@@ -1,9 +1,15 @@
 # Hello API
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://www.zalt.me)
 
-Hello API, is an **API Starter** providing you everything you need to build a professional API.
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
-Built using **PHP** on top of **Laravel 5.1 (LTS)**.
+
+Hello API, is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
+
+Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
+And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
+
+Hello API is a project that gives you all the common functionalties of a professional modern API, to start building your own Application on top of it immediately.
+It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful peace of code base.
 
 ## Content
 
@@ -19,30 +25,28 @@ Built using **PHP** on top of **Laravel 5.1 (LTS)**.
 
 >The Hello API comes with great features:
 
-- All In One (everything you need to build an API).
 - Token Based Authentication (with JWT "JSON Web Tokens").
 - API Throttling (Rate Limiting).
 - Supports CORS "Cross-Origin Resource Sharing".
 - Automatic Data Pagination (meta links to next and previous data).
-- Data Caching support (cleared on Craete, Update and Delete).
+- Data Caching support (with auto clearing on Craete, Update and Delete).
 - Easy and auto request input validation.
+- Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Auto API Documentation generator (using the API Doc JS).
-- Support for JSON with padding (JSONP).
 - Type-Casting JSON response with Transformers.
+- Full text search support out of the box (search, searchFields).
+- Custom Tests Helpers for faster automated testing (using PHPUnit).
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
+- Support for JSON with padding (JSONP).
 - Scalable, Stateless and Distributable Application on the server.
-- BDD "Behaviour Driven Development" (PHPUnit Tests included with Tests Helper).
 - RESTful API (supporting all HTTP verbs).
-- Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include)
-- Advanced Full text search support out of the box (search, searchFields)
 - Modular Software Architecture (Freestyle Architecture).
+- Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
-- Well structured code, implementing the best design patterns and coding techniques.
-- Extremely easy to understand the code and get started.
-- Full Complete documentation.
-- Fully Object Oriented Code and 100% customizable and Open Code.
+- Full detailed documentation.
+- 100% customizable and Open Code.
 
 
 
@@ -101,7 +105,7 @@ Built using **PHP** on top of **Laravel 5.1 (LTS)**.
 
 
 ## Contribution
-We welcome any kind of contribution. Just Do It.
+Just do it. You are welcome :)
 
 
 
@@ -111,8 +115,8 @@ We welcome any kind of contribution. Just Do It.
 
 
 ## License
-MIT
 
+The MIT License [(MIT)](https://github.com/Mahmoudz/Hello-API/blob/master/LICENSE).
 
 
 
