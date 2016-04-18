@@ -1,0 +1,11 @@
+{
+  "name": "User Module",
+  "require": {
+    "modules": [
+    ],
+    "services": [
+      "Core",
+      "Authentication"
+    ]
+  }
+}

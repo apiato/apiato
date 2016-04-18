@@ -1,0 +1,11 @@
+{
+  "name": "MEGA PRO API",
+  "version": "1.0.0",
+  "description": "The MEGA PRO API Documentation",
+  "title": "MEGA PRO",
+  "url" : "http://api.mega.pro",
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}
