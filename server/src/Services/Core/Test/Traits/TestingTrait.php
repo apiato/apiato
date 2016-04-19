@@ -249,7 +249,7 @@ trait TestingTrait
     /**
      * Migrate the database
      */
-    public function migrateTheDatabase()
+    public function migrateDatabase()
     {
         \Artisan::call('migrate');
     }
