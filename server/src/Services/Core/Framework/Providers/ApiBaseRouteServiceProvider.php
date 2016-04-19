@@ -30,7 +30,7 @@ class ApiBaseRouteServiceProvider extends ApiRouteServiceProvider
                 'expires'    => env('API_LIMIT_EXPIRES') // The API limit expiry time.
             ], function ($router) {
                 $router->any('/', function () {
-                    return response()->json(['Welcome to the ' . env('API_NAME') . ' API.']);
+                    return response()->json(['Welcome to ' . env('API_NAME') . '.']);
                 });
             });
 
