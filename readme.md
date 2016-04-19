@@ -9,7 +9,12 @@ Today everything needs an API (Mobile Apps, Websites, Internet of Things,...).
 And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
 
 Hello API is a project that gives you all the common functionalties of a professional modern API, to start building your own Application on top of it immediately.
-It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful peace of code base.
+It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful peace of code.
+
+
+
+
+
 
 ## Content
 
@@ -17,6 +22,9 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - [Technologies](#Technologies)
 - [Full Documentation](#Documentation)
 - [Comming Features](#Comming-Features)
+
+
+
 
 
 
@@ -51,6 +59,8 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
+
+
 <a name="Technologies"></a>
 ## Technologies
 
@@ -76,12 +86,15 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
-
-
 <a name="Documentation"></a>
 ## Full Documentation
 
-###[Click here](https://github.com/Mahmoudz/Hello-API/wiki)
+**Hello API** comes with a detailed documentation (wiki), to help you getting started and modifying the existing code.
+
+####[Click here to see the WIKI](https://github.com/Mahmoudz/Hello-API/wiki)
+
+
+
 
 
 
@@ -99,7 +112,9 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Support login with social networks (Facebook, Twitter, Github, Google).
 - A lot more cools stuff in mind, (never stop coding).
 
-> Suggest a feature by openning a new Issue with `Feature:` title [here](https://github.com/Mahmoudz/Hello-API/issues).
+> Suggest a feature by openning a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
+
+
 
 
 
@@ -109,9 +124,15 @@ Just do it. You are welcome :)
 
 
 
+
+
+
 ## Credits
 
 - [Mahmoud Zalt (Follow on Twitter)](https://twitter.com/Mahmoud_Zalt)
+
+
+
 
 
 ## License
