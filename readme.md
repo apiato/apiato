@@ -37,7 +37,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - API Throttling (Rate Limiting).
 - Supports CORS "Cross-Origin Resource Sharing".
 - Automatic Data Pagination (meta links to next and previous data).
-- Data Caching support (with auto clearing on Craete, Update and Delete).
+- Data Caching support (with auto clearing on Create, Update and Delete).
 - Easy and auto request input validation.
 - Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Auto API Documentation generator (using the API Doc JS).
