@@ -15,8 +15,7 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
-        "guzzlehttp/guzzle": "^6.1",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "guzzlehttp/guzzle": "^6.1"
     },
     "autoload": {
         "classmap": [
