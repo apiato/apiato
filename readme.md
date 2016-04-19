@@ -2,15 +2,15 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
+#### The Hello world of an API :)
 
-
-Hello API, is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
+Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
 
 Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
 And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
 
-Hello API is a project that gives you all the common functionalties of a professional modern API, to start building your own Application on top of it immediately.
-It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful peace of code.
+Hello API is a project that gives you all the common functionalities of a professional modern API, to start building your own Application on top of it immediately.
+It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
 
 
 
@@ -44,7 +44,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Auto API Documentation generator (using the API Doc JS).
 - Type-Casting JSON response with Transformers.
-- Full text search support out of the box (search, searchFields).
+- Full-text search support out of the box (search, searchFields).
 - Custom Tests Helpers for faster automated testing (using PHPUnit).
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
@@ -110,11 +110,11 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Request size limiting and response rate limiting.
 - Back-end generators (to generate Modules and components) for faster development.
 - Automatic Code and Data Backup.
-- Hidden real ID's from the response.
+- Hidden real IDs from the response.
 - Support login with social networks (Facebook, Twitter, Github, Google).
-- A lot more cools stuff in mind, (never stop coding).
+- A lot more cool stuff in mind, (never stop coding).
 
-> Suggest a feature by openning a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
+> Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
 
 
 
