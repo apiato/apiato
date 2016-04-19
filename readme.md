@@ -3,8 +3,6 @@
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
 
-![](http://s31.postimg.org/g8clmm9ob/hello_api.jpg)
-
 
 Hello API, is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
 
@@ -16,6 +14,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
+![](http://s31.postimg.org/s51xi7ywr/hello_api.jpg)
 
 
 
