@@ -34,8 +34,7 @@ class MasterServiceProvider extends ServiceProvider
         ApiBaseRouteServiceProvider::class,
         // Modules Service Providers:
         UserServiceProvider::class,
-        AccountServiceProvider::class,
-        TagServiceProvider::class
+        // ...
     ];
 
     public function boot()
