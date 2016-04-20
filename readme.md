@@ -94,31 +94,31 @@ It uses the best framework, packages, tools and conventions. All configured to w
 **Hello API** comes with a detailed documentation ([wiki](https://github.com/Mahmoudz/Hello-API/wiki)), to help you getting started and modifying the existing code.
 
 * Intro
-	* [Introduction](Home#introduction)
-	* [Requirements](Home#requirements)
-	* [Installation](Home#installation)
+	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
+	* [Requirements](https://github.com/Mahmoudz/Hello-API/wiki/Home#requirements)
+	* [Installation](https://github.com/Mahmoudz/Hello-API/wiki/Home#installation)
 * General
-	* [Folders Structure](Folders-Structure)
-	* [Development Workflow](Development-Workflow)
-	* [Debugging](Debugging)
+	* [Folders Structure](https://github.com/Mahmoudz/Hello-API/wiki/Folders-Structure)
+	* [Development Workflow](https://github.com/Mahmoudz/Hello-API/wiki/Development-Workflow)
+	* [Debugging](https://github.com/Mahmoudz/Hello-API/wiki/Debugging)
 * API
-	* [Request & Response](API-Request-and-Response)
-	* [Supported Parameters](API-Parameters)
-	* [Documentation Generator](API-Doc-Generator)
+	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
+	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
+	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
 * Components
-	* [Routes](Routes)
-	* [Controllers](Controllers)
-	* [Models](Models)
-	* [Tasks](Tasks)
-	* [Service Providers](Service-Providers)
-	* [Requests](Requests)
-	* [Response Transformers](Response-Transformers)
-	* [Repositories](Repositories)
-	* [Database Criterias](Database-Criterias)
-	* [Database Migrations](Database-Migrations)
-	* [Execptions](Execptions)
-	* [Tests](Tests)
-	* [Models Factory](Models-Factory)
+	* [Routes](https://github.com/Mahmoudz/Hello-API/wiki/Routes)
+	* [Controllers](https://github.com/Mahmoudz/Hello-API/wiki/Controllers)
+	* [Models](https://github.com/Mahmoudz/Hello-API/wiki/Models)
+	* [Tasks](https://github.com/Mahmoudz/Hello-API/wiki/Tasks)
+	* [Service Providers](https://github.com/Mahmoudz/Hello-API/wiki/Service-Providers)
+	* [Requests](https://github.com/Mahmoudz/Hello-API/wiki/Requests)
+	* [Response Transformers](https://github.com/Mahmoudz/Hello-API/wiki/Response-Transformers)
+	* [Repositories](https://github.com/Mahmoudz/Hello-API/wiki/Repositories)
+	* [Database Criterias](https://github.com/Mahmoudz/Hello-API/wiki/Database-Criterias)
+	* [Database Migrations](https://github.com/Mahmoudz/Hello-API/wiki/Database-Migrations)
+	* [Execptions](https://github.com/Mahmoudz/Hello-API/wiki/Execptions)
+	* [Tests](https://github.com/Mahmoudz/Hello-API/wiki/Tests)
+	* [Models Factory](https://github.com/Mahmoudz/Hello-API/wiki/Models-Factory)
 
 
 
