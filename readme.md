@@ -91,10 +91,34 @@ It uses the best framework, packages, tools and conventions. All configured to w
 <a name="Documentation"></a>
 ## Full Documentation
 
-**Hello API** comes with a detailed documentation (wiki), to help you getting started and modifying the existing code.
+**Hello API** comes with a detailed documentation ([wiki](https://github.com/Mahmoudz/Hello-API/wiki)), to help you getting started and modifying the existing code.
 
-####[Click here to see the WIKI](https://github.com/Mahmoudz/Hello-API/wiki)
-
+* Intro
+	* [Introduction](Home#introduction)
+	* [Requirements](Home#requirements)
+	* [Installation](Home#installation)
+* General
+	* [Folders Structure](Folders-Structure)
+	* [Development Workflow](Development-Workflow)
+	* [Debugging](Debugging)
+* API
+	* [Request & Response](API-Request-and-Response)
+	* [Supported Parameters](API-Parameters)
+	* [Documentation Generator](API-Doc-Generator)
+* Components
+	* [Routes](Routes)
+	* [Controllers](Controllers)
+	* [Models](Models)
+	* [Tasks](Tasks)
+	* [Service Providers](Service-Providers)
+	* [Requests](Requests)
+	* [Response Transformers](Response-Transformers)
+	* [Repositories](Repositories)
+	* [Database Criterias](Database-Criterias)
+	* [Database Migrations](Database-Migrations)
+	* [Execptions](Execptions)
+	* [Tests](Tests)
+	* [Models Factory](Models-Factory)
 
 
 
@@ -115,6 +139,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - A lot more cool stuff in mind, (never stop coding).
 
 > Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
+
 
 
 
