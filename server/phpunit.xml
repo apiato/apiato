@@ -9,9 +9,6 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Account Module API Functional Tests">
-            <directory>./src/Modules/Account/Tests/Api/</directory>
-        </testsuite>
         <testsuite name="Account Module User Functional Tests">
             <directory>./src/Modules/User/Tests/Api/</directory>
         </testsuite>
