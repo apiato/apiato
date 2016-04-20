@@ -116,7 +116,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 	* [Repositories](https://github.com/Mahmoudz/Hello-API/wiki/Repositories)
 	* [Database Criterias](https://github.com/Mahmoudz/Hello-API/wiki/Database-Criterias)
 	* [Database Migrations](https://github.com/Mahmoudz/Hello-API/wiki/Database-Migrations)
-	* [Execptions](https://github.com/Mahmoudz/Hello-API/wiki/Execptions)
+	* [Exceptions](https://github.com/Mahmoudz/Hello-API/wiki/Exceptions)
 	* [Tests](https://github.com/Mahmoudz/Hello-API/wiki/Tests)
 	* [Models Factory](https://github.com/Mahmoudz/Hello-API/wiki/Models-Factory)
 
