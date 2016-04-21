@@ -11,7 +11,7 @@ use Mega\Modules\User\Transformers\UserTransformer;
 /**
  * Class RegisterController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterController extends ApiController
 {

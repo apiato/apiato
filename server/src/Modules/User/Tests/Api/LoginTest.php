@@ -8,7 +8,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 /**
  * Class LoginEndpointTest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginTest extends TestCase
 {

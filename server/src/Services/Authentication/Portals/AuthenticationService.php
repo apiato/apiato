@@ -11,7 +11,7 @@ use Mega\Services\Authentication\Exceptions\MissingTokenException;
 /**
  * Class AuthenticationService.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class AuthenticationService
 {

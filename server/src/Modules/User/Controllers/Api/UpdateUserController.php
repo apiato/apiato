@@ -10,7 +10,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
 /**
  * Class UpdateUserController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserController extends ApiController
 {

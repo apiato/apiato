@@ -12,7 +12,7 @@ use Mega\Services\Authentication\Portals\AuthenticationService;
 /**
  * Class CreateUserTask.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class CreateUserTask extends Task
 {

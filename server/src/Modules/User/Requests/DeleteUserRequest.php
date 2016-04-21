@@ -7,7 +7,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
 /**
  * Class DeleteUserRequest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserRequest extends Request
 {

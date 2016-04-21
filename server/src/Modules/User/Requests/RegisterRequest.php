@@ -7,7 +7,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
 /**
  * Class RegisterRequest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterRequest extends Request
 {

@@ -9,7 +9,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
 /**
  * Class UpdateUserTask.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserTask extends Task
 {

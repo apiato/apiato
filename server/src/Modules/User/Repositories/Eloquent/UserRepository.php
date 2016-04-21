@@ -9,7 +9,7 @@ use Mega\Modules\User\Models\User;
 /**
  * Class UserRepository.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UserRepository extends Repository implements UserRepositoryInterface
 {

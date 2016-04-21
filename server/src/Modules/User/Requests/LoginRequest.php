@@ -7,7 +7,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
 /**
  * Class LoginRequest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginRequest extends Request
 {

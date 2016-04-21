@@ -8,7 +8,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
 /**
  * Class DeleteUserTask.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserTask extends Task
 {

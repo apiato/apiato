@@ -7,7 +7,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
 /**
  * Class UpdateUserRequest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserRequest extends Request
 {

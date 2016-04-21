@@ -8,7 +8,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 /**
  * Class DeleteUserTest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserTest extends TestCase
 {

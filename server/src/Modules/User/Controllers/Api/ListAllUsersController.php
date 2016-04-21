@@ -9,7 +9,7 @@ use Mega\Modules\User\Transformers\UserTransformer;
 /**
  * Class ListAllUsersController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ListAllUsersController extends ApiController
 {

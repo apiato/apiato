@@ -7,7 +7,7 @@ namespace Mega\Services\Authentication\Portals;
  *
  * To be `used` by the `User` Model.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait TokenTrait
 {

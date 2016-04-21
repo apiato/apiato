@@ -9,7 +9,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
 /**
  * Class DeleteUserController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserController extends ApiController
 {

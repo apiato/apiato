@@ -9,7 +9,7 @@ use Mega\Modules\User\Contracts\UserRepositoryInterface;
 /**
  * Class ListAllUsersTask.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ListAllUsersTask extends Task
 {

@@ -9,7 +9,7 @@ use Mega\Modules\User\Tasks\LogoutTask;
 /**
  * Class LogoutController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LogoutController extends ApiController
 {

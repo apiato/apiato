@@ -8,7 +8,7 @@ use Mega\Services\Authentication\Portals\AuthenticationService;
 /**
  * Class LogoutTask.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LogoutTask extends Task
 {

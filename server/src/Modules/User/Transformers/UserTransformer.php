@@ -8,7 +8,7 @@ use Mega\Modules\User\Models\User;
 /**
  * Class UserTransformer.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UserTransformer extends Transformer
 {

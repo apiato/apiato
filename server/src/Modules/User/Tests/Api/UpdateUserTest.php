@@ -8,7 +8,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 /**
  * Class UpdateUserTest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserTest extends TestCase
 {

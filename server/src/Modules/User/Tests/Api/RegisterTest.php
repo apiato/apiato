@@ -8,7 +8,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 /**
  * Class RegisterEndpointTest.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterTest extends TestCase
 {

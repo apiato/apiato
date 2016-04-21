@@ -10,7 +10,7 @@ use Mega\Modules\User\Transformers\UserTransformer;
 /**
  * Class LoginController.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginController extends ApiController
 {

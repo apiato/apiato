@@ -7,7 +7,7 @@ use Tymon\JWTAuth\JWTAuth;
 /**
  * Class JWTAuthService.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class JwtAuthAdapter
 {
