@@ -7,25 +7,22 @@ use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Modules\User\Models\User;
 
 /**
- * Class UserRepository
+ * Class UserRepository.
  *
- * @type Repository
- * @package  Mega\Modules\User\Repositories\Eloquent
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UserRepository extends Repository implements UserRepositoryInterface
 {
-
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'name'  => 'like',
+        'name' => 'like',
         'email' => '=',
     ];
 
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */
@@ -33,5 +30,4 @@ class UserRepository extends Repository implements UserRepositoryInterface
     {
         return User::class;
     }
-
 }

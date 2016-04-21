@@ -6,10 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
- * Class DeleteUserTest
+ * Class DeleteUserTest.
  *
- * @type     Tests
- * @package  Mega\Interfaces\Api\Tests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserTest extends TestCase
@@ -23,11 +21,11 @@ class DeleteUserTest extends TestCase
         $user = $this->getLoggedInTestingUser();
 
         $data = [
-            'name'     => 'Updated Name',
+            'name' => 'Updated Name',
             'password' => 'updated#Password',
         ];
 
-        $endpoint = $this->endpoint . '/' . $user->id;
+        $endpoint = $this->endpoint.'/'.$user->id;
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'delete', $data);
@@ -37,7 +35,7 @@ class DeleteUserTest extends TestCase
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'User (' . $user->id . ') Deleted Successfully.',
+            'message' => 'User ('.$user->id.') Deleted Successfully.',
         ], $response);
 
         // assert the account was delete from the database (in face it will be soft deleted)
@@ -48,7 +46,7 @@ class DeleteUserTest extends TestCase
 
     public function testDeleteDifferentUser()
     {
-        $endpoint = $this->endpoint . '/' . 100; // any ID
+        $endpoint = $this->endpoint.'/'. 100; // any ID
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'delete');
@@ -59,7 +57,4 @@ class DeleteUserTest extends TestCase
         // assert user not allowed to proceed with the request
         $this->assertEquals($response->getContent(), 'Forbidden');
     }
-
 }
-
-

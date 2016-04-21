@@ -6,10 +6,8 @@ use Mega\Services\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class MissingTokenException
+ * Class MissingTokenException.
  *
- * @type Exception
- * @package  Mega\Services\Authentication\Exceptions
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class MissingTokenException extends ApiException

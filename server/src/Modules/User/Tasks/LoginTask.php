@@ -6,15 +6,12 @@ use Mega\Services\Core\Task\Abstracts\Task;
 use Mega\Services\Authentication\Portals\AuthenticationService;
 
 /**
- * Class CreateUserTask
+ * Class CreateUserTask.
  *
- * @type Task
- * @package  Mega\Services\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginTask extends Task
 {
-
     /**
      * @var \Mega\Services\Authentication\Portals\AuthenticationService
      */
@@ -44,5 +41,4 @@ class LoginTask extends Task
 
         return $user;
     }
-
 }

@@ -10,15 +10,12 @@ use Mega\Modules\User\Exceptions\AccountFailedException;
 use Mega\Services\Authentication\Portals\AuthenticationService;
 
 /**
- * Class CreateUserTask
+ * Class CreateUserTask.
  *
- * @type Task
- * @package  Mega\Services\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class CreateUserTask extends Task
 {
-
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -43,7 +40,7 @@ class CreateUserTask extends Task
 
     /**
      * create a new user object.
-     * optionally can login the created user and return it with its token
+     * optionally can login the created user and return it with its token.
      *
      * @param            $email
      * @param            $password
@@ -59,11 +56,11 @@ class CreateUserTask extends Task
         try {
             // create new user
             $user = $this->userRepository->create([
-                'email'    => $email,
+                'email' => $email,
                 'password' => $hashedPassword,
-                'name'     => $name,
+                'name' => $name,
             ]);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);
         }
 
@@ -74,5 +71,4 @@ class CreateUserTask extends Task
 
         return $user;
     }
-
 }

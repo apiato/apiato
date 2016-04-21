@@ -2,7 +2,6 @@
 
 namespace Mega\Modules\User\Controllers\Api;
 
-use JWTAuth;
 use Mega\Services\Core\Controller\Abstracts\ApiController;
 use Mega\Modules\User\Requests\RegisterRequest;
 use Mega\Modules\User\Tasks\AssignUserRolesTask;
@@ -10,15 +9,12 @@ use Mega\Modules\User\Tasks\CreateUserTask;
 use Mega\Modules\User\Transformers\UserTransformer;
 
 /**
- * Class RegisterController
+ * Class RegisterController.
  *
- * @type     Controller
- * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterController extends ApiController
 {
-
     /**
      * @param \Mega\Modules\User\Requests\RegisterRequest  $registerRequest
      * @param \Mega\Modules\User\Tasks\CreateUserTask      $createUserTask
@@ -45,6 +41,4 @@ class RegisterController extends ApiController
 
         return $this->response->item($user, new UserTransformer());
     }
-
-
 }

@@ -9,10 +9,8 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 use Mega\Modules\User\Models\User;
 
 /**
- * Class ListAllUsersTest
+ * Class ListAllUsersTest.
  *
- * @type
- * @package Mega\Modules\User\Tests\Api
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ListAllUsersTest extends TestCase
@@ -39,11 +37,8 @@ class ListAllUsersTest extends TestCase
         $this->assertEquals(count($responseArray->data), 5); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
 
-
-
     public function testListAllUsersOnlyForAdmin_()
     {
-
         $listUsersPermission = Permission::create([
             'name' => 'List users',
             'slug' => 'list.users',
@@ -83,5 +78,3 @@ class ListAllUsersTest extends TestCase
         $this->assertEquals(count($responseArray->data), 5); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
 }
-
-

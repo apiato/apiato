@@ -9,15 +9,12 @@ use Mega\Services\Authentication\Exceptions\AuthenticationFailedException;
 use Mega\Services\Authentication\Exceptions\MissingTokenException;
 
 /**
- * Class AuthenticationService
+ * Class AuthenticationService.
  *
- * @type Portal
- * @package  Mega\Services\Authentication\Portals
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class AuthenticationService
 {
-
     /**
      * @var \Mega\Services\Authentication\Adapters\JwtAuthAdapter
      */
@@ -49,15 +46,14 @@ class AuthenticationService
     {
         try {
             $token = $this->jwtAuthAdapter->attempt([
-                'email'    => $email,
+                'email' => $email,
                 'password' => $password,
             ]);
 
             if (!$token) {
                 throw new AuthenticationFailedException();
             }
-
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // something went wrong whilst attempting to encode the token
             throw (new AuthenticationFailedException())->debug($e);
         }
@@ -67,7 +63,7 @@ class AuthenticationService
 
     /**
      * login user from it's object. (no username and password needed)
-     * useful for logging in new created users (during registration)
+     * useful for logging in new created users (during registration).
      *
      * @param $user
      *
@@ -85,7 +81,7 @@ class AuthenticationService
 
     /**
      * get the user object of the current authenticated user
-     * inject the token on it if a token is provided
+     * inject the token on it if a token is provided.
      *
      * @return mixed
      */
@@ -102,6 +98,7 @@ class AuthenticationService
      * @param $authorizationHeader
      *
      * @return bool
+     *
      * @throws \Mega\Services\Authentication\Portals\MissingTokenException
      */
     public function logout($authorizationHeader)
@@ -119,7 +116,7 @@ class AuthenticationService
     }
 
     /**
-     * login/authenticate user and return its token
+     * login/authenticate user and return its token.
      *
      * @param $user
      *
@@ -129,11 +126,10 @@ class AuthenticationService
     {
         try {
             $token = $this->jwtAuthAdapter->fromUser($user);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             throw (new AuthenticationFailedException())->debug($e);
         }
 
         return $token;
     }
-
 }

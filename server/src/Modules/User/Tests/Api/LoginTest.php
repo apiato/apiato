@@ -6,13 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
- * Class LoginEndpointTest
+ * Class LoginEndpointTest.
  *
- * @type Tests
- * @package  Mega\Interfaces\Api\Tests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginEndpointTest extends TestCase
+class LoginTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -25,8 +23,8 @@ class LoginEndpointTest extends TestCase
         $password = 'secret';
 
         $userDetails = [
-            'name'     => $name,
-            'email'    => $email,
+            'name' => $name,
+            'email' => $email,
             'password' => $password,
         ];
 
@@ -34,7 +32,7 @@ class LoginEndpointTest extends TestCase
         $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email'    => $email,
+            'email' => $email,
             'password' => $password,
         ];
 
@@ -46,7 +44,7 @@ class LoginEndpointTest extends TestCase
 
         $this->assertResponseContainKeyValue([
             'email' => $email,
-            'name'  => $name
+            'name' => $name,
         ], $response);
 
         $this->assertResponseContainKeys(['id', 'token'], $response);
@@ -55,7 +53,7 @@ class LoginEndpointTest extends TestCase
     public function testLoginExistingUserUsingGetRequest()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email' => 'mega@mail.dev',
             'password' => 'secret',
         ];
 
@@ -65,14 +63,14 @@ class LoginEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '405');
 
         $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed'
+            'message' => '405 Method Not Allowed',
         ], $response);
     }
 
     public function testLoginNonExistingUser()
     {
         $data = [
-            'email'    => 'i-do-not-exist@mail.dev',
+            'email' => 'i-do-not-exist@mail.dev',
             'password' => 'secret',
         ];
 
@@ -92,8 +90,8 @@ class LoginEndpointTest extends TestCase
         $password = 'secret';
 
         $userDetails = [
-            'name'     => 'Mega',
-            'email'    => 'mega@mail.dev',
+            'name' => 'Mega',
+            'email' => 'mega@mail.dev',
             'password' => $password,
         ];
 
@@ -111,7 +109,7 @@ class LoginEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '422');
 
         $this->assertValidationErrorContain($response, [
-            'email' => 'The email field is required.'
+            'email' => 'The email field is required.',
         ]);
     }
 
@@ -122,8 +120,8 @@ class LoginEndpointTest extends TestCase
         $password = 'secret';
 
         $userDetails = [
-            'name'     => $name,
-            'email'    => $email,
+            'name' => $name,
+            'email' => $email,
             'password' => $password,
         ];
 
@@ -131,7 +129,7 @@ class LoginEndpointTest extends TestCase
         $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email' => $email
+            'email' => $email,
         ];
 
         // send the HTTP request
@@ -141,9 +139,8 @@ class LoginEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '422');
 
         $this->assertValidationErrorContain($response, [
-            'password' => 'The password field is required.'
+            'password' => 'The password field is required.',
         ]);
-
     }
 
     public function testLoginExistingUserWithoutEmailAndPassword()
@@ -153,8 +150,8 @@ class LoginEndpointTest extends TestCase
         $password = 'secret';
 
         $userDetails = [
-            'name'     => $name,
-            'email'    => $email,
+            'name' => $name,
+            'email' => $email,
             'password' => $password,
         ];
 
@@ -171,11 +168,7 @@ class LoginEndpointTest extends TestCase
 
         $this->assertValidationErrorContain($response, [
             'email' => 'The email field is required.',
-            'password' => 'The password field is required.'
+            'password' => 'The password field is required.',
         ]);
-
     }
-
 }
-
-

@@ -6,15 +6,12 @@ use Mega\Services\Core\Task\Abstracts\Task;
 use Mega\Services\Authentication\Portals\AuthenticationService;
 
 /**
- * Class LogoutTask
+ * Class LogoutTask.
  *
- * @type Task
- * @package  Mega\Services\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LogoutTask extends Task
 {
-
     /**
      * @var \Mega\Modules\User\Tasks\AuthenticationService|\Mega\Services\Authentication\Portals\AuthenticationService
      */
@@ -28,7 +25,6 @@ class LogoutTask extends Task
     public function __construct(
         AuthenticationService $authenticationService
     ) {
-
         $this->authenticationService = $authenticationService;
     }
 
@@ -43,5 +39,4 @@ class LogoutTask extends Task
 
         return $ok;
     }
-
 }

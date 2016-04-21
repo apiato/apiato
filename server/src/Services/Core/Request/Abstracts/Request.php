@@ -7,15 +7,12 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
 use Mega\Services\Core\Exception\Exceptions\ValidationFailedException;
 
 /**
- * Class Request
+ * Class Request.
  *
- * @type    Abstract
- * @package Mega\Services\Core\Request\Abstracts
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 abstract class Request extends LaravelFrameworkRequest
 {
-
     /**
      * overriding the failedValidation function to throw my custom
      * exception instead of the default Laravel exception.
@@ -28,6 +25,4 @@ abstract class Request extends LaravelFrameworkRequest
     {
         throw new ValidationFailedException($validator->getMessageBag());
     }
-
-
 }

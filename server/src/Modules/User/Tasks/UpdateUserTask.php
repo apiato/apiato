@@ -7,15 +7,12 @@ use Mega\Services\Authentication\Exceptions\UpdateResourceFailedException;
 use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
- * Class UpdateUserTask
+ * Class UpdateUserTask.
  *
- * @type     Task
- * @package  Mega\Services\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserTask extends Task
 {
-
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -47,7 +44,7 @@ class UpdateUserTask extends Task
 
         $attributes = [
             'password' => $password,
-            'name'     => $name,
+            'name' => $name,
         ];
 
         // updating the attributes
@@ -55,6 +52,4 @@ class UpdateUserTask extends Task
 
         return $user;
     }
-
-
 }

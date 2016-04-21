@@ -8,15 +8,12 @@ use Log;
 use Mega\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
 
 /**
- * Class MasterServiceProviderTrait
+ * Class MasterServiceProviderTrait.
  *
- * @type    Trait
- * @package Mega\Services\Core\Framework\Traits
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait MasterServiceProviderTrait
 {
-
     /**
      * @param bool|false $terminal
      */
@@ -26,7 +23,7 @@ trait MasterServiceProviderTrait
             DB::listen(function ($query, $bindings, $time, $connection) use ($terminal) {
                 $fullQuery = vsprintf(str_replace(array('%', '?'), array('%%', '%s'), $query), $bindings);
 
-                $text = $connection . ' (' . $time . '): ' . $fullQuery;
+                $text = $connection.' ('.$time.'): '.$fullQuery;
 
                 if ($terminal) {
                     dump($text);
@@ -36,7 +33,6 @@ trait MasterServiceProviderTrait
             });
         }
     }
-
 
     /**
      * By default Laravel takes (server/database/factories) as the
@@ -50,14 +46,13 @@ trait MasterServiceProviderTrait
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
-            return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
+            return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path().$customPath);
         });
-
     }
 
     /**
      * register the Migrations to be published when this command runs
-     * `php artisan vendor:publish --provider="Mega\Infrastructure\Providers\MasterServiceProvider"`
+     * `php artisan vendor:publish --provider="Mega\Infrastructure\Providers\MasterServiceProvider"`.
      *
      * This transfers all the Migrations files from the Infrastructure directory to the Framework
      * Migrations Directory.
@@ -67,7 +62,7 @@ trait MasterServiceProviderTrait
     public function registerTheDatabaseMigrationsFiles($directory)
     {
         $this->publishes([
-            $directory . '/../Migrations/MySQL/' => database_path('migrations')
+            $directory.'/../Migrations/MySQL/' => database_path('migrations'),
         ], 'migrations');
     }
 
@@ -88,7 +83,6 @@ trait MasterServiceProviderTrait
 
         // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
         if ($serializerName != 'DataArray') {
-
             app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
                 switch ($serializerName) {
                     case 'JsonApi':
@@ -98,16 +92,14 @@ trait MasterServiceProviderTrait
                         $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
                         break;
                     default:
-                        throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
+                        throw new UnsupportedFractalSerializerException('Unsupported '.$serializerName);
                 }
 
-                $fractal = new \League\Fractal\Manager;
+                $fractal = new \League\Fractal\Manager();
                 $fractal->setSerializer($serializer);
 
                 return new \Dingo\Api\Transformer\Adapter\Fractal($fractal, 'include', ',', false);
             });
-
         }
     }
-
 }

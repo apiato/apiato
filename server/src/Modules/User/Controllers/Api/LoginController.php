@@ -8,15 +8,12 @@ use Mega\Modules\User\Tasks\LoginTask;
 use Mega\Modules\User\Transformers\UserTransformer;
 
 /**
- * Class LoginController
+ * Class LoginController.
  *
- * @type Controller
- * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginController extends ApiController
 {
-
     /**
      * @param \Mega\Modules\User\Requests\LoginRequest $loginRequest
      * @param \Mega\Modules\User\Tasks\LoginTask       $loginTask
@@ -29,5 +26,4 @@ class LoginController extends ApiController
 
         return $this->response->item($user, new UserTransformer());
     }
-
 }

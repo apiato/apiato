@@ -5,15 +5,12 @@ namespace Mega\Modules\User\Tasks;
 use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
- * Class AssignUserRolesTask
+ * Class AssignUserRolesTask.
  *
- * @type Task
- * @package  Mega\Modules\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class AssignUserRolesTask extends Task
 {
-
     /**
      * @param $user
      */
@@ -23,5 +20,4 @@ class AssignUserRolesTask extends Task
 
         return $user;
     }
-
 }

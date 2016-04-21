@@ -6,10 +6,8 @@ use Mega\Services\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
- * Class InternalErrorException
+ * Class InternalErrorException.
  *
- * @type    Exception
- * @package Mega\Services\Core\Exception\Exceptions
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class InternalErrorException extends ApiException

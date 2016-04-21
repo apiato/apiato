@@ -8,15 +8,12 @@ use Mega\Modules\User\Transformers\UserTransformer;
 use Mega\Services\Core\Controller\Abstracts\ApiController;
 
 /**
- * Class UpdateUserController
+ * Class UpdateUserController.
  *
- * @type     Controller
- * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserController extends ApiController
 {
-
     /**
      * @param \Mega\Modules\User\Requests\UpdateUserRequest $updateUserRequest
      * @param \Mega\Modules\User\Tasks\UpdateUserTask       $updateUserTask
@@ -34,5 +31,4 @@ class UpdateUserController extends ApiController
 
         return $this->response->item($user, new UserTransformer());
     }
-
 }

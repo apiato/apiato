@@ -7,15 +7,12 @@ use Mega\Services\Core\Request\Manager\HttpRequest;
 use Mega\Modules\User\Tasks\LogoutTask;
 
 /**
- * Class LogoutController
+ * Class LogoutController.
  *
- * @type Controller
- * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LogoutController extends ApiController
 {
-
     /**
      * @param \Dingo\Api\Http\Request             $request
      * @param \Mega\Modules\User\Tasks\LogoutTask $logoutTask
@@ -27,8 +24,7 @@ class LogoutController extends ApiController
         $logoutTask->run($request->header('authorization'));
 
         return $this->response->accepted(null, [
-            'message' => 'User Logged Out Successfully.'
+            'message' => 'User Logged Out Successfully.',
         ]);
     }
-
 }

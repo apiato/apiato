@@ -6,13 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
- * Class LogoutEndpointTest
+ * Class LogoutEndpointTest.
  *
- * @type Tests
- * @package  Mega\Interfaces\Api\Tests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LogoutEndpointTest extends TestCase
+class LogoutTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -40,7 +38,7 @@ class LogoutEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '405');
 
         $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed'
+            'message' => '405 Method Not Allowed',
         ], $response);
     }
 
@@ -53,10 +51,7 @@ class LogoutEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '401');
 
         $this->assertResponseContainKeyValue([
-            'message' => 'Failed to authenticate because of bad credentials or an invalid authorization header.'
+            'message' => 'Failed to authenticate because of bad credentials or an invalid authorization header.',
         ], $response);
     }
-
 }
-
-

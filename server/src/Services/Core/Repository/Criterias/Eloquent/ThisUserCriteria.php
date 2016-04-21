@@ -6,15 +6,12 @@ use Mega\Services\Core\Repository\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class ThisUserCriteria
+ * Class ThisUserCriteria.
  *
- * @type    Criteria
- * @package Mega\Services\Core\Repository\Criterias\Eloquent
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ThisUserCriteria extends Criteria
 {
-
     /**
      * @var int
      */
@@ -41,4 +38,3 @@ class ThisUserCriteria extends Criteria
         return $model->where('user_id', '=', $this->userId);
     }
 }
-

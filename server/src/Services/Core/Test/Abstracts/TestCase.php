@@ -7,15 +7,12 @@ use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use Mega\Services\Core\Test\Traits\TestingTrait;
 
 /**
- * Class TestCase
+ * Class TestCase.
  *
- * @type    Abstract
- * @package Mega\Services\Core\Test\Abstracts
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 abstract class TestCase extends LaravelTestCase
 {
-
     use TestingTrait;
 
     /**
@@ -34,7 +31,7 @@ abstract class TestCase extends LaravelTestCase
     {
         $this->baseUrl = env('API_BASE_URL');
 
-        $app = require __DIR__ . '/../../../../../bootstrap/app.php';
+        $app = require __DIR__.'/../../../../../bootstrap/app.php';
 
         $app->make(LaravelKernel::class)->bootstrap();
 

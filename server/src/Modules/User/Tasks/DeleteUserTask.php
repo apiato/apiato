@@ -6,15 +6,12 @@ use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
- * Class DeleteUserTask
+ * Class DeleteUserTask.
  *
- * @type     Task
- * @package  Mega\Services\User\Tasks
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserTask extends Task
 {
-
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -44,6 +41,4 @@ class DeleteUserTask extends Task
 
         return true;
     }
-
-
 }

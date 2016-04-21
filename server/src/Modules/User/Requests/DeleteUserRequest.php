@@ -5,15 +5,12 @@ namespace Mega\Modules\User\Requests;
 use Mega\Services\Core\Request\Abstracts\Request;
 
 /**
- * Class DeleteUserRequest
+ * Class DeleteUserRequest.
  *
- * @type     Request
- * @package  Mega\Interfaces\Api\Requests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserRequest extends Request
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -40,6 +37,4 @@ class DeleteUserRequest extends Request
         // authorize only if a user is updating it's own record
         return ($currentLoggedInUserId == $inputUserId) ? true : false;
     }
-
-
 }

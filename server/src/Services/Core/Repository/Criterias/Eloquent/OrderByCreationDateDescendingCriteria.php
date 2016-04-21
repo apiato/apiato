@@ -6,15 +6,12 @@ use Mega\Services\Core\Repository\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class OrderByCreationDateDescendingCriteria
+ * Class OrderByCreationDateDescendingCriteria.
  *
- * @type    Criteria
- * @package Mega\Services\Core\Repository\Criterias\Eloquent
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class OrderByCreationDateDescendingCriteria extends Criteria
 {
-
     /**
      * @param                                                   $model
      * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
@@ -26,4 +23,3 @@ class OrderByCreationDateDescendingCriteria extends Criteria
         return $model->orderBy('created_at', 'desc');
     }
 }
-

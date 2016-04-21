@@ -5,10 +5,8 @@ namespace Mega\Modules\User\Requests;
 use Mega\Services\Core\Request\Abstracts\Request;
 
 /**
- * Class RegisterRequest
+ * Class RegisterRequest.
  *
- * @type Request
- * @package  Mega\Interfaces\Api\Requests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterRequest extends Request
@@ -21,9 +19,9 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'email'    => 'required|email|max:40',
+            'email' => 'required|email|max:40',
             'password' => 'required|min:6|max:30',
-            'name'     => 'required|min:2|max:50',
+            'name' => 'required|min:2|max:50',
         ];
     }
 
@@ -36,6 +34,4 @@ class RegisterRequest extends Request
     {
         return true;
     }
-
-
 }

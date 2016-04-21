@@ -5,19 +5,16 @@ namespace Mega\Services\Core\Request\Manager;
 use Mega\Services\Core\Request\Abstracts\Request;
 
 /**
- * Class HttpRequest
+ * Class HttpRequest.
  *
  * General request to be used in the Controllers of the GET endpoints,
  * to collect some data from the request like Headers or the Auth User,..
  * (without the need of creating an empty request just for that).
  *
- * @type    Request
- * @package Mega\Services\Core\Request\Manager
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class HttpRequest extends Request
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -37,5 +34,4 @@ class HttpRequest extends Request
     {
         return true;
     }
-
 }

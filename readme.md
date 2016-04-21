@@ -38,7 +38,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Token Based Authentication (with JWT "JSON Web Tokens").
 - API Throttling (Rate Limiting).
 - User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
-- Functional Tests covering all the existing Endpoints.
+- Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Data Caching support (with auto clearing on Create, Update and Delete).
 - Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Full-text search support out of the box (search, searchFields).

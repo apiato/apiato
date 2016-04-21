@@ -6,29 +6,24 @@ use Illuminate\Routing\Router as LaravelRouter;
 use Mega\Services\Core\Route\Providers\ApiRouteServiceProvider;
 
 /**
- * Class RoutesServiceProvider
+ * Class RoutesServiceProvider.
  *
- * @type    Service Provider
- * @package Mega\Modules\User\Providers
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RoutesServiceProvider extends ApiRouteServiceProvider
 {
-
     /**
      * Define the routes for the application.
-     *
-     * @return void
      */
     public function map(LaravelRouter $webRouter)
     {
         $this->apiRouter->version('v1', function ($router) {
 
             $router->group([
-                'namespace'  => 'Mega\Modules\User\Controllers\Api', // Routes Namespace
+                'namespace' => 'Mega\Modules\User\Controllers\Api', // Routes Namespace
                 'middleware' => 'api.throttle',                      // Enable: API Rate Limiting
-                'limit'      => env('API_LIMIT'),                    // The API limit time.
-                'expires'    => env('API_LIMIT_EXPIRES')             // The API limit expiry time.
+                'limit' => env('API_LIMIT'),                    // The API limit time.
+                'expires' => env('API_LIMIT_EXPIRES'),             // The API limit expiry time.
             ], function ($router) {
                 require app_path('../src/Modules/User/Routes/Api/v1.php');
             });
@@ -36,7 +31,7 @@ class RoutesServiceProvider extends ApiRouteServiceProvider
         });
 
         $webRouter->group([
-            'namespace' => 'Mega\Modules\User\Controllers\Web'
+            'namespace' => 'Mega\Modules\User\Controllers\Web',
         ], function ($router) {
             require app_path('../src/Modules/User/Routes/Web/main.php');
         });

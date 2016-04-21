@@ -7,29 +7,23 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRoute
 use Illuminate\Routing\Router as LaravelRouter;
 
 /**
- * Class ApiRouteServiceProvider
+ * Class ApiRouteServiceProvider.
  *
- * @type    Service Provider
- * @package Mega\Services\Core\Route\Providers
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ApiRouteServiceProvider extends LaravelRouteServiceProvider
 {
-
     /**
-     * instance of the Dingo Api router
+     * instance of the Dingo Api router.
      *
      * @var \Dingo\Api\Routing\Router
      */
     public $apiRouter;
 
-
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router $router
-     *
-     * @return void
+     * @param \Illuminate\Routing\Router $router
      */
     public function boot(LaravelRouter $router)
     {
@@ -38,5 +32,4 @@ class ApiRouteServiceProvider extends LaravelRouteServiceProvider
 
         parent::boot($router);
     }
-
 }

@@ -5,15 +5,12 @@ namespace Mega\Services\Authentication\Adapters;
 use Tymon\JWTAuth\JWTAuth;
 
 /**
- * Class JWTAuthService
+ * Class JWTAuthService.
  *
- * @type Adapter
- * @package  Mega\Services\Authentication\Services
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class JwtAuthAdapter
 {
-
     /**
      * @var \JWTAuth
      */
@@ -81,5 +78,4 @@ class JwtAuthAdapter
     {
         return $this->jwtAuth->setToken($token);
     }
-
 }

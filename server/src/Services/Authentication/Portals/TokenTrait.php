@@ -3,17 +3,14 @@
 namespace Mega\Services\Authentication\Portals;
 
 /**
- * Class TokenTrait
+ * Class TokenTrait.
  *
  * To be `used` by the `User` Model.
  *
- * @type Trait
- * @package  Mega\Services\Authentication\Traits
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait TokenTrait
 {
-
     /**
      * inject a token in the user model itself.
      * if no token provided generate token first.
@@ -29,5 +26,4 @@ trait TokenTrait
 
         return $this;
     }
-
 }

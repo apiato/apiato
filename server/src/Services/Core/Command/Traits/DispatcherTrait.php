@@ -3,10 +3,8 @@
 namespace Mega\Services\Core\Command\Traits;
 
 /**
- * Class DispatcherTrait
+ * Class DispatcherTrait.
  *
- * @type    Trait
- * @package Mega\Services\Core\Command\Traits
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait DispatcherTrait
@@ -24,5 +22,4 @@ trait DispatcherTrait
     {
         return app('Illuminate\Contracts\Bus\Dispatcher')->dispatchFromArray($command, $arguments);
     }
-
 }

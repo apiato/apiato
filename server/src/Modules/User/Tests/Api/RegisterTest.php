@@ -6,13 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
- * Class RegisterEndpointTest
+ * Class RegisterEndpointTest.
  *
- * @type Tests
- * @package  Mega\Interfaces\Api\Tests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterEndpointTest extends TestCase
+class RegisterTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -24,8 +22,8 @@ class RegisterEndpointTest extends TestCase
         $name = 'Mega';
 
         $data = [
-            'email'    => $email,
-            'name'     => $name,
+            'email' => $email,
+            'name' => $name,
             'password' => 'secret',
         ];
 
@@ -37,7 +35,7 @@ class RegisterEndpointTest extends TestCase
 
         $this->assertResponseContainKeyValue([
             'email' => $email,
-            'name'  => $name
+            'name' => $name,
         ], $response);
 
         $this->assertResponseContainKeys(['id', 'token'], $response);
@@ -48,8 +46,8 @@ class RegisterEndpointTest extends TestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
-            'name'     => 'Mega',
+            'email' => 'mega@mail.dev',
+            'name' => 'Mega',
             'password' => 'secret',
         ];
 
@@ -60,7 +58,7 @@ class RegisterEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '405');
 
         $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed'
+            'message' => '405 Method Not Allowed',
         ], $response);
     }
 
@@ -71,8 +69,8 @@ class RegisterEndpointTest extends TestCase
         $password = 'secret';
 
         $userDetails = [
-            'email'    => $email,
-            'name'     => $name,
+            'email' => $email,
+            'name' => $name,
             'password' => $password,
         ];
 
@@ -80,8 +78,8 @@ class RegisterEndpointTest extends TestCase
         $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email'    => $email,
-            'name'     => $name,
+            'email' => $email,
+            'name' => $name,
             'password' => $password,
         ];
 
@@ -92,15 +90,14 @@ class RegisterEndpointTest extends TestCase
         $this->assertEquals($response->getStatusCode(), '409');
 
         $this->assertResponseContainKeyValue([
-            'message' => 'Failed creating new User.'
+            'message' => 'Failed creating new User.',
         ], $response);
-
     }
 
     public function testRegisterNewUserWithoutEmail()
     {
         $data = [
-            'name'     => 'Mega',
+            'name' => 'Mega',
             'password' => 'secret',
         ];
 
@@ -117,7 +114,7 @@ class RegisterEndpointTest extends TestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email' => 'mega@mail.dev',
             'password' => 'secret',
         ];
 
@@ -135,7 +132,7 @@ class RegisterEndpointTest extends TestCase
     {
         $data = [
             'email' => 'mega@mail.dev',
-            'name'  => 'Mega',
+            'name' => 'Mega',
         ];
 
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
@@ -150,8 +147,8 @@ class RegisterEndpointTest extends TestCase
     public function testRegisterNewUserWithInvalidEmail()
     {
         $data = [
-            'email'    => 'missing-at.dev',
-            'name'     => 'Mega',
+            'email' => 'missing-at.dev',
+            'name' => 'Mega',
             'password' => 'secret',
         ];
 
@@ -164,7 +161,4 @@ class RegisterEndpointTest extends TestCase
             'email' => 'The email must be a valid email address.',
         ]);
     }
-
 }
-
-

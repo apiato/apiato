@@ -5,10 +5,8 @@ namespace Mega\Modules\User\Requests;
 use Mega\Services\Core\Request\Abstracts\Request;
 
 /**
- * Class LoginRequest
+ * Class LoginRequest.
  *
- * @type Request
- * @package  Mega\Interfaces\Api\Requests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class LoginRequest extends Request
@@ -21,7 +19,7 @@ class LoginRequest extends Request
     public function rules()
     {
         return [
-            'email'    => 'required|email|max:40',
+            'email' => 'required|email|max:40',
             'password' => 'required|max:30',
         ];
     }
@@ -35,5 +33,4 @@ class LoginRequest extends Request
     {
         return true;
     }
-
 }

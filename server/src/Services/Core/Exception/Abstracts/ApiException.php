@@ -10,15 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException as SymfonyHttpException;
 
 /**
- * Class ApiException
+ * Class ApiException.
  *
- * @type    Abstract
- * @package Mega\Services\Core\Exception\Abstracts
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 abstract class ApiException extends SymfonyHttpException implements DingoMessageBagErrors
 {
-
     /**
      * MessageBag errors.
      *
@@ -27,7 +24,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
     protected $errors;
 
     /**
-     * Default status code
+     * Default status code.
      *
      * @var int
      */
@@ -65,7 +62,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
         }
 
         if (is_null($errors)) {
-            $this->errors = new MessageBag;
+            $this->errors = new MessageBag();
         } else {
             $this->errors = is_array($errors) ? new MessageBag($errors) : $errors;
         }
@@ -80,11 +77,11 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
 
         // if not testing environment, log the error message
         if ($this->environment != 'testing') {
-            Log::error('[ERROR] ' .
-                'Status Code: ' . $statusCode . ' | ' .
-                'Message: ' . $message . ' | ' .
-                'Errors: ' . $this->errors . ' | ' .
-                'Code: ' . $code
+            Log::error('[ERROR] '.
+                'Status Code: '.$statusCode.' | '.
+                'Message: '.$message.' | '.
+                'Errors: '.$this->errors.' | '.
+                'Code: '.$code
             );
         }
 
@@ -92,9 +89,8 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
     }
 
     /**
-     *
      * Help developers debug the error without showing these details to the end user.
-     * Usage: `throw (new MyCustomException())->debug($e)`
+     * Usage: `throw (new MyCustomException())->debug($e)`.
      *
      * @param $error
      *
@@ -107,7 +103,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
         }
 
         if ($this->environment != 'testing') {
-            Log::error('[DEBUG] ' . $error);
+            Log::error('[DEBUG] '.$error);
         }
 
         return $this;

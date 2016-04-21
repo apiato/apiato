@@ -7,15 +7,12 @@ use Mega\Services\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendi
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
 
 /**
- * Class ListAllUsersTask
+ * Class ListAllUsersTask.
  *
- * @type Command
- * @package  Mega\Modules\User\Commands
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ListAllUsersTask extends Task
 {
-
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -29,7 +26,6 @@ class ListAllUsersTask extends Task
     public function __construct(
         UserRepositoryInterface $userRepository
     ) {
-
         $this->userRepository = $userRepository;
     }
 
@@ -40,11 +36,10 @@ class ListAllUsersTask extends Task
      */
     public function run()
     {
-        $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria);
+        $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
 
         $users = $this->userRepository->paginate();
 
         return $users;
     }
-
 }

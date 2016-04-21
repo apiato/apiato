@@ -5,15 +5,12 @@ namespace Mega\Modules\User\Requests;
 use Mega\Services\Core\Request\Abstracts\Request;
 
 /**
- * Class UpdateUserRequest
+ * Class UpdateUserRequest.
  *
- * @type     Request
- * @package  Mega\Interfaces\Api\Requests
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserRequest extends Request
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,7 +20,7 @@ class UpdateUserRequest extends Request
     {
         return [
             'password' => 'min:6|max:30',
-            'name'     => 'min:2|max:50',
+            'name' => 'min:2|max:50',
         ];
     }
 
@@ -43,6 +40,4 @@ class UpdateUserRequest extends Request
         // authorize only if a user is updating it's own record
         return ($currentLoggedInUserId == $inputUserId) ? true : false;
     }
-
-
 }

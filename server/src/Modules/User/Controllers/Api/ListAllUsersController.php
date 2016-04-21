@@ -7,10 +7,8 @@ use Mega\Modules\User\Tasks\ListAllUsersTask;
 use Mega\Modules\User\Transformers\UserTransformer;
 
 /**
- * Class ListAllUsersController
+ * Class ListAllUsersController.
  *
- * @type Controller
- * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class ListAllUsersController extends ApiController
