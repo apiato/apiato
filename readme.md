@@ -156,12 +156,9 @@ Just do it. You are welcome :)
 
 ## Credits
 
-| Authors                | Follow on Twitter                                 | Ask for Help                                                                                                                                                                                    | Hire / Direct Contact |
-|------------------------|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Mahmoud Zalt (Creator) | [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz?utm_source=github&utm_medium=button&utm_term=mahmoudz&utm_campaign=github) | mahmoud@zalt.me       |
-
-
-
+| Authors                | Follow on Twitter                                 | Ask for Help                                                                                                          | Hire            |
+|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|
+| Mahmoud Zalt (Creator) | [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me |
 
 ## License
 

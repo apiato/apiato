@@ -161,3 +161,20 @@ $router->get('users', [
         'api.auth',
     ]
 ]);
+
+
+/*********************************************************************************
+ * @apiGroup           User
+ * @apiName            UpdateUser
+ * @api                {PATCH} /users/{id} Update a User
+ * @apiDescription     Update User details
+ * @apiVersion         1.0.0
+ * @apiPermission      Authenticated User
+ * @apiUse             Headers_Authenticated
+ */
+$router->patch('users/{id}', [
+    'uses'       => 'UpdateUserController@handle',
+    'middleware' => [
+        'api.auth',
+    ]
+]);
