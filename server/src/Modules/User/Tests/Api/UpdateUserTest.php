@@ -14,7 +14,6 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class UpdateUserTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     private $endpoint = '/users';
@@ -31,7 +30,7 @@ class UpdateUserTest extends TestCase
         $endpoint = $this->endpoint . '/' . $user->id;
 
         // send the HTTP request
-        $response = $this->apiCall($endpoint, 'patch', $data);
+        $response = $this->apiCall($endpoint, 'put', $data);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '200');
@@ -46,7 +45,7 @@ class UpdateUserTest extends TestCase
         $this->seeInDatabase('users', ['name' => $data['name']]);
     }
 
-    public function testUpdateExistingUserWithEmptyValues_()
+    public function testUpdateExistingUserWithEmptyValues()
     {
         $user = $this->getLoggedInTestingUser();
 
@@ -55,11 +54,12 @@ class UpdateUserTest extends TestCase
         $endpoint = $this->endpoint . '/' . $user->id;
 
         // send the HTTP request
-        $response = $this->apiCall($endpoint, 'patch', $data);
+        $response = $this->apiCall($endpoint, 'put', $data);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '417');
 
+        // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'All inputs are empty.'
         ], $response);
@@ -73,15 +73,15 @@ class UpdateUserTest extends TestCase
             'password' => 'updated#Password',
         ];
 
-        $endpoint = $this->endpoint . '/' . 100;
+        $endpoint = $this->endpoint . '/' . 100; // amy ID
 
         // send the HTTP request
-        $response = $this->apiCall($endpoint, 'patch', $data);
+        $response = $this->apiCall($endpoint, 'put', $data);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '403');
 
-        // assert user not allowed to proceed with the request
+        // assert the message means (not allowed to proceed with the request)
         $this->assertEquals($response->getContent(), 'Forbidden');
     }
 
