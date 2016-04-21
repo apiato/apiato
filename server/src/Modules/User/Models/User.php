@@ -8,8 +8,9 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Mega\Services\Core\Model\Abstracts\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Mega\Services\Authentication\Portals\TokenTrait;
+use Mega\Services\Core\Model\Abstracts\Model;
 
 /**
  * Class User
@@ -24,7 +25,7 @@ class User extends Model implements
     HasRoleAndPermissionContract
 {
 
-    use Authenticatable, CanResetPassword, TokenTrait, HasRoleAndPermission;
+    use Authenticatable, CanResetPassword, TokenTrait, HasRoleAndPermission, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -45,6 +46,17 @@ class User extends Model implements
     ];
 
     /**
+     * The dates attributes
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
@@ -54,5 +66,5 @@ class User extends Model implements
         'remember_token',
         'token'
     ];
-    
+
 }
