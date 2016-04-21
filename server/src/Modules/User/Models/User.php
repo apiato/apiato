@@ -13,10 +13,8 @@ use Mega\Services\Authentication\Portals\TokenTrait;
 use Mega\Services\Core\Model\Abstracts\Model;
 
 /**
- * Class User
+ * Class User.
  *
- * @type Model
- * @package  Mega\Modules\User\Models
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
 class User extends Model implements
@@ -24,7 +22,6 @@ class User extends Model implements
     CanResetPasswordContract,
     HasRoleAndPermissionContract
 {
-
     use Authenticatable, CanResetPassword, TokenTrait, HasRoleAndPermission, SoftDeletes;
 
     /**
@@ -42,11 +39,11 @@ class User extends Model implements
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
     ];
 
     /**
-     * The dates attributes
+     * The dates attributes.
      *
      * @var array
      */
@@ -64,7 +61,6 @@ class User extends Model implements
     protected $hidden = [
         'password',
         'remember_token',
-        'token'
+        'token',
     ];
-
 }
