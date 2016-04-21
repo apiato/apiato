@@ -37,21 +37,23 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 - Token Based Authentication (with JWT "JSON Web Tokens").
 - API Throttling (Rate Limiting).
+- User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
+- Functional Tests covering all the existing Endpoints.
+- Data Caching support (with auto clearing on Create, Update and Delete).
+- Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
+- Full-text search support out of the box (search, searchFields).
+- Auto API Documentation generator (using the API Doc JS).
 - Supports CORS "Cross-Origin Resource Sharing".
 - Automatic Data Pagination (meta links to next and previous data).
-- Data Caching support (with auto clearing on Create, Update and Delete).
 - Easy and auto request input validation.
-- Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
-- Auto API Documentation generator (using the API Doc JS).
-- Type-Casting JSON response with Transformers.
-- Full-text search support out of the box (search, searchFields).
+- Type-Casting JSON responses with Transformers.
 - Custom Tests Helpers for faster automated testing (using PHPUnit).
+- RESTful API (supporting all HTTP verbs).
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
 - Support for JSON with padding (JSONP).
 - Scalable, Stateless and Distributable Application on the server.
-- RESTful API (supporting all HTTP verbs).
-- Modular Software Architecture (Freestyle Architecture).
+- Modular Software Architecture (using the Freestyle Architecture).
 - Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
