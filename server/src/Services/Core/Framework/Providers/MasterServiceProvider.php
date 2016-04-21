@@ -3,11 +3,8 @@
 namespace Mega\Services\Core\Framework\Providers;
 
 use Dingo\Api\Http\Response;
-use Mega\Modules\Account\Providers\AccountServiceProvider;
-use Mega\Modules\Tag\Providers\TagServiceProvider;
 use Mega\Modules\User\Providers\UserServiceProvider;
 use Mega\Services\Core\Framework\Abstracts\ServiceProvider;
-use Mega\Services\Core\Framework\Traits\MasterServiceProviderTrait;
 
 /**
  * Class MasterServiceProvider
@@ -22,8 +19,6 @@ use Mega\Services\Core\Framework\Traits\MasterServiceProviderTrait;
  */
 class MasterServiceProvider extends ServiceProvider
 {
-
-    use MasterServiceProviderTrait;
 
     /**
      * Application Service Provides
@@ -54,7 +49,6 @@ class MasterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->changeTheDefaultDatabaseModelsFactoriesPath();
-        $this->registerTheDatabaseMigrationsFiles(__DIR__);
         $this->debugDatabaseQueries(true);
     }
 
