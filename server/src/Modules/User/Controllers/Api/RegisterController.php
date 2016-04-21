@@ -12,7 +12,7 @@ use Mega\Modules\User\Transformers\UserTransformer;
 /**
  * Class RegisterController
  *
- * @type Controller
+ * @type     Controller
  * @package  Mega\Interfaces\Api\Controllers
  * @author   Mahmoud Zalt <mahmoud@zalt.me>
  */
@@ -20,8 +20,9 @@ class RegisterController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Requests\RegisterRequest $registerRequest
-     * @param \Mega\Modules\User\Tasks\CreateUserTask     $createUserTask
+     * @param \Mega\Modules\User\Requests\RegisterRequest  $registerRequest
+     * @param \Mega\Modules\User\Tasks\CreateUserTask      $createUserTask
+     * @param \Mega\Modules\User\Tasks\AssignUserRolesTask $assignUserRolesTask
      *
      * @return \Dingo\Api\Http\Response
      */
@@ -39,6 +40,7 @@ class RegisterController extends ApiController
             true
         );
 
+        // assign user roles
         $user = $assignUserRolesTask->run($user);
 
         return $this->response->item($user, new UserTransformer());
