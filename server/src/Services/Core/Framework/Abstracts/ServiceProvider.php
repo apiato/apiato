@@ -3,6 +3,7 @@
 namespace Mega\Services\Core\Framework\Abstracts;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Mega\Services\Core\Framework\Traits\MasterServiceProviderTrait;
 
 /**
  * Class ServiceProvider
@@ -13,5 +14,5 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
  */
 abstract class ServiceProvider extends LaravelServiceProvider
 {
-
+    use MasterServiceProviderTrait;
 }

@@ -40,6 +40,8 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerTheDatabaseMigrationsFiles(__DIR__);
+
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
