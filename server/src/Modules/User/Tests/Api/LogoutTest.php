@@ -24,7 +24,7 @@ class LogoutTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');
 
-        // assert returned message is right
+        // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'User Logged Out Successfully.',
         ], $response);
@@ -35,8 +35,10 @@ class LogoutTest extends TestCase
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
 
+        // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '405');
 
+        // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => '405 Method Not Allowed',
         ], $response);
@@ -50,6 +52,7 @@ class LogoutTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '401');
 
+        // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'Failed to authenticate because of bad credentials or an invalid authorization header.',
         ], $response);

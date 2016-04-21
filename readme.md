@@ -102,7 +102,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 * General
 	* [Folders Structure](https://github.com/Mahmoudz/Hello-API/wiki/Folders-Structure)
 	* [Development Workflow](https://github.com/Mahmoudz/Hello-API/wiki/Development-Workflow)
-	* [FAQ](https://github.com/Mahmoudz/Hello-API/wiki/FAQ)
+	* [Frequently Asked Questions (FAQ)](https://github.com/Mahmoudz/Hello-API/wiki/FAQ)
 * API
 	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
