@@ -1,7 +1,7 @@
 <?php
 
 /*********************************************************************************
- * @apiGroup           User
+ * @apiGroup           Users
  * @apiName            Login
  * @api                {post} /login Login a user
  * @apiDescription     Login existing User
@@ -37,7 +37,7 @@ $router->post('login', [
 ]);
 
 /*********************************************************************************
- * @apiGroup           User
+ * @apiGroup           Users
  * @apiName            Logout
  * @api                {post} /logout Logout a user
  * @apiDescription     Logout an Authenticated User
@@ -55,7 +55,7 @@ $router->post('logout', [
 ]);
 
 /*********************************************************************************
- * @apiGroup           User
+ * @apiGroup           Users
  * @apiName            RegisterUser
  * @api                {post} /register Register new User
  * @apiDescription     Create and Login new user
@@ -91,8 +91,65 @@ $router->post('register', [
     'uses' => 'RegisterController@handle'
 ]);
 
+
 /*********************************************************************************
- * @apiGroup           User
+ * @apiGroup           Users
+ * @apiName            UpdateUser
+ * @api                {put} /users/{id} Update a User
+ * @apiDescription     Update User details
+ * @apiVersion         1.0.0
+ * @apiPermission      Authenticated User
+ * @apiUse             Headers_Authenticated
+ * @apiParam           {String}  password
+ * @apiParam           {String}  name
+ * @apiSuccessExample  {json}    Success-Response:
+HTTP/1.1 200 OK
+
+ {
+  "data": {
+    "id": 1,
+    "name": "Mahmoud Zalt 2",
+    "email": "new@email.com",
+    "token": null,
+    "created_at": {
+      "date": "2016-04-09 02:34:11.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "updated_at": {
+      "date": "2016-04-21 09:45:19.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
+}
+ */
+$router->put('users/{id}', [
+    'uses'       => 'UpdateUserController@handle',
+    'middleware' => [
+        'api.auth',
+    ]
+]);
+
+
+/*********************************************************************************
+ * @apiGroup           Users
+ * @apiName            DeleteUser
+ * @api                {delete} /users/{id} Delete a User
+ * @apiDescription     Delete User from Database
+ * @apiVersion         1.0.0
+ * @apiPermission      Authenticated User
+ * @apiUse             Headers_Authenticated
+ */
+$router->delete('users/{id}', [
+    'uses'       => 'DeleteUserController@handle',
+    'middleware' => [
+        'api.auth',
+    ]
+]);
+
+/*********************************************************************************
+ * @apiGroup           Users
  * @apiName            ListAllUsers
  * @api                {get} /users Search & List all Users
  * @apiDescription     List all the Application Users
@@ -157,23 +214,6 @@ HTTP/1.1 200 OK
  */
 $router->get('users', [
     'uses'       => 'ListAllUsersController@handle',
-    'middleware' => [
-        'api.auth',
-    ]
-]);
-
-
-/*********************************************************************************
- * @apiGroup           User
- * @apiName            UpdateUser
- * @api                {PATCH} /users/{id} Update a User
- * @apiDescription     Update User details
- * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
- * @apiUse             Headers_Authenticated
- */
-$router->patch('users/{id}', [
-    'uses'       => 'UpdateUserController@handle',
     'middleware' => [
         'api.auth',
     ]
