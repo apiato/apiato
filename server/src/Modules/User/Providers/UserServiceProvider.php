@@ -2,9 +2,9 @@
 
 namespace Mega\Modules\User\Providers;
 
-use Mega\Services\Core\Framework\Abstracts\ServiceProvider;
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Modules\User\Repositories\Eloquent\UserRepository;
+use Mega\Services\Core\Framework\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.
@@ -13,6 +13,7 @@ use Mega\Modules\User\Repositories\Eloquent\UserRepository;
  */
 class UserServiceProvider extends ServiceProvider
 {
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -21,11 +22,21 @@ class UserServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Module Service providers to be registered
+     *
+     * @var array
+     */
+    protected $providers = [
+        RoutesServiceProvider::class,
+        AuthServiceProvider::class,
+    ];
+
+    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->app->register(RoutesServiceProvider::class);
+        $this->registerServiceProviders($this->providers);
     }
 
     /**

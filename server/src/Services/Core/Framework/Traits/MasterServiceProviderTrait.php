@@ -14,6 +14,19 @@ use Mega\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerExceptio
  */
 trait MasterServiceProviderTrait
 {
+
+    /**
+     * register an array of providers
+     *
+     * @param array $providers
+     */
+    public function registerServiceProviders(array $providers)
+    {
+        foreach ($providers as $provider) {
+            $this->app->register($provider);
+        }
+    }
+
     /**
      * @param bool|false $terminal
      */
