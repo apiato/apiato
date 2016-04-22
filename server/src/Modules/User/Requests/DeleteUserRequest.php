@@ -28,13 +28,8 @@ class DeleteUserRequest extends Request
      */
     public function authorize()
     {
-        // current logged in user ID
-        $currentLoggedInUserId = $this->user()->id;
-
-        // the request input user ID (for the user that needs to be deleted)
-        $inputUserId = $this->id;
-
-        // authorize only if a user is updating it's own record
-        return ($currentLoggedInUserId == $inputUserId) ? true : false;
+        // $this->user() is the current logged in user, taken from the request
+        // $this->id is the request input user ID (for the user that needs to be updated)
+        return policy($this->user())->delete($this->user(), $this->id);
     }
 }
