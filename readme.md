@@ -114,6 +114,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 	* [Tasks](https://github.com/Mahmoudz/Hello-API/wiki/Tasks)
 	* [Service Providers](https://github.com/Mahmoudz/Hello-API/wiki/Service-Providers)
 	* [Requests](https://github.com/Mahmoudz/Hello-API/wiki/Requests)
+	* [Policies](https://github.com/Mahmoudz/Hello-API/wiki/Policies)
 	* [Response Transformers](https://github.com/Mahmoudz/Hello-API/wiki/Response-Transformers)
 	* [Repositories](https://github.com/Mahmoudz/Hello-API/wiki/Repositories)
 	* [Database Criterias](https://github.com/Mahmoudz/Hello-API/wiki/Database-Criterias)
@@ -121,6 +122,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 	* [Exceptions](https://github.com/Mahmoudz/Hello-API/wiki/Exceptions)
 	* [Tests](https://github.com/Mahmoudz/Hello-API/wiki/Tests)
 	* [Models Factory](https://github.com/Mahmoudz/Hello-API/wiki/Models-Factory)
+	* [Database Seeders](https://github.com/Mahmoudz/Hello-API/wiki/Database-Seeders)
 
 
 
