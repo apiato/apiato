@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Framework\Providers;
+namespace Mega\Services\Core\Route\Providers;
 
 use Mega\Services\Core\Route\Providers\ApiRouteServiceProvider;
 
@@ -20,9 +20,9 @@ class ApiBaseRouteServiceProvider extends ApiRouteServiceProvider
 
             $router->group([
                 'namespace' => 'Mega\Controllers',      // Routes Namespace
-                'middleware' => 'api.throttle',          // Enable: API Rate Limiting
-                'limit' => env('API_LIMIT'),        // The API limit time.
-                'expires' => env('API_LIMIT_EXPIRES'), // The API limit expiry time.
+                'middleware' => 'api.throttle',         // Enable: API Rate Limiting
+                'limit' => env('API_LIMIT'),            // The API limit time.
+                'expires' => env('API_LIMIT_EXPIRES'),  // The API limit expiry time.
             ], function ($router) {
                 $router->any('/', function () {
                     return response()->json(['Welcome to '.env('API_NAME').'.']);
