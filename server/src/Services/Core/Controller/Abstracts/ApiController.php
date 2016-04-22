@@ -3,7 +3,6 @@
 namespace Mega\Services\Core\Controller\Abstracts;
 
 use Dingo\Api\Routing\Helpers as DingoApiHelper;
-use Mega\Http\Controllers\Controller as LaravelController;
 use Mega\Services\Core\Controller\Contracts\ApiControllerInterface;
 
 /**
@@ -11,7 +10,7 @@ use Mega\Services\Core\Controller\Contracts\ApiControllerInterface;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class ApiController extends LaravelController implements ApiControllerInterface
+abstract class ApiController extends MasterController implements ApiControllerInterface
 {
     use DingoApiHelper;
 }
