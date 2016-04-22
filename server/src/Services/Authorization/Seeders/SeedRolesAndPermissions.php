@@ -58,7 +58,7 @@ class SeedRolesAndPermissions extends Seeder
         $adminRole->attachPermission($updateUserPermission);
         $adminRole->attachPermission($deleteUserPermission);
 
-        $adminRole->attachPermission($createUserPermission);
+        $memberRole->attachPermission($createUserPermission);
         $memberRole->attachPermission($updateUserPermission);
         $memberRole->attachPermission($deleteUserPermission);
 
