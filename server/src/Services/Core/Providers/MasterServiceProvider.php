@@ -1,9 +1,9 @@
 <?php
 
-namespace Mega\Services\Core\Framework\Providers;
+namespace Mega\Services\Core\Providers;
 
 use Mega\Modules\User\Providers\UserServiceProvider;
-use Mega\Services\Core\Framework\Abstracts\ServiceProvider;
+use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
 use Mega\Services\Core\Route\Providers\ApiBaseRouteServiceProvider;
 
 /**

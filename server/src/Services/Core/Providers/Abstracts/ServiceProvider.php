@@ -1,9 +1,9 @@
 <?php
 
-namespace Mega\Services\Core\Framework\Abstracts;
+namespace Mega\Services\Core\Providers\Abstracts;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Mega\Services\Core\Framework\Traits\MasterServiceProviderTrait;
+use Mega\Services\Core\Providers\Traits\MasterServiceProviderTrait;
 
 /**
  * Class ServiceProvider.

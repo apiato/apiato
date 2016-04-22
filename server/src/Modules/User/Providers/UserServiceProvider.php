@@ -4,7 +4,7 @@ namespace Mega\Modules\User\Providers;
 
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Modules\User\Repositories\Eloquent\UserRepository;
-use Mega\Services\Core\Framework\Abstracts\ServiceProvider;
+use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.

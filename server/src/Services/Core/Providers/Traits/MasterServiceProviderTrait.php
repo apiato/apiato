@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Framework\Traits;
+namespace Mega\Services\Core\Providers\Traits;
 
 use App;
 use DB;
@@ -54,7 +54,7 @@ trait MasterServiceProviderTrait
      */
     public function changeTheDefaultDatabaseModelsFactoriesPath()
     {
-        $customPath = '/src/Services/Core/Framework/ModelsFactory';
+        $customPath = '/src/Services/Core/ModelsFactory';
 
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);

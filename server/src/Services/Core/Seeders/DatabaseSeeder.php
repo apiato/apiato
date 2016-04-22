@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Framework\Seeders;
+namespace Mega\Services\Core\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -13,7 +13,6 @@ use Mega\Services\Authorization\Seeders\SeedRolesAndPermissions;
  */
 class DatabaseSeeder extends Seeder
 {
-
     /**
      * The application Seeders that needs to be registered
      *

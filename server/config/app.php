@@ -146,7 +146,7 @@ return [
         /*
          * Additional Application Service Providers
          */
-        Mega\Services\Core\Framework\Providers\MasterServiceProvider::class,
+        Mega\Services\Core\Providers\MasterServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
