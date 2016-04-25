@@ -8,7 +8,7 @@
         "predis/predis": "^1.0",
         "prettus/l5-repository": "^2.1",
         "barryvdh/laravel-cors": "^0.8.0",
-        "bican/roles": "2.1.*"
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

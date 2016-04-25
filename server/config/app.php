@@ -151,7 +151,7 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Bican\Roles\RolesServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -205,6 +205,7 @@ return [
          */
         'JWTAuth'    => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

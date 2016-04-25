@@ -2,8 +2,6 @@
 
 namespace Mega\Modules\User\Models;
 
-use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
-use Bican\Roles\Traits\HasRoleAndPermission;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -11,6 +9,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mega\Services\Authentication\Portals\TokenTrait;
 use Mega\Services\Core\Model\Abstracts\Model;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**
  * Class User.
@@ -19,11 +18,10 @@ use Mega\Services\Core\Model\Abstracts\Model;
  */
 class User extends Model implements
     AuthenticatableContract,
-    CanResetPasswordContract,
-    HasRoleAndPermissionContract
+    CanResetPasswordContract
 {
 
-    use Authenticatable, CanResetPassword, TokenTrait, HasRoleAndPermission, SoftDeletes;
+    use Authenticatable, CanResetPassword, TokenTrait, SoftDeletes, EntrustUserTrait;
 
     /**
      * The database table used by the model.

@@ -40,26 +40,9 @@ class ListAllUsersTest extends TestCase
 
     public function testListAllUsersOnlyForAdmin_()
     {
-        $listUsersPermission = Permission::create([
-            'name'        => 'List users',
-            'slug'        => 'list.users',
-            'description' => 'List all registered Users',
-        ]);
+        // TODO: seed the roles and permissions for every class
 
-        $adminRole = Role::create([
-            'name'        => 'Admin',
-            'slug'        => 'admin',
-            'description' => 'Admin access',
-            'level'       => 1,
-        ]);
-
-        $adminRole->attachPermission($listUsersPermission);
-
-        $user = $this->getLoggedInTestingUser();
-
-        $user->attachRole($adminRole);
-
-//dd($user->hasRole('admin'));
+        // TODO: Add roles and permissions here..
 
         // create some fake users
         factory(User::class, 4)->create();
