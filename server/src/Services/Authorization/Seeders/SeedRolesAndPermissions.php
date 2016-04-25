@@ -3,6 +3,7 @@
 namespace Mega\Services\Authorization\Seeders;
 
 use Illuminate\Database\Seeder;
+use Mega\Services\Authorization\Models\Permission;
 use Mega\Services\Authorization\Models\Role;
 
 class SeedRolesAndPermissions extends Seeder
@@ -15,16 +16,16 @@ class SeedRolesAndPermissions extends Seeder
      */
     public function run()
     {
-        $owner = new Role();
-        $owner->name = 'member';
-        $owner->display_name = 'Normal Member';
-        $owner->description = 'All users will be normal members by default.';
-        $owner->save();
-
         $admin = new Role();
         $admin->name = 'admin';
-        $admin->display_name = 'Admin';
-        $admin->description = 'This is an Administrator user.';
+        $admin->display_name = 'Administrator';
         $admin->save();
+
+        $listUsers = new Permission();
+        $listUsers->name = 'list-users';
+        $listUsers->display_name = 'List all Users';
+        $listUsers->save();
+
+        $admin->attachPermission($listUsers);
     }
 }

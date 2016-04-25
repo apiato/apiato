@@ -2,15 +2,16 @@
 
 namespace Mega\Services\Authorization\Models;
 
-use Zizaco\Entrust\EntrustRole;
+use Zizaco\Entrust\EntrustPermission;
 
 /**
  * Class Permission
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Permission extends EntrustRole
+class Permission extends EntrustPermission
 {
+
     /**
      * The attributes that are mass assignable.
      *
