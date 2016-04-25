@@ -24,6 +24,29 @@ abstract class TestCase extends LaravelTestCase
     protected $baseUrl;
 
     /**
+     * Setup the test environment, before each test.
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        // migrate the database
+        $this->artisan('migrate');
+        // seed the database
+        $this->seed('Mega\Services\Core\Seeders\DatabaseSeeder');
+    }
+
+    /**
+     * Reset the test environment, after each test.
+     */
+    public function tearDown()
+    {
+        $this->artisan('migrate:reset');
+    }
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application

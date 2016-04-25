@@ -2,7 +2,6 @@
 
 namespace Mega\Modules\User\Tests\Api;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
@@ -12,8 +11,6 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class RegisterTest extends TestCase
 {
-
-    use DatabaseMigrations;
 
     private $endpoint = '/register';
 
