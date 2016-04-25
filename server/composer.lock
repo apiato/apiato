@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fda27b5da189d57700daccd6b91f395",
-    "content-hash": "cb24ec6dca91b9cc605b1b69d9b0f968",
+    "hash": "95c3a091f9c4108b83af58cea0a02de9",
+    "content-hash": "e16b872ae59a251460d8b9bbf013d839",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -2715,16 +2715,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "5.2.x-dev",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d"
+                "reference": "d2f1ded7f47bff24e52f5fc82db09807a8a13613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/b749bff868026336dec1ba1a16c150728697353d",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/d2f1ded7f47bff24e52f5fc82db09807a8a13613",
+                "reference": "d2f1ded7f47bff24e52f5fc82db09807a8a13613",
                 "shasum": ""
             },
             "require": {
@@ -2779,7 +2779,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-03-24 15:24:42"
+            "time": "2016-03-04 17:32:28"
         }
     ],
     "packages-dev": [
@@ -4185,8 +4185,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dingo/api": 20,
-        "zizaco/entrust": 20
+        "dingo/api": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
