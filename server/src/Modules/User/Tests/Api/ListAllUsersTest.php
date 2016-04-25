@@ -2,10 +2,8 @@
 
 namespace Mega\Modules\User\Tests\Api;
 
-use Bican\Roles\Models\Permission;
-use Bican\Roles\Models\Role;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Mega\Modules\User\Models\User;
+use Mega\Services\Authorization\Models\Role;
 use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
@@ -16,35 +14,19 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
 class ListAllUsersTest extends TestCase
 {
 
-    use DatabaseMigrations;
-
     private $endpoint = '/users';
 
-    public function testListAllUsers_()
+    public function testListAllUsersByAdmin_()
     {
-        // create some fake users
-        factory(User::class, 4)->create();
+        $user = $this->getLoggedInTestingUser();
 
-        // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        // get the admin role
+        $adminRole = Role::where('name', 'admin')->first();
 
-        // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        // make the user admin
+        $user->attachRole($adminRole);
 
-        // convert JSON response string to Array
-        $responseArray = json_decode($response->getContent());
-
-        // assert the returned data size is correct
-        $this->assertCount(5, $responseArray->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
-    }
-
-    public function testListAllUsersOnlyForAdmin_()
-    {
-        // TODO: seed the roles and permissions for every class
-
-        // TODO: Add roles and permissions here..
-
-        // create some fake users
+        // create some non-admin users
         factory(User::class, 4)->create();
 
         $endpoint = $this->endpoint;
@@ -61,4 +43,17 @@ class ListAllUsersTest extends TestCase
         // assert the returned data size is correct
         $this->assertCount(5, $responseArray->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
+
+    public function testListAllUsersByNonAdmin_()
+    {
+        // create some fake users
+        factory(User::class, 4)->create();
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'get');
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '403');
+    }
+
 }
