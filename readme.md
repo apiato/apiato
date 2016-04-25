@@ -1,8 +1,12 @@
 # Hello API
 
+
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
-#### The 'Hello World' of an API :)
+
+#### The `Hello World` of an API : )
+
+[![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
 
 Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
 
