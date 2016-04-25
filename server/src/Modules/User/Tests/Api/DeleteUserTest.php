@@ -21,7 +21,7 @@ class DeleteUserTest extends TestCase
         $user = $this->getLoggedInTestingUser();
 
         $data = [
-            'name' => 'Updated Name',
+            'name'     => 'Updated Name',
             'password' => 'updated#Password',
         ];
 

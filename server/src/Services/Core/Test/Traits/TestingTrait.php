@@ -29,9 +29,9 @@ trait TestingTrait
      * @param bool|true $protected
      * @param array     $header
      *
-     * @return mixed
-     *
      * @throws \Symfony\Component\Debug\Exception\UndefinedMethodException
+     *
+     * @return mixed
      */
     public function apiCall($endpoint, $verb = 'get', $data = [], $protected = true, $header = [])
     {
@@ -117,8 +117,8 @@ trait TestingTrait
         // if no user detail provided, use the default details.
         if (!$userDetails) {
             $userDetails = [
-                'name' => 'Mahmoud Zalt',
-                'email' => 'testing@mega.pro',
+                'name'     => 'Mahmoud Zalt',
+                'email'    => 'testing@mega.pro',
                 'password' => 'secret.Pass7',
             ];
         }
@@ -143,7 +143,7 @@ trait TestingTrait
     public function assertResponseContainKeys($keys, $response)
     {
         if (!is_array($keys)) {
-            $keys = (Array) $keys;
+            $keys = (array) $keys;
         }
 
         foreach ($keys as $key) {
@@ -158,7 +158,7 @@ trait TestingTrait
     public function assertResponseContainValues($values, $response)
     {
         if (!is_array($values)) {
-            $values = (Array) $values;
+            $values = (array) $values;
         }
 
         foreach ($values as $value) {

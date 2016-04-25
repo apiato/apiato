@@ -46,7 +46,7 @@ class AuthenticationService
     {
         try {
             $token = $this->jwtAuthAdapter->attempt([
-                'email' => $email,
+                'email'    => $email,
                 'password' => $password,
             ]);
 
@@ -97,9 +97,9 @@ class AuthenticationService
     /**
      * @param $authorizationHeader
      *
-     * @return bool
-     *
      * @throws \Mega\Services\Authentication\Portals\MissingTokenException
+     *
+     * @return bool
      */
     public function logout($authorizationHeader)
     {

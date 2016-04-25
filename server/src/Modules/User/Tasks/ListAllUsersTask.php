@@ -2,9 +2,9 @@
 
 namespace Mega\Modules\User\Tasks;
 
-use Mega\Services\Core\Task\Abstracts\Task;
-use Mega\Services\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
+use Mega\Services\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
  * Class ListAllUsersTask.

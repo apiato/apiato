@@ -13,7 +13,6 @@ use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
  */
 class UserServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -22,7 +21,7 @@ class UserServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Module Service providers to be registered
+     * Module Service providers to be registered.
      *
      * @var array
      */

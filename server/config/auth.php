@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => env('USER_NAMESPACE') . User::class,
+    'model' => env('USER_NAMESPACE').User::class,
 
     /*
     |--------------------------------------------------------------------------

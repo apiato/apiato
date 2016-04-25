@@ -2,10 +2,10 @@
 
 namespace Mega\Modules\User\Controllers\Api;
 
-use Mega\Services\Core\Controller\Abstracts\ApiController;
 use Mega\Modules\User\Requests\LoginRequest;
 use Mega\Modules\User\Tasks\LoginTask;
 use Mega\Modules\User\Transformers\UserTransformer;
+use Mega\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class LoginController.

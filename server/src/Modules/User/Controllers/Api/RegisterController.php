@@ -2,11 +2,11 @@
 
 namespace Mega\Modules\User\Controllers\Api;
 
-use Mega\Services\Core\Controller\Abstracts\ApiController;
 use Mega\Modules\User\Requests\RegisterRequest;
 use Mega\Modules\User\Tasks\AssignUserRolesTask;
 use Mega\Modules\User\Tasks\CreateUserTask;
 use Mega\Modules\User\Transformers\UserTransformer;
+use Mega\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class RegisterController.

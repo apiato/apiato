@@ -8,7 +8,7 @@ use Mega\Modules\User\Models\User;
 use Mega\Modules\User\Policies\UserPolicy;
 
 /**
- * Class AuthServiceProvider
+ * Class AuthServiceProvider.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
@@ -20,13 +20,14 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        User::class => UserPolicy::class
+        User::class => UserPolicy::class,
     ];
 
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
+     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     *
      * @return void
      */
     public function boot(GateContract $gate)

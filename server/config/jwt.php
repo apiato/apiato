@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'user' => env('USER_NAMESPACE') . 'User',
+    'user' => env('USER_NAMESPACE').'User',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,8 +161,8 @@ return [
 
         'storage' => function ($app) {
             return new Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter($app['cache']);
-        }
+        },
 
-    ]
+    ],
 
 ];

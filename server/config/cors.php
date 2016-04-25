@@ -12,11 +12,10 @@ return [
      |
      */
     'supportsCredentials' => false,
-    'allowedOrigins' => ['*'],
-    'allowedHeaders' => ['Content-Type', 'Authorization', 'Accept'],
-    'allowedMethods' => ['*'],
-    'exposedHeaders' => [],
-    'maxAge' => 0,
-    'hosts' => [],
+    'allowedOrigins'      => ['*'],
+    'allowedHeaders'      => ['Content-Type', 'Authorization', 'Accept'],
+    'allowedMethods'      => ['*'],
+    'exposedHeaders'      => [],
+    'maxAge'              => 0,
+    'hosts'               => [],
 ];
-

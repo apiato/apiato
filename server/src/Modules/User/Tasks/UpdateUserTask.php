@@ -44,7 +44,7 @@ class UpdateUserTask extends Task
 
         $attributes = [
             'password' => $password,
-            'name' => $name,
+            'name'     => $name,
         ];
 
         // updating the attributes

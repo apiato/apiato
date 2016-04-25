@@ -15,7 +15,7 @@ return [
     |
     */
     'pagination' => [
-        'limit' => env('PAGINATION_LIMIT', 15)
+        'limit' => env('PAGINATION_LIMIT', 15),
     ],
 
     /*
@@ -32,9 +32,9 @@ return [
     */
     'fractal'    => [
         'params'     => [
-            'include' => 'include'
+            'include' => 'include',
         ],
-        'serializer' => League\Fractal\Serializer\DataArraySerializer::class
+        'serializer' => League\Fractal\Serializer\DataArraySerializer::class,
     ],
 
     /*
@@ -106,7 +106,7 @@ return [
                 'create' => true,
                 'update' => true,
                 'delete' => true,
-            ]
+            ],
         ],
 
         'params'  => [
@@ -119,7 +119,7 @@ return [
             | Ex: http://prettus.local/?search=lorem&skipCache=true
             |
             */
-            'skipCache' => 'skipCache'
+            'skipCache' => 'skipCache',
         ],
 
         /*
@@ -139,8 +139,8 @@ return [
        */
         'allowed' => [
             'only'   => null,
-            'except' => null
-        ]
+            'except' => null,
+        ],
     ],
 
     /*
@@ -169,7 +169,7 @@ return [
         */
         'acceptedConditions' => [
             '=',
-            'like'
+            'like',
         ],
         /*
         |--------------------------------------------------------------------------
@@ -210,7 +210,7 @@ return [
             'orderBy'      => 'orderBy',
             'sortedBy'     => 'sortedBy',
 //            'with'         => 'with'
-        ]
+        ],
     ],
     /*
     |--------------------------------------------------------------------------
@@ -220,13 +220,13 @@ return [
     */
     'generator'  => [
         'basePath'      => env('SRC_PATH'),
-        'rootNamespace' => env('ROOT_NAMESPACE') . '\\',
+        'rootNamespace' => env('ROOT_NAMESPACE').'\\',
         'paths'         => [
             'models'       => 'Entities',
             'repositories' => 'Repositories',
             'interfaces'   => 'Repositories',
             'transformers' => 'Transformers',
-            'presenters'   => 'Presenters'
-        ]
-    ]
+            'presenters'   => 'Presenters',
+        ],
+    ],
 ];
