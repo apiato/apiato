@@ -47,6 +47,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Full-text search support out of the box (search, searchFields).
 - Auto API Documentation generator (using the API Doc JS).
+- Authorization system (ACL), to control which consumer can access your API.
 - Supports CORS "Cross-Origin Resource Sharing".
 - Automatic Data Pagination (meta links to next and previous data).
 - Easy and auto request input validation.
@@ -81,13 +82,14 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - [Redis](http://redis.io/) (Cache System)
 - [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
 - [Laravel Homestead](https://laravel.com/docs/homestead) (Virtual Server Provisioning via [Vagrant](https://www.vagrantup.com/))
-- **Third Party Packages**
+- **Third Party Packages:**
 	- [Dingo API](https://github.com/dingo/api) (A RESTful API package)
-    - [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
-    - [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
-    - [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
-    - [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
-    - [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
+	- [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
+	- [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
+	- [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
+	- [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
+	- [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
+	- [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
 
 
 
@@ -136,14 +138,13 @@ It uses the best framework, packages, tools and conventions. All configured to w
 <a name="Comming-Features"></a>
 ##Comming Features
 
-- Authorization system (ACL), to control which consumer can access your API.
-- Admin Panel (For Users Management).
+- Hidden real IDs from the response.
 - IP Restriction (to whitelist or blacklist IP's).
 - Request size limiting and response rate limiting.
-- Back-end generators (to generate Modules and components) for faster development.
 - Automatic Code and Data Backup.
-- Hidden real IDs from the response.
+- Admin Panel (For Users Management).
 - Support login with social networks (Facebook, Twitter, Github, Google).
+- Back-end generators (to generate Modules and components) for faster development.
 - A lot more cool stuff in mind, (never stop coding).
 
 > Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
