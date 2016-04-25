@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AuthenticationFailedException extends ApiException
 {
+
     public $httpStatusCode = Response::HTTP_UNAUTHORIZED;
 
     public $message = 'Credentials Incorrect.';

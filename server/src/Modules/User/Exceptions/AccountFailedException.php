@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AccountFailedException extends ApiException
 {
+
     public $httpStatusCode = Response::HTTP_CONFLICT;
 
     public $message = 'Failed creating new User.';

@@ -11,4 +11,5 @@ use Mega\Services\Core\Controller\Contracts\WebControllerInterface;
  */
 abstract class WebController extends MasterController implements WebControllerInterface
 {
+
 }

@@ -15,6 +15,7 @@ use Mega\Services\Authentication\Exceptions\MissingTokenException;
  */
 class AuthenticationService
 {
+
     /**
      * @var \Mega\Services\Authentication\Adapters\JwtAuthAdapter
      */
@@ -26,9 +27,10 @@ class AuthenticationService
     private $authManager;
 
     /**
-     * LoginTask constructor.
+     * AuthenticationService constructor.
      *
      * @param \Mega\Services\Authentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
+     * @param \Illuminate\Auth\AuthManager                          $authManager
      */
     public function __construct(JwtAuthAdapter $jwtAuthAdapter, LaravelAuthManager $authManager)
     {
@@ -83,6 +85,8 @@ class AuthenticationService
      * get the user object of the current authenticated user
      * inject the token on it if a token is provided.
      *
+     * @param null $token
+     *
      * @return mixed
      */
     public function getAuthenticatedUser($token = null)
@@ -91,7 +95,7 @@ class AuthenticationService
             throw new AuthenticationFailedException('User is not logged in.');
         }
 
-        return ($token) ? $user->injectToken($token) : $user;
+        return $token ? $user->injectToken($token) : $user;
     }
 
     /**

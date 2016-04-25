@@ -13,6 +13,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
  */
 class DeleteUserRequest extends Request
 {
+
     /**
      * Get the validation rules that apply to the request.
      *

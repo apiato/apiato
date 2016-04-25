@@ -11,6 +11,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
  */
 class LoginRequest extends Request
 {
+
     /**
      * Get the validation rules that apply to the request.
      *

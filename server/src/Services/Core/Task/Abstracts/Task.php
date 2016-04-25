@@ -9,4 +9,5 @@ namespace Mega\Services\Core\Task\Abstracts;
  */
 abstract class Task
 {
+
 }

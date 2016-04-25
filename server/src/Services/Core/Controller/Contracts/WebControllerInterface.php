@@ -9,4 +9,5 @@ namespace Mega\Services\Core\Controller\Contracts;
  */
 interface WebControllerInterface
 {
+
 }

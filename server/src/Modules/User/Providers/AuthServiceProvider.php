@@ -14,6 +14,7 @@ use Mega\Modules\User\Policies\UserPolicy;
  */
 class AuthServiceProvider extends ServiceProvider
 {
+
     /**
      * The policy mappings for the application.
      *

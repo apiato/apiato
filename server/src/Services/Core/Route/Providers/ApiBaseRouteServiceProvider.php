@@ -9,6 +9,7 @@ namespace Mega\Services\Core\Route\Providers;
  */
 class ApiBaseRouteServiceProvider extends ApiRouteServiceProvider
 {
+
     /**
      * Define the routes for the application.
      */
@@ -23,7 +24,7 @@ class ApiBaseRouteServiceProvider extends ApiRouteServiceProvider
                 'expires'    => env('API_LIMIT_EXPIRES'),  // The API limit expiry time.
             ], function ($router) {
                 $router->any('/', function () {
-                    return response()->json(['Welcome to '.env('API_NAME').'.']);
+                    return response()->json(['Welcome to ' . env('API_NAME') . '.']);
                 });
             });
 

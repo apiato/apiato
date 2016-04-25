@@ -13,7 +13,10 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
  */
 class ListAllUsersController extends ApiController
 {
+
     /**
+     * @param \Mega\Modules\User\Tasks\ListAllUsersTask $listAllUsersTask
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function handle(ListAllUsersTask $listAllUsersTask)

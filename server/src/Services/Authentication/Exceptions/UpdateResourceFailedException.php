@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UpdateResourceFailedException extends ApiException
 {
+
     public $httpStatusCode = Response::HTTP_EXPECTATION_FAILED;
 
     public $message = 'Failed to Update.';

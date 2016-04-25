@@ -13,9 +13,10 @@ use Mega\Services\Core\Request\Manager\HttpRequest;
  */
 class LogoutController extends ApiController
 {
+
     /**
-     * @param \Dingo\Api\Http\Request             $request
-     * @param \Mega\Modules\User\Tasks\LogoutTask $logoutTask
+     * @param \Mega\Services\Core\Request\Manager\HttpRequest $request
+     * @param \Mega\Modules\User\Tasks\LogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response
      */

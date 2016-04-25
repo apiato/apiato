@@ -15,6 +15,7 @@ use Mega\Services\Core\Request\Abstracts\Request;
  */
 class HttpRequest extends Request
 {
+
     /**
      * Get the validation rules that apply to the request.
      *

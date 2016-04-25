@@ -12,6 +12,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class DeleteUserTest extends TestCase
 {
+
     use DatabaseMigrations;
 
     private $endpoint = '/users';
@@ -25,7 +26,7 @@ class DeleteUserTest extends TestCase
             'password' => 'updated#Password',
         ];
 
-        $endpoint = $this->endpoint.'/'.$user->id;
+        $endpoint = $this->endpoint . '/' . $user->id;
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'delete', $data);
@@ -35,14 +36,13 @@ class DeleteUserTest extends TestCase
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'User ('.$user->id.') Deleted Successfully.',
+            'message' => 'User (' . $user->id . ') Deleted Successfully.',
         ], $response);
-
     }
 
     public function testDeleteDifferentUser()
     {
-        $endpoint = $this->endpoint.'/'. 100; // any ID
+        $endpoint = $this->endpoint . '/' . 100; // any ID
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'delete');

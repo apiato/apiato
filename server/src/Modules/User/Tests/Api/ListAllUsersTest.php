@@ -15,6 +15,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class ListAllUsersTest extends TestCase
 {
+
     use DatabaseMigrations;
 
     private $endpoint = '/users';
@@ -22,7 +23,7 @@ class ListAllUsersTest extends TestCase
     public function testListAllUsers_()
     {
         // create some fake users
-        $users = factory(User::class, 4)->create();
+        factory(User::class, 4)->create();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
@@ -34,7 +35,7 @@ class ListAllUsersTest extends TestCase
         $responseArray = json_decode($response->getContent());
 
         // assert the returned data size is correct
-        $this->assertEquals(count($responseArray->data), 5); // 5 = 4 (fake in this test) + 1 (that is logged in)
+        $this->assertCount(5, $responseArray->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
 
     public function testListAllUsersOnlyForAdmin_()
@@ -61,7 +62,7 @@ class ListAllUsersTest extends TestCase
 //dd($user->hasRole('admin'));
 
         // create some fake users
-        $users = factory(User::class, 4)->create();
+        factory(User::class, 4)->create();
 
         $endpoint = $this->endpoint;
 
@@ -75,6 +76,6 @@ class ListAllUsersTest extends TestCase
         $responseArray = json_decode($response->getContent());
 
         // assert the returned data size is correct
-        $this->assertEquals(count($responseArray->data), 5); // 5 = 4 (fake in this test) + 1 (that is logged in)
+        $this->assertCount(5, $responseArray->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
 }

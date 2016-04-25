@@ -12,6 +12,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class LoginTask extends Task
 {
+
     /**
      * @var \Mega\Services\Authentication\Portals\AuthenticationService
      */

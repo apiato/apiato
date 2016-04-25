@@ -12,6 +12,7 @@ use Mega\Services\Core\Transformer\Abstracts\Transformer;
  */
 class UserTransformer extends Transformer
 {
+
     /**
      * @param \Mega\Modules\User\Models\User $user
      *
@@ -20,7 +21,7 @@ class UserTransformer extends Transformer
     public function transform(User $user)
     {
         return [
-            'id'         => (int) $user->id,
+            'id'         => (int)$user->id,
             'name'       => $user->name,
             'email'      => $user->email,
             'token'      => $user->token,

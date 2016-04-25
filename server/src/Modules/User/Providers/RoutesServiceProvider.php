@@ -12,8 +12,11 @@ use Mega\Services\Core\Route\Providers\ApiRouteServiceProvider;
  */
 class RoutesServiceProvider extends ApiRouteServiceProvider
 {
+
     /**
      * Define the routes for the application.
+     *
+     * @param \Illuminate\Routing\Router $webRouter
      */
     public function map(LaravelRouter $webRouter)
     {

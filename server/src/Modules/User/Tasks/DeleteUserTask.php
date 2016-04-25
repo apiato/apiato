@@ -12,6 +12,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class DeleteUserTask extends Task
 {
+
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -28,11 +29,9 @@ class DeleteUserTask extends Task
     }
 
     /**
-     * @param      $userId
-     * @param null $password
-     * @param null $name
+     * @param $userId
      *
-     * @return mixed
+     * @return bool
      */
     public function run($userId)
     {

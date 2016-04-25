@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException as SymfonyHttpException
  */
 abstract class ApiException extends SymfonyHttpException implements DingoMessageBagErrors
 {
+
     /**
      * MessageBag errors.
      *
@@ -77,11 +78,11 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
 
         // if not testing environment, log the error message
         if ($this->environment != 'testing') {
-            Log::error('[ERROR] '.
-                'Status Code: '.$statusCode.' | '.
-                'Message: '.$message.' | '.
-                'Errors: '.$this->errors.' | '.
-                'Code: '.$code
+            Log::error('[ERROR] ' .
+                'Status Code: ' . $statusCode . ' | ' .
+                'Message: ' . $message . ' | ' .
+                'Errors: ' . $this->errors . ' | ' .
+                'Code: ' . $code
             );
         }
 
@@ -103,7 +104,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
         }
 
         if ($this->environment != 'testing') {
-            Log::error('[DEBUG] '.$error);
+            Log::error('[DEBUG] ' . $error);
         }
 
         return $this;

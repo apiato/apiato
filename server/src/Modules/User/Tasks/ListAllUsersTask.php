@@ -13,6 +13,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class ListAllUsersTask extends Task
 {
+
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -30,8 +31,6 @@ class ListAllUsersTask extends Task
     }
 
     /**
-     * @param \Mega\Modules\User\Contracts\UserRepositoryInterface $userRepository
-     *
      * @return mixed
      */
     public function run()

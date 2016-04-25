@@ -15,13 +15,14 @@ use Mega\Services\Core\Model\Abstracts\Model;
 /**
  * Class User.
  *
- * @author   Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class User extends Model implements
     AuthenticatableContract,
     CanResetPasswordContract,
     HasRoleAndPermissionContract
 {
+
     use Authenticatable, CanResetPassword, TokenTrait, HasRoleAndPermission, SoftDeletes;
 
     /**

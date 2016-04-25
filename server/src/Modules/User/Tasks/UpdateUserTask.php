@@ -13,6 +13,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class UpdateUserTask extends Task
 {
+
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */

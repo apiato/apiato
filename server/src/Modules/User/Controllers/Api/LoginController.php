@@ -14,6 +14,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
  */
 class LoginController extends ApiController
 {
+
     /**
      * @param \Mega\Modules\User\Requests\LoginRequest $loginRequest
      * @param \Mega\Modules\User\Tasks\LoginTask       $loginTask

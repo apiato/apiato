@@ -12,5 +12,6 @@ use Mega\Services\Core\Controller\Contracts\ApiControllerInterface;
  */
 abstract class ApiController extends MasterController implements ApiControllerInterface
 {
+
     use DingoApiHelper;
 }

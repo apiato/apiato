@@ -13,6 +13,7 @@ use Mega\Services\Core\Command\Traits\DispatcherTrait;
  */
 abstract class Command implements LaravelSelfHandling
 {
+
     use LaravelDispatchesJobs;
     use DispatcherTrait;
 }

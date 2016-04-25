@@ -12,5 +12,6 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class UnsupportedFractalSerializerException extends ApiException
 {
+
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 }

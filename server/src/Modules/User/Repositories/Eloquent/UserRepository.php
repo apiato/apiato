@@ -13,6 +13,7 @@ use Mega\Services\Core\Repository\Abstracts\Repository;
  */
 class UserRepository extends Repository implements UserRepositoryInterface
 {
+
     /**
      * @var array
      */

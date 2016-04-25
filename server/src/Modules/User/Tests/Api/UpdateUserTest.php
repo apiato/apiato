@@ -12,6 +12,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class UpdateUserTest extends TestCase
 {
+
     use DatabaseMigrations;
 
     private $endpoint = '/users';
@@ -25,7 +26,7 @@ class UpdateUserTest extends TestCase
             'password' => 'updated#Password',
         ];
 
-        $endpoint = $this->endpoint.'/'.$user->id;
+        $endpoint = $this->endpoint . '/' . $user->id;
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'put', $data);
@@ -49,7 +50,7 @@ class UpdateUserTest extends TestCase
 
         $data = []; // empty data
 
-        $endpoint = $this->endpoint.'/'.$user->id;
+        $endpoint = $this->endpoint . '/' . $user->id;
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'put', $data);
@@ -70,7 +71,7 @@ class UpdateUserTest extends TestCase
             'password' => 'updated#Password',
         ];
 
-        $endpoint = $this->endpoint.'/'. 100; // amy ID
+        $endpoint = $this->endpoint . '/' . 100; // amy ID
 
         // send the HTTP request
         $response = $this->apiCall($endpoint, 'put', $data);

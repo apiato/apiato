@@ -14,6 +14,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
  */
 class UpdateUserController extends ApiController
 {
+
     /**
      * @param \Mega\Modules\User\Requests\UpdateUserRequest $updateUserRequest
      * @param \Mega\Modules\User\Tasks\UpdateUserTask       $updateUserTask

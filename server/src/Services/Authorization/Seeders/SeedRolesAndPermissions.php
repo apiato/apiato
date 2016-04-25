@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 
 class SeedRolesAndPermissions extends Seeder
 {
+
     /**
      * Run the database seeds.
      *

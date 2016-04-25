@@ -15,6 +15,7 @@ use Symfony\Component\Debug\Exception\UndefinedMethodException;
  */
 trait TestingTrait
 {
+
     /**
      * the Logged in user, used for protected routes.
      *
@@ -33,20 +34,20 @@ trait TestingTrait
      *
      * @return mixed
      */
-    public function apiCall($endpoint, $verb = 'get', $data = [], $protected = true, $header = [])
+    public function apiCall($endpoint, $verb = 'get', array $data = [], $protected = true, array $header = [])
     {
         $content = json_encode($data);
 
         $headers = array_merge([
             'CONTENT_LENGTH' => mb_strlen($content, '8bit'),
 //            'CONTENT_TYPE' => 'application/json',
-            'Accept' => 'application/json',
+            'Accept'         => 'application/json',
         ], $header);
 
         // if endpoint is protected (requires token to access it's functionality)
         if ($protected) {
             // append the token to the header
-            $headers['Authorization'] = 'Bearer '.$this->getLoggedInTestingUserToken();
+            $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
         }
 
         $verb = strtolower($verb);
@@ -62,7 +63,7 @@ trait TestingTrait
                 $response = $this->{$verb}($endpoint, $data, $headers)->response;
                 break;
             default:
-                throw new UndefinedMethodException('Undefined HTTP Verb ('.$verb.').');
+                throw new UndefinedMethodException('Undefined HTTP Verb (' . $verb . ').');
         }
 
         return $response;
@@ -84,7 +85,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \Mega\Infrastructure\Traits\User
+     * @return \Mega\Services\Core\Test\Traits\User|mixed
      */
     public function getLoggedInTestingUser()
     {
@@ -143,7 +144,7 @@ trait TestingTrait
     public function assertResponseContainKeys($keys, $response)
     {
         if (!is_array($keys)) {
-            $keys = (array) $keys;
+            $keys = (array)$keys;
         }
 
         foreach ($keys as $key) {
@@ -158,7 +159,7 @@ trait TestingTrait
     public function assertResponseContainValues($values, $response)
     {
         if (!is_array($values)) {
-            $values = (array) $values;
+            $values = (array)$values;
         }
 
         foreach ($values as $value) {
@@ -173,7 +174,7 @@ trait TestingTrait
     public function assertResponseContainKeyValue($data, $response)
     {
         $response = json_encode(LaravelArr::sortRecursive(
-            (array) $this->responseToArray($response)
+            (array)$this->responseToArray($response)
         ));
 
         foreach (LaravelArr::sortRecursive($data) as $key => $value) {

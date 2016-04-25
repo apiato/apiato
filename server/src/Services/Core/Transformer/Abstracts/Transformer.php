@@ -11,4 +11,5 @@ use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
  */
 abstract class Transformer extends FractalTransformerAbstract
 {
+
 }

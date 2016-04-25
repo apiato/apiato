@@ -13,6 +13,7 @@ use Mega\Services\Authorization\Seeders\SeedRolesAndPermissions;
  */
 class DatabaseSeeder extends Seeder
 {
+
     /**
      * The application Seeders that needs to be registered.
      *

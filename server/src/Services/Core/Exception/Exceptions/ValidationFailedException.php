@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class ValidationFailedException extends DingoResourceException
 {
+
     public $httpStatusCode = SymfonyResponse::HTTP_UNPROCESSABLE_ENTITY;
 
     public $message = 'Invalid Input.';

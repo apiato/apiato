@@ -16,6 +16,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class CreateUserTask extends Task
 {
+
     /**
      * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
      */
@@ -42,10 +43,10 @@ class CreateUserTask extends Task
      * create a new user object.
      * optionally can login the created user and return it with its token.
      *
-     * @param            $email
-     * @param            $password
-     * @param            $name
-     * @param bool|false $loginWithToken determine weather to login or not after creating
+     * @param      $email
+     * @param      $password
+     * @param      $name
+     * @param bool $login determine weather to login or not after creating
      *
      * @return mixed
      */

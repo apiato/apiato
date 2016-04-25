@@ -9,6 +9,7 @@ namespace Mega\Services\Core\Command\Traits;
  */
 trait DispatcherTrait
 {
+
     /**
      * Beautifier function to be called instead of the laravel function dispatchFromArray.
      * To dispatch a command with data.
@@ -18,7 +19,7 @@ trait DispatcherTrait
      *
      * @return mixed
      */
-    public function call($command, $arguments = [])
+    public function call($command, array $arguments = [])
     {
         return app('Illuminate\Contracts\Bus\Dispatcher')->dispatchFromArray($command, $arguments);
     }

@@ -13,6 +13,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
  */
 class DeleteUserController extends ApiController
 {
+
     /**
      * @param \Mega\Modules\User\Requests\DeleteUserRequest $deleteUserRequest
      * @param \Mega\Modules\User\Tasks\DeleteUserTask       $deleteUserTask
@@ -25,7 +26,7 @@ class DeleteUserController extends ApiController
         $deleteUserTask->run($userId);
 
         return $this->response->accepted(null, [
-            'message' => 'User ('.$userId.') Deleted Successfully.',
+            'message' => 'User (' . $userId . ') Deleted Successfully.',
         ]);
     }
 }

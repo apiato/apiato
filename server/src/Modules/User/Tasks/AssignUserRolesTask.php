@@ -11,6 +11,7 @@ use Mega\Services\Core\Task\Abstracts\Task;
  */
 class AssignUserRolesTask extends Task
 {
+
     /**
      * @param $user
      */

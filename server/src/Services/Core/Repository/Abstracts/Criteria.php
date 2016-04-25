@@ -11,4 +11,5 @@ use Prettus\Repository\Contracts\CriteriaInterface as PrettusCriteriaInterface;
  */
 abstract class Criteria implements PrettusCriteriaInterface
 {
+
 }

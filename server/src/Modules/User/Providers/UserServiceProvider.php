@@ -13,6 +13,7 @@ use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
  */
 class UserServiceProvider extends ServiceProvider
 {
+
     /**
      * Indicates if loading of the provider is deferred.
      *

@@ -13,6 +13,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class ApiRouteServiceProvider extends LaravelRouteServiceProvider
 {
+
     /**
      * instance of the Dingo Api router.
      *

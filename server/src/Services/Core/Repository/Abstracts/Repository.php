@@ -14,6 +14,7 @@ use Prettus\Repository\Traits\CacheableRepository as PrettusCacheableRepository;
  */
 abstract class Repository extends PrettusRepository implements PrettusCacheableInterface
 {
+
     use PrettusCacheableRepository;
 
     /**

@@ -15,6 +15,7 @@ use Mega\Services\Core\Controller\Abstracts\ApiController;
  */
 class RegisterController extends ApiController
 {
+
     /**
      * @param \Mega\Modules\User\Requests\RegisterRequest  $registerRequest
      * @param \Mega\Modules\User\Tasks\CreateUserTask      $createUserTask

@@ -14,6 +14,7 @@ use Mega\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerExceptio
  */
 trait MasterServiceProviderTrait
 {
+
     /**
      * register an array of providers.
      *
@@ -35,7 +36,7 @@ trait MasterServiceProviderTrait
             DB::listen(function ($query, $bindings, $time, $connection) use ($terminal) {
                 $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $query), $bindings);
 
-                $text = $connection.' ('.$time.'): '.$fullQuery;
+                $text = $connection . ' (' . $time . '): ' . $fullQuery;
 
                 if ($terminal) {
                     dump($text);
@@ -58,7 +59,7 @@ trait MasterServiceProviderTrait
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
-            return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path().$customPath);
+            return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
         });
     }
 
@@ -74,7 +75,7 @@ trait MasterServiceProviderTrait
     public function registerTheDatabaseMigrationsFiles($directory)
     {
         $this->publishes([
-            $directory.'/../Migrations/MySQL/' => database_path('migrations'),
+            $directory . '/../Migrations/MySQL/' => database_path('migrations'),
         ], 'migrations');
     }
 
@@ -94,7 +95,7 @@ trait MasterServiceProviderTrait
         $serializerName = env('FRACTAL_SERIALIZER', 'DataArray');
 
         // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
-        if ($serializerName != 'DataArray') {
+        if ($serializerName !== 'DataArray') {
             app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
                 switch ($serializerName) {
                     case 'JsonApi':
@@ -104,7 +105,7 @@ trait MasterServiceProviderTrait
                         $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
                         break;
                     default:
-                        throw new UnsupportedFractalSerializerException('Unsupported '.$serializerName);
+                        throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
                 }
 
                 $fractal = new \League\Fractal\Manager();

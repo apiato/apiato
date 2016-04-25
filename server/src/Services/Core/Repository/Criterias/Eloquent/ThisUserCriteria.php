@@ -12,6 +12,7 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
  */
 class ThisUserCriteria extends Criteria
 {
+
     /**
      * @var int
      */

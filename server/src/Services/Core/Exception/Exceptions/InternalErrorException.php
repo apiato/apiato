@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class InternalErrorException extends ApiException
 {
+
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
     public $message = 'Something went wrong!';

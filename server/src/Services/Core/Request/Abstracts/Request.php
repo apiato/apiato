@@ -13,6 +13,7 @@ use Mega\Services\Core\Exception\Exceptions\ValidationFailedException;
  */
 abstract class Request extends LaravelFrameworkRequest
 {
+
     /**
      * overriding the failedValidation function to throw my custom
      * exception instead of the default Laravel exception.

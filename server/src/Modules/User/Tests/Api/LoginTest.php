@@ -12,6 +12,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class LoginTest extends TestCase
 {
+
     use DatabaseMigrations;
 
     private $endpoint = '/login';

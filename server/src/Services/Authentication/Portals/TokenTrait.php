@@ -11,6 +11,7 @@ namespace Mega\Services\Authentication\Portals;
  */
 trait TokenTrait
 {
+
     /**
      * inject a token in the user model itself.
      * if no token provided generate token first.

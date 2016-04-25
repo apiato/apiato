@@ -12,6 +12,7 @@ use Mega\Services\Core\Test\Abstracts\TestCase;
  */
 class RegisterTest extends TestCase
 {
+
     use DatabaseMigrations;
 
     private $endpoint = '/register';

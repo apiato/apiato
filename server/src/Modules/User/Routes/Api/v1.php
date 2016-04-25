@@ -11,26 +11,26 @@
  * @apiParam           {String}     email
  * @apiParam           {String}     password
  * @apiSuccessExample  {json}       Success-Response:
-HTTP/1.1 200 OK
-
-{
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "email": "mahmoud@zalt.me",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
-    "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * HTTP/1.1 200 OK
+ *
+ * {
+ * "data": {
+ * "id": 1,
+ * "name": "Mahmoud Zalt",
+ * "email": "mahmoud@zalt.me",
+ * "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+ * "created_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * },
+ * "updated_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * }
+ * }
+ * }
  */
 $router->post('login', [
     'uses' => 'LoginController@handle',
@@ -45,7 +45,7 @@ $router->post('login', [
  * @apiPermission      Authenticated User
  * @apiUse             Headers_Authenticated
  * @apiSuccessExample  {json}       Success-Response:
-HTTP/1.1 202 Accepted
+ * HTTP/1.1 202 Accepted
  */
 $router->post('logout', [
     'uses'       => 'LogoutController@handle',
@@ -66,26 +66,26 @@ $router->post('logout', [
  * @apiParam           {String}  password
  * @apiParam           {String}  name
  * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-
-{
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "email": "mahmoud@zalt.me",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
-    "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * HTTP/1.1 200 OK
+ *
+ * {
+ * "data": {
+ * "id": 1,
+ * "name": "Mahmoud Zalt",
+ * "email": "mahmoud@zalt.me",
+ * "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+ * "created_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * },
+ * "updated_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * }
+ * }
+ * }
  */
 $router->post('register', [
     'uses' => 'RegisterController@handle',
@@ -102,26 +102,26 @@ $router->post('register', [
  * @apiParam           {String}  password
  * @apiParam           {String}  name
  * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-
- {
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt 2",
-    "email": "new@email.com",
-    "token": null,
-    "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-04-21 09:45:19.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * HTTP/1.1 200 OK
+ *
+ * {
+ * "data": {
+ * "id": 1,
+ * "name": "Mahmoud Zalt 2",
+ * "email": "new@email.com",
+ * "token": null,
+ * "created_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * },
+ * "updated_at": {
+ * "date": "2016-04-21 09:45:19.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * }
+ * }
+ * }
  */
 $router->put('users/{id}', [
     'uses'       => 'UpdateUserController@handle',
@@ -161,54 +161,54 @@ $router->delete('users/{id}', [
  * @apiParam           sort             ?sortedBy=asc
  * @apiParam           filter           ?filter=id;name;age
  * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-
- {
-  "data": [
-    {
-      "id": 2,
-      "name": "Mahmoud Zalt",
-      "email": "mahmoud@zalt.me",
-      "token": null,
-      "created_at": {
-        "date": "2016-04-12 06:15:06.000000",
-        "timezone_type": 3,
-        "timezone": "UTC"
-      },
-      "updated_at": {
-        "date": "2016-04-12 06:15:06.000000",
-        "timezone_type": 3,
-        "timezone": "UTC"
-      }
-    },
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@something.com",
-      "token": null,
-      "created_at": {
-        "date": "2016-04-09 02:34:11.000000",
-        "timezone_type": 3,
-        "timezone": "UTC"
-      },
-      "updated_at": {
-        "date": "2016-04-09 02:34:11.000000",
-        "timezone_type": 3,
-        "timezone": "UTC"
-      }
-    }
-  ],
-  "meta": {
-    "pagination": {
-      "total": 25,
-      "count": 10,
-      "per_page": 10,
-      "current_page": 1,
-      "total_pages": 1,
-      "links": []
-    }
-  }
-}
+ * HTTP/1.1 200 OK
+ *
+ * {
+ * "data": [
+ * {
+ * "id": 2,
+ * "name": "Mahmoud Zalt",
+ * "email": "mahmoud@zalt.me",
+ * "token": null,
+ * "created_at": {
+ * "date": "2016-04-12 06:15:06.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * },
+ * "updated_at": {
+ * "date": "2016-04-12 06:15:06.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * }
+ * },
+ * {
+ * "id": 1,
+ * "name": "John Doe",
+ * "email": "john@something.com",
+ * "token": null,
+ * "created_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * },
+ * "updated_at": {
+ * "date": "2016-04-09 02:34:11.000000",
+ * "timezone_type": 3,
+ * "timezone": "UTC"
+ * }
+ * }
+ * ],
+ * "meta": {
+ * "pagination": {
+ * "total": 25,
+ * "count": 10,
+ * "per_page": 10,
+ * "current_page": 1,
+ * "total_pages": 1,
+ * "links": []
+ * }
+ * }
+ * }
  */
 $router->get('users', [
     'uses'       => 'ListAllUsersController@handle',

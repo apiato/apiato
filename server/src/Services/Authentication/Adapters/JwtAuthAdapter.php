@@ -11,6 +11,7 @@ use Tymon\JWTAuth\JWTAuth;
  */
 class JwtAuthAdapter
 {
+
     /**
      * @var \JWTAuth
      */

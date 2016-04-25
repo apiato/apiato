@@ -12,5 +12,6 @@ use Mega\Services\Core\Providers\Traits\MasterServiceProviderTrait;
  */
 abstract class ServiceProvider extends LaravelServiceProvider
 {
+
     use MasterServiceProviderTrait;
 }
