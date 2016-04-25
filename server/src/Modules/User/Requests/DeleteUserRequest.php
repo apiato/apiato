@@ -24,7 +24,6 @@ class DeleteUserRequest extends Request
     }
 
     /**
-     *
      * Determine if the user is authorized to make this request.
      *
      * @param \Illuminate\Contracts\Auth\Access\Gate $gate

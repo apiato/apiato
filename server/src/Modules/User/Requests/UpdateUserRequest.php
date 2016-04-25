@@ -22,12 +22,11 @@ class UpdateUserRequest extends Request
     {
         return [
             'password' => 'min:6|max:30',
-            'name' => 'min:2|max:50',
+            'name'     => 'min:2|max:50',
         ];
     }
 
     /**
-     *
      * Determine if the user is authorized to make this request.
      *
      * @param \Illuminate\Contracts\Auth\Access\Gate $gate

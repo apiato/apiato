@@ -48,7 +48,7 @@ $router->post('login', [
 HTTP/1.1 202 Accepted
  */
 $router->post('logout', [
-    'uses' => 'LogoutController@handle',
+    'uses'       => 'LogoutController@handle',
     'middleware' => [
         'api.auth',
     ],
@@ -124,7 +124,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->put('users/{id}', [
-    'uses' => 'UpdateUserController@handle',
+    'uses'       => 'UpdateUserController@handle',
     'middleware' => [
         'api.auth',
     ],
@@ -140,7 +140,7 @@ $router->put('users/{id}', [
  * @apiUse             Headers_Authenticated
  */
 $router->delete('users/{id}', [
-    'uses' => 'DeleteUserController@handle',
+    'uses'       => 'DeleteUserController@handle',
     'middleware' => [
         'api.auth',
     ],
@@ -211,7 +211,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->get('users', [
-    'uses' => 'ListAllUsersController@handle',
+    'uses'       => 'ListAllUsersController@handle',
     'middleware' => [
         'api.auth',
     ],

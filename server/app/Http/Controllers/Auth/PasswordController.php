@@ -2,8 +2,8 @@
 
 namespace Mega\Http\Controllers\Auth;
 
-use Mega\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Mega\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {

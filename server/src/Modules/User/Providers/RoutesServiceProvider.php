@@ -20,10 +20,10 @@ class RoutesServiceProvider extends ApiRouteServiceProvider
         $this->apiRouter->version('v1', function ($router) {
 
             $router->group([
-                'namespace' => 'Mega\Modules\User\Controllers\Api', // Routes Namespace
+                'namespace'  => 'Mega\Modules\User\Controllers\Api', // Routes Namespace
                 'middleware' => 'api.throttle',                      // Enable: API Rate Limiting
-                'limit' => env('API_LIMIT'),                    // The API limit time.
-                'expires' => env('API_LIMIT_EXPIRES'),             // The API limit expiry time.
+                'limit'      => env('API_LIMIT'),                    // The API limit time.
+                'expires'    => env('API_LIMIT_EXPIRES'),             // The API limit expiry time.
             ], function ($router) {
                 require app_path('../src/Modules/User/Routes/Api/v1.php');
             });

@@ -14,9 +14,8 @@ use Mega\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerExceptio
  */
 trait MasterServiceProviderTrait
 {
-
     /**
-     * register an array of providers
+     * register an array of providers.
      *
      * @param array $providers
      */
@@ -34,7 +33,7 @@ trait MasterServiceProviderTrait
     {
         if (env('DATABASE_QUERIES_DEBUG', false)) {
             DB::listen(function ($query, $bindings, $time, $connection) use ($terminal) {
-                $fullQuery = vsprintf(str_replace(array('%', '?'), array('%%', '%s'), $query), $bindings);
+                $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $query), $bindings);
 
                 $text = $connection.' ('.$time.'): '.$fullQuery;
 

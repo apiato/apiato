@@ -2,9 +2,9 @@
 
 namespace Mega\Modules\User\Repositories\Eloquent;
 
-use Mega\Services\Core\Repository\Abstracts\Repository;
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Modules\User\Models\User;
+use Mega\Services\Core\Repository\Abstracts\Repository;
 
 /**
  * Class UserRepository.
@@ -17,7 +17,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
      * @var array
      */
     protected $fieldSearchable = [
-        'name' => 'like',
+        'name'  => 'like',
         'email' => '=',
     ];
 

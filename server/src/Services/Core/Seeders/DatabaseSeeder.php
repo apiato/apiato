@@ -7,19 +7,19 @@ use Illuminate\Database\Seeder;
 use Mega\Services\Authorization\Seeders\SeedRolesAndPermissions;
 
 /**
- * Class DatabaseSeeder
+ * Class DatabaseSeeder.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DatabaseSeeder extends Seeder
 {
     /**
-     * The application Seeders that needs to be registered
+     * The application Seeders that needs to be registered.
      *
      * @var array
      */
     protected $seeders = [
-        SeedRolesAndPermissions::class
+        SeedRolesAndPermissions::class,
     ];
 
     /**

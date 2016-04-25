@@ -21,7 +21,7 @@ class UpdateUserTest extends TestCase
         $user = $this->getLoggedInTestingUser();
 
         $data = [
-            'name' => 'Updated Name',
+            'name'     => 'Updated Name',
             'password' => 'updated#Password',
         ];
 
@@ -36,7 +36,7 @@ class UpdateUserTest extends TestCase
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'email' => $user->email,
-            'name' => $data['name'],
+            'name'  => $data['name'],
         ], $response);
 
         // assert data was updated in the database
@@ -66,7 +66,7 @@ class UpdateUserTest extends TestCase
     public function testUpdateDifferentUser_()
     {
         $data = [
-            'name' => 'Updated Name',
+            'name'     => 'Updated Name',
             'password' => 'updated#Password',
         ];
 

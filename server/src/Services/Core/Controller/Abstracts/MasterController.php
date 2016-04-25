@@ -11,5 +11,4 @@ use Mega\Http\Controllers\Controller as LaravelController;
  */
 abstract class MasterController extends LaravelController
 {
-
 }

@@ -16,41 +16,41 @@ class SeedRolesAndPermissions extends Seeder
     public function run()
     {
         $listUsersPermission = Permission::create([
-            'name' => 'List users',
-            'slug' => 'list.users',
+            'name'        => 'List users',
+            'slug'        => 'list.users',
             'description' => 'List all registered Users.',
         ]);
 
         $createUserPermission = Permission::create([
-            'name' => 'Create user',
-            'slug' => 'create.user',
+            'name'        => 'Create user',
+            'slug'        => 'create.user',
             'description' => 'Create a User.',
         ]);
 
         $updateUserPermission = Permission::create([
-            'name' => 'Update user',
-            'slug' => 'update.user',
+            'name'        => 'Update user',
+            'slug'        => 'update.user',
             'description' => 'Update a User.',
         ]);
 
         $deleteUserPermission = Permission::create([
-            'name' => 'Delete user',
-            'slug' => 'delete.user',
+            'name'        => 'Delete user',
+            'slug'        => 'delete.user',
             'description' => 'Delete a User.',
         ]);
 
         $adminRole = Role::create([
-            'name' => 'Admin',
-            'slug' => 'admin',
+            'name'        => 'Admin',
+            'slug'        => 'admin',
             'description' => 'Admin access',
-            'level' => 1,
+            'level'       => 1,
         ]);
 
         $memberRole = Role::create([
-            'name' => 'Member',
-            'slug' => 'member',
+            'name'        => 'Member',
+            'slug'        => 'member',
             'description' => 'Member access',
-            'level' => 1,
+            'level'       => 1,
         ]);
 
         $adminRole->attachPermission($listUsersPermission);
@@ -61,6 +61,5 @@ class SeedRolesAndPermissions extends Seeder
         $memberRole->attachPermission($createUserPermission);
         $memberRole->attachPermission($updateUserPermission);
         $memberRole->attachPermission($deleteUserPermission);
-
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Mega\Modules\User\Models\User;
 
 /**
- * Class UserPolicy
+ * Class UserPolicy.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
@@ -41,5 +41,4 @@ class UserPolicy
         // authorize only if a user is deleting it's own records
         return ($user->id == $inputUserId) ? true : false;
     }
-
 }

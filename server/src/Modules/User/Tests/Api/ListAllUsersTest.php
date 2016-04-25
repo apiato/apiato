@@ -5,8 +5,8 @@ namespace Mega\Modules\User\Tests\Api;
 use Bican\Roles\Models\Permission;
 use Bican\Roles\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Mega\Services\Core\Test\Abstracts\TestCase;
 use Mega\Modules\User\Models\User;
+use Mega\Services\Core\Test\Abstracts\TestCase;
 
 /**
  * Class ListAllUsersTest.
@@ -40,16 +40,16 @@ class ListAllUsersTest extends TestCase
     public function testListAllUsersOnlyForAdmin_()
     {
         $listUsersPermission = Permission::create([
-            'name' => 'List users',
-            'slug' => 'list.users',
+            'name'        => 'List users',
+            'slug'        => 'list.users',
             'description' => 'List all registered Users',
         ]);
 
         $adminRole = Role::create([
-            'name' => 'Admin',
-            'slug' => 'admin',
+            'name'        => 'Admin',
+            'slug'        => 'admin',
             'description' => 'Admin access',
-            'level' => 1,
+            'level'       => 1,
         ]);
 
         $adminRole->attachPermission($listUsersPermission);

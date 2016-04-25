@@ -19,8 +19,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUser_()
     {
         $data = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -32,7 +32,7 @@ class RegisterTest extends TestCase
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
-            'name' => $data['name'],
+            'name'  => $data['name'],
         ], $response);
 
         // assert response contain the correct data
@@ -45,8 +45,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -65,8 +65,8 @@ class RegisterTest extends TestCase
     public function testRegisterExistingUser()
     {
         $userDetails = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -74,8 +74,8 @@ class RegisterTest extends TestCase
         $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email' => $userDetails['email'],
-            'name' => $userDetails['name'],
+            'email'    => $userDetails['email'],
+            'name'     => $userDetails['name'],
             'password' => $userDetails['password'],
         ];
 
@@ -94,7 +94,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutEmail()
     {
         $data = [
-            'name' => 'Mega',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -113,7 +113,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email' => 'mega@mail.dev',
+            'email'    => 'mega@mail.dev',
             'password' => 'secret',
         ];
 
@@ -133,7 +133,7 @@ class RegisterTest extends TestCase
     {
         $data = [
             'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'name'  => 'Mega',
         ];
 
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
@@ -150,8 +150,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithInvalidEmail()
     {
         $data = [
-            'email' => 'missing-at.dev',
-            'name' => 'Mega',
+            'email'    => 'missing-at.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 

@@ -4,10 +4,10 @@ namespace Mega\Modules\User\Tasks;
 
 use Exception;
 use Illuminate\Support\Facades\Hash;
-use Mega\Services\Core\Task\Abstracts\Task;
 use Mega\Modules\User\Contracts\UserRepositoryInterface;
 use Mega\Modules\User\Exceptions\AccountFailedException;
 use Mega\Services\Authentication\Portals\AuthenticationService;
+use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.
@@ -56,9 +56,9 @@ class CreateUserTask extends Task
         try {
             // create new user
             $user = $this->userRepository->create([
-                'email' => $email,
+                'email'    => $email,
                 'password' => $hashedPassword,
-                'name' => $name,
+                'name'     => $name,
             ]);
         } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);

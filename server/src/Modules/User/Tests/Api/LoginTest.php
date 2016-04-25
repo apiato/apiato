@@ -19,8 +19,8 @@ class LoginTest extends TestCase
     public function testLoginExistingUser_()
     {
         $userDetails = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -28,7 +28,7 @@ class LoginTest extends TestCase
         $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email' => $userDetails['email'],
+            'email'    => $userDetails['email'],
             'password' => $userDetails['password'],
         ];
 
@@ -41,7 +41,7 @@ class LoginTest extends TestCase
         // assert the response contain the expected data
         $this->assertResponseContainKeyValue([
             'email' => $userDetails['email'],
-            'name' => $userDetails['name'],
+            'name'  => $userDetails['name'],
         ], $response);
 
         // assert response contain the data
@@ -51,7 +51,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUserUsingGetRequest()
     {
         $data = [
-            'email' => 'mega@mail.dev',
+            'email'    => 'mega@mail.dev',
             'password' => 'secret',
         ];
 
@@ -70,7 +70,7 @@ class LoginTest extends TestCase
     public function testLoginNonExistingUser()
     {
         $data = [
-            'email' => 'i-do-not-exist@mail.dev',
+            'email'    => 'i-do-not-exist@mail.dev',
             'password' => 'secret',
         ];
 
@@ -89,8 +89,8 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutEmail_()
     {
         $userDetails = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -116,8 +116,8 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutPassword()
     {
         $userDetails = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -143,8 +143,8 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutEmailAndPassword()
     {
         $userDetails = [
-            'email' => 'mega@mail.dev',
-            'name' => 'Mega',
+            'email'    => 'mega@mail.dev',
+            'name'     => 'Mega',
             'password' => 'secret',
         ];
 
@@ -161,7 +161,7 @@ class LoginTest extends TestCase
 
         // assert message is correct
         $this->assertValidationErrorContain($response, [
-            'email' => 'The email field is required.',
+            'email'    => 'The email field is required.',
             'password' => 'The password field is required.',
         ]);
     }

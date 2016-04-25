@@ -2,9 +2,9 @@
 
 namespace Mega\Modules\User\Controllers\Api;
 
+use Mega\Modules\User\Tasks\LogoutTask;
 use Mega\Services\Core\Controller\Abstracts\ApiController;
 use Mega\Services\Core\Request\Manager\HttpRequest;
-use Mega\Modules\User\Tasks\LogoutTask;
 
 /**
  * Class LogoutController.

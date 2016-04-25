@@ -2,8 +2,8 @@
 
 namespace Mega\Modules\User\Tasks;
 
-use Mega\Services\Core\Task\Abstracts\Task;
 use Mega\Services\Authentication\Portals\AuthenticationService;
+use Mega\Services\Core\Task\Abstracts\Task;
 
 /**
  * Class LogoutTask.
