@@ -6,7 +6,6 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Mega\Services\Authentication\Portals\TokenTrait;
 use Mega\Services\Core\Model\Abstracts\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
@@ -21,7 +20,14 @@ class User extends Model implements
     CanResetPasswordContract
 {
 
-    use Authenticatable, CanResetPassword, TokenTrait, SoftDeletes, EntrustUserTrait;
+    use Authenticatable, CanResetPassword, TokenTrait, EntrustUserTrait;
+    // use SoftDeletes;
+    /**
+     * TODO:
+     * Temporary hiding the Illuminate\Database\Eloquent\SoftDeletes trait because
+     * of the collisions of the restore function with the EntrustUserTrait.
+     * Will be uncommented once a fix PR is merged in the repo (https://github.com/Zizaco/entrust/issues/428)
+     */
 
     /**
      * The database table used by the model.
