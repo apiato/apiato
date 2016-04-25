@@ -38,10 +38,6 @@ class DeleteUserTest extends TestCase
             'message' => 'User ('.$user->id.') Deleted Successfully.',
         ], $response);
 
-        // assert the account was delete from the database (in face it will be soft deleted)
-        $this->notSeeInDatabase('accounts', [
-            'id' => $user->id,
-        ]);
     }
 
     public function testDeleteDifferentUser()
