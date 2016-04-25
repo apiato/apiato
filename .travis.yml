@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.5.9
+  - 5.6
+  - 7.0
+  - hhvm
+
+matrix:
+    allow_failures:
+        - php: 7.0
+        - php: hhvm
+
+before_script:
+- cd server
+- cp .env.travis .env
+- mysql -e 'create database homestead;'
+- composer self-update
+- composer install --prefer-source --no-interaction --dev
+- php artisan migrate
+- php artisan db:seed
+
+script: vendor/bin/phpunit
