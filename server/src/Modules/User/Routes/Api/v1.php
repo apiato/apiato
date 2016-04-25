@@ -214,5 +214,6 @@ $router->get('users', [
     'uses'       => 'ListAllUsersController@handle',
     'middleware' => [
         'api.auth',
+        'role:admin'
     ],
 ]);
