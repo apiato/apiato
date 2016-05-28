@@ -18,7 +18,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
-![](http://s31.postimg.org/s51xi7ywr/hello_api.jpg)
+![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
 
 
 
@@ -133,8 +133,6 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
-
-
 <a name="Comming-Features"></a>
 ##Comming Features
 
@@ -150,6 +148,15 @@ It uses the best framework, packages, tools and conventions. All configured to w
 > Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
 
 
+
+
+
+<a name="Support"></a>
+##Support Hello API
+
+Empower me to make Hello API better, by supporting it on [**bountysource**](https://salt.bountysource.com/teams/hello-api). 
+
+Many thanks : )
 
 
 
