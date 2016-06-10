@@ -2,3 +2,4 @@
 .env
 /storage/logs/laravel.log
 /public/documentation
+/docker-helloapi
