@@ -1,1 +1,4 @@
-
+/vendor
+.env
+/storage/logs/laravel.log
+/public/documentation

@@ -1,7 +1,0 @@
-/vendor
-.env
-/storage/logs/laravel.log
-/public/documentation
-
-/src/Modules/Account
-/src/Modules/Tag
