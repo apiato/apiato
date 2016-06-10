@@ -3,8 +3,8 @@
 namespace Hello\Modules\User\Controllers\Api;
 
 use Hello\Modules\User\Tasks\LogoutTask;
-use Hello\Services\Core\Controller\Abstracts\ApiController;
-use Hello\Services\Core\Request\Manager\HttpRequest;
+use Hello\Modules\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\Core\Request\Manager\HttpRequest;
 
 /**
  * Class LogoutController.
@@ -15,7 +15,7 @@ class LogoutController extends ApiController
 {
 
     /**
-     * @param \Hello\Services\Core\Request\Manager\HttpRequest $request
+     * @param \Hello\Modules\Core\Request\Manager\HttpRequest $request
      * @param \Hello\Modules\User\Tasks\LogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response

@@ -3,7 +3,7 @@
 namespace Hello\Modules\User\Providers;
 
 use Illuminate\Routing\Router as LaravelRouter;
-use Hello\Services\Core\Route\Providers\ApiRouteServiceProvider;
+use Hello\Modules\Core\Route\Providers\ApiRouteServiceProvider;
 
 /**
  * Class RoutesServiceProvider.

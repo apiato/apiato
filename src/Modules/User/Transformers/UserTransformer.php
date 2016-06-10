@@ -3,7 +3,7 @@
 namespace Hello\Modules\User\Transformers;
 
 use Hello\Modules\User\Models\User;
-use Hello\Services\Core\Transformer\Abstracts\Transformer;
+use Hello\Modules\Core\Transformer\Abstracts\Transformer;
 
 /**
  * Class UserTransformer.

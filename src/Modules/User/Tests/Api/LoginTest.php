@@ -2,7 +2,7 @@
 
 namespace Hello\Modules\User\Tests\Api;
 
-use Hello\Services\Core\Test\Abstracts\TestCase;
+use Hello\Modules\Core\Test\Abstracts\TestCase;
 
 /**
  * Class LoginEndpointTest.

@@ -4,7 +4,7 @@ namespace Hello\Modules\User\Tests\Api;
 
 use Hello\Modules\User\Models\User;
 use Hello\Services\Authorization\Models\Role;
-use Hello\Services\Core\Test\Abstracts\TestCase;
+use Hello\Modules\Core\Test\Abstracts\TestCase;
 
 /**
  * Class ListAllUsersTest.

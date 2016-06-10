@@ -4,7 +4,7 @@ namespace Hello\Modules\User\Repositories\Eloquent;
 
 use Hello\Modules\User\Contracts\UserRepositoryInterface;
 use Hello\Modules\User\Models\User;
-use Hello\Services\Core\Repository\Abstracts\Repository;
+use Hello\Modules\Core\Repository\Abstracts\Repository;
 
 /**
  * Class UserRepository.
