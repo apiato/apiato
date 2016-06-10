@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Exceptions;
+namespace Hello\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Services\Core\Repository\Criterias\Eloquent;
+namespace Hello\Services\Core\Repository\Criterias\Eloquent;
 
-use Mega\Services\Core\Repository\Abstracts\Criteria;
+use Hello\Services\Core\Repository\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**

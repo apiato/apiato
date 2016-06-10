@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Services\Core\Request\Manager;
+namespace Hello\Services\Core\Request\Manager;
 
-use Mega\Services\Core\Request\Abstracts\Request;
+use Hello\Services\Core\Request\Abstracts\Request;
 
 /**
  * Class HttpRequest.

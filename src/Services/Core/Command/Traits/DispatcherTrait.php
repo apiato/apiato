@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Command\Traits;
+namespace Hello\Services\Core\Command\Traits;
 
 /**
  * Class DispatcherTrait.

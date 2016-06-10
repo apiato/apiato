@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Mega
-        psr4_prefix: Mega
+        namespace: Hello
+        psr4_prefix: Hello
         src_path: app

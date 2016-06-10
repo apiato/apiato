@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Authorization\Seeders;
+namespace Hello\Services\Authorization\Seeders;
 
 use Illuminate\Database\Seeder;
-use Mega\Services\Authorization\Models\Permission;
-use Mega\Services\Authorization\Models\Role;
+use Hello\Services\Authorization\Models\Permission;
+use Hello\Services\Authorization\Models\Role;
 
 class SeedRolesAndPermissions extends Seeder
 {

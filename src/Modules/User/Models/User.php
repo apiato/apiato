@@ -1,13 +1,13 @@
 <?php
 
-namespace Mega\Modules\User\Models;
+namespace Hello\Modules\User\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Mega\Services\Authentication\Portals\TokenTrait;
-use Mega\Services\Core\Model\Abstracts\Model;
+use Hello\Services\Authentication\Portals\TokenTrait;
+use Hello\Services\Core\Model\Abstracts\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**

@@ -20,7 +20,7 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="API_BASE_URL" value="http://api.mega.pro"/>
+        <env name="API_BASE_URL" value="http://api.hello.dev"/>
 
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
@@ -29,9 +29,9 @@
         <env name="DB_CONNECTION" value="testing_sqlite_in_memory"/>
         <env name="TESTING_DB_HOST" value="192.168.99.100"/>
         <env name="TESTING_DB_PORT" value="3307"/>
-        <env name="TESTING_DB_NAME" value="megapro"/>
-        <env name="TESTING_DB_USERNAME" value="megapro"/>
-        <env name="TESTING_DB_PASSWORD" value="megapro"/>
+        <env name="TESTING_DB_NAME" value="helloapi"/>
+        <env name="TESTING_DB_USERNAME" value="helloapi"/>
+        <env name="TESTING_DB_PASSWORD" value="helloapi"/>
 
     </php>
 </phpunit>

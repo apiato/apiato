@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Core\Command\Abstracts;
+namespace Hello\Services\Core\Command\Abstracts;
 
 use Illuminate\Contracts\Bus\SelfHandling as LaravelSelfHandling;
 use Illuminate\Foundation\Bus\DispatchesJobs as LaravelDispatchesJobs;
-use Mega\Services\Core\Command\Traits\DispatcherTrait;
+use Hello\Services\Core\Command\Traits\DispatcherTrait;
 
 /**
  * Class Command.

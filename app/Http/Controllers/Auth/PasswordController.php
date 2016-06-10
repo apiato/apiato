@@ -1,9 +1,9 @@
 <?php
 
-namespace Mega\Http\Controllers\Auth;
+namespace Hello\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Mega\Http\Controllers\Controller;
+use Hello\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Transformer\Abstracts;
+namespace Hello\Services\Core\Transformer\Abstracts;
 
 use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
 

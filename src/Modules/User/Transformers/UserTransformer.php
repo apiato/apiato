@@ -1,9 +1,9 @@
 <?php
 
-namespace Mega\Modules\User\Transformers;
+namespace Hello\Modules\User\Transformers;
 
-use Mega\Modules\User\Models\User;
-use Mega\Services\Core\Transformer\Abstracts\Transformer;
+use Hello\Modules\User\Models\User;
+use Hello\Services\Core\Transformer\Abstracts\Transformer;
 
 /**
  * Class UserTransformer.
@@ -14,7 +14,7 @@ class UserTransformer extends Transformer
 {
 
     /**
-     * @param \Mega\Modules\User\Models\User $user
+     * @param \Hello\Modules\User\Models\User $user
      *
      * @return array
      */

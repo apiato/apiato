@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Providers;
+namespace Hello\Modules\User\Providers;
 
-use Mega\Modules\User\Contracts\UserRepositoryInterface;
-use Mega\Modules\User\Repositories\Eloquent\UserRepository;
-use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
+use Hello\Modules\User\Contracts\UserRepositoryInterface;
+use Hello\Modules\User\Repositories\Eloquent\UserRepository;
+use Hello\Services\Core\Providers\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.

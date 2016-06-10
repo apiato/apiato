@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Console;
+namespace Hello\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \Mega\Console\Commands\Inspire::class,
+        \Hello\Console\Commands\Inspire::class,
     ];
 
     /**

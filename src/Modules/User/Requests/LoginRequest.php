@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Modules\User\Requests;
+namespace Hello\Modules\User\Requests;
 
-use Mega\Services\Core\Request\Abstracts\Request;
+use Hello\Services\Core\Request\Abstracts\Request;
 
 /**
  * Class LoginRequest.

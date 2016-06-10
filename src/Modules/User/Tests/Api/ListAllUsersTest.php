@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Tests\Api;
+namespace Hello\Modules\User\Tests\Api;
 
-use Mega\Modules\User\Models\User;
-use Mega\Services\Authorization\Models\Role;
-use Mega\Services\Core\Test\Abstracts\TestCase;
+use Hello\Modules\User\Models\User;
+use Hello\Services\Authorization\Models\Role;
+use Hello\Services\Core\Test\Abstracts\TestCase;
 
 /**
  * Class ListAllUsersTest.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Core\Seeders;
+namespace Hello\Services\Core\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
-use Mega\Services\Authorization\Seeders\SeedRolesAndPermissions;
+use Hello\Services\Authorization\Seeders\SeedRolesAndPermissions;
 
 /**
  * Class DatabaseSeeder.

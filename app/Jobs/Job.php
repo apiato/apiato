@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Jobs;
+namespace Hello\Jobs;
 
 use Illuminate\Bus\Queueable;
 

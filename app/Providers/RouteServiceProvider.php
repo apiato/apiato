@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Providers;
+namespace Hello\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Mega\Http\Controllers';
+    protected $namespace = 'Hello\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

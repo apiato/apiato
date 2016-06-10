@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Services\Core\Providers\Traits;
+namespace Hello\Services\Core\Providers\Traits;
 
 use App;
 use DB;
 use Log;
-use Mega\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
+use Hello\Services\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
 
 /**
  * Class MasterServiceProviderTrait.
@@ -65,7 +65,7 @@ trait MasterServiceProviderTrait
 
     /**
      * register the Migrations to be published when this command runs
-     * `php artisan vendor:publish --provider="Mega\Infrastructure\Providers\MasterServiceProvider"`.
+     * `php artisan vendor:publish --provider="Hello\Infrastructure\Providers\MasterServiceProvider"`.
      *
      * This transfers all the Migrations files from the Infrastructure directory to the Framework
      * Migrations Directory.

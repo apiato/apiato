@@ -74,7 +74,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Mega\Modules\User\Models\User::class,
+            'model' => Hello\Modules\User\Models\User::class,
             'table' => 'users',
         ],
     ],

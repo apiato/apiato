@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Modules\User\Tests\Api;
+namespace Hello\Modules\User\Tests\Api;
 
-use Mega\Services\Core\Test\Abstracts\TestCase;
+use Hello\Services\Core\Test\Abstracts\TestCase;
 
 /**
  * Class RegisterEndpointTest.
@@ -17,8 +17,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUser_()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
-            'name'     => 'Mega',
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -43,8 +43,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
-            'name'     => 'Mega',
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -63,8 +63,8 @@ class RegisterTest extends TestCase
     public function testRegisterExistingUser()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
-            'name'     => 'Mega',
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -92,7 +92,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutEmail()
     {
         $data = [
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -111,7 +111,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'password' => 'secret',
         ];
 
@@ -130,8 +130,8 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutPassword()
     {
         $data = [
-            'email' => 'mega@mail.dev',
-            'name'  => 'Mega',
+            'email' => 'hello@mail.dev',
+            'name'  => 'Hello',
         ];
 
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
@@ -149,7 +149,7 @@ class RegisterTest extends TestCase
     {
         $data = [
             'email'    => 'missing-at.dev',
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 

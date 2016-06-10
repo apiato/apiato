@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Tasks\LogoutTask;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
-use Mega\Services\Core\Request\Manager\HttpRequest;
+use Hello\Modules\User\Tasks\LogoutTask;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Services\Core\Request\Manager\HttpRequest;
 
 /**
  * Class LogoutController.
@@ -15,8 +15,8 @@ class LogoutController extends ApiController
 {
 
     /**
-     * @param \Mega\Services\Core\Request\Manager\HttpRequest $request
-     * @param \Mega\Modules\User\Tasks\LogoutTask             $logoutTask
+     * @param \Hello\Services\Core\Request\Manager\HttpRequest $request
+     * @param \Hello\Modules\User\Tasks\LogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response
      */
