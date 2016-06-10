@@ -17,7 +17,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUser_()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -49,7 +49,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUserUsingGetRequest()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'password' => 'secret',
         ];
 
@@ -87,7 +87,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutEmail_()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -114,7 +114,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutPassword()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -141,7 +141,7 @@ class LoginTest extends TestCase
     public function testLoginExistingUserWithoutEmailAndPassword()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];

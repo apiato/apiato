@@ -119,7 +119,7 @@ trait TestingTrait
         if (!$userDetails) {
             $userDetails = [
                 'name'     => 'Mahmoud Zalt',
-                'email'    => 'testing@mega.pro',
+                'email'    => 'testing@hello.dev',
                 'password' => 'secret.Pass7',
             ];
         }

@@ -17,7 +17,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUser_()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -43,7 +43,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -63,7 +63,7 @@ class RegisterTest extends TestCase
     public function testRegisterExistingUser()
     {
         $userDetails = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'name'     => 'Mega',
             'password' => 'secret',
         ];
@@ -111,7 +111,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email'    => 'mega@mail.dev',
+            'email'    => 'hello@mail.dev',
             'password' => 'secret',
         ];
 
@@ -130,7 +130,7 @@ class RegisterTest extends TestCase
     public function testRegisterNewUserWithoutPassword()
     {
         $data = [
-            'email' => 'mega@mail.dev',
+            'email' => 'hello@mail.dev',
             'name'  => 'Mega',
         ];
 
