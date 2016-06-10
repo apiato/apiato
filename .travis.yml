@@ -11,7 +11,6 @@ matrix:
         - php: hhvm
 
 before_script:
-- cd server
 - cp .env.travis .env
 - mysql -e 'create database homestead;'
 - travis_retry composer self-update

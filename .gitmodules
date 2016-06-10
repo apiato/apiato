@@ -1,0 +1,3 @@
+[submodule "docker-helloapi"]
+	path = docker-helloapi
+	url = https://github.com/LaraDock/laradock.git
