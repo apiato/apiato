@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Http\Controllers;
+namespace Hello\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

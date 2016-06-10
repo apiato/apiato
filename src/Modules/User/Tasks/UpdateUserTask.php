@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Tasks;
+namespace Hello\Modules\User\Tasks;
 
-use Mega\Modules\User\Contracts\UserRepositoryInterface;
-use Mega\Services\Authentication\Exceptions\UpdateResourceFailedException;
-use Mega\Services\Core\Task\Abstracts\Task;
+use Hello\Modules\User\Contracts\UserRepositoryInterface;
+use Hello\Services\Authentication\Exceptions\UpdateResourceFailedException;
+use Hello\Services\Core\Task\Abstracts\Task;
 
 /**
  * Class UpdateUserTask.
@@ -15,14 +15,14 @@ class UpdateUserTask extends Task
 {
 
     /**
-     * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
+     * @var \Hello\Modules\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * UpdateUserTask constructor.
      *
-     * @param \Mega\Modules\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \Hello\Modules\User\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Services\Core\Controller\Abstracts;
+namespace Hello\Services\Core\Controller\Abstracts;
 
-use Mega\Http\Controllers\Controller as LaravelController;
+use Hello\Http\Controllers\Controller as LaravelController;
 
 /**
  * Class MasterController.

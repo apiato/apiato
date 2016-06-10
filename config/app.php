@@ -139,14 +139,14 @@ return [
         /*
          * Application Service Providers
          */
-        Mega\Providers\AppServiceProvider::class,
-        Mega\Providers\AuthServiceProvider::class,
-        Mega\Providers\EventServiceProvider::class,
-        Mega\Providers\RouteServiceProvider::class,
+        Hello\Providers\AppServiceProvider::class,
+        Hello\Providers\AuthServiceProvider::class,
+        Hello\Providers\EventServiceProvider::class,
+        Hello\Providers\RouteServiceProvider::class,
         /*
          * Additional Application Service Providers
          */
-        Mega\Services\Core\Providers\MasterServiceProvider::class,
+        Hello\Services\Core\Providers\MasterServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,

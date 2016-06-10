@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Requests\LoginRequest;
-use Mega\Modules\User\Tasks\LoginTask;
-use Mega\Modules\User\Transformers\UserTransformer;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\User\Requests\LoginRequest;
+use Hello\Modules\User\Tasks\LoginTask;
+use Hello\Modules\User\Transformers\UserTransformer;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class LoginController.
@@ -16,8 +16,8 @@ class LoginController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Requests\LoginRequest $loginRequest
-     * @param \Mega\Modules\User\Tasks\LoginTask       $loginTask
+     * @param \Hello\Modules\User\Requests\LoginRequest $loginRequest
+     * @param \Hello\Modules\User\Tasks\LoginTask       $loginTask
      *
      * @return \Dingo\Api\Http\Response
      */

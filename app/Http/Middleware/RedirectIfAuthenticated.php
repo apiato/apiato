@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Http\Middleware;
+namespace Hello\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;

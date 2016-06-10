@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Task\Abstracts;
+namespace Hello\Services\Core\Task\Abstracts;
 
 /**
  * Class Task.

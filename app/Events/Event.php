@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Events;
+namespace Hello\Events;
 
 abstract class Event
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Tasks\ListAllUsersTask;
-use Mega\Modules\User\Transformers\UserTransformer;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\User\Tasks\ListAllUsersTask;
+use Hello\Modules\User\Transformers\UserTransformer;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class ListAllUsersController.
@@ -15,7 +15,7 @@ class ListAllUsersController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Tasks\ListAllUsersTask $listAllUsersTask
+     * @param \Hello\Modules\User\Tasks\ListAllUsersTask $listAllUsersTask
      *
      * @return \Dingo\Api\Http\Response
      */

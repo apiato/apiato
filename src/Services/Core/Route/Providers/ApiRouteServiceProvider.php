@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Route\Providers;
+namespace Hello\Services\Core\Route\Providers;
 
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;

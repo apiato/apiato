@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Requests\DeleteUserRequest;
-use Mega\Modules\User\Tasks\DeleteUserTask;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\User\Requests\DeleteUserRequest;
+use Hello\Modules\User\Tasks\DeleteUserTask;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class DeleteUserController.
@@ -15,8 +15,8 @@ class DeleteUserController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Requests\DeleteUserRequest $deleteUserRequest
-     * @param \Mega\Modules\User\Tasks\DeleteUserTask       $deleteUserTask
+     * @param \Hello\Modules\User\Requests\DeleteUserRequest $deleteUserRequest
+     * @param \Hello\Modules\User\Tasks\DeleteUserTask       $deleteUserTask
      * @param                                               $userId
      *
      * @return \Dingo\Api\Http\Response

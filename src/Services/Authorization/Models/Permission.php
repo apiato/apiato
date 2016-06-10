@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Authorization\Models;
+namespace Hello\Services\Authorization\Models;
 
 use Zizaco\Entrust\EntrustPermission;
 

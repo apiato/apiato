@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Modules\User\Tests\Api;
+namespace Hello\Modules\User\Tests\Api;
 
-use Mega\Services\Core\Test\Abstracts\TestCase;
+use Hello\Services\Core\Test\Abstracts\TestCase;
 
 /**
  * Class LoginEndpointTest.
@@ -18,7 +18,7 @@ class LoginTest extends TestCase
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -88,7 +88,7 @@ class LoginTest extends TestCase
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -115,7 +115,7 @@ class LoginTest extends TestCase
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 
@@ -142,7 +142,7 @@ class LoginTest extends TestCase
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
-            'name'     => 'Mega',
+            'name'     => 'Hello',
             'password' => 'secret',
         ];
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Authentication\Portals;
+namespace Hello\Services\Authentication\Portals;
 
 /**
  * Class TokenTrait.

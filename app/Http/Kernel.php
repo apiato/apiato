@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Http;
+namespace Hello\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -14,7 +14,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // for the Laravel Framework
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \Mega\Http\Middleware\EncryptCookies::class,
+        \Hello\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         // for the CORS Package
         \Barryvdh\Cors\HandleCors::class,

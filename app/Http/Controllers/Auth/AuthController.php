@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Http\Controllers\Auth;
+namespace Hello\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Mega\Http\Controllers\Controller;
-use Mega\User;
+use Hello\Http\Controllers\Controller;
+use Hello\User;
 use Validator;
 
 class AuthController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Services\Core\Exception\Exceptions;
+namespace Hello\Services\Core\Exception\Exceptions;
 
-use Mega\Services\Core\Exception\Abstracts\ApiException;
+use Hello\Services\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**

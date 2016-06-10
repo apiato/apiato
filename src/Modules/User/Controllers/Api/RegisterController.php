@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Requests\RegisterRequest;
-use Mega\Modules\User\Tasks\CreateUserTask;
-use Mega\Modules\User\Transformers\UserTransformer;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\User\Requests\RegisterRequest;
+use Hello\Modules\User\Tasks\CreateUserTask;
+use Hello\Modules\User\Transformers\UserTransformer;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class RegisterController.
@@ -16,8 +16,8 @@ class RegisterController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Requests\RegisterRequest  $registerRequest
-     * @param \Mega\Modules\User\Tasks\AssignUserRolesTask $assignUserRolesTask
+     * @param \Hello\Modules\User\Requests\RegisterRequest  $registerRequest
+     * @param \Hello\Modules\User\Tasks\AssignUserRolesTask $assignUserRolesTask
      *
      * @return \Dingo\Api\Http\Response
      */

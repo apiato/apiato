@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Services\Core\Test\Traits;
+namespace Hello\Services\Core\Test\Traits;
 
 use App;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
-use Mega\Modules\User\Tasks\CreateUserTask;
+use Hello\Modules\User\Tasks\CreateUserTask;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 /**
@@ -85,7 +85,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \Mega\Services\Core\Test\Traits\User|mixed
+     * @return \Hello\Services\Core\Test\Traits\User|mixed
      */
     public function getLoggedInTestingUser()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Core\Test\Abstracts;
+namespace Hello\Services\Core\Test\Abstracts;
 
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
-use Mega\Services\Core\Test\Traits\TestingTrait;
+use Hello\Services\Core\Test\Traits\TestingTrait;
 
 /**
  * Class TestCase.
@@ -35,7 +35,7 @@ abstract class TestCase extends LaravelTestCase
         // migrate the database
         $this->artisan('migrate');
         // seed the database
-        $this->seed('Mega\Services\Core\Seeders\DatabaseSeeder');
+        $this->seed('Hello\Services\Core\Seeders\DatabaseSeeder');
     }
 
     /**

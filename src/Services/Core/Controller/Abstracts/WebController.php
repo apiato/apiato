@@ -1,8 +1,8 @@
 <?php
 
-namespace Mega\Services\Core\Controller\Abstracts;
+namespace Hello\Services\Core\Controller\Abstracts;
 
-use Mega\Services\Core\Controller\Contracts\WebControllerInterface;
+use Hello\Services\Core\Controller\Contracts\WebControllerInterface;
 
 /**
  * Class WebController.

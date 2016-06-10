@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Core\Providers;
+namespace Hello\Services\Core\Providers;
 
-use Mega\Modules\User\Providers\UserServiceProvider;
-use Mega\Services\Core\Providers\Abstracts\ServiceProvider;
-use Mega\Services\Core\Route\Providers\ApiBaseRouteServiceProvider;
+use Hello\Modules\User\Providers\UserServiceProvider;
+use Hello\Services\Core\Providers\Abstracts\ServiceProvider;
+use Hello\Services\Core\Route\Providers\ApiBaseRouteServiceProvider;
 
 /**
  * Class MasterServiceProvider

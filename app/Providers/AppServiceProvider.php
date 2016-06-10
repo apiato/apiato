@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Providers;
+namespace Hello\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

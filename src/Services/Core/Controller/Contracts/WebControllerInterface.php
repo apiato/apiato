@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Services\Core\Controller\Contracts;
+namespace Hello\Services\Core\Controller\Contracts;
 
 /**
  * Interface WebControllerInterface.

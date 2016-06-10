@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Modules\User\Providers;
+namespace Hello\Modules\User\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Mega\Modules\User\Models\User;
-use Mega\Modules\User\Policies\UserPolicy;
+use Hello\Modules\User\Models\User;
+use Hello\Modules\User\Policies\UserPolicy;
 
 /**
  * Class AuthServiceProvider.

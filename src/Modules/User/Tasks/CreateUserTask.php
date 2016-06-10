@@ -1,13 +1,13 @@
 <?php
 
-namespace Mega\Modules\User\Tasks;
+namespace Hello\Modules\User\Tasks;
 
 use Exception;
 use Illuminate\Support\Facades\Hash;
-use Mega\Modules\User\Contracts\UserRepositoryInterface;
-use Mega\Modules\User\Exceptions\AccountFailedException;
-use Mega\Services\Authentication\Portals\AuthenticationService;
-use Mega\Services\Core\Task\Abstracts\Task;
+use Hello\Modules\User\Contracts\UserRepositoryInterface;
+use Hello\Modules\User\Exceptions\AccountFailedException;
+use Hello\Services\Authentication\Portals\AuthenticationService;
+use Hello\Services\Core\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.
@@ -18,20 +18,20 @@ class CreateUserTask extends Task
 {
 
     /**
-     * @var \Mega\Modules\User\Contracts\UserRepositoryInterface
+     * @var \Hello\Modules\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
-     * @var \Mega\Services\Authentication\Portals\AuthenticationService
+     * @var \Hello\Services\Authentication\Portals\AuthenticationService
      */
     private $authenticationService;
 
     /**
      * CreateUserTask constructor.
      *
-     * @param \Mega\Modules\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \Mega\Services\Authentication\Portals\AuthenticationService $authenticationService
+     * @param \Hello\Modules\User\Contracts\UserRepositoryInterface        $userRepository
+     * @param \Hello\Services\Authentication\Portals\AuthenticationService $authenticationService
      */
     public function __construct(UserRepositoryInterface $userRepository, AuthenticationService $authenticationService)
     {

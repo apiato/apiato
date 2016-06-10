@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Modules\User\Repositories\Eloquent;
+namespace Hello\Modules\User\Repositories\Eloquent;
 
-use Mega\Modules\User\Contracts\UserRepositoryInterface;
-use Mega\Modules\User\Models\User;
-use Mega\Services\Core\Repository\Abstracts\Repository;
+use Hello\Modules\User\Contracts\UserRepositoryInterface;
+use Hello\Modules\User\Models\User;
+use Hello\Services\Core\Repository\Abstracts\Repository;
 
 /**
  * Class UserRepository.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mega\Services\Core\Request\Abstracts;
+namespace Hello\Services\Core\Request\Abstracts;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
-use Mega\Services\Core\Exception\Exceptions\ValidationFailedException;
+use Hello\Services\Core\Exception\Exceptions\ValidationFailedException;
 
 /**
  * Class Request.

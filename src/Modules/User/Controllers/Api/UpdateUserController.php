@@ -1,11 +1,11 @@
 <?php
 
-namespace Mega\Modules\User\Controllers\Api;
+namespace Hello\Modules\User\Controllers\Api;
 
-use Mega\Modules\User\Requests\UpdateUserRequest;
-use Mega\Modules\User\Tasks\UpdateUserTask;
-use Mega\Modules\User\Transformers\UserTransformer;
-use Mega\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\User\Requests\UpdateUserRequest;
+use Hello\Modules\User\Tasks\UpdateUserTask;
+use Hello\Modules\User\Transformers\UserTransformer;
+use Hello\Services\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class UpdateUserController.
@@ -16,8 +16,8 @@ class UpdateUserController extends ApiController
 {
 
     /**
-     * @param \Mega\Modules\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \Mega\Modules\User\Tasks\UpdateUserTask       $updateUserTask
+     * @param \Hello\Modules\User\Requests\UpdateUserRequest $updateUserRequest
+     * @param \Hello\Modules\User\Tasks\UpdateUserTask       $updateUserTask
      * @param                                               $userId
      *
      * @return \Dingo\Api\Http\Response

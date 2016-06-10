@@ -1,6 +1,6 @@
 <?php
 
-namespace Mega\Providers;
+namespace Hello\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Mega\Events\SomeEvent' => [
-            'Mega\Listeners\EventListener',
+        'Hello\Events\SomeEvent' => [
+            'Hello\Listeners\EventListener',
         ],
     ];
 
