@@ -151,17 +151,6 @@ It uses the best framework, packages, tools and conventions. All configured to w
 
 
 
-<a name="Support"></a>
-##Support Hello API
-
-Empower me to make Hello API better, by supporting it on [**bountysource**](https://salt.bountysource.com/teams/hello-api). 
-
-Many thanks : )
-
-
-
-
-
 ## Contribution
 Just do it. You are welcome :)
 
