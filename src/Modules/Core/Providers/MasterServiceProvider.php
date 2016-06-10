@@ -2,7 +2,6 @@
 
 namespace Hello\Modules\Core\Providers;
 
-use Hello\Modules\User\Providers\UserServiceProvider;
 use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
 use Hello\Modules\Core\Route\Providers\ApiBaseRouteServiceProvider;
 
@@ -22,16 +21,15 @@ class MasterServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    private $serviceProviders = [
+    private $coreServiceProviders = [
         ApiBaseRouteServiceProvider::class,
-        // Modules Service Providers:
-        UserServiceProvider::class,
-        // ...
     ];
 
     public function boot()
     {
-        foreach ($this->serviceProviders as $serviceProvider) {
+        $allServiceProviders = array_merge($this->coreServiceProviders, $this->getModulesServiceProviders());
+
+        foreach ($allServiceProviders as $serviceProvider) {
             $this->app->register($serviceProvider);
         }
 

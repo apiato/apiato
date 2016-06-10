@@ -4,8 +4,9 @@ namespace Hello\Modules\Core\Providers\Traits;
 
 use App;
 use DB;
-use Log;
 use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
+use Illuminate\Support\Facades\Config;
+use Log;
 
 /**
  * Class MasterServiceProviderTrait.
@@ -115,4 +116,37 @@ trait MasterServiceProviderTrait
             });
         }
     }
+
+    /**
+     * Get the Service Providers full classes names from the modules config file registered modules.
+     *
+     * @return  array
+     */
+    public function getModulesServiceProviders()
+    {
+        $modulesNames = array_keys(Config::get('modules.modules.register'));
+        $modulesNamespace = Config::get('modules.modules.namespace');
+
+        return $this->buildServiceProviderClassNamespace($modulesNames, $modulesNamespace);
+    }
+
+    /**
+     * Build the full name of the class of the Service Providers.
+     *
+     * @param array $modulesNames
+     * @param       $modulesNamespace
+     *
+     * @return  array
+     */
+    public function buildServiceProviderClassNamespace(array $modulesNames, $modulesNamespace)
+    {
+        $modulesClasses = [];
+
+        foreach ($modulesNames as $moduleName) {
+            $modulesClasses[] = $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider::class";
+        }
+
+        return $modulesClasses;
+    }
+
 }
