@@ -143,7 +143,7 @@ trait MasterServiceProviderTrait
         $modulesClasses = [];
 
         foreach ($modulesNames as $moduleName) {
-            $modulesClasses[] = $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider::class";
+            $modulesClasses[] = $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
         }
 
         return $modulesClasses;
