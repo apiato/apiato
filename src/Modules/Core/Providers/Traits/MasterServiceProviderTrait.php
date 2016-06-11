@@ -117,6 +117,51 @@ trait MasterServiceProviderTrait
         }
     }
 
+
+    /**
+     * Get the registered modules names in the modules config file
+     *
+     * @return  array
+     */
+    public function getModulesNames()
+    {
+        return array_keys(Config::get('modules.modules.register'));
+    }
+
+    /**
+     * Get the modules namespace value from the modules config file
+     *
+     * @return  string
+     */
+    public function getModulesNamespace()
+    {
+        return Config::get('modules.modules.namespace');
+    }
+
+    /**
+     * Get the modules api routes values from the modules config file
+     *
+     * @param $moduleName
+     *
+     * @return  mixed
+     */
+    public function getModulesApiRoutes($moduleName)
+    {
+        return Config::get('modules.modules.register.' . $moduleName . '.routes.api');
+    }
+
+    /**
+     * Get the modules web routes values from the modules config file
+     *
+     * @param $moduleName
+     *
+     * @return  mixed
+     */
+    public function getModulesWebRoutes($moduleName)
+    {
+        return Config::get('modules.modules.register.' . $moduleName . '.routes.web');
+    }
+
     /**
      * Get the Service Providers full classes names from the modules config file registered modules.
      *
@@ -124,10 +169,7 @@ trait MasterServiceProviderTrait
      */
     public function getModulesServiceProviders()
     {
-        $modulesNames = array_keys(Config::get('modules.modules.register'));
-        $modulesNamespace = Config::get('modules.modules.namespace');
-
-        return $this->buildServiceProviderClassNamespace($modulesNames, $modulesNamespace);
+        return $this->buildServiceProviderClassNamespace($this->getModulesNames(), $this->getModulesNamespace());
     }
 
     /**
@@ -138,7 +180,7 @@ trait MasterServiceProviderTrait
      *
      * @return  array
      */
-    public function buildServiceProviderClassNamespace(array $modulesNames, $modulesNamespace)
+    private function buildServiceProviderClassNamespace(array $modulesNames, $modulesNamespace)
     {
         $modulesClasses = [];
 

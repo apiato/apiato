@@ -23,6 +23,7 @@ class MasterServiceProvider extends ServiceProvider
      */
     private $coreServiceProviders = [
         ApiBaseRouteServiceProvider::class,
+        RoutesServiceProvider::class
     ];
 
     public function boot()

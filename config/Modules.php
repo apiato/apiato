@@ -5,7 +5,16 @@ return [
         'namespace' => 'Hello',
 
         'register' => [
-            'User' => [],
+            'User' => [
+                'routes' => [
+                    'api' => [
+                        ['fileName' => 'v1', 'versionNumber' => '1']
+                    ],
+                    'web' => [
+                        ['fileName' => 'main']
+                    ]
+                ]
+            ],
         ],
 
     ],

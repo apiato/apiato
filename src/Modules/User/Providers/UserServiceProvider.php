@@ -27,7 +27,6 @@ class UserServiceProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
-        RoutesServiceProvider::class,
         AuthServiceProvider::class,
     ];
 
