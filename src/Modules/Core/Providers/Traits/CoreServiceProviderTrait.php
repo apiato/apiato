@@ -56,7 +56,7 @@ trait CoreServiceProviderTrait
      */
     public function changeTheDefaultDatabaseModelsFactoriesPath()
     {
-        $customPath = '/src/Modules/Core/ModelsFactory';
+        $customPath = Config::get('modules.modelsFactoryPath');
 
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);

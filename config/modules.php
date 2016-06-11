@@ -26,4 +26,7 @@ return [
         ],
 
     ],
+
+    'modelsFactoryPath' => '/src/Modules/Core/ModelsFactory'
+
 ];
