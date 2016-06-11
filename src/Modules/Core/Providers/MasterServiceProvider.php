@@ -3,7 +3,6 @@
 namespace Hello\Modules\Core\Providers;
 
 use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
-use Hello\Modules\Core\Route\Providers\ApiBaseRouteServiceProvider;
 
 /**
  * Class MasterServiceProvider
@@ -22,7 +21,6 @@ class MasterServiceProvider extends ServiceProvider
      * @var array
      */
     private $coreServiceProviders = [
-        ApiBaseRouteServiceProvider::class,
         RoutesServiceProvider::class
     ];
 

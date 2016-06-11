@@ -2,8 +2,9 @@
 
 namespace Hello\Modules\Core\Providers;
 
+use Dingo\Api\Routing\Router as DingoApiRouter;
 use Hello\Modules\Core\Providers\Traits\MasterServiceProviderTrait;
-use Hello\Modules\Core\Route\Providers\ApiRouteServiceProvider;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
 /**
@@ -11,17 +12,36 @@ use Illuminate\Routing\Router as LaravelRouter;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RoutesServiceProvider extends ApiRouteServiceProvider
+class RoutesServiceProvider extends LaravelRouteServiceProvider
 {
-
     use MasterServiceProviderTrait;
 
     /**
-     * Laravel default Router Class
+     * Instance of the Laravel default Router Class
      *
      * @var \Illuminate\Routing\Router
      */
     private $webRouter;
+
+    /**
+     * Instance of the Dingo Api router.
+     *
+     * @var \Dingo\Api\Routing\Router
+     */
+    public $apiRouter;
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @param \Illuminate\Routing\Router $router
+     */
+    public function boot(LaravelRouter $router)
+    {
+        // initializing an instance of the Dingo Api router
+        $this->apiRouter = app(DingoApiRouter::class);
+
+        parent::boot($router);
+    }
 
     /**
      * Define the routes for the application.
@@ -37,11 +57,11 @@ class RoutesServiceProvider extends ApiRouteServiceProvider
 
         foreach ($modulesNames as $moduleName) {
             $this->registerModulesApiRoutes($moduleName, $modulesNamespace);
-
             $this->registerModulesWebRoutes($moduleName, $modulesNamespace);
         }
-    }
 
+        $this->registerApplicationDefaultRoutes();
+    }
 
     /**
      * Register the Modules API routes files
@@ -96,5 +116,27 @@ class RoutesServiceProvider extends ApiRouteServiceProvider
 
     }
 
+    /**
+     * The default Application Routes. When a user visit the root of the API endpoint, will access this routes.
+     */
+    public function registerApplicationDefaultRoutes()
+    {
+        $this->apiRouter->version('v1', function ($router) {
+
+            $router->group([
+                'middleware' => 'api.throttle',
+                'limit'      => env('API_LIMIT'),
+                'expires'    => env('API_LIMIT_EXPIRES'),
+            ], function ($router) {
+                // Default root route
+                $router->any('/', function () {
+                    return response()->json(['Welcome to ' . env('API_NAME') . '.']);
+                });
+                // Add more routes below
+                // ...
+            });
+
+        });
+    }
 
 }
