@@ -4,6 +4,7 @@ namespace Hello\Modules\Core\Providers\Traits;
 
 use App;
 use DB;
+use Hello\Modules\Core\Exception\Exceptions\MissingConfigurationsException;
 use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
 use Illuminate\Support\Facades\Config;
 use Log;
@@ -125,7 +126,13 @@ trait MasterServiceProviderTrait
      */
     public function getModulesNames()
     {
-        return array_keys(Config::get('modules.modules.register'));
+        $configurations = Config::get('modules.modules.register');
+
+        if (is_null($configurations)) {
+            throw new MissingConfigurationsException();
+        }
+
+        return array_keys($configurations);
     }
 
     /**
