@@ -9,7 +9,7 @@ use Hello\Modules\Core\Controller\Contracts\WebControllerInterface;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class WebController extends MasterController implements WebControllerInterface
+abstract class WebController extends CoreController implements WebControllerInterface
 {
 
 }

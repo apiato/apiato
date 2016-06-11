@@ -10,7 +10,7 @@ use Hello\Modules\Core\Controller\Contracts\ApiControllerInterface;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class ApiController extends MasterController implements ApiControllerInterface
+abstract class ApiController extends CoreController implements ApiControllerInterface
 {
 
     use DingoApiHelper;

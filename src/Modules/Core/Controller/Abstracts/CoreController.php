@@ -5,11 +5,11 @@ namespace Hello\Modules\Core\Controller\Abstracts;
 use Hello\Http\Controllers\Controller as LaravelController;
 
 /**
- * Class MasterController.
+ * Class CoreController.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class MasterController extends LaravelController
+abstract class CoreController extends LaravelController
 {
 
 }

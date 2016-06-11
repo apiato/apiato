@@ -3,7 +3,7 @@
 namespace Hello\Modules\Core\Providers\Abstracts;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Hello\Modules\Core\Providers\Traits\MasterServiceProviderTrait;
+use Hello\Modules\Core\Providers\Traits\CoreServiceProviderTrait;
 
 /**
  * Class ServiceProvider.
@@ -13,5 +13,5 @@ use Hello\Modules\Core\Providers\Traits\MasterServiceProviderTrait;
 abstract class ServiceProvider extends LaravelServiceProvider
 {
 
-    use MasterServiceProviderTrait;
+    use CoreServiceProviderTrait;
 }

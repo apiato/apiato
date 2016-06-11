@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
- * Class MasterServiceProviderTrait.
+ * Class CoreServiceProviderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait MasterServiceProviderTrait
+trait CoreServiceProviderTrait
 {
 
     /**
@@ -67,7 +67,7 @@ trait MasterServiceProviderTrait
 
     /**
      * register the Migrations to be published when this command runs
-     * `php artisan vendor:publish --provider="Hello\Infrastructure\Providers\MasterServiceProvider"`.
+     * `php artisan vendor:publish --provider="Hello\Infrastructure\Providers\CoreServiceProvider"`.
      *
      * This transfers all the Migrations files from the Infrastructure directory to the Framework
      * Migrations Directory.

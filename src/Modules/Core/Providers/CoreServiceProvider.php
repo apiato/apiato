@@ -5,15 +5,15 @@ namespace Hello\Modules\Core\Providers;
 use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
 
 /**
- * Class MasterServiceProvider
+ * Class CoreServiceProvider
  * The main Service Provider where all Service Providers gets registered
  * this is the only Service Provider that gets injected in the Config/app.php.
  *
- * Class MasterServiceProvider
+ * Class CoreServiceProvider
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MasterServiceProvider extends ServiceProvider
+class CoreServiceProvider extends ServiceProvider
 {
     /**
      * Application Service Provides.

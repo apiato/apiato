@@ -3,7 +3,7 @@
 namespace Hello\Modules\Core\Providers;
 
 use Dingo\Api\Routing\Router as DingoApiRouter;
-use Hello\Modules\Core\Providers\Traits\MasterServiceProviderTrait;
+use Hello\Modules\Core\Providers\Traits\CoreServiceProviderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -14,7 +14,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class RoutesServiceProvider extends LaravelRouteServiceProvider
 {
-    use MasterServiceProviderTrait;
+    use CoreServiceProviderTrait;
 
     /**
      * Instance of the Laravel default Router Class
