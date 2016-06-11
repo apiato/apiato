@@ -3,7 +3,7 @@
 namespace Hello\Modules\User\Tasks;
 
 use Hello\Services\Authentication\Portals\AuthenticationService;
-use Hello\Services\Core\Task\Abstracts\Task;
+use Hello\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class LogoutTask.

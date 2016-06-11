@@ -5,7 +5,7 @@ namespace Hello\Modules\User\Controllers\Api;
 use Hello\Modules\User\Requests\LoginRequest;
 use Hello\Modules\User\Tasks\LoginTask;
 use Hello\Modules\User\Transformers\UserTransformer;
-use Hello\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class LoginController.

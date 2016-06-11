@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Hello\Modules\User\Contracts\UserRepositoryInterface;
 use Hello\Modules\User\Exceptions\AccountFailedException;
 use Hello\Services\Authentication\Portals\AuthenticationService;
-use Hello\Services\Core\Task\Abstracts\Task;
+use Hello\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.

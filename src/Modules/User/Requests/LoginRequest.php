@@ -2,7 +2,7 @@
 
 namespace Hello\Modules\User\Requests;
 
-use Hello\Services\Core\Request\Abstracts\Request;
+use Hello\Modules\Core\Request\Abstracts\Request;
 
 /**
  * Class LoginRequest.

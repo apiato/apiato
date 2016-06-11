@@ -4,7 +4,7 @@ namespace Hello\Modules\User\Controllers\Api;
 
 use Hello\Modules\User\Requests\DeleteUserRequest;
 use Hello\Modules\User\Tasks\DeleteUserTask;
-use Hello\Services\Core\Controller\Abstracts\ApiController;
+use Hello\Modules\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class DeleteUserController.

@@ -7,7 +7,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Hello\Services\Authentication\Portals\TokenTrait;
-use Hello\Services\Core\Model\Abstracts\Model;
+use Hello\Modules\Core\Model\Abstracts\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**

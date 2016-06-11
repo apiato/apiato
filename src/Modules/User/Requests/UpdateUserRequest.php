@@ -4,7 +4,7 @@ namespace Hello\Modules\User\Requests;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Hello\Modules\User\Models\User;
-use Hello\Services\Core\Request\Abstracts\Request;
+use Hello\Modules\Core\Request\Abstracts\Request;
 
 /**
  * Class UpdateUserRequest.

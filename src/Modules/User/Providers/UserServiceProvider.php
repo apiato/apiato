@@ -4,7 +4,7 @@ namespace Hello\Modules\User\Providers;
 
 use Hello\Modules\User\Contracts\UserRepositoryInterface;
 use Hello\Modules\User\Repositories\Eloquent\UserRepository;
-use Hello\Services\Core\Providers\Abstracts\ServiceProvider;
+use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.
@@ -27,7 +27,6 @@ class UserServiceProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
-        RoutesServiceProvider::class,
         AuthServiceProvider::class,
     ];
 

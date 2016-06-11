@@ -2,7 +2,7 @@
 
 namespace Hello\Services\Authentication\Exceptions;
 
-use Hello\Services\Core\Exception\Abstracts\ApiException;
+use Hello\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

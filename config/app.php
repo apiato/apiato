@@ -146,7 +146,7 @@ return [
         /*
          * Additional Application Service Providers
          */
-        Hello\Services\Core\Providers\MasterServiceProvider::class,
+        Hello\Modules\Core\Providers\CoreServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
