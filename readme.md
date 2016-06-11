@@ -113,6 +113,9 @@ It uses the best framework, packages, tools and conventions. All configured to w
 	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
 	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
+* Layers
+	* [Modules](https://github.com/Mahmoudz/Hello-API/wiki/Modules)
+	* [Services](https://github.com/Mahmoudz/Hello-API/wiki/Services)
 * Components
 	* [Routes](https://github.com/Mahmoudz/Hello-API/wiki/Routes)
 	* [Controllers](https://github.com/Mahmoudz/Hello-API/wiki/Controllers)
