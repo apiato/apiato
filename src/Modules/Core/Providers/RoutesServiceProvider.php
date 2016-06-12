@@ -5,6 +5,7 @@ namespace Hello\Modules\Core\Providers;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
 use Hello\Modules\Core\Providers\Traits\CoreServiceProviderTrait;
+use Hello\Services\Configuration\Facade\ModulesConfig;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -54,8 +55,16 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
     {
         $this->webRouter = $webRouter;
 
+        $this->registerRoutes();
+    }
+
+    /**
+     * Register all the modules routes files in the framework
+     */
+    private function registerRoutes()
+    {
         $modulesNames = $this->getModulesNames();
-        $modulesNamespace = $this->getModulesNamespace();
+        $modulesNamespace = ModulesConfig::getModulesNamespace();
 
         foreach ($modulesNames as $moduleName) {
             $this->registerModulesApiRoutes($moduleName, $modulesNamespace);
@@ -71,7 +80,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      * @param $moduleName
      * @param $modulesNamespace
      */
-    public function registerModulesApiRoutes($moduleName, $modulesNamespace)
+    private function registerModulesApiRoutes($moduleName, $modulesNamespace)
     {
         foreach ($this->getModulesApiRoutes($moduleName) as $apiRoute) {
 
@@ -104,7 +113,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      * @param $moduleName
      * @param $modulesNamespace
      */
-    public function registerModulesWebRoutes($moduleName, $modulesNamespace)
+    private function registerModulesWebRoutes($moduleName, $modulesNamespace)
     {
         foreach ($this->getModulesWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
@@ -120,7 +129,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
     /**
      * The default Application Routes. When a user visit the root of the API endpoint, will access this routes.
      */
-    public function registerApplicationDefaultRoutes()
+    private function registerApplicationDefaultRoutes()
     {
         $this->apiRouter->version('v1', function ($router) {
 

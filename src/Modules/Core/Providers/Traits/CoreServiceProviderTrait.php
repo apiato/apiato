@@ -4,8 +4,9 @@ namespace Hello\Modules\Core\Providers\Traits;
 
 use App;
 use DB;
-use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
 use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
+use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
+use Hello\Services\Configuration\Facade\ModulesConfig;
 use Illuminate\Support\Facades\Config;
 use Log;
 
@@ -92,16 +93,6 @@ trait CoreServiceProviderTrait
     }
 
     /**
-     * Get the modules namespace value from the modules config file
-     *
-     * @return  string
-     */
-    public function getModulesNamespace()
-    {
-        return Config::get('modules.modules.namespace');
-    }
-
-    /**
      * Get the modules api routes values from the modules config file
      *
      * @param $moduleName
@@ -124,7 +115,6 @@ trait CoreServiceProviderTrait
     {
         return Config::get('modules.modules.register.' . $moduleName . '.routes.web');
     }
-
 
     /**
      * Get the extraServiceProviders of a Module
@@ -151,7 +141,8 @@ trait CoreServiceProviderTrait
      */
     public function getModulesServiceProviders()
     {
-        $modulesNamespace = $this->getModulesNamespace();
+
+        $modulesNamespace = ModulesConfig::getModulesNamespace();
 
         foreach ($this->getModulesNames() as $moduleName) {
             // get the Module extra service providers (extra service providers are defined in the modules config file)
