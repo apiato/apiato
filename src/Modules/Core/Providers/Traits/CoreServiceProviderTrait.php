@@ -5,9 +5,7 @@ namespace Hello\Modules\Core\Providers\Traits;
 use App;
 use DB;
 use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
-use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
 use Hello\Services\Configuration\Facade\ModulesConfig;
-use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
@@ -57,9 +55,9 @@ trait CoreServiceProviderTrait
      */
     public function changeTheDefaultDatabaseModelsFactoriesPath()
     {
-        $customPath = Config::get('modules.modelsFactoryPath');
+        $customPath = ModulesConfig::getModelsFactoryPath();
 
-        $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
+            $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
             return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
@@ -71,67 +69,9 @@ trait CoreServiceProviderTrait
      */
     public function publishModulesMigrationsFiles()
     {
-        foreach ($this->getModulesNames() as $moduleName) {
+        foreach (ModulesConfig::getModulesNames() as $moduleName) {
             $this->publishModuleMigrationsFiles($moduleName);
         }
-    }
-
-    /**
-     * Get the registered modules names in the modules config file
-     *
-     * @return  array
-     */
-    public function getModulesNames()
-    {
-        $configurations = Config::get('modules.modules.register');
-
-        if (is_null($configurations)) {
-            throw new WrongConfigurationsException();
-        }
-
-        return array_keys($configurations);
-    }
-
-    /**
-     * Get the modules api routes values from the modules config file
-     *
-     * @param $moduleName
-     *
-     * @return  mixed
-     */
-    public function getModulesApiRoutes($moduleName)
-    {
-        return Config::get('modules.modules.register.' . $moduleName . '.routes.api');
-    }
-
-    /**
-     * Get the modules web routes values from the modules config file
-     *
-     * @param $moduleName
-     *
-     * @return  mixed
-     */
-    public function getModulesWebRoutes($moduleName)
-    {
-        return Config::get('modules.modules.register.' . $moduleName . '.routes.web');
-    }
-
-    /**
-     * Get the extraServiceProviders of a Module
-     *
-     * @param $moduleName
-     *
-     * @return  mixed
-     */
-    public function getModulesExtraServiceProviders($moduleName)
-    {
-        $extraServiceProviders = Config::get('modules.modules.register.' . $moduleName . '.extraServiceProviders');
-
-        if (is_null($extraServiceProviders)) {
-            $extraServiceProviders = [];
-        }
-
-        return $extraServiceProviders;
     }
 
     /**
@@ -141,14 +81,13 @@ trait CoreServiceProviderTrait
      */
     public function getModulesServiceProviders()
     {
-
         $modulesNamespace = ModulesConfig::getModulesNamespace();
 
-        foreach ($this->getModulesNames() as $moduleName) {
+        foreach (ModulesConfig::getModulesNames() as $moduleName) {
             // get the Module extra service providers (extra service providers are defined in the modules config file)
-            $allServiceProviders = $this->getModulesExtraServiceProviders($moduleName);
+            $allServiceProviders = ModulesConfig::getModulesExtraServiceProviders($moduleName);
             // append the Module main service provider
-            $allServiceProviders[] = $this->buildMainServiceProvider($modulesNamespace, $moduleName);
+            $allServiceProviders[] = ModulesConfig::buildMainServiceProvider($modulesNamespace, $moduleName);
         }
 
         return array_unique($allServiceProviders) ? : [];
@@ -191,18 +130,6 @@ trait CoreServiceProviderTrait
         }
     }
 
-    /**
-     * build the main service provider class namespace
-     *
-     * @param $modulesNamespace
-     * @param $moduleName
-     *
-     * @return  string
-     */
-    private function buildMainServiceProvider($modulesNamespace, $moduleName)
-    {
-        return $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
-    }
 
     /**
      * Register the Migrations files of a Module
@@ -218,5 +145,6 @@ trait CoreServiceProviderTrait
             base_path() . '/src/Modules/' . $moduleName . '/Migrations/MySQL/' => database_path('migrations'),
         ], 'migrations');
     }
+
 
 }

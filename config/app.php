@@ -146,6 +146,7 @@ return [
         /*
          * Additional Application Service Providers
          */
+        Hello\Services\Configuration\Providers\ModulesConfigServiceProvider::class,
         Hello\Modules\Core\Providers\CoreServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,

@@ -63,7 +63,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      */
     private function registerRoutes()
     {
-        $modulesNames = $this->getModulesNames();
+        $modulesNames = ModulesConfig::getModulesNames();
         $modulesNamespace = ModulesConfig::getModulesNamespace();
 
         foreach ($modulesNames as $moduleName) {
@@ -82,7 +82,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      */
     private function registerModulesApiRoutes($moduleName, $modulesNamespace)
     {
-        foreach ($this->getModulesApiRoutes($moduleName) as $apiRoute) {
+        foreach (ModulesConfig::getModulesApiRoutes($moduleName) as $apiRoute) {
 
             $version = 'v' . $apiRoute['versionNumber'];
 
@@ -115,7 +115,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      */
     private function registerModulesWebRoutes($moduleName, $modulesNamespace)
     {
-        foreach ($this->getModulesWebRoutes($moduleName) as $webRoute) {
+        foreach (ModulesConfig::getModulesWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
                 'namespace' => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Web',
             ], function ($router) use ($webRoute, $moduleName) {
