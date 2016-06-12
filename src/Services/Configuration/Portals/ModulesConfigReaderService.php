@@ -2,7 +2,7 @@
 
 namespace Hello\Services\Configuration\Portals;
 
-use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
+use Hello\Services\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**

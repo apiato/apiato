@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Exception\Exceptions;
+namespace Hello\Services\Configuration\Exceptions;
 
 use Hello\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
