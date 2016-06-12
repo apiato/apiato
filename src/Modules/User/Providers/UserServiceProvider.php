@@ -9,6 +9,10 @@ use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
 /**
  * Class UserServiceProvider.
  *
+ * The Main Service Provider of this Module.
+ * Will be automatically registered in the framework after
+ * adding the Module name to modules config file.
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UserServiceProvider extends ServiceProvider

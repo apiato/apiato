@@ -3,6 +3,7 @@
 namespace Hello\Modules\Core\Providers;
 
 use Dingo\Api\Routing\Router as DingoApiRouter;
+use Hello\Modules\Core\Exception\Exceptions\WrongConfigurationsException;
 use Hello\Modules\Core\Providers\Traits\CoreServiceProviderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
@@ -14,6 +15,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class RoutesServiceProvider extends LaravelRouteServiceProvider
 {
+
     use CoreServiceProviderTrait;
 
     /**
@@ -71,9 +73,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      */
     public function registerModulesApiRoutes($moduleName, $modulesNamespace)
     {
-        $apiRoutes = $this->getModulesApiRoutes($moduleName);
-
-        foreach ($apiRoutes as $apiRoute) {
+        foreach ($this->getModulesApiRoutes($moduleName) as $apiRoute) {
 
             $version = 'v' . $apiRoute['versionNumber'];
 
@@ -89,7 +89,9 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
                     // The API limit expiry time.
                     'expires'    => env('API_LIMIT_EXPIRES'),
                 ], function ($router) use ($moduleName, $apiRoute) {
-                    require app_path('../src/Modules//' . $moduleName . '//Routes/Api//' . $apiRoute['fileName'] . '.php');
+                    require $this->validateRouteFile(
+                        base_path('src/Modules/' . $moduleName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
+                    );
                 });
 
             });
@@ -104,16 +106,15 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      */
     public function registerModulesWebRoutes($moduleName, $modulesNamespace)
     {
-        $webRoutes = $this->getModulesWebRoutes($moduleName);
-
-        foreach ($webRoutes as $webRoute) {
+        foreach ($this->getModulesWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
                 'namespace' => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Web',
             ], function ($router) use ($webRoute, $moduleName) {
-                require app_path('../src/Modules/' . $moduleName . '/Routes/Web//' . $webRoute['fileName'] . '.php');
+                require $this->validateRouteFile(
+                    base_path('src/Modules/' . $moduleName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
+                );
             });
         }
-
     }
 
     /**
@@ -137,6 +138,24 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
             });
 
         });
+    }
+
+    /**
+     * Check route file exist
+     *
+     * @param $file
+     *
+     * @return  mixed
+     */
+    private function validateRouteFile($file)
+    {
+        if (!file_exists($file)) {
+            throw new WrongConfigurationsException(
+                'You probably have defined some Routes files in the modules config file that does not yet exist in your module routes directory.'
+            );
+        }
+
+        return $file;
     }
 
 }
