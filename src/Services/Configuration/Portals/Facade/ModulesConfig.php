@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Services\Configuration\Facade;
+namespace Hello\Services\Configuration\Portals\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

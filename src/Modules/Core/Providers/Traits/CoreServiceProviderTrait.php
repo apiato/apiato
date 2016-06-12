@@ -5,7 +5,7 @@ namespace Hello\Modules\Core\Providers\Traits;
 use App;
 use DB;
 use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
-use Hello\Services\Configuration\Facade\ModulesConfig;
+use Hello\Services\Configuration\Portals\Facade\ModulesConfig;
 use Log;
 
 /**
@@ -57,7 +57,7 @@ trait CoreServiceProviderTrait
     {
         $customPath = ModulesConfig::getModelsFactoryPath();
 
-            $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
+        $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
             return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
