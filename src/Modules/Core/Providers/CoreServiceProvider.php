@@ -15,32 +15,36 @@ use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
  */
 class CoreServiceProvider extends ServiceProvider
 {
+
     /**
-     * Application Service Provides.
+     * Extra Core Service Providers.
      *
      * @var array
      */
-    private $coreServiceProviders = [
+    private $extraCoreServiceProviders = [
         RoutesServiceProvider::class
     ];
 
+    /**
+     * Perform post-registration booting of services.
+     */
     public function boot()
     {
-        $allServiceProviders = array_merge($this->coreServiceProviders, $this->getModulesServiceProviders());
-
-        foreach ($allServiceProviders as $serviceProvider) {
-            $this->app->register($serviceProvider);
-        }
+        $this->registerServiceProviders(array_merge(
+                $this->extraCoreServiceProviders,
+                $this->getModulesServiceProviders())
+        );
 
         $this->overrideDefaultFractalSerializer();
     }
 
     /**
-     * Register the service provider.
+     * Register bindings in the container.
      */
     public function register()
     {
         $this->changeTheDefaultDatabaseModelsFactoriesPath();
+        $this->publishModulesMigrationsFiles();
         $this->debugDatabaseQueries(true);
     }
 }

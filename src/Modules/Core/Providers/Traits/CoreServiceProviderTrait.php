@@ -66,58 +66,14 @@ trait CoreServiceProviderTrait
     }
 
     /**
-     * register the Migrations to be published when this command runs
-     * `php artisan vendor:publish --provider="Hello\Infrastructure\Providers\CoreServiceProvider"`.
-     *
-     * This transfers all the Migrations files from the Infrastructure directory to the Framework
-     * Migrations Directory.
-     *
-     * @param $directory
+     * Register the Migrations files of all Modules
      */
-    public function registerTheDatabaseMigrationsFiles($directory)
+    public function publishModulesMigrationsFiles()
     {
-        $this->publishes([
-            $directory . '/../Migrations/MySQL/' => database_path('migrations'),
-        ], 'migrations');
-    }
-
-    /**
-     * By default the Dingo API package (in the config file) creates an instance of the
-     * fractal manager which takes the default serializer (specified by the fractal
-     * package itself, and there's no way to override change it from the configurations of
-     * the Dingo package).
-     *
-     * Here I am replacing the current default serializer (DataArraySerializer) by the
-     * (JsonApiSerializer).
-     *
-     * "Serializers are what build the final response after taking the transformers data".
-     */
-    public function overrideDefaultFractalSerializer()
-    {
-        $serializerName = env('FRACTAL_SERIALIZER', 'DataArray');
-
-        // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
-        if ($serializerName !== 'DataArray') {
-            app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
-                switch ($serializerName) {
-                    case 'JsonApi':
-                        $serializer = new \League\Fractal\Serializer\JsonApiSerializer(env('API_DOMAIN'));
-                        break;
-                    case 'Array':
-                        $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
-                        break;
-                    default:
-                        throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
-                }
-
-                $fractal = new \League\Fractal\Manager();
-                $fractal->setSerializer($serializer);
-
-                return new \Dingo\Api\Transformer\Adapter\Fractal($fractal, 'include', ',', false);
-            });
+        foreach ($this->getModulesNames() as $moduleName) {
+            $this->publishModuleMigrationsFiles($moduleName);
         }
     }
-
 
     /**
      * Get the registered modules names in the modules config file
@@ -169,6 +125,25 @@ trait CoreServiceProviderTrait
         return Config::get('modules.modules.register.' . $moduleName . '.routes.web');
     }
 
+
+    /**
+     * Get the extraServiceProviders of a Module
+     *
+     * @param $moduleName
+     *
+     * @return  mixed
+     */
+    public function getModulesExtraServiceProviders($moduleName)
+    {
+        $extraServiceProviders = Config::get('modules.modules.register.' . $moduleName . '.extraServiceProviders');
+
+        if (is_null($extraServiceProviders)) {
+            $extraServiceProviders = [];
+        }
+
+        return $extraServiceProviders;
+    }
+
     /**
      * Get the Service Providers full classes names from the modules config file registered modules.
      *
@@ -176,26 +151,81 @@ trait CoreServiceProviderTrait
      */
     public function getModulesServiceProviders()
     {
-        return $this->buildServiceProviderClassNamespace($this->getModulesNames(), $this->getModulesNamespace());
+        $modulesNamespace = $this->getModulesNamespace();
+
+        foreach ($this->getModulesNames() as $moduleName) {
+            // get the Module extra service providers (extra service providers are defined in the modules config file)
+            $allServiceProviders = $this->getModulesExtraServiceProviders($moduleName);
+            // append the Module main service provider
+            $allServiceProviders[] = $this->buildMainServiceProvider($modulesNamespace, $moduleName);
+        }
+
+        return array_unique($allServiceProviders) ? : [];
     }
 
     /**
-     * Build the full name of the class of the Service Providers.
+     * By default the Dingo API package (in the config file) creates an instance of the
+     * fractal manager which takes the default serializer (specified by the fractal
+     * package itself, and there's no way to override change it from the configurations of
+     * the Dingo package).
      *
-     * @param array $modulesNames
-     * @param       $modulesNamespace
+     * Here I am replacing the current default serializer (DataArraySerializer) by the
+     * (JsonApiSerializer).
      *
-     * @return  array
+     * "Serializers are what build the final response after taking the transformers data".
      */
-    private function buildServiceProviderClassNamespace(array $modulesNames, $modulesNamespace)
+    public function overrideDefaultFractalSerializer()
     {
-        $modulesClasses = [];
+        $serializerName = env('FRACTAL_SERIALIZER', 'DataArray');
 
-        foreach ($modulesNames as $moduleName) {
-            $modulesClasses[] = $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+        // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
+        if ($serializerName !== 'DataArray') {
+            app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
+                switch ($serializerName) {
+                    case 'JsonApi':
+                        $serializer = new \League\Fractal\Serializer\JsonApiSerializer(env('API_DOMAIN'));
+                        break;
+                    case 'Array':
+                        $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
+                        break;
+                    default:
+                        throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
+                }
+
+                $fractal = new \League\Fractal\Manager();
+                $fractal->setSerializer($serializer);
+
+                return new \Dingo\Api\Transformer\Adapter\Fractal($fractal, 'include', ',', false);
+            });
         }
+    }
 
-        return $modulesClasses;
+    /**
+     * build the main service provider class namespace
+     *
+     * @param $modulesNamespace
+     * @param $moduleName
+     *
+     * @return  string
+     */
+    private function buildMainServiceProvider($modulesNamespace, $moduleName)
+    {
+        return $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+    }
+
+    /**
+     * Register the Migrations files of a Module
+     *
+     * This transfers all the Migrations files from the Module directory to the Framework
+     * Migrations Directory.
+     *
+     * @param $directory
+     */
+    private function publishModuleMigrationsFiles($moduleName)
+    {
+        $this->publishes([
+            base_path() . '/src/Modules/' . $moduleName . '/Migrations/MySQL/' => database_path('migrations'),
+        ], 'migrations');
     }
 
 }

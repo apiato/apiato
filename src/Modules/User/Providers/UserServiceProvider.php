@@ -22,20 +22,11 @@ class UserServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Module Service providers to be registered.
-     *
-     * @var array
-     */
-    protected $providers = [
-        AuthServiceProvider::class,
-    ];
-
-    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->registerServiceProviders($this->providers);
+
     }
 
     /**
@@ -43,8 +34,6 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerTheDatabaseMigrationsFiles(__DIR__);
-
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }
