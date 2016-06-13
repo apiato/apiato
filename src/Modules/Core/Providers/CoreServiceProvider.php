@@ -17,24 +17,11 @@ class CoreServiceProvider extends ServiceProvider
 {
 
     /**
-     * Extra Core Service Providers.
-     *
-     * @var array
-     */
-    private $extraCoreServiceProviders = [
-        RoutesServiceProvider::class,
-    ];
-
-    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->registerServiceProviders(array_merge(
-                $this->extraCoreServiceProviders,
-                $this->getModulesServiceProviders())
-        );
-
+        $this->registerServiceProviders($this->getModulesServiceProviders());
         $this->overrideDefaultFractalSerializer();
     }
 

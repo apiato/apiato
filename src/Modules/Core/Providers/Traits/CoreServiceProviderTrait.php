@@ -85,7 +85,9 @@ trait CoreServiceProviderTrait
 
         foreach (ModulesConfig::getModulesNames() as $moduleName) {
             // get the Module extra service providers (extra service providers are defined in the modules config file)
-            $allServiceProviders = ModulesConfig::getModulesExtraServiceProviders($moduleName);
+            foreach (ModulesConfig::getModulesExtraServiceProviders($moduleName) as $provider) {
+                $allServiceProviders[] = $provider;
+            }
             // append the Module main service provider
             $allServiceProviders[] = ModulesConfig::buildMainServiceProvider($modulesNamespace, $moduleName);
         }

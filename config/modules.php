@@ -23,6 +23,18 @@ return [
         */
         'register'  => [
 
+            'Core' => [
+                'dependencies' => [
+                    'services' => [
+                        'Authorization',
+                        'Configuration',
+                    ],
+                ],
+                'extraServiceProviders' => [
+                    Hello\Modules\Core\Providers\RoutesServiceProvider::class,
+                ],
+            ],
+
             'User' => [
 
                 /*
@@ -44,7 +56,6 @@ return [
                     'web' => [
                         ['fileName' => 'main']
                     ],
-
                 ],
 
                 /*
@@ -78,8 +89,7 @@ return [
                     ],
 
                     'services' => [
-                        'Core',
-                        'Authentication'
+                        'Authentication',
                     ],
                 ],
             ],

@@ -50,13 +50,13 @@ class ModulesConfigReaderService
      */
     public function getModulesExtraServiceProviders($moduleName)
     {
-        $extraServiceProviders = Config::get('modules.modules.register.' . $moduleName . '.extraServiceProviders');
+        $configurations = Config::get('modules.modules.register.' . $moduleName . '.extraServiceProviders');
 
-        if (is_null($extraServiceProviders)) {
-            $extraServiceProviders = [];
+        if (is_null($configurations)) {
+            $configurations = [];
         }
 
-        return $extraServiceProviders;
+        return $configurations;
     }
 
     /**
@@ -73,6 +73,16 @@ class ModulesConfigReaderService
     }
 
     /**
+     * Get the Models Factory Path from the modules config file
+     *
+     * @return  mixed
+     */
+    public function getModelsFactoryPath()
+    {
+        return Config::get('modules.modelsFactoryPath');
+    }
+
+    /**
      * Get the modules web routes values from the modules config file
      *
      * @param $moduleName
@@ -81,17 +91,13 @@ class ModulesConfigReaderService
      */
     public function getModulesWebRoutes($moduleName)
     {
-        return Config::get('modules.modules.register.' . $moduleName . '.routes.web');
-    }
+        $configurations = Config::get('modules.modules.register.' . $moduleName . '.routes.web');
 
-    /**
-     * Get the Models Factory Path from the modules config file
-     *
-     * @return  mixed
-     */
-    public function getModelsFactoryPath()
-    {
-        return Config::get('modules.modelsFactoryPath');
+        if (is_null($configurations)) {
+            $configurations = [];
+        }
+
+        return $configurations;
     }
 
     /**
@@ -103,6 +109,12 @@ class ModulesConfigReaderService
      */
     public function getModulesApiRoutes($moduleName)
     {
-        return Config::get('modules.modules.register.' . $moduleName . '.routes.api');
+        $configurations = Config::get('modules.modules.register.' . $moduleName . '.routes.api');
+
+        if (is_null($configurations)) {
+            $configurations = [];
+        }
+
+        return $configurations;
     }
 }
