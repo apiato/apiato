@@ -137,22 +137,28 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         /*
-         * Application Service Providers
+         * Default Application Service Providers
          */
         Hello\Providers\AppServiceProvider::class,
         Hello\Providers\AuthServiceProvider::class,
         Hello\Providers\EventServiceProvider::class,
         Hello\Providers\RouteServiceProvider::class,
         /*
-         * Additional Application Service Providers
+         * Custom Application Service Providers
          */
-        Hello\Services\Configuration\Providers\ModulesConfigServiceProvider::class,
-        Hello\Modules\Core\Providers\CoreServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        /*
+         * Hello Services Service Providers
+         */
+        Hello\Services\Configuration\Providers\ModulesConfigServiceProvider::class,
+        /*
+         * Hello Modules Service Providers
+         */
+        Hello\Modules\Core\Providers\CoreServiceProvider::class,
     ],
 
     /*

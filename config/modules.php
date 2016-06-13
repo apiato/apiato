@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'modules'           => [
+    'modules' => [
 
         /*
         |--------------------------------------------------------------------------
@@ -23,23 +23,16 @@ return [
         */
         'register'  => [
 
-            'Core' => [
-                'dependencies' => [
-                    'services' => [
-                        'Authorization',
-                        'Configuration',
-                    ],
-                ],
-                'extraServiceProviders' => [
-                    Hello\Modules\Core\Providers\RoutesServiceProvider::class,
-                ],
-            ],
-
+            /*
+            |--------------------------------------
+            | Module: User
+            |--------------------------------------
+            */
             'User' => [
 
                 /*
                 |--------------------------------------------------------------------------
-                | Module Routes
+                | User Module Routes
                 |--------------------------------------------------------------------------
                 |
                 | Here you should define the routes files names. There are two types of
@@ -60,7 +53,7 @@ return [
 
                 /*
                 |--------------------------------------------------------------------------
-                | Module extra (additional) Service Providers
+                | User Module extra (additional) Service Providers
                 |--------------------------------------------------------------------------
                 |
                 | Here you should register any extra service provider in your module.
@@ -76,7 +69,7 @@ return [
 
                 /*
                 |--------------------------------------------------------------------------
-                | Module Dependencies
+                | User Module Dependencies
                 |--------------------------------------------------------------------------
                 |
                 | Here you should include the names of all the Module dependencies.
@@ -93,6 +86,49 @@ return [
                     ],
                 ],
             ],
+
+            /*
+            |--------------------------------------
+            | Module: Core
+            |--------------------------------------
+            */
+            'Core' => [
+
+                /*
+                |--------------------------------------------------------------------------
+                | Core Module Dependencies
+                |--------------------------------------------------------------------------
+                |
+                | Here you should include the names of all the Module dependencies.
+                | A Module could depend on another Module or on a Service.
+                |
+                */
+                'dependencies'          => [
+                    'services' => [
+                        'Authorization',
+                        'Configuration',
+                    ],
+                ],
+
+                /*
+                |--------------------------------------------------------------------------
+                | Core Module extra (additional) Service Providers
+                |--------------------------------------------------------------------------
+                |
+                | Usually you don't have to touche the Core Module.
+                |
+                | Here you should register any extra service provider in your module.
+                | By default every module must have a single (main) service provider,
+                | which will get registered automatically by the core service provider,
+                | without the need to define it here. However, if you have extra service
+                | providers in your Module, you must register them here to get loaded.
+                |
+                */
+                'extraServiceProviders' => [
+                    Hello\Modules\Core\Providers\RoutesServiceProvider::class,
+                ],
+            ],
+
         ],
 
     ],
