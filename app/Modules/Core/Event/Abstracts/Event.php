@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Events\Abstracts;
+namespace Hello\Event\Abstracts;
 
 /**
  * Class Event
