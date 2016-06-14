@@ -6,6 +6,13 @@ use Hello\Modules\Demo\ConsoleCommands\Inspire;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
+/**
+ * Class ConsoleCommandKernel
+ *
+ * Same as (app/Console/Kernel.php)
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class ConsoleCommandKernel extends LaravelConsoleKernel
 {
     /**

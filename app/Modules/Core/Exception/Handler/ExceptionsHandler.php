@@ -11,6 +11,8 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 /**
  * Class ExceptionsHandler
  *
+ * Same as (app/Exceptions/Handler.php)
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class ExceptionsHandler extends ExceptionHandler
