@@ -1,11 +1,16 @@
 <?php
 
-namespace Hello\Providers;
+namespace Hello\Modules\Demo\Events;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Hello\Modules\Core\Event\Abstracts\EventServiceProvider as CoreEventServiceProvider;
 
-class EventServiceProvider extends ServiceProvider
+/**
+ * Class EventServiceProvider
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class EventServiceProvider extends CoreEventServiceProvider
 {
     /**
      * The event listener mappings for the application.
