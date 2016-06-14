@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\Demo\ConsoleCommands;
+namespace Hello\Modules\Demo\Consoles;
 
-use Hello\Modules\Core\ConsoleCommand\Abstracts\ConsoleCommand;
+use Hello\Modules\Core\Console\Abstracts\ConsoleCommand;
 use Illuminate\Foundation\Inspiring;
 
 class Inspire extends ConsoleCommand

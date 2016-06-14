@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\ConsoleCommand\Abstracts;
+namespace Hello\Modules\Core\Console\Abstracts;
 
 use Illuminate\Console\Command as LaravelCommand;
 
