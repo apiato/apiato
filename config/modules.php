@@ -125,7 +125,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    Hello\Modules\Core\Providers\RoutesServiceProvider::class,
+                    Hello\Modules\Core\Provider\Providers\RoutesServiceProvider::class,
                 ],
             ],
 

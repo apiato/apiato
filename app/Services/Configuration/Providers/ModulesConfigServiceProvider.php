@@ -2,7 +2,7 @@
 
 namespace Hello\Services\Configuration\Providers;
 
-use Hello\Modules\Core\Providers\Abstracts\ServiceProvider;
+use Hello\Modules\Core\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class ModulesConfigServiceProvider

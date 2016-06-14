@@ -162,7 +162,7 @@ return [
         /*
          * Hello Modules Service Providers
          */
-        Hello\Modules\Core\Providers\CoreServiceProvider::class,
+        Hello\Modules\Core\Provider\Providers\CoreServiceProvider::class,
     ],
 
     /*

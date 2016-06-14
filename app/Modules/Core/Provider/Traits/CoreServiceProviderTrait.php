@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Providers\Traits;
+namespace Hello\Modules\Core\Provider\Traits;
 
 use App;
 use DB;

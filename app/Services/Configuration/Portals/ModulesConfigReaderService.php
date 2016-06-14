@@ -69,7 +69,11 @@ class ModulesConfigReaderService
      */
     public function buildMainServiceProvider($modulesNamespace, $moduleName)
     {
-        return $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+        if($moduleName != 'Core') {
+            return $modulesNamespace . "\\Modules\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+        }
+
+        return $modulesNamespace . "\\Modules\\" . $moduleName . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
     }
 
     /**

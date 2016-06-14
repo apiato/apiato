@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\Core\Providers;
+namespace Hello\Modules\Core\Provider\Providers;
 
 use Dingo\Api\Routing\Router as DingoApiRouter;
-use Hello\Modules\Core\Providers\Traits\CoreServiceProviderTrait;
+use Hello\Modules\Core\Provider\Traits\CoreServiceProviderTrait;
 use Hello\Services\Configuration\Exceptions\WrongConfigurationsException;
 use Hello\Services\Configuration\Portals\Facade\ModulesConfig;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
