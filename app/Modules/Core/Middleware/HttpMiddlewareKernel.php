@@ -1,10 +1,17 @@
 <?php
 
-namespace Hello\Http;
+namespace Hello\Modules\Core\Middleware;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel
+/**
+ * Class HttpMiddlewareKernel
+ *
+ * A.K.A (app/Http/Kernel.php)
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class HttpMiddlewareKernel extends HttpKernel
 {
     /**
      * The application's global HTTP middleware stack.

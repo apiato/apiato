@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 /**
  * Class Job
  *
- * Same as (app/Jobs/Job.php)
+ * A.K.A (app/Jobs/Job.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
