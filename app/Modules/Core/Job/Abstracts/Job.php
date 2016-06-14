@@ -1,9 +1,16 @@
 <?php
 
-namespace Hello\Jobs;
+namespace Hello\Modules\Core\Job\Abstracts;
 
 use Illuminate\Bus\Queueable;
 
+/**
+ * Class Job
+ *
+ * Same as (app/Jobs/Job.php)
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 abstract class Job
 {
     /*
