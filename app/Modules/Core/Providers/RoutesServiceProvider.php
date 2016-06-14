@@ -99,7 +99,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
                     'expires'    => env('API_LIMIT_EXPIRES'),
                 ], function ($router) use ($moduleName, $apiRoute) {
                     require $this->validateRouteFile(
-                        base_path('src/Modules/' . $moduleName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
+                        app_path('Modules/' . $moduleName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
                     );
                 });
 
@@ -120,7 +120,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
                 'namespace' => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Web',
             ], function ($router) use ($webRoute, $moduleName) {
                 require $this->validateRouteFile(
-                    base_path('src/Modules/' . $moduleName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
+                    app_path('/Modules/' . $moduleName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
                 );
             });
         }

@@ -144,7 +144,7 @@ trait CoreServiceProviderTrait
     private function publishModuleMigrationsFiles($moduleName)
     {
         $this->publishes([
-            base_path() . '/src/Modules/' . $moduleName . '/Migrations/MySQL/' => database_path('migrations'),
+            app_path() . '/Modules/' . $moduleName . '/Migrations/MySQL/' => database_path('migrations'),
         ], 'migrations');
     }
 

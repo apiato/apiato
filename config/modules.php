@@ -142,6 +142,6 @@ return [
     | Laravel to override the default path for the Models Factories.
     |
     */
-    'modelsFactoryPath' => '/src/Modules/Core/ModelsFactory'
+    'modelsFactoryPath' => '/app/Modules/Core/ModelsFactory'
 
 ];
