@@ -21,13 +21,13 @@ class HttpMiddlewareKernel extends HttpKernel
     protected $middleware = [
         // Laravel default middleware's
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \Hello\Http\Middleware\EncryptCookies::class,
+        \Hello\Modules\Core\Middleware\Http\Middlewares\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
 
         // removing some of the Laravel's default middleware's
         //        \Illuminate\Session\Middleware\StartSession::class,
         //        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        //        \Hello\Http\Middleware\VerifyCsrfToken::class,
+        //        \Hello\Modules\Core\Middleware\Http\Middlewares\VerifyCsrfToken::class,
 
         // CORS Package middleware's
         \Barryvdh\Cors\HandleCors::class,
@@ -40,9 +40,9 @@ class HttpMiddlewareKernel extends HttpKernel
      */
     protected $routeMiddleware = [
         // removing the Laravel's default route middleware's
-        //        'auth' => \Hello\Http\Middleware\Authenticate::class,
+        //        'auth' => \Hello\Modules\Core\Middleware\Http\Middlewares\Authenticate::class,
         //        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        //        'guest' => \Hello\Http\Middleware\RedirectIfAuthenticated::class,
+        //        'guest' => \Hello\Modules\Core\Middleware\Http\Middlewares\RedirectIfAuthenticated::class,
 
         // JWT Package middleware's
         'jwt.auth'    => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
