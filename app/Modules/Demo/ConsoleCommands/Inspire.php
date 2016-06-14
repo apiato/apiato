@@ -1,11 +1,11 @@
 <?php
 
-namespace Hello\Console\Commands;
+namespace Hello\Modules\Demo\ConsoleCommands;
 
-use Illuminate\Console\Command;
+use Hello\Modules\Core\ConsoleCommand\Abstracts\ConsoleCommand;
 use Illuminate\Foundation\Inspiring;
 
-class Inspire extends Command
+class Inspire extends ConsoleCommand
 {
     /**
      * The name and signature of the console command.
