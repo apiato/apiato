@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Command\Traits;
+namespace Hello\Modules\Core\Dispatcher\Traits;
 
 /**
  * Class DispatcherTrait.
