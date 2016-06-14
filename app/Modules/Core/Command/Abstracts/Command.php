@@ -1,17 +1,17 @@
 <?php
 
-namespace Hello\Modules\Core\CommandsDispatcher\Abstracts;
+namespace Hello\Modules\Core\Commands\Abstracts;
 
-use Hello\Modules\Core\CommandsDispatcher\Traits\DispatcherTrait;
+use Hello\Modules\Core\Commands\Traits\DispatcherTrait;
 use Illuminate\Contracts\Bus\SelfHandling as LaravelSelfHandling;
 use Illuminate\Foundation\Bus\DispatchesJobs as LaravelDispatchesJobs;
 
 /**
- * Class CommandsDispatcher.
+ * Class Command.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class CommandsDispatcher implements LaravelSelfHandling
+abstract class Command implements LaravelSelfHandling
 {
 
     use LaravelDispatchesJobs;
