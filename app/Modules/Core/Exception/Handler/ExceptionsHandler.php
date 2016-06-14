@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Exceptions;
+namespace Hello\Modules\Core\Exception\Handler;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -8,7 +8,12 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler
+/**
+ * Class ExceptionsHandler
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class ExceptionsHandler extends ExceptionHandler
 {
     /**
      * A list of the exception types that should not be reported.
