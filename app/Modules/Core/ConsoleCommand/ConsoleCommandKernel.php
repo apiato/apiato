@@ -1,11 +1,12 @@
 <?php
 
-namespace Hello\Console;
+namespace Hello\Modules\Core\ConsoleCommand;
 
+use Hello\Modules\Demo\ConsoleCommands\Inspire;
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
-class Kernel extends ConsoleKernel
+class ConsoleCommandKernel extends LaravelConsoleKernel
 {
     /**
      * The Artisan commands provided by your application.
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Inspire::class,
+        Inspire::class,
     ];
 
     /**
