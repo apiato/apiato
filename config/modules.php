@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'modules' => [
+    'modules'           => [
 
         /*
         |--------------------------------------------------------------------------
@@ -84,6 +84,50 @@ return [
                     'services' => [
                         'Authentication',
                     ],
+                ],
+            ],
+
+            /*
+             |--------------------------------------
+             | Module: Demo
+             |--------------------------------------
+             */
+            'Demo' => [
+
+                /*
+                |--------------------------------------------------------------------------
+                | Demo Module Dependencies
+                |--------------------------------------------------------------------------
+                |
+                | Here you should include the names of all the Module dependencies.
+                | A Module could depend on another Module or on a Service.
+                |
+                */
+                'dependencies'          => [
+                    'modules'  => [
+
+                    ],
+                    'services' => [
+
+                    ],
+                ],
+
+                /*
+                |--------------------------------------------------------------------------
+                | Demo Module extra (additional) Service Providers
+                |--------------------------------------------------------------------------
+                |
+                | Usually you don't have to touche the Core Module.
+                |
+                | Here you should register any extra service provider in your module.
+                | By default every module must have a single (main) service provider,
+                | which will get registered automatically by the core service provider,
+                | without the need to define it here. However, if you have extra service
+                | providers in your Module, you must register them here to get loaded.
+                |
+                */
+                'extraServiceProviders' => [
+                    Hello\Modules\Demo\Events\EventServiceProvider::class,
                 ],
             ],
 
