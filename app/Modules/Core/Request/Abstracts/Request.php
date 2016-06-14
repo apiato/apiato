@@ -7,9 +7,11 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
 use Hello\Modules\Core\Exception\Exceptions\ValidationFailedException;
 
 /**
- * Class Request.
+ * Class Request
  *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * A.K.A (app/Http/Requests/Request.php)
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 abstract class Request extends LaravelFrameworkRequest
 {
