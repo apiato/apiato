@@ -138,14 +138,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Application Service Providers...
-         */
-        Hello\Providers\AppServiceProvider::class,
-        Hello\Providers\AuthServiceProvider::class,
-        Hello\Providers\EventServiceProvider::class,
-        Hello\Providers\RouteServiceProvider::class,
-
-        /*
          * Custom Application Service Providers
          */
         Dingo\Api\Provider\LaravelServiceProvider::class,
