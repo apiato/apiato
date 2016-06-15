@@ -1,5 +1,5 @@
 {
-    "name": "Mahmoudz/Hello-API",
+    "name": "hello/api",
     "description": "API starter providing everything to build a modern API with PHP on top of Laravel.",
     "keywords": ["framework", "API", "laravel", "Hello-API"],
     "license": "MIT",
