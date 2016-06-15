@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Controllers\Api;
+namespace App\Modules\User\Controllers\Api;
 
-use Hello\Modules\User\Requests\DeleteUserRequest;
-use Hello\Modules\User\Tasks\DeleteUserTask;
-use Hello\Modules\Core\Controller\Abstracts\ApiController;
+use App\Modules\User\Requests\DeleteUserRequest;
+use App\Modules\User\Tasks\DeleteUserTask;
+use App\Modules\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class DeleteUserController.
@@ -15,8 +15,8 @@ class DeleteUserController extends ApiController
 {
 
     /**
-     * @param \Hello\Modules\User\Requests\DeleteUserRequest $deleteUserRequest
-     * @param \Hello\Modules\User\Tasks\DeleteUserTask       $deleteUserTask
+     * @param \App\Modules\User\Requests\DeleteUserRequest $deleteUserRequest
+     * @param \App\Modules\User\Tasks\DeleteUserTask       $deleteUserTask
      * @param                                               $userId
      *
      * @return \Dingo\Api\Http\Response

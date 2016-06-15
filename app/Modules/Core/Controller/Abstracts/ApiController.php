@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\Core\Controller\Abstracts;
+namespace App\Modules\Core\Controller\Abstracts;
 
 use Dingo\Api\Routing\Helpers as DingoApiHelper;
-use Hello\Modules\Core\Controller\Contracts\ApiControllerInterface;
+use App\Modules\Core\Controller\Contracts\ApiControllerInterface;
 
 /**
  * Class ApiController.

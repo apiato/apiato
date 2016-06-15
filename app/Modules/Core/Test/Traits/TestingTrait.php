@@ -1,12 +1,12 @@
 <?php
 
-namespace Hello\Modules\Core\Test\Traits;
+namespace App\Modules\Core\Test\Traits;
 
 use App;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
-use Hello\Modules\User\Tasks\CreateUserTask;
+use App\Modules\User\Tasks\CreateUserTask;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 /**
@@ -87,7 +87,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \Hello\Modules\Core\Test\Traits\User|mixed
+     * @return \App\Modules\Core\Test\Traits\User|mixed
      */
     public function getLoggedInTestingUser()
     {

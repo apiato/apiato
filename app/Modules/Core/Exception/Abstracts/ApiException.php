@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Exception\Abstracts;
+namespace App\Modules\Core\Exception\Abstracts;
 
 use Dingo\Api\Contract\Debug\MessageBagErrors as DingoMessageBagErrors;
 use Exception;

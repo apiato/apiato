@@ -2,7 +2,7 @@
 
 // Automatically include Factory Files from all Modules to this file,
 // which will be used by Laravel when dealing with Model Factories.
-foreach (Hello\Services\Configuration\Portals\Facade\ModulesConfig::getModulesNames() as $moduleName) {
+foreach (App\Services\Configuration\Portals\Facade\ModulesConfig::getModulesNames() as $moduleName) {
 
     $modulesDirectory = base_path('app/Modules/' . $moduleName . '/Factory/');
 

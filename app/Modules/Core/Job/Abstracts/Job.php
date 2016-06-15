@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Job\Abstracts;
+namespace App\Modules\Core\Job\Abstracts;
 
 use Illuminate\Bus\Queueable;
 

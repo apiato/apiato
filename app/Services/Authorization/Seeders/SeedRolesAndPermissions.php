@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Services\Authorization\Seeders;
+namespace App\Services\Authorization\Seeders;
 
 use Illuminate\Database\Seeder;
-use Hello\Services\Authorization\Models\Permission;
-use Hello\Services\Authorization\Models\Role;
+use App\Services\Authorization\Models\Permission;
+use App\Services\Authorization\Models\Role;
 
 class SeedRolesAndPermissions extends Seeder
 {

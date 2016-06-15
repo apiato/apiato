@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Tasks;
+namespace App\Modules\User\Tasks;
 
-use Hello\Modules\User\Contracts\UserRepositoryInterface;
-use Hello\Modules\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
-use Hello\Modules\Core\Task\Abstracts\Task;
+use App\Modules\User\Contracts\UserRepositoryInterface;
+use App\Modules\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class ListAllUsersTask.
@@ -15,14 +15,14 @@ class ListAllUsersTask extends Task
 {
 
     /**
-     * @var \Hello\Modules\User\Contracts\UserRepositoryInterface
+     * @var \App\Modules\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * ListAllUsersTask constructor.
      *
-     * @param \Hello\Modules\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Modules\User\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(
         UserRepositoryInterface $userRepository

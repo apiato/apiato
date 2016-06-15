@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Repository\Abstracts;
+namespace App\Modules\Core\Repository\Abstracts;
 
 use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheableInterface;
 use Prettus\Repository\Criteria\RequestCriteria as PrettusRequestCriteria;

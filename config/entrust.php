@@ -11,7 +11,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => Hello\Services\Authorization\Models\Role::class,
+    'role' => App\Services\Authorization\Models\Role::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => Hello\Services\Authorization\Models\Permission::class,
+    'permission' => App\Services\Authorization\Models\Permission::class,
 
     /*
     |--------------------------------------------------------------------------

@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Providers;
+namespace App\Modules\User\Providers;
 
-use Hello\Modules\User\Contracts\UserRepositoryInterface;
-use Hello\Modules\User\Repositories\Eloquent\UserRepository;
-use Hello\Modules\Core\Provider\Abstracts\ServiceProvider;
+use App\Modules\User\Contracts\UserRepositoryInterface;
+use App\Modules\User\Repositories\Eloquent\UserRepository;
+use App\Modules\Core\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.

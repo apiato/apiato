@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\User\Controllers\Web;
+namespace App\Modules\User\Controllers\Web;
 
-use Hello\Modules\Core\Controller\Abstracts\WebController;
+use App\Modules\Core\Controller\Abstracts\WebController;
 
 /**
  * Class WelcomeUserController

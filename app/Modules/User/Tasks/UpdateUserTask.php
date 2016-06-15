@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Tasks;
+namespace App\Modules\User\Tasks;
 
-use Hello\Modules\User\Contracts\UserRepositoryInterface;
-use Hello\Services\Authentication\Exceptions\UpdateResourceFailedException;
-use Hello\Modules\Core\Task\Abstracts\Task;
+use App\Modules\User\Contracts\UserRepositoryInterface;
+use App\Services\Authentication\Exceptions\UpdateResourceFailedException;
+use App\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class UpdateUserTask.
@@ -15,14 +15,14 @@ class UpdateUserTask extends Task
 {
 
     /**
-     * @var \Hello\Modules\User\Contracts\UserRepositoryInterface
+     * @var \App\Modules\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * UpdateUserTask constructor.
      *
-     * @param \Hello\Modules\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Modules\User\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

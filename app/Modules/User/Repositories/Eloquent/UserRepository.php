@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Repositories\Eloquent;
+namespace App\Modules\User\Repositories\Eloquent;
 
-use Hello\Modules\User\Contracts\UserRepositoryInterface;
-use Hello\Modules\User\Models\User;
-use Hello\Modules\Core\Repository\Abstracts\Repository;
+use App\Modules\User\Contracts\UserRepositoryInterface;
+use App\Modules\User\Models\User;
+use App\Modules\Core\Repository\Abstracts\Repository;
 
 /**
  * Class UserRepository.

@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\User\Tasks;
+namespace App\Modules\User\Tasks;
 
-use Hello\Services\Authentication\Portals\AuthenticationService;
-use Hello\Modules\Core\Task\Abstracts\Task;
+use App\Services\Authentication\Portals\AuthenticationService;
+use App\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.
@@ -14,14 +14,14 @@ class LoginTask extends Task
 {
 
     /**
-     * @var \Hello\Services\Authentication\Portals\AuthenticationService
+     * @var \App\Services\Authentication\Portals\AuthenticationService
      */
     private $authenticationService;
 
     /**
      * LoginTask constructor.
      *
-     * @param \Hello\Services\Authentication\Portals\AuthenticationService $authenticationService
+     * @param \App\Services\Authentication\Portals\AuthenticationService $authenticationService
      */
     public function __construct(AuthenticationService $authenticationService)
     {

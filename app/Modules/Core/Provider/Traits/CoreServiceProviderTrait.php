@@ -1,11 +1,11 @@
 <?php
 
-namespace Hello\Modules\Core\Provider\Traits;
+namespace App\Modules\Core\Provider\Traits;
 
 use App;
 use DB;
-use Hello\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
-use Hello\Services\Configuration\Portals\Facade\ModulesConfig;
+use App\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
+use App\Services\Configuration\Portals\Facade\ModulesConfig;
 use Log;
 
 /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\Core\Request\Manager;
+namespace App\Modules\Core\Request\Manager;
 
-use Hello\Modules\Core\Request\Abstracts\Request;
+use App\Modules\Core\Request\Abstracts\Request;
 
 /**
  * Class HttpRequest.

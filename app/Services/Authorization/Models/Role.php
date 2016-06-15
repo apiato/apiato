@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Services\Authorization\Models;
+namespace App\Services\Authorization\Models;
 
 use Zizaco\Entrust\EntrustRole;
 

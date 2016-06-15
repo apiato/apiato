@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Services\Authentication\Exceptions;
+namespace App\Services\Authentication\Exceptions;
 
-use Hello\Modules\Core\Exception\Abstracts\ApiException;
+use App\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

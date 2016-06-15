@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Task\Abstracts;
+namespace App\Modules\Core\Task\Abstracts;
 
 /**
  * Class Task.

@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\Demo\Events;
+namespace App\Modules\Demo\Events;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use Hello\Modules\Core\Event\Abstracts\EventServiceProvider as CoreEventServiceProvider;
+use App\Modules\Core\Event\Abstracts\EventServiceProvider as CoreEventServiceProvider;
 
 /**
  * Class EventServiceProvider
@@ -18,8 +18,8 @@ class EventServiceProvider extends CoreEventServiceProvider
      * @var array
      */
     protected $listen = [
-        'Hello\Events\SomeEvent' => [
-            'Hello\Listeners\EventListener',
+        'App\Events\SomeEvent' => [
+            'App\Listeners\EventListener',
         ],
     ];
 

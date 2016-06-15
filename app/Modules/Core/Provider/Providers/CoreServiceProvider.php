@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\Core\Provider\Providers;
+namespace App\Modules\Core\Provider\Providers;
 
-use Hello\Modules\Core\Provider\Abstracts\ServiceProvider;
+use App\Modules\Core\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class CoreServiceProvider

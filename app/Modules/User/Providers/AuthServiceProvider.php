@@ -1,11 +1,11 @@
 <?php
 
-namespace Hello\Modules\User\Providers;
+namespace App\Modules\User\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Hello\Modules\User\Models\User;
-use Hello\Modules\User\Policies\UserPolicy;
+use App\Modules\User\Models\User;
+use App\Modules\User\Policies\UserPolicy;
 
 /**
  * Class AuthServiceProvider.

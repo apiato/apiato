@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Services\Configuration\Providers;
+namespace App\Services\Configuration\Providers;
 
-use Hello\Modules\Core\Provider\Abstracts\ServiceProvider;
+use App\Modules\Core\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class ModulesConfigServiceProvider
@@ -18,7 +18,7 @@ class ModulesConfigServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('modulesConfigReaderService', function () {
-            return $this->app->make('Hello\Services\Configuration\Portals\ModulesConfigReaderService');
+            return $this->app->make('App\Services\Configuration\Portals\ModulesConfigReaderService');
         });
     }
 }

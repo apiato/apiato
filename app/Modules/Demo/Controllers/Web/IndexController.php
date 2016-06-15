@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\Demo\Controllers\Web;
+namespace App\Modules\Demo\Controllers\Web;
 
-use Hello\Modules\Core\Controller\Abstracts\WebController;
+use App\Modules\Core\Controller\Abstracts\WebController;
 
 /**
  * Class IndexController

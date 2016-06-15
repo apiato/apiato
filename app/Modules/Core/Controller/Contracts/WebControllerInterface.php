@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Controller\Contracts;
+namespace App\Modules\Core\Controller\Contracts;
 
 /**
  * Interface WebControllerInterface.

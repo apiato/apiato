@@ -1,11 +1,11 @@
 <?php
 
-namespace Hello\Modules\Core\Provider\Providers;
+namespace App\Modules\Core\Provider\Providers;
 
 use Dingo\Api\Routing\Router as DingoApiRouter;
-use Hello\Modules\Core\Provider\Traits\CoreServiceProviderTrait;
-use Hello\Services\Configuration\Exceptions\WrongConfigurationsException;
-use Hello\Services\Configuration\Portals\Facade\ModulesConfig;
+use App\Modules\Core\Provider\Traits\CoreServiceProviderTrait;
+use App\Services\Configuration\Exceptions\WrongConfigurationsException;
+use App\Services\Configuration\Portals\Facade\ModulesConfig;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 

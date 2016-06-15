@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Services\Configuration\Portals;
+namespace App\Services\Configuration\Portals;
 
-use Hello\Services\Configuration\Exceptions\WrongConfigurationsException;
+use App\Services\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**

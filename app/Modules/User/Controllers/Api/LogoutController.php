@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Controllers\Api;
+namespace App\Modules\User\Controllers\Api;
 
-use Hello\Modules\User\Tasks\LogoutTask;
-use Hello\Modules\Core\Controller\Abstracts\ApiController;
-use Hello\Modules\Core\Request\Manager\HttpRequest;
+use App\Modules\User\Tasks\LogoutTask;
+use App\Modules\Core\Controller\Abstracts\ApiController;
+use App\Modules\Core\Request\Manager\HttpRequest;
 
 /**
  * Class LogoutController.
@@ -15,8 +15,8 @@ class LogoutController extends ApiController
 {
 
     /**
-     * @param \Hello\Modules\Core\Request\Manager\HttpRequest $request
-     * @param \Hello\Modules\User\Tasks\LogoutTask             $logoutTask
+     * @param \App\Modules\Core\Request\Manager\HttpRequest $request
+     * @param \App\Modules\User\Tasks\LogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response
      */

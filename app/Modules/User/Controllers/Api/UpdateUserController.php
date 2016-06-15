@@ -1,11 +1,11 @@
 <?php
 
-namespace Hello\Modules\User\Controllers\Api;
+namespace App\Modules\User\Controllers\Api;
 
-use Hello\Modules\User\Requests\UpdateUserRequest;
-use Hello\Modules\User\Tasks\UpdateUserTask;
-use Hello\Modules\User\Transformers\UserTransformer;
-use Hello\Modules\Core\Controller\Abstracts\ApiController;
+use App\Modules\User\Requests\UpdateUserRequest;
+use App\Modules\User\Tasks\UpdateUserTask;
+use App\Modules\User\Transformers\UserTransformer;
+use App\Modules\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class UpdateUserController.
@@ -16,8 +16,8 @@ class UpdateUserController extends ApiController
 {
 
     /**
-     * @param \Hello\Modules\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \Hello\Modules\User\Tasks\UpdateUserTask       $updateUserTask
+     * @param \App\Modules\User\Requests\UpdateUserRequest $updateUserRequest
+     * @param \App\Modules\User\Tasks\UpdateUserTask       $updateUserTask
      * @param                                               $userId
      *
      * @return \Dingo\Api\Http\Response

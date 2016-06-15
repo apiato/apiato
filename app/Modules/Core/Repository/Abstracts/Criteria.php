@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Repository\Abstracts;
+namespace App\Modules\Core\Repository\Abstracts;
 
 use Prettus\Repository\Contracts\CriteriaInterface as PrettusCriteriaInterface;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\Core\Controller\Abstracts;
+namespace App\Modules\Core\Controller\Abstracts;
 
-use Hello\Modules\Core\Controller\Contracts\WebControllerInterface;
-use Hello\Services\Configuration\Portals\ModulesConfigReaderService;
+use App\Modules\Core\Controller\Contracts\WebControllerInterface;
+use App\Services\Configuration\Portals\ModulesConfigReaderService;
 use Illuminate\View\Factory as View;
 
 /**
@@ -20,7 +20,7 @@ abstract class WebController extends CoreController implements WebControllerInte
     private $view;
 
     /**
-     * @var  \Hello\Services\Configuration\Portals\ModulesConfigReaderService
+     * @var  \App\Services\Configuration\Portals\ModulesConfigReaderService
      */
     private $modulesConfig;
 
@@ -28,7 +28,7 @@ abstract class WebController extends CoreController implements WebControllerInte
      * WebController constructor.
      *
      * @param \Illuminate\View\Factory                                         $view
-     * @param \Hello\Services\Configuration\Portals\ModulesConfigReaderService $modulesConfig
+     * @param \App\Services\Configuration\Portals\ModulesConfigReaderService $modulesConfig
      */
     public function __construct(View $view, ModulesConfigReaderService $modulesConfig)
     {

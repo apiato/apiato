@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\User\Tasks;
+namespace App\Modules\User\Tasks;
 
-use Hello\Services\Authentication\Portals\AuthenticationService;
-use Hello\Modules\Core\Task\Abstracts\Task;
+use App\Services\Authentication\Portals\AuthenticationService;
+use App\Modules\Core\Task\Abstracts\Task;
 
 /**
  * Class LogoutTask.
@@ -14,14 +14,14 @@ class LogoutTask extends Task
 {
 
     /**
-     * @var \Hello\Modules\User\Tasks\AuthenticationService|\Hello\Services\Authentication\Portals\AuthenticationService
+     * @var \App\Modules\User\Tasks\AuthenticationService|\App\Services\Authentication\Portals\AuthenticationService
      */
     private $authenticationService;
 
     /**
      * LogoutTask constructor.
      *
-     * @param \Hello\Services\Authentication\Portals\AuthenticationService $authenticationService
+     * @param \App\Services\Authentication\Portals\AuthenticationService $authenticationService
      */
     public function __construct(
         AuthenticationService $authenticationService

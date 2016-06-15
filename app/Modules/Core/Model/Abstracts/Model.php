@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Model\Abstracts;
+namespace App\Modules\Core\Model\Abstracts;
 
 use Illuminate\Database\Eloquent\Model as LaravelEloquentModel;
 

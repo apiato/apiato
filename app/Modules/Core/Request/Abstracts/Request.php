@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\Core\Request\Abstracts;
+namespace App\Modules\Core\Request\Abstracts;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
-use Hello\Modules\Core\Exception\Exceptions\ValidationFailedException;
+use App\Modules\Core\Exception\Exceptions\ValidationFailedException;
 
 /**
  * Class Request

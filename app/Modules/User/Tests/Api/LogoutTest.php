@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\User\Tests\Api;
+namespace App\Modules\User\Tests\Api;
 
-use Hello\Modules\Core\Test\Abstracts\TestCase;
+use App\Modules\Core\Test\Abstracts\TestCase;
 
 /**
  * Class LogoutEndpointTest.

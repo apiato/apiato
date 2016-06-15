@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Controllers\Api;
+namespace App\Modules\User\Controllers\Api;
 
-use Hello\Modules\User\Tasks\ListAllUsersTask;
-use Hello\Modules\User\Transformers\UserTransformer;
-use Hello\Modules\Core\Controller\Abstracts\ApiController;
+use App\Modules\User\Tasks\ListAllUsersTask;
+use App\Modules\User\Transformers\UserTransformer;
+use App\Modules\Core\Controller\Abstracts\ApiController;
 
 /**
  * Class ListAllUsersController.
@@ -15,7 +15,7 @@ class ListAllUsersController extends ApiController
 {
 
     /**
-     * @param \Hello\Modules\User\Tasks\ListAllUsersTask $listAllUsersTask
+     * @param \App\Modules\User\Tasks\ListAllUsersTask $listAllUsersTask
      *
      * @return \Dingo\Api\Http\Response
      */

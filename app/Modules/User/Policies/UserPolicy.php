@@ -1,9 +1,9 @@
 <?php
 
-namespace Hello\Modules\User\Policies;
+namespace App\Modules\User\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Hello\Modules\User\Models\User;
+use App\Modules\User\Models\User;
 
 /**
  * Class UserPolicy.
@@ -18,7 +18,7 @@ class UserPolicy
     /**
      * Determine if the user is updating himself and not another user.
      *
-     * @param \Hello\Modules\User\Models\User $user
+     * @param \App\Modules\User\Models\User $user
      * @param                                $inputUserId
      *
      * @return bool
@@ -32,7 +32,7 @@ class UserPolicy
     /**
      * Determine if the user is deleting himself and not another user.
      *
-     * @param \Hello\Modules\User\Models\User $user
+     * @param \App\Modules\User\Models\User $user
      * @param                                $inputUserId
      *
      * @return bool

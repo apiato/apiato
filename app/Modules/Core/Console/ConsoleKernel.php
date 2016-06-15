@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\Core\Console;
+namespace App\Modules\Core\Console;
 
-use Hello\Modules\Demo\Consoles\Inspire;
+use App\Modules\Demo\Consoles\Inspire;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 

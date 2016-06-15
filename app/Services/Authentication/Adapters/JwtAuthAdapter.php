@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Services\Authentication\Adapters;
+namespace App\Services\Authentication\Adapters;
 
 use Tymon\JWTAuth\JWTAuth;
 

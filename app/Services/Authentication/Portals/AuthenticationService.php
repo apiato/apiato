@@ -1,12 +1,12 @@
 <?php
 
-namespace Hello\Services\Authentication\Portals;
+namespace App\Services\Authentication\Portals;
 
 use Exception;
 use Illuminate\Auth\AuthManager as LaravelAuthManager;
-use Hello\Services\Authentication\Adapters\JwtAuthAdapter;
-use Hello\Services\Authentication\Exceptions\AuthenticationFailedException;
-use Hello\Services\Authentication\Exceptions\MissingTokenException;
+use App\Services\Authentication\Adapters\JwtAuthAdapter;
+use App\Services\Authentication\Exceptions\AuthenticationFailedException;
+use App\Services\Authentication\Exceptions\MissingTokenException;
 
 /**
  * Class AuthenticationService.
@@ -17,7 +17,7 @@ class AuthenticationService
 {
 
     /**
-     * @var \Hello\Services\Authentication\Adapters\JwtAuthAdapter
+     * @var \App\Services\Authentication\Adapters\JwtAuthAdapter
      */
     private $jwtAuthAdapter;
 
@@ -29,7 +29,7 @@ class AuthenticationService
     /**
      * AuthenticationService constructor.
      *
-     * @param \Hello\Services\Authentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
+     * @param \App\Services\Authentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
      * @param \Illuminate\Auth\AuthManager                          $authManager
      */
     public function __construct(JwtAuthAdapter $jwtAuthAdapter, LaravelAuthManager $authManager)
@@ -101,7 +101,7 @@ class AuthenticationService
     /**
      * @param $authorizationHeader
      *
-     * @throws \Hello\Services\Authentication\Portals\MissingTokenException
+     * @throws \App\Services\Authentication\Portals\MissingTokenException
      *
      * @return bool
      */

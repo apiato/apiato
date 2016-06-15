@@ -11,7 +11,7 @@ return [
         | Here you should set the Modules namespace
         |
         */
-        'namespace' => 'Hello',
+        'namespace' => 'App',
 
         /*
         |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    Hello\Modules\User\Providers\AuthServiceProvider::class,
+                    App\Modules\User\Providers\AuthServiceProvider::class,
                 ],
 
                 /*
@@ -148,7 +148,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    Hello\Modules\Demo\Events\EventServiceProvider::class,
+                    App\Modules\Demo\Events\EventServiceProvider::class,
                 ],
             ],
 
@@ -190,7 +190,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    Hello\Modules\Core\Provider\Providers\RoutesServiceProvider::class,
+                    App\Modules\Core\Provider\Providers\RoutesServiceProvider::class,
                 ],
             ],
 

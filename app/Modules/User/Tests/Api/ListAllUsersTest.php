@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Tests\Api;
+namespace App\Modules\User\Tests\Api;
 
-use Hello\Modules\User\Models\User;
-use Hello\Services\Authorization\Models\Role;
-use Hello\Modules\Core\Test\Abstracts\TestCase;
+use App\Modules\User\Models\User;
+use App\Services\Authorization\Models\Role;
+use App\Modules\Core\Test\Abstracts\TestCase;
 
 /**
  * Class ListAllUsersTest.

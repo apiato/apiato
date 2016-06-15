@@ -1,8 +1,8 @@
 <?php
 
-namespace Hello\Modules\User\Requests;
+namespace App\Modules\User\Requests;
 
-use Hello\Modules\Core\Request\Abstracts\Request;
+use App\Modules\Core\Request\Abstracts\Request;
 
 /**
  * Class RegisterRequest.

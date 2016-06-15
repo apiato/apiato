@@ -1,6 +1,6 @@
 <?php
 
-namespace Hello\Modules\Core\Exception\Handler;
+namespace App\Modules\Core\Exception\Handler;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

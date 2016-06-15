@@ -1,10 +1,10 @@
 <?php
 
-namespace Hello\Modules\User\Requests;
+namespace App\Modules\User\Requests;
 
 use Illuminate\Contracts\Auth\Access\Gate;
-use Hello\Modules\User\Models\User;
-use Hello\Modules\Core\Request\Abstracts\Request;
+use App\Modules\User\Models\User;
+use App\Modules\Core\Request\Abstracts\Request;
 
 /**
  * Class DeleteUserRequest.
