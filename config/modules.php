@@ -96,6 +96,27 @@ return [
 
                 /*
                 |--------------------------------------------------------------------------
+                | User Module Routes
+                |--------------------------------------------------------------------------
+                |
+                | Here you should define the routes files names. There are two types of
+                | Routes, API Routes and Web Routes.
+                | For the API routes you must define the route version number in addition
+                | to the route file name.
+                | For the Web routes you must only define the route file name.
+                |
+                */
+                'routes'                => [
+                    'api' => [
+                        ['fileName' => 'v1', 'versionNumber' => '1']
+                    ],
+                    'web' => [
+                        ['fileName' => 'main']
+                    ],
+                ],
+
+                /*
+                |--------------------------------------------------------------------------
                 | Demo Module Dependencies
                 |--------------------------------------------------------------------------
                 |
