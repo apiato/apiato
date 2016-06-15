@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "Mahmoudz/Hello-API",
+    "description": "API starter providing everything to build a modern API with PHP on top of Laravel.",
+    "keywords": ["framework", "API", "laravel", "Hello-API"],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "app/Modules/Core/Test/Abstracts/TestCase.php"
         ]
     },
     "scripts": {
