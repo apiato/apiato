@@ -1,15 +1,13 @@
 <?php
 
-namespace Hello\Modules\Core\Seeder;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Hello\Services\Authorization\Seeders\SeedRolesAndPermissions;
 
 /**
- * Class DatabaseSeeder.
+ * Class DatabaseSeeder
  *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class DatabaseSeeder extends Seeder
 {

@@ -34,8 +34,9 @@ abstract class TestCase extends LaravelTestCase
 
         // migrate the database
         $this->artisan('migrate');
+
         // seed the database
-        $this->seed('Hello\Modules\Core\Seeder\DatabaseSeeder');
+        $this->seed();
     }
 
     /**
