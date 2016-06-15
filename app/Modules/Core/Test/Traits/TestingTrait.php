@@ -3,6 +3,7 @@
 namespace Hello\Modules\Core\Test\Traits;
 
 use App;
+use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Hello\Modules\User\Tasks\CreateUserTask;
@@ -70,11 +71,12 @@ trait TestingTrait
     }
 
     /**
-     * @param       $response
-     * @param array $messages
+     * @param \Dingo\Api\Http\Response $response
+     * @param array                    $messages
      */
-    public function assertValidationErrorContain($response, array $messages)
+    public function assertValidationErrorContain(DingoAPIResponse $response, array $messages)
     {
+
         $arrayResponse = json_decode($response->getContent());
 
         foreach ($messages as $key => $value) {
