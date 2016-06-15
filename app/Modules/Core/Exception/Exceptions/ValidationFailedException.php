@@ -3,6 +3,7 @@
 namespace Hello\Modules\Core\Exception\Exceptions;
 
 use Dingo\Api\Exception\ResourceException as DingoResourceException;
+use Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
@@ -25,10 +26,10 @@ class ValidationFailedException extends DingoResourceException
     /**
      * ValidationFailedException constructor.
      *
-     * @param null                                                    $errors
-     * @param \Hello\Modules\Core\Exception\Exceptions\Exception|null $previous
-     * @param array                                                   $headers
-     * @param int                                                     $code
+     * @param null            $errors
+     * @param \Exception|null $previous
+     * @param array           $headers
+     * @param int             $code
      */
     public function __construct($errors = null, Exception $previous = null, $headers = [], $code = 0)
     {
