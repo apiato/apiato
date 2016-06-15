@@ -177,15 +177,4 @@ return [
 
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Models Factory
-    |--------------------------------------------------------------------------
-    |
-    | Here you should set the new path of the Models Factory. This tells
-    | Laravel to override the default path for the Models Factories.
-    |
-    */
-    'modelsFactoryPath' => '/app/Modules/Core/Factory'
-
 ];

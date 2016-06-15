@@ -17,6 +17,11 @@ class CoreServiceProvider extends ServiceProvider
 {
 
     /**
+     * the new Models Factories Paths
+     */
+    const MODELS_FACTORY_PATH = '/app/Modules/Core/Factory';
+
+    /**
      * Perform post-registration booting of services.
      */
     public function boot()
@@ -30,8 +35,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->changeTheDefaultDatabaseModelsFactoriesPath();
+        $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->publishModulesMigrationsFiles();
         $this->debugDatabaseQueries(true);
     }
+
 }

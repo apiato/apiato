@@ -53,10 +53,8 @@ trait CoreServiceProviderTrait
      * path to the factories, this function changes the path to load
      * the factories from the infrastructure directory.
      */
-    public function changeTheDefaultDatabaseModelsFactoriesPath()
+    public function changeTheDefaultDatabaseModelsFactoriesPath($customPath)
     {
-        $customPath = ModulesConfig::getModelsFactoryPath();
-
         $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
@@ -151,6 +149,5 @@ trait CoreServiceProviderTrait
             ], 'migrations');
         }
     }
-
 
 }
