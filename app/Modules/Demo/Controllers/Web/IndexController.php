@@ -5,11 +5,11 @@ namespace Hello\Modules\Demo\Controllers\Web;
 use Hello\Modules\Core\Controller\Abstracts\WebController;
 
 /**
- * Class DemoController
+ * Class IndexController
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DemoController extends WebController
+class IndexController extends WebController
 {
     /**
      * @return  string

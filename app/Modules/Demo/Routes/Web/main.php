@@ -1,5 +1,5 @@
 <?php
 
 $router->get('/', [
-    'uses' => 'DemoController@handle',
+    'uses' => 'IndexController@handle',
 ]);

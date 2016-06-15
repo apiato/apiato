@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel Plus 5</div>
+                <div class="title">Welcome User :)</div>
             </div>
         </div>
     </body>
