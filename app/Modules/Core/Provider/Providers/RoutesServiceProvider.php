@@ -86,24 +86,25 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
 
             $version = 'v' . $apiRoute['versionNumber'];
 
-            $this->apiRouter->version($version, function ($router) use ($moduleName, $modulesNamespace, $apiRoute) {
+            $this->apiRouter->version($version,
+                function (DingoApiRouter $router) use ($moduleName, $modulesNamespace, $apiRoute) {
 
-                $router->group([
-                    // Routes Namespace
-                    'namespace'  => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Api',
-                    // Enable: API Rate Limiting
-                    'middleware' => 'api.throttle',
-                    // The API limit time.
-                    'limit'      => env('API_LIMIT'),
-                    // The API limit expiry time.
-                    'expires'    => env('API_LIMIT_EXPIRES'),
-                ], function ($router) use ($moduleName, $apiRoute) {
-                    require $this->validateRouteFile(
-                        app_path('Modules/' . $moduleName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
-                    );
+                    $router->group([
+                        // Routes Namespace
+                        'namespace'  => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Api',
+                        // Enable: API Rate Limiting
+                        'middleware' => 'api.throttle',
+                        // The API limit time.
+                        'limit'      => env('API_LIMIT'),
+                        // The API limit expiry time.
+                        'expires'    => env('API_LIMIT_EXPIRES'),
+                    ], function ($router) use ($moduleName, $apiRoute) {
+                        require $this->validateRouteFile(
+                            app_path('Modules/' . $moduleName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
+                        );
+                    });
+
                 });
-
-            });
         }
     }
 
@@ -118,7 +119,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
         foreach (ModulesConfig::getModulesWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
                 'namespace' => $modulesNamespace . '\\Modules\\' . $moduleName . '\\Controllers\Web',
-            ], function ($router) use ($webRoute, $moduleName) {
+            ], function (LaravelRouter $router) use ($webRoute, $moduleName) {
                 require $this->validateRouteFile(
                     app_path('/Modules/' . $moduleName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
                 );
@@ -137,7 +138,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
                 'middleware' => 'api.throttle',
                 'limit'      => env('API_LIMIT'),
                 'expires'    => env('API_LIMIT_EXPIRES'),
-            ], function ($router) {
+            ], function (DingoApiRouter $router) {
                 // Default root route
                 $router->any('/', function () {
                     return response()->json(['Welcome to ' . env('API_NAME') . '.']);
