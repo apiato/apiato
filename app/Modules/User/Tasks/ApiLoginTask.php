@@ -10,7 +10,7 @@ use App\Modules\Core\Task\Abstracts\Task;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginTask extends Task
+class ApiLoginTask extends Task
 {
 
     /**
@@ -19,7 +19,7 @@ class LoginTask extends Task
     private $authenticationService;
 
     /**
-     * LoginTask constructor.
+     * ApiLoginTask constructor.
      *
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */

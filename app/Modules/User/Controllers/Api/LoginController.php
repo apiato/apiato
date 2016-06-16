@@ -3,7 +3,7 @@
 namespace App\Modules\User\Controllers\Api;
 
 use App\Modules\User\Requests\LoginRequest;
-use App\Modules\User\Tasks\LoginTask;
+use App\Modules\User\Tasks\ApiLoginTask;
 use App\Modules\User\Transformers\UserTransformer;
 use App\Modules\Core\Controller\Abstracts\ApiController;
 
@@ -17,11 +17,11 @@ class LoginController extends ApiController
 
     /**
      * @param \App\Modules\User\Requests\LoginRequest $loginRequest
-     * @param \App\Modules\User\Tasks\LoginTask       $loginTask
+     * @param \App\Modules\User\Tasks\ApiLoginTask       $loginTask
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(LoginRequest $loginRequest, LoginTask $loginTask)
+    public function handle(LoginRequest $loginRequest, ApiLoginTask $loginTask)
     {
         $user = $loginTask->run($loginRequest['email'], $loginRequest['password']);
 

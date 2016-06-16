@@ -2,7 +2,7 @@
 
 namespace App\Modules\User\Controllers\Api;
 
-use App\Modules\User\Tasks\LogoutTask;
+use App\Modules\User\Tasks\ApiLogoutTask;
 use App\Modules\Core\Controller\Abstracts\ApiController;
 use App\Modules\Core\Request\Manager\HttpRequest;
 
@@ -16,11 +16,11 @@ class LogoutController extends ApiController
 
     /**
      * @param \App\Modules\Core\Request\Manager\HttpRequest $request
-     * @param \App\Modules\User\Tasks\LogoutTask             $logoutTask
+     * @param \App\Modules\User\Tasks\ApiLogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(HttpRequest $request, LogoutTask $logoutTask)
+    public function handle(HttpRequest $request, ApiLogoutTask $logoutTask)
     {
         $logoutTask->run($request->header('authorization'));
 

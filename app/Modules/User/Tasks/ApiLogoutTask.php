@@ -6,11 +6,11 @@ use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use App\Modules\Core\Task\Abstracts\Task;
 
 /**
- * Class LogoutTask.
+ * Class ApiLogoutTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LogoutTask extends Task
+class ApiLogoutTask extends Task
 {
 
     /**
@@ -19,7 +19,7 @@ class LogoutTask extends Task
     private $authenticationService;
 
     /**
-     * LogoutTask constructor.
+     * ApiLogoutTask constructor.
      *
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
