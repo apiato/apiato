@@ -8,7 +8,7 @@ use App\Modules\User\Models\User;
 use App\Modules\User\Policies\UserPolicy;
 
 /**
- * Class AuthServiceProvider.
+ * Class PoliciesServiceProvider.
  *
  * This Service Provider is designed to map the policies to their models.
  * Must be manually added to the list of extra service providers in the
@@ -16,7 +16,7 @@ use App\Modules\User\Policies\UserPolicy;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AuthServiceProvider extends ServiceProvider
+class PoliciesServiceProvider extends ServiceProvider
 {
 
     /**

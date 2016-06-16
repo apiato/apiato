@@ -64,7 +64,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Modules\User\Providers\AuthServiceProvider::class,
+                    App\Modules\User\Providers\PoliciesServiceProvider::class,
                 ],
 
                 /*
