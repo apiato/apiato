@@ -2,10 +2,10 @@
 
 namespace App\Modules\Core\Provider\Providers;
 
-use Dingo\Api\Routing\Router as DingoApiRouter;
 use App\Modules\Core\Provider\Traits\CoreServiceProviderTrait;
 use App\Services\Configuration\Exceptions\WrongConfigurationsException;
 use App\Services\Configuration\Portals\Facade\ModulesConfig;
+use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -71,7 +71,8 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
             $this->registerModulesWebRoutes($moduleName, $modulesNamespace);
         }
 
-        $this->registerApplicationDefaultRoutes();
+        $this->registerApplicationDefaultApiRoutes();
+        $this->registerApplicationDefaultWebRoutes();
     }
 
     /**
@@ -128,9 +129,10 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
     }
 
     /**
-     * The default Application Routes. When a user visit the root of the API endpoint, will access this routes.
+     * The default Application API Routes. When a user visit the root of the API endpoint, will access these routes.
+     * This will be overwritten by the Modules if defined there.
      */
-    private function registerApplicationDefaultRoutes()
+    private function registerApplicationDefaultApiRoutes()
     {
         $this->apiRouter->version('v1', function ($router) {
 
@@ -139,16 +141,27 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
                 'limit'      => env('API_LIMIT'),
                 'expires'    => env('API_LIMIT_EXPIRES'),
             ], function (DingoApiRouter $router) {
-                // Default root route
-                $router->any('/', function () {
-                    return response()->json(['Welcome to ' . env('API_NAME') . '.']);
-                });
-                // Add more routes below
-                // ...
+                require $this->validateRouteFile(
+                    app_path('Modules/Core/Routes/default-api.php')
+                );
             });
 
         });
     }
+
+    /**
+     * The default Application Web Routes. When a user visit the root of the web, will access these routes.
+     * This will be overwritten by the Modules if defined there.
+     */
+    private function registerApplicationDefaultWebRoutes()
+    {
+        $this->webRouter->group([], function (LaravelRouter $router) {
+            require $this->validateRouteFile(
+                app_path('Modules/Core/Routes/default-web.php')
+            );
+        });
+    }
+
 
     /**
      * Check route file exist
