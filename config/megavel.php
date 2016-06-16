@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'modules'           => [
+    'modules' => [
 
         /*
         |--------------------------------------------------------------------------
@@ -83,6 +83,7 @@ return [
 
                     'services' => [
                         'ApiAuthentication',
+                        'Authorization',
                     ],
                 ],
             ],
@@ -170,7 +171,6 @@ return [
                 */
                 'dependencies'          => [
                     'services' => [
-                        'Authorization',
                         'Configuration',
                     ],
                 ],
