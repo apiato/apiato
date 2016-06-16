@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Authentication\Exceptions;
+namespace App\Services\ApiAuthentication\Exceptions;
 
 use App\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response;

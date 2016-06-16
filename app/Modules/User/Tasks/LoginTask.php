@@ -2,7 +2,7 @@
 
 namespace App\Modules\User\Tasks;
 
-use App\Services\Authentication\Portals\AuthenticationService;
+use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use App\Modules\Core\Task\Abstracts\Task;
 
 /**
@@ -14,16 +14,16 @@ class LoginTask extends Task
 {
 
     /**
-     * @var \App\Services\Authentication\Portals\AuthenticationService
+     * @var \App\Services\ApiAuthentication\Portals\ApiAuthenticationService
      */
     private $authenticationService;
 
     /**
      * LoginTask constructor.
      *
-     * @param \App\Services\Authentication\Portals\AuthenticationService $authenticationService
+     * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
-    public function __construct(AuthenticationService $authenticationService)
+    public function __construct(ApiAuthenticationService $authenticationService)
     {
         $this->authenticationService = $authenticationService;
     }

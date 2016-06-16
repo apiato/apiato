@@ -3,7 +3,7 @@
 namespace App\Modules\User\Tasks;
 
 use App\Modules\User\Contracts\UserRepositoryInterface;
-use App\Services\Authentication\Exceptions\UpdateResourceFailedException;
+use App\Services\ApiAuthentication\Exceptions\UpdateResourceFailedException;
 use App\Modules\Core\Task\Abstracts\Task;
 
 /**

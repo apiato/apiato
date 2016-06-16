@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Modules\User\Contracts\UserRepositoryInterface;
 use App\Modules\User\Exceptions\AccountFailedException;
-use App\Services\Authentication\Portals\AuthenticationService;
+use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use App\Modules\Core\Task\Abstracts\Task;
 
 /**
@@ -23,7 +23,7 @@ class CreateUserTask extends Task
     private $userRepository;
 
     /**
-     * @var \App\Services\Authentication\Portals\AuthenticationService
+     * @var \App\Services\ApiAuthentication\Portals\ApiAuthenticationService
      */
     private $authenticationService;
 
@@ -31,9 +31,9 @@ class CreateUserTask extends Task
      * CreateUserTask constructor.
      *
      * @param \App\Modules\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \App\Services\Authentication\Portals\AuthenticationService $authenticationService
+     * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
-    public function __construct(UserRepositoryInterface $userRepository, AuthenticationService $authenticationService)
+    public function __construct(UserRepositoryInterface $userRepository, ApiAuthenticationService $authenticationService)
     {
         $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;

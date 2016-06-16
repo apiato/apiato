@@ -22,7 +22,7 @@ class ModulesConfigReaderService
      */
     public function getModulesNamespace()
     {
-        return Config::get('modules.modules.namespace');
+        return Config::get('megavel.modules.namespace');
     }
 
     /**
@@ -32,7 +32,7 @@ class ModulesConfigReaderService
      */
     public function getModulesNames()
     {
-        $configurations = Config::get('modules.modules.register');
+        $configurations = Config::get('megavel.modules.register');
 
         if (is_null($configurations)) {
             throw new WrongConfigurationsException();
@@ -50,7 +50,7 @@ class ModulesConfigReaderService
      */
     public function getModulesExtraServiceProviders($moduleName)
     {
-        $configurations = Config::get('modules.modules.register.' . $moduleName . '.extraServiceProviders');
+        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.extraServiceProviders');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -83,7 +83,7 @@ class ModulesConfigReaderService
      */
     public function getModelsFactoryPath()
     {
-        return Config::get('modules.modelsFactoryPath');
+        return Config::get('megavel.modelsFactoryPath');
     }
 
     /**
@@ -95,7 +95,7 @@ class ModulesConfigReaderService
      */
     public function getModulesWebRoutes($moduleName)
     {
-        $configurations = Config::get('modules.modules.register.' . $moduleName . '.routes.web');
+        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.routes.web');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -113,7 +113,7 @@ class ModulesConfigReaderService
      */
     public function getModulesApiRoutes($moduleName)
     {
-        $configurations = Config::get('modules.modules.register.' . $moduleName . '.routes.api');
+        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.routes.api');
 
         if (is_null($configurations)) {
             $configurations = [];

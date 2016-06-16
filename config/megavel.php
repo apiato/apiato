@@ -82,7 +82,7 @@ return [
                     ],
 
                     'services' => [
-                        'Authentication',
+                        'ApiAuthentication',
                     ],
                 ],
             ],

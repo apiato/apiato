@@ -6,7 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use App\Services\Authentication\Portals\TokenTrait;
+use App\Services\ApiAuthentication\Portals\TokenTrait;
 use App\Modules\Core\Model\Abstracts\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 

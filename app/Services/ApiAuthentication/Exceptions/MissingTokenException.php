@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Services\Authentication\Exceptions;
+namespace App\Services\ApiAuthentication\Exceptions;
 
 use App\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class AuthenticationFailedException.
+ * Class MissingTokenException.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LogoutFailedException extends ApiException
+class MissingTokenException extends ApiException
 {
 
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'Failed to logout!';
+    public $message = 'Token is required.';
 }
