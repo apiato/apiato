@@ -2,6 +2,7 @@
 
 namespace App\Modules\User\Policies;
 
+use App\Modules\Core\Policy\Abstracts\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Modules\User\Models\User;
 
@@ -10,7 +11,7 @@ use App\Modules\User\Models\User;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UserPolicy
+class UserPolicy extends Policy
 {
 
     use HandlesAuthorization;
