@@ -1,7 +1,7 @@
 <?php
 
+use App\Modules\Core\Seeder\Abstracts\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
 use App\Services\Authorization\Seeders\RolesAndPermissionsSeeder;
 
 /**
