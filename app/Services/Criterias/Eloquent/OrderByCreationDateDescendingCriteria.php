@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Core\Repository\Criterias\Eloquent;
+namespace App\Services\Criterias\Eloquent;
 
 use App\Modules\Core\Repository\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;

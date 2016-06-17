@@ -2,9 +2,9 @@
 
 namespace App\Modules\User\Tasks;
 
-use App\Modules\User\Contracts\UserRepositoryInterface;
-use App\Modules\Core\Repository\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Modules\Core\Task\Abstracts\Task;
+use App\Modules\User\Contracts\UserRepositoryInterface;
+use App\Services\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
  * Class ListAllUsersTask.
