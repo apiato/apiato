@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
-use App\Services\Authorization\Seeders\SeedRolesAndPermissions;
+use App\Services\Authorization\Seeders\RolesAndPermissionsSeeder;
 
 /**
  * Class DatabaseSeeder
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $seeders = [
-        SeedRolesAndPermissions::class,
+        RolesAndPermissionsSeeder::class,
     ];
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Services\Authorization\Models\Permission;
 use App\Services\Authorization\Models\Role;
 
-class SeedRolesAndPermissions extends Seeder
+class RolesAndPermissionsSeeder extends Seeder
 {
 
     /**
