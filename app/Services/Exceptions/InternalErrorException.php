@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Modules\Core\Exception\Exceptions;
+namespace App\Services\Exceptions;
 
 use App\Modules\Core\Exception\Abstracts\ApiException;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
- * Class UnsupportedFractalSerializerException.
+ * Class InternalErrorException.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UnsupportedFractalSerializerException extends ApiException
+class InternalErrorException extends ApiException
 {
 
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
+
+    public $message = 'Something went wrong!';
 }

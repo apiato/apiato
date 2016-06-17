@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Core\Exception\Exceptions;
+namespace App\Services\Exceptions;
 
 use Dingo\Api\Exception\ResourceException as DingoResourceException;
 use Exception;

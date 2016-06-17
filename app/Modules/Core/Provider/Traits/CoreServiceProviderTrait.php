@@ -3,9 +3,9 @@
 namespace App\Modules\Core\Provider\Traits;
 
 use App;
-use DB;
-use App\Modules\Core\Exception\Exceptions\UnsupportedFractalSerializerException;
 use App\Services\Configuration\Portals\Facade\ModulesConfig;
+use App\Services\Exceptions\UnsupportedFractalSerializerException;
+use DB;
 use Log;
 
 /**
