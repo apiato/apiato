@@ -2,7 +2,7 @@
 
 namespace App\Services\ApiAuthentication\Exceptions;
 
-use App\Modules\Core\Exception\Abstracts\ApiException;
+use App\Modules\Core\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AuthenticationFailedException extends ApiException
+class AuthenticationFailedException extends Exception
 {
 
     public $httpStatusCode = Response::HTTP_UNAUTHORIZED;

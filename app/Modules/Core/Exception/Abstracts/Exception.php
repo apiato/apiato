@@ -3,18 +3,18 @@
 namespace App\Modules\Core\Exception\Abstracts;
 
 use Dingo\Api\Contract\Debug\MessageBagErrors as DingoMessageBagErrors;
-use Exception;
+use Exception as BaseException;
 use Illuminate\Support\MessageBag;
 use Log;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException as SymfonyHttpException;
 
 /**
- * Class ApiException.
+ * Class Exception.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class ApiException extends SymfonyHttpException implements DingoMessageBagErrors
+abstract class Exception extends SymfonyHttpException implements DingoMessageBagErrors
 {
 
     /**
@@ -37,7 +37,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
     protected $environment;
 
     /**
-     * ApiException constructor.
+     * Exception constructor.
      *
      * @param null            $message
      * @param null            $errors
@@ -51,7 +51,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
         $errors = null,
         $statusCode = null,
         $code = 0,
-        Exception $previous = null,
+        BaseException $previous = null,
         $headers = []
     ) {
 
@@ -99,7 +99,7 @@ abstract class ApiException extends SymfonyHttpException implements DingoMessage
      */
     public function debug($error)
     {
-        if ($error instanceof Exception) {
+        if ($error instanceof BaseException) {
             $error = $error->getMessage();
         }
 

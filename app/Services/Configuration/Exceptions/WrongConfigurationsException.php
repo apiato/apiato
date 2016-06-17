@@ -2,7 +2,7 @@
 
 namespace App\Services\Configuration\Exceptions;
 
-use App\Modules\Core\Exception\Abstracts\ApiException;
+use App\Modules\Core\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WrongConfigurationsException extends ApiException
+class WrongConfigurationsException extends Exception
 {
 
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;

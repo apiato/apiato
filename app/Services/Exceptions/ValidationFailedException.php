@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  * Class ValidationFailedException.
  *
  * Note: exceptionally extending from `Dingo\Api\Exception\ResourceException` instead of
- * `App\Modules\Core\Exception\Abstracts\ApiException`. To keep the request validation
+ * `App\Modules\Core\Exception\Abstracts\Exception`. To keep the request validation
  * throwing well formatted error. To be debugged later and switched to extending from
- * `ApiException` while carefully looking at the validation response error format.
+ * `Exception` while carefully looking at the validation response error format.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
