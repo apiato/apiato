@@ -4,7 +4,7 @@
 // which will be used by Laravel when dealing with Model Factories.
 foreach (App\Services\Configuration\Portals\Facade\ModulesConfig::getModulesNames() as $moduleName) {
 
-    $modulesDirectory = base_path('app/Modules/' . $moduleName . '/Factory/');
+    $modulesDirectory = base_path('app/Modules/' . $moduleName . '/Factories/');
 
     if (is_dir($modulesDirectory)) {
         $moduleFactoryFile = $modulesDirectory . $moduleName . 'Factory.php';

@@ -77,16 +77,6 @@ class ModulesConfigReaderService
     }
 
     /**
-     * Get the Models Factory Path from the modules config file
-     *
-     * @return  mixed
-     */
-    public function getModelsFactoryPath()
-    {
-        return Config::get('megavel.modelsFactoryPath');
-    }
-
-    /**
      * Get the modules web routes values from the modules config file
      *
      * @param $moduleName
