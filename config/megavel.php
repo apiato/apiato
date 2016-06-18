@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'modules' => [
+    'containers' => [
 
         /*
         |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
                 |
                 */
                 'dependencies'          => [
-                    'modules' => [
+                    'containers' => [
 
                     ],
 
@@ -126,7 +126,7 @@ return [
                 |
                 */
                 'dependencies'          => [
-                    'modules'  => [
+                    'containers'  => [
 
                     ],
                     'services' => [

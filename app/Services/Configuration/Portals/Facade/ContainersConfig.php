@@ -19,7 +19,7 @@ class ContainersConfig extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'modulesConfigReaderService';
+        return 'containersConfigReaderService';
     }
 
 }

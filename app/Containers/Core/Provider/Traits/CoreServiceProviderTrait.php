@@ -75,21 +75,21 @@ trait CoreServiceProviderTrait
     }
 
     /**
-     * Get the Service Providers full classes names from the modules config file registered modules.
+     * Get the Service Providers full classes names from the containers config file registered containers.
      *
      * @return  array
      */
     public function getContainersServiceProviders()
     {
-        $modulesNamespace = ContainersConfig::getContainersNamespace();
+        $containersNamespace = ContainersConfig::getContainersNamespace();
 
         foreach (ContainersConfig::getContainersNames() as $moduleName) {
-            // get the Module extra service providers (extra service providers are defined in the modules config file)
+            // get the Module extra service providers (extra service providers are defined in the containers config file)
             foreach (ContainersConfig::getContainersExtraServiceProviders($moduleName) as $provider) {
                 $allServiceProviders[] = $provider;
             }
             // append the Module main service provider
-            $allServiceProviders[] = ContainersConfig::buildMainServiceProvider($modulesNamespace, $moduleName);
+            $allServiceProviders[] = ContainersConfig::buildMainServiceProvider($containersNamespace, $moduleName);
         }
 
         return array_unique($allServiceProviders) ? : [];

@@ -12,7 +12,7 @@ use App\Containers\User\Policies\UserPolicy;
  *
  * This Service Provider is designed to map the policies to their models.
  * Must be manually added to the list of extra service providers in the
- * modules config file in order to get registered in the framework.
+ * containers config file in order to get registered in the framework.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

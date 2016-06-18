@@ -16,23 +16,23 @@ class ContainersConfigReaderService
 {
 
     /**
-     * Get the modules namespace value from the modules config file
+     * Get the containers namespace value from the containers config file
      *
      * @return  string
      */
     public function getContainersNamespace()
     {
-        return Config::get('megavel.modules.namespace');
+        return Config::get('megavel.containers.namespace');
     }
 
     /**
-     * Get the registered modules names in the modules config file
+     * Get the registered containers names in the containers config file
      *
      * @return  array
      */
     public function getContainersNames()
     {
-        $configurations = Config::get('megavel.modules.register');
+        $configurations = Config::get('megavel.containers.register');
 
         if (is_null($configurations)) {
             throw new WrongConfigurationsException();
@@ -50,7 +50,7 @@ class ContainersConfigReaderService
      */
     public function getContainersExtraServiceProviders($moduleName)
     {
-        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.extraServiceProviders');
+        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.extraServiceProviders');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -62,22 +62,22 @@ class ContainersConfigReaderService
     /**
      * build the main service provider class namespace
      *
-     * @param $modulesNamespace
+     * @param $containersNamespace
      * @param $moduleName
      *
      * @return  string
      */
-    public function buildMainServiceProvider($modulesNamespace, $moduleName)
+    public function buildMainServiceProvider($containersNamespace, $moduleName)
     {
         if($moduleName != 'Core') {
-            return $modulesNamespace . "\\Containers\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+            return $containersNamespace . "\\Containers\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
         }
 
-        return $modulesNamespace . "\\Containers\\" . $moduleName . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
+        return $containersNamespace . "\\Containers\\" . $moduleName . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
     }
 
     /**
-     * Get the modules web routes values from the modules config file
+     * Get the containers web routes values from the containers config file
      *
      * @param $moduleName
      *
@@ -85,7 +85,7 @@ class ContainersConfigReaderService
      */
     public function getContainersWebRoutes($moduleName)
     {
-        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.routes.web');
+        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.routes.web');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -95,7 +95,7 @@ class ContainersConfigReaderService
     }
 
     /**
-     * Get the modules api routes values from the modules config file
+     * Get the containers api routes values from the containers config file
      *
      * @param $moduleName
      *
@@ -103,7 +103,7 @@ class ContainersConfigReaderService
      */
     public function getContainersApiRoutes($moduleName)
     {
-        $configurations = Config::get('megavel.modules.register.' . $moduleName . '.routes.api');
+        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.routes.api');
 
         if (is_null($configurations)) {
             $configurations = [];

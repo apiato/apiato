@@ -59,16 +59,16 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
     }
 
     /**
-     * Register all the modules routes files in the framework
+     * Register all the containers routes files in the framework
      */
     private function registerRoutes()
     {
-        $modulesNames = ContainersConfig::getContainersNames();
-        $modulesNamespace = ContainersConfig::getContainersNamespace();
+        $containersNames = ContainersConfig::getContainersNames();
+        $containersNamespace = ContainersConfig::getContainersNamespace();
 
-        foreach ($modulesNames as $moduleName) {
-            $this->registerContainersApiRoutes($moduleName, $modulesNamespace);
-            $this->registerContainersWebRoutes($moduleName, $modulesNamespace);
+        foreach ($containersNames as $moduleName) {
+            $this->registerContainersApiRoutes($moduleName, $containersNamespace);
+            $this->registerContainersWebRoutes($moduleName, $containersNamespace);
         }
 
         $this->registerApplicationDefaultApiRoutes();
@@ -79,20 +79,20 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      * Register the Containers API routes files
      *
      * @param $moduleName
-     * @param $modulesNamespace
+     * @param $containersNamespace
      */
-    private function registerContainersApiRoutes($moduleName, $modulesNamespace)
+    private function registerContainersApiRoutes($moduleName, $containersNamespace)
     {
         foreach (ContainersConfig::getContainersApiRoutes($moduleName) as $apiRoute) {
 
             $version = 'v' . $apiRoute['versionNumber'];
 
             $this->apiRouter->version($version,
-                function (DingoApiRouter $router) use ($moduleName, $modulesNamespace, $apiRoute) {
+                function (DingoApiRouter $router) use ($moduleName, $containersNamespace, $apiRoute) {
 
                     $router->group([
                         // Routes Namespace
-                        'namespace'  => $modulesNamespace . '\\Containers\\' . $moduleName . '\\Controllers\Api',
+                        'namespace'  => $containersNamespace . '\\Containers\\' . $moduleName . '\\Controllers\Api',
                         // Enable: API Rate Limiting
                         'middleware' => 'api.throttle',
                         // The API limit time.
@@ -113,13 +113,13 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
      * Register the Containers WEB routes files
      *
      * @param $moduleName
-     * @param $modulesNamespace
+     * @param $containersNamespace
      */
-    private function registerContainersWebRoutes($moduleName, $modulesNamespace)
+    private function registerContainersWebRoutes($moduleName, $containersNamespace)
     {
         foreach (ContainersConfig::getContainersWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
-                'namespace' => $modulesNamespace . '\\Containers\\' . $moduleName . '\\Controllers\Web',
+                'namespace' => $containersNamespace . '\\Containers\\' . $moduleName . '\\Controllers\Web',
             ], function (LaravelRouter $router) use ($webRoute, $moduleName) {
                 require $this->validateRouteFile(
                     app_path('/Containers/' . $moduleName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
@@ -174,7 +174,7 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
     {
         if (!file_exists($file)) {
             throw new WrongConfigurationsException(
-                'You probably have defined some Routes files in the modules config file that does not yet exist in your module routes directory.'
+                'You probably have defined some Routes files in the containers config file that does not yet exist in your module routes directory.'
             );
         }
 

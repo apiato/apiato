@@ -17,7 +17,7 @@ class ContainersConfigServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('modulesConfigReaderService', function () {
+        $this->app->bind('containersConfigReaderService', function () {
             return $this->app->make('App\Services\Configuration\Portals\ContainersConfigReaderService');
         });
     }

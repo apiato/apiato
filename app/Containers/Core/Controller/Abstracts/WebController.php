@@ -22,28 +22,28 @@ abstract class WebController extends CoreController implements WebControllerInte
     /**
      * @var  \App\Services\Configuration\Portals\ContainersConfigReaderService
      */
-    private $modulesConfig;
+    private $containersConfig;
 
     /**
      * WebController constructor.
      *
      * @param \Illuminate\View\Factory                                         $view
-     * @param \App\Services\Configuration\Portals\ContainersConfigReaderService $modulesConfig
+     * @param \App\Services\Configuration\Portals\ContainersConfigReaderService $containersConfig
      */
-    public function __construct(View $view, ContainersConfigReaderService $modulesConfig)
+    public function __construct(View $view, ContainersConfigReaderService $containersConfig)
     {
         $this->view = $view;
-        $this->modulesConfig = $modulesConfig;
+        $this->containersConfig = $containersConfig;
 
         $this->loadContainersViewsDirectories();
     }
 
     /**
-     * Automatically load all the modules views directories
+     * Automatically load all the containers views directories
      */
     private function loadContainersViewsDirectories()
     {
-        foreach ($this->modulesConfig->getContainersNames() as $moduleName) {
+        foreach ($this->containersConfig->getContainersNames() as $moduleName) {
             $moduleViewDirectory = base_path('app/Containers/' . $moduleName . '/Views/');
             if (is_dir($moduleViewDirectory)) {
                 $this->view->addLocation($moduleViewDirectory);
