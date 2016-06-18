@@ -8,7 +8,7 @@
 
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
 
-Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
+Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **[Megavel](https://github.com/megavel/megavel)** (Laravel 5.1 with new look).
 
 Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
 And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
@@ -99,42 +99,23 @@ It uses the best framework, packages, tools and conventions. All configured to w
 <a name="Documentation"></a>
 ## Full Documentation
 
-**Hello API** comes with a detailed documentation ([wiki](https://github.com/Mahmoudz/Hello-API/wiki)), to help you getting started and modifying the existing code.
+**Hello API** is built on top of [Megavel](https://github.com/megavel/megavel) (Laravel Framework with new look). In order to understand Hello API code base you may read a little bit about **Megavel**, to get an overview of how the project is architected. *(you will love it)*
 
 * Intro
 	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
 	* [Requirements](https://github.com/Mahmoudz/Hello-API/wiki/Home#requirements)
 	* [Installation](https://github.com/Mahmoudz/Hello-API/wiki/Home#installation)
 * General
-	* [Folders Structure](https://github.com/Mahmoudz/Hello-API/wiki/Folders-Structure)
 	* [Development Workflow](https://github.com/Mahmoudz/Hello-API/wiki/Development-Workflow)
 	* [Frequently Asked Questions (FAQ)](https://github.com/Mahmoudz/Hello-API/wiki/FAQ)
 * API
+	* [Routes DockBlock](https://github.com/Mahmoudz/Hello-API/wiki/Routes-DockBlock)
 	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
 	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
-* Layers
-	* [Modules](https://github.com/Mahmoudz/Hello-API/wiki/Modules)
-	* [Services](https://github.com/Mahmoudz/Hello-API/wiki/Services)
-* Components
-	* [Routes](https://github.com/Mahmoudz/Hello-API/wiki/Routes)
-	* [Controllers](https://github.com/Mahmoudz/Hello-API/wiki/Controllers)
-	* [Models](https://github.com/Mahmoudz/Hello-API/wiki/Models)
-	* [Tasks](https://github.com/Mahmoudz/Hello-API/wiki/Tasks)
-	* [Service Providers](https://github.com/Mahmoudz/Hello-API/wiki/Service-Providers)
-	* [Requests](https://github.com/Mahmoudz/Hello-API/wiki/Requests)
-	* [Policies](https://github.com/Mahmoudz/Hello-API/wiki/Policies)
-	* [Response Transformers](https://github.com/Mahmoudz/Hello-API/wiki/Response-Transformers)
-	* [Repositories](https://github.com/Mahmoudz/Hello-API/wiki/Repositories)
-	* [Database Criterias](https://github.com/Mahmoudz/Hello-API/wiki/Database-Criterias)
-	* [Database Migrations](https://github.com/Mahmoudz/Hello-API/wiki/Database-Migrations)
-	* [Exceptions](https://github.com/Mahmoudz/Hello-API/wiki/Exceptions)
-	* [Tests](https://github.com/Mahmoudz/Hello-API/wiki/Tests)
-	* [Models Factory](https://github.com/Mahmoudz/Hello-API/wiki/Models-Factory)
-	* [Database Seeders](https://github.com/Mahmoudz/Hello-API/wiki/Database-Seeders)
 
-
-
+	
+	
 
 <a name="Comming-Features"></a>
 ##Comming Features
