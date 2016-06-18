@@ -10,7 +10,7 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="User Module Functional Tests">
-            <directory>./app/Modules/User/Tests/Api/</directory>
+            <directory>./app/Containers/User/Tests/Api/</directory>
         </testsuite>
     </testsuites>
     <filter>

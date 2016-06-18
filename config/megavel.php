@@ -5,20 +5,20 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Modules Namespace
+        | Containers Namespace
         |--------------------------------------------------------------------------
         |
-        | Here you should set the Modules namespace
+        | Here you should set the Containers namespace
         |
         */
         'namespace' => 'App',
 
         /*
         |--------------------------------------------------------------------------
-        | Modules Registration
+        | Containers Registration
         |--------------------------------------------------------------------------
         |
-        | Here you should register all your Modules
+        | Here you should register all your Containers
         |
         */
         'register'  => [
@@ -64,7 +64,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Modules\User\Providers\PoliciesServiceProvider::class,
+                    App\Containers\User\Providers\PoliciesServiceProvider::class,
                 ],
 
                 /*
@@ -149,7 +149,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Modules\Demo\Events\EventServiceProvider::class,
+                    App\Containers\Demo\Events\EventServiceProvider::class,
                 ],
             ],
 
@@ -190,7 +190,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Modules\Core\Provider\Providers\RoutesServiceProvider::class,
+                    App\Containers\Core\Provider\Providers\RoutesServiceProvider::class,
                 ],
             ],
 

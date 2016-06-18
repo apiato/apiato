@@ -149,12 +149,12 @@ return [
         /*
          * Hello Services Service Providers
          */
-        App\Services\Configuration\Providers\ModulesConfigServiceProvider::class,
+        App\Services\Configuration\Providers\ContainersConfigServiceProvider::class,
 
         /*
-         * Hello Modules Service Providers
+         * Hello Containers Service Providers
          */
-        App\Modules\Core\Provider\Providers\CoreServiceProvider::class,
+        App\Containers\Core\Provider\Providers\CoreServiceProvider::class,
     ],
 
     /*

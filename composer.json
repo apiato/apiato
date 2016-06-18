@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "classmap": [
-            "app/Modules/Core/Test/Abstracts/TestCase.php"
+            "app/Containers/Core/Test/Abstracts/TestCase.php"
         ]
     },
     "scripts": {

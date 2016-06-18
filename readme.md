@@ -8,7 +8,7 @@
 
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
 
-Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **[Megavel](https://github.com/megavel/megavel)** (Laravel 5.1 with new look).
+Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **[Megavel](https://github.com/megavel/megavel)** (Laravel 5.1 framework with new look).
 
 Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
 And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
@@ -99,7 +99,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 <a name="Documentation"></a>
 ## Full Documentation
 
-**Hello API** is built on top of [Megavel](https://github.com/megavel/megavel) (Laravel Framework with new look). In order to understand Hello API code base you may read a little bit about **Megavel**, to get an overview of how the project is architected. *(you will love it)*
+**Hello API** is built on top of [Megavel](https://github.com/megavel/megavel) (Laravel Framework with new look). In order to understand the `Hello API` code base you need to read a little bit about **Megavel**, to get an overview of how the project is architected. *(you will love it)*.
 
 * Intro
 	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
@@ -126,7 +126,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Automatic Code and Data Backup.
 - Admin Panel (For Users Management).
 - Support login with social networks (Facebook, Twitter, Github, Google).
-- Back-end generators (to generate Modules and components) for faster development.
+- Back-end generators (to generate Containers and components) for faster development.
 - A lot more cool stuff in mind, (never stop coding).
 
 > Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).

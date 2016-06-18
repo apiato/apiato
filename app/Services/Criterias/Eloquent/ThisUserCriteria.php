@@ -2,7 +2,7 @@
 
 namespace App\Services\Criterias\Eloquent;
 
-use App\Modules\Core\Repository\Abstracts\Criteria;
+use App\Containers\Core\Repository\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
