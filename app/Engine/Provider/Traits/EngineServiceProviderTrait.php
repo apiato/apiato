@@ -9,11 +9,11 @@ use DB;
 use Log;
 
 /**
- * Class CoreServiceProviderTrait.
+ * Class EngineServiceProviderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait CoreServiceProviderTrait
+trait EngineServiceProviderTrait
 {
 
     /**

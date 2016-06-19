@@ -2,7 +2,7 @@
 
 namespace App\Engine\Provider\Providers;
 
-use App\Engine\Provider\Traits\CoreServiceProviderTrait;
+use App\Engine\Provider\Traits\EngineServiceProviderTrait;
 use App\Services\Configuration\Exceptions\WrongConfigurationsException;
 use App\Services\Configuration\Portals\Facade\ContainersConfig;
 use Dingo\Api\Routing\Router as DingoApiRouter;
@@ -17,7 +17,7 @@ use Illuminate\Routing\Router as LaravelRouter;
 class RoutesServiceProvider extends LaravelRouteServiceProvider
 {
 
-    use CoreServiceProviderTrait;
+    use EngineServiceProviderTrait;
 
     /**
      * Instance of the Laravel default Router Class

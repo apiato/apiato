@@ -5,15 +5,15 @@ namespace App\Engine\Provider\Providers;
 use App\Engine\Provider\Abstracts\ServiceProvider;
 
 /**
- * Class CoreServiceProvider
+ * Class EngineServiceProvider
  * The main Service Provider where all Service Providers gets registered
  * this is the only Service Provider that gets injected in the Config/app.php.
  *
- * Class CoreServiceProvider
+ * Class EngineServiceProvider
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CoreServiceProvider extends ServiceProvider
+class EngineServiceProvider extends ServiceProvider
 {
 
     /**

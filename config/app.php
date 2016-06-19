@@ -154,7 +154,7 @@ return [
         /*
          * Hello Containers Service Providers
          */
-        App\Engine\Provider\Providers\CoreServiceProvider::class,
+        App\Engine\Provider\Providers\EngineServiceProvider::class,
     ],
 
     /*

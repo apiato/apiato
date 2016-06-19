@@ -3,7 +3,7 @@
 namespace App\Engine\Provider\Abstracts;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use App\Engine\Provider\Traits\CoreServiceProviderTrait;
+use App\Engine\Provider\Traits\EngineServiceProviderTrait;
 
 /**
  * Class ServiceProvider.
@@ -13,5 +13,5 @@ use App\Engine\Provider\Traits\CoreServiceProviderTrait;
 abstract class ServiceProvider extends LaravelServiceProvider
 {
 
-    use CoreServiceProviderTrait;
+    use EngineServiceProviderTrait;
 }
