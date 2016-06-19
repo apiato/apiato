@@ -2,7 +2,7 @@
 
 namespace App\Containers\Demo\Providers;
 
-use App\Engine\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class DemoServiceProvider.
@@ -13,7 +13,7 @@ use App\Engine\Provider\Abstracts\ServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DemoServiceProvider extends ServiceProvider
+class DemoServiceProvider extends ServiceProviderAbstract
 {
 
     /**

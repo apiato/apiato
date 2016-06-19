@@ -2,8 +2,9 @@
 
 namespace App\Engine\Provider\Providers;
 
-use App\Engine\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
 use App\Engine\Routes\Providers\RoutesServiceProvider;
+use App\Engine\Provider\Traits\EngineServiceProviderTrait;
 
 /**
  * Class EngineServiceProvider
@@ -14,8 +15,10 @@ use App\Engine\Routes\Providers\RoutesServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class EngineServiceProvider extends ServiceProvider
+class EngineServiceProvider extends ServiceProviderAbstract
 {
+
+    use EngineServiceProviderTrait;
 
     /**
      * the new Models Factories Paths

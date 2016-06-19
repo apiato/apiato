@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Repositories\Eloquent\UserRepository;
-use App\Engine\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class UserServiceProvider.
@@ -15,7 +15,7 @@ use App\Engine\Provider\Abstracts\ServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UserServiceProvider extends ServiceProvider
+class UserServiceProvider extends ServiceProviderAbstract
 {
 
     /**

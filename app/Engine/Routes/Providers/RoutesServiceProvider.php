@@ -2,9 +2,9 @@
 
 namespace App\Engine\Routes\Providers;
 
+use App\Engine\Provider\Abstracts\RoutesServiceProviderAbstract;
 use App\Engine\Routes\Traits\RoutesServiceProviderTrait;
 use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RoutesServiceProvider extends LaravelRouteServiceProvider
+class RoutesServiceProvider extends RoutesServiceProviderAbstract
 {
     use RoutesServiceProviderTrait;
 
