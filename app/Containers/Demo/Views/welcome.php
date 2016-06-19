@@ -34,15 +34,15 @@
                 font-size: 96px;
             }
             .subTitle {
-                font-size: 56px;
+                font-size: 48px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
-                <div class="subTitle">Freestyle Architecture</div>
+                <div class="title">Megavel 5.1</div>
+                <div class="subTitle">(Freestyle Architecture)</div>
             </div>
         </div>
     </body>

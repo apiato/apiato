@@ -35,7 +35,8 @@ class EngineServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerServiceProviders(array_merge($this->getContainersServiceProviders(), $this->engineServiceProviders));
+        $this->registerServiceProviders(array_merge($this->getContainersServiceProviders(),
+            $this->engineServiceProviders));
         $this->overrideDefaultFractalSerializer();
     }
 

@@ -3,6 +3,7 @@
 namespace App\Engine\Controller\Abstracts;
 
 use App\Engine\Controller\Contracts\WebControllerInterface;
+use App\Engine\Views\Traits\ViewsTrait;
 use App\Services\Configuration\Portals\ContainersConfigReaderService;
 use Illuminate\View\Factory as View;
 
@@ -13,43 +14,17 @@ use Illuminate\View\Factory as View;
  */
 abstract class WebController extends EngineController implements WebControllerInterface
 {
-
-    /**
-     * @var  \Illuminate\View\Factory
-     */
-    private $view;
-
-    /**
-     * @var  \App\Services\Configuration\Portals\ContainersConfigReaderService
-     */
-    private $containersConfig;
+    use ViewsTrait;
 
     /**
      * WebController constructor.
      *
-     * @param \Illuminate\View\Factory                                         $view
+     * @param \Illuminate\View\Factory                                          $view
      * @param \App\Services\Configuration\Portals\ContainersConfigReaderService $containersConfig
      */
     public function __construct(View $view, ContainersConfigReaderService $containersConfig)
     {
-        $this->view = $view;
-        $this->containersConfig = $containersConfig;
-
-        $this->loadContainersViewsDirectories();
-    }
-
-    /**
-     * Automatically load all the containers views directories
-     */
-    private function loadContainersViewsDirectories()
-    {
-        foreach ($this->containersConfig->getContainersNames() as $moduleName) {
-            $moduleViewDirectory = base_path('app/Containers/' . $moduleName . '/Views/');
-            if (is_dir($moduleViewDirectory)) {
-                $this->view->addLocation($moduleViewDirectory);
-            }
-        }
-
+        $this->loadContainersViewsDirectories($view, $containersConfig);
     }
 
 }
