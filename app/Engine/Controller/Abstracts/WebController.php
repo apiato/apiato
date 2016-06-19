@@ -14,6 +14,7 @@ use Illuminate\View\Factory as View;
  */
 abstract class WebController extends EngineController implements WebControllerInterface
 {
+
     use ViewsTrait;
 
     /**

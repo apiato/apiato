@@ -1,11 +1,16 @@
 <?php
 
-namespace App\Engine\Middleware\Http\Middlewares;
+namespace App\Services\Middlewares\Http;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
+/**
+ * Class Authenticate
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class Authenticate
 {
     /**

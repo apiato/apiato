@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Engine\Middleware\Http\Middlewares;
+namespace App\Services\Middlewares\Http;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
+/**
+ * Class RedirectIfAuthenticated
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class RedirectIfAuthenticated
 {
     /**
