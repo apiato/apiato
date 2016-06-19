@@ -2,14 +2,15 @@
 
 namespace App\Services\Configuration\Providers;
 
-use App\Engine\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
+use App\Services\Configuration\Portals\ContainersConfigReaderService;
 
 /**
  * Class ContainersConfigServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ContainersConfigServiceProvider extends ServiceProvider
+class ContainersConfigServiceProvider extends ServiceProviderAbstract
 {
 
     /**
@@ -18,7 +19,7 @@ class ContainersConfigServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('containersConfigReaderService', function () {
-            return $this->app->make('App\Services\Configuration\Portals\ContainersConfigReaderService');
+            return $this->app->make(ContainersConfigReaderService::class);
         });
     }
 }
