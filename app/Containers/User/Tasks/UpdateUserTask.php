@@ -4,7 +4,7 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Services\ApiAuthentication\Exceptions\UpdateResourceFailedException;
-use App\Containers\Core\Task\Abstracts\Task;
+use App\Engine\Task\Abstracts\Task;
 
 /**
  * Class UpdateUserTask.

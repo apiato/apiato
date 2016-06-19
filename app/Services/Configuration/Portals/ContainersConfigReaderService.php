@@ -69,11 +69,11 @@ class ContainersConfigReaderService
      */
     public function buildMainServiceProvider($containersNamespace, $moduleName)
     {
-        if($moduleName != 'Core') {
+        if($moduleName != 'Engine') {
             return $containersNamespace . "\\Containers\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
         }
 
-        return $containersNamespace . "\\Containers\\" . $moduleName . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
+        return "App" . "\\Engine" . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
     }
 
     /**

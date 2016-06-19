@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Repositories\Eloquent\UserRepository;
-use App\Containers\Core\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class UserServiceProvider.

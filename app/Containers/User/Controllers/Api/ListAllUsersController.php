@@ -4,7 +4,7 @@ namespace App\Containers\User\Controllers\Api;
 
 use App\Containers\User\Tasks\ListAllUsersTask;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Containers\Core\Controller\Abstracts\ApiController;
+use App\Engine\Controller\Abstracts\ApiController;
 
 /**
  * Class ListAllUsersController.

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\Core\Task\Abstracts\Task;
+use App\Engine\Task\Abstracts\Task;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Services\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 

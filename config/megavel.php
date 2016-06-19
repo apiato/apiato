@@ -158,7 +158,7 @@ return [
             | Module: Core
             |--------------------------------------
             */
-            'Core' => [
+            'Engine' => [
 
                 /*
                 |--------------------------------------------------------------------------
@@ -190,7 +190,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Containers\Core\Provider\Providers\RoutesServiceProvider::class,
+                    App\Engine\Provider\Providers\RoutesServiceProvider::class,
                 ],
             ],
 

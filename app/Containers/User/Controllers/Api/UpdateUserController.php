@@ -5,7 +5,7 @@ namespace App\Containers\User\Controllers\Api;
 use App\Containers\User\Requests\UpdateUserRequest;
 use App\Containers\User\Tasks\UpdateUserTask;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Containers\Core\Controller\Abstracts\ApiController;
+use App\Engine\Controller\Abstracts\ApiController;
 
 /**
  * Class UpdateUserController.

@@ -4,7 +4,7 @@ namespace App\Containers\User\Requests;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use App\Containers\User\Models\User;
-use App\Containers\Core\Request\Abstracts\Request;
+use App\Engine\Request\Abstracts\Request;
 
 /**
  * Class DeleteUserRequest.

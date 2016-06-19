@@ -3,7 +3,7 @@
 namespace App\Containers\User\Transformers;
 
 use App\Containers\User\Models\User;
-use App\Containers\Core\Transformer\Abstracts\Transformer;
+use App\Engine\Transformer\Abstracts\Transformer;
 
 /**
  * Class UserTransformer.

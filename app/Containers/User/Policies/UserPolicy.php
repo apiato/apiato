@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Policies;
 
-use App\Containers\Core\Policy\Abstracts\Policy;
+use App\Engine\Policy\Abstracts\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Containers\User\Models\User;
 

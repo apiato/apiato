@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Containers\Core\Task\Abstracts\Task;
+use App\Engine\Task\Abstracts\Task;
 
 /**
  * Class ApiLogoutTask.

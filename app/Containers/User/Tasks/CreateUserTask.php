@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Containers\Core\Task\Abstracts\Task;
+use App\Engine\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.

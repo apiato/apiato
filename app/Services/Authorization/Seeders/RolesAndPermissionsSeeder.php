@@ -2,7 +2,7 @@
 
 namespace App\Services\Authorization\Seeders;
 
-use App\Containers\Core\Seeder\Abstracts\Seeder;
+use App\Engine\Seeder\Abstracts\Seeder;
 use App\Services\Authorization\Models\Permission;
 use App\Services\Authorization\Models\Role;
 

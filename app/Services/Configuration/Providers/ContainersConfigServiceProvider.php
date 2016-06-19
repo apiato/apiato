@@ -2,7 +2,7 @@
 
 namespace App\Services\Configuration\Providers;
 
-use App\Containers\Core\Provider\Abstracts\ServiceProvider;
+use App\Engine\Provider\Abstracts\ServiceProvider;
 
 /**
  * Class ContainersConfigServiceProvider

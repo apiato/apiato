@@ -2,7 +2,7 @@
 
 namespace App\Containers\Demo\Controllers\Web;
 
-use App\Containers\Core\Controller\Abstracts\WebController;
+use App\Engine\Controller\Abstracts\WebController;
 
 /**
  * Class IndexController

@@ -32,9 +32,7 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "app/Containers/Core/Test/Abstracts/TestCase.php"
-        ]
+
     },
     "scripts": {
         "post-root-package-install": [

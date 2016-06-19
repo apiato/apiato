@@ -2,7 +2,7 @@
 
 namespace App\Services\Exceptions;
 
-use App\Containers\Core\Exception\Abstracts\Exception;
+use App\Engine\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**

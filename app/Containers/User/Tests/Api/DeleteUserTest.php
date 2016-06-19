@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tests\Api;
 
-use App\Containers\Core\Test\Abstracts\TestCase;
+use App\Engine\Test\Abstracts\TestCase;
 
 /**
  * Class DeleteUserTest.

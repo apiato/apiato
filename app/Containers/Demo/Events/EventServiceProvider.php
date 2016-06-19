@@ -3,7 +3,7 @@
 namespace App\Containers\Demo\Events;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use App\Containers\Core\Event\Abstracts\EventServiceProvider as CoreEventServiceProvider;
+use App\Engine\Event\Abstracts\EventServiceProvider as CoreEventServiceProvider;
 
 /**
  * Class EventServiceProvider

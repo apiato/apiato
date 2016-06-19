@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Controllers\Web;
 
-use App\Containers\Core\Controller\Abstracts\WebController;
+use App\Engine\Controller\Abstracts\WebController;
 
 /**
  * Class WelcomeUserController
