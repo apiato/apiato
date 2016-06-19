@@ -3,6 +3,7 @@
 namespace App\Engine\Provider\Providers;
 
 use App\Engine\Provider\Abstracts\ServiceProvider;
+use App\Engine\Routes\Providers\RoutesServiceProvider;
 
 /**
  * Class EngineServiceProvider

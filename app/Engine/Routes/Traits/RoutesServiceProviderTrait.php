@@ -1,62 +1,19 @@
 <?php
 
-namespace App\Engine\Provider\Providers;
+namespace App\Engine\Routes\Traits;
 
-use App\Engine\Provider\Traits\EngineServiceProviderTrait;
 use App\Services\Configuration\Exceptions\WrongConfigurationsException;
 use App\Services\Configuration\Portals\Facade\ContainersConfig;
 use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router as LaravelRouter;
 
 /**
- * Class RoutesServiceProvider.
+ * Class RoutesServiceProviderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RoutesServiceProvider extends LaravelRouteServiceProvider
+trait RoutesServiceProviderTrait
 {
-
-    use EngineServiceProviderTrait;
-
-    /**
-     * Instance of the Laravel default Router Class
-     *
-     * @var \Illuminate\Routing\Router
-     */
-    private $webRouter;
-
-    /**
-     * Instance of the Dingo Api router.
-     *
-     * @var \Dingo\Api\Routing\Router
-     */
-    public $apiRouter;
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
-     */
-    public function boot(LaravelRouter $router)
-    {
-        // initializing an instance of the Dingo Api router
-        $this->apiRouter = app(DingoApiRouter::class);
-
-        parent::boot($router);
-    }
-
-    /**
-     * Define the routes for the application.
-     *
-     * @param \Illuminate\Routing\Router $webRouter
-     */
-    public function map(LaravelRouter $webRouter)
-    {
-        $this->webRouter = $webRouter;
-
-        $this->registerRoutes();
-    }
 
     /**
      * Register all the containers routes files in the framework
@@ -180,5 +137,4 @@ class RoutesServiceProvider extends LaravelRouteServiceProvider
 
         return $file;
     }
-
 }
