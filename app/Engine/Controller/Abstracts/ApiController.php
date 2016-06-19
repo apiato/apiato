@@ -10,7 +10,7 @@ use App\Engine\Controller\Contracts\ApiControllerInterface;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class ApiController extends CoreController implements ApiControllerInterface
+abstract class ApiController extends EngineController implements ApiControllerInterface
 {
 
     use DingoApiHelper;

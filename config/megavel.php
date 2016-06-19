@@ -58,7 +58,7 @@ return [
                 |
                 | Here you should register any extra service provider in your module.
                 | By default every module must have a single (main) service provider,
-                | which will get registered automatically by the core service provider,
+                | which will get registered automatically by the Engine service provider,
                 | without the need to define it here. However, if you have extra service
                 | providers in your Module, you must register them here to get loaded.
                 |
@@ -139,11 +139,11 @@ return [
                 | Demo Module extra (additional) Service Providers
                 |--------------------------------------------------------------------------
                 |
-                | Usually you don't have to touche the Core Module.
+                | Usually you don't have to touche the Engine Module.
                 |
                 | Here you should register any extra service provider in your module.
                 | By default every module must have a single (main) service provider,
-                | which will get registered automatically by the core service provider,
+                | which will get registered automatically by the Engine service provider,
                 | without the need to define it here. However, if you have extra service
                 | providers in your Module, you must register them here to get loaded.
                 |
@@ -152,48 +152,6 @@ return [
                     App\Containers\Demo\Events\EventServiceProvider::class,
                 ],
             ],
-
-            /*
-            |--------------------------------------
-            | Module: Core
-            |--------------------------------------
-            */
-            'Engine' => [
-
-                /*
-                |--------------------------------------------------------------------------
-                | Core Module Dependencies
-                |--------------------------------------------------------------------------
-                |
-                | Here you should include the names of all the Module dependencies.
-                | A Module could depend on another Module or on a Service.
-                |
-                */
-                'dependencies'          => [
-                    'services' => [
-                        'Configuration',
-                    ],
-                ],
-
-                /*
-                |--------------------------------------------------------------------------
-                | Core Module extra (additional) Service Providers
-                |--------------------------------------------------------------------------
-                |
-                | Usually you don't have to touche the Core Module.
-                |
-                | Here you should register any extra service provider in your module.
-                | By default every module must have a single (main) service provider,
-                | which will get registered automatically by the core service provider,
-                | without the need to define it here. However, if you have extra service
-                | providers in your Module, you must register them here to get loaded.
-                |
-                */
-                'extraServiceProviders' => [
-                    App\Engine\Provider\Providers\RoutesServiceProvider::class,
-                ],
-            ],
-
         ],
 
     ],

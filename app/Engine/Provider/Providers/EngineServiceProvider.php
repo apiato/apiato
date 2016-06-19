@@ -22,11 +22,20 @@ class EngineServiceProvider extends ServiceProvider
     const MODELS_FACTORY_PATH = '/app/Engine/Factory';
 
     /**
+     * Engine internal Service Provides.
+     *
+     * @var array
+     */
+    private $engineServiceProviders = [
+        RoutesServiceProvider::class
+    ];
+
+    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->registerServiceProviders($this->getContainersServiceProviders());
+        $this->registerServiceProviders(array_merge($this->getContainersServiceProviders(), $this->engineServiceProviders));
         $this->overrideDefaultFractalSerializer();
     }
 

@@ -11,7 +11,7 @@ use Illuminate\View\Factory as View;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class WebController extends CoreController implements WebControllerInterface
+abstract class WebController extends EngineController implements WebControllerInterface
 {
 
     /**
