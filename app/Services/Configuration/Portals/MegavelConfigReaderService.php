@@ -69,11 +69,11 @@ class MegavelConfigReaderService
      */
     public function buildMainServiceProvider($containersNamespace, $moduleName)
     {
-        if($moduleName != 'Engine') {
+        if($moduleName != 'Kernel') {
             return $containersNamespace . "\\Containers\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
         }
 
-        return "App" . "\\Engine" . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
+        return "App" . "\\Kernel" . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
     }
 
     /**

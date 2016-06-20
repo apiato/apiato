@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Requests;
 
-use App\Engine\Request\Abstracts\Request;
+use App\Kernel\Request\Abstracts\Request;
 
 /**
  * Class LoginRequest.

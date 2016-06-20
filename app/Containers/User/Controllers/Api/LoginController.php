@@ -5,7 +5,7 @@ namespace App\Containers\User\Controllers\Api;
 use App\Containers\User\Requests\LoginRequest;
 use App\Containers\User\Tasks\ApiLoginTask;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Engine\Controller\Abstracts\ApiController;
+use App\Kernel\Controller\Abstracts\ApiController;
 
 /**
  * Class LoginController.

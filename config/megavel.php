@@ -58,7 +58,7 @@ return [
                 |
                 | Here you should register any extra service provider in your module.
                 | By default every module must have a single (main) service provider,
-                | which will get registered automatically by the Engine service provider,
+                | which will get registered automatically by the Kernel service provider,
                 | without the need to define it here. However, if you have extra service
                 | providers in your Module, you must register them here to get loaded.
                 |
@@ -139,11 +139,11 @@ return [
                 | Demo Module extra (additional) Service Providers
                 |--------------------------------------------------------------------------
                 |
-                | Usually you don't have to touche the Engine Module.
+                | Usually you don't have to touche the Kernel Module.
                 |
                 | Here you should register any extra service provider in your module.
                 | By default every module must have a single (main) service provider,
-                | which will get registered automatically by the Engine service provider,
+                | which will get registered automatically by the Kernel service provider,
                 | without the need to define it here. However, if you have extra service
                 | providers in your Module, you must register them here to get loaded.
                 |

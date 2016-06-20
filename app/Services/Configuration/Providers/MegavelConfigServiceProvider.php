@@ -2,7 +2,7 @@
 
 namespace App\Services\Configuration\Providers;
 
-use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
+use App\Kernel\Provider\Abstracts\ServiceProviderAbstract;
 use App\Services\Configuration\Portals\MegavelConfigReaderService;
 
 /**

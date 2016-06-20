@@ -3,14 +3,14 @@
 namespace App\Containers\Demo\Events;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use App\Engine\Event\Abstracts\EventServiceProvider as EngineEventServiceProvider;
+use App\Kernel\Event\Abstracts\EventServiceProvider as KernelEventServiceProvider;
 
 /**
  * Class EventServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EventServiceProvider extends EngineEventServiceProvider
+class EventServiceProvider extends KernelEventServiceProvider
 {
     /**
      * The event listener mappings for the application.

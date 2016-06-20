@@ -2,7 +2,7 @@
 
 namespace App\Containers\Demo\Providers;
 
-use App\Engine\Provider\Abstracts\ServiceProviderAbstract;
+use App\Kernel\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class DemoServiceProvider.

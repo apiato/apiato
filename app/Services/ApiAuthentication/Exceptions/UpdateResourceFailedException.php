@@ -2,7 +2,7 @@
 
 namespace App\Services\ApiAuthentication\Exceptions;
 
-use App\Engine\Exception\Abstracts\Exception;
+use App\Kernel\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

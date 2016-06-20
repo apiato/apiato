@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Engine\Task\Abstracts\Task;
+use App\Kernel\Task\Abstracts\Task;
 
 /**
  * Class DeleteUserTask.

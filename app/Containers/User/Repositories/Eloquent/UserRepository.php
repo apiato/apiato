@@ -4,7 +4,7 @@ namespace App\Containers\User\Repositories\Eloquent;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Models\User;
-use App\Engine\Repository\Abstracts\Repository;
+use App\Kernel\Repository\Abstracts\Repository;
 
 /**
  * Class UserRepository.

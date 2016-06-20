@@ -2,7 +2,7 @@
 
 namespace App\Containers\Demo\Consoles;
 
-use App\Engine\Console\Abstracts\ConsoleCommand;
+use App\Kernel\Console\Abstracts\ConsoleCommand;
 use Illuminate\Foundation\Inspiring;
 
 class Inspire extends ConsoleCommand

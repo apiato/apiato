@@ -3,8 +3,8 @@
 namespace App\Containers\User\Controllers\Api;
 
 use App\Containers\User\Tasks\ApiLogoutTask;
-use App\Engine\Controller\Abstracts\ApiController;
-use App\Engine\Request\Manager\HttpRequest;
+use App\Kernel\Controller\Abstracts\ApiController;
+use App\Kernel\Request\Manager\HttpRequest;
 
 /**
  * Class LogoutController.
@@ -15,7 +15,7 @@ class LogoutController extends ApiController
 {
 
     /**
-     * @param \App\Engine\Request\Manager\HttpRequest $request
+     * @param \App\Kernel\Request\Manager\HttpRequest $request
      * @param \App\Containers\User\Tasks\ApiLogoutTask             $logoutTask
      *
      * @return \Dingo\Api\Http\Response
