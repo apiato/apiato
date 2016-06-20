@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Engine\Test\Traits;
+namespace App\Services\PHPUnitTests\Traits;
 
 use App;
 use Dingo\Api\Http\Response as DingoAPIResponse;
@@ -87,7 +87,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \App\Engine\Test\Traits\User|mixed
+     * @return \App\Services\PHPUnitTests\Traits\User|mixed
      */
     public function getLoggedInTestingUser()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Engine\Test\Abstracts;
+namespace App\Services\PHPUnitTests\Abstracts;
 
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
-use App\Engine\Test\Traits\TestingTrait;
+use App\Services\PHPUnitTests\Traits\TestingTrait;
 
 /**
  * Class TestCase.

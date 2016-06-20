@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tests\Api;
 
-use App\Engine\Test\Abstracts\TestCase;
+use App\Services\PHPUnitTests\Abstracts\TestCase;
 
 /**
  * Class LoginEndpointTest.
