@@ -7,7 +7,7 @@
  * @apiDescription     Login existing User
  * @apiVersion         1.0.0
  * @apiPermission      none
- * @apiUse             Headers_Normal
+ * @apiHeader          Accept application/json
  * @apiParam           {String}     email
  * @apiParam           {String}     password
  * @apiSuccessExample  {json}       Success-Response:
@@ -43,7 +43,8 @@ $router->post('login', [
  * @apiDescription     Logout an Authenticated User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
- * @apiUse             Headers_Authenticated
+ * @apiHeader          Accept   application/json
+ * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 202 Accepted
  */
@@ -61,7 +62,7 @@ $router->post('logout', [
  * @apiDescription     Create and Login new user
  * @apiVersion         1.0.0
  * @apiPermission      none
- * @apiUse             Headers_Normal
+ * @apiHeader          Accept application/json
  * @apiParam           {String}  email
  * @apiParam           {String}  password
  * @apiParam           {String}  name
@@ -98,7 +99,8 @@ $router->post('register', [
  * @apiDescription     Update User details
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
- * @apiUse             Headers_Authenticated
+ * @apiHeader          Accept application/json
+ * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  * @apiParam           {String}  password
  * @apiParam           {String}  name
  * @apiSuccessExample  {json}    Success-Response:
@@ -137,7 +139,8 @@ $router->put('users/{id}', [
  * @apiDescription     Delete User from Database
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
- * @apiUse             Headers_Authenticated
+ * @apiHeader          Accept application/json
+ * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  */
 $router->delete('users/{id}', [
     'uses'       => 'DeleteUserController@handle',
@@ -153,7 +156,8 @@ $router->delete('users/{id}', [
  * @apiDescription     List all the Application Users
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Admin
- * @apiUse             Headers_Authenticated
+ * @apiHeader          Accept application/json
+ * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  * @apiParam           search           ?search=name:John Doe;email:john@main.com
  * @apiParam           searchFields     ?searchFields=name:like;email:=
  * @apiParam           paginate         ?page=3
