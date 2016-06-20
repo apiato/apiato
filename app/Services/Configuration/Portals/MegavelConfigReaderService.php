@@ -6,13 +6,13 @@ use App\Services\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ContainersConfigReaderService.
+ * Class MegavelConfigReaderService.
  *
  * NOTE: You can access this Class functions with the facade [ModuleConfig].
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ContainersConfigReaderService
+class MegavelConfigReaderService
 {
 
     /**

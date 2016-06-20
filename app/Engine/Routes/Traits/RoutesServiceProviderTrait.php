@@ -3,7 +3,7 @@
 namespace App\Engine\Routes\Traits;
 
 use App\Services\Configuration\Exceptions\WrongConfigurationsException;
-use App\Services\Configuration\Portals\Facade\ContainersConfig;
+use App\Services\Configuration\Portals\Facade\MegavelConfig;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -20,8 +20,8 @@ trait RoutesServiceProviderTrait
      */
     private function registerRoutes()
     {
-        $containersNames = ContainersConfig::getContainersNames();
-        $containersNamespace = ContainersConfig::getContainersNamespace();
+        $containersNames = MegavelConfig::getContainersNames();
+        $containersNamespace = MegavelConfig::getContainersNamespace();
 
         foreach ($containersNames as $moduleName) {
             $this->registerContainersApiRoutes($moduleName, $containersNamespace);
@@ -40,7 +40,7 @@ trait RoutesServiceProviderTrait
      */
     private function registerContainersApiRoutes($moduleName, $containersNamespace)
     {
-        foreach (ContainersConfig::getContainersApiRoutes($moduleName) as $apiRoute) {
+        foreach (MegavelConfig::getContainersApiRoutes($moduleName) as $apiRoute) {
 
             $version = 'v' . $apiRoute['versionNumber'];
 
@@ -74,7 +74,7 @@ trait RoutesServiceProviderTrait
      */
     private function registerContainersWebRoutes($moduleName, $containersNamespace)
     {
-        foreach (ContainersConfig::getContainersWebRoutes($moduleName) as $webRoute) {
+        foreach (MegavelConfig::getContainersWebRoutes($moduleName) as $webRoute) {
             $this->webRouter->group([
                 'namespace' => $containersNamespace . '\\Containers\\' . $moduleName . '\\Controllers\Web',
             ], function (LaravelRouter $router) use ($webRoute, $moduleName) {

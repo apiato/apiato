@@ -3,7 +3,7 @@
 namespace App\Engine\Provider\Traits;
 
 use App;
-use App\Services\Configuration\Portals\Facade\ContainersConfig;
+use App\Services\Configuration\Portals\Facade\MegavelConfig;
 use App\Services\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Log;
@@ -69,7 +69,7 @@ trait EngineServiceProviderTrait
      */
     public function publishContainersMigrationsFiles()
     {
-        foreach (ContainersConfig::getContainersNames() as $moduleName) {
+        foreach (MegavelConfig::getContainersNames() as $moduleName) {
             $this->publishModuleMigrationsFiles($moduleName);
         }
     }
@@ -81,15 +81,15 @@ trait EngineServiceProviderTrait
      */
     public function getContainersServiceProviders()
     {
-        $containersNamespace = ContainersConfig::getContainersNamespace();
+        $containersNamespace = MegavelConfig::getContainersNamespace();
 
-        foreach (ContainersConfig::getContainersNames() as $moduleName) {
+        foreach (MegavelConfig::getContainersNames() as $moduleName) {
             // get the Module extra service providers (extra service providers are defined in the containers config file)
-            foreach (ContainersConfig::getContainersExtraServiceProviders($moduleName) as $provider) {
+            foreach (MegavelConfig::getContainersExtraServiceProviders($moduleName) as $provider) {
                 $allServiceProviders[] = $provider;
             }
             // append the Module main service provider
-            $allServiceProviders[] = ContainersConfig::buildMainServiceProvider($containersNamespace, $moduleName);
+            $allServiceProviders[] = MegavelConfig::buildMainServiceProvider($containersNamespace, $moduleName);
         }
 
         return array_unique($allServiceProviders) ? : [];

@@ -5,11 +5,11 @@ namespace App\Services\Configuration\Portals\Facade;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class ContainersConfiguration
+ * Class MegavelConfiguration
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ContainersConfig extends Facade
+class MegavelConfig extends Facade
 {
 
     /**
@@ -19,7 +19,7 @@ class ContainersConfig extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'containersConfigReaderService';
+        return 'megavelConfigReaderService';
     }
 
 }
