@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Tests\Api;
+namespace App\Containers\User\Tests\Api\Functional;
 
 use App\Containers\User\Models\User;
 use App\Services\Authorization\Models\Role;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Tests\Api;
+namespace App\Containers\User\Tests\Api\Functional;
 
 use App\Services\PHPUnitTests\Abstracts\TestCase;
 
