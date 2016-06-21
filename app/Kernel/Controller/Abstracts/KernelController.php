@@ -12,6 +12,8 @@ use Illuminate\Routing\Controller as LaravelController;
  *
  * A.K.A (app/Http/Controllers/Controller.php)
  *
+ * You are not allowed to extend from this class directly.
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 abstract class KernelController extends LaravelController
