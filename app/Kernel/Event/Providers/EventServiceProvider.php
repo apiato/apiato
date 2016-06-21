@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kernel\Event\Abstracts;
+namespace App\Kernel\Event\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServiceProvider;
 

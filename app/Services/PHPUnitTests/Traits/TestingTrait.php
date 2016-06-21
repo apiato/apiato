@@ -12,6 +12,8 @@ use Symfony\Component\Debug\Exception\UndefinedMethodException;
 /**
  * Class TestingTrait.
  *
+ * All the functions in this trait are accessible from all your tests.
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait TestingTrait

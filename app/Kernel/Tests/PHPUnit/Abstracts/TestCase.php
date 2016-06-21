@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\PHPUnitTests\Abstracts;
+namespace App\Kernel\Tests\PHPUnit\Abstracts;
 
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
@@ -56,7 +56,7 @@ abstract class TestCase extends LaravelTestCase
     {
         $this->baseUrl = env('API_BASE_URL');
 
-        $app = require __DIR__ . '/../../../../bootstrap/app.php';
+        $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
         $app->make(LaravelKernel::class)->bootstrap();
 
