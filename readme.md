@@ -8,7 +8,15 @@
 
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
 
-Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **[Megavel](https://github.com/megavel/megavel)** (Laravel 5.1 framework with new look).
+
+
+> If you used **Hello API** before `21 June 2016` you may need to check the branch [1.0](https://github.com/Mahmoudz/Hello-API/tree/release-0.1) of the release [v0.1.1](https://github.com/Mahmoudz/Hello-API/releases/tag/v0.1.1).
+
+
+
+Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **[Megavel](https://github.com/megavel/megavel)** (**Laravel** 5 with new look).
+
+<br>
 
 Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
 And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
