@@ -2,7 +2,7 @@
 
 namespace App\Kernel\Views\Traits;
 
-use App\Services\Configuration\Portals\MegavelConfigReaderService;
+use App\Kernel\Configuration\Portals\MegavelConfigReaderService;
 use Illuminate\View\Factory as View;
 
 /**

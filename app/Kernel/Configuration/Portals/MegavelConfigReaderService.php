@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Configuration\Portals;
+namespace App\Kernel\Configuration\Portals;
 
-use App\Services\Configuration\Exceptions\WrongConfigurationsException;
+use App\Kernel\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**

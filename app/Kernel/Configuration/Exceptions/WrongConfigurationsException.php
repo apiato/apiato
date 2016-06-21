@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Configuration\Exceptions;
+namespace App\Kernel\Configuration\Exceptions;
 
 use App\Kernel\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;

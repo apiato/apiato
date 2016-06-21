@@ -149,7 +149,7 @@ return [
         /*
          * Hello Services Service Providers
          */
-        App\Services\Configuration\Providers\MegavelConfigServiceProvider::class,
+        App\Kernel\Configuration\Providers\MegavelConfigServiceProvider::class,
 
         /*
          * Hello Containers Service Providers

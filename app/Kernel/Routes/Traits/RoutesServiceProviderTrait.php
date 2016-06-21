@@ -2,8 +2,8 @@
 
 namespace App\Kernel\Routes\Traits;
 
-use App\Services\Configuration\Exceptions\WrongConfigurationsException;
-use App\Services\Configuration\Portals\Facade\MegavelConfig;
+use App\Kernel\Configuration\Exceptions\WrongConfigurationsException;
+use App\Kernel\Configuration\Portals\Facade\MegavelConfig;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 

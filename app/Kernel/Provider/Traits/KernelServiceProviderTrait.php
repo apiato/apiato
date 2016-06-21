@@ -3,7 +3,7 @@
 namespace App\Kernel\Provider\Traits;
 
 use App;
-use App\Services\Configuration\Portals\Facade\MegavelConfig;
+use App\Kernel\Configuration\Portals\Facade\MegavelConfig;
 use App\Services\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Log;

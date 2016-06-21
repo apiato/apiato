@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Configuration\Providers;
+namespace App\Kernel\Configuration\Providers;
 
 use App\Kernel\Provider\Abstracts\ServiceProviderAbstract;
-use App\Services\Configuration\Portals\MegavelConfigReaderService;
+use App\Kernel\Configuration\Portals\MegavelConfigReaderService;
 
 /**
  * Class MegavelConfigServiceProvider
