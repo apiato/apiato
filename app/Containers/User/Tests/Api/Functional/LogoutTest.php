@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tests\Api\Functional;
 
-use App\Services\PHPUnitTests\Abstracts\TestCase;
+use App\Kernel\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
  * Class LogoutEndpointTest.

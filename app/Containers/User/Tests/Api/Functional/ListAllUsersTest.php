@@ -4,7 +4,7 @@ namespace App\Containers\User\Tests\Api\Functional;
 
 use App\Containers\User\Models\User;
 use App\Services\Authorization\Models\Role;
-use App\Services\PHPUnitTests\Abstracts\TestCase;
+use App\Kernel\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
  * Class ListAllUsersTest.
