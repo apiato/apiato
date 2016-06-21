@@ -69,8 +69,8 @@ trait KernelServiceProviderTrait
      */
     public function publishContainersMigrationsFiles()
     {
-        foreach (MegavelConfig::getContainersNames() as $moduleName) {
-            $this->publishModuleMigrationsFiles($moduleName);
+        foreach (MegavelConfig::getContainersNames() as $containerName) {
+            $this->publishModuleMigrationsFiles($containerName);
         }
     }
 
@@ -83,13 +83,13 @@ trait KernelServiceProviderTrait
     {
         $containersNamespace = MegavelConfig::getContainersNamespace();
 
-        foreach (MegavelConfig::getContainersNames() as $moduleName) {
+        foreach (MegavelConfig::getContainersNames() as $containerName) {
             // get the Module extra service providers (extra service providers are defined in the containers config file)
-            foreach (MegavelConfig::getContainersExtraServiceProviders($moduleName) as $provider) {
+            foreach (MegavelConfig::getContainersExtraServiceProviders($containerName) as $provider) {
                 $allServiceProviders[] = $provider;
             }
             // append the Module main service provider
-            $allServiceProviders[] = MegavelConfig::buildMainServiceProvider($containersNamespace, $moduleName);
+            $allServiceProviders[] = MegavelConfig::buildMainServiceProvider($containersNamespace, $containerName);
         }
 
         return array_unique($allServiceProviders) ? : [];
@@ -141,13 +141,13 @@ trait KernelServiceProviderTrait
      *
      * @param $directory
      */
-    private function publishModuleMigrationsFiles($moduleName)
+    private function publishModuleMigrationsFiles($containerName)
     {
-        $moduleMigrationsDirectory = base_path() . '/app/Containers/' . $moduleName . '/Migrations/';
+        $containerMigrationsDirectory = base_path() . '/app/Containers/' . $containerName . '/Migrations/';
 
-        if (is_dir($moduleMigrationsDirectory)) {
+        if (is_dir($containerMigrationsDirectory)) {
             $this->publishes([
-                $moduleMigrationsDirectory => database_path('migrations'),
+                $containerMigrationsDirectory => database_path('migrations'),
             ], 'migrations');
         }
     }

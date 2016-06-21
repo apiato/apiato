@@ -44,13 +44,13 @@ class MegavelConfigReaderService
     /**
      * Get the extraServiceProviders of a Module
      *
-     * @param $moduleName
+     * @param $containerName
      *
      * @return  mixed
      */
-    public function getContainersExtraServiceProviders($moduleName)
+    public function getContainersExtraServiceProviders($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.extraServiceProviders');
+        $configurations = Config::get('megavel.containers.register.' . $containerName . '.extraServiceProviders');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -63,29 +63,29 @@ class MegavelConfigReaderService
      * build the main service provider class namespace
      *
      * @param $containersNamespace
-     * @param $moduleName
+     * @param $containerName
      *
      * @return  string
      */
-    public function buildMainServiceProvider($containersNamespace, $moduleName)
+    public function buildMainServiceProvider($containersNamespace, $containerName)
     {
-        if($moduleName != 'Kernel') {
-            return $containersNamespace . "\\Containers\\" . $moduleName . "\\Providers\\" . $moduleName . "ServiceProvider";
+        if($containerName != 'Kernel') {
+            return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . $containerName . "ServiceProvider";
         }
 
-        return "App" . "\\Kernel" . "\\Provider\\Providers\\" . $moduleName . "ServiceProvider";
+        return "App" . "\\Kernel" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
     }
 
     /**
      * Get the containers web routes values from the containers config file
      *
-     * @param $moduleName
+     * @param $containerName
      *
      * @return  mixed
      */
-    public function getContainersWebRoutes($moduleName)
+    public function getContainersWebRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.routes.web');
+        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.web');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -97,13 +97,13 @@ class MegavelConfigReaderService
     /**
      * Get the containers api routes values from the containers config file
      *
-     * @param $moduleName
+     * @param $containerName
      *
      * @return  mixed
      */
-    public function getContainersApiRoutes($moduleName)
+    public function getContainersApiRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $moduleName . '.routes.api');
+        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.api');
 
         if (is_null($configurations)) {
             $configurations = [];

@@ -18,10 +18,10 @@ trait ViewsTrait
      */
     private function loadContainersViewsDirectories(View $view, MegavelConfigReaderService $containersConfig)
     {
-        foreach ($containersConfig->getContainersNames() as $moduleName) {
-            $moduleViewDirectory = base_path('app/Containers/' . $moduleName . '/Views/');
-            if (is_dir($moduleViewDirectory)) {
-                $view->addLocation($moduleViewDirectory);
+        foreach ($containersConfig->getContainersNames() as $containerName) {
+            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');
+            if (is_dir($containerViewDirectory)) {
+                $view->addLocation($containerViewDirectory);
             }
         }
 
