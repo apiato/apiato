@@ -11,6 +11,7 @@ use App\Kernel\Controller\Abstracts\WebController;
  */
 class IndexController extends WebController
 {
+
     /**
      * @return  string
      */
