@@ -5,4 +5,4 @@ Homestead.json
 .env
 /public/documentation
 /storage/logs/laravel.log
-/docker-helloapi
+/docker-hello-api
