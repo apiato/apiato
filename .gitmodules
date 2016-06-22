@@ -1,6 +1,0 @@
-[submodule "docker-helloapi"]
-	path = docker-helloapi
-	url = https://github.com/LaraDock/laradock.git
-[submodule "Hello-API.wiki"]
-	path = Hello-API.wiki
-	url = https://github.com/Mahmoudz/Hello-API.wiki.git
