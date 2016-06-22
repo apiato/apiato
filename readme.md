@@ -12,17 +12,29 @@
 
 > If you used **Hello API** before `21 June 2016` you may need to check the branch [1.0](https://github.com/Mahmoudz/Hello-API/tree/release-0.1) of the release [v0.1.1](https://github.com/Mahmoudz/Hello-API/releases/tag/v0.1.1).
 
-
-
-Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **[Megavel](https://github.com/megavel/megavel)** (**Laravel** 5 with new look).
-
 <br>
 
-Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
-And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
 
-Hello API is a project that gives you all the common functionalities of a professional modern API, to start building your own Application on top of it immediately.
+#### WHAT
+
+Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel** ([Megavel](https://github.com/megavel/megavel)). 
+
+#### HOW
+
+Hello API gives all the common functionalities of a modern API, to help getting started faster.
+
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
+
+#### WHY
+
+Today we’re living in a digital era, where almost everything is connected to the Internet.
+
+Building cross-devices applications is becoming a must. And to do it, you need APIs (Application Programing Interfaces).
+
+API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
+As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
+
+Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
 
 
 
