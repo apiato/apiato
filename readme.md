@@ -8,13 +8,33 @@
 
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
 
-Hello API is an **API Starter** providing you everything to build a professional API with **PHP** on top of **Laravel 5.1**.
 
-Today everything needs an API (Mobile Apps, Websites, Internet of Things,...). 
-And setting up an API from scratch takes a lot of time, even with the existence of the many great Packages and Tools.
 
-Hello API is a project that gives you all the common functionalities of a professional modern API, to start building your own Application on top of it immediately.
+> If you used **Hello API** before `21 June 2016` you may need to check the branch [1.0](https://github.com/Mahmoudz/Hello-API/tree/release-0.1) of the release [v0.1.1](https://github.com/Mahmoudz/Hello-API/releases/tag/v0.1.1).
+
+<br>
+
+
+#### WHAT
+
+Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel** ([Megavel](https://github.com/megavel/megavel)). 
+
+#### HOW
+
+Hello API gives all the common functionalities of a modern API, to help getting started faster.
+
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
+
+#### WHY
+
+Today we’re living in a digital era, where almost everything is connected to the Internet.
+
+Building cross-devices applications is becoming a must. And to do it, you need APIs (Application Programing Interfaces).
+
+API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
+As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
+
+Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
 
 
 
@@ -99,42 +119,23 @@ It uses the best framework, packages, tools and conventions. All configured to w
 <a name="Documentation"></a>
 ## Full Documentation
 
-**Hello API** comes with a detailed documentation ([wiki](https://github.com/Mahmoudz/Hello-API/wiki)), to help you getting started and modifying the existing code.
+**Hello API** is built on top of [Megavel](https://github.com/megavel/megavel) (Laravel Framework with new look). In order to understand the `Hello API` code base you need to read a little bit about **Megavel**, to get an overview of how the project is architected. *(you will love it)*.
 
 * Intro
 	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
 	* [Requirements](https://github.com/Mahmoudz/Hello-API/wiki/Home#requirements)
 	* [Installation](https://github.com/Mahmoudz/Hello-API/wiki/Home#installation)
 * General
-	* [Folders Structure](https://github.com/Mahmoudz/Hello-API/wiki/Folders-Structure)
 	* [Development Workflow](https://github.com/Mahmoudz/Hello-API/wiki/Development-Workflow)
 	* [Frequently Asked Questions (FAQ)](https://github.com/Mahmoudz/Hello-API/wiki/FAQ)
 * API
+	* [Routes DockBlock](https://github.com/Mahmoudz/Hello-API/wiki/Routes-DockBlock)
 	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
 	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
-* Layers
-	* [Modules](https://github.com/Mahmoudz/Hello-API/wiki/Modules)
-	* [Services](https://github.com/Mahmoudz/Hello-API/wiki/Services)
-* Components
-	* [Routes](https://github.com/Mahmoudz/Hello-API/wiki/Routes)
-	* [Controllers](https://github.com/Mahmoudz/Hello-API/wiki/Controllers)
-	* [Models](https://github.com/Mahmoudz/Hello-API/wiki/Models)
-	* [Tasks](https://github.com/Mahmoudz/Hello-API/wiki/Tasks)
-	* [Service Providers](https://github.com/Mahmoudz/Hello-API/wiki/Service-Providers)
-	* [Requests](https://github.com/Mahmoudz/Hello-API/wiki/Requests)
-	* [Policies](https://github.com/Mahmoudz/Hello-API/wiki/Policies)
-	* [Response Transformers](https://github.com/Mahmoudz/Hello-API/wiki/Response-Transformers)
-	* [Repositories](https://github.com/Mahmoudz/Hello-API/wiki/Repositories)
-	* [Database Criterias](https://github.com/Mahmoudz/Hello-API/wiki/Database-Criterias)
-	* [Database Migrations](https://github.com/Mahmoudz/Hello-API/wiki/Database-Migrations)
-	* [Exceptions](https://github.com/Mahmoudz/Hello-API/wiki/Exceptions)
-	* [Tests](https://github.com/Mahmoudz/Hello-API/wiki/Tests)
-	* [Models Factory](https://github.com/Mahmoudz/Hello-API/wiki/Models-Factory)
-	* [Database Seeders](https://github.com/Mahmoudz/Hello-API/wiki/Database-Seeders)
 
-
-
+	
+	
 
 <a name="Comming-Features"></a>
 ##Comming Features
@@ -145,7 +146,7 @@ It uses the best framework, packages, tools and conventions. All configured to w
 - Automatic Code and Data Backup.
 - Admin Panel (For Users Management).
 - Support login with social networks (Facebook, Twitter, Github, Google).
-- Back-end generators (to generate Modules and components) for faster development.
+- Back-end generators (to generate Containers and components) for faster development.
 - A lot more cool stuff in mind, (never stop coding).
 
 > Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).

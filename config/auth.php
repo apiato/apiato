@@ -64,7 +64,6 @@ return [
         'expire' => 60,
     ],
 
-
     /*
     |--------------------------------------------------------------------------
     | For Entrust
@@ -74,7 +73,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Hello\Modules\User\Models\User::class,
+            'model' => App\Containers\User\Models\User::class,
             'table' => 'users',
         ],
     ],

@@ -1,10 +1,26 @@
 <?php
 
+use App\Kernel\Seeder\Abstracts\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
+use App\Services\Authorization\Seeders\RolesAndPermissionsSeeder;
 
+/**
+ * Class DatabaseSeeder
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class DatabaseSeeder extends Seeder
 {
+
+    /**
+     * The application Seeders that needs to be registered.
+     *
+     * @var array
+     */
+    protected $seeders = [
+        RolesAndPermissionsSeeder::class,
+    ];
+
     /**
      * Run the database seeds.
      *
@@ -14,7 +30,9 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        foreach ($this->seeders as $seeder) {
+            $this->call($seeder);
+        }
 
         Model::reguard();
     }

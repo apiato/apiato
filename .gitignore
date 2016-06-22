@@ -1,5 +1,8 @@
 /vendor
+/node_modules
+Homestead.yaml
+Homestead.json
 .env
-/storage/logs/laravel.log
 /public/documentation
+/storage/logs/laravel.log
 /docker-helloapi

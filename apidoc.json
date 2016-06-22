@@ -1,8 +1,8 @@
 {
-  "name": "MEGA PRO API",
+  "name": "Hello API",
   "version": "1.0.0",
-  "description": "The MEGA PRO API Documentation",
-  "title": "MEGA PRO",
+  "description": "The Hello API Documentation",
+  "title": "Hello API",
   "url" : "http://api.hello.dev",
   "template": {
   	"withCompare": true,

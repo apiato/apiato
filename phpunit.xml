@@ -10,12 +10,15 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="User Module Functional Tests">
-            <directory>./src/Modules/User/Tests/Api/</directory>
+            <directory>./app/Containers/User/Tests/Api/</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
-            <directory suffix=".php">app/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+            <!--<exclude>-->
+                <!--<file>./app/Http/routes.php</file>-->
+            <!--</exclude>-->
         </whitelist>
     </filter>
     <php>
@@ -32,6 +35,5 @@
         <env name="TESTING_DB_NAME" value="helloapi"/>
         <env name="TESTING_DB_USERNAME" value="helloapi"/>
         <env name="TESTING_DB_PASSWORD" value="helloapi"/>
-
     </php>
 </phpunit>

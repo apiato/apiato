@@ -62,26 +62,12 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'strict'    => false,
-            'port'      => '3306',
         ],
 
         'testing_sqlite_in_memory' => [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
-        ],
-
-        'testing_mysql' => [
-            'driver'    => 'mysql',
-            'host'      => env('TESTING_DB_HOST'),
-            'port'      => env('TESTING_DB_PORT'),
-            'database'  => env('TESTING_DB_NAME'),
-            'username'  => env('TESTING_DB_USERNAME'),
-            'password'  => env('TESTING_DB_PASSWORD'),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
         ],
 
         'pgsql' => [
@@ -136,7 +122,8 @@ return [
         'cluster' => env('REDIS_CLUSTER', false),
 
         'default' => [
-            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'host'     => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
             'port'     => env('REDIS_PORT', 6379),
             'database' => env('REDIS_DATABASE', 0),
         ],
