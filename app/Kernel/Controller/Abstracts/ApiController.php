@@ -2,8 +2,8 @@
 
 namespace App\Kernel\Controller\Abstracts;
 
-use Dingo\Api\Routing\Helpers as DingoApiHelper;
 use App\Kernel\Controller\Contracts\ApiControllerInterface;
+use Dingo\Api\Routing\Helpers as DingoApiHelper;
 
 /**
  * Class ApiController.
