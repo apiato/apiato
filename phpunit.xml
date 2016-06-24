@@ -9,8 +9,11 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="User Module Functional Tests">
+        <testsuite name="User Container Tests">
             <directory>./app/Containers/User/Tests/Api/</directory>
+        </testsuite>
+        <testsuite name="Demo Container Tests">
+            <directory>./app/Containers/Demo/Tests/Api/</directory>
         </testsuite>
     </testsuites>
     <filter>
