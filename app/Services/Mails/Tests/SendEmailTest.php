@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\App;
 class SendEmailTest extends TestCase
 {
 
-    public function testSendingEmail_()
-    {
-
-        // TODO:to be mocked
-        $service = App::make(MailsService::class);
-
-        $service->send();
-    }
+//    public function testSendingEmail_()
+//    {
+//        // TODO:to be mocked
+//        $service = App::make(MailsService::class);
+//
+//        $service->send();
+//    }
 }
