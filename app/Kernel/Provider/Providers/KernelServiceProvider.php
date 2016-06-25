@@ -51,7 +51,7 @@ class KernelServiceProvider extends ServiceProviderAbstract
     {
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->publishContainersMigrationsFiles();
-        $this->debugDatabaseQueries(true);
+        $this->debugDatabaseQueries(true, true);
     }
 
 }

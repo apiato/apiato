@@ -31,12 +31,15 @@ trait KernelServiceProviderTrait
     }
 
     /**
+     * Write the DB queries in the Log and Display them in the
+     * terminal (in case you want to see them while executing the tests).
+     *
      * @param bool|false $terminal
      */
-    public function debugDatabaseQueries($terminal = false)
+    public function debugDatabaseQueries($log = true, $terminal = false)
     {
         if (env('DATABASE_QUERIES_DEBUG', false)) {
-            DB::listen(function ($query, $bindings, $time, $connection) use ($terminal) {
+            DB::listen(function ($query, $bindings, $time, $connection) use ($terminal, $log) {
                 $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $query), $bindings);
 
                 $text = $connection . ' (' . $time . '): ' . $fullQuery;
@@ -45,7 +48,9 @@ trait KernelServiceProviderTrait
                     dump($text);
                 }
 
-                Log::info($text);
+                if ($log) {
+                    Log::info($text);
+                }
             });
         }
     }
