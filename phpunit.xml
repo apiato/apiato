@@ -15,6 +15,9 @@
         <testsuite name="Demo Container Tests">
             <directory>./app/Containers/Demo/Tests/Api/</directory>
         </testsuite>
+        <testsuite name="Mails Service Tests">
+            <directory>./app/Services/Mails/</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
