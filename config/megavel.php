@@ -149,7 +149,7 @@ return [
                 |
                 */
                 'extraServiceProviders' => [
-                    App\Containers\Demo\Events\EventServiceProvider::class,
+
                 ],
             ],
         ],
