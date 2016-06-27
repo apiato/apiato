@@ -10,7 +10,7 @@
 
 
 
-> If you used **Hello API** before `21 June 2016` you may need to check the branch [1.0](https://github.com/Mahmoudz/Hello-API/tree/release-0.1) of the release [v0.1.1](https://github.com/Mahmoudz/Hello-API/releases/tag/v0.1.1).
+> If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
 
 <br>
 
