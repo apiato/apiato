@@ -54,11 +54,15 @@ abstract class MailsAbstract
      */
     public function send($data = [])
     {
-        Mail::send($this->template, $data, function ($m) {
-            $m->from($this->fromEmail, $this->fromName);
-            $m->to($this->toEmail, $this->toName)
-                ->subject($this->subject);
-        });
+        $enabled = env('MAIL_ENABLED', true);
+
+        if ($enabled) {
+            Mail::send($this->template, $data, function ($m) {
+                $m->from($this->fromEmail, $this->fromName);
+                $m->to($this->toEmail, $this->toName)
+                    ->subject($this->subject);
+            });
+        }
     }
 
 
