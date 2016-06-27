@@ -8,6 +8,7 @@ use App\Containers\User\Exceptions\AccountFailedException;
 use App\Kernel\Task\Abstracts\Task;
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -36,10 +37,12 @@ class CreateUserTask extends Task
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        ApiAuthenticationService $authenticationService
+        ApiAuthenticationService $authenticationService,
+        Dispatcher $eventsDispatcher
     ) {
         $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;
+        $this->eventsDispatcher = $eventsDispatcher;
     }
 
     /**
