@@ -17,7 +17,9 @@
 
 #### WHAT
 
-Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel** ([Megavel](https://github.com/megavel/megavel)). 
+Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel CSAP**.
+<br>
+(**[Laravel CSAP](https://github.com/Mahmoudz/laravel-csap)** is **[Laravel 5.1](https://github.com/laravel/framework)** implementing the **[Containers SAP](https://github.com/Mahmoudz/Containers-SAP)** "Containers Software Architectural Pattern").
 
 #### HOW
 
@@ -78,7 +80,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 - Automatic dates conversion to ISO format in responses.
 - Support for JSON with padding (JSONP).
 - Scalable, Stateless and Distributable Application on the server.
-- Modular Software Architecture (using the Freestyle Architecture).
+- Fantastic Software Architectural Pattern (using C-SAP).
 - Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
@@ -97,6 +99,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 
 - PHP (Server-Side Scripting Language)
 - [Laravel](https://laravel.com/docs/5.1) 5.1 LTS (Back-End Framework)
+- [Laravel CSAP](https://github.com/Mahmoudz/laravel-csap) (C-SAP with Laravel)
 - [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
 - [MySQL](https://www.mysql.com/) (RDBMS Database)
 - [Redis](http://redis.io/) (Cache System)
@@ -119,7 +122,11 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 <a name="Documentation"></a>
 ## Full Documentation
 
-**Hello API** is built on top of [Megavel](https://github.com/megavel/megavel) (Laravel Framework with new look). In order to understand the `Hello API` code base you need to read a little bit about **Megavel**, to get an overview of how the project is architected. *(you will love it)*.
+To get an overview of how the code is designed you MUST read the [**Containers SAP** Documentation](https://github.com/Mahmoudz/Containers-SAP).
+
+Since **Hello API** is built on top of **Laravel CSAP**, you SHOULD refer to the [**Laravel CSAP** Documeentation](https://laravel-csap.readme.io/docs/introduction) for all the details.
+
+Below is the **Hello API** specific documentation:
 
 * Intro
 	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
