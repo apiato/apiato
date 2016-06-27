@@ -17,20 +17,6 @@ trait KernelServiceProviderTrait
 {
 
     /**
-     * register an array of providers.
-     *
-     * @param array $providers
-     */
-    public function registerServiceProviders(array $providers)
-    {
-        foreach ($providers as $provider) {
-            if (class_exists($provider)) {
-                $this->app->register($provider);
-            }
-        }
-    }
-
-    /**
      * Write the DB queries in the Log and Display them in the
      * terminal (in case you want to see them while executing the tests).
      *
@@ -89,10 +75,6 @@ trait KernelServiceProviderTrait
         $containersNamespace = MegavelConfig::getContainersNamespace();
 
         foreach (MegavelConfig::getContainersNames() as $containerName) {
-            // get the Module extra service providers (extra service providers are defined in the containers config file)
-            foreach (MegavelConfig::getContainersExtraServiceProviders($containerName) as $provider) {
-                $allServiceProviders[] = $provider;
-            }
             // append the Module main service provider
             $allServiceProviders[] = MegavelConfig::buildMainServiceProvider($containersNamespace, $containerName);
         }

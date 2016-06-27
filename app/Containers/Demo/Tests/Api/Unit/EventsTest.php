@@ -17,6 +17,8 @@ class EventsTest extends TestCase
     public function testDemoEvent_()
     {
         Event::fire(New DemoEvent());
+
+        $this->assertTrue(true);
     }
 
 

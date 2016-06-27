@@ -42,24 +42,6 @@ class MegavelConfigReaderService
     }
 
     /**
-     * Get the extraServiceProviders of a Module
-     *
-     * @param $containerName
-     *
-     * @return  mixed
-     */
-    public function getContainersExtraServiceProviders($containerName)
-    {
-        $configurations = Config::get('megavel.containers.register.' . $containerName . '.extraServiceProviders');
-
-        if (is_null($configurations)) {
-            $configurations = [];
-        }
-
-        return $configurations;
-    }
-
-    /**
      * build the main service provider class namespace
      *
      * @param $containersNamespace
@@ -111,4 +93,25 @@ class MegavelConfigReaderService
 
         return $configurations;
     }
+
+
+// TODO: To be deleted
+//    /**
+//     * Get the extraServiceProviders of a Module
+//     *
+//     * @param $containerName
+//     *
+//     * @return  mixed
+//     */
+//    public function getContainersExtraServiceProviders($containerName)
+//    {
+//        $configurations = Config::get('megavel.containers.register.' . $containerName . '.extraServiceProviders');
+//
+//        if (is_null($configurations)) {
+//            $configurations = [];
+//        }
+//
+//        return $configurations;
+//    }
+
 }

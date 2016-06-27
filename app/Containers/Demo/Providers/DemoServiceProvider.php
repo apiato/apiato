@@ -24,11 +24,20 @@ class DemoServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
+     * Container internal Service Provides.
+     *
+     * @var array
+     */
+    private $containerServiceProviders = [
+        EventServiceProvider::class
+    ];
+
+    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-
+        $this->registerServiceProviders($this->containerServiceProviders);
     }
 
     /**

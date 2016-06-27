@@ -53,22 +53,6 @@ return [
 
                 /*
                 |--------------------------------------------------------------------------
-                | User Module extra (additional) Service Providers
-                |--------------------------------------------------------------------------
-                |
-                | Here you should register any extra service provider in your container.
-                | By default every container must have a single (main) service provider,
-                | which will get registered automatically by the Kernel service provider,
-                | without the need to define it here. However, if you have extra service
-                | providers in your Module, you must register them here to get loaded.
-                |
-                */
-                'extraServiceProviders' => [
-                    App\Containers\User\Providers\PoliciesServiceProvider::class,
-                ],
-
-                /*
-                |--------------------------------------------------------------------------
                 | User Module Dependencies
                 |--------------------------------------------------------------------------
                 |
@@ -133,24 +117,7 @@ return [
 
                     ],
                 ],
-
-                /*
-                |--------------------------------------------------------------------------
-                | Demo Module extra (additional) Service Providers
-                |--------------------------------------------------------------------------
-                |
-                | Usually you don't have to touche the Kernel Module.
-                |
-                | Here you should register any extra service provider in your container.
-                | By default every container must have a single (main) service provider,
-                | which will get registered automatically by the Kernel service provider,
-                | without the need to define it here. However, if you have extra service
-                | providers in your Module, you must register them here to get loaded.
-                |
-                */
-                'extraServiceProviders' => [
-
-                ],
+                
             ],
         ],
 

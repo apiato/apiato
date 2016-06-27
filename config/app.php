@@ -150,7 +150,6 @@ return [
          * Hello Services Service Providers
          */
         App\Kernel\Configuration\Providers\MegavelConfigServiceProvider::class,
-        App\Services\Events\Providers\EventServiceProvider::class,
 
         /*
          * Hello Containers Service Providers
