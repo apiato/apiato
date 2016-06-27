@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Containers\Demo\Providers;
+namespace App\Containers\User\Providers;
 
+use App\Containers\User\Events\Events\UserCreatedEvent;
+use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
 use App\Kernel\Event\Providers\KernelEventServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 
@@ -19,8 +21,8 @@ class EventServiceProvider extends KernelEventServiceProvider
      * @var array
      */
     protected $listen = [
-        \App\Containers\Demo\Events\Events\DemoEvent::class => [
-            \App\Containers\Demo\Events\Handlers\DemoEventHandler::class,
+        UserCreatedEvent::class => [
+            UserCreatedEventHandler::class,
         ],
     ];
 

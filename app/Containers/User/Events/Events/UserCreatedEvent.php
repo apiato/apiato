@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Containers\Demo\Events\Events;
+namespace App\Containers\User\Events\Events;
 
 use App\Kernel\Event\Abstracts\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class DemoEvent extends Event
+/**
+ * Class UserCreatedEvent
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class UserCreatedEvent extends Event
 {
     use SerializesModels;
 
