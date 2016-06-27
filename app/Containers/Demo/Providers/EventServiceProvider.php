@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\Demo\Events;
+namespace App\Containers\Demo\Providers;
 
+use App\Kernel\Event\Providers\KernelEventServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use App\Kernel\Event\Providers\EventServiceProvider as KernelEventServiceProvider;
 
 /**
  * Class EventServiceProvider
@@ -12,21 +12,23 @@ use App\Kernel\Event\Providers\EventServiceProvider as KernelEventServiceProvide
  */
 class EventServiceProvider extends KernelEventServiceProvider
 {
+
     /**
      * The event listener mappings for the application.
      *
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        \App\Containers\Demo\Events\Events\DemoEvent::class => [
+            \App\Containers\Demo\Events\Handlers\DemoEventHandler::class,
         ],
     ];
 
     /**
      * Register any other events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+     * @param  \Illuminate\Contracts\Events\Dispatcher $events
+     *
      * @return void
      */
     public function boot(DispatcherContract $events)

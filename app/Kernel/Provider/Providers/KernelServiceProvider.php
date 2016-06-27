@@ -3,8 +3,9 @@
 namespace App\Kernel\Provider\Providers;
 
 use App\Kernel\Provider\Abstracts\ServiceProviderAbstract;
-use App\Kernel\Routes\Providers\RoutesServiceProvider;
+use App\Kernel\Provider\Traits\AutoRegisterServiceProvidersTrait;
 use App\Kernel\Provider\Traits\KernelServiceProviderTrait;
+use App\Kernel\Routes\Providers\RoutesServiceProvider;
 
 /**
  * Class KernelServiceProvider
@@ -19,6 +20,7 @@ class KernelServiceProvider extends ServiceProviderAbstract
 {
 
     use KernelServiceProviderTrait;
+    use AutoRegisterServiceProvidersTrait;
 
     /**
      * the new Models Factories Paths
@@ -39,8 +41,11 @@ class KernelServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->registerServiceProviders(array_merge($this->getContainersServiceProviders(),
-            $this->engineServiceProviders));
+        $this->registerServiceProviders(array_merge(
+            $this->getContainersServiceProviders(),
+            $this->engineServiceProviders
+        ));
+
         $this->overrideDefaultFractalSerializer();
     }
 

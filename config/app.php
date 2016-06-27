@@ -147,15 +147,19 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
-         * Hello Services Service Providers
+         * Megavel kernel Service Providers
          */
         App\Kernel\Configuration\Providers\MegavelConfigServiceProvider::class,
-        App\Services\Events\Providers\EventServiceProvider::class,
+        App\Kernel\Provider\Providers\KernelServiceProvider::class,
 
         /*
-         * Hello Containers Service Providers
+         * Megavel Services Service Providers
          */
-        App\Kernel\Provider\Providers\KernelServiceProvider::class,
+
+        /*
+         * Megavel Containers Service Providers
+         */
+
     ],
 
     /*

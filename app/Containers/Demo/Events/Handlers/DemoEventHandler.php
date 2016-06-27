@@ -28,6 +28,6 @@ class DemoEventHandler
      */
     public function handle(DemoEvent $event)
     {
-        dd('Did you called me!');
+        dump('Did you called me!');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Kernel\Provider\Abstracts;
 
+use App\Kernel\Provider\Traits\AutoRegisterServiceProvidersTrait;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**
@@ -11,5 +12,5 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
  */
 abstract class ServiceProviderAbstract extends LaravelServiceProvider
 {
-
+    use AutoRegisterServiceProvidersTrait;
 }
