@@ -2,12 +2,13 @@
 
 namespace App\Containers\User\Tasks;
 
+use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Events\Events\UserCreatedEvent;
+use App\Containers\User\Exceptions\AccountFailedException;
+use App\Kernel\Task\Abstracts\Task;
+use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
 use Illuminate\Support\Facades\Hash;
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Exceptions\AccountFailedException;
-use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Kernel\Task\Abstracts\Task;
 
 /**
  * Class CreateUserTask.
@@ -30,11 +31,13 @@ class CreateUserTask extends Task
     /**
      * CreateUserTask constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
-    public function __construct(UserRepositoryInterface $userRepository, ApiAuthenticationService $authenticationService)
-    {
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        ApiAuthenticationService $authenticationService
+    ) {
         $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;
     }
@@ -69,6 +72,9 @@ class CreateUserTask extends Task
             // login this user using it's object and inject it's token on it
             $user = $this->authenticationService->loginFromObject($user);
         }
+
+        // Fire a User Created Event
+        $this->eventsDispatcher->fire(New UserCreatedEvent());
 
         return $user;
     }
