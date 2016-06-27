@@ -29,7 +29,7 @@ class DemoServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     private $containerServiceProviders = [
-        EventServiceProvider::class
+        // ...
     ];
 
     /**

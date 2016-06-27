@@ -25,11 +25,7 @@ class UserCreatedEventHandler implements ShouldQueue
     }
 
     /**
-     * Handle the event.
-     *
-     * @param \App\Containers\Demo\Events\Events\DemoEvent $event
-     *
-     * @return void
+     * @param \App\Containers\User\Events\Events\UserCreatedEvent $event
      */
     public function handle(UserCreatedEvent $event)
     {
