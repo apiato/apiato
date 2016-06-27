@@ -22,6 +22,7 @@ class User extends Model implements
 
     use Authenticatable, CanResetPassword, TokenTrait, EntrustUserTrait;
     // use SoftDeletes;
+
     /**
      * TODO:
      * Temporary hiding the Illuminate\Database\Eloquent\SoftDeletes trait because
@@ -45,6 +46,7 @@ class User extends Model implements
         'name',
         'email',
         'password',
+        'confirmed',
     ];
 
     /**
