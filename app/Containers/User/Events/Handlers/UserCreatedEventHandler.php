@@ -24,7 +24,10 @@ class UserCreatedEventHandler implements ShouldQueue
         $email = new WelcomeEmail();
         $email->setEmail($event->user->email);
         $email->setName($event->user->name);
-        $email->send($data = ['name' => $event->user->name, 'appName' => 'Hello API']);
+        $email->send($data = [
+            'name'    => $event->user->name,
+            'appName' => 'Hello API'
+        ]);
 
     }
 }
