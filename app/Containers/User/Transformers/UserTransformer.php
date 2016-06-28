@@ -24,6 +24,7 @@ class UserTransformer extends Transformer
             'id'         => (int)$user->id,
             'name'       => $user->name,
             'email'      => $user->email,
+            'confirmed'  => $user->confirmed,
             'token'      => $user->token,
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
