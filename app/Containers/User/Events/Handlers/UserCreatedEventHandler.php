@@ -4,7 +4,6 @@ namespace App\Containers\User\Events\Handlers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Services\Mails\Mails\WelcomeEmail;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
@@ -14,6 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class UserCreatedEventHandler implements ShouldQueue
 {
+
     /**
      * @param \App\Containers\User\Events\Events\UserCreatedEvent $event
      */
@@ -22,9 +22,9 @@ class UserCreatedEventHandler implements ShouldQueue
         dump('New User Created Successfully!');
 
         $email = new WelcomeEmail();
-        $email->setEmail('testing@tester.com');
-        $email->setName('Mahmoud Zalt');
-        $email->send($data = []);
+        $email->setEmail($event->user->email);
+        $email->setName($event->user->name);
+        $email->send($data = ['name' => $event->user->name, 'appName' => 'Hello API']);
 
     }
 }
