@@ -17,7 +17,9 @@ class SetEmailTest extends TestCase
     public function testSetUserEmail_()
     {
         $userDetails = [
-            'name' => 'Mahmoud Zalt',
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
+            'password' => 'secret',
         ];
 
         // get the logged in user (create one if no one is logged in)
