@@ -54,9 +54,11 @@ abstract class MailsAbstract
      */
     public function send($data = [])
     {
+        // get if sending emails is enabled
         $enabled = env('MAIL_ENABLED', true);
 
-        if ($enabled) {
+        // check if sending emails is enabled and if this is not running a testing environment
+        if ($enabled && app()->env != 'testing') {
             Mail::send($this->template, $data, function ($m) {
                 $m->from($this->fromEmail, $this->fromName);
                 $m->to($this->toEmail, $this->toName)
