@@ -34,7 +34,8 @@ class ConfirmUserEmailController extends WebController
         // validate the confirmation code and update user status is code is valid
         $validateConfirmationCodeTask->run($user, $confirmUserEmailRequest->code);
 
-        // TODO: return normal view
+        // redirect to the app URL
+        return redirect(env('APP_FULL_URL'));
     }
 
 }
