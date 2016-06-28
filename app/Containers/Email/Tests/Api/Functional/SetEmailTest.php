@@ -24,7 +24,7 @@ class SetEmailTest extends TestCase
         $user = $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
-            'email' => 'mahmoudz.me@gmail.com',
+            'email' => 'test@test.test',
         ];
 
         $this->endpoint = str_replace("{id}", $user->id, $this->endpoint);
