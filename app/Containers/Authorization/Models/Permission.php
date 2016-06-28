@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Authorization\Models;
+namespace App\Containers\Authorization\Models;
 
 use Zizaco\Entrust\EntrustPermission;
 

@@ -2,7 +2,7 @@
 
 use App\Kernel\Seeder\Abstracts\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Authorization\Seeders\RolesAndPermissionsSeeder;
+use App\Containers\Authorization\Seeders\RolesAndPermissionsSeeder;
 
 /**
  * Class DatabaseSeeder

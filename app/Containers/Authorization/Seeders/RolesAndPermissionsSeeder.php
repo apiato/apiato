@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Authorization\Seeders;
+namespace App\Containers\Authorization\Seeders;
 
 use App\Kernel\Seeder\Abstracts\Seeder;
-use App\Services\Authorization\Models\Permission;
-use App\Services\Authorization\Models\Role;
+use App\Containers\Authorization\Models\Permission;
+use App\Containers\Authorization\Models\Role;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
