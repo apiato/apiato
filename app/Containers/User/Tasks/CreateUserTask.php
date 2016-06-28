@@ -77,7 +77,7 @@ class CreateUserTask extends Task
         }
 
         // Fire a User Created Event
-        $this->eventsDispatcher->fire(New UserCreatedEvent());
+        $this->eventsDispatcher->fire(New UserCreatedEvent($user));
 
         return $user;
     }
