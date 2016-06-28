@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Tests\Api\Functional;
+namespace App\Containers\Authorization\Tests\Api\Functional;
 
 use App\Kernel\Tests\PHPUnit\Abstracts\TestCase;
 
@@ -12,5 +12,9 @@ use App\Kernel\Tests\PHPUnit\Abstracts\TestCase;
 class AuthorizationTest extends TestCase
 {
 
+    public function testAuthorization_()
+    {
+        $this->assertTrue(true);
+    }
 
 }
