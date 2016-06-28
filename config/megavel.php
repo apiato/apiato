@@ -83,6 +83,9 @@ return [
                     'api' => [
                         ['fileName' => 'v1', 'versionNumber' => '1']
                     ],
+                    'web' => [
+                        ['fileName' => 'main']
+                    ],
                 ],
 
                 'dependencies'          => [
