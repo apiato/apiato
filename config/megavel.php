@@ -25,14 +25,14 @@ return [
 
             /*
             |--------------------------------------
-            | Module: User
+            | Container: User
             |--------------------------------------
             */
             'User' => [
 
                 /*
                 |--------------------------------------------------------------------------
-                | User Module Routes
+                | User Container Routes
                 |--------------------------------------------------------------------------
                 |
                 | Here you should define the routes files names. There are two types of
@@ -53,11 +53,11 @@ return [
 
                 /*
                 |--------------------------------------------------------------------------
-                | User Module Dependencies
+                | User Container Dependencies
                 |--------------------------------------------------------------------------
                 |
-                | Here you should include the names of all the Module dependencies.
-                | A Module could depend on another Module or on a Service.
+                | Here you should include the names of all the Container dependencies.
+                | A Container could depend on another Container or on a Service.
                 |
                 */
                 'dependencies'          => [
@@ -74,7 +74,30 @@ return [
 
             /*
              |--------------------------------------
-             | Module: Demo
+             | Container: Email
+             |--------------------------------------
+             */
+            'Email' => [
+
+                'routes'                => [
+                    'api' => [
+                        ['fileName' => 'v1', 'versionNumber' => '1']
+                    ],
+                ],
+
+                'dependencies'          => [
+                    'containers'  => [
+
+                    ],
+                    'services' => [
+
+                    ],
+                ],
+            ],
+
+            /*
+             |--------------------------------------
+             | Container: Demo
              |--------------------------------------
              */
             'Demo' => [
