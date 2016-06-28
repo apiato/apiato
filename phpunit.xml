@@ -12,6 +12,9 @@
         <testsuite name="User Container Tests">
             <directory>./app/Containers/User/Tests/Api/</directory>
         </testsuite>
+        <testsuite name="Authorization Container Tests">
+            <directory>./app/Containers/Authorization/Tests/</directory>
+        </testsuite>
         <testsuite name="Demo Container Tests">
             <directory>./app/Containers/Demo/Tests/Api/</directory>
         </testsuite>

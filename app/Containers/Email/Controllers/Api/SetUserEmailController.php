@@ -40,7 +40,7 @@ class SetUserEmailController extends ApiController
         $sendConfirmationEmailTask->run($user, $confirmationUrl);
 
         return $this->response->accepted(null, [
-            'message' => 'User Email Set Successfully, Waiting User Email Confirmation.',
+            'message' => 'User Email Sent Successfully, Waiting User Email Confirmation.',
         ]);
     }
 }
