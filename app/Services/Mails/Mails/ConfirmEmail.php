@@ -6,11 +6,11 @@ use App\Services\Mails\Abstracts\MailsAbstract;
 use App\Services\Mails\Contracts\MailsInterface;
 
 /**
- * Class WelcomeEmail.
+ * Class ConfirmEmail.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WelcomeEmail extends MailsAbstract implements MailsInterface
+class ConfirmEmail extends MailsAbstract implements MailsInterface
 {
 
     /**
@@ -18,12 +18,12 @@ class WelcomeEmail extends MailsAbstract implements MailsInterface
      *
      * @var  string
      */
-    public $template = 'welcome';
+    public $template = 'confirm';
 
     /**
      * The email subject
      *
      * @var  string
      */
-    public $subject = 'Welcome to Hello API';
+    public $subject = 'Email confirmation (Hello API)';
 }

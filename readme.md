@@ -49,10 +49,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 - [Features](#Features)
 - [Technologies](#Technologies)
 - [Full Documentation](#Documentation)
-- [Comming Features](#Comming-Features)
-
-
-
+- [Coming Features](#Coming-Features)
 
 
 
@@ -144,8 +141,8 @@ Below is the **Hello API** specific documentation:
 	
 	
 
-<a name="Comming-Features"></a>
-##Comming Features
+<a name="Coming-Features"></a>
+##Coming Features
 
 - Hidden real IDs from the response.
 - IP Restriction (to whitelist or blacklist IP's).
