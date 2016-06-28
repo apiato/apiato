@@ -73,7 +73,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Containers\User\Models\User::class,
+            'model' => env('USER_NAMESPACE').User::class,
             'table' => 'users',
         ],
     ],
