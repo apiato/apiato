@@ -19,8 +19,6 @@ class UserCreatedEventHandler implements ShouldQueue
      */
     public function handle(UserCreatedEvent $event)
     {
-        dump('New User Created Successfully!');
-
         $email = new WelcomeEmail();
         $email->setEmail($event->user->email);
         $email->setName($event->user->name);
