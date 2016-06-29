@@ -68,6 +68,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 - Auto API Documentation generator (using the API Doc JS).
 - Authorization system (ACL), to control which consumer can access your API.
 - Supports CORS "Cross-Origin Resource Sharing".
+- Localization support (multiple langauges via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
 - Easy and auto request input validation.
 - Type-Casting JSON responses with Transformers.
