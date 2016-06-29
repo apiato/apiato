@@ -37,7 +37,13 @@ class Localization
         // read the language from the request header
         $locale = $request->header('Content-Language');
 
-        // Check the languages defined is supported
+        // if the header is missed
+        if(!$locale){
+            // take the default local language
+            $locale = $this->app->config->get('app.locale');
+        }
+
+        // check the languages defined is supported
         if (!array_key_exists($locale, $this->app->config->get('app.supported_languages'))) {
             // respond with error
             return abort(403, 'Language not supported.');
