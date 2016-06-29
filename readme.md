@@ -137,6 +137,7 @@ Below is the **Hello API** specific documentation:
 	* [Routes DockBlock](https://github.com/Mahmoudz/Hello-API/wiki/Routes-DockBlock)
 	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
+	* [Localization](https://github.com/Mahmoudz/Hello-API/wiki/Localization)
 	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
 
 	
