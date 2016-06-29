@@ -28,8 +28,10 @@ class Kernel
             //            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             //            \App\Services\Middlewares\Http\VerifyCsrfToken::class,
 
-            // CORS Package middleware's
+            // CORS Package middleware
             \Barryvdh\Cors\HandleCors::class,
+            // Hello API Localization middleware
+            \App\Services\Middlewares\Http\Localization::class,
         ];
     }
 
