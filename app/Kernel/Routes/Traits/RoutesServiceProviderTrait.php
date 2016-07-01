@@ -21,7 +21,7 @@ trait RoutesServiceProviderTrait
      */
     private function registerRoutes()
     {
-        $containersPaths = FIle::directories(app_path('Containers'));
+        $containersPaths = MegavelConfig::getContainersPaths();
         $containersNamespace = MegavelConfig::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
