@@ -2,10 +2,11 @@
 
 namespace App\Kernel\Routes\Traits;
 
-use App\Kernel\Configuration\Exceptions\WrongConfigurationsException;
 use App\Kernel\Configuration\Portals\Facade\MegavelConfig;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
+use Illuminate\Support\Facades\File;
+use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * Class RoutesServiceProviderTrait.
@@ -20,121 +21,110 @@ trait RoutesServiceProviderTrait
      */
     private function registerRoutes()
     {
-        $containersNames = MegavelConfig::getContainersNames();
+        $containersPaths = FIle::directories(app_path('Containers'));
         $containersNamespace = MegavelConfig::getContainersNamespace();
 
-        foreach ($containersNames as $containerName) {
-            $this->registerContainersApiRoutes($containerName, $containersNamespace);
-            $this->registerContainersWebRoutes($containerName, $containersNamespace);
+        foreach ($containersPaths as $containerPath) {
+            $this->registerContainersApiRoutes($containerPath, $containersNamespace);
+            $this->registerContainersWebRoutes($containerPath, $containersNamespace);
         }
-
-        $this->registerApplicationDefaultApiRoutes();
-        $this->registerApplicationDefaultWebRoutes();
     }
 
     /**
      * Register the Containers API routes files
      *
-     * @param $containerName
+     * @param $containerPath
      * @param $containersNamespace
      */
-    private function registerContainersApiRoutes($containerName, $containersNamespace)
+    private function registerContainersApiRoutes($containerPath, $containersNamespace)
     {
-        foreach (MegavelConfig::getContainersApiRoutes($containerName) as $apiRoute) {
+        // get the container api routes path
+        $apiRoutesPath = $containerPath . '/Routes/Api';
 
-            $version = 'v' . $apiRoute['versionNumber'];
+        if (File::isDirectory($apiRoutesPath)) {
 
-            $this->apiRouter->version($version,
-                function (DingoApiRouter $router) use ($containerName, $containersNamespace, $apiRoute) {
+            // get all files from the container API routes directory
+            $files = File::allFiles($apiRoutesPath);
 
-                    $router->group([
-                        // Routes Namespace
-                        'namespace'  => $containersNamespace . '\\Containers\\' . $containerName . '\\Controllers\Api',
-                        // Enable: API Rate Limiting
-                        'middleware' => 'api.throttle',
-                        // The API limit time.
-                        'limit'      => env('API_LIMIT'),
-                        // The API limit expiry time.
-                        'expires'    => env('API_LIMIT_EXPIRES'),
-                    ], function ($router) use ($containerName, $apiRoute) {
-                        require $this->validateRouteFile(
-                            app_path('Containers/' . $containerName . '/Routes/Api/' . $apiRoute['fileName'] . '.php')
-                        );
+            foreach ($files as $file) {
+
+                $fileNameWithoutExtension = $this->getRouteFileNameWithoutExtension($file);
+
+                $apiVersionNumber = $this->getRouteFileVersionNumber($fileNameWithoutExtension);
+
+                $this->apiRouter->version('v' . $apiVersionNumber,
+                    function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
+
+                        $router->group([
+                            // Routes Namespace
+                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers\Api',
+                            // Enable: API Rate Limiting
+                            'middleware' => 'api.throttle',
+                            // The API limit time.
+                            'limit'      => env('API_LIMIT'),
+                            // The API limit expiry time.
+                            'expires'    => env('API_LIMIT_EXPIRES'),
+                        ], function ($router) use ($file) {
+
+                            require $file->getPathname();
+
+                        });
+
                     });
 
-                });
+            }
+
         }
     }
 
     /**
      * Register the Containers WEB routes files
      *
-     * @param $containerName
+     * @param $containerPath
      * @param $containersNamespace
      */
-    private function registerContainersWebRoutes($containerName, $containersNamespace)
+    private function registerContainersWebRoutes($containerPath, $containersNamespace)
     {
-        foreach (MegavelConfig::getContainersWebRoutes($containerName) as $webRoute) {
-            $this->webRouter->group([
-                'namespace' => $containersNamespace . '\\Containers\\' . $containerName . '\\Controllers\Web',
-            ], function (LaravelRouter $router) use ($webRoute, $containerName) {
-                require $this->validateRouteFile(
-                    app_path('/Containers/' . $containerName . '/Routes/Web/' . $webRoute['fileName'] . '.php')
-                );
-            });
+        // get the container web routes path
+        $webRoutesPath = $containerPath . '/Routes/Web';
+
+        if (File::isDirectory($webRoutesPath)) {
+            // get all files from the container Web routes directory
+            $files = File::allFiles($webRoutesPath);
+
+            foreach ($files as $file) {
+                $this->webRouter->group([
+                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers\Web',
+                ], function (LaravelRouter $router) use ($file) {
+                    require $file->getPathname();
+                });
+            }
         }
+
     }
 
     /**
-     * The default Application API Routes. When a user visit the root of the API endpoint, will access these routes.
-     * This will be overwritten by the Containers if defined there.
-     */
-    private function registerApplicationDefaultApiRoutes()
-    {
-        $this->apiRouter->version('v1', function ($router) {
-
-            $router->group([
-                'middleware' => 'api.throttle',
-                'limit'      => env('API_LIMIT'),
-                'expires'    => env('API_LIMIT_EXPIRES'),
-            ], function (DingoApiRouter $router) {
-                require $this->validateRouteFile(
-                    app_path('Kernel/Routes/default-api.php')
-                );
-            });
-
-        });
-    }
-
-    /**
-     * The default Application Web Routes. When a user visit the root of the web, will access these routes.
-     * This will be overwritten by the Containers if defined there.
-     */
-    private function registerApplicationDefaultWebRoutes()
-    {
-        $this->webRouter->group([], function (LaravelRouter $router) {
-            require $this->validateRouteFile(
-                app_path('Kernel/Routes/default-web.php')
-            );
-        });
-    }
-
-
-    /**
-     * Check route file exist
-     *
-     * @param $file
+     * @param \Symfony\Component\Finder\SplFileInfo $file
      *
      * @return  mixed
      */
-    private function validateRouteFile($file)
+    private function getRouteFileNameWithoutExtension(SplFileInfo $file)
     {
-        if (!file_exists($file)) {
-            throw new WrongConfigurationsException(
-                'You probably have defined some Routes files in the containers config file that does not yet exist in your container routes directory.'
-            );
-        }
+        $fileInfo = pathinfo($file->getFileName());
 
-        return $file;
+        return $fileInfo['filename'];
     }
+
+    /**
+     * @param $fileNameWithoutExtension
+     */
+    private function getRouteFileVersionNumber($fileNameWithoutExtension)
+    {
+        $fileNameWithoutExtensionExploded = explode('.', $fileNameWithoutExtension);
+
+        $apiVersionNumber = (int)end($fileNameWithoutExtensionExploded);
+
+        return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
+    }
+
 }

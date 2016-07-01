@@ -2,8 +2,8 @@
 
 namespace App\Kernel\Configuration\Portals;
 
-use App\Kernel\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class MegavelConfigReaderService.
@@ -26,19 +26,29 @@ class MegavelConfigReaderService
     }
 
     /**
-     * Get the registered containers names in the containers config file
+     * Get the containers names
      *
      * @return  array
      */
     public function getContainersNames()
     {
-        $configurations = Config::get('megavel.containers.register');
+        $containersNames = [];
 
-        if (is_null($configurations)) {
-            throw new WrongConfigurationsException();
+        foreach($this->getContainersPaths() as $containersPath){
+            $containersNames[] = basename($containersPath);
         }
 
-        return array_keys($configurations);
+        return $containersNames;
+    }
+
+    /**
+     * get containers directories paths
+     *
+     * @return  mixed
+     */
+    public function getContainersPaths()
+    {
+        return FIle::directories(app_path('Containers'));
     }
 
     /**
@@ -93,25 +103,5 @@ class MegavelConfigReaderService
 
         return $configurations;
     }
-
-
-// TODO: To be deleted
-//    /**
-//     * Get the extraServiceProviders of a Module
-//     *
-//     * @param $containerName
-//     *
-//     * @return  mixed
-//     */
-//    public function getContainersExtraServiceProviders($containerName)
-//    {
-//        $configurations = Config::get('megavel.containers.register.' . $containerName . '.extraServiceProviders');
-//
-//        if (is_null($configurations)) {
-//            $configurations = [];
-//        }
-//
-//        return $configurations;
-//    }
 
 }
