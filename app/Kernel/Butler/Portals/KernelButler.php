@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Kernel\Configuration\Portals;
+namespace App\Kernel\Butler\Portals;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
 /**
- * Class MegavelConfigReaderService.
+ * Class KernelButler.
  *
  * NOTE: You can access this Class functions with the facade [ModuleConfig].
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MegavelConfigReaderService
+class KernelButler
 {
 
     /**

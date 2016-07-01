@@ -3,7 +3,7 @@
 namespace App\Kernel\Provider\Traits;
 
 use App;
-use App\Kernel\Configuration\Portals\Facade\MegavelConfig;
+use App\Kernel\Butler\Portals\Facade\KernelButler;
 use App\Services\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Log;
@@ -60,7 +60,7 @@ trait KernelServiceProviderTrait
      */
     public function publishContainersMigrationsFiles()
     {
-        foreach (MegavelConfig::getContainersNames() as $containerName) {
+        foreach (KernelButler::getContainersNames() as $containerName) {
             $this->publishModuleMigrationsFiles($containerName);
         }
     }
@@ -72,11 +72,11 @@ trait KernelServiceProviderTrait
      */
     public function getContainersServiceProviders()
     {
-        $containersNamespace = MegavelConfig::getContainersNamespace();
+        $containersNamespace = KernelButler::getContainersNamespace();
 
-        foreach (MegavelConfig::getContainersNames() as $containerName) {
+        foreach (KernelButler::getContainersNames() as $containerName) {
             // append the Module main service provider
-            $allServiceProviders[] = MegavelConfig::buildMainServiceProvider($containersNamespace, $containerName);
+            $allServiceProviders[] = KernelButler::buildMainServiceProvider($containersNamespace, $containerName);
         }
 
         return array_unique($allServiceProviders) ? : [];
