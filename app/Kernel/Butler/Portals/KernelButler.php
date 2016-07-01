@@ -22,7 +22,7 @@ class KernelButler
      */
     public function getContainersNamespace()
     {
-        return Config::get('megavel.containers.namespace');
+        return Config::get('csap.containers.namespace');
     }
 
     /**
@@ -77,7 +77,7 @@ class KernelButler
      */
     public function getContainersWebRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.web');
+        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.web');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -95,7 +95,7 @@ class KernelButler
      */
     public function getContainersApiRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.api');
+        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.api');
 
         if (is_null($configurations)) {
             $configurations = [];
