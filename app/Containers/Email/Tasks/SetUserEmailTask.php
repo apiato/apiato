@@ -2,8 +2,9 @@
 
 namespace App\Containers\Email\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Exceptions\UserNotFoundException;
+use App\Containers\Email\Subtasks\GenerateEmailConfirmationUrlSubtask;
+use App\Containers\Email\Subtasks\SendConfirmationEmailSubtask;
+use App\Containers\Email\Subtasks\SetUserEmailSubtask;
 use App\Kernel\Task\Abstracts\Task;
 
 /**
@@ -15,37 +16,60 @@ class SetUserEmailTask extends Task
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\Email\Requests\SetEmailRequest
      */
-    private $userRepository;
+    private $setEmailRequest;
 
     /**
-     * UpdateUserTask constructor.
-     *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @var  \App\Containers\Email\Subtasks\SetUserEmailSubtask
      */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
+    private $setUserEmailSubtask;
+
+    /**
+     * @var  \App\Containers\Email\Subtasks\GenerateEmailConfirmationUrlSubtask
+     */
+    private $generateEmailConfirmationUrlSubtask;
+
+    /**
+     * @var  \App\Containers\Email\Subtasks\SendConfirmationEmailSubtask
+     */
+    private $sendConfirmationEmailSubtask;
+
+    /**
+     * SetUserEmailTask constructor.
+     *
+     * @param \App\Containers\Email\Subtasks\SetUserEmailSubtask                 $setUserEmailSubtask
+     * @param \App\Containers\Email\Subtasks\GenerateEmailConfirmationUrlSubtask $generateEmailConfirmationUrlSubtask
+     * @param \App\Containers\Email\Subtasks\SendConfirmationEmailSubtask        $sendConfirmationEmailSubtask
+     */
+    public function __construct(
+        SetUserEmailSubtask $setUserEmailSubtask,
+        GenerateEmailConfirmationUrlSubtask $generateEmailConfirmationUrlSubtask,
+        SendConfirmationEmailSubtask $sendConfirmationEmailSubtask
+    ) {
+        $this->setUserEmailSubtask = $setUserEmailSubtask;
+        $this->generateEmailConfirmationUrlSubtask = $generateEmailConfirmationUrlSubtask;
+        $this->sendConfirmationEmailSubtask = $sendConfirmationEmailSubtask;
     }
 
+
     /**
+     * @param $userId
      * @param $email
-     * @param $password
      *
-     * @return mixed
+     * @return  bool
      */
     public function run($userId, $email)
     {
-        $user = $this->userRepository->find($userId);
+        // set the email on the user in the database
+        $user = $this->setUserEmailSubtask->run($userId, $email);
 
-        if (!$user) {
-            throw new UserNotFoundException;
-        }
+        // generate confirmation code, store it on the memory and inject it in url
+        $confirmationUrl = $this->generateEmailConfirmationUrlSubtask->run($user);
 
-        $user->email = $email;
-        $user->save();
+        // send a confirmation email to the user with the link
+        $this->sendConfirmationEmailSubtask->run($user, $confirmationUrl);
 
-        return $user;
+        return true;
     }
 }

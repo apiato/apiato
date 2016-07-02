@@ -2,7 +2,7 @@
 
 namespace App\Kernel\Views\Traits;
 
-use App\Kernel\Configuration\Portals\MegavelConfigReaderService;
+use App\Kernel\Butler\Portals\KernelButler;
 use Illuminate\View\Factory as View;
 
 /**
@@ -16,7 +16,7 @@ trait ViewsTrait
      * Automatically load all the containers views directories.
      * To be used by the Web Controller Abstract Class.
      */
-    private function loadContainersViewsDirectories(View $view, MegavelConfigReaderService $containersConfig)
+    private function loadContainersViewsDirectories(View $view, KernelButler $containersConfig)
     {
         foreach ($containersConfig->getContainersNames() as $containerName) {
             $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');

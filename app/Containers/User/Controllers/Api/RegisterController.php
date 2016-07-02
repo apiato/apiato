@@ -3,7 +3,7 @@
 namespace App\Containers\User\Controllers\Api;
 
 use App\Containers\User\Requests\RegisterRequest;
-use App\Containers\User\Tasks\CreateUserTask;
+use App\Containers\User\Subtasks\CreateUserSubtask;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Kernel\Controller\Abstracts\ApiController;
 
@@ -17,17 +17,17 @@ class RegisterController extends ApiController
 
     /**
      * @param \App\Containers\User\Requests\RegisterRequest  $registerRequest
-     * @param \App\Containers\User\Tasks\AssignUserRolesTask $assignUserRolesTask
+     * @param \App\Containers\User\Subtasks\AssignUserRolesSubtask $assignUserRolesSubtask
      *
      * @return \Dingo\Api\Http\Response
      */
     public function handle(
         RegisterRequest $registerRequest,
-        CreateUserTask $createUserTask
+        CreateUserSubtask $createUserSubtask
     ) {
 
         // create and login (true parameter) the new user
-        $user = $createUserTask->run(
+        $user = $createUserSubtask->run(
             $registerRequest['email'],
             $registerRequest['password'],
             $registerRequest['name'],

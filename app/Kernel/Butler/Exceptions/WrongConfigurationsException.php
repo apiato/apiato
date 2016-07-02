@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kernel\Configuration\Exceptions;
+namespace App\Kernel\Butler\Exceptions;
 
 use App\Kernel\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
@@ -15,5 +15,5 @@ class WrongConfigurationsException extends Exception
 
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
-    public $message = 'Ops! Some Containers configurations (config/megavel.php) are wrong!';
+    public $message = 'Ops! Some Containers configurations (config/csap.php) are wrong!';
 }

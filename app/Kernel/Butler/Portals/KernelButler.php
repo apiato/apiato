@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Kernel\Configuration\Portals;
+namespace App\Kernel\Butler\Portals;
 
-use App\Kernel\Configuration\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
 
 /**
- * Class MegavelConfigReaderService.
+ * Class KernelButler.
  *
  * NOTE: You can access this Class functions with the facade [ModuleConfig].
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MegavelConfigReaderService
+class KernelButler
 {
 
     /**
@@ -22,23 +22,33 @@ class MegavelConfigReaderService
      */
     public function getContainersNamespace()
     {
-        return Config::get('megavel.containers.namespace');
+        return Config::get('csap.containers.namespace');
     }
 
     /**
-     * Get the registered containers names in the containers config file
+     * Get the containers names
      *
      * @return  array
      */
     public function getContainersNames()
     {
-        $configurations = Config::get('megavel.containers.register');
+        $containersNames = [];
 
-        if (is_null($configurations)) {
-            throw new WrongConfigurationsException();
+        foreach($this->getContainersPaths() as $containersPath){
+            $containersNames[] = basename($containersPath);
         }
 
-        return array_keys($configurations);
+        return $containersNames;
+    }
+
+    /**
+     * get containers directories paths
+     *
+     * @return  mixed
+     */
+    public function getContainersPaths()
+    {
+        return FIle::directories(app_path('Containers'));
     }
 
     /**
@@ -67,7 +77,7 @@ class MegavelConfigReaderService
      */
     public function getContainersWebRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.web');
+        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.web');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -85,7 +95,7 @@ class MegavelConfigReaderService
      */
     public function getContainersApiRoutes($containerName)
     {
-        $configurations = Config::get('megavel.containers.register.' . $containerName . '.routes.api');
+        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.api');
 
         if (is_null($configurations)) {
             $configurations = [];
@@ -93,25 +103,5 @@ class MegavelConfigReaderService
 
         return $configurations;
     }
-
-
-// TODO: To be deleted
-//    /**
-//     * Get the extraServiceProviders of a Module
-//     *
-//     * @param $containerName
-//     *
-//     * @return  mixed
-//     */
-//    public function getContainersExtraServiceProviders($containerName)
-//    {
-//        $configurations = Config::get('megavel.containers.register.' . $containerName . '.extraServiceProviders');
-//
-//        if (is_null($configurations)) {
-//            $configurations = [];
-//        }
-//
-//        return $configurations;
-//    }
 
 }

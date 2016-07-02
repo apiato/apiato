@@ -3,7 +3,7 @@
 namespace App\Containers\User\Controllers\Api;
 
 use App\Containers\User\Requests\UpdateUserRequest;
-use App\Containers\User\Tasks\UpdateUserTask;
+use App\Containers\User\Subtasks\UpdateUserSubtask;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Kernel\Controller\Abstracts\ApiController;
 
@@ -17,14 +17,14 @@ class UpdateUserController extends ApiController
 
     /**
      * @param \App\Containers\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \App\Containers\User\Tasks\UpdateUserTask       $updateUserTask
+     * @param \App\Containers\User\Subtasks\UpdateUserSubtask       $updateUserSubtask
      * @param                                               $userId
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(UpdateUserRequest $updateUserRequest, UpdateUserTask $updateUserTask, $userId)
+    public function handle(UpdateUserRequest $updateUserRequest, UpdateUserSubtask $updateUserSubtask, $userId)
     {
-        $user = $updateUserTask->run(
+        $user = $updateUserSubtask->run(
             $userId,
             $updateUserRequest['password'],
             $updateUserRequest['name']

@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Containers\Email\Tasks;
+namespace App\Containers\Email\Subtasks;
 
 use App\Containers\Email\Exceptions\InvalidConfirmationCodeException;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Subtask\Abstracts\Subtask;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Class ValidateConfirmationCodeTask.
+ * Class ValidateConfirmationCodeSubtask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidateConfirmationCodeTask extends Task
+class ValidateConfirmationCodeSubtask extends Subtask
 {
 
     /**
      * @param $userId
      * @param $code
      *
-     * @throws \App\Containers\Email\Tasks\InvalidConfirmationCodeException
+     * @throws \App\Containers\Email\Subtasks\InvalidConfirmationCodeException
      */
     public function run($user, $code)
     {

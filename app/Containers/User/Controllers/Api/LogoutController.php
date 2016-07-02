@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Controllers\Api;
 
-use App\Containers\User\Tasks\ApiLogoutTask;
+use App\Containers\User\Subtasks\ApiLogoutSubtask;
 use App\Kernel\Controller\Abstracts\ApiController;
 use App\Kernel\Request\Manager\HttpRequest;
 
@@ -16,13 +16,13 @@ class LogoutController extends ApiController
 
     /**
      * @param \App\Kernel\Request\Manager\HttpRequest $request
-     * @param \App\Containers\User\Tasks\ApiLogoutTask             $logoutTask
+     * @param \App\Containers\User\Subtasks\ApiLogoutSubtask             $logoutSubtask
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(HttpRequest $request, ApiLogoutTask $logoutTask)
+    public function handle(HttpRequest $request, ApiLogoutSubtask $logoutSubtask)
     {
-        $logoutTask->run($request->header('authorization'));
+        $logoutSubtask->run($request->header('authorization'));
 
         return $this->response->accepted(null, [
             'message' => 'User Logged Out Successfully.',

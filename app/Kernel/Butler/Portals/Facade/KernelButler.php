@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Kernel\Configuration\Portals\Facade;
+namespace App\Kernel\Butler\Portals\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class MegavelConfiguration
+ * Class KernelButler
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class MegavelConfig extends Facade
+class KernelButler extends Facade
 {
 
     /**
@@ -19,7 +19,7 @@ class MegavelConfig extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'megavelConfigReaderService';
+        return 'KernelButler';
     }
 
 }

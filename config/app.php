@@ -151,7 +151,7 @@ return [
         /*
          * Megavel kernel Service Providers
          */
-        App\Kernel\Configuration\Providers\MegavelConfigServiceProvider::class,
+        App\Kernel\Butler\Providers\KernelButlerServiceProvider::class,
         App\Kernel\Provider\Providers\KernelServiceProvider::class,
 
         /*
