@@ -3,7 +3,7 @@
 namespace App\Containers\User\Controllers\Api;
 
 use App\Containers\User\Requests\LoginRequest;
-use App\Containers\User\Tasks\ApiLoginTask;
+use App\Containers\User\Subtasks\ApiLoginSubtask;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Kernel\Controller\Abstracts\ApiController;
 
@@ -17,13 +17,13 @@ class LoginController extends ApiController
 
     /**
      * @param \App\Containers\User\Requests\LoginRequest $loginRequest
-     * @param \App\Containers\User\Tasks\ApiLoginTask       $loginTask
+     * @param \App\Containers\User\Subtasks\ApiLoginSubtask       $loginSubtask
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(LoginRequest $loginRequest, ApiLoginTask $loginTask)
+    public function handle(LoginRequest $loginRequest, ApiLoginSubtask $loginSubtask)
     {
-        $user = $loginTask->run($loginRequest['email'], $loginRequest['password']);
+        $user = $loginSubtask->run($loginRequest['email'], $loginRequest['password']);
 
         return $this->response->item($user, new UserTransformer());
     }

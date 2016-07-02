@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Subtasks;
 
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Subtask\Abstracts\Subtask;
 
 /**
- * Class ApiLogoutTask.
+ * Class ApiLogoutSubtask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLogoutTask extends Task
+class ApiLogoutSubtask extends Subtask
 {
 
     /**
-     * @var \App\Containers\User\Tasks\ApiAuthenticationService|\App\Services\ApiAuthentication\Portals\ApiAuthenticationService
+     * @var \App\Containers\User\Subtasks\ApiAuthenticationService|\App\Services\ApiAuthentication\Portals\ApiAuthenticationService
      */
     private $authenticationService;
 
     /**
-     * ApiLogoutTask constructor.
+     * ApiLogoutSubtask constructor.
      *
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */

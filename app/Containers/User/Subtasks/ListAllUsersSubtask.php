@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Subtasks;
 
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Subtask\Abstracts\Subtask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Services\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
- * Class ListAllUsersTask.
+ * Class ListAllUsersSubtask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ListAllUsersTask extends Task
+class ListAllUsersSubtask extends Subtask
 {
 
     /**
@@ -20,7 +20,7 @@ class ListAllUsersTask extends Task
     private $userRepository;
 
     /**
-     * ListAllUsersTask constructor.
+     * ListAllUsersSubtask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

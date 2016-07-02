@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Controllers\Api;
 
-use App\Containers\User\Tasks\ListAllUsersTask;
+use App\Containers\User\Subtasks\ListAllUsersSubtask;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Kernel\Controller\Abstracts\ApiController;
 
@@ -15,13 +15,13 @@ class ListAllUsersController extends ApiController
 {
 
     /**
-     * @param \App\Containers\User\Tasks\ListAllUsersTask $listAllUsersTask
+     * @param \App\Containers\User\Subtasks\ListAllUsersSubtask $listAllUsersSubtask
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function handle(ListAllUsersTask $listAllUsersTask)
+    public function handle(ListAllUsersSubtask $listAllUsersSubtask)
     {
-        $users = $listAllUsersTask->run();
+        $users = $listAllUsersSubtask->run();
 
         return $this->response->paginator($users, new UserTransformer());
     }
