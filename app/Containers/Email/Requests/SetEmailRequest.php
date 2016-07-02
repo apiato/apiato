@@ -45,6 +45,8 @@ class SetEmailRequest extends Request
      */
     public function authorize()
     {
+        // TODO: add policy checking if the user is authorized to set his own Email
+
         return true;
     }
 }
