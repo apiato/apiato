@@ -3,9 +3,7 @@
 namespace App\Containers\Email\Controllers\Api;
 
 use App\Containers\Email\Requests\SetEmailRequest;
-use App\Containers\Email\Subtasks\GenerateEmailConfirmationUrlSubtask;
-use App\Containers\Email\Subtasks\SendConfirmationEmailSubtask;
-use App\Containers\Email\Subtasks\SetUserEmailSubtask;
+use App\Containers\Email\Tasks\SetUserEmailTask;
 use App\Kernel\Controller\Abstracts\ApiController;
 
 /**
@@ -17,27 +15,14 @@ class SetUserEmailController extends ApiController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\SetEmailRequest               $setEmailRequest
-     * @param \App\Containers\Email\Subtasks\SetUserEmailSubtask                 $setUserEmailSubtask
-     * @param \App\Containers\Email\Subtasks\GenerateEmailConfirmationUrlSubtask $generateEmailConfirmationUrlSubtask
-     * @param \App\Containers\Email\Subtasks\SendConfirmationEmailSubtask        $sendConfirmationEmailSubtask
+     * @param \App\Containers\Email\Requests\SetEmailRequest $setEmailRequest
+     * @param \App\Containers\Email\Tasks\SetUserEmailTask   $setUserEmailTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function handle(
-        SetEmailRequest $setEmailRequest,
-        SetUserEmailSubtask $setUserEmailSubtask,
-        GenerateEmailConfirmationUrlSubtask $generateEmailConfirmationUrlSubtask,
-        SendConfirmationEmailSubtask $sendConfirmationEmailSubtask
-    ) {
-        // set the email on the user in the database
-        $user = $setUserEmailSubtask->run($setEmailRequest->id, $setEmailRequest->email);
-
-        // generate confirmation code, store it on the memory and inject it in url
-        $confirmationUrl = $generateEmailConfirmationUrlSubtask->run($user);
-
-        // send a confirmation email to the user with the link
-        $sendConfirmationEmailSubtask->run($user, $confirmationUrl);
+    public function handle(SetEmailRequest $setEmailRequest, SetUserEmailTask $setUserEmailTask)
+    {
+        $setUserEmailTask->run($setEmailRequest->id, $setEmailRequest->email);
 
         return $this->response->accepted(null, [
             'message' => 'User Email Sent Successfully, Waiting User Email Confirmation.',
