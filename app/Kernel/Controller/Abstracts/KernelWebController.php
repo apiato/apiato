@@ -8,11 +8,11 @@ use App\Kernel\Views\Traits\ViewsTrait;
 use Illuminate\View\Factory as View;
 
 /**
- * Class WebController.
+ * Class KernelWebController.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class WebController extends KernelController implements WebControllerInterface
+abstract class KernelWebController extends KernelController implements WebControllerInterface
 {
 
     use ViewsTrait;
