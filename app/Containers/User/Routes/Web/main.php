@@ -1,5 +1,5 @@
 <?php
 
 $router->get('/user', [
-    'uses' => 'WelcomeUserController@handle',
+    'uses' => 'WebController@sayWelcome',
 ]);

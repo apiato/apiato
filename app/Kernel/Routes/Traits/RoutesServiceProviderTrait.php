@@ -57,7 +57,7 @@ trait RoutesServiceProviderTrait
 
                         $router->group([
                             // Routes Namespace
-                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers\Api',
+                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers',
                             // Enable: API Rate Limiting
                             'middleware' => 'api.throttle',
                             // The API limit time.
@@ -94,7 +94,7 @@ trait RoutesServiceProviderTrait
 
             foreach ($files as $file) {
                 $this->webRouter->group([
-                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers\Web',
+                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers',
                 ], function (LaravelRouter $router) use ($file) {
                     require $file->getPathname();
                 });

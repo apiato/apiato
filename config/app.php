@@ -113,7 +113,7 @@ return [
     'providers' => [
 
         /*
-         * Laravel Framework Service Providers...
+         * Laravel Framework
          */
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
@@ -140,7 +140,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Custom Application Service Providers
+         * Third-party Packages
          */
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
@@ -149,17 +149,13 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
-         * Megavel kernel Service Providers
+         * Laravel Porto Kernel
          */
         App\Kernel\Butler\Providers\KernelButlerServiceProvider::class,
         App\Kernel\Provider\Providers\KernelServiceProvider::class,
 
         /*
-         * Megavel Services Service Providers
-         */
-
-        /*
-         * Megavel Containers Service Providers
+         * Laravel Porto Services
          */
 
     ],

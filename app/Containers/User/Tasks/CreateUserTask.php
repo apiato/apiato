@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Containers\User\Subtasks;
+namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Kernel\Subtask\Abstracts\Subtask;
+use App\Kernel\Task\Abstracts\Task;
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class CreateUserSubtask.
+ * Class CreateUserTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateUserSubtask extends Subtask
+class CreateUserTask extends Task
 {
 
     /**
@@ -30,7 +30,7 @@ class CreateUserSubtask extends Subtask
     private $authenticationService;
 
     /**
-     * CreateUserSubtask constructor.
+     * CreateUserTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService

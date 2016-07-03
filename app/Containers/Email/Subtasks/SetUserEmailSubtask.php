@@ -30,10 +30,10 @@ class SetUserEmailSubtask extends Subtask
     }
 
     /**
+     * @param $userId
      * @param $email
-     * @param $password
      *
-     * @return mixed
+     * @return  mixed
      */
     public function run($userId, $email)
     {
