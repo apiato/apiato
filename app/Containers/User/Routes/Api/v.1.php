@@ -33,7 +33,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->post('login', [
-    'uses' => 'LoginController@handle',
+    'uses' => 'ApiController@loginUser',
 ]);
 
 /*********************************************************************************
@@ -89,7 +89,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->post('register', [
-    'uses' => 'RegisterController@handle',
+    'uses' => 'ApiController@registerUser',
 ]);
 
 /*********************************************************************************
