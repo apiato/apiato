@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Containers\Email\Controllers\Api;
+namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\SetEmailRequest;
 use App\Containers\Email\Tasks\SetUserEmailTask;
-use App\Kernel\Controller\Abstracts\ApiController;
+use App\Kernel\Controller\Abstracts\KernelApiController;
 
 /**
- * Class SetUserEmailController.
+ * Class ApiController.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetUserEmailController extends ApiController
+class ApiController extends KernelApiController
 {
 
     /**
@@ -20,7 +20,7 @@ class SetUserEmailController extends ApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function handle(SetEmailRequest $setEmailRequest, SetUserEmailTask $setUserEmailTask)
+    public function setUserEmailController(SetEmailRequest $setEmailRequest, SetUserEmailTask $setUserEmailTask)
     {
         $setUserEmailTask->run($setEmailRequest->id, $setEmailRequest->email);
 

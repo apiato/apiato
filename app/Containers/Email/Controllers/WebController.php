@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Containers\Email\Controllers\Web;
+namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\ConfirmUserEmailRequest;
 use App\Containers\Email\Subtasks\ValidateConfirmationCodeSubtask;
 use App\Containers\User\Subtasks\FindUserByIdSubtask;
-use App\Kernel\Controller\Abstracts\WebController;
+use App\Kernel\Controller\Abstracts\KernelWebController;
 
 /**
- * Class ConfirmUserEmailController.
+ * Class WebController.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ConfirmUserEmailController extends WebController
+class WebController extends KernelWebController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest $confirmUserEmailRequest
-     * @param \App\Containers\User\Subtasks\FindUserByIdSubtask            $findUserByIdSubtask
+     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest         $confirmUserEmailRequest
+     * @param \App\Containers\User\Subtasks\FindUserByIdSubtask              $findUserByIdSubtask
+     * @param \App\Containers\Email\Subtasks\ValidateConfirmationCodeSubtask $validateConfirmationCodeSubtask
      *
-     * @return  bool
-     * @throws \App\Containers\User\Subtasks\UserNotFoundException
+     * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function handle(
+    public function confirmUserEmail(
         ConfirmUserEmailRequest $confirmUserEmailRequest,
         FindUserByIdSubtask $findUserByIdSubtask,
         ValidateConfirmationCodeSubtask $validateConfirmationCodeSubtask
