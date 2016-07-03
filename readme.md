@@ -137,6 +137,7 @@ To get an overview of how the code is designed you MUST read about the [**Porto*
 	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
 	* [Localization](https://github.com/Mahmoudz/Hello-API/wiki/Localization)
 	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
+	* [Tests Helpers](https://github.com/Mahmoudz/Hello-API/wiki/Tests-Helpers)
 
 	
 	
