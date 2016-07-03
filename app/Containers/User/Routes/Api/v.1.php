@@ -49,7 +49,7 @@ $router->post('login', [
 HTTP/1.1 202 Accepted
  */
 $router->post('logout', [
-    'uses'       => 'LogoutController@handle',
+    'uses'       => 'ApiController@logoutUser',
     'middleware' => [
         'api.auth',
     ],
@@ -126,7 +126,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->put('users/{id}', [
-    'uses'       => 'UpdateUserController@handle',
+    'uses'       => 'ApiController@updateUser',
     'middleware' => [
         'api.auth',
     ],
@@ -143,7 +143,7 @@ $router->put('users/{id}', [
  * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  */
 $router->delete('users/{id}', [
-    'uses'       => 'DeleteUserController@handle',
+    'uses'       => 'ApiController@deleteUser',
     'middleware' => [
         'api.auth',
     ],
@@ -215,7 +215,7 @@ HTTP/1.1 200 OK
 }
  */
 $router->get('users', [
-    'uses'       => 'ListAllUsersController@handle',
+    'uses'       => 'ApiController@listAllUsers',
     'middleware' => [
         'api.auth',
         'role:admin'
