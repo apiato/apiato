@@ -17,9 +17,9 @@
 
 #### WHAT
 
-Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel CSAP**.
-<br>
-(**[Laravel CSAP](https://github.com/Mahmoudz/laravel-csap)** is **[Laravel 5.1](https://github.com/laravel/framework)** implementing the **[Containers SAP](https://github.com/Mahmoudz/Containers-SAP)** "Containers Software Architectural Pattern").
+Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel Porto**.
+
+*[Laravel Porto](https://github.com/Mahmoudz/laravel-porto) is the implementation of the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern in [Laravel 5.1](https://github.com/laravel/framework).*
 
 #### HOW
 
@@ -120,11 +120,9 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 <a name="Documentation"></a>
 ## Full Documentation
 
-To get an overview of how the code is designed you MUST read the [**Containers SAP** Documentation](https://github.com/Mahmoudz/Containers-SAP).
+To get an overview of how the code is designed you MUST read about the [**Porto** (Software Architectural Pattern)](https://github.com/Mahmoudz/Porto).
 
-Since **Hello API** is built on top of **Laravel CSAP**, you SHOULD refer to the [**Laravel CSAP** Documeentation](https://laravel-csap.readme.io/docs/introduction) for all the details.
-
-Below is the **Hello API** specific documentation:
+**Hello API** is built on top of **Laravel Porto** *(the implementation of Porto in Laravel)*, so you will need to refer to the [**Laravel Porto** Documentation](https://laravel-porto.readme.io) for everything. Below is the **Hello API** specific documentation:
 
 * Intro
 	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
@@ -142,20 +140,6 @@ Below is the **Hello API** specific documentation:
 
 	
 	
-
-<a name="Coming-Features"></a>
-##Coming Features
-
-- Hidden real IDs from the response.
-- IP Restriction (to whitelist or blacklist IP's).
-- Request size limiting and response rate limiting.
-- Automatic Code and Data Backup.
-- Admin Panel (For Users Management).
-- Support login with social networks (Facebook, Twitter, Github, Google).
-- Back-end generators (to generate Containers and components) for faster development.
-- A lot more cool stuff in mind, (never stop coding).
-
-> Suggest a feature by opening a new Issue with (`Feature -`) title [here](https://github.com/Mahmoudz/Hello-API/issues).
 
 
 
