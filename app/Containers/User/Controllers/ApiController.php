@@ -6,12 +6,12 @@ use App\Containers\User\Requests\DeleteUserRequest;
 use App\Containers\User\Requests\LoginRequest;
 use App\Containers\User\Requests\RegisterRequest;
 use App\Containers\User\Requests\UpdateUserRequest;
-use App\Containers\User\Subtasks\ApiLoginSubtask;
-use App\Containers\User\Subtasks\ApiLogoutSubtask;
-use App\Containers\User\Subtasks\CreateUserSubtask;
-use App\Containers\User\Subtasks\DeleteUserSubtask;
-use App\Containers\User\Subtasks\ListAllUsersSubtask;
-use App\Containers\User\Subtasks\UpdateUserSubtask;
+use App\Containers\User\Tasks\ApiLoginTask;
+use App\Containers\User\Tasks\ApiLogoutTask;
+use App\Containers\User\Tasks\CreateUserTask;
+use App\Containers\User\Tasks\DeleteUserTask;
+use App\Containers\User\Tasks\ListAllUsersTask;
+use App\Containers\User\Tasks\UpdateUserTask;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Kernel\Controller\Abstracts\KernelApiController;
 use App\Kernel\Request\Manager\HttpRequest;
@@ -26,14 +26,14 @@ class ApiController extends KernelApiController
 
     /**
      * @param \App\Containers\User\Requests\DeleteUserRequest $deleteUserRequest
-     * @param \App\Containers\User\Subtasks\DeleteUserSubtask $deleteUserSubtask
+     * @param \App\Containers\User\Tasks\DeleteUserTask $deleteUserTask
      * @param                                                 $userId
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function deleteUser(DeleteUserRequest $deleteUserRequest, DeleteUserSubtask $deleteUserSubtask, $userId)
+    public function deleteUser(DeleteUserRequest $deleteUserRequest, DeleteUserTask $deleteUserTask, $userId)
     {
-        $deleteUserSubtask->run($userId);
+        $deleteUserTask->run($userId);
 
         return $this->response->accepted(null, [
             'message' => 'User (' . $userId . ') Deleted Successfully.',
@@ -41,39 +41,39 @@ class ApiController extends KernelApiController
     }
 
     /**
-     * @param \App\Containers\User\Subtasks\ListAllUsersSubtask $listAllUsersSubtask
+     * @param \App\Containers\User\Tasks\ListAllUsersTask $listAllUsersTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function listAllUsers(ListAllUsersSubtask $listAllUsersSubtask)
+    public function listAllUsers(ListAllUsersTask $listAllUsersTask)
     {
-        $users = $listAllUsersSubtask->run();
+        $users = $listAllUsersTask->run();
 
         return $this->response->paginator($users, new UserTransformer());
     }
 
     /**
      * @param \App\Containers\User\Requests\LoginRequest    $loginRequest
-     * @param \App\Containers\User\Subtasks\ApiLoginSubtask $loginSubtask
+     * @param \App\Containers\User\Tasks\ApiLoginTask $loginTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function loginUser(LoginRequest $loginRequest, ApiLoginSubtask $loginSubtask)
+    public function loginUser(LoginRequest $loginRequest, ApiLoginTask $loginTask)
     {
-        $user = $loginSubtask->run($loginRequest['email'], $loginRequest['password']);
+        $user = $loginTask->run($loginRequest['email'], $loginRequest['password']);
 
         return $this->response->item($user, new UserTransformer());
     }
 
     /**
      * @param \App\Kernel\Request\Manager\HttpRequest        $request
-     * @param \App\Containers\User\Subtasks\ApiLogoutSubtask $logoutSubtask
+     * @param \App\Containers\User\Tasks\ApiLogoutTask $logoutTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function logoutUser(HttpRequest $request, ApiLogoutSubtask $logoutSubtask)
+    public function logoutUser(HttpRequest $request, ApiLogoutTask $logoutTask)
     {
-        $logoutSubtask->run($request->header('authorization'));
+        $logoutTask->run($request->header('authorization'));
 
         return $this->response->accepted(null, [
             'message' => 'User Logged Out Successfully.',
@@ -82,15 +82,15 @@ class ApiController extends KernelApiController
 
     /**
      * @param \App\Containers\User\Requests\RegisterRequest   $registerRequest
-     * @param \App\Containers\User\Subtasks\CreateUserSubtask $createUserSubtask
+     * @param \App\Containers\User\Tasks\CreateUserTask $createUserTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $registerRequest, CreateUserSubtask $createUserSubtask)
+    public function registerUser(RegisterRequest $registerRequest, CreateUserTask $createUserTask)
     {
 
         // create and login (true parameter) the new user
-        $user = $createUserSubtask->run(
+        $user = $createUserTask->run(
             $registerRequest['email'],
             $registerRequest['password'],
             $registerRequest['name'],
@@ -102,14 +102,14 @@ class ApiController extends KernelApiController
 
     /**
      * @param \App\Containers\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \App\Containers\User\Subtasks\UpdateUserSubtask $updateUserSubtask
+     * @param \App\Containers\User\Tasks\UpdateUserTask $updateUserTask
      * @param                                                 $userId
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function updateUser(UpdateUserRequest $updateUserRequest, UpdateUserSubtask $updateUserSubtask, $userId)
+    public function updateUser(UpdateUserRequest $updateUserRequest, UpdateUserTask $updateUserTask, $userId)
     {
-        $user = $updateUserSubtask->run(
+        $user = $updateUserTask->run(
             $userId,
             $updateUserRequest['password'],
             $updateUserRequest['name']

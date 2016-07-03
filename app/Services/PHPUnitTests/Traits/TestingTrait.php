@@ -6,7 +6,7 @@ use App;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
-use App\Containers\User\Subtasks\CreateUserSubtask;
+use App\Containers\User\Tasks\CreateUserTask;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 /**
@@ -128,10 +128,10 @@ trait TestingTrait
             ];
         }
 
-        $createUserSubtask = App::make(CreateUserSubtask::class);
+        $CreateUserTask = App::make(CreateUserTask::class);
 
         // create new user and login (true)
-        $user = $createUserSubtask->run(
+        $user = $CreateUserTask->run(
             $userDetails['email'],
             $userDetails['password'],
             $userDetails['name'],

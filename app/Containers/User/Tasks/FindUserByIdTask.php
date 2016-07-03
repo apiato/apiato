@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\User\Subtasks;
+namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Kernel\Subtask\Abstracts\Subtask;
+use App\Kernel\Task\Abstracts\Task;
 use Exception;
 
 /**
- * Class FindUserByIdSubtask.
+ * Class FindUserByIdTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserByIdSubtask extends Subtask
+class FindUserByIdTask extends Task
 {
 
     /**
@@ -21,7 +21,7 @@ class FindUserByIdSubtask extends Subtask
     private $userRepository;
 
     /**
-     * CreateUserSubtask constructor.
+     * CreateUserTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
