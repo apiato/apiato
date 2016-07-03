@@ -16,11 +16,6 @@ class SetUserEmailTask extends Task
 {
 
     /**
-     * @var  \App\Containers\Email\Requests\SetEmailRequest
-     */
-    private $setEmailRequest;
-
-    /**
      * @var  \App\Containers\Email\Subtasks\SetUserEmailSubtask
      */
     private $setUserEmailSubtask;
