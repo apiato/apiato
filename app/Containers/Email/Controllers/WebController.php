@@ -3,8 +3,8 @@
 namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\ConfirmUserEmailRequest;
-use App\Containers\Email\Subtasks\ValidateConfirmationCodeSubtask;
-use App\Containers\User\Subtasks\FindUserByIdSubtask;
+use App\Containers\Email\Tasks\ValidateConfirmationCodeTask;
+use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Kernel\Controller\Abstracts\KernelWebController;
 
 /**
@@ -16,23 +16,23 @@ class WebController extends KernelWebController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest         $confirmUserEmailRequest
-     * @param \App\Containers\User\Subtasks\FindUserByIdSubtask              $findUserByIdSubtask
-     * @param \App\Containers\Email\Subtasks\ValidateConfirmationCodeSubtask $validateConfirmationCodeSubtask
+     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest   $confirmUserEmailRequest
+     * @param \App\Containers\User\Tasks\FindUserByIdTask              $findUserByIdTask
+     * @param \App\Containers\Email\Tasks\ValidateConfirmationCodeTask $validateConfirmationCodeTask
      *
      * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function confirmUserEmail(
         ConfirmUserEmailRequest $confirmUserEmailRequest,
-        FindUserByIdSubtask $findUserByIdSubtask,
-        ValidateConfirmationCodeSubtask $validateConfirmationCodeSubtask
+        FindUserByIdTask $findUserByIdTask,
+        ValidateConfirmationCodeTask $validateConfirmationCodeTask
     ) {
 
         // find user by ID
-        $user = $findUserByIdSubtask->run($confirmUserEmailRequest->id);
+        $user = $findUserByIdTask->run($confirmUserEmailRequest->id);
 
         // validate the confirmation code and update user status is code is valid
-        $validateConfirmationCodeSubtask->run($user, $confirmUserEmailRequest->code);
+        $validateConfirmationCodeTask->run($user, $confirmUserEmailRequest->code);
 
         // redirect to the app URL
         return redirect(env('APP_FULL_URL'));
