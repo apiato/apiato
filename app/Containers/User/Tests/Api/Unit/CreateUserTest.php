@@ -17,11 +17,13 @@ class CreateUserTest extends TestCase
 
     public function testCreateUser_()
     {
-        $Task = App::make(CreateUserTask::class);
+        $task = App::make(CreateUserTask::class);
 
+        $email = 'Mahmoud@test.test';
         $name = 'Mahmoud';
+        $password = 'so-secret';
 
-        $user = $Task->run($name, true);
+        $user = $task->run($email, $password, $name, true);
 
         // asset the returned object is an instance of the User
         $this->assertInstanceOf(User::class, $user);
