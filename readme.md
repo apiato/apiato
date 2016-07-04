@@ -17,13 +17,13 @@
 
 #### WHAT
 
-Hello API is a **Starter** providing everything to build a modern API, with **PHP** and **Laravel Porto**.
+Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel Porto**.
 
 *[Laravel Porto](https://github.com/Mahmoudz/laravel-porto) is the implementation of the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern in [Laravel 5.1](https://github.com/laravel/framework).*
 
 #### HOW
 
-Hello API gives all the common functionalities of a modern API, to help getting started faster.
+Hello API gives all the common functionalities of a modern API, to help building API-Centric Apps faster.
 
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
 
