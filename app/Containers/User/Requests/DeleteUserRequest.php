@@ -21,7 +21,22 @@ class DeleteUserRequest extends Request
      */
     public function rules()
     {
-        return [];
+        return [
+            'id'    => 'required|integer', // url parameter
+        ];
+    }
+
+    /**
+     * Override the all() to automatically apply validation rules to the URL parameters
+     *
+     * @return  array
+     */
+    public function all()
+    {
+        $data = parent::all();
+        $data['id'] = $this->route('id');
+
+        return $data;
     }
 
     /**

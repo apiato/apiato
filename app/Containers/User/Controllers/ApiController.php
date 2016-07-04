@@ -26,17 +26,16 @@ class ApiController extends KernelApiController
 
     /**
      * @param \App\Containers\User\Requests\DeleteUserRequest $deleteUserRequest
-     * @param \App\Containers\User\Tasks\DeleteUserTask $deleteUserTask
-     * @param                                                 $userId
+     * @param \App\Containers\User\Tasks\DeleteUserTask       $deleteUserTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function deleteUser(DeleteUserRequest $deleteUserRequest, DeleteUserTask $deleteUserTask, $userId)
+    public function deleteUser(DeleteUserRequest $deleteUserRequest, DeleteUserTask $deleteUserTask)
     {
-        $deleteUserTask->run($userId);
+        $deleteUserTask->run($deleteUserRequest->id);
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $userId . ') Deleted Successfully.',
+            'message' => 'User (' . $deleteUserRequest->id . ') Deleted Successfully.',
         ]);
     }
 
@@ -102,15 +101,14 @@ class ApiController extends KernelApiController
 
     /**
      * @param \App\Containers\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \App\Containers\User\Tasks\UpdateUserTask $updateUserTask
-     * @param                                                 $userId
+     * @param \App\Containers\User\Tasks\UpdateUserTask       $updateUserTask
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function updateUser(UpdateUserRequest $updateUserRequest, UpdateUserTask $updateUserTask, $userId)
+    public function updateUser(UpdateUserRequest $updateUserRequest, UpdateUserTask $updateUserTask)
     {
         $user = $updateUserTask->run(
-            $userId,
+            $updateUserRequest->id,
             $updateUserRequest['password'],
             $updateUserRequest['name']
         );

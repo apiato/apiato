@@ -24,8 +24,23 @@ class UpdateUserRequest extends Request
         return [
             'password' => 'min:6|max:30',
             'name'     => 'min:2|max:50',
+            'id'       => 'required|integer', // url parameter
         ];
     }
+
+    /**
+     * Override the all() to automatically apply validation rules to the URL parameters
+     *
+     * @return  array
+     */
+    public function all()
+    {
+        $data = parent::all();
+        $data['id'] = $this->route('id');
+
+        return $data;
+    }
+
 
     /**
      * Determine if the user is authorized to make this request.
