@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Actions;
 
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Action\Abstracts\Action;
 
 /**
- * Class CreateUserTask.
+ * Class CreateUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLoginTask extends Task
+class ApiLoginAction extends Action
 {
 
     /**
@@ -19,7 +19,7 @@ class ApiLoginTask extends Task
     private $authenticationService;
 
     /**
-     * ApiLoginTask constructor.
+     * ApiLoginAction constructor.
      *
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */

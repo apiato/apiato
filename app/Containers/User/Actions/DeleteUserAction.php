@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Action\Abstracts\Action;
 
 /**
- * Class DeleteUserTask.
+ * Class DeleteUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DeleteUserTask extends Task
+class DeleteUserAction extends Action
 {
 
     /**
@@ -19,7 +19,7 @@ class DeleteUserTask extends Task
     private $userRepository;
 
     /**
-     * UpdateUserTask constructor.
+     * UpdateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

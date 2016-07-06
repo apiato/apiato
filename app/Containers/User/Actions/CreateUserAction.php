@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Action\Abstracts\Action;
 use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class CreateUserTask.
+ * Class CreateUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateUserTask extends Task
+class CreateUserAction extends Action
 {
 
     /**
@@ -30,7 +30,7 @@ class CreateUserTask extends Task
     private $authenticationService;
 
     /**
-     * CreateUserTask constructor.
+     * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
      * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService

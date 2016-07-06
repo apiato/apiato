@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Services\ApiAuthentication\Exceptions\UpdateResourceFailedException;
-use App\Kernel\Task\Abstracts\Task;
+use App\Kernel\Action\Abstracts\Action;
 
 /**
- * Class UpdateUserTask.
+ * Class UpdateUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateUserTask extends Task
+class UpdateUserAction extends Action
 {
 
     /**
@@ -20,7 +20,7 @@ class UpdateUserTask extends Task
     private $userRepository;
 
     /**
-     * UpdateUserTask constructor.
+     * UpdateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

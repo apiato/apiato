@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tests\Api\Unit;
 
 use App\Containers\User\Models\User;
-use App\Containers\User\Tasks\CreateUserTask;
+use App\Containers\User\Actions\CreateUserAction;
 use App\Kernel\Tests\PHPUnit\Abstracts\TestCase;
 use Illuminate\Support\Facades\App;
 
@@ -17,7 +17,7 @@ class CreateUserTest extends TestCase
 
     public function testCreateUser_()
     {
-        $task = App::make(CreateUserTask::class);
+        $task = App::make(CreateUserAction::class);
 
         $email = 'Mahmoud@test.test';
         $name = 'Mahmoud';
