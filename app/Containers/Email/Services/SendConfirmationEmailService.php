@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Containers\Email\Subtasks;
+namespace App\Containers\Email\Services;
 
 use App\Containers\User\Models\User;
-use App\Kernel\Subtask\Abstracts\Subtask;
+use App\Kernel\Service\Abstracts\Service;
 use App\Services\Mails\Mails\ConfirmEmail;
 
 /**
- * Class SendConfirmationEmailSubtask.
+ * Class SendConfirmationEmailService.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SendConfirmationEmailSubtask extends Subtask
+class SendConfirmationEmailService extends Service
 {
 
     /**

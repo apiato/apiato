@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Containers\Email\Subtasks;
+namespace App\Containers\Email\Services;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Kernel\Subtask\Abstracts\Subtask;
+use App\Kernel\Service\Abstracts\Service;
 
 /**
- * Class SetUserEmailSubtask.
+ * Class SetUserEmailService.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetUserEmailSubtask extends Subtask
+class SetUserEmailService extends Service
 {
 
     /**
@@ -20,7 +20,7 @@ class SetUserEmailSubtask extends Subtask
     private $userRepository;
 
     /**
-     * UpdateUserSubtask constructor.
+     * UpdateUserService constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

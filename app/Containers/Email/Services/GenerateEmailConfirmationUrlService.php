@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Containers\Email\Subtasks;
+namespace App\Containers\Email\Services;
 
 use App\Containers\Email\Exceptions\UserEmailNotFoundException;
 use App\Containers\User\Models\User;
-use App\Kernel\Subtask\Abstracts\Subtask;
+use App\Kernel\Service\Abstracts\Service;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class GenerateEmailConfirmationUrlSubtask.
+ * Class GenerateEmailConfirmationUrlService.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GenerateEmailConfirmationUrlSubtask extends Subtask
+class GenerateEmailConfirmationUrlService extends Service
 {
 
     /**

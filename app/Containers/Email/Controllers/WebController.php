@@ -3,8 +3,8 @@
 namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\ConfirmUserEmailRequest;
-use App\Containers\Email\Tasks\ValidateConfirmationCodeTask;
-use App\Containers\User\Tasks\FindUserByIdTask;
+use App\Containers\Email\Actions\ValidateConfirmationCodeAction;
+use App\Containers\User\Actions\FindUserByIdAction;
 use App\Kernel\Controller\Abstracts\KernelWebController;
 
 /**
@@ -17,22 +17,22 @@ class WebController extends KernelWebController
 
     /**
      * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest   $confirmUserEmailRequest
-     * @param \App\Containers\User\Tasks\FindUserByIdTask              $findUserByIdTask
-     * @param \App\Containers\Email\Tasks\ValidateConfirmationCodeTask $validateConfirmationCodeTask
+     * @param \App\Containers\User\Actions\FindUserByIdAction              $findUserByIdAction
+     * @param \App\Containers\Email\Actions\ValidateConfirmationCodeAction $validateConfirmationCodeAction
      *
      * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function confirmUserEmail(
         ConfirmUserEmailRequest $confirmUserEmailRequest,
-        FindUserByIdTask $findUserByIdTask,
-        ValidateConfirmationCodeTask $validateConfirmationCodeTask
+        FindUserByIdAction $findUserByIdAction,
+        ValidateConfirmationCodeAction $validateConfirmationCodeAction
     ) {
 
         // find user by ID
-        $user = $findUserByIdTask->run($confirmUserEmailRequest->id);
+        $user = $findUserByIdAction->run($confirmUserEmailRequest->id);
 
         // validate the confirmation code and update user status is code is valid
-        $validateConfirmationCodeTask->run($user, $confirmUserEmailRequest->code);
+        $validateConfirmationCodeAction->run($user, $confirmUserEmailRequest->code);
 
         // redirect to the app URL
         return redirect(env('APP_FULL_URL'));
