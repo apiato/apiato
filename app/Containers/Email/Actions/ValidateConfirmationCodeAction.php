@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Containers\Email\Services;
+namespace App\Containers\Email\Actions;
 
 use App\Containers\Email\Exceptions\InvalidConfirmationCodeException;
-use App\Ship\Service\Abstracts\Service;
+use App\Ship\Action\Abstracts\Action;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Class ValidateConfirmationCodeService.
+ * Class ValidateConfirmationCodeAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidateConfirmationCodeService extends Service
+class ValidateConfirmationCodeAction extends Action
 {
 
     /**
-     * @param $userId
+     * @param $user
      * @param $code
      *
-     * @throws \App\Containers\Email\Services\InvalidConfirmationCodeException
+     * @return  bool
      */
     public function run($user, $code)
     {

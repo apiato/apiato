@@ -16,7 +16,7 @@ class WebController extends KernelWebController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest   $confirmUserEmailRequest
+     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest       $confirmUserEmailRequest
      * @param \App\Containers\User\Actions\FindUserByIdAction              $findUserByIdAction
      * @param \App\Containers\Email\Actions\ValidateConfirmationCodeAction $validateConfirmationCodeAction
      *
