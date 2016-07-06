@@ -4,7 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Kernel\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 use Exception;
 
 /**
@@ -24,7 +24,7 @@ class FindUserByIdAction extends Action
      * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
-     * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
+     * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
     public function __construct(
         UserRepositoryInterface $userRepository

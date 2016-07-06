@@ -4,7 +4,7 @@ namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\SetEmailRequest;
 use App\Containers\Email\Actions\SetUserEmailAction;
-use App\Kernel\Controller\Abstracts\KernelApiController;
+use App\Ship\Controller\Abstracts\KernelApiController;
 
 /**
  * Class ApiController.

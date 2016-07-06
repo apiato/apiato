@@ -2,9 +2,9 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Kernel\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Services\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Portainers\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
  * Class ListAllUsersAction.

@@ -13,8 +13,8 @@ use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Kernel\Controller\Abstracts\KernelApiController;
-use App\Kernel\Request\Manager\HttpRequest;
+use App\Ship\Controller\Abstracts\KernelApiController;
+use App\Ship\Request\Manager\HttpRequest;
 
 /**
  * Class ApiController.
@@ -65,7 +65,7 @@ class ApiController extends KernelApiController
     }
 
     /**
-     * @param \App\Kernel\Request\Manager\HttpRequest        $request
+     * @param \App\Ship\Request\Manager\HttpRequest        $request
      * @param \App\Containers\User\Actions\ApiLogoutAction $logoutAction
      *
      * @return  \Dingo\Api\Http\Response

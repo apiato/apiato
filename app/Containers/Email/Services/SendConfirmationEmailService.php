@@ -3,8 +3,8 @@
 namespace App\Containers\Email\Services;
 
 use App\Containers\User\Models\User;
-use App\Kernel\Service\Abstracts\Service;
-use App\Services\Mails\Mails\ConfirmEmail;
+use App\Ship\Service\Abstracts\Service;
+use App\Portainers\Mails\Mails\ConfirmEmail;
 
 /**
  * Class SendConfirmationEmailService.

@@ -5,8 +5,8 @@ namespace App\Containers\User\Actions;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Kernel\Action\Abstracts\Action;
-use App\Services\ApiAuthentication\Portals\ApiAuthenticationService;
+use App\Ship\Action\Abstracts\Action;
+use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +25,7 @@ class CreateUserAction extends Action
     private $userRepository;
 
     /**
-     * @var \App\Services\ApiAuthentication\Portals\ApiAuthenticationService
+     * @var \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService
      */
     private $authenticationService;
 
@@ -33,7 +33,7 @@ class CreateUserAction extends Action
      * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
-     * @param \App\Services\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
+     * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
      */
     public function __construct(
         UserRepositoryInterface $userRepository,

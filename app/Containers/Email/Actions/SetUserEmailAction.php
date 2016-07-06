@@ -5,7 +5,7 @@ namespace App\Containers\Email\Actions;
 use App\Containers\Email\Services\GenerateEmailConfirmationUrlService;
 use App\Containers\Email\Services\SendConfirmationEmailService;
 use App\Containers\Email\Services\SetUserEmailService;
-use App\Kernel\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class SetUserEmailAction.

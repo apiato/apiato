@@ -3,7 +3,7 @@
 namespace App\Containers\User\Events\Handlers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
-use App\Services\Mails\Mails\WelcomeEmail;
+use App\Portainers\Mails\Mails\WelcomeEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**

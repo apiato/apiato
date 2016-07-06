@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Requests;
 
-use App\Kernel\Request\Abstracts\Request;
+use App\Ship\Request\Abstracts\Request;
 
 /**
  * Class RegisterRequest.

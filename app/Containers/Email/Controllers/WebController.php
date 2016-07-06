@@ -5,7 +5,7 @@ namespace App\Containers\Email\Controllers;
 use App\Containers\Email\Requests\ConfirmUserEmailRequest;
 use App\Containers\Email\Actions\ValidateConfirmationCodeAction;
 use App\Containers\User\Actions\FindUserByIdAction;
-use App\Kernel\Controller\Abstracts\KernelWebController;
+use App\Ship\Controller\Abstracts\KernelWebController;
 
 /**
  * Class WebController.

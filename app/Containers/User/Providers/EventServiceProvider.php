@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
-use App\Kernel\Event\Providers\KernelEventServiceProvider;
+use App\Ship\Event\Providers\KernelEventServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 
 /**

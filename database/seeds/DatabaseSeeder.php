@@ -1,6 +1,6 @@
 <?php
 
-use App\Kernel\Seeder\Abstracts\Seeder;
+use App\Ship\Seeder\Abstracts\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Containers\Authorization\Seeders\RolesAndPermissionsSeeder;
 

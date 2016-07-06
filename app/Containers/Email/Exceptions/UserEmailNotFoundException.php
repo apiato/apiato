@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\Exceptions;
 
-use App\Kernel\Exception\Abstracts\Exception;
+use App\Ship\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
