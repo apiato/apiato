@@ -59,7 +59,7 @@ abstract class MailsAbstract
 
         // check if sending emails is enabled and if this is not running a testing environment
         if ($enabled && app()->env != 'testing') {
-            Mail::send($this->template, $data, function ($m) {
+            Mail::queue($this->template, $data, function ($m) {
                 $m->from($this->fromEmail, $this->fromName);
                 $m->to($this->toEmail, $this->toName)
                     ->subject($this->subject);
