@@ -2,11 +2,11 @@
 
 namespace App\Portainers\ApiAuthentication\Portals;
 
-use Exception;
-use Illuminate\Auth\AuthManager as LaravelAuthManager;
 use App\Portainers\ApiAuthentication\Adapters\JwtAuthAdapter;
 use App\Portainers\ApiAuthentication\Exceptions\AuthenticationFailedException;
 use App\Portainers\ApiAuthentication\Exceptions\MissingTokenException;
+use Exception;
+use Illuminate\Auth\AuthManager as LaravelAuthManager;
 
 /**
  * Class ApiAuthenticationService.
@@ -30,7 +30,7 @@ class ApiAuthenticationService
      * ApiAuthenticationService constructor.
      *
      * @param \App\Portainers\ApiAuthentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
-     * @param \Illuminate\Auth\AuthManager                          $authManager
+     * @param \Illuminate\Auth\AuthManager                              $authManager
      */
     public function __construct(JwtAuthAdapter $jwtAuthAdapter, LaravelAuthManager $authManager)
     {
@@ -74,6 +74,9 @@ class ApiAuthenticationService
     public function loginFromObject($user)
     {
         $token = $this->generateTokenFromObject($user);
+
+        // manually authenticate the user
+        $this->jwtAuthAdapter->authenticateViaToken($token);
 
         // inject the token on the model
         $user = $user->injectToken($token);
@@ -136,4 +139,5 @@ class ApiAuthenticationService
 
         return $token;
     }
+
 }

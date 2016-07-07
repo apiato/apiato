@@ -79,4 +79,14 @@ class JwtAuthAdapter
     {
         return $this->jwtAuth->setToken($token);
     }
+
+    /**
+     * @param $token
+     *
+     * @return  mixed
+     */
+    public function authenticateViaToken($token)
+    {
+        return $this->jwtAuth->authenticate($token);
+    }
 }
