@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Controllers;
 
-use App\Ship\Controller\Abstracts\KernelWebController;
+use App\Port\Controller\Abstracts\KernelWebController;
 
 /**
  * Class WebController

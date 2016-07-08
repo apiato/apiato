@@ -4,7 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 use Exception;
 
 /**

@@ -3,7 +3,7 @@
 namespace App\Containers\Email\Services;
 
 use App\Containers\User\Models\User;
-use App\Ship\Service\Abstracts\Service;
+use App\Port\Service\Abstracts\Service;
 use App\Portainers\Mails\Mails\ConfirmEmail;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Policies;
 
-use App\Ship\Policy\Abstracts\Policy;
+use App\Port\Policy\Abstracts\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Containers\User\Models\User;
 

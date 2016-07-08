@@ -2,7 +2,7 @@
 
 namespace App\Containers\Demo\Providers;
 
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class DemoServiceProvider.

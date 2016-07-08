@@ -4,7 +4,7 @@ namespace App\Containers\Email\Services;
 
 use App\Containers\Email\Exceptions\UserEmailNotFoundException;
 use App\Containers\User\Models\User;
-use App\Ship\Service\Abstracts\Service;
+use App\Port\Service\Abstracts\Service;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\URL;
 

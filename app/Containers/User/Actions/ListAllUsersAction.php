@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Portainers\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
