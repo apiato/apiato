@@ -78,7 +78,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 - Automatic dates conversion to ISO format in responses.
 - Support for JSON with padding (JSONP).
 - Scalable, Stateless and Distributable Application on the server.
-- Fantastic Software Architectural Pattern (using C-SAP).
+- Modern Software Architectural Pattern (using Porto).
 - Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
@@ -96,8 +96,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 >Hello API is built with the latest & hottest Technologies:
 
 - PHP (Server-Side Scripting Language)
-- [Laravel](https://laravel.com/docs/5.1) 5.1 LTS (Back-End Framework)
-- [Laravel CSAP](https://github.com/Mahmoudz/laravel-csap) (C-SAP with Laravel)
+- [Laravel Porto](https://github.com/Mahmoudz/laravel-Porto) (Implementation of Porto SAP in Laravel 5.1)
 - [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
 - [MySQL](https://www.mysql.com/) (RDBMS Database)
 - [Redis](http://redis.io/) (Cache System)
