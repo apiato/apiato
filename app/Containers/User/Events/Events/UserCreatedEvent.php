@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Events\Events;
 
-use App\Ship\Event\Abstracts\Event;
+use App\Port\Event\Abstracts\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

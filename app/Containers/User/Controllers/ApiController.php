@@ -13,15 +13,15 @@ use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Ship\Controller\Abstracts\KernelApiController;
-use App\Ship\Request\Manager\HttpRequest;
+use App\Port\Controller\Abstracts\PortApiController;
+use App\Port\Request\Manager\HttpRequest;
 
 /**
  * Class ApiController.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiController extends KernelApiController
+class ApiController extends PortApiController
 {
 
     /**
@@ -65,7 +65,7 @@ class ApiController extends KernelApiController
     }
 
     /**
-     * @param \App\Ship\Request\Manager\HttpRequest        $request
+     * @param \App\Port\Request\Manager\HttpRequest        $request
      * @param \App\Containers\User\Actions\ApiLogoutAction $logoutAction
      *
      * @return  \Dingo\Api\Http\Response

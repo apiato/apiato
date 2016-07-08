@@ -3,7 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 
 /**
  * Class ApiLogoutAction.

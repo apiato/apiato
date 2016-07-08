@@ -151,8 +151,8 @@ return [
         /*
          * Laravel Porto Kernel
          */
-        App\Ship\Butler\Providers\KernelButlerServiceProvider::class,
-        App\Ship\Provider\Providers\KernelServiceProvider::class,
+        App\Port\Butler\Providers\PortButlerServiceProvider::class,
+        App\Port\Provider\Providers\PortServiceProvider::class,
 
         /*
          * Laravel Porto Services

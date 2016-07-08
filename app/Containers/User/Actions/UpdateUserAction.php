@@ -4,7 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Portainers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 
 /**
  * Class UpdateUserAction.

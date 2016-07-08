@@ -5,7 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
 use Illuminate\Events\Dispatcher;

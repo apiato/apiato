@@ -4,7 +4,7 @@ namespace App\Containers\Email\Services;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Ship\Service\Abstracts\Service;
+use App\Port\Service\Abstracts\Service;
 
 /**
  * Class SetUserEmailService.

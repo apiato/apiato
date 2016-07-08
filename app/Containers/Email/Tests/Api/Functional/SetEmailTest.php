@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\Tests\Api\Functional;
 
-use App\Ship\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
  * Class SetEmailTest.

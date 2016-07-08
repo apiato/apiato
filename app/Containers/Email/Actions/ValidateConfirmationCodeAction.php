@@ -3,7 +3,7 @@
 namespace App\Containers\Email\Actions;
 
 use App\Containers\Email\Exceptions\InvalidConfirmationCodeException;
-use App\Ship\Action\Abstracts\Action;
+use App\Port\Action\Abstracts\Action;
 use Illuminate\Support\Facades\Cache;
 
 /**
