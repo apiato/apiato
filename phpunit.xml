@@ -9,28 +9,13 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="User Container Tests">
-            <directory>./app/Containers/User/Tests/Api/</directory>
-        </testsuite>
-        <testsuite name="Authorization Container Tests">
-            <directory>./app/Containers/Authorization/Tests/</directory>
-        </testsuite>
-        <testsuite name="Demo Container Tests">
-            <directory>./app/Containers/Demo/Tests/Api/</directory>
-        </testsuite>
-        <testsuite name="Email Container Tests">
-            <directory>./app/Containers/Email/Tests/</directory>
-        </testsuite>
-        <testsuite name="Mails Service Tests">
-            <directory>./app/Services/Mails/</directory>
+        <testsuite name="Containers Tests">
+            <directory>./app/Containers/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
-            <!--<exclude>-->
-                <!--<file>./app/Http/routes.php</file>-->
-            <!--</exclude>-->
         </whitelist>
     </filter>
     <php>
