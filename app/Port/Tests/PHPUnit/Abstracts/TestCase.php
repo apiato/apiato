@@ -2,7 +2,7 @@
 
 namespace App\Port\Tests\PHPUnit\Abstracts;
 
-use Illuminate\Contracts\Console\Kernel as LaravelKernel;
+use Illuminate\Contracts\Console\Kernel as LaravelPort;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use App\Portainers\PHPUnitTests\Traits\TestingTrait;
 
@@ -58,7 +58,7 @@ abstract class TestCase extends LaravelTestCase
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
-        $app->make(LaravelKernel::class)->bootstrap();
+        $app->make(LaravelPort::class)->bootstrap();
 
         return $app;
     }

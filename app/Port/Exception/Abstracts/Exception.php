@@ -7,7 +7,7 @@ use Exception as BaseException;
 use Illuminate\Support\MessageBag;
 use Log;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException as SymfonyHttpException;
+use Symfony\Component\HttpPort\Exception\HttpException as SymfonyHttpException;
 
 /**
  * Class Exception.

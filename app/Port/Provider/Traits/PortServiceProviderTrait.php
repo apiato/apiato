@@ -3,17 +3,17 @@
 namespace App\Port\Provider\Traits;
 
 use App;
-use App\Port\Butler\Portals\Facade\KernelButler;
+use App\Port\Butler\Portals\Facade\PortButler;
 use App\Portainers\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Log;
 
 /**
- * Class KernelServiceProviderTrait.
+ * Class PortServiceProviderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait KernelServiceProviderTrait
+trait PortServiceProviderTrait
 {
 
     /**
@@ -60,7 +60,7 @@ trait KernelServiceProviderTrait
      */
     public function publishContainersMigrationsFiles()
     {
-        foreach (KernelButler::getContainersNames() as $containerName) {
+        foreach (PortButler::getContainersNames() as $containerName) {
             $this->publishModuleMigrationsFiles($containerName);
         }
     }
@@ -72,11 +72,11 @@ trait KernelServiceProviderTrait
      */
     public function getContainersServiceProviders()
     {
-        $containersNamespace = KernelButler::getContainersNamespace();
+        $containersNamespace = PortButler::getContainersNamespace();
 
-        foreach (KernelButler::getContainersNames() as $containerName) {
+        foreach (PortButler::getContainersNames() as $containerName) {
             // append the Module main service provider
-            $allServiceProviders[] = KernelButler::buildMainServiceProvider($containersNamespace, $containerName);
+            $allServiceProviders[] = PortButler::buildMainServiceProvider($containersNamespace, $containerName);
         }
 
         return array_unique($allServiceProviders) ? : [];

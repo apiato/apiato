@@ -8,13 +8,13 @@ use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 use Illuminate\Routing\Router;
 
 /**
- * Class KernelHttpMiddleware
+ * Class PortHttpMiddleware
  *
- * A.K.A (app/Http/Kernel.php)
+ * A.K.A (app/Http/Port.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class KernelHttpMiddleware extends LaravelHttpKernel
+class PortHttpMiddleware extends LaravelHttpKernel
 {
 
     /**
@@ -32,7 +32,7 @@ class KernelHttpMiddleware extends LaravelHttpKernel
     protected $routeMiddleware = [];
 
     /**
-     * KernelHttpMiddleware constructor.
+     * PortHttpMiddleware constructor.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
      * @param \Illuminate\Routing\Router                   $router

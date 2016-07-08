@@ -3,14 +3,14 @@
 namespace App\Port\Butler\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Butler\Portals\KernelButler;
+use App\Port\Butler\Portals\PortButler;
 
 /**
- * Class KernelButlerServiceProvider
+ * Class PortButlerServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class KernelButlerServiceProvider extends ServiceProviderAbstract
+class PortButlerServiceProvider extends ServiceProviderAbstract
 {
 
     /**
@@ -18,8 +18,8 @@ class KernelButlerServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-        $this->app->bind('KernelButler', function () {
-            return $this->app->make(KernelButler::class);
+        $this->app->bind('PortButler', function () {
+            return $this->app->make(PortButler::class);
         });
     }
 }

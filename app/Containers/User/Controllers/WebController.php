@@ -2,14 +2,14 @@
 
 namespace App\Containers\User\Controllers;
 
-use App\Port\Controller\Abstracts\KernelWebController;
+use App\Port\Controller\Abstracts\PortWebController;
 
 /**
  * Class WebController
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WebController extends KernelWebController
+class WebController extends PortWebController
 {
 
     /**

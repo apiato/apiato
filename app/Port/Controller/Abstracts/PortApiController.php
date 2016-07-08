@@ -6,11 +6,11 @@ use App\Port\Controller\Contracts\ApiControllerInterface;
 use Dingo\Api\Routing\Helpers as DingoApiHelper;
 
 /**
- * Class KernelApiController.
+ * Class PortApiController.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class KernelApiController extends KernelController implements ApiControllerInterface
+abstract class PortApiController extends PortController implements ApiControllerInterface
 {
 
     use DingoApiHelper;

@@ -4,22 +4,22 @@ namespace App\Port\Provider\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\AutoRegisterServiceProvidersTrait;
-use App\Port\Provider\Traits\KernelServiceProviderTrait;
+use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 
 /**
- * Class KernelServiceProvider
+ * Class PortServiceProvider
  * The main Service Provider where all Service Providers gets registered
  * this is the only Service Provider that gets injected in the Config/app.php.
  *
- * Class KernelServiceProvider
+ * Class PortServiceProvider
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class KernelServiceProvider extends ServiceProviderAbstract
+class PortServiceProvider extends ServiceProviderAbstract
 {
 
-    use KernelServiceProviderTrait;
+    use PortServiceProviderTrait;
     use AutoRegisterServiceProvidersTrait;
 
     /**
@@ -28,7 +28,7 @@ class KernelServiceProvider extends ServiceProviderAbstract
     const MODELS_FACTORY_PATH = '/app/Port/Factory';
 
     /**
-     * Kernel internal Service Provides.
+     * Port internal Service Provides.
      *
      * @var array
      */

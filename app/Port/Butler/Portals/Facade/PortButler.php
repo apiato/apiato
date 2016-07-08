@@ -5,11 +5,11 @@ namespace App\Port\Butler\Portals\Facade;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class KernelButler
+ * Class PortButler
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class KernelButler extends Facade
+class PortButler extends Facade
 {
 
     /**
@@ -19,7 +19,7 @@ class KernelButler extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'KernelButler';
+        return 'PortButler';
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
-use App\Port\Event\Providers\KernelEventServiceProvider;
+use App\Port\Event\Providers\PortEventServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EventServiceProvider extends KernelEventServiceProvider
+class EventServiceProvider extends PortEventServiceProvider
 {
 
     /**

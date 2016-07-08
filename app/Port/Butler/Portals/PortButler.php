@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
 /**
- * Class KernelButler.
+ * Class PortButler.
  *
  * NOTE: You can access this Class functions with the facade [ModuleConfig].
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class KernelButler
+class PortButler
 {
 
     /**
@@ -61,11 +61,11 @@ class KernelButler
      */
     public function buildMainServiceProvider($containersNamespace, $containerName)
     {
-        if($containerName != 'Kernel') {
+        if($containerName != 'Port') {
             return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . $containerName . "ServiceProvider";
         }
 
-        return "App" . "\\Kernel" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
+        return "App" . "\\Port" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
     }
 
     /**

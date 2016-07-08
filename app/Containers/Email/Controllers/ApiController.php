@@ -4,14 +4,14 @@ namespace App\Containers\Email\Controllers;
 
 use App\Containers\Email\Requests\SetEmailRequest;
 use App\Containers\Email\Actions\SetUserEmailAction;
-use App\Port\Controller\Abstracts\KernelApiController;
+use App\Port\Controller\Abstracts\PortApiController;
 
 /**
  * Class ApiController.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiController extends KernelApiController
+class ApiController extends PortApiController
 {
 
     /**

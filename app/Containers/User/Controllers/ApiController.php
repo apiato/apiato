@@ -13,7 +13,7 @@ use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Transformers\UserTransformer;
-use App\Port\Controller\Abstracts\KernelApiController;
+use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
 
 /**
@@ -21,7 +21,7 @@ use App\Port\Request\Manager\HttpRequest;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiController extends KernelApiController
+class ApiController extends PortApiController
 {
 
     /**

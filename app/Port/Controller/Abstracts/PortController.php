@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as LaravelController;
 
 /**
- * Class KernelController.
+ * Class PortController.
  *
  * A.K.A (app/Http/Controllers/Controller.php)
  *
@@ -16,7 +16,7 @@ use Illuminate\Routing\Controller as LaravelController;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class KernelController extends LaravelController
+abstract class PortController extends LaravelController
 {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

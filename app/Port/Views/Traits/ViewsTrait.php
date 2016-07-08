@@ -2,7 +2,7 @@
 
 namespace App\Port\Views\Traits;
 
-use App\Port\Butler\Portals\KernelButler;
+use App\Port\Butler\Portals\PortButler;
 use Illuminate\View\Factory as View;
 
 /**
@@ -16,7 +16,7 @@ trait ViewsTrait
      * Automatically load all the containers views directories.
      * To be used by the Web Controller Abstract Class.
      */
-    private function loadContainersViewsDirectories(View $view, KernelButler $containersConfig)
+    private function loadContainersViewsDirectories(View $view, PortButler $containersConfig)
     {
         foreach ($containersConfig->getContainersNames() as $containerName) {
             $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');

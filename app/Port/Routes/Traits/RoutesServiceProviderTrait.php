@@ -2,7 +2,7 @@
 
 namespace App\Port\Routes\Traits;
 
-use App\Port\Butler\Portals\Facade\KernelButler;
+use App\Port\Butler\Portals\Facade\PortButler;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\File;
@@ -21,8 +21,8 @@ trait RoutesServiceProviderTrait
      */
     private function registerRoutes()
     {
-        $containersPaths = KernelButler::getContainersPaths();
-        $containersNamespace = KernelButler::getContainersNamespace();
+        $containersPaths = PortButler::getContainersPaths();
+        $containersNamespace = PortButler::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
             $this->registerContainersApiRoutes($containerPath, $containersNamespace);

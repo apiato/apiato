@@ -5,11 +5,11 @@ namespace App\Port\Event\Providers;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServiceProvider;
 
 /**
- * Class KernelEventServiceProvider
+ * Class PortEventServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-abstract class KernelEventServiceProvider extends LaravelServiceProvider
+abstract class PortEventServiceProvider extends LaravelServiceProvider
 {
 
 }
