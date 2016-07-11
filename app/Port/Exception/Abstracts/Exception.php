@@ -94,16 +94,17 @@ abstract class Exception extends SymfonyHttpException implements DingoMessageBag
      * Usage: `throw (new MyCustomException())->debug($e)`.
      *
      * @param $error
+     * @param $force
      *
      * @return $this
      */
-    public function debug($error)
+    public function debug($error, $force = false)
     {
         if ($error instanceof BaseException) {
             $error = $error->getMessage();
         }
 
-        if ($this->environment != 'testing') {
+        if ($this->environment != 'testing' || $force == true) {
             Log::error('[DEBUG] ' . $error);
         }
 
