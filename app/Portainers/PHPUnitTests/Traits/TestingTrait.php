@@ -3,10 +3,11 @@
 namespace App\Portainers\PHPUnitTests\Traits;
 
 use App;
+use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
-use App\Containers\User\Actions\CreateUserAction;
+use Mockery;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 /**
@@ -295,5 +296,20 @@ trait TestingTrait
         }
 
         return $expected;
+    }
+
+    /**
+     * Mocking helper
+     *
+     * @param $class
+     *
+     * @return  \Mockery\MockInterface
+     */
+    public function mock($class)
+    {
+        $mock = Mockery::mock($class);
+        $this->app->instance($class, $mock);
+
+        return $mock;
     }
 }
