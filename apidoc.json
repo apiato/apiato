@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Hello API Documentation",
   "title": "Hello API",
-  "url" : "http://api.hello.dev/documentation",
+  "url" : "http://api.hello.dev",
   "template": {
   	"withCompare": true,
   	"withGenerator": true
