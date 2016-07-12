@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Models;
 
+use App\Containers\Stripe\Models\StripeAccount;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -70,4 +71,22 @@ class User extends Model implements
         'remember_token',
         'token',
     ];
+
+
+    /**
+     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stripeAccount()
+    {
+        return $this->hasOne(StripeAccount::class);
+    }
+
+    /**
+     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function paypalAccount()
+    {
+        return $this->hasOne(PaypalAccount::class);
+    }
+
 }
