@@ -2,6 +2,7 @@
 
 namespace App\Portainers\Payments\Portals;
 
+use App\Containers\Paypal\Services\ChargeWithPaypalService;
 use App\Containers\Stripe\Services\ChargeWithStripeService;
 use App\Containers\User\Models\User;
 use App\Portainers\Payments\Contracts\Chargeable;
@@ -42,11 +43,11 @@ class PaymentsFactory
         if ($user->stripeAccount != null) {
             $this->method = App::make(ChargeWithStripeService::class);
         } elseif ($user->paypalAccount != null) {
-            $this->method = 'Paypal API Service'; // TODO: ...
-        } // TODO: ...
-
-
-
+            $this->method = App::make(ChargeWithPaypalService::class);
+        }
+//        elseif ($user->...Account != null) {
+//            $this->method = App::make(ChargeWith...Service::class);
+//        }
 
         // validate a payment method was found
         if ($this->method == null) {
