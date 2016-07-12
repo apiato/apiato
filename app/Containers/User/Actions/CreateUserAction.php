@@ -20,6 +20,11 @@ class CreateUserAction extends Action
 {
 
     /**
+     * @var  \App\Port\Event\Dispatcher\EventsDispatcher
+     */
+    private $eventsDispatcher;
+
+    /**
      * @var \App\Containers\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;

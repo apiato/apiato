@@ -4,7 +4,6 @@ namespace App\Containers\User\Events\Events;
 
 use App\Port\Event\Abstracts\Event;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 /**
  * Class UserCreatedEvent
@@ -13,6 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
  */
 class UserCreatedEvent extends Event
 {
+
     use SerializesModels;
 
     /**

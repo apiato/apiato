@@ -11,5 +11,5 @@ use Illuminate\Events\Dispatcher as LaravelDispatcher;
  */
 class EventsDispatcher extends LaravelDispatcher
 {
-
+    
 }
