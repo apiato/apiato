@@ -1,57 +1,63 @@
 {
-    "name": "hello/api",
-    "description": "API starter providing everything to build a modern API with PHP on top of Laravel.",
-    "keywords": ["framework", "API", "laravel", "Hello-API"],
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
-        "dingo/api": "1.0.x@dev",
-        "tymon/jwt-auth": "0.5.*",
-        "predis/predis": "^1.0",
-        "prettus/l5-repository": "^2.1",
-        "barryvdh/laravel-cors": "^0.8.0",
-        "zizaco/entrust": "1.6.*",
-        "cartalyst/stripe-laravel": "3.0.*"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
-        "guzzlehttp/guzzle": "^6.1"
-    },
-    "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-          "App\\": [
-            "app"
-          ]
-        }
-    },
-    "autoload-dev": {
-
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
-        ]
-    },
-    "config": {
-        "preferred-install": "dist"
+  "name": "hello/api",
+  "description": "API starter providing everything to build a modern API with PHP on top of Laravel.",
+  "keywords": [
+    "framework",
+    "API",
+    "laravel",
+    "Hello-API"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/framework": "5.1.*",
+    "guzzlehttp/guzzle": "^6.1",
+    "dingo/api": "1.0.x@dev",
+    "tymon/jwt-auth": "0.5.*",
+    "predis/predis": "^1.0",
+    "prettus/l5-repository": "^2.1",
+    "barryvdh/laravel-cors": "^0.8.0",
+    "zizaco/entrust": "1.6.*",
+    "torann/currency": "0.3.*",
+    "cartalyst/stripe-laravel": "3.0.*",
+    "anouar/paypalpayment": "~1.0"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~4.0",
+    "phpspec/phpspec": "~2.1"
+  },
+  "autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "App\\": [
+        "app"
+      ]
     }
+  },
+  "autoload-dev": {
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ],
+    "post-install-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan optimize"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
 }
