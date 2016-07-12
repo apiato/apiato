@@ -12,6 +12,9 @@
         <testsuite name="Containers Tests">
             <directory>./app/Containers/</directory>
         </testsuite>
+        <testsuite name="Portainers Tests">
+            <directory>./app/Portainers/</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
