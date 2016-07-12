@@ -2,16 +2,16 @@
 
 namespace App\Containers\User\Controllers;
 
-use App\Containers\User\Requests\DeleteUserRequest;
-use App\Containers\User\Requests\LoginRequest;
-use App\Containers\User\Requests\RegisterRequest;
-use App\Containers\User\Requests\UpdateUserRequest;
 use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
+use App\Containers\User\Requests\DeleteUserRequest;
+use App\Containers\User\Requests\LoginRequest;
+use App\Containers\User\Requests\RegisterRequest;
+use App\Containers\User\Requests\UpdateUserRequest;
 use App\Containers\User\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
@@ -25,54 +25,54 @@ class ApiController extends PortApiController
 {
 
     /**
-     * @param \App\Containers\User\Requests\DeleteUserRequest $deleteUserRequest
-     * @param \App\Containers\User\Actions\DeleteUserAction       $deleteUserAction
+     * @param \App\Containers\User\Requests\DeleteUserRequest $request
+     * @param \App\Containers\User\Actions\DeleteUserAction   $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function deleteUser(DeleteUserRequest $deleteUserRequest, DeleteUserAction $deleteUserAction)
+    public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
-        $deleteUserAction->run($deleteUserRequest->id);
+        $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $deleteUserRequest->id . ') Deleted Successfully.',
+            'message' => 'User (' . $request->id . ') Deleted Successfully.',
         ]);
     }
 
     /**
-     * @param \App\Containers\User\Actions\ListAllUsersAction $listAllUsersAction
+     * @param \App\Containers\User\Actions\ListAllUsersAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function listAllUsers(ListAllUsersAction $listAllUsersAction)
+    public function listAllUsers(ListAllUsersAction $action)
     {
-        $users = $listAllUsersAction->run();
+        $users = $action->run();
 
         return $this->response->paginator($users, new UserTransformer());
     }
 
     /**
-     * @param \App\Containers\User\Requests\LoginRequest    $loginRequest
-     * @param \App\Containers\User\Actions\ApiLoginAction $loginAction
+     * @param \App\Containers\User\Requests\LoginRequest  $request
+     * @param \App\Containers\User\Actions\ApiLoginAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function loginUser(LoginRequest $loginRequest, ApiLoginAction $loginAction)
+    public function loginUser(LoginRequest $request, ApiLoginAction $action)
     {
-        $user = $loginAction->run($loginRequest['email'], $loginRequest['password']);
+        $user = $action->run($request['email'], $request['password']);
 
         return $this->response->item($user, new UserTransformer());
     }
 
     /**
      * @param \App\Port\Request\Manager\HttpRequest        $request
-     * @param \App\Containers\User\Actions\ApiLogoutAction $logoutAction
+     * @param \App\Containers\User\Actions\ApiLogoutAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function logoutUser(HttpRequest $request, ApiLogoutAction $logoutAction)
+    public function logoutUser(HttpRequest $request, ApiLogoutAction $action)
     {
-        $logoutAction->run($request->header('authorization'));
+        $action->run($request->header('authorization'));
 
         return $this->response->accepted(null, [
             'message' => 'User Logged Out Successfully.',
@@ -80,19 +80,19 @@ class ApiController extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Requests\RegisterRequest   $registerRequest
-     * @param \App\Containers\User\Actions\CreateUserAction $createUserAction
+     * @param \App\Containers\User\Requests\RegisterRequest $request
+     * @param \App\Containers\User\Actions\CreateUserAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $registerRequest, CreateUserAction $createUserAction)
+    public function registerUser(RegisterRequest $request, CreateUserAction $action)
     {
 
         // create and login (true parameter) the new user
-        $user = $createUserAction->run(
-            $registerRequest['email'],
-            $registerRequest['password'],
-            $registerRequest['name'],
+        $user = $action->run(
+            $request['email'],
+            $request['password'],
+            $request['name'],
             true
         );
 
@@ -100,17 +100,17 @@ class ApiController extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Requests\UpdateUserRequest $updateUserRequest
-     * @param \App\Containers\User\Actions\UpdateUserAction       $updateUserAction
+     * @param \App\Containers\User\Requests\UpdateUserRequest $request
+     * @param \App\Containers\User\Actions\UpdateUserAction   $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function updateUser(UpdateUserRequest $updateUserRequest, UpdateUserAction $updateUserAction)
+    public function updateUser(UpdateUserRequest $request, UpdateUserAction $action)
     {
-        $user = $updateUserAction->run(
-            $updateUserRequest->id,
-            $updateUserRequest['password'],
-            $updateUserRequest['name']
+        $user = $action->run(
+            $request->id,
+            $request['password'],
+            $request['name']
         );
 
         return $this->response->item($user, new UserTransformer());
