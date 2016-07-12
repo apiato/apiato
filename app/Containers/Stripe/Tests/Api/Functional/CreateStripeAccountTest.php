@@ -18,6 +18,8 @@ class CreateStripeAccountTest extends TestCase
     {
         $userDetails = [
             'name' => 'Mahmoud Zalt',
+            'email' => 'mahmoud@testttt.test',
+            'password' => 'passssssssssss',
         ];
         // get the logged in user (create one if no one is logged in)
         $user = $this->registerAndLoginTestingUser($userDetails);

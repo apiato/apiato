@@ -6,9 +6,9 @@ use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Port\Action\Abstracts\Action;
+use App\Port\Event\Dispatcher\EventsDispatcher;
 use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
 use Exception;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -32,13 +32,14 @@ class CreateUserAction extends Action
     /**
      * CreateUserAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface             $userRepository
      * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
+     * @param \App\Port\Event\Dispatcher\EventsDispatcher                        $eventsDispatcher
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
         ApiAuthenticationService $authenticationService,
-        Dispatcher $eventsDispatcher
+        EventsDispatcher $eventsDispatcher
     ) {
         $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;
