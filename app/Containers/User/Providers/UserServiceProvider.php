@@ -32,7 +32,7 @@ class UserServiceProvider extends ServiceProviderAbstract
      */
     private $containerServiceProviders = [
         PoliciesServiceProvider::class,
-        EventServiceProvider::class,
+        EventsServiceProvider::class,
     ];
 
     /**
