@@ -110,6 +110,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 	- [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
 	- [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
 	- [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
+	- [Stripe](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
 
 
 
