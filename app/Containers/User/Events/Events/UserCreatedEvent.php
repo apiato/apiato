@@ -21,9 +21,9 @@ class UserCreatedEvent extends Event
     public $user;
 
     /**
-     * Create a new event instance.
+     * UserCreatedEvent constructor.
      *
-     * @return void
+     * @param $user
      */
     public function __construct($user)
     {
