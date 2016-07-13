@@ -21,9 +21,7 @@ class PaypalAccount extends Model
      * @var array
      */
     protected $fillable = [
-
-        // ...
-
+        'some_id',
         'user_id',
     ];
 

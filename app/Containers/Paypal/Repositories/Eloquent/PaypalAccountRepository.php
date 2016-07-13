@@ -2,7 +2,7 @@
 
 namespace App\Containers\Paypal\Repositories\Eloquent;
 
-use App\Containers\Stripe\Models\PaypalAccount;
+use App\Containers\Paypal\Models\PaypalAccount;
 use App\Port\Repository\Abstracts\Repository;
 
 /**
