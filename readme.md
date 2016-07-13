@@ -39,6 +39,13 @@ As well as, it can be exposed to the world allowing developers to interact with 
 Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
 
 
+### Important Note:
+
+The project is currently under heavy development. 
+So expect things to change very quickly.
+Till now Hello API doesn't have a stable release.
+So can use it today on your own responsibility.
+
 
 ![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
 
@@ -81,6 +88,7 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 - Modern Software Architectural Pattern (using Porto).
 - Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
+- Easy to include payments gateways (Support for Stripe and Paypal).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
 - Full detailed documentation.
 - 100% customizable and Open Code.
@@ -110,7 +118,8 @@ Setting up an API from scratch takes a lot of time, even with the existence of t
 	- [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
 	- [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
 	- [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
-	- [Stripe](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
+	- [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
+	- [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
 
 
 

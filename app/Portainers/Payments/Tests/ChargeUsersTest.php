@@ -63,9 +63,9 @@ class ChargeUsersTest extends TestCase
 
         $paymentsFactory = new PaymentsFactory();
         $result = $paymentsFactory->charge($user, 1000, 'USD');
-dd($result);
+
         $this->assertEquals($result['payment_method'], 'paypal');
-//        $this->assertEquals($result['description'], $payId);
+        $this->assertEquals($result['description'], $payId);
     }
 
 }
