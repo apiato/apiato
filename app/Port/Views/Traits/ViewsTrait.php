@@ -16,9 +16,9 @@ trait ViewsTrait
      * Automatically load all the containers views directories.
      * To be used by the Web Controller Abstract Class.
      */
-    private function loadContainersViewsDirectories(View $view, PortButler $containersConfig)
+    private function loadContainersViewsDirectories(View $view, PortButler $portButler)
     {
-        foreach ($containersConfig->getContainersNames() as $containerName) {
+        foreach ($portButler->getContainersNames() as $containerName) {
             $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');
             if (is_dir($containerViewDirectory)) {
                 $view->addLocation($containerViewDirectory);

@@ -18,14 +18,14 @@ abstract class PortWebController extends PortController implements WebController
     use ViewsTrait;
 
     /**
-     * WebController constructor.
+     * PortWebController constructor.
      *
-     * @param \Illuminate\View\Factory                                     $view
-     * @param \App\Port\Butler\Portals\PortButler $containersConfig
+     * @param \Illuminate\View\Factory            $view
+     * @param \App\Port\Butler\Portals\PortButler $portButler
      */
-    public function __construct(View $view, PortButler $containersConfig)
+    public function __construct(View $view, PortButler $portButler)
     {
-        $this->loadContainersViewsDirectories($view, $containersConfig);
+        $this->loadContainersViewsDirectories($view, $portButler);
     }
 
 }
