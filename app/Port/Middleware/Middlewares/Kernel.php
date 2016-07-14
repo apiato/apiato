@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\Middlewares;
+namespace App\Port\Middleware\Middlewares;
 
 /**
  * Class Kernel
@@ -20,18 +20,18 @@ class Kernel
         return [
             // Laravel default middleware's
             \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-            \App\Portainers\Middlewares\Http\EncryptCookies::class,
+            \App\Port\Middleware\Middlewares\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
 
             // removing some of the Laravel's default middleware's
             //            \Illuminate\Session\Middleware\StartSession::class,
             //            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            //            \App\Portainers\Middlewares\Http\VerifyCsrfToken::class,
+            //            \App\Port\Middleware\Middlewares\Http\VerifyCsrfToken::class,
 
             // CORS Package middleware
             \Barryvdh\Cors\HandleCors::class,
             // Hello API Localization middleware
-            \App\Portainers\Middlewares\Http\Localization::class,
+            \App\Port\Middleware\Middlewares\Http\Localization::class,
         ];
     }
 
@@ -44,9 +44,9 @@ class Kernel
     {
         return [
             // removing the Laravel's default route middleware's
-            //            'auth' => \App\Portainers\Middlewares\Http\Authenticate::class,
-            //            'auth.basic' => \App\Portainers\Middlewares\Http\AuthenticateWithBasicAuth::class,
-            //            'guest' => \App\Portainers\Middlewares\Http\RedirectIfAuthenticated::class,
+            //            'auth' => \App\Port\Middleware\Middlewares\Http\Authenticate::class,
+            //            'auth.basic' => \App\Port\Middleware\Middlewares\Http\AuthenticateWithBasicAuth::class,
+            //            'guest' => \App\Port\Middleware\Middlewares\Http\RedirectIfAuthenticated::class,
 
 
             // JWT Package middleware's

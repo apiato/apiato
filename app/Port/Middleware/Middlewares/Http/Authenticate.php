@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Portainers\Middlewares\Http;
+namespace App\Port\Middleware\Middlewares\Http;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 /**
- * Class RedirectIfAuthenticated
+ * Class Authenticate
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class RedirectIfAuthenticated
+class Authenticate
 {
     /**
      * The Guard implementation.
@@ -20,7 +21,7 @@ class RedirectIfAuthenticated
     protected $auth;
 
     /**
-     * Create a new filter instance.
+     * Create a new middleware instance.
      *
      * @param  Guard  $auth
      * @return void
@@ -37,10 +38,14 @@ class RedirectIfAuthenticated
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if ($this->auth->check()) {
-            return redirect('/');
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('auth/login');
+            }
         }
 
         return $next($request);

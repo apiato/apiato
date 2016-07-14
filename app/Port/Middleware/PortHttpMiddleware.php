@@ -2,7 +2,7 @@
 
 namespace App\Port\Middleware;
 
-use App\Portainers\Middlewares\Kernel;
+use App\Port\Middleware\Middlewares\Kernel;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 use Illuminate\Routing\Router;
