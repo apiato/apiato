@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\PHPUnitTests\Traits;
+namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
 use App\Containers\User\Actions\CreateUserAction;
@@ -90,7 +90,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \App\Portainers\PHPUnitTests\Traits\User|mixed
+     * @return \App\Port\Tests\PHPUnit\Traits\User|mixed
      */
     public function getLoggedInTestingUser()
     {
