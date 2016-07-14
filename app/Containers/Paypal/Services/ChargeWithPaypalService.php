@@ -6,7 +6,7 @@ use Anouar\Paypalpayment\PaypalPayment;
 use App\Containers\Paypal\Exceptions\PaypalApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
-use App\Portainers\Payments\Contracts\Chargeable;
+use App\Containers\Payments\Contracts\Chargeable;
 use Illuminate\Support\Facades\Config;
 
 /**

@@ -3,8 +3,10 @@
 namespace App\Containers\User\Actions;
 
 use App\Port\Action\Abstracts\Action;
+
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Portainers\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+
 
 /**
  * Class ListAllUsersAction.

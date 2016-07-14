@@ -2,7 +2,7 @@
 
 namespace App\Port\Request\Abstracts;
 
-use App\Portainers\Exceptions\ValidationFailedException;
+use App\Port\Exception\Exceptions\ValidationFailedException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
 

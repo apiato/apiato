@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
+use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -13,16 +13,9 @@ use App\Port\Action\Abstracts\Action;
 class ApiLoginAction extends Action
 {
 
-    /**
-     * @var \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService
-     */
     private $authenticationService;
 
-    /**
-     * ApiLoginAction constructor.
-     *
-     * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
-     */
+
     public function __construct(ApiAuthenticationService $authenticationService)
     {
         $this->authenticationService = $authenticationService;

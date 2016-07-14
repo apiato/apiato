@@ -4,7 +4,7 @@ namespace App\Port\Tests\PHPUnit\Abstracts;
 
 use Illuminate\Contracts\Console\Kernel as LaravelPort;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
-use App\Portainers\PHPUnitTests\Traits\TestingTrait;
+use App\Port\Tests\PHPUnit\Traits\TestingTrait;
 
 /**
  * Class TestCase.

@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Services;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
-use App\Portainers\Payments\Contracts\Chargeable;
+use App\Containers\Payments\Contracts\Chargeable;
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
