@@ -4,7 +4,7 @@ namespace App\Containers\Email\Services;
 
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
-use App\Portainers\Mails\Mails\ConfirmEmail;
+use App\Containers\Email\Mails\ConfirmEmail;
 
 /**
  * Class SendConfirmationEmailService.

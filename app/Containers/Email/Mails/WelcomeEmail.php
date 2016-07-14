@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Portainers\Mails\Mails;
+namespace App\Containers\Email\Mails;
 
-use App\Portainers\Mails\Abstracts\MailsAbstract;
-use App\Portainers\Mails\Contracts\MailsInterface;
+use App\Port\Email\Abstracts\MailsAbstract;
+use App\Port\Email\Contracts\MailsInterface;
 
 /**
  * Class WelcomeEmail.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\Mails\Abstracts;
+namespace App\Port\Email\Abstracts;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;

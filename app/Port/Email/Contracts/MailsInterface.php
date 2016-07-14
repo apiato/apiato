@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\Mails\Contracts;
+namespace App\Port\Email\Contracts;
 
 /**
  * Interface MailsInterface.
