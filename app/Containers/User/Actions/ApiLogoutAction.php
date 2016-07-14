@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
 use App\Port\Action\Abstracts\Action;
+use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 
 /**
  * Class ApiLogoutAction.
@@ -14,14 +14,14 @@ class ApiLogoutAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Actions\ApiAuthenticationService|\App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService
+     * @var \App\Containers\User\Actions\ApiAuthenticationService|\App\Containers\ApiAuthentication\Services\ApiAuthenticationService
      */
     private $authenticationService;
 
     /**
      * ApiLogoutAction constructor.
      *
-     * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
+     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
      */
     public function __construct(
         ApiAuthenticationService $authenticationService

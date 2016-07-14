@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\ApiAuthentication\Adapters;
+namespace App\Containers\ApiAuthentication\Adapters;
 
 use Tymon\JWTAuth\JWTAuth;
 

@@ -2,14 +2,14 @@
 
 namespace App\Containers\User\Models;
 
+use App\Containers\ApiAuthentication\Services\TokenTrait;
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Stripe\Models\StripeAccount;
+use App\Port\Model\Abstracts\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use App\Portainers\ApiAuthentication\Portals\TokenTrait;
-use App\Port\Model\Abstracts\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**
@@ -23,6 +23,7 @@ class User extends Model implements
 {
 
     use Authenticatable, CanResetPassword, TokenTrait, EntrustUserTrait;
+
     // use SoftDeletes;
 
     /**

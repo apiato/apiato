@@ -7,7 +7,7 @@ use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Port\Action\Abstracts\Action;
 use App\Port\Event\Dispatcher\EventsDispatcher;
-use App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService;
+use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,7 +30,7 @@ class CreateUserAction extends Action
     private $userRepository;
 
     /**
-     * @var \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService
+     * @var \App\Containers\ApiAuthentication\Services\ApiAuthenticationService
      */
     private $authenticationService;
 
@@ -38,7 +38,7 @@ class CreateUserAction extends Action
      * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface             $userRepository
-     * @param \App\Portainers\ApiAuthentication\Portals\ApiAuthenticationService $authenticationService
+     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
      * @param \App\Port\Event\Dispatcher\EventsDispatcher                        $eventsDispatcher
      */
     public function __construct(
