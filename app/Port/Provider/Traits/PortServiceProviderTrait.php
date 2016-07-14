@@ -4,7 +4,7 @@ namespace App\Port\Provider\Traits;
 
 use App;
 use App\Port\Butler\Portals\Facade\PortButler;
-use App\Portainers\Exceptions\UnsupportedFractalSerializerException;
+use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Log;
 

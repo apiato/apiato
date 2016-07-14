@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\Exceptions;
+namespace App\Port\Exception\Exceptions;
 
 use Dingo\Api\Exception\ResourceException as DingoResourceException;
 use Exception;
