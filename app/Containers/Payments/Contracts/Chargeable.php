@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Portainers\Payments\Contracts;
+namespace App\Containers\Payments\Contracts;
 
 use App\Containers\User\Models\User;
 

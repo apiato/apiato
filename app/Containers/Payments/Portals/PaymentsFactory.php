@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Portainers\Payments\Portals;
+namespace App\Containers\Payments\Portals;
 
 use App\Containers\Paypal\Services\ChargeWithPaypalService;
 use App\Containers\Stripe\Services\ChargeWithStripeService;
 use App\Containers\User\Models\User;
-use App\Portainers\Payments\Contracts\Chargeable;
-use App\Portainers\Payments\Exceptions\ObjectNonChargeableException;
-use App\Portainers\Payments\Exceptions\PaymentMethodNotFoundException;
-use App\Portainers\Payments\Exceptions\UserNotSetInThePaymentServiceException;
+use App\Containers\Payments\Contracts\Chargeable;
+use App\Containers\Payments\Exceptions\ObjectNonChargeableException;
+use App\Containers\Payments\Exceptions\PaymentMethodNotFoundException;
+use App\Containers\Payments\Exceptions\UserNotSetInThePaymentServiceException;
 use Illuminate\Support\Facades\App;
 
 /**
