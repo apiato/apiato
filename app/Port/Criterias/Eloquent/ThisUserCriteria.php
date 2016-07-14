@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Portainers\Criterias\Eloquent;
+namespace App\Port\Criterias\Eloquent;
 
-use App\Port\Repository\Abstracts\Criteria;
+use App\Port\Criterias\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
