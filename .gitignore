@@ -5,5 +5,6 @@ Homestead.json
 .env
 /public/documentation
 /storage/logs/laravel.log
-/docker-hello-api
+docker-hello-api/
 docker-skins-io/
+docker-rewards-fox/
