@@ -140,6 +140,8 @@ Thus you MUST read its [Readme Document](https://github.com/Mahmoudz/Porto) befo
 	* [API Documentation Generator](https://hello-api.readme.io/docs/api-documentation-generator)
 	* [Localization](https://hello-api.readme.io/docs/localization)
 	* [Tests Helpers](https://hello-api.readme.io/docs/tests-helpers)
+	* [Mails](https://hello-api.readme.io/docs/mails)
+	* [Payments](https://hello-api.readme.io/docs/payments)
 	* [Frequently Asked Questions (FAQ)](https://hello-api.readme.io/docs/faq)
 * **Components:**
 	* [Routes](https://hello-api.readme.io/docs/routes)
