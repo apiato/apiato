@@ -17,9 +17,7 @@
 
 #### WHAT
 
-Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel Porto**.
-
-*[Laravel Porto](https://github.com/Mahmoudz/laravel-porto) is the implementation of the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern in [Laravel 5.1](https://github.com/laravel/framework).*
+Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel**.
 
 #### HOW
 
@@ -39,12 +37,12 @@ As well as, it can be exposed to the world allowing developers to interact with 
 Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
 
 
-### Important Note:
+#### Important Note:
 
 The project is currently under heavy development. 
 So expect things to change very quickly.
-Till now Hello API doesn't have a stable release.
-So can use it today on your own responsibility.
+Also there's no stable release yet.
+So use it today on your own responsibility.
 
 
 ![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
@@ -53,10 +51,10 @@ So can use it today on your own responsibility.
 
 ## Content
 
-- [Features](#Features)
-- [Technologies](#Technologies)
-- [Full Documentation](#Documentation)
-- [Coming Features](#Coming-Features)
+* [Features](#Features)
+* [Technologies](#Technologies)
+* [Full Documentation](#Documentation)
+* [Coming Features](#Coming-Features)
 
 
 
@@ -88,7 +86,8 @@ So can use it today on your own responsibility.
 - Modern Software Architectural Pattern (using Porto).
 - Fully Object Oriented Code, implementing the best design patterns and coding techniques.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
-- Easy to include payments gateways (Support for Stripe and Paypal).
+- Easy to send Emails.
+- Easy to support payment gateways (Ready for Stripe and Paypal).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
 - Full detailed documentation.
 - 100% customizable and Open Code.
@@ -104,22 +103,21 @@ So can use it today on your own responsibility.
 >Hello API is built with the latest & hottest Technologies:
 
 - PHP (Server-Side Scripting Language)
-- [Laravel Porto](https://github.com/Mahmoudz/laravel-Porto) (Implementation of Porto SAP in Laravel 5.1)
-- [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
-- [MySQL](https://www.mysql.com/) (RDBMS Database)
-- [Redis](http://redis.io/) (Cache System)
-- [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
-- [Laravel Homestead](https://laravel.com/docs/homestead) (Virtual Server Provisioning via [Vagrant](https://www.vagrantup.com/))
+* [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
+* [MySQL](https://www.mysql.com/) (RDBMS Database)
+* [Redis](http://redis.io/) (Cache System)
+* [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
+* [Laravel Homestead](https://laravel.com/docs/homestead) (Virtual Server Provisioning via [Vagrant](https://www.vagrantup.com/))
 - **Third Party Packages:**
-	- [Dingo API](https://github.com/dingo/api) (A RESTful API package)
-	- [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
-	- [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
-	- [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
-	- [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
-	- [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
-	- [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
-	- [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
-	- [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
+	* [Dingo API](https://github.com/dingo/api) (A RESTful API package)
+	* [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
+	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
+	* [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
+	* [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
+	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
+	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
+	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
+	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
 
 
 
@@ -129,28 +127,40 @@ So can use it today on your own responsibility.
 <a name="Documentation"></a>
 ## Full Documentation
 
-To get an overview of how the code is designed you MUST read about the [**Porto** (Software Architectural Pattern)](https://github.com/Mahmoudz/Porto).
+**Hello API** is architectured using the **Porto** Software Architectural Pattern. 
+Thus you MUST read its [Readme Document](https://github.com/Mahmoudz/Porto) before getting started, to get an overview of how the code is architectured.
 
-**Hello API** is built on top of **Laravel Porto** *(the implementation of Porto in Laravel)*, so you will need to refer to the [**Laravel Porto** Documentation](https://laravel-porto.readme.io) for everything. Below is the **Hello API** specific documentation:
-
-* Intro
-	* [Introduction](https://github.com/Mahmoudz/Hello-API/wiki/Home#introduction)
-	* [Requirements](https://github.com/Mahmoudz/Hello-API/wiki/Home#requirements)
-	* [Installation](https://github.com/Mahmoudz/Hello-API/wiki/Home#installation)
-* General
-	* [Development Workflow](https://github.com/Mahmoudz/Hello-API/wiki/Development-Workflow)
-	* [Frequently Asked Questions (FAQ)](https://github.com/Mahmoudz/Hello-API/wiki/FAQ)
-* API
-	* [Routes DockBlock](https://github.com/Mahmoudz/Hello-API/wiki/Routes-DockBlock)
-	* [Request & Response](https://github.com/Mahmoudz/Hello-API/wiki/API-Request-and-Response)
-	* [Supported Parameters](https://github.com/Mahmoudz/Hello-API/wiki/API-Parameters)
-	* [Localization](https://github.com/Mahmoudz/Hello-API/wiki/Localization)
-	* [Documentation Generator](https://github.com/Mahmoudz/Hello-API/wiki/API-Doc-Generator)
-	* [Tests Helpers](https://github.com/Mahmoudz/Hello-API/wiki/Tests-Helpers)
-
-	
-	
-
+* **Setup:**
+	* [Requirements](https://hello-api.readme.io/docs/requirements)
+	* [Installation](https://hello-api.readme.io/docs/installation)
+	* [Development Workflow](https://hello-api.readme.io/docs/development-workflow)
+* **General:**
+	* [Supported Parameters](https://hello-api.readme.io/docs/supported-parameters)
+	* [Requests & Responses](https://hello-api.readme.io/docs/requests-and-responses)
+	* [API Documentation Generator](https://hello-api.readme.io/docs/api-documentation-generator)
+	* [Localization](https://hello-api.readme.io/docs/localization)
+	* [Tests Helpers](https://hello-api.readme.io/docs/tests-helpers)
+	* [Frequently Asked Questions (FAQ)](https://hello-api.readme.io/docs/faq)
+* **Components:**
+	* [Routes](https://hello-api.readme.io/docs/routes)
+	* [Controllers](https://hello-api.readme.io/docs/controllers)
+	* [Actions](https://hello-api.readme.io/docs/actions)
+	* [Services](https://hello-api.readme.io/docs/services)
+	* [Models](https://hello-api.readme.io/docs/models)
+	* [Views](https://hello-api.readme.io/docs/views)
+	* [Providers](https://hello-api.readme.io/docs/providers)
+	* [Requests](https://hello-api.readme.io/docs/requests)
+	* [Repositories](https://hello-api.readme.io/docs/repositories)
+	* [Criterias](https://hello-api.readme.io/docs/criterias)
+	* [Tests](https://hello-api.readme.io/docs/tests)
+	* [Exceptions](https://hello-api.readme.io/docs/exceptions)
+	* [Migrations](https://hello-api.readme.io/docs/migrations)
+	* [Transformers](https://hello-api.readme.io/docs/transformers)
+	* [Events](https://hello-api.readme.io/docs/events)
+	* [Middlewares](https://hello-api.readme.io/docs/middlewares)
+	* [Policies](https://hello-api.readme.io/docs/policies)
+	* [Factories](https://hello-api.readme.io/docs/factories)
+	* [Seeders](https://hello-api.readme.io/docs/seeders)
 
 
 
