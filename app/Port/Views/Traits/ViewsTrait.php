@@ -18,7 +18,9 @@ trait ViewsTrait
      */
     private function loadContainersViewsDirectories(View $view, PortButler $portButler)
     {
+
         foreach ($portButler->getContainersNames() as $containerName) {
+
             $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');
             if (is_dir($containerViewDirectory)) {
                 $view->addLocation($containerViewDirectory);

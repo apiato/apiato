@@ -2,14 +2,14 @@
 
 namespace App\Containers\Demo\Controllers;
 
-use App\Port\Controller\Abstracts\KernelWebController;
+use App\Port\Controller\Abstracts\PortWebController;
 
 /**
  * Class WebController
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WebController extends KernelWebController
+class WebController extends PortWebController
 {
 
     /**
@@ -17,6 +17,6 @@ class WebController extends KernelWebController
      */
     public function sayWelcome()
     {
-        return view('welcome');
+        return view('just-welcome');
     }
 }
