@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Payments\Portals;
+namespace App\Containers\Payments\Services;
 
 use App\Containers\Paypal\Services\ChargeWithPaypalService;
 use App\Containers\Stripe\Services\ChargeWithStripeService;

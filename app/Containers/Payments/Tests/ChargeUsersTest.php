@@ -7,7 +7,7 @@ use App\Containers\Paypal\Services\ChargeWithPaypalService;
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\Services\ChargeWithStripeService;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
-use App\Containers\Payments\Portals\PaymentsFactory;
+use App\Containers\Payments\Services\PaymentsFactory;
 use Illuminate\Support\Facades\App;
 
 /**
