@@ -2,7 +2,6 @@
 
 namespace App\Port\Console;
 
-use App\Containers\Demo\Consoles\Inspire;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 

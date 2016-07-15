@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Demo\Consoles;
+namespace App\Port\Console;
 
 use App\Port\Console\Abstracts\ConsoleCommand;
 use Illuminate\Foundation\Inspiring;
