@@ -55,7 +55,7 @@ abstract class TestCase extends LaravelTestCase
      */
     public function createApplication()
     {
-        $this->baseUrl = Config::get('api.full_url'); // this reads the value from `phpunit.xml` during testing
+        $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
