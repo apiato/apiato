@@ -4,13 +4,18 @@
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
 
-#### The `Hello World` of an API : )
-
+[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Mahmoudz/Hello-API)
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/build-status/master)
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Mahmoudz/Hello-API/master/LICENSE)
 
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f/big.png)](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f)
+
+#### The `Hello World` of an API : )
+
 
 > If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
 
