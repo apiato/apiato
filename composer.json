@@ -19,15 +19,15 @@
     "prettus/l5-repository": "^2.1",
     "barryvdh/laravel-cors": "^0.8.0",
     "zizaco/entrust": "5.2.x-dev",
-    "cartalyst/stripe-laravel": "4.0.x",
+    "cartalyst/stripe-laravel": "4.0.*",
     "anouar/paypalpayment": "~1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~4.0",
-    "symfony/css-selector": "2.8.*|3.0.*",
-    "symfony/dom-crawler": "2.8.*|3.0.*"
+    "phpunit/phpunit": "~5.0",
+    "symfony/css-selector": "3.1.*",
+    "symfony/dom-crawler": "3.1.*"
   },
   "autoload": {
     "classmap": [
