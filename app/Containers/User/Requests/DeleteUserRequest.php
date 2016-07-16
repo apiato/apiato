@@ -50,6 +50,6 @@ class DeleteUserRequest extends Request
     {
         // $this->user(): is the current logged in user, taken from the request
         // $this->id: is the request input user ID (for the user that needs to be updated)
-        return $gate->getPolicyFor(User::class)->update($this->user(), $this->id);
+        return $gate->getPolicyFor(User::class)->delete($this->user(), $this->id);
     }
 }
