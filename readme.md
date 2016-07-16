@@ -10,6 +10,8 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
 
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f/big.png)](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f)
+
 > If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
 
 <br>
