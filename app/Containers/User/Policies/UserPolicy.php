@@ -13,7 +13,6 @@ use App\Containers\User\Models\User;
  */
 class UserPolicy extends Policy
 {
-
     use HandlesAuthorization;
 
     /**

@@ -87,7 +87,6 @@ class ApiController extends PortApiController
      */
     public function registerUser(RegisterRequest $request, CreateUserAction $action)
     {
-
         // create and login (true parameter) the new user
         $user = $action->run(
             $request['email'],
