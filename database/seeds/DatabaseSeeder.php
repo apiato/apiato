@@ -1,7 +1,6 @@
 <?php
 
 use App\Port\Seeder\Abstracts\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use App\Containers\Authorization\Seeders\RolesAndPermissionsSeeder;
 
 /**
@@ -28,12 +27,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
         foreach ($this->seeders as $seeder) {
             $this->call($seeder);
         }
-
-        Model::reguard();
     }
 }

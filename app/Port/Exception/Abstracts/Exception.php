@@ -4,6 +4,7 @@ namespace App\Port\Exception\Abstracts;
 
 use Dingo\Api\Contract\Debug\MessageBagErrors as DingoMessageBagErrors;
 use Exception as BaseException;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\MessageBag;
 use Log;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,7 +57,7 @@ abstract class Exception extends SymfonyHttpException implements DingoMessageBag
     ) {
 
         // detect and set the running environment
-        $this->environment = env('APP_ENV', '');
+        $this->environment = Config::get('app.env');
 
         if (is_null($message) && property_exists($this, 'message')) {
             $message = $this->message;

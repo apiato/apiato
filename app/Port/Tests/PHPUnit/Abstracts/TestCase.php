@@ -5,6 +5,7 @@ namespace App\Port\Tests\PHPUnit\Abstracts;
 use Illuminate\Contracts\Console\Kernel as LaravelPort;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use App\Port\Tests\PHPUnit\Traits\TestingTrait;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class TestCase.
@@ -54,7 +55,7 @@ abstract class TestCase extends LaravelTestCase
      */
     public function createApplication()
     {
-        $this->baseUrl = env('API_BASE_URL');
+        $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 

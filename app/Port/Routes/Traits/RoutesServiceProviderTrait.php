@@ -5,6 +5,7 @@ namespace App\Port\Routes\Traits;
 use App\Port\Butler\Portals\Facade\PortButler;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -61,9 +62,9 @@ trait RoutesServiceProviderTrait
                             // Enable: API Rate Limiting
                             'middleware' => 'api.throttle',
                             // The API limit time.
-                            'limit'      => env('API_LIMIT'),
+                            'limit'      => Config::get('api.limit'),
                             // The API limit expiry time.
-                            'expires'    => env('API_LIMIT_EXPIRES'),
+                            'expires'    => Config::get('api.limit_expires'),
                         ], function ($router) use ($file) {
 
                             require $file->getPathname();

@@ -6,6 +6,7 @@ use App;
 use App\Port\Butler\Portals\Facade\PortButler;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
 use DB;
+use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
@@ -24,7 +25,8 @@ trait PortServiceProviderTrait
      */
     public function debugDatabaseQueries($log = true, $terminal = false)
     {
-        if (env('DATABASE_QUERIES_DEBUG', false)) {
+        if (Config::get('database.query_debugging')) {
+            // TODO: might not work in laravel 5.2 - check the events section of the upgrading giud and test it
             DB::listen(function ($query, $bindings, $time, $connection) use ($terminal, $log) {
                 $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $query), $bindings);
 
@@ -95,17 +97,17 @@ trait PortServiceProviderTrait
      */
     public function overrideDefaultFractalSerializer()
     {
-        $serializerName = env('FRACTAL_SERIALIZER', 'DataArray');
+        $serializerName = Config::get('api.serializer');
 
         // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
         if ($serializerName !== 'DataArray') {
             app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
                 switch ($serializerName) {
                     case 'JsonApi':
-                        $serializer = new \League\Fractal\Serializer\JsonApiSerializer(env('API_DOMAIN'));
+                        $serializer = new \League\Fractal\Serializer\JsonApiSerializer(Config::get('api.domain'));
                         break;
                     case 'Array':
-                        $serializer = new \League\Fractal\Serializer\ArraySerializer(env('API_DOMAIN'));
+                        $serializer = new \League\Fractal\Serializer\ArraySerializer(Config::get('api.domain'));
                         break;
                     default:
                         throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
