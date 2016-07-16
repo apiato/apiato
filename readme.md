@@ -7,7 +7,7 @@
 #### The `Hello World` of an API : )
 
 [![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
-
+[![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
 
 
 > If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
@@ -17,7 +17,7 @@
 
 #### WHAT
 
-Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel**.
+Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.2**.
 
 #### HOW
 
@@ -102,13 +102,13 @@ So use it today on your own responsibility.
 
 >Hello API is built with the latest & hottest Technologies:
 
-- PHP (Server-Side Scripting Language)
+* PHP (Server-Side Scripting Language)
+* [Laravel 5.2](http://laravel.com) (PHP Framework)
 * [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
 * [MySQL](https://www.mysql.com/) (RDBMS Database)
 * [Redis](http://redis.io/) (Cache System)
 * [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
-* [Laravel Homestead](https://laravel.com/docs/homestead) (Virtual Server Provisioning via [Vagrant](https://www.vagrantup.com/))
-- **Third Party Packages:**
+* Third Party Packages:
 	* [Dingo API](https://github.com/dingo/api) (A RESTful API package)
 	* [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
 	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
@@ -142,7 +142,8 @@ Thus you MUST read its [Readme Document](https://github.com/Mahmoudz/Porto) befo
 	* [Tests Helpers](https://hello-api.readme.io/docs/tests-helpers)
 	* [Mails](https://hello-api.readme.io/docs/mails)
 	* [Payments](https://hello-api.readme.io/docs/payments)
-	* [Frequently Asked Questions (FAQ)](https://hello-api.readme.io/docs/faq)
+	* [Frequently Asked Questions](https://hello-api.readme.io/docs/faq)
+	* [Contribute to Hello API](https://hello-api.readme.io/v5.1.0/docs/contribute-to-hello-api)
 * **Components:**
 	* [Routes](https://hello-api.readme.io/docs/routes)
 	* [Controllers](https://hello-api.readme.io/docs/controllers)
