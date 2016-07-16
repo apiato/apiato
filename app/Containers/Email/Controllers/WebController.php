@@ -6,6 +6,7 @@ use App\Containers\Email\Requests\ConfirmUserEmailRequest;
 use App\Containers\Email\Actions\ValidateConfirmationCodeAction;
 use App\Containers\User\Actions\FindUserByIdAction;
 use App\Port\Controller\Abstracts\PortWebController;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class WebController.
@@ -35,7 +36,7 @@ class WebController extends PortWebController
         $validateConfirmationCodeAction->run($user, $confirmUserEmailRequest->code);
 
         // redirect to the app URL
-        return redirect(env('APP_FULL_URL'));
+        return redirect(Config::get('app.url'));
     }
 
 }

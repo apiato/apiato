@@ -2,6 +2,7 @@
 
 namespace App\Port\Email\Abstracts;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 
@@ -55,7 +56,7 @@ abstract class MailsAbstract
     public function send($data = [])
     {
         // get if sending emails is enabled
-        $enabled = env('MAIL_ENABLED', true);
+        $enabled = Config::get('mail.enabled');
 
         // check if sending emails is enabled and if this is not running a testing environment
         if ($enabled && app()->env != 'testing') {
