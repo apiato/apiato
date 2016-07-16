@@ -27,7 +27,7 @@ class UserPolicy extends Policy
     public function update(User $user, $inputUserId)
     {
         // authorize only if a user is updating it's own records
-        return ($user->id === $inputUserId) ? true : false;
+        return ($user->id == $inputUserId) ? true : false;
     }
 
     /**
@@ -41,6 +41,6 @@ class UserPolicy extends Policy
     public function delete(User $user, $inputUserId)
     {
         // authorize only if a user is deleting it's own records
-        return ($user->id === $inputUserId) ? true : false;
+        return ($user->id == $inputUserId) ? true : false;
     }
 }
