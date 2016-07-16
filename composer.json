@@ -11,23 +11,23 @@
   "type": "project",
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "5.1.*",
+    "laravel/framework": "5.2.*",
     "guzzlehttp/guzzle": "^6.1",
     "dingo/api": "1.0.x@dev",
     "tymon/jwt-auth": "0.5.*",
     "predis/predis": "^1.0",
     "prettus/l5-repository": "^2.1",
     "barryvdh/laravel-cors": "^0.8.0",
-    "zizaco/entrust": "1.6.*",
-    "torann/currency": "0.3.*",
-    "cartalyst/stripe-laravel": "3.0.*",
+    "zizaco/entrust": "5.2.x-dev",
+    "cartalyst/stripe-laravel": "4.0.x",
     "anouar/paypalpayment": "~1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1"
+    "symfony/css-selector": "2.8.*|3.0.*",
+    "symfony/dom-crawler": "2.8.*|3.0.*"
   },
   "autoload": {
     "classmap": [

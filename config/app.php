@@ -151,7 +151,6 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        Torann\Currency\CurrencyServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
 
@@ -219,7 +218,6 @@ return [
         'JWTAuth'       => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'    => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Entrust'       => Zizaco\Entrust\EntrustFacade::class,
-        'Currency'      => Torann\Currency\Facades\Currency::class,
         'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
     ],
