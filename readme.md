@@ -1,7 +1,8 @@
 # Hello API
 
 
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
+![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
+
 
 
 [![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Mahmoudz/Hello-API)
@@ -12,27 +13,37 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Mahmoudz/Hello-API/master/LICENSE)
 
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f/big.png)](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f)
 
 #### The `Hello World` of an API : )
 
+## Content
+
+* [Introduction](#Introduction)
+* [Features](#Features)
+* [Documentation](#Documentation)
+* [Technologies](#Technologies)
+* [Contribution](#Contribution)
+* [Credits](#Credits)
+* [License](#License)
 
 > If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
 
-<br>
 
-
-#### WHAT
+<a name="Introduction"></a>
+### What is Hello API
 
 Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.2**.
 
-#### HOW
-
-Hello API gives all the common functionalities of a modern API, to help building API-Centric Apps faster.
+It gives all the common functionalities of a modern API, to help building API-Centric Apps faster.
 
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
 
-#### WHY
+Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
+
+
+### Why API-Centric Apps
+
+Web developers are used to serve HTML pages directly from the Backend. However, this traditional method has many disadvantages in nowadays.
 
 Today we’re living in a digital era, where almost everything is connected to the Internet.
 
@@ -41,27 +52,20 @@ Building cross-devices applications is becoming a must. And to do it, you need A
 API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
 As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
 
-Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
+API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work on their codes in parallel. After the front-end Apps are ready they get attached to the back-end (API-Centric) code to start functioning. This leads to zero decoupling between the front-end and the back-end code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
 
 
-#### Important Note:
+### Important Note:
 
 The project is currently under heavy development. 
 So expect things to change very quickly.
-Also there's no stable release yet.
-So use it today on your own responsibility.
+Also note that there's **no stable release** till this date.
 
 
-![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
+<br>
 
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
 
-
-## Content
-
-* [Features](#Features)
-* [Technologies](#Technologies)
-* [Full Documentation](#Documentation)
-* [Coming Features](#Coming-Features)
 
 
 
@@ -100,42 +104,11 @@ So use it today on your own responsibility.
 - 100% customizable and Open Code.
 
 
-
-
-
-
-<a name="Technologies"></a>
-## Technologies
-
->Hello API is built with the latest & hottest Technologies:
-
-* PHP (Server-Side Scripting Language)
-* [Laravel 5.2](http://laravel.com) (PHP Framework)
-* [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
-* [MySQL](https://www.mysql.com/) (RDBMS Database)
-* [Redis](http://redis.io/) (Cache System)
-* [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
-* Third Party Packages:
-	* [Dingo API](https://github.com/dingo/api) (A RESTful API package)
-	* [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
-	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
-	* [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
-	* [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
-	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
-	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
-	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
-	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
-
-
-
-
-
-
 <a name="Documentation"></a>
 ## Full Documentation
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern. 
-Thus you MUST read its [Readme Document](https://github.com/Mahmoudz/Porto) before getting started, to get an overview of how the code is architectured.
+Thus you MUST read its [Readme](https://github.com/Mahmoudz/Porto) page before getting started, to get an overview of how the code is architectured.
 
 * **Setup:**
 	* [Requirements](https://hello-api.readme.io/docs/requirements)
@@ -175,6 +148,39 @@ Thus you MUST read its [Readme Document](https://github.com/Mahmoudz/Porto) befo
 
 
 
+
+
+
+<a name="Technologies"></a>
+## Technologies
+
+>Hello API is built with the latest & hottest Technologies:
+
+* PHP (Server-Side Scripting Language)
+* [Laravel 5.2](http://laravel.com) (PHP Framework)
+* [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
+* [MySQL](https://www.mysql.com/) (RDBMS Database)
+* [Redis](http://redis.io/) (Cache System)
+* [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
+* Third Party Packages:
+	* [Dingo API](https://github.com/dingo/api) (A RESTful API package)
+	* [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
+	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
+	* [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
+	* [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
+	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
+	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
+	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
+	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
+
+
+
+<br>
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f/big.png)](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f)
+
+
+<a name="Contribution"></a>
 ## Contribution
 Just do it. You are welcome :)
 
@@ -182,13 +188,15 @@ Just do it. You are welcome :)
 
 
 
-
+<a name="Credits"></a>
 ## Credits
 
 | Authors                | Follow on Twitter                                 | Ask for Help                                                                                                          | Hire            |
 |------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|
 | Mahmoud Zalt (Creator) | [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me |
 
+
+<a name="License"></a>
 ## License
 
 The MIT License [(MIT)](https://github.com/Mahmoudz/Hello-API/blob/master/LICENSE).
