@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Settings\Repositories;
 
-use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
+use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Models\User;
 use App\Port\Repository\Abstracts\Repository;
 

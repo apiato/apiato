@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Stripe\Repositories\Eloquent;
+namespace App\Containers\Stripe\Settings\Repositories;
 
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Port\Repository\Abstracts\Repository;

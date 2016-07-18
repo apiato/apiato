@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\Actions;
 
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Containers\Stripe\Repositories\Eloquent\StripeAccountRepository;
+use App\Containers\Stripe\Settings\Repositories\StripeAccountRepository;
 use App\Containers\User\Models\User;
 use App\Port\Action\Abstracts\Action;
 use Auth;
@@ -17,14 +17,14 @@ class CreateStripeAccountAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Stripe\Repositories\Eloquent\StripeAccountRepository
+     * @var  \App\Containers\Stripe\Settings\Repositories\StripeAccountRepository
      */
     private $stripeAccountRepository;
 
     /**
      * CreateStripeAccountAction constructor.
      *
-     * @param \App\Containers\Stripe\Repositories\Eloquent\StripeAccountRepository $stripeAccountRepository
+     * @param \App\Containers\Stripe\Settings\Repositories\StripeAccountRepository $stripeAccountRepository
      */
     public function __construct(StripeAccountRepository $stripeAccountRepository)
     {
