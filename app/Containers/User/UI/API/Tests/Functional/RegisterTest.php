@@ -1,20 +1,66 @@
 <?php
 
-namespace App\Containers\User\Tests\Api\Functional;
+namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class LoginEndpointTest.
+ * Class RegisterEndpointTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginTest extends TestCase
+class RegisterTest extends TestCase
 {
 
-    private $endpoint = '/login';
+    private $endpoint = '/register';
 
-    public function testLoginExistingUser_()
+    public function testRegisterNewUser_()
+    {
+        $data = [
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
+            'password' => 'secret',
+        ];
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '200');
+
+        $this->assertResponseContainKeyValue([
+            'email' => $data['email'],
+            'name'  => $data['name'],
+        ], $response);
+
+        // assert response contain the correct data
+        $this->assertResponseContainKeys(['id', 'token'], $response);
+
+        // assert the data is stored in the database
+        $this->seeInDatabase('users', ['email' => $data['email']]);
+    }
+
+    public function testRegisterNewUserUsingGetVerb()
+    {
+        $data = [
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Hello',
+            'password' => 'secret',
+        ];
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'get', $data, false);
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '405');
+
+        // assert response contain the correct message
+        $this->assertResponseContainKeyValue([
+            'message' => '405 Method Not Allowed',
+        ], $response);
+    }
+
+    public function testRegisterExistingUser()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
@@ -27,6 +73,7 @@ class LoginTest extends TestCase
 
         $data = [
             'email'    => $userDetails['email'],
+            'name'     => $userDetails['name'],
             'password' => $userDetails['password'],
         ];
 
@@ -34,69 +81,19 @@ class LoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals($response->getStatusCode(), '409');
 
-        // assert the response contain the expected data
+        // assert response contain the correct message
         $this->assertResponseContainKeyValue([
-            'email' => $userDetails['email'],
-            'name'  => $userDetails['name'],
+            'message' => 'Failed creating new User.',
         ], $response);
-
-        // assert response contain the data
-        $this->assertResponseContainKeys(['id', 'token'], $response);
     }
 
-    public function testLoginExistingUserUsingGetRequest()
+    public function testRegisterNewUserWithoutEmail()
     {
         $data = [
-            'email'    => 'hello@mail.dev',
-            'password' => 'secret',
-        ];
-
-        // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get', $data, false);
-
-        // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '405');
-
-        // assert message is correct
-        $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed',
-        ], $response);
-    }
-
-    public function testLoginNonExistingUser()
-    {
-        $data = [
-            'email'    => 'i-do-not-exist@mail.dev',
-            'password' => 'secret',
-        ];
-
-        // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
-
-        // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '401');
-
-        // assert message is correct
-        $this->assertResponseContainKeyValue([
-            'message' => 'Credentials Incorrect.',
-        ], $response);
-    }
-
-    public function testLoginExistingUserWithoutEmail_()
-    {
-        $userDetails = [
-            'email'    => 'hello@mail.dev',
             'name'     => 'Hello',
             'password' => 'secret',
-        ];
-
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
-
-        $data = [
-            'password' => $userDetails['password'],
         ];
 
         // send the HTTP request
@@ -105,25 +102,17 @@ class LoginTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '422');
 
-        // assert message is correct
+        // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
             'email' => 'The email field is required.',
         ]);
     }
 
-    public function testLoginExistingUserWithoutPassword()
+    public function testRegisterNewUserWithoutName()
     {
-        $userDetails = [
-            'email'    => 'hello@mail.dev',
-            'name'     => 'Hello',
-            'password' => 'secret',
-        ];
-
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
-
         $data = [
-            'email' => $userDetails['email'],
+            'email'    => 'hello@mail.dev',
+            'password' => 'secret',
         ];
 
         // send the HTTP request
@@ -132,24 +121,37 @@ class LoginTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '422');
 
-        // assert message is correct
+        // assert response contain the correct message
+        $this->assertValidationErrorContain($response, [
+            'name' => 'The name field is required.',
+        ]);
+    }
+
+    public function testRegisterNewUserWithoutPassword()
+    {
+        $data = [
+            'email' => 'hello@mail.dev',
+            'name'  => 'Hello',
+        ];
+
+        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '422');
+
+        // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
             'password' => 'The password field is required.',
         ]);
     }
 
-    public function testLoginExistingUserWithoutEmailAndPassword()
+    public function testRegisterNewUserWithInvalidEmail()
     {
-        $userDetails = [
-            'email'    => 'hello@mail.dev',
+        $data = [
+            'email'    => 'missing-at.dev',
             'name'     => 'Hello',
             'password' => 'secret',
         ];
-
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
-
-        $data = []; // empty data
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
@@ -157,10 +159,9 @@ class LoginTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '422');
 
-        // assert message is correct
+        // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
-            'email'    => 'The email field is required.',
-            'password' => 'The password field is required.',
+            'email' => 'The email must be a valid email address.',
         ]);
     }
 }
