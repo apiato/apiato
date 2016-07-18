@@ -7,6 +7,7 @@ use App\Port\Butler\Portals\Facade\PortButler;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
 use DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 use Log;
 
 /**
@@ -82,6 +83,21 @@ trait PortServiceProviderTrait
         }
 
         return array_unique($allServiceProviders) ? : [];
+    }
+
+    /**
+     * Load views from inside the Containers
+     */
+    public function autoLoadViewsFromContainers()
+    {
+        foreach (PortButler::getContainersNames() as $containerName) {
+
+            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
+
+            if (is_dir($containerViewDirectory)) {
+                View::addLocation($containerViewDirectory);
+            }
+        }
     }
 
     /**

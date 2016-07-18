@@ -4,7 +4,6 @@ namespace App\Port\Email\Abstracts;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\View;
 
 /**
  * Class MailsAbstract.
@@ -41,9 +40,6 @@ abstract class MailsAbstract
      */
     public function __construct()
     {
-        // instruct laravel to look for views in this directory
-        View::addLocation('app/Services/Mails/Views');
-
         $this->fromEmail = config('mail.from.address');
         $this->fromName = config('mail.from.name');
     }
@@ -52,20 +48,23 @@ abstract class MailsAbstract
      * Send the email
      *
      * @param array $data
+     *
+     * @return  bool
      */
     public function send($data = [])
     {
-        // get if sending emails is enabled
-        $enabled = Config::get('mail.enabled');
+        // TODO: surround with try and catch block and return exception
 
         // check if sending emails is enabled and if this is not running a testing environment
-        if ($enabled && app()->env != 'testing') {
-            Mail::queue($this->template, $data, function ($m) {
+        if (Config::get('mail.enabled')) {
+            Mail::queue('EmailTemplates.' . $this->template, $data, function ($m) {
                 $m->from($this->fromEmail, $this->fromName);
                 $m->to($this->toEmail, $this->toName)
                     ->subject($this->subject);
             });
         }
+
+        return true;
     }
 
 

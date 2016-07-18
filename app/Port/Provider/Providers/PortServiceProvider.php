@@ -7,6 +7,7 @@ use App\Port\Provider\Traits\AutoRegisterServiceProvidersTrait;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 
+
 /**
  * Class PortServiceProvider
  * The main Service Provider where all Service Providers gets registered
@@ -45,6 +46,8 @@ class PortServiceProvider extends ServiceProviderAbstract
             $this->getContainersServiceProviders(),
             $this->engineServiceProviders
         ));
+
+        $this->autoLoadViewsFromContainers();
 
         $this->overrideDefaultFractalSerializer();
     }

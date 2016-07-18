@@ -48,7 +48,7 @@ class PortButler
      */
     public function getContainersPaths()
     {
-        return FIle::directories(app_path('Containers'));
+        return File::directories(app_path('Containers'));
     }
 
     /**
