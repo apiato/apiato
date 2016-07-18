@@ -48,20 +48,23 @@ abstract class MailsAbstract
      * Send the email
      *
      * @param array $data
+     *
+     * @return  bool
      */
     public function send($data = [])
     {
-        // get if sending emails is enabled
-        $enabled = Config::get('mail.enabled');
+        // TODO: surround with try and catch block and return exception
 
         // check if sending emails is enabled and if this is not running a testing environment
-        if ($enabled && app()->env != 'testing') {
+        if (Config::get('mail.enabled')) {
             Mail::queue('EmailTemplates.' . $this->template, $data, function ($m) {
                 $m->from($this->fromEmail, $this->fromName);
                 $m->to($this->toEmail, $this->toName)
                     ->subject($this->subject);
             });
         }
+
+        return true;
     }
 
 

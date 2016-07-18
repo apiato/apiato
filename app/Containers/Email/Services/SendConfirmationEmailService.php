@@ -2,9 +2,9 @@
 
 namespace App\Containers\Email\Services;
 
+use App\Containers\Email\Mails\ConfirmEmail;
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
-use App\Containers\Email\Mails\ConfirmEmail;
 
 /**
  * Class SendConfirmationEmailService.
@@ -14,20 +14,32 @@ use App\Containers\Email\Mails\ConfirmEmail;
 class SendConfirmationEmailService extends Service
 {
 
+
+    /**
+     * SendConfirmationEmailService constructor.
+     *
+     * @param \App\Containers\Email\Mails\ConfirmEmail $confirmEmail
+     */
+    public function __construct(ConfirmEmail $confirmEmail)
+    {
+        $this->email = $confirmEmail;
+    }
+
     /**
      * @param \App\Containers\User\Models\User $user
      * @param                                  $confirmationUrl
+     *
+     * @return  bool
      */
     public function run(User $user, $confirmationUrl)
     {
-        $email = new ConfirmEmail();
-        $email->setEmail($user->email);
-        $email->setName($user->name);
-        $email->send($data = [
+        $this->email->setEmail($user->email);
+        $this->email->setName($user->name);
+        $result = $this->email->send($data = [
             'name' => $user->name,
             'url'  => $confirmationUrl,
         ]);
 
-        return true;
+        return $result;
     }
 }
