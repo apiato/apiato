@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\User\Requests;
+namespace App\Containers\User\UI\API\Requests;
 
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class LoginRequest.
+ * Class RegisterRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginRequest extends Request
+class RegisterRequest extends Request
 {
 
     /**
@@ -21,7 +21,8 @@ class LoginRequest extends Request
     {
         return [
             'email'    => 'required|email|max:40',
-            'password' => 'required|max:30',
+            'password' => 'required|min:6|max:30',
+            'name'     => 'required|min:2|max:50',
         ];
     }
 

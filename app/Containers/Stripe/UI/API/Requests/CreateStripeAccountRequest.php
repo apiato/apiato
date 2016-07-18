@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Stripe\Requests;
+namespace App\Containers\Stripe\UI\API\Requests;
 
 use App\Port\Request\Abstracts\Request;
 

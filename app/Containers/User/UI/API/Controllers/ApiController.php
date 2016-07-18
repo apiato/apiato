@@ -8,10 +8,10 @@ use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
-use App\Containers\User\Requests\DeleteUserRequest;
-use App\Containers\User\Requests\LoginRequest;
-use App\Containers\User\Requests\RegisterRequest;
-use App\Containers\User\Requests\UpdateUserRequest;
+use App\Containers\User\UI\API\Requests\DeleteUserRequest;
+use App\Containers\User\UI\API\Requests\LoginRequest;
+use App\Containers\User\UI\API\Requests\RegisterRequest;
+use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
@@ -25,8 +25,8 @@ class ApiController extends PortApiController
 {
 
     /**
-     * @param \App\Containers\User\Requests\DeleteUserRequest $request
-     * @param \App\Containers\User\Actions\DeleteUserAction   $action
+     * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
+     * @param \App\Containers\User\Actions\DeleteUserAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -52,8 +52,8 @@ class ApiController extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Requests\LoginRequest  $request
-     * @param \App\Containers\User\Actions\ApiLoginAction $action
+     * @param \App\Containers\User\UI\API\Requests\LoginRequest $request
+     * @param \App\Containers\User\Actions\ApiLoginAction       $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -80,8 +80,8 @@ class ApiController extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateUserAction $action
+     * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
+     * @param \App\Containers\User\Actions\CreateUserAction        $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -99,8 +99,8 @@ class ApiController extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Requests\UpdateUserRequest $request
-     * @param \App\Containers\User\Actions\UpdateUserAction   $action
+     * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
+     * @param \App\Containers\User\Actions\UpdateUserAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */

@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\UI\API\Controllers;
 
-use App\Containers\Email\Requests\SetEmailRequest;
+use App\Containers\Email\UI\API\Requests\SetEmailRequest;
 use App\Containers\Email\Actions\SetUserEmailAction;
 use App\Port\Controller\Abstracts\PortApiController;
 
@@ -15,7 +15,7 @@ class ApiController extends PortApiController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\SetEmailRequest $setEmailRequest
+     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $setEmailRequest
      * @param \App\Containers\Email\Actions\SetUserEmailAction   $setUserEmailAction
      *
      * @return  \Dingo\Api\Http\Response

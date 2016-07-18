@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Requests;
+namespace App\Containers\User\UI\API\Requests;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use App\Containers\User\Models\User;

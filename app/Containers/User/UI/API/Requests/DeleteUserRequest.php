@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Containers\Email\Requests;
+namespace App\Containers\User\UI\API\Requests;
 
+use Illuminate\Contracts\Auth\Access\Gate;
+use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class SetEmailRequest.
+ * Class DeleteUserRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetEmailRequest extends Request
+class DeleteUserRequest extends Request
 {
 
     /**
@@ -20,7 +22,6 @@ class SetEmailRequest extends Request
     public function rules()
     {
         return [
-            'email' => 'required|email|max:40',
             'id'    => 'required|integer', // url parameter
         ];
     }
@@ -41,12 +42,14 @@ class SetEmailRequest extends Request
     /**
      * Determine if the user is authorized to make this request.
      *
+     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Gate $gate)
     {
-        // TODO: add policy checking if the user is authorized to set his own Email
-
-        return true;
+        // $this->user(): is the current logged in user, taken from the request
+        // $this->id: is the request input user ID (for the user that needs to be updated)
+        return $gate->getPolicyFor(User::class)->delete($this->user(), $this->id);
     }
 }

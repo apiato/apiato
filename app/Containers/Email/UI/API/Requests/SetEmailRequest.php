@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Email\Requests;
+namespace App\Containers\Email\UI\API\Requests;
 
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class ConfirmUserEmailRequest.
+ * Class SetEmailRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ConfirmUserEmailRequest extends Request
+class SetEmailRequest extends Request
 {
 
     /**
@@ -20,8 +20,8 @@ class ConfirmUserEmailRequest extends Request
     public function rules()
     {
         return [
-            'id'   => 'required|integer', // url parameter
-            'code' => 'required|min:35|max:45', // url parameter
+            'email' => 'required|email|max:40',
+            'id'    => 'required|integer', // url parameter
         ];
     }
 
@@ -34,7 +34,6 @@ class ConfirmUserEmailRequest extends Request
     {
         $data = parent::all();
         $data['id'] = $this->route('id');
-        $data['code'] = $this->route('code');
 
         return $data;
     }
@@ -46,6 +45,8 @@ class ConfirmUserEmailRequest extends Request
      */
     public function authorize()
     {
+        // TODO: add policy checking if the user is authorized to set his own Email
+
         return true;
     }
 }

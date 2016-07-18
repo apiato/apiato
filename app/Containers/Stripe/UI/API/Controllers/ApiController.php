@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\UI\API\Controllers;
 
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
-use App\Containers\Stripe\Requests\CreateStripeAccountRequest;
+use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Port\Controller\Abstracts\PortApiController;
 
 /**
@@ -15,7 +15,7 @@ class ApiController extends PortApiController
 {
 
     /**
-     * @param \App\Containers\Stripe\Requests\CreateStripeAccountRequest $request
+     * @param \App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest $request
      * @param \App\Containers\Stripe\Actions\CreateStripeAccountAction   $action
      */
     public function createStripeAccount(CreateStripeAccountRequest $request, CreateStripeAccountAction $action)

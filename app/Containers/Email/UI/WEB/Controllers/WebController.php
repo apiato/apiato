@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\UI\WEB\Controllers;
 
-use App\Containers\Email\Requests\ConfirmUserEmailRequest;
+use App\Containers\Email\UI\API\Requests\ConfirmUserEmailRequest;
 use App\Containers\Email\Actions\ValidateConfirmationCodeAction;
 use App\Containers\User\Actions\FindUserByIdAction;
 use App\Port\Controller\Abstracts\PortWebController;
@@ -17,7 +17,7 @@ class WebController extends PortWebController
 {
 
     /**
-     * @param \App\Containers\Email\Requests\ConfirmUserEmailRequest       $confirmUserEmailRequest
+     * @param \App\Containers\Email\UI\API\Requests\ConfirmUserEmailRequest       $confirmUserEmailRequest
      * @param \App\Containers\User\Actions\FindUserByIdAction              $findUserByIdAction
      * @param \App\Containers\Email\Actions\ValidateConfirmationCodeAction $validateConfirmationCodeAction
      *
