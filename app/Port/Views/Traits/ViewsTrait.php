@@ -21,7 +21,7 @@ trait ViewsTrait
 
         foreach ($portButler->getContainersNames() as $containerName) {
 
-            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/Views/');
+            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
             if (is_dir($containerViewDirectory)) {
                 $view->addLocation($containerViewDirectory);
             }
