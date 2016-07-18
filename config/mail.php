@@ -8,7 +8,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Determine if the mail is enabled or not. When set to false, will never
-    | trigger sending emails to users.
+    | trigger sending emails to users. Don't have to put it false for testing
+    | it never sends emails in testing environments.
     |
     */
     'enabled' => env('MAIL_ENABLED', true),
