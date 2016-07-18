@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\Services;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Port\Service\Abstracts\Service;
 
@@ -15,14 +15,14 @@ class SetUserEmailService extends Service
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var \App\Containers\User\Settings\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * UpdateUserService constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Settings\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

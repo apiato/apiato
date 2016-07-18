@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
 use App\Port\Action\Abstracts\Action;
 use App\Containers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
 
@@ -15,14 +15,14 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var \App\Containers\User\Settings\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Settings\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

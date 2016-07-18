@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authorization\Seeders;
+namespace App\Containers\Authorization\Database\Seeders;
 
 use App\Port\Seeder\Abstracts\Seeder;
 use App\Containers\Authorization\Models\Permission;

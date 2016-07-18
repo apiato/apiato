@@ -1,7 +1,7 @@
 <?php
 
+use App\Containers\Authorization\Database\Seeders\RolesAndPermissionsSeeder;
 use App\Port\Seeder\Abstracts\Seeder;
-use App\Containers\Authorization\Seeders\RolesAndPermissionsSeeder;
 
 /**
  * Class DatabaseSeeder

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\User\Providers;
+namespace App\Containers\User\Settings\Providers;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Repositories\Eloquent\UserRepository;
+use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
+use App\Containers\User\Settings\Repositories\UserRepository;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
