@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Transformers;
+namespace App\Containers\User\UI\API\Transformers;
 
 use App\Containers\User\Models\User;
 use App\Port\Transformer\Abstracts\Transformer;

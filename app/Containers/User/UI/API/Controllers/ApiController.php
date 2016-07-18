@@ -12,7 +12,7 @@ use App\Containers\User\Requests\DeleteUserRequest;
 use App\Containers\User\Requests\LoginRequest;
 use App\Containers\User\Requests\RegisterRequest;
 use App\Containers\User\Requests\UpdateUserRequest;
-use App\Containers\User\Transformers\UserTransformer;
+use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
 
