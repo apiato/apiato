@@ -58,7 +58,7 @@ trait RoutesServiceProviderTrait
 
                         $router->group([
                             // Routes Namespace
-                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers',
+                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers',
                             // Enable: API Rate Limiting
                             'middleware' => 'api.throttle',
                             // The API limit time.
@@ -87,7 +87,7 @@ trait RoutesServiceProviderTrait
     private function registerContainersWebRoutes($containerPath, $containersNamespace)
     {
         // get the container web routes path
-        $webRoutesPath = $containerPath . '/UI/WEB/Routes';
+        $webRoutesPath = $containerPath . '/UI/Web/Routes';
 
         if (File::isDirectory($webRoutesPath)) {
             // get all files from the container Web routes directory
@@ -95,7 +95,7 @@ trait RoutesServiceProviderTrait
 
             foreach ($files as $file) {
                 $this->webRouter->group([
-                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\Controllers',
+                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers',
                 ], function (LaravelRouter $router) use ($file) {
                     require $file->getPathname();
                 });
