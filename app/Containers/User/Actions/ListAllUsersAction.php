@@ -2,11 +2,9 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Port\Action\Abstracts\Action;
-
 use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Port\Action\Abstracts\Action;
 use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
-
 
 /**
  * Class ListAllUsersAction.
@@ -26,9 +24,8 @@ class ListAllUsersAction extends Action
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
-    public function __construct(
-        UserRepositoryInterface $userRepository
-    ) {
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
         $this->userRepository = $userRepository;
     }
 

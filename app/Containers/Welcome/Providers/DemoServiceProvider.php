@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Demo\Providers;
+namespace App\Containers\Welcome\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
- * Class DemoServiceProvider.
+ * Class WelcomeServiceProvider.
  *
  * The Main Service Provider of this Module.
  * Will be automatically registered in the framework after
@@ -13,7 +13,7 @@ use App\Port\Provider\Abstracts\ServiceProviderAbstract;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DemoServiceProvider extends ServiceProviderAbstract
+class WelcomeServiceProvider extends ServiceProviderAbstract
 {
 
     /**
