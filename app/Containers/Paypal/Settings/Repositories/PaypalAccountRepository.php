@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Paypal\Repositories\Eloquent;
+namespace App\Containers\Paypal\Settings\Repositories;
 
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Port\Repository\Abstracts\Repository;

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
+use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Port\Action\Abstracts\Action;
@@ -25,7 +25,7 @@ class CreateUserAction extends Action
     private $eventsDispatcher;
 
     /**
-     * @var \App\Containers\User\Settings\Contracts\UserRepositoryInterface
+     * @var \App\Containers\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
@@ -37,7 +37,7 @@ class CreateUserAction extends Action
     /**
      * CreateUserAction constructor.
      *
-     * @param \App\Containers\User\Settings\Contracts\UserRepositoryInterface             $userRepository
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface             $userRepository
      * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
      * @param \App\Port\Event\Dispatcher\EventsDispatcher                        $eventsDispatcher
      */

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Settings\Contracts\UserRepositoryInterface;
+use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,14 +14,14 @@ class DeleteUserAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Settings\Contracts\UserRepositoryInterface
+     * @var \App\Containers\User\Contracts\UserRepositoryInterface
      */
     private $userRepository;
 
     /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Settings\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

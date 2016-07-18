@@ -3,7 +3,7 @@
 namespace App\Containers\Paypal\Actions;
 
 use App\Containers\Paypal\Models\PaypalAccount;
-use App\Containers\Paypal\Repositories\Eloquent\PaypalAccountRepository;
+use App\Containers\Paypal\Settings\Repositories\PaypalAccountRepository;
 use App\Containers\User\Models\User;
 use App\Port\Action\Abstracts\Action;
 use Auth;
@@ -17,14 +17,14 @@ class CreatePaypalAccountAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Paypal\Repositories\Eloquent\PaypalAccountRepository
+     * @var  \App\Containers\Paypal\Settings\Repositories\PaypalAccountRepository
      */
     private $paypalAccountRepository;
 
     /**
      * CreatePaypalAccountAction constructor.
      *
-     * @param \App\Containers\Paypal\Repositories\Eloquent\PaypalAccountRepository $paypalAccountRepository
+     * @param \App\Containers\Paypal\Settings\Repositories\PaypalAccountRepository $paypalAccountRepository
      */
     public function __construct(PaypalAccountRepository $paypalAccountRepository)
     {
