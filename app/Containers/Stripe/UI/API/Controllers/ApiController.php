@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Stripe\Controllers;
+namespace App\Containers\Stripe\UI\API\Controllers;
 
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\Requests\CreateStripeAccountRequest;

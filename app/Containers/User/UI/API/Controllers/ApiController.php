@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Controllers;
+namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;

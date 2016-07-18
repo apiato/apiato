@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Email\Controllers;
+namespace App\Containers\Email\UI\API\Controllers;
 
 use App\Containers\Email\Requests\SetEmailRequest;
 use App\Containers\Email\Actions\SetUserEmailAction;

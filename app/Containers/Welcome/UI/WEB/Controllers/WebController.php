@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Welcome\Controllers;
+namespace App\Containers\Welcome\UI\WEB\Controllers;
 
 use App\Port\Controller\Abstracts\PortWebController;
 
