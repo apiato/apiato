@@ -40,7 +40,7 @@ trait RoutesServiceProviderTrait
     private function registerContainersApiRoutes($containerPath, $containersNamespace)
     {
         // get the container api routes path
-        $apiRoutesPath = $containerPath . '/Routes/Api';
+        $apiRoutesPath = $containerPath . '/UI/API/Routes';
 
         if (File::isDirectory($apiRoutesPath)) {
 
