@@ -5,7 +5,7 @@ namespace App\Containers\User\Settings\Providers;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\Containers\User\Models\User;
-use App\Containers\User\Policies\UserPolicy;
+use App\Containers\User\UI\API\Policies\UserPolicy;
 
 /**
  * Class PoliciesServiceProvider.
