@@ -148,7 +148,7 @@ trait PortServiceProviderTrait
      */
     private function publishModuleMigrationsFiles($containerName)
     {
-        $containerMigrationsDirectory = base_path() . '/app/Containers/' . $containerName . '/Migrations/';
+        $containerMigrationsDirectory = base_path() . '/app/Containers/' . $containerName . '/Database/Migrations/';
 
         if (is_dir($containerMigrationsDirectory)) {
             $this->publishes([
