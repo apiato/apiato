@@ -16,5 +16,5 @@
  */
 
 $router->post('/stripes', [
-    'uses' => 'ApiController@createStripeAccount',
+    'uses' => 'Controller@createStripeAccount',
 ]);

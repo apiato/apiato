@@ -9,11 +9,11 @@ use App\Port\Controller\Abstracts\PortWebController;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class WebController.
+ * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WebController extends PortWebController
+class Controller extends PortWebController
 {
 
     /**

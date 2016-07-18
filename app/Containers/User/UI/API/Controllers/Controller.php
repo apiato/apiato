@@ -17,11 +17,11 @@ use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
 
 /**
- * Class ApiController.
+ * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiController extends PortApiController
+class Controller extends PortApiController
 {
 
     /**

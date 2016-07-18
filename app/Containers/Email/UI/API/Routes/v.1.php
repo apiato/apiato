@@ -12,7 +12,7 @@
  * @apiParam           {String}     email
  */
 $router->post('/users/{id}/email', [
-    'uses'       => 'ApiController@setUserEmailController',
+    'uses'       => 'Controller@setUserEmailController',
     'middleware' => [
         'api.auth',
     ],

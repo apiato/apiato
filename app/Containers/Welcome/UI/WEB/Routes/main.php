@@ -1,5 +1,5 @@
 <?php
 
 $router->get('/', [
-    'uses' => 'WebController@sayWelcome',
+    'uses' => 'Controller@sayWelcome',
 ]);

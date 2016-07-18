@@ -7,11 +7,11 @@ use App\Containers\Email\Actions\SetUserEmailAction;
 use App\Port\Controller\Abstracts\PortApiController;
 
 /**
- * Class ApiController.
+ * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiController extends PortApiController
+class Controller extends PortApiController
 {
 
     /**

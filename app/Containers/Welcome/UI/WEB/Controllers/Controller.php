@@ -5,11 +5,11 @@ namespace App\Containers\Welcome\UI\WEB\Controllers;
 use App\Port\Controller\Abstracts\PortWebController;
 
 /**
- * Class WebController
+ * Class Controller
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WebController extends PortWebController
+class Controller extends PortWebController
 {
 
     /**
