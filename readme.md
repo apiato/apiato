@@ -172,6 +172,7 @@ Thus you MUST read its [Readme](https://github.com/Mahmoudz/Porto) page before g
 	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
 	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
 	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
+	* [Agent](https://github.com/jenssegers/agent) (Detect users agent)
 
 
 
