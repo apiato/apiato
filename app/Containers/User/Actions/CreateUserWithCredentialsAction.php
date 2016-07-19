@@ -29,6 +29,7 @@ class CreateUserWithCredentialsAction extends Action
      * CreateUserWithCredentialsAction constructor.
      *
      * @param \App\Containers\User\Services\CreateUserService $createUserService
+     * @param \App\Port\Event\Dispatcher\EventsDispatcher     $eventsDispatcher
      */
     public function __construct(CreateUserService $createUserService, EventsDispatcher $eventsDispatcher)
     {
@@ -49,7 +50,7 @@ class CreateUserWithCredentialsAction extends Action
      */
     public function run($email, $password, $name, $login = false)
     {
-        $user = $this->createUserService->run($email, $password, $name, $login);
+        $user = $this->createUserService->byCredentials($email, $password, $name, $login);
 
         // Fire a User Created Event
         $this->eventsDispatcher->fire(New UserCreatedEvent($user));

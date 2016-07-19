@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Hash;
 class CreateUserService extends Service
 {
 
-
     /**
      * @var \App\Containers\User\Contracts\UserRepositoryInterface
      */
@@ -42,7 +41,6 @@ class CreateUserService extends Service
         $this->authenticationService = $authenticationService;
     }
 
-
     /**
      * @param            $email
      * @param            $password
@@ -51,16 +49,16 @@ class CreateUserService extends Service
      *
      * @return  mixed
      */
-    public function run($email, $password, $name, $login = false)
+    public function byCredentials($email, $password, $name, $login = false)
     {
         $hashedPassword = Hash::make($password);
 
         try {
             // create new user
             $user = $this->userRepository->create([
+                'name'     => $name,
                 'email'    => $email,
                 'password' => $hashedPassword,
-                'name'     => $name,
             ]);
         } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);
@@ -74,5 +72,27 @@ class CreateUserService extends Service
         return $user;
     }
 
+    /**
+     * @param      $agentId device ID (example: iphone UUID, Android ID)
+     * @param null $device
+     * @param null $platform
+     *
+     * @return  mixed
+     */
+    public function byAgent($agentId, $device = null, $platform = null)
+    {
+        try {
+            // create new user
+            $user = $this->userRepository->create([
+                'agent_id' => $agentId,
+                'device'   => $device,
+                'platform' => $platform,
+            ]);
+        } catch (Exception $e) {
+            throw (new AccountFailedException())->debug($e);
+        }
+
+        return $user;
+    }
 
 }
