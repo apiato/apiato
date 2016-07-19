@@ -55,42 +55,6 @@ $router->post('logout', [
     ],
 ]);
 
-/*********************************************************************************
- * @apiGroup           Users
- * @apiName            RegisterUser
- * @api                {post} /register Register new User
- * @apiDescription     Create and Login new user
- * @apiVersion         1.0.0
- * @apiPermission      none
- * @apiHeader          Accept application/json
- * @apiParam           {String}  email
- * @apiParam           {String}  password
- * @apiParam           {String}  name
- * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-
-{
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "email": "mahmoud@zalt.me",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
-    "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
- */
-$router->post('register', [
-    'uses' => 'Controller@registerUser',
-]);
 
 /*********************************************************************************
  * @apiGroup           Users
@@ -130,6 +94,84 @@ $router->put('users/{id}', [
     'middleware' => [
         'api.auth',
     ],
+]);
+
+/*********************************************************************************
+ * @apiGroup           Users
+ * @apiName            registerAgentUser
+ * @api                {post} /register/agent Register a new User by his Agent Id (A.K.A Device ID).
+ *                     Use this endpoint, if the App doesn't require registration first.
+ *                     Where users can navigate through the App and register later.
+ *                     This Endpoint should be used whenever they decided to register.
+ * @apiDescription     Create and Login new user (from agent)
+ * @apiVersion         1.0.0
+ * @apiPermission      none
+ * @apiHeader          Accept application/json
+ * @apiHeader          Agent-Id 2BY1h82XPPRmtl53eJ7zFi7uiFwEJeWRWHZCIwd2
+ * @apiParam           {String}  email
+ * @apiParam           {String}  password
+ * @apiParam           {String}  name
+ * @apiSuccessExample  {json}    Success-Response:
+* HTTP/1.1 200 OK
+ *
+* {
+  * "data": {
+    * "id": 1,
+    * "name": "Mahmoud Zalt",
+    * "email": "mahmoud@zalt.me",
+    * "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+    * "created_at": {
+      * "date": "2016-04-09 02:34:11.000000",
+      * "timezone_type": 3,
+      * "timezone": "UTC"
+    * },
+    * "updated_at": {
+      * "date": "2016-04-09 02:34:11.000000",
+      * "timezone_type": 3,
+      * "timezone": "UTC"
+    * }
+  * }
+* }
+ */
+$router->post('register/agent', [
+    'uses'  => 'Controller@registerAgentUser',
+]);
+
+/*********************************************************************************
+ * @apiGroup           Users
+ * @apiName            RegisterUser
+ * @api                {post} /register Register a new User by his credentials
+ * @apiDescription     Create and Login new user
+ * @apiVersion         1.0.0
+ * @apiPermission      none
+ * @apiHeader          Accept application/json
+ * @apiParam           {String}  email
+ * @apiParam           {String}  password
+ * @apiParam           {String}  name
+ * @apiSuccessExample  {json}    Success-Response:
+HTTP/1.1 200 OK
+
+{
+  "data": {
+    "id": 1,
+    "name": "Mahmoud Zalt",
+    "email": "mahmoud@zalt.me",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+    "created_at": {
+      "date": "2016-04-09 02:34:11.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "updated_at": {
+      "date": "2016-04-09 02:34:11.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
+}
+ */
+$router->post('register', [
+    'uses' => 'Controller@registerUser',
 ]);
 
 /*********************************************************************************
