@@ -4,13 +4,15 @@ namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;
-use App\Containers\User\Actions\CreateUserWithCredentialsAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
+use App\Containers\User\Actions\RegisterUserAction;
+use App\Containers\User\Actions\UpdateAgentUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\LoginRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
+use App\Containers\User\UI\API\Requests\UpdateAgentUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
@@ -81,11 +83,11 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateUserWithCredentialsAction        $action
+     * @param \App\Containers\User\Actions\RegisterUserAction      $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $request, CreateUserWithCredentialsAction $action)
+    public function registerUser(RegisterRequest $request, RegisterUserAction $action)
     {
         // create and login (true parameter) the new user
         $user = $action->run(
@@ -93,6 +95,27 @@ class Controller extends PortApiController
             $request['password'],
             $request['name'],
             true
+        );
+
+        return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
+     * The Agent is the user that was previously created by an agent ID (A.K.A Device ID).
+     * The Agent user usually gets created automatically by a Middleware.
+     *
+     * @param \App\Containers\User\UI\API\Requests\UpdateAgentUserRequest $request
+     * @param \App\Containers\User\Actions\UpdateAgentUserAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function registerAgentUser(UpdateAgentUserRequest $request, UpdateAgentUserAction $action)
+    {
+        $user = $action->run(
+            $request->header('Agent-Id'),
+            $request['email'],
+            $request['password'],
+            $request['name']
         );
 
         return $this->response->item($user, new UserTransformer());
@@ -109,7 +132,8 @@ class Controller extends PortApiController
         $user = $action->run(
             $request->id,
             $request['password'],
-            $request['name']
+            $request['name'],
+            $request['email']
         );
 
         return $this->response->item($user, new UserTransformer());
