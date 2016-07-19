@@ -2,16 +2,15 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
-use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
- * Class UpdateUserRequest.
+ * Class UpdateAgentUserRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateUserRequest extends Request
+class UpdateAgentUserRequest extends Request
 {
 
     /**
@@ -25,21 +24,7 @@ class UpdateUserRequest extends Request
             'password' => 'min:6|max:30',
             'name'     => 'min:2|max:50',
             'email'    => 'email',
-            'id'       => 'required|integer', // url parameter
         ];
-    }
-
-    /**
-     * Override the all() to automatically apply validation rules to the URL parameters
-     *
-     * @return  array
-     */
-    public function all()
-    {
-        $data = parent::all();
-        $data['id'] = $this->route('id');
-
-        return $data;
     }
 
 
@@ -52,8 +37,6 @@ class UpdateUserRequest extends Request
      */
     public function authorize(Gate $gate)
     {
-        // $this->user(): is the current logged in user, taken from the request
-        // $this->id: is the request input user ID (for the user that needs to be updated)
-        return $gate->getPolicyFor(User::class)->update($this->user(), $this->id);
+        return true;
     }
 }
