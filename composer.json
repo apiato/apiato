@@ -19,6 +19,7 @@
     "prettus/l5-repository": "^2.1",
     "barryvdh/laravel-cors": "^0.8.0",
     "zizaco/entrust": "5.2.x-dev",
+    "jenssegers/agent": "^2.3",
     "cartalyst/stripe-laravel": "4.0.*",
     "anouar/paypalpayment": "~1.0"
   },

@@ -163,6 +163,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
 
         /*
          * Laravel Porto: kernel Service Providers
@@ -228,6 +229,7 @@ return [
         'JWTAuth'       => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'    => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Entrust'       => Zizaco\Entrust\EntrustFacade::class,
+        'Agent'         => Jenssegers\Agent\Facades\Agent::class,
         'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
     ],
