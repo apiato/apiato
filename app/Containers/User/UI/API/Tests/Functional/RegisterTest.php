@@ -33,7 +33,7 @@ class RegisterTest extends TestCase
             'name'  => $data['name'],
         ], $response);
 
-        // assert response contain the correct data
+        // assert response contain the token
         $this->assertResponseContainKeys(['id', 'token'], $response);
 
         // assert the data is stored in the database

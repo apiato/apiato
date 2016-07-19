@@ -57,7 +57,7 @@ class UpdateUserTest extends TestCase
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'All inputs are empty.',
+            'message' => 'Inputs are empty.',
         ], $response);
     }
 
