@@ -52,6 +52,9 @@ trait TestingTrait
         if ($protected) {
             // append the token to the header
             $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
+        } else {
+            // append the Device ID to the header (IPhone UUID, Android ID, ...)
+            $headers['Agent-Id'] = str_random(40);
         }
 
         $verb = strtolower($verb);

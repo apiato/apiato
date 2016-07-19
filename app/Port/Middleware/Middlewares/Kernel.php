@@ -32,6 +32,8 @@ class Kernel
             \Barryvdh\Cors\HandleCors::class,
             // Hello API Localization middleware
             \App\Port\Middleware\Middlewares\Http\Localization::class,
+            // Hello API Agent auto authentication middleware
+            \App\Containers\APIAuthentication\Middlewares\AgentAuthentication::class
         ];
     }
 
