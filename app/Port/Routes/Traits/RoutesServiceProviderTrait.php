@@ -56,9 +56,11 @@ trait RoutesServiceProviderTrait
                 $this->apiRouter->version('v' . $apiVersionNumber,
                     function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
 
+                        $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
+
                         $router->group([
                             // Routes Namespace
-                            'namespace'  => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers',
+                            'namespace'  => $controllerNamespace,
                             // Enable: API Rate Limiting
                             'middleware' => 'api.throttle',
                             // The API limit time.
@@ -93,9 +95,11 @@ trait RoutesServiceProviderTrait
             // get all files from the container Web routes directory
             $files = File::allFiles($webRoutesPath);
 
+            $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers';
+
             foreach ($files as $file) {
                 $this->webRouter->group([
-                    'namespace' => $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers',
+                    'namespace' => $controllerNamespace,
                 ], function (LaravelRouter $router) use ($file) {
                     require $file->getPathname();
                 });
