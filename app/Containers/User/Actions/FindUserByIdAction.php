@@ -21,7 +21,7 @@ class FindUserByIdAction extends Action
     private $userRepository;
 
     /**
-     * CreateUserAction constructor.
+     * CreateUserWithCredentialsAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
      * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService

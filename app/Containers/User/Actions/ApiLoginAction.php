@@ -6,7 +6,7 @@ use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class CreateUserAction.
+ * Class ApiLoginAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

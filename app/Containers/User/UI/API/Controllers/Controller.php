@@ -4,7 +4,7 @@ namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;
-use App\Containers\User\Actions\CreateUserAction;
+use App\Containers\User\Actions\CreateUserWithCredentialsAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
@@ -81,11 +81,11 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateUserAction        $action
+     * @param \App\Containers\User\Actions\CreateUserWithCredentialsAction        $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $request, CreateUserAction $action)
+    public function registerUser(RegisterRequest $request, CreateUserWithCredentialsAction $action)
     {
         // create and login (true parameter) the new user
         $user = $action->run(
