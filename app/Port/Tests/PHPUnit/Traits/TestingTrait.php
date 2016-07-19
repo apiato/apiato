@@ -48,13 +48,14 @@ trait TestingTrait
             'Accept'         => 'application/json',
         ], $header);
 
+
         // if endpoint is protected (requires token to access it's functionality)
-        if ($protected && !$header['Authorization']) {
+        if ($protected && !array_has($header, 'Authorization')) {
             // append the token to the header
             $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
         }
 
-        if (!$protected && !$header['Agent-Id']) {
+        if (!$protected && !array_has($header, 'Agent-Id')) {
             // append the Device ID to the header (IPhone UUID, Android ID, ...)
             $headers['Agent-Id'] = str_random(40);
         }
