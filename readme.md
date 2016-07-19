@@ -79,13 +79,15 @@ Also note that there's **no stable release** till this date.
 - User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Data Caching support (with auto clearing on Create, Update and Delete).
-- Useful Query Parameters support out of the box (orderBy, sortedBy, filter, include).
+- Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Full-text search support out of the box (search, searchFields).
 - Auto API Documentation generator (using the API Doc JS).
 - Authorization system (ACL), to control which consumer can access your API.
 - Supports CORS "Cross-Origin Resource Sharing".
 - Localization support (multiple langauges via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
+- Ability to register users by Device ID (Use App first, register later).
+- Auto detect and save device type and platform.
 - Easy and auto request input validation.
 - Type-Casting JSON responses with Transformers.
 - Custom Tests Helpers for faster automated testing (using PHPUnit).
@@ -94,13 +96,13 @@ Also note that there's **no stable release** till this date.
 - Automatic dates conversion to ISO format in responses.
 - Support for JSON with padding (JSONP).
 - Scalable, Stateless and Distributable Application on the server.
-- Modern Software Architectural Pattern (using Porto).
-- Fully Object Oriented Code, implementing the best design patterns and coding techniques.
+- Maintainable and scalable Software Architectural Pattern (using Porto).
+- Fully Object Oriented Code, implementing the best design patterns.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Easy to send Emails.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
-- Full detailed documentation.
+- Fully detailed documentation.
 - 100% customizable and Open Code.
 
 
