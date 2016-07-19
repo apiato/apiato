@@ -4,7 +4,7 @@ namespace App\Containers\APIAuthentication\Middlewares;
 
 use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
 use App\Containers\ApiAuthentication\Exceptions\MissingAgentIdException;
-use App\Containers\User\Actions\CreateUserWithoutCredentialsAction;
+use App\Containers\User\Actions\RegisterAgentUserAction;
 use Closure;
 use Illuminate\Foundation\Application;
 use Jenssegers\Agent\Agent;
@@ -28,25 +28,25 @@ class AgentAuthentication
     private $app;
 
     /**
-     * @var  \App\Containers\User\Actions\CreateUserWithoutCredentialsAction
+     * @var  \App\Containers\User\Actions\RegisterAgentUserAction
      */
-    private $createUserWithoutCredentialsAction;
+    private $RegisterAgentUserAction;
 
     /**
      * AgentAuthentication constructor.
      *
      * @param \Illuminate\Foundation\Application                              $app
      * @param \Jenssegers\Agent\Agent                                         $agent
-     * @param \App\Containers\User\Actions\CreateUserWithoutCredentialsAction $createUserWithoutCredentialsAction
+     * @param \App\Containers\User\Actions\RegisterAgentUserAction $RegisterAgentUserAction
      */
     public function __construct(
         Application $app,
         Agent $agent,
-        CreateUserWithoutCredentialsAction $createUserWithoutCredentialsAction
+        RegisterAgentUserAction $RegisterAgentUserAction
     ) {
         $this->app = $app;
         $this->agent = $agent;
-        $this->createUserWithoutCredentialsAction = $createUserWithoutCredentialsAction;
+        $this->RegisterAgentUserAction = $RegisterAgentUserAction;
     }
 
 
@@ -74,7 +74,7 @@ class AgentAuthentication
             $device = $this->agent->device();
             $platform = $this->agent->platform();
 
-            $user = $this->createUserWithoutCredentialsAction->run($agentId, $device, $platform);
+            $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
 
             if (!$user) {
                 throw new AuthenticationFailedException(

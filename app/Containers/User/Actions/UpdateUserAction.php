@@ -2,9 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Services\UpdateUserService;
 use App\Port\Action\Abstracts\Action;
-use App\Containers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
 
 /**
  * Class UpdateUserAction.
@@ -15,41 +14,32 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\User\Services\UpdateUserService
      */
-    private $userRepository;
+    private $updateUserService;
 
     /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Services\UpdateUserService $updateUserService
      */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
+    public function __construct(
+        UpdateUserService $updateUserService
+    ) {
+        $this->updateUserService = $updateUserService;
     }
 
     /**
      * @param      $userId
      * @param null $password
      * @param null $name
+     * @param null $email
      *
-     * @return mixed
+     * @return  mixed
      */
-    public function run($userId, $password = null, $name = null)
+    public function run($userId, $password = null, $name = null, $email = null)
     {
-        // check if data is empty
-        if (!$password && !$name) {
-            throw new UpdateResourceFailedException('All inputs are empty.');
-        }
-
-        $attributes = [
-            'password' => $password,
-            'name'     => $name,
-        ];
-
-        // updating the attributes
-        $user = $this->userRepository->update($attributes, $userId);
+        $user = $this->updateUserService->run($userId, $password, $name, $email);
 
         return $user;
     }

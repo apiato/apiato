@@ -3,7 +3,7 @@
 namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
-use App\Containers\User\Actions\CreateUserWithCredentialsAction;
+use App\Containers\User\Actions\RegisterUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
@@ -49,10 +49,12 @@ trait TestingTrait
         ], $header);
 
         // if endpoint is protected (requires token to access it's functionality)
-        if ($protected) {
+        if ($protected && !$header['Authorization']) {
             // append the token to the header
             $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
-        } else {
+        }
+
+        if (!$protected && !$header['Agent-Id']) {
             // append the Device ID to the header (IPhone UUID, Android ID, ...)
             $headers['Agent-Id'] = str_random(40);
         }
@@ -132,10 +134,10 @@ trait TestingTrait
             ];
         }
 
-        $CreateUserWithCredentialsAction = App::make(CreateUserWithCredentialsAction::class);
+        $RegisterUserAction = App::make(RegisterUserAction::class);
 
         // create new user and login (true)
-        $user = $CreateUserWithCredentialsAction->run(
+        $user = $RegisterUserAction->run(
             $userDetails['email'],
             $userDetails['password'],
             $userDetails['name'],
