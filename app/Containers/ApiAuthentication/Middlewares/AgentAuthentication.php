@@ -35,8 +35,8 @@ class AgentAuthentication
     /**
      * AgentAuthentication constructor.
      *
-     * @param \Illuminate\Foundation\Application                              $app
-     * @param \Jenssegers\Agent\Agent                                         $agent
+     * @param \Illuminate\Foundation\Application                   $app
+     * @param \Jenssegers\Agent\Agent                              $agent
      * @param \App\Containers\User\Actions\RegisterAgentUserAction $RegisterAgentUserAction
      */
     public function __construct(
@@ -61,25 +61,28 @@ class AgentAuthentication
      */
     public function handle($request, Closure $next)
     {
-        $token = $request->header('Authorization');
+        if ($this->agent->isMobile() || $this->agent->isPhone() || $this->agent->isTablet()) {
 
-        if (!$token) {
-            // read the agent ID header (set by the API users)
-            $agentId = $request->header('Agent-Id');
+            $token = $request->header('Authorization');
 
-            if (!$agentId) {
-                throw new MissingAgentIdException();
-            }
+            if (!$token) {
+                // read the agent ID header (set by the API users)
+                $agentId = $request->header('Agent-Id');
 
-            $device = $this->agent->device();
-            $platform = $this->agent->platform();
+                if (!$agentId) {
+                    throw new MissingAgentIdException();
+                }
 
-            $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
+                $device = $this->agent->device();
+                $platform = $this->agent->platform();
 
-            if (!$user) {
-                throw new AuthenticationFailedException(
-                    'Something went wrong while trying to create user from the Agent ID: ' . $agentId
-                );
+                $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
+
+                if (!$user) {
+                    throw new AuthenticationFailedException(
+                        'Something went wrong while trying to create user from the Agent ID: ' . $agentId
+                    );
+                }
             }
         }
 
