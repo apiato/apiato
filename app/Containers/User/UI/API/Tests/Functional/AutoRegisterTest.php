@@ -13,7 +13,7 @@ class AutoRegisterTest extends TestCase
 {
 
     // works with any random endpoint, since when activated this applies by a middleware
-    private $endpoint = '/';
+    private $endpoint = '/say-welcome';
 
     public function testRegisterNewUserWithoutCredentials_()
     {

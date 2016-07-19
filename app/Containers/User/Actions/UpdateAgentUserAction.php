@@ -59,6 +59,9 @@ class UpdateAgentUserAction extends Action
     }
 
     /**
+     * This will register an existing User Agent. After being created by the middleware.
+     * Only case the "Registration by Device ID" feature is enabled, via its middleware.
+     *
      * @param      $agentId
      * @param null $email
      * @param null $password
