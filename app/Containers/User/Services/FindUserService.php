@@ -3,9 +3,7 @@
 namespace App\Containers\User\Services;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Port\Service\Abstracts\Service;
-use Exception;
 
 /**
  * Class FindUserService.
@@ -31,21 +29,14 @@ class FindUserService extends Service
     }
 
     /**
-     * @param            $email
-     * @param            $password
-     * @param            $name
-     * @param bool|false $login
+     * @param $id
      *
      * @return  mixed
      */
     public function byId($id)
     {
-        try {
-            // find the user by its id
-            $user = $this->userRepository->find($id);
-        } catch (Exception $e) {
-            throw new UserNotFoundException;
-        }
+        // find the user by its id
+        $user = $this->userRepository->find($id);
 
         return $user;
     }
