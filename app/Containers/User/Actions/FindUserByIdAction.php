@@ -2,10 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Exceptions\UserNotFoundException;
+use App\Containers\User\Services\FindUserService;
 use App\Port\Action\Abstracts\Action;
-use Exception;
 
 /**
  * Class FindUserByIdAction.
@@ -16,41 +14,30 @@ class FindUserByIdAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\User\Services\FindUserService
      */
-    private $userRepository;
+    private $findUserService;
 
     /**
-     * CreateUserWithCredentialsAction constructor.
+     * FindUserByIdAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface           $userRepository
-     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
+     * @param \App\Containers\User\Services\FindUserService $findUserService
      */
     public function __construct(
-        UserRepositoryInterface $userRepository
+        FindUserService $findUserService
     ) {
-        $this->userRepository = $userRepository;
+        $this->findUserService = $findUserService;
     }
 
+
     /**
-     * create a new user object.
-     * optionally can login the created user and return it with its token.
+     * @param $id
      *
-     * @param      $email
-     * @param      $password
-     * @param      $name
-     * @param bool $login determine weather to login or not after creating
-     *
-     * @return mixed
+     * @return  mixed
      */
     public function run($id)
     {
-        try {
-            // find the user by its id
-            $user = $this->userRepository->find($id);
-        } catch (Exception $e) {
-            throw new UserNotFoundException;
-        }
+        $user = $this->findUserService->byId($id);
 
         return $user;
     }
