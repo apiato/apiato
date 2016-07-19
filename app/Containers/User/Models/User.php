@@ -49,6 +49,9 @@ class User extends Model implements
         'name',
         'email',
         'password',
+        'agent_id',
+        'device',
+        'platform',
         'confirmed',
     ];
 
