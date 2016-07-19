@@ -6,13 +6,13 @@ use App\Port\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class AuthenticationFailedException.
+ * Class MissingAgentIdException.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AuthenticationFailedException extends Exception
+class MissingAgentIdException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_UNAUTHORIZED;
+    public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'Credentials Incorrect.';
+    public $message = 'Agent ID is required.';
 }
