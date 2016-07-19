@@ -14,7 +14,7 @@ class RegisterTest extends TestCase
 
     private $endpoint = '/register';
 
-    public function testRegisterNewUser_()
+    public function testRegisterNewUserWithCredentials_()
     {
         $data = [
             'email'    => 'hello@mail.dev',
