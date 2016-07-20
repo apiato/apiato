@@ -18,7 +18,7 @@ class AutoRegisterTest extends TestCase
     public function testRegisterNewUserWithoutCredentials_()
     {
         // send the HTTP request
-        // the header `Agent-Id` is automatically added for non protected routes
+        // the header `Visitor-Id` is automatically added for non protected routes
         $response = $this->apiCall($this->endpoint, 'get', [], false);
 
         // assert response status is correct
@@ -26,13 +26,13 @@ class AutoRegisterTest extends TestCase
 
     }
 
-    public function testSendingAgentAndToken()
+    public function testSendingVisitorAndToken()
     {
-        $headers = ['Agent-Id' => str_random(40)];
+        $headers = ['Visitor-Id' => str_random(40)];
 
         // send the HTTP request
         // since this is marked as protected endpoint a Token will by added to the headers
-        // and also and Agent-Id is added to the same deader
+        // and also and Visitor-Id is added to the same header
         $response = $this->apiCall($this->endpoint, 'get', [], true, $headers);
 
         // assert response status is correct

@@ -6,16 +6,16 @@ use App\Containers\User\Models\User;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class UpdateAgentUserTest.
+ * Class UpdateVisitorUserTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateAgentUserTest extends TestCase
+class UpdateVisitorUserTest extends TestCase
 {
 
-    private $endpoint = '/register/agent';
+    private $endpoint = '/register/visitor';
 
-    public function testRegisterExistingAgentUser_()
+    public function testRegisterExistingVisitorUser_()
     {
         $data = [
             'email'    => 'new@user.com',
@@ -23,15 +23,15 @@ class UpdateAgentUserTest extends TestCase
             'name'     => 'First time name',
         ];
 
-        $agentId = str_random(40);
+        $visitorId = str_random(40);
 
-        $AgentUser = User::create([
-            'agent_id' => $agentId,
+        $visitorUser = User::create([
+            'visitor_id' => $visitorId,
             'device'   => 'Android',
             'platform' => 'Google Super OS',
         ]);
 
-        $headers['Agent-Id'] = $agentId;
+        $headers['Visitor-Id'] = $visitorId;
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post', $data, false, $headers);
@@ -49,9 +49,9 @@ class UpdateAgentUserTest extends TestCase
 
         // assert the data is stored in the database
         $this->seeInDatabase('users', ['email' => $data['email']]);
-        $this->seeInDatabase('users', ['agent_id' => $agentId]);
-        $this->seeInDatabase('users', ['device' => $AgentUser->device]);
-        $this->seeInDatabase('users', ['platform' => $AgentUser->platform]);
+        $this->seeInDatabase('users', ['visitor_id' => $visitorId]);
+        $this->seeInDatabase('users', ['device' => $visitorUser->device]);
+        $this->seeInDatabase('users', ['platform' => $visitorUser->platform]);
     }
 
 

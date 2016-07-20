@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->boolean('confirmed')->default(false);
 
-            $table->string('agent_id')->unique()->nullable();
+            $table->string('visitor_id')->unique()->nullable();
             $table->string('device')->nullable();
             $table->string('platform')->nullable();
 

@@ -98,13 +98,13 @@ $router->put('users/{id}', [
 
 /*********************************************************************************
  * @apiGroup           Users
- * @apiName            registerAgentUser
- * @api                {post} /register/agent Register a new User by his Agent Id (A.K.A Device ID). Use this endpoint, if the App doesn't require registration first. Where users can navigate through the App and register later. This Endpoint should be used whenever they decided to register.
- * @apiDescription     Create and Login new user (from agent)
+ * @apiName            registerVisitorUser
+ * @api                {post} /register/visitor Register a new User by his Visitor Id (A.K.A Device ID). Use this endpoint, if the App doesn't require registration first. Where users can navigate through the App and register later. This Endpoint should be used whenever they decided to register.
+ * @apiDescription     Create and Login new user (from visitor)
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json
- * @apiHeader          Agent-Id 2BY1h82XPPRmtl53eJ7zFi7uiFwEJeWRWHZCIwd2
+ * @apiHeader          Visitor-Id 2BY1h82XPPRmtl53eJ7zFi7uiFwEJeWRWHZCIwd2
  * @apiParam           {String}  email
  * @apiParam           {String}  password
  * @apiParam           {String}  name
@@ -130,10 +130,10 @@ $router->put('users/{id}', [
   * }
 * }
  */
-$router->post('register/agent', [
-    'uses'  => 'Controller@registerAgentUser',
+$router->post('register/visitor', [
+    'uses'  => 'Controller@registerVisitorUser',
     'middleware' => [
-        'agent.auth',
+        'visitor.auth',
     ],
 ]);
 

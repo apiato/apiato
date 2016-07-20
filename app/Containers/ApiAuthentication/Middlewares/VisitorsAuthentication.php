@@ -3,18 +3,18 @@
 namespace App\Containers\APIAuthentication\Middlewares;
 
 use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
-use App\Containers\ApiAuthentication\Exceptions\MissingAgentIdException;
-use App\Containers\User\Actions\RegisterAgentUserAction;
+use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
+use App\Containers\User\Actions\RegisterVisitorUserAction;
 use Closure;
 use Illuminate\Foundation\Application;
 use Jenssegers\Agent\Agent;
 
 /**
- * Class AgentAuthentication
+ * Class VisitorsAuthentication
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class AgentAuthentication
+class VisitorsAuthentication
 {
 
     /**
@@ -28,31 +28,31 @@ class AgentAuthentication
     private $app;
 
     /**
-     * @var  \App\Containers\User\Actions\RegisterAgentUserAction
+     * @var  \App\Containers\User\Actions\RegisterVisitorUserAction
      */
-    private $RegisterAgentUserAction;
+    private $RegisterVisitorUserAction;
 
     /**
-     * AgentAuthentication constructor.
+     * VisitorsAuthentication constructor.
      *
      * @param \Illuminate\Foundation\Application                   $app
      * @param \Jenssegers\Agent\Agent                              $agent
-     * @param \App\Containers\User\Actions\RegisterAgentUserAction $RegisterAgentUserAction
+     * @param \App\Containers\User\Actions\RegisterVisitorUserAction $RegisterVisitorUserAction
      */
     public function __construct(
         Application $app,
         Agent $agent,
-        RegisterAgentUserAction $RegisterAgentUserAction
+        RegisterVisitorUserAction $RegisterVisitorUserAction
     ) {
         $this->app = $app;
         $this->agent = $agent;
-        $this->RegisterAgentUserAction = $RegisterAgentUserAction;
+        $this->RegisterVisitorUserAction = $RegisterVisitorUserAction;
     }
 
 
     /**
      * Whenever the request doesn't have an Authorization header (token)
-     * it must have a an Agent-Id header.
+     * it must have a an Visitor-Id header.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure                 $next
@@ -64,21 +64,21 @@ class AgentAuthentication
         $token = $request->header('Authorization');
 
         if (!$token) {
-            // read the agent ID header (set by the API users)
-            $agentId = $request->header('Agent-Id');
+            // read the visitor ID header (set by the API users)
+            $visitorId = $request->header('Visitor-Id');
 
-            if (!$agentId) {
-                throw new MissingAgentIdException();
+            if (!$visitorId) {
+                throw new MissingVisitorIdException();
             }
 
             $device = $this->agent->device();
             $platform = $this->agent->platform();
 
-            $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
+            $user = $this->RegisterVisitorUserAction->run($visitorId, $device, $platform);
 
             if (!$user) {
                 throw new AuthenticationFailedException(
-                    'Something went wrong while trying to create user from the Agent ID: ' . $agentId
+                    'Something went wrong while trying to create user from the Visitor ID: ' . $visitorId
                 );
             }
         }

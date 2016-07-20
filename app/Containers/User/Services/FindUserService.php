@@ -42,13 +42,13 @@ class FindUserService extends Service
     }
 
     /**
-     * @param $agentId
+     * @param $visitorId
      *
      * @return  mixed
      */
-    public function byAgentId($agentId)
+    public function byVisitorId($visitorId)
     {
-        $user = $this->userRepository->findByField('agent_id', $agentId)->first();
+        $user = $this->userRepository->findByField('visitor_id', $visitorId)->first();
 
         return $user;
     }

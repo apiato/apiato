@@ -6,11 +6,11 @@ use App\Port\Request\Abstracts\Request;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
- * Class UpdateAgentUserRequest.
+ * Class UpdateVisitorUserRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateAgentUserRequest extends Request
+class UpdateVisitorUserRequest extends Request
 {
 
     /**

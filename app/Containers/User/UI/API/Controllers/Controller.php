@@ -7,12 +7,12 @@ use App\Containers\User\Actions\ApiLogoutAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\RegisterUserAction;
-use App\Containers\User\Actions\UpdateAgentUserAction;
+use App\Containers\User\Actions\UpdateVisitorUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\LoginRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
-use App\Containers\User\UI\API\Requests\UpdateAgentUserRequest;
+use App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
@@ -101,18 +101,18 @@ class Controller extends PortApiController
     }
 
     /**
-     * The Agent is the user that was previously created by an agent ID (A.K.A Device ID).
-     * The Agent user usually gets created automatically by a Middleware.
+     * The Visitor is the user that was previously created by an visitor ID (A.K.A Device ID).
+     * The Visitor user usually gets created automatically by a Middleware.
      *
-     * @param \App\Containers\User\UI\API\Requests\UpdateAgentUserRequest $request
-     * @param \App\Containers\User\Actions\UpdateAgentUserAction          $action
+     * @param \App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest $request
+     * @param \App\Containers\User\Actions\UpdateVisitorUserAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerAgentUser(UpdateAgentUserRequest $request, UpdateAgentUserAction $action)
+    public function registerVisitorUser(UpdateVisitorUserRequest $request, UpdateVisitorUserAction $action)
     {
         $user = $action->run(
-            $request->header('Agent-Id'),
+            $request->header('Visitor-Id'),
             $request['email'],
             $request['password'],
             $request['name']

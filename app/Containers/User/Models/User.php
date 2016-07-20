@@ -49,7 +49,7 @@ class User extends Model implements
         'name',
         'email',
         'password',
-        'agent_id',
+        'visitor_id',
         'device',
         'platform',
         'confirmed',

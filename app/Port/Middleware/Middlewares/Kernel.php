@@ -57,8 +57,8 @@ class Kernel
             'permission'  => \Zizaco\Entrust\Middleware\EntrustPermission::class,
             'ability'     => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
-            // Hello API Agent User Authentication middleware
-            'agent.auth'  => \App\Containers\APIAuthentication\Middlewares\AgentAuthentication::class,
+            // Hello API Visitor User Authentication middleware
+            'visitor.auth'  => \App\Containers\APIAuthentication\Middlewares\VisitorsAuthentication::class,
 
             // ...
         ];

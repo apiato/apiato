@@ -2,20 +2,19 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\ApiAuthentication\Exceptions\MissingAgentIdException;
+use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
 use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 use App\Containers\User\Services\CreateUserService;
 use App\Containers\User\Services\FindUserService;
 use App\Containers\User\Services\UpdateUserService;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Exception\Exceptions\InternalErrorException;
 
 /**
- * Class UpdateAgentUserAction.
+ * Class UpdateVisitorUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateAgentUserAction extends Action
+class UpdateVisitorUserAction extends Action
 {
 
     /**
@@ -59,35 +58,33 @@ class UpdateAgentUserAction extends Action
     }
 
     /**
-     * This will register an existing User Agent. After being created by the middleware.
+     * This will register an existing User Visitor. After being created by the middleware.
      * Only case the "Registration by Device ID" feature is enabled, via its middleware.
      *
-     * @param      $agentId
+     * @param      $visitorId
      * @param null $email
      * @param null $password
      * @param null $name
      *
      * @return  mixed
      */
-    public function run($agentId, $email = null, $password = null, $name = null)
+    public function run($visitorId, $email = null, $password = null, $name = null)
     {
-        if (!$agentId) {
-            throw (new MissingAgentIdException())->debug('from (UpdateAgentUserAction)');
+        if (!$visitorId) {
+            throw (new MissingVisitorIdException())->debug('from (UpdateVisitorUserAction)');
         }
 
-        $user = $this->findUserService->byAgentId($agentId);
+        $user = $this->findUserService->byVisitorId($visitorId);
 
-        // There should be no way a user is not created, since before hitting this action's endpoint
-        // a middleware already checking if the user exist by his Agent-Id header, and if not found
-        // he automatically creates it.
-        if (!$user) {
-            throw new InternalErrorException('Something went wrong while registering a user!');
+        if ($user) {
+            // update the existing user by adding his credentials
+            $user = $this->updateUserService->run($user->id, $password, $name, $email);
+            // Login the User from his object
+            $user = $this->apiAuthenticationService->loginFromObject($user);
+        } else {
+            // create the user now, in case that user have registered from the first screen
+            $user = $this->createUserService->byCredentials($email, $password, $name, true);
         }
-
-        $user = $this->updateUserService->run($user->id, $password, $name, $email);
-
-        // Login the User from its object
-        $user = $this->apiAuthenticationService->loginFromObject($user);
 
         return $user;
     }

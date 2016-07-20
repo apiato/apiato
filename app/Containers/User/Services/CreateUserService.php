@@ -73,18 +73,18 @@ class CreateUserService extends Service
     }
 
     /**
-     * @param      $agentId device ID (example: iphone UUID, Android ID)
+     * @param      $visitorId device ID (example: iphone UUID, Android ID)
      * @param null $device
      * @param null $platform
      *
      * @return  mixed
      */
-    public function byAgent($agentId, $device = null, $platform = null)
+    public function byVisitor($visitorId, $device = null, $platform = null)
     {
         try {
             // create new user
             $user = $this->userRepository->create([
-                'agent_id' => $agentId,
+                'visitor_id' => $visitorId,
                 'device'   => $device,
                 'platform' => $platform,
             ]);

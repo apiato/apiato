@@ -6,13 +6,13 @@ use App\Port\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class MissingAgentIdException.
+ * Class MissingVisitorIdException.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MissingAgentIdException extends Exception
+class MissingVisitorIdException extends Exception
 {
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'Agent ID is required.';
+    public $message = 'Visitor ID is required.';
 }
