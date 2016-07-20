@@ -3,6 +3,7 @@
 // Default root route
 use Illuminate\Support\Facades\Config;
 
-$router->any('/say-welcome', function () {
+$router->any('/', function () {
     return response()->json(['Welcome to ' . Config::get('api.name') . '.']);
 });
+

@@ -54,6 +54,7 @@ class VisitorsAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
+
         $token = $request->header('Authorization');
 
         if (!$token) {
