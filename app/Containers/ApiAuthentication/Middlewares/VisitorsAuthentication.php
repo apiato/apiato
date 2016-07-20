@@ -30,23 +30,23 @@ class VisitorsAuthentication
     /**
      * @var  \App\Containers\User\Actions\RegisterVisitorUserAction
      */
-    private $RegisterVisitorUserAction;
+    private $registerVisitorUserAction;
 
     /**
      * VisitorsAuthentication constructor.
      *
-     * @param \Illuminate\Foundation\Application                   $app
-     * @param \Jenssegers\Agent\Agent                              $agent
-     * @param \App\Containers\User\Actions\RegisterVisitorUserAction $RegisterVisitorUserAction
+     * @param \Illuminate\Foundation\Application                     $app
+     * @param \Jenssegers\Agent\Agent                                $agent
+     * @param \App\Containers\User\Actions\RegisterVisitorUserAction $registerVisitorUserAction
      */
     public function __construct(
         Application $app,
         Agent $agent,
-        RegisterVisitorUserAction $RegisterVisitorUserAction
+        RegisterVisitorUserAction $registerVisitorUserAction
     ) {
         $this->app = $app;
         $this->agent = $agent;
-        $this->RegisterVisitorUserAction = $RegisterVisitorUserAction;
+        $this->registerVisitorUserAction = $registerVisitorUserAction;
     }
 
 
@@ -74,7 +74,7 @@ class VisitorsAuthentication
             $device = $this->agent->device();
             $platform = $this->agent->platform();
 
-            $user = $this->RegisterVisitorUserAction->run($visitorId, $device, $platform);
+            $user = $this->registerVisitorUserAction->run($visitorId, $device, $platform);
 
             if (!$user) {
                 throw new AuthenticationFailedException(
