@@ -57,7 +57,7 @@ class ChargeWithStripeService extends Service implements Chargeable
             throw new StripeApiErrorException('Stripe response status not succeeded (chargeCustomer)');
         }
 
-        if ($response['paid'] != true) {
+        if ($response['paid'] !== true) {
             return null;
         }
 

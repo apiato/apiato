@@ -18,11 +18,6 @@ class ChargeWithPaypalService extends Service implements Chargeable
 {
 
     /**
-     * @var  \Anouar\Paypalpayment\Paypal\Rest\ApiContext
-     */
-    private $paypalContext;
-
-    /**
      * @var  \Anouar\Paypalpayment\PaypalPayment
      */
     private $paypalPayment;

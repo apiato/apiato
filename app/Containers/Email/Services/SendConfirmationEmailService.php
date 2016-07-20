@@ -35,7 +35,7 @@ class SendConfirmationEmailService extends Service
     {
         $this->email->setEmail($user->email);
         $this->email->setName($user->name);
-        $result = $this->email->send($data = [
+        $result = $this->email->send([
             'name' => $user->name,
             'url'  => $confirmationUrl,
         ]);

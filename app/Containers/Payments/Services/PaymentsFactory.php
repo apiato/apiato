@@ -2,13 +2,13 @@
 
 namespace App\Containers\Payments\Services;
 
-use App\Containers\Paypal\Services\ChargeWithPaypalService;
-use App\Containers\Stripe\Services\ChargeWithStripeService;
-use App\Containers\User\Models\User;
 use App\Containers\Payments\Contracts\Chargeable;
 use App\Containers\Payments\Exceptions\ObjectNonChargeableException;
 use App\Containers\Payments\Exceptions\PaymentMethodNotFoundException;
 use App\Containers\Payments\Exceptions\UserNotSetInThePaymentServiceException;
+use App\Containers\Paypal\Services\ChargeWithPaypalService;
+use App\Containers\Stripe\Services\ChargeWithStripeService;
+use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -40,12 +40,12 @@ class PaymentsFactory
      */
     public function setUserPaymentMethod(User $user)
     {
-        if ($user->stripeAccount != null) {
+        if ($user->stripeAccount !== null) {
             $this->method = App::make(ChargeWithStripeService::class);
-        } elseif ($user->paypalAccount != null) {
+        } elseif ($user->paypalAccount !== null) {
             $this->method = App::make(ChargeWithPaypalService::class);
         }
-//        elseif ($user->...Account != null) {
+//        elseif ($user->...Account !== null) {
 //            $this->method = App::make(ChargeWith...Service::class);
 //        }
 

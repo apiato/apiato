@@ -105,7 +105,7 @@ abstract class Exception extends SymfonyHttpException implements DingoMessageBag
             $error = $error->getMessage();
         }
 
-        if ($this->environment != 'testing' || $force == true) {
+        if ($this->environment != 'testing' || $force === true) {
             Log::error('[DEBUG] ' . $error);
         }
 

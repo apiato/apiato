@@ -6,7 +6,7 @@ use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
 use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
 use App\Containers\User\Actions\RegisterVisitorUserAction;
 use Closure;
-use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
 /**
@@ -23,11 +23,6 @@ class VisitorsAuthentication
     private $agent;
 
     /**
-     * @var  \Illuminate\Foundation\Application
-     */
-    private $app;
-
-    /**
      * @var  \App\Containers\User\Actions\RegisterVisitorUserAction
      */
     private $registerVisitorUserAction;
@@ -40,11 +35,9 @@ class VisitorsAuthentication
      * @param \App\Containers\User\Actions\RegisterVisitorUserAction $registerVisitorUserAction
      */
     public function __construct(
-        Application $app,
         Agent $agent,
         RegisterVisitorUserAction $registerVisitorUserAction
     ) {
-        $this->app = $app;
         $this->agent = $agent;
         $this->registerVisitorUserAction = $registerVisitorUserAction;
     }
@@ -59,7 +52,7 @@ class VisitorsAuthentication
      *
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         $token = $request->header('Authorization');
 

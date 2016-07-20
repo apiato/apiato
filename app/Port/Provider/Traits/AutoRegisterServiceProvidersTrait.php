@@ -2,10 +2,6 @@
 
 namespace App\Port\Provider\Traits;
 
-use App;
-use DB;
-use Log;
-
 /**
  * Class AutoRegisterServiceProvidersTrait.
  *
@@ -13,6 +9,7 @@ use Log;
  */
 trait AutoRegisterServiceProvidersTrait
 {
+
     /**
      * register an array of providers.
      *
