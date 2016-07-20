@@ -3,10 +3,10 @@
 namespace App\Containers\Paypal\Services;
 
 use Anouar\Paypalpayment\PaypalPayment;
+use App\Containers\Payments\Contracts\Chargeable;
 use App\Containers\Paypal\Exceptions\PaypalApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
-use App\Containers\Payments\Contracts\Chargeable;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -57,7 +57,6 @@ class ChargeWithPaypalService extends Service implements Chargeable
         // this does not seem to be compatible with paypal
         // I need to remove this package (Paypalpayment) and replace with something else
         // was checking the Payum laravel package seems compatible with Paypal Express Checkout
-
 
         $card = $this->paypalPayment->creditCard();
         $card->setType("visa")
@@ -119,12 +118,10 @@ class ChargeWithPaypalService extends Service implements Chargeable
             ->setPayer($payer)
             ->setTransactions(array($transaction));
 
-
-
         try {
 
             $response = $payment->create($this->paypalApi);
-dd($response);
+
         } catch (Exception $e) {
             throw (new PaypalApiErrorException('Paypal API error (payment)'))->debug($e->getMessage(), true);
         }
@@ -132,7 +129,6 @@ dd($response);
         if ($response['state'] != 'approved') {
             throw new PaypalApiErrorException('Paypal response status not succeeded (payment)');
         }
-
 
         // this data will be stored on the pivot table (user credits)
         return [
