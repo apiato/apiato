@@ -53,16 +53,12 @@ class CreateUserService extends Service
     {
         $hashedPassword = Hash::make($password);
 
-        try {
-            // create new user
-            $user = $this->userRepository->create([
-                'name'     => $name,
-                'email'    => $email,
-                'password' => $hashedPassword,
-            ]);
-        } catch (Exception $e) {
-            throw (new AccountFailedException())->debug($e);
-        }
+        // create new user
+        $user = $this->create([
+            'name'     => $name,
+            'email'    => $email,
+            'password' => $hashedPassword,
+        ]);
 
         if ($login) {
             // login this user using it's object and inject it's token on it
@@ -81,13 +77,27 @@ class CreateUserService extends Service
      */
     public function byVisitor($visitorId, $device = null, $platform = null)
     {
+        // create new user
+        $user = $this->create([
+            'visitor_id' => $visitorId,
+            'device'     => $device,
+            'platform'   => $platform,
+        ]);
+
+        return $user;
+    }
+
+
+    /**
+     * @param $data
+     *
+     * @return  mixed
+     */
+    private function create($data)
+    {
         try {
             // create new user
-            $user = $this->userRepository->create([
-                'visitor_id' => $visitorId,
-                'device'   => $device,
-                'platform' => $platform,
-            ]);
+            $user = $this->userRepository->create($data);
         } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);
         }
