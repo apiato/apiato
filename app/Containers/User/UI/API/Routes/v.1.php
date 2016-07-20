@@ -132,6 +132,9 @@ $router->put('users/{id}', [
  */
 $router->post('register/agent', [
     'uses'  => 'Controller@registerAgentUser',
+    'middleware' => [
+        'agent.auth',
+    ],
 ]);
 
 /*********************************************************************************

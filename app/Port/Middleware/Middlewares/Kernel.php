@@ -32,8 +32,6 @@ class Kernel
             \Barryvdh\Cors\HandleCors::class,
             // Hello API Localization middleware
             \App\Port\Middleware\Middlewares\Http\Localization::class,
-            // Hello API Agent auto authentication middleware
-            \App\Containers\APIAuthentication\Middlewares\AgentAuthentication::class
         ];
     }
 
@@ -50,7 +48,6 @@ class Kernel
             //            'auth.basic' => \App\Port\Middleware\Middlewares\Http\AuthenticateWithBasicAuth::class,
             //            'guest' => \App\Port\Middleware\Middlewares\Http\RedirectIfAuthenticated::class,
 
-
             // JWT Package middleware's
             'jwt.auth'    => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
             'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
@@ -59,6 +56,9 @@ class Kernel
             'role'        => \Zizaco\Entrust\Middleware\EntrustRole::class,
             'permission'  => \Zizaco\Entrust\Middleware\EntrustPermission::class,
             'ability'     => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+
+            // Hello API Agent User Authentication middleware
+            'agent.auth'  => \App\Containers\APIAuthentication\Middlewares\AgentAuthentication::class,
 
             // ...
         ];

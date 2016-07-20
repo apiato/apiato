@@ -61,28 +61,25 @@ class AgentAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if ($this->agent->isMobile() || $this->agent->isPhone() || $this->agent->isTablet()) {
+        $token = $request->header('Authorization');
 
-            $token = $request->header('Authorization');
+        if (!$token) {
+            // read the agent ID header (set by the API users)
+            $agentId = $request->header('Agent-Id');
 
-            if (!$token) {
-                // read the agent ID header (set by the API users)
-                $agentId = $request->header('Agent-Id');
+            if (!$agentId) {
+                throw new MissingAgentIdException();
+            }
 
-                if (!$agentId) {
-                    throw new MissingAgentIdException();
-                }
+            $device = $this->agent->device();
+            $platform = $this->agent->platform();
 
-                $device = $this->agent->device();
-                $platform = $this->agent->platform();
+            $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
 
-                $user = $this->RegisterAgentUserAction->run($agentId, $device, $platform);
-
-                if (!$user) {
-                    throw new AuthenticationFailedException(
-                        'Something went wrong while trying to create user from the Agent ID: ' . $agentId
-                    );
-                }
+            if (!$user) {
+                throw new AuthenticationFailedException(
+                    'Something went wrong while trying to create user from the Agent ID: ' . $agentId
+                );
             }
         }
 
