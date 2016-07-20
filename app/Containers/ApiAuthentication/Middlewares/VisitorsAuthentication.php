@@ -72,7 +72,7 @@ class VisitorsAuthentication
 
             if (!$user) {
                 throw new AuthenticationFailedException(
-                    'Something went wrong while trying to create user from the Visitor ID: ' . $visitorId
+                    'Something went wrong while trying to create user from the "Visitor-Id": ' . $visitorId
                 );
             }
         }
