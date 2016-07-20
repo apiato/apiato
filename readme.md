@@ -180,7 +180,7 @@ Thus you MUST read its [Readme](https://github.com/Mahmoudz/Porto) page before g
 
 <br>
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f/big.png)](https://insight.sensiolabs.com/projects/02b4301e-e9fa-441c-b57b-3a4edcc2b23f)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 <a name="Contribution"></a>
