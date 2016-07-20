@@ -5,6 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Services\FindUserService;
 use App\Port\Action\Abstracts\Action;
+use Exception;
 
 /**
  * Class FindUserByIdAction.

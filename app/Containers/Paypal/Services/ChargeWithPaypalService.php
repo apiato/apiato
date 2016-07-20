@@ -7,6 +7,7 @@ use App\Containers\Payments\Contracts\Chargeable;
 use App\Containers\Paypal\Exceptions\PaypalApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Service\Abstracts\Service;
+use Exception;
 use Illuminate\Support\Facades\Config;
 
 /**
