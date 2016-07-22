@@ -5,6 +5,7 @@ namespace App\Containers\User\Services;
 use App\Containers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Service\Abstracts\Service;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UpdateUserService.
@@ -43,7 +44,7 @@ class UpdateUserService extends Service
         $attributes = [];
 
         if ($password) {
-            $attributes['password'] = $password;
+            $attributes['password'] = Hash::make($password);
         }
 
         if ($name) {
