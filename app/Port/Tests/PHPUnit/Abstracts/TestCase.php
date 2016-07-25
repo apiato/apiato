@@ -2,10 +2,10 @@
 
 namespace App\Port\Tests\PHPUnit\Abstracts;
 
+use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelPort;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use App\Port\Tests\PHPUnit\Traits\TestingTrait;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class TestCase.
@@ -60,6 +60,9 @@ abstract class TestCase extends LaravelTestCase
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
         $app->make(LaravelPort::class)->bootstrap();
+
+        // create instance of faker and make it available in all tests
+        $this->faker = $app->make(Generator::class);
 
         return $app;
     }
