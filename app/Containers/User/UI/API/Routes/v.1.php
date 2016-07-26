@@ -7,25 +7,26 @@
  * @apiDescription     Login existing User
  * @apiVersion         1.0.0
  * @apiPermission      none
- * @apiHeader          Accept application/json
- * @apiParam           {String}     email
- * @apiParam           {String}     password
+ * @apiHeader          Accept application/json (required)
+ * @apiParam           {String}     email (required)
+ * @apiParam           {String}     password (required)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 200 OK
 
 {
   "data": {
-    "id": 1,
+    "id": 4,
     "name": "Mahmoud Zalt",
     "email": "mahmoud@zalt.me",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+    "confirmed": 0,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9sb2dpbiIsImlhdCI6MTQ2OTIxMjk4NCwiZXhwIjoxNDcxODQwOTg0LCJuYmYiOjE0NjkyMTI5ODQsImp0aSI6IjE2MzkzM2Y2ZDU4OGI3ZWM4MjY5YTM1ZTlmNjBkMTdjIn0.7DqcTv0tKf6dcs4cc8iH5VvAoz9P1p9b-cqXsk9lPoY",
     "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
+      "date": "2016-07-22 18:42:42.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     },
     "updated_at": {
-      "date": "2016-04-09 02:34:11.000000",
+      "date": "2016-07-22 18:42:54.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     }
@@ -43,10 +44,14 @@ $router->post('login', [
  * @apiDescription     Logout an Authenticated User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
- * @apiHeader          Accept   application/json
- * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 202 Accepted
+
+{
+  "message": "User Logged Out Successfully."
+}
  */
 $router->post('logout', [
     'uses'       => 'Controller@logoutUser',
@@ -99,36 +104,38 @@ $router->put('users/{id}', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            registerVisitorUser
- * @api                {post} /register/visitor Register a new User by his Visitor Id (A.K.A Device ID). Use this endpoint, if the App doesn't require registration first. Where users can navigate through the App and register later. This Endpoint should be used whenever they decided to register.
- * @apiDescription     Create and Login new user (from visitor)
+ * @api                {post} /register/visitor Register user
+ * @apiDescription     Register and login a User by his Visitor Id (A.K.A Device ID).
+ * This registration Endpoint must be used when the App allows Users to use the App
+ * first and register later.
  * @apiVersion         1.0.0
  * @apiPermission      none
- * @apiHeader          Accept application/json
- * @apiHeader          Visitor-Id 2BY1h82XPPRmtl53eJ7zFi7uiFwEJeWRWHZCIwd2
- * @apiParam           {String}  email
- * @apiParam           {String}  password
- * @apiParam           {String}  name
- * @apiSuccessExample  {json}    Success-Response:
-* HTTP/1.1 200 OK
- *
-* {
-  * "data": {
-    * "id": 1,
-    * "name": "Mahmoud Zalt",
-    * "email": "mahmoud@zalt.me",
-    * "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
-    * "created_at": {
-      * "date": "2016-04-09 02:34:11.000000",
-      * "timezone_type": 3,
-      * "timezone": "UTC"
-    * },
-    * "updated_at": {
-      * "date": "2016-04-09 02:34:11.000000",
-      * "timezone_type": 3,
-      * "timezone": "UTC"
-    * }
-  * }
-* }
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          visitor-id The Device ID [12345] (required)
+ * @apiParam           {String}  email (required)
+ * @apiParam           {String}  password (required)
+ * @apiParam           {String}  name (optional)
+ * @apiSuccessExample  {json}       Success-Response:
+HTTP/1.1 200 OK
+ {
+  "data": {
+    "id": 4,
+    "name": "Mahmoud Zalt",
+    "email": "mahmoud@zalt.me",
+    "confirmed": 0,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ2OTIxMjYzOSwiZXhwIjoxNDcxODQwNjM5LCJuYmYiOjE0NjkyMTI2MzksImp0aSI6ImMwYWZjNTA0NmRlOTg4NmZmYjM1NTk0ZjdlYTE3MTczIn0.zapUpSsIwb-jR9wZyj2oQFMGPZwouSMJhMxAjjDd2q8",
+    "created_at": {
+      "date": "2016-07-22 18:37:19.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "updated_at": {
+      "date": "2016-07-22 18:37:19.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
+}
  */
 $router->post('register/visitor', [
     'uses'  => 'Controller@registerVisitorUser',
@@ -156,7 +163,8 @@ HTTP/1.1 200 OK
     "id": 1,
     "name": "Mahmoud Zalt",
     "email": "mahmoud@zalt.me",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsIm..."
+    "confirmed": 0,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ2OTIxMjYzOSwiZXhwIjoxNDcxODQwNjM5LCJuYmYiOjE0NjkyMTI2MzksImp0aSI6ImMwYWZjNTA0NmRlOTg4NmZmYjM1NTk0ZjdlYTE3MTczIn0.zapUpSsIwb-jR9wZyj2oQFMGPZwouSMJhMxAjjDd2q8",
     "created_at": {
       "date": "2016-04-09 02:34:11.000000",
       "timezone_type": 3,
@@ -181,8 +189,14 @@ $router->post('register', [
  * @apiDescription     Delete User from Database
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
- * @apiHeader          Accept application/json
- * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
+ * @apiParam           {Number}  id the user id in the uri (required)
+ * @apiSuccessExample  {json}       Success-Response:
+HTTP/1.1 202 OK
+{
+  "message": "User (4) Deleted Successfully."
+}
  */
 $router->delete('users/{id}', [
     'uses'       => 'Controller@deleteUser',
@@ -191,6 +205,7 @@ $router->delete('users/{id}', [
     ],
 ]);
 
+
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            ListAllUsers
@@ -198,14 +213,14 @@ $router->delete('users/{id}', [
  * @apiDescription     List all the Application Users
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Admin
- * @apiHeader          Accept application/json
- * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
- * @apiParam           search           ?search=name:John Doe;email:john@main.com
- * @apiParam           searchFields     ?searchFields=name:like;email:=
- * @apiParam           paginate         ?page=3
- * @apiParam           order            ?orderBy=id
- * @apiParam           sort             ?sortedBy=asc
- * @apiParam           filter           ?filter=id;name;age
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
+ * @apiParam           search           ?search=name:John Doe;email:john@main.com (optional)
+ * @apiParam           searchFields     ?searchFields=name:like;email:= (optional)
+ * @apiParam           paginate         ?page=3 (optional)
+ * @apiParam           order            ?orderBy=id (optional)
+ * @apiParam           sort             ?sortedBy=asc (optional)
+ * @apiParam           filter           ?filter=id;name;age (optional)
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 
@@ -215,6 +230,7 @@ HTTP/1.1 200 OK
       "id": 2,
       "name": "Mahmoud Zalt",
       "email": "mahmoud@zalt.me",
+      "confirmed": 0,
       "token": null,
       "created_at": {
         "date": "2016-04-12 06:15:06.000000",
@@ -231,6 +247,7 @@ HTTP/1.1 200 OK
       "id": 1,
       "name": "John Doe",
       "email": "john@something.com",
+      "confirmed": 0,
       "token": null,
       "created_at": {
         "date": "2016-04-09 02:34:11.000000",
