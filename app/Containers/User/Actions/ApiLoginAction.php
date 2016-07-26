@@ -15,7 +15,11 @@ class ApiLoginAction extends Action
 
     private $authenticationService;
 
-
+    /**
+     * ApiLoginAction constructor.
+     *
+     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
+     */
     public function __construct(ApiAuthenticationService $authenticationService)
     {
         $this->authenticationService = $authenticationService;

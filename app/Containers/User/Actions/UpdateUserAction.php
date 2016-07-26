@@ -23,9 +23,8 @@ class UpdateUserAction extends Action
      *
      * @param \App\Containers\User\Services\UpdateUserService $updateUserService
      */
-    public function __construct(
-        UpdateUserService $updateUserService
-    ) {
+    public function __construct(UpdateUserService $updateUserService)
+    {
         $this->updateUserService = $updateUserService;
     }
 
