@@ -5,6 +5,7 @@ namespace App\Port\Tests\PHPUnit\Traits;
 use App;
 use App\Containers\User\Actions\RegisterUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
@@ -318,4 +319,18 @@ trait TestingTrait
 
         return $mock;
     }
+
+    /**
+     * get response object, get the string content from it and convert it to an std object
+     * making it easier to read
+     *
+     * @param $response
+     *
+     * @return  mixed
+     */
+    public function getResponseObject(Response $response)
+    {
+        return json_decode($response->getContent());
+    }
+
 }
