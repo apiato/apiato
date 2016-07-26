@@ -5,11 +5,11 @@ namespace App\Containers\Email\UI\API\Requests;
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class SetEmailRequest.
+ * Class SetVisitorEmailRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetEmailRequest extends Request
+class SetVisitorEmailRequest extends Request
 {
 
     /**
@@ -21,21 +21,7 @@ class SetEmailRequest extends Request
     {
         return [
             'email' => 'required|email|max:40',
-            'id'    => 'required|integer', // url parameter
         ];
-    }
-
-    /**
-     * Override the all() to automatically apply validation rules to the URL parameters
-     *
-     * @return  array
-     */
-    public function all()
-    {
-        $data = parent::all();
-        $data['id'] = $this->route('id');
-
-        return $data;
     }
 
     /**
@@ -45,8 +31,6 @@ class SetEmailRequest extends Request
      */
     public function authorize()
     {
-        // TODO: add policy checking if the user is authorized to set his own Email
-
         return true;
     }
 }

@@ -18,3 +18,21 @@ $router->post('/users/{id}/email', [
         'api.auth',
     ],
 ]);
+
+
+/*********************************************************************************
+ * @apiGroup           Emails
+ * @apiName            SetVisitorEmailController
+ * @api                {post} /visitors/email Set visitor Email
+ * @apiDescription     Set visitor Email
+ * @apiVersion         1.0.0
+ * @apiPermission      visitor
+ * @apiHeader          Accept application/json (required)
+ * @apiParam           {String}     email
+ */
+$router->post('/visitors/email', [
+    'uses'       => 'Controller@SetVisitorEmailController',
+    'middleware' => [
+        'visitor.auth',
+    ],
+]);

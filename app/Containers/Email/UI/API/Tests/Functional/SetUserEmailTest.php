@@ -6,11 +6,11 @@ use App\Containers\Email\Mails\ConfirmEmail;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class SetEmailTest.
+ * Class SetUserEmailTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetEmailTest extends TestCase
+class SetUserEmailTest extends TestCase
 {
 
     private $endpoint = '/users/{id}/email';
@@ -43,6 +43,10 @@ class SetEmailTest extends TestCase
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');
+
+        $this->assertResponseContainKeyValue(['message' => 'User Email Saved Successfully.'], $response);
+
+        $this->seeInDatabase('users', ['email' => $data['email']]);
 
     }
 
