@@ -37,11 +37,11 @@ class ListAllUsersTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '200');
 
-        // convert JSON response string to Array
-        $responseArray = json_decode($response->getContent());
+        // convert JSON response string to Object
+        $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(5, $responseArray->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
+        $this->assertCount(5, $responseObject->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
     }
 
     public function testListAllUsersByNonAdmin_()
