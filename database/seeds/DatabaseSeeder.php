@@ -1,6 +1,7 @@
 <?php
 
 use App\Containers\Authorization\Database\Seeders\RolesAndPermissionsSeeder;
+use App\Containers\Settings\Database\Seeders\DefaultSystemSettingsSeeder;
 use App\Port\Seeder\Abstracts\Seeder;
 
 /**
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $seeders = [
+        DefaultSystemSettingsSeeder::class,
         RolesAndPermissionsSeeder::class,
     ];
 
