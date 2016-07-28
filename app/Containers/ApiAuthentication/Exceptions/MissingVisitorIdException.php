@@ -14,5 +14,5 @@ class MissingVisitorIdException extends Exception
 {
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'Visitor ID is required.';
+    public $message = '(visitor-id) is required.';
 }
