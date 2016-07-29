@@ -40,4 +40,28 @@ class FindSettingsService extends Service
         return $result->value;
     }
 
+    /**
+     * @return  mixed
+     */
+    public function getReferringUserPoints()
+    {
+        return $this->byKey('referring_user_points');
+    }
+
+    /**
+     * @return  mixed
+     */
+    public function getReferredUserPoints()
+    {
+        return $this->byKey('referred_user_points');
+    }
+
+    /**
+     * @return  mixed
+     */
+    public function getOffersCacheTime()
+    {
+        return $this->byKey('offers_cache_time');
+    }
+
 }
