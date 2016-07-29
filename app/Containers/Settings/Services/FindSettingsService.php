@@ -56,12 +56,4 @@ class FindSettingsService extends Service
         return $this->byKey('referred_user_points');
     }
 
-    /**
-     * @return  mixed
-     */
-    public function getOffersCacheTime()
-    {
-        return $this->byKey('offers_cache_time');
-    }
-
 }
