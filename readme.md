@@ -110,47 +110,10 @@ Also note that there's **no stable release** till this date.
 ## Full Documentation
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern. 
-Thus you MUST read its [Readme](https://github.com/Mahmoudz/Porto) page before getting started, to get an overview of how the code is architectured.
+<br>
+Thus you MUST read the Porto [Document](https://github.com/Mahmoudz/Porto)  before starting.
 
-* **Setup:**
-	* [Requirements](https://hello-api.readme.io/docs/requirements)
-	* [Installation](https://hello-api.readme.io/docs/installation)
-	* [Development Workflow](https://hello-api.readme.io/docs/development-workflow)
-* **General:**
-	* [Supported Parameters](https://hello-api.readme.io/docs/supported-parameters)
-	* [Requests & Responses](https://hello-api.readme.io/docs/requests-and-responses)
-	* [API Documentation Generator](https://hello-api.readme.io/docs/api-documentation-generator)
-	* [Localization](https://hello-api.readme.io/docs/localization)
-	* [Tests Helpers](https://hello-api.readme.io/docs/tests-helpers)
-	* [Mails](https://hello-api.readme.io/docs/mails)
-	* [Payments](https://hello-api.readme.io/docs/payments)
-	* [Frequently Asked Questions](https://hello-api.readme.io/docs/faq)
-	* [Contribute to Hello API](https://hello-api.readme.io/v5.1.0/docs/contribute-to-hello-api)
-* **Components:**
-	* [Routes](https://hello-api.readme.io/docs/routes)
-	* [Controllers](https://hello-api.readme.io/docs/controllers)
-	* [Actions](https://hello-api.readme.io/docs/actions)
-	* [Services](https://hello-api.readme.io/docs/services)
-	* [Models](https://hello-api.readme.io/docs/models)
-	* [Views](https://hello-api.readme.io/docs/views)
-	* [Providers](https://hello-api.readme.io/docs/providers)
-	* [Requests](https://hello-api.readme.io/docs/requests)
-	* [Repositories](https://hello-api.readme.io/docs/repositories)
-	* [Criterias](https://hello-api.readme.io/docs/criterias)
-	* [Tests](https://hello-api.readme.io/docs/tests)
-	* [Exceptions](https://hello-api.readme.io/docs/exceptions)
-	* [Migrations](https://hello-api.readme.io/docs/migrations)
-	* [Transformers](https://hello-api.readme.io/docs/transformers)
-	* [Events](https://hello-api.readme.io/docs/events)
-	* [Middlewares](https://hello-api.readme.io/docs/middlewares)
-	* [Policies](https://hello-api.readme.io/docs/policies)
-	* [Factories](https://hello-api.readme.io/docs/factories)
-	* [Seeders](https://hello-api.readme.io/docs/seeders)
-
-
-
-
-
+###[Full Documentation Here](https://hello-api.readme.io/docs/installation)
 
 
 <a name="Technologies"></a>
