@@ -65,6 +65,7 @@ trait TestingTrait
 
         switch ($verb) {
             case 'get':
+                $endpoint = $data ? $endpoint . '?' . http_build_query($data) : $endpoint;
                 $response = $this->get($endpoint, $headers)->response;
                 break;
             case 'post':
