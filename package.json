@@ -1,7 +1,15 @@
 {
   "private": true,
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-  }
+    "apidoc": "^0.16.1"
+  },
+  "name": "rewards-fox",
+  "description": "RewardFox API",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahmoud Zalt",
+  "license": "MIT"
 }
