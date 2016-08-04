@@ -89,7 +89,7 @@ trait RoutesServiceProviderTrait
     private function registerContainersWebRoutes($containerPath, $containersNamespace)
     {
         // get the container web routes path
-        $webRoutesPath = $containerPath . '/UI/Web/Routes';
+        $webRoutesPath = $containerPath . '/UI/WEB/Routes';
 
         if (File::isDirectory($webRoutesPath)) {
             // get all files from the container Web routes directory
