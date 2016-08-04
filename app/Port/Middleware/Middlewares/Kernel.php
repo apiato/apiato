@@ -58,7 +58,7 @@ class Kernel
             'ability'     => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
             // Hello API Visitor User Authentication middleware
-            'visitor.auth'  => \App\Containers\APIAuthentication\Middlewares\VisitorsAuthentication::class,
+            'visitor.auth'  => \App\Containers\ApiAuthentication\Middlewares\VisitorsAuthentication::class,
 
             // ...
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\APIAuthentication\Middlewares;
+namespace App\Containers\ApiAuthentication\Middlewares;
 
 use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
 use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
@@ -41,7 +41,6 @@ class VisitorsAuthentication
         $this->agent = $agent;
         $this->registerVisitorUserAction = $registerVisitorUserAction;
     }
-
 
     /**
      * Whenever the request doesn't have an Authorization header (token)
