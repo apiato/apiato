@@ -30,7 +30,6 @@ class VisitorsAuthentication
     /**
      * VisitorsAuthentication constructor.
      *
-     * @param \Illuminate\Foundation\Application                     $app
      * @param \Jenssegers\Agent\Agent                                $agent
      * @param \App\Containers\User\Actions\RegisterVisitorUserAction $registerVisitorUserAction
      */
