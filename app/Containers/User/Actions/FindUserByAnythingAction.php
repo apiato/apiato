@@ -2,18 +2,16 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Services\FindUserService;
 use App\Port\Action\Abstracts\Action;
-use Exception;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class FindUserAction.
+ * Class FindUserByAnythingAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserAction extends Action
+class FindUserByAnythingAction extends Action
 {
 
     /**
@@ -22,7 +20,7 @@ class FindUserAction extends Action
     private $findUserService;
 
     /**
-     * FindUserByIdAction constructor.
+     * FindUserByAnythingAction constructor.
      *
      * @param \App\Containers\User\Services\FindUserService $findUserService
      */
@@ -32,23 +30,6 @@ class FindUserAction extends Action
         $this->findUserService = $findUserService;
     }
 
-
-    /**
-     * @param $id
-     *
-     * @return  mixed
-     */
-    public function run($id)
-    {
-        try {
-            $user = $this->findUserService->byId($id);
-        } catch (Exception $e) {
-            throw new UserNotFoundException;
-        }
-
-        return $user;
-    }
-
     /**
      * @param $userId
      * @param $visitorId
@@ -56,19 +37,21 @@ class FindUserAction extends Action
      *
      * @return  mixed
      */
-    public function byEverything($userId, $visitorId, $token)
+    public function run($userId, $visitorId, $token)
     {
-        if($userId){
+        if ($userId) {
             $user = $this->findUserService->byId($userId);
-        }else if($token){
-            $user = Auth::user();
-        }else if($visitorId){
-            $user = $this->findUserService->byVisitorId($visitorId);
+        } else {
+            if ($token) {
+                $user = Auth::user();
+            } else {
+                if ($visitorId) {
+                    $user = $this->findUserService->byVisitorId($visitorId);
+                }
+            }
         }
 
         return $user;
     }
-
-
 
 }
