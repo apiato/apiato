@@ -14,7 +14,6 @@ use Exception;
  */
 class FindUserByIdAction extends Action
 {
-
     /**
      * @var  \App\Containers\User\Services\FindUserService
      */
@@ -30,7 +29,6 @@ class FindUserByIdAction extends Action
     ) {
         $this->findUserService = $findUserService;
     }
-
 
     /**
      * @param $id

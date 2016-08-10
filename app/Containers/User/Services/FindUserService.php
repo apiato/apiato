@@ -52,4 +52,5 @@ class FindUserService extends Service
 
         return $user;
     }
+
 }

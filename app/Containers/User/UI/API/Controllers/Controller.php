@@ -6,7 +6,7 @@ use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\FindUserByAnythingAction;
-use App\Containers\User\Actions\ListAllUsersAction;
+use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Actions\UpdateVisitorUserAction;
@@ -44,11 +44,11 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Actions\ListAllUsersAction $action
+     * @param \App\Containers\User\Actions\ListAndSearchUsersAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function listAllUsers(ListAllUsersAction $action)
+    public function listAllUsers(ListAndSearchUsersAction $action)
     {
         $users = $action->run();
 

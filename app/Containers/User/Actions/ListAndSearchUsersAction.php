@@ -7,11 +7,11 @@ use App\Port\Action\Abstracts\Action;
 use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
- * Class ListAllUsersAction.
+ * Class ListAndSearchUsersAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ListAllUsersAction extends Action
+class ListAndSearchUsersAction extends Action
 {
 
     /**
@@ -20,7 +20,7 @@ class ListAllUsersAction extends Action
     private $userRepository;
 
     /**
-     * ListAllUsersAction constructor.
+     * ListAndSearchUsersAction constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
@@ -30,11 +30,17 @@ class ListAllUsersAction extends Action
     }
 
     /**
-     * @return mixed
+     * The search text is auto-magically applied.
+     *
+     * @param bool|true $order
+     *
+     * @return  mixed
      */
-    public function run()
+    public function run($order = true)
     {
-        $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
+        if($order){
+            $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
+        }
 
         $users = $this->userRepository->paginate();
 
