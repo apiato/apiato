@@ -5,18 +5,20 @@ namespace App\Containers\User\UI\API\Controllers;
 use App\Containers\User\Actions\ApiLoginAction;
 use App\Containers\User\Actions\ApiLogoutAction;
 use App\Containers\User\Actions\DeleteUserAction;
+use App\Containers\User\Actions\FindUserAction;
 use App\Containers\User\Actions\ListAllUsersAction;
 use App\Containers\User\Actions\RegisterUserAction;
-use App\Containers\User\Actions\UpdateVisitorUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
+use App\Containers\User\Actions\UpdateVisitorUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\LoginRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
-use App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
+use App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
+use Dingo\Api\Http\Request;
 
 /**
  * Class Controller.
@@ -79,6 +81,23 @@ class Controller extends PortApiController
         return $this->response->accepted(null, [
             'message' => 'User Logged Out Successfully.',
         ]);
+    }
+
+    /**
+     * @param \Dingo\Api\Http\Request                     $request
+     * @param \App\Containers\User\Actions\FindUserAction $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function refreshUser(Request $request, FindUserAction $action)
+    {
+        $user = $action->byEverything(
+            $request['user_id'],
+            $request->header('visitor-id'),
+            $request->header('Authorization')
+        );
+
+        return $this->response->item($user, new UserTransformer());
     }
 
     /**

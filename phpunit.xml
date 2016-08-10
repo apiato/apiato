@@ -10,7 +10,7 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Portainers Tests">
-            <directory>./app/Portainers/</directory>
+            <directory>./app/Containers/</directory>
         </testsuite>
     </testsuites>
     <filter>

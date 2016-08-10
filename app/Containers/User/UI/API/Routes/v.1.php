@@ -63,6 +63,48 @@ $router->post('logout', [
 
 /*********************************************************************************
  * @apiGroup           Users
+ * @apiName            RefreshUser
+ * @api                {post} /users/refresh Refresh user data
+ * @apiDescription     Update the user data. You can send the `visitor-id` header,
+ * `token` header or `id_user` parameter to get the updated user data.
+ * You can call this endpoint after some important events such as xx min after user took an offer
+ * (to see if he completed it and got some points) or directly after a user redeem a reward,
+ * to display his new points.
+ * @apiVersion         1.0.0
+ * @apiPermission      none
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          visitor-id The Device ID [12345] (optional)
+ * @apiHeader          Authorization The user token [Bearer a1b2c3d4..] (optional)
+ * @apiParam           id_user User Id (optional)
+ * @apiSuccessExample  {json}       Success-Response:
+HTTP/1.1 200 OK
+
+{
+  "data": {
+    "id": 1,
+    "name": "Mahmoud Zalt",
+    "email": "mahmoud@zalt.me",
+    "confirmed": 0,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ3MDc2MTk0NCwiZXhwIjoxNDczMzg5OTQ0LCJuYmYiOjE0NzA3NjE5NDQsImp0aSI6ImVkNjNjYmQ0YjUxMGQ0YWMwZjQ3ZWVlODMyMGM1MTM4In0.WoenjRSsW11QqFiCpUOx7y40HG44QD-qBMjsP3hwAWs",
+    "created_at": {
+      "date": "2016-08-09 16:57:44.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "updated_at": {
+      "date": "2016-08-09 16:59:04.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    }
+  }
+}
+ */
+$router->post('users/refresh', [
+    'uses' => 'Controller@refreshUser',
+]);
+
+/*********************************************************************************
+ * @apiGroup           Users
  * @apiName            UpdateUser
  * @api                {put} /users/{id} Update a User
  * @apiDescription     Update User details
