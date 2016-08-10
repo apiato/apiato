@@ -18,8 +18,16 @@ class UserRepository extends Repository implements UserRepositoryInterface
      * @var array
      */
     protected $fieldSearchable = [
-        'name'  => 'like',
-        'email' => '=',
+        'name'          => 'like',
+        'platform'      => 'like',
+        'device'        => 'like',
+        'birth'         => 'like',
+        'gender'        => '=',
+        'id'            => '=',
+        'visitor_id'    => '=',
+        'email'         => '=',
+        'points'        => '=',
+        'referral_code' => '=',
     ];
 
     /**
