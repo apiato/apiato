@@ -59,7 +59,7 @@ class TrackOpenAction extends Action
         $user = $this->findUserService->byVisitorId($visitorId);
 
         // check if any previous session was not closed
-        $timeTracker = $this->findTimeTrackerService->byUserIdAndStatusNull($user->id);
+        $timeTracker = $this->findTimeTrackerService->byUserIdAndStatusPending($user->id);
         if ($timeTracker && $timeTracker->status == TimeTracker::PENDING) {
             $this->timeTrackerRepository->update(['status' => TimeTracker::FAILED], $timeTracker->id);
         }
