@@ -6,6 +6,11 @@ use App\Port\Butler\Portals\PortButler;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
+/**
+ * Class EntrustRoleForWeb
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class EntrustRoleForWeb
 {
 
