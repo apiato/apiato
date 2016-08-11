@@ -27,6 +27,20 @@ class PortButler
     }
 
     /**
+     * @return  mixed
+     */
+    public function getLoginWebPageName()
+    {
+        $loginPage = Config::get('hello.containers.login-page-name');
+
+        if (is_null($loginPage)) {
+            throw new WrongConfigurationsException();
+        }
+
+        return $loginPage;
+    }
+
+    /**
      * Get the containers names
      *
      * @return  array
@@ -35,7 +49,7 @@ class PortButler
     {
         $containersNames = [];
 
-        foreach($this->getContainersPaths() as $containersPath){
+        foreach ($this->getContainersPaths() as $containersPath) {
             $containersNames[] = basename($containersPath);
         }
 
@@ -62,25 +76,12 @@ class PortButler
      */
     public function buildMainServiceProvider($containersNamespace, $containerName)
     {
-        if($containerName != 'Port') {
+        if ($containerName != 'Port') {
             return $containersNamespace . "\\Containers\\" . $containerName . "\\Settings\\Providers\\" . $containerName . "ServiceProvider";
         }
 
         return "App" . "\\Port" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
     }
 
-    /**
-     * @return  mixed
-     */
-    public function getLoginWebPageName()
-    {
-        $loginPage = Config::get('hello.containers.login-page-name');
-
-        if (is_null($loginPage)) {
-            throw new WrongConfigurationsException();
-        }
-
-        return $loginPage;
-    }
 
 }
