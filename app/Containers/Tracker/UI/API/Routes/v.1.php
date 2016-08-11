@@ -18,7 +18,7 @@ HTTP/1.1 202 Accepted
 $router->post('track/open', [
     'uses' => 'Controller@trackOpen',
     'middleware' => [
-        'visitor.auth',
+        'api.auth.visitor',
     ],
 ]);
 
@@ -41,6 +41,6 @@ HTTP/1.1 202 Accepted
 $router->post('track/close', [
     'uses' => 'Controller@trackClose',
     'middleware' => [
-        'visitor.auth',
+        'api.auth.visitor',
     ],
 ]);

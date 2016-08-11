@@ -182,7 +182,7 @@ HTTP/1.1 200 OK
 $router->post('register/visitor', [
     'uses'  => 'Controller@registerVisitorUser',
     'middleware' => [
-        'visitor.auth',
+        'api.auth.visitor',
     ],
 ]);
 
