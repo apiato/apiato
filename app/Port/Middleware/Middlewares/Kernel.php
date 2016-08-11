@@ -56,6 +56,7 @@ class Kernel
             'role'        => \Zizaco\Entrust\Middleware\EntrustRole::class,
             'permission'  => \Zizaco\Entrust\Middleware\EntrustPermission::class,
             'ability'     => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+            'role-web'    => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
 
             // Hello API Visitor User Authentication middleware
             'visitor.auth'  => \App\Containers\ApiAuthentication\Middlewares\VisitorsAuthentication::class,
