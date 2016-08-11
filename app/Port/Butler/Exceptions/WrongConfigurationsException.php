@@ -15,5 +15,5 @@ class WrongConfigurationsException extends Exception
 
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
-    public $message = 'Ops! Some Containers configurations (config/csap.php) are wrong!';
+    public $message = 'Ops! Some Containers configurations are incorrect!';
 }

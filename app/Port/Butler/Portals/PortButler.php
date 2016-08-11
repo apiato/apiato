@@ -2,6 +2,7 @@
 
 namespace App\Port\Butler\Portals;
 
+use App\Port\Butler\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
@@ -22,7 +23,7 @@ class PortButler
      */
     public function getContainersNamespace()
     {
-        return Config::get('csap.containers.namespace');
+        return Config::get('hello.containers.namespace');
     }
 
     /**
@@ -69,39 +70,17 @@ class PortButler
     }
 
     /**
-     * Get the containers web routes values from the containers config file
-     *
-     * @param $containerName
-     *
      * @return  mixed
      */
-    public function getContainersWebRoutes($containerName)
+    public function getLoginWebPageName()
     {
-        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.web');
+        $loginPage = Config::get('hello.containers.login-page-name');
 
-        if (is_null($configurations)) {
-            $configurations = [];
+        if (is_null($loginPage)) {
+            throw new WrongConfigurationsException();
         }
 
-        return $configurations;
-    }
-
-    /**
-     * Get the containers api routes values from the containers config file
-     *
-     * @param $containerName
-     *
-     * @return  mixed
-     */
-    public function getContainersApiRoutes($containerName)
-    {
-        $configurations = Config::get('csap.containers.register.' . $containerName . '.routes.api');
-
-        if (is_null($configurations)) {
-            $configurations = [];
-        }
-
-        return $configurations;
+        return $loginPage;
     }
 
 }
