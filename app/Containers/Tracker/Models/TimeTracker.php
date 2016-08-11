@@ -35,6 +35,7 @@ class TimeTracker extends Model
         'open_at',
         'close_at',
         'status',
+        'duration',
         'user_id',
     ];
 
