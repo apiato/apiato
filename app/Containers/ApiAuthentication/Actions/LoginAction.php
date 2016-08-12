@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\ApiAuthentication\Actions;
 
 use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class ApiLoginAction.
+ * Class LoginAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLoginAction extends Action
+class LoginAction extends Action
 {
 
     private $authenticationService;

@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\ApiAuthentication\Actions;
 
-use App\Port\Action\Abstracts\Action;
 use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
+use App\Port\Action\Abstracts\Action;
 
 /**
  * Class ApiLogoutAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLogoutAction extends Action
+class LogoutAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Actions\ApiAuthenticationService|\App\Containers\ApiAuthentication\Services\ApiAuthenticationService
+     * @var  \App\Containers\ApiAuthentication\Services\ApiAuthenticationService
      */
     private $authenticationService;
 
     /**
-     * ApiLogoutAction constructor.
+     * LogoutAction constructor.
      *
      * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
      */

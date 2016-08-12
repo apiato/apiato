@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\UI\API\Controllers;
 
-use App\Containers\User\Actions\ApiLoginAction;
-use App\Containers\User\Actions\ApiLogoutAction;
+use App\Containers\ApiAuthentication\Actions\LoginAction;
+use App\Containers\ApiAuthentication\Actions\LogoutAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\FindUserByAnythingAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
@@ -56,12 +56,12 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\LoginRequest $request
-     * @param \App\Containers\User\Actions\ApiLoginAction       $action
+     * @param \App\Containers\User\UI\API\Requests\LoginRequest     $request
+     * @param \App\Containers\ApiAuthentication\Actions\LoginAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function loginUser(LoginRequest $request, ApiLoginAction $action)
+    public function loginUser(LoginRequest $request, LoginAction $action)
     {
         $user = $action->run($request['email'], $request['password']);
 
@@ -69,12 +69,12 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Port\Request\Manager\HttpRequest        $request
-     * @param \App\Containers\User\Actions\ApiLogoutAction $action
+     * @param \App\Port\Request\Manager\HttpRequest                  $request
+     * @param \App\Containers\ApiAuthentication\Actions\LogoutAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function logoutUser(HttpRequest $request, ApiLogoutAction $action)
+    public function logoutUser(HttpRequest $request, LogoutAction $action)
     {
         $action->run($request->header('authorization'));
 
