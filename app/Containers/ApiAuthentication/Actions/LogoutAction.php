@@ -36,8 +36,8 @@ class LogoutAction extends Action
      */
     public function run($authorizationHeader)
     {
-        $ok = $this->authenticationService->logout($authorizationHeader);
+        $hasLoggedOut = $this->authenticationService->logout($authorizationHeader);
 
-        return $ok;
+        return $hasLoggedOut;
     }
 }

@@ -42,6 +42,7 @@ class WebAuthenticationService
         $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
 
         if(!$correct){
+            // TODO: this has to be Web Exception
             throw new AuthenticationFailedException();
         }
 

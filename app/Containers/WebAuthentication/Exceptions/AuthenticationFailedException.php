@@ -2,7 +2,7 @@
 
 namespace App\Containers\WebAuthentication\Exceptions;
 
-use App\Port\Exception\Abstracts\Exception;
+use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
