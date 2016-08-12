@@ -33,15 +33,29 @@ class WebAuthenticationService
      *
      * @return mixed
      */
-    public function login($email, $password)
+    public function login($email, $password, $remember = false)
     {
-        $correct = $this->auth->attempt(['email' => $email, 'password' => $password]);
+        if($remember){
+            $remember = true;
+        }
+
+        $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
 
         if(!$correct){
             throw new AuthenticationFailedException();
         }
 
         return $this->auth->user();
+    }
+
+    /**
+     * @return  bool
+     */
+    public function logout()
+    {
+        $this->auth->logout();
+
+        return true;
     }
 
 
