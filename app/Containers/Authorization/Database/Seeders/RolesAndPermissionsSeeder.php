@@ -2,9 +2,11 @@
 
 namespace App\Containers\Authorization\Database\Seeders;
 
-use App\Port\Seeder\Abstracts\Seeder;
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
+use App\Containers\User\Models\User;
+use App\Port\Seeder\Abstracts\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
@@ -16,16 +18,24 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new Role();
-        $admin->name = 'admin';
-        $admin->display_name = 'Administrator';
+        $adminRole = new Role();
+        $adminRole->name = 'admin';
+        $adminRole->display_name = 'Administrator';
+        $adminRole->save();
+
+        $accessDashboardPermission = new Permission();
+        $accessDashboardPermission->name = 'access-dashboard';
+        $accessDashboardPermission->display_name = 'Access the Admins Dashboard';
+        $accessDashboardPermission->save();
+
+        $adminRole->attachPermission($accessDashboardPermission);
+
+        $admin = new User();
+        $admin->name = 'Super Admin';
+        $admin->email = 'admin@admin.com';
+        $admin->password = Hash::make('admin');
         $admin->save();
 
-        $listUsers = new Permission();
-        $listUsers->name = 'list-users';
-        $listUsers->display_name = 'List all Users';
-        $listUsers->save();
-
-        $admin->attachPermission($listUsers);
+        $admin->attachRole($adminRole);
     }
 }

@@ -14,6 +14,9 @@ use Illuminate\Contracts\Auth\Guard;
 class EntrustRoleForWeb
 {
 
+    /**
+     * @var  \Illuminate\Contracts\Auth\Guard
+     */
     protected $auth;
 
     /**
@@ -24,7 +27,8 @@ class EntrustRoleForWeb
     /**
      * Creates a new instance of the middleware.
      *
-     * @param Guard $auth
+     * @param Guard                               $auth
+     * @param \App\Port\Butler\Portals\PortButler $portButler
      */
     public function __construct(Guard $auth, PortButler $portButler)
     {
