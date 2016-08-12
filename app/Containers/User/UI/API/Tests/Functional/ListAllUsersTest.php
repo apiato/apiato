@@ -41,7 +41,7 @@ class ListAllUsersTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(5, $responseObject->data); // 5 = 4 (fake in this test) + 1 (that is logged in)
+        $this->assertCount(6, $responseObject->data); // 6 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
     public function testListAllUsersByNonAdmin_()

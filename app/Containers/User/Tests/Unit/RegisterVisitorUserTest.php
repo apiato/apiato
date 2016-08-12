@@ -44,8 +44,8 @@ class RegisterVisitorUserTest extends TestCase
 
         // assert a visitor was created in the DB
         $usersTotal = User::all()->count();
-        $this->assertEquals(0, $usersTotal);
-        $this->notSeeInDatabase('users', ['id' => 1]);
+        $this->assertEquals(1, $usersTotal); // 1 is the default seeded Super Admin
+        $this->notSeeInDatabase('users', ['id' => 2]);
     }
 
 }
