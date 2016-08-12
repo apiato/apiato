@@ -58,33 +58,13 @@ class UpdateSettingsService extends Service
     }
 
     /**
-     * @param $points
+     * @param $value
      *
      * @return  mixed
      */
-    public function updateReferringUserPoints($points)
+    public function updateSomething($value)
     {
-        return $this->update('referring_user_points', $points);
-    }
-
-    /**
-     * @param $points
-     *
-     * @return  mixed
-     */
-    public function updateReferredUserPoints($points)
-    {
-        return $this->update('referred_user_points', $points);
-    }
-
-    /**
-     * @param $points
-     *
-     * @return  mixed
-     */
-    public function updateOffersCacheTime($points)
-    {
-        return $this->update('offers_cache_time', $points);
+        return $this->update('something', $value);
     }
 
 }
