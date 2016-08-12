@@ -33,6 +33,6 @@ $router->post('/users/{id}/email', [
 $router->post('/visitors/email', [
     'uses'       => 'Controller@SetVisitorEmailController',
     'middleware' => [
-        'visitor.auth',
+        'api.auth.visitor',
     ],
 ]);
