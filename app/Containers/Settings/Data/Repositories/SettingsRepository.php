@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Settings\Settings\Repositories;
+namespace App\Containers\Settings\Data\Repositories;
 
 use App\Containers\Settings\Models\Settings;
 use App\Port\Repository\Abstracts\Repository;

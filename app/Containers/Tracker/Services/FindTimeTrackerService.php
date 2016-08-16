@@ -4,7 +4,7 @@ namespace App\Containers\Tracker\Services;
 
 
 use App\Containers\Tracker\Models\TimeTracker;
-use App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository;
+use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Port\Criterias\Eloquent\IsNullCriteria;
 use App\Port\Criterias\Eloquent\ThisEqualThatCriteria;
 use App\Port\Service\Abstracts\Service;
@@ -18,14 +18,14 @@ class FindTimeTrackerService extends Service
 {
 
     /**
-     * @var  \App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository
+     * @var  \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository
      */
     private $timeTrackerRepository;
 
     /**
      * FindTimeTrackerService constructor.
      *
-     * @param \App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository $timeTrackerRepository
+     * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */
     public function __construct(TimeTrackerRepository $timeTrackerRepository)
     {

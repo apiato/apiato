@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Tracker\Settings\Repositories;
+namespace App\Containers\Tracker\Data\Repositories;
 
 use App\Containers\Tracker\Models\TimeTracker;
 use App\Port\Repository\Abstracts\Repository;

@@ -2,7 +2,7 @@
 
 namespace App\Containers\Tracker\Actions;
 
-use App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository;
+use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\User\Services\FindUserService;
 use App\Port\Action\Abstracts\Action;
 

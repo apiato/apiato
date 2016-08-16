@@ -3,7 +3,7 @@
 namespace App\Containers\User\Settings\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Settings\Repositories\UserRepository;
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**

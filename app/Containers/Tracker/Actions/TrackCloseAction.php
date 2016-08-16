@@ -4,7 +4,7 @@ namespace App\Containers\Tracker\Actions;
 
 use App\Containers\Tracker\Models\TimeTracker;
 use App\Containers\Tracker\Services\FindTimeTrackerService;
-use App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository;
+use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\User\Services\FindUserService;
 use App\Port\Action\Abstracts\Action;
 use Carbon\Carbon;
@@ -23,7 +23,7 @@ class TrackCloseAction extends Action
     private $findUserService;
 
     /**
-     * @var  \App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository
+     * @var  \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository
      */
     private $timeTrackerRepository;
 
@@ -36,7 +36,7 @@ class TrackCloseAction extends Action
      * TrackOpenAction constructor.
      *
      * @param \App\Containers\User\Services\FindUserService                       $findUserService
-     * @param \App\Containers\Tracker\Settings\Repositories\TimeTrackerRepository $timeTrackerRepository
+     * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */
     public function __construct(
         FindUserService $findUserService,

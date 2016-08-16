@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Settings\Repositories\UserRepository;
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Port\Action\Abstracts\Action;
 use App\Port\Criterias\Eloquent\IsNullCriteria;
 use App\Port\Criterias\Eloquent\NotNullCriteria;
@@ -18,7 +18,7 @@ class CountUsersAction extends Action
     /**
      * CountUsersAction constructor.
      *
-     * @param \App\Containers\User\Settings\Repositories\UserRepository $userRepository
+     * @param \App\Containers\User\Data\Repositories\UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {

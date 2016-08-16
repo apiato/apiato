@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Paypal\Settings\Repositories;
+namespace App\Containers\Stripe\Data\Repositories;
 
-use App\Containers\Paypal\Models\PaypalAccount;
+use App\Containers\Stripe\Models\StripeAccount;
 use App\Port\Repository\Abstracts\Repository;
 
 /**
- * Class PaypalAccountRepository.
+ * Class StripeAccountRepository.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PaypalAccountRepository extends Repository
+class StripeAccountRepository extends Repository
 {
 
     /**
@@ -20,6 +20,6 @@ class PaypalAccountRepository extends Repository
      */
     public function model()
     {
-        return PaypalAccount::class;
+        return StripeAccount::class;
     }
 }
