@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Settings\Providers;
+namespace App\Containers\User\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Repositories\UserRepository;

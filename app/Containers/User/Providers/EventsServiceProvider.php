@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Settings\Providers;
+namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;

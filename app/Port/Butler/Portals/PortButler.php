@@ -77,7 +77,7 @@ class PortButler
     public function buildMainServiceProvider($containersNamespace, $containerName)
     {
         if ($containerName != 'Port') {
-            return $containersNamespace . "\\Containers\\" . $containerName . "\\Settings\\Providers\\" . $containerName . "ServiceProvider";
+            return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . $containerName . "ServiceProvider";
         }
 
         return "App" . "\\Port" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
