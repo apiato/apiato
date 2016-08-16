@@ -1,7 +1,7 @@
 <?php
 
-use App\Containers\Authorization\Database\Seeders\RolesAndPermissionsSeeder;
-use App\Containers\Settings\Database\Seeders\DefaultSystemSettingsSeeder;
+use App\Containers\Authorization\Data\Seeders\RolesAndPermissionsSeeder;
+use App\Containers\Settings\Data\Seeders\DefaultSystemSettingsSeeder;
 use App\Port\Seeder\Abstracts\Seeder;
 
 /**

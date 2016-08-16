@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Settings\Database\Seeders;
+namespace App\Containers\Settings\Data\Seeders;
 
 use App\Containers\Settings\Models\Settings;
 use App\Port\Seeder\Abstracts\Seeder;

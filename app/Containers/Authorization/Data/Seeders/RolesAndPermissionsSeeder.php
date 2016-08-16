@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authorization\Database\Seeders;
+namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
