@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\UI\API\Policies;
+namespace App\Containers\User\Policies;
 
 use App\Port\Policy\Abstracts\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
