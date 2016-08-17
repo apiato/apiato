@@ -30,8 +30,10 @@ class CreateVisitorUserAction extends Action
      * @param \App\Containers\User\Tasks\CreateUserByVisitorIdTask $createUserByVisitorIdTask
      * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask   $findUserByVisitorIdTask
      */
-    public function __construct(CreateUserByVisitorIdTask $createUserByVisitorIdTask, FindUserByVisitorIdTask $findUserByVisitorIdTask)
-    {
+    public function __construct(
+        CreateUserByVisitorIdTask $createUserByVisitorIdTask,
+        FindUserByVisitorIdTask $findUserByVisitorIdTask
+    ) {
         $this->createUserByVisitorIdTask = $createUserByVisitorIdTask;
         $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
     }
@@ -54,7 +56,7 @@ class CreateVisitorUserAction extends Action
     {
         $user = $this->findUserByVisitorIdTask->run($visitorId);
 
-        if(!$user){
+        if (!$user) {
             $user = $this->createUserByVisitorIdTask->run($visitorId, $device, $platform);
         }
 

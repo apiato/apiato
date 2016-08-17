@@ -38,7 +38,7 @@ class ListUsersTask extends Action
      */
     public function run($order = true)
     {
-        if($order){
+        if ($order) {
             $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
         }
 

@@ -35,6 +35,8 @@ class DeleteUserAction extends Action
      */
     public function run($userId)
     {
-        return $this->deleteUserTask->run($userId);
+        $done = $this->deleteUserTask->run($userId);
+
+        return $done;
     }
 }

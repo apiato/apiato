@@ -2,10 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Tasks\ListUsersTask;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
  * Class ListAndSearchUsersAction.
@@ -14,6 +12,7 @@ use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
  */
 class ListAndSearchUsersAction extends Action
 {
+
     /**
      * @var  \App\Containers\User\Tasks\ListUsersTask
      */
