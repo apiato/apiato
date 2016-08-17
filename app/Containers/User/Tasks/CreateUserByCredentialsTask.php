@@ -10,11 +10,11 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class CreateUserTask.
+ * Class CreateUserByCredentialsTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateUserTask extends Task
+class CreateUserByCredentialsTask extends Task
 {
 
     /**
@@ -28,9 +28,9 @@ class CreateUserTask extends Task
     private $authenticationTask;
 
     /**
-     * CreateUserTask constructor.
+     * CreateUserByCredentialsTask constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface              $userRepository
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
      * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $authenticationTask
      */
     public function __construct(
@@ -49,57 +49,24 @@ class CreateUserTask extends Task
      *
      * @return  mixed
      */
-    public function byCredentials($email, $password, $name, $login = false)
+    public function run($email, $password, $name, $login = false)
     {
         $hashedPassword = Hash::make($password);
 
-        // create new user
-        $user = $this->create([
-            'name'     => $name,
-            'email'    => $email,
-            'password' => $hashedPassword,
-        ]);
+        try {
+            // create new user
+            $user = $this->userRepository->create([
+                'name'     => $name,
+                'email'    => $email,
+                'password' => $hashedPassword,
+            ]);
+        } catch (Exception $e) {
+            throw (new AccountFailedException())->debug($e);
+        }
 
         if ($login) {
             // login this user using it's object and inject it's token on it
             $user = $this->authenticationTask->loginFromObject($user);
-        }
-
-        return $user;
-    }
-
-    /**
-     * @param      $visitorId device ID (example: iphone UUID, Android ID)
-     * @param null $device
-     * @param null $platform
-     *
-     * @return  mixed
-     */
-    public function byVisitor($visitorId, $device = null, $platform = null)
-    {
-        // create new user
-        $user = $this->create([
-            'visitor_id' => $visitorId,
-            'device'     => $device,
-            'platform'   => $platform,
-        ]);
-
-        return $user;
-    }
-
-
-    /**
-     * @param $data
-     *
-     * @return  mixed
-     */
-    private function create($data)
-    {
-        try {
-            // create new user
-            $user = $this->userRepository->create($data);
-        } catch (Exception $e) {
-            throw (new AccountFailedException())->debug($e);
         }
 
         return $user;

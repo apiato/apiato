@@ -4,8 +4,8 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
 use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
-use App\Containers\User\Tasks\CreateUserTask;
-use App\Containers\User\Tasks\FindUserTask;
+use App\Containers\User\Tasks\CreateUserByCredentialsTask;
+use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
@@ -23,14 +23,14 @@ class UpdateVisitorUserAction extends Action
     private $updateUserTask;
 
     /**
-     * @var  \App\Containers\User\Tasks\FindUserTask
+     * @var  \App\Containers\User\Tasks\FindUserByVisitorIdTask
      */
-    private $findUserTask;
+    private $findUserByVisitorIdTask;
 
     /**
-     * @var  \App\Containers\User\Tasks\CreateUserTask
+     * @var  \App\Containers\User\Tasks\CreateUserByCredentialsTask
      */
-    private $createUserTask;
+    private $createUserByCredentialsTask;
 
     /**
      * @var  \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
@@ -41,19 +41,19 @@ class UpdateVisitorUserAction extends Action
      * UpdateUserAction constructor.
      *
      * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
-     * @param \App\Containers\User\Tasks\FindUserTask                       $findUserTask
-     * @param \App\Containers\User\Tasks\CreateUserTask                     $createUserTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask                       $findUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask                     $createUserByCredentialsTask
      * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
         UpdateUserTask $updateUserTask,
-        FindUserTask $findUserTask,
-        CreateUserTask $createUserTask,
+        FindUserByVisitorIdTask $findUserByVisitorIdTask,
+        CreateUserByCredentialsTask $createUserByCredentialsTask,
         ApiAuthenticationTask $apiAuthenticationTask
     ) {
         $this->updateUserTask = $updateUserTask;
-        $this->findUserTask = $findUserTask;
-        $this->createUserTask = $createUserTask;
+        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
+        $this->createUserByCredentialsTask = $createUserByCredentialsTask;
         $this->apiAuthenticationTask = $apiAuthenticationTask;
     }
 
@@ -74,7 +74,7 @@ class UpdateVisitorUserAction extends Action
             throw (new MissingVisitorIdException())->debug('from (UpdateVisitorUserAction)');
         }
 
-        $user = $this->findUserTask->byVisitorId($visitorId);
+        $user = $this->findUserByVisitorIdTask->run($visitorId);
 
         if ($user) {
             // update the existing user by adding his credentials
@@ -83,7 +83,7 @@ class UpdateVisitorUserAction extends Action
             $user = $this->apiAuthenticationTask->loginFromObject($user);
         } else {
             // create the user now, in case that user have registered from the first screen
-            $user = $this->createUserTask->byCredentials($email, $password, $name, true);
+            $user = $this->createUserByCredentialsTask->run($email, $password, $name, true);
         }
 
         return $user;

@@ -6,11 +6,11 @@ use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class FindUserTask.
+ * Class FindUserByIdTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserTask extends Task
+class FindUserByIdTask extends Task
 {
 
     /**
@@ -19,7 +19,7 @@ class FindUserTask extends Task
     private $userRepository;
 
     /**
-     * FindUserTask constructor.
+     * FindUserByIdTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
@@ -33,22 +33,10 @@ class FindUserTask extends Task
      *
      * @return  mixed
      */
-    public function byId($id)
+    public function run($id)
     {
         // find the user by its id
         $user = $this->userRepository->find($id);
-
-        return $user;
-    }
-
-    /**
-     * @param $visitorId
-     *
-     * @return  mixed
-     */
-    public function byVisitorId($visitorId)
-    {
-        $user = $this->userRepository->findByField('visitor_id', $visitorId)->first();
 
         return $user;
     }

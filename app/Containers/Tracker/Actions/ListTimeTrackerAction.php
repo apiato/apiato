@@ -3,7 +3,6 @@
 namespace App\Containers\Tracker\Actions;
 
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
-use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -21,20 +20,13 @@ class ListTimeTrackerAction extends Action
     private $timeTrackerRepository;
 
     /**
-     * @var  \App\Containers\User\Tasks\FindUserTask
-     */
-    private $findUserTask;
-
-    /**
      * ListTimeTrackerAction constructor.
      *
-     * @param \App\Containers\Tracker\Actions\TimeTrackerRepository $timeTrackerRepository
-     * @param \App\Containers\User\Tasks\FindUserTask         $findUserTask
+     * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */
-    public function __construct(TimeTrackerRepository $timeTrackerRepository, FindUserTask $findUserTask)
+    public function __construct(TimeTrackerRepository $timeTrackerRepository)
     {
         $this->timeTrackerRepository = $timeTrackerRepository;
-        $this->findUserTask = $findUserTask;
     }
 
     /**

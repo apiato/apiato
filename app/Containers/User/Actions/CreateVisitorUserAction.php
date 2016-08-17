@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Tasks\CreateUserTask;
-use App\Containers\User\Tasks\FindUserTask;
+use App\Containers\User\Tasks\CreateUserByVisitorIdTask;
+use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -15,25 +15,25 @@ class CreateVisitorUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Actions\CreateUserTask
+     * @var  \App\Containers\User\Actions\CreateUserByVisitorIdTask
      */
-    private $createUserTask;
+    private $createUserByVisitorIdTask;
 
     /**
-     * @var  \App\Containers\User\Tasks\FindUserTask
+     * @var  \App\Containers\User\Tasks\FindUserByVisitorIdTask
      */
-    private $findUserTask;
+    private $findUserByVisitorIdTask;
 
     /**
      * CreateUserAction constructor.
      *
-     * @param \App\Containers\User\Tasks\CreateUserTask $createUserTask
-     * @param \App\Containers\User\Tasks\FindUserTask   $findUserTask
+     * @param \App\Containers\User\Tasks\CreateUserByVisitorIdTask $createUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask   $findUserByVisitorIdTask
      */
-    public function __construct(CreateUserTask $createUserTask, FindUserTask $findUserTask)
+    public function __construct(CreateUserByVisitorIdTask $createUserByVisitorIdTask, FindUserByVisitorIdTask $findUserByVisitorIdTask)
     {
-        $this->createUserTask = $createUserTask;
-        $this->findUserTask = $findUserTask;
+        $this->createUserByVisitorIdTask = $createUserByVisitorIdTask;
+        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
     }
 
     /**
@@ -52,10 +52,10 @@ class CreateVisitorUserAction extends Action
      */
     public function run($visitorId, $device = null, $platform = null)
     {
-        $user = $this->findUserTask->byVisitorId($visitorId);
+        $user = $this->findUserByVisitorIdTask->run($visitorId);
 
         if(!$user){
-            $user = $this->createUserTask->byVisitor($visitorId, $device, $platform);
+            $user = $this->createUserByVisitorIdTask->run($visitorId, $device, $platform);
         }
 
         return $user;

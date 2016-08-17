@@ -5,7 +5,7 @@ namespace App\Containers\Email\Actions;
 use App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask;
 use App\Containers\Email\Tasks\SendConfirmationEmailTask;
 use App\Containers\Email\Tasks\SetUserEmailTask;
-use App\Containers\User\Tasks\FindUserTask;
+use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -32,9 +32,9 @@ class SetVisitorEmailAction extends Action
     private $sendConfirmationEmailTask;
 
     /**
-     * @var  \App\Containers\User\Tasks\FindUserTask
+     * @var  \App\Containers\User\Tasks\FindUserByVisitorIdTask
      */
-    private $findUserTask;
+    private $findUserByVisitorIdTask;
 
     /**
      * SetUserEmailAction constructor.
@@ -42,18 +42,18 @@ class SetVisitorEmailAction extends Action
      * @param \App\Containers\Email\Tasks\SetUserEmailTask                 $setUserEmailTask
      * @param \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask
      * @param \App\Containers\Email\Tasks\SendConfirmationEmailTask        $sendConfirmationEmailTask
-     * @param \App\Containers\User\Tasks\FindUserTask                      $findUserTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask                      $findUserByVisitorIdTask
      */
     public function __construct(
         SetUserEmailTask $setUserEmailTask,
         GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask,
         SendConfirmationEmailTask $sendConfirmationEmailTask,
-        FindUserTask $findUserTask
+        FindUserByVisitorIdTask $findUserByVisitorIdTask
     ) {
         $this->setUserEmailTask = $setUserEmailTask;
         $this->generateEmailConfirmationUrlTask = $generateEmailConfirmationUrlTask;
         $this->sendConfirmationEmailTask = $sendConfirmationEmailTask;
-        $this->findUserTask = $findUserTask;
+        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
     }
 
 
@@ -65,7 +65,7 @@ class SetVisitorEmailAction extends Action
      */
     public function run($visitorId, $email)
     {
-        $user = $this->findUserTask->byVisitorId($visitorId);
+        $user = $this->findUserByVisitorIdTask->run($visitorId);
 
         $this->setUserEmailTask->run($user->id, $email);
 
