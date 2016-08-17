@@ -3,6 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Tasks\ListUsersTask;
 use App\Port\Action\Abstracts\Action;
 use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 
@@ -13,20 +14,19 @@ use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
  */
 class ListAndSearchUsersAction extends Action
 {
-
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\User\Tasks\ListUsersTask
      */
-    private $userRepository;
+    private $listUsersTask;
 
     /**
      * ListAndSearchUsersAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Tasks\ListUsersTask $listUsersTask
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(ListUsersTask $listUsersTask)
     {
-        $this->userRepository = $userRepository;
+        $this->listUsersTask = $listUsersTask;
     }
 
     /**
@@ -38,11 +38,7 @@ class ListAndSearchUsersAction extends Action
      */
     public function run($order = true)
     {
-        if($order){
-            $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
-        }
-
-        $users = $this->userRepository->paginate();
+        $users = $this->listUsersTask->run($order);
 
         return $users;
     }
