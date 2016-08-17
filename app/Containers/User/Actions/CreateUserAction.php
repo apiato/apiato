@@ -2,10 +2,9 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
+use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Event\Dispatcher\EventsDispatcher;
 
 /**
  * Class CreateUserAction.
@@ -21,22 +20,22 @@ class CreateUserAction extends Action
     private $createUserByCredentialsTask;
 
     /**
-     * @var  \App\Port\Event\Dispatcher\EventsDispatcher
+     * @var  \App\Containers\User\Actions\FireUserCreatedEventTask
      */
-    private $eventsDispatcher;
+    private $fireUserCreatedEventTask;
 
     /**
      * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask $createUserByCredentialsTask
-     * @param \App\Port\Event\Dispatcher\EventsDispatcher            $eventsDispatcher
+     * @param \App\Containers\User\Actions\FireUserCreatedEventTask  $fireUserCreatedEventTask
      */
     public function __construct(
         CreateUserByCredentialsTask $createUserByCredentialsTask,
-        EventsDispatcher $eventsDispatcher
+        FireUserCreatedEventTask $fireUserCreatedEventTask
     ) {
         $this->createUserByCredentialsTask = $createUserByCredentialsTask;
-        $this->eventsDispatcher = $eventsDispatcher;
+        $this->fireUserCreatedEventTask = $fireUserCreatedEventTask;
     }
 
     /**
@@ -54,8 +53,7 @@ class CreateUserAction extends Action
     {
         $user = $this->createUserByCredentialsTask->run($email, $password, $name, $login);
 
-        // Fire a User Created Event
-        $this->eventsDispatcher->fire(New UserCreatedEvent($user));
+        $this->fireUserCreatedEventTask->run($user);
 
         return $user;
     }
