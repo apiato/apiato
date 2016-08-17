@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
+use App\Containers\Authentication\Exceptions\UpdateResourceFailedException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Task\Abstracts\Task;
 use Illuminate\Support\Facades\Hash;

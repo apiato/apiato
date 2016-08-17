@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
+use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Containers\User\Tasks\UpdateUserTask;
@@ -32,17 +32,17 @@ class SwitchVisitorToUserAction extends Action
     private $createUserByCredentialsTask;
 
     /**
-     * @var  \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
+     * @var  \App\Containers\Authentication\Tasks\AuthenticationTask
      */
     private $apiAuthenticationTask;
 
     /**
-     * UpdateUserAction constructor.
+     * SwitchVisitorToUserAction constructor.
      *
-     * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
-     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask            $findUserByVisitorIdTask
-     * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask        $createUserByCredentialsTask
-     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
+     * @param \App\Containers\User\Tasks\UpdateUserTask                  $updateUserTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask         $findUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask     $createUserByCredentialsTask
+     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
         UpdateUserTask $updateUserTask,

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tests\Unit;
 
-use App\Containers\APIAuthentication\Middlewares\VisitorsAuthentication;
+use App\Containers\Authentication\Middlewares\VisitorsAuthentication;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;

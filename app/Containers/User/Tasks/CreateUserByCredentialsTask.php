@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
+use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Port\Task\Abstracts\Task;
@@ -23,22 +23,22 @@ class CreateUserByCredentialsTask extends Task
     private $userRepository;
 
     /**
-     * @var \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
+     * @var \App\Containers\Authentication\Tasks\ApiAuthenticationTask
      */
-    private $authenticationTask;
+    private $apiAuthenticationTask;
 
     /**
      * CreateUserByCredentialsTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $authenticationTask
+     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        ApiAuthenticationTask $authenticationTask
+        ApiAuthenticationTask $apiAuthenticationTask
     ) {
         $this->userRepository = $userRepository;
-        $this->authenticationTask = $authenticationTask;
+        $this->apiAuthenticationTask = $apiAuthenticationTask;
     }
 
     /**
@@ -66,7 +66,7 @@ class CreateUserByCredentialsTask extends Task
 
         if ($login) {
             // login this user using it's object and inject it's token on it
-            $user = $this->authenticationTask->loginFromObject($user);
+            $user = $this->apiAuthenticationTask->loginFromObject($user);
         }
 
         return $user;

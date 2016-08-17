@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
+use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Port\Task\Abstracts\Task;
@@ -22,22 +22,22 @@ class CreateUserByVisitorIdTask extends Task
     private $userRepository;
 
     /**
-     * @var \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
+     * @var \App\Containers\Authentication\Tasks\ApiAuthenticationTask
      */
-    private $authenticationTask;
+    private $apiAuthenticationTask;
 
     /**
      * CreateUserByVisitorIdTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $authenticationTask
+     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        ApiAuthenticationTask $authenticationTask
+        ApiAuthenticationTask $apiAuthenticationTask
     ) {
         $this->userRepository = $userRepository;
-        $this->authenticationTask = $authenticationTask;
+        $this->apiAuthenticationTask = $apiAuthenticationTask;
     }
 
 

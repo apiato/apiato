@@ -61,10 +61,10 @@ class Kernel
             'role.web'    => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
 
             // Hello API Visitor User Authentication middleware
-            'api.auth.visitor'  => \App\Containers\ApiAuthentication\Middlewares\VisitorsAuthentication::class,
+            'api.auth.visitor'  => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
 
             // Hello API User Authentication middleware for Web Pages
-            'web.auth' => \App\Containers\WebAuthentication\Middlewares\Authenticate::class,
+            'web.auth' => \App\Containers\Authentication\Middlewares\Authentication::class,
 
             // ...
         ];

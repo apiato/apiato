@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
+use App\Containers\Authentication\Exceptions\MissingVisitorIdException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Task\Abstracts\Task;
 
