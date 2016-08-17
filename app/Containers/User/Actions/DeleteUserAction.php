@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Tasks\DeleteUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,18 +14,18 @@ class DeleteUserAction extends Action
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\User\Tasks\DeleteUserTask
      */
-    private $userRepository;
+    private $deleteUserTask;
 
     /**
-     * UpdateUserAction constructor.
+     * DeleteUserAction constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Tasks\DeleteUserTask $deleteUserTask
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(DeleteUserTask $deleteUserTask)
     {
-        $this->userRepository = $userRepository;
+        $this->deleteUserTask = $deleteUserTask;
     }
 
     /**
@@ -35,9 +35,6 @@ class DeleteUserAction extends Action
      */
     public function run($userId)
     {
-        // delete the record from the users table.
-        $this->userRepository->delete($userId);
-
-        return true;
+        return $this->deleteUserTask->run($userId);
     }
 }
