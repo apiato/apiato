@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
+use App\Containers\Authentication\Tasks\ApiLogoutTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,19 +14,18 @@ class ApiLogoutAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authentication\Tasks\ApiAuthenticationTask
+     * @var  \App\Containers\Authentication\Tasks\ApiLogoutTask
      */
-    private $apiAuthenticationTask;
+    private $apiLogoutTask;
 
     /**
      * ApiLogoutAction constructor.
      *
-     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
+     * @param \App\Containers\Authentication\Tasks\ApiLogoutTask $apiLogoutTask
      */
-    public function __construct(
-        ApiAuthenticationTask $apiAuthenticationTask
-    ) {
-        $this->apiAuthenticationTask = $apiAuthenticationTask;
+    public function __construct(ApiLogoutTask $apiLogoutTask)
+    {
+        $this->apiLogoutTask = $apiLogoutTask;
     }
 
     /**
@@ -36,7 +35,7 @@ class ApiLogoutAction extends Action
      */
     public function run($authorizationHeader)
     {
-        $hasLoggedOut = $this->apiAuthenticationTask->logout($authorizationHeader);
+        $hasLoggedOut = $this->apiLogoutTask->run($authorizationHeader);
 
         return $hasLoggedOut;
     }
