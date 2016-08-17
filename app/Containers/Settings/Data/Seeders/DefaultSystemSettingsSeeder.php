@@ -20,14 +20,14 @@ class DefaultSystemSettingsSeeder extends Seeder
      */
     public function run()
     {
-        $settings = new Settings();
-        $settings->key = 'referring_user_points';
-        $settings->value = '200';
-        $settings->save();
-
-        $settings = new Settings();
-        $settings->key = 'referred_user_points';
-        $settings->value = '200';
-        $settings->save();
+//        $settings = new Settings();
+//        $settings->key = 'referring_user_points';
+//        $settings->value = '200';
+//        $settings->save();
+//
+//        $settings = new Settings();
+//        $settings->key = 'referred_user_points';
+//        $settings->value = '200';
+//        $settings->save();
     }
 }
