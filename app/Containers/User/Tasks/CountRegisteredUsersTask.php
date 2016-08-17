@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Criterias\Eloquent\IsNullCriteria;
 use App\Port\Criterias\Eloquent\NotNullCriteria;
 
 /**
- * Class CountUsersAction.
+ * Class CountRegisteredUsersTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CountUsersAction extends Action
+class CountRegisteredUsersTask extends Action
 {
 
     /**
@@ -27,28 +26,9 @@ class CountUsersAction extends Action
 
     /**
      * @return  mixed
-     */
-    public function all()
-    {
-        return $this->userRepository->all()->count();
-    }
-
-    /**
-     * @return  mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function visitors()
-    {
-        $this->userRepository->pushCriteria(new IsNullCriteria('email'));
-
-        return $this->userRepository->all()->count();
-    }
-
-    /**
-     * @return  mixed
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     */
-    public function registered()
+    public function run()
     {
         $this->userRepository->pushCriteria(new NotNullCriteria('email'));
 
