@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Containers\Tracker\Services;
+namespace App\Containers\Tracker\Tasks;
 
 
 use App\Containers\Tracker\Models\TimeTracker;
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Port\Criterias\Eloquent\IsNullCriteria;
 use App\Port\Criterias\Eloquent\ThisEqualThatCriteria;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class FindTimeTrackerService.
+ * Class FindTimeTrackerTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindTimeTrackerService extends Service
+class FindTimeTrackerTask extends Task
 {
 
     /**
@@ -23,7 +23,7 @@ class FindTimeTrackerService extends Service
     private $timeTrackerRepository;
 
     /**
-     * FindTimeTrackerService constructor.
+     * FindTimeTrackerTask constructor.
      *
      * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */

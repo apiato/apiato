@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\User\Services;
+namespace App\Containers\User\Tasks;
 
 use App\Containers\ApiAuthentication\Exceptions\UpdateResourceFailedException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class UpdateUserService.
+ * Class UpdateUserTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateUserService extends Service
+class UpdateUserTask extends Task
 {
 
     /**

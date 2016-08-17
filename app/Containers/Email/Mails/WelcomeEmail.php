@@ -14,7 +14,7 @@ class WelcomeEmail extends MailsAbstract implements MailsInterface
 {
 
     /**
-     * The email template name. (a view file name form "app/Services/Mails/Views/")
+     * The email template name. (a view file name form "app/Tasks/Mails/Views/")
      *
      * @var  string
      */

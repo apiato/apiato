@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Containers\Stripe\Services;
+namespace App\Containers\Stripe\Tasks;
 
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class CreateStripeCustomerService.
+ * Class CreateStripeCustomerTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateStripeCustomerService extends Service
+class CreateStripeCustomerTask extends Task
 {
 
     public $stripe;

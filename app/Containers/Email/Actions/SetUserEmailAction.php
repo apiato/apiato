@@ -2,9 +2,9 @@
 
 namespace App\Containers\Email\Actions;
 
-use App\Containers\Email\Services\GenerateEmailConfirmationUrlService;
-use App\Containers\Email\Services\SendConfirmationEmailService;
-use App\Containers\Email\Services\SetUserEmailService;
+use App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask;
+use App\Containers\Email\Tasks\SendConfirmationEmailTask;
+use App\Containers\Email\Tasks\SetUserEmailTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -16,35 +16,35 @@ class SetUserEmailAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Email\Services\SetUserEmailService
+     * @var  \App\Containers\Email\Tasks\SetUserEmailTask
      */
-    private $setUserEmailService;
+    private $setUserEmailTask;
 
     /**
-     * @var  \App\Containers\Email\Services\GenerateEmailConfirmationUrlService
+     * @var  \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask
      */
-    private $generateEmailConfirmationUrlService;
+    private $generateEmailConfirmationUrlTask;
 
     /**
-     * @var  \App\Containers\Email\Services\SendConfirmationEmailService
+     * @var  \App\Containers\Email\Tasks\SendConfirmationEmailTask
      */
-    private $sendConfirmationEmailService;
+    private $sendConfirmationEmailTask;
 
     /**
      * SetUserEmailAction constructor.
      *
-     * @param \App\Containers\Email\Services\SetUserEmailService                 $setUserEmailService
-     * @param \App\Containers\Email\Services\GenerateEmailConfirmationUrlService $generateEmailConfirmationUrlService
-     * @param \App\Containers\Email\Services\SendConfirmationEmailService        $sendConfirmationEmailService
+     * @param \App\Containers\Email\Tasks\SetUserEmailTask                 $setUserEmailTask
+     * @param \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask
+     * @param \App\Containers\Email\Tasks\SendConfirmationEmailTask        $sendConfirmationEmailTask
      */
     public function __construct(
-        SetUserEmailService $setUserEmailService,
-        GenerateEmailConfirmationUrlService $generateEmailConfirmationUrlService,
-        SendConfirmationEmailService $sendConfirmationEmailService
+        SetUserEmailTask $setUserEmailTask,
+        GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask,
+        SendConfirmationEmailTask $sendConfirmationEmailTask
     ) {
-        $this->setUserEmailService = $setUserEmailService;
-        $this->generateEmailConfirmationUrlService = $generateEmailConfirmationUrlService;
-        $this->sendConfirmationEmailService = $sendConfirmationEmailService;
+        $this->setUserEmailTask = $setUserEmailTask;
+        $this->generateEmailConfirmationUrlTask = $generateEmailConfirmationUrlTask;
+        $this->sendConfirmationEmailTask = $sendConfirmationEmailTask;
     }
 
 
@@ -57,13 +57,13 @@ class SetUserEmailAction extends Action
     public function run($userId, $email)
     {
         // set the email on the user in the database
-        $user = $this->setUserEmailService->run($userId, $email);
+        $user = $this->setUserEmailTask->run($userId, $email);
 
         // generate confirmation code, store it on the memory and inject it in url
-        $confirmationUrl = $this->generateEmailConfirmationUrlService->run($user);
+        $confirmationUrl = $this->generateEmailConfirmationUrlTask->run($user);
 
         // send a confirmation email to the user with the link
-        $this->sendConfirmationEmailService->run($user, $confirmationUrl);
+        $this->sendConfirmationEmailTask->run($user, $confirmationUrl);
 
         return true;
     }

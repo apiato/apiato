@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Services\FindUserService;
+use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,19 +15,19 @@ class FindUserByAnythingAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
      * FindUserByAnythingAction constructor.
      *
-     * @param \App\Containers\User\Services\FindUserService $findUserService
+     * @param \App\Containers\User\Tasks\FindUserTask $findUserTask
      */
     public function __construct(
-        FindUserService $findUserService
+        FindUserTask $findUserTask
     ) {
-        $this->findUserService = $findUserService;
+        $this->findUserTask = $findUserTask;
     }
 
     /**
@@ -40,13 +40,13 @@ class FindUserByAnythingAction extends Action
     public function run($userId, $visitorId, $token)
     {
         if ($userId) {
-            $user = $this->findUserService->byId($userId);
+            $user = $this->findUserTask->byId($userId);
         } else {
             if ($token) {
                 $user = Auth::user();
             } else {
                 if ($visitorId) {
-                    $user = $this->findUserService->byVisitorId($visitorId);
+                    $user = $this->findUserTask->byVisitorId($visitorId);
                 }
             }
         }

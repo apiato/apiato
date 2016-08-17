@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Services\CreateUserService;
-use App\Containers\User\Services\FindUserService;
+use App\Containers\User\Tasks\CreateUserTask;
+use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -15,25 +15,25 @@ class RegisterVisitorUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Actions\CreateUserService
+     * @var  \App\Containers\User\Actions\CreateUserTask
      */
-    private $createUserService;
+    private $createUserTask;
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
      * RegisterUserAction constructor.
      *
-     * @param \App\Containers\User\Services\CreateUserService $createUserService
-     * @param \App\Containers\User\Services\FindUserService   $findUserService
+     * @param \App\Containers\User\Tasks\CreateUserTask $createUserTask
+     * @param \App\Containers\User\Tasks\FindUserTask   $findUserTask
      */
-    public function __construct(CreateUserService $createUserService, FindUserService $findUserService)
+    public function __construct(CreateUserTask $createUserTask, FindUserTask $findUserTask)
     {
-        $this->createUserService = $createUserService;
-        $this->findUserService = $findUserService;
+        $this->createUserTask = $createUserTask;
+        $this->findUserTask = $findUserTask;
     }
 
     /**
@@ -52,10 +52,10 @@ class RegisterVisitorUserAction extends Action
      */
     public function run($visitorId, $device = null, $platform = null)
     {
-        $user = $this->findUserService->byVisitorId($visitorId);
+        $user = $this->findUserTask->byVisitorId($visitorId);
 
         if(!$user){
-            $user = $this->createUserService->byVisitor($visitorId, $device, $platform);
+            $user = $this->createUserTask->byVisitor($visitorId, $device, $platform);
         }
 
         return $user;

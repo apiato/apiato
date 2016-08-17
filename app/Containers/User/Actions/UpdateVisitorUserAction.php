@@ -3,10 +3,10 @@
 namespace App\Containers\User\Actions;
 
 use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
-use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
-use App\Containers\User\Services\CreateUserService;
-use App\Containers\User\Services\FindUserService;
-use App\Containers\User\Services\UpdateUserService;
+use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
+use App\Containers\User\Tasks\CreateUserTask;
+use App\Containers\User\Tasks\FindUserTask;
+use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -18,43 +18,43 @@ class UpdateVisitorUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Services\UpdateUserService
+     * @var  \App\Containers\User\Tasks\UpdateUserTask
      */
-    private $updateUserService;
+    private $updateUserTask;
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
-     * @var  \App\Containers\User\Services\CreateUserService
+     * @var  \App\Containers\User\Tasks\CreateUserTask
      */
-    private $createUserService;
+    private $createUserTask;
 
     /**
-     * @var  \App\Containers\ApiAuthentication\Services\ApiAuthenticationService
+     * @var  \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
      */
-    private $apiAuthenticationService;
+    private $apiAuthenticationTask;
 
     /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Services\UpdateUserService                     $updateUserService
-     * @param \App\Containers\User\Services\FindUserService                       $findUserService
-     * @param \App\Containers\User\Services\CreateUserService                     $createUserService
-     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $apiAuthenticationService
+     * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
+     * @param \App\Containers\User\Tasks\FindUserTask                       $findUserTask
+     * @param \App\Containers\User\Tasks\CreateUserTask                     $createUserTask
+     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
-        UpdateUserService $updateUserService,
-        FindUserService $findUserService,
-        CreateUserService $createUserService,
-        ApiAuthenticationService $apiAuthenticationService
+        UpdateUserTask $updateUserTask,
+        FindUserTask $findUserTask,
+        CreateUserTask $createUserTask,
+        ApiAuthenticationTask $apiAuthenticationTask
     ) {
-        $this->updateUserService = $updateUserService;
-        $this->findUserService = $findUserService;
-        $this->createUserService = $createUserService;
-        $this->apiAuthenticationService = $apiAuthenticationService;
+        $this->updateUserTask = $updateUserTask;
+        $this->findUserTask = $findUserTask;
+        $this->createUserTask = $createUserTask;
+        $this->apiAuthenticationTask = $apiAuthenticationTask;
     }
 
     /**
@@ -74,16 +74,16 @@ class UpdateVisitorUserAction extends Action
             throw (new MissingVisitorIdException())->debug('from (UpdateVisitorUserAction)');
         }
 
-        $user = $this->findUserService->byVisitorId($visitorId);
+        $user = $this->findUserTask->byVisitorId($visitorId);
 
         if ($user) {
             // update the existing user by adding his credentials
-            $user = $this->updateUserService->run($user->id, $password, $name, $email);
+            $user = $this->updateUserTask->run($user->id, $password, $name, $email);
             // Login the User from his object
-            $user = $this->apiAuthenticationService->loginFromObject($user);
+            $user = $this->apiAuthenticationTask->loginFromObject($user);
         } else {
             // create the user now, in case that user have registered from the first screen
-            $user = $this->createUserService->byCredentials($email, $password, $name, true);
+            $user = $this->createUserTask->byCredentials($email, $password, $name, true);
         }
 
         return $user;

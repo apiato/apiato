@@ -69,7 +69,7 @@ trait PortServiceProviderTrait
     }
 
     /**
-     * Get the Service Providers full classes names from the containers config file registered containers.
+     * Get the Task Providers full classes names from the containers config file registered containers.
      *
      * @return  array
      */

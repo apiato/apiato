@@ -10,7 +10,7 @@ use App\Containers\User\Policies\UserPolicy;
 /**
  * Class PoliciesServiceProvider.
  *
- * This Service Provider is designed to map the policies to their models.
+ * This Task Provider is designed to map the policies to their models.
  * Must be manually added to the list of extra service providers in the
  * containers config file in order to get registered in the framework.
  *

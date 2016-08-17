@@ -3,9 +3,9 @@
 namespace App\Containers\Tracker\Actions;
 
 use App\Containers\Tracker\Models\TimeTracker;
-use App\Containers\Tracker\Services\FindTimeTrackerService;
+use App\Containers\Tracker\Tasks\FindTimeTrackerTask;
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
-use App\Containers\User\Services\FindUserService;
+use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 use Carbon\Carbon;
 
@@ -18,9 +18,9 @@ class TrackCloseAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
      * @var  \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository
@@ -28,24 +28,24 @@ class TrackCloseAction extends Action
     private $timeTrackerRepository;
 
     /**
-     * @var  \App\Containers\Tracker\Services\FindTimeTrackerService
+     * @var  \App\Containers\Tracker\Tasks\FindTimeTrackerTask
      */
-    private $findTimeTrackerService;
+    private $findTimeTrackerTask;
 
     /**
      * TrackOpenAction constructor.
      *
-     * @param \App\Containers\User\Services\FindUserService                       $findUserService
+     * @param \App\Containers\User\Tasks\FindUserTask                       $findUserTask
      * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */
     public function __construct(
-        FindUserService $findUserService,
+        FindUserTask $findUserTask,
         TimeTrackerRepository $timeTrackerRepository,
-        FindTimeTrackerService $findTimeTrackerService
+        FindTimeTrackerTask $findTimeTrackerTask
     ) {
-        $this->findUserService = $findUserService;
+        $this->findUserTask = $findUserTask;
         $this->timeTrackerRepository = $timeTrackerRepository;
-        $this->findTimeTrackerService = $findTimeTrackerService;
+        $this->findTimeTrackerTask = $findTimeTrackerTask;
     }
 
     /**
@@ -55,10 +55,10 @@ class TrackCloseAction extends Action
      */
     public function run($visitorId)
     {
-        $user = $this->findUserService->byVisitorId($visitorId);
+        $user = $this->findUserTask->byVisitorId($visitorId);
 
         // check if any previous session was not closed
-        $timeTracker = $this->findTimeTrackerService->byUserIdAndStatusPending($user->id);
+        $timeTracker = $this->findTimeTrackerTask->byUserIdAndStatusPending($user->id);
         if ($timeTracker && $timeTracker->status == TimeTracker::PENDING) {
 
             $now = Carbon::now();

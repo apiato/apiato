@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\User\Services;
+namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class FindUserService.
+ * Class FindUserTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserService extends Service
+class FindUserTask extends Task
 {
 
     /**
@@ -19,7 +19,7 @@ class FindUserService extends Service
     private $userRepository;
 
     /**
-     * FindUserService constructor.
+     * FindUserTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Containers\Stripe\Services;
+namespace App\Containers\Stripe\Tasks;
 
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Containers\User\Models\User;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 use App\Containers\Payments\Contracts\Chargeable;
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ChargeWithStripeService.
+ * Class ChargeWithStripeTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithStripeService extends Service implements Chargeable
+class ChargeWithStripeTask extends Task implements Chargeable
 {
 
     public $stripe;

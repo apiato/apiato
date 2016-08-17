@@ -10,8 +10,8 @@ use App\Port\Routes\Providers\RoutesServiceProvider;
 
 /**
  * Class PortServiceProvider
- * The main Service Provider where all Service Providers gets registered
- * this is the only Service Provider that gets injected in the Config/app.php.
+ * The main Task Provider where all Task Providers gets registered
+ * this is the only Task Provider that gets injected in the Config/app.php.
  *
  * Class PortServiceProvider
  *
@@ -29,7 +29,7 @@ class PortServiceProvider extends ServiceProviderAbstract
     const MODELS_FACTORY_PATH = '/app/Port/Factory';
 
     /**
-     * Port internal Service Provides.
+     * Port internal Task Provides.
      *
      * @var array
      */

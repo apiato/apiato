@@ -5,7 +5,7 @@ namespace App\Containers\ApiAuthentication\Adapters;
 use Tymon\JWTAuth\JWTAuth;
 
 /**
- * Class JWTAuthService.
+ * Class JWTAuthTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

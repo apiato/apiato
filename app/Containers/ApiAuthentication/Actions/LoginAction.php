@@ -2,7 +2,7 @@
 
 namespace App\Containers\ApiAuthentication\Actions;
 
-use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
+use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -13,16 +13,16 @@ use App\Port\Action\Abstracts\Action;
 class LoginAction extends Action
 {
 
-    private $authenticationService;
+    private $authenticationTask;
 
     /**
      * ApiLoginAction constructor.
      *
-     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
+     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $authenticationTask
      */
-    public function __construct(ApiAuthenticationService $authenticationService)
+    public function __construct(ApiAuthenticationTask $authenticationTask)
     {
-        $this->authenticationService = $authenticationService;
+        $this->authenticationTask = $authenticationTask;
     }
 
     /**
@@ -33,9 +33,9 @@ class LoginAction extends Action
      */
     public function run($email, $password)
     {
-        $token = $this->authenticationService->login($email, $password);
+        $token = $this->authenticationTask->login($email, $password);
 
-        $user = $this->authenticationService->getAuthenticatedUser($token);
+        $user = $this->authenticationTask->getAuthenticatedUser($token);
 
         return $user;
     }

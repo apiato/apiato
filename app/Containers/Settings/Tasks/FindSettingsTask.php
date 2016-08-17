@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Settings\Services;
+namespace App\Containers\Settings\Tasks;
 
 use App\Containers\Settings\Data\Repositories\SettingsRepository;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class FindSettingsService
+ * Class FindSettingsTask
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class FindSettingsService extends Service
+class FindSettingsTask extends Task
 {
 
     /**
@@ -19,7 +19,7 @@ class FindSettingsService extends Service
     private $settingsRepository;
 
     /**
-     * FindSettingsService constructor.
+     * FindSettingsTask constructor.
      *
      * @param \App\Containers\Settings\Data\Repositories\SettingsRepository $settingsRepository
      */

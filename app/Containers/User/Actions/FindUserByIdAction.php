@@ -3,7 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Containers\User\Services\FindUserService;
+use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 use Exception;
 
@@ -15,19 +15,19 @@ use Exception;
 class FindUserByIdAction extends Action
 {
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
      * FindUserByIdAction constructor.
      *
-     * @param \App\Containers\User\Services\FindUserService $findUserService
+     * @param \App\Containers\User\Tasks\FindUserTask $findUserTask
      */
     public function __construct(
-        FindUserService $findUserService
+        FindUserTask $findUserTask
     ) {
-        $this->findUserService = $findUserService;
+        $this->findUserTask = $findUserTask;
     }
 
     /**
@@ -38,7 +38,7 @@ class FindUserByIdAction extends Action
     public function run($id)
     {
         try {
-            $user = $this->findUserService->byId($id);
+            $user = $this->findUserTask->byId($id);
         } catch (Exception $e) {
             throw new UserNotFoundException;
         }

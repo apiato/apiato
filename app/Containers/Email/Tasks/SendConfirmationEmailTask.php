@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Containers\Email\Services;
+namespace App\Containers\Email\Tasks;
 
 use App\Containers\Email\Mails\ConfirmEmail;
 use App\Containers\User\Models\User;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class SendConfirmationEmailService.
+ * Class SendConfirmationEmailTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SendConfirmationEmailService extends Service
+class SendConfirmationEmailTask extends Task
 {
 
 
     /**
-     * SendConfirmationEmailService constructor.
+     * SendConfirmationEmailTask constructor.
      *
      * @param \App\Containers\Email\Mails\ConfirmEmail $confirmEmail
      */

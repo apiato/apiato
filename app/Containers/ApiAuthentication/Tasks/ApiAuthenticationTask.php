@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\ApiAuthentication\Services;
+namespace App\Containers\ApiAuthentication\Tasks;
 
 use App\Containers\ApiAuthentication\Adapters\JwtAuthAdapter;
 use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
@@ -9,11 +9,11 @@ use Exception;
 use Illuminate\Auth\AuthManager as LaravelAuthManager;
 
 /**
- * Class ApiAuthenticationService.
+ * Class ApiAuthenticationTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiAuthenticationService
+class ApiAuthenticationTask
 {
 
     /**
@@ -27,7 +27,7 @@ class ApiAuthenticationService
     private $authManager;
 
     /**
-     * ApiAuthenticationService constructor.
+     * ApiAuthenticationTask constructor.
      *
      * @param \App\Containers\ApiAuthentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
      * @param \Illuminate\Auth\AuthManager                              $authManager
@@ -104,7 +104,7 @@ class ApiAuthenticationService
     /**
      * @param $authorizationHeader
      *
-     * @throws \App\Containers\ApiAuthentication\Services\MissingTokenException
+     * @throws \App\Containers\ApiAuthentication\Tasks\MissingTokenException
      *
      * @return bool
      */

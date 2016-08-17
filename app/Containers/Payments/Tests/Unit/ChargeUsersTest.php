@@ -3,11 +3,11 @@
 namespace App\Containers\Payments\Tests\Unit;
 
 use App\Containers\Paypal\Actions\CreatePaypalAccountAction;
-use App\Containers\Paypal\Services\ChargeWithPaypalService;
+use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
-use App\Containers\Stripe\Services\ChargeWithStripeService;
+use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
-use App\Containers\Payments\Services\PaymentsFactory;
+use App\Containers\Payments\Tasks\PaymentsFactory;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -29,8 +29,8 @@ class ChargeUsersTest extends TestCase
 
         $payId = 'ch_z8WDARKFvzcBUkvQzrbBvfhz';
 
-        // mock the ChargeWithStripeService external API call
-        $this->mock(ChargeWithStripeService::class)->shouldReceive('charge')->andReturn([
+        // mock the ChargeWithStripeTask external API call
+        $this->mock(ChargeWithStripeTask::class)->shouldReceive('charge')->andReturn([
             'payment_method' => 'stripe',
             'description'    => $payId
         ]);
@@ -53,8 +53,8 @@ class ChargeUsersTest extends TestCase
 
         $payId = 'PAY-04797768K5905283VK6DGEMZ';
 
-        // mock the ChargeWithPaypalService external API call
-        $this->mock(ChargeWithPaypalService::class)->shouldReceive('charge')->andReturn([
+        // mock the ChargeWithPaypalTask external API call
+        $this->mock(ChargeWithPaypalTask::class)->shouldReceive('charge')->andReturn([
             'payment_method' => 'paypal',
             'description'    => $payId
         ]);

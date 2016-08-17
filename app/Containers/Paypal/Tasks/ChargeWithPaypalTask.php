@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Containers\Paypal\Services;
+namespace App\Containers\Paypal\Tasks;
 
 use Anouar\Paypalpayment\PaypalPayment;
 use App\Containers\Payments\Contracts\Chargeable;
 use App\Containers\Paypal\Exceptions\PaypalApiErrorException;
 use App\Containers\User\Models\User;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 use Exception;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ChargeWithPaypalService.
+ * Class ChargeWithPaypalTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithPaypalService extends Service implements Chargeable
+class ChargeWithPaypalTask extends Task implements Chargeable
 {
 
     /**
@@ -24,7 +24,7 @@ class ChargeWithPaypalService extends Service implements Chargeable
     private $paypalPayment;
 
     /**
-     * ChargeWithPaypalService constructor.
+     * ChargeWithPaypalTask constructor.
      *
      * @param \Anouar\Paypalpayment\PaypalPayment $paypalPayment
      */

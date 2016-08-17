@@ -7,7 +7,7 @@ use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 /**
  * Class WelcomeServiceProvider.
  *
- * The Main Service Provider of this Module.
+ * The Main Task Provider of this Module.
  * Will be automatically registered in the framework after
  * adding the Module name to containers config file.
  *
@@ -24,7 +24,7 @@ class WelcomeServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container internal Task Provides.
      *
      * @var array
      */

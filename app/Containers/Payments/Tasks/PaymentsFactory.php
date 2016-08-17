@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Payments\Services;
+namespace App\Containers\Payments\Tasks;
 
 use App\Containers\Payments\Contracts\Chargeable;
 use App\Containers\Payments\Exceptions\ObjectNonChargeableException;
 use App\Containers\Payments\Exceptions\PaymentMethodNotFoundException;
-use App\Containers\Payments\Exceptions\UserNotSetInThePaymentServiceException;
-use App\Containers\Paypal\Services\ChargeWithPaypalService;
-use App\Containers\Stripe\Services\ChargeWithStripeService;
+use App\Containers\Payments\Exceptions\UserNotSetInThePaymentTaskException;
+use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
+use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\App;
 
@@ -41,12 +41,12 @@ class PaymentsFactory
     public function setUserPaymentMethod(User $user)
     {
         if ($user->stripeAccount !== null) {
-            $this->method = App::make(ChargeWithStripeService::class);
+            $this->method = App::make(ChargeWithStripeTask::class);
         } elseif ($user->paypalAccount !== null) {
-            $this->method = App::make(ChargeWithPaypalService::class);
+            $this->method = App::make(ChargeWithPaypalTask::class);
         }
 //        elseif ($user->...Account !== null) {
-//            $this->method = App::make(ChargeWith...Service::class);
+//            $this->method = App::make(ChargeWith...Task::class);
 //        }
 
         // validate a payment method was found

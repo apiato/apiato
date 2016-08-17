@@ -3,7 +3,7 @@
 namespace App\Containers\WebAuthentication\Actions;
 
 use App\Containers\WebAuthentication\Exceptions\AuthenticationFailedException;
-use App\Containers\WebAuthentication\Services\WebAuthenticationService;
+use App\Containers\WebAuthentication\Tasks\WebAuthenticationTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -15,18 +15,18 @@ class AdminLoginAction extends Action
 {
 
     /**
-     * @var  \App\Containers\WebAuthentication\Services\WebAuthenticationService
+     * @var  \App\Containers\WebAuthentication\Tasks\WebAuthenticationTask
      */
-    private $authenticationService;
+    private $authenticationTask;
 
     /**
      * LoginAction constructor.
      *
-     * @param \App\Containers\WebAuthentication\Services\WebAuthenticationService $authenticationService
+     * @param \App\Containers\WebAuthentication\Tasks\WebAuthenticationTask $authenticationTask
      */
-    public function __construct(WebAuthenticationService $authenticationService)
+    public function __construct(WebAuthenticationTask $authenticationTask)
     {
-        $this->authenticationService = $authenticationService;
+        $this->authenticationTask = $authenticationTask;
     }
 
     /**
@@ -39,7 +39,7 @@ class AdminLoginAction extends Action
     public function run($email, $password, $remember)
     {
         try {
-            $user = $this->authenticationService->login($email, $password, $remember);
+            $user = $this->authenticationTask->login($email, $password, $remember);
         } catch (AuthenticationFailedException $e) {
             return ['message' => 'Authentication Failed.'];
         }

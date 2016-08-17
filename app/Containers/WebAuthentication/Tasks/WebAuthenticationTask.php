@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\WebAuthentication\Services;
+namespace App\Containers\WebAuthentication\Tasks;
 
 use App\Containers\WebAuthentication\Exceptions\AuthenticationFailedException;
 use Illuminate\Auth\AuthManager as Auth;
 /**
- * Class WebAuthenticationService.
+ * Class WebAuthenticationTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WebAuthenticationService
+class WebAuthenticationTask
 {
 
     /**
@@ -18,7 +18,7 @@ class WebAuthenticationService
     private $auth;
 
     /**
-     * WebAuthenticationService constructor.
+     * WebAuthenticationTask constructor.
      *
      * @param \Illuminate\Auth\AuthManager $auth
      */

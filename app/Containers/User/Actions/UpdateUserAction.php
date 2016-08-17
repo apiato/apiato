@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Services\UpdateUserService;
+use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,18 +14,18 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Services\UpdateUserService
+     * @var  \App\Containers\User\Tasks\UpdateUserTask
      */
-    private $updateUserService;
+    private $updateUserTask;
 
     /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Services\UpdateUserService $updateUserService
+     * @param \App\Containers\User\Tasks\UpdateUserTask $updateUserTask
      */
-    public function __construct(UpdateUserService $updateUserService)
+    public function __construct(UpdateUserTask $updateUserTask)
     {
-        $this->updateUserService = $updateUserService;
+        $this->updateUserTask = $updateUserTask;
     }
 
     /**
@@ -38,7 +38,7 @@ class UpdateUserAction extends Action
      */
     public function run($userId, $password = null, $name = null, $email = null)
     {
-        $user = $this->updateUserService->run($userId, $password, $name, $email);
+        $user = $this->updateUserTask->run($userId, $password, $name, $email);
 
         return $user;
     }

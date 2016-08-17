@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Containers\User\Services;
+namespace App\Containers\User\Tasks;
 
-use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
+use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Port\Service\Abstracts\Service;
+use App\Port\Task\Abstracts\Task;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class CreateUserService.
+ * Class CreateUserTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateUserService extends Service
+class CreateUserTask extends Task
 {
 
     /**
@@ -23,22 +23,22 @@ class CreateUserService extends Service
     private $userRepository;
 
     /**
-     * @var \App\Containers\ApiAuthentication\Services\ApiAuthenticationService
+     * @var \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask
      */
-    private $authenticationService;
+    private $authenticationTask;
 
     /**
-     * CreateUserService constructor.
+     * CreateUserTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface              $userRepository
-     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService $authenticationService
+     * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $authenticationTask
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        ApiAuthenticationService $authenticationService
+        ApiAuthenticationTask $authenticationTask
     ) {
         $this->userRepository = $userRepository;
-        $this->authenticationService = $authenticationService;
+        $this->authenticationTask = $authenticationTask;
     }
 
     /**
@@ -62,7 +62,7 @@ class CreateUserService extends Service
 
         if ($login) {
             // login this user using it's object and inject it's token on it
-            $user = $this->authenticationService->loginFromObject($user);
+            $user = $this->authenticationTask->loginFromObject($user);
         }
 
         return $user;

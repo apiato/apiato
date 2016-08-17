@@ -2,10 +2,10 @@
 
 namespace App\Containers\Email\Actions;
 
-use App\Containers\Email\Services\GenerateEmailConfirmationUrlService;
-use App\Containers\Email\Services\SendConfirmationEmailService;
-use App\Containers\Email\Services\SetUserEmailService;
-use App\Containers\User\Services\FindUserService;
+use App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask;
+use App\Containers\Email\Tasks\SendConfirmationEmailTask;
+use App\Containers\Email\Tasks\SetUserEmailTask;
+use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -17,43 +17,43 @@ class SetVisitorEmailAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Email\Services\SetUserEmailService
+     * @var  \App\Containers\Email\Tasks\SetUserEmailTask
      */
-    private $setUserEmailService;
+    private $setUserEmailTask;
 
     /**
-     * @var  \App\Containers\Email\Services\GenerateEmailConfirmationUrlService
+     * @var  \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask
      */
-    private $generateEmailConfirmationUrlService;
+    private $generateEmailConfirmationUrlTask;
 
     /**
-     * @var  \App\Containers\Email\Services\SendConfirmationEmailService
+     * @var  \App\Containers\Email\Tasks\SendConfirmationEmailTask
      */
-    private $sendConfirmationEmailService;
+    private $sendConfirmationEmailTask;
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindUserTask
      */
-    private $findUserService;
+    private $findUserTask;
 
     /**
      * SetUserEmailAction constructor.
      *
-     * @param \App\Containers\Email\Services\SetUserEmailService                 $setUserEmailService
-     * @param \App\Containers\Email\Services\GenerateEmailConfirmationUrlService $generateEmailConfirmationUrlService
-     * @param \App\Containers\Email\Services\SendConfirmationEmailService        $sendConfirmationEmailService
-     * @param \App\Containers\User\Services\FindUserService                      $findUserService
+     * @param \App\Containers\Email\Tasks\SetUserEmailTask                 $setUserEmailTask
+     * @param \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask
+     * @param \App\Containers\Email\Tasks\SendConfirmationEmailTask        $sendConfirmationEmailTask
+     * @param \App\Containers\User\Tasks\FindUserTask                      $findUserTask
      */
     public function __construct(
-        SetUserEmailService $setUserEmailService,
-        GenerateEmailConfirmationUrlService $generateEmailConfirmationUrlService,
-        SendConfirmationEmailService $sendConfirmationEmailService,
-        FindUserService $findUserService
+        SetUserEmailTask $setUserEmailTask,
+        GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask,
+        SendConfirmationEmailTask $sendConfirmationEmailTask,
+        FindUserTask $findUserTask
     ) {
-        $this->setUserEmailService = $setUserEmailService;
-        $this->generateEmailConfirmationUrlService = $generateEmailConfirmationUrlService;
-        $this->sendConfirmationEmailService = $sendConfirmationEmailService;
-        $this->findUserService = $findUserService;
+        $this->setUserEmailTask = $setUserEmailTask;
+        $this->generateEmailConfirmationUrlTask = $generateEmailConfirmationUrlTask;
+        $this->sendConfirmationEmailTask = $sendConfirmationEmailTask;
+        $this->findUserTask = $findUserTask;
     }
 
 
@@ -65,9 +65,9 @@ class SetVisitorEmailAction extends Action
      */
     public function run($visitorId, $email)
     {
-        $user = $this->findUserService->byVisitorId($visitorId);
+        $user = $this->findUserTask->byVisitorId($visitorId);
 
-        $this->setUserEmailService->run($user->id, $email);
+        $this->setUserEmailTask->run($user->id, $email);
 
         return true;
     }
