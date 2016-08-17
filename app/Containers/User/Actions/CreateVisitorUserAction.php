@@ -7,11 +7,11 @@ use App\Containers\User\Tasks\FindUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class RegisterVisitorUserAction.
+ * Class CreateVisitorUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterVisitorUserAction extends Action
+class CreateVisitorUserAction extends Action
 {
 
     /**

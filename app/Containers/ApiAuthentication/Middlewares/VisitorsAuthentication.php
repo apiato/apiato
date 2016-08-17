@@ -4,7 +4,7 @@ namespace App\Containers\ApiAuthentication\Middlewares;
 
 use App\Containers\ApiAuthentication\Exceptions\AuthenticationFailedException;
 use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
-use App\Containers\User\Actions\RegisterVisitorUserAction;
+use App\Containers\User\Actions\CreateVisitorUserAction;
 use Closure;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
@@ -23,7 +23,7 @@ class VisitorsAuthentication
     private $agent;
 
     /**
-     * @var  \App\Containers\User\Actions\RegisterVisitorUserAction
+     * @var  \App\Containers\User\Actions\CreateVisitorUserAction
      */
     private $registerVisitorUserAction;
 
@@ -31,11 +31,11 @@ class VisitorsAuthentication
      * VisitorsAuthentication constructor.
      *
      * @param \Jenssegers\Agent\Agent                                $agent
-     * @param \App\Containers\User\Actions\RegisterVisitorUserAction $registerVisitorUserAction
+     * @param \App\Containers\User\Actions\CreateVisitorUserAction $registerVisitorUserAction
      */
     public function __construct(
         Agent $agent,
-        RegisterVisitorUserAction $registerVisitorUserAction
+        CreateVisitorUserAction $registerVisitorUserAction
     ) {
         $this->agent = $agent;
         $this->registerVisitorUserAction = $registerVisitorUserAction;
