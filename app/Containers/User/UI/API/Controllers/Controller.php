@@ -2,22 +2,18 @@
 
 namespace App\Containers\User\UI\API\Controllers;
 
-use App\Containers\ApiAuthentication\Actions\LoginAction;
-use App\Containers\ApiAuthentication\Actions\LogoutAction;
+use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\FindUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
-use App\Containers\User\Actions\CreateUserAction;
-use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Actions\SwitchVisitorToUserAction;
+use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\LoginRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
-use App\Port\Request\Manager\HttpRequest;
 use Dingo\Api\Http\Request;
 
 /**
@@ -56,35 +52,7 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\LoginRequest     $request
-     * @param \App\Containers\ApiAuthentication\Actions\LoginAction $action
-     *
-     * @return  \Dingo\Api\Http\Response
-     */
-    public function loginUser(LoginRequest $request, LoginAction $action)
-    {
-        $user = $action->run($request['email'], $request['password']);
-
-        return $this->response->item($user, new UserTransformer());
-    }
-
-    /**
-     * @param \App\Port\Request\Manager\HttpRequest                  $request
-     * @param \App\Containers\ApiAuthentication\Actions\LogoutAction $action
-     *
-     * @return  \Dingo\Api\Http\Response
-     */
-    public function logoutUser(HttpRequest $request, LogoutAction $action)
-    {
-        $action->run($request->header('authorization'));
-
-        return $this->response->accepted(null, [
-            'message' => 'User Logged Out Successfully.',
-        ]);
-    }
-
-    /**
-     * @param \Dingo\Api\Http\Request                               $request
+     * @param \Dingo\Api\Http\Request                     $request
      * @param \App\Containers\User\Actions\FindUserAction $action
      *
      * @return  \Dingo\Api\Http\Response
@@ -102,7 +70,7 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateUserAction      $action
+     * @param \App\Containers\User\Actions\CreateUserAction        $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -124,7 +92,7 @@ class Controller extends PortApiController
      * The Visitor user usually gets created automatically by a Middleware.
      *
      * @param \App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest $request
-     * @param \App\Containers\User\Actions\SwitchVisitorToUserAction          $action
+     * @param \App\Containers\User\Actions\SwitchVisitorToUserAction        $action
      *
      * @return  \Dingo\Api\Http\Response
      */
