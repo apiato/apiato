@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
 use App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
@@ -10,11 +9,11 @@ use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class UpdateVisitorUserAction.
+ * Class SwitchVisitorToUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateVisitorUserAction extends Action
+class SwitchVisitorToUserAction extends Action
 {
 
     /**
@@ -41,8 +40,8 @@ class UpdateVisitorUserAction extends Action
      * UpdateUserAction constructor.
      *
      * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
-     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask                       $findUserByVisitorIdTask
-     * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask                     $createUserByCredentialsTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask            $findUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask        $createUserByCredentialsTask
      * @param \App\Containers\ApiAuthentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
      */
     public function __construct(
@@ -70,9 +69,6 @@ class UpdateVisitorUserAction extends Action
      */
     public function run($visitorId, $email = null, $password = null, $name = null)
     {
-        if (!$visitorId) {
-            throw (new MissingVisitorIdException())->debug('from (UpdateVisitorUserAction)');
-        }
 
         $user = $this->findUserByVisitorIdTask->run($visitorId);
 

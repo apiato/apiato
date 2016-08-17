@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\Tasks;
 
+use App\Containers\ApiAuthentication\Exceptions\MissingVisitorIdException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -36,6 +36,10 @@ class FindUserByVisitorIdTask extends Task
      */
     public function run($visitorId)
     {
+        if (!$visitorId) {
+            throw (new MissingVisitorIdException());
+        }
+
         $user = $this->userRepository->findByField('visitor_id', $visitorId)->first();
 
         return $user;

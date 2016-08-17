@@ -9,7 +9,7 @@ use App\Containers\User\Actions\FindUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
-use App\Containers\User\Actions\UpdateVisitorUserAction;
+use App\Containers\User\Actions\SwitchVisitorToUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\LoginRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
@@ -124,11 +124,11 @@ class Controller extends PortApiController
      * The Visitor user usually gets created automatically by a Middleware.
      *
      * @param \App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest $request
-     * @param \App\Containers\User\Actions\UpdateVisitorUserAction          $action
+     * @param \App\Containers\User\Actions\SwitchVisitorToUserAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerVisitorUser(UpdateVisitorUserRequest $request, UpdateVisitorUserAction $action)
+    public function registerVisitorUser(UpdateVisitorUserRequest $request, SwitchVisitorToUserAction $action)
     {
         $user = $action->run(
             $request->header('Visitor-Id'),
