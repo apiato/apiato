@@ -2,10 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Port\Action\Abstracts\Action;
-use Exception;
 
 /**
  * Class FindUserByIdAction.
@@ -14,6 +12,7 @@ use Exception;
  */
 class FindUserByIdAction extends Action
 {
+
     /**
      * @var  \App\Containers\User\Tasks\FindUserByIdTask
      */
@@ -37,11 +36,7 @@ class FindUserByIdAction extends Action
      */
     public function run($id)
     {
-        try {
-            $user = $this->findUserByIdTask->run($id);
-        } catch (Exception $e) {
-            throw new UserNotFoundException;
-        }
+        $user = $this->findUserByIdTask->run($id);
 
         return $user;
     }

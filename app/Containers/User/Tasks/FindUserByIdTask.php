@@ -4,6 +4,7 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Task\Abstracts\Task;
+use Exception;
 
 /**
  * Class FindUserByIdTask.
@@ -36,7 +37,11 @@ class FindUserByIdTask extends Task
     public function run($id)
     {
         // find the user by its id
-        $user = $this->userRepository->find($id);
+        try {
+            $user = $this->userRepository->find($id);
+        } catch (Exception $e) {
+            throw new UserNotFoundException();
+        }
 
         return $user;
     }

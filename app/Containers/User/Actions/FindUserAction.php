@@ -2,17 +2,18 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
+use App\Containers\User\Tasks\GetAuthenticatedUserTask;
 use App\Port\Action\Abstracts\Action;
-use Illuminate\Support\Facades\Auth;
 
 /**
- * Class FindUserByAnythingAction.
+ * Class FindUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserByAnythingAction extends Action
+class FindUserAction extends Action
 {
 
     /**
@@ -21,16 +22,25 @@ class FindUserByAnythingAction extends Action
     private $findUserByVisitorIdTask;
 
     /**
+     * @var  \App\Containers\User\Tasks\GetAuthenticatedUserTask
+     */
+    private $getAuthenticatedUserTask;
+
+    /**
      * FindUserByAnythingAction constructor.
      *
-     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask $findUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask  $findUserByVisitorIdTask
+     * @param \App\Containers\User\Tasks\FindUserByIdTask         $findUserByIdTask
+     * @param \App\Containers\User\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
      */
     public function __construct(
         FindUserByVisitorIdTask $findUserByVisitorIdTask,
-        FindUserByIdTask $findUserByIdTask
+        FindUserByIdTask $findUserByIdTask,
+        GetAuthenticatedUserTask $getAuthenticatedUserTask
     ) {
         $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
         $this->findUserByIdTask = $findUserByIdTask;
+        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
     }
 
     /**
@@ -46,12 +56,16 @@ class FindUserByAnythingAction extends Action
             $user = $this->findUserByIdTask->run($userId);
         } else {
             if ($token) {
-                $user = Auth::user();
+                $user = $this->getAuthenticatedUserTask->run();
             } else {
                 if ($visitorId) {
                     $user = $this->findUserByVisitorIdTask->run($visitorId);
                 }
             }
+        }
+
+        if (!$user) {
+            throw new UserNotFoundException();
         }
 
         return $user;
