@@ -23,9 +23,8 @@ class WebLogoutAction extends Action
      *
      * @param \App\Containers\Authentication\Tasks\WebAuthenticationTask $webAuthenticationTask
      */
-    public function __construct(
-        WebAuthenticationTask $webAuthenticationTask
-    ) {
+    public function __construct(WebAuthenticationTask $webAuthenticationTask)
+    {
         $this->webAuthenticationTask = $webAuthenticationTask;
     }
 

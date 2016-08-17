@@ -12,11 +12,4 @@ use App\Port\Controller\Abstracts\PortWebController;
 class Controller extends PortWebController
 {
 
-    /**
-     * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function sayWelcome()
-    {
-        return view('user-welcome');
-    }
 }
