@@ -3,7 +3,7 @@
 namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
-use App\Containers\User\Actions\RegisterUserAction;
+use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr as LaravelArr;
@@ -137,10 +137,10 @@ trait TestingTrait
             ];
         }
 
-        $RegisterUserAction = App::make(RegisterUserAction::class);
+        $CreateUserAction = App::make(CreateUserAction::class);
 
         // create new user and login (true)
-        $user = $RegisterUserAction->run(
+        $user = $CreateUserAction->run(
             $userDetails['email'],
             $userDetails['password'],
             $userDetails['name'],

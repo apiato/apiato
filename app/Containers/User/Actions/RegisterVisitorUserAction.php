@@ -25,7 +25,7 @@ class RegisterVisitorUserAction extends Action
     private $findUserTask;
 
     /**
-     * RegisterUserAction constructor.
+     * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Tasks\CreateUserTask $createUserTask
      * @param \App\Containers\User\Tasks\FindUserTask   $findUserTask

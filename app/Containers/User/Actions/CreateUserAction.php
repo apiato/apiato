@@ -8,11 +8,11 @@ use App\Port\Action\Abstracts\Action;
 use App\Port\Event\Dispatcher\EventsDispatcher;
 
 /**
- * Class RegisterUserAction.
+ * Class CreateUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterUserAction extends Action
+class CreateUserAction extends Action
 {
 
     /**
@@ -26,7 +26,7 @@ class RegisterUserAction extends Action
     private $eventsDispatcher;
 
     /**
-     * RegisterUserAction constructor.
+     * CreateUserAction constructor.
      *
      * @param \App\Containers\User\Tasks\CreateUserTask $createUserTask
      * @param \App\Port\Event\Dispatcher\EventsDispatcher     $eventsDispatcher
