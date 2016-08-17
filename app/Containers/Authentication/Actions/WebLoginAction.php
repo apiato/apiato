@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\WebAuthenticationTask;
+use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,18 +14,18 @@ class WebLoginAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authentication\Tasks\WebAuthenticationTask
+     * @var  \App\Containers\Authentication\Tasks\WebLoginTask
      */
-    private $webAuthenticationTask;
+    private $webLoginTask;
 
     /**
      * LoginAction constructor.
      *
-     * @param \App\Containers\Authentication\Tasks\WebAuthenticationTask $webAuthenticationTask
+     * @param \App\Containers\Authentication\Tasks\WebLoginTask $webLoginTask
      */
-    public function __construct(WebAuthenticationTask $webAuthenticationTask)
+    public function __construct(WebLoginTask $webLoginTask)
     {
-        $this->webAuthenticationTask = $webAuthenticationTask;
+        $this->webLoginTask = $webLoginTask;
     }
 
     /**
@@ -37,7 +37,7 @@ class WebLoginAction extends Action
      */
     public function run($email, $password, $remember)
     {
-        $user = $this->webAuthenticationTask->login($email, $password, $remember);
+        $user = $this->webLoginTask->run($email, $password, $remember);
 
         return $user;
     }

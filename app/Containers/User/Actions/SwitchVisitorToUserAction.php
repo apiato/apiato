@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
+use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Containers\User\Tasks\UpdateUserTask;
@@ -34,7 +34,7 @@ class SwitchVisitorToUserAction extends Action
     /**
      * @var  \App\Containers\Authentication\Tasks\AuthenticationTask
      */
-    private $apiAuthenticationTask;
+    private $apiLoginThisUserObjectTask;
 
     /**
      * SwitchVisitorToUserAction constructor.
@@ -42,18 +42,18 @@ class SwitchVisitorToUserAction extends Action
      * @param \App\Containers\User\Tasks\UpdateUserTask                  $updateUserTask
      * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask         $findUserByVisitorIdTask
      * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask     $createUserByCredentialsTask
-     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
+     * @param \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
      */
     public function __construct(
         UpdateUserTask $updateUserTask,
         FindUserByVisitorIdTask $findUserByVisitorIdTask,
         CreateUserByCredentialsTask $createUserByCredentialsTask,
-        ApiAuthenticationTask $apiAuthenticationTask
+        ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
     ) {
         $this->updateUserTask = $updateUserTask;
         $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
         $this->createUserByCredentialsTask = $createUserByCredentialsTask;
-        $this->apiAuthenticationTask = $apiAuthenticationTask;
+        $this->apiLoginThisUserObjectTask = $apiLoginThisUserObjectTask;
     }
 
     /**
@@ -76,7 +76,7 @@ class SwitchVisitorToUserAction extends Action
             // update the existing user by adding his credentials
             $user = $this->updateUserTask->run($user->id, $password, $name, $email);
             // Login the User from his object
-            $user = $this->apiAuthenticationTask->loginFromObject($user);
+            $user = $this->apiLoginThisUserObjectTask->run($user);
         } else {
             // create the user now, in case that user have registered from the first screen
             $user = $this->createUserByCredentialsTask->run($email, $password, $name, true);

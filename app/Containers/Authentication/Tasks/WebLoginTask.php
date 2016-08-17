@@ -6,11 +6,11 @@ use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use Illuminate\Auth\AuthManager as Auth;
 
 /**
- * Class WebAuthenticationTask.
+ * Class webLoginTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WebAuthenticationTask
+class webLoginTask
 {
 
     /**
@@ -19,7 +19,7 @@ class WebAuthenticationTask
     private $auth;
 
     /**
-     * AuthenticationTask constructor.
+     * WebAuthenticationTask constructor.
      *
      * @param \Illuminate\Auth\AuthManager $auth
      */
@@ -29,36 +29,25 @@ class WebAuthenticationTask
     }
 
     /**
-     * @param $email
-     * @param $password
+     * @param            $email
+     * @param            $password
+     * @param bool|false $remember
      *
-     * @return mixed
+     * @return  mixed
      */
-    public function login($email, $password, $remember = false)
+    public function run($email, $password, $remember = false)
     {
-        if($remember){
+        if ($remember) {
             $remember = true;
         }
 
         $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
 
-        if(!$correct){
-            // TODO: this has to be Web Exception
+        if (!$correct) {
             throw new AuthenticationFailedException();
         }
 
         return $this->auth->user();
     }
-
-    /**
-     * @return  bool
-     */
-    public function logout()
-    {
-        $this->auth->logout();
-
-        return true;
-    }
-
 
 }

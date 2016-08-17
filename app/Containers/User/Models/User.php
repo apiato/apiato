@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Models;
 
-use App\Containers\Authentication\Tasks\TokenTrait;
+use App\Containers\Authentication\Traits\TokenTrait;
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\Tracker\Models\TimeTracker;

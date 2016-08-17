@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\WebAuthenticationTask;
+use App\Containers\Authentication\Tasks\WebLogoutTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -14,18 +14,18 @@ class WebLogoutAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authentication\Tasks\WebAuthenticationTask
+     * @var  \App\Containers\Authentication\Tasks\WebLogoutTask
      */
-    private $webAuthenticationTask;
+    private $webLogoutTask;
 
     /**
      * LogoutAction constructor.
      *
-     * @param \App\Containers\Authentication\Tasks\WebAuthenticationTask $webAuthenticationTask
+     * @param \App\Containers\Authentication\Tasks\WebLogoutTask $webLogoutTask
      */
-    public function __construct(WebAuthenticationTask $webAuthenticationTask)
+    public function __construct(WebLogoutTask $webLogoutTask)
     {
-        $this->webAuthenticationTask = $webAuthenticationTask;
+        $this->webLogoutTask = $webLogoutTask;
     }
 
     /**
@@ -35,7 +35,7 @@ class WebLogoutAction extends Action
      */
     public function run()
     {
-        $hasLoggedOut = $this->webAuthenticationTask->logout();
+        $hasLoggedOut = $this->webLogoutTask->run();
 
         return $hasLoggedOut;
     }

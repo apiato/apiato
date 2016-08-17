@@ -22,22 +22,13 @@ class CreateUserByVisitorIdTask extends Task
     private $userRepository;
 
     /**
-     * @var \App\Containers\Authentication\Tasks\ApiAuthenticationTask
-     */
-    private $apiAuthenticationTask;
-
-    /**
      * CreateUserByVisitorIdTask constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \App\Containers\Authentication\Tasks\ApiAuthenticationTask $apiAuthenticationTask
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
-    public function __construct(
-        UserRepositoryInterface $userRepository,
-        ApiAuthenticationTask $apiAuthenticationTask
-    ) {
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
         $this->userRepository = $userRepository;
-        $this->apiAuthenticationTask = $apiAuthenticationTask;
     }
 
 

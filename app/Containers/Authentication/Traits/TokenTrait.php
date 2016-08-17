@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authentication\Tasks;
+namespace App\Containers\Authentication\Traits;
 
 /**
  * Class TokenTrait.
