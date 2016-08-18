@@ -6,11 +6,11 @@ use App\Containers\Settings\Data\Repositories\SettingsRepository;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class UpdateSettingsTask
+ * Class FindSettingsByKeyTask
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class UpdateSettingsTask extends Task
+class FindSettingsByKeyTask extends Task
 {
 
     /**
@@ -29,42 +29,15 @@ class UpdateSettingsTask extends Task
     }
 
     /**
-     * @param $key
+     * @param $id
      *
      * @return  mixed
      */
-    private function findByKey($key)
+    public function run($key)
     {
         $result = $this->settingsRepository->findWhere(['key' => $key])->first();
 
-        return $result;
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     *
-     * @return  mixed
-     */
-    public function update($key, $value)
-    {
-        $setting = $this->findByKey($key);
-
-        $result = $this->settingsRepository->update([
-            'value' => $value
-        ], $setting->id);
-
-        return $result;
-    }
-
-    /**
-     * @param $value
-     *
-     * @return  mixed
-     */
-    public function updateSomething($value)
-    {
-        return $this->update('something', $value);
+        return $result->value;
     }
 
 }
