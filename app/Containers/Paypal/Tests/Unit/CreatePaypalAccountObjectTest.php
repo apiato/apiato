@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Payment\Tests\Unit;
+namespace App\Containers\Stripe\Tests\Unit;
 
 use App\Containers\Paypal\Tasks\CreatePaypalAccountObjectTask;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
