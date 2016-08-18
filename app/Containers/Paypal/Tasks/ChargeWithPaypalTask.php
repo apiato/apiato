@@ -3,7 +3,7 @@
 namespace App\Containers\Paypal\Tasks;
 
 use Anouar\Paypalpayment\PaypalPayment;
-use App\Containers\Payments\Contracts\Chargeable;
+use App\Containers\Payment\Contracts\Chargeable;
 use App\Containers\Paypal\Exceptions\PaypalApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\Payments\Tasks;
+namespace App\Containers\Payment\Factories;
 
-use App\Containers\Payments\Contracts\Chargeable;
-use App\Containers\Payments\Exceptions\ObjectNonChargeableException;
-use App\Containers\Payments\Exceptions\PaymentMethodNotFoundException;
-use App\Containers\Payments\Exceptions\UserNotSetInThePaymentTaskException;
+use App\Containers\Payment\Contracts\Chargeable;
+use App\Containers\Payment\Exceptions\ObjectNonChargeableException;
+use App\Containers\Payment\Exceptions\PaymentMethodNotFoundException;
+use App\Containers\Payment\Exceptions\UserNotSetInThePaymentTaskException;
 use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Containers\User\Models\User;

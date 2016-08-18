@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\Payments\Tests\Unit;
+namespace App\Containers\Payment\Tests\Unit;
 
+use App\Containers\Payment\Factories\PaymentsFactory;
 use App\Containers\Paypal\Actions\CreatePaypalAccountAction;
 use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
-use App\Containers\Payments\Tasks\PaymentsFactory;
 use Illuminate\Support\Facades\App;
 
 /**

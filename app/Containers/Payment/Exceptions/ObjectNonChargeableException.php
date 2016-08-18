@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Payments\Exceptions;
+namespace App\Containers\Payment\Exceptions;
 
 use App\Port\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;

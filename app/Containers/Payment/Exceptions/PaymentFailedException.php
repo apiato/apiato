@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Containers\Payments\Exceptions;
+namespace App\Containers\Payment\Exceptions;
 
 use App\Port\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
- * Class PaymentMethodNotFoundException.
+ * Class PaymentFailedException.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PaymentMethodNotFoundException extends Exception
+class PaymentFailedException extends Exception
 {
     public $httpStatusCode = SymfonyResponse::HTTP_PAYMENT_REQUIRED;
 
-    public $message = 'Payment method is not found.';
+    public $message = 'Payment failed!';
 }
