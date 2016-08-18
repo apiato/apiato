@@ -2,8 +2,7 @@
 
 namespace App\Containers\Paypal\Actions;
 
-use App\Containers\Paypal\Models\PaypalAccount;
-use App\Containers\Paypal\Data\Repositories\PaypalAccountRepository;
+use App\Containers\Paypal\Tasks\CreatePaypalAccountTask;
 use App\Containers\User\Models\User;
 use App\Port\Action\Abstracts\Action;
 use Auth;
@@ -17,18 +16,18 @@ class CreatePaypalAccountAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Paypal\Data\Repositories\PaypalAccountRepository
+     * @var  \App\Containers\Paypal\Data\Repositories\CreatePaypalAccountTask
      */
-    private $paypalAccountRepository;
+    private $createPaypalAccountTask;
 
     /**
      * CreatePaypalAccountAction constructor.
      *
-     * @param \App\Containers\Paypal\Data\Repositories\PaypalAccountRepository $paypalAccountRepository
+     * @param \App\Containers\Paypal\Data\Repositories\CreatePaypalAccountTask $createPaypalAccountTask
      */
-    public function __construct(PaypalAccountRepository $paypalAccountRepository)
+    public function __construct(CreatePaypalAccountTask $createPaypalAccountTask)
     {
-        $this->paypalAccountRepository = $paypalAccountRepository;
+        $this->createPaypalAccountTask = $createPaypalAccountTask;
     }
 
     /**
@@ -41,11 +40,7 @@ class CreatePaypalAccountAction extends Action
      */
     public function run(User $user, $some_id)
     {
-        $paypalAccount = new PaypalAccount();
-        $paypalAccount->some_id = $some_id;
-        $paypalAccount->user()->associate($user);
-
-        $paypalAccount = $this->paypalAccountRepository->create($paypalAccount->toArray());
+        $paypalAccount = $this->createPaypalAccountTask->run($user, $some_id);
 
         return $paypalAccount;
     }
