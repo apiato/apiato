@@ -63,9 +63,23 @@ class PortButler
      */
     public function getContainersPaths()
     {
-        return File::directories(app_path('Containers'));
-    }
+        $containersPaths = File::directories(app_path('Containers'));
 
+        // TODO: preparing some code to implement the Ships concept to Porto
+
+//        // Search for Ships "_SHIP" of Containers
+//        foreach ($containersPaths as $containersPath) {
+//
+//            if (preg_match('/_SHIP/',$containersPath)){
+//
+//                // append the Ship directories to the Containers directory, since it will contain containers
+//                $shipContainers = File::directories($containersPath);
+//                $containersPaths = array_merge($containersPaths, $shipContainers);
+//            }
+//        }
+
+        return $containersPaths;
+    }
     /**
      * build the main service provider class namespace
      *
