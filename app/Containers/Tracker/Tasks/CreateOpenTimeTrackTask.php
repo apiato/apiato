@@ -4,15 +4,17 @@ namespace App\Containers\Tracker\Tasks;
 
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\Tracker\Models\TimeTracker;
+use App\Containers\User\Models\User;
+use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Port\Task\Abstracts\Task;
 use Carbon\Carbon;
 
 /**
- * Class UpdateTimeTrackerToCloseTask.
+ * Class CreateOpenTimeTrackTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateTimeTrackerToCloseTask extends Task
+class CreateOpenTimeTrackTask extends Task
 {
 
     /**
@@ -31,29 +33,20 @@ class UpdateTimeTrackerToCloseTask extends Task
     }
 
     /**
-     * @param \App\Containers\Tracker\Models\TimeTracker $timeTracker
+     * @param \App\Containers\User\Models\User $user
      *
      * @return  \App\Containers\Tracker\Models\TimeTracker|mixed
      */
-    public function run(TimeTracker $timeTracker)
+    public function run(User $user)
     {
-        if ($timeTracker && $timeTracker->status == TimeTracker::PENDING) {
 
-            $now = Carbon::now();
+        // create the new record with pending status
+        $timeTracker = new TimeTracker();
+        $timeTracker->open_at = Carbon::now();
+        $timeTracker->status = TimeTracker::PENDING;
+        $timeTracker->user()->associate($user);
+        $timeTracker = $this->timeTrackerRepository->create($timeTracker->toArray());
 
-            // get the time between now and when it was opened
-            $durationsSeconds = $now->diffInSeconds($timeTracker->open_at);
-
-            $data = [
-                'status'   => TimeTracker::SUCCEEDED,
-                'close_at' => $now,
-                'duration' => $durationsSeconds,
-            ];
-            $this->timeTrackerRepository->update($data, $timeTracker->id);
-
-            return true;
-        }
-
-        return false;
+        return $timeTracker;
     }
 }

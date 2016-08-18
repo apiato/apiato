@@ -2,29 +2,23 @@
 
 namespace App\Containers\Tracker\Actions;
 
-use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask;
 use App\Containers\Tracker\Tasks\UpdateTimeTrackerToCloseTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class TrackCloseAction.
+ * Class CloseTimeTrackAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class TrackCloseAction extends Action
+class CloseTimeTrackAction extends Task
 {
 
     /**
      * @var  \App\Containers\User\Tasks\FindUserByVisitorIdTask
      */
     private $findUserByVisitorIdTask;
-
-    /**
-     * @var  \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository
-     */
-    private $timeTrackerRepository;
 
     /**
      * @var  \App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask
@@ -37,21 +31,18 @@ class TrackCloseAction extends Action
     private $updateTimeTrackerToCloseTask;
 
     /**
-     * TrackOpenAction constructor.
+     * CloseTimeTrackAction constructor.
      *
-     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask              $findUserByVisitorIdTask
-     * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
-     * @param \App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask               $findPendingTimeTrackerByUserIdTask
-     * @param \App\Containers\Tracker\Tasks\UpdateTimeTrackerToCloseTask                    $updateTimeTrackerToCloseTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask               $findUserByVisitorIdTask
+     * @param \App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask $findPendingTimeTrackerByUserIdTask
+     * @param \App\Containers\Tracker\Tasks\UpdateTimeTrackerToCloseTask       $updateTimeTrackerToCloseTask
      */
     public function __construct(
         FindUserByVisitorIdTask $findUserByVisitorIdTask,
-        TimeTrackerRepository $timeTrackerRepository,
         FindPendingTimeTrackerByUserIdTask $findPendingTimeTrackerByUserIdTask,
         UpdateTimeTrackerToCloseTask $updateTimeTrackerToCloseTask
     ) {
         $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
-        $this->timeTrackerRepository = $timeTrackerRepository;
         $this->findPendingTimeTrackerByUserIdTask = $findPendingTimeTrackerByUserIdTask;
         $this->updateTimeTrackerToCloseTask = $updateTimeTrackerToCloseTask;
     }
@@ -63,7 +54,7 @@ class TrackCloseAction extends Action
      */
     public function run($visitorId)
     {
-        // find the user vy visitor ID to get his real ID
+        // find the user by visitor ID to get his real ID
         $user = $this->findUserByVisitorIdTask->run($visitorId);
 
         // find the pending to close track for this user

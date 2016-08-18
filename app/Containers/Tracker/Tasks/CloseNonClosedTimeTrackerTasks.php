@@ -5,14 +5,13 @@ namespace App\Containers\Tracker\Tasks;
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\Tracker\Models\TimeTracker;
 use App\Port\Task\Abstracts\Task;
-use Carbon\Carbon;
 
 /**
- * Class UpdateTimeTrackerToCloseTask.
+ * Class CloseNonClosedTimeTrackerTasks.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateTimeTrackerToCloseTask extends Task
+class CloseNonClosedTimeTrackerTasks extends Task
 {
 
     /**
@@ -31,29 +30,17 @@ class UpdateTimeTrackerToCloseTask extends Task
     }
 
     /**
-     * @param \App\Containers\Tracker\Models\TimeTracker $timeTracker
+     * @param $timeTracker
      *
-     * @return  \App\Containers\Tracker\Models\TimeTracker|mixed
+     * @return  mixed
      */
-    public function run(TimeTracker $timeTracker)
+    public function run($timeTracker)
     {
+        // check if any previous session was not closed
         if ($timeTracker && $timeTracker->status == TimeTracker::PENDING) {
-
-            $now = Carbon::now();
-
-            // get the time between now and when it was opened
-            $durationsSeconds = $now->diffInSeconds($timeTracker->open_at);
-
-            $data = [
-                'status'   => TimeTracker::SUCCEEDED,
-                'close_at' => $now,
-                'duration' => $durationsSeconds,
-            ];
-            $this->timeTrackerRepository->update($data, $timeTracker->id);
-
-            return true;
+            $this->timeTrackerRepository->update(['status' => TimeTracker::FAILED], $timeTracker->id);
         }
 
-        return false;
+        return $timeTracker;
     }
 }

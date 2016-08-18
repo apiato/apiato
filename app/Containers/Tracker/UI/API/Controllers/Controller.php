@@ -2,8 +2,8 @@
 
 namespace App\Containers\Tracker\UI\API\Controllers;
 
-use App\Containers\Tracker\Actions\TrackCloseAction;
-use App\Containers\Tracker\Actions\TrackOpenAction;
+use App\Containers\Tracker\Actions\CloseTimeTrackAction;
+use App\Containers\Tracker\Actions\OpenTimeTrackAction;
 use App\Port\Controller\Abstracts\PortApiController;
 use Dingo\Api\Http\Request;
 use Dingo\Api\Http\Response;
@@ -18,11 +18,11 @@ class Controller extends PortApiController
 
     /**
      * @param \Dingo\Api\Http\Request                         $request
-     * @param \App\Containers\Tracker\Actions\TrackOpenAction $action
+     * @param \App\Containers\Tracker\Actions\OpenTimeTrackAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function trackOpen(Request $request, TrackOpenAction $action)
+    public function trackOpen(Request $request, OpenTimeTrackAction $action)
     {
         $visitorId = $request->header('visitor-id');
 
@@ -36,11 +36,11 @@ class Controller extends PortApiController
 
     /**
      * @param \Dingo\Api\Http\Request                         $request
-     * @param \App\Containers\Tracker\Actions\TrackOpenAction $action
+     * @param \App\Containers\Tracker\Actions\OpenTimeTrackAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function trackClose(Request $request, TrackCloseAction $action)
+    public function trackClose(Request $request, CloseTimeTrackAction $action)
     {
         $visitorId = $request->header('visitor-id');
 
