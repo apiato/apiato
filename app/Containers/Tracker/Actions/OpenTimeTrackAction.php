@@ -6,14 +6,14 @@ use App\Containers\Tracker\Tasks\CloseNonClosedTimeTrackerTasks;
 use App\Containers\Tracker\Tasks\CreateOpenTimeTrackTask;
 use App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
-use App\Port\Task\Abstracts\Task;
+use App\Port\Action\Abstracts\Action;
 
 /**
  * Class OpenTimeTrackAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class OpenTimeTrackAction extends Task
+class OpenTimeTrackAction extends Action
 {
 
     /**

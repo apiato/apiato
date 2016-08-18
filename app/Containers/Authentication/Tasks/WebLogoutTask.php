@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Tasks;
 
+use App\Port\Task\Abstracts\Task;
 use Illuminate\Auth\AuthManager as Auth;
 
 /**
@@ -9,7 +10,7 @@ use Illuminate\Auth\AuthManager as Auth;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WebLogoutTask
+class WebLogoutTask extends Task
 {
 
     /**

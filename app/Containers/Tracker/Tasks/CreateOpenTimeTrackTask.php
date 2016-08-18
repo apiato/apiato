@@ -5,7 +5,6 @@ namespace App\Containers\Tracker\Tasks;
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\Tracker\Models\TimeTracker;
 use App\Containers\User\Models\User;
-use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use App\Port\Task\Abstracts\Task;
 use Carbon\Carbon;
 

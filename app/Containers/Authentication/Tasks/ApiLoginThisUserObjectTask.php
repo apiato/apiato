@@ -4,6 +4,7 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Adapters\JwtAuthAdapter;
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
+use App\Port\Task\Abstracts\Task;
 use Exception;
 
 /**
@@ -11,7 +12,7 @@ use Exception;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLoginThisUserObjectTask
+class ApiLoginThisUserObjectTask extends Task
 {
 
     /**

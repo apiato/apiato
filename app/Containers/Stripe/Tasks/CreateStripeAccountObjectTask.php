@@ -2,10 +2,10 @@
 
 namespace App\Containers\Stripe\Tasks;
 
-use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
+use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\User\Models\User;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 use Auth;
 
 /**
@@ -13,7 +13,7 @@ use Auth;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateStripeAccountObjectTask extends Action
+class CreateStripeAccountObjectTask extends Task
 {
 
     /**

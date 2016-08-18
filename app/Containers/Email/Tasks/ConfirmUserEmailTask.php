@@ -3,14 +3,14 @@
 namespace App\Containers\Email\Tasks;
 
 use App\Containers\User\Models\User;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 
 /**
  * Class ConfirmUserEmailTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ConfirmUserEmailTask extends Action
+class ConfirmUserEmailTask extends Task
 {
 
     /**

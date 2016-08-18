@@ -3,7 +3,7 @@
 namespace App\Containers\Email\Tasks;
 
 use App\Containers\Email\Exceptions\InvalidConfirmationCodeException;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 use Illuminate\Cache\Repository as Cache;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\Cache\Repository as Cache;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidateConfirmationCodeTask extends Action
+class ValidateConfirmationCodeTask extends Task
 {
 
     /**

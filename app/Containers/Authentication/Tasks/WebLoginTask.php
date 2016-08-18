@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
+use App\Port\Task\Abstracts\Task;
 use Illuminate\Auth\AuthManager as Auth;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Auth\AuthManager as Auth;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class webLoginTask
+class webLoginTask extends Task
 {
 
     /**

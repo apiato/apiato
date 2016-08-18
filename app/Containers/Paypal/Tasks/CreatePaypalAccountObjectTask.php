@@ -5,7 +5,7 @@ namespace App\Containers\Paypal\Tasks;
 use App\Containers\Paypal\Data\Repositories\PaypalAccountRepository;
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\User\Models\User;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 use Auth;
 
 /**
@@ -13,7 +13,7 @@ use Auth;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class CreatePaypalAccountObjectTask extends Action
+class CreatePaypalAccountObjectTask extends Task
 {
 
     /**

@@ -4,13 +4,14 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Adapters\JwtAuthAdapter;
 use App\Containers\Authentication\Exceptions\MissingTokenException;
+use App\Port\Task\Abstracts\Task;
 
 /**
  * Class ApiLogoutTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLogoutTask
+class ApiLogoutTask extends Task
 {
 
     /**

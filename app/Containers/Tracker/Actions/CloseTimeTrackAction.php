@@ -5,14 +5,14 @@ namespace App\Containers\Tracker\Actions;
 use App\Containers\Tracker\Tasks\FindPendingTimeTrackerByUserIdTask;
 use App\Containers\Tracker\Tasks\UpdateTimeTrackerToCloseTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
-use App\Port\Task\Abstracts\Task;
+use App\Port\Action\Abstracts\Action;
 
 /**
  * Class CloseTimeTrackAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CloseTimeTrackAction extends Task
+class CloseTimeTrackAction extends Action
 {
 
     /**

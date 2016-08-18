@@ -4,13 +4,14 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Exceptions\UserNotAdminException;
 use App\Containers\User\Models\User;
+use App\Port\Task\Abstracts\Task;
 
 /**
  * Class ValidateUserIsAdminTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidateUserIsAdminTask
+class ValidateUserIsAdminTask extends Task
 {
 
     /**
