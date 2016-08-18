@@ -33,6 +33,7 @@ class FindUserByIdTask extends Task
      * @param $id
      *
      * @return  mixed
+     * @throws \App\Containers\User\Tasks\UserNotFoundException
      */
     public function run($id)
     {

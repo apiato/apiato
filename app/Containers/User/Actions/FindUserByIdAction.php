@@ -23,9 +23,8 @@ class FindUserByIdAction extends Action
      *
      * @param \App\Containers\User\Tasks\FindUserByIdTask $findUserByIdTask
      */
-    public function __construct(
-        FindUserByIdTask $findUserByIdTask
-    ) {
+    public function __construct(FindUserByIdTask $findUserByIdTask)
+    {
         $this->findUserByIdTask = $findUserByIdTask;
     }
 

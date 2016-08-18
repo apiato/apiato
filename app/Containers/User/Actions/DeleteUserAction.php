@@ -31,12 +31,12 @@ class DeleteUserAction extends Action
     /**
      * @param $userId
      *
-     * @return bool
+     * @return  bool
      */
     public function run($userId)
     {
-        $done = $this->deleteUserTask->run($userId);
+        $isDeleted = $this->deleteUserTask->run($userId);
 
-        return $done;
+        return $isDeleted;
     }
 }

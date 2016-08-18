@@ -17,14 +17,14 @@ class Controller extends PortApiController
 {
 
     /**
-     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $setEmailRequest
+     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $request
      * @param \App\Containers\Email\Actions\SetUserEmailWithConfirmationAction   $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function setUserEmailController(SetUserEmailRequest $setEmailRequest, SetUserEmailWithConfirmationAction $action)
+    public function setUserEmailController(SetUserEmailRequest $request, SetUserEmailWithConfirmationAction $action)
     {
-        $action->run($setEmailRequest->id, $setEmailRequest->email);
+        $action->run($request->id, $request->email);
 
         return $this->response->accepted(null, [
             'message' => 'User Email Saved Successfully.',
@@ -32,14 +32,14 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest $setEmailRequest
+     * @param \App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest $request
      * @param \App\Containers\Email\Actions\SetVisitorEmailAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function SetVisitorEmailController(SetVisitorEmailRequest $setEmailRequest, SetVisitorEmailAction $action)
+    public function SetVisitorEmailController(SetVisitorEmailRequest $request, SetVisitorEmailAction $action)
     {
-        $action->run($setEmailRequest->header('visitor-id'), $setEmailRequest->email);
+        $action->run($request->header('visitor-id'), $request->email);
 
         return $this->response->accepted(null, [
             'message' => 'Visitor Email Saved Successfully.',
