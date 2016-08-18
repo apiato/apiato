@@ -2,18 +2,18 @@
 
 namespace App\Containers\Paypal\Tasks;
 
-use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Paypal\Data\Repositories\PaypalAccountRepository;
+use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\User\Models\User;
 use App\Port\Action\Abstracts\Action;
 use Auth;
 
 /**
- * Class CreatePaypalAccountTask
+ * Class CreatePaypalAccountObjectTask
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class CreatePaypalAccountTask extends Action
+class CreatePaypalAccountObjectTask extends Action
 {
 
     /**
@@ -22,7 +22,7 @@ class CreatePaypalAccountTask extends Action
     private $paypalAccountRepository;
 
     /**
-     * CreatePaypalAccountAction constructor.
+     * CreatePaypalAccountTask constructor.
      *
      * @param \App\Containers\Paypal\Data\Repositories\PaypalAccountRepository $paypalAccountRepository
      */

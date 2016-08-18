@@ -3,7 +3,7 @@
 namespace App\Containers\Payment\Tests\Unit;
 
 use App\Containers\Payment\Factories\PaymentsFactory;
-use App\Containers\Paypal\Actions\CreatePaypalAccountAction;
+use App\Containers\Paypal\Tasks\CreatePaypalAccountObjectTask;
 use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
@@ -48,7 +48,7 @@ class ChargeUsersTest extends TestCase
         $user = $this->registerAndLoginTestingUser();
 
         // create stripe account for this user
-        $createPaypalAccountAction = App::make(CreatePaypalAccountAction::class);
+        $createPaypalAccountAction = App::make(CreatePaypalAccountObjectTask::class);
         $paypalAccount = $createPaypalAccountAction->run($user, '8mBD5S1SoyD4zL');
 
         $payId = 'PAY-04797768K5905283VK6DGEMZ';
