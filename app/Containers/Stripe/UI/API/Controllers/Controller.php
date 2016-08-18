@@ -16,7 +16,9 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest $request
-     * @param \App\Containers\Stripe\Actions\CreateStripeAccountAction   $action
+     * @param \App\Containers\Stripe\Actions\CreateStripeAccountAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
     public function createStripeAccount(CreateStripeAccountRequest $request, CreateStripeAccountAction $action)
     {
@@ -30,7 +32,7 @@ class Controller extends PortApiController
         );
 
         return $this->response->accepted(null, [
-            'message' => 'Stripe account created successfully.',
+            'message'           => 'Stripe account created successfully.',
             'stripe_account_id' => $stripeAccount->id,
         ]);
     }

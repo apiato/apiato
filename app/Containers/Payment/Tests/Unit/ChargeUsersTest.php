@@ -5,7 +5,7 @@ namespace App\Containers\Payment\Tests\Unit;
 use App\Containers\Payment\Factories\PaymentsFactory;
 use App\Containers\Paypal\Tasks\CreatePaypalAccountObjectTask;
 use App\Containers\Paypal\Tasks\ChargeWithPaypalTask;
-use App\Containers\Stripe\Actions\CreateStripeAccountAction;
+use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 use Illuminate\Support\Facades\App;
@@ -24,7 +24,7 @@ class ChargeUsersTest extends TestCase
         $user = $this->registerAndLoginTestingUser();
 
         // create stripe account for this user
-        $createStripeAccountAction = App::make(CreateStripeAccountAction::class);
+        $createStripeAccountAction = App::make(CreateStripeAccountObjectTask::class);
         $stripeAccount = $createStripeAccountAction->run($user, 'cus_8mBD5S1SoyD4zL', 'card_18Uck6KFvMcBUkvQorbBkYhR', 'credit', '4242', 'WsNM4K8puHbdS2VP');
 
         $payId = 'ch_z8WDARKFvzcBUkvQzrbBvfhz';

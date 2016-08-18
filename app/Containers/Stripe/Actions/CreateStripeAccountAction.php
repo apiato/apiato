@@ -2,8 +2,7 @@
 
 namespace App\Containers\Stripe\Actions;
 
-use App\Containers\Stripe\Models\StripeAccount;
-use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
+use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
 use App\Containers\User\Models\User;
 use App\Port\Action\Abstracts\Action;
 use Auth;
@@ -17,23 +16,21 @@ class CreateStripeAccountAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Stripe\Data\Repositories\StripeAccountRepository
+     * @var  \App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask
      */
-    private $stripeAccountRepository;
+    private $createStripeAccountObjectTask;
 
     /**
      * CreateStripeAccountAction constructor.
      *
-     * @param \App\Containers\Stripe\Data\Repositories\StripeAccountRepository $stripeAccountRepository
+     * @param \App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask $createStripeAccountObjectTask
      */
-    public function __construct(StripeAccountRepository $stripeAccountRepository)
+    public function __construct(CreateStripeAccountObjectTask $createStripeAccountObjectTask)
     {
-        $this->stripeAccountRepository = $stripeAccountRepository;
+        $this->createStripeAccountObjectTask = $createStripeAccountObjectTask;
     }
 
     /**
-     * Create stripe account in my database
-     *
      * @param \App\Containers\User\Models\User $user
      * @param                                  $customer_id
      * @param                                  $card_id
@@ -45,15 +42,14 @@ class CreateStripeAccountAction extends Action
      */
     public function run(User $user, $customer_id, $card_id, $card_funding, $card_last_digits, $card_fingerprint)
     {
-        $stripeAccount = new StripeAccount();
-        $stripeAccount->customer_id = $customer_id;
-        $stripeAccount->card_id = $card_id;
-        $stripeAccount->card_funding = $card_funding;
-        $stripeAccount->card_last_digits = $card_last_digits;
-        $stripeAccount->card_fingerprint = $card_fingerprint;
-        $stripeAccount->user()->associate($user);
-
-        $stripeAccount = $this->stripeAccountRepository->create($stripeAccount->toArray());
+        $stripeAccount = $this->createStripeAccountObjectTask->run(
+            $user,
+            $customer_id,
+            $card_id,
+            $card_funding,
+            $card_last_digits,
+            $card_fingerprint
+        );
 
         return $stripeAccount;
     }
