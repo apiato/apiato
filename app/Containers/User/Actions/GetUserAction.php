@@ -9,11 +9,11 @@ use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class FindUserAction.
+ * Class GetUserAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserAction extends Action
+class GetUserAction extends Action
 {
 
     /**
@@ -50,7 +50,7 @@ class FindUserAction extends Action
      *
      * @return  mixed
      */
-    public function run($userId, $visitorId, $token)
+    public function run($userId, $visitorId = null, $token = null)
     {
         if ($userId) {
             $user = $this->findUserByIdTask->run($userId);

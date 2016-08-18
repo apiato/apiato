@@ -4,7 +4,7 @@ namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
-use App\Containers\User\Actions\FindUserAction;
+use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\SwitchVisitorToUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
@@ -53,11 +53,11 @@ class Controller extends PortApiController
 
     /**
      * @param \Dingo\Api\Http\Request                     $request
-     * @param \App\Containers\User\Actions\FindUserAction $action
+     * @param \App\Containers\User\Actions\GetUserAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function refreshUser(Request $request, FindUserAction $action)
+    public function refreshUser(Request $request, GetUserAction $action)
     {
         $user = $action->run(
             $request['user_id'],
