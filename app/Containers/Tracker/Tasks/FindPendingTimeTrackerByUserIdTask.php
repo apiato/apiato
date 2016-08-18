@@ -3,15 +3,16 @@
 namespace App\Containers\Tracker\Tasks;
 
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
-use App\Port\Criterias\Eloquent\IsNullCriteria;
+use App\Containers\Tracker\Models\TimeTracker;
+use App\Port\Criterias\Eloquent\ThisEqualThatCriteria;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class FindTimeTrackerTask.
+ * Class FindPendingTimeTrackerByUserIdTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindTimeTrackerTask extends Task
+class FindPendingTimeTrackerByUserIdTask extends Task
 {
 
     /**
@@ -30,35 +31,15 @@ class FindTimeTrackerTask extends Task
     }
 
     /**
-     * @param $id
-     *
-     * @return  mixed
-     */
-    public function byId($id)
-    {
-        return $this->timeTrackerRepository->find($id);
-    }
-
-    /**
-     * @param $userId
-     *
-     * @return  mixed
-     */
-    public function byUserId($userId)
-    {
-        return $this->timeTrackerRepository->findByField('user_id', $userId)->first();
-    }
-
-    /**
      * @param $userId
      *
      * @return  mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function byUserIdAndStatusNull($userId)
+    public function run($userId)
     {
-        $this->timeTrackerRepository->pushCriteria(new IsNullCriteria('status'));
+        $this->timeTrackerRepository->pushCriteria(new ThisEqualThatCriteria('status', TimeTracker::PENDING));
 
-        return $this->byUserId($userId);
+        return $this->timeTrackerRepository->findByField('user_id', $userId)->first();
     }
 }
