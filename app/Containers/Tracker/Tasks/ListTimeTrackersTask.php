@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Tracker\Actions;
+namespace App\Containers\Tracker\Tasks;
 
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
-use App\Port\Action\Abstracts\Action;
+use App\Port\Task\Abstracts\Task;
 
 /**
- * Class ListTimeTrackerAction.
+ * Class ListTimeTrackersTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ListTimeTrackerAction extends Action
+class ListTimeTrackersTask extends Task
 {
 
 
@@ -34,7 +34,7 @@ class ListTimeTrackerAction extends Action
      *
      * @return  mixed
      */
-    public function all($relations = ['user'])
+    public function run($relations = ['user'])
     {
         $this->timeTrackerRepository->with($relations);
 

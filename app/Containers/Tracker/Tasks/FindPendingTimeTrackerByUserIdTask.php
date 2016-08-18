@@ -21,7 +21,7 @@ class FindPendingTimeTrackerByUserIdTask extends Task
     private $timeTrackerRepository;
 
     /**
-     * FindTimeTrackerTask constructor.
+     * FindPendingTimeTrackerByUserIdTask constructor.
      *
      * @param \App\Containers\Tracker\Data\Repositories\TimeTrackerRepository $timeTrackerRepository
      */
