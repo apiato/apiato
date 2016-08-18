@@ -8,11 +8,11 @@ use App\Containers\Email\Tasks\SetUserEmailTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class SetUserEmailAction.
+ * Class SetUserEmailWithConfirmationAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SetUserEmailAction extends Action
+class SetUserEmailWithConfirmationAction extends Action
 {
 
     /**

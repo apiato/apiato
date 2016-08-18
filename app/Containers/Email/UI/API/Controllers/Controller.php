@@ -2,7 +2,7 @@
 
 namespace App\Containers\Email\UI\API\Controllers;
 
-use App\Containers\Email\Actions\SetUserEmailAction;
+use App\Containers\Email\Actions\SetUserEmailWithConfirmationAction;
 use App\Containers\Email\Actions\SetVisitorEmailAction;
 use App\Containers\Email\UI\API\Requests\SetUserEmailRequest;
 use App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest;
@@ -18,13 +18,13 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $setEmailRequest
-     * @param \App\Containers\Email\Actions\SetUserEmailAction   $setUserEmailAction
+     * @param \App\Containers\Email\Actions\SetUserEmailWithConfirmationAction   $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function setUserEmailController(SetUserEmailRequest $setEmailRequest, SetUserEmailAction $setUserEmailAction)
+    public function setUserEmailController(SetUserEmailRequest $setEmailRequest, SetUserEmailWithConfirmationAction $action)
     {
-        $setUserEmailAction->run($setEmailRequest->id, $setEmailRequest->email);
+        $action->run($setEmailRequest->id, $setEmailRequest->email);
 
         return $this->response->accepted(null, [
             'message' => 'User Email Saved Successfully.',
@@ -32,8 +32,8 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $setEmailRequest
-     * @param \App\Containers\Email\Actions\SetUserEmailAction   $setUserEmailAction
+     * @param \App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest $setEmailRequest
+     * @param \App\Containers\Email\Actions\SetVisitorEmailAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */

@@ -2,40 +2,68 @@
 
 namespace App\Containers\Email\Actions;
 
-use App\Containers\Email\Exceptions\InvalidConfirmationCodeException;
+use App\Containers\Email\Tasks\ConfirmUserEmailTask;
+use App\Containers\Email\Tasks\ValidateConfirmationCodeTask;
+use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Port\Action\Abstracts\Action;
-use Illuminate\Support\Facades\Cache;
 
 /**
- * Class ValidateConfirmationCodeAction.
+ * Class ValidateUserEmailByConfirmationCodeAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidateConfirmationCodeAction extends Action
+class ValidateUserEmailByConfirmationCodeAction extends Action
 {
 
     /**
-     * @param $user
+     * @var  \App\Containers\Email\Tasks\ValidateConfirmationCodeTask
+     */
+    private $validateConfirmationCodeTask;
+
+    /**
+     * @var  \App\Containers\User\Tasks\FindUserByIdTask
+     */
+    private $findUserByIdTask;
+
+    /**
+     * @var  \App\Containers\Email\Tasks\ConfirmUserEmailTask
+     */
+    private $confirmUserEmailTask;
+
+    /**
+     * ValidateConfirmationCodeAction constructor.
+     *
+     * @param \App\Containers\Email\Tasks\ValidateConfirmationCodeTask $validateConfirmationCodeTask
+     * @param \App\Containers\User\Tasks\FindUserByIdTask              $findUserByIdTask
+     * @param \App\Containers\Email\Tasks\ConfirmUserEmailTask         $confirmUserEmailTask
+     */
+    public function __construct(
+        ValidateConfirmationCodeTask $validateConfirmationCodeTask,
+        FindUserByIdTask $findUserByIdTask,
+        ConfirmUserEmailTask $confirmUserEmailTask
+    ) {
+        $this->validateConfirmationCodeTask = $validateConfirmationCodeTask;
+        $this->findUserByIdTask = $findUserByIdTask;
+        $this->confirmUserEmailTask = $confirmUserEmailTask;
+    }
+
+    /**
+     * @param $userId
      * @param $code
      *
      * @return  bool
+     * @throws \App\Containers\User\Tasks\UserNotFoundException
      */
-    public function run($user, $code)
+    public function run($userId, $code)
     {
-        // find the confirmation code of this user from the cache
-        $codeFromCache = Cache::get('user:email-confirmation-code:' . $user->id);
+        $this->validateConfirmationCodeTask->run($userId, $code);
 
-        // if code is valid
-        if (!$codeFromCache && $codeFromCache != $code) {
-            throw new InvalidConfirmationCodeException;
-        }
+        // TODO: can replace both tasks below with a single task to reduce the queries from 2 to 1
+        //       the query can be Update (confirmed = true) by User ID
 
-        // update user state
-        $user->confirmed = true;
-        $user->save();
+        $user = $this->findUserByIdTask->run($userId);
 
-        // remove the confirmation code from the cache
-        Cache::forget('user:email-confirmation-code:' . $user->id);
+        $this->confirmUserEmailTask->run($user);
 
         return true;
     }
