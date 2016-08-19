@@ -128,8 +128,8 @@ $router->post('register/visitor', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            RegisterUser
- * @api                {post} /register Register a new User by his credentials
- * @apiDescription     Create and Login new user
+ * @api                {post} /register Create and Login new user
+ * @apiDescription     Register a new User by credentials
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json
