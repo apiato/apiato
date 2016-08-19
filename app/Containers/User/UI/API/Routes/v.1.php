@@ -5,7 +5,7 @@
  * @apiName            RefreshUser
  * @api                {post} /users/refresh Refresh user data
  * @apiDescription     Update the user data. You can send the `visitor-id` header,
- * `token` header or `id_user` parameter to get the updated user data.
+ * `token` header or `user_id` parameter to get the updated user data.
  * You can call this endpoint after some important events such as xx min after user took an offer
  * (to see if he completed it and got some points) or directly after a user redeem a reward,
  * to display his new points.
@@ -14,7 +14,7 @@
  * @apiHeader          Accept application/json (required)
  * @apiHeader          visitor-id The Device ID [12345] (optional)
  * @apiHeader          Authorization The user token [Bearer a1b2c3d4..] (optional)
- * @apiParam           id_user User Id (optional)
+ * @apiParam           user_id User Id (optional)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 200 OK
 
