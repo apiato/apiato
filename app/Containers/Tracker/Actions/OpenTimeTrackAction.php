@@ -73,7 +73,7 @@ class OpenTimeTrackAction extends Action
         $this->closeNonClosedTimeTrackerTasks->run($timeTracker);
 
         // create new time track record
-        $this->createOpenTimeTrackTask->run($user);
+        $this->createOpenTimeTrackTask->run($user->id);
 
         return $timeTracker;
     }

@@ -4,7 +4,6 @@ namespace App\Containers\Tracker\Tasks;
 
 use App\Containers\Tracker\Data\Repositories\TimeTrackerRepository;
 use App\Containers\Tracker\Models\TimeTracker;
-use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
 use Carbon\Carbon;
 
@@ -36,14 +35,13 @@ class CreateOpenTimeTrackTask extends Task
      *
      * @return  \App\Containers\Tracker\Models\TimeTracker|mixed
      */
-    public function run(User $user)
+    public function run($userId)
     {
-
         // create the new record with pending status
         $timeTracker = new TimeTracker();
         $timeTracker->open_at = Carbon::now();
         $timeTracker->status = TimeTracker::PENDING;
-        $timeTracker->user()->associate($user);
+        $timeTracker->user()->associate($userId);
         $timeTracker = $this->timeTrackerRepository->create($timeTracker->toArray());
 
         return $timeTracker;
