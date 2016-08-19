@@ -3,12 +3,11 @@
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            RefreshUser
- * @api                {post} /users/refresh Refresh user data
- * @apiDescription     Update the user data. You can send the `visitor-id` header,
- * `token` header or `user_id` parameter to get the updated user data.
- * You can call this endpoint after some important events such as xx min after user took an offer
- * (to see if he completed it and got some points) or directly after a user redeem a reward,
- * to display his new points.
+ * @api                {post} /users/refresh Refresh User data
+ * @apiDescription     Request the latest user Data. You can send the `visitor-id`
+ * header, `token` header or `user_id` parameter to get the updated user data.
+ * (You can use this Endpoint whenever the user object is updated for any reason to get
+ * his updated data).
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
@@ -45,8 +44,7 @@ $router->post('users/refresh', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            UpdateUser
- * @api                {put} /users/{id} Update a User
- * @apiDescription     Update User details
+ * @api                {put} /users/{id} Update User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json
@@ -85,8 +83,10 @@ $router->put('users/{id}', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            registerVisitorUser
- * @api                {post} /register/visitor Register user
- * @apiDescription     Register and login a User by his Visitor Id (A.K.A Device ID).
+ * @api                {post} /register/visitor Register Visitor
+ * @apiDescription     This is different than the Register User (Create User) Endpoint.
+ * This will register and login a User by his Visitor Id (A.K.A Device ID), and it
+ * require that the user is already created as Visitor before.
  * This registration Endpoint must be used when the App allows Users to use the App
  * first and register later.
  * @apiVersion         1.0.0
@@ -128,8 +128,9 @@ $router->post('register/visitor', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            RegisterUser
- * @api                {post} /register Create and Login new user
- * @apiDescription     Register a new User by credentials
+ * @api                {post} /register Create User (Register)
+ * @apiDescription     Register a new User by credentials. This will also Login the
+ * new created user.
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json
@@ -166,8 +167,7 @@ $router->post('register', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            DeleteUser
- * @api                {delete} /users/{id} Delete a User
- * @apiDescription     Delete User from Database
+ * @api                {delete} /users/{id} Delete User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json (required)

@@ -1,10 +1,9 @@
 <?php
 
 /*********************************************************************************
- * @apiGroup           Users
+ * @apiGroup           Authentication
  * @apiName            Login
  * @api                {post} /login Login a user
- * @apiDescription     Login existing User
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
@@ -38,10 +37,9 @@ $router->post('login', [
 ]);
 
 /*********************************************************************************
- * @apiGroup           Users
+ * @apiGroup           Authentication
  * @apiName            Logout
  * @api                {post} /logout Logout a user
- * @apiDescription     Logout an Authenticated User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json (required)

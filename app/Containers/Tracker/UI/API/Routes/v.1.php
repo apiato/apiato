@@ -2,7 +2,7 @@
 /*********************************************************************************
  * @apiGroup           Tracker
  * @apiName            trackOpen
- * @api                {post} /track/open Track when user opens the app
+ * @api                {post} /track/open Track App open
  * @apiDescription     Call this Endpoint when the user first open the app
  * @apiVersion         1.0.0
  * @apiPermission      Visitor
@@ -25,7 +25,7 @@ $router->post('track/open', [
 /*********************************************************************************
  * @apiGroup           Tracker
  * @apiName            trackClose
- * @api                {post} /track/close Track when user closes the app
+ * @api                {post} /track/close Track App close
  * @apiDescription     Call this Endpoint when the user closes the app
  * @apiVersion         1.0.0
  * @apiPermission      Visitor

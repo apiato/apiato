@@ -4,7 +4,6 @@
  * @apiGroup           Emails
  * @apiName            SetUserEmailController
  * @api                {post} /users/{id}/email Update User Email
- * @apiDescription     Set an email for the User
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
@@ -24,7 +23,6 @@ $router->post('/users/{id}/email', [
  * @apiGroup           Emails
  * @apiName            SetVisitorEmailController
  * @api                {post} /visitors/email Set visitor Email
- * @apiDescription     Set visitor Email
  * @apiVersion         1.0.0
  * @apiPermission      visitor
  * @apiHeader          Accept application/json (required)
