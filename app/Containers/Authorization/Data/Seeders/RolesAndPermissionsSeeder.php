@@ -23,13 +23,6 @@ class RolesAndPermissionsSeeder extends Seeder
         $adminRole->display_name = 'Administrator';
         $adminRole->save();
 
-        $accessDashboardPermission = new Permission();
-        $accessDashboardPermission->name = 'access-dashboard';
-        $accessDashboardPermission->display_name = 'Access the Admins Dashboard';
-        $accessDashboardPermission->save();
-
-        $adminRole->attachPermission($accessDashboardPermission);
-
         $admin = new User();
         $admin->name = 'Super Admin';
         $admin->email = 'admin@admin.com';
@@ -37,5 +30,12 @@ class RolesAndPermissionsSeeder extends Seeder
         $admin->save();
 
         $admin->attachRole($adminRole);
+
+        $accessDashboardPermission = new Permission();
+        $accessDashboardPermission->name = 'access-dashboard';
+        $accessDashboardPermission->display_name = 'Access the Admins Dashboard';
+        $accessDashboardPermission->save();
+
+        $adminRole->attachPermission($accessDashboardPermission);
     }
 }
