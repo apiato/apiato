@@ -10,6 +10,7 @@ use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
+use App\Containers\Authorization\Models\Role;
 
 /**
  * Class TestingTrait.
@@ -107,6 +108,20 @@ trait TestingTrait
         if (!$user) {
             $user = $this->registerAndLoginTestingUser();
         }
+
+        return $user;
+    }
+
+    /**
+     * @return  \App\Port\Tests\PHPUnit\Traits\User|mixed
+     */
+    public function getLoggedInTestingAdmin()
+    {
+        $user = $this->getLoggedInTestingUser();
+
+        $adminRole = Role::where('name', 'admin')->first();
+
+        $user->attachRole($adminRole);
 
         return $user;
     }
