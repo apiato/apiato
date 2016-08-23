@@ -3,6 +3,7 @@
 namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
+use App\Containers\Authorization\Models\Role;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
@@ -10,7 +11,6 @@ use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
-use App\Containers\Authorization\Models\Role;
 
 /**
  * Class TestingTrait.
@@ -49,7 +49,6 @@ trait TestingTrait
 //            'CONTENT_TYPE' => 'application/json',
             'Accept'         => 'application/json',
         ], $header);
-
 
         // if endpoint is protected (requires token to access it's functionality)
         if ($protected && !array_has($header, 'Authorization')) {
@@ -119,6 +118,18 @@ trait TestingTrait
     {
         $user = $this->getLoggedInTestingUser();
 
+        $user = $this->makeAdmin($user);
+
+        return $user;
+    }
+
+    /**
+     * @param $user
+     *
+     * @return  mixed
+     */
+    public function makeAdmin($user)
+    {
         $adminRole = Role::where('name', 'admin')->first();
 
         $user->attachRole($adminRole);
@@ -163,6 +174,20 @@ trait TestingTrait
         );
 
         return $this->loggedInTestingUser = $user;
+    }
+
+    /**
+     * @param null $userDetails
+     *
+     * @return  mixed
+     */
+    public function registerAndLoginTestingAdmin($userDetails = null)
+    {
+        $user = $this->registerAndLoginTestingUser($userDetails);
+
+        $user = $this->makeAdmin($user);
+
+        return $user;
     }
 
     /**
