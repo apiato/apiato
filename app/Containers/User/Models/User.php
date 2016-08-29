@@ -54,6 +54,15 @@ class User extends Model implements
         'device',
         'platform',
         'confirmed',
+        'social_provider',
+        'social_token',
+        'social_refresh_token',
+        'social_expires_in',
+        'social_token_secret',
+        'social_id',
+        'social_avatar',
+        'social_avatar_original',
+        'social_nickname',
     ];
 
     /**
