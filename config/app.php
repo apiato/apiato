@@ -164,6 +164,7 @@ return [
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Laravel Porto: kernel Service Providers
@@ -232,6 +233,8 @@ return [
         'Agent'         => Jenssegers\Agent\Facades\Agent::class,
         'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
+        'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
+
     ],
 
 ];

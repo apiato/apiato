@@ -30,10 +30,27 @@ return [
     ],
 
     'stripe' => [
-        'model'  => env('USER_NAMESPACE').User::class,
-        'key'    => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'model'   => env('USER_NAMESPACE') . User::class,
+        'key'     => env('STRIPE_KEY'),
+        'secret'  => env('STRIPE_SECRET'),
         'version' => '2016-07-06',
     ],
 
+    'facebook' => [
+        'client_id'     => env('AUTH_FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('AUTH_FACEBOOK_CLIENT_SECRET'),
+        'redirect'      => env('AUTH_FACEBOOK_CLIENT_REDIRECT'),
+    ],
+
+    'twitter' => [
+        'client_id'     => env('AUTH_TWITTER_CLIENT_ID'),
+        'client_secret' => env('AUTH_TWITTER_CLIENT_SECRET'),
+        'redirect'      => env('AUTH_TWITTER_CLIENT_REDIRECT'),
+    ],
+
+    'google' => [
+        'client_id'     => env('AUTH_GOOGLE_CLIENT_ID'),
+        'client_secret' => env('AUTH_GOOGLE_CLIENT_SECRET'),
+        'redirect'      => env('AUTH_GOOGLE_CLIENT_REDIRECT'),
+    ],
 ];
