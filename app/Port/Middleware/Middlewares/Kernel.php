@@ -22,10 +22,10 @@ class Kernel
             \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
             \App\Port\Middleware\Middlewares\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
 
             // removing some of the Laravel's default middleware's
-            //            \Illuminate\Session\Middleware\StartSession::class,
-            //            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             //            \App\Port\Middleware\Middlewares\Http\VerifyCsrfToken::class,
 
             // CORS Package middleware
