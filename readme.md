@@ -75,6 +75,7 @@ Also note that there's **no stable release** till this date.
 >The Hello API comes with great features:
 
 - Token Based Authentication (with JWT "JSON Web Tokens").
+- Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - API Throttling (Rate Limiting).
 - User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
@@ -86,7 +87,7 @@ Also note that there's **no stable release** till this date.
 - Supports CORS "Cross-Origin Resource Sharing".
 - Localization support (multiple langauges via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
-- Ability to register users by Device ID (Use App first, register later).
+- Support Visitors Authentication by Device ID (Use first register later).
 - Auto detect and save device type and platform.
 - Easy and auto request input validation.
 - Type-Casting JSON responses with Transformers.
