@@ -13,12 +13,21 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('name')->nullable();
-
-            $table->string('password')->nullable();
-
             $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
             $table->boolean('confirmed')->default(false);
+
+            $table->string('social_provider')->nullable();
+            $table->string('social_nickname')->nullable();
+            $table->string('social_id')->nullable();
+            $table->string('social_token')->nullable();
+            $table->string('social_token_secret')->nullable();
+            $table->string('social_refresh_token')->nullable();
+            $table->string('social_expires_in')->nullable();
+            $table->string('social_avatar')->nullable();
+            $table->string('social_avatar_original')->nullable();
 
             $table->string('visitor_id')->unique()->nullable();
             $table->string('device')->nullable();
