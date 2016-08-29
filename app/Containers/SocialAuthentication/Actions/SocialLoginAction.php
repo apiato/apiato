@@ -2,11 +2,11 @@
 
 namespace App\Containers\SocialAuthentication\Actions;
 
-use App\Containers\ApiAuthentication\Services\ApiAuthenticationService;
-use App\Containers\SocialAuthentication\Services\GetUserSocialProfileService;
-use App\Containers\User\Services\CreateUserService;
-use App\Containers\User\Services\FindUserService;
-use App\Containers\User\Services\UpdateUserService;
+use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
+use App\Containers\SocialAuthentication\Tasks\GetUserSocialProfileTask;
+use App\Containers\User\Tasks\CreateUserBySocialProfileTask;
+use App\Containers\User\Tasks\FindSocialUserTask;
+use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -18,51 +18,51 @@ class SocialLoginAction extends Action
 {
 
     /**
-     * @var  \App\Containers\SocialAuthentication\Services\GetUserSocialProfileService
+     * @var  \App\Containers\SocialAuthentication\Tasks\GetUserSocialProfileTask
      */
-    private $getUserSocialProfileService;
+    private $getUserSocialProfileTask;
 
     /**
-     * @var  \App\Containers\User\Services\FindUserService
+     * @var  \App\Containers\User\Tasks\FindSocialUserTask
      */
-    private $findUserService;
+    private $findSocialUserTask;
 
     /**
-     * @var  \App\Containers\User\Services\CreateUserService
+     * @var  \App\Containers\User\Tasks\CreateUserBySocialProfileTask
      */
-    private $createUserService;
+    private $createUserBySocialProfileTask;
 
     /**
-     * @var  \App\Containers\User\Services\UpdateUserService
+     * @var  \App\Containers\User\Tasks\UpdateUserTask
      */
-    private $updateUserService;
+    private $updateUserTask;
 
     /**
-     * @var  \App\Containers\SocialAuthentication\Actions\ApiAuthenticationService
+     * @var  \App\Containers\SocialAuthentication\Actions\ApiLoginThisUserObjectTask
      */
-    private $apiAuthenticationService;
+    private $apiLoginThisUserObjectTask;
 
     /**
      * SocialLoginAction constructor.
      *
-     * @param \App\Containers\SocialAuthentication\Services\GetUserSocialProfileService $getUserSocialProfileService
-     * @param \App\Containers\User\Services\FindUserService                             $findUserService
-     * @param \App\Containers\User\Services\CreateUserService                           $createUserService
-     * @param \App\Containers\User\Services\UpdateUserService                           $updateUserService
-     * @param \App\Containers\ApiAuthentication\Services\ApiAuthenticationService       $apiAuthenticationService
+     * @param \App\Containers\SocialAuthentication\Tasks\GetUserSocialProfileTask $getUserSocialProfileTask
+     * @param \App\Containers\User\Tasks\FindSocialUserTask                       $findSocialUserTask
+     * @param \App\Containers\User\Tasks\CreateUserBySocialProfileTask            $createUserBySocialProfileTask
+     * @param \App\Containers\User\Tasks\UpdateUserTask                           $updateUserTask
+     * @param \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask     $apiLoginThisUserObjectTask
      */
     public function __construct(
-        GetUserSocialProfileService $getUserSocialProfileService,
-        FindUserService $findUserService,
-        CreateUserService $createUserService,
-        UpdateUserService $updateUserService,
-        ApiAuthenticationService $apiAuthenticationService
+        GetUserSocialProfileTask $getUserSocialProfileTask,
+        FindSocialUserTask $findSocialUserTask,
+        CreateUserBySocialProfileTask $createUserBySocialProfileTask,
+        UpdateUserTask $updateUserTask,
+        ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
     ) {
-        $this->getUserSocialProfileService = $getUserSocialProfileService;
-        $this->findUserService = $findUserService;
-        $this->createUserService = $createUserService;
-        $this->updateUserService = $updateUserService;
-        $this->apiAuthenticationService = $apiAuthenticationService;
+        $this->getUserSocialProfileTask = $getUserSocialProfileTask;
+        $this->findSocialUserTask = $findSocialUserTask;
+        $this->createUserBySocialProfileTask = $createUserBySocialProfileTask;
+        $this->updateUserTask = $updateUserTask;
+        $this->apiLoginThisUserObjectTask = $apiLoginThisUserObjectTask;
     }
 
     /**
@@ -73,15 +73,20 @@ class SocialLoginAction extends Action
     public function run($provider)
     {
         // fetch the user data from facebook
-        $socialUserProfile = $this->getUserSocialProfileService->run($provider);
+        $socialUserProfile = $this->getUserSocialProfileTask->run($provider);
 
         // find if that user exist in our database
-        $user = $this->findUserService->bySocialId($provider, $socialUserProfile->id);
+        $user = $this->findSocialUserTask->run($provider, $socialUserProfile->id);
+
+        $tokenSecret = isset($socialUserProfile->tokenSecret) ? : null;
+        $expiresIn = isset($socialUserProfile->expiresIn) ? : null;
+        $refreshToken = isset($socialUserProfile->refreshToken) ? : null;
+        $avatar_original = isset($socialUserProfile->avatar_original) ? : null;
 
         // if user not found then create new one
         if (!$user) {
             // create new user form the facebook user object and log him in
-            $user = $this->createUserService->bySocial(
+            $user = $this->createUserBySocialProfileTask->run(
                 $provider,
                 $socialUserProfile->token,
                 $socialUserProfile->id,
@@ -89,18 +94,18 @@ class SocialLoginAction extends Action
                 $socialUserProfile->name,
                 $socialUserProfile->email,
                 $socialUserProfile->avatar,
-                isset($socialUserProfile->tokenSecret) ? : null,
-                isset($socialUserProfile->expiresIn) ? : null,
-                isset($socialUserProfile->refreshToken) ? : null,
-                isset($socialUserProfile->avatar_original) ? : null
+                $tokenSecret,
+                $expiresIn,
+                $refreshToken,
+                $avatar_original
             );
         } else {
             // if the user exist then update the Tokens
-            $user = $this->updateUserService->run($user->id, null, null, null, null, null, $socialUserProfile->token,
-                $socialUserProfile->expiresIn, $socialUserProfile->refreshToken, $socialUserProfile->tokenSecret);
+            $user = $this->updateUserTask->run($user->id, null, null, null, null, null,
+                $tokenSecret, $expiresIn, $refreshToken, $avatar_original);
         }
 
-        $user = $this->apiAuthenticationService->loginFromObject($user);
+        $user = $this->apiLoginThisUserObjectTask->run($user);
 
         return $user;
     }

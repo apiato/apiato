@@ -1,6 +1,5 @@
 <?php
 
-
 /*********************************************************************************
  * @apiGroup           SocialAuth
  * @apiName            AuthWithTwitter
@@ -12,21 +11,19 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
- * @apiParam           oauth_token           ?oauth_token (required)
+ * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
+ * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
-    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
-    "gender": "male",
-    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "twitter",
     "social_id": "5713788888",
@@ -62,21 +59,19 @@ $router->any('auth/twitter', [
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
- * @apiParam           code           ?code (required)
+ * @apiParam           code            code=41JfK_Pu1VXAkcJTe3Bca3v87MY (required)
+ * @apiParam           state           state=rZPGzQ850a5f4OxlKexzTL29Vi (required)
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
-    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
-    "gender": "male",
-    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "facebook",
     "social_id": "88208885713788888",
@@ -112,21 +107,21 @@ $router->any('auth/facebook', [
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
- * @apiParam           code           ?code (required)
+ * @apiParam           code            code=41JfK_Pu1VXAkcJTe3Bca3v87MY (required)
+ * @apiParam           state           state=rZPGzQ850a5f4OxlKexzTL29Vi (required)
+ * @apiParam           authuser        authuser=0&session_state=9045a1 (required)
+ * @apiParam           prompt          prompt=none#
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
-    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
-    "gender": "male",
-    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "google",
     "social_id": "11111208885713788888",

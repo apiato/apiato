@@ -14,5 +14,5 @@ class AuthenticationFailedException extends Exception
 {
     public $httpStatusCode = Response::HTTP_UNAUTHORIZED;
 
-    public $message = 'Credentials Incorrect.';
+    public $message = 'Something went wrong!';
 }

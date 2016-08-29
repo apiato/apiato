@@ -20,7 +20,7 @@ class FindSocialUserTask extends Task
     private $userRepository;
 
     /**
-     * FindUserBySocialIdTask constructor.
+     * FindSocialUserTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
@@ -30,6 +30,7 @@ class FindSocialUserTask extends Task
     }
 
     /**
+     * @param $socialProvider
      * @param $socialId
      *
      * @return  mixed

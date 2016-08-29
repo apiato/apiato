@@ -9,7 +9,6 @@ namespace App\Containers\SocialAuthentication;
  */
 class SocialProvider
 {
-
     CONST FACEBOOK = 'facebook';
     CONST TWITTER = 'twitter';
     CONST GOOGLE = 'google';

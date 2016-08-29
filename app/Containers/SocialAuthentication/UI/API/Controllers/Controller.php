@@ -8,7 +8,6 @@ use App\Containers\SocialAuthentication\UI\API\Requests\AuthenticateOneRequest;
 use App\Containers\SocialAuthentication\UI\API\Requests\AuthenticateTwoRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
-use Dingo\Api\Http\Request;
 
 /**
  * Class Controller.

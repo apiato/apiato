@@ -24,9 +24,8 @@ class FireUserCreatedEventTask extends Action
      *
      * @param \App\Port\Event\Dispatcher\EventsDispatcher $eventsDispatcher
      */
-    public function __construct(
-        EventsDispatcher $eventsDispatcher
-    ) {
+    public function __construct(EventsDispatcher $eventsDispatcher)
+    {
         $this->eventsDispatcher = $eventsDispatcher;
     }
 

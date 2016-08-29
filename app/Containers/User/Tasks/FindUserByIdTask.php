@@ -3,6 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Port\Task\Abstracts\Task;
 use Exception;
 
