@@ -14,7 +14,7 @@
 
 
 
-#### The `Hello World` of an API : )
+#### A `Hello World` for API's : )
 
 ## Content
 
@@ -139,6 +139,7 @@ Thus you MUST read the Porto [Document](https://github.com/Mahmoudz/Porto)  befo
 	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
 	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
 	* [Agent](https://github.com/jenssegers/agent) (Detect users agent)
+	* [Socialite](https://github.com/laravel/socialite) (Social Authentication)
 
 
 
