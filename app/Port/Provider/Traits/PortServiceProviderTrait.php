@@ -27,11 +27,10 @@ trait PortServiceProviderTrait
     public function debugDatabaseQueries($log = true, $terminal = false)
     {
         if (Config::get('database.query_debugging')) {
-            // TODO: might not work in laravel 5.2 - check the events section of the upgrading giud and test it
-            DB::listen(function ($query, $bindings, $time, $connection) use ($terminal, $log) {
-                $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $query), $bindings);
+            DB::listen(function ($event) use ($terminal, $log) {
+                $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $event->sql), $event->bindings);
 
-                $text = $connection . ' (' . $time . '): ' . $fullQuery;
+                $text = $event->connectionName . ' (' . $event->time . '): ' . $fullQuery;
 
                 if ($terminal) {
                     dump($text);
