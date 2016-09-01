@@ -25,7 +25,7 @@ class UpdateUserRequest extends Request
             'password' => 'min:6|max:30',
             'name'     => 'min:2|max:50',
             'email'    => 'email',
-            'id'       => 'required|integer', // url parameter
+            'id'       => 'required|integer|exists:users,id', // url parameter
         ];
     }
 

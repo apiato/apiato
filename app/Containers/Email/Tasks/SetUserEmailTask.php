@@ -38,11 +38,6 @@ class SetUserEmailTask extends Task
     public function run($userId, $email)
     {
         $user = $this->userRepository->find($userId);
-
-        if (!$user) {
-            throw new UserNotFoundException;
-        }
-
         $user->email = $email;
         $user->save();
 

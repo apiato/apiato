@@ -22,7 +22,7 @@ class DeleteUserRequest extends Request
     public function rules()
     {
         return [
-            'id'    => 'required|integer', // url parameter
+            'id'    => 'required|integer|exists:users,id', // url parameter
         ];
     }
 

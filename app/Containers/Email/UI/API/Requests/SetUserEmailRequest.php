@@ -21,7 +21,7 @@ class SetUserEmailRequest extends Request
     {
         return [
             'email' => 'required|email|max:40',
-            'id'    => 'required|integer', // url parameter
+            'id'    => 'required|integer|exists:users,id', // url parameter
         ];
     }
 
