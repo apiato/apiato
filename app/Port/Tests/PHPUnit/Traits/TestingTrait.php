@@ -374,4 +374,19 @@ trait TestingTrait
         return json_decode($response->getContent());
     }
 
+    /**
+     * Inject the ID in the Endpoint URI
+     *
+     * Example: you give it ('users/{id}/stores', 100) it returns 'users/100/stores'
+     *
+     * @param $endpoint
+     * @param $id
+     *
+     * @return  mixed
+     */
+    public function injectEndpointId($endpoint, $id)
+    {
+        return str_replace("{id}", $id, $endpoint);
+    }
+
 }

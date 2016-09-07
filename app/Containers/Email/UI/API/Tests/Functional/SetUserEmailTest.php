@@ -36,10 +36,8 @@ class SetUserEmailTest extends TestCase
         $confirmEmail->shouldReceive('setEmail')->once()->withAnyArgs();
         $confirmEmail->shouldReceive('setName')->once()->withAnyArgs();
 
-        $this->endpoint = str_replace("{id}", $user->id, $this->endpoint);
-
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $user->id), 'post', $data, true);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');
