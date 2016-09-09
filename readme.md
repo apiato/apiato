@@ -104,6 +104,7 @@ Also note that there's **no stable release** till this date.
 - Ready Middlewares for WEB and API Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
 - Visual .env editor (in the browser).
+- Ready Admin dashboard infrastructure (just drop your admin views).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
 - Fully detailed documentation.
 - 100% customizable and Open Code.
