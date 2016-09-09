@@ -22,7 +22,8 @@
     "jenssegers/agent": "^2.3",
     "cartalyst/stripe-laravel": "4.0.*",
     "anouar/paypalpayment": "~1.0",
-    "laravel/socialite": "^2.0"
+    "laravel/socialite": "^2.0",
+    "brotzka/laravel-dotenv-editor": "2.*"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

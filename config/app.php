@@ -165,6 +165,7 @@ return [
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
 
         /*
          * Laravel Porto: kernel Service Providers
@@ -234,6 +235,7 @@ return [
         'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
         'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
+        'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
 
     ],
 
