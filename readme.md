@@ -101,7 +101,9 @@ Also note that there's **no stable release** till this date.
 - Fully Object Oriented Code, implementing the best design patterns.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Easy to send Emails.
+- Ready Middlewares for WEB and API Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
+- Visual .env editor (in the browser).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
 - Fully detailed documentation.
 - 100% customizable and Open Code.
@@ -134,13 +136,13 @@ Thus you MUST read the Porto [Document](https://github.com/Mahmoudz/Porto)  befo
 	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
 	* [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
 	* [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
-	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
-	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
-	* [Stripe Laravel](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
-	* [Laravel Paypal Payment](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
 	* [Agent](https://github.com/jenssegers/agent) (Detect users agent)
 	* [Socialite](https://github.com/laravel/socialite) (Social Authentication)
-
+	* [Dotenv Editor](https://github.com/Brotzka/laravel-dotenv-editor) (Edit .env variables from browser)
+	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
+	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
+	* [Stripe](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
+	* [Paypal](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
 
 
 <br>
