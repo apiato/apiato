@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Containers\Authentication\Tasks\ValidateUserIsAdminTask;
 use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Port\Action\Abstracts\Action;
@@ -46,7 +45,6 @@ class WebAdminLoginAction extends Action
      */
     public function run($email, $password, $remember)
     {
-
         $user = $this->webLoginTask->run($email, $password, $remember);
 
         $this->validateUserIsAdminTask->run($user);

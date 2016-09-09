@@ -109,11 +109,10 @@
 
     <div class="login-page">
         <div class="form">
-            <form class="login-form">
-                <input type="text" placeholder="username"/>
-                <input type="password" placeholder="password"/>
+            <form class="login-form" action="{{route('admin_login')}}" method="post">
+                <input type="text"  placeholder="email" id="email" name="email"/>
+                <input type="password" placeholder="password" id="password" name="password"/>
                 <button>login</button>
-                {{--<p class="message">Not registered? <a href="#">Create an account</a></p>--}}
             </form>
         </div>
     </div>
