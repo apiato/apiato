@@ -22,21 +22,8 @@ class DeleteUserRequest extends Request
     public function rules()
     {
         return [
-            'id'    => 'required|integer|exists:users,id', // url parameter
+
         ];
-    }
-
-    /**
-     * Override the all() to automatically apply validation rules to the URL parameters
-     *
-     * @return  array
-     */
-    public function all()
-    {
-        $data = parent::all();
-        $data['id'] = $this->route('id');
-
-        return $data;
     }
 
     /**
@@ -46,10 +33,8 @@ class DeleteUserRequest extends Request
      *
      * @return bool
      */
-    public function authorize(Gate $gate)
+    public function authorize(Gate $gate, GetAuthenticatedUserTask $getAuthenticatedUserTask)
     {
-        // $this->user(): is the current logged in user, taken from the request
-        // $this->id: is the request input user ID (for the user that needs to be updated)
-        return $gate->getPolicyFor(User::class)->delete($this->user(), $this->id);
+        return $gate->getPolicyFor(User::class)->update($this->user(), $getAuthenticatedUserTask->run()->id);
     }
 }

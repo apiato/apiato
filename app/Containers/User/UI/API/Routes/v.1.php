@@ -167,19 +167,18 @@ $router->post('register', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            DeleteUser
- * @api                {delete} /users/{id} Delete User
+ * @api                {delete} /users Delete User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
- * @apiParam           {Number}  id the user id in the uri (required)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 202 OK
 {
   "message": "User (4) Deleted Successfully."
 }
  */
-$router->delete('users/{id}', [
+$router->delete('users', [
     'uses'       => 'Controller@deleteUser',
     'middleware' => [
         'api.auth',

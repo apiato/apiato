@@ -32,7 +32,7 @@ class Controller extends PortApiController
      */
     public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
-        $action->run($request->id);
+        $action->run();
 
         return $this->response->accepted(null, [
             'message' => 'User (' . $request->id . ') Deleted Successfully.',
