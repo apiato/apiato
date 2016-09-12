@@ -117,7 +117,6 @@ class Controller extends PortApiController
     public function updateUser(UpdateUserRequest $request, UpdateUserAction $action)
     {
         $user = $action->run(
-            $request->id,
             $request['password'],
             $request['name'],
             $request['email']

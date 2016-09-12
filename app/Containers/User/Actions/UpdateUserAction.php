@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\UpdateUserTask;
 use App\Port\Action\Abstracts\Action;
 
@@ -19,13 +20,20 @@ class UpdateUserAction extends Action
     private $updateUserTask;
 
     /**
+     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
+     */
+    private $getAuthenticatedUserTask;
+
+    /**
      * UpdateUserAction constructor.
      *
-     * @param \App\Containers\User\Tasks\UpdateUserTask $updateUserTask
+     * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
+     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
      */
-    public function __construct(UpdateUserTask $updateUserTask)
+    public function __construct(UpdateUserTask $updateUserTask, GetAuthenticatedUserTask $getAuthenticatedUserTask)
     {
         $this->updateUserTask = $updateUserTask;
+        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
     }
 
     /**
@@ -36,8 +44,10 @@ class UpdateUserAction extends Action
      *
      * @return  mixed
      */
-    public function run($userId, $password = null, $name = null, $email = null)
+    public function run($password = null, $name = null, $email = null)
     {
+        $userId = $this->getAuthenticatedUserTask->run()->id;
+
         $user = $this->updateUserTask->run($userId, $password, $name, $email);
 
         return $user;

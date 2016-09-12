@@ -44,7 +44,7 @@ $router->post('users/refresh', [
 /*********************************************************************************
  * @apiGroup           Users
  * @apiName            UpdateUser
- * @api                {put} /users/{id} Update User
+ * @api                {put} /users Update User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json
@@ -73,7 +73,7 @@ HTTP/1.1 200 OK
   }
 }
  */
-$router->put('users/{id}', [
+$router->put('users', [
     'uses'       => 'Controller@updateUser',
     'middleware' => [
         'api.auth',
