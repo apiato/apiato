@@ -18,10 +18,8 @@ class DeleteUserTest extends TestCase
     {
         $user = $this->getLoggedInTestingUser();
 
-        $endpoint = $this->endpoint . '/' . $user->id;
-
         // send the HTTP request
-        $response = $this->apiCall($endpoint, 'delete');
+        $response = $this->apiCall($this->endpoint, 'delete');
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');

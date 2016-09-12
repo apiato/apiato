@@ -35,7 +35,7 @@ class Controller extends PortApiController
         $action->run();
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $request->id . ') Deleted Successfully.',
+            'message' => 'User (' . $request->user()->id . ') Deleted Successfully.',
         ]);
     }
 

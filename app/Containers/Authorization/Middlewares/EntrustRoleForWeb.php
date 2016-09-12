@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Middlewares;
 use App\Port\Butler\Portals\PortButler;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 /**
  * Class EntrustRoleForWeb
@@ -45,7 +46,7 @@ class EntrustRoleForWeb
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $roles)
+    public function handle(Request $request, Closure $next, $roles)
     {
         if ($this->auth->guest() || !$request->user()->hasRole(explode('|', $roles))) {
             return view($this->portButler->getLoginWebPageName());

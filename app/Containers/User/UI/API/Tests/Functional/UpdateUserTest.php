@@ -45,10 +45,8 @@ class UpdateUserTest extends TestCase
 
         $data = []; // empty data
 
-        $endpoint = $this->endpoint . '/' . $user->id;
-
         // send the HTTP request
-        $response = $this->apiCall($endpoint, 'put', $data);
+        $response = $this->apiCall($this->endpoint, 'put', $data);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '417');

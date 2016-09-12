@@ -29,7 +29,7 @@ class FindSettingsByKeyTask extends Task
     }
 
     /**
-     * @param $id
+     * @param $key
      *
      * @return  mixed
      */

@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use Illuminate\Contracts\Auth\Access\Gate;
 use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
@@ -29,9 +30,10 @@ class DeleteUserRequest extends Request
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     * @param \Illuminate\Contracts\Auth\Access\Gate                        $gate
+     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
      *
-     * @return bool
+     * @return  mixed
      */
     public function authorize(Gate $gate, GetAuthenticatedUserTask $getAuthenticatedUserTask)
     {

@@ -35,7 +35,7 @@ class CreateUserBySocialProfileTask extends Task
     /**
      * @param      $provider
      * @param null $token
-     * @param null $id
+     * @param null $socialId
      * @param null $nickname
      * @param null $name
      * @param null $email
@@ -50,7 +50,7 @@ class CreateUserBySocialProfileTask extends Task
     public function run(
         $provider,
         $token = null,
-        $id = null,
+        $socialId = null,
         $nickname = null,
         $name = null,
         $email = null,
@@ -67,7 +67,7 @@ class CreateUserBySocialProfileTask extends Task
             'social_refresh_token'   => $refreshToken,
             'social_token_secret'    => $tokenSecret,
             'social_expires_in'      => $expiresIn,
-            'social_id'              => $id,
+            'social_id'              => $socialId,
             'social_nickname'        => $nickname,
             'social_avatar'          => $avatar,
             'social_avatar_original' => $avatar_original,

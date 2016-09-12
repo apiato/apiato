@@ -31,16 +31,16 @@ class FindUserByIdTask extends Task
     }
 
     /**
-     * @param $id
+     * @param $userId
      *
      * @return  mixed
      * @throws \App\Containers\User\Tasks\UserNotFoundException
      */
-    public function run($id)
+    public function run($userId)
     {
         // find the user by its id
         try {
-            $user = $this->userRepository->find($id);
+            $user = $this->userRepository->find($userId);
         } catch (Exception $e) {
             throw new UserNotFoundException();
         }
