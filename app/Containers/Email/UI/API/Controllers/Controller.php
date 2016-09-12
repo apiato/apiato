@@ -24,7 +24,7 @@ class Controller extends PortApiController
      */
     public function setUserEmailController(SetUserEmailRequest $request, SetUserEmailWithConfirmationAction $action)
     {
-        $action->run($request->id, $request->email);
+        $action->run($request->email);
 
         return $this->response->accepted(null, [
             'message' => 'User Email Saved Successfully.',

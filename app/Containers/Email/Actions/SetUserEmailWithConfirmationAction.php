@@ -2,6 +2,7 @@
 
 namespace App\Containers\Email\Actions;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask;
 use App\Containers\Email\Tasks\SendConfirmationEmailTask;
 use App\Containers\Email\Tasks\SetUserEmailTask;
@@ -31,20 +32,28 @@ class SetUserEmailWithConfirmationAction extends Action
     private $sendConfirmationEmailTask;
 
     /**
+     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
+     */
+    private $getAuthenticatedUserTask;
+
+    /**
      * SetUserEmailAction constructor.
      *
-     * @param \App\Containers\Email\Tasks\SetUserEmailTask                 $setUserEmailTask
-     * @param \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask
-     * @param \App\Containers\Email\Tasks\SendConfirmationEmailTask        $sendConfirmationEmailTask
+     * @param \App\Containers\Email\Tasks\SetUserEmailTask                  $setUserEmailTask
+     * @param \App\Containers\Email\Tasks\GenerateEmailConfirmationUrlTask  $generateEmailConfirmationUrlTask
+     * @param \App\Containers\Email\Tasks\SendConfirmationEmailTask         $sendConfirmationEmailTask
+     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
      */
     public function __construct(
         SetUserEmailTask $setUserEmailTask,
         GenerateEmailConfirmationUrlTask $generateEmailConfirmationUrlTask,
-        SendConfirmationEmailTask $sendConfirmationEmailTask
+        SendConfirmationEmailTask $sendConfirmationEmailTask,
+        GetAuthenticatedUserTask $getAuthenticatedUserTask
     ) {
         $this->setUserEmailTask = $setUserEmailTask;
         $this->generateEmailConfirmationUrlTask = $generateEmailConfirmationUrlTask;
         $this->sendConfirmationEmailTask = $sendConfirmationEmailTask;
+        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
     }
 
 
@@ -54,8 +63,12 @@ class SetUserEmailWithConfirmationAction extends Action
      *
      * @return  bool
      */
-    public function run($userId, $email)
+    public function run($email, $userId = null)
     {
+        if(!$userId){
+            $userId = $this->getAuthenticatedUserTask->run()->id;
+        }
+
         // set the email on the user in the database
         $user = $this->setUserEmailTask->run($userId, $email);
 

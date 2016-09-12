@@ -13,7 +13,7 @@ use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 class SetUserEmailTest extends TestCase
 {
 
-    private $endpoint = '/users/{id}/email';
+    private $endpoint = '/users/email';
 
     public function testSetUserEmail_()
     {
@@ -24,7 +24,7 @@ class SetUserEmailTest extends TestCase
         ];
 
         // get the logged in user (create one if no one is logged in)
-        $user = $this->registerAndLoginTestingUser($userDetails);
+        $this->registerAndLoginTestingUser($userDetails);
 
         $data = [
             'email' => 'test@test.test',
@@ -37,7 +37,7 @@ class SetUserEmailTest extends TestCase
         $confirmEmail->shouldReceive('setName')->once()->withAnyArgs();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $user->id), 'post', $data, true);
+        $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');
