@@ -42,9 +42,6 @@ class VisitorsAuthentication
     }
 
     /**
-     * Whenever the request doesn't have an Authorization header (token)
-     * it must have a an Visitor-Id header.
-     *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure                 $next
      *
@@ -54,7 +51,7 @@ class VisitorsAuthentication
     {
         $token = $request->header('Authorization');
 
-        if (!$token) {
+        if (!$token || strlen($token) < 20) {
             // read the visitor ID header (set by the API users)
             $visitorId = $request->header('Visitor-Id');
 
