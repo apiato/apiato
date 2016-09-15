@@ -37,7 +37,7 @@ class RequestsMonitorMiddleware
             Log::debug('URL: ' . $request->getMethod() . ' - ' . $request->fullUrl());
 
             if ($request->user()) {
-                $user = 'ID: ' . $request->user->id . ' | Name: ' . $request->user->name;
+                $user = 'ID ' . $request->user()->id;
             } else {
                 $user = 'NULL';
             }
