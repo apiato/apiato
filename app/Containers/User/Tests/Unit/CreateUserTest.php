@@ -23,7 +23,7 @@ class CreateUserTest extends TestCase
         $name = 'Mahmoud';
         $password = 'so-secret';
 
-        $user = $task->run($email, $password, $name, true);
+        $user = $task->run($email, $password, $name, null, null, true);
 
         // asset the returned object is an instance of the User
         $this->assertInstanceOf(User::class, $user);

@@ -42,14 +42,16 @@ class CreateUserByCredentialsTask extends Task
     }
 
     /**
-     * @param            $email
-     * @param            $password
-     * @param            $name
-     * @param bool|false $login
+     * @param      $email
+     * @param      $password
+     * @param      $name
+     * @param null $gender
+     * @param null $birth
+     * @param bool $login
      *
      * @return  mixed
      */
-    public function run($email, $password, $name, $login = false)
+    public function run($email, $password, $name, $gender = null, $birth = null, $login = false)
     {
         $hashedPassword = Hash::make($password);
 
@@ -59,6 +61,8 @@ class CreateUserByCredentialsTask extends Task
                 'name'     => $name,
                 'email'    => $email,
                 'password' => $hashedPassword,
+                'gender'   => $gender,
+                'birth'    => $birth,
             ]);
         } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);

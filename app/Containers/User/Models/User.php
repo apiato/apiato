@@ -54,6 +54,8 @@ class User extends Model implements
         'device',
         'platform',
         'confirmed',
+        'gender',
+        'birth',
         'social_provider',
         'social_token',
         'social_refresh_token',

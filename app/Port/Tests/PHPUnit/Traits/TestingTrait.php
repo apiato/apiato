@@ -163,13 +163,15 @@ trait TestingTrait
             ];
         }
 
-        $CreateUserAction = App::make(CreateUserAction::class);
+        $createUserAction = App::make(CreateUserAction::class);
 
         // create new user and login (true)
-        $user = $CreateUserAction->run(
+        $user = $createUserAction->run(
             $userDetails['email'],
             $userDetails['password'],
             $userDetails['name'],
+            null,
+            null,
             true
         );
 

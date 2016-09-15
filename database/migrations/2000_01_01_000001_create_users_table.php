@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->boolean('confirmed')->default(false);
 
+            $table->string('gender')->nullable();
+            $table->string('birth')->nullable();
+
             $table->string('social_provider')->nullable();
             $table->string('social_nickname')->nullable();
             $table->string('social_id')->nullable();

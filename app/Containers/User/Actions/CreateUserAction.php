@@ -45,13 +45,15 @@ class CreateUserAction extends Action
      * @param      $email
      * @param      $password
      * @param      $name
+     * @param      $gender
+     * @param      $birth
      * @param bool $login determine weather to login or not after creating
      *
      * @return mixed
      */
-    public function run($email, $password, $name, $login = false)
+    public function run($email, $password, $name, $gender = null, $birth = null, $login = false)
     {
-        $user = $this->createUserByCredentialsTask->run($email, $password, $name, $login);
+        $user = $this->createUserByCredentialsTask->run($email, $password, $name, $gender, $birth, $login);
 
         $this->fireUserCreatedEventTask->run($user);
 
