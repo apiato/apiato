@@ -23,7 +23,7 @@ HTTP/1.1 200 OK
     "name": "Mahmoud Zalt",
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ3MDc2MTk0NCwiZXhwIjoxNDczMzg5OTQ0LCJuYmYiOjE0NzA3NjE5NDQsImp0aSI6ImVkNjNjYmQ0YjUxMGQ0YWMwZjQ3ZWVlODMyMGM1MTM4In0.WoenjRSsW11QqFiCpUOx7y40HG44QD-qBMjsP3hwAWs",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "created_at": {
       "date": "2016-08-09 16:57:44.000000",
       "timezone_type": 3,
@@ -82,86 +82,85 @@ $router->put('users', [
 
 /*********************************************************************************
  * @apiGroup           Users
- * @apiName            registerVisitorUser
- * @api                {post} /register/visitor Register Visitor
- * @apiDescription     This is different than the Register User (Create User) Endpoint.
- * This will register and login a User by his Visitor Id (A.K.A Device ID), and it
- * require that the user is already created as Visitor before.
- * This registration Endpoint must be used when the App allows Users to use the App
- * first and register later.
+ * @apiName            registerVisitor
+ * @api                {post} /visitor/register Register visitor (even if he exist)
+ * @apiDescription     This endpoint must be called on App startup. (when the App
+ * allows using it before registering). The endpoint will create a user record
+ * if not already exist based on his unique visitor-id (A.K.A device ID) and return
+ * the `User ID`. Later when the user is required to register, we simply
+ * update his existing record with his information (email, password,...).
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
  * @apiHeader          visitor-id The Device ID [12345] (required)
- * @apiParam           {String}  email (required)
- * @apiParam           {String}  password (required)
- * @apiParam           {String}  name (optional)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 200 OK
- {
+{
   "data": {
     "id": 4,
     "name": "Mahmoud Zalt",
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ2OTIxMjYzOSwiZXhwIjoxNDcxODQwNjM5LCJuYmYiOjE0NjkyMTI2MzksImp0aSI6ImMwYWZjNTA0NmRlOTg4NmZmYjM1NTk0ZjdlYTE3MTczIn0.zapUpSsIwb-jR9wZyj2oQFMGPZwouSMJhMxAjjDd2q8",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "created_at": {
-      "date": "2016-07-22 18:37:19.000000",
+      "date": "2016-09-15 19:24:56.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     },
     "updated_at": {
-      "date": "2016-07-22 18:37:19.000000",
+      "date": "2016-09-15 19:24:56.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     }
   }
 }
  */
-$router->post('register/visitor', [
-    'uses'  => 'Controller@registerVisitorUser',
-    'middleware' => [
-        'api.auth.visitor',
-    ],
+$router->post('visitor/register', [
+    'uses'  => 'Controller@registerVisitor',
 ]);
 
 /*********************************************************************************
  * @apiGroup           Users
- * @apiName            RegisterUser
- * @api                {post} /register Create User (Register)
- * @apiDescription     Register a new User by credentials. This will also Login the
- * new created user.
+ * @apiName            registerUser
+ * @api                {post} /user/register Register User
+ * @apiDescription     If the App supports Visitors Access (allows users to use)
+ * the App first and register later) then you `must` send the `visitor-id` in the
+ * header. If the app require registering first, with no access to Visitors, then
+ * you can just pass the user info without the `visitor-id`.
  * @apiVersion         1.0.0
- * @apiPermission      none
- * @apiHeader          Accept application/json
- * @apiParam           {String}  email
- * @apiParam           {String}  password
- * @apiParam           {String}  name
- * @apiSuccessExample  {json}    Success-Response:
+ * @apiPermission      none/Visitor
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          visitor-id The Device ID [12345] (depend)
+ * @apiParam           {String}  email (required)
+ * @apiParam           {String}  password (required)
+ * @apiParam           {String}  name (optional)
+ * @apiParam           {String}  gender (optional)
+ * @apiParam           {String}  birth (optional)
+ * @apiSuccessExample  {json}      Success-Response:
 HTTP/1.1 200 OK
-
 {
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
+    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ2OTIxMjYzOSwiZXhwIjoxNDcxODQwNjM5LCJuYmYiOjE0NjkyMTI2MzksImp0aSI6ImMwYWZjNTA0NmRlOTg4NmZmYjM1NTk0ZjdlYTE3MTczIn0.zapUpSsIwb-jR9wZyj2oQFMGPZwouSMJhMxAjjDd2q8",
     "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
+      "date": "2016-08-09 16:57:44.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     },
     "updated_at": {
-      "date": "2016-04-09 02:34:11.000000",
+      "date": "2016-08-09 16:59:04.000000",
       "timezone_type": 3,
       "timezone": "UTC"
     }
   }
 }
  */
-$router->post('register', [
-    'uses' => 'Controller@registerUser',
+$router->post('user/register', [
+    'uses'  => 'Controller@registerUser',
 ]);
 
 /*********************************************************************************

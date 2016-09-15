@@ -36,6 +36,7 @@ class FindUserByVisitorIdTask extends Task
      */
     public function run($visitorId)
     {
+
         if (!$visitorId) {
             throw (new MissingVisitorIdException());
         }

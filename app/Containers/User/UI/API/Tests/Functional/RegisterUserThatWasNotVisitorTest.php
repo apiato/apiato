@@ -5,14 +5,14 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class RegisterEndpointTest.
+ * Class RegisterUserThatWasNotVisitorTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterTest extends TestCase
+class RegisterUserThatWasNotVisitorTest extends TestCase
 {
 
-    private $endpoint = '/register';
+    private $endpoint = '/user/register';
 
     public function testRegisterNewUserWithCredentials_()
     {
@@ -33,10 +33,10 @@ class RegisterTest extends TestCase
             'name'  => $data['name'],
         ], $response);
 
-        // assert response contain the token
+         // assert response contain the token
         $this->assertResponseContainKeys(['id', 'token'], $response);
 
-        // assert the data is stored in the database
+         // assert the data is stored in the database
         $this->seeInDatabase('users', ['email' => $data['email']]);
     }
 

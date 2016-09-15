@@ -6,12 +6,14 @@ use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
+use App\Containers\User\Actions\RegisterVisitorUserAction;
 use App\Containers\User\Actions\SwitchVisitorToUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
+use App\Containers\User\Actions\UpdateVisitorUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
+use App\Containers\User\UI\API\Requests\RegisterVisitorRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
-use App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use Dingo\Api\Http\Request;
@@ -52,7 +54,7 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \Dingo\Api\Http\Request                     $request
+     * @param \Dingo\Api\Http\Request                    $request
      * @param \App\Containers\User\Actions\GetUserAction $action
      *
      * @return  \Dingo\Api\Http\Response
@@ -69,41 +71,51 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateUserAction        $action
+     * @param \App\Containers\User\UI\API\Requests\RegisterVisitorRequest $request
+     * @param \App\Containers\User\Actions\RegisterVisitorUserAction      $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $request, CreateUserAction $action)
+    public function registerVisitor(RegisterVisitorRequest $request, RegisterVisitorUserAction $action)
     {
-        // create and login (true parameter) the new user
-        $user = $action->run(
-            $request['email'],
-            $request['password'],
-            $request['name'],
-            true
-        );
+        $user = $action->run($request->header('visitor-id'));
 
         return $this->response->item($user, new UserTransformer());
     }
 
     /**
-     * The Visitor is the user that was previously created by an visitor ID (A.K.A Device ID).
-     * The Visitor user usually gets created automatically by a Middleware.
-     *
-     * @param \App\Containers\User\UI\API\Requests\UpdateVisitorUserRequest $request
-     * @param \App\Containers\User\Actions\SwitchVisitorToUserAction        $action
+     * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
+     * @param \App\Containers\User\Actions\CreateUserAction        $createUserAction
+     * @param \App\Containers\User\Actions\UpdateVisitorUserAction $updateVisitorUserAction
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerVisitorUser(UpdateVisitorUserRequest $request, SwitchVisitorToUserAction $action)
-    {
-        $user = $action->run(
-            $request->header('Visitor-Id'),
-            $request['email'],
-            $request['password'],
-            $request['name']
-        );
+    public function registerUser(
+        RegisterRequest $request,
+        CreateUserAction $createUserAction,
+        UpdateVisitorUserAction $updateVisitorUserAction
+    ) {
+        $visitorId = $request->header('visitor-id');
+
+        if ($visitorId) {
+            $user = $updateVisitorUserAction->run(
+                $visitorId,
+                $request['email'],
+                $request['password'],
+                $request['name'],
+                $request['gender'],
+                $request['birth']
+            );
+        } else {
+            $user = $createUserAction->run(
+                $request['email'],
+                $request['password'],
+                $request['name'],
+                $request['gender'],
+                $request['birth'],
+                true
+            );
+        }
 
         return $this->response->item($user, new UserTransformer());
     }
