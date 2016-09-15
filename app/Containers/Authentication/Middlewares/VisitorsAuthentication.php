@@ -2,12 +2,10 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
-use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Containers\Authentication\Exceptions\MissingVisitorIdException;
-use App\Containers\User\Actions\CreateVisitorUserAction;
+use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use Closure;
 use Illuminate\Http\Request;
-use Jenssegers\Agent\Agent;
 
 /**
  * Class VisitorsAuthentication
@@ -18,27 +16,19 @@ class VisitorsAuthentication
 {
 
     /**
-     * @var  \Jenssegers\Agent\Agent
+     * @var  \App\Containers\User\Tasks\FindUserByVisitorIdTask
      */
-    private $agent;
-
-    /**
-     * @var  \App\Containers\User\Actions\CreateVisitorUserAction
-     */
-    private $registerVisitorUserAction;
+    private $findUserByVisitorIdTask;
 
     /**
      * VisitorsAuthentication constructor.
      *
-     * @param \Jenssegers\Agent\Agent                                $agent
-     * @param \App\Containers\User\Actions\CreateVisitorUserAction $registerVisitorUserAction
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask $findUserByVisitorIdTask
      */
     public function __construct(
-        Agent $agent,
-        CreateVisitorUserAction $registerVisitorUserAction
+        FindUserByVisitorIdTask $findUserByVisitorIdTask
     ) {
-        $this->agent = $agent;
-        $this->registerVisitorUserAction = $registerVisitorUserAction;
+        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
     }
 
     /**
@@ -49,26 +39,17 @@ class VisitorsAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = $request->header('Authorization');
+        // read the visitor ID header (set by the API users)
+        $visitorId = $request->header('visitor-id');
 
-        if (!$token || strlen($token) < 20) {
-            // read the visitor ID header (set by the API users)
-            $visitorId = $request->header('Visitor-Id');
+        if (!$visitorId) {
+            throw new MissingVisitorIdException();
+        }
 
-            if (!$visitorId) {
-                throw new MissingVisitorIdException();
-            }
+        $user = $this->findUserByVisitorIdTask->run($visitorId);
 
-            $device = $this->agent->device();
-            $platform = $this->agent->platform();
-
-            $user = $this->registerVisitorUserAction->run($visitorId, $device, $platform);
-
-            if (!$user) {
-                throw new AuthenticationFailedException(
-                    'Something went wrong while trying to create user from the "Visitor-Id": ' . $visitorId
-                );
-            }
+        if (!$user) {
+            abort(403);
         }
 
         // return the response
