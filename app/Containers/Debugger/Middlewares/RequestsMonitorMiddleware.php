@@ -27,7 +27,7 @@ class RequestsMonitorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (App::environment() != 'testing' || Config::get('app.debug') === true) {
+        if (App::environment() != 'testing' && Config::get('app.debug') === true) {
 
             Log::debug('');
             Log::debug('REQUEST START-------------------------------------------------------');
