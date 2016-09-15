@@ -66,6 +66,9 @@ class Kernel
             // Hello API User Authentication middleware for Web Pages
             'web.auth' => \App\Containers\Authentication\Middlewares\Authentication::class,
 
+            // Hello API Requests Monitor
+            'mobile.requests.monitor' => \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
+
             // ...
         ];
 
