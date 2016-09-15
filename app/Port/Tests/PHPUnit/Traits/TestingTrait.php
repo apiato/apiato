@@ -56,11 +56,6 @@ trait TestingTrait
             $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
         }
 
-        if (!$protected && !array_has($header, 'Visitor-Id')) {
-            // append the Device ID to the header (IPhone UUID, Android ID, ...)
-            $headers['Visitor-Id'] = str_random(40);
-        }
-
         $verb = strtolower($verb);
 
         switch ($verb) {
@@ -107,6 +102,25 @@ trait TestingTrait
         if (!$user) {
             $user = $this->registerAndLoginTestingUser();
         }
+
+        return $user;
+    }
+
+    /**
+     * This returned visitor is a normal user, with `visitor_id` means
+     * before he became a registered user (can login) was a visitor.
+     * So this can be used to test endpoints that are protected by visitors
+     * access.
+     *
+     * @return  \App\Port\Tests\PHPUnit\Traits\User|mixed
+     */
+    public function getVisitor()
+    {
+        $user = $this->getLoggedInTestingUser();
+
+        $user->visitor_id = str_random('20');
+        unset($user->token);
+        $user->save();
 
         return $user;
     }
