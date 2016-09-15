@@ -21,8 +21,12 @@ class SetVisitorEmailTest extends TestCase
             'email' => 'test@test.test',
         ];
 
+        $visitor = $this->getVisitor();
+
+        $headers['visitor-id'] = $visitor->visitor_id;
+
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->apiCall($this->endpoint, 'post', $data, false, $headers);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '202');
