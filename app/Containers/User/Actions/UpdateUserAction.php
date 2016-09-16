@@ -37,18 +37,19 @@ class UpdateUserAction extends Action
     }
 
     /**
-     * @param      $userId
      * @param null $password
      * @param null $name
      * @param null $email
+     * @param null $gender
+     * @param null $birth
      *
      * @return  mixed
      */
-    public function run($password = null, $name = null, $email = null)
+    public function run($password = null, $name = null, $email = null, $gender = null, $birth = null)
     {
         $userId = $this->getAuthenticatedUserTask->run()->id;
 
-        $user = $this->updateUserTask->run($userId, $password, $name, $email);
+        $user = $this->updateUserTask->run($userId, $password, $name, $email, $gender, $birth);
 
         return $user;
     }

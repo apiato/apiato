@@ -131,8 +131,10 @@ class Controller extends PortApiController
         $user = $action->run(
             $request['password'],
             $request['name'],
-            $request['email']
-        );
+            $request['email'],
+            $request['gender'],
+            $request['birth']
+        )->withToken();
 
         return $this->response->item($user, new UserTransformer());
     }

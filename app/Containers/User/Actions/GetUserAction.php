@@ -53,10 +53,10 @@ class GetUserAction extends Action
     public function run($userId, $visitorId = null, $token = null)
     {
         if ($userId) {
-            $user = $this->findUserByIdTask->run($userId);
+            $user = $this->findUserByIdTask->run($userId)->withToken();
         } else {
             if ($token) {
-                $user = $this->getAuthenticatedUserTask->run();
+                $user = $this->getAuthenticatedUserTask->run()->withToken();
             } else {
                 if ($visitorId) {
                     $user = $this->findUserByVisitorIdTask->run($visitorId);

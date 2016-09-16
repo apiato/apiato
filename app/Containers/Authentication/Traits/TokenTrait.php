@@ -2,6 +2,9 @@
 
 namespace App\Containers\Authentication\Traits;
 
+use App\Containers\Authentication\Tasks\ApiGenerateTokenFromObjectTask;
+use Illuminate\Support\Facades\App;
+
 /**
  * Class TokenTrait.
  *
@@ -22,9 +25,18 @@ trait TokenTrait
      */
     public function injectToken($token)
     {
-        // attach the token on the user
         $this->token = $token;
 
         return $this;
+    }
+
+    /**
+     * When calling this function, the token will be added on the model.
+     *
+     * @return  $this
+     */
+    public function withToken()
+    {
+        return $this->injectToken((App::make(ApiGenerateTokenFromObjectTask::class))->run($this));
     }
 }
