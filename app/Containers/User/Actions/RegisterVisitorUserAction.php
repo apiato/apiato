@@ -2,6 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
+use App\Containers\Authentication\Exceptions\MissingVisitorIdException;
 use App\Port\Action\Abstracts\Action;
 use Jenssegers\Agent\Agent;
 
