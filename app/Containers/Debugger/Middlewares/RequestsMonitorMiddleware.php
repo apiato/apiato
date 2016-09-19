@@ -17,44 +17,59 @@ class RequestsMonitorMiddleware
 {
 
     /**
-     * Whenever the request doesn't have an Authorization header (token)
-     * it must have a an visitor-id header.
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     *
-     * @return mixed
+     * @return  mixed
      */
     public function handle(Request $request, Closure $next)
     {
+
+        $response = $next($request);
+
         if (App::environment() != 'testing' && Config::get('app.debug') === true) {
 
             Log::debug('');
+            Log::debug('');
             Log::debug('REQUEST START-------------------------------------------------------');
 
+            // Endpoint URL:
+            Log::debug('URL: ' . $request->getMethod() . ' ' . $request->fullUrl());
+
+            // Request Device IP:
             Log::debug('IP: ' . $request->ip());
 
-            Log::debug('URL: ' . $request->getMethod() . ' - ' . $request->fullUrl());
+            // Request Headers:
+            Log::debug('App Headers: ');
+            Log::debug('   Authorization = ' . substr($request->header('Authorization'), 0, 80) . '...');
+            Log::debug('   Visitor-Id = ' . $request->header('Visitor-Id'));
 
-            if ($request->user()) {
-                $user = 'ID ' . $request->user()->id;
-            } else {
-                $user = 'NULL';
-            }
-            Log::debug('User: ' . $user);
-
+            // Request Data:
             if ($request->all()) {
                 $data = http_build_query($request->all(), '', ' ; ');
             } else {
-                $data = 'NULL';
+                $data = 'N/A';
             }
-            Log::debug('DATA: ' . $data);
+            Log::debug('Request Data: ' . $data);
 
+            // Authenticated User:
+            if ($request->user()) {
+                $user = 'ID: ' . $request->user()->id;
+            } else {
+                $user = 'N/A';
+            }
+            Log::debug('Authenticated User: ' . $user);
+
+            // Response Content:
+            Log::debug('Response: ' . $response->content());
+
+            Log::debug('');
             Log::debug('');
 
         }
 
-        // return the response
-        return $next($request);
+        // Perform action
+
+        return $response;
     }
 }
