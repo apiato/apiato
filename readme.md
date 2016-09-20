@@ -88,6 +88,7 @@ Also note that there's **no stable release** till this date.
 - Localization support (multiple langauges via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
 - Support Visitors Authentication by Device ID (Use first register later).
+- Http Requests/Response Monitor and Debugger (easy test your Apps requests).
 - Auto detect and save device type and platform.
 - Easy and auto request input validation.
 - Type-Casting JSON responses with Transformers.
