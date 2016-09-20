@@ -1,17 +1,25 @@
 <?php
 
+$factoriesPath = '/Data/Factories/';
+
 // Automatically include Factory Files from all Containers to this file,
 // which will be used by Laravel when dealing with Model Factories.
 foreach (App\Port\Butler\Portals\Facade\PortButler::getContainersNames() as $containerName) {
 
-    $containersDirectory = base_path('app/Containers/' . $containerName . '/Data/Factories/');
+    $containersDirectory = base_path('app/Containers/' . $containerName . $factoriesPath);
 
-    if (is_dir($containersDirectory)) {
-        $containerFactoryFile = $containersDirectory . $containerName . 'Factory.php';
+    if (\File::isDirectory($containersDirectory)) {
 
-        if (is_file($containerFactoryFile)) {
-            include($containerFactoryFile);
+        $files = \File::allFiles($containersDirectory);
+
+        foreach ($files as $factoryFile) {
+
+            if (\File::isFile($factoryFile)) {
+                include($factoryFile);
+            }
+
         }
+
     }
 }
 
