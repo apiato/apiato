@@ -6,6 +6,7 @@ use App;
 use App\Port\Butler\Portals\Facade\PortButler;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
 use DB;
+use File;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 use Log;
@@ -50,7 +51,7 @@ trait PortServiceProviderTrait
      */
     public function changeTheDefaultDatabaseModelsFactoriesPath($customPath)
     {
-        $this->app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
+        App::singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
             $faker = $app->make(\Faker\Generator::class);
 
             return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
@@ -93,7 +94,7 @@ trait PortServiceProviderTrait
 
             $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
 
-            if (is_dir($containerViewDirectory)) {
+            if (File::isDirectory($containerViewDirectory)) {
                 View::addLocation($containerViewDirectory);
             }
         }
@@ -149,7 +150,7 @@ trait PortServiceProviderTrait
     {
         $containerMigrationsDirectory = base_path() . '/app/Containers/' . $containerName . '/Data/Migrations/';
 
-        if (is_dir($containerMigrationsDirectory)) {
+        if (File::isDirectory($containerMigrationsDirectory)) {
             $this->publishes([
                 $containerMigrationsDirectory => database_path('migrations'),
             ], 'migrations');

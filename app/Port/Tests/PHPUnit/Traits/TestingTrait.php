@@ -372,7 +372,7 @@ trait TestingTrait
     public function mock($class)
     {
         $mock = Mockery::mock($class);
-        $this->app->instance($class, $mock);
+        App::instance($class, $mock);
 
         return $mock;
     }

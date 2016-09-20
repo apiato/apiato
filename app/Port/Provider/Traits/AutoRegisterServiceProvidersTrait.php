@@ -2,6 +2,8 @@
 
 namespace App\Port\Provider\Traits;
 
+use App;
+
 /**
  * Class AutoRegisterServiceProvidersTrait.
  *
@@ -19,7 +21,7 @@ trait AutoRegisterServiceProvidersTrait
     {
         foreach ($providers as $provider) {
             if (class_exists($provider)) {
-                $this->app->register($provider);
+                App::register($provider);
             }
         }
     }
