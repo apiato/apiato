@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Middlewares;
 use App\Containers\Authentication\Exceptions\MissingVisitorIdException;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use Closure;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 
 /**
@@ -21,14 +22,22 @@ class VisitorsAuthentication
     private $findUserByVisitorIdTask;
 
     /**
+     * @var  \App\Containers\Authentication\Middlewares\AuthManager|\Illuminate\Auth\AuthManager
+     */
+    private $authManager;
+
+    /**
      * VisitorsAuthentication constructor.
      *
      * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask $findUserByVisitorIdTask
+     * @param \Illuminate\Auth\AuthManager                       $authManager
      */
     public function __construct(
-        FindUserByVisitorIdTask $findUserByVisitorIdTask
+        FindUserByVisitorIdTask $findUserByVisitorIdTask,
+        AuthManager $authManager
     ) {
         $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
+        $this->authManager = $authManager;
     }
 
     /**
@@ -52,7 +61,14 @@ class VisitorsAuthentication
             abort(403);
         }
 
-        // return the response
-        return $next($request);
+        // make the user accessible outside the middleware (\Auth::user())
+        $this->authManager->setUser($user);
+
+        $response = $next($request);
+
+        // make sure nothing left from that user, after this request end
+        $this->authManager->logout();
+
+        return $response;
     }
 }
