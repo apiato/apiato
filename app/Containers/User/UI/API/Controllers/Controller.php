@@ -95,8 +95,10 @@ class Controller extends PortApiController
         CreateUserAction $createUserAction,
         UpdateVisitorUserAction $updateVisitorUserAction
     ) {
+
         $visitorId = $request->header('visitor-id');
 
+        // if visitor ID is given then try to find that user and update it's record
         if ($visitorId) {
             $user = $updateVisitorUserAction->run(
                 $visitorId,
@@ -106,7 +108,10 @@ class Controller extends PortApiController
                 $request['gender'],
                 $request['birth']
             );
-        } else {
+        }
+
+        // if visitor ID is not provided OR if the above code didn't find the user by his visitor ID then create new record
+        if (!$visitorId || $user == null) {
             $user = $createUserAction->run(
                 $request['email'],
                 $request['password'],
