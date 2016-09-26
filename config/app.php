@@ -166,6 +166,7 @@ return [
         Jenssegers\Agent\AgentServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Webpatser\Countries\CountriesServiceProvider::class,
 
         /*
          * Laravel Porto: kernel Service Providers
@@ -235,7 +236,8 @@ return [
         'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
         'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
-        'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'DotenvEditor'  => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'Countries'     => Webpatser\Countries\CountriesFacade::class,
 
     ],
 
