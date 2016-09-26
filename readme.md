@@ -145,6 +145,7 @@ Thus you MUST read the Porto [Document](https://github.com/Mahmoudz/Porto)  befo
 	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
 	* [Stripe](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
 	* [Paypal](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
+	* [Countries](https://github.com/webpatser/laravel-countries) (Migrating the database with all countries info)
 
 
 <br>
