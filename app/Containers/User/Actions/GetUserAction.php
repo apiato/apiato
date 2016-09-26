@@ -2,10 +2,10 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**

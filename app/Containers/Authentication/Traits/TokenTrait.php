@@ -37,6 +37,6 @@ trait TokenTrait
      */
     public function withToken()
     {
-        return $this->injectToken((App::make(ApiGenerateTokenFromObjectTask::class))->run($this));
+        return $this->injectToken(App::make(ApiGenerateTokenFromObjectTask::class)->run($this));
     }
 }
