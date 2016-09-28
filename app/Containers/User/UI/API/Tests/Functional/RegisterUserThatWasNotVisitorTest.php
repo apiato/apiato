@@ -81,12 +81,7 @@ class RegisterUserThatWasNotVisitorTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '409');
-
-        // assert response contain the correct message
-        $this->assertResponseContainKeyValue([
-            'message' => 'Failed creating new User.',
-        ], $response);
+        $this->assertEquals($response->getStatusCode(), '422');
     }
 
     public function testRegisterNewUserWithoutEmail()
