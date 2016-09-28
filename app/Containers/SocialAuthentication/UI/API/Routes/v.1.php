@@ -3,7 +3,7 @@
 /*********************************************************************************
  * @apiGroup           SocialAuth
  * @apiName            AuthWithTwitter
- * @api                {get} /auth/twitter
+ * @api                {GET/POST} /auth/twitter
  * @apiDescription     After getting the User Token from twitter, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.
@@ -11,6 +11,7 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
+ * @apiHeader          visitor-id The Device ID [12345] (required in case you are enabling Visitors)
  * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
  * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
  * @apiSuccessExample  {json}    Success-Response:

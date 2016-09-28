@@ -25,7 +25,7 @@ class Controller extends PortApiController
      */
     public function authenticateTwitter(AuthenticateOneRequest $request, SocialLoginAction $action)
     {
-        $user = $action->run(SocialProvider::TWITTER);
+        $user = $action->run(SocialProvider::TWITTER, $request->header('visitor-id'));
 
         return $this->response->item($user, new UserTransformer());
     }
@@ -38,7 +38,7 @@ class Controller extends PortApiController
      */
     public function authenticateFacebook(AuthenticateTwoRequest $request, SocialLoginAction $action)
     {
-        $user = $action->run(SocialProvider::FACEBOOK);
+        $user = $action->run(SocialProvider::FACEBOOK, $request->header('visitor-id'));
 
         return $this->response->item($user, new UserTransformer());
     }
@@ -52,7 +52,7 @@ class Controller extends PortApiController
      */
     public function authenticateGoogle(AuthenticateTwoRequest $request, SocialLoginAction $action)
     {
-        $user = $action->run(SocialProvider::GOOGLE);
+        $user = $action->run(SocialProvider::GOOGLE, $request->header('visitor-id'));
 
         return $this->response->item($user, new UserTransformer());
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\SocialAuthentication\Tasks;
 
 use App\Containers\Authentication\Tasks\ApiAuthenticationTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
