@@ -61,7 +61,9 @@ class RequestsMonitorMiddleware
             Log::debug('Authenticated User: ' . $user);
 
             // Response Content:
-            Log::debug('Response: ' . $response->content());
+            if ($response && method_exists($response, 'content')) {
+                Log::debug('Response: ' . $response->content());
+            }
 
             Log::debug('');
             Log::debug('');
