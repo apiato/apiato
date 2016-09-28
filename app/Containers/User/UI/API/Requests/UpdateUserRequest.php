@@ -23,9 +23,9 @@ class UpdateUserRequest extends Request
     public function rules()
     {
         return [
-            'password' => 'min:6|max:30',
+            'email'    => 'email|unique:users,email',
+            'password' => 'min:6|max:40',
             'name'     => 'min:2|max:50',
-            'email'    => 'email',
         ];
     }
 
