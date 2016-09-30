@@ -62,7 +62,7 @@ class RequestsMonitorMiddleware
 
             // Response Content:
             if ($response && method_exists($response, 'content')) {
-                Log::debug('Response: ' . $response->content());
+                Log::debug('Response: ' . substr($response->content(), 0, 700) . '...');
             }
 
             Log::debug('');
