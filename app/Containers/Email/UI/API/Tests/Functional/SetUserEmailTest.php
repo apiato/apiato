@@ -33,8 +33,7 @@ class SetUserEmailTest extends TestCase
         // mock sending real emails
         $confirmEmail = $this->mock(ConfirmEmail::class);
         $confirmEmail->shouldReceive('send')->once()->withAnyArgs()->andReturn(true);
-        $confirmEmail->shouldReceive('setEmail')->once()->withAnyArgs();
-        $confirmEmail->shouldReceive('setName')->once()->withAnyArgs();
+        $confirmEmail->shouldReceive('to')->once()->withAnyArgs()->andReturn($confirmEmail);
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
