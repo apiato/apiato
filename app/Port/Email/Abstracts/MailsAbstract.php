@@ -2,6 +2,7 @@
 
 namespace App\Port\Email\Abstracts;
 
+use App\Port\Exception\Exceptions\EmailIsMissedException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 
@@ -60,10 +61,15 @@ abstract class MailsAbstract
      */
     public function send($data = [])
     {
+        if(!$this->fromEmail || !$this->toEmail){
+            throw new EmailIsMissedException();
+        }
+
         // TODO: surround with try and catch block and return exception
 
         // check if sending emails is enabled and if this is not running a testing environment
         if (Config::get('mail.enabled')) {
+
             Mail::queue('EmailTemplates.' . $this->template, $data, function ($m) {
                 $m->from($this->fromEmail, $this->fromName);
                 $m->to($this->toEmail, $this->toName)
