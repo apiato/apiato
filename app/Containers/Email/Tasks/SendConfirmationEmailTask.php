@@ -22,7 +22,7 @@ class SendConfirmationEmailTask extends Task
      */
     public function __construct(ConfirmEmail $confirmEmail)
     {
-        $this->email = $confirmEmail;
+        $this->confirmEmail = $confirmEmail;
     }
 
     /**
@@ -33,9 +33,7 @@ class SendConfirmationEmailTask extends Task
      */
     public function run(User $user, $confirmationUrl)
     {
-        $this->email->setEmail($user->email);
-        $this->email->setName($user->name);
-        $result = $this->email->send([
+        $result = $this->confirmEmail->to($user->email, $user->name)->send([
             'name' => $user->name,
             'url'  => $confirmationUrl,
         ]);

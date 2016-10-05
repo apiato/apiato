@@ -34,14 +34,21 @@ abstract class MailsAbstract
     protected $toName;
 
     /**
+     * @var string
+     */
+    protected $subject;
+
+    /**
      * MailsAbstract constructor.
      *
      * @param \Illuminate\Mail\Mailer $mail
      */
     public function __construct()
     {
-        $this->fromEmail = config('mail.from.address');
-        $this->fromName = config('mail.from.name');
+        // set default values from the config for both emails directions
+        // you can override everything later when using it.
+        $this->from(config('mail.from.address'), config('mail.from.name'));
+        $this->to(config('mail.to.address'), config('mail.to.name'));
     }
 
     /**
@@ -57,9 +64,9 @@ abstract class MailsAbstract
 
         // check if sending emails is enabled and if this is not running a testing environment
         if (Config::get('mail.enabled')) {
-            Mail::queue('EmailTemplates.' . $this->template, $data, function ($message) {
-                $message->from($this->fromEmail, $this->fromName);
-                $message->to($this->toEmail, $this->toName)
+            Mail::queue('EmailTemplates.' . $this->template, $data, function ($m) {
+                $m->from($this->fromEmail, $this->fromName);
+                $m->to($this->toEmail, $this->toName)
                     ->subject($this->subject);
             });
         }
@@ -67,22 +74,40 @@ abstract class MailsAbstract
         return true;
     }
 
-
     /**
-     * @param  mixed $toEmail
+     * @param $subject
      */
-    public function setEmail($toEmail)
+    public function setSubject($subject)
     {
-        $this->toEmail = $toEmail;
+        $this->subject = $subject;
     }
 
     /**
-     * @param  mixed $toName
+     * @param        $email
+     * @param string $name
+     *
+     * @return  $this
      */
-    public function setName($toName)
+    public function to($email, $name = '')
     {
-        $this->toName = $toName;
+        $this->toEmail = $email;
+        $this->toName = $name;
+
+        return $this;
     }
 
+    /**
+     * @param        $email
+     * @param string $name
+     *
+     * @return  $this
+     */
+    public function from($email, $name = '')
+    {
+        $this->fromEmail = $email;
+        $this->fromName = $name;
+
+        return $this;
+    }
 
 }

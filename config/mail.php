@@ -68,6 +68,11 @@ return [
 
     'from' => ['address' => env('MAIL_FROM_ADDRESS', null), 'name' => env('MAIL_FROM_NAME', null)],
 
+    'to' => [
+        'support' => ['address' => env('MAIL_TO_SUPPORT_ADDRESS', null), 'name' => env('MAIL_TO_SUPPORT_NAME', null)],
+        // .. add more below
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
