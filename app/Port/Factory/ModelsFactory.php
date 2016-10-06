@@ -1,5 +1,6 @@
 <?php
 
+// Default seeders directory in the container
 $factoriesPath = '/Data/Factories/';
 
 // Automatically include Factory Files from all Containers to this file,
