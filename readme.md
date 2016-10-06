@@ -86,6 +86,7 @@ Also note that there's **no stable release** till this date.
 - Authorization system (ACL), to control which consumer can access your API.
 - Supports CORS "Cross-Origin Resource Sharing".
 - Localization support (multiple langauges via Content-Language header).
+- Send Emails from App to User & User to App (Welcome, Email Confirmation, Contact Us,...).
 - Automatic Data Pagination (meta links to next and previous data).
 - Support Visitors Authentication by Device ID (Use first register later).
 - Http Requests/Response Monitor and Debugger (easy test your Apps requests).
@@ -101,14 +102,14 @@ Also note that there's **no stable release** till this date.
 - Maintainable and scalable Software Architectural Pattern (using Porto).
 - Fully Object Oriented Code, implementing the best design patterns.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
-- Easy to send Emails.
 - Ready Middlewares for WEB and API Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
 - Visual .env editor (in the browser).
 - Ready Admin dashboard infrastructure (just drop your admin views).
 - Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
-- Fully detailed documentation.
+- Fully detailed documentation (on www.hello-api.readme.io/docs).
 - 100% customizable and Open Code.
+- And much more...
 
 
 <a name="Documentation"></a>
@@ -116,9 +117,9 @@ Also note that there's **no stable release** till this date.
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern. 
 <br>
-Thus you MUST read the Porto [Document](https://github.com/Mahmoudz/Porto)  before starting.
+Thus you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto)  before starting.
 
-###[Full Documentation Here](https://hello-api.readme.io/docs/installation)
+###[Hello API Documentation](https://hello-api.readme.io/docs/installation)
 
 
 <a name="Technologies"></a>
