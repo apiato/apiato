@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Middlewares;
 
 use App\Containers\Authentication\Exceptions\MissingVisitorIdException;
+use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByVisitorIdTask;
 use Closure;
 use Illuminate\Auth\AuthManager;
@@ -55,7 +56,11 @@ class VisitorsAuthentication
             throw new MissingVisitorIdException();
         }
 
-        $user = $this->findUserByVisitorIdTask->run($visitorId);
+        // If I use "$this->findUserByVisitorIdTask->run($visitorId)" it applies any query parameters passed
+        // with the request to the search for user function, and this cause problems like (user not found)
+        // especially when passing something like `&search=name:whatever` it applies this on the user before
+        // reaching its final repository.
+        $user = User::where('visitor_id', $visitorId)->first();
 
         if (!$user) {
             abort(403);
