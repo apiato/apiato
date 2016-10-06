@@ -99,7 +99,7 @@ class PortButler
 
 
     /**
-     * build and return an object
+     * build and return an object of a class from its file path
      *
      * @param $filePathName
      *
@@ -116,7 +116,7 @@ class PortButler
 
 
     /**
-     * return the name and the namespace of a class from its file path
+     * get the full name (name \ namespace) of a class from its file path
      * result example: (string) "I\Am\The\Namespace\Of\This\Class"
      *
      * @param $filePathName
@@ -129,7 +129,7 @@ class PortButler
     }
 
     /**
-     * get the class namespace using token
+     * get the class namespace form file path using token
      *
      * @param $filePathName
      *
@@ -168,7 +168,7 @@ class PortButler
     }
 
     /**
-     * get the class name form using token
+     * get the class name form file path using token
      *
      * @param $filePathName
      *
