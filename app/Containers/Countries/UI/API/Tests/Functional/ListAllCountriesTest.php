@@ -16,6 +16,7 @@ class ListAllCountriesTest extends TestCase
 
     public function testListAllCountries_()
     {
+
         $this->getLoggedInTestingUser();
 
         // send the HTTP request
