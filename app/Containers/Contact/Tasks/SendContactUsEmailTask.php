@@ -38,8 +38,10 @@ class SendContactUsEmailTask extends Task
      */
     public function run($fromEmail, $message, $subject = 'No Subject', $fromName = 'No Name')
     {
+        $this->email->to(env('MAIL_TO_SUPPORT_ADDRESS'));
         $this->email->setSubject($subject);
-        $result = $this->email->from($fromEmail, $fromName)->send([
+        $result = $this->email->send([
+            'email'   => $fromEmail,
             'name'    => $fromName,
             'content' => $message,
         ]);

@@ -55,5 +55,8 @@
 <div>
     Message: {{$content}}
 </div>
+<div>
+    Email: {{$email}}
+</div>
 </body>
 </html>
