@@ -153,32 +153,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
-         * Third-party packages Service Providers
-         */
-        Dingo\Api\Provider\LaravelServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,
-        Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
-        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
-        Jenssegers\Agent\AgentServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
-        Webpatser\Countries\CountriesServiceProvider::class,
-
-        /*
-         * Laravel Porto: kernel Service Providers
-         */
         App\Port\Butler\Providers\PortButlerServiceProvider::class,
         App\Port\Provider\Providers\PortServiceProvider::class,
-
-        /*
-         * Laravel Porto: Services Service Providers
-         */
-
     ],
 
     /*

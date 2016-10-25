@@ -5,11 +5,11 @@ namespace App\Port\Provider\Traits;
 use App;
 
 /**
- * Class AutoRegisterServiceProvidersTrait.
+ * Class ContainersServiceProviderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait AutoRegisterServiceProvidersTrait
+trait ContainersServiceProviderTrait
 {
 
     /**

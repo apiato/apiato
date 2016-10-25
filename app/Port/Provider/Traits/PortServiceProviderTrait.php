@@ -69,11 +69,11 @@ trait PortServiceProviderTrait
     }
 
     /**
-     * Get the Task Providers full classes names from the containers config file registered containers.
+     * Get the containers Service Providers full classes names.
      *
      * @return  array
      */
-    public function getContainersServiceProviders()
+    public function getMainServiceProviders()
     {
         $containersNamespace = PortButler::getContainersNamespace();
 

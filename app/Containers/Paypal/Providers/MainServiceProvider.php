@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Containers\Welcome\Providers;
+namespace App\Containers\Paypal\Providers;
 
+use Anouar\Paypalpayment\PaypalpaymentServiceProvider as PaypalServiceProvider;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
- * Class WelcomeServiceProvider.
+ * Class MainServiceProvider.
  *
- * The Main Task Provider of this Module.
- * Will be automatically registered in the framework after
- * adding the Module name to containers config file.
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class WelcomeServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends ServiceProviderAbstract
 {
 
     /**
@@ -24,12 +23,12 @@ class WelcomeServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Task Provides.
+     * Container internal Service Provides.
      *
      * @var array
      */
     private $containerServiceProviders = [
-        // ...
+        PaypalServiceProvider::class,
     ];
 
     /**

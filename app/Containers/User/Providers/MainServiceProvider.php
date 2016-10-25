@@ -7,15 +7,13 @@ use App\Containers\User\Data\Repositories\UserRepository;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
- * Class UserServiceProvider.
+ * Class MainServiceProvider.
  *
- * The Main Task Provider of this Module.
- * Will be automatically registered in the framework after
- * adding the Module name to containers config file.
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UserServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends ServiceProviderAbstract
 {
 
     /**
@@ -26,7 +24,7 @@ class UserServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Task Provides.
+     * Container internal Service Provides.
      *
      * @var array
      */

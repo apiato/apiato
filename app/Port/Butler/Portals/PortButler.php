@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\File;
 class PortButler
 {
 
+    const DEFAULT_MAIN_SERVICE_PROVIDERS_NAMES = 'MainServiceProvider';
+
     /**
      * Get the containers namespace value from the containers config file
      *
@@ -91,7 +93,7 @@ class PortButler
     public function buildMainServiceProvider($containersNamespace, $containerName)
     {
         if ($containerName != 'Port') {
-            return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . $containerName . "ServiceProvider";
+            return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . self::DEFAULT_MAIN_SERVICE_PROVIDERS_NAMES;
         }
 
         return "App" . "\\Port" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";

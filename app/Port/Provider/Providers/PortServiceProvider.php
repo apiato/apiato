@@ -3,10 +3,14 @@
 namespace App\Port\Provider\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Provider\Traits\AutoRegisterServiceProvidersTrait;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
-
+use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
+use Brotzka\DotenvEditor\DotenvEditorServiceProvider;
+use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
+use Jenssegers\Agent\AgentServiceProvider;
+use Laravel\Socialite\SocialiteServiceProvider;
+use Prettus\Repository\Providers\RepositoryServiceProvider;
 
 /**
  * Class PortServiceProvider
@@ -23,7 +27,6 @@ class PortServiceProvider extends ServiceProviderAbstract
 {
 
     use PortServiceProviderTrait;
-    use AutoRegisterServiceProvidersTrait;
 
     /**
      * the new Models Factories Paths
@@ -31,12 +34,18 @@ class PortServiceProvider extends ServiceProviderAbstract
     const MODELS_FACTORY_PATH = '/app/Port/Factory';
 
     /**
-     * Port internal Task Provides.
+     * Port internal Service Provides.
      *
      * @var array
      */
-    private $engineServiceProviders = [
-        RoutesServiceProvider::class
+    private $serviceProviders = [
+        DingoApiServiceProvider::class,
+        CorsServiceProvider::class,
+        RepositoryServiceProvider::class,
+        RoutesServiceProvider::class,
+        AgentServiceProvider::class,
+        SocialiteServiceProvider::class,
+        DotenvEditorServiceProvider::class,
     ];
 
     /**
@@ -44,13 +53,8 @@ class PortServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->registerServiceProviders(array_merge(
-            $this->getContainersServiceProviders(),
-            $this->engineServiceProviders
-        ));
-
+        $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
         $this->autoLoadViewsFromContainers();
-
         $this->overrideDefaultFractalSerializer();
     }
 
