@@ -2,7 +2,7 @@
 
 namespace App\Port\Routes\Providers;
 
-use App\Port\Provider\Abstracts\RoutesServiceProviderAbstract;
+use App\Port\Routes\Abstracts\PortRoutesServiceProviderAbstract;
 use App\Port\Routes\Traits\RoutesServiceProviderTrait;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
@@ -12,7 +12,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RoutesServiceProvider extends RoutesServiceProviderAbstract
+class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
 {
     use RoutesServiceProviderTrait;
 
