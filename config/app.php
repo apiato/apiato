@@ -153,7 +153,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Porto Service Provider
         App\Port\Provider\Providers\PortServiceProvider::class,
+        // NOTE: all packages service providers must be registered inside their containers
     ],
 
     /*
