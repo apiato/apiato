@@ -2,19 +2,18 @@
 
 namespace App\Port\Middleware;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
-use Illuminate\Routing\Router;
 
 /**
- * Class PortHttpMiddleware
+ * Class PortKernel
  *
  * A.K.A (app/Http/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortHttpMiddleware extends LaravelHttpKernel
+class PortKernel extends LaravelHttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -25,7 +24,7 @@ class PortHttpMiddleware extends LaravelHttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
 
         // Hello API Localization middleware
-        \App\Port\Middleware\Middlewares\Http\Localization::class,
+        \App\Port\Middleware\Http\Localization::class,
     ];
 
     /**
@@ -36,8 +35,8 @@ class PortHttpMiddleware extends LaravelHttpKernel
     protected $middlewareGroups = [
         'web' => [
             // Laravel default WEB middleware's (provided by laravel/laravel)
-            \App\Port\Middleware\Middlewares\Http\EncryptCookies::class,
-            \App\Port\Middleware\Middlewares\Http\VerifyCsrfToken::class,
+            \App\Port\Middleware\Http\EncryptCookies::class,
+            \App\Port\Middleware\Http\VerifyCsrfToken::class,
 
             // Laravel default WEB middleware's (provided by laravel/framework)
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -62,17 +61,17 @@ class PortHttpMiddleware extends LaravelHttpKernel
      */
     protected $routeMiddleware = [
         // Laravel default route middleware's
-        'can'         => \Illuminate\Auth\Middleware\Authorize::class,
-        'bindings'    => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'                     => \Illuminate\Auth\Middleware\Authorize::class,
+        'bindings'                => \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
         // JWT Package middleware's
-        'jwt.auth'    => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        'jwt.auth'                => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh'             => \Tymon\JWTAuth\Middleware\RefreshToken::class,
 
         // Entrust Package middleware's
-        'role'        => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        'permission'  => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        'ability'     => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+        'role'                    => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission'              => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability'                 => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
         // By Hello API
         'role.web'                => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,

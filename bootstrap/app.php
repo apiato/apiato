@@ -28,7 +28,7 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\Port\Middleware\PortHttpMiddleware::class
+    App\Port\Middleware\PortKernel::class
 );
 
 $app->singleton(
