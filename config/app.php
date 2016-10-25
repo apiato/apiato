@@ -153,7 +153,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        App\Port\Butler\Providers\PortButlerServiceProvider::class,
         App\Port\Provider\Providers\PortServiceProvider::class,
     ],
 

@@ -11,6 +11,7 @@ use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Jenssegers\Agent\AgentServiceProvider;
 use Laravel\Socialite\SocialiteServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
+use App\Port\Butler\Portals\PortButler;
 
 /**
  * Class PortServiceProvider
@@ -63,6 +64,10 @@ class PortServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
+        $this->app->bind('PortButler', function () {
+            return $this->app->make(PortButler::class);
+        });
+
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->publishContainersMigrationsFiles();
         $this->debugDatabaseQueries(true, true);
