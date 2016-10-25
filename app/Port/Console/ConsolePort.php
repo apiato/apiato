@@ -8,7 +8,7 @@ use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 /**
  * Class ConsolePort
  *
- * A.K.A (app/Console/Port.php)
+ * A.K.A (app/Console/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
