@@ -38,7 +38,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Port\Exception\Handler\ExceptionsHandler::class
+    App\Port\Exception\Handler\PortExceptionsHandler::class
 );
 
 /*
