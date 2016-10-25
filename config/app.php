@@ -153,6 +153,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
+        Illuminate\Broadcasting\BroadcastServiceProvider::class,
 
         /*
          * Third-party packages Service Providers
