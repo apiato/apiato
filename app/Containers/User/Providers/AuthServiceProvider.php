@@ -2,21 +2,20 @@
 
 namespace App\Containers\User\Providers;
 
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Port\Policy\Providers\PortAuthServiceProvider;
 use App\Containers\User\Models\User;
 use App\Containers\User\Policies\UserPolicy;
 
 /**
- * Class PoliciesServiceProvider.
+ * Class AuthServiceProvider.
  *
- * This Task Provider is designed to map the policies to their models.
+ * This Provider is designed to map the policies to their models.
  * Must be manually added to the list of extra service providers in the
  * containers config file in order to get registered in the framework.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PoliciesServiceProvider extends ServiceProvider
+class AuthServiceProvider extends PortAuthServiceProvider
 {
 
     /**
@@ -31,14 +30,10 @@ class PoliciesServiceProvider extends ServiceProvider
     /**
      * Register any application authentication / authorization services.
      *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
-     *
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        parent::registerPolicies($gate);
-
-        //
+        parent::registerPolicies();
     }
 }

@@ -10,8 +10,10 @@ use App\Port\Routes\Providers\RoutesServiceProvider;
 
 /**
  * Class PortServiceProvider
- * The main Task Provider where all Task Providers gets registered
- * this is the only Task Provider that gets injected in the Config/app.php.
+ * The main Service Provider where all Service Providers gets registered
+ * this is the only Service Provider that gets injected in the Config/app.php.
+ *
+ * A.K.A app/Providers/AppServiceProvider.php
  *
  * Class PortServiceProvider
  *

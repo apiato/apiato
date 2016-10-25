@@ -32,15 +32,13 @@ class RoutesServiceProvider extends RoutesServiceProviderAbstract
 
     /**
      * Define your route model bindings, pattern filters, etc.
-     *
-     * @param \Illuminate\Routing\Router $router
      */
-    public function boot(LaravelRouter $router)
+    public function boot()
     {
         // initializing an instance of the Dingo Api router
         $this->apiRouter = app(DingoApiRouter::class);
 
-        parent::boot($router);
+        parent::boot();
     }
 
     /**

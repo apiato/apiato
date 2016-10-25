@@ -28,7 +28,7 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\Port\Middleware\PortHttpMiddleware::class
+    App\Port\Middleware\PortKernel::class
 );
 
 $app->singleton(
@@ -38,7 +38,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Port\Exception\Handler\ExceptionsHandler::class
+    App\Port\Exception\Handler\PortExceptionsHandler::class
 );
 
 /*
