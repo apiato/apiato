@@ -14,7 +14,7 @@ use Prettus\Repository\Providers\RepositoryServiceProvider;
 use App\Port\Butler\Portals\PortButler;
 
 /**
- * Class PortServiceProvider
+ * Class MainServiceProvider
  * The main Service Provider where all Service Providers gets registered
  * this is the only Service Provider that gets injected in the Config/app.php.
  *
@@ -24,7 +24,7 @@ use App\Port\Butler\Portals\PortButler;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PortServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends ServiceProviderAbstract
 {
 
     use PortServiceProviderTrait;

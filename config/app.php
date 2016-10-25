@@ -154,7 +154,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         // Porto Service Provider
-        App\Port\Provider\Providers\PortServiceProvider::class,
+        App\Port\Provider\Providers\MainServiceProvider::class,
         // NOTE: all packages service providers must be registered inside their containers
     ],
 
