@@ -30,15 +30,19 @@ class FindUserByVisitorIdTask extends Task
     }
 
     /**
-     * @param $visitorId
+     * @param      $visitorId
+     * @param bool $skipCriterias
      *
      * @return  mixed
      */
-    public function run($visitorId)
+    public function run($visitorId, $skipCriterias = false)
     {
-
         if (!$visitorId) {
             throw (new MissingVisitorIdException());
+        }
+
+        if($skipCriterias){
+            $this->userRepository = $this->userRepository->skipCriteria();
         }
 
         $user = $this->userRepository->findByField('visitor_id', $visitorId)->first();

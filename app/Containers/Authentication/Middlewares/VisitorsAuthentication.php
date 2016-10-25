@@ -56,11 +56,7 @@ class VisitorsAuthentication
             throw new MissingVisitorIdException();
         }
 
-        // If I use "$this->findUserByVisitorIdTask->run($visitorId)" it applies any query parameters passed
-        // with the request to the search for user function, and this cause problems like (user not found)
-        // especially when passing something like `&search=name:whatever` it applies this on the user before
-        // reaching its final repository.
-        $user = User::where('visitor_id', $visitorId)->first();
+        $user = $this->findUserByVisitorIdTask->run($visitorId, true); // true: skip criterias
 
         if (!$user) {
             abort(403);
