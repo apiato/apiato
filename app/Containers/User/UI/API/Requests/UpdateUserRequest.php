@@ -38,6 +38,10 @@ class UpdateUserRequest extends Request
      */
     public function authorize(Gate $gate, GetAuthenticatedUserTask $getAuthenticatedUserTask)
     {
-        return $gate->getPolicyFor(User::class)->update($this->user(), $getAuthenticatedUserTask->run()->id);
+        // NOTE: the comment below is just a reference for how to use the policies, since now
+        //       a user is authorized to update himself.
+        //$gate->getPolicyFor(User::class)->update($this->user(), $getAuthenticatedUserTask->run()->id);
+
+        return true;
     }
 }

@@ -16,6 +16,7 @@ class UserPolicy extends Policy
     use HandlesAuthorization;
 
     /**
+     * EXAMPLE CODE, NEVER USED
      * Determine if the user is updating himself and not another user.
      *
      * @param \App\Containers\User\Models\User $user
@@ -30,6 +31,7 @@ class UserPolicy extends Policy
     }
 
     /**
+     * EXAMPLE CODE, NEVER USED
      * Determine if the user is deleting himself and not another user.
      *
      * @param \App\Containers\User\Models\User $user
