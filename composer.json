@@ -11,7 +11,7 @@
   "type": "project",
   "require": {
     "php": ">=5.6.4",
-    "laravel/framework": "5.3.0",
+    "laravel/framework": "5.3.*",
     "guzzlehttp/guzzle": "^6.2",
     "dingo/api": "1.0.x@dev",
     "tymon/jwt-auth": "0.5.*",

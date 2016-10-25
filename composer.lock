@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bbbf5c9eb700d058ce9b50175e3282d1",
-    "content-hash": "a7e0b6fbe2a9c5fadf2f23254e9c9bb4",
+    "hash": "b046e8de36c22b6411ae1b1f162676fe",
+    "content-hash": "acac883a404d5432038780f2b42ee4da",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -1100,16 +1100,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.0",
+            "version": "v5.3.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7d116dc5a008e69c97f864af79ac46ab6a8d5895"
+                "reference": "09f2515b72eba3229dfce44a801852b9b8d011e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7d116dc5a008e69c97f864af79ac46ab6a8d5895",
-                "reference": "7d116dc5a008e69c97f864af79ac46ab6a8d5895",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/09f2515b72eba3229dfce44a801852b9b8d011e2",
+                "reference": "09f2515b72eba3229dfce44a801852b9b8d011e2",
                 "shasum": ""
             },
             "require": {
@@ -1157,6 +1157,7 @@
                 "illuminate/http": "self.version",
                 "illuminate/log": "self.version",
                 "illuminate/mail": "self.version",
+                "illuminate/notifications": "self.version",
                 "illuminate/pagination": "self.version",
                 "illuminate/pipeline": "self.version",
                 "illuminate/queue": "self.version",
@@ -1190,7 +1191,7 @@
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (3.1.*).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (3.1.*).",
-                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
+                "symfony/psr-http-message-bridge": "Required to use psr7 bridging features (0.2.*)."
             },
             "type": "library",
             "extra": {
@@ -1223,7 +1224,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-23 13:04:04"
+            "time": "2016-10-25 13:38:24"
         },
         {
             "name": "laravel/socialite",
