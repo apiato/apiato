@@ -32,7 +32,7 @@
 <a name="Introduction"></a>
 ### What is Hello API
 
-Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.2**.
+Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.3**.
 
 It gives all the common functionalities of a modern API, to help building API-Centric Apps faster.
 
@@ -128,7 +128,7 @@ Thus you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto)  befo
 >Hello API is built with the latest & hottest Technologies:
 
 * PHP (Server-Side Scripting Language)
-* [Laravel 5.2](http://laravel.com) (PHP Framework)
+* [Laravel 5.3](http://laravel.com) (PHP Framework)
 * [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
 * [MySQL](https://www.mysql.com/) (RDBMS Database)
 * [Redis](http://redis.io/) (Cache System)
