@@ -7,12 +7,7 @@ use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
-use Brotzka\DotenvEditor\DotenvEditorFacade;
-use Brotzka\DotenvEditor\DotenvEditorServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
-use Jenssegers\Agent\AgentServiceProvider;
-use Jenssegers\Agent\Facades\Agent;
-use Laravel\Socialite\SocialiteServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
 
 /**
@@ -46,9 +41,6 @@ class MainServiceProvider extends ServiceProviderAbstract
         CorsServiceProvider::class,
         RepositoryServiceProvider::class,
         RoutesServiceProvider::class,
-        AgentServiceProvider::class,
-        SocialiteServiceProvider::class,
-        DotenvEditorServiceProvider::class,
     ];
 
     /**
@@ -57,8 +49,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var  array
      */
     private $aliases = [
-        'Agent'        => Agent::class,
-        'DotenvEditor' => DotenvEditorFacade::class,
+
     ];
 
     /**

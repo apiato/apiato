@@ -4,6 +4,7 @@ namespace App\Containers\SocialAuthentication\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\SocialiteServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -28,7 +29,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     private $containerServiceProviders = [
-
+        SocialiteServiceProvider::class,
     ];
 
     /**

@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Containers\Authorization\Providers;
+namespace App\Containers\Environment\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-
-use Zizaco\Entrust\EntrustFacade;
-use Zizaco\Entrust\EntrustServiceProvider;
+use Brotzka\DotenvEditor\DotenvEditorServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -30,7 +28,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     private $containerServiceProviders = [
-        EntrustServiceProvider::class,
+        DotenvEditorServiceProvider::class,
     ];
 
     /**
@@ -39,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var  array
      */
     private $containerAliases = [
-        'Entrust'    => EntrustFacade::class,
+        'DotenvEditor' => DotenvEditorFacade::class,
     ];
 
     /**
