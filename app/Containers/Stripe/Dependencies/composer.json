@@ -1,0 +1,5 @@
+{
+  "require": {
+    "cartalyst/stripe-laravel": "5.0.*"
+  }
+}

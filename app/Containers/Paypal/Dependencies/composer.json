@@ -1,0 +1,5 @@
+{
+  "require": {
+    "anouar/paypalpayment": "~1.0"
+  }
+}

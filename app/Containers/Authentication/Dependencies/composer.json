@@ -1,0 +1,6 @@
+{
+  "require": {
+    "tymon/jwt-auth": "0.5.*",
+    "jenssegers/agent": "^2.3"
+  }
+}

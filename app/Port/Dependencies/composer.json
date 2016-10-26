@@ -1,0 +1,9 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "^6.2",
+    "predis/predis": "^1.0",
+    "dingo/api": "1.0.x@dev",
+    "prettus/l5-repository": "^2.1",
+    "barryvdh/laravel-cors": "^0.8.0"
+  }
+}
