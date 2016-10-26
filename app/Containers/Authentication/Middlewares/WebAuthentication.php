@@ -8,11 +8,11 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 /**
- * Class Authentication
+ * Class WebAuthentication
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Authentication
+class WebAuthentication
 {
 
     /**
