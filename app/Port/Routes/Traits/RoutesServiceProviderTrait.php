@@ -62,7 +62,7 @@ trait RoutesServiceProviderTrait
                             // Routes Namespace
                             'namespace'  => $controllerNamespace,
                             // Enable: API Rate Limiting
-                            'middleware' => ['api.throttle','mobile.requests.monitor'],
+                            'middleware' => ['api.throttle', 'api.cors', 'api.localization', 'mobile.requests.monitor'],
                             // The API limit time.
                             'limit'      => Config::get('api.limit'),
                             // The API limit expiry time.
@@ -99,6 +99,7 @@ trait RoutesServiceProviderTrait
 
             foreach ($files as $file) {
                 $this->webRouter->group([
+                    'middleware' => ['web'],
                     'namespace' => $controllerNamespace,
                 ], function (LaravelRouter $router) use ($file) {
                     require $file->getPathname();

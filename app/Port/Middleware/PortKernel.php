@@ -22,9 +22,6 @@ class PortKernel extends LaravelHttpKernel
     protected $middleware = [
         // Laravel default middlewares
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-
-        // Hello API Localization middleware
-        \App\Port\Middleware\Http\Localization::class,
     ];
 
     /**
@@ -34,23 +31,14 @@ class PortKernel extends LaravelHttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // Laravel default WEB middleware's (provided by laravel/laravel)
+            // Laravel default middleware's (provided by laravel/laravel)
             \App\Port\Middleware\Http\EncryptCookies::class,
             \App\Port\Middleware\Http\VerifyCsrfToken::class,
-
-            // Laravel default WEB middleware's (provided by laravel/framework)
+            // Laravel default middleware's (provided by laravel/framework)
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-        'api' => [
-            // Laravel default API middleware's
-            'throttle:60,1',
-            'bindings',
-
-            // CORS Package middleware
-            \Barryvdh\Cors\HandleCors::class,
         ],
     ];
 
@@ -80,10 +68,16 @@ class PortKernel extends LaravelHttpKernel
         'api.auth.visitor'        => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
 
         // Hello API User Authentication middleware for Web Pages
-        'web.auth'                => \App\Containers\Authentication\Middlewares\Authentication::class,
+        'web.auth'                => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
 
         // Hello API Requests Monitor
         'mobile.requests.monitor' => \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
+
+        // CORS package middleware
+        'api.cors' => \Barryvdh\Cors\HandleCors::class,
+
+        // Hello API Localization middleware
+        'api.localization' => \App\Port\Middleware\Http\Localization::class,
 
         // ...
     ];
