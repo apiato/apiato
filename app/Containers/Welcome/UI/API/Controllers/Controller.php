@@ -16,7 +16,7 @@ class Controller extends PortApiController
     /**
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function welcome()
+    public function sayWelcome()
     {
         return response()->json(['Welcome to ' . Config::get('api.name') . '.']);
     }
