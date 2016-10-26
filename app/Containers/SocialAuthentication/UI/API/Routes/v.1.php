@@ -3,7 +3,7 @@
 /*********************************************************************************
  * @apiGroup           SocialAuth
  * @apiName            AuthWithTwitter
- * @api                {GET/POST} /auth/twitter
+ * @api                {get} /auth/twitter
  * @apiDescription     After getting the User Token from twitter, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.
@@ -20,11 +20,14 @@ HTTP/1.1 200 OK
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
+    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
+    "gender": "male",
+    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "twitter",
     "social_id": "5713788888",
@@ -45,8 +48,8 @@ HTTP/1.1 200 OK
   }
 }
  */
-$router->any('auth/twitter', [
-    'uses' => 'Controller@authenticateTwitter',
+$router->any('auth/{provider}', [
+    'uses' => 'Controller@apiAuthenticateAll',
 ]);
 
 /*********************************************************************************
@@ -68,11 +71,14 @@ HTTP/1.1 200 OK
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
+    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
+    "gender": "male",
+    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "facebook",
     "social_id": "88208885713788888",
@@ -93,8 +99,8 @@ HTTP/1.1 200 OK
   }
 }
  */
-$router->any('auth/facebook', [
-    'uses' => 'Controller@authenticateFacebook',
+$router->any('auth/{provider}', [
+    'uses' => 'Controller@apiAuthenticateAll',
 ]);
 
 /*********************************************************************************
@@ -118,11 +124,14 @@ HTTP/1.1 200 OK
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
+    "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
     "visitor_id": "123456789",
+    "gender": "male",
+    "birth": "null",
     "nickname": "MEGA",
     "social_auth_provider": "google",
     "social_id": "11111208885713788888",
@@ -143,28 +152,8 @@ HTTP/1.1 200 OK
   }
 }
  */
-$router->any('auth/google', [
-    'uses' => 'Controller@authenticateGoogle',
+$router->any('auth/{provider}', [
+    'uses' => 'Controller@apiAuthenticateAll',
 ]);
 
 
-
-// FOR LIVE TESTING ONLY
-
-$router->any('auth/google/test', [
-    'uses'       => function () {
-        return Laravel\Socialite\Facades\Socialite::driver('google')->redirect();
-    },
-]);
-
-$router->any('auth/twitter/test', [
-    'uses'       => function () {
-        return Laravel\Socialite\Facades\Socialite::driver('twitter')->redirect();
-    },
-]);
-
-$router->any('auth/facebook/test', [
-    'uses'       => function () {
-        return Laravel\Socialite\Facades\Socialite::driver('facebook')->redirect();
-    },
-]);

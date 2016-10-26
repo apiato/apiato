@@ -5,11 +5,11 @@ namespace App\Containers\SocialAuthentication\UI\API\Requests;
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class AuthenticateOneRequest.
+ * Class ApiAuthenticateRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AuthenticateOneRequest extends Request
+class ApiAuthenticateRequest extends Request
 {
 
     /**
@@ -20,7 +20,7 @@ class AuthenticateOneRequest extends Request
     public function rules()
     {
         return [
-            'oauth_token'     => 'required',
+
         ];
     }
 

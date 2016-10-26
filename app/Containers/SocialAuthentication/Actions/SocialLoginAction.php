@@ -93,8 +93,12 @@ class SocialLoginAction extends Action
      *
      * @return  mixed
      */
-    public function run($provider, $visitorId = null)
+    public function run($provider, $visitorId = null, $requestData = null)
     {
+        // TODO: to be updated/replaced
+
+        // TODO: needs refactoring so bad :D
+
         // fetch the user data from facebook
         $socialUserProfile = $this->getUserSocialProfileTask->run($provider);
 
