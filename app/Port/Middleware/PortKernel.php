@@ -20,7 +20,7 @@ class PortKernel extends LaravelHttpKernel
      * @var array
      */
     protected $middleware = [
-        // Laravel default middlewares
+        // Laravel default middleware's:
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
     ];
 
@@ -31,15 +31,17 @@ class PortKernel extends LaravelHttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // Laravel default middleware's
+            // Laravel default middleware's:
             \App\Port\Middleware\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Port\Middleware\Http\VerifyCsrfToken::class,
-
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'api' => [
+            // Laravel default middleware's:
+            'bindings',
             // Hello API Requests Monitor
             \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
             // CORS package middleware
@@ -57,28 +59,22 @@ class PortKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        // Laravel default route middleware's
+        // Laravel default route middleware's:
         'can'              => \Illuminate\Auth\Middleware\Authorize::class,
         'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
         // JWT Package middleware's
         'jwt.auth'         => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
         'jwt.refresh'      => \Tymon\JWTAuth\Middleware\RefreshToken::class,
-
         // Entrust Package middleware's
         'role'             => \Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission'       => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability'          => \Zizaco\Entrust\Middleware\EntrustAbility::class,
-
         // By Hello API
         'role.web'         => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
-
         // Hello API Visitor User Authentication middleware
         'api.auth.visitor' => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
-
         // Hello API User Authentication middleware for Web Pages
         'web.auth'         => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
-
         // ...
     ];
 
