@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Containers\Stripe\Providers;
+namespace App\Containers\Tracker\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use Cartalyst\Stripe\Laravel\StripeServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -28,7 +27,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     private $containerServiceProviders = [
-        StripeServiceProvider::class,
+
     ];
 
     /**

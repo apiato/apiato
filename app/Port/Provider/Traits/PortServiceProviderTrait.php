@@ -59,16 +59,6 @@ trait PortServiceProviderTrait
     }
 
     /**
-     * Register the Migrations files of all Containers
-     */
-    public function publishContainersMigrationsFiles()
-    {
-        foreach (PortButler::getContainersNames() as $containerName) {
-            $this->publishModuleMigrationsFiles($containerName);
-        }
-    }
-
-    /**
      * Get the containers Service Providers full classes names.
      *
      * @return  array
@@ -99,6 +89,27 @@ trait PortServiceProviderTrait
             }
         }
     }
+
+    /**
+     *
+     */
+    public function autoMigrationsFromContainers()
+    {
+        foreach (PortButler::getContainersNames() as $containerName) {
+
+            $containerMigrationDirectory = base_path('app/Containers/' . $containerName . '/Data/Migrations');
+
+            if (File::isDirectory($containerMigrationDirectory)) {
+
+                App::afterResolving('migrator', function ($migrator) use ($containerMigrationDirectory) {
+                    foreach ((array)$containerMigrationDirectory as $path) {
+                        $migrator->path($path);
+                    }
+                });
+            }
+        }
+    }
+
 
     /**
      * By default the Dingo API package (in the config file) creates an instance of the
@@ -136,25 +147,4 @@ trait PortServiceProviderTrait
             });
         }
     }
-
-
-    /**
-     * Register the Migrations files of a Module
-     *
-     * This transfers all the Migrations files from the Module directory to the Framework
-     * Migrations Directory.
-     *
-     * @param $directory
-     */
-    private function publishModuleMigrationsFiles($containerName)
-    {
-        $containerMigrationsDirectory = base_path() . '/app/Containers/' . $containerName . '/Data/Migrations/';
-
-        if (File::isDirectory($containerMigrationsDirectory)) {
-            $this->publishes([
-                $containerMigrationsDirectory => database_path('migrations'),
-            ], 'migrations');
-        }
-    }
-
 }

@@ -55,6 +55,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     public function boot()
     {
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
+        $this->autoMigrationsFromContainers();
         $this->autoLoadViewsFromContainers();
         $this->overrideDefaultFractalSerializer();
     }
@@ -69,7 +70,6 @@ class MainServiceProvider extends ServiceProviderAbstract
         });
 
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
-        $this->publishContainersMigrationsFiles();
         $this->debugDatabaseQueries(true, true);
     }
 
