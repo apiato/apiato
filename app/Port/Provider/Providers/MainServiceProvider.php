@@ -57,6 +57,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
+        $this->autoLoadConfigFiles();
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
         $this->autoMigrationsFromContainers();
         $this->autoLoadViewsFromContainers();
@@ -71,7 +72,6 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->app->bind('PortButler', function () {
             return $this->app->make(PortButler::class);
         });
-        $this->registerAliases($this->aliases);
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->debugDatabaseQueries(true, true);
     }
