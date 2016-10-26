@@ -3,6 +3,7 @@
 namespace App\Port\Provider\Traits;
 
 use App;
+use Illuminate\Foundation\AliasLoader;
 
 /**
  * Class ContainersServiceProviderTrait.
@@ -33,7 +34,7 @@ trait ContainersServiceProviderTrait
     {
         foreach ($aliases as $aliasKey => $aliasValue) {
             if (class_exists($aliasValue)) {
-                App::alias($aliasKey, $aliasValue);
+                AliasLoader::getInstance()->alias($aliasKey, $aliasValue);
             }
         }
     }
