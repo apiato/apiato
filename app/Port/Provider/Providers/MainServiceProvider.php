@@ -2,16 +2,18 @@
 
 namespace App\Port\Provider\Providers;
 
+use App\Port\Butler\Portals\PortButler;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
+use Brotzka\DotenvEditor\DotenvEditorFacade;
 use Brotzka\DotenvEditor\DotenvEditorServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Jenssegers\Agent\AgentServiceProvider;
+use Jenssegers\Agent\Facades\Agent;
 use Laravel\Socialite\SocialiteServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
-use App\Port\Butler\Portals\PortButler;
 
 /**
  * Class MainServiceProvider
@@ -35,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     const MODELS_FACTORY_PATH = '/app/Port/Factory';
 
     /**
-     * Port internal Service Provides.
+     * Port Service Providers
      *
      * @var array
      */
@@ -47,6 +49,16 @@ class MainServiceProvider extends ServiceProviderAbstract
         AgentServiceProvider::class,
         SocialiteServiceProvider::class,
         DotenvEditorServiceProvider::class,
+    ];
+
+    /**
+     * Port Aliases
+     *
+     * @var  array
+     */
+    private $aliases = [
+        'Agent'        => Agent::class,
+        'DotenvEditor' => DotenvEditorFacade::class,
     ];
 
     /**
@@ -68,7 +80,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->app->bind('PortButler', function () {
             return $this->app->make(PortButler::class);
         });
-
+        $this->registerAliases($this->aliases);
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->debugDatabaseQueries(true, true);
     }

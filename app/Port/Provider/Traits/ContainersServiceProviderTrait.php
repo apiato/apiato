@@ -26,4 +26,16 @@ trait ContainersServiceProviderTrait
         }
     }
 
+    /**
+     * @param array $aliases
+     */
+    public function registerAliases(array $aliases)
+    {
+        foreach ($aliases as $aliasKey => $aliasValue) {
+            if (class_exists($aliasValue)) {
+                App::alias($aliasKey, $aliasValue);
+            }
+        }
+    }
+
 }

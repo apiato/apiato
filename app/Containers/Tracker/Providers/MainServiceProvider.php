@@ -22,11 +22,20 @@ class MainServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container Service Providers.
      *
      * @var array
      */
     private $containerServiceProviders = [
+
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    private $containerAliases = [
 
     ];
 
@@ -43,6 +52,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-
+        $this->registerAliases($this->containerAliases);
     }
 }

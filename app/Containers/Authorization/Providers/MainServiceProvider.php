@@ -3,6 +3,9 @@
 namespace App\Containers\Authorization\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
+use Zizaco\Entrust\EntrustFacade;
 use Zizaco\Entrust\EntrustServiceProvider;
 
 /**
@@ -23,12 +26,23 @@ class MainServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container Service Providers.
      *
      * @var array
      */
     private $containerServiceProviders = [
         EntrustServiceProvider::class,
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    private $containerAliases = [
+        'Entrust'    => EntrustFacade::class,
+        'JWTAuth'    => JWTAuth::class,
+        'JWTFactory' => JWTFactory::class,
     ];
 
     /**
@@ -40,10 +54,10 @@ class MainServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register bindings in the container.
+     * Register anything in the container.
      */
     public function register()
     {
-
+        $this->registerAliases($this->containerAliases);
     }
 }

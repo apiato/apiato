@@ -3,6 +3,7 @@
 namespace App\Containers\Stripe\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Laravel\StripeServiceProvider;
 
 /**
@@ -23,12 +24,21 @@ class MainServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container Service Providers.
      *
      * @var array
      */
     private $containerServiceProviders = [
         StripeServiceProvider::class,
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    private $containerAliases = [
+        'Stripe' => Stripe::class,
     ];
 
     /**
@@ -44,6 +54,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-
+        $this->registerAliases($this->containerAliases);
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Containers\Settings\Providers;
+namespace App\Containers\SocialAuthentication\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use Laravel\Socialite\Facades\Socialite;
 
 /**
  * Class MainServiceProvider.
@@ -36,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var  array
      */
     private $containerAliases = [
-
+        'Socialite' => Socialite::class,
     ];
 
     /**
@@ -48,7 +49,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register anything in the container.
+     * Register bindings in the container.
      */
     public function register()
     {

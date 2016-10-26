@@ -2,6 +2,7 @@
 
 namespace App\Containers\Paypal\Providers;
 
+use Anouar\Paypalpayment\Facades\PaypalPayment;
 use Anouar\Paypalpayment\PaypalpaymentServiceProvider as PaypalServiceProvider;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
@@ -23,12 +24,21 @@ class MainServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container Service Providers.
      *
      * @var array
      */
     private $containerServiceProviders = [
         PaypalServiceProvider::class,
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    private $containerAliases = [
+        'Paypalpayment' => PaypalPayment::class,
     ];
 
     /**
@@ -40,10 +50,10 @@ class MainServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register bindings in the container.
+     * Register anything in the container.
      */
     public function register()
     {
-
+        $this->registerAliases($this->containerAliases);
     }
 }

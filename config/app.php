@@ -155,7 +155,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         // Porto Service Provider
         App\Port\Provider\Providers\MainServiceProvider::class,
-        // NOTE: all packages service providers must be registered inside their containers
+        // NOTE: all packages service providers must be registered inside their containers service providers
     ],
 
     /*
@@ -203,21 +203,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-
-        /*
-         * Custom Application Aliases
-         */
-        'JWTAuth'       => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory'    => Tymon\JWTAuth\Facades\JWTFactory::class,
-        'Entrust'       => Zizaco\Entrust\EntrustFacade::class,
-        'Agent'         => Jenssegers\Agent\Facades\Agent::class,
-        'Stripe'        => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
-        'Paypalpayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
-        'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
-        'DotenvEditor'  => Brotzka\DotenvEditor\DotenvEditorFacade::class,
-        'Countries'     => Webpatser\Countries\CountriesFacade::class,
-
+        // NOTE: all packages aliases must be registered inside their containers service providers
     ],
 
 ];

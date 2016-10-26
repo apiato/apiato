@@ -24,13 +24,22 @@ class MainServiceProvider extends ServiceProviderAbstract
     protected $defer = false;
 
     /**
-     * Container internal Service Provides.
+     * Container Service Providers.
      *
      * @var array
      */
     private $containerServiceProviders = [
         AuthServiceProvider::class,
         EventsServiceProvider::class,
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    private $containerAliases = [
+
     ];
 
     /**
@@ -42,10 +51,12 @@ class MainServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register bindings in the container.
+     * Register anything in the container.
      */
     public function register()
     {
+        $this->registerAliases($this->containerAliases);
+
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }
