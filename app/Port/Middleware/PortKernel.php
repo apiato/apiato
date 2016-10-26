@@ -31,10 +31,9 @@ class PortKernel extends LaravelHttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // Laravel default middleware's (provided by laravel/laravel)
+            // Laravel default middleware's
             \App\Port\Middleware\Http\EncryptCookies::class,
-            \App\Port\Middleware\Http\VerifyCsrfToken::class,
-            // Laravel default middleware's (provided by laravel/framework)
+//            \App\Port\Middleware\Http\VerifyCsrfToken::class, // By default Csrf os disabled feel free to enable it
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
