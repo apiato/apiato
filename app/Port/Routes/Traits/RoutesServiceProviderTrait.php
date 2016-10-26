@@ -62,7 +62,7 @@ trait RoutesServiceProviderTrait
                             // Routes Namespace
                             'namespace'  => $controllerNamespace,
                             // Enable: API Rate Limiting
-                            'middleware' => ['api.throttle', 'api.cors', 'api.localization', 'mobile.requests.monitor'],
+                            'middleware' => ['api'],
                             // The API limit time.
                             'limit'      => Config::get('api.limit'),
                             // The API limit expiry time.

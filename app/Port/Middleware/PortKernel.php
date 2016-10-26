@@ -39,6 +39,16 @@ class PortKernel extends LaravelHttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'api' => [
+            // Hello API Requests Monitor
+            \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
+            // CORS package middleware
+            \Barryvdh\Cors\HandleCors::class,
+            // Hello API Localization middleware
+            \App\Port\Middleware\Http\Localization::class,
+            // Dingo Package throttle middleware
+            'api.throttle',
+        ],
     ];
 
     /**
@@ -48,35 +58,26 @@ class PortKernel extends LaravelHttpKernel
      */
     protected $routeMiddleware = [
         // Laravel default route middleware's
-        'can'                     => \Illuminate\Auth\Middleware\Authorize::class,
-        'bindings'                => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
+        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
         // JWT Package middleware's
-        'jwt.auth'                => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        'jwt.refresh'             => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        'jwt.auth'         => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh'      => \Tymon\JWTAuth\Middleware\RefreshToken::class,
 
         // Entrust Package middleware's
-        'role'                    => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        'permission'              => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        'ability'                 => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+        'role'             => \Zizaco\Entrust\Middleware\EntrustRole::class,
+        'permission'       => \Zizaco\Entrust\Middleware\EntrustPermission::class,
+        'ability'          => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
         // By Hello API
-        'role.web'                => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
+        'role.web'         => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
 
         // Hello API Visitor User Authentication middleware
-        'api.auth.visitor'        => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
+        'api.auth.visitor' => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
 
         // Hello API User Authentication middleware for Web Pages
-        'web.auth'                => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
-
-        // Hello API Requests Monitor
-        'mobile.requests.monitor' => \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
-
-        // CORS package middleware
-        'api.cors' => \Barryvdh\Cors\HandleCors::class,
-
-        // Hello API Localization middleware
-        'api.localization' => \App\Port\Middleware\Http\Localization::class,
+        'web.auth'         => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
 
         // ...
     ];
