@@ -33,11 +33,11 @@ class PortKernel extends LaravelHttpKernel
         'web' => [
             // Laravel default middleware's
             \App\Port\Middleware\Http\EncryptCookies::class,
-//            \App\Port\Middleware\Http\VerifyCsrfToken::class, // By default Csrf os disabled feel free to enable it
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Port\Middleware\Http\VerifyCsrfToken::class,
+
         ],
         'api' => [
             // Hello API Requests Monitor

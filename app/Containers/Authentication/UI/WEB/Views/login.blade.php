@@ -106,6 +106,7 @@
     <div class="login-page">
         <div class="form">
             <form class="login-form" action="{{route('admin_login')}}" method="post">
+                {{ csrf_field() }}
                 <input type="text"  placeholder="email" id="email" name="email"/>
                 <input type="password" placeholder="password" id="password" name="password"/>
                 <button>login</button>
