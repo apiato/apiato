@@ -5,16 +5,16 @@ namespace App\Containers\Authentication\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class LoginEndpointTest.
+ * Class UserLoginTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginTest extends TestCase
+class UserLoginTest extends TestCase
 {
 
-    private $endpoint = '/login';
+    private $endpoint = '/user/login';
 
-    public function testLoginExistingUser_()
+    public function testUserLoginExistingUser_()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
@@ -46,7 +46,7 @@ class LoginTest extends TestCase
         $this->assertResponseContainKeys(['id', 'token'], $response);
     }
 
-    public function testLoginExistingUserUsingGetRequest()
+    public function testUserLoginExistingUserUsingGetRequest()
     {
         $data = [
             'email'    => 'hello@mail.dev',
@@ -65,7 +65,7 @@ class LoginTest extends TestCase
         ], $response);
     }
 
-    public function testLoginNonExistingUser()
+    public function testUserLoginNonExistingUser()
     {
         $data = [
             'email'    => 'i-do-not-exist@mail.dev',
@@ -84,7 +84,7 @@ class LoginTest extends TestCase
         ], $response);
     }
 
-    public function testLoginExistingUserWithoutEmail_()
+    public function testUserLoginExistingUserWithoutEmail_()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
@@ -111,7 +111,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    public function testLoginExistingUserWithoutPassword()
+    public function testUserLoginExistingUserWithoutPassword()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
@@ -138,7 +138,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    public function testLoginExistingUserWithoutEmailAndPassword()
+    public function testUserLoginExistingUserWithoutEmailAndPassword()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',

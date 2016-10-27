@@ -2,9 +2,9 @@
 
 namespace App\Containers\Authentication\UI\API\Controllers;
 
-use App\Containers\Authentication\Actions\ApiLoginAction;
-use App\Containers\Authentication\Actions\ApiLogoutAction;
-use App\Containers\Authentication\UI\API\Requests\LoginRequest;
+use App\Containers\Authentication\Actions\ApiUserLoginAction;
+use App\Containers\Authentication\Actions\ApiUserLogoutAction;
+use App\Containers\Authentication\UI\API\Requests\UserLoginRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 use App\Port\Request\Manager\HttpRequest;
@@ -19,11 +19,11 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\LoginRequest     $request
-     * @param \App\Containers\Authentication\Actions\ApiLoginAction $action
+     * @param \App\Containers\Authentication\Actions\ApiUserLoginAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function loginUser(LoginRequest $request, ApiLoginAction $action)
+    public function userLogin(UserLoginRequest $request, ApiUserLoginAction $action)
     {
         $user = $action->run($request['email'], $request['password']);
 
@@ -32,11 +32,11 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Port\Request\Manager\HttpRequest                  $request
-     * @param \App\Containers\Authentication\Actions\ApiLogoutAction $action
+     * @param \App\Containers\Authentication\Actions\ApiUserLogoutAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function logoutUser(HttpRequest $request, ApiLogoutAction $action)
+    public function userLogout(HttpRequest $request, ApiUserLogoutAction $action)
     {
         $action->run($request->header('authorization'));
 

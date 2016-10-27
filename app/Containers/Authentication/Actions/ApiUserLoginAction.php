@@ -7,11 +7,11 @@ use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class ApiLoginAction.
+ * Class ApiUserLoginAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApiLoginAction extends Action
+class ApiUserLoginAction extends Action
 {
 
     private $apiLoginWithCredentialsTask;
@@ -22,7 +22,7 @@ class ApiLoginAction extends Action
     private $getAuthenticatedUserTask;
 
     /**
-     * ApiLoginAction constructor.
+     * ApiUserLoginAction constructor.
      *
      * @param \App\Containers\Authentication\Tasks\ApiLoginWithCredentialsTask $apiLoginWithCredentialsTask
      * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask    $getAuthenticatedUserTask

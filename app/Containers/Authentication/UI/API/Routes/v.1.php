@@ -2,8 +2,8 @@
 
 /*********************************************************************************
  * @apiGroup           Authentication
- * @apiName            Login
- * @api                {post} /login Login a user
+ * @apiName            UserLogin
+ * @api                {post} user/login Login a user
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
@@ -32,14 +32,14 @@ HTTP/1.1 200 OK
   }
 }
  */
-$router->post('login', [
-    'uses' => 'Controller@loginUser',
+$router->post('user/login', [
+    'uses' => 'Controller@userLogin',
 ]);
 
 /*********************************************************************************
  * @apiGroup           Authentication
- * @apiName            Logout
- * @api                {post} /logout Logout a user
+ * @apiName            UserLogout
+ * @api                {post} user/logout Logout a user
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json (required)
@@ -51,8 +51,8 @@ HTTP/1.1 202 Accepted
   "message": "User Logged Out Successfully."
 }
  */
-$router->post('logout', [
-    'uses'       => 'Controller@logoutUser',
+$router->post('user/logout', [
+    'uses'       => 'Controller@userLogout',
     'middleware' => [
         'api.auth',
     ],

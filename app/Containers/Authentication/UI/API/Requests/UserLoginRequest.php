@@ -5,11 +5,11 @@ namespace App\Containers\Authentication\UI\API\Requests;
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class LoginRequest.
+ * Class UserLoginRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LoginRequest extends Request
+class UserLoginRequest extends Request
 {
 
     /**

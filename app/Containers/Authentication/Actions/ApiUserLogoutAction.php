@@ -6,11 +6,11 @@ use App\Containers\Authentication\Tasks\ApiLogoutTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
- * Class ApiLogoutAction
+ * Class ApiUserLogoutAction
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ApiLogoutAction extends Action
+class ApiUserLogoutAction extends Action
 {
 
     /**
@@ -19,7 +19,7 @@ class ApiLogoutAction extends Action
     private $apiLogoutTask;
 
     /**
-     * ApiLogoutAction constructor.
+     * ApiUserLogoutAction constructor.
      *
      * @param \App\Containers\Authentication\Tasks\ApiLogoutTask $apiLogoutTask
      */

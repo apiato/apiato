@@ -5,16 +5,16 @@ namespace App\Containers\Authentication\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class LogoutEndpointTest.
+ * Class UserLogoutTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class LogoutTest extends TestCase
+class UserLogoutTest extends TestCase
 {
 
-    private $endpoint = '/logout';
+    private $endpoint = '/user/logout';
 
-    public function testLogout_()
+    public function testUserLogout_()
     {
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post');
@@ -28,7 +28,7 @@ class LogoutTest extends TestCase
         ], $response);
     }
 
-    public function testLogoutWithGetRequest()
+    public function testUserLogoutWithGetRequest()
     {
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
@@ -42,7 +42,7 @@ class LogoutTest extends TestCase
         ], $response);
     }
 
-    public function testLogoutWithoutToken()
+    public function testUserLogoutWithoutToken()
     {
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post', [], false);
