@@ -4,6 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    */
+
+    'name' => 'Hello API',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -12,6 +24,7 @@ return [
     | services your application utilizes. Set this in your ".env" file.
     |
     */
+
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -114,6 +127,8 @@ return [
     */
 
     'log' => env('APP_LOG', 'single'),
+
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
     |--------------------------------------------------------------------------
