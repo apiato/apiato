@@ -3,7 +3,7 @@
 /*********************************************************************************
  * @apiGroup           Authentication
  * @apiName            UserLogin
- * @api                {post} user/login Login a user
+ * @api                {post} /user/login Login a user
  * @apiVersion         1.0.0
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
@@ -39,7 +39,7 @@ $router->post('user/login', [
 /*********************************************************************************
  * @apiGroup           Authentication
  * @apiName            UserLogout
- * @api                {post} user/logout Logout a user
+ * @api                {post} /user/logout Logout a user
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  * @apiHeader          Accept application/json (required)
