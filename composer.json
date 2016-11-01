@@ -34,6 +34,7 @@
         "app/Containers/Settings/Dependencies/composer.json",
         "app/Containers/Email/Dependencies/composer.json",
         "app/Containers/Contact/Dependencies/composer.json",
+        "app/Containers/SocialAuthentication/Dependencies/composer.json",
         "app/Containers/Countries/Dependencies/composer.json",
         "app/Containers/Debugger/Dependencies/composer.json",
         "app/Containers/Environment/Dependencies/composer.json",
