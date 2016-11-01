@@ -7,5 +7,5 @@ Homestead.json
 storage/logs/laravel.log
 public/documentation/
 public/uploads/
-laradock/
+laradock*/
 /app/TEMP/
