@@ -15,22 +15,20 @@ class GetUserSocialProfileTask
 {
 
     /**
-     * @param      $provider
-     * @param null $request
+     * @param            $provider
+     * @param array|null $requestData
      *
-     * @return  mixed
+     * @return  null
      */
     public function run($provider, array $requestData = null)
     {
+        $user = null;
 
         if ($provider == SocialProvider::FACEBOOK) {
             $user = Socialite::driver($provider)->userFromToken($requestData['access_token']);
         } elseif ($provider == SocialProvider::TWITTER) {
-            // TODO: I have not yet submitted this PR to Socialite so the function `userFromTokenAndSecret` does not exist in the package
             $user = Socialite::driver($provider)->userFromTokenAndSecret($requestData['oauth_token'],
                 $requestData['oauth_token_secret']);
-
-            dd($user);
         }
 
         return $user;
