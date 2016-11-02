@@ -67,6 +67,8 @@ trait PortServiceProviderTrait
     {
         $containersNamespace = PortButler::getContainersNamespace();
 
+        $allServiceProviders = [];
+
         foreach (PortButler::getContainersNames() as $containerName) {
             // append the Module main service provider
             $allServiceProviders[] = PortButler::buildMainServiceProvider($containersNamespace, $containerName);
