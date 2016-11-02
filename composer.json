@@ -1,19 +1,19 @@
 {
-  "name": "hello/api",
-  "description": "API starter providing everything to build a modern API with PHP on top of Laravel.",
+  "name": "porto-sap/hello-api",
+  "description": "An API starter for building modern API's using PHP, Laravel and Porto SAP.",
   "keywords": [
-    "framework",
-    "API",
-    "laravel",
-    "Hello-API"
+    "Porto SAP",
+    "Hello API",
+    "Starter",
+    "API"
   ],
   "license": "MIT",
   "type": "project",
   "require": {
     "php": ">=5.6.4",
     "laravel/framework": "5.3.*",
-    "hello-api/social-auth": "*",
-    "wikimedia/composer-merge-plugin": "^1.3"
+    "wikimedia/composer-merge-plugin": "^1.3",
+    "oomphinc/composer-installers-extender": "^1.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -25,29 +25,25 @@
   "extra": {
     "merge-plugin": {
       "include": [
-        "app/Containers/*/Dependencies/composer.json",
-        "app/Port/Dependencies/composer.json"
-      ],
-      "require": [
-        "app/Containers/User/Dependencies/composer.json",
-        "app/Containers/Authentication/Dependencies/composer.json",
-        "app/Containers/Authentication/Dependencies/composer.json",
-        "app/Containers/Settings/Dependencies/composer.json",
-        "app/Containers/Email/Dependencies/composer.json",
-        "app/Containers/Contact/Dependencies/composer.json",
-        "app/Containers/Countries/Dependencies/composer.json",
-        "app/Containers/Debugger/Dependencies/composer.json",
-        "app/Containers/Environment/Dependencies/composer.json",
-        "app/Containers/Welcome/Dependencies/composer.json",
-        "app/Containers/Paypal/Dependencies/composer.json",
-        "app/Containers/Stripe/Dependencies/composer.json",
-        "app/Containers/Tracker/Dependencies/composer.json"
+        "app/Containers/composer.json",
+        "app/Port/composer.json",
+        "app/Containers/*/composer.json"
       ],
       "recurse": true,
       "replace": false,
       "merge-dev": true,
       "merge-extra": false,
       "merge-extra-deep": false
+    },
+    "installer-types": [
+      "porto-container"
+    ],
+    "installer-paths": {
+      "app/Containers/{$name}/": [
+        "type:porto-container"
+      ],"vendor/{$name}/": [
+        "type:laravel-library"
+      ]
     }
   },
   "autoload": {
@@ -80,5 +76,6 @@
   },
   "config": {
     "preferred-install": "dist"
-  }
+  },
+  "minimum-stability": "stable"
 }

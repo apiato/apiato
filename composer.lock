@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b908cc1a07312017a0ecd3b2d91a955e",
-    "content-hash": "ac96b7d43649ad7cbf472a4312daeff8",
+    "hash": "8ec651e4c2d0e9dba3a7c1ae8ce95b97",
+    "content-hash": "80298f193d6ebff6868a4b8e0a88cd6c",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -371,6 +371,113 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "ImageCMS",
+                "MODX Evo",
+                "Mautic",
+                "OXID",
+                "Plentymarkets",
+                "RadPHP",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "time": "2016-08-13 20:53:52"
         },
         {
             "name": "dingo/api",
@@ -1100,16 +1207,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.21",
+            "version": "v5.3.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "140ad823863d5cc6f4580f1cdf9b18b9a6a457f4"
+                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/140ad823863d5cc6f4580f1cdf9b18b9a6a457f4",
-                "reference": "140ad823863d5cc6f4580f1cdf9b18b9a6a457f4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
+                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
                 "shasum": ""
             },
             "require": {
@@ -1224,20 +1331,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-10-26 13:27:05"
+            "time": "2016-11-01 18:52:00"
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.19",
+            "version": "v2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2"
+                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2",
-                "reference": "4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/aca8de9a93a28a119714e289c8bc599bd81aa88d",
+                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1385,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2016-10-24 13:06:51"
+            "time": "2016-11-01 18:49:10"
         },
         {
             "name": "league/flysystem",
@@ -1814,6 +1921,48 @@
             "time": "2016-09-16 12:04:44"
         },
         {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "e29c900d3d6a851ee8261859fb39edbb1f34722e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/e29c900d3d6a851ee8261859fb39edbb1f34722e",
+                "reference": "e29c900d3d6a851ee8261859fb39edbb1f34722e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2016-07-05 15:00:34"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.3",
             "source": {
@@ -2152,6 +2301,363 @@
                 "x509"
             ],
             "time": "2015-01-28 21:50:33"
+        },
+        {
+            "name": "porto-sap/authentication",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Authentication.git",
+                "reference": "def923d971fff969ef27a3b4ef320cc7f8554eec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Authentication/zipball/def923d971fff969ef27a3b4ef320cc7f8554eec",
+                "reference": "def923d971fff969ef27a3b4ef320cc7f8554eec",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "jenssegers/agent": "^2.3",
+                "tymon/jwt-auth": "0.5.*"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Authentication"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:51:33"
+        },
+        {
+            "name": "porto-sap/authorization",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Authorization.git",
+                "reference": "4eb97b34eaca994627a322a70b2f5dfeed8622cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Authorization/zipball/4eb97b34eaca994627a322a70b2f5dfeed8622cd",
+                "reference": "4eb97b34eaca994627a322a70b2f5dfeed8622cd",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "zizaco/entrust": "5.2.x-dev@dev"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Authorization"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 18:39:57"
+        },
+        {
+            "name": "porto-sap/contact",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Contact.git",
+                "reference": "1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Contact/zipball/1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b",
+                "reference": "1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Contact"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:40:49"
+        },
+        {
+            "name": "porto-sap/country",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Country.git",
+                "reference": "07d130271240f4172ac994b28dbdf3f5dac0c473"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Country/zipball/07d130271240f4172ac994b28dbdf3f5dac0c473",
+                "reference": "07d130271240f4172ac994b28dbdf3f5dac0c473",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "webpatser/laravel-countries": "1.4.*"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Country"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:40:38"
+        },
+        {
+            "name": "porto-sap/debugger",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Debugger.git",
+                "reference": "b1f5d24014f27548492d6c3d485f9ed693d13c59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Debugger/zipball/b1f5d24014f27548492d6c3d485f9ed693d13c59",
+                "reference": "b1f5d24014f27548492d6c3d485f9ed693d13c59",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Debugger"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:40:25"
+        },
+        {
+            "name": "porto-sap/email",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Email.git",
+                "reference": "b1f74ddd3eeb77143151f628f4c11fd8d559e599"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Email/zipball/b1f74ddd3eeb77143151f628f4c11fd8d559e599",
+                "reference": "b1f74ddd3eeb77143151f628f4c11fd8d559e599",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Email"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:40:12"
+        },
+        {
+            "name": "porto-sap/environment",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Environment.git",
+                "reference": "a68407320e180951dfedd08a5f5b3079fbd15913"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Environment/zipball/a68407320e180951dfedd08a5f5b3079fbd15913",
+                "reference": "a68407320e180951dfedd08a5f5b3079fbd15913",
+                "shasum": ""
+            },
+            "require": {
+                "brotzka/laravel-dotenv-editor": "2.*",
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Environment"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:39:57"
+        },
+        {
+            "name": "porto-sap/payment",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Payment.git",
+                "reference": "5cd5e4509591555b2c2d44db07f8822edf6a3823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Payment/zipball/5cd5e4509591555b2c2d44db07f8822edf6a3823",
+                "reference": "5cd5e4509591555b2c2d44db07f8822edf6a3823",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Payment"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:39:45"
+        },
+        {
+            "name": "porto-sap/paypal",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Paypal.git",
+                "reference": "38bed73cca970203d890fbf01342abaf0348a1d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Paypal/zipball/38bed73cca970203d890fbf01342abaf0348a1d7",
+                "reference": "38bed73cca970203d890fbf01342abaf0348a1d7",
+                "shasum": ""
+            },
+            "require": {
+                "anouar/paypalpayment": "~1.0",
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Paypal"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:39:32"
+        },
+        {
+            "name": "porto-sap/settings",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Settings.git",
+                "reference": "209b24bc078debd52f218ef6d5c3b4677a7d7ff3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Settings/zipball/209b24bc078debd52f218ef6d5c3b4677a7d7ff3",
+                "reference": "209b24bc078debd52f218ef6d5c3b4677a7d7ff3",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Settings"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:39:10"
+        },
+        {
+            "name": "porto-sap/social-auth",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/porto-sap/SocialAuth.git",
+                "reference": "64192c4bc092a760fc3515fe621a3f7d6bc80f85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/porto-sap/SocialAuth/zipball/64192c4bc092a760fc3515fe621a3f7d6bc80f85",
+                "reference": "64192c4bc092a760fc3515fe621a3f7d6bc80f85",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0",
+                "laravel/socialite": "^2.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "SocialAuth"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-11-02 15:04:08"
+        },
+        {
+            "name": "porto-sap/stripe",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Stripe.git",
+                "reference": "f3300fde063a105f44d1238284fa4f067fb2571e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Stripe/zipball/f3300fde063a105f44d1238284fa4f067fb2571e",
+                "reference": "f3300fde063a105f44d1238284fa4f067fb2571e",
+                "shasum": ""
+            },
+            "require": {
+                "cartalyst/stripe-laravel": "5.0.*",
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Stripe"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:38:43"
+        },
+        {
+            "name": "porto-sap/user",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/User.git",
+                "reference": "446cfaff5d76c3ed610d4e228e184bec31120671"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/User/zipball/446cfaff5d76c3ed610d4e228e184bec31120671",
+                "reference": "446cfaff5d76c3ed610d4e228e184bec31120671",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "User"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:34:26"
+        },
+        {
+            "name": "porto-sap/welcome",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Welcome.git",
+                "reference": "903d55615bcaf72be4f7be1201228b3238b67801"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Welcome/zipball/903d55615bcaf72be4f7be1201228b3238b67801",
+                "reference": "903d55615bcaf72be4f7be1201228b3238b67801",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Welcome"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-02 16:12:11"
         },
         {
             "name": "predis/predis",
