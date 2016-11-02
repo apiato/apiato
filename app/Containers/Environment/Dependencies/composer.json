@@ -1,5 +1,0 @@
-{
-  "require": {
-    "brotzka/laravel-dotenv-editor": "2.*"
-  }
-}
