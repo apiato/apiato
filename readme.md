@@ -17,9 +17,26 @@
 #### A `Hello World` for API's : )
 
 
+
+
+
 <br>
+<br>
+# Important Note:
+
+The project is currently under heavy development. 
+So expect major updates without notice.
+Also note that there's **no stable release** till this date.
+
+
+
 ![](https://s18.postimg.org/b1vc6lfhl/under_development.png)
 <br>
+<br>
+
+
+
+
 
 
 ## Content
@@ -59,14 +76,6 @@ API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart
 As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
 
 API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work on their codes in parallel. After the front-end Apps are ready they get attached to the back-end (API-Centric) code to start functioning. This leads to zero decoupling between the front-end and the back-end code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
-
-
-### Important Note:
-
-The project is currently under heavy development. 
-So expect things to change very quickly.
-Also note that there's **no stable release** till this date.
-
 
 <br>
 
