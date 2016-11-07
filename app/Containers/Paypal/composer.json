@@ -1,0 +1,12 @@
+{
+  "name": "porto-sap/paypal",
+  "extra": {
+    "installer-name": "Paypal"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "anouar/paypalpayment": "~1.0"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}

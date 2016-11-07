@@ -1,0 +1,12 @@
+{
+  "name": "porto-sap/country",
+  "extra": {
+    "installer-name": "Country"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "webpatser/laravel-countries": "1.4.*"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}

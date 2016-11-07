@@ -1,0 +1,13 @@
+{
+  "name": "porto-sap/authentication",
+  "extra": {
+    "installer-name": "Authentication"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "tymon/jwt-auth": "0.5.*",
+    "jenssegers/agent": "^2.3"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}

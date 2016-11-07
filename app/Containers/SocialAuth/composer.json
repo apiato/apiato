@@ -1,0 +1,12 @@
+{
+  "name": "porto-sap/social-auth",
+  "extra": {
+    "installer-name": "SocialAuth"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "laravel/socialite": "^2.0"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}

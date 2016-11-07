@@ -25,7 +25,6 @@
   "extra": {
     "merge-plugin": {
       "include": [
-        "app/Containers/composer.json",
         "app/Port/composer.json",
         "app/Containers/*/composer.json"
       ],

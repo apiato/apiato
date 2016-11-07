@@ -1,0 +1,11 @@
+{
+  "name": "porto-sap/debugger",
+  "extra": {
+    "installer-name": "Debugger"
+  },
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}

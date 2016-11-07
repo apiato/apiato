@@ -1,3 +1,6 @@
+// This feature is temporally unavailable:
+// to get it to work you need to add `"app/Containers/composer.json",` to `composer.json` file on the root under "extra > merge-plugin > include"
+
 {
   "require": {
     "porto-sap/welcome": "1.*",

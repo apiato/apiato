@@ -1,0 +1,13 @@
+{
+  "name": "porto-sap/stripe",
+  "extra": {
+    "installer-name": "Stripe"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+    "cartalyst/stripe-laravel": "5.0.*"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API."
+}
+

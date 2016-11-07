@@ -1,0 +1,13 @@
+{
+  "name": "porto-sap/authorization",
+  "extra": {
+    "installer-name": "Authorization"
+  },
+  "require": {
+    "composer/installers": "~1.0",
+      "zizaco/entrust": "5.2.x-dev@dev"
+  },
+  "type": "porto-container",
+  "description": "Porto-SAP Container for Hello-API.",
+  "minimum-stability": "dev"
+}
