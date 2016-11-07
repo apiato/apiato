@@ -6,7 +6,6 @@
     "porto-sap/social-auth": "1.*",
     "porto-sap/authorization": "1.*",
     "porto-sap/debugger": "1.*",
-    "porto-sap/environment": "1.*",
     "porto-sap/email": "1.*",
     "porto-sap/contact": "1.*",
     "porto-sap/country": "1.*",

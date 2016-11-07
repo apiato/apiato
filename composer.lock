@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ec651e4c2d0e9dba3a7c1ae8ce95b97",
-    "content-hash": "80298f193d6ebff6868a4b8e0a88cd6c",
+    "hash": "10842d4faa19d3968f34af08f82d37e0",
+    "content-hash": "a8e66d81684ae1d96cbe8bff379c1a08",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -2304,16 +2304,16 @@
         },
         {
             "name": "porto-sap/authentication",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Authentication.git",
-                "reference": "def923d971fff969ef27a3b4ef320cc7f8554eec"
+                "reference": "e462abc26e82205f266f260404e639b850a6d021"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Authentication/zipball/def923d971fff969ef27a3b4ef320cc7f8554eec",
-                "reference": "def923d971fff969ef27a3b4ef320cc7f8554eec",
+                "url": "https://api.github.com/repos/Porto-SAP/Authentication/zipball/e462abc26e82205f266f260404e639b850a6d021",
+                "reference": "e462abc26e82205f266f260404e639b850a6d021",
                 "shasum": ""
             },
             "require": {
@@ -2327,7 +2327,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:51:33"
+            "time": "2016-11-06 20:31:40"
         },
         {
             "name": "porto-sap/authorization",
@@ -2457,32 +2457,6 @@
             "time": "2016-11-02 16:40:12"
         },
         {
-            "name": "porto-sap/environment",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Porto-SAP/Environment.git",
-                "reference": "a68407320e180951dfedd08a5f5b3079fbd15913"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Environment/zipball/a68407320e180951dfedd08a5f5b3079fbd15913",
-                "reference": "a68407320e180951dfedd08a5f5b3079fbd15913",
-                "shasum": ""
-            },
-            "require": {
-                "brotzka/laravel-dotenv-editor": "2.*",
-                "composer/installers": "~1.0"
-            },
-            "type": "porto-container",
-            "extra": {
-                "installer-name": "Environment"
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:39:57"
-        },
-        {
             "name": "porto-sap/payment",
             "version": "v1.0.0",
             "source": {
@@ -2560,16 +2534,16 @@
         },
         {
             "name": "porto-sap/social-auth",
-            "version": "1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/porto-sap/SocialAuth.git",
-                "reference": "64192c4bc092a760fc3515fe621a3f7d6bc80f85"
+                "url": "https://github.com/Porto-SAP/SocialAuth.git",
+                "reference": "2bf523f7d521e0b4d18ead58420bfdcc1539dd1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/porto-sap/SocialAuth/zipball/64192c4bc092a760fc3515fe621a3f7d6bc80f85",
-                "reference": "64192c4bc092a760fc3515fe621a3f7d6bc80f85",
+                "url": "https://api.github.com/repos/Porto-SAP/SocialAuth/zipball/2bf523f7d521e0b4d18ead58420bfdcc1539dd1e",
+                "reference": "2bf523f7d521e0b4d18ead58420bfdcc1539dd1e",
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2555,8 @@
                 "installer-name": "SocialAuth"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-11-02 15:04:08"
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-06 20:24:49"
         },
         {
             "name": "porto-sap/stripe",
@@ -4161,12 +4136,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d"
+                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/b749bff868026336dec1ba1a16c150728697353d",
-                "reference": "b749bff868026336dec1ba1a16c150728697353d",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
+                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
                 "shasum": ""
             },
             "require": {
@@ -4221,7 +4196,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-03-24 15:24:42"
+            "time": "2016-11-04 16:23:22"
         }
     ],
     "packages-dev": [
@@ -5601,8 +5576,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20,
-        "dingo/api": 20
+        "dingo/api": 20,
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
