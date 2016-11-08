@@ -61,7 +61,7 @@ trait RoutesServiceProviderTrait
                         $router->group([
                             // Routes Namespace
                             'namespace'  => $controllerNamespace,
-                            // Enable: API Rate Limiting
+                            // Add Middleware's - 'api' is a group of middleware's
                             'middleware' => ['api'],
                             // The API limit time.
                             'limit'      => Config::get('api.limit'),
