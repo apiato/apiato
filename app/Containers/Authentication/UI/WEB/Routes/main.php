@@ -1,23 +1,29 @@
 <?php
+$router->group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
 
-$router->get('/admin/login', [
-    'uses' => 'Controller@showLoginPage',
-]);
+    $router->get('/', [
+        'uses' => 'Controller@showLoginPage',
+    ]);
 
-$router->post('/admin/login', [
-    'as'   => 'admin_login',
-    'uses' => 'Controller@loginAdmin',
-]);
+    $router->get('/login', [
+        'uses' => 'Controller@showLoginPage',
+    ]);
 
-$router->get('/admin/logout', [
-    'as'   => 'admin_logout',
-    'uses' => 'Controller@logoutAdmin',
-]);
+    $router->post('/login', [
+        'as'   => 'admin_login',
+        'uses' => 'Controller@loginAdmin',
+    ]);
 
-$router->get('/admin/dashboard', [
-    'uses' => 'Controller@showDashboardPage',
-    'middleware' => [
-        'web.auth',
-        'role.web:admin',
-    ],
-]);
+    $router->get('/logout', [
+        'as'   => 'admin_logout',
+        'uses' => 'Controller@logoutAdmin',
+    ]);
+
+    $router->get('/dashboard', [
+        'uses'       => 'Controller@showDashboardPage',
+        'middleware' => [
+            'web.auth',
+            'role.web:admin',
+        ],
+    ]);
+});
