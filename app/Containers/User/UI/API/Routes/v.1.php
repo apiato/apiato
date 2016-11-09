@@ -14,28 +14,7 @@
  * @apiHeader          visitor-id The Device ID [12345] (optional)
  * @apiHeader          Authorization The user token [Bearer a1b2c3d4..] (optional)
  * @apiParam           user_id User Id (optional)
- * @apiSuccessExample  {json}       Success-Response:
-HTTP/1.1 200 OK
-
-{
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "email": "mahmoud@zalt.me",
-    "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-    "created_at": {
-      "date": "2016-08-09 16:57:44.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-08-09 16:59:04.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * @apiUse             SingleUserSuccessResponse
  */
 $router->post('users/refresh', [
     'uses' => 'Controller@refreshUser',
@@ -51,27 +30,7 @@ $router->post('users/refresh', [
  * @apiHeader          Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ91QiLCJhbGciOiJIUzI1NiJ1...
  * @apiParam           {String}  password
  * @apiParam           {String}  name
- * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-
- {
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt 2",
-    "email": "new@email.com",
-    "token": null,
-    "created_at": {
-      "date": "2016-04-09 02:34:11.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-04-21 09:45:19.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * @apiUse             SingleUserSuccessResponse
  */
 $router->put('users', [
     'uses'       => 'Controller@updateUser',
@@ -93,27 +52,7 @@ $router->put('users', [
  * @apiPermission      none
  * @apiHeader          Accept application/json (required)
  * @apiHeader          visitor-id The Device ID [12345] (required)
- * @apiSuccessExample  {json}       Success-Response:
-HTTP/1.1 200 OK
-{
-  "data": {
-    "id": 4,
-    "name": "Mahmoud Zalt",
-    "email": "mahmoud@zalt.me",
-    "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-    "created_at": {
-      "date": "2016-09-15 19:24:56.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-09-15 19:24:56.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * @apiUse             SingleUserSuccessResponse
  */
 $router->post('visitor/register', [
     'uses'  => 'Controller@registerVisitor',
@@ -136,28 +75,7 @@ $router->post('visitor/register', [
  * @apiParam           {String}  name (optional)
  * @apiParam           {String}  gender (optional)
  * @apiParam           {String}  birth (optional)
- * @apiSuccessExample  {json}      Success-Response:
-HTTP/1.1 200 OK
-{
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "points": 0,
-    "email": "mahmoud@zalt.me",
-    "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5yZXdhcmRmb3guZGV2XC9yZWdpc3RlclwvdmlzaXRvciIsImlhdCI6MTQ2OTIxMjYzOSwiZXhwIjoxNDcxODQwNjM5LCJuYmYiOjE0NjkyMTI2MzksImp0aSI6ImMwYWZjNTA0NmRlOTg4NmZmYjM1NTk0ZjdlYTE3MTczIn0.zapUpSsIwb-jR9wZyj2oQFMGPZwouSMJhMxAjjDd2q8",
-    "created_at": {
-      "date": "2016-08-09 16:57:44.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-08-09 16:59:04.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    }
-  }
-}
+ * @apiUse             SingleUserSuccessResponse
  */
 $router->post('user/register', [
     'uses'  => 'Controller@registerUser',
