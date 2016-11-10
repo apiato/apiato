@@ -49,9 +49,8 @@ trait RoutesServiceProviderTrait
 
             foreach ($files as $file) {
 
-                $fileNameWithoutExtension = $this->getRouteFileNameWithoutExtension($file);
-
-                $apiVersionNumber = $this->getRouteFileVersionNumber($fileNameWithoutExtension);
+                // get the version from the file name to register it
+                $apiVersionNumber = $this->getRouteFileVersionNumber($file);
 
                 $this->apiRouter->version('v' . $apiVersionNumber,
                     function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
@@ -100,7 +99,7 @@ trait RoutesServiceProviderTrait
             foreach ($files as $file) {
                 $this->webRouter->group([
                     'middleware' => ['web'],
-                    'namespace' => $controllerNamespace,
+                    'namespace'  => $controllerNamespace,
                 ], function (LaravelRouter $router) use ($file) {
                     require $file->getPathname();
                 });
@@ -124,11 +123,16 @@ trait RoutesServiceProviderTrait
     /**
      * @param $fileNameWithoutExtension
      */
-    private function getRouteFileVersionNumber($fileNameWithoutExtension)
+    private function getRouteFileVersionNumber($file)
     {
+        $fileNameWithoutExtension = $this->getRouteFileNameWithoutExtension($file);
+
         $fileNameWithoutExtensionExploded = explode('.', $fileNameWithoutExtension);
 
-        $apiVersionNumber = (int)end($fileNameWithoutExtensionExploded);
+        end($fileNameWithoutExtensionExploded);
+        $apiVersion = prev($fileNameWithoutExtensionExploded); // get the array before the last one
+
+        $apiVersionNumber = str_replace('v', '', $apiVersion);
 
         return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
     }
