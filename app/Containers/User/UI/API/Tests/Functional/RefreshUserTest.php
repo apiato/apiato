@@ -24,7 +24,7 @@ class RefreshUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '200');

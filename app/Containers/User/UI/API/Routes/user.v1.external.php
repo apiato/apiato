@@ -63,8 +63,32 @@ $router->put('users', [
     ],
 ]);
 
+/*********************************************************************************
+ * @apiGroup           Users
+ * @apiName            registerVisitor
+ * @api                {post} /visitor/register Register visitor (even if he exist)
+ * @apiDescription     This endpoint must be called on App startup. (when the App
+ * allows using it before registering). The endpoint will create a user record
+ * if not already exist based on his unique visitor-id (A.K.A device ID) and return
+ * the `User ID`. Later when the user is required to register, we simply
+ * update his existing record with his information (email, password,...).
+ * @apiVersion         1.0.0
+ * @apiPermission      none
+ * @apiHeader          Accept application/json (required)
+ * @apiHeader          visitor-id The Device ID [12345] (required)
+ * @apiUse             SingleUserSuccessResponse
+ */
+$router->post('visitor/register', [
+    'uses'  => 'Controller@registerVisitor',
+]);
 
-/**
+
+
+
+
+
+
+/********************************************************************************************
  * @apiDefine SingleUserSuccessResponse
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 200 OK
@@ -84,8 +108,7 @@ HTTP/1.1 200 OK
       "timezone_type": 3,
       "timezone": "UTC"
     },
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cL2FwaS5wb21zLmRldlwvdXNlclwvcmVnaXN0ZXIiLCJpYXQiOjE0Nzg3MDg0MzAsImV4cCI6MTQ4MTMzNjQzMCwibmJmIjoxNDc4NzA4NDMwLCJqdGkiOiI2NmE2ZGM0N2RkNmRjMDBjZGY5ZGQyZWUwNTdhZGVhMCJ9.j_IZWRWzHQdoWl_YQUxEs0cPz9NEG48baebK1-8TRUY"
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiO...
   }
 }
  */
-
