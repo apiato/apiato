@@ -30,33 +30,22 @@ trait TestingTrait
     public $loggedInTestingUser;
 
     /**
-     * @param           $endpoint
-     * @param string    $verb
-     * @param array     $data
-     * @param bool|true $protected
-     * @param array     $header
+     * @param        $endpoint
+     * @param string $verb
+     * @param array  $data
+     * @param bool   $protected
+     * @param array  $headers
      *
+     * @return  mixed
      * @throws \Symfony\Component\Debug\Exception\UndefinedMethodException
-     *
-     * @return mixed
      */
-    public function apiCall($endpoint, $verb = 'get', array $data = [], $protected = true, array $header = [])
+    public function apiCall($endpoint, $verb = 'get', array $data = [], $protected = true, array $headers = [])
     {
-        $content = json_encode($data);
-
-        $headers = array_merge([
-            'CONTENT_LENGTH' => mb_strlen($content, '8bit'),
-//            'CONTENT_TYPE' => 'application/json',
-            'Accept'         => 'application/json',
-        ], $header);
-
         // if endpoint is protected (requires token to access it's functionality)
-        if ($protected && !array_has($header, 'Authorization')) {
+        if ($protected && !array_has($headers, 'Authorization')) {
             // append the token to the header
             $headers['Authorization'] = 'Bearer ' . $this->getLoggedInTestingUserToken();
         }
-
-        $verb = strtolower($verb);
 
         switch ($verb) {
             case 'get':
@@ -68,6 +57,9 @@ trait TestingTrait
             case 'patch':
             case 'delete':
                 $response = $this->{$verb}($endpoint, $data, $headers)->response;
+                break;
+            case 'json:post':
+                $response = $this->json('post', $endpoint, $data, $headers)->response;
                 break;
             default:
                 throw new UndefinedMethodException('Undefined HTTP Verb (' . $verb . ').');
@@ -82,7 +74,6 @@ trait TestingTrait
      */
     public function assertValidationErrorContain(DingoAPIResponse $response, array $messages)
     {
-
         $arrayResponse = json_decode($response->getContent());
 
         foreach ($messages as $key => $value) {
@@ -172,7 +163,7 @@ trait TestingTrait
         if (!$userDetails) {
             $userDetails = [
                 'name'     => 'Mahmoud Zalt',
-                'email'    => 'testing@hello.dev',
+                'email'    => 'testing@poms.dev',
                 'password' => 'secret.Pass7',
             ];
         }
