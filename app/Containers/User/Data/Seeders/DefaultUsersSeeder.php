@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Data\Seeders;
 
-use App\Containers\Authorization\Tasks\GetAdminRoleTask;
+use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
 use App\Port\Seeder\Abstracts\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -11,18 +11,18 @@ class DefaultUsersSeeder extends Seeder
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Seeders\GetAdminRoleTask
+     * @var  \App\Containers\Authorization\Data\Seeders\GetRoleTask
      */
-    private $getAdminRoleTask;
+    private $getRoleTask;
 
     /**
      * DefaultUsersSeeder constructor.
      *
-     * @param \App\Containers\Authorization\Data\Seeders\GetAdminRoleTask $getAdminRoleTask
+     * @param \App\Containers\Authorization\Data\Seeders\GetRoleTask $getRoleTask
      */
-    public function __construct(GetAdminRoleTask $getAdminRoleTask)
+    public function __construct(GetRoleTask $getRoleTask)
     {
-        $this->getAdminRoleTask = $getAdminRoleTask;
+        $this->getRoleTask = $getRoleTask;
     }
 
     /**
@@ -37,6 +37,6 @@ class DefaultUsersSeeder extends Seeder
         $admin->email = 'admin@admin.com';
         $admin->password = Hash::make('admin');
         $admin->save();
-        $admin->attachRole($this->getAdminRoleTask->run());
+        $admin->attachRole($this->getRoleTask->run('admin'));
     }
 }

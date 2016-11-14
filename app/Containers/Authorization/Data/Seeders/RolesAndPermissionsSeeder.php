@@ -16,6 +16,8 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
+        // Role -----------
+
         $adminRole = new Role();
         $adminRole->name = 'admin';
         $adminRole->display_name = 'Administrator';
@@ -27,5 +29,11 @@ class RolesAndPermissionsSeeder extends Seeder
         $accessDashboardPermission->save();
 
         $adminRole->attachPermission($accessDashboardPermission);
+
+        // Role -----------
+
+        # ...
+
+
     }
 }
