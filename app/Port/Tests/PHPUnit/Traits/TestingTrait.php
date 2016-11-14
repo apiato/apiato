@@ -7,6 +7,7 @@ use App\Containers\Authorization\Models\Role;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
@@ -334,6 +335,26 @@ trait TestingTrait
     public function injectEndpointId($endpoint, $id)
     {
         return str_replace("{id}", $id, $endpoint);
+    }
+
+    /**
+     * Make sure you have an image in `storage/tests/` named to `a.jpeg` or anything else
+     *
+     * @param string $original_name
+     * @param string $mime_type
+     * @param int    $size
+     *
+     * @return  \Illuminate\Http\UploadedFile
+     */
+    public static function getTestingFile($original_name = 'a.jpeg', $mime_type = 'image/jpeg', $size = 2476)
+    {
+        $path = storage_path('tests/' . $original_name);
+        $error = null;
+        $test = true;
+
+        $file = new UploadedFile($path, $original_name, $mime_type, $size, $error, $test);
+
+        return $file;
     }
 
 }
