@@ -17,8 +17,6 @@ class ApplicationAccessTokenTest extends TestCase
 
     private $endpoint = '/apps';
 
-
-
     public function testCreateApplicationWithToken_()
     {
         $user = $this->registerAndLoginTestingUser();

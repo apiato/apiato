@@ -25,7 +25,7 @@ class Controller extends PortApiController
         CreateApplicationWithTokenAction $action
     ) {
 
-        $app = $action->run($request->name);
+        $app = $action->run($request->name, $request->user());
 
         return $this->response->accepted(null, [
             'application_name'  => $app->name,

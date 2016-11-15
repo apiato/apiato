@@ -3,15 +3,16 @@
 namespace App\Containers\Application\Tasks;
 
 use App\Containers\Application\Data\Repositories\ApplicationRepository;
-use App\Containers\Application\Models\Application;
+use App\Containers\Application\Exceptions\ApplicationNotFoundException;
 use App\Port\Task\Abstracts\Task;
+use Exception;
 
 /**
- * Class CreateApplicationTask.
+ * Class FindApplicationByIdTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateApplicationTask extends Task
+class FindApplicationByIdTask extends Task
 {
 
     /**
@@ -20,7 +21,7 @@ class CreateApplicationTask extends Task
     private $applicationRepository;
 
     /**
-     * CreateApplicationTask constructor.
+     * FindApplicationByIdTask constructor.
      *
      * @param \App\Containers\Application\Data\Repositories\ApplicationRepository $applicationRepository
      */
@@ -30,17 +31,19 @@ class CreateApplicationTask extends Task
     }
 
     /**
-     * @param $name
-     * @param $userId
+     * @param $applicationId
      *
-     * @return  \App\Containers\Application\Models\Application|mixed
+     * @return  mixed
+     * @throws \App\Containers\Application\Tasks\ApplicationNotFoundException
      */
-    public function run($name, $userId)
+    public function run($applicationId)
     {
-        $application = new Application();
-        $application->name = $name;
-        $application->user()->associate($userId);
-        $application = $this->applicationRepository->create($application->toArray());
+        // find the application by its id
+        try {
+            $application = $this->applicationRepository->find($applicationId);
+        } catch (Exception $e) {
+            throw new ApplicationNotFoundException();
+        }
 
         return $application;
     }

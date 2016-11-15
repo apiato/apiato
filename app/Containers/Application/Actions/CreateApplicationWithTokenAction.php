@@ -58,12 +58,13 @@ class CreateApplicationWithTokenAction extends Action
 
     /**
      * @param $applicationName
+     * @param $userId
      *
      * @return  \App\Containers\Application\Models\Application|mixed
      */
-    public function run($applicationName)
+    public function run($applicationName, $userId)
     {
-        $application = $this->createApplicationTask->run($applicationName);
+        $application = $this->createApplicationTask->run($applicationName, $userId);
 
         $customClaims = $this->getApplicationClaimsTask->run($application);
 

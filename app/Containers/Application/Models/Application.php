@@ -2,6 +2,7 @@
 
 namespace App\Containers\Application\Models;
 
+use App\Containers\User\Models\User;
 use App\Port\Model\Abstracts\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -23,6 +24,7 @@ class Application extends Model
     protected $fillable = [
         'name',
         'token',
+        'user_id',
     ];
 
     /**
@@ -44,5 +46,10 @@ class Application extends Model
     protected $hidden = [
 
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }
