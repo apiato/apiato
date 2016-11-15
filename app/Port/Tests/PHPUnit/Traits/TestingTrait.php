@@ -4,6 +4,7 @@ namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
 use App\Containers\Authorization\Models\Role;
+use App\Containers\Authorization\Tasks\AttachRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
@@ -194,6 +195,23 @@ trait TestingTrait
         $user = $this->registerAndLoginTestingUser($userDetails);
 
         $user = $this->makeAdmin($user);
+
+        return $user;
+    }
+
+    /**
+     * Normal user with Developer Role
+     *
+     * @param null $userDetails
+     *
+     * @return  mixed
+     */
+    public function registerAndLoginTestingDeveloper($userDetails = null)
+    {
+        $user = $this->registerAndLoginTestingUser($userDetails);
+
+        // Give Developer Role to this User
+        App::make(AttachRoleTask::class)->run($user, ['developer']);
 
         return $user;
     }

@@ -3,7 +3,9 @@
 namespace App\Containers\Application\UI\API\Tests\Functional;
 
 use App\Containers\Application\Models\Application;
+use App\Containers\Authorization\Tasks\AttachRoleTask;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use Illuminate\Support\Facades\App;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 
@@ -19,7 +21,7 @@ class ApplicationAccessTokenTest extends TestCase
 
     public function testCreateApplicationWithToken_()
     {
-        $user = $this->registerAndLoginTestingUser();
+        $user = $this->registerAndLoginTestingDeveloper();
 
         $data = [
             'name' => 'My first App'
