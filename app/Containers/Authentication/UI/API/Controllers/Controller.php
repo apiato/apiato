@@ -18,8 +18,8 @@ class Controller extends PortApiController
 {
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\LoginRequest     $request
-     * @param \App\Containers\Authentication\Actions\ApiUserLoginAction $action
+     * @param \App\Containers\Authentication\UI\API\Requests\UserLoginRequest $request
+     * @param \App\Containers\Authentication\Actions\ApiUserLoginAction       $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -31,7 +31,7 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Port\Request\Manager\HttpRequest                  $request
+     * @param \App\Port\Request\Manager\HttpRequest                      $request
      * @param \App\Containers\Authentication\Actions\ApiUserLogoutAction $action
      *
      * @return  \Dingo\Api\Http\Response
