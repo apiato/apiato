@@ -70,6 +70,14 @@ class JwtAuthAdapter
     }
 
     /**
+     * @return  \Tymon\JWTAuth\Payload
+     */
+    public function getPayload()
+    {
+        return $this->jwtAuth->getPayload();
+    }
+
+    /**
      * @param $token
      *
      * @return mixed
@@ -84,7 +92,7 @@ class JwtAuthAdapter
      *
      * @return  mixed
      */
-    public function authenticateViaToken($token)
+    public function authenticateViaToken($token = null)
     {
         return $this->jwtAuth->authenticate($token);
     }
