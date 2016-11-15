@@ -75,6 +75,9 @@ class PortKernel extends LaravelHttpKernel
         'api.auth.visitor' => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
         // Hello API User Authentication middleware for Web Pages
         'web.auth'         => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
+        // Hello API App Authentication middleware for third party apps access on behalf of users
+        'app.auth'         => \App\Containers\Application\Middlewares\ApplicationAuthentication::class,
+
         // ...
     ];
 
