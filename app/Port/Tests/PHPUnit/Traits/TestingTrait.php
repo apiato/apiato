@@ -357,4 +357,26 @@ trait TestingTrait
         return $file;
     }
 
+    /**
+     * Create Application in the database with Token based on the User who made the request.
+     * And return headers array with the Application stored token in it.
+     * This is made to be used with the endpoints protected with `app.auth` middleware.
+     *
+     * @param string $endpoint
+     * @param string $verb
+     * @param array  $data
+     */
+    public function getApplicationTokenHeader(
+        $endpoint = 'apps/',
+        $verb = 'post',
+        $data = ['name' => 'Testing Application']
+    ) {
+        $application = $this->apiCall($endpoint, $verb, $data);
+
+        // override the header with the application token instead of the default user token
+        $headers['Authorization'] = 'Bearer ' . $this->getResponseObject($application)->application_token;
+
+        return $headers;
+    }
+
 }
