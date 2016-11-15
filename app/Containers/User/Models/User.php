@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Models;
 
+use App\Containers\Application\Models\Application;
 use App\Containers\Authentication\Traits\TokenTrait;
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Stripe\Models\StripeAccount;
@@ -89,18 +90,11 @@ class User extends Model implements
         'token',
     ];
 
-
-    /**
-     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function stripeAccount()
     {
         return $this->hasOne(StripeAccount::class);
     }
 
-    /**
-     * @return  \Illuminate\Database\Eloquent\Relations\HasOne
-     */
     public function paypalAccount()
     {
         return $this->hasOne(PaypalAccount::class);
@@ -109,6 +103,11 @@ class User extends Model implements
     public function timeTrackers()
     {
         return $this->hasMany(TimeTracker::class);
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
     }
 
 }
