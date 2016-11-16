@@ -4,6 +4,11 @@ namespace App\Containers\Welcome\UI\CLI\Commands;
 
 use App\Port\Console\Abstracts\ConsoleCommand;
 
+/**
+ * Class SayWelcome
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class SayWelcome extends ConsoleCommand
 {
 
