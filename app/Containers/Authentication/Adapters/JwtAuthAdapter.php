@@ -42,6 +42,14 @@ class JwtAuthAdapter
     }
 
     /**
+     * @return  \Tymon\JWTAuth\JWTAuth
+     */
+    public function parseToken()
+    {
+        return $this->jwtAuth->parseToken();
+    }
+
+    /**
      * @param $user
      *
      * @return mixed

@@ -70,13 +70,9 @@ class ApplicationAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if (!$this->auth->check(false)) {
-            $user = $this->auth->authenticate($this->router->getCurrentRoute()->getAuthenticationProviders());
-        }
+        $token = str_replace('Bearer ', '', $request->header('authorization'));
 
-        if (!isset($user)) {
-            throw new AuthenticationFailedException();
-        }
+        $user = $this->jwtAuthAdapter->toUser($token);
 
         // NOTE: You can remove this condition of you are not using roles for this purpose.
         // check if the user has developer role, in case accessing an endpoint from his own user account instead of App
@@ -86,7 +82,7 @@ class ApplicationAuthentication
         }
 
         // get App ID from the token payload custom claim `ApplicationId`
-        if ($applicationId = $this->jwtAuthAdapter->getPayload()->get('ApplicationId')) {
+        if ($applicationId = $this->jwtAuthAdapter->getPayload($token)->get('ApplicationId')) {
 
             // find that App in the database
             $application = $this->findApplicationByIdTask->run($applicationId);
