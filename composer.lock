@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10842d4faa19d3968f34af08f82d37e0",
-    "content-hash": "a8e66d81684ae1d96cbe8bff379c1a08",
+    "hash": "169c2f43d0e0ea3aa5acf6b68cf3e87b",
+    "content-hash": "88c6d75096ab37367e756cb3d84fde12",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -102,47 +102,6 @@
                 "laravel"
             ],
             "time": "2016-08-11 08:46:01"
-        },
-        {
-            "name": "brotzka/laravel-dotenv-editor",
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Brotzka/laravel-dotenv-editor.git",
-                "reference": "ec773c3ead7ba39e9edbb91a84a1fb5da179c395"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/ec773c3ead7ba39e9edbb91a84a1fb5da179c395",
-                "reference": "ec773c3ead7ba39e9edbb91a84a1fb5da179c395",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Brotzka\\DotenvEditor\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabian Hagen",
-                    "email": "fabianhagen87@gmail.com"
-                }
-            ],
-            "description": "A package for editing the .env file in your Laravel root.",
-            "keywords": [
-                "dotenv",
-                "dotenv-editor",
-                "laravel"
-            ],
-            "time": "2016-10-10 12:33:36"
         },
         {
             "name": "cartalyst/collections",
@@ -1207,16 +1166,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.22",
+            "version": "v5.3.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc"
+                "reference": "5b920baa30fbd4606829d56f3737cac0633a8db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
-                "reference": "715328dd4fb1a7bcf3cb41b3472f9e3499d068fc",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5b920baa30fbd4606829d56f3737cac0633a8db7",
+                "reference": "5b920baa30fbd4606829d56f3737cac0633a8db7",
                 "shasum": ""
             },
             "require": {
@@ -1331,7 +1290,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-11-01 18:52:00"
+            "time": "2016-11-14 15:41:06"
         },
         {
             "name": "laravel/socialite",
@@ -1598,16 +1557,16 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.22",
+            "version": "2.8.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "53cddae0c272a478b24a4b5fb60d0f838caf70b6"
+                "reference": "cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/53cddae0c272a478b24a4b5fb60d0f838caf70b6",
-                "reference": "53cddae0c272a478b24a4b5fb60d0f838caf70b6",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3",
+                "reference": "cdf8f8efaf993bc687e78e4622f5eebd0b8b3bf3",
                 "shasum": ""
             },
             "require": {
@@ -1648,7 +1607,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2016-04-24 09:47:16"
+            "time": "2016-11-11 14:56:25"
         },
         {
             "name": "monolog/monolog",
@@ -1964,16 +1923,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -2008,7 +1967,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "paypal/rest-api-sdk-php",
@@ -2303,17 +2262,39 @@
             "time": "2015-01-28 21:50:33"
         },
         {
-            "name": "porto-sap/authentication",
-            "version": "v1.0.2",
+            "name": "porto-sap/application",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Porto-SAP/Authentication.git",
-                "reference": "e462abc26e82205f266f260404e639b850a6d021"
+                "url": "https://github.com/Porto-SAP/Application.git",
+                "reference": "fde5ffabdf9ecc3af93554dc0bf0b770260a6a6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Authentication/zipball/e462abc26e82205f266f260404e639b850a6d021",
-                "reference": "e462abc26e82205f266f260404e639b850a6d021",
+                "url": "https://api.github.com/repos/Porto-SAP/Application/zipball/fde5ffabdf9ecc3af93554dc0bf0b770260a6a6f",
+                "reference": "fde5ffabdf9ecc3af93554dc0bf0b770260a6a6f",
+                "shasum": ""
+            },
+            "type": "porto-container",
+            "extra": {
+                "installer-name": "Application"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Porto-SAP Container for Hello-API.",
+            "time": "2016-11-16 21:42:29"
+        },
+        {
+            "name": "porto-sap/authentication",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Porto-SAP/Authentication.git",
+                "reference": "feb08171bec3e713b495d9301d2f377c22911238"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Porto-SAP/Authentication/zipball/feb08171bec3e713b495d9301d2f377c22911238",
+                "reference": "feb08171bec3e713b495d9301d2f377c22911238",
                 "shasum": ""
             },
             "require": {
@@ -2327,25 +2308,25 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-06 20:31:40"
+            "time": "2016-11-16 21:13:42"
         },
         {
             "name": "porto-sap/authorization",
-            "version": "v1.0.6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Authorization.git",
-                "reference": "4eb97b34eaca994627a322a70b2f5dfeed8622cd"
+                "reference": "ed8d6e1a6089af823e82d1fb97cf0ad973a752e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Authorization/zipball/4eb97b34eaca994627a322a70b2f5dfeed8622cd",
-                "reference": "4eb97b34eaca994627a322a70b2f5dfeed8622cd",
+                "url": "https://api.github.com/repos/Porto-SAP/Authorization/zipball/ed8d6e1a6089af823e82d1fb97cf0ad973a752e2",
+                "reference": "ed8d6e1a6089af823e82d1fb97cf0ad973a752e2",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
-                "zizaco/entrust": "5.2.x-dev@dev"
+                "zizaco/entrust": "1.7.0"
             },
             "type": "porto-container",
             "extra": {
@@ -2353,20 +2334,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 18:39:57"
+            "time": "2016-11-17 00:21:54"
         },
         {
             "name": "porto-sap/contact",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Contact.git",
-                "reference": "1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b"
+                "reference": "170f5480941e32445cdea5926c5b5e5d86053252"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Contact/zipball/1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b",
-                "reference": "1ffa8ae283c73f6262fffadbf6ef8364db1ddc7b",
+                "url": "https://api.github.com/repos/Porto-SAP/Contact/zipball/170f5480941e32445cdea5926c5b5e5d86053252",
+                "reference": "170f5480941e32445cdea5926c5b5e5d86053252",
                 "shasum": ""
             },
             "require": {
@@ -2378,20 +2359,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:40:49"
+            "time": "2016-11-16 23:37:14"
         },
         {
             "name": "porto-sap/country",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Country.git",
-                "reference": "07d130271240f4172ac994b28dbdf3f5dac0c473"
+                "reference": "fa018327302288335cb8e8c81834b780ba7a06c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Country/zipball/07d130271240f4172ac994b28dbdf3f5dac0c473",
-                "reference": "07d130271240f4172ac994b28dbdf3f5dac0c473",
+                "url": "https://api.github.com/repos/Porto-SAP/Country/zipball/fa018327302288335cb8e8c81834b780ba7a06c1",
+                "reference": "fa018327302288335cb8e8c81834b780ba7a06c1",
                 "shasum": ""
             },
             "require": {
@@ -2404,20 +2385,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:40:38"
+            "time": "2016-11-16 23:40:08"
         },
         {
             "name": "porto-sap/debugger",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Debugger.git",
-                "reference": "b1f5d24014f27548492d6c3d485f9ed693d13c59"
+                "reference": "dc0e65ecc0267cf48f03aed7f3be95bc4f4c0bee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Debugger/zipball/b1f5d24014f27548492d6c3d485f9ed693d13c59",
-                "reference": "b1f5d24014f27548492d6c3d485f9ed693d13c59",
+                "url": "https://api.github.com/repos/Porto-SAP/Debugger/zipball/dc0e65ecc0267cf48f03aed7f3be95bc4f4c0bee",
+                "reference": "dc0e65ecc0267cf48f03aed7f3be95bc4f4c0bee",
                 "shasum": ""
             },
             "require": {
@@ -2429,20 +2410,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:40:25"
+            "time": "2016-11-16 21:19:46"
         },
         {
             "name": "porto-sap/email",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Email.git",
-                "reference": "b1f74ddd3eeb77143151f628f4c11fd8d559e599"
+                "reference": "daf733e41f0d1fbb0d26db642edc6ffce68f84dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Email/zipball/b1f74ddd3eeb77143151f628f4c11fd8d559e599",
-                "reference": "b1f74ddd3eeb77143151f628f4c11fd8d559e599",
+                "url": "https://api.github.com/repos/Porto-SAP/Email/zipball/daf733e41f0d1fbb0d26db642edc6ffce68f84dc",
+                "reference": "daf733e41f0d1fbb0d26db642edc6ffce68f84dc",
                 "shasum": ""
             },
             "require": {
@@ -2454,20 +2435,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:40:12"
+            "time": "2016-11-16 23:41:49"
         },
         {
             "name": "porto-sap/payment",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Payment.git",
-                "reference": "5cd5e4509591555b2c2d44db07f8822edf6a3823"
+                "reference": "8610cbc88bb9edbf6dd630bf16cc02d31f23c89e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Payment/zipball/5cd5e4509591555b2c2d44db07f8822edf6a3823",
-                "reference": "5cd5e4509591555b2c2d44db07f8822edf6a3823",
+                "url": "https://api.github.com/repos/Porto-SAP/Payment/zipball/8610cbc88bb9edbf6dd630bf16cc02d31f23c89e",
+                "reference": "8610cbc88bb9edbf6dd630bf16cc02d31f23c89e",
                 "shasum": ""
             },
             "require": {
@@ -2479,20 +2460,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:39:45"
+            "time": "2016-11-16 21:20:47"
         },
         {
             "name": "porto-sap/paypal",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Paypal.git",
-                "reference": "38bed73cca970203d890fbf01342abaf0348a1d7"
+                "reference": "44eb01825a757c8ee8f6371ca95ecd82e73abe74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Paypal/zipball/38bed73cca970203d890fbf01342abaf0348a1d7",
-                "reference": "38bed73cca970203d890fbf01342abaf0348a1d7",
+                "url": "https://api.github.com/repos/Porto-SAP/Paypal/zipball/44eb01825a757c8ee8f6371ca95ecd82e73abe74",
+                "reference": "44eb01825a757c8ee8f6371ca95ecd82e73abe74",
                 "shasum": ""
             },
             "require": {
@@ -2505,20 +2486,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:39:32"
+            "time": "2016-11-16 21:22:06"
         },
         {
             "name": "porto-sap/settings",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Settings.git",
-                "reference": "209b24bc078debd52f218ef6d5c3b4677a7d7ff3"
+                "reference": "c00f12082321aa6b5f62dd98bcafe68c747d7689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Settings/zipball/209b24bc078debd52f218ef6d5c3b4677a7d7ff3",
-                "reference": "209b24bc078debd52f218ef6d5c3b4677a7d7ff3",
+                "url": "https://api.github.com/repos/Porto-SAP/Settings/zipball/c00f12082321aa6b5f62dd98bcafe68c747d7689",
+                "reference": "c00f12082321aa6b5f62dd98bcafe68c747d7689",
                 "shasum": ""
             },
             "require": {
@@ -2530,20 +2511,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:39:10"
+            "time": "2016-11-16 21:23:20"
         },
         {
             "name": "porto-sap/social-auth",
-            "version": "v1.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/SocialAuth.git",
-                "reference": "2bf523f7d521e0b4d18ead58420bfdcc1539dd1e"
+                "reference": "7798a823d8482ff6ada4051a3bd143055fb69c80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/SocialAuth/zipball/2bf523f7d521e0b4d18ead58420bfdcc1539dd1e",
-                "reference": "2bf523f7d521e0b4d18ead58420bfdcc1539dd1e",
+                "url": "https://api.github.com/repos/Porto-SAP/SocialAuth/zipball/7798a823d8482ff6ada4051a3bd143055fb69c80",
+                "reference": "7798a823d8482ff6ada4051a3bd143055fb69c80",
                 "shasum": ""
             },
             "require": {
@@ -2556,20 +2537,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-06 20:24:49"
+            "time": "2016-11-16 23:31:02"
         },
         {
             "name": "porto-sap/stripe",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Stripe.git",
-                "reference": "f3300fde063a105f44d1238284fa4f067fb2571e"
+                "reference": "b10b2812d2fda6e6f179ea9a08b62e45ad9e032f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Stripe/zipball/f3300fde063a105f44d1238284fa4f067fb2571e",
-                "reference": "f3300fde063a105f44d1238284fa4f067fb2571e",
+                "url": "https://api.github.com/repos/Porto-SAP/Stripe/zipball/b10b2812d2fda6e6f179ea9a08b62e45ad9e032f",
+                "reference": "b10b2812d2fda6e6f179ea9a08b62e45ad9e032f",
                 "shasum": ""
             },
             "require": {
@@ -2582,20 +2563,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:38:43"
+            "time": "2016-11-16 21:29:39"
         },
         {
             "name": "porto-sap/user",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/User.git",
-                "reference": "446cfaff5d76c3ed610d4e228e184bec31120671"
+                "reference": "f4fa9d2dc76635050d8dbe63c1135fb0fffb11ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/User/zipball/446cfaff5d76c3ed610d4e228e184bec31120671",
-                "reference": "446cfaff5d76c3ed610d4e228e184bec31120671",
+                "url": "https://api.github.com/repos/Porto-SAP/User/zipball/f4fa9d2dc76635050d8dbe63c1135fb0fffb11ed",
+                "reference": "f4fa9d2dc76635050d8dbe63c1135fb0fffb11ed",
                 "shasum": ""
             },
             "require": {
@@ -2607,20 +2588,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:34:26"
+            "time": "2016-11-16 21:27:14"
         },
         {
             "name": "porto-sap/welcome",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Welcome.git",
-                "reference": "903d55615bcaf72be4f7be1201228b3238b67801"
+                "reference": "4e23326c787641dc6b7f088a484351633666e56e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Welcome/zipball/903d55615bcaf72be4f7be1201228b3238b67801",
-                "reference": "903d55615bcaf72be4f7be1201228b3238b67801",
+                "url": "https://api.github.com/repos/Porto-SAP/Welcome/zipball/4e23326c787641dc6b7f088a484351633666e56e",
+                "reference": "4e23326c787641dc6b7f088a484351633666e56e",
                 "shasum": ""
             },
             "require": {
@@ -2632,7 +2613,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-02 16:12:11"
+            "time": "2016-11-16 21:27:49"
         },
         {
             "name": "predis/predis",
@@ -3450,16 +3431,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594"
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/dff51f72b0706335131b00a7f49606168c582594",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
                 "shasum": ""
             },
             "require": {
@@ -3471,7 +3452,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -3505,20 +3486,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "3edf57a8fbf9a927533344cef65ad7e1cf31030a"
+                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/3edf57a8fbf9a927533344cef65ad7e1cf31030a",
-                "reference": "3edf57a8fbf9a927533344cef65ad7e1cf31030a",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/1dd42b9b89556f18092f3d1ada22cb05ac85383c",
+                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c",
                 "shasum": ""
             },
             "require": {
@@ -3528,7 +3509,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -3561,20 +3542,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "ef830ce3d218e622b221d6bfad42c751d974bf99"
+                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ef830ce3d218e622b221d6bfad42c751d974bf99",
-                "reference": "ef830ce3d218e622b221d6bfad42c751d974bf99",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/746bce0fca664ac0a575e465f65c6643faddf7fb",
+                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb",
                 "shasum": ""
             },
             "require": {
@@ -3583,7 +3564,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -3613,7 +3594,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/process",
@@ -4132,16 +4113,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "5.2.x-dev",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3"
+                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
-                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
+                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
                 "shasum": ""
             },
             "require": {
@@ -4196,7 +4177,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-11-04 16:23:22"
+            "time": "2016-03-09 17:05:35"
         }
     ],
     "packages-dev": [
@@ -4713,16 +4694,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.8",
+            "version": "1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da"
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
                 "shasum": ""
             },
             "require": {
@@ -4758,20 +4739,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-09-15 10:49:45"
+            "time": "2016-11-15 14:06:22"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.6.2",
+            "version": "5.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "cd13b23ac5a519a4708e00736c26ee0bb28b2e01"
+                "reference": "a9de0dbafeb6b1391b391fbb034734cb0af9f67c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/cd13b23ac5a519a4708e00736c26ee0bb28b2e01",
-                "reference": "cd13b23ac5a519a4708e00736c26ee0bb28b2e01",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a9de0dbafeb6b1391b391fbb034734cb0af9f67c",
+                "reference": "a9de0dbafeb6b1391b391fbb034734cb0af9f67c",
                 "shasum": ""
             },
             "require": {
@@ -4840,7 +4821,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-10-25 07:40:25"
+            "time": "2016-11-14 06:39:40"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -5232,21 +5213,21 @@
         },
         {
             "name": "sebastian/object-enumerator",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-enumerator.git",
-                "reference": "d4ca2fb70344987502567bc50081c03e6192fb26"
+                "reference": "12dc92be4c9b1286fd37c15d54f7c9d8524f29e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/d4ca2fb70344987502567bc50081c03e6192fb26",
-                "reference": "d4ca2fb70344987502567bc50081c03e6192fb26",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/12dc92be4c9b1286fd37c15d54f7c9d8524f29e0",
+                "reference": "12dc92be4c9b1286fd37c15d54f7c9d8524f29e0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6",
-                "sebastian/recursion-context": "~1.0"
+                "sebastian/recursion-context": "~1.0.4"
             },
             "require-dev": {
                 "phpunit/phpunit": "~5"
@@ -5274,20 +5255,20 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2016-01-28 13:25:10"
+            "time": "2016-11-16 07:17:31"
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
-                "reference": "913401df809e99e4f47b27cdd781f4a258d58791"
+                "reference": "938df7a6478e72795e5f8266cff24d06e3136f2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/913401df809e99e4f47b27cdd781f4a258d58791",
-                "reference": "913401df809e99e4f47b27cdd781f4a258d58791",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/938df7a6478e72795e5f8266cff24d06e3136f2e",
+                "reference": "938df7a6478e72795e5f8266cff24d06e3136f2e",
                 "shasum": ""
             },
             "require": {
@@ -5327,7 +5308,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2015-11-11 19:50:13"
+            "time": "2016-11-15 06:55:36"
         },
         {
             "name": "sebastian/resource-operations",
@@ -5577,7 +5558,20 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "dingo/api": 20,
-        "zizaco/entrust": 20
+        "porto-sap/welcome": 20,
+        "porto-sap/user": 20,
+        "porto-sap/authentication": 20,
+        "porto-sap/application": 20,
+        "porto-sap/authorization": 20,
+        "porto-sap/social-auth": 20,
+        "porto-sap/debugger": 20,
+        "porto-sap/email": 20,
+        "porto-sap/contact": 20,
+        "porto-sap/country": 20,
+        "porto-sap/payment": 20,
+        "porto-sap/paypal": 20,
+        "porto-sap/stripe": 20,
+        "porto-sap/settings": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

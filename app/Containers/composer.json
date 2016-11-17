@@ -1,19 +1,19 @@
 {
   "require": {
-    "porto-sap/welcome": "1.*",
-    "porto-sap/user": "1.*",
-    "porto-sap/authentication": "1.*",
-    "porto-sap/application": "1.*",
-    "porto-sap/authorization": "1.*",
-    "porto-sap/social-auth": "1.*",
-    "porto-sap/debugger": "1.*",
-    "porto-sap/email": "1.*",
-    "porto-sap/contact": "1.*",
-    "porto-sap/country": "1.*",
-    "porto-sap/payment": "1.*",
-    "porto-sap/paypal": "1.*",
-    "porto-sap/stripe": "1.*",
-    "porto-sap/settings": "1.*"
+    "porto-sap/welcome": "dev-master",
+    "porto-sap/user": "dev-master",
+    "porto-sap/authentication": "dev-master",
+    "porto-sap/application": "dev-master",
+    "porto-sap/authorization": "dev-master",
+    "porto-sap/social-auth": "dev-master",
+    "porto-sap/debugger": "dev-master",
+    "porto-sap/email": "dev-master",
+    "porto-sap/contact": "dev-master",
+    "porto-sap/country": "dev-master",
+    "porto-sap/payment": "dev-master",
+    "porto-sap/paypal": "dev-master",
+    "porto-sap/stripe": "dev-master",
+    "porto-sap/settings": "dev-master"
   },
   "extra": {
     "merge-plugin": {
