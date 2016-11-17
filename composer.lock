@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "169c2f43d0e0ea3aa5acf6b68cf3e87b",
-    "content-hash": "88c6d75096ab37367e756cb3d84fde12",
+    "hash": "376416c59294f8c97b23bd6134f010e5",
+    "content-hash": "40d66f8c965b7a59b8a27b0c749f9290",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -440,16 +440,16 @@
         },
         {
             "name": "dingo/api",
-            "version": "dev-master",
+            "version": "v1.0.0-beta6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dingo/api.git",
-                "reference": "dc312a566ff8fe16098f95360d3778789727f63f"
+                "reference": "cac67ab05da38c3de6d48c7146b700a13ed54cd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dingo/api/zipball/dc312a566ff8fe16098f95360d3778789727f63f",
-                "reference": "dc312a566ff8fe16098f95360d3778789727f63f",
+                "url": "https://api.github.com/repos/dingo/api/zipball/cac67ab05da38c3de6d48c7146b700a13ed54cd0",
+                "reference": "cac67ab05da38c3de6d48c7146b700a13ed54cd0",
                 "shasum": ""
             },
             "require": {
@@ -511,7 +511,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2016-10-18 16:20:39"
+            "time": "2016-08-30 03:57:04"
         },
         {
             "name": "dingo/blueprint",
@@ -2316,17 +2316,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Porto-SAP/Authorization.git",
-                "reference": "ed8d6e1a6089af823e82d1fb97cf0ad973a752e2"
+                "reference": "fabd021df1b2b137572ba479122335bece6037df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Porto-SAP/Authorization/zipball/ed8d6e1a6089af823e82d1fb97cf0ad973a752e2",
-                "reference": "ed8d6e1a6089af823e82d1fb97cf0ad973a752e2",
+                "url": "https://api.github.com/repos/Porto-SAP/Authorization/zipball/fabd021df1b2b137572ba479122335bece6037df",
+                "reference": "fabd021df1b2b137572ba479122335bece6037df",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
-                "zizaco/entrust": "1.7.0"
+                "zizaco/entrust": "5.2.x-dev"
             },
             "type": "porto-container",
             "extra": {
@@ -2334,7 +2334,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Porto-SAP Container for Hello-API.",
-            "time": "2016-11-17 00:21:54"
+            "time": "2016-11-17 00:56:05"
         },
         {
             "name": "porto-sap/contact",
@@ -4113,16 +4113,16 @@
         },
         {
             "name": "zizaco/entrust",
-            "version": "1.7.0",
+            "version": "5.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2"
+                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
-                "reference": "1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
+                "reference": "7455ed41fe448c37c6a5bcd41a584c1f92d428a3",
                 "shasum": ""
             },
             "require": {
@@ -4177,7 +4177,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-03-09 17:05:35"
+            "time": "2016-11-04 16:23:22"
         }
     ],
     "packages-dev": [
@@ -5555,7 +5555,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "dingo/api": 20,
         "porto-sap/welcome": 20,
@@ -5573,7 +5573,7 @@
         "porto-sap/stripe": 20,
         "porto-sap/settings": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6.4"

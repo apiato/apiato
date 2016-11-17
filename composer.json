@@ -41,7 +41,8 @@
     "installer-paths": {
       "app/Containers/{$name}/": [
         "type:porto-container"
-      ],"vendor/{$name}/": [
+      ],
+      "vendor/{$name}/": [
         "type:laravel-library"
       ]
     }
@@ -78,5 +79,6 @@
   "config": {
     "preferred-install": "dist"
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
