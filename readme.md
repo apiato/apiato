@@ -5,12 +5,12 @@
 
 
 
-[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Mahmoudz/Hello-API)
-[![Build Status](https://travis-ci.org/Mahmoudz/Hello-API.svg?branch=master)](https://travis-ci.org/Mahmoudz/Hello-API)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Mahmoudz/Hello-API/build-status/master)
+[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
+[![Build Status](https://travis-ci.org/Porto-SAP/Hello-API.svg?branch=master)](https://travis-ci.org/Porto-SAP/Hello-API)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/build-status/master)
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Mahmoudz/Hello-API/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Porto-SAP/Hello-API/master/LICENSE)
 
 
 
@@ -22,19 +22,11 @@
 
 <br>
 <br>
-# Important Note:
+## Important Note:
 
 The project is currently under heavy development. 
 So expect major updates without notice.
 Also note that there's **no stable release** till this date.
-
-
-
-![](https://s18.postimg.org/b1vc6lfhl/under_development.png)
-<br>
-<br>
-
-
 
 
 
@@ -49,7 +41,7 @@ Also note that there's **no stable release** till this date.
 * [Credits](#Credits)
 * [License](#License)
 
-> If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Mahmoudz/Hello-API/tree/release-0.1).
+> If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Porto-SAP/Hello-API/tree/release-0.1)
 
 
 <a name="Introduction"></a>
@@ -75,7 +67,7 @@ Building cross-devices applications is becoming a must. And to do it, you need A
 API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
 As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
 
-API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work on their codes in parallel. After the front-end Apps are ready they get attached to the back-end (API-Centric) code to start functioning. This leads to zero decoupling between the front-end and the back-end code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
+API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
 
 <br>
 
@@ -90,17 +82,17 @@ API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work
 >The Hello API comes with great features:
 
 - Token Based Authentication (with JWT "JSON Web Tokens").
-- Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - API Throttling (Rate Limiting).
-- User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
-- Functional Tests covering all the existing Endpoints (using PHPUnit).
-- Data Caching support (with auto clearing on Create, Update and Delete).
 - Query Parameters support out of the box (orderBy, sortedBy, filter, include).
 - Full-text search support out of the box (search, searchFields).
+- User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
+- Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Auto API Documentation generator (using the API Doc JS).
-- Authorization system (ACL), to control which consumer can access your API.
+- Authorization system (ACL), with Default Super Admin seeding.
+- Data Caching support (with auto clearing on Create, Update and Delete).
+- Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Supports CORS "Cross-Origin Resource Sharing".
-- Localization support (multiple langauges via Content-Language header).
+- Localization support (multiple languages via Content-Language header).
 - Send Emails from App to User & User to App (Welcome, Email Confirmation, Contact Us,...).
 - Automatic Data Pagination (meta links to next and previous data).
 - Support Visitors Authentication by Device ID (Use first register later).
@@ -112,16 +104,15 @@ API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work
 - RESTful API (supporting all HTTP verbs).
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
-- Support for JSON with padding (JSONP).
-- Scalable, Stateless and Distributable Application on the server.
-- Maintainable and scalable Software Architectural Pattern (using Porto).
+- Optional support for JSON with padding (JSONP).
+- Maintainable and scalable Software Architectural Pattern (using Porto SAP).
 - Fully Object Oriented Code, implementing the best design patterns.
 - Following the PSR-2/PSR-4 coding/autoloading standards.
 - Ready Middlewares for WEB and API Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
 - Visual .env editor (in the browser).
 - Ready Admin dashboard infrastructure (just drop your admin views).
-- Runs on PHP 5.5.9+ (including PHP 7 and HHVM).
+- Runs on PHP 5.6.4 and above.
 - Fully detailed documentation (on www.hello-api.readme.io/docs).
 - 100% customizable and Open Code.
 - And much more...
@@ -132,36 +123,9 @@ API-Centric Apps allows front-end (Web + Mobile) and back-end developers to work
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern. 
 <br>
-Thus you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto)  before starting.
+Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation)  before starting.
 
 ###[Hello API Documentation](https://hello-api.readme.io/docs/installation)
-
-
-<a name="Technologies"></a>
-## Technologies
-
->Hello API is built with the latest & hottest Technologies:
-
-* PHP (Server-Side Scripting Language)
-* [Laravel 5.3](http://laravel.com) (PHP Framework)
-* [PHPUnit](https://phpunit.de/) (PHP Testing Framework)
-* [MySQL](https://www.mysql.com/) (RDBMS Database)
-* [Redis](http://redis.io/) (Cache System)
-* [API Doc JS](http://apidocjs.com/) (API Documentation Generator)
-* Third Party Packages:
-	* [Dingo API](https://github.com/dingo/api) (A RESTful API package)
-	* [JWT](https://github.com/tymondesigns/jwt-auth) (JSON Web Token Authentication)
-	* [CORS](https://github.com/barryvdh/laravel-cors) (Cross-Origin Resource Sharing headers support)
-	* [Repository](https://github.com/andersao/l5-repository) (Repositories to abstract the database layer)
-	* [Entrust](https://github.com/Zizaco/entrust) (Role-based Permissions)
-	* [Agent](https://github.com/jenssegers/agent) (Detect users agent)
-	* [Socialite](https://github.com/laravel/socialite) (Social Authentication)
-	* [Dotenv Editor](https://github.com/Brotzka/laravel-dotenv-editor) (Edit .env variables from browser)
-	* [Guzzle](http://docs.guzzlephp.org/en/latest/) (PHP HTTP client)
-	* [Predis](https://packagist.org/packages/predis/predis) (PHP client library for Redis)
-	* [Stripe](https://github.com/cartalyst/stripe-laravel) (Stripe API client)
-	* [Paypal](https://github.com/anouarabdsslm/laravel-paypalpayment) (Paypal API client)
-	* [Countries](https://github.com/webpatser/laravel-countries) (Migrating the database with all countries info)
 
 
 <br>
@@ -180,15 +144,18 @@ Just do it. You are welcome :)
 <a name="Credits"></a>
 ## Credits
 
-| Authors                | Follow on Twitter                                 | Ask for Help                                                                                                          | Hire            |
-|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|
-| Mahmoud Zalt (Creator) | [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me |
+| Contributors           | Twitter                                 | Ask for Help                                                                                                          | Contact / Hire  | Site            |
+|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
+| [Mahmoud Zalt](https://github.com/Mahmoudz) (Creator) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [http://zalt.me](http://zalt.me/) |
+
+
+
 
 
 <a name="License"></a>
 ## License
 
-The MIT License [(MIT)](https://github.com/Mahmoudz/Hello-API/blob/master/LICENSE).
+The MIT License [(MIT)](https://github.com/Porto-SAP/Hello-API/blob/master/LICENSE).
 
 
 
