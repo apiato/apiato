@@ -7,7 +7,9 @@ use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
+use Route;
 use Symfony\Component\Finder\SplFileInfo;
+use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * Class RoutesServiceProviderTrait.
@@ -135,6 +137,16 @@ trait RoutesServiceProviderTrait
         $apiVersionNumber = str_replace('v', '', $apiVersion);
 
         return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
+    }
+
+
+    protected function hashIds()
+    {
+        if (Config::get('hello.hash-id')) {
+            Route::bind('id', function ($id, $route) {
+                return Hashids::decode($id)[0];
+            });
+        }
     }
 
 }

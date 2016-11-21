@@ -9,6 +9,8 @@ use App\Port\Routes\Providers\RoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
+use Vinkla\Hashids\Facades\Hashids;
+use Vinkla\Hashids\HashidsServiceProvider;
 
 /**
  * Class MainServiceProvider
@@ -41,6 +43,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         CorsServiceProvider::class,
         RepositoryServiceProvider::class,
         RoutesServiceProvider::class,
+        HashidsServiceProvider::class,
     ];
 
     /**
@@ -49,7 +52,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var  array
      */
     private $aliases = [
-
+        'Hashids' => Hashids::class,
     ];
 
     /**
@@ -74,6 +77,8 @@ class MainServiceProvider extends ServiceProviderAbstract
         });
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->debugDatabaseQueries(true, true);
+
+        $this->registerAliases($this->aliases);
     }
 
 }

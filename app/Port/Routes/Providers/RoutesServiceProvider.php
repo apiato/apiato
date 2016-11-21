@@ -51,6 +51,8 @@ class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
         $this->webRouter = $webRouter;
 
         $this->registerRoutes();
+
+        $this->hashIds();
     }
 
 
