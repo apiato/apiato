@@ -7,12 +7,15 @@ use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AttachRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
+
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr as LaravelArr;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
+use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * Class TestingTrait.
@@ -352,6 +355,10 @@ trait TestingTrait
      */
     public function injectEndpointId($endpoint, $id)
     {
+        if(Config::get('hello.hash-id')){
+            $id = Hashids::encode($id);
+        }
+
         return str_replace("{id}", $id, $endpoint);
     }
 
