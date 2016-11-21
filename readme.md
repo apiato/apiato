@@ -89,6 +89,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Auto API Documentation generator (using the API Doc JS).
 - Authorization system (ACL), with Default Super Admin seeding.
+- Support ID hashing, to hide your original ID from your users (using HashID). 
 - Data Caching support (with auto clearing on Create, Update and Delete).
 - Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Supports CORS "Cross-Origin Resource Sharing".
