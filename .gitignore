@@ -10,6 +10,8 @@ storage/logs/laravel.log
 /app/Containers/
 !app/Containers/composer.json
 
+composer.lock
+
 laradock*/
 
 .idea
