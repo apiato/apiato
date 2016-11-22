@@ -5,23 +5,26 @@
 
 
 
-[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
-[![Build Status](https://travis-ci.org/Porto-SAP/Hello-API.svg?branch=master)](https://travis-ci.org/Porto-SAP/Hello-API)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/?branch=master)
+[![Build Status](https://travis-ci.org/Porto-SAP/Hello-API.svg?branch=master)](https://travis-ci.org/Porto-SAP/Hello-API)
 [![Build Status](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/build-status/master)
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Porto-SAP/Hello-API/master/LICENSE)
-
+[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
 
 
 #### A `Hello World` for API's : )
 
 
 
+<br>
 
+Join our chatting room on Gitter:
+
+[![Gitter](https://badges.gitter.im/porto-sap/Lobby.svg)](https://gitter.im/porto-sap/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 <br>
-<br>
+
 ## Important Note:
 
 The project is currently under heavy development. 
@@ -89,7 +92,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Auto API Documentation generator (using the API Doc JS).
 - Authorization system (ACL), with Default Super Admin seeding.
-- Support ID hashing, to hide your original ID from your users (using HashID). 
+- Support ID hashing, to hide original IDs from users (using HashID).
 - Data Caching support (with auto clearing on Create, Update and Delete).
 - Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Supports CORS "Cross-Origin Resource Sharing".
@@ -107,13 +110,9 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Automatic dates conversion to ISO format in responses.
 - Optional support for JSON with padding (JSONP).
 - Maintainable and scalable Software Architectural Pattern (using Porto SAP).
-- Fully Object Oriented Code, implementing the best design patterns.
-- Following the PSR-2/PSR-4 coding/autoloading standards.
-- Ready Middlewares for WEB and API Authentication.
+- Ready Middlewares for WEB, API and App Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
-- Visual .env editor (in the browser).
 - Ready Admin dashboard infrastructure (just drop your admin views).
-- Runs on PHP 5.6.4 and above.
 - Fully detailed documentation (on www.hello-api.readme.io/docs).
 - 100% customizable and Open Code.
 - And much more...
