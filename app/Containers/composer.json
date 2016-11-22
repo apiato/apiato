@@ -11,7 +11,6 @@
     "porto-sap/contact": "dev-master",
     "porto-sap/country": "dev-master",
     "porto-sap/payment": "dev-master",
-    "porto-sap/paypal": "dev-master",
     "porto-sap/stripe": "dev-master",
     "porto-sap/settings": "dev-master"
   },
