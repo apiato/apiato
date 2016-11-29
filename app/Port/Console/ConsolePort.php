@@ -3,7 +3,7 @@
 namespace App\Port\Console;
 
 
-use App\Containers\Welcome\UI\CLI\Commands\SayWelcome;
+//use App\Containers\Welcome\UI\CLI\Commands\SayWelcome;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
@@ -22,7 +22,7 @@ class ConsolePort extends LaravelConsoleKernel
      * @var array
      */
     protected $commands = [
-        SayWelcome::class,
+//        SayWelcome::class,
     ];
 
     /**
