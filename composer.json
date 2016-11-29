@@ -26,8 +26,7 @@
     "merge-plugin": {
       "include": [
         "app/Port/composer.json",
-        "app/Containers/composer.json",
-        "app/Containers/*/composer.json"
+        "app/Containers/composer.json"
       ],
       "recurse": true,
       "replace": false,
