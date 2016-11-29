@@ -7,11 +7,11 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 /**
- * Class DownloadContainersCommand
+ * Class CloneContainersCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DownloadContainersCommand extends ConsoleCommand
+class CloneContainersCommand extends ConsoleCommand
 {
 
     /**
@@ -19,7 +19,7 @@ class DownloadContainersCommand extends ConsoleCommand
      *
      * @var string
      */
-    protected $signature = "container:download {repository-name*}"; // {--skip-update=false}
+    protected $signature = "containers:add {repository-names*}"; // {--skip-update=false}
 
     /**
      * The console command description.
@@ -47,7 +47,7 @@ class DownloadContainersCommand extends ConsoleCommand
     {
         $ContainersPath = "app/Containers";
 
-        foreach ($this->argument("repository-name") as $repoName) {
+        foreach ($this->argument("repository-names") as $repoName) {
             $repoName = ucfirst(strtolower($repoName));
 
             // TODO: find a way to validate the repo!
