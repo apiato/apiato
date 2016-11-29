@@ -4,6 +4,7 @@ namespace App\Port\Console;
 
 
 //use App\Containers\Welcome\UI\CLI\Commands\SayWelcome;
+use App\Port\Command\Commands\DownloadContainersCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
@@ -23,6 +24,7 @@ class ConsolePort extends LaravelConsoleKernel
      */
     protected $commands = [
 //        SayWelcome::class,
+        DownloadContainersCommand::class
     ];
 
     /**
