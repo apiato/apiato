@@ -52,7 +52,6 @@
     ],
     "post-create-project-cmd": [
       "php artisan key:generate",
-      "php artisan jwt:generate",
       "php artisan containers:add User Welcome Authentication"
     ],
     "post-install-cmd": [
