@@ -12,8 +12,7 @@
   "require": {
     "php": ">=5.6.4",
     "laravel/framework": "5.3.*",
-    "wikimedia/composer-merge-plugin": "^1.3",
-    "oomphinc/composer-installers-extender": "^1.1"
+    "wikimedia/composer-merge-plugin": "^1.3"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -26,24 +25,13 @@
     "merge-plugin": {
       "include": [
         "app/Port/composer.json",
-        "app/Containers/composer.json"
+        "app/Containers/*/composer.json"
       ],
       "recurse": true,
       "replace": false,
       "merge-dev": true,
       "merge-extra": false,
       "merge-extra-deep": false
-    },
-    "installer-types": [
-      "porto-container"
-    ],
-    "installer-paths": {
-      "app/Containers/{$name}/": [
-        "type:porto-container"
-      ],
-      "vendor/{$name}/": [
-        "type:laravel-library"
-      ]
     }
   },
   "autoload": {
