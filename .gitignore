@@ -7,9 +7,6 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 
-/app/Containers/
-!app/Containers/composer.json
-
 composer.lock
 
 laradock*/
