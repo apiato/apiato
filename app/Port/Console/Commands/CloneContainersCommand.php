@@ -51,7 +51,7 @@ class CloneContainersCommand extends ConsoleCommand
             $repoName = ucfirst(strtolower($repoName));
 
             // TODO: find a way to validate the repo!
-            $process = new Process("git clone https://github.com:Porto-SAP/" . $repoName . ".git " . $ContainersPath . "/" . $repoName);
+            $process = new Process("git clone https://github.com/Porto-SAP/" . $repoName . ".git " . $ContainersPath . "/" . $repoName);
             $process->run();
 
             if (!$process->isSuccessful()) {
