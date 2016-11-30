@@ -51,11 +51,11 @@ class CloneContainersCommand extends ConsoleCommand
             $repoName = ucfirst(strtolower($repoName));
 
             // TODO: find a way to validate the repo!
-            $process = new Process("git clone https://github.com/Porto-SAP/" . $repoName . ".git " . $ContainersPath . "/" . $repoName);
-            $process->run();
+            $process1 = new Process("git clone https://github.com/Porto-SAP/" . $repoName . ".git " . $ContainersPath . "/" . $repoName);
+            $process1->run();
 
-            if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
+            if (!$process1->isSuccessful()) {
+                throw new ProcessFailedException($process1);
             }
 
             echo "Downloading " . $repoName . " completed successfully.\n";
@@ -66,14 +66,15 @@ class CloneContainersCommand extends ConsoleCommand
 //        if (!$this->option('skip-update')) {
 
             echo "Running 'Composer Update'..\n";
-            $process = new Process("composer update");
-            $process->run();
+            $process2 = new Process("composer update");
+            $process2->setTimeout(300);
+            $process2->run();
 
-            if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
+            if (!$process2->isSuccessful()) {
+                throw new ProcessFailedException($process2);
             }
 
-            echo $process->getOutput();
+            echo $process2->getOutput();
 //        }
 
         echo "Congratulation :)\n";
