@@ -5,6 +5,7 @@ namespace App\Port\Provider\Providers;
 use App\Port\Butler\Portals\PortButler;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
+use App\Port\Console\Providers\ConsoleServiceProvider;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
@@ -44,6 +45,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         RepositoryServiceProvider::class,
         RoutesServiceProvider::class,
         HashidsServiceProvider::class,
+        ConsoleServiceProvider::class
     ];
 
     /**

@@ -113,6 +113,30 @@ trait PortServiceProviderTrait
     }
 
     /**
+     * TODO: needs refactoring, was created in 5 min
+     *
+     * @return  array
+     */
+    public function getAllContainersConsoleCommandsForAutoLoading()
+    {
+        $classes = [];
+        foreach (PortButler::getContainersNames() as $containerName) {
+            $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
+            if (File::isDirectory($containerCommandsDirectory)) {
+                $files = \File::allFiles($containerCommandsDirectory);
+                foreach ($files as $consoleFile) {
+                    if (\File::isFile($consoleFile)) {
+                        $pathName = $consoleFile->getPathname();
+                        $classes[] = PortButler::getClassFullNameFromFile($pathName);
+                    }
+                }
+            }
+        };
+
+        return $classes;
+    }
+
+    /**
      * Auto load Containers and Port config files into Laravel
      */
     public function autoLoadConfigFiles()
