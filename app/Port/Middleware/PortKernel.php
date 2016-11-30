@@ -42,8 +42,6 @@ class PortKernel extends LaravelHttpKernel
         'api' => [
             // Laravel default middleware's:
             'bindings',
-            // Hello API Requests Monitor
-            \App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware::class,
             // CORS package middleware
             \Barryvdh\Cors\HandleCors::class,
             // Hello API Localization middleware
@@ -80,5 +78,13 @@ class PortKernel extends LaravelHttpKernel
 
         // ...
     ];
+
+    /**
+     * @param array $middlewareGroups
+     */
+    public function registerMiddlewareGroups(array $middlewareGroups)
+    {
+        $this->middlewareGroups = array_merge($this->middlewareGroups, $middlewareGroups);
+    }
 
 }

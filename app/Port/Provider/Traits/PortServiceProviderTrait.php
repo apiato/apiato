@@ -5,6 +5,7 @@ namespace App\Port\Provider\Traits;
 use App;
 use App\Port\Butler\Portals\Facade\PortButler;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
+use App\Port\Middleware\PortKernel;
 use DB;
 use File;
 use Illuminate\Support\Facades\Config;
@@ -219,4 +220,12 @@ trait PortServiceProviderTrait
             });
         }
     }
+
+
+    public function registerMiddlewareGroups($middlewareGroups)
+    {
+        (App::make(PortKernel::class))->registerMiddlewareGroups($middlewareGroups);
+    }
+
+
 }
