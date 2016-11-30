@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Command\Commands;
+namespace App\Port\Console\Commands;
 
 use App\Port\Console\Abstracts\ConsoleCommand;
 use Symfony\Component\Process\Exception\ProcessFailedException;

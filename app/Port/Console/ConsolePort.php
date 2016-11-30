@@ -4,8 +4,8 @@ namespace App\Port\Console;
 
 
 //use App\Containers\Welcome\UI\CLI\Commands\SayWelcome;
-use App\Port\Command\Commands\CloneContainersCommand;
-use App\Port\Command\Commands\DeleteContainersCommand;
+use App\Port\Console\Commands\CloneContainersCommand;
+use App\Port\Console\Commands\DeleteContainersCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
