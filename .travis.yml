@@ -9,6 +9,7 @@ before_script:
 - mysql -e 'create database homestead;'
 - travis_retry composer self-update
 - composer install --prefer-source --no-interaction --dev
+- php artisan containers:add User Welcome Authentication Authorization Application Debugger Payment Paypal Stripe Settings SocialAuth Contact Email Country
 - php artisan migrate
 - php artisan db:seed
 
