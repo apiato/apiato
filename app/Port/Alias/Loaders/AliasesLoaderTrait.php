@@ -12,12 +12,6 @@ use Illuminate\Foundation\AliasLoader;
  */
 trait AliasesLoaderTrait
 {
-
-    private function loadAlias($aliasKey, $aliasValue)
-    {
-        AliasLoader::getInstance()->alias($aliasKey, $aliasValue);
-    }
-
     public function loadContainersInternalAliases()
     {
         foreach ($this->containerAliases as $aliasKey => $aliasValue) {
@@ -35,4 +29,10 @@ trait AliasesLoaderTrait
             }
         }
     }
+
+    private function loadAlias($aliasKey, $aliasValue)
+    {
+        AliasLoader::getInstance()->alias($aliasKey, $aliasValue);
+    }
+
 }

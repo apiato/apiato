@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Middlewares;
 
-use App\Port\Butler\Portals\PortButler;
+use App\Port\Foundation\Portals\PortButler;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class EntrustRoleForWeb
     protected $auth;
 
     /**
-     * @var  \App\Port\Butler\Portals\PortButler
+     * @var  \App\Port\Foundation\Portals\PortButler
      */
     private $portButler;
 
@@ -29,7 +29,7 @@ class EntrustRoleForWeb
      * Creates a new instance of the middleware.
      *
      * @param Guard                               $auth
-     * @param \App\Port\Butler\Portals\PortButler $portButler
+     * @param \App\Port\Foundation\Portals\PortButler $portButler
      */
     public function __construct(Guard $auth, PortButler $portButler)
     {

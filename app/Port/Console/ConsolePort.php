@@ -2,8 +2,8 @@
 
 namespace App\Port\Console;
 
-use App\Port\Console\Commands\CloneContainersCommand;
-use App\Port\Console\Commands\DeleteContainersCommand;
+//use App\Port\Console\Commands\CloneContainersCommand;
+//use App\Port\Console\Commands\DeleteContainersCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
@@ -22,8 +22,8 @@ class ConsolePort extends LaravelConsoleKernel
      * @var array
      */
     protected $commands = [
-        CloneContainersCommand::class,
-        DeleteContainersCommand::class,
+//        CloneContainersCommand::class,
+//        DeleteContainersCommand::class,
     ];
 
     /**

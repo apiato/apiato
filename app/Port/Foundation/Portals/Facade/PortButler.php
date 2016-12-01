@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Butler\Portals\Facade;
+namespace App\Port\Foundation\Portals\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

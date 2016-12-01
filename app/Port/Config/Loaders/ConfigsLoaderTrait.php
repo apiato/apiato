@@ -3,7 +3,7 @@
 namespace App\Port\Config\Loaders;
 
 use App;
-use App\Port\Butler\Portals\Facade\PortButler;
+use App\Port\Foundation\Portals\Facade\PortButler;
 use DB;
 use File;
 
@@ -18,6 +18,7 @@ trait ConfigsLoaderTrait
     protected $portConfigsDirectories = [
         'Config/Configs',
         'Queue/Configs',
+        'HashId/Configs',
     ];
 
     public function runConfigsAutoLoader()

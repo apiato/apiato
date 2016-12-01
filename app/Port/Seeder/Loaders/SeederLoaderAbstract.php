@@ -2,7 +2,7 @@
 
 namespace App\Port\Seeder\Loaders;
 
-use App\Port\Butler\Portals\Facade\PortButler;
+use App\Port\Foundation\Portals\Facade\PortButler;
 use Illuminate\Database\Seeder as LaravelSeeder;
 
 /**

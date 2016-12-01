@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Port\Butler\Portals;
+namespace App\Port\Foundation\Portals;
 
-use App\Port\Butler\Exceptions\WrongConfigurationsException;
+use App\Port\Foundation\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
@@ -24,20 +24,6 @@ class PortButler
     public function getContainersNamespace()
     {
         return Config::get('hello.containers.namespace');
-    }
-
-    /**
-     * @return  mixed
-     */
-    public function getLoginWebPageName()
-    {
-        $loginPage = Config::get('hello.containers.login-page-name');
-
-        if (is_null($loginPage)) {
-            throw new WrongConfigurationsException();
-        }
-
-        return $loginPage;
     }
 
     /**
@@ -96,7 +82,6 @@ class PortButler
 
         return $object;
     }
-
 
     /**
      * get the full name (name \ namespace) of a class from its file path
@@ -178,10 +163,31 @@ class PortButler
         return $classes[0];
     }
 
-    public function stringStartsWith($word, $needle)
+    /**
+     * @return  mixed
+     */
+    public function getLoginWebPageName()
     {
-        $length = strlen($needle);
-        return (substr($word, 0, $length) === $needle);
+        $loginPage = Config::get('hello.containers.login-page-name');
+
+        if (is_null($loginPage)) {
+            throw new WrongConfigurationsException();
+        }
+
+        return $loginPage;
+    }
+
+    /**
+     * check if a word starts with another word
+     *
+     * @param $word
+     * @param $startsWith
+     *
+     * @return  bool
+     */
+    public function stringStartsWith($word, $startsWith)
+    {
+        return (substr($word, 0, strlen($startsWith)) === $startsWith);
     }
 
 }

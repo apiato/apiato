@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Butler\Exceptions;
+namespace App\Port\Foundation\Exceptions;
 
 use App\Port\Exception\Abstracts\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;

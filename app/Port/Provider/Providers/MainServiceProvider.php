@@ -2,10 +2,11 @@
 
 namespace App\Port\Provider\Providers;
 
-use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
 use App\Port\Console\Loaders\ConsolesLoaderTrait;
 use App\Port\Factory\Loaders\FactoriesLoaderTrait;
+use App\Port\Foundation\Portals\PortButler;
+use App\Port\Foundation\Providers\FoundationServiceProvider;
 use App\Port\Foundation\Traits\FractalTrait;
 use App\Port\Foundation\Traits\QueryDebuggerTrait;
 use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
@@ -32,6 +33,7 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class MainServiceProvider extends ServiceProviderAbstract
 {
+
     use ConfigsLoaderTrait;
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
@@ -47,6 +49,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     private $serviceProviders = [
+        FoundationServiceProvider::class,
         DingoApiServiceProvider::class,
         CorsServiceProvider::class,
         RepositoryServiceProvider::class,
