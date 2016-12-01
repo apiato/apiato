@@ -137,6 +137,13 @@ trait PortServiceProviderTrait
         return $classes;
     }
 
+
+
+
+
+
+
+
     /**
      * Auto load Containers and Port config files into Laravel
      */
@@ -161,7 +168,7 @@ trait PortServiceProviderTrait
      */
     protected function autoLoadPortConfigFiles()
     {
-        $this->loadConfigs(base_path('app/Port/Config'));
+        $this->loadConfigs(base_path('app/Port/Config/Configs'));
     }
 
     /**
@@ -182,6 +189,14 @@ trait PortServiceProviderTrait
             }
         }
     }
+
+
+
+
+
+
+
+
 
 
     /**
