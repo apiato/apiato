@@ -6,7 +6,6 @@ use App;
 use App\Port\Butler\Portals\Facade\PortButler;
 use DB;
 use File;
-use Log;
 
 /**
  * Class ConfigsLoaderTrait.
@@ -16,13 +15,21 @@ use Log;
 trait ConfigsLoaderTrait
 {
 
-    /**
-     * Auto load Containers and Port config files into Laravel
-     */
+    protected $portConfigsDirectories = [
+        'Config/Configs'
+    ];
+
     public function autoLoadConfigFiles()
     {
-        $this->autoLoadContainersConfigFiles();
         $this->autoLoadPortConfigFiles();
+        $this->autoLoadContainersConfigFiles();
+    }
+
+    protected function autoLoadPortConfigFiles()
+    {
+        foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
+            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
+        }
     }
 
     protected function autoLoadContainersConfigFiles()
@@ -32,14 +39,6 @@ trait ConfigsLoaderTrait
         }
     }
 
-    protected function autoLoadPortConfigFiles()
-    {
-        $this->loadConfigs(base_path('app/Port/Config/Configs'));
-    }
-
-    /**
-     * @param $directory
-     */
     private function loadConfigs($directory)
     {
         if (File::isDirectory($directory)) {
