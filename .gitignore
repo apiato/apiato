@@ -7,8 +7,6 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 
-composer.lock
-
 laradock*/
 
 .idea

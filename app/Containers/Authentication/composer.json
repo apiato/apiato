@@ -1,0 +1,13 @@
+{
+  "name": "porto-sap/authentication",
+  "description": "Porto-SAP Container for Hello-API.",
+  "require": {
+    "tymon/jwt-auth": "0.5.*",
+    "jenssegers/agent": "^2.3"
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "php artisan jwt:generate"
+    ]
+  }
+}

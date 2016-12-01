@@ -1,0 +1,7 @@
+{
+  "name": "porto-sap/social-auth",
+  "description": "Porto-SAP Container for Hello-API.",
+  "require": {
+    "laravel/socialite": "^2.0"
+  }
+}

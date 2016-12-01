@@ -1,0 +1,8 @@
+{
+  "name": "porto-sap/stripe",
+  "description": "Porto-SAP Container for Hello-API.",
+  "require": {
+    "cartalyst/stripe-laravel": "5.0.*"
+  }
+}
+

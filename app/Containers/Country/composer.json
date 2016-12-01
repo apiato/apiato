@@ -1,0 +1,7 @@
+{
+  "name": "porto-sap/country",
+  "description": "Porto-SAP Container for Hello-API.",
+  "require": {
+    "webpatser/laravel-countries": "1.4.*"
+  }
+}
