@@ -1,13 +1,13 @@
 <?php
 
-use App\Port\Seeder\Abstracts\Seeder;
+use App\Port\Seeder\Loaders\SeederLoaderAbstract;
 
 /**
  * Class DatabaseSeeder
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DatabaseSeeder extends Seeder
+class DatabaseSeeder extends SeederLoaderAbstract
 {
 
 }
