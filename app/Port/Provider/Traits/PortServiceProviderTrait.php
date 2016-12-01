@@ -4,7 +4,6 @@ namespace App\Port\Provider\Traits;
 
 use App;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
-use App\Port\Middleware\PortKernel;
 use DB;
 use File;
 use Illuminate\Support\Facades\Config;
@@ -79,28 +78,5 @@ trait PortServiceProviderTrait
             });
         }
     }
-
-    /**
-     * @param array $middlewares
-     * @param array $middlewareGroups
-     * @param array $routeMiddlewares
-     */
-    public function registerAllMiddlewares(
-        array $middlewares = [],
-        array $middlewareGroups = [],
-        array $routeMiddlewares = []
-    ) {
-        // Registering single and grouped middleware's
-        (App::make(PortKernel::class))
-            ->registerMiddlewares($middlewares)
-            ->registerMiddlewareGroups($middlewareGroups);
-
-        // Registering Route Middleware's
-        foreach ($routeMiddlewares as $key => $routeMiddleware) {
-            $this->app['router']->middleware($key, $routeMiddleware);
-        }
-
-    }
-
 
 }

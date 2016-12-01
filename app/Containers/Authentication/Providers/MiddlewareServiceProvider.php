@@ -45,7 +45,7 @@ class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
      */
     public function boot()
     {
-        $this->registerAllMiddlewares($this->middleware, $this->middlewareGroups, $this->routeMiddleware);
+        $this->loadContainersInternalMiddlewares();
     }
 
     /**

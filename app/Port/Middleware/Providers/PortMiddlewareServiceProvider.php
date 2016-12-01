@@ -2,7 +2,7 @@
 
 namespace App\Port\Middleware\Providers;
 
-use App\Port\Provider\Traits\PortServiceProviderTrait;
+use App\Port\Middleware\Loaders\MiddlewaresLoaderTrait;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServiceProvider;
 
 /**
@@ -13,6 +13,5 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServi
 abstract class PortMiddlewareServiceProvider extends LaravelServiceProvider
 {
 
-    use PortServiceProviderTrait;
-
+    use MiddlewaresLoaderTrait;
 }
