@@ -9,6 +9,7 @@ use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Console\Providers\ConsoleServiceProvider;
 use App\Port\Routes\Providers\RoutesServiceProvider;
+use App\Port\View\Loaders\ViewsLoaderTrait;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
@@ -32,6 +33,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use PortServiceProviderTrait;
     use ConfigsLoaderTrait;
     use MigrationsLoaderTrait;
+    use ViewsLoaderTrait;
 
     /**
      * the new Models Factories Paths
@@ -69,7 +71,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->runConfigsAutoLoader();
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
         $this->runMigrationsAutoLoader();
-        $this->autoLoadViewsFromContainers();
+        $this->runViewsAutoLoader();
         $this->overrideDefaultFractalSerializer();
     }
 

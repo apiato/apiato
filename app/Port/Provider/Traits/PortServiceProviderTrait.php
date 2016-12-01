@@ -9,7 +9,6 @@ use App\Port\Middleware\PortKernel;
 use DB;
 use File;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\View;
 use Log;
 
 /**
@@ -78,21 +77,6 @@ trait PortServiceProviderTrait
         return array_unique($allServiceProviders) ? : [];
     }
 
-    /**
-     * Load views from inside the Containers
-     */
-    public function autoLoadViewsFromContainers()
-    {
-        foreach (PortButler::getContainersNames() as $containerName) {
-
-            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
-
-            if (File::isDirectory($containerViewDirectory)) {
-                View::addLocation($containerViewDirectory);
-            }
-        }
-    }
-
 
     /**
      * TODO: needs refactoring, was created in 5 min
@@ -117,22 +101,6 @@ trait PortServiceProviderTrait
 
         return $classes;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -177,15 +145,18 @@ trait PortServiceProviderTrait
      * @param array $middlewareGroups
      * @param array $routeMiddlewares
      */
-    public function registerAllMiddlewares(array $middlewares = [], array $middlewareGroups = [], array $routeMiddlewares = [])
-    {
+    public function registerAllMiddlewares(
+        array $middlewares = [],
+        array $middlewareGroups = [],
+        array $routeMiddlewares = []
+    ) {
         // Registering single and grouped middleware's
         (App::make(PortKernel::class))
             ->registerMiddlewares($middlewares)
             ->registerMiddlewareGroups($middlewareGroups);
 
         // Registering Route Middleware's
-        foreach ($routeMiddlewares as $key => $routeMiddleware){
+        foreach ($routeMiddlewares as $key => $routeMiddleware) {
             $this->app['router']->middleware($key, $routeMiddleware);
         }
 
