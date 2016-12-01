@@ -12,21 +12,6 @@ use Illuminate\Foundation\AliasLoader;
  */
 trait ContainersServiceProviderTrait
 {
-
-    /**
-     * register an array of providers.
-     *
-     * @param array $providers
-     */
-    public function registerServiceProviders(array $providers)
-    {
-        foreach ($providers as $provider) {
-            if (class_exists($provider)) {
-                App::register($provider);
-            }
-        }
-    }
-
     /**
      * @param array $aliases
      */

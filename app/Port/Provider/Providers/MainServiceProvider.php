@@ -6,6 +6,7 @@ use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
 use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Port\Provider\Loaders\ProvidersLoaderTrait;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Console\Providers\ConsoleServiceProvider;
 use App\Port\Routes\Providers\RoutesServiceProvider;
@@ -34,6 +35,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use ConfigsLoaderTrait;
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
+    use ProvidersLoaderTrait;
 
     /**
      * the new Models Factories Paths
@@ -69,7 +71,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     public function boot()
     {
         $this->runConfigsAutoLoader();
-        $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
+        $this->runProvidersAutoLoader();
         $this->runMigrationsAutoLoader();
         $this->runViewsAutoLoader();
         $this->overrideDefaultFractalSerializer();

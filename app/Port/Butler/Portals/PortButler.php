@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\File;
 class PortButler
 {
 
-    const DEFAULT_MAIN_SERVICE_PROVIDERS_NAMES = 'MainServiceProvider';
-
     /**
      * Get the containers namespace value from the containers config file
      *
@@ -82,23 +80,6 @@ class PortButler
 
         return $containersPaths;
     }
-    /**
-     * build the main service provider class namespace
-     *
-     * @param $containersNamespace
-     * @param $containerName
-     *
-     * @return  string
-     */
-    public function buildMainServiceProvider($containersNamespace, $containerName)
-    {
-        if ($containerName != 'Port') {
-            return $containersNamespace . "\\Containers\\" . $containerName . "\\Providers\\" . self::DEFAULT_MAIN_SERVICE_PROVIDERS_NAMES;
-        }
-
-        return "App" . "\\Port" . "\\Provider\\Providers\\" . $containerName . "ServiceProvider";
-    }
-
 
     /**
      * build and return an object of a class from its file path
@@ -195,6 +176,12 @@ class PortButler
         }
 
         return $classes[0];
+    }
+
+    public function stringStartsWith($word, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($word, 0, $length) === $needle);
     }
 
 }

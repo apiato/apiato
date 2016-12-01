@@ -28,15 +28,15 @@ trait ConfigsLoaderTrait
 
     private function loadConfigsFromContainers()
     {
-        foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
-            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
+        foreach (PortButler::getContainersNames() as $containerName) {
+            $this->loadConfigs(base_path('app/Containers/' . $containerName . '/Configs'));
         }
     }
 
     private function loadConfigsFromPort()
     {
-        foreach (PortButler::getContainersNames() as $containerName) {
-            $this->loadConfigs(base_path('app/Containers/' . $containerName . '/Configs'));
+        foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
+            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
         }
     }
 

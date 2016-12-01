@@ -44,7 +44,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->registerServiceProviders($this->containerServiceProviders);
+        $this->loadContainersInternalProviders($this->containerServiceProviders);
     }
 
     /**

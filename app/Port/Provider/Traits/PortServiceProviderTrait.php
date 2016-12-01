@@ -58,25 +58,6 @@ trait PortServiceProviderTrait
         });
     }
 
-    /**
-     * Get the containers Service Providers full classes names.
-     *
-     * @return  array
-     */
-    public function getMainServiceProviders()
-    {
-        $containersNamespace = PortButler::getContainersNamespace();
-
-        $allServiceProviders = [];
-
-        foreach (PortButler::getContainersNames() as $containerName) {
-            // append the Module main service provider
-            $allServiceProviders[] = PortButler::buildMainServiceProvider($containersNamespace, $containerName);
-        }
-
-        return array_unique($allServiceProviders) ? : [];
-    }
-
 
     /**
      * TODO: needs refactoring, was created in 5 min
