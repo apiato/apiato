@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Route;
 use Symfony\Component\Finder\SplFileInfo;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * Class RoutesLoaderTrait.
@@ -28,8 +27,8 @@ trait RoutesLoaderTrait
         $containersNamespace = PortButler::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
-            $this->registerContainersApiRoutes($containerPath, $containersNamespace);
-            $this->registerContainersWebRoutes($containerPath, $containersNamespace);
+            $this->loadRoutesFromContainersForApi($containerPath, $containersNamespace);
+            $this->loadRoutesFromContainersForWeb($containerPath, $containersNamespace);
         }
     }
 
@@ -39,7 +38,7 @@ trait RoutesLoaderTrait
      * @param $containerPath
      * @param $containersNamespace
      */
-    private function registerContainersApiRoutes($containerPath, $containersNamespace)
+    private function loadRoutesFromContainersForApi($containerPath, $containersNamespace)
     {
         // get the container api routes path
         $apiRoutesPath = $containerPath . '/UI/API/Routes';
@@ -87,7 +86,7 @@ trait RoutesLoaderTrait
      * @param $containerPath
      * @param $containersNamespace
      */
-    private function registerContainersWebRoutes($containerPath, $containersNamespace)
+    private function loadRoutesFromContainersForWeb($containerPath, $containersNamespace)
     {
         // get the container web routes path
         $webRoutesPath = $containerPath . '/UI/WEB/Routes';
@@ -110,20 +109,11 @@ trait RoutesLoaderTrait
 
     }
 
+
     /**
-     * @param \Symfony\Component\Finder\SplFileInfo $file
+     * @param $file
      *
-     * @return  mixed
-     */
-    private function getRouteFileNameWithoutExtension(SplFileInfo $file)
-    {
-        $fileInfo = pathinfo($file->getFileName());
-
-        return $fileInfo['filename'];
-    }
-
-    /**
-     * @param $fileNameWithoutExtension
+     * @return  int
      */
     private function getRouteFileVersionNumber($file)
     {
@@ -139,4 +129,15 @@ trait RoutesLoaderTrait
         return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
     }
 
+    /**
+     * @param \Symfony\Component\Finder\SplFileInfo $file
+     *
+     * @return  mixed
+     */
+    private function getRouteFileNameWithoutExtension(SplFileInfo $file)
+    {
+        $fileInfo = pathinfo($file->getFileName());
+
+        return $fileInfo['filename'];
+    }
 }
