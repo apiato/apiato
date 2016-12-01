@@ -93,25 +93,6 @@ trait PortServiceProviderTrait
         }
     }
 
-    /**
-     * Load migrations files from Containers to Laravel
-     */
-    public function autoMigrationsFromContainers()
-    {
-        foreach (PortButler::getContainersNames() as $containerName) {
-
-            $containerMigrationDirectory = base_path('app/Containers/' . $containerName . '/Data/Migrations');
-
-            if (File::isDirectory($containerMigrationDirectory)) {
-
-                App::afterResolving('migrator', function ($migrator) use ($containerMigrationDirectory) {
-                    foreach ((array)$containerMigrationDirectory as $path) {
-                        $migrator->path($path);
-                    }
-                });
-            }
-        }
-    }
 
     /**
      * TODO: needs refactoring, was created in 5 min

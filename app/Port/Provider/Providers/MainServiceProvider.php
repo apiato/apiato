@@ -4,6 +4,7 @@ namespace App\Port\Provider\Providers;
 
 use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
+use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Console\Providers\ConsoleServiceProvider;
@@ -30,6 +31,7 @@ class MainServiceProvider extends ServiceProviderAbstract
 
     use PortServiceProviderTrait;
     use ConfigsLoaderTrait;
+    use MigrationsLoaderTrait;
 
     /**
      * the new Models Factories Paths
@@ -66,7 +68,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     {
         $this->autoLoadConfigFiles();
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
-        $this->autoMigrationsFromContainers();
+        $this->autoLoadMigrations();
         $this->autoLoadViewsFromContainers();
         $this->overrideDefaultFractalSerializer();
     }
