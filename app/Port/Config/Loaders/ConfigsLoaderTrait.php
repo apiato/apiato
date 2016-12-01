@@ -22,25 +22,25 @@ trait ConfigsLoaderTrait
 
     public function runConfigsAutoLoader()
     {
-        $this->loadFromPort();
-        $this->loadFromContainers();
+        $this->loadConfigsFromPort();
+        $this->loadConfigsFromContainers();
     }
 
-    private function loadFromContainers()
+    private function loadConfigsFromContainers()
     {
         foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
-            $this->load(base_path('app/Port/') . $portConfigsDirectory);
+            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
         }
     }
 
-    private function loadFromPort()
+    private function loadConfigsFromPort()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
-            $this->load(base_path('app/Containers/' . $containerName . '/Configs'));
+            $this->loadConfigs(base_path('app/Containers/' . $containerName . '/Configs'));
         }
     }
 
-    private function load($directory)
+    private function loadConfigs($directory)
     {
         if (File::isDirectory($directory)) {
 

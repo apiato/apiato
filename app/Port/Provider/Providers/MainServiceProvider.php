@@ -68,7 +68,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     {
         $this->runConfigsAutoLoader();
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
-        $this->autoLoadMigrations();
+        $this->runMigrationsAutoLoader();
         $this->autoLoadViewsFromContainers();
         $this->overrideDefaultFractalSerializer();
     }

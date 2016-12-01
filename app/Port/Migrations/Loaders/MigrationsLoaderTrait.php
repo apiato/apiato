@@ -19,13 +19,13 @@ trait MigrationsLoaderTrait
         'Queue/Data/Migrations',
     ];
 
-    public function autoLoadMigrations()
+    public function runMigrationsAutoLoader()
     {
-        $this->autoLoadContainersMigrations();
-        $this->autoLoadPortMigrations();
+        $this->loadMigrationsFromContainers();
+        $this->loadMigrationsFromPort();
     }
 
-    public function autoLoadContainersMigrations()
+    private function loadMigrationsFromContainers()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
 
@@ -33,21 +33,21 @@ trait MigrationsLoaderTrait
 
             if (File::isDirectory($containerMigrationDirectory)) {
 
-                $this->migrate($containerMigrationDirectory);
+                $this->loadMigrations($containerMigrationDirectory);
 
             }
         }
     }
 
-    public function autoLoadPortMigrations()
+    private function loadMigrationsFromPort()
     {
         foreach ($this->portMigrationsDirectories as $portMigrationsDirectory) {
-            $this->migrate($portMigrationsDirectory);
+            $this->loadMigrations($portMigrationsDirectory);
         }
 
     }
 
-    private function migrate($directory)
+    private function loadMigrations($directory)
     {
         App::afterResolving('migrator', function ($migrator) use ($directory) {
             foreach ((array)$directory as $path) {
