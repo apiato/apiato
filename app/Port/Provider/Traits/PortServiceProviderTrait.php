@@ -161,7 +161,7 @@ trait PortServiceProviderTrait
      */
     protected function autoLoadPortConfigFiles()
     {
-        $this->loadConfigs(base_path('app/Port/Configs'));
+        $this->loadConfigs(base_path('app/Port/Config'));
     }
 
     /**
