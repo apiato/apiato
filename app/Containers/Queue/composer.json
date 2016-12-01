@@ -1,0 +1,7 @@
+{
+  "name": "porto-sap/queue",
+  "description": "Porto-SAP Container for Hello-API.",
+  "require": {
+    "pda/pheanstalk": "~3.0"
+  }
+}
