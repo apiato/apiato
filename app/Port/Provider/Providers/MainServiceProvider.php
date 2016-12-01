@@ -6,6 +6,7 @@ use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
 use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Port\Provider\Loaders\FactoriesLoaderTrait;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Console\Providers\ConsoleServiceProvider;
@@ -36,11 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
     use ProvidersLoaderTrait;
-
-    /**
-     * the new Models Factories Paths
-     */
-    const MODELS_FACTORY_PATH = '/app/Port/Factory';
+    use FactoriesLoaderTrait;
 
     /**
      * Port Service Providers
@@ -85,9 +82,10 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->app->bind('PortButler', function () {
             return $this->app->make(PortButler::class);
         });
-        $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
-        $this->debugDatabaseQueries(true, true);
 
+        $this->changeTheDefaultFactoriesPath();
+
+        $this->debugDatabaseQueries(true, true);
 
         $this->loadPortInternalAliases($this->aliases);
     }

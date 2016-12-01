@@ -45,21 +45,6 @@ trait PortServiceProviderTrait
     }
 
     /**
-     * By default Laravel takes (server/database/factories) as the
-     * path to the factories, this function changes the path to load
-     * the factories from the infrastructure directory.
-     */
-    public function changeTheDefaultDatabaseModelsFactoriesPath($customPath)
-    {
-        App::singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) use ($customPath) {
-            $faker = $app->make(\Faker\Generator::class);
-
-            return \Illuminate\Database\Eloquent\Factory::construct($faker, base_path() . $customPath);
-        });
-    }
-
-
-    /**
      * TODO: needs refactoring, was created in 5 min
      *
      * @return  array
