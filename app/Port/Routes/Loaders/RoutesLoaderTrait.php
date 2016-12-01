@@ -139,14 +139,4 @@ trait RoutesLoaderTrait
         return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
     }
 
-
-    public function hashIds()
-    {
-        if (Config::get('hello.hash-id')) {
-            Route::bind('id', function ($id, $route) {
-                return Hashids::decode($id)[0];
-            });
-        }
-    }
-
 }
