@@ -60,52 +60,31 @@ class PortKernel extends LaravelHttpKernel
         // Laravel default route middleware's:
         'can'              => \Illuminate\Auth\Middleware\Authorize::class,
         'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // JWT Package middleware's
-        'jwt.auth'         => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        'jwt.refresh'      => \Tymon\JWTAuth\Middleware\RefreshToken::class,
-        // Entrust Package middleware's
-        'role'             => \Zizaco\Entrust\Middleware\EntrustRole::class,
-        'permission'       => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-        'ability'          => \Zizaco\Entrust\Middleware\EntrustAbility::class,
-        // By Hello API
-        'role.web'         => \App\Containers\Authorization\Middlewares\EntrustRoleForWeb::class,
-
-
-        // Hello API Visitor User Authentication middleware
-        'api.auth.visitor' => \App\Containers\Authentication\Middlewares\VisitorsAuthentication::class,
-        // Hello API User Authentication middleware for Web Pages
-        'web.auth'         => \App\Containers\Authentication\Middlewares\WebAuthentication::class,
-
-
-        // Hello API App Authentication middleware for third party apps access on behalf of users
-        'app.auth'         => \App\Containers\Application\Middlewares\ApplicationAuthentication::class,
-
-        // ...
     ];
 
 
     /**
      * @param array $middlewares
+     *
+     * @return  $this
      */
-    public function registerMiddlewares(array $middlewares)
+    public function registerMiddlewares(array $middlewares = [])
     {
         $this->middleware = array_merge($this->middleware, $middlewares);
+
+        return $this;
     }
 
     /**
      * @param array $middlewareGroups
+     *
+     * @return  $this
      */
-    public function registerMiddlewareGroups(array $middlewareGroups)
+    public function registerMiddlewareGroups(array $middlewareGroups = [])
     {
         $this->middlewareGroups = array_merge($this->middlewareGroups, $middlewareGroups);
-    }
 
-    /**
-     * @param array $routeMiddleware
-     */
-    public function registerRouteMiddlewares(array $routeMiddleware)
-    {
-        $this->routeMiddleware = array_merge($this->routeMiddleware, $routeMiddleware);
+        return $this;
     }
 
 }

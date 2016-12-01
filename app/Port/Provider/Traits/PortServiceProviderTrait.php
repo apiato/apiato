@@ -221,12 +221,23 @@ trait PortServiceProviderTrait
         }
     }
 
-    public function registerAllMiddlewares($middleware, $middlewareGroups, $routeMiddleware)
+    /**
+     * @param array $middlewares
+     * @param array $middlewareGroups
+     * @param array $routeMiddlewares
+     */
+    public function registerAllMiddlewares(array $middlewares = [], array $middlewareGroups = [], array $routeMiddlewares = [])
     {
+        // Registering single and grouped middleware's
         (App::make(PortKernel::class))
-            ->registerMiddlewareGroups($middleware)
-            ->registerMiddlewareGroups($middlewareGroups)
-            ->registerRouteMiddlewares($routeMiddleware);
+            ->registerMiddlewares($middlewares)
+            ->registerMiddlewareGroups($middlewareGroups);
+
+        // Registering Route Middleware's
+        foreach ($routeMiddlewares as $key => $routeMiddleware){
+            $this->app['router']->middleware($key, $routeMiddleware);
+        }
+
     }
 
 
