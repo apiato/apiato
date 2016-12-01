@@ -2,8 +2,8 @@
 
 namespace App\Port\Provider\Abstracts;
 
+use App\Port\Alias\Loaders\AliasesLoaderTrait;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
-use App\Port\Provider\Traits\ContainersServiceProviderTrait;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**
@@ -13,6 +13,6 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
  */
 abstract class ServiceProviderAbstract extends LaravelServiceProvider
 {
-    use ContainersServiceProviderTrait;
     use ProvidersLoaderTrait;
+    use AliasesLoaderTrait;
 }

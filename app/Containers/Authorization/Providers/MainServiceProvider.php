@@ -29,7 +29,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var array
      */
-    private $containerServiceProviders = [
+    public $containerServiceProviders = [
         EntrustServiceProvider::class,
         MiddlewareServiceProvider::class
     ];
@@ -39,7 +39,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var  array
      */
-    private $containerAliases = [
+    public $containerAliases = [
         'Entrust'    => EntrustFacade::class,
     ];
 
@@ -48,7 +48,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->loadContainersInternalProviders($this->containerServiceProviders);
+        $this->loadContainersInternalProviders();
     }
 
     /**
@@ -56,6 +56,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-        $this->registerAliases($this->containerAliases);
+        $this->loadContainersInternalAliases();
     }
 }

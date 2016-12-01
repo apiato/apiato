@@ -28,7 +28,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var array
      */
-    private $containerServiceProviders = [
+    public $containerServiceProviders = [
         StripeServiceProvider::class,
     ];
 
@@ -37,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var  array
      */
-    private $containerAliases = [
+    public $containerAliases = [
         'Stripe' => Stripe::class,
     ];
 
@@ -46,7 +46,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->loadContainersInternalProviders($this->containerServiceProviders);
+        $this->loadContainersInternalProviders();
     }
 
     /**
@@ -54,6 +54,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-        $this->registerAliases($this->containerAliases);
+        $this->loadContainersInternalAliases();
     }
 }

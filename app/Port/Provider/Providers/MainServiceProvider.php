@@ -61,7 +61,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var  array
      */
-    private $aliases = [
+    protected $aliases = [
         'Hashids' => Hashids::class,
     ];
 
@@ -88,7 +88,8 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->changeTheDefaultDatabaseModelsFactoriesPath(self::MODELS_FACTORY_PATH);
         $this->debugDatabaseQueries(true, true);
 
-        $this->registerAliases($this->aliases);
+
+        $this->loadPortInternalAliases($this->aliases);
     }
 
 }

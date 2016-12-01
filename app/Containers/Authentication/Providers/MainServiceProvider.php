@@ -31,7 +31,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var array
      */
-    private $containerServiceProviders = [
+    public $containerServiceProviders = [
         JWTAuthServiceProvider::class,
         AgentServiceProvider::class,
         MiddlewareServiceProvider::class
@@ -42,7 +42,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var  array
      */
-    private $containerAliases = [
+    public $containerAliases = [
         'JWTAuth'    => JWTAuth::class,
         'JWTFactory' => JWTFactory::class,
         'Agent' => Agent::class,
@@ -53,7 +53,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->loadContainersInternalProviders($this->containerServiceProviders);
+        $this->loadContainersInternalProviders();
     }
 
     /**
@@ -61,6 +61,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
-        $this->registerAliases($this->containerAliases);
+        $this->loadContainersInternalAliases();
     }
 }

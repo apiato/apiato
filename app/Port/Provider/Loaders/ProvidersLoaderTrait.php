@@ -66,9 +66,9 @@ trait ProvidersLoaderTrait
         App::register($provider);
     }
 
-    public function loadContainersInternalProviders(Array $providers = [])
+    public function loadContainersInternalProviders()
     {
-        foreach ($providers as $provider) {
+        foreach ($this->containerServiceProviders as $provider) {
             $this->loadProvider($provider);
         }
     }
