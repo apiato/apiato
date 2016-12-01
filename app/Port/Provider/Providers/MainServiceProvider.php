@@ -4,12 +4,12 @@ namespace App\Port\Provider\Providers;
 
 use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
+use App\Port\Console\Loaders\ConsolesLoaderTrait;
 use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Provider\Loaders\FactoriesLoaderTrait;
+use App\Port\Factory\Loaders\FactoriesLoaderTrait;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
-use App\Port\Console\Providers\ConsoleServiceProvider;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 use App\Port\View\Loaders\ViewsLoaderTrait;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
@@ -38,6 +38,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use ViewsLoaderTrait;
     use ProvidersLoaderTrait;
     use FactoriesLoaderTrait;
+    use ConsolesLoaderTrait;
 
     /**
      * Port Service Providers
@@ -50,7 +51,6 @@ class MainServiceProvider extends ServiceProviderAbstract
         RepositoryServiceProvider::class,
         RoutesServiceProvider::class,
         HashidsServiceProvider::class,
-        ConsoleServiceProvider::class
     ];
 
     /**
@@ -71,6 +71,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->runProvidersAutoLoader();
         $this->runMigrationsAutoLoader();
         $this->runViewsAutoLoader();
+        $this->runConsolesAutoLoader();
         $this->overrideDefaultFractalSerializer();
     }
 

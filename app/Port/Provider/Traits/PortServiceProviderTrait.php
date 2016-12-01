@@ -3,7 +3,6 @@
 namespace App\Port\Provider\Traits;
 
 use App;
-use App\Port\Butler\Portals\Facade\PortButler;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
 use App\Port\Middleware\PortKernel;
 use DB;
@@ -43,31 +42,6 @@ trait PortServiceProviderTrait
             });
         }
     }
-
-    /**
-     * TODO: needs refactoring, was created in 5 min
-     *
-     * @return  array
-     */
-    public function getAllContainersConsoleCommandsForAutoLoading()
-    {
-        $classes = [];
-        foreach (PortButler::getContainersNames() as $containerName) {
-            $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
-            if (File::isDirectory($containerCommandsDirectory)) {
-                $files = \File::allFiles($containerCommandsDirectory);
-                foreach ($files as $consoleFile) {
-                    if (\File::isFile($consoleFile)) {
-                        $pathName = $consoleFile->getPathname();
-                        $classes[] = PortButler::getClassFullNameFromFile($pathName);
-                    }
-                }
-            }
-        };
-
-        return $classes;
-    }
-
 
     /**
      * By default the Dingo API package (in the config file) creates an instance of the
