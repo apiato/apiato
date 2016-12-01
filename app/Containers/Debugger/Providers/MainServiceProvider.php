@@ -3,7 +3,6 @@
 namespace App\Containers\Debugger\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Provider\Traits\PortServiceProviderTrait;
 
 /**
  * Class MainServiceProvider.
@@ -14,8 +13,6 @@ use App\Port\Provider\Traits\PortServiceProviderTrait;
  */
 class MainServiceProvider extends ServiceProviderAbstract
 {
-
-    use PortServiceProviderTrait;
 
     /**
      * Indicates if loading of the provider is deferred.

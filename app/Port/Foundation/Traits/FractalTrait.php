@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Provider\Traits;
+namespace App\Port\Foundation\Traits;
 
 use App;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
@@ -10,37 +10,12 @@ use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
- * Class PortServiceProviderTrait.
+ * Class FractalTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait PortServiceProviderTrait
+trait FractalTrait
 {
-
-    /**
-     * Write the DB queries in the Log and Display them in the
-     * terminal (in case you want to see them while executing the tests).
-     *
-     * @param bool|false $terminal
-     */
-    public function debugDatabaseQueries($log = true, $terminal = false)
-    {
-        if (Config::get('database.query_debugging')) {
-            DB::listen(function ($event) use ($terminal, $log) {
-                $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $event->sql), $event->bindings);
-
-                $text = $event->connectionName . ' (' . $event->time . '): ' . $fullQuery;
-
-                if ($terminal) {
-                    dump($text);
-                }
-
-                if ($log) {
-                    Log::info($text);
-                }
-            });
-        }
-    }
 
     /**
      * By default the Dingo API package (in the config file) creates an instance of the

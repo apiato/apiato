@@ -5,11 +5,12 @@ namespace App\Port\Provider\Providers;
 use App\Port\Butler\Portals\PortButler;
 use App\Port\Config\Loaders\ConfigsLoaderTrait;
 use App\Port\Console\Loaders\ConsolesLoaderTrait;
+use App\Port\Factory\Loaders\FactoriesLoaderTrait;
+use App\Port\Foundation\Traits\FractalTrait;
+use App\Port\Foundation\Traits\QueryDebuggerTrait;
 use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Factory\Loaders\FactoriesLoaderTrait;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
-use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
 use App\Port\View\Loaders\ViewsLoaderTrait;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
@@ -31,14 +32,14 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class MainServiceProvider extends ServiceProviderAbstract
 {
-
-    use PortServiceProviderTrait;
     use ConfigsLoaderTrait;
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
     use ProvidersLoaderTrait;
     use FactoriesLoaderTrait;
     use ConsolesLoaderTrait;
+    use QueryDebuggerTrait;
+    use FractalTrait;
 
     /**
      * Port Service Providers
@@ -72,6 +73,7 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->runMigrationsAutoLoader();
         $this->runViewsAutoLoader();
         $this->runConsolesAutoLoader();
+
         $this->overrideDefaultFractalSerializer();
     }
 
@@ -86,9 +88,9 @@ class MainServiceProvider extends ServiceProviderAbstract
 
         $this->changeTheDefaultFactoriesPath();
 
-        $this->debugDatabaseQueries(true, true);
-
         $this->loadPortInternalAliases($this->aliases);
+
+        $this->runQueryDebugger(true, true);
     }
 
 }
