@@ -3,6 +3,7 @@
 namespace App\Port\Provider\Providers;
 
 use App\Port\Butler\Portals\PortButler;
+use App\Port\Config\Loaders\ConfigsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Traits\PortServiceProviderTrait;
 use App\Port\Console\Providers\ConsoleServiceProvider;
@@ -28,6 +29,7 @@ class MainServiceProvider extends ServiceProviderAbstract
 {
 
     use PortServiceProviderTrait;
+    use ConfigsLoaderTrait;
 
     /**
      * the new Models Factories Paths
