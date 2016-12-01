@@ -30,6 +30,9 @@ class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
     ];
 
     protected $routeMiddleware = [
+        // Laravel default route middleware's:
+        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
+        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         // Entrust Package middleware's
         'role'       => EntrustRole::class,
         'permission' => EntrustPermission::class,

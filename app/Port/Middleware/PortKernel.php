@@ -57,9 +57,7 @@ class PortKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        // Laravel default route middleware's:
-        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
-        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
     ];
 
 
