@@ -3,7 +3,7 @@
 namespace App\Port\Routes\Providers;
 
 use App\Port\Routes\Abstracts\PortRoutesServiceProviderAbstract;
-use App\Port\Routes\Traits\RoutesServiceProviderTrait;
+use App\Port\Routes\Loaders\RoutesLoaderTrait;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -14,7 +14,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
 {
-    use RoutesServiceProviderTrait;
+    use RoutesLoaderTrait;
 
     /**
      * Instance of the Laravel default Router Class
@@ -50,7 +50,7 @@ class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
     {
         $this->webRouter = $webRouter;
 
-        $this->registerRoutes();
+        $this->runRoutesAutoLoader();
 
         $this->hashIds();
     }

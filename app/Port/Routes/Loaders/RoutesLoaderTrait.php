@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Routes\Traits;
+namespace App\Port\Routes\Loaders;
 
 use App\Port\Butler\Portals\Facade\PortButler;
 use Dingo\Api\Routing\Router as DingoApiRouter;
@@ -12,17 +12,17 @@ use Symfony\Component\Finder\SplFileInfo;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
- * Class RoutesServiceProviderTrait.
+ * Class RoutesLoaderTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait RoutesServiceProviderTrait
+trait RoutesLoaderTrait
 {
 
     /**
      * Register all the containers routes files in the framework
      */
-    private function registerRoutes()
+    public function runRoutesAutoLoader()
     {
         $containersPaths = PortButler::getContainersPaths();
         $containersNamespace = PortButler::getContainersNamespace();
@@ -140,7 +140,7 @@ trait RoutesServiceProviderTrait
     }
 
 
-    protected function hashIds()
+    public function hashIds()
     {
         if (Config::get('hello.hash-id')) {
             Route::bind('id', function ($id, $route) {
