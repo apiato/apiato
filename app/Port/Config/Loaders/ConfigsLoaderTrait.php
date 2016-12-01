@@ -16,30 +16,31 @@ trait ConfigsLoaderTrait
 {
 
     protected $portConfigsDirectories = [
-        'Config/Configs'
+        'Config/Configs',
+        'Queue/Configs',
     ];
 
-    public function autoLoadConfigFiles()
+    public function runConfigsAutoLoader()
     {
-        $this->autoLoadPortConfigFiles();
-        $this->autoLoadContainersConfigFiles();
+        $this->loadFromPort();
+        $this->loadFromContainers();
     }
 
-    protected function autoLoadPortConfigFiles()
+    private function loadFromContainers()
     {
         foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
-            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
+            $this->load(base_path('app/Port/') . $portConfigsDirectory);
         }
     }
 
-    protected function autoLoadContainersConfigFiles()
+    private function loadFromPort()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
-            $this->loadConfigs(base_path('app/Containers/' . $containerName . '/Configs'));
+            $this->load(base_path('app/Containers/' . $containerName . '/Configs'));
         }
     }
 
-    private function loadConfigs($directory)
+    private function load($directory)
     {
         if (File::isDirectory($directory)) {
 

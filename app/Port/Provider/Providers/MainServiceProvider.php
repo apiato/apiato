@@ -66,7 +66,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function boot()
     {
-        $this->autoLoadConfigFiles();
+        $this->runConfigsAutoLoader();
         $this->registerServiceProviders(array_merge($this->getMainServiceProviders(), $this->serviceProviders));
         $this->autoLoadMigrations();
         $this->autoLoadViewsFromContainers();

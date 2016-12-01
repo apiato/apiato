@@ -15,6 +15,10 @@ use File;
 trait MigrationsLoaderTrait
 {
 
+    protected $portMigrationsDirectories = [
+        'Queue/Data/Migrations',
+    ];
+
     public function autoLoadMigrations()
     {
         $this->autoLoadContainersMigrations();
@@ -29,18 +33,27 @@ trait MigrationsLoaderTrait
 
             if (File::isDirectory($containerMigrationDirectory)) {
 
-                App::afterResolving('migrator', function ($migrator) use ($containerMigrationDirectory) {
-                    foreach ((array)$containerMigrationDirectory as $path) {
-                        $migrator->path($path);
-                    }
-                });
+                $this->migrate($containerMigrationDirectory);
+
             }
         }
     }
 
     public function autoLoadPortMigrations()
     {
+        foreach ($this->portMigrationsDirectories as $portMigrationsDirectory) {
+            $this->migrate($portMigrationsDirectory);
+        }
 
+    }
+
+    private function migrate($directory)
+    {
+        App::afterResolving('migrator', function ($migrator) use ($directory) {
+            foreach ((array)$directory as $path) {
+                $migrator->path($path);
+            }
+        });
     }
 
 }
