@@ -221,10 +221,12 @@ trait PortServiceProviderTrait
         }
     }
 
-
-    public function registerMiddlewareGroups($middlewareGroups)
+    public function registerAllMiddlewares($middleware, $middlewareGroups, $routeMiddleware)
     {
-        (App::make(PortKernel::class))->registerMiddlewareGroups($middlewareGroups);
+        (App::make(PortKernel::class))
+            ->registerMiddlewareGroups($middleware)
+            ->registerMiddlewareGroups($middlewareGroups)
+            ->registerRouteMiddlewares($routeMiddleware);
     }
 
 
