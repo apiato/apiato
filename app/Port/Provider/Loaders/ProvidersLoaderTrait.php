@@ -16,10 +16,6 @@ use Log;
 trait ProvidersLoaderTrait
 {
 
-    protected $portProvidersDirectories = [
-
-    ];
-
     public function runProvidersAutoLoader()
     {
         $this->loadProvidersFromPort();
