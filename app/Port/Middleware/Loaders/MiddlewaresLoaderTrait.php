@@ -17,12 +17,12 @@ trait MiddlewaresLoaderTrait
 
     public function loadContainersInternalMiddlewares()
     {
-        // TODO: might need refactoring to get rid ot the functions on the PortKernel
+        // TODO: might need refactoring to get rid of the functions on the PortKernel
 
         // Registering single and grouped middleware's
-        (App::make(PortKernel::class))
-            ->registerMiddlewares($this->middleware)
-            ->registerMiddlewareGroups($this->middlewareGroups);
+        $portKernel = App::make(PortKernel::class);
+        $portKernel->registerMiddlewares($this->middleware);
+        $portKernel->registerMiddlewareGroups($this->middlewareGroups);
 
         // Registering Route Middleware's
         foreach ($this->routeMiddleware as $key => $routeMiddleware) {
