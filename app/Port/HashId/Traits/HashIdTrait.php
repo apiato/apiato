@@ -15,17 +15,28 @@ trait HashIdTrait
 {
 
     /**
+     * endpoint to be skipped from decoding their ID's (example for external ID's)
+     * @var  array
+     */
+    private $skippedEndpoints = [
+//        'orders/{id}/external',
+    ];
+
+    /**
      * All ID's passed with all endpoints will be decoded before entering the Application
      */
     public function runEndpointsHashedIdsDecoder()
     {
         if (Config::get('hello.hash-id')) {
             Route::bind('id', function ($id, $route) {
-                return Hashids::decode($id)[0];
+                // skip decoding some endpoints
+                if (!in_array($route->getUri(), $this->skippedEndpoints)) {
+                    // decode the ID in the URL
+                    return Hashids::decode($id)[0];
+                }
             });
         }
     }
-
 
     /**
      * Will be used by the Eloquent Models (since it's used as trait there).

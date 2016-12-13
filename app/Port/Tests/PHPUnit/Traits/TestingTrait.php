@@ -7,7 +7,6 @@ use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AttachRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
-
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr as LaravelArr;
@@ -348,16 +347,20 @@ trait TestingTrait
      *
      * Example: you give it ('users/{id}/stores', 100) it returns 'users/100/stores'
      *
-     * @param $endpoint
-     * @param $id
+     * @param      $endpoint
+     * @param      $id
+     * @param bool $skipEncoding
      *
      * @return  mixed
      */
-    public function injectEndpointId($endpoint, $id)
+    public function injectEndpointId($endpoint, $id, $skipEncoding = false)
     {
         // In case Hash ID is enabled it will encode the ID first
-        if(Config::get('hello.hash-id')){
-            $id = Hashids::encode($id);
+        if (Config::get('hello.hash-id')) {
+
+            if (!$skipEncoding) {
+                $id = Hashids::encode($id);
+            }
         }
 
         return str_replace("{id}", $id, $endpoint);
