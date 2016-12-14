@@ -15,7 +15,6 @@ class LiveTestingSeeder extends Seeder
     public function run()
     {
 
-
-
     }
+
 }

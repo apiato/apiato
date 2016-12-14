@@ -1,11 +1,13 @@
 <?php
 
+use App\Containers\User\Models\User;
+
 // User
-$factory->define(App\Containers\User\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     return [
-        'name'     => $faker->name,
-        'email'    => $faker->email,
-        'password' => bcrypt(str_random(10)),
+        'name'              => $faker->name,
+        'email'             => $faker->email,
+        'password'          => bcrypt('tester'),
     ];
 });
 

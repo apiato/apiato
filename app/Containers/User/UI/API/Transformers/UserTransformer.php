@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Transformers;
 
+use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Port\Transformer\Abstracts\Transformer;
 
@@ -12,6 +13,10 @@ use App\Port\Transformer\Abstracts\Transformer;
  */
 class UserTransformer extends Transformer
 {
+
+    protected $defaultIncludes = [
+        'roles',
+    ];
 
     /**
      * @param \App\Containers\User\Models\User $user
@@ -39,5 +44,10 @@ class UserTransformer extends Transformer
             'updated_at'           => $user->updated_at,
             'token'                => $user->token,
         ];
+    }
+
+    public function includeRoles(User $user)
+    {
+        return $this->collection($user->roles, new RoleTransformer());
     }
 }
