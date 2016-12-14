@@ -2,6 +2,7 @@
 
 namespace App\Port\HashId\Traits;
 
+use App\Port\Exception\Exceptions\IncorrectIdException;
 use Illuminate\Support\Facades\Config;
 use Route;
 use Vinkla\Hashids\Facades\Hashids;
@@ -31,8 +32,16 @@ trait HashIdTrait
             Route::bind('id', function ($id, $route) {
                 // skip decoding some endpoints
                 if (!in_array($route->getUri(), $this->skippedEndpoints)) {
+
                     // decode the ID in the URL
-                    return Hashids::decode($id)[0];
+                    $decoded = Hashids::decode($id);
+
+                    if (empty($decoded)) {
+                        throw new IncorrectIdException('ID (' . $id . ') is incorrect, consider using the hashed ID 
+                        instead of the numeric ID.');
+                    }
+
+                    return $decoded[0];
                 }
             });
         }
