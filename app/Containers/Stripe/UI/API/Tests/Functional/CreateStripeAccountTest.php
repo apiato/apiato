@@ -14,11 +14,11 @@ class CreateStripeAccountTest extends TestCase
 
     private $endpoint = '/stripes';
 
-    public function testCreateStripeAccount()
+    public function testCreateStripeAccount_()
     {
         $userDetails = [
-            'name' => 'Mahmoud Zalt',
-            'email' => 'mahmoud@testttt.test',
+            'name'     => 'Mahmoud Zalt',
+            'email'    => 'mahmoud@testttt.test',
             'password' => 'passssssssssss',
         ];
         // get the logged in user (create one if no one is logged in)

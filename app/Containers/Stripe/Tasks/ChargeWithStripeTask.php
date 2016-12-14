@@ -37,14 +37,17 @@ class ChargeWithStripeTask extends Task implements Chargeable
      * @param string                           $currency
      *
      * @return  array|null
-     * @throws \App\Containers\Stripe\Exceptions\StripeAccountNotFoundException
      */
     public function run(User $user, $amount, $currency = 'USD')
     {
         $stripeAccount = $user->stripeAccount;
 
         if(!$stripeAccount){
-            throw new StripeAccountNotFoundException('You need to enter your payment information first (Credit Card), by calling another endpoint.');
+            throw new StripeAccountNotFoundException('We could not find your credit card information. 
+            For security reasons, we do not store your credit card information on our server. 
+            So please login to our Web App and enter your credit card information directly into Stripe, 
+            then try to purchase the credits again. 
+            Thanks.');
         }
 
         try {
