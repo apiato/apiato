@@ -25,6 +25,7 @@ class UserTransformer extends Transformer
      */
     public function transform(User $user)
     {
+
         return [
             'id'                   => (int)$user->getHashedKey(),
             'name'                 => $user->name,
@@ -41,9 +42,17 @@ class UserTransformer extends Transformer
                 'original' => $user->social_avatar_original,
             ],
             'created_at'           => $user->created_at,
-            'updated_at'           => $user->updated_at,
             'token'                => $user->token,
         ];
+
+        if ($this->isUserAdmin()) {
+            $response = array_merge($response, [
+                'updated_at' => $user->updated_at,
+                'deleted_at' => $user->deleted_at,
+            ]);
+        }
+
+        return $response;
     }
 
     public function includeRoles(User $user)
