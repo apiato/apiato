@@ -1,6 +1,6 @@
 <?php
 
-/*********************************************************************************
+/**
  * @apiGroup           SocialAuth
  * @apiName            AuthWithTwitter
  * @api                {post} /auth/twitter

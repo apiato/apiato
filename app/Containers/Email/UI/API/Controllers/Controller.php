@@ -37,7 +37,7 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function SetVisitorEmailController(SetVisitorEmailRequest $request, SetVisitorEmailAction $action)
+    public function setVisitorEmailController(SetVisitorEmailRequest $request, SetVisitorEmailAction $action)
     {
         $action->run($request->header('visitor-id'), $request->email);
 

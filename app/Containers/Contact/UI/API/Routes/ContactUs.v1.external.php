@@ -1,6 +1,6 @@
 <?php
 
-/*********************************************************************************
+/**
  * @apiGroup           Emails
  * @apiName            ContactUs
  * @api                {post} /contact Contact Us form
@@ -15,9 +15,10 @@
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 202 Accepted
 {
-"message": "Message sent Successfully."
+    "message": "Message sent Successfully."
 }
  */
+
 $router->post('/contact', [
     'uses'       => 'Controller@contactUs',
     'middleware' => [
