@@ -1,7 +1,6 @@
 <?php
 
-
-/*********************************************************************************
+/**
  * @apiGroup           Stripe
  * @apiName            createStripeAccount
  * @apiDescription     Before calling this endpoint make sure to call Stripe first and get the `customer_id`.

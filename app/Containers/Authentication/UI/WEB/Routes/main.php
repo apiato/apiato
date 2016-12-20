@@ -1,4 +1,5 @@
 <?php
+// TODO: these needs to be separated into multiple routes files
 $router->group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
 
     $router->get('/', [

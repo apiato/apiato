@@ -1,7 +1,6 @@
 <?php
 
-
-/*********************************************************************************
+/**
  * @apiGroup           Paypal
  * @apiName            createPaypalAccount
  * @api                {post} /paypals Save Paypal Information
