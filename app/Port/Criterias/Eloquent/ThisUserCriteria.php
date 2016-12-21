@@ -3,6 +3,7 @@
 namespace App\Port\Criterias\Eloquent;
 
 use App\Port\Criterias\Abstracts\Criteria;
+use Illuminate\Support\Facades\Auth;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
@@ -12,7 +13,6 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
  */
 class ThisUserCriteria extends Criteria
 {
-
     /**
      * @var int
      */
@@ -23,7 +23,7 @@ class ThisUserCriteria extends Criteria
      *
      * @param $userId
      */
-    public function __construct($userId)
+    public function __construct($userId = null)
     {
         $this->userId = $userId;
     }
@@ -36,6 +36,10 @@ class ThisUserCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
+        if(!$this->userId){
+            $this->userId = Auth::user()->id;
+        }
+
         return $model->where('user_id', '=', $this->userId);
     }
 }
