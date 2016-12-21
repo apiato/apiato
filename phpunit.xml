@@ -19,18 +19,18 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="API_FULL_URL" value="http://api.hello.dev"/>
+        <env name="APP_ENV"             value="testing"/>
+        <env name="API_FULL_URL"        value="http://api.hello.dev"/>
 
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="CACHE_DRIVER"        value="array"/>
+        <env name="SESSION_DRIVER"      value="array"/>
+        <env name="QUEUE_DRIVER"        value="sync"/>
+        <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
 
-        <env name="DB_CONNECTION" value="testing_sqlite_in_memory"/>
-        <env name="TESTING_DB_HOST" value="192.168.99.100"/>
-        <env name="TESTING_DB_PORT" value="3307"/>
-        <env name="TESTING_DB_NAME" value="helloapi"/>
-        <env name="TESTING_DB_USERNAME" value="helloapi"/>
-        <env name="TESTING_DB_PASSWORD" value="helloapi"/>
+        <env name="DB_HOST"             value="127.0.0.1"/>
+        <env name="DB_PORT"             value="3306"/>
+        <env name="DB_NAME"             value="homestead"/>
+        <env name="DB_USERNAME"         value="homestead"/>
+        <env name="DB_PASSWORD"         value="secret"/>
     </php>
 </phpunit>
