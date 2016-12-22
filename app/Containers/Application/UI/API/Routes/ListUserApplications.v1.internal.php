@@ -7,8 +7,10 @@
  * @apiDescription     List all your user Apps and their Tokens
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User (with Developer role)
+ *
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
+ *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
 {
@@ -50,6 +52,7 @@
    ]
 }
  */
+
 $router->get('apps', [
     'uses'       => 'Controller@listUserApplications',
     'middleware' => [
