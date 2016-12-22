@@ -10,14 +10,14 @@
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
  * @apiSuccessExample  {json}       Success-Response:
- * HTTP/1.1 200 Ok
+ * HTTP/1.1 200 OK
 {
    "data":[
       {
          "object":"Application",
          "id":"qrvzpjzb",
          "name":"Dante Kunze",
-         "token":"1234567890",
+         "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
          "created_at":{
             "date":"2016-12-22 18:03:41.000000",
             "timezone_type":3,
@@ -28,7 +28,7 @@
          "object":"Application",
          "id":"oplzqrmw",
          "name":"Gaylord Orn",
-         "token":"1234567890",
+         "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
          "created_at":{
             "date":"2016-12-22 18:03:41.000000",
             "timezone_type":3,
@@ -39,7 +39,7 @@
          "object":"Application",
          "id":"wvpzjamr",
          "name":"Ansel Altenwerth DDS",
-         "token":"1234567890",
+         "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
          "created_at":{
             "date":"2016-12-22 18:03:41.000000",
             "timezone_type":3,

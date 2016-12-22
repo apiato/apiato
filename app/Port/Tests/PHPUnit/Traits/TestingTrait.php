@@ -404,8 +404,9 @@ trait TestingTrait
     ) {
         $application = $this->apiCall($endpoint, $verb, $data);
 
+        //TODO: remove dependency data->token depend of the Authorization container transformer response of the App
         // override the header with the application token instead of the default user token
-        $headers['Authorization'] = 'Bearer ' . $this->getResponseObject($application)->application_token;
+        $headers['Authorization'] = 'Bearer ' . $this->getResponseObject($application)->data->token;
 
         return $headers;
     }
