@@ -10,7 +10,6 @@
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
  * @apiSuccessExample  {json}       Success-Response:
 HTTP/1.1 202 Accepted
-
 {
   "message": "User Logged Out Successfully."
 }
