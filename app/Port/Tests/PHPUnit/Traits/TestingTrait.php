@@ -212,8 +212,10 @@ trait TestingTrait
     {
         $user = $this->registerAndLoginTestingUser($userDetails);
 
-        // Give Developer Role to this User
-        App::make(AttachRoleTask::class)->run($user, ['developer']);
+        // Give Developer Role to this User if he doesn't have it already
+        if (!$user->hasRole('developer')) {
+            App::make(AttachRoleTask::class)->run($user, ['developer']);
+        }
 
         return $user;
     }

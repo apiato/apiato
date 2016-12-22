@@ -12,11 +12,19 @@
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
  * @apiParam           {string} Name (required) Application Name
  * @apiSuccessExample  {json}       Success-Response:
-* HTTP/1.1 202 Accepted
+* HTTP/1.1 200 Accepted
 {
-  "application_name": "My App",
-  "application_id": 25,
-  "application_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+   "data":{
+      "object":"Application",
+      "id":"owpmaymq",
+      "name":"My first App",
+      "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+      "created_at":{
+         "date":"2016-12-22 17:55:34.000000",
+         "timezone_type":3,
+         "timezone":"UTC"
+      }
+   }
 }
  */
 $router->post('apps', [

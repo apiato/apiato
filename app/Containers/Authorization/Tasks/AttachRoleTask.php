@@ -38,7 +38,6 @@ class AttachRoleTask extends Task
     public function run(User $user, $roles)
     {
         if (is_array($roles)) {
-
             foreach ($roles as $role) {
                 $this->attachRole($user, $role);
             }
@@ -52,13 +51,13 @@ class AttachRoleTask extends Task
 
     /**
      * @param $user
-     * @param $roles
+     * @param $role
      *
      * @return  mixed
      */
-    private function attachRole($user, $roles)
+    private function attachRole($user, $role)
     {
-        return $user->attachRole($this->roleRepository->findWhere(['name' => $roles])->first());
+        return $user->attachRole($this->roleRepository->findWhere(['name' => $role])->first());
     }
 
 }

@@ -34,7 +34,7 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function getUserApplications(ListAllAppsAction $action)
+    public function listUserApplications(ListAllAppsAction $action)
     {
         $apps = $action->run();
 
