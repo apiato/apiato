@@ -3,7 +3,9 @@
 namespace App\Containers\Application\UI\API\Controllers;
 
 use App\Containers\Application\Actions\CreateApplicationWithTokenAction;
+use App\Containers\Application\Actions\ListAllAppsAction;
 use App\Containers\Application\UI\API\Requests\CreateApplicationRequest;
+use App\Containers\Application\UI\API\Transformers\ApplicationTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 
 /**
@@ -20,18 +22,23 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function createApplication(
-        CreateApplicationRequest $request,
-        CreateApplicationWithTokenAction $action
-    ) {
-
+    public function createApplication(CreateApplicationRequest $request, CreateApplicationWithTokenAction $action)
+    {
         $app = $action->run($request->name, $request->user()->id);
 
-        return $this->response->accepted(null, [
-            'application_name'  => $app->name,
-            'application_id'    => $app->id,
-            'application_token' => $app->token,
-        ]);
+        return $this->response->item($app, new ApplicationTransformer());
+    }
+
+    /**
+     * @param \App\Containers\Application\Actions\ListAllAppsAction $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function getUserApplications(ListAllAppsAction $action)
+    {
+        $apps = $action->run();
+
+        return $this->response->collection($apps, new ApplicationTransformer());
     }
 
 }

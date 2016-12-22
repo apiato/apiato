@@ -5,11 +5,11 @@ namespace App\Containers\Application\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class ApplicationAccessTokenTest.
+ * Class CreateApplicationWithTokenTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ApplicationAccessTokenTest extends TestCase
+class CreateApplicationWithTokenTest extends TestCase
 {
 
     private $endpoint = '/apps';
@@ -26,10 +26,10 @@ class ApplicationAccessTokenTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '202');
+        $this->assertEquals($response->getStatusCode(), '200');
 
         // assert response contain the data
-        $this->assertResponseContainKeys(['application_token'], $response);
+        $this->assertResponseContainKeys(['token'], $response);
     }
 
 }
