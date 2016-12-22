@@ -7,37 +7,40 @@
  * @apiDescription     List all Countries, non paginated
  * @apiVersion         1.0.0
  * @apiPermission      none
+ *
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 {
-  "data": [
-    {
-      "id": 4,
-      "name": "Afghanistan",
-      "full_name": "Islamic Republic of Afghanistan",
-      "iso_3166_2": "AF",
-      "currency_code": "AFN",
-      "currency_symbol": "http://api.rewardfox.dev/assets/flags/AF.png"
-    },
-    {
-      "id": 248,
-      "name": "Åland Islands",
-      "full_name": "Åland Islands",
-      "iso_3166_2": "AX",
-      "currency_code": "EUR",
-      "currency_symbol": "http://api.rewardfox.dev/assets/flags"
-    },
-    {
-      "id": 8,
-      "name": "Albania",
-      "full_name": "Republic of Albania",
-      "iso_3166_2": "AL",
-      "currency_code": "ALL",
-      "currency_symbol": "http://api.rewardfox.dev/assets/flags/AL.png"
-    },
-    ...
+   "data":[
+      {
+         "type":"country",
+         "id":4,
+         "name":"Afghanistan",
+         "full_name":"Islamic Republic of Afghanistan",
+         "iso_3166_2":"AF",
+         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/AF.png"
+      },
+      {
+         "type":"country",
+         "id":8,
+         "name":"Albania",
+         "full_name":"Republic of Albania",
+         "iso_3166_2":"AL",
+         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/AL.png"
+      },
+      {
+         "type":"country",
+         "id":12,
+         "name":"Algeria",
+         "full_name":"People\u2019s Democratic Republic of Algeria",
+         "iso_3166_2":"DZ",
+         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/DZ.png"
+      }
+      ...
+   ]
 }
  */
+
 $router->get('countries', [
     'uses'       => 'Controller@listAllCountries',
 ]);
