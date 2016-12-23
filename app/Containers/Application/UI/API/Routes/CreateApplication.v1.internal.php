@@ -15,7 +15,7 @@
  * @apiParam           {string} Name (required) Application Name
  *
  * @apiSuccessExample  {json}       Success-Response:
-* HTTP/1.1 200 OK
+ * HTTP/1.1 200 OK
 {
    "data":{
       "object":"Application",

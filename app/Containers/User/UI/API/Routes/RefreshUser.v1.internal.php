@@ -18,15 +18,25 @@
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
+
 {
    "data":{
       "id":0,
       "name":"Mahmoud Zalt",
-      "email":"testing@whatever.dev",
-      "confirmed":"0",
-      "total_credits":0,
+      "email":"hello@mail.dev",
+      "confirmed":null,
+      "nickname":null,
+      "gender":null,
+      "birth":null,
+      "visitor_id":null,
+      "social_auth_provider":null,
+      "social_id":null,
+      "social_avatar":{
+         "avatar":null,
+         "original":null
+      },
       "created_at":{
-         "date":"2016-12-23 19:51:11.000000",
+         "date":"2016-12-23 20:01:34.000000",
          "timezone_type":3,
          "timezone":"UTC"
       },

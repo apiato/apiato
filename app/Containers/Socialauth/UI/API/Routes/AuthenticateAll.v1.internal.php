@@ -10,12 +10,15 @@
  * For testing purposes use this endpoint `auth/twitter/test` to get the code/token.
  * @apiVersion         1.0.0
  * @apiPermission      none
+ *
  * @apiHeader          Accept application/json (required)
  * @apiHeader          visitor-id The Device ID [12345] (required in case you are enabling Visitors)
+ *
  * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
  * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
+ *
  * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
+ * HTTP/1.1 200 OK
 
   "data": {
     "id": 1,
@@ -48,7 +51,7 @@ HTTP/1.1 200 OK
   }
 }
  *
- * ______________________________
+ * _____________________________________________________________________________________________________________________
  *
  * @apiGroup           SocialAuth
  * @apiName            AuthWithFacebook
@@ -59,8 +62,11 @@ HTTP/1.1 200 OK
  * For testing purposes use this endpoint `auth/facebook/test` to get the code/token.
  * @apiVersion         1.0.0
  * @apiPermission      none
+ *
  * @apiHeader          Accept application/json (required)
+ *
  * @apiParam           access_token     access_token=41EAAJyuLl3gaUBAPN6BrVIO.. (required)
+ *
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 

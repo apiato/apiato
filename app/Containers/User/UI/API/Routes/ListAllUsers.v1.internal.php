@@ -23,28 +23,30 @@
  * @apiParam           filter           ?filter=id;name;age (optional)
  *
  * @apiSuccessExample  {json}    Success-Response:
-HTTP/1.1 200 OK
-{
+ * HTTP/1.1 200 OK
 {
    "data":[
       {
          "id":0,
-         "name":"Nola Mayer",
-         "email":"candice86@hotmail.com",
+         "name":"Reyes Anderson",
+         "email":"jaden.runolfsdottir@hermann.com",
          "confirmed":"0",
-         "total_credits":0,
+         "nickname":null,
+         "gender":null,
+         "birth":null,
+         "visitor_id":null,
+         "social_auth_provider":null,
+         "social_id":null,
+         "social_avatar":{
+            "avatar":null,
+            "original":null
+         },
          "created_at":{
-            "date":"2016-12-23 19:48:53.000000",
+            "date":"2016-12-23 20:05:13.000000",
             "timezone_type":3,
             "timezone":"UTC"
          },
          "token":null,
-         "updated_at":{
-            "date":"2016-12-23 19:48:53.000000",
-            "timezone_type":3,
-            "timezone":"UTC"
-         },
-         "deleted_at":null,
          "roles":{
             "data":[
 
@@ -53,22 +55,25 @@ HTTP/1.1 200 OK
       },
       {
          "id":0,
-         "name":"Aditya Nitzsche",
-         "email":"sauer.sammy@hotmail.com",
+         "name":"Prudence Murazik",
+         "email":"maxie.rempel@yahoo.com",
          "confirmed":"0",
-         "total_credits":0,
+         "nickname":null,
+         "gender":null,
+         "birth":null,
+         "visitor_id":null,
+         "social_auth_provider":null,
+         "social_id":null,
+         "social_avatar":{
+            "avatar":null,
+            "original":null
+         },
          "created_at":{
-            "date":"2016-12-23 19:48:53.000000",
+            "date":"2016-12-23 20:05:13.000000",
             "timezone_type":3,
             "timezone":"UTC"
          },
          "token":null,
-         "updated_at":{
-            "date":"2016-12-23 19:48:53.000000",
-            "timezone_type":3,
-            "timezone":"UTC"
-         },
-         "deleted_at":null,
          "roles":{
             "data":[
 
@@ -77,22 +82,25 @@ HTTP/1.1 200 OK
       },
       {
          "id":0,
-         "name":"Margot Donnelly",
-         "email":"antonio20@yahoo.com",
+         "name":"Lisa Roob",
+         "email":"ladarius02@runte.info",
          "confirmed":"0",
-         "total_credits":0,
+         "nickname":null,
+         "gender":null,
+         "birth":null,
+         "visitor_id":null,
+         "social_auth_provider":null,
+         "social_id":null,
+         "social_avatar":{
+            "avatar":null,
+            "original":null
+         },
          "created_at":{
-            "date":"2016-12-23 19:48:53.000000",
+            "date":"2016-12-23 20:05:13.000000",
             "timezone_type":3,
             "timezone":"UTC"
          },
          "token":null,
-         "updated_at":{
-            "date":"2016-12-23 19:48:53.000000",
-            "timezone_type":3,
-            "timezone":"UTC"
-         },
-         "deleted_at":null,
          "roles":{
             "data":[
 
@@ -113,7 +121,6 @@ HTTP/1.1 200 OK
          ]
       }
    }
-}
 }
  */
 
