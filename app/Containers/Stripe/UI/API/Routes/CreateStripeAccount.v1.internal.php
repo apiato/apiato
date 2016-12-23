@@ -8,12 +8,21 @@
  *                     will be used to charge the user whenever he to purchase anything on the platform.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
+ *
  * @apiHeader          Accept application/json
+ *
  * @apiParam           customer_id
  * @apiParam           card_id
  * @apiParam           card_funding
  * @apiParam           card_last_digits
  * @apiParam           card_fingerprint
+ *
+ * @apiSuccessExample  {json}       Success-Response:
+ * HTTP/1.1 200 OK
+{
+   "message":"Stripe account created successfully.",
+   "stripe_account_id":1
+}
  */
 
 $router->post('/stripes', [
