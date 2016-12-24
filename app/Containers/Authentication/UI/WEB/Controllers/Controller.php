@@ -37,7 +37,7 @@ class Controller extends PortWebController
             return view('login')->with($result);
         }
 
-        return view('dashboard');
+        return redirect('/dashboard');
     }
 
     /**
