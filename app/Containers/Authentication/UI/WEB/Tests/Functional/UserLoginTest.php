@@ -40,12 +40,12 @@ class UserLoginTest extends WebTestCase
             ->seePageIs($this->endpoint)
             ->see('Login');
 
-        // fill the login form
+        // fill the login form with wrong credentials
         $this->type('foo@foo.com', 'email')
             ->type('foo.123', 'password')
             ->press('login');
 
-        // we are redirected to the login page and see errors
+        // we are redirected to the login page and we see errors
         $this->seePageIs($this->endpoint)
             ->see('Credentials Incorrect.');
     }
