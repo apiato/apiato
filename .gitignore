@@ -10,3 +10,5 @@ storage/logs/laravel.log
 laradock*/
 
 .idea
+
+.phpintel
