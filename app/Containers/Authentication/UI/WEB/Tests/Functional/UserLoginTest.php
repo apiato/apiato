@@ -35,4 +35,21 @@ class UserLoginTest extends TestCase
         $this->seePageIs('/dashboard')
             ->see('Hello Admin');
     }
+
+    public function testLoginWithInvalidCredentials()
+    {
+        // go to the page
+        $this->visit($this->endpoint)
+            ->seePageIs($this->endpoint)
+            ->see('Login');
+
+        // fill the login form
+        $this->type('foo@foo.com', 'email')
+            ->type('foo.123', 'password')
+            ->press('login');
+
+        // we are redirected to the login page and see errors
+        $this->seePageIs($this->endpoint)
+            ->see('Credentials Incorrect.');
+    }
 }

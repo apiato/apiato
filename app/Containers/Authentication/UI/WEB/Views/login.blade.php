@@ -102,6 +102,10 @@
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
+            .text-red {
+                color: red;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
     <body>
@@ -111,6 +115,9 @@
         <div class="form">
             <form class="login-form" action="{{route('admin_login')}}" method="post">
                 {{ csrf_field() }}
+                @if(session('status'))
+                    <div class="text-red">{{ session('status') }}</div>
+                @endif
                 <input type="text"  placeholder="email" id="email" name="email"/>
                 <input type="password" placeholder="password" id="password" name="password"/>
                 <button>login</button>
