@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
 
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Tests\PHPUnit\Abstracts\WebTestCase;
 use Faker\Generator;
 // use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Contracts\Console\Kernel as LaravelPort;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 *
 * @author  Johan Alvarez <llstarscreamll@hotmail.com>
 */
-class UserLoginTest extends TestCase
+class UserLoginTest extends WebTestCase
 {
     use WithoutMiddleware;
     
