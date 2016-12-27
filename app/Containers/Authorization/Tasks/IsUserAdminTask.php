@@ -15,12 +15,13 @@ use App\Port\Task\Abstracts\Task;
 class IsUserAdminTask extends Task
 {
     use UserAuthorizationTrait;
+
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param \App\Containers\User\Models\User|null $user
      *
      * @return  bool
      */
-    public function run(User $user)
+    public function run(User $user = null)
     {
         // check if is Admin
         $isAdmin = $this->isUserAdmin($user);

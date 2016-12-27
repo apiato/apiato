@@ -42,30 +42,28 @@ class ChargeUsersTest extends TestCase
         $this->assertEquals($result['description'], $payId);
     }
 
-//    public function testChargeWithPaypal()
-//    {
-//        // get the logged in user (create one if no one is logged in)
-//        $user = $this->registerAndLoginTestingUser();
-//
-//        // create stripe account for this user
-//        $createPaypalAccountAction = App::make(CreatePaypalAccountObjectTask::class);
-//        $paypalAccount = $createPaypalAccountAction->run($user, '8mBD5S1SoyD4zL');
-//
-//        $payId = 'PAY-04797768K5905283VK6DGEMZ';
-//
-//        // mock the ChargeWithPaypalTask external API call
-//        $this->mock(ChargeWithPaypalTask::class)->shouldReceive('charge')->andReturn([
-//            'payment_method' => 'paypal',
-//            'description'    => $payId
-//        ]);
-//
-//        // TODO: comment out the pocking part above and test the real API call
-//
-//        $paymentsFactory = new PaymentsFactory();
-//        $result = $paymentsFactory->charge($user, 1000, 'USD');
-//
-//        $this->assertEquals($result['payment_method'], 'paypal');
-//        $this->assertEquals($result['description'], $payId);
-//    }
+    public function testChargeWithPaypal()
+    {
+        // get the logged in user (create one if no one is logged in)
+        $user = $this->registerAndLoginTestingUser();
+
+        // create stripe account for this user
+        $createPaypalAccountAction = App::make(CreatePaypalAccountObjectTask::class);
+        $paypalAccount = $createPaypalAccountAction->run($user, '8mBD5S1SoyD4zL');
+
+        $payId = 'PAY-04797768K5905283VK6DGEMZ';
+
+        // mock the ChargeWithPaypalTask external API call
+        $this->mock(ChargeWithPaypalTask::class)->shouldReceive('charge')->andReturn([
+            'payment_method' => 'paypal',
+            'description'    => $payId
+        ]);
+
+        $paymentsFactory = new PaymentsFactory();
+        $result = $paymentsFactory->charge($user, 1000, 'USD');
+
+        $this->assertEquals($result['payment_method'], 'paypal');
+        $this->assertEquals($result['description'], $payId);
+    }
 
 }
