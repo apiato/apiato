@@ -6,7 +6,7 @@
  * @api                {post} /apps List all user Apps
  * @apiDescription     List all your user Apps and their Tokens
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User (with Developer role)
+ * @apiPermission      Authenticated User
  *
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
@@ -57,6 +57,5 @@ $router->get('apps', [
     'uses'       => 'Controller@listUserApplications',
     'middleware' => [
         'api.auth',
-        'role:developer',
     ],
 ]);

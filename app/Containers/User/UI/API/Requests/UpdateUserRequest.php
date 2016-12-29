@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -32,16 +31,10 @@ class UpdateUserRequest extends Request
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
-     *
      * @return bool
      */
-    public function authorize(Gate $gate, GetAuthenticatedUserTask $getAuthenticatedUserTask)
+    public function authorize(Gate $gate)
     {
-        // NOTE: the comment below is just a reference for how to use the policies, since now
-        //       a user is authorized to update himself.
-        //$gate->getPolicyFor(User::class)->update($this->user(), $getAuthenticatedUserTask->run()->id);
-
         return true;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Containers\User\Policies;
 
+use App\Containers\User\Models\User;
 use App\Port\Policy\Abstracts\Policy;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Containers\User\Models\User;
 
 /**
  * Class UserPolicy.
@@ -13,35 +13,26 @@ use App\Containers\User\Models\User;
  */
 class UserPolicy extends Policy
 {
+
     use HandlesAuthorization;
 
     /**
-     * EXAMPLE CODE, NEVER USED
-     * Determine if the user is updating himself and not another user.
-     *
      * @param \App\Containers\User\Models\User $user
-     * @param                                $inputUserId
      *
-     * @return bool
+     * @return  bool
      */
-    public function update(User $user, $inputUserId)
+    public function list(User $user)
     {
-        // authorize only if a user is updating it's own records
-        return ($user->id == $inputUserId) ? true : false;
+        return $user->hasPermissionTo('list-all-users');
     }
 
     /**
-     * EXAMPLE CODE, NEVER USED
-     * Determine if the user is deleting himself and not another user.
-     *
      * @param \App\Containers\User\Models\User $user
-     * @param                                $inputUserId
      *
-     * @return bool
+     * @return  bool
      */
-    public function delete(User $user, $inputUserId)
+    public function delete(User $user)
     {
-        // authorize only if a user is deleting it's own records
-        return ($user->id == $inputUserId) ? true : false;
+        return $user->hasPermissionTo('delete-user');
     }
 }

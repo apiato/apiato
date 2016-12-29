@@ -4,7 +4,7 @@ namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tasks\AttachRoleTask;
+use App\Containers\Authorization\Tasks\AssignRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
@@ -141,7 +141,7 @@ trait TestingTrait
     {
         $adminRole = Role::where('name', 'admin')->first();
 
-        $user->attachRole($adminRole);
+        $user->assignRole($adminRole);
 
         return $user;
     }
@@ -214,7 +214,7 @@ trait TestingTrait
 
         // Give Developer Role to this User if he doesn't have it already
         if (!$user->hasRole('developer')) {
-            App::make(AttachRoleTask::class)->run($user, ['developer']);
+            App::make(AssignRoleTask::class)->run($user, ['developer']);
         }
 
         return $user;

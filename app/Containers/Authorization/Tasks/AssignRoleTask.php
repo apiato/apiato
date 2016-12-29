@@ -7,11 +7,11 @@ use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class AttachRoleTask.
+ * Class AssignRoleTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AttachRoleTask extends Task
+class AssignRoleTask extends Task
 {
 
     /**
@@ -39,11 +39,11 @@ class AttachRoleTask extends Task
     {
         if (is_array($roles)) {
             foreach ($roles as $role) {
-                $this->attachRole($user, $role);
+                $this->assignRole($user, $role);
             }
 
         }else{
-            $this->attachRole($user, $roles);
+            $this->assignRole($user, $roles);
         }
 
         return $user;
@@ -55,9 +55,9 @@ class AttachRoleTask extends Task
      *
      * @return  mixed
      */
-    private function attachRole($user, $role)
+    private function assignRole($user, $role)
     {
-        return $user->attachRole($this->roleRepository->findWhere(['name' => $role])->first());
+        return $user->assignRole($this->roleRepository->findWhere(['name' => $role])->first());
     }
 
 }

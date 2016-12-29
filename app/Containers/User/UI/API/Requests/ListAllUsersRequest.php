@@ -7,11 +7,11 @@ use App\Port\Request\Abstracts\Request;
 use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
- * Class DeleteUserRequest.
+ * Class ListAllUsersRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DeleteUserRequest extends Request
+class ListAllUsersRequest extends Request
 {
 
     /**
@@ -30,11 +30,9 @@ class DeleteUserRequest extends Request
      * Determine if the user is authorized to make this request.
      *
      * @param \Illuminate\Contracts\Auth\Access\Gate $gate
-     *
-     * @return  mixed
      */
     public function authorize(Gate $gate)
     {
-        return $gate->getPolicyFor(User::class)->delete($this->user());
+        return $gate->getPolicyFor(User::class)->list($this->user());
     }
 }

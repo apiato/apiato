@@ -16,16 +16,49 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
+        // Default Roles -------------------------
+        // ---------------------------------------
+
         $adminRole = new Role();
         $adminRole->name = 'admin';
-        $adminRole->display_name = 'Administrator';
+        $adminRole->description = 'Super Administrator';
         $adminRole->save();
 
-        $accessDashboardPermission = new Permission();
-        $accessDashboardPermission->name = 'access-dashboard';
-        $accessDashboardPermission->display_name = 'Access the Admins Dashboard';
-        $accessDashboardPermission->save();
+        // ---------------------------------------
 
-        $adminRole->attachPermission($accessDashboardPermission);
+        // ...
+
+        // Default Permissions -------------------
+        // ---------------------------------------
+
+        $permission = new Permission();
+        $permission->name = 'access-dashboard';
+        $permission->description = 'Access the Admins Dashboard';
+        $permission->save();
+
+        $adminRole->givePermissionTo($permission);
+
+        // ---------------------------------------
+
+        $permission = new Permission();
+        $permission->name = 'list-all-users';
+        $permission->description = 'List all users in the system';
+        $permission->save();
+
+        $adminRole->givePermissionTo($permission);
+
+        // ---------------------------------------
+
+        $permission = new Permission();
+        $permission->name = 'delete-user';
+        $permission->description = 'Delete any user';
+        $permission->save();
+
+        $adminRole->givePermissionTo($permission);
+
+        // ---------------------------------------
+
+        // ...
+
     }
 }

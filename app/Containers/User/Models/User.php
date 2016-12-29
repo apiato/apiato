@@ -6,34 +6,24 @@ use App\Containers\Application\Models\Application;
 use App\Containers\Authentication\Traits\TokenTrait;
 use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Containers\Tracker\Models\TimeTracker;
 use App\Port\Model\Abstracts\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class User extends Model implements
-    AuthenticatableContract,
-    CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-
-    use Authenticatable, CanResetPassword, TokenTrait, EntrustUserTrait;
-
-    // use SoftDeletes;
-
-    /**
-     * TODO:
-     * Temporary hiding the Illuminate\Database\Eloquent\SoftDeletes trait because
-     * of the collisions of the restore function with the EntrustUserTrait.
-     * Will be uncommented once a fix PR is merged in the repo (https://github.com/Zizaco/entrust/issues/428)
-     */
+    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes, TokenTrait, HasRoles;
 
     /**
      * The database table used by the model.

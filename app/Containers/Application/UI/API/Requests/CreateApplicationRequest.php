@@ -2,7 +2,9 @@
 
 namespace App\Containers\Application\UI\API\Requests;
 
+use App\Containers\Application\Models\Application;
 use App\Port\Request\Abstracts\Request;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
  * Class CreateApplicationRequest.
@@ -29,8 +31,8 @@ class CreateApplicationRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(Gate $gate)
     {
-        return true;
+        return $gate->getPolicyFor(Application::class)->create($this->user());
     }
 }

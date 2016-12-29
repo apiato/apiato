@@ -2,6 +2,6 @@
   "name": "porto-sap/authorization",
   "description": "Porto-SAP Container for Hello-API.",
   "require": {
-    "zizaco/entrust": "5.2.x-dev"
+    "spatie/laravel-permission": "1.6.*"
   }
 }

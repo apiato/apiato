@@ -5,7 +5,7 @@
  * @apiName            DeleteUser
  * @api                {delete} /users Delete User
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated Admin
+ * @apiPermission      Authenticated User
  *
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer {User-Token} (required)
@@ -21,6 +21,5 @@ $router->delete('users', [
     'uses'       => 'Controller@deleteUser',
     'middleware' => [
         'api.auth',
-        'role:admin',
     ],
 ]);

@@ -47,6 +47,7 @@ class UpdateUserAction extends Action
      */
     public function run($password = null, $name = null, $email = null, $gender = null, $birth = null)
     {
+        // user can only update himself
         $userId = $this->getAuthenticatedUserTask->run()->id;
 
         $user = $this->updateUserTask->run($userId, $password, $name, $email, $gender, $birth);

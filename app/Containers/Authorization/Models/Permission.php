@@ -2,14 +2,14 @@
 
 namespace App\Containers\Authorization\Models;
 
-use Zizaco\Entrust\EntrustPermission;
+use Spatie\Permission\Models\Permission as LaratrustPermission;
 
 /**
  * Class Permission
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Permission extends EntrustPermission
+class Permission extends LaratrustPermission
 {
 
     /**

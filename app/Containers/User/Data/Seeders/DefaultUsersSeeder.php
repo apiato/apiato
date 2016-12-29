@@ -37,6 +37,6 @@ class DefaultUsersSeeder extends Seeder
         $admin->email = 'admin@admin.com';
         $admin->password = Hash::make('admin');
         $admin->save();
-        $admin->attachRole($this->getRoleTask->run('admin'));
+        $admin->assignRole($this->getRoleTask->run('admin'));
     }
 }

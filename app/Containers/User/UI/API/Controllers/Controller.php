@@ -11,6 +11,7 @@ use App\Containers\User\Actions\SwitchVisitorToUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\Actions\UpdateVisitorUserAction;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
+use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterRequest;
 use App\Containers\User\UI\API\Requests\RegisterVisitorRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
@@ -42,11 +43,12 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\Actions\ListAndSearchUsersAction $action
+     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function listAllUsers(ListAndSearchUsersAction $action)
+    public function listAllUsers(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
         $users = $action->run();
 

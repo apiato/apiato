@@ -7,7 +7,7 @@
  * @apiDescription     Create an Application and gain access to our server on behalf
  *                     of your user from your third party App.
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User (with Developer role)
+ * @apiPermission      Authenticated User
  *
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer a1b2c3d4.. (required)
@@ -35,6 +35,5 @@ $router->post('apps', [
     'uses'       => 'Controller@createApplication',
     'middleware' => [
         'api.auth',
-        'role:developer',
     ],
 ]);

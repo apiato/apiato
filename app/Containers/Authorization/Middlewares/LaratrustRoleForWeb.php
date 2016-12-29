@@ -8,11 +8,11 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 /**
- * Class EntrustRoleForWeb
+ * Class LaratrustRoleForWeb
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EntrustRoleForWeb
+class LaratrustRoleForWeb
 {
 
     /**

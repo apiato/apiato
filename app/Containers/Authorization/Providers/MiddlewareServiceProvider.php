@@ -2,11 +2,8 @@
 
 namespace App\Containers\Authorization\Providers;
 
-use App\Containers\Authorization\Middlewares\EntrustRoleForWeb;
+use App\Containers\Authorization\Middlewares\LaratrustRoleForWeb;
 use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
-use Zizaco\Entrust\Middleware\EntrustAbility;
-use Zizaco\Entrust\Middleware\EntrustPermission;
-use Zizaco\Entrust\Middleware\EntrustRole;
 
 /**
  * Class MiddlewareServiceProvider
@@ -31,14 +28,10 @@ class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
 
     protected $routeMiddleware = [
         // Laravel default route middleware's:
-        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
-        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // Entrust Package middleware's
-        'role'       => EntrustRole::class,
-        'permission' => EntrustPermission::class,
-        'ability'    => EntrustAbility::class,
+        'can'      => \Illuminate\Auth\Middleware\Authorize::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         // By Hello API
-        'role.web'   => EntrustRoleForWeb::class,
+        'role.web' => LaratrustRoleForWeb::class,
     ];
 
     /**

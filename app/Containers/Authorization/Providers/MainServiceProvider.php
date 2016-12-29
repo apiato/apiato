@@ -4,8 +4,7 @@ namespace App\Containers\Authorization\Providers;
 
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 
-use Zizaco\Entrust\EntrustFacade;
-use Zizaco\Entrust\EntrustServiceProvider;
+use Spatie\Permission\PermissionServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -30,7 +29,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     public $containerServiceProviders = [
-        EntrustServiceProvider::class,
+        PermissionServiceProvider::class,
         MiddlewareServiceProvider::class
     ];
 
@@ -40,7 +39,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var  array
      */
     public $containerAliases = [
-        'Entrust'    => EntrustFacade::class,
+
     ];
 
     /**
