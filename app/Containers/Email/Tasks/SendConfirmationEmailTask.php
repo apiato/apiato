@@ -13,7 +13,10 @@ use App\Port\Task\Abstracts\Task;
  */
 class SendConfirmationEmailTask extends Task
 {
-
+    /**
+     * @var   \App\Containers\Email\Mails\ConfirmEmail
+     */
+    private $confirmEmail;
 
     /**
      * SendConfirmationEmailTask constructor.

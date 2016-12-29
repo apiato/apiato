@@ -22,7 +22,7 @@ class RoleTransformer extends Transformer
     ];
 
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param \App\Containers\Authorization\Models\Role $role
      *
      * @return array
      */

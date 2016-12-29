@@ -41,8 +41,6 @@ abstract class MailsAbstract
 
     /**
      * MailsAbstract constructor.
-     *
-     * @param \Illuminate\Mail\Mailer $mail
      */
     public function __construct()
     {

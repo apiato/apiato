@@ -23,7 +23,7 @@ class VisitorsAuthentication
     private $findUserByVisitorIdTask;
 
     /**
-     * @var  \App\Containers\Authentication\Middlewares\AuthManager|\Illuminate\Auth\AuthManager
+     * @var  \Illuminate\Auth\AuthManager
      */
     private $authManager;
 

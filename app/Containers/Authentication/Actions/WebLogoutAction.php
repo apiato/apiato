@@ -29,8 +29,6 @@ class WebLogoutAction extends Action
     }
 
     /**
-     * @param $authorizationHeader
-     *
      * @return bool
      */
     public function run()

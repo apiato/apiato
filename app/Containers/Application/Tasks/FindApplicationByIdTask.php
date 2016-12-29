@@ -34,7 +34,7 @@ class FindApplicationByIdTask extends Task
      * @param $applicationId
      *
      * @return  mixed
-     * @throws \App\Containers\Application\Tasks\ApplicationNotFoundException
+     * @throws \App\Containers\Application\Exceptions\ApplicationNotFoundException
      */
     public function run($applicationId)
     {

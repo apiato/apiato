@@ -13,6 +13,10 @@ use App\Port\Criterias\Eloquent\OrderByNameCriteria;
  */
 class ListAllCountriesAction extends Action
 {
+    /**
+     * @var \App\Containers\Country\Data\Repositories\CountryRepository
+     */
+    private $countryRepository;
 
     /**
      * ListAllCountriesAction constructor.

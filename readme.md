@@ -113,7 +113,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Ready Middlewares for WEB, API and App Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
 - Ready Admin dashboard infrastructure (just drop your admin views).
-- Fully detailed documentation (on www.hello-api.readme.io/docs).
+- Fully detailed documentation (on hello-api.readme.io/docs).
 - 100% customizable and Open Code.
 - And much more...
 
