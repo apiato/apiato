@@ -51,7 +51,7 @@ class WebAuthentication
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {
-            return view($this->portButler->getLoginWebPageName());
+            return response()->view($this->portButler->getLoginWebPageName());
         }
 
         return $next($request);
