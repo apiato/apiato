@@ -411,4 +411,25 @@ trait TestingTrait
         return $headers;
     }
 
+    /**
+     * override default URL subDomain in case you want to change it for some tests
+     *
+     * @param $subDomain
+     */
+    public function overrideSubDomain($subDomain, $url = null)
+    {
+        $url = ($url) ? : $this->baseUrl;
+
+        $info = parse_url($url);
+
+        $array = explode('.', $info['host']);
+
+        $withoutDomain = (array_key_exists(count($array) - 2,
+                $array) ? $array[count($array) - 2] : '') . '.' . $array[count($array) - 1];
+
+        $newSubDomain = $info['scheme'] . '://' . $subDomain . '.' . $withoutDomain;
+
+        $this->baseUrl = $newSubDomain;
+    }
+
 }

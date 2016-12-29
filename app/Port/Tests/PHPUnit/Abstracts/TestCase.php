@@ -14,7 +14,6 @@ use App\Port\Tests\PHPUnit\Traits\TestingTrait;
  */
 abstract class TestCase extends LaravelTestCase
 {
-
     use TestingTrait;
 
     /**
@@ -56,6 +55,11 @@ abstract class TestCase extends LaravelTestCase
     public function createApplication()
     {
         $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
+
+        // override the default subDomain of the base URL when subDomain property is defined inside a test
+        if(property_exists($this, 'subDomain')){
+            $this->overrideSubDomain($this->subDomain);
+        }
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 

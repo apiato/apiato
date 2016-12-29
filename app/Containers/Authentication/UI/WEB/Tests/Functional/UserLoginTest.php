@@ -2,21 +2,25 @@
 
 namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
 
+use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 use App\Port\Tests\PHPUnit\Abstracts\WebTestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 /**
-* Class UserLoginTest.
-*
-* @author  Johan Alvarez <llstarscreamll@hotmail.com>
-*/
-class UserLoginTest extends WebTestCase
+ * Class UserLoginTest
+ *
+ * @author  Johan Alvarez <llstarscreamll@hotmail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class UserLoginTest extends TestCase
 {
     use WithoutMiddleware;
-    
+
+    // overrides the default subDomain in the base URL
+    protected $subDomain = 'admin';
     private $endpoint = '/login';
 
-    public function testUserLogin()
+    public function testUserLogin_()
     {
         // go to the page
         $this->visit($this->endpoint)
