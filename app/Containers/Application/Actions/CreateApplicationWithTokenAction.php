@@ -22,7 +22,7 @@ class CreateApplicationWithTokenAction extends Action
     private $createApplicationTask;
 
     /**
-     * @var  \App\Containers\Application\Tasks\GenerateTokenFromClaimsTask
+     * @var  \App\Containers\Authentication\Tasks\GenerateTokenFromClaimsTask
      */
     private $generateTokenFromClaimsTask;
 
@@ -32,7 +32,7 @@ class CreateApplicationWithTokenAction extends Action
     private $getApplicationClaimsTask;
 
     /**
-     * @var  \App\Containers\Application\Actions\SetApplicationTokenTask|\App\Containers\Application\Tasks\SetApplicationTokenTask
+     * @var  \App\Containers\Application\Tasks\SetApplicationTokenTask
      */
     private $setApplicationTokenTask;
 

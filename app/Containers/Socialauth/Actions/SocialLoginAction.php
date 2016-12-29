@@ -17,14 +17,46 @@ use App\Port\Action\Abstracts\Action;
  */
 class SocialLoginAction extends Action
 {
+
+    /**
+     * @var \App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask
+     */
+    private $getUserSocialProfileTask;
+
+    /**
+     * @var \App\Containers\SocialAuth\Tasks\FindSocialUserTask
+     */
+    private $findSocialUserTask;
+
+    /**
+     * @var \App\Containers\User\Tasks\FindUserByVisitorIdTask
+     */
+    private $findUserByVisitorIdTask;
+
+    /**
+     * @var \App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask
+     */
+    private $createUserBySocialProfileTask;
+
+    /**
+     * @var \App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask
+     */
+    private $updateUserSocialProfileTask;
+
+    /**
+     * @var \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask
+     */
+    private $apiLoginThisUserObjectTask;
+
     /**
      * SocialLoginAction constructor.
      *
-     * @param \App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask     $getUserSocialProfileTask
-     * @param \App\Containers\User\Tasks\FindSocialUserTask                                 $findSocialUserTask
-     * @param \App\Containers\User\Tasks\CreateUserBySocialProfileTask                               $createUserBySocialProfileTask
-     * @param \App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask  $updateUserSocialProfileTask
-     * @param \App\Containers\SocialAuth\Actions\ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
+     * @param \App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask       $getUserSocialProfileTask
+     * @param \App\Containers\SocialAuth\Tasks\FindSocialUserTask             $findSocialUserTask
+     * @param \App\Containers\User\Tasks\FindUserByVisitorIdTask              $findUserByVisitorIdTask
+     * @param \App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask  $createUserBySocialProfileTask
+     * @param \App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask    $updateUserSocialProfileTask
+     * @param \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
      */
     public function __construct(
         GetUserSocialProfileTask $getUserSocialProfileTask,
@@ -36,10 +68,10 @@ class SocialLoginAction extends Action
     ) {
         $this->getUserSocialProfileTask = $getUserSocialProfileTask;
         $this->findSocialUserTask = $findSocialUserTask;
+        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
         $this->createUserBySocialProfileTask = $createUserBySocialProfileTask;
         $this->updateUserSocialProfileTask = $updateUserSocialProfileTask;
         $this->apiLoginThisUserObjectTask = $apiLoginThisUserObjectTask;
-        $this->findUserByVisitorIdTask = $findUserByVisitorIdTask;
     }
 
     /**

@@ -17,8 +17,8 @@ class Controller extends PortApiController
 {
 
     /**
-     * @param \App\Containers\Application\UI\API\Requests\GenerateApplicationTokenRequest $request
-     * @param \App\Containers\Application\Actions\GenerateApplicationTokenAction          $action
+     * @param \App\Containers\Application\UI\API\Requests\CreateApplicationRequest $request
+     * @param \App\Containers\Application\Actions\CreateApplicationWithTokenAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */

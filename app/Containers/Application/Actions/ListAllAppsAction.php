@@ -14,6 +14,10 @@ use App\Port\Criterias\Eloquent\ThisUserCriteria;
  */
 class ListAllAppsAction extends Action
 {
+    /**
+     * @var \App\Containers\Application\Data\Repositories\ApplicationRepository
+     */
+    private $applicationRepository;
 
     /**
      * ListAllAppsAction constructor.

@@ -20,7 +20,7 @@ class WebAdminLoginAction extends Action
     private $webLoginTask;
 
     /**
-     * @var  \App\Containers\Authentication\Tasks\IsUserAdminTask
+     * @var  \App\Containers\Authorization\Tasks\IsUserAdminTask
      */
     private $isUserAdminTask;
 
@@ -28,7 +28,7 @@ class WebAdminLoginAction extends Action
      * LoginAction constructor.
      *
      * @param \App\Containers\Authentication\Tasks\WebLoginTask            $webLoginTask
-     * @param \App\Containers\Authentication\Tasks\IsUserAdminTask $isUserAdminTask
+     * @param \App\Containers\Authorization\Tasks\IsUserAdminTask $isUserAdminTask
      */
     public function __construct(WebLoginTask $webLoginTask, IsUserAdminTask $isUserAdminTask)
     {

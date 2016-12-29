@@ -26,6 +26,8 @@ class GenerateTokenFromClaimsTask extends Task
 
     /**
      * @param $customClaims
+     *
+     * @return mixed
      */
     public function run($customClaims)
     {

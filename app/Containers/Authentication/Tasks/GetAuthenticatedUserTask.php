@@ -15,14 +15,14 @@ class GetAuthenticatedUserTask extends Task
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\Auth
+     * @var  \Illuminate\Auth\AuthManager
      */
     private $auth;
 
     /**
      * GetAuthenticatedUserTask constructor.
      *
-     * @param \App\Containers\User\Tasks\Auth $auth
+     * @param \Illuminate\Auth\AuthManager $auth
      */
     public function __construct(Auth $auth)
     {

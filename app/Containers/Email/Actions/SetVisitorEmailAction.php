@@ -40,7 +40,7 @@ class SetVisitorEmailAction extends Action
 
 
     /**
-     * @param $userId
+     * @param $visitorId
      * @param $email
      *
      * @return  bool

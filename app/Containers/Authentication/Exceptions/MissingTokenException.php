@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class MissingTokenException extends Exception
 {
-
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
     public $message = 'Token is required.';
