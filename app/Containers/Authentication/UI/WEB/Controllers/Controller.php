@@ -7,6 +7,8 @@ use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Port\Controller\Abstracts\PortWebController;
 
+use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
+
 /**
  * Class Controller
  *
@@ -31,13 +33,17 @@ class Controller extends PortWebController
      */
     public function loginAdmin(LoginRequest $request, WebAdminLoginAction $action)
     {
-        $result = $action->run($request->email, $request->password, $request->remember_me);
-
-        if (is_array($result)) {
-            return view('login')->with($result);
+        try {
+            $result = $action->run($request->email, $request->password, $request->remember_me);
+        } catch (AuthenticationFailedException $e) {
+            return redirect('/login')->with('status', $e->message);
         }
 
-        return view('dashboard');
+        if (is_array($result)) {
+            return redirect('/login')->with($result);
+        }
+
+        return redirect('/dashboard');
     }
 
     /**

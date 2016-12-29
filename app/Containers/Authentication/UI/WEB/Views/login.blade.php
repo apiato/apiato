@@ -75,13 +75,16 @@
                 margin: 50px auto;
                 text-align: center;
             }
-            .container .info h1 {
+            h1, .container .info h1 {
                 margin: 0 0 15px;
                 padding: 0;
                 font-size: 36px;
                 font-weight: 300;
                 color: #1a1a1a;
             }
+
+            .center { text-align: center;  }
+
             .container .info span {
                 color: #4d4d4d;
                 font-size: 12px;
@@ -99,14 +102,22 @@
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
             }
+            .text-red {
+                color: red;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
     <body>
 
     <div class="login-page">
+        <h1 class="center">Login</h1>
         <div class="form">
             <form class="login-form" action="{{route('admin_login')}}" method="post">
                 {{ csrf_field() }}
+                @if(session('status'))
+                    <div class="text-red">{{ session('status') }}</div>
+                @endif
                 <input type="text"  placeholder="email" id="email" name="email"/>
                 <input type="password" placeholder="password" id="password" name="password"/>
                 <button>login</button>
