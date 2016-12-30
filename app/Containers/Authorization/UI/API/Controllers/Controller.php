@@ -2,17 +2,21 @@
 
 namespace App\Containers\Authorization\UI\API\Controllers;
 
+use App\Containers\Authorization\Actions\AssignRoleAction;
+use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\Authorization\Actions\ListAllPermissionsAction;
 use App\Containers\Authorization\Actions\GetPermissionAction;
 use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Containers\Authorization\Actions\ListAllRolesAction;
+use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\Authorization\UI\API\Transformers\UserTransformer;
+use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 
 /**
@@ -69,14 +73,26 @@ class Controller extends PortApiController
         return $this->response->item($role, new RoleTransformer());
     }
 
-    public function assignUserToRole()
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\AssignRoleAction                $action
+     */
+    public function assignUserToRole(AssignUserToRoleRequest $request, AssignRoleAction $action)
     {
+        $user = $action->run($request->user_id, $request->name);
 
+        return $this->response->item($user, new UserTransformer());
     }
 
-    public function attachPermissionToRole()
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\AttachPermissionsToRoleAction         $action
+     */
+    public function attachPermissionToRole(AttachPermissionToRoleRequest $request, AttachPermissionsToRoleAction $action)
     {
+        $role = $action->run($request->role_name, $request->permission_name);
 
+        return $this->response->item($role, new RoleTransformer());
     }
 
     public function createRole()
