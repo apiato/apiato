@@ -65,6 +65,16 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // ---------------------------------------
 
+        $p = Permission::create([
+            'name'         => 'manage-roles-permissions',
+            'description'  => 'Create, View, Modify, Assign, Attach.. Roles and Permissions for Users',
+            'display_name' => '',
+        ]);
+
+        $roleAdmin->givePermissionTo($p);
+
+        // ---------------------------------------
+
         // ...
 
     }

@@ -29,8 +29,9 @@ class RoleTransformer extends Transformer
     public function transform(Role $role)
     {
         return [
-            'name' => $role->display_name,
+            'name'         => $role->name,
             'description'  => $role->description,
+            'display_name' => $role->display_name,
         ];
     }
 

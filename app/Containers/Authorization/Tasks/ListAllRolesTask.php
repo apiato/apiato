@@ -6,11 +6,11 @@ use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class GetRoleTask.
+ * Class ListAllRolesTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetRoleTask extends Task
+class ListAllRolesTask extends Task
 {
 
     /**
@@ -29,13 +29,11 @@ class GetRoleTask extends Task
     }
 
     /**
-     * @param $roleName
-     *
      * @return  mixed
      */
-    public function run($roleName)
+    public function run()
     {
-        return $this->roleRepository->findWhere(['name' => $roleName])->first();
+        return $this->roleRepository->all();
     }
 
 }
