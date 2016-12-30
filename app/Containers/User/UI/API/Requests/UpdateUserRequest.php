@@ -2,9 +2,7 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
-use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
-use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
  * Class UpdateUserRequest.
@@ -15,9 +13,7 @@ class UpdateUserRequest extends Request
 {
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return  array
      */
     public function rules()
     {
@@ -29,11 +25,9 @@ class UpdateUserRequest extends Request
     }
 
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
+     * @return  bool
      */
-    public function authorize(Gate $gate)
+    public function authorize()
     {
         return true;
     }

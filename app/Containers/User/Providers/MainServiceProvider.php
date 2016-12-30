@@ -29,7 +29,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      * @var array
      */
     public $containerServiceProviders = [
-        AuthServiceProvider::class,
         EventsServiceProvider::class,
     ];
 

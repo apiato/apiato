@@ -15,9 +15,7 @@ class ListAllUsersRequest extends Request
 {
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return  array
      */
     public function rules()
     {
@@ -27,12 +25,10 @@ class ListAllUsersRequest extends Request
     }
 
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     * @return  bool
      */
-    public function authorize(Gate $gate)
+    public function authorize()
     {
-        return $gate->getPolicyFor(User::class)->list($this->user());
+        return $this->user()->hasPermissionTo('list-all-users');
     }
 }

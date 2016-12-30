@@ -2,9 +2,7 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
-use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
-use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
  * Class DeleteUserRequest.
@@ -15,9 +13,7 @@ class DeleteUserRequest extends Request
 {
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return  array
      */
     public function rules()
     {
@@ -27,14 +23,10 @@ class DeleteUserRequest extends Request
     }
 
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
-     *
-     * @return  mixed
+     * @return  bool
      */
-    public function authorize(Gate $gate)
+    public function authorize()
     {
-        return $gate->getPolicyFor(User::class)->delete($this->user());
+        return $this->user()->hasPermissionTo('delete-user');
     }
 }

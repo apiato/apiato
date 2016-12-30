@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\UI\WEB\Controllers;
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
 use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
+use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Port\Controller\Abstracts\PortWebController;
 
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
@@ -47,9 +48,11 @@ class Controller extends PortWebController
     }
 
     /**
+     * @param \App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest $request
+     *
      * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showDashboardPage()
+    public function viewDashboardPage(ViewDashboardRequest $request)
     {
         return view('dashboard');
     }

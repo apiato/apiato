@@ -21,10 +21,9 @@ $router->group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
     ]);
 
     $router->get('/dashboard', [
-        'uses'       => 'Controller@showDashboardPage',
+        'uses'       => 'Controller@viewDashboardPage',
         'middleware' => [
-            'web.auth',
-            'role.web:admin',
+            'web.auth'
         ],
     ]);
 });

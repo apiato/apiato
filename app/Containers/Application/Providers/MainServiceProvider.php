@@ -28,7 +28,6 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public $containerServiceProviders = [
         MiddlewareServiceProvider::class,
-        AuthServiceProvider::class
     ];
 
     /**

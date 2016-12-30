@@ -13,9 +13,7 @@ class RegisterVisitorRequest extends Request
 {
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+     * @return  array
      */
     public function rules()
     {
@@ -25,9 +23,7 @@ class RegisterVisitorRequest extends Request
     }
 
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
+     * @return  bool
      */
     public function authorize()
     {

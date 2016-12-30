@@ -32,15 +32,6 @@ class RolesAndPermissionsSeeder extends Seeder
         // ---------------------------------------
 
         $permission = new Permission();
-        $permission->name = 'access-dashboard';
-        $permission->description = 'Access the Admins Dashboard';
-        $permission->save();
-
-        $adminRole->givePermissionTo($permission);
-
-        // ---------------------------------------
-
-        $permission = new Permission();
         $permission->name = 'list-all-users';
         $permission->description = 'List all users in the system';
         $permission->save();
