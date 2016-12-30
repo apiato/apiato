@@ -16,36 +16,52 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
-        // Default Roles -------------------------
+        // Default Roles ----------------------------------------------------------------
+        // ------------------------------------------------------------------------------
+
+        $roleAdmin = Role::create([
+            'name'         => 'admin',
+            'description'  => 'Super Administrator',
+            'display_name' => '',
+        ]);
+
+        $roleClient = Role::create([
+            'name'         => 'client',
+            'description'  => 'Normal User',
+            'display_name' => '',
+        ]);
+
+        // Default Permissions ----------------------------------------------------------
+        // ------------------------------------------------------------------------------
+
+        $p = Permission::create([
+            'name'         => 'list-all-users',
+            'description'  => 'List all users in the system',
+            'display_name' => '',
+        ]);
+
+        $roleAdmin->givePermissionTo($p);
+
         // ---------------------------------------
 
-        $adminRole = new Role();
-        $adminRole->name = 'admin';
-        $adminRole->description = 'Super Administrator';
-        $adminRole->save();
+        $p = Permission::create([
+            'name'         => 'delete-user',
+            'description'  => '',
+            'display_name' => '',
+        ]);
+
+        $roleAdmin->givePermissionTo($p);
 
         // ---------------------------------------
 
-        // ...
+        $p = Permission::create([
+            'name'         => 'update-user',
+            'description'  => '',
+            'display_name' => '',
+        ]);
 
-        // Default Permissions -------------------
-        // ---------------------------------------
-
-        $permission = new Permission();
-        $permission->name = 'list-all-users';
-        $permission->description = 'List all users in the system';
-        $permission->save();
-
-        $adminRole->givePermissionTo($permission);
-
-        // ---------------------------------------
-
-        $permission = new Permission();
-        $permission->name = 'delete-user';
-        $permission->description = 'Delete any user';
-        $permission->save();
-
-        $adminRole->givePermissionTo($permission);
+        $roleClient->givePermissionTo($p);
+        $roleAdmin->givePermissionTo($p);
 
         // ---------------------------------------
 

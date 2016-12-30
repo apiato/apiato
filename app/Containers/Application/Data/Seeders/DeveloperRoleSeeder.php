@@ -16,19 +16,22 @@ class DeveloperRoleSeeder extends Seeder
      */
     public function run()
     {
-        $developerRole = new Role();
-        $developerRole->name = 'developer';
-        $developerRole->display_name = 'Developer';
-        $developerRole->save();
 
+        $roleDeveloper = Role::create([
+            'name'         => 'developer',
+            'description'  => 'A developer account, has access to the API',
+            'display_name' => '',
+        ]);
+        
         // ---------------------------------------
 
-        $permission = new Permission();
-        $permission->name = 'create-applications';
-        $permission->description = 'Create Application to gain third party access using special token';
-        $permission->save();
-
-        $developerRole->givePermissionTo($permission);
+        $p = Permission::create([
+            'name'         => 'create-applications',
+            'description'  => 'Create Application to gain third party access using special token',
+            'display_name' => '',
+        ]);
+        
+        $roleDeveloper->givePermissionTo($p);
         
     }
 }
