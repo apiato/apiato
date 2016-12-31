@@ -6,6 +6,8 @@ use App;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AssignRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
+use App\Containers\User\Models\User;
+use Artisan;
 use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -88,7 +90,7 @@ trait TestingTrait
     /**
      * get teh current logged in user.
      *
-     * @return \App\Port\Tests\PHPUnit\Traits\User|mixed
+     * @return App\Containers\User\Models\User
      */
     public function getLoggedInTestingUser()
     {
@@ -107,7 +109,7 @@ trait TestingTrait
      * So this can be used to test endpoints that are protected by visitors
      * access.
      *
-     * @return  \App\Port\Tests\PHPUnit\Traits\User|mixed
+     * @return  App\Containers\User\Models\User|mixed
      */
     public function getVisitor()
     {
@@ -121,7 +123,7 @@ trait TestingTrait
     }
 
     /**
-     * @return  \App\Port\Tests\PHPUnit\Traits\User|mixed
+     * @return  App\Containers\User\Models\User|mixed
      */
     public function getLoggedInTestingAdmin()
     {
@@ -135,9 +137,9 @@ trait TestingTrait
     /**
      * @param $user
      *
-     * @return  mixed
+     * @return  App\Containers\User\Models\User
      */
-    public function makeAdmin($user)
+    public function makeAdmin(User $user)
     {
         $adminRole = Role::where('name', 'admin')->first();
 
@@ -159,7 +161,7 @@ trait TestingTrait
     /**
      * @param null $userDetails
      *
-     * @return mixed
+     * @return  mixed
      */
     public function registerAndLoginTestingUser($userDetails = null)
     {
@@ -272,13 +274,13 @@ trait TestingTrait
      */
     public function migrateDatabase()
     {
-        \Artisan::call('migrate');
+        Artisan::call('migrate');
     }
 
     /**
      * @param $response
      *
-     * @return mixed
+     * @return  mixed
      */
     private function responseToArray($response)
     {
@@ -414,7 +416,8 @@ trait TestingTrait
     /**
      * override default URL subDomain in case you want to change it for some tests
      *
-     * @param $subDomain
+     * @param      $subDomain
+     * @param null $url
      */
     public function overrideSubDomain($subDomain, $url = null)
     {
