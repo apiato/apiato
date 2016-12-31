@@ -47,7 +47,9 @@ class WebAdminLoginAction extends Action
     {
         $user = $this->webLoginTask->run($email, $password, $remember);
 
-        $this->isUserAdminTask->run($user);
+        if($user){
+            $this->isUserAdminTask->run($user);
+        }
 
         return $user;
     }

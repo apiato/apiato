@@ -2,7 +2,6 @@
 
 namespace App\Port\Exception\Abstracts;
 
-use Dingo\Api\Contract\Debug\MessageBagErrors as DingoMessageBagErrors;
 use Exception as BaseException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\MessageBag;
@@ -15,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException as SymfonyHttpException
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class Exception extends SymfonyHttpException implements DingoMessageBagErrors
+abstract class Exception extends SymfonyHttpException
 {
 
     /**

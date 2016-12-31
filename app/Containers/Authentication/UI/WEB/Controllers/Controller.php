@@ -4,11 +4,10 @@ namespace App\Containers\Authentication\UI\WEB\Controllers;
 
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
 use App\Containers\Authentication\Actions\WebLogoutAction;
+use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Port\Controller\Abstracts\PortWebController;
-
-use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 
 /**
  * Class Controller
@@ -37,14 +36,14 @@ class Controller extends PortWebController
         try {
             $result = $action->run($request->email, $request->password, $request->remember_me);
         } catch (AuthenticationFailedException $e) {
-            return redirect('/login')->with('status', $e->message);
+            return redirect('login')->with('status', $e->getMessage());
         }
 
         if (is_array($result)) {
-            return redirect('/login')->with($result);
+            return view('login')->with($result);
         }
 
-        return redirect('/dashboard');
+        return redirect('dashboard');
     }
 
     /**
@@ -64,7 +63,7 @@ class Controller extends PortWebController
      */
     public function logoutAdmin(WebLogoutAction $action)
     {
-        $action->run();
+        $loggedOut = $action->run();
 
         return view('login');
     }
