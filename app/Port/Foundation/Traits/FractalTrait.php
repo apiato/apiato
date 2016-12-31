@@ -30,7 +30,7 @@ trait FractalTrait
      */
     public function overrideDefaultFractalSerializer()
     {
-        $serializerName = Config::get('api.serializer');
+        $serializerName = Config::get('hello.api.serializer');
 
         // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
         if ($serializerName !== 'DataArray') {

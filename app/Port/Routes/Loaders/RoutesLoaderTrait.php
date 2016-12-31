@@ -64,9 +64,9 @@ trait RoutesLoaderTrait
                             // Add Middleware's - 'api' is a group of middleware's
                             'middleware' => ['api'],
                             // The API limit time.
-                            'limit'      => Config::get('api.limit'),
+                            'limit'      => Config::get('hello.api.limit'),
                             // The API limit expiry time.
-                            'expires'    => Config::get('api.limit_expires'),
+                            'expires'    => Config::get('hello.api.limit_expires'),
                         ], function ($router) use ($file) {
 
                             require $file->getPathname();

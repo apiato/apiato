@@ -916,16 +916,16 @@
         },
         {
             "name": "hashids/hashids",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivanakimov/hashids.php.git",
-                "reference": "57cf3bbfbb939868a37a201aa858071e6c1b4764"
+                "reference": "fde206587c004fa21f8f355eec179fe138a1fd21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivanakimov/hashids.php/zipball/57cf3bbfbb939868a37a201aa858071e6c1b4764",
-                "reference": "57cf3bbfbb939868a37a201aa858071e6c1b4764",
+                "url": "https://api.github.com/repos/ivanakimov/hashids.php/zipball/fde206587c004fa21f8f355eec179fe138a1fd21",
+                "reference": "fde206587c004fa21f8f355eec179fe138a1fd21",
                 "shasum": ""
             },
             "require": {
@@ -938,7 +938,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -975,7 +975,7 @@
                 "obfuscate",
                 "youtube"
             ],
-            "time": "2016-11-15 18:59:27"
+            "time": "2016-12-29 20:38:38"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -5235,9 +5235,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dingo/api": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
