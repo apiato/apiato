@@ -4,12 +4,16 @@ namespace App\Containers\Authorization\UI\API\Controllers;
 
 use App\Containers\Authorization\Actions\AssignRoleAction;
 use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
-use App\Containers\Authorization\Actions\ListAllPermissionsAction;
+use App\Containers\Authorization\Actions\CreatePermissionAction;
+use App\Containers\Authorization\Actions\CreateRoleAction;
 use App\Containers\Authorization\Actions\GetPermissionAction;
 use App\Containers\Authorization\Actions\GetRoleAction;
+use App\Containers\Authorization\Actions\ListAllPermissionsAction;
 use App\Containers\Authorization\Actions\ListAllRolesAction;
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
+use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
@@ -29,7 +33,9 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest $request
-     * @param \App\Containers\Authorization\Actions\ListAllPermissionsAction           $action
+     * @param \App\Containers\Authorization\Actions\ListAllPermissionsAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
     public function listAllPermissions(ListAllPermissionsRequest $request, ListAllPermissionsAction $action)
     {
@@ -41,6 +47,8 @@ class Controller extends PortApiController
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\GetPermissionRequest $request
      * @param \App\Containers\Authorization\Actions\GetPermissionAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
     public function getPermission(GetPermissionRequest $request, GetPermissionAction $action)
     {
@@ -65,6 +73,8 @@ class Controller extends PortApiController
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\GetRoleRequest $request
      * @param \App\Containers\Authorization\Actions\GetRoleAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
     public function getRole(GetRoleRequest $request, GetRoleAction $action)
     {
@@ -87,22 +97,43 @@ class Controller extends PortApiController
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\AttachPermissionsToRoleAction         $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
-    public function attachPermissionToRole(AttachPermissionToRoleRequest $request, AttachPermissionsToRoleAction $action)
-    {
+    public function attachPermissionToRole(
+        AttachPermissionToRoleRequest $request,
+        AttachPermissionsToRoleAction $action
+    ) {
         $role = $action->run($request->role_name, $request->permission_name);
 
         return $this->response->item($role, new RoleTransformer());
     }
 
-    public function createRole()
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\CreateRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\CreateRoleAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function createRole(CreateRoleRequest $request, CreateRoleAction $action)
     {
+        $role = $action->run($request->name, $request->description, $request->display_name);
 
+        return $this->response->item($role, new RoleTransformer());
     }
 
-    public function createPermission()
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest $request
+     * @param \App\Containers\Authorization\Actions\CreatePermissionAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function createPermission(CreatePermissionRequest $request, CreatePermissionAction $action)
     {
+        $permission = $action->run($request->name, $request->description, $request->display_name);
 
+        return $this->response->item($permission, new PermissionTransformer());
     }
+
 
 }

@@ -29,6 +29,7 @@ class PermissionTransformer extends Transformer
     public function transform(Permission $permission)
     {
         return [
+            'object'       => 'Permission',
             'name'         => $permission->name,
             'description'  => $permission->description,
             'display_name' => $permission->display_name,
