@@ -3,6 +3,7 @@
 namespace App\Port\Tests\PHPUnit\Traits;
 
 use App;
+use App\Containers\Application\Actions\CreateApplicationWithTokenAction;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AssignRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
@@ -212,7 +213,7 @@ trait TestingTrait
      */
     public function registerAndLoginTestingDeveloper($userDetails = null)
     {
-        $user = $this->registerAndLoginTestingUser($userDetails);
+        $user = $this->getLoggedInTestingUser($userDetails);
 
         // Give Developer Role to this User if he doesn't have it already
         if (!$user->hasRole('developer')) {
@@ -395,20 +396,21 @@ trait TestingTrait
      * And return headers array with the Application stored token in it.
      * This is made to be used with the endpoints protected with `app.auth` middleware.
      *
-     * @param string $endpoint
-     * @param string $verb
-     * @param array  $data
+     * NOTE: make sure you call this function before getting the `logged in testing user` in your tests.
+     * TODO: will fix this line above later.
+     *
+     * @param string $appName
+     * @param null   $userDetails
+     *
+     * @return  mixed
      */
-    public function getApplicationTokenHeader(
-        $endpoint = 'apps/',
-        $verb = 'post',
-        $data = ['name' => 'Testing Application']
-    ) {
-        $application = $this->apiCall($endpoint, $verb, $data);
+    public function getApplicationTokenHeader($appName = 'Testing App', $userDetails = null)
+    {
+        $user = $this->registerAndLoginTestingDeveloper($userDetails);
 
-        //TODO: remove dependency data->token depend of the Authorization container transformer response of the App
-        // override the header with the application token instead of the default user token
-        $headers['Authorization'] = 'Bearer ' . $this->getResponseObject($application)->data->token;
+        $application = (App::make(CreateApplicationWithTokenAction::class))->run($appName, $user->id);
+
+        $headers['Authorization'] = 'Bearer ' . $application->token;
 
         return $headers;
     }

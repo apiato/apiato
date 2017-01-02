@@ -10,6 +10,7 @@ use Closure;
 use Dingo\Api\Auth\Auth as Authentication;
 use Dingo\Api\Routing\Router;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class ApplicationAuthentication
@@ -76,21 +77,25 @@ class ApplicationAuthentication
      * @param \Closure $next
      *
      * @return  mixed
+     * @throws \App\Containers\Application\Exceptions\UserNotPermittedException
+     * @throws \App\Containers\Application\Exceptions\AuthenticationFailedException
      */
     public function handle($request, Closure $next)
     {
+        // NOTE: this ApplicationAuthentication `app.auth` works on top of the `api.auth` provided by dingo.
+        // Some endpoints can be accessed by 2 types of tokens (User & App). Laravel doesn't support
+        // middleware fallback: (if not first middleware try the second): `'middleware' => ['app.auth|api.auth']`
+        // So this middleware `app.auth` will be used on the endpoints that are allowed to be accessed by Apps.
+        // It check first if the token contain Application ID in its payload and if so it tries to authenticate
+        // the (owner) user of that App. BUT if the token doesn't have an Application ID that means he is using
+        // his own token from my client App (Admin/User front-end) so will try to authenticate him normally
+        // using the `api.auth` (this is the fallback to the original auth middleware).
+
         $token = str_replace('Bearer ', '', $request->header('authorization'));
 
-        $user = $this->jwtAuthAdapter->toUser($token);
-
-        // NOTE: You can remove this condition of you are not using roles for this purpose.
-        // check if the user has developer role, in case accessing an endpoint from his own user account instead of App
-        // prevent his access unless he is an approved developer.
-        if (!$user || !$user->hasRole('developer')) {
-            throw new UserNotPermittedException();
+        if(!$token){
+            throw new AuthenticationFailedException('Empty Token!');
         }
-
-        $request->user = $user;
 
         // get App ID from the token payload custom claim `ApplicationId`
         if ($applicationId = $this->jwtAuthAdapter->getPayload($token)->get('ApplicationId')) {
@@ -98,10 +103,21 @@ class ApplicationAuthentication
             // find that App in the database
             $application = $this->findApplicationByIdTask->run($applicationId);
 
-            // also validate the owner of that App is the same making this request and using the token
-            if (!$application || ($application->user->id != $user->id)) {
+            if (!$application || !$user = $application->user) {
                 throw new AuthenticationFailedException();
             }
+
+            // NOTE: You can remove this condition of you are not using roles for this purpose.
+            // Allow Access only for users with valid developer account
+            if (!$user->hasRole('developer')) {
+                throw new UserNotPermittedException();
+            }
+
+        }else{
+            return (App::make(\Dingo\Api\Http\Middleware\Auth::class))->handle($request, $next);
+            // another way to do handle this is by calling `$user = $this->jwtAuthAdapter->toUser($token);`
+            // and continuing the execution of this code till the last return, but to maintain consistency
+            // I'm calling the same auth middleware used by all other endpoints.
         }
 
         // make the user accessible on the requests objects when using `$request->user()`

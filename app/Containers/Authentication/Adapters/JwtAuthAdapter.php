@@ -79,11 +79,13 @@ class JwtAuthAdapter
     }
 
     /**
+     * @param bool $token
+     *
      * @return  \Tymon\JWTAuth\Payload
      */
-    public function getPayload()
+    public function getPayload($token = false)
     {
-        return $this->jwtAuth->getPayload();
+        return $this->jwtAuth->getPayload($token);
     }
 
     /**
