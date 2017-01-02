@@ -6,7 +6,7 @@
  * @api                {get} /countries List all Countries
  * @apiDescription     List all Countries, non paginated
  * @apiVersion         1.0.0
- * @apiPermission      none
+ * @apiPermission      Authenticated User|Authorized App
  *
  * @apiSuccessExample  {json}    Success-Response:
  * HTTP/1.1 200 OK
@@ -43,4 +43,7 @@
 
 $router->get('countries', [
     'uses'       => 'Controller@listAllCountries',
+    'middleware' => [
+        'app.auth',
+    ],
 ]);

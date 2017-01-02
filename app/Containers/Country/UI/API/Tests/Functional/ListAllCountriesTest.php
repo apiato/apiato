@@ -16,11 +16,27 @@ class ListAllCountriesTest extends TestCase
 
     public function testListAllCountries_()
     {
-
         $this->getLoggedInTestingUser();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '200');
+
+        // convert JSON response string to object
+        $responseObject = $this->getResponseObject($response);
+
+        // assert the returned data size is correct
+        $this->assertCount(249, $responseObject->data);
+    }
+
+    public function testListAllCountriesAsApplication_()
+    {
+        $headers = $this->getApplicationTokenHeader();
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'get', [], true, $headers);
 
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '200');
