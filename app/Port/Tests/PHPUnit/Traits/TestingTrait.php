@@ -372,23 +372,18 @@ trait TestingTrait
     }
 
     /**
-     * Make sure you have an image in `storage/tests/` named to `a.jpeg` or anything else
-     *
-     * @param string $originalName
-     * @param string $mimeType
-     * @param int    $size
+     * @param      $fileName
+     * @param      $stubDirPath
+     * @param null $mimeType
+     * @param null $size
      *
      * @return  \Illuminate\Http\UploadedFile
      */
-    public static function getTestingFile($originalName = 'a.jpeg', $mimeType = 'image/jpeg', $size = 2476)
+    public static function getTestingFile($fileName, $stubDirPath, $mimeType = null, $size = null)
     {
-        $path = storage_path('tests/' . $originalName);
-        $error = null;
-        $test = true;
+        $file =  $stubDirPath . $fileName;
 
-        $file = new UploadedFile($path, $originalName, $mimeType, $size, $error, $test);
-
-        return $file;
+        return new UploadedFile($file, $fileName, $mimeType, $size, $error = null, $testMode = true);
     }
 
     /**
