@@ -3,6 +3,7 @@
 /**
  * @apiGroup           Stripe
  * @apiName            createStripeAccount
+ * @api                {post} /stripes Create Stripe Account
  * @apiDescription     Before calling this endpoint make sure to call Stripe first and get the `customer_id`.
  *                     You may use "Stripe Checkout" or "Stripe.js" to make your Stripe call. This Information
  *                     will be used to charge the user whenever he to purchase anything on the platform.
