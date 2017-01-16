@@ -103,9 +103,14 @@ class ApplicationAuthentication
             // find that App in the database
             $application = $this->findApplicationByIdTask->run($applicationId);
 
-            if (!$application || !$user = $application->user) {
+            if (!$application || !$user = $application->store->user) {
                 throw new AuthenticationFailedException();
             }
+
+            // add the application on the request object
+            $request->merge([
+                'application' => $application
+            ]);
 
             // NOTE: You can remove this condition of you are not using roles for this purpose.
             // Allow Access only for users with valid developer account
