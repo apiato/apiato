@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Welcome\UI\WEB\Controllers;
+namespace App\Containers\User\UI\Web\Controllers;
 
 use App\Port\Controller\Abstracts\PortWebController;
 
@@ -13,10 +13,10 @@ class Controller extends PortWebController
 {
 
     /**
-     * @return  string
+     * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sayWelcome()
     {
-        return view('just-welcome');
+        return view('user-welcome');
     }
 }

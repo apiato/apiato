@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authentication\UI\WEB\Requests;
+namespace App\Containers\Authentication\UI\Web\Requests;
 
 use App\Port\Request\Abstracts\Request;
 

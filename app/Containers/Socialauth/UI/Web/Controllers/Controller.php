@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\SocialAuth\UI\WEB\Controllers;
+namespace App\Containers\SocialAuth\UI\Web\Controllers;
 
 use App\Port\Controller\Abstracts\PortWebController;
 use Laravel\Socialite\Facades\Socialite;
