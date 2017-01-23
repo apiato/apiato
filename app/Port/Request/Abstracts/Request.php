@@ -3,6 +3,7 @@
 namespace App\Port\Request\Abstracts;
 
 use App\Port\Exception\Exceptions\ValidationFailedException;
+use App\Port\HashId\Traits\HashIdTrait;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
 
@@ -15,6 +16,8 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFrameworkRequest;
  */
 abstract class Request extends LaravelFrameworkRequest
 {
+
+    use HashIdTrait;
 
     /**
      * overriding the failedValidation function to throw my custom

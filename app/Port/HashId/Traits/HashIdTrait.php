@@ -34,7 +34,7 @@ trait HashIdTrait
                 if (!in_array($route->getUri(), $this->skippedEndpoints)) {
 
                     // decode the ID in the URL
-                    $decoded = Hashids::decode($id);
+                    $decoded = $this->decoder($id);
 
                     if (empty($decoded)) {
                         throw new IncorrectIdException('ID (' . $id . ') is incorrect, consider using the hashed ID 
@@ -48,6 +48,20 @@ trait HashIdTrait
     }
 
     /**
+     * @param $id
+     *
+     * @return  mixed
+     */
+    public function decodeThisId($id)
+    {
+        if (Config::get('hello.hash-id')) {
+            return $this->decoder($id)[0];
+        }
+
+        return $id;
+    }
+
+    /**
      * Will be used by the Eloquent Models (since it's used as trait there).
      *
      * @return  mixed
@@ -56,10 +70,30 @@ trait HashIdTrait
     {
         // hash the ID only if hash-id enabled in the config
         if (Config::get('hello.hash-id')) {
-            return Hashids::encode($this->getKey());
+            return $this->encoder($this->getKey());
         }
 
         return $this->getKey();
+    }
+
+    /**
+     * @param $id
+     *
+     * @return  mixed
+     */
+    private function decoder($id)
+    {
+        return Hashids::decode($id);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return  mixed
+     */
+    private function encoder($id)
+    {
+        return Hashids::encode($id);
     }
 
 }
