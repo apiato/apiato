@@ -15,27 +15,35 @@
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
 {
-   "data":{
-      "id":0,
-      "name":"Hello",
-      "email":"hello@mail.dev",
-      "confirmed":"0",
-      "total_credits":0,
-      "created_at":{
-         "date":"2016-12-22 18:14:43.000000",
-         "timezone_type":3,
-         "timezone":"UTC"
-      },
-      "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-      "roles":{
-         "data":[
-            {
-               "name":"Client User",
-               "description":null
-            }
-         ]
-      }
-   }
+  "data": {
+    "id": "owpmaymq",
+    "name": "Super Admin",
+    "email": "admin@admin.com",
+    "confirmed": 0,
+    "total_credits": 0,
+    "created_at": {
+      "date": "2017-01-23 18:40:46.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+    "updated_at": {
+      "date": "2017-01-23 18:40:46.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "deleted_at": null,
+    "roles": {
+      "data": [
+        {
+          "object": "Role",
+          "name": "admin",
+          "description": "Super Administrator",
+          "display_name": null
+        }
+      ]
+    }
+  }
 }
  *
  * @apiErrorExample  {json}       Error-Response:
