@@ -103,7 +103,7 @@ class ApplicationAuthentication
             // find that App in the database
             $application = $this->findApplicationByIdTask->run($applicationId);
 
-            if (!$application || !$user = $application->store->user) {
+            if (!$application || !$user = $application->user) {
                 throw new AuthenticationFailedException();
             }
 

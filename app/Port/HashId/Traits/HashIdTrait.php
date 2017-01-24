@@ -55,7 +55,7 @@ trait HashIdTrait
     public function decodeThisId($id)
     {
         if (Config::get('hello.hash-id')) {
-            return $this->decoder($id)[0];
+            return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
         }
 
         return $id;
