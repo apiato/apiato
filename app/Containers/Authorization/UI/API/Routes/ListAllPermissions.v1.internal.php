@@ -13,24 +13,32 @@
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
 {
-   "data":[
-      {
-         "name":"create-applications",
-         "description":"Create Application to gain third party access using special token",
-         "display_name":""
-      },
-      {
-         "name":"list-all-users",
-         "description":"List all users in the system",
-         "display_name":""
-      },
-      {
-         "name":"delete-user",
-         "description":"",
-         "display_name":""
-      }
-      ...
-   ]
+  "data": [
+    {
+      "object": "Permission",
+      "name": "manage-roles-permissions",
+      "description": "Manage Roles and Permissions for Users",
+      "display_name": null
+    },
+    {
+      "object": "Permission",
+      "name": "delete-user",
+      "description": null,
+      "display_name": null
+    },
+    {
+      "object": "Permission",
+      "name": "update-user",
+      "description": null,
+      "display_name": null
+    },
+    {
+      "object": "Permission",
+      "name": "create-applications",
+      "description": "Create Application to gain third party access using special token",
+      "display_name": null
+    }
+  ]
 }
  */
 

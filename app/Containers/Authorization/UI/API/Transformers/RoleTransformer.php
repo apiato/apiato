@@ -18,7 +18,7 @@ class RoleTransformer extends Transformer
     ];
 
     protected $defaultIncludes = [
-
+        'permissions'
     ];
 
     /**
@@ -34,6 +34,16 @@ class RoleTransformer extends Transformer
             'description'  => $role->description,
             'display_name' => $role->display_name,
         ];
+    }
+
+    /**
+     * @param \App\Containers\Authorization\Models\Role $role
+     *
+     * @return  \League\Fractal\Resource\Collection
+     */
+    public function includePermissions(Role $role)
+    {
+        return $this->collection($role->permissions, new PermissionTransformer());
     }
 
 }
