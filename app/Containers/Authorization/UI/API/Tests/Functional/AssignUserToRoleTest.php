@@ -4,7 +4,6 @@ namespace App\Containers\Order\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * Class AssignUserToRoleTest.
@@ -23,8 +22,8 @@ class AssignUserToRoleTest extends TestCase
         $randomUser = factory(User::class)->create();
 
         $data = [
-            'name'    => 'admin',
-            'user_id' => $randomUser->id,
+            'roles_names' => 'admin',
+            'user_id'     => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -33,7 +32,11 @@ class AssignUserToRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals($response->getStatusCode(), '200');
 
-//        $this->assertEquals($data['user_id'], Hashids::decode($responseObject->data->id));
+        $responseObject = $this->getResponseObject($response);
+
+        $this->assertEquals($data['user_id'], $responseObject->data->id);
+
+        $this->assertEquals($data['roles_names'], $responseObject->data->roles->data[0]->name);
     }
 
 
@@ -44,8 +47,8 @@ class AssignUserToRoleTest extends TestCase
         $randomUser = factory(User::class)->create();
 
         $data = [
-            'name'    => ['admin', 'client'],
-            'user_id' => $randomUser->id,
+            'roles_names' => ['admin', 'client'],
+            'user_id'     => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -57,6 +60,10 @@ class AssignUserToRoleTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         $this->assertTrue(count($responseObject->data->roles->data) > 1);
+
+        $this->assertEquals($data['roles_names'][0], $responseObject->data->roles->data[0]->name);
+
+        $this->assertEquals($data['roles_names'][1], $responseObject->data->roles->data[1]->name);
     }
 
 }

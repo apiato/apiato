@@ -11,13 +11,13 @@
  * @apiHeader          Authorization Bearer {User-Token}
  *
  * @apiParam           {Number} user_id the user ID
- * @apiParam           {Array} name Name or Names of the Roles (accepts String or Array)
+ * @apiParam           {Array} roles_names Name or Names of the Roles (accepts String or Array)
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
 {
    "data":{
-      "id":0,
+      "id":abcderf,
       "name":"Mrs. Genoveva Prosacco",
       "email":"abbigail.rolfson@hotmail.com",
       "confirmed":"0",

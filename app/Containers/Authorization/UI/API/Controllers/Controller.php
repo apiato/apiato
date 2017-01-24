@@ -89,7 +89,7 @@ class Controller extends PortApiController
      */
     public function assignUserToRole(AssignUserToRoleRequest $request, AssignRoleAction $action)
     {
-        $user = $action->run($request->user_id, $request->name);
+        $user = $action->run($request->user_id, $request->roles_names);
 
         return $this->response->item($user, new UserTransformer());
     }

@@ -18,9 +18,18 @@ class AssignUserToRoleRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|exists:roles,name',
-            'user_id' => 'required|exists:users,id',
+            'roles_names' => 'required|exists:roles,name',
+            'user_id'    => 'required|exists:users,id',
         ];
+    }
+
+    public function all()
+    {
+        $data = parent::all();
+
+        $data['user_id'] = $this->decodeThisId($data['user_id']);
+
+        return $data;
     }
 
     /**
