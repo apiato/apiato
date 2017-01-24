@@ -27,7 +27,7 @@ class UserTransformer extends Transformer
     {
 
         return [
-            'id'                   => (int)$user->getHashedKey(),
+            'id'                   => $user->getHashedKey(),
             'name'                 => $user->name,
             'email'                => $user->email,
             'confirmed'            => $user->confirmed,
