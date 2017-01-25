@@ -13,21 +13,16 @@
 [![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
 
 
-#### A `Hello World` for API's : )
+#### The `Hello World` of API's.
+
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](https://www.zalt.me)
 
 
 
-<br>
 
-Join our chatting room on Gitter:
 
-[![Gitter](https://badges.gitter.im/porto-sap/Lobby.svg)](https://gitter.im/porto-sap/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-<br>
-
-## Important Note:
-
-The project is currently under heavy development. 
+> The project is currently under heavy development. 
 So expect major updates without notice.
 Also note that there's **no stable release** till this date.
 
@@ -38,8 +33,8 @@ Also note that there's **no stable release** till this date.
 
 * [Introduction](#Introduction)
 * [Features](#Features)
+* [Chat](#Chat)
 * [Documentation](#Documentation)
-* [Technologies](#Technologies)
 * [Contribution](#Contribution)
 * [Credits](#Credits)
 * [License](#License)
@@ -48,6 +43,9 @@ Also note that there's **no stable release** till this date.
 
 
 <a name="Introduction"></a>
+## Into
+
+
 ### What is Hello API
 
 Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.3**.
@@ -72,10 +70,6 @@ As well as, it can be exposed to the world allowing developers to interact with 
 
 API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
 
-<br>
-
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://www.zalt.me)
-
 
 
 
@@ -85,59 +79,65 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 >The Hello API comes with great features:
 
 - Token Based Authentication (with JWT "JSON Web Tokens").
-- API Throttling (Rate Limiting).
+- Authorization system (ACL), with Default Super Admin seeding (Roles & Permissions).
 - Query Parameters support out of the box (orderBy, sortedBy, filter, include).
+- API Throttling (Rate Limiting).
 - Full-text search support out of the box (search, searchFields).
 - User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
-- Functional Tests covering all the existing Endpoints (using PHPUnit).
+- Ready Middlewares for WEB, API and App Authentication.
+- Ready Admin dashboard infrastructure (just drop your admin views).
 - Auto API Documentation generator (using the API Doc JS).
-- Authorization system (ACL), with Default Super Admin seeding.
 - Support ID hashing, to hide original IDs from users (using HashID).
 - Data Caching support (with auto clearing on Create, Update and Delete).
-- Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Supports CORS "Cross-Origin Resource Sharing".
+- Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Localization support (multiple languages via Content-Language header).
-- Send Emails from App to User & User to App (Welcome, Email Confirmation, Contact Us,...).
 - Automatic Data Pagination (meta links to next and previous data).
-- Support Visitors Authentication by Device ID (Use first register later).
 - Http Requests/Response Monitor and Debugger (easy test your Apps requests).
-- Auto detect and save device type and platform.
-- Easy and auto request input validation.
 - Type-Casting JSON responses with Transformers.
 - Custom Tests Helpers for faster automated testing (using PHPUnit).
-- RESTful API (supporting all HTTP verbs).
 - Optional support for the JSON API specification v1.0.
+- Support Visitors Authentication by Device ID (Use first register later).
 - Automatic dates conversion to ISO format in responses.
+- Send Emails from App to User & User to App (Welcome, Email Confirmation, Contact Us,...).
 - Optional support for JSON with padding (JSONP).
 - Maintainable and scalable Software Architectural Pattern (using Porto SAP).
-- Ready Middlewares for WEB, API and App Authentication.
 - Easy to support payment gateways (Ready for Stripe and Paypal).
-- Ready Admin dashboard infrastructure (just drop your admin views).
+- Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Fully detailed documentation (on hello-api.readme.io/docs).
 - 100% customizable and Open Code.
 - And much more...
 
 
+<a name="Chat"></a>
+## Chat
+
+Join our chatting room on Gitter by click on the icon below
+
+[![Gitter](https://badges.gitter.im/porto-sap/Lobby.svg)](https://gitter.im/porto-sap/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+
+
 <a name="Documentation"></a>
-## Full Documentation
+## Documentation
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern. 
 <br>
 Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation)  before starting.
 
-###[Hello API Documentation](https://hello-api.readme.io/docs/installation)
+###[Full Documentation](https://hello-api.readme.io/docs/installation)
 
 
-<br>
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 <a name="Contribution"></a>
 ## Contribution
-Just do it. You are welcome :)
+
+Just do it! :)
 
 
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 
@@ -146,7 +146,7 @@ Just do it. You are welcome :)
 
 | Contributors           | Twitter                                 | Ask for Help                                                                                                          | Contact / Hire  | Site            |
 |------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| [Mahmoud Zalt](https://github.com/Mahmoudz) (Creator) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [http://zalt.me](http://zalt.me/) |
+| [Mahmoud Zalt](https://github.com/Mahmoudz) (Creator) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
 
 
 
