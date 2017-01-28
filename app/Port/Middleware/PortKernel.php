@@ -22,6 +22,8 @@ class PortKernel extends LaravelHttpKernel
     protected $middleware = [
         // Laravel default middleware's:
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        // CORS package middleware
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
@@ -42,8 +44,6 @@ class PortKernel extends LaravelHttpKernel
         'api' => [
             // Laravel default middleware's:
             'bindings',
-            // CORS package middleware
-            \Barryvdh\Cors\HandleCors::class,
             // Hello API Localization middleware
             \App\Port\Middleware\Http\Localization::class,
             // Dingo Package throttle middleware
