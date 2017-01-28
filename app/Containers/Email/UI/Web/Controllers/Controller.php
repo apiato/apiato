@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Email\UI\WEB\Controllers;
+namespace App\Containers\Email\UI\Web\Controllers;
 
 use App\Containers\Email\Actions\ValidateUserEmailByConfirmationCodeAction;
 use App\Containers\Email\UI\API\Requests\ConfirmUserEmailRequest;

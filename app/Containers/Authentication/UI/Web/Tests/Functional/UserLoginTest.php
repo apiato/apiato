@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
+namespace App\Containers\Authentication\UI\Web\Tests\Functional;
 
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 use App\Port\Tests\PHPUnit\Abstracts\WebTestCase;

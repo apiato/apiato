@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Welcome\UI\WEB\Tests\Acceptance;
+namespace App\Containers\Welcome\UI\Web\Tests\Acceptance;
 
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 

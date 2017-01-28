@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Containers\Authentication\UI\WEB\Controllers;
+namespace App\Containers\Authentication\UI\Web\Controllers;
 
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
 use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
-use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
+use App\Containers\Authentication\UI\Web\Requests\LoginRequest;
+use App\Containers\Authentication\UI\Web\Requests\ViewDashboardRequest;
 use App\Port\Controller\Abstracts\PortWebController;
 
 /**
@@ -26,7 +26,7 @@ class Controller extends PortWebController
     }
 
     /**
-     * @param \App\Containers\Authentication\UI\WEB\Requests\LoginRequest $request
+     * @param \App\Containers\Authentication\UI\Web\Requests\LoginRequest $request
      * @param \App\Containers\Authentication\Actions\WebAdminLoginAction  $action
      *
      * @return  $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -47,7 +47,7 @@ class Controller extends PortWebController
     }
 
     /**
-     * @param \App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest $request
+     * @param \App\Containers\Authentication\UI\Web\Requests\ViewDashboardRequest $request
      *
      * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
