@@ -2,10 +2,8 @@
 
 namespace App\Containers\Application\Actions;
 
-use App\Containers\Application\Data\Repositories\ApplicationRepository;
+use App\Containers\Application\Tasks\ListAllAppsTask;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
-use App\Port\Criterias\Eloquent\ThisUserCriteria;
 
 /**
  * Class ListAllAppsAction.
@@ -14,19 +12,20 @@ use App\Port\Criterias\Eloquent\ThisUserCriteria;
  */
 class ListAllAppsAction extends Action
 {
+
     /**
-     * @var \App\Containers\Application\Data\Repositories\ApplicationRepository
+     * @var  \App\Containers\Application\Tasks\ListAllAppsTask
      */
-    private $applicationRepository;
+    private $listAllAppsTask;
 
     /**
      * ListAllAppsAction constructor.
      *
-     * @param \App\Containers\Application\Data\Repositories\ApplicationRepository $applicationRepository
+     * @param \App\Containers\Application\Tasks\ListAllAppsTask $listAllAppsTask
      */
-    public function __construct(ApplicationRepository $applicationRepository)
+    public function __construct(ListAllAppsTask $listAllAppsTask)
     {
-        $this->applicationRepository = $applicationRepository;
+        $this->listAllAppsTask = $listAllAppsTask;
     }
 
     /**
@@ -34,11 +33,7 @@ class ListAllAppsAction extends Action
      */
     public function run()
     {
-        $this->applicationRepository->pushCriteria(new ThisUserCriteria());
-
-        $this->applicationRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
-
-        return $this->applicationRepository->all();
+        return $this->listAllAppsTask->run();
     }
 
 }
