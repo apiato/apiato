@@ -10,9 +10,10 @@ use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\RegisterVisitorUserAction;
 use App\Containers\User\Actions\SwitchVisitorToUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
+use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
-use App\Containers\User\UI\API\Requests\RegisterRequest;
+use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterVisitorRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -92,7 +93,7 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function registerUser(RegisterRequest $request, RegisterUserAction $action)
+    public function registerUser(RegisterUserRequest $request, RegisterUserAction $action)
     {
         $user = $action->run($request['email'], $request['password'], $request['name'], $request['gender'],
             $request['birth'], true, $request->header('visitor-id'));
@@ -101,12 +102,12 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
-     * @param \App\Containers\User\Actions\CreateAdminAction       $action
+     * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
+     * @param \App\Containers\User\Actions\CreateAdminAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function createAdmin(RegisterRequest $request, CreateAdminAction $action)
+    public function createAdmin(CreateAdminRequest $request, CreateAdminAction $action)
     {
         $admin = $action->run($request['email'], $request['password'], $request['name']);
 

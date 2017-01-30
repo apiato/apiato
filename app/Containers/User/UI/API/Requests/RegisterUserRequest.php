@@ -5,11 +5,11 @@ namespace App\Containers\User\UI\API\Requests;
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class RegisterRequest.
+ * Class RegisterUserRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterRequest extends Request
+class RegisterUserRequest extends Request
 {
 
     /**
@@ -29,6 +29,6 @@ class RegisterRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasRole('admin');
+        return true;
     }
 }
