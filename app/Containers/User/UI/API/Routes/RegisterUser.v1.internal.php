@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            registerUser
- * @api                {post} /user/register Register User
+ * @api                {post} /users/register Register User
  * @apiDescription     If the App supports Visitors Access (allows users to use)
  * the App first and register later) then you `must` send the `visitor-id` in the
  * header. If the app require registering first, with no access to Visitors, then
@@ -55,6 +55,6 @@
 }
  */
 
-$router->post('user/register', [
+$router->post('users/register', [
     'uses'  => 'Controller@registerUser',
 ]);

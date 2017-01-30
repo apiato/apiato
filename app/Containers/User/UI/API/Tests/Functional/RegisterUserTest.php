@@ -5,14 +5,14 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class RegisterUserThatWasNotVisitorTest.
+ * Class RegisterUserTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterUserThatWasNotVisitorTest extends TestCase
+class RegisterUserTest extends TestCase
 {
 
-    private $endpoint = '/user/register';
+    private $endpoint = '/users/register';
 
     public function testRegisterNewUserWithCredentials_()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Controllers;
 
+use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
@@ -97,6 +98,19 @@ class Controller extends PortApiController
             $request['birth'], true, $request->header('visitor-id'));
 
         return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\RegisterRequest $request
+     * @param \App\Containers\User\Actions\CreateAdminAction       $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function createAdmin(RegisterRequest $request, CreateAdminAction $action)
+    {
+        $admin = $action->run($request['email'], $request['password'], $request['name']);
+
+        return $this->response->item($admin, new UserTransformer());
     }
 
     /**
