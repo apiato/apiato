@@ -42,7 +42,6 @@ class RequestsMonitorMiddleware
             // Request Headers:
             Log::debug('App Headers: ');
             Log::debug('   Authorization = ' . substr($request->header('Authorization'), 0, 80) . '...');
-            Log::debug('   Visitor-Id = ' . $request->header('Visitor-Id'));
 
             // Request Data:
             if ($request->all()) {

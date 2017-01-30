@@ -12,7 +12,6 @@
  * @apiPermission      none
  *
  * @apiHeader          Accept application/json (required)
- * @apiHeader          visitor-id The Device ID [12345] (required in case you are enabling Visitors)
  *
  * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
  * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
@@ -28,7 +27,6 @@
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
-    "visitor_id": "123456789",
     "gender": "male",
     "birth": "null",
     "nickname": "MEGA",
@@ -78,7 +76,6 @@ HTTP/1.1 200 OK
     "confirmed": 0,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
     "referral_code": "57aa0b88ab334",
-    "visitor_id": "123456789",
     "gender": "male",
     "birth": "null",
     "nickname": "MEGA",

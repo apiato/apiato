@@ -34,7 +34,6 @@
          "nickname":null,
          "gender":null,
          "birth":null,
-         "visitor_id":null,
          "social_auth_provider":null,
          "social_id":null,
          "social_avatar":{
@@ -61,7 +60,6 @@
          "nickname":null,
          "gender":null,
          "birth":null,
-         "visitor_id":null,
          "social_auth_provider":null,
          "social_id":null,
          "social_avatar":{
@@ -88,7 +86,6 @@
          "nickname":null,
          "gender":null,
          "birth":null,
-         "visitor_id":null,
          "social_auth_provider":null,
          "social_id":null,
          "social_avatar":{

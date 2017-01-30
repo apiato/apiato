@@ -34,7 +34,6 @@ class UserTransformer extends Transformer
             'nickname'             => $user->nickname,
             'gender'               => $user->gender,
             'birth'                => $user->birth,
-            'visitor_id'           => $user->visitor_id,
             'social_auth_provider' => $user->social_provider,
             'social_id'            => $user->social_id,
             'social_avatar'        => [

@@ -22,7 +22,7 @@ class CreateUserBySocialProfileTask extends Task
     private $userRepository;
 
     /**
-     * CreateUserByVisitorIdTask constructor.
+     * CreateUserBySocialProfileTask constructor.
      *
      * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */

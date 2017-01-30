@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authentication\Providers;
 
-use App\Containers\Authentication\Middlewares\VisitorsAuthentication;
 use App\Containers\Authentication\Middlewares\WebAuthentication;
 use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
 use Tymon\JWTAuth\Middleware\GetUserFromToken;
@@ -34,8 +33,6 @@ class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
         'jwt.auth'         => GetUserFromToken::class,
         'jwt.refresh'      => RefreshToken::class,
 
-        // Hello API Visitor User Authentication middleware
-        'api.auth.visitor' => VisitorsAuthentication::class,
         // Hello API User Authentication middleware for Web Pages
         'web.auth'         => WebAuthentication::class,
     ];

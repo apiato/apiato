@@ -5,7 +5,7 @@
  * @apiName            ContactUs
  * @api                {post} /contact Contact Us form
  * @apiVersion         1.0.0
- * @apiPermission      visitor
+ * @apiPermission      Authenticated User
  *
  * @apiHeader          Accept application/json (required)
  *

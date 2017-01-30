@@ -3,9 +3,7 @@
 namespace App\Containers\Email\UI\API\Controllers;
 
 use App\Containers\Email\Actions\SetUserEmailWithConfirmationAction;
-use App\Containers\Email\Actions\SetVisitorEmailAction;
 use App\Containers\Email\UI\API\Requests\SetUserEmailRequest;
-use App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest;
 use App\Port\Controller\Abstracts\PortApiController;
 
 /**
@@ -17,8 +15,8 @@ class Controller extends PortApiController
 {
 
     /**
-     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest $request
-     * @param \App\Containers\Email\Actions\SetUserEmailWithConfirmationAction   $action
+     * @param \App\Containers\Email\UI\API\Requests\SetEmailRequest            $request
+     * @param \App\Containers\Email\Actions\SetUserEmailWithConfirmationAction $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -31,18 +29,4 @@ class Controller extends PortApiController
         ]);
     }
 
-    /**
-     * @param \App\Containers\Email\UI\API\Requests\SetVisitorEmailRequest $request
-     * @param \App\Containers\Email\Actions\SetVisitorEmailAction          $action
-     *
-     * @return  \Dingo\Api\Http\Response
-     */
-    public function setVisitorEmailController(SetVisitorEmailRequest $request, SetVisitorEmailAction $action)
-    {
-        $action->run($request->header('visitor-id'), $request->email);
-
-        return $this->response->accepted(null, [
-            'message' => 'Visitor Email Saved Successfully.',
-        ]);
-    }
 }

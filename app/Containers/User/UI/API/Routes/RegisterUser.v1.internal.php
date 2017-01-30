@@ -4,10 +4,7 @@
  * @apiGroup           Users
  * @apiName            registerUser
  * @api                {post} /users/register Register User
- * @apiDescription     If the App supports Visitors Access (allows users to use)
- * the App first and register later) then you `must` send the `visitor-id` in the
- * header. If the app require registering first, with no access to Visitors, then
- * you can just pass the user info without the `visitor-id`.
+ * @apiDescription
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
@@ -30,7 +27,6 @@
       "nickname":null,
       "gender":null,
       "birth":null,
-      "visitor_id":null,
       "social_auth_provider":null,
       "social_id":null,
       "social_avatar":{

@@ -133,25 +133,6 @@ trait TestingTrait
     }
 
     /**
-     * This returned visitor is a normal user, with `visitor_id` means
-     * before he became a registered user (can login) was a visitor.
-     * So this can be used to test endpoints that are protected by visitors
-     * access.
-     *
-     * @return  App\Containers\User\Models\User|mixed
-     */
-    public function getVisitor()
-    {
-        $user = $this->getLoggedInTestingUser();
-
-        $user->visitor_id = str_random('20');
-        unset($user->token);
-        $user->save();
-
-        return $user;
-    }
-
-    /**
      * @return  App\Containers\User\Models\User|mixed
      */
     public function getLoggedInTestingAdmin()
