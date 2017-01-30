@@ -12,7 +12,7 @@ use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 class RegisterVisitorUserTest extends TestCase
 {
 
-    private $endpoint = '/user/register';
+    private $endpoint = '/users/register';
 
     public function testRegisterExistingVisitorAsNewUserWithCredentials_()
     {
