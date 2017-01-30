@@ -5,11 +5,11 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class RegisterUserThatWasVisitorTest.
+ * Class RegisterVisitorUserTest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterUserThatWasVisitorTest extends TestCase
+class RegisterVisitorUserTest extends TestCase
 {
 
     private $endpoint = '/user/register';
