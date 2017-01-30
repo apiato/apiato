@@ -2,9 +2,8 @@
 
 namespace App\Containers\Country\Actions;
 
-use App\Containers\Country\Data\Repositories\CountryRepository;
+use App\Containers\Country\Tasks\ListAllCountriesTask;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Criterias\Eloquent\OrderByNameCriteria;
 
 /**
  * Class ListAllCountriesAction.
@@ -13,19 +12,20 @@ use App\Port\Criterias\Eloquent\OrderByNameCriteria;
  */
 class ListAllCountriesAction extends Action
 {
+
     /**
-     * @var \App\Containers\Country\Data\Repositories\CountryRepository
+     * @var  \App\Containers\Country\Actions\ListAllCountriesTask
      */
-    private $countryRepository;
+    private $listAllCountriesTask;
 
     /**
      * ListAllCountriesAction constructor.
      *
-     * @param \App\Containers\Country\Data\Repositories\CountryRepository $countryRepository
+     * @param \App\Containers\Country\Actions\ListAllCountriesTask $listAllCountriesTask
      */
-    public function __construct(CountryRepository $countryRepository)
+    public function __construct(ListAllCountriesTask $listAllCountriesTask)
     {
-        $this->countryRepository = $countryRepository;
+        $this->listAllCountriesTask = $listAllCountriesTask;
     }
 
     /**
@@ -33,11 +33,7 @@ class ListAllCountriesAction extends Action
      */
     public function run()
     {
-        $this->countryRepository->pushCriteria(new OrderByNameCriteria());
-
-        $countryRequests = $this->countryRepository->all();
-
-        return $countryRequests;
+        return $this->listAllCountriesTask->run();
     }
 
 }
