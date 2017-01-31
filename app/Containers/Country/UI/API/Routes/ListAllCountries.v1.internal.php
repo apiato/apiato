@@ -44,6 +44,6 @@
 $router->get('countries', [
     'uses'       => 'Controller@listAllCountries',
     'middleware' => [
-        'app.auth',
+        'api.auth',
     ],
 ]);

@@ -381,30 +381,6 @@ trait TestingTrait
     }
 
     /**
-     * Create Application in the database with Token based on the User who made the request.
-     * And return headers array with the Application stored token in it.
-     * This is made to be used with the endpoints protected with `app.auth` middleware.
-     *
-     * NOTE: make sure you call this function before getting the `logged in testing user` in your tests.
-     * TODO: will fix this line above later.
-     *
-     * @param string $appName
-     * @param null   $userDetails
-     *
-     * @return  mixed
-     */
-    public function getApplicationTokenHeader($appName = 'Testing App', $userDetails = null)
-    {
-        $user = $this->registerAndLoginTestingDeveloper($userDetails);
-
-        $application = (App::make(CreateApplicationWithTokenAction::class))->run($appName, $user->id);
-
-        $headers['Authorization'] = 'Bearer ' . $application->token;
-
-        return $headers;
-    }
-
-    /**
      * override default URL subDomain in case you want to change it for some tests
      *
      * @param      $subDomain
