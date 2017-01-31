@@ -1,10 +1,11 @@
 {
   "require": {
     "guzzlehttp/guzzle": "^6.2",
-    "predis/predis": "^1.0",
     "dingo/api": "v1.0.0-beta6",
     "prettus/l5-repository": "^2.1",
     "barryvdh/laravel-cors": "^0.8.0",
-    "vinkla/hashids": "3.0.0"
+    "vinkla/hashids": "3.0.0",
+    "predis/predis": "^1.0",
+    "pda/pheanstalk": "~3.0"
   }
 }
