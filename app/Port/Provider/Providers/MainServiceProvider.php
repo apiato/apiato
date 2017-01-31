@@ -40,7 +40,6 @@ class MainServiceProvider extends ServiceProviderAbstract
     use ProvidersLoaderTrait;
     use FactoriesLoaderTrait;
     use ConsolesLoaderTrait;
-    use QueryDebuggerTrait;
     use FractalTrait;
 
     /**
@@ -92,8 +91,6 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->changeTheDefaultFactoriesPath();
 
         $this->loadPortInternalAliases($this->aliases);
-
-        $this->runQueryDebugger(true, true);
     }
 
 }

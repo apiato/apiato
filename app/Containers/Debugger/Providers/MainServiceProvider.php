@@ -53,6 +53,5 @@ class MainServiceProvider extends ServiceProviderAbstract
     public function register()
     {
         $this->loadContainersInternalAliases();
-
     }
 }

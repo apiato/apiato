@@ -3,6 +3,7 @@
 namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware;
+use App\Containers\Debugger\Traits\DebuggerTrait;
 use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
 
 /**
@@ -14,6 +15,7 @@ use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
  */
 class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
 {
+    use DebuggerTrait;
 
     protected $middleware = [
 
@@ -46,6 +48,6 @@ class MiddlewareServiceProvider extends PortMiddlewareServiceProvider
      */
     public function register()
     {
-
+        $this->runQueryDebugger(true, true);
     }
 }
