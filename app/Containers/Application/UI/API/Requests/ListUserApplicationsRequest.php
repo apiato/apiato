@@ -17,7 +17,7 @@ class ListUserApplicationsRequest extends Request
      */
     public function rules()
     {
-
+        return [];
     }
 
     /**

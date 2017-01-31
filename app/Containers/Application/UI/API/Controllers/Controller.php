@@ -5,6 +5,7 @@ namespace App\Containers\Application\UI\API\Controllers;
 use App\Containers\Application\Actions\CreateApplicationWithTokenAction;
 use App\Containers\Application\Actions\ListUserAppsAction;
 use App\Containers\Application\UI\API\Requests\CreateApplicationRequest;
+use App\Containers\Application\UI\API\Requests\ListUserApplicationsRequest;
 use App\Containers\Application\UI\API\Transformers\ApplicationTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 
@@ -30,8 +31,8 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\Application\UI\API\Controllers\ListUserApplicationsRequest $request
-     * @param \App\Containers\Application\Actions\ListUserAppsAction                     $action
+     * @param \App\Containers\Application\UI\API\Requests\ListUserApplicationsRequest $request
+     * @param \App\Containers\Application\Actions\ListUserAppsAction                  $action
      *
      * @return  \Dingo\Api\Http\Response
      */

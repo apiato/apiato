@@ -75,6 +75,11 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // ---------------------------------------
 
+        $p = $this->createPermissionAction->run('list-applications');
+        $roleDeveloper->givePermissionTo($p);
+
+        // ---------------------------------------
+
         // ...
 
     }
