@@ -1,7 +1,0 @@
-{
-  "name": "porto-sap/paypal",
-  "description": "Porto-SAP Container for Hello-API.",
-  "require": {
-    "anouar/paypalpayment": "~1.0"
-  }
-}

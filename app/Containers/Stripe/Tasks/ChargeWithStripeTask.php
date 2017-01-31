@@ -6,7 +6,7 @@ use App\Containers\Stripe\Exceptions\StripeAccountNotFoundException;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
-use App\Containers\Payment\Contracts\Chargeable;
+
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Config;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithStripeTask extends Task implements Chargeable
+class ChargeWithStripeTask extends Task
 {
 
     public $stripe;
@@ -75,18 +75,6 @@ class ChargeWithStripeTask extends Task implements Chargeable
             'payment_method' => 'stripe',
             'description'    => $response['id'] // the charge id
         ];
-    }
-
-    /**
-     * @param \App\Containers\User\Models\User $user
-     * @param                                  $amount
-     * @param string                           $currency
-     *
-     * @return  array|null
-     */
-    public function charge(User $user, $amount, $currency = 'USD')
-    {
-        return $this->run($user, $amount, $currency);
     }
 
 }
