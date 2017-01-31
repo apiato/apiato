@@ -6,16 +6,16 @@ use App\Containers\Application\Models\Application;
 use App\Port\Tests\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class ListAllUserApplicationsTest
+ * Class ListUserApplicationsTest
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ListAllUserApplicationsTest extends TestCase
+class ListUserApplicationsTest extends TestCase
 {
 
     private $endpoint = '/apps';
 
-    public function testListAllUserApplications_()
+    public function testListStoreApplications_()
     {
         $user = $this->registerAndLoginTestingDeveloper();
 
