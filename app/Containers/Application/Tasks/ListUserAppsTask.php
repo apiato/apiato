@@ -35,7 +35,7 @@ class ListUserAppsTask extends Task
      */
     public function run()
     {
-        $this->applicationRepository->pushCriteria(new ThisStoreCriteria());
+        $this->applicationRepository->pushCriteria(new ThisUserCriteria());
 
         $this->applicationRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
 
