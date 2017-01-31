@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Authentication
  * @apiName            UserLogin
- * @api                {post} /user/login Login a user
+ * @api                {post} /users/login Login a user
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
@@ -64,6 +64,6 @@
 }
  */
 
-$router->post('user/login', [
+$router->post('users/login', [
     'uses' => 'Controller@userLogin',
 ]);
