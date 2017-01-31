@@ -30,11 +30,12 @@ class Controller extends PortApiController
     }
 
     /**
-     * @param \App\Containers\Application\Actions\ListUserAppsAction $action
+     * @param \App\Containers\Application\UI\API\Controllers\ListUserApplicationsRequest $request
+     * @param \App\Containers\Application\Actions\ListUserAppsAction                     $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function listUserApplications(ListUserAppsAction $action)
+    public function listUserApplications(ListUserApplicationsRequest $request, ListUserAppsAction $action)
     {
         $apps = $action->run();
 
