@@ -48,6 +48,7 @@ trait DebuggerTrait
      */
     public function runRequestDebugger($request, $response)
     {
+
         if (App::environment() != 'testing' && Config::get('app.debug') === true) {
 
             Log::debug('');
@@ -62,7 +63,9 @@ trait DebuggerTrait
 
             // Request Headers:
             Log::debug('App Headers: ');
-            Log::debug('   Authorization = ' . substr($request->header('Authorization'), 0, 80) . '...');
+            $authHead = $request->header('Authorization');
+            $end = $authHead ? '...' : 'N/A';
+            Log::debug('   Authorization = ' . substr($authHead, 0, 80) . $end);
 
             // Request Data:
             if ($request->all()) {
