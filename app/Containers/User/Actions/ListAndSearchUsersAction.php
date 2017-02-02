@@ -35,9 +35,9 @@ class ListAndSearchUsersAction extends Action
      *
      * @return  mixed
      */
-    public function run($order = true)
+    public function run($order = true, $admins = false)
     {
-        $users = $this->listUsersTask->run($order);
+        $users = $this->listUsersTask->run($order, $admins);
 
         return $users;
     }

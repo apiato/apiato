@@ -2,9 +2,7 @@
 
 namespace App\Containers\User\Models;
 
-use App\Containers\Application\Models\Application;
 use App\Containers\Authentication\Traits\TokenTrait;
-use App\Containers\Paypal\Models\PaypalAccount;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Port\Model\Abstracts\Model;
 use Illuminate\Auth\Authenticatable;
@@ -82,21 +80,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function stripeAccount()
     {
         return $this->hasOne(StripeAccount::class);
-    }
-
-    public function paypalAccount()
-    {
-        return $this->hasOne(PaypalAccount::class);
-    }
-
-    public function timeTrackers()
-    {
-        return $this->hasMany(TimeTracker::class);
-    }
-
-    public function applications()
-    {
-        return $this->hasMany(Application::class);
     }
 
 }

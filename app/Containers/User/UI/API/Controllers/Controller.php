@@ -54,6 +54,19 @@ class Controller extends PortApiController
         return $this->response->paginator($users, new UserTransformer());
     }
 
+  /**
+   * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+   * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+   *
+   * @return  \Dingo\Api\Http\Response
+   */
+    public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    {
+        $users = $action->run(true, true);
+
+        return $this->response->paginator($users, new UserTransformer());
+    }
+
     /**
      * @param \Dingo\Api\Http\Request                    $request
      * @param \App\Containers\User\Actions\GetUserAction $action
