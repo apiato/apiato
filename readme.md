@@ -115,11 +115,6 @@ Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentati
 ###[Full Documentation](https://hello-api.readme.io/docs/installation)
 
 
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
-
-
-
 <a name="Contribution"></a>
 ## Contribution
 
@@ -137,13 +132,14 @@ Just do it! :)
 
 
 
-
-
 <a name="License"></a>
 ## License
 
 The MIT License [(MIT)](https://github.com/Porto-SAP/Hello-API/blob/master/LICENSE).
 
+
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 
