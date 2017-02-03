@@ -13,20 +13,9 @@
 [![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
 
 
-#### The `Hello World` of API's.
+#### A `Hello World` project for API's.
 
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](https://www.zalt.me)
-
-
-
-
-
-
-> The project is currently under heavy development. 
-So expect major updates without notice.
-Also note that there's **no stable release** till this date.
-
-
 
 
 ## Content
@@ -84,8 +73,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - API Throttling (Rate Limiting).
 - Full-text search support out of the box (search, searchFields).
 - User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
-- Ready Middlewares for WEB, API and App Authentication.
-- Ready Admin dashboard infrastructure (just drop your admin views).
+- Ready Middlewares for WEB & API Authentication.
 - Auto API Documentation generator (using the API Doc JS).
 - Support ID hashing, to hide original IDs from users (using HashID).
 - Data Caching support (with auto clearing on Create, Update and Delete).
@@ -93,16 +81,15 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Social Authentication supported out of the box (Facebook, Twitter, Google+)
 - Localization support (multiple languages via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
-- Http Requests/Response Monitor and Debugger (easy test your Apps requests).
+- Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
 - Type-Casting JSON responses with Transformers.
 - Custom Tests Helpers for faster automated testing (using PHPUnit).
 - Optional support for the JSON API specification v1.0.
-- Support Visitors Authentication by Device ID (Use first register later).
 - Automatic dates conversion to ISO format in responses.
-- Send Emails from App to User & User to App (Welcome, Email Confirmation, Contact Us,...).
 - Optional support for JSON with padding (JSONP).
+- Ready Admin dashboard infrastructure (just drop your admin views).
 - Maintainable and scalable Software Architectural Pattern (using Porto SAP).
-- Easy to support payment gateways (Ready for Stripe and Paypal).
+- Support Stripe payment gateways (easy to extend and cover other gatways).
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
 - Fully detailed documentation (on hello-api.readme.io/docs).
 - 100% customizable and Open Code.
@@ -129,15 +116,15 @@ Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentati
 
 
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
+
+
 
 <a name="Contribution"></a>
 ## Contribution
 
 Just do it! :)
 
-
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 
