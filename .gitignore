@@ -12,3 +12,9 @@ laradock*/
 .idea
 
 .phpintel
+
+/app/Containers/Application/*
+/app/Containers/Email/*
+/app/Containers/Contact/*
+/app/Containers/Stripe/*
+/app/Containers/Settings/*
