@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Data\Repositories;
 
-use App\Containers\Authorization\Models\Role;
 use App\Port\Repository\Abstracts\Repository;
 
 /**
@@ -14,19 +13,17 @@ class RoleRepository extends Repository
 {
 
     /**
+     * the container name. Must be set when the model has different name than the container
+     *
+     * @var  string
+     */
+    protected $container = 'Authorization';
+
+    /**
      * @var array
      */
     protected $fieldSearchable = [
 
     ];
 
-    /**
-     * Specify Model class name.
-     *
-     * @return string
-     */
-    public function model()
-    {
-        return Role::class;
-    }
 }

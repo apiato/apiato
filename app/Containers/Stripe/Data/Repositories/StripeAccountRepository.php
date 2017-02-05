@@ -14,6 +14,13 @@ class StripeAccountRepository extends Repository
 {
 
     /**
+     * the container name. Must be set when the model has different name than the container
+     *
+     * @var  string
+     */
+    protected $container = 'Stripe';
+
+    /**
      * Specify Model class name.
      *
      * @return string

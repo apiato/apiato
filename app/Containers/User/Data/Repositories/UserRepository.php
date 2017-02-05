@@ -23,13 +23,4 @@ class UserRepository extends Repository implements UserRepositoryInterface
         'email'         => '=',
     ];
 
-    /**
-     * Specify Model class name.
-     *
-     * @return string
-     */
-    public function model()
-    {
-        return User::class;
-    }
 }
