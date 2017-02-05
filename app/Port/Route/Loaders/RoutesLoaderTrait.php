@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Routes\Loaders;
+namespace App\Port\Route\Loaders;
 
 use App\Port\Foundation\Portals\Facade\PortButler;
 use Dingo\Api\Routing\Router as DingoApiRouter;

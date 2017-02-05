@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Port\Routes\Providers;
+namespace App\Port\Route\Providers;
 
 use App\Port\HashId\Traits\HashIdTrait;
-use App\Port\Routes\Abstracts\PortRoutesServiceProviderAbstract;
-use App\Port\Routes\Loaders\RoutesLoaderTrait;
+use App\Port\Route\Abstracts\PortRoutesServiceProviderAbstract;
+use App\Port\Route\Loaders\RoutesLoaderTrait;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 

@@ -12,7 +12,7 @@ use App\Port\Foundation\Traits\QueryDebuggerTrait;
 use App\Port\Migration\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
-use App\Port\Routes\Providers\RoutesServiceProvider;
+use App\Port\Route\Providers\RoutesServiceProvider;
 use App\Port\View\Loaders\ViewsLoaderTrait;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;

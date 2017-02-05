@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Routes\Abstracts;
+namespace App\Port\Route\Abstracts;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 
