@@ -34,7 +34,7 @@ class AssignUserToRoleTest extends TestCase
 
         $responseObject = $this->getResponseObject($response);
 
-        $this->assertEquals($data['user_id'], $responseObject->data->id);
+        $this->assertEquals($randomUser->id, $responseObject->data->id);
 
         $this->assertEquals($data['roles_names'], $responseObject->data->roles->data[0]->name);
     }
