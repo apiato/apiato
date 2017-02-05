@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Console\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
@@ -15,16 +15,18 @@ use File;
 trait ConsolesLoaderTrait
 {
 
-    protected $portConsolesDirectories = [
-
-    ];
-
+    /**
+     * runConsolesAutoLoader
+     */
     public function runConsolesAutoLoader()
     {
         $this->loadConsolesFromPort();
         $this->loadConsolesFromContainers();
     }
 
+    /**
+     * loadConsolesFromContainers
+     */
     private function loadConsolesFromContainers()
     {
         $consoleClasses = [];
@@ -42,17 +44,24 @@ trait ConsolesLoaderTrait
         };
 
         $this->loadConsoles($consoleClasses);
-
     }
 
-    private function loadConsolesFromPort()
-    {
-
-    }
-
+    /**
+     * @param array $consoleClasses
+     */
     private function loadConsoles(array $consoleClasses = [])
     {
         $this->commands($consoleClasses);
     }
 
+    /**
+     * Incomplete
+     */
+    private function loadConsolesFromPort()
+    {
+        // TODO: implement this function when needed
+
+        // defined on the MainServiceProvider
+        $this->portConsolesDirectories;
+    }
 }

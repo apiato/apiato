@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Provider\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
@@ -16,12 +16,18 @@ use Log;
 trait ProvidersLoaderTrait
 {
 
+    /**
+     * runProvidersAutoLoader
+     */
     public function runProvidersAutoLoader()
     {
         $this->loadProvidersFromPort();
         $this->loadProvidersFromContainers();
     }
 
+    /**
+     * loadProvidersFromContainers
+     */
     private function loadProvidersFromContainers()
     {
         $mainServiceProviderNameStartWith = 'Main';
@@ -50,6 +56,9 @@ trait ProvidersLoaderTrait
         }
     }
 
+    /**
+     * loadProvidersFromPort
+     */
     private function loadProvidersFromPort()
     {
         foreach ($this->serviceProviders as $providerClass) {
@@ -57,11 +66,17 @@ trait ProvidersLoaderTrait
         }
     }
 
+    /*
+     * loadProvider
+     */
     private function loadProvider($provider)
     {
         App::register($provider);
     }
 
+    /**
+     * loadContainersInternalProviders
+     */
     public function loadContainersInternalProviders()
     {
         foreach ($this->containerServiceProviders as $provider) {

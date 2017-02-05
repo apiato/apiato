@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Alias\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use Illuminate\Foundation\AliasLoader;
@@ -12,15 +12,10 @@ use Illuminate\Foundation\AliasLoader;
  */
 trait AliasesLoaderTrait
 {
-    public function loadContainersInternalAliases()
-    {
-        foreach ($this->containerAliases as $aliasKey => $aliasValue) {
-            if (class_exists($aliasValue)) {
-                $this->loadAlias($aliasKey, $aliasValue);
-            }
-        }
-    }
 
+    /**
+     * @param array $aliases
+     */
     public function loadPortInternalAliases(array $aliases = [])
     {
         foreach ($aliases as $aliasKey => $aliasValue) {
@@ -30,9 +25,24 @@ trait AliasesLoaderTrait
         }
     }
 
+    /**
+     * @param $aliasKey
+     * @param $aliasValue
+     */
     private function loadAlias($aliasKey, $aliasValue)
     {
         AliasLoader::getInstance()->alias($aliasKey, $aliasValue);
     }
 
+    /**
+     * loadContainersInternalAliases
+     */
+    public function loadContainersInternalAliases()
+    {
+        foreach ($this->containerAliases as $aliasKey => $aliasValue) {
+            if (class_exists($aliasValue)) {
+                $this->loadAlias($aliasKey, $aliasValue);
+            }
+        }
+    }
 }

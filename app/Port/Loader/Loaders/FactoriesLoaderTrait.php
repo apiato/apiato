@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Factory\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use Faker\Generator;

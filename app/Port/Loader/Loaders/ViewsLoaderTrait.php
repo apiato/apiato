@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\View\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
@@ -17,16 +17,18 @@ use Log;
 trait ViewsLoaderTrait
 {
 
-    protected $portViewsDirectories = [
-
-    ];
-
+    /**
+     * runViewsAutoLoader
+     */
     public function runViewsAutoLoader()
     {
         $this->loadViewsFromPort();
         $this->loadViewsFromContainers();
     }
 
+    /**
+     * loadViewsFromContainers
+     */
     private function loadViewsFromContainers()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
@@ -39,13 +41,22 @@ trait ViewsLoaderTrait
         }
     }
 
-    private function loadViewsFromPort()
-    {
-
-    }
-
+    /**
+     * @param $directory
+     */
     private function loadViews($directory)
     {
         View::addLocation($directory);
+    }
+
+    /**
+     * loadViewsFromPort
+     */
+    private function loadViewsFromPort()
+    {
+        // TODO: Implement this function when needed
+
+        // defined on the Main Service Provider
+        $this->portViewsDirectories;
     }
 }

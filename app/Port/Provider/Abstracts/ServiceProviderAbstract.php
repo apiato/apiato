@@ -2,8 +2,8 @@
 
 namespace App\Port\Provider\Abstracts;
 
-use App\Port\Alias\Loaders\AliasesLoaderTrait;
-use App\Port\Provider\Loaders\ProvidersLoaderTrait;
+use App\Port\Loader\Loaders\AliasesLoaderTrait;
+use App\Port\Loader\Loaders\ProvidersLoaderTrait;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**

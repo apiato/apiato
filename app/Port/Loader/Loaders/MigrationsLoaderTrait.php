@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Migration\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
@@ -15,16 +15,18 @@ use File;
 trait MigrationsLoaderTrait
 {
 
-    protected $portMigrationsDirectories = [
-        'Queue/Data/Migrations',
-    ];
-
+    /**
+     * runMigrationsAutoLoader
+     */
     public function runMigrationsAutoLoader()
     {
         $this->loadMigrationsFromContainers();
         $this->loadMigrationsFromPort();
     }
 
+    /**
+     * loadMigrationsFromContainers
+     */
     private function loadMigrationsFromContainers()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
@@ -39,14 +41,20 @@ trait MigrationsLoaderTrait
         }
     }
 
+    /**
+     * loadMigrationsFromPort
+     */
     private function loadMigrationsFromPort()
     {
+        // `$this->portMigrationsDirectories` is defined in the Main Service Provider
         foreach ($this->portMigrationsDirectories as $portMigrationsDirectory) {
             $this->loadMigrations($portMigrationsDirectory);
         }
-
     }
 
+    /**
+     * @param $directory
+     */
     private function loadMigrations($directory)
     {
         App::afterResolving('migrator', function ($migrator) use ($directory) {

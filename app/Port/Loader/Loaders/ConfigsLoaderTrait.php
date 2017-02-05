@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Config\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
@@ -15,18 +15,18 @@ use File;
 trait ConfigsLoaderTrait
 {
 
-    protected $portConfigsDirectories = [
-        'Config/Configs',
-        'Queue/Configs',
-        'HashId/Configs',
-    ];
-
+    /**
+     * runConfigsAutoLoader
+     */
     public function runConfigsAutoLoader()
     {
         $this->loadConfigsFromPort();
         $this->loadConfigsFromContainers();
     }
 
+    /**
+     * loadConfigsFromContainers
+     */
     private function loadConfigsFromContainers()
     {
         foreach (PortButler::getContainersNames() as $containerName) {
@@ -34,13 +34,20 @@ trait ConfigsLoaderTrait
         }
     }
 
+    /**
+     * loadConfigsFromPort
+     */
     private function loadConfigsFromPort()
     {
+        // $this->portConfigsDirectories is defined on the main service provider class
         foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
             $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
         }
     }
 
+    /**
+     * @param $directory
+     */
     private function loadConfigs($directory)
     {
         if (File::isDirectory($directory)) {

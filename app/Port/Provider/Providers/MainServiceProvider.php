@@ -2,18 +2,13 @@
 
 namespace App\Port\Provider\Providers;
 
-use App\Port\Config\Loaders\ConfigsLoaderTrait;
-use App\Port\Console\Loaders\ConsolesLoaderTrait;
-use App\Port\Factory\Loaders\FactoriesLoaderTrait;
 use App\Port\Foundation\Portals\PortButler;
 use App\Port\Foundation\Providers\FoundationServiceProvider;
 use App\Port\Foundation\Traits\FractalTrait;
 use App\Port\Foundation\Traits\QueryDebuggerTrait;
-use App\Port\Migration\Loaders\MigrationsLoaderTrait;
+use App\Port\Loader\AutoLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Provider\Loaders\ProvidersLoaderTrait;
 use App\Port\Route\Providers\RoutesServiceProvider;
-use App\Port\View\Loaders\ViewsLoaderTrait;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
@@ -33,14 +28,8 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class MainServiceProvider extends ServiceProviderAbstract
 {
-
-    use ConfigsLoaderTrait;
-    use MigrationsLoaderTrait;
-    use ViewsLoaderTrait;
-    use ProvidersLoaderTrait;
-    use FactoriesLoaderTrait;
-    use ConsolesLoaderTrait;
     use FractalTrait;
+    use AutoLoaderTrait;
 
     /**
      * Port Service Providers
@@ -57,7 +46,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     ];
 
     /**
-     * Port Aliases
+     * Port Aliases (mainly for third party packages)
      *
      * @var  array
      */
@@ -66,15 +55,50 @@ class MainServiceProvider extends ServiceProviderAbstract
     ];
 
     /**
+     * Port Config directories
+     *
+     * @var array
+     */
+    protected $portConfigsDirectories = [
+        'Config/Configs',
+        'Queue/Configs',
+        'HashId/Configs',
+    ];
+
+    /**
+     * Port Migration directories
+     *
+     * @var  array
+     */
+    protected $portMigrationsDirectories = [
+        'Queue/Data/Migrations',
+    ];
+
+    /**
+     * Port Console directories
+     *
+     * @var  array
+     */
+    protected $portConsolesDirectories = [
+
+    ];
+
+
+    /**
+     * Port Views directories
+     *
+     * @var  array
+     */
+    protected $portViewsDirectories = [
+
+    ];
+
+    /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->runConfigsAutoLoader();
-        $this->runProvidersAutoLoader();
-        $this->runMigrationsAutoLoader();
-        $this->runViewsAutoLoader();
-        $this->runConsolesAutoLoader();
+        $this->bootLoaders();
 
         $this->overrideDefaultFractalSerializer();
     }
@@ -90,7 +114,7 @@ class MainServiceProvider extends ServiceProviderAbstract
 
         $this->changeTheDefaultFactoriesPath();
 
-        $this->loadPortInternalAliases($this->aliases);
+        $this->registerLoaders();
     }
 
 }
