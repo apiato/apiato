@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Migrations\Loaders;
+namespace App\Port\Migration\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;

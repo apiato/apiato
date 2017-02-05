@@ -9,7 +9,7 @@ use App\Port\Foundation\Portals\PortButler;
 use App\Port\Foundation\Providers\FoundationServiceProvider;
 use App\Port\Foundation\Traits\FractalTrait;
 use App\Port\Foundation\Traits\QueryDebuggerTrait;
-use App\Port\Migrations\Loaders\MigrationsLoaderTrait;
+use App\Port\Migration\Loaders\MigrationsLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Provider\Loaders\ProvidersLoaderTrait;
 use App\Port\Routes\Providers\RoutesServiceProvider;
