@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Port\Tests\PHPUnit\Abstracts;
+namespace App\Port\Test\PHPUnit\Abstracts;
 
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelPort;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
-use App\Port\Tests\PHPUnit\Traits\TestingTrait;
+use App\Port\Test\PHPUnit\Traits\TestingTrait;
 
 /**
  * Class TestCase.

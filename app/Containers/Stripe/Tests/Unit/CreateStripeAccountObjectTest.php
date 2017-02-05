@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\Tests\Unit;
 
 use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Test\PHPUnit\Abstracts\TestCase;
 use Illuminate\Support\Facades\App;
 
 /**

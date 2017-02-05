@@ -5,7 +5,7 @@ namespace App\Containers\Order\UI\API\Tests\Functional;
 use App\Containers\Order\Models\Order;
 use App\Containers\Invoice\Models\Invoice;
 use App\Containers\User\Models\User;
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Test\PHPUnit\Abstracts\TestCase;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**

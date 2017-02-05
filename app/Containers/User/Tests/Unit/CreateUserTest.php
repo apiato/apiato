@@ -4,7 +4,7 @@ namespace App\Containers\User\Tests\Unit;
 
 use App\Containers\User\Models\User;
 use App\Containers\User\Actions\CreateUserAction;
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Test\PHPUnit\Abstracts\TestCase;
 use Illuminate\Support\Facades\App;
 
 /**

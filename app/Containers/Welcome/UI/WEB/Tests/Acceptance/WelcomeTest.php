@@ -2,7 +2,7 @@
 
 namespace App\Containers\Welcome\UI\WEB\Tests\Acceptance;
 
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Test\PHPUnit\Abstracts\TestCase;
 
 /**
  * Class WelcomeTest.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Tests\PHPUnit\Traits;
+namespace App\Port\Test\PHPUnit\Traits;
 
 use App;
 use App\Containers\Application\Actions\CreateApplicationWithTokenAction;

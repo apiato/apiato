@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\User;
-use App\Port\Tests\PHPUnit\Abstracts\TestCase;
+use App\Port\Test\PHPUnit\Abstracts\TestCase;
 
 /**
  * Class ListPermissionsTest.
