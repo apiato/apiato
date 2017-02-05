@@ -4,7 +4,7 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Port\Action\Abstracts\Action;
-use App\Port\Criterias\Eloquent\NotNullCriteria;
+use App\Port\Criteria\Eloquent\NotNullCriteria;
 
 /**
  * Class CountRegisteredUsersTask.

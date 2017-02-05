@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Port\Criterias\Eloquent;
+namespace App\Port\Criteria\Eloquent;
 
-use App\Port\Criterias\Abstracts\Criteria;
+use App\Port\Criteria\Abstracts\Criteria;
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class ThisEqualThatCriteria
+ * Class CountCriteria
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ThisEqualThatCriteria extends Criteria
+class CountCriteria extends Criteria
 {
 
     /**
@@ -19,20 +20,13 @@ class ThisEqualThatCriteria extends Criteria
     private $field;
 
     /**
-     * @var
-     */
-    private $value;
-
-    /**
-     * ThisEqualThatCriteria constructor.
+     * ThisFieldCriteria constructor.
      *
      * @param $field
-     * @param $value
      */
-    public function __construct($field, $value)
+    public function __construct($field)
     {
         $this->field = $field;
-        $this->value = $value;
     }
 
     /**
@@ -43,6 +37,6 @@ class ThisEqualThatCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->where($this->field, $this->value);
+        return DB::table($model->getModel()->getTable())->select('*', DB::raw('count('.$this->field.') as total_count'))->groupBy($this->field);
     }
 }

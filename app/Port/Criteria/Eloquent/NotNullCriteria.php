@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Port\Criterias\Eloquent;
+namespace App\Port\Criteria\Eloquent;
 
-use App\Port\Criterias\Abstracts\Criteria;
-use Illuminate\Support\Facades\DB;
+use App\Port\Criteria\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class CountCriteria
+ * Class ThisFieldCriteria
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class CountCriteria extends Criteria
+class NotNullCriteria extends Criteria
 {
 
     /**
@@ -37,6 +36,6 @@ class CountCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return DB::table($model->getModel()->getTable())->select('*', DB::raw('count('.$this->field.') as total_count'))->groupBy($this->field);
+        return $model->whereNotNull($this->field);
     }
 }

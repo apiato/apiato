@@ -4,7 +4,7 @@ namespace App\Containers\Country\Tasks;
 
 use App\Containers\Country\Data\Repositories\CountryRepository;
 use App\Port\Task\Abstracts\Task;
-use App\Port\Criterias\Eloquent\OrderByNameCriteria;
+use App\Port\Criteria\Eloquent\OrderByNameCriteria;
 
 /**
  * Class ListAllCountriesTask.

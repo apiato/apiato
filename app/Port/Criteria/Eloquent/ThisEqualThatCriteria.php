@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Port\Criterias\Eloquent;
+namespace App\Port\Criteria\Eloquent;
 
-use App\Port\Criterias\Abstracts\Criteria;
+use App\Port\Criteria\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class ThisFieldCriteria
+ * Class ThisEqualThatCriteria
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class NotNullCriteria extends Criteria
+class ThisEqualThatCriteria extends Criteria
 {
 
     /**
@@ -19,13 +19,20 @@ class NotNullCriteria extends Criteria
     private $field;
 
     /**
-     * ThisFieldCriteria constructor.
+     * @var
+     */
+    private $value;
+
+    /**
+     * ThisEqualThatCriteria constructor.
      *
      * @param $field
+     * @param $value
      */
-    public function __construct($field)
+    public function __construct($field, $value)
     {
         $this->field = $field;
+        $this->value = $value;
     }
 
     /**
@@ -36,6 +43,6 @@ class NotNullCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->whereNotNull($this->field);
+        return $model->where($this->field, $this->value);
     }
 }
