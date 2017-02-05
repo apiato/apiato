@@ -26,7 +26,7 @@ class UserTransformer extends Transformer
     public function transform(User $user)
     {
 
-        return [
+      $response = [
             'id'                   => $user->getHashedKey(),
             'name'                 => $user->name,
             'email'                => $user->email,
@@ -45,7 +45,9 @@ class UserTransformer extends Transformer
         ];
 
         if ($this->isUserAdmin()) {
+
             $response = array_merge($response, [
+                'id'         => $user->id,
                 'updated_at' => $user->updated_at,
                 'deleted_at' => $user->deleted_at,
             ]);
