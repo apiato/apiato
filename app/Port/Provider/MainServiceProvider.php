@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Provider\Providers;
+namespace App\Port\Provider;
 
 use App\Port\Foundation\Portals\PortButler;
 use App\Port\Foundation\Providers\FoundationServiceProvider;
