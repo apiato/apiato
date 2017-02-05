@@ -61,16 +61,18 @@ trait HashIdTrait
         return $id;
     }
 
-    /**
-     * Will be used by the Eloquent Models (since it's used as trait there).
-     *
-     * @return  mixed
-     */
-    public function getHashedKey()
+  /**
+   * Will be used by the Eloquent Models (since it's used as trait there).
+   *
+   * @param null $key
+   *
+   * @return  mixed
+   */
+    public function getHashedKey($key = null)
     {
         // hash the ID only if hash-id enabled in the config
         if (Config::get('hello.hash-id')) {
-            return $this->encoder($this->getKey());
+            return $this->encoder(($key) ?: $this->getKey());
         }
 
         return $this->getKey();
