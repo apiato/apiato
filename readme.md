@@ -37,9 +37,7 @@
 
 ### What is Hello API
 
-Hello API is a **Starter** providing everything to build a modern API-Centric application, with **PHP** and **Laravel 5.3**.
-
-It gives all the common functionalities of a modern API, to help building API-Centric Apps faster.
+Hello API is a **starter** providing the all common functionalities required to develop a modern API-Centric Application, to help building API's faster and smarter with **PHP** and **Laravel 5.3**.
 
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
 
