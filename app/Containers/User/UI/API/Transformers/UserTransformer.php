@@ -14,6 +14,9 @@ use App\Port\Transformer\Abstracts\Transformer;
 class UserTransformer extends Transformer
 {
 
+    /**
+     * @var  array
+     */
     protected $defaultIncludes = [
         'roles',
     ];
@@ -25,8 +28,7 @@ class UserTransformer extends Transformer
      */
     public function transform(User $user)
     {
-
-      $response = [
+        $response = [
             'object'               => 'User',
             'id'                   => $user->getHashedKey(),
             'name'                 => $user->name,
@@ -42,6 +44,7 @@ class UserTransformer extends Transformer
                 'original' => $user->social_avatar_original,
             ],
             'created_at'           => $user->created_at,
+            'updated_at'           => $user->updated_at,
             'token'                => $user->token,
         ];
 
@@ -49,7 +52,6 @@ class UserTransformer extends Transformer
 
             $response = array_merge($response, [
                 'id'         => $user->id,
-                'updated_at' => $user->updated_at,
                 'deleted_at' => $user->deleted_at,
             ]);
         }
