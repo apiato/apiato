@@ -3,9 +3,6 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Actions\GetRoleAction;
-use App\Containers\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\User\Models\User;
-use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -42,13 +39,13 @@ class AttachPermissionsToRoleTask extends Task
     {
         $role = $this->getRoleAction->run($roleName);
 
-        if(is_array($permissionNames)){
+        if (is_array($permissionNames)) {
 
-            foreach ($permissionNames as $permissionName){
+            foreach ($permissionNames as $permissionName) {
                 $role->givePermissionTo($permissionName);
             }
 
-        }else{
+        } else {
             $role->givePermissionTo($permissionNames);
         }
 

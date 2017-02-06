@@ -1,17 +1,10 @@
 .env
-
-/vendor
-/node_modules
+.phpintel
 storage/logs/laravel.log
-
+/vendor
 /public/api/
 /public/uploads/
-
-laradock*/
-
-.idea
-
-.phpintel
+/laradock*/
 
 /app/Containers/Application/*
 /app/Containers/Email/*

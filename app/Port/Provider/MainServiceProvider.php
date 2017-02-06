@@ -40,7 +40,7 @@ class MainServiceProvider extends ServiceProviderAbstract
      *
      * @var array
      */
-    private $serviceProviders = [
+    public $serviceProviders = [
         FoundationServiceProvider::class,
         DingoApiServiceProvider::class,
         CorsServiceProvider::class,

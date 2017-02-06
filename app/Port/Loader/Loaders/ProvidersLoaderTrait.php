@@ -5,9 +5,7 @@ namespace App\Port\Loader\Loaders;
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
 use App\Port\Loader\Helpers\Facade\LoaderHelper;
-use DB;
 use File;
-use Log;
 
 /**
  * Class ProvidersLoaderTrait.

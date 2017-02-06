@@ -3,7 +3,6 @@
 namespace App\Port\Test\PHPUnit\Traits;
 
 use App;
-use App\Containers\Application\Actions\CreateApplicationWithTokenAction;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AssignRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
@@ -87,7 +86,7 @@ trait TestingTrait
     {
         $file = $stubDirPath . $fileName;
 
-        return new UploadedFile($file, $fileName, $mimeType, $size, $error = null, $testMode = true);
+        return new UploadedFile($file, $fileName, $mimeType, $size, null, true); // null = null | $testMode = true
     }
 
     /**

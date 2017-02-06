@@ -2,7 +2,7 @@
 
 namespace App\Port\Middleware\Providers;
 
-use App\Port\Middleware\Loaders\MiddlewaresLoaderTrait;
+use App\Port\Loader\Loaders\MiddlewaresLoaderTrait;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServiceProvider;
 
 /**

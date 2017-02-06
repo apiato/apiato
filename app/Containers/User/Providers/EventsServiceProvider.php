@@ -5,8 +5,6 @@ namespace App\Containers\User\Providers;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
 use App\Port\Event\Providers\PortEventsServiceProvider;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
-use Illuminate\Events\Dispatcher;
 
 /**
  * Class EventsServiceProvider

@@ -4,10 +4,8 @@ namespace App\Containers\Debugger\Traits;
 
 use App;
 use DB;
-use File;
 use Illuminate\Support\Facades\Config;
 use Log;
-
 
 /**
  * Class DebuggerTrait.

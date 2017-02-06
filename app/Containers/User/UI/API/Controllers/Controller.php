@@ -7,7 +7,6 @@ use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
-use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;

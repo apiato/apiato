@@ -6,7 +6,6 @@ use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
-use Auth;
 
 /**
  * Class CreateStripeAccountObjectTask.

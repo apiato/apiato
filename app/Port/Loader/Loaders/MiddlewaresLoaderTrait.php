@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Port\Middleware\Loaders;
+namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Middleware\PortKernel;
-use DB;
-use File;
 
 /**
  * Class MiddlewaresLoaderTrait.

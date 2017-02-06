@@ -7,11 +7,11 @@ use App\Port\Task\Abstracts\Task;
 use Illuminate\Auth\AuthManager as Auth;
 
 /**
- * Class webLoginTask.
+ * Class WebLoginTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class webLoginTask extends Task
+class WebLoginTask extends Task
 {
 
     /**

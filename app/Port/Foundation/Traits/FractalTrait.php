@@ -2,12 +2,8 @@
 
 namespace App\Port\Foundation\Traits;
 
-use App;
 use App\Port\Exception\Exceptions\UnsupportedFractalSerializerException;
-use DB;
-use File;
 use Illuminate\Support\Facades\Config;
-use Log;
 
 /**
  * Class FractalTrait.

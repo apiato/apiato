@@ -4,7 +4,6 @@ namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Loader\Helpers\Facade\LoaderHelper;
-use DB;
 use File;
 
 /**

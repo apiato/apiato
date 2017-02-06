@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\Authorization\Models\Role;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -18,11 +17,6 @@ class CreateRoleTask extends Task
      * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
      */
     private $roleRepository;
-
-    /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
 
     /**
      * CreateRoleTask constructor.
@@ -45,8 +39,8 @@ class CreateRoleTask extends Task
     {
 
         return $this->roleRepository->create([
-            'name'          => $name,
-            'description'   => $description,
+            'name'         => $name,
+            'description'  => $description,
             'display_name' => $displayName,
         ]);
     }

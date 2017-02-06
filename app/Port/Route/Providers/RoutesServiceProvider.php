@@ -46,11 +46,11 @@ class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
     /**
      * Define the routes for the application.
      *
-     * @param \Illuminate\Routing\Router $webRouter
+     * @param \Illuminate\Routing\Router $webRouterParam
      */
-    public function map(LaravelRouter $webRouter)
+    public function map(LaravelRouter $webRouterParam)
     {
-        $this->webRouter = $webRouter;
+        $this->webRouter = $webRouterParam;
 
         $this->runRoutesAutoLoader();
 

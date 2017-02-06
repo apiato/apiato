@@ -2,7 +2,6 @@
 
 namespace App\Containers\Country\Data\Repositories;
 
-use App\Containers\Country\Models\Country;
 use App\Port\Repository\Abstracts\Repository;
 
 /**

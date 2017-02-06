@@ -3,7 +3,6 @@
 namespace App\Port\Loader\Loaders;
 
 use App;
-use DB;
 use File;
 
 /**

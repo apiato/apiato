@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
-use App\Containers\Authorization\Models\Permission;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -18,11 +17,6 @@ class CreatePermissionTask extends Task
      * @var  \App\Containers\Authorization\Data\Repositories\PermissionRepository
      */
     private $permissionRepository;
-
-    /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
 
     /**
      * CreatePermissionTask constructor.
@@ -45,8 +39,8 @@ class CreatePermissionTask extends Task
     {
 
         return $this->permissionRepository->create([
-            'name'          => $name,
-            'description'   => $description,
+            'name'         => $name,
+            'description'  => $description,
             'display_name' => $displayName,
         ]);
     }

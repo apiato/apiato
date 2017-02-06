@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Providers;
 
-use App\Containers\Authorization\Middlewares\LaratrustRoleForWeb;
 use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
 
 /**

@@ -2,7 +2,6 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\Authentication\Exceptions\MissingSocialIdException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Port\Task\Abstracts\Task;
 

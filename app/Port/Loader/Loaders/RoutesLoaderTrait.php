@@ -7,7 +7,6 @@ use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Route;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**

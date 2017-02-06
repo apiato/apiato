@@ -2,9 +2,7 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
-use App\Containers\User\Models\User;
 use App\Port\Request\Abstracts\Request;
-use Illuminate\Contracts\Auth\Access\Gate;
 
 /**
  * Class ListAllUsersRequest.

@@ -2,11 +2,8 @@
 
 namespace App\Port\Loader\Loaders;
 
-use App;
-use DB;
 use File;
 use Illuminate\Support\Facades\View;
-use Log;
 
 /**
  * Class ViewsLoaderTrait.

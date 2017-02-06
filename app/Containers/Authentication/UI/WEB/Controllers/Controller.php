@@ -63,7 +63,7 @@ class Controller extends PortWebController
      */
     public function logoutAdmin(WebLogoutAction $action)
     {
-        $loggedOut = $action->run();
+        $action->run();
 
         return view('login');
     }

@@ -2,7 +2,6 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\SocialAuth\Exceptions\MissingTokenException;
 use App\Containers\SocialAuth\Extra\SocialProvider;
 use Laravel\Socialite\Facades\Socialite;
 
