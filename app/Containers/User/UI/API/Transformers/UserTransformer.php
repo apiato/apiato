@@ -27,6 +27,7 @@ class UserTransformer extends Transformer
     {
 
       $response = [
+            'object'               => 'User',
             'id'                   => $user->getHashedKey(),
             'name'                 => $user->name,
             'email'                => $user->email,
