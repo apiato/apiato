@@ -14,14 +14,14 @@ class AssignRoleAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Repositories\AssignRoleTask
+     * @var  \App\Containers\Authorization\Tasks\AssignRoleTask
      */
     private $assignRoleTask;
 
     /**
-     * GetAdminRoleAction constructor.
+     * AssignRoleAction constructor.
      *
-     * @param \App\Containers\Authorization\Data\Repositories\AssignRoleTask $assignRoleTask
+     * @param \App\Containers\Authorization\Tasks\AssignRoleTask $assignRoleTask
      */
     public function __construct(AssignRoleTask $assignRoleTask)
     {

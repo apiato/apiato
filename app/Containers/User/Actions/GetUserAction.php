@@ -16,15 +16,20 @@ class GetUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\GetAuthenticatedUserTask
+     * @var  \App\Containers\User\Tasks\FindUserByIdTask
+     */
+    private $findUserByIdTask;
+
+    /**
+     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
      */
     private $getAuthenticatedUserTask;
 
     /**
-     * FindUserByAnythingAction constructor.
+     * GetUserAction constructor.
      *
-     * @param \App\Containers\User\Tasks\FindUserByIdTask         $findUserByIdTask
-     * @param \App\Containers\User\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
+     * @param \App\Containers\User\Tasks\FindUserByIdTask                   $findUserByIdTask
+     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
      */
     public function __construct(
         FindUserByIdTask $findUserByIdTask,

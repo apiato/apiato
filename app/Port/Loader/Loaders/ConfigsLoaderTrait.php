@@ -29,7 +29,7 @@ trait ConfigsLoaderTrait
      */
     public function loadConfigsFromPort($portFolderName)
     {
-        // $this->portConfigsDirectories is defined on the main service provider class
+        // `$this->portConfigsDirectories` is declared on the main service provider class
 
         $portConfigsDirectory = base_path('app/Port/') . $portFolderName . '/Configs';
 

@@ -44,7 +44,7 @@ abstract class SeederLoaderAbstract extends LaravelSeeder
 
             $containersDirectory = base_path('app/Containers/' . $containerName . $this->seedersPath);
 
-            $this->seed($containersDirectory);
+            $this->loadSeeds($containersDirectory);
         }
     }
 
@@ -58,7 +58,7 @@ abstract class SeederLoaderAbstract extends LaravelSeeder
 
             $portSeedersDirectory = base_path('app/Port/') . $portFolderName . $this->seedersPath;
 
-            $this->seed($portSeedersDirectory);
+            $this->loadSeeds($portSeedersDirectory);
         }
 
     }
@@ -66,7 +66,7 @@ abstract class SeederLoaderAbstract extends LaravelSeeder
     /**
      * @param $directory
      */
-    private function seed($directory)
+    private function loadSeeds($directory)
     {
         if (\File::isDirectory($directory)) {
 

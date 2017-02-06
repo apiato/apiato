@@ -46,7 +46,7 @@ class UserLoginTest extends TestCase
         $this->assertResponseContainKeys(['id', 'token'], $response);
     }
 
-    public function testUserLoginExistingUserUsingGetRequest()
+    public function testUserLoginExistingUserUsingGetRequest_()
     {
         $data = [
             'email'    => 'hello@mail.dev',
@@ -65,7 +65,7 @@ class UserLoginTest extends TestCase
         ], $response);
     }
 
-    public function testUserLoginNonExistingUser()
+    public function testUserLoginNonExistingUser_()
     {
         $data = [
             'email'    => 'i-do-not-exist@mail.dev',
@@ -111,7 +111,7 @@ class UserLoginTest extends TestCase
         ]);
     }
 
-    public function testUserLoginExistingUserWithoutPassword()
+    public function testUserLoginExistingUserWithoutPassword_()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',
@@ -138,7 +138,7 @@ class UserLoginTest extends TestCase
         ]);
     }
 
-    public function testUserLoginExistingUserWithoutEmailAndPassword()
+    public function testUserLoginExistingUserWithoutEmailAndPassword_()
     {
         $userDetails = [
             'email'    => 'hello@mail.dev',

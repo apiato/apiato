@@ -56,7 +56,7 @@ abstract class TestCase extends LaravelTestCase
     {
         $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
-        // override the default subDomain of the base URL when subDomain property is defined inside a test
+        // override the default subDomain of the base URL when subDomain property is declared inside a test
         if(property_exists($this, 'subDomain')){
             $this->overrideSubDomain($this->subDomain);
         }

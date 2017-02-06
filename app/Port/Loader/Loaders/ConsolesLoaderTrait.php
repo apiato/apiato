@@ -22,7 +22,7 @@ trait ConsolesLoaderTrait
     {
         $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
 
-        $this->loadConsoles($containerCommandsDirectory);
+        $this->loadTheConsoles($containerCommandsDirectory);
     }
 
     /**
@@ -34,13 +34,13 @@ trait ConsolesLoaderTrait
 
         $portFolderName = base_path('app/Port/') . $portFolderName . '/Commands/';
 
-        $this->loadConsoles($portFolderName);
+        $this->loadTheConsoles($portFolderName);
     }
 
     /**
      * @param $consoleClass
      */
-    private function loadConsoles($directory)
+    private function loadTheConsoles($directory)
     {
         if (File::isDirectory($directory)) {
 

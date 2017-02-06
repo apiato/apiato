@@ -107,7 +107,7 @@ class UpdateUserSocialProfileTask extends Task
         }
 
         // check if data is empty
-        if (!$attributes) {
+        if (!empty($attributes)) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 

@@ -13,8 +13,10 @@ use App\Port\Task\Abstracts\Task;
 class GenerateTokenFromClaimsTask extends Task
 {
 
+    public $jwtAuthAdapter;
+
     /**
-     * ApiLoginThisUserObjectTask constructor.
+     * GenerateTokenFromClaimsTask constructor.
      *
      * @param \App\Containers\Authentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
      */
@@ -27,7 +29,7 @@ class GenerateTokenFromClaimsTask extends Task
     /**
      * @param $customClaims
      *
-     * @return mixed
+     * @return  mixed
      */
     public function run($customClaims)
     {

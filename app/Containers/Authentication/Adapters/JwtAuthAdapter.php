@@ -13,10 +13,15 @@ class JwtAuthAdapter
 {
 
     /**
-     * @var \JWTAuth
+     * @var  \Tymon\JWTAuth\JWTAuth
      */
     private $jwtAuth;
 
+    /**
+     * JwtAuthAdapter constructor.
+     *
+     * @param \Tymon\JWTAuth\JWTAuth $jwtAuth
+     */
     public function __construct(JWTAuth $jwtAuth)
     {
         $this->jwtAuth = $jwtAuth;

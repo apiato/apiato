@@ -29,7 +29,7 @@ class Controller extends PortWebController
      * @param \App\Containers\Authentication\UI\WEB\Requests\LoginRequest $request
      * @param \App\Containers\Authentication\Actions\WebAdminLoginAction  $action
      *
-     * @return  $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return  $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function loginAdmin(LoginRequest $request, WebAdminLoginAction $action)
     {

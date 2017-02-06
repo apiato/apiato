@@ -13,12 +13,27 @@ use Illuminate\Foundation\AliasLoader;
 trait AliasesLoaderTrait
 {
 
+
     /**
      * @param array $aliases
      */
     public function loadPortInternalAliases()
     {
-        foreach ($this->aliases as $aliasKey => $aliasValue) {
+        // `$this->aliases` is declared on the Main Service Provider of the Port layer
+        foreach (isset($this->aliases) ? $this->aliases : [] as $aliasKey => $aliasValue) {
+            if (class_exists($aliasValue)) {
+                $this->loadAlias($aliasKey, $aliasValue);
+            }
+        }
+    }
+
+    /**
+     * loadContainersInternalAliases
+     */
+    public function loadContainersInternalAliases()
+    {
+        // `$this->aliases` is declared on each Container's Main Service Provider
+        foreach (isset($this->containerAliases) ? $this->containerAliases : [] as $aliasKey => $aliasValue) {
             if (class_exists($aliasValue)) {
                 $this->loadAlias($aliasKey, $aliasValue);
             }
@@ -32,17 +47,5 @@ trait AliasesLoaderTrait
     private function loadAlias($aliasKey, $aliasValue)
     {
         AliasLoader::getInstance()->alias($aliasKey, $aliasValue);
-    }
-
-    /**
-     * loadContainersInternalAliases
-     */
-    public function loadContainersInternalAliases()
-    {
-        foreach ($this->containerAliases as $aliasKey => $aliasValue) {
-            if (class_exists($aliasValue)) {
-                $this->loadAlias($aliasKey, $aliasValue);
-            }
-        }
     }
 }

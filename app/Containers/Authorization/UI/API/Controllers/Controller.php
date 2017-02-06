@@ -52,7 +52,7 @@ class Controller extends PortApiController
      */
     public function getPermission(GetPermissionRequest $request, GetPermissionAction $action)
     {
-        $permission = $action->run($request->name);
+        $permission = $action->run($request['name']);
 
         return $this->response->item($permission, new PermissionTransformer());
     }
@@ -78,7 +78,7 @@ class Controller extends PortApiController
      */
     public function getRole(GetRoleRequest $request, GetRoleAction $action)
     {
-        $role = $action->run($request->name);
+        $role = $action->run($request['name']);
 
         return $this->response->item($role, new RoleTransformer());
     }
@@ -89,7 +89,7 @@ class Controller extends PortApiController
      */
     public function assignUserToRole(AssignUserToRoleRequest $request, AssignRoleAction $action)
     {
-        $user = $action->run($request->user_id, $request->roles_names);
+        $user = $action->run($request['user_id'], $request['roles_names']);
 
         return $this->response->item($user, new UserTransformer());
     }
@@ -104,7 +104,7 @@ class Controller extends PortApiController
         AttachPermissionToRoleRequest $request,
         AttachPermissionsToRoleAction $action
     ) {
-        $role = $action->run($request->role_name, $request->permission_name);
+        $role = $action->run($request['role_name'], $request['permission_name']);
 
         return $this->response->item($role, new RoleTransformer());
     }
@@ -117,7 +117,7 @@ class Controller extends PortApiController
      */
     public function createRole(CreateRoleRequest $request, CreateRoleAction $action)
     {
-        $role = $action->run($request->name, $request->description, $request->display_name);
+        $role = $action->run($request['name'], $request['description'], $request['display_name']);
 
         return $this->response->item($role, new RoleTransformer());
     }
@@ -130,7 +130,7 @@ class Controller extends PortApiController
      */
     public function createPermission(CreatePermissionRequest $request, CreatePermissionAction $action)
     {
-        $permission = $action->run($request->name, $request->description, $request->display_name);
+        $permission = $action->run($request['name'], $request['description'], $request['display_name']);
 
         return $this->response->item($permission, new PermissionTransformer());
     }

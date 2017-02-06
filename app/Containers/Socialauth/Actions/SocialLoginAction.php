@@ -85,10 +85,10 @@ class SocialLoginAction extends Action
 
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
-        $tokenSecret = isset($socialUserProfile->tokenSecret) ? : null;
-        $expiresIn = isset($socialUserProfile->expiresIn) ? : null;
-        $refreshToken = isset($socialUserProfile->refreshToken) ? : null;
-        $avatar_original = isset($socialUserProfile->avatar_original) ? : null;
+        $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;
+        $expiresIn = isset($socialUserProfile->expiresIn) ? $socialUserProfile->expiresIn : null;
+        $refreshToken = isset($socialUserProfile->refreshToken) ? $socialUserProfile->refreshToken : null;
+        $avatar_original = isset($socialUserProfile->avatar_original) ? $socialUserProfile->avatar_original : null;
 
         // check if the social ID exist on any of our users, and get that user in case it was found
         $socialUser = $this->findSocialUserTask->run($provider, $socialUserProfile->id);

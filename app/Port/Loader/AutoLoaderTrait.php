@@ -36,9 +36,10 @@ trait AutoLoaderTrait
             $this->loadConfigsFromPort($portFolderName); // TODO: move this to the loop below at the top
         }
 
+        $this->loadProvidersFromPort();
+
         // > iterate over all the port folders and autoload most of the components
         foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
-            $this->loadProvidersFromPort($portFolderName);
             $this->loadMigrationsFromPort($portFolderName);
             $this->loadViewsFromPort($portFolderName);
             $this->loadConsolesFromPort($portFolderName);

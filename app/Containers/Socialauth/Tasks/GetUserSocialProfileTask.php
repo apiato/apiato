@@ -18,7 +18,7 @@ class GetUserSocialProfileTask
      * @param            $provider
      * @param array|null $requestData
      *
-     * @return  null
+     * @return  null|\App\Containers\User\Models\User
      */
     public function run($provider, array $requestData = null)
     {

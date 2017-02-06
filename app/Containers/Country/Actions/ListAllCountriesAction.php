@@ -14,14 +14,14 @@ class ListAllCountriesAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Country\Actions\ListAllCountriesTask
+     * @var  \App\Containers\Country\Tasks\ListAllCountriesTask
      */
     private $listAllCountriesTask;
 
     /**
      * ListAllCountriesAction constructor.
      *
-     * @param \App\Containers\Country\Actions\ListAllCountriesTask $listAllCountriesTask
+     * @param \App\Containers\Country\Tasks\ListAllCountriesTask $listAllCountriesTask
      */
     public function __construct(ListAllCountriesTask $listAllCountriesTask)
     {

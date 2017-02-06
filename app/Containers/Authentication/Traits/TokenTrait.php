@@ -25,6 +25,7 @@ trait TokenTrait
      */
     public function injectToken($token)
     {
+        // `$this->token` will be attached on the User where this trait is used.
         $this->token = $token;
 
         return $this;

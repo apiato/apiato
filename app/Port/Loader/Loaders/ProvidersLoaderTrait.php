@@ -65,7 +65,6 @@ trait ProvidersLoaderTrait
         }
     }
 
-
     /*
      * loadProvider
      */
@@ -73,11 +72,6 @@ trait ProvidersLoaderTrait
     {
         App::register($provider);
     }
-
-
-
-
-
 
     /**
      * loadContainersInternalProviders
@@ -88,9 +82,5 @@ trait ProvidersLoaderTrait
             $this->loadProvider($provider);
         }
     }
-
-
-
-
 
 }

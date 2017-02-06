@@ -16,12 +16,12 @@ class CreateAdminAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Actions\CreateUserByCredentialsTask
+     * @var  \App\Containers\User\Tasks\CreateUserByCredentialsTask
      */
     private $createUserByCredentialsTask;
 
     /**
-     * @var  \App\Containers\User\Actions\FireUserCreatedEventTask
+     * @var  \App\Containers\User\Tasks\FireUserCreatedEventTask
      */
     private $fireUserCreatedEventTask;
 
@@ -31,7 +31,7 @@ class CreateAdminAction extends Action
     private $assignRoleTask;
 
     /**
-     * CreateUserAction constructor.
+     * CreateAdminAction constructor.
      *
      * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask $createUserByCredentialsTask
      * @param \App\Containers\User\Tasks\FireUserCreatedEventTask    $fireUserCreatedEventTask

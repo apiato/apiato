@@ -7,18 +7,23 @@ use App\Containers\User\Models\User;
 use App\Port\Seeder\Abstracts\Seeder;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class DefaultUsersSeeder
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class DefaultUsersSeeder extends Seeder
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Seeders\GetRoleTask
+     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
      */
     private $getRoleTask;
 
     /**
      * DefaultUsersSeeder constructor.
      *
-     * @param \App\Containers\Authorization\Data\Seeders\GetRoleTask $getRoleTask
+     * @param \App\Containers\Authorization\Tasks\GetRoleTask $getRoleTask
      */
     public function __construct(GetRoleTask $getRoleTask)
     {
