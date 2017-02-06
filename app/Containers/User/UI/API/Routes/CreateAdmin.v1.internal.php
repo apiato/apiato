@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @apiGroup           Users
- * @apiName            createAdmin
+ * @apiGroup           Admins
+ * @apiName            CreateAdmin
  * @api                {post} /admins/create Create Admin
  * @apiDescription     Creating Admins form the Dashboard
  * @apiVersion         1.0.0
