@@ -3,7 +3,7 @@
 namespace App\Port\Loader\Loaders;
 
 use App;
-use App\Port\Foundation\Portals\Facade\PortButler;
+use App\Port\Loader\Helpers\Facade\LoaderHelper;
 use DB;
 use File;
 
@@ -16,52 +16,47 @@ trait ConsolesLoaderTrait
 {
 
     /**
-     * runConsolesAutoLoader
+     * @param $containerName
      */
-    public function runConsolesAutoLoader()
+    public function loadConsolesFromContainers($containerName)
     {
-        $this->loadConsolesFromPort();
-        $this->loadConsolesFromContainers();
+        $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
+
+        $this->loadConsoles($containerCommandsDirectory);
     }
 
     /**
-     * loadConsolesFromContainers
+     * @param $portFolderName
      */
-    private function loadConsolesFromContainers()
+    public function loadConsolesFromPort($portFolderName)
     {
-        $consoleClasses = [];
-        foreach (PortButler::getContainersNames() as $containerName) {
-            $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
-            if (File::isDirectory($containerCommandsDirectory)) {
-                $files = File::allFiles($containerCommandsDirectory);
-                foreach ($files as $consoleFile) {
-                    if (File::isFile($consoleFile)) {
-                        $pathName = $consoleFile->getPathname();
-                        $consoleClasses[] = PortButler::getClassFullNameFromFile($pathName);
-                    }
-                }
+        // TODO: Never Tested
+
+        $portFolderName = base_path('app/Port/') . $portFolderName . '/Commands/';
+
+        $this->loadConsoles($portFolderName);
+    }
+
+    /**
+     * @param $consoleClass
+     */
+    private function loadConsoles($directory)
+    {
+        if (File::isDirectory($directory)) {
+
+            $files = File::allFiles($directory);
+
+            foreach ($files as $consoleFile) {
+
+                $consoleClass = LoaderHelper::getClassFullNameFromFile($consoleFile->getPathname());
+
+                // when user from the Main Service Provider, which extends Laravel
+                // service provider you get access to `$this->commands`
+                $this->commands([$consoleClass]);
             }
-        };
 
-        $this->loadConsoles($consoleClasses);
+        }
     }
 
-    /**
-     * @param array $consoleClasses
-     */
-    private function loadConsoles(array $consoleClasses = [])
-    {
-        $this->commands($consoleClasses);
-    }
 
-    /**
-     * Incomplete
-     */
-    private function loadConsolesFromPort()
-    {
-        // TODO: implement this function when needed
-
-        // defined on the MainServiceProvider
-        $this->portConsolesDirectories;
-    }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Port\Loader;
 
+use App\Port\Loader\Helpers\Facade\LoaderHelper;
 use App\Port\Loader\Loaders\AliasesLoaderTrait;
 use App\Port\Loader\Loaders\ConfigsLoaderTrait;
 use App\Port\Loader\Loaders\ConsolesLoaderTrait;
-use App\Port\Loader\Loaders\FactoriesLoaderTrait;
 use App\Port\Loader\Loaders\MigrationsLoaderTrait;
 use App\Port\Loader\Loaders\ProvidersLoaderTrait;
 use App\Port\Loader\Loaders\ViewsLoaderTrait;
@@ -17,27 +17,51 @@ use App\Port\Loader\Loaders\ViewsLoaderTrait;
  */
 trait AutoLoaderTrait
 {
+
+    // using each component loader trait
     use ConfigsLoaderTrait;
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
     use ProvidersLoaderTrait;
-    use FactoriesLoaderTrait;
     use ConsolesLoaderTrait;
     use AliasesLoaderTrait;
 
+    /**
+     * * to be used from the `boot` function of the main service provider
+     */
     public function bootLoaders()
     {
-        $this->runConfigsAutoLoader();
-        $this->runProvidersAutoLoader();
-        $this->runMigrationsAutoLoader();
-        $this->runViewsAutoLoader();
-        $this->runConsolesAutoLoader();
+        // the config files should be loaded first from all the directories in their own loop
+        foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
+            $this->loadConfigsFromPort($portFolderName); // TODO: move this to the loop below at the top
+        }
+
+        // > iterate over all the port folders and autoload most of the components
+        foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
+            $this->loadProvidersFromPort($portFolderName);
+            $this->loadMigrationsFromPort($portFolderName);
+            $this->loadViewsFromPort($portFolderName);
+            $this->loadConsolesFromPort($portFolderName);
+        }
+
+        // > iterate over all the containers folders and autoload most of the components
+        foreach (LoaderHelper::getContainersNames() as $containerName) {
+            $this->loadConfigsFromContainers($containerName);
+            $this->loadProvidersFromContainers($containerName);
+            $this->loadMigrationsFromContainers($containerName);
+            $this->loadViewsFromContainers($containerName);
+            $this->loadViewsFromContainers($containerName);
+            $this->loadConsolesFromContainers($containerName);
+        }
     }
 
+    /**
+     * to be used from the `register` function of the main service provider
+     */
     public function registerLoaders()
     {
-        $this->loadPortInternalAliases($this->aliases);
+        $this->loadContainerFactories();
+        $this->loadPortInternalAliases();
     }
-
 
 }

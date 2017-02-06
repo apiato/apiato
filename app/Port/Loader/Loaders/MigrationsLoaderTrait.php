@@ -3,7 +3,6 @@
 namespace App\Port\Loader\Loaders;
 
 use App;
-use App\Port\Foundation\Portals\Facade\PortButler;
 use DB;
 use File;
 
@@ -16,40 +15,23 @@ trait MigrationsLoaderTrait
 {
 
     /**
-     * runMigrationsAutoLoader
+     * @param $containerName
      */
-    public function runMigrationsAutoLoader()
+    public function loadMigrationsFromContainers($containerName)
     {
-        $this->loadMigrationsFromContainers();
-        $this->loadMigrationsFromPort();
+        $containerMigrationDirectory = base_path('app/Containers/' . $containerName . '/Data/Migrations');
+
+        $this->loadMigrations($containerMigrationDirectory);
     }
 
     /**
-     * loadMigrationsFromContainers
+     * @param $portFolderName
      */
-    private function loadMigrationsFromContainers()
+    public function loadMigrationsFromPort($portFolderName)
     {
-        foreach (PortButler::getContainersNames() as $containerName) {
+        $portMigrationDirectory = base_path('app/Port/' . $portFolderName . '/Data/Migrations');
 
-            $containerMigrationDirectory = base_path('app/Containers/' . $containerName . '/Data/Migrations');
-
-            if (File::isDirectory($containerMigrationDirectory)) {
-
-                $this->loadMigrations($containerMigrationDirectory);
-
-            }
-        }
-    }
-
-    /**
-     * loadMigrationsFromPort
-     */
-    private function loadMigrationsFromPort()
-    {
-        // `$this->portMigrationsDirectories` is defined in the Main Service Provider
-        foreach ($this->portMigrationsDirectories as $portMigrationsDirectory) {
-            $this->loadMigrations($portMigrationsDirectory);
-        }
+        $this->loadMigrations($portMigrationDirectory);
     }
 
     /**
@@ -57,11 +39,15 @@ trait MigrationsLoaderTrait
      */
     private function loadMigrations($directory)
     {
-        App::afterResolving('migrator', function ($migrator) use ($directory) {
-            foreach ((array)$directory as $path) {
-                $migrator->path($path);
-            }
-        });
+        if (File::isDirectory($directory)) {
+
+            App::afterResolving('migrator', function ($migrator) use ($directory) {
+                foreach ((array)$directory as $path) {
+                    $migrator->path($path);
+                }
+            });
+
+        }
     }
 
 }

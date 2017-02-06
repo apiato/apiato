@@ -7,6 +7,8 @@ use App\Port\Foundation\Providers\FoundationServiceProvider;
 use App\Port\Foundation\Traits\FractalTrait;
 use App\Port\Foundation\Traits\QueryDebuggerTrait;
 use App\Port\Loader\AutoLoaderTrait;
+use App\Port\Loader\Helpers\LoaderHelper;
+use App\Port\Loader\Loaders\FactoriesLoaderTrait;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Route\Providers\RoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
@@ -28,7 +30,9 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class MainServiceProvider extends ServiceProviderAbstract
 {
+
     use FractalTrait;
+    use FactoriesLoaderTrait;
     use AutoLoaderTrait;
 
     /**
@@ -55,45 +59,6 @@ class MainServiceProvider extends ServiceProviderAbstract
     ];
 
     /**
-     * Port Config directories
-     *
-     * @var array
-     */
-    protected $portConfigsDirectories = [
-        'Config/Configs',
-        'Queue/Configs',
-        'HashId/Configs',
-    ];
-
-    /**
-     * Port Migration directories
-     *
-     * @var  array
-     */
-    protected $portMigrationsDirectories = [
-        'Queue/Data/Migrations',
-    ];
-
-    /**
-     * Port Console directories
-     *
-     * @var  array
-     */
-    protected $portConsolesDirectories = [
-
-    ];
-
-
-    /**
-     * Port Views directories
-     *
-     * @var  array
-     */
-    protected $portViewsDirectories = [
-
-    ];
-
-    /**
      * Perform post-registration booting of services.
      */
     public function boot()
@@ -108,11 +73,14 @@ class MainServiceProvider extends ServiceProviderAbstract
      */
     public function register()
     {
+        $this->app->bind('LoaderHelper', function () {
+            return $this->app->make(LoaderHelper::class);
+        });
+
+
         $this->app->bind('PortButler', function () {
             return $this->app->make(PortButler::class);
         });
-
-        $this->changeTheDefaultFactoriesPath();
 
         $this->registerLoaders();
     }

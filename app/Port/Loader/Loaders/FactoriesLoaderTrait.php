@@ -15,13 +15,12 @@ trait FactoriesLoaderTrait
 {
 
     /**
-     * By default Laravel takes (server/database/factories) as the
-     * path to the factories, this function changes the path to load
-     * the factories from the port directory.
+     * By default Laravel takes a shared factory directory to load from it all the factories.
+     * This function changes the path to load the factories from the port directory instead.
      */
-    public function changeTheDefaultFactoriesPath()
+    public function loadContainerFactories()
     {
-        $newFactoriesPath = '/app/Port/Factory/Factories';
+        $newFactoriesPath = '/app/Port/Loader/Loaders/Factories';
 
         App::singleton(Factory::class, function ($app) use ($newFactoriesPath) {
             $faker = $app->make(Generator::class);

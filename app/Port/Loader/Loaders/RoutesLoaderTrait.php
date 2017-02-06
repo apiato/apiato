@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Port\Route\Loaders;
+namespace App\Port\Loader\Loaders;
 
-use App\Port\Foundation\Portals\Facade\PortButler;
+use App\Port\Loader\Helpers\Facade\LoaderHelper;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\Config;
@@ -23,8 +23,8 @@ trait RoutesLoaderTrait
      */
     public function runRoutesAutoLoader()
     {
-        $containersPaths = PortButler::getContainersPaths();
-        $containersNamespace = PortButler::getContainersNamespace();
+        $containersPaths = LoaderHelper::getContainersPaths();
+        $containersNamespace = LoaderHelper::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
             $this->loadRoutesFromContainersForApi($containerPath, $containersNamespace);

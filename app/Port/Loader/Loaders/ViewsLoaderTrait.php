@@ -3,7 +3,6 @@
 namespace App\Port\Loader\Loaders;
 
 use App;
-use App\Port\Foundation\Portals\Facade\PortButler;
 use DB;
 use File;
 use Illuminate\Support\Facades\View;
@@ -18,27 +17,25 @@ trait ViewsLoaderTrait
 {
 
     /**
-     * runViewsAutoLoader
+     * loadViewsFromContainers
      */
-    public function runViewsAutoLoader()
+    public function loadViewsFromContainers($containerName)
     {
-        $this->loadViewsFromPort();
-        $this->loadViewsFromContainers();
+        $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
+
+        $this->loadViews($containerViewDirectory);
     }
 
     /**
-     * loadViewsFromContainers
+     * @param $portFolderName
      */
-    private function loadViewsFromContainers()
+    public function loadViewsFromPort($portFolderName)
     {
-        foreach (PortButler::getContainersNames() as $containerName) {
+        // TODO: Never Tested
 
-            $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
+        $portViewsDirectory = base_path('app/Port/') . $portFolderName . '/Views/';
 
-            if (File::isDirectory($containerViewDirectory)) {
-                $this->loadViews($containerViewDirectory);
-            }
-        }
+        $this->loadViews($portViewsDirectory);
     }
 
     /**
@@ -46,17 +43,9 @@ trait ViewsLoaderTrait
      */
     private function loadViews($directory)
     {
-        View::addLocation($directory);
+        if (File::isDirectory($directory)) {
+            View::addLocation($directory);
+        }
     }
 
-    /**
-     * loadViewsFromPort
-     */
-    private function loadViewsFromPort()
-    {
-        // TODO: Implement this function when needed
-
-        // defined on the Main Service Provider
-        $this->portViewsDirectories;
-    }
 }

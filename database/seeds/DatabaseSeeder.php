@@ -1,6 +1,6 @@
 <?php
 
-use App\Port\Seeder\Loaders\SeederLoaderAbstract;
+use App\Port\Loader\Loaders\SeederLoaderAbstract;
 
 /**
  * Class DatabaseSeeder

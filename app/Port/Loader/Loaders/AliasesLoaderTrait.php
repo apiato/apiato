@@ -16,9 +16,9 @@ trait AliasesLoaderTrait
     /**
      * @param array $aliases
      */
-    public function loadPortInternalAliases(array $aliases = [])
+    public function loadPortInternalAliases()
     {
-        foreach ($aliases as $aliasKey => $aliasValue) {
+        foreach ($this->aliases as $aliasKey => $aliasValue) {
             if (class_exists($aliasValue)) {
                 $this->loadAlias($aliasKey, $aliasValue);
             }

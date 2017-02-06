@@ -4,7 +4,7 @@ namespace App\Port\Route\Providers;
 
 use App\Port\HashId\Traits\HashIdTrait;
 use App\Port\Route\Abstracts\PortRoutesServiceProviderAbstract;
-use App\Port\Route\Loaders\RoutesLoaderTrait;
+use App\Port\Loader\Loaders\RoutesLoaderTrait;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 

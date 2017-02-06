@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Port\Seeder\Testing;
+namespace App\Port\Seeder\Data\Seeders;
 
 use App\Port\Seeder\Abstracts\Seeder;
 

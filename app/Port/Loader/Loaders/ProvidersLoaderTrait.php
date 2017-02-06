@@ -4,6 +4,7 @@ namespace App\Port\Loader\Loaders;
 
 use App;
 use App\Port\Foundation\Portals\Facade\PortButler;
+use App\Port\Loader\Helpers\Facade\LoaderHelper;
 use DB;
 use File;
 use Log;
@@ -17,54 +18,53 @@ trait ProvidersLoaderTrait
 {
 
     /**
-     * runProvidersAutoLoader
+     * @param $containerName
      */
-    public function runProvidersAutoLoader()
+    public function loadProvidersFromContainers($containerName)
     {
-        $this->loadProvidersFromPort();
-        $this->loadProvidersFromContainers();
+        $containerProvidersDirectory = base_path('app/Containers/' . $containerName . '/Providers');
+
+        $this->loadProviders($containerProvidersDirectory);
     }
 
     /**
-     * loadProvidersFromContainers
+     * loadProvidersFromPort
      */
-    private function loadProvidersFromContainers()
+    public function loadProvidersFromPort()
     {
-        $mainServiceProviderNameStartWith = 'Main';
+        foreach ($this->serviceProviders as $providerClass) {
+            $this->loadProvider($providerClass);
+        }
+    }
 
-        foreach (PortButler::getContainersNames() as $containerName) {
+    /**
+     * @param $directory
+     */
+    private function loadProviders($directory)
+    {
+        if (File::isDirectory($directory)) {
 
-            $containerProvidersDirectory = base_path('app/Containers/' . $containerName . '/Providers');
+            $files = File::allFiles($directory);
 
-            if (File::isDirectory($containerProvidersDirectory)) {
+            $mainServiceProviderNameStartWith = 'Main';
 
-                $files = \File::allFiles($containerProvidersDirectory);
+            foreach ($files as $file) {
 
-                foreach ($files as $file) {
+                if (File::isFile($file)) {
 
-                    if (\File::isFile($file)) {
+                    // Check if this is the Main Service Provider
+                    if (PortButler::stringStartsWith($file->getFilename(), $mainServiceProviderNameStartWith)) {
 
-                        // Check if this is the Main Service Provider
-                        if (PortButler::stringStartsWith($file->getFilename(), $mainServiceProviderNameStartWith)) {
-                            $serviceProviderClass = PortButler::getClassFullNameFromFile($file->getPathname());
+                        $serviceProviderClass = LoaderHelper::getClassFullNameFromFile($file->getPathname());
 
-                            $this->loadProvider($serviceProviderClass);
-                        }
+                        $this->loadProvider($serviceProviderClass);
+
                     }
                 }
             }
         }
     }
 
-    /**
-     * loadProvidersFromPort
-     */
-    private function loadProvidersFromPort()
-    {
-        foreach ($this->serviceProviders as $providerClass) {
-            $this->loadProvider($providerClass);
-        }
-    }
 
     /*
      * loadProvider
@@ -73,6 +73,11 @@ trait ProvidersLoaderTrait
     {
         App::register($provider);
     }
+
+
+
+
+
 
     /**
      * loadContainersInternalProviders
@@ -83,4 +88,9 @@ trait ProvidersLoaderTrait
             $this->loadProvider($provider);
         }
     }
+
+
+
+
+
 }

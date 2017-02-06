@@ -3,7 +3,6 @@
 namespace App\Port\Loader\Loaders;
 
 use App;
-use App\Port\Foundation\Portals\Facade\PortButler;
 use DB;
 use File;
 
@@ -16,33 +15,25 @@ trait ConfigsLoaderTrait
 {
 
     /**
-     * runConfigsAutoLoader
+     * @param $containerName
      */
-    public function runConfigsAutoLoader()
+    public function loadConfigsFromContainers($containerName)
     {
-        $this->loadConfigsFromPort();
-        $this->loadConfigsFromContainers();
+        $containerConfigsDirectory = base_path('app/Containers/' . $containerName . '/Configs');
+
+        $this->loadConfigs($containerConfigsDirectory);
     }
 
     /**
-     * loadConfigsFromContainers
+     * @param $portFolderName
      */
-    private function loadConfigsFromContainers()
-    {
-        foreach (PortButler::getContainersNames() as $containerName) {
-            $this->loadConfigs(base_path('app/Containers/' . $containerName . '/Configs'));
-        }
-    }
-
-    /**
-     * loadConfigsFromPort
-     */
-    private function loadConfigsFromPort()
+    public function loadConfigsFromPort($portFolderName)
     {
         // $this->portConfigsDirectories is defined on the main service provider class
-        foreach ($this->portConfigsDirectories as $portConfigsDirectory) {
-            $this->loadConfigs(base_path('app/Port/') . $portConfigsDirectory);
-        }
+
+        $portConfigsDirectory = base_path('app/Port/') . $portFolderName . '/Configs';
+
+        $this->loadConfigs($portConfigsDirectory);
     }
 
     /**
