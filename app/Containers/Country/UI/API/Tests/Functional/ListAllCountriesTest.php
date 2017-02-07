@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class ListAllCountriesTest extends TestCase
 {
 
-    private $endpoint = '/countries';
+    protected $endpoint = '/countries';
 
     public function testListAllCountries_()
     {

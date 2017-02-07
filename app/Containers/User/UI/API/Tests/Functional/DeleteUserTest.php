@@ -12,9 +12,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class DeleteUserTest extends TestCase
 {
 
-    private $endpoint = '/users';
+    protected $endpoint = '/users';
 
-    public $permissions = [
+    protected $permissions = [
         'delete-users'
     ];
 

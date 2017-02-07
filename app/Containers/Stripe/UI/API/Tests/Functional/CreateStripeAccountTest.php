@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class CreateStripeAccountTest extends TestCase
 {
 
-    private $endpoint = '/stripes';
+    protected $endpoint = '/stripes';
 
     public function testCreateStripeAccount_()
     {

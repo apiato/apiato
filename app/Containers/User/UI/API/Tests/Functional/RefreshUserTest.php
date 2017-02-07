@@ -12,9 +12,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class RefreshUserTest extends TestCase
 {
 
-    private $endpoint = '/users/refresh';
+    protected $endpoint = '/users/refresh';
 
-    public $permissions = [];
+    protected $permissions = [];
 
     public function testRefreshUserById_()
     {

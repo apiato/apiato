@@ -12,9 +12,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class FindPermissionByNameTest extends TestCase
 {
 
-    private $endpoint = '/find-permission';
+    protected $endpoint = '/find-permission';
 
-    public $permissions = [
+    protected $permissions = [
         'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
     ];
 

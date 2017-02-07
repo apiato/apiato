@@ -18,7 +18,7 @@ class UserLoginTest extends TestCase
 
     // overrides the default subDomain in the base URL
     protected $subDomain = 'admin';
-    private $endpoint = '/login';
+    protected $endpoint = '/login';
 
     public function testUserLogin_()
     {

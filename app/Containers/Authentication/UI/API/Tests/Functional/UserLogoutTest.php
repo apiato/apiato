@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class UserLogoutTest extends TestCase
 {
 
-    private $endpoint = '/user/logout';
+    protected $endpoint = '/user/logout';
 
     public function testUserLogout_()
     {

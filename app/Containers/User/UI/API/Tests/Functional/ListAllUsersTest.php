@@ -13,9 +13,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class ListAllUsersTest extends TestCase
 {
 
-    private $endpoint = '/users';
+    protected $endpoint = '/users';
 
-    public $permissions = [
+    protected $permissions = [
         'list-users'
     ];
 

@@ -12,9 +12,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class CreateAdminTest extends TestCase
 {
 
-    private $endpoint = '/admins/create';
+    protected $endpoint = '/admins/create';
 
-    public $permissions = [
+    protected $permissions = [
         'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
     ];
 

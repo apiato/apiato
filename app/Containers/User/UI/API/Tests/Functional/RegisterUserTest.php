@@ -12,9 +12,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    private $endpoint = '/users/register';
+    protected $endpoint = '/users/register';
 
-    public $permissions = [];
+    protected $permissions = [];
 
     public function testRegisterNewUserWithCredentials_()
     {

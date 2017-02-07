@@ -13,9 +13,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class AssignUserToRoleTest extends TestCase
 {
 
-    private $endpoint = '/roles/assign';
+    protected $endpoint = '/roles/assign';
 
-    public $permissions = [
+    protected $permissions = [
         'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
     ];
 

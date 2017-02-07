@@ -13,9 +13,9 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class ListPermissionsTest extends TestCase
 {
 
-    private $endpoint = '/permissions';
+    protected $endpoint = '/permissions';
 
-    public $permissions = [
+    protected $permissions = [
         'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
     ];
 
