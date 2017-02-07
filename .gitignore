@@ -5,9 +5,3 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 /laradock*/
-
-/app/Containers/Application/*
-/app/Containers/Email/*
-/app/Containers/Contact/*
-/app/Containers/Paypal/*
-/app/Containers/Settings/*
