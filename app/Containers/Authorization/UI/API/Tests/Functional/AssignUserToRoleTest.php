@@ -43,6 +43,28 @@ class AssignUserToRoleTest extends TestCase
         $this->assertEquals($data['roles_names'], $responseObject->data->roles->data[0]->name);
     }
 
+    public function testAssignUserToRoleWithRealId_()
+    {
+        $this->getLoggedInTestingAdmin();
+
+        $randomUser = factory(User::class)->create();
+
+        $data = [
+            'roles_names' => 'admin',
+            'user_id'     => $randomUser->id,
+        ];
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+
+        // assert response status is correct
+        $this->assertEquals($response->getStatusCode(), '400');
+
+        $this->assertResponseContainKeyValue([
+            'message' => 'Only Hashed ID\'s allowed to be passed.',
+        ], $response);
+    }
+
 
     public function testAssignUserToManyRoles_()
     {

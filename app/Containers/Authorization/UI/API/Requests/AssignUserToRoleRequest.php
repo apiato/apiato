@@ -22,23 +22,23 @@ class AssignUserToRoleRequest extends Request
     ];
 
     /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+        'user_id',
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
     {
         return [
             'roles_names' => 'required|exists:roles,name',
-            'user_id'    => 'required|exists:users,id',
+            'user_id'     => 'required|exists:users,id',
         ];
-    }
-
-    public function all()
-    {
-        $data = parent::all();
-
-        $data['user_id'] = $this->decodeThisId($data['user_id']);
-
-        return $data;
     }
 
     /**

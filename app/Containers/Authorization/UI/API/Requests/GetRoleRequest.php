@@ -21,6 +21,14 @@ class GetRoleRequest extends Request
         'permission' => 'manage-roles-permissions'
     ];
 
+    /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+
+    ];
 
     /**
      * @return  array

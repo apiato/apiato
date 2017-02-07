@@ -22,6 +22,15 @@ class UserLoginRequest extends Request
     ];
 
     /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+
+    ];
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array

@@ -22,6 +22,15 @@ class CreateAdminRequest extends Request
     ];
 
     /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
