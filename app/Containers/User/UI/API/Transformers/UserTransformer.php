@@ -51,7 +51,7 @@ class UserTransformer extends Transformer
         if ($this->isUserAdmin()) {
 
             $response = array_merge($response, [
-                'id'         => $user->id,
+                'real_id'    => $user->id,
                 'deleted_at' => $user->deleted_at,
             ]);
         }
