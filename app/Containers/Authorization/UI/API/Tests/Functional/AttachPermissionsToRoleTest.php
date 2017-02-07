@@ -17,9 +17,13 @@ class AttachPermissionsToRoleTest extends TestCase
 
     private $endpoint = '/permissions/attach';
 
+    public $permissions = [
+        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    ];
+
     public function testAttachSinglePermissionToRole_()
     {
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getLoggedInTestingAdmin();
 
         $roleA = Role::create([
             'name'         => 'role-A',

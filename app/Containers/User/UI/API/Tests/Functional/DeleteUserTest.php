@@ -14,6 +14,10 @@ class DeleteUserTest extends TestCase
 
     private $endpoint = '/users';
 
+    public $permissions = [
+        'delete-users'
+    ];
+
     public function testDeleteExistingUser_()
     {
         $user = $this->getLoggedInTestingAdmin();

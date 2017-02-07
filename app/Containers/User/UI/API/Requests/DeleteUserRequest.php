@@ -13,6 +13,15 @@ class DeleteUserRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'delete-users'
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -27,6 +36,6 @@ class DeleteUserRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasPermissionTo('delete-user');
+        return $this->validatePermission();
     }
 }

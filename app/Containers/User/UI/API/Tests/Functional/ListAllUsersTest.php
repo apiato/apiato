@@ -15,6 +15,10 @@ class ListAllUsersTest extends TestCase
 
     private $endpoint = '/users';
 
+    public $permissions = [
+        'list-users'
+    ];
+
     public function testListAllUsersByAdmin_()
     {
         $admin = $this->getLoggedInTestingAdmin();
@@ -38,6 +42,9 @@ class ListAllUsersTest extends TestCase
 
     public function testListAllUsersByNonAdmin_()
     {
+        // by default permission is set, so we need to revoke it manually
+        $this->getLoggedInTestingUser()->revokePermissionTo($this->permissions);
+
         // create some fake users
         factory(User::class, 4)->create();
 

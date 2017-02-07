@@ -13,6 +13,15 @@ class CreateAdminRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'admin-access'
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -29,6 +38,6 @@ class CreateAdminRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasRole('admin');
+        return $this->validatePermission();
     }
 }

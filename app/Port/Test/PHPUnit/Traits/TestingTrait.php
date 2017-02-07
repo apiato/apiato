@@ -192,8 +192,13 @@ trait TestingTrait
             $userDetails['name'],
             null,
             null,
-            true
+            true // < means login after creation
         );
+
+        // if permission property is defined than attach permission on the user
+        if(isset($this->permissions)){
+            $user->givePermissionTo($this->permissions);
+        }
 
         return $this->loggedInTestingUser = $user;
     }

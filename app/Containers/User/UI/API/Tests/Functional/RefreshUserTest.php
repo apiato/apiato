@@ -14,6 +14,8 @@ class RefreshUserTest extends TestCase
 
     private $endpoint = '/users/refresh';
 
+    public $permissions = [];
+
     public function testRefreshUserById_()
     {
         // get the logged in user (create one if no one is logged in)

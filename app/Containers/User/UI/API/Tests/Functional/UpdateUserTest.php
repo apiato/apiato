@@ -14,6 +14,10 @@ class UpdateUserTest extends TestCase
 
     private $endpoint = '/users';
 
+    public $permissions = [
+        'update-users',
+    ];
+
     public function testUpdateExistingUser_()
     {
         $user = $this->getLoggedInTestingUser();
@@ -41,7 +45,7 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUserWithEmptyValues()
     {
-        $this->getLoggedInTestingUser();
+        $user = $this->getLoggedInTestingUser();
 
         $data = []; // empty data
 

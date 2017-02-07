@@ -13,6 +13,15 @@ class ListAllUsersRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'list-users'
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -27,6 +36,6 @@ class ListAllUsersRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasPermissionTo('list-all-users');
+        return $this->validatePermission();
     }
 }

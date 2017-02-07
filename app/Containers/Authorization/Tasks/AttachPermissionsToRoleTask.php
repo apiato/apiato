@@ -30,8 +30,8 @@ class AttachPermissionsToRoleTask extends Task
     }
 
     /**
-     * @param $roleName
-     * @param $permissionNames
+     * @param string       $roleName
+     * @param array|string $permissionNames
      *
      * @return  mixed
      */

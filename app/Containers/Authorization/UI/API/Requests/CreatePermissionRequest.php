@@ -13,6 +13,15 @@ class CreatePermissionRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'manage-roles-permissions'
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -29,6 +38,6 @@ class CreatePermissionRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasPermissionTo('manage-roles-permissions');
+        return $this->validatePermission();
     }
 }

@@ -15,9 +15,13 @@ class ListRolesTest extends TestCase
 
     private $endpoint = '/roles';
 
+    public $permissions = [
+        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    ];
+
     public function testListAllRoles_()
     {
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getLoggedInTestingAdmin();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');

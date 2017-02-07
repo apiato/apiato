@@ -12,6 +12,16 @@ use App\Port\Request\Abstracts\Request;
 class ApiAuthenticateRequest extends Request
 {
 
+
+    /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => null
+    ];
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -31,6 +41,6 @@ class ApiAuthenticateRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return $this->validatePermission();
     }
 }

@@ -29,10 +29,10 @@ class AttachPermissionsToRoleAction extends Action
     }
 
     /**
-     * @param $role
-     * @param $permissions
+     * @param string       $role
+     * @param array|string $permissions
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  mixed
      */
     public function run($role, $permissions)
     {

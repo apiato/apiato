@@ -11,6 +11,14 @@ use App\Port\Request\Abstracts\Request;
  */
 class UpdateUserRequest extends Request
 {
+    /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'update-users'
+    ];
 
     /**
      * @return  array
@@ -29,6 +37,6 @@ class UpdateUserRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasPermissionTo('update-user');
+        return $this->validatePermission();
     }
 }

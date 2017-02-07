@@ -16,6 +16,10 @@ class ListAllAdminsTest extends TestCase
 
     private $endpoint = '/admins';
 
+    public $permissions = [
+        'list-users'
+    ];
+
     public function testListAllAdmins_()
     {
         $admin = $this->getLoggedInTestingAdmin();

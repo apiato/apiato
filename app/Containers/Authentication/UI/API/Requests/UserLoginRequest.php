@@ -13,6 +13,15 @@ class UserLoginRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => null
+    ];
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -32,6 +41,6 @@ class UserLoginRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return $this->validatePermission();
     }
 }

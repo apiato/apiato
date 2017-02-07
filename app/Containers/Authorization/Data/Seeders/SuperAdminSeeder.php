@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\Data\Seeders;
+namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
@@ -8,11 +8,11 @@ use App\Port\Seeder\Abstracts\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class DefaultUsersSeeder
+ * Class SuperAdminSeeder
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DefaultUsersSeeder extends Seeder
+class SuperAdminSeeder extends Seeder
 {
 
     /**
@@ -21,7 +21,7 @@ class DefaultUsersSeeder extends Seeder
     private $getRoleTask;
 
     /**
-     * DefaultUsersSeeder constructor.
+     * SuperAdminSeeder constructor.
      *
      * @param \App\Containers\Authorization\Tasks\GetRoleTask $getRoleTask
      */
@@ -37,11 +37,16 @@ class DefaultUsersSeeder extends Seeder
      */
     public function run()
     {
+        // Default Users ----------------------------------------------------------------
+
         $admin = new User();
         $admin->name = 'Super Admin';
         $admin->email = 'admin@admin.com';
         $admin->password = Hash::make('admin');
         $admin->save();
         $admin->assignRole($this->getRoleTask->run('admin'));
+
+        // ...
+
     }
 }

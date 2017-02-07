@@ -14,6 +14,8 @@ class RegisterUserTest extends TestCase
 
     private $endpoint = '/users/register';
 
+    public $permissions = [];
+
     public function testRegisterNewUserWithCredentials_()
     {
         $data = [

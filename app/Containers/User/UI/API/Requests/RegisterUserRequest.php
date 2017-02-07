@@ -13,6 +13,15 @@ class RegisterUserRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => ''
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -29,6 +38,6 @@ class RegisterUserRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return $this->validatePermission();
     }
 }
