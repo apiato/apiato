@@ -5,7 +5,12 @@ namespace App\Containers\Authorization\Data\Seeders;
 use App\Containers\Authorization\Actions\CreateRoleAction;
 use App\Port\Seeder\Abstracts\Seeder;
 
-class RolesSeeder extends Seeder
+/**
+ * Class AuthorizationRolesSeeder_2
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class AuthorizationRolesSeeder_2 extends Seeder
 {
 
     /**

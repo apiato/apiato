@@ -8,11 +8,11 @@ use App\Port\Seeder\Abstracts\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class SuperAdminSeeder
+ * Class AuthorizationSuperAdminsSeeder_9
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class SuperAdminSeeder extends Seeder
+class AuthorizationSuperAdminsSeeder_9 extends Seeder
 {
 
     /**

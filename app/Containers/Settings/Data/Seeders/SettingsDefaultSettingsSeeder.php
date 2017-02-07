@@ -6,11 +6,11 @@ use App\Containers\Settings\Models\Settings;
 use App\Port\Seeder\Abstracts\Seeder;
 
 /**
- * Class DefaultSystemSettingsSeeder
+ * Class SettingsDefaultSettingsSeeder
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DefaultSystemSettingsSeeder extends Seeder
+class SettingsDefaultSettingsSeeder extends Seeder
 {
 
     /**

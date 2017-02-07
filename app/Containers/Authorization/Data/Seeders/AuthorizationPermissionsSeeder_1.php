@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\User\Data\Seeders;
+namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Port\Seeder\Abstracts\Seeder;
 
 /**
- * Class PermissionsSeeder
+ * Class AuthorizationPermissionsSeeder_1
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PermissionsSeeder extends Seeder
+class AuthorizationPermissionsSeeder_1 extends Seeder
 {
 
     /**
@@ -37,13 +37,9 @@ class PermissionsSeeder extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        $this->createPermissionAction->run('create-users', 'Create a User.');
+        $this->createPermissionAction->run('admin-access', 'General Admin access Permission.');
 
-        $this->createPermissionAction->run('list-users', 'List all Users.');
-
-        $this->createPermissionAction->run('update-users', 'Update a User.');
-
-        $this->createPermissionAction->run('delete-users', 'Delete a User.');
+        $this->createPermissionAction->run('manage-roles-permissions', 'Manage Roles and Permissions.');
 
         // ...
 
