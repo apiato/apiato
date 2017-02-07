@@ -29,17 +29,17 @@ trait SeederLoaderTrait
      */
     public function runLoadingSeeders()
     {
-        $seedersClasses = new Collection();
-
-        $this->loadSeedersFromContainers($seedersClasses);
-        $this->loadSeedersFromPort($seedersClasses);
+        $this->loadSeedersFromContainers();
+        $this->loadSeedersFromPort();
     }
 
     /**
-     * @param \Illuminate\Support\Collection $seedersClasses
+     * loadSeedersFromContainers
      */
-    private function loadSeedersFromContainers(Collection $seedersClasses)
+    private function loadSeedersFromContainers()
     {
+        $seedersClasses = new Collection();
+
         foreach (LoaderHelper::getContainersNames() as $containerName) {
 
             $containersDirectories[] = base_path('app/Containers/' . $containerName . $this->seedersPath);
@@ -55,8 +55,10 @@ trait SeederLoaderTrait
     /**
      * loadSeedersFromPort
      */
-    private function loadSeedersFromPort(Collection $seedersClasses)
+    private function loadSeedersFromPort()
     {
+        $seedersClasses = new Collection();
+
         // it has to do it's own loop for now
         foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
 
