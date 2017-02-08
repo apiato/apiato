@@ -57,14 +57,13 @@ class AssignUserToRoleTest extends TestCase
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
-        // assert response status is correct
+        // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
         $this->assertEquals('400', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
             'message' => 'Only Hashed ID\'s allowed to be passed.',
         ], $response);
     }
-
 
     public function testAssignUserToManyRoles_()
     {

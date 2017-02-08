@@ -86,6 +86,8 @@ class Controller extends PortApiController
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\AssignRoleAction                $action
+     *
+     * @return  \Dingo\Api\Http\Response
      */
     public function assignUserToRole(AssignUserToRoleRequest $request, AssignRoleAction $action)
     {

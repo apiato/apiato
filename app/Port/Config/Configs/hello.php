@@ -23,7 +23,7 @@ return [
     | Turn On Off Hashed ID
     |--------------------------------------------------------------------------
     */
-    'hash-id'    => env('HASH_ID', false),
+    'hash-id'    => env('HASH_ID', true),
 
     'api' => [
 
