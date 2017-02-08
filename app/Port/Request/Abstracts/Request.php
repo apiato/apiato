@@ -95,7 +95,7 @@ abstract class Request extends LaravelFrameworkRequest
 
             if (isset($requestData[$id])) {
                 // validate the user is not trying to pass real ID
-                if (is_int($requestData[$id])) {
+                if (is_numeric($requestData[$id])) {
                     throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
                 }
 
