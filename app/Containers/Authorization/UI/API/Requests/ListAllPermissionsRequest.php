@@ -31,11 +31,12 @@ class ListAllPermissionsRequest extends Request
     ];
 
     /**
-     * URL parameters (`/stores/999/items`) that needs to apply validation rules on.
+     * Defining the URL parameters (`/stores/999/items`) allows applying
+     * validation rules on them and allows accessing them like request data.
      *
      * @var  array
      */
-    protected $applyRulesOn = [
+    protected $urlParameters = [
 
     ];
 

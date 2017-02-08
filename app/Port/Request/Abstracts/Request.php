@@ -74,7 +74,7 @@ abstract class Request extends LaravelFrameworkRequest
             $requestData = $this->decodeHashedIdsBeforeValidatingThem($requestData);
         }
 
-        if (isset($this->applyRulesOn) && !empty($this->applyRulesOn)) {
+        if (isset($this->urlParameters) && !empty($this->urlParameters)) {
             $requestData = $this->applyValidationRulesToUrlParams($requestData);
         }
 
@@ -119,7 +119,7 @@ abstract class Request extends LaravelFrameworkRequest
      */
     private function applyValidationRulesToUrlParams(Array $requestData)
     {
-        foreach ($this->applyRulesOn as $param) {
+        foreach ($this->urlParameters as $param) {
             $requestData[$param] = $this->route($param);
         }
 
