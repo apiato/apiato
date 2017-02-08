@@ -11,6 +11,7 @@ use App\Port\Request\Abstracts\Request;
  */
 class UpdateUserRequest extends Request
 {
+
     /**
      * The required Permissions to proceed with this request.
      *
@@ -26,6 +27,15 @@ class UpdateUserRequest extends Request
      * @var  array
      */
     protected $decode = [
+
+    ];
+
+    /**
+     * URL parameters (`/stores/999/items`) that needs to apply validation rules on.
+     *
+     * @var  array
+     */
+    protected $applyRulesOn = [
 
     ];
 
@@ -46,6 +56,6 @@ class UpdateUserRequest extends Request
      */
     public function authorize()
     {
-        return $this->validatePermission();
+        return $this->hasAccess();
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Authorization\UI\API\Requests;
+namespace App\Containers\Authentication\UI\API\Requests;
 
 use App\Port\Request\Abstracts\Request;
 
 /**
- * Class CreatePermissionRequest.
+ * Class UserLogoutRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreatePermissionRequest extends Request
+class UserLogoutRequest extends Request
 {
 
     /**
@@ -18,7 +18,7 @@ class CreatePermissionRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permission' => 'manage-roles-permissions'
+        'permission' => null
     ];
 
     /**
@@ -40,19 +40,21 @@ class CreatePermissionRequest extends Request
     ];
 
     /**
-     * @return  array
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
      */
     public function rules()
     {
         return [
-            'name'         => 'required|unique:permissions,name|max:100',
-            'description'  => 'max:255',
-            'display_name' => 'max:100',
+
         ];
     }
 
     /**
-     * @return  bool
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
     public function authorize()
     {

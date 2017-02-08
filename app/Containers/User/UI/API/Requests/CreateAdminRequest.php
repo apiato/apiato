@@ -31,6 +31,15 @@ class CreateAdminRequest extends Request
     ];
 
     /**
+     * URL parameters (`/stores/999/items`) that needs to apply validation rules on.
+     *
+     * @var  array
+     */
+    protected $applyRulesOn = [
+
+    ];
+
+    /**
      * @return  array
      */
     public function rules()
@@ -47,6 +56,6 @@ class CreateAdminRequest extends Request
      */
     public function authorize()
     {
-        return $this->validatePermission();
+        return $this->hasAccess();
     }
 }

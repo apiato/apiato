@@ -13,6 +13,33 @@ class LoginRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => null
+    ];
+
+    /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+
+    ];
+
+    /**
+     * URL parameters (`/stores/999/items`) that needs to apply validation rules on.
+     *
+     * @var  array
+     */
+    protected $applyRulesOn = [
+
+    ];
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -32,6 +59,6 @@ class LoginRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return $this->hasAccess();
     }
 }

@@ -13,6 +13,33 @@ class ViewDashboardRequest extends Request
 {
 
     /**
+     * The required Permissions to proceed with this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'admin-access'
+    ];
+
+    /**
+     * Id's that needs decoding before applying the validation rules.
+     *
+     * @var  array
+     */
+    protected $decode = [
+
+    ];
+
+    /**
+     * URL parameters (`/stores/999/items`) that needs to apply validation rules on.
+     *
+     * @var  array
+     */
+    protected $applyRulesOn = [
+
+    ];
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -29,6 +56,6 @@ class ViewDashboardRequest extends Request
      */
     public function authorize()
     {
-        return $this->user()->hasRole('admin');
+        return $this->hasAccess();
     }
 }
