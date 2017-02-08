@@ -33,7 +33,7 @@ class CreateAdminTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],

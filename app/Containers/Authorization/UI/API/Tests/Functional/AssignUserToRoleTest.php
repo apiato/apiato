@@ -34,7 +34,7 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         $responseObject = $this->getResponseObject($response);
 
@@ -58,7 +58,7 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '400');
+        $this->assertEquals('400', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
             'message' => 'Only Hashed ID\'s allowed to be passed.',
@@ -81,7 +81,7 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         $responseObject = $this->getResponseObject($response);
 

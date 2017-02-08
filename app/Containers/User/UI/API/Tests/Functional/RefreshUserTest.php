@@ -29,7 +29,7 @@ class RefreshUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
     }
 
     public function testRefreshUserByToken_()
@@ -38,6 +38,6 @@ class RefreshUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', [], true);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
     }
 }

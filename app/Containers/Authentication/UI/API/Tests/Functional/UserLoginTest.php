@@ -34,7 +34,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         // assert the response contain the expected data
         $this->assertResponseContainKeyValue([
@@ -57,7 +57,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'get', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '405');
+        $this->assertEquals('405', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
@@ -76,7 +76,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '401');
+        $this->assertEquals('401', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
@@ -103,7 +103,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert message is correct
         $this->assertValidationErrorContain($response, [
@@ -130,7 +130,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert message is correct
         $this->assertValidationErrorContain($response, [
@@ -155,7 +155,7 @@ class UserLoginTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert message is correct
         $this->assertValidationErrorContain($response, [

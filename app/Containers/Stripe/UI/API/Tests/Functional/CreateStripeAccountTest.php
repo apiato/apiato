@@ -36,7 +36,7 @@ class CreateStripeAccountTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, true);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '202');
+        $this->assertEquals('202', $response->getStatusCode());
 
         // convert JSON response string to Object
         $responseObject = $this->getResponseObject($response);

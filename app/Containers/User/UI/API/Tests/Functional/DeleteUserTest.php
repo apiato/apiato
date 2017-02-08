@@ -26,7 +26,7 @@ class DeleteUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'delete');
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '202');
+        $this->assertEquals('202', $response->getStatusCode());
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([

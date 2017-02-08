@@ -28,7 +28,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
@@ -54,7 +54,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'get', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '405');
+        $this->assertEquals('405', $response->getStatusCode());
 
         // assert response contain the correct message
         $this->assertResponseContainKeyValue([
@@ -83,7 +83,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
     }
 
     public function testRegisterNewUserWithoutEmail()
@@ -97,7 +97,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
@@ -116,7 +116,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
@@ -134,7 +134,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert response contain the correct message
         $this->assertValidationErrorContain($response, [
@@ -154,7 +154,7 @@ class RegisterUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', $data, false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '422');
+        $this->assertEquals('422', $response->getStatusCode());
 
         // assert response contain the correct message
         $this->assertValidationErrorContain($response, [

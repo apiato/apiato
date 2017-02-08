@@ -20,7 +20,7 @@ class UserLogoutTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post');
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '202');
+        $this->assertEquals('202', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
@@ -34,7 +34,7 @@ class UserLogoutTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'get');
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '405');
+        $this->assertEquals('405', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
@@ -48,7 +48,7 @@ class UserLogoutTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'post', [], false);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '401');
+        $this->assertEquals('401', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([

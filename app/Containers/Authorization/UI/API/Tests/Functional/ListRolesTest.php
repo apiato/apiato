@@ -27,7 +27,7 @@ class ListRolesTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'get');
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to Object
         $responseObject = $this->getResponseObject($response);

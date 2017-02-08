@@ -31,7 +31,7 @@ class UpdateUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'put', $data);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
@@ -53,7 +53,7 @@ class UpdateUserTest extends TestCase
         $response = $this->apiCall($this->endpoint, 'put', $data);
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '417');
+        $this->assertEquals('417', $response->getStatusCode());
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
