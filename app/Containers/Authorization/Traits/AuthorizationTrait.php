@@ -36,7 +36,6 @@ trait AuthorizationTrait
         return $this->hasRole('client');
     }
 
-
     /**
      * This function will be called from the Requests (authorize) to check if a user
      * has permission to perform an action.
@@ -47,30 +46,57 @@ trait AuthorizationTrait
      */
     public function hasAccess(User $user = null)
     {
-        if(!$user){
-            $user = $this->user();
+        // if not in parameters, take from the request object {$this}
+        $user = $user ? : $this->user();
+
+        $hasAccess = array_merge(
+            $this->hasAnyPermissionAccess($user),
+            $this->hasAnyRoleAccess($user)
+        );
+
+        // allow access if user has access to any of the defined roles or permissions.
+        return empty($hasAccess) ? true : in_array(true, $hasAccess);
+    }
+
+    /**
+     * @param $user
+     *
+     * @return  array
+     */
+    private function hasAnyPermissionAccess($user)
+    {
+        if (!array_key_exists('permissions', $this->access) || !$this->access['permissions']) {
+            return [];
         }
 
-        // $this->access is optionally set on the Request
+        $permissions = explode('|', $this->access['permissions']);
 
-        // allow access when the access is not defined
-        // allow access when nothing no roles or permissions are declared
-        if (!isset($this->access) || !isset($this->access['permission'])) {
-            return true;
-        }
-
-        // allow access if has permission set but is empty or null
-        if (!$this->access['permission']) {
-            return true;
-        }
-
-        $permissions = explode('|', $this->access['permission']);
-
-        $hasAccess = array_map(function ($permission) use ($user){
+        $hasAccess = array_map(function ($permission) use ($user) {
+            // Note: internal return
             return $user->hasPermissionTo($permission);
         }, $permissions);
 
-        // allow access if user has access to any of the defined permissions.
-        return in_array(true, $hasAccess);
+        return $hasAccess;
+    }
+
+    /**
+     * @param $user
+     *
+     * @return  array
+     */
+    private function hasAnyRoleAccess($user)
+    {
+        if (!array_key_exists('roles', $this->access) || !$this->access['roles']) {
+            return [];
+        }
+
+        $roles = explode('|', $this->access['roles']);
+
+        $hasAccess = array_map(function ($role) use ($user) {
+            // Note: internal return
+            return $user->hasRole($role);
+        }, $roles);
+
+        return $hasAccess;
     }
 }

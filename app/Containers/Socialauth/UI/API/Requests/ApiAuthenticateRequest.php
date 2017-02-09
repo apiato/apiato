@@ -14,12 +14,12 @@ class ApiAuthenticateRequest extends Request
 
 
     /**
-     * The required Permissions to proceed with this request.
+     * Define which Roles and/or Permissions has access to this request..
      *
      * @var  array
      */
     protected $access = [
-        'permission' => null
+        'permissions' => null
     ];
 
     /**
@@ -50,6 +50,6 @@ class ApiAuthenticateRequest extends Request
      */
     public function authorize()
     {
-        return $this->validatePermission();
+        return $this->hasAccess();
     }
 }
