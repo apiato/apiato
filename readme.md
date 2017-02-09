@@ -65,18 +65,16 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 >The Hello API comes with great features:
 
-- Token Based Authentication (with JWT "JSON Web Tokens").
-- Authorization system (ACL), with Default Super Admin seeding (Roles & Permissions).
-- Query Parameters support out of the box (orderBy, sortedBy, filter, include).
+- JSON Web Tokens (JWT) based Authentication, with pre-configured middleware's.
+- Role-Based Access Control (RBAC), seeded with a Super Admin Role and  Permissions.
+- Query Parameters support (orderBy, sortedBy, filter, include) with full-text search (search, searchFields).
+- User basic Endpoints and more (Login, Logout, Register, List, Update, Delete, Search).
 - API Throttling (Rate Limiting).
-- Full-text search support out of the box (search, searchFields).
-- User Endpoints (Login, Logout, Register, List, Update, Delete, Search).
-- Ready Middlewares for WEB & API Authentication.
-- Auto API Documentation generator (using the API Doc JS).
-- Support ID hashing, to hide original IDs from users (using HashID).
-- Data Caching support (with auto clearing on Create, Update and Delete).
-- Supports CORS "Cross-Origin Resource Sharing".
-- Social Authentication supported out of the box (Facebook, Twitter, Google+)
+- Easy API Documentations generator from artisan commands (using the ApiDocJS tool).
+- Auto encoding/decoding of real ID's, to prevent exposing real ID's to the outer world.
+- Data Caching support out of the box (with auto clearing on Create, Update and Delete).
+- Supports for CORS "Cross-Origin Resource Sharing", allowing access from different domians.
+- Social Authentication supported out of the box (Facebook, Twitter, Google+).
 - Localization support (multiple languages via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
 - Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
@@ -85,6 +83,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
 - Optional support for JSON with padding (JSONP).
+- WEB and API Authentication Middlewares.
 - Ready Admin dashboard infrastructure (just drop your admin views).
 - Maintainable and scalable Software Architectural Pattern (using Porto SAP).
 - Support Stripe payment gateways (easy to extend and cover other gatways).
