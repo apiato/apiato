@@ -51,7 +51,7 @@ class GenerateApiDocumentationsCommand extends ConsoleCommand
             PublicApi::$type,
         ];
 
-        echo "Generating API Documentations " . implode('& ', $types) . ".\n";
+        echo "Generating API Documentations " . implode(' & ', $types) . ".\n";
 
         foreach ($types as $type) {
             $documentationUrls[] = "> {your-domain}/{$action->run($type)}";
