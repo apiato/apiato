@@ -1,0 +1,22 @@
+{
+  "name": "Hello API",
+  "description": "Hello API (Public API) Documentation",
+  "title": "Welcome to Hello API",
+  "version": "1.0.0",
+  "url" : "http://api.hello.dev",
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  },
+  "header": {
+    "title": "API Overview",
+    "filename": "app/Containers/Documentation/ApiDocJs/public/header.md"
+  },
+  "footer": {
+    "title": "Footer",
+    "filename": "app/Containers/Documentation/ApiDocJs/public/header.md"
+  },
+  "order": [
+
+  ]
+}

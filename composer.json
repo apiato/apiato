@@ -48,7 +48,8 @@
   },
   "scripts": {
     "post-root-package-install": [
-      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "php artisan apidoc:generate"
     ],
     "post-create-project-cmd": [
       "php artisan key:generate"
