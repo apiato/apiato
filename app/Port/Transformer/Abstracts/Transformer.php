@@ -2,7 +2,6 @@
 
 namespace App\Port\Transformer\Abstracts;
 
-use App\Containers\Authorization\Traits\UserAuthorizationTrait;
 use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
 
 /**
@@ -12,5 +11,5 @@ use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
  */
 abstract class Transformer extends FractalTransformerAbstract
 {
-    use UserAuthorizationTrait; // TODO: this depend on the existence of the Authorization Container.
+    
 }

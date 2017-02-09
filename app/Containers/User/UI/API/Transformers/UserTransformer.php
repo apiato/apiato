@@ -48,7 +48,7 @@ class UserTransformer extends Transformer
             'token'                => $user->token,
         ];
 
-        if ($this->isUserAdmin()) {
+        if ($user->hasAdminRole()) {
 
             $response = array_merge($response, [
                 'real_id'    => $user->id,

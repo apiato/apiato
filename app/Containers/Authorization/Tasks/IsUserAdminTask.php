@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
-use App\Containers\Authorization\Traits\UserAuthorizationTrait;
 use App\Containers\User\Models\User;
 use App\Port\Task\Abstracts\Task;
 
@@ -14,8 +13,6 @@ use App\Port\Task\Abstracts\Task;
  */
 class IsUserAdminTask extends Task
 {
-    use UserAuthorizationTrait;
-
     /**
      * @param \App\Containers\User\Models\User|null $user
      *
@@ -24,9 +21,7 @@ class IsUserAdminTask extends Task
     public function run(User $user = null)
     {
         // check if is Admin
-        $isAdmin = $this->isUserAdmin($user);
-
-        if (!$isAdmin) {
+        if (!$user->hasAdminRole()) {
             throw new UserNotAdminException();
         }
 

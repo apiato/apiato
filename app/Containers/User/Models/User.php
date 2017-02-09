@@ -3,6 +3,7 @@
 namespace App\Containers\User\Models;
 
 use App\Containers\Authentication\Traits\TokenTrait;
+use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Port\Model\Abstracts\Model;
 use Illuminate\Auth\Authenticatable;
@@ -21,7 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes, TokenTrait, HasRoles;
+    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait;
 
     /**
      * The database table used by the model.
