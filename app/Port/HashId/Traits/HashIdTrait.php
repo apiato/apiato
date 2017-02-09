@@ -78,6 +78,33 @@ trait HashIdTrait
         return $this->getKey();
     }
 
+
+    /**
+     * without decoding the encoded ID's you won't be able to use
+     * validation features like `exists:table,id`
+     *
+     * @param array $requestData
+     *
+     * @return  array
+     */
+    private function decodeHashedIdsBeforeValidatingThem(Array $requestData)
+    {
+        foreach ($this->decode as $id) {
+
+            if (isset($requestData[$id])) {
+                // validate the user is not trying to pass real ID
+                if (is_numeric($requestData[$id])) {
+                    throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
+                }
+
+                // perform the decoding
+                $requestData[$id] = $this->decodeThisId($requestData[$id]);
+            } // do nothing if the input is incorrect, because what if it's not required!
+        }
+
+        return $requestData;
+    }
+
     /**
      * @param $id
      *
