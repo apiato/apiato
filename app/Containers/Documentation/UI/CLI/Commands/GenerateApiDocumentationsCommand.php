@@ -47,16 +47,16 @@ class GenerateApiDocumentationsCommand extends ConsoleCommand
         // TODO: add optional argument array, allowing user to specify a type or more otherwise take all
 
         $types = [
-            PrivateApi::TYPE,
-            PublicApi::TYPE,
+            PrivateApi::$type,
+            PublicApi::$type,
         ];
 
         echo "Generating API Documentations " . implode('& ', $types) . ".\n";
 
         foreach ($types as $type) {
-            $documentationUrls[] = "[ {your-domain}/{$action->run($type)} ]";
+            $documentationUrls[] = "> {your-domain}/{$action->run($type)}";
         }
 
-        echo "Done! You can access your API Docs at: " . implode(' & ', $documentationUrls) . ".\n";
+        echo "Done! You can access your API Docs at: \n" . implode("\n", $documentationUrls) . "\n";
     }
 }

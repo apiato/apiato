@@ -9,6 +9,7 @@ namespace App\Containers\Documentation\Contracts;
  */
 interface ApiTypeInterface
 {
+
     public function getDocumentationPath();
 
     public function getJsonFilePath();

@@ -4,6 +4,7 @@ namespace App\Containers\Documentation\Tasks;
 
 use App\Containers\Documentation\Contracts\ApiTypeInterface;
 use App\Port\Task\Abstracts\Task;
+use Illuminate\Config\Repository as Config;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -16,6 +17,21 @@ class GenerateApiDocJsDocsTask extends Task
 {
 
     /**
+     * @var  \Illuminate\Config\Repository
+     */
+    private $config;
+
+    /**
+     * GenerateApiDocJsDocsTask constructor.
+     *
+     * @param \Illuminate\Config\Repository $config
+     */
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
+
+    /**
      * @param \App\Containers\Documentation\Contracts\ApiTypeInterface $type
      *
      * @return  mixed
@@ -23,7 +39,7 @@ class GenerateApiDocJsDocsTask extends Task
     public function run(ApiTypeInterface $type)
     {
         // the actual command that needs to be executed
-        $command = "apidoc -c {$type->getJsonFilePath()} -f {$type->getType()}.php -i app -o {$type->getDocumentationPath()}";
+        $command = "{$this->config->get('apidoc.executable')} -c {$type->getJsonFilePath()} -f {$type->getType()}.php -i app -o {$type->getDocumentationPath()}";
 
         // execute the command
         ($process = new Process($command))->run();

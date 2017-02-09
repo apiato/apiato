@@ -2,6 +2,7 @@
 
 namespace App\Containers\Documentation\Objects;
 
+use App\Containers\Documentation\Abstracts\ApiTypeAbstract;
 use App\Containers\Documentation\Contracts\ApiTypeInterface;
 
 /**
@@ -9,48 +10,9 @@ use App\Containers\Documentation\Contracts\ApiTypeInterface;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PrivateApi implements ApiTypeInterface
+class PrivateApi extends ApiTypeAbstract implements ApiTypeInterface
 {
 
-    CONST TYPE = 'private';
-
-    /**
-     * @var  string
-     */
-    protected $url = 'api/private/documentation';
-
-    /**
-     * Where to generate the new documentation.
-     *
-     * @return  string
-     */
-    public function getDocumentationPath()
-    {
-        return 'public/' . $this->url;
-    }
-
-    /**
-     * @return  string
-     */
-    public function getJsonFilePath()
-    {
-        return "app/Containers/Documentation/ApiDocJs/{$this->getType()}";
-    }
-
-    /**
-     * @return  string
-     */
-    public function getType()
-    {
-        return self::TYPE;
-    }
-
-    /**
-     * @return  string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
+    public static $type = 'private';
 
 }
