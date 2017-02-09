@@ -7,8 +7,7 @@ return [
     | Executable
     |--------------------------------------------------------------------------
     |
-    | if you get `apidoc not found` try pointing to your executable
-    | Example: replace `apidoc` with `$(npm bin)/apidoc` if using NPM.
+    | Specify how you run or access the `apidoc` tool on your machine.
     |
     */
 
