@@ -48,7 +48,7 @@ class UserTransformer extends Transformer
             'token'                => $user->token,
         ];
 
-        $response = $this->ifAdmins([
+        $response = $this->ifAdmin([
             'real_id'    => $user->id,
             'deleted_at' => $user->deleted_at,
         ], $response);
