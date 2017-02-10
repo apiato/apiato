@@ -44,9 +44,7 @@ class ListAllUsersTest extends TestCase
     public function testListAllUsersByNonAdmin_()
     {
         // by default permission is set, so we need to revoke it manually
-        $user = $this->getTestingUser();
-        $user->revokePermissionTo($this->access['permissions']);
-        $user->removeRole($this->access['roles']);
+        $this->getTestingUserWithoutPermissions();
 
         // create some fake users
         factory(User::class, 4)->create();

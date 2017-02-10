@@ -119,6 +119,18 @@ trait TestingTrait
     }
 
     /**
+     * @return  \App\Containers\User\Models\User|mixed
+     */
+    public function getTestingUserWithoutPermissions()
+    {
+        if (!$user = $this->loggedInTestingUser) {
+            $user = $this->getTestingUser(['permissions' => null, 'roles' => null]);
+        }
+
+        return $user;
+    }
+
+    /**
      * @param null $permissions
      *
      * @return  \App\Containers\User\Models\User|mixed
