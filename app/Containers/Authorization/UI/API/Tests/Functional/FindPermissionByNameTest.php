@@ -14,15 +14,16 @@ class FindPermissionByNameTest extends TestCase
 
     protected $endpoint = '/find-permission';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testGetPermission_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
-        $data = ['name' => 'manage-roles-permissions'];
+        $data = ['name' => 'delete-users'];
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get', $data, true);

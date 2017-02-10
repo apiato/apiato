@@ -3,7 +3,6 @@
 namespace App\Port\Test\PHPUnit\Traits;
 
 use App;
-use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tasks\AssignRoleTask;
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Models\User;
@@ -116,45 +115,32 @@ trait TestingTrait
     }
 
     /**
-     * get teh current logged in user.
+     * get teh current logged in user OR create new one if no one exist
      *
-     * @return App\Containers\User\Models\User
+     * @param null $access
+     *
+     * @return  \App\Containers\User\Models\User|mixed
      */
-    public function getLoggedInTestingUser()
+    public function getTestingUser($access = null)
     {
-        $user = $this->loggedInTestingUser;
-
-        if (!$user) {
-            $user = $this->registerAndLoginTestingUser();
+        if (!$user = $this->loggedInTestingUser) {
+            $user = $this->createTestingUser($access);
         }
 
         return $user;
     }
 
     /**
-     * @return  App\Containers\User\Models\User|mixed
-     */
-    public function getLoggedInTestingAdmin()
-    {
-        $user = $this->getLoggedInTestingUser();
-
-        $user = $this->makeAdmin($user);
-
-        return $user;
-    }
-
-    /**
-     * @param $user
+     * @param null $permissions
      *
-     * @return  App\Containers\User\Models\User
+     * @return  \App\Containers\User\Models\User|mixed
      */
-    public function makeAdmin(User $user)
+    public function getTestingAdmin($permissions = null)
     {
-        $adminRole = Role::where('name', 'admin')->first();
-
-        $user->assignRole($adminRole);
-
-        return $user;
+        return $this->getTestingUser([
+            'roles'        => 'admin',
+            '$permissions' => $permissions,
+        ]);
     }
 
     /**
@@ -164,43 +150,52 @@ trait TestingTrait
      */
     public function getLoggedInTestingUserToken()
     {
-        return $this->getLoggedInTestingUser()->token;
+        return $this->getTestingUser()->token;
     }
 
     /**
+     * @param null $access
      * @param null $userDetails
      *
      * @return  mixed
      */
-    public function registerAndLoginTestingUser($userDetails = null)
+    public function createTestingUser($access = null, $userDetails = null)
     {
         // if no user detail provided, use the default details.
-        if (!$userDetails) {
-            $userDetails = [
-                'name'     => 'Mahmoud Zalt',
-                'email'    => 'testing@hello.dev',
-                'password' => 'secret.Pass7',
-            ];
-        }
-
-        $createUserAction = App::make(CreateUserAction::class);
+        $userDetails = $userDetails ? : [
+            'name'     => 'Mahmoud Zalt',
+            'email'    => 'testing@hello.dev',
+            'password' => 'secret.Pass7',
+        ];
 
         // create new user and login (true)
-        $user = $createUserAction->run(
-            $userDetails['email'],
-            $userDetails['password'],
-            $userDetails['name'],
-            null,
-            null,
-            true // < means login after creation
+        $user = App::make(CreateUserAction::class)->run($userDetails['email'], $userDetails['password'],
+            $userDetails['name'], null, null, true
         );
 
-        // if permission property is defined than attach permission on the user
-        if(isset($this->permissions)){
-            $user->givePermissionTo($this->permissions);
-        }
+        $user = $this->setupTestingUserAccess($user, $access ? : (isset($this->access) ? $this->access : null));
 
         return $this->loggedInTestingUser = $user;
+    }
+
+    /**
+     * @param $user
+     * @param $access
+     *
+     * @return  mixed
+     */
+    private function setupTestingUserAccess($user, $access)
+    {
+        if (isset($access['permissions']) && !empty($access['permissions'])) {
+            $user->givePermissionTo($access['permissions']);
+        }
+        if (isset($access['roles']) && !empty($access['roles'])) {
+            if (!$user->hasRole($access['roles'])) {
+                $user->assignRole($access['roles']);
+            }
+        }
+
+        return $user;
     }
 
     /**
@@ -210,7 +205,7 @@ trait TestingTrait
      */
     public function registerAndLoginTestingAdmin($userDetails = null)
     {
-        $user = $this->registerAndLoginTestingUser($userDetails);
+        $user = $this->createTestingUser($userDetails);
 
         $user = $this->makeAdmin($user);
 
@@ -222,11 +217,11 @@ trait TestingTrait
      *
      * @param null $userDetails
      *
-     * @return  mixed
+     * @return  \App\Containers\User\Models\User|mixed
      */
     public function registerAndLoginTestingDeveloper($userDetails = null)
     {
-        $user = $this->getLoggedInTestingUser($userDetails);
+        $user = $this->getTestingUser(null, $userDetails);
 
         // Give Developer Role to this User if he doesn't have it already
         if (!$user->hasRole('developer')) {

@@ -37,11 +37,6 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        $this->createPermissionAction->run('admin-access', 'General Admin access Permission.');
-
-        $this->createPermissionAction->run('manage-roles-permissions', 'Manage Roles and Permissions.');
-
         // ...
-
     }
 }

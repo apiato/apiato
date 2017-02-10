@@ -15,13 +15,14 @@ class AssignUserToRoleTest extends TestCase
 
     protected $endpoint = '/roles/assign';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testAssignUserToRole_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $randomUser = factory(User::class)->create();
 
@@ -45,7 +46,7 @@ class AssignUserToRoleTest extends TestCase
 
     public function testAssignUserToRoleWithRealId_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $randomUser = factory(User::class)->create();
 
@@ -67,7 +68,7 @@ class AssignUserToRoleTest extends TestCase
 
     public function testAssignUserToManyRoles_()
     {
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getTestingUser();
 
         $randomUser = factory(User::class)->create();
 

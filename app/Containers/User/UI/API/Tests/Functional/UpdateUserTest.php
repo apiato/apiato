@@ -14,13 +14,14 @@ class UpdateUserTest extends TestCase
 
     protected $endpoint = '/users';
 
-    protected $permissions = [
-        'update-users',
+    protected $access = [
+        'roles'       => '',
+        'permissions' => 'update-users',
     ];
 
     public function testUpdateExistingUser_()
     {
-        $user = $this->getLoggedInTestingUser();
+        $user = $this->getTestingUser();
 
         $data = [
             'name'     => 'Updated Name',
@@ -45,7 +46,7 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUserWithEmptyValues()
     {
-        $user = $this->getLoggedInTestingUser();
+        $this->getTestingUser();
 
         $data = []; // empty data
 

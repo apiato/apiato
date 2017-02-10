@@ -14,7 +14,11 @@ class RegisterUserTest extends TestCase
 
     protected $endpoint = '/users/register';
 
-    protected $permissions = [];
+
+    protected $access = [
+        'roles'       => '',
+        'permissions' => '',
+    ];
 
     public function testRegisterNewUserWithCredentials_()
     {
@@ -71,7 +75,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
+        $this->createTestingUser(null, $userDetails);
 
         $data = [
             'email'    => $userDetails['email'],

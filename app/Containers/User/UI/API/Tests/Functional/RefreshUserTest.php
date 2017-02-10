@@ -14,12 +14,15 @@ class RefreshUserTest extends TestCase
 
     protected $endpoint = '/users/refresh';
 
-    protected $permissions = [];
+    protected $access = [
+        'roles'       => '',
+        'permissions' => '',
+    ];
 
     public function testRefreshUserById_()
     {
         // get the logged in user (create one if no one is logged in)
-        $user = $this->registerAndLoginTestingUser();
+        $user = $this->createTestingUser();
 
         $data = [
             'user_id' => $user->id,

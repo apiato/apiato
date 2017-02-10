@@ -18,7 +18,8 @@ class CreateRoleRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'manage-roles-permissions'
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     /**

@@ -17,13 +17,14 @@ class AttachPermissionsToRoleTest extends TestCase
 
     protected $endpoint = '/permissions/attach';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testAttachSinglePermissionToRole_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $roleA = Role::create([
             'name'         => 'role-A',
@@ -55,7 +56,7 @@ class AttachPermissionsToRoleTest extends TestCase
 
     public function testAttachMultiplePermissionToRole_()
     {
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $roleA = Role::create([
             'name'         => 'role-A',

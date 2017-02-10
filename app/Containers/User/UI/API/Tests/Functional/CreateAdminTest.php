@@ -14,14 +14,15 @@ class CreateAdminTest extends TestCase
 
     protected $endpoint = '/admins/create';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testCreateAdmin_()
     {
 
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $data = [
             'email'    => 'hello@admin.dev',

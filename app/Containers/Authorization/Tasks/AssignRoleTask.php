@@ -45,7 +45,7 @@ class AssignRoleTask extends Task
      */
     public function run($user, $roles)
     {
-        if(!$user instanceof User){
+        if (!$user instanceof User) {
             $user = $this->findUserByIdTask->run($user);
         }
 
@@ -54,7 +54,7 @@ class AssignRoleTask extends Task
                 $this->assignRole($user, $role);
             }
 
-        }else{
+        } else {
             $this->assignRole($user, $roles);
         }
 
@@ -69,7 +69,9 @@ class AssignRoleTask extends Task
      */
     private function assignRole($user, $role)
     {
-        return $user->assignRole($this->roleRepository->findWhere(['name' => $role])->first());
+        $user = $user->assignRole($this->roleRepository->findWhere(['name' => $role])->first());
+
+        return $user;
     }
 
 }

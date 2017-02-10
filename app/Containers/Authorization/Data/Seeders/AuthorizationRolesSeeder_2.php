@@ -47,7 +47,7 @@ class AuthorizationRolesSeeder_2 extends Seeder
         // Default Roles ----------------------------------------------------------------
 
         // give the super admin all the available permissions, while seeding
-        $this->createRoleAction->run('admin', 'Super Administrator')->givePermissionTo(
+        $this->createRoleAction->run('admin', 'Administrator')->givePermissionTo(
             $this->listAllPermissionsTask->run()->pluck('name')->toArray()
         );
 

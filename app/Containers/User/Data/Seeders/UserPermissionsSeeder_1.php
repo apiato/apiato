@@ -37,8 +37,6 @@ class UserPermissionsSeeder_1 extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        $this->createPermissionAction->run('create-users', 'Create a User.');
-
         $this->createPermissionAction->run('list-users', 'List all Users.');
 
         $this->createPermissionAction->run('update-users', 'Update a User.');

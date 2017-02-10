@@ -15,13 +15,14 @@ class ListPermissionsTest extends TestCase
 
     protected $endpoint = '/permissions';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testListAllPermissions_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');

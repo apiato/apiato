@@ -18,7 +18,8 @@ class RegisterUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => ''
+        'roles'       => '',
+        'permissions' => '',
     ];
 
     /**

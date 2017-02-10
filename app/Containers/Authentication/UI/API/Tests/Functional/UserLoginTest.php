@@ -22,8 +22,7 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
+        $this->createTestingUser(null, $userDetails);
 
         $data = [
             'email'    => $userDetails['email'],
@@ -92,8 +91,7 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
+        $this->createTestingUser(null, $userDetails);
 
         $data = [
             'password' => $userDetails['password'],
@@ -119,8 +117,7 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
+        $this->createTestingUser(null, $userDetails);
 
         $data = [
             'email' => $userDetails['email'],
@@ -146,8 +143,7 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        // get the logged in user (create one if no one is logged in)
-        $this->registerAndLoginTestingUser($userDetails);
+        $this->createTestingUser(null, $userDetails);
 
         $data = []; // empty data
 

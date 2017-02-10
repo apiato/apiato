@@ -14,13 +14,14 @@ class DeleteUserTest extends TestCase
 
     protected $endpoint = '/users';
 
-    protected $permissions = [
-        'delete-users'
+    protected $access = [
+        'roles'       => '',
+        'permissions' => 'delete-users',
     ];
 
     public function testDeleteExistingUser_()
     {
-        $user = $this->getLoggedInTestingAdmin();
+        $user = $this->getTestingUser();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'delete');

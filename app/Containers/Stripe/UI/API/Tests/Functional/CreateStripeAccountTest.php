@@ -22,7 +22,7 @@ class CreateStripeAccountTest extends TestCase
             'password' => 'passssssssssss',
         ];
         // get the logged in user (create one if no one is logged in)
-        $user = $this->registerAndLoginTestingUser($userDetails);
+        $user = $this->createTestingUser($userDetails);
 
         $data = [
             'customer_id'      => 'cus_123456789',

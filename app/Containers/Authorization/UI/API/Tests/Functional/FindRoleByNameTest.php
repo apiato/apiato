@@ -14,13 +14,14 @@ class FindRoleByNameTest extends TestCase
 
     protected $endpoint = '/find-role';
 
-    protected $permissions = [
-        'admin-access' // no need to set `admin-access` since it's given to the admins by default while seeding.
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
     ];
 
     public function testGetRole_()
     {
-        $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         $data = ['name' => 'admin'];
 

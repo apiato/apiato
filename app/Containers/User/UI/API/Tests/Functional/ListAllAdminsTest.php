@@ -16,13 +16,14 @@ class ListAllAdminsTest extends TestCase
 
     protected $endpoint = '/admins';
 
-    protected $permissions = [
-        'list-users'
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => 'list-users',
     ];
 
     public function testListAllAdmins_()
     {
-        $admin = $this->getLoggedInTestingAdmin();
+        $this->getTestingAdmin();
 
         // create some non-admin users
         $user1 = factory(User::class)->create();

@@ -14,9 +14,14 @@ class ListAllCountriesTest extends TestCase
 
     protected $endpoint = '/countries';
 
+    protected $access = [
+        'roles'       => '',
+        'permissions' => '',
+    ];
+
     public function testListAllCountries_()
     {
-        $this->getLoggedInTestingUser();
+        $this->getTestingUser();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
