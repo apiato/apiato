@@ -2,6 +2,8 @@
 
 namespace App\Port\Transformer\Abstracts;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
+use Illuminate\Support\Facades\App;
 use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
 
 /**
@@ -11,5 +13,28 @@ use League\Fractal\TransformerAbstract as FractalTransformerAbstract;
  */
 abstract class Transformer extends FractalTransformerAbstract
 {
-    
+
+    /**
+     * @return  mixed
+     */
+    public function user()
+    {
+        return App::make(GetAuthenticatedUserTask::class)->run();
+    }
+
+    /**
+     * @param $adminResponse
+     * @param $clientResponse
+     *
+     * @return  array
+     */
+    public function ifAdmin($adminResponse, $clientResponse)
+    {
+        if ($this->user()->hasAdminRole()) {
+            return array_merge($clientResponse, $adminResponse);
+        }
+
+        return $clientResponse;
+    }
+
 }

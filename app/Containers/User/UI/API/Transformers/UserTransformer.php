@@ -48,13 +48,10 @@ class UserTransformer extends Transformer
             'token'                => $user->token,
         ];
 
-        if ($user->hasAdminRole()) {
-
-            $response = array_merge($response, [
-                'real_id'    => $user->id,
-                'deleted_at' => $user->deleted_at,
-            ]);
-        }
+        $response = $this->ifAdmins([
+            'real_id'    => $user->id,
+            'deleted_at' => $user->deleted_at,
+        ], $response);
 
         return $response;
     }
