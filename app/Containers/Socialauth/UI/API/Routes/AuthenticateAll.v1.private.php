@@ -88,7 +88,7 @@ HTTP/1.1 200 OK
     "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
-        "token": {
+    "token": {
       "object": "Token",
       "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
       "access_token": {

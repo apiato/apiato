@@ -58,9 +58,16 @@ class UserTransformer extends Transformer
         return $response;
     }
 
-    private function transformToken($token)
+    /**
+     * TODO: remove from here
+     *
+     * @param null $token
+     *
+     * @return  array
+     */
+    private function transformToken($token = null)
     {
-        return [
+        return !$token ? null : [
             'object'       => 'token',
             'token'        => $token,
             'access_token' => [
