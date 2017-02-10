@@ -3,8 +3,7 @@
 namespace App\Port\Test\PHPUnit\Traits;
 
 use App;
-use App\Containers\Authorization\Tasks\AssignRoleTask;
-use App\Containers\User\Actions\CreateUserAction;
+use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Models\User;
 use Artisan;
 use Dingo\Api\Http\Response as DingoAPIResponse;
@@ -12,6 +11,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str as LaravelStr;
 use Mockery;
 use Symfony\Component\Debug\Exception\UndefinedMethodException;
@@ -101,18 +101,6 @@ trait TestingTrait
         return $this->getTestingFile($imageName, $stubDirPath, $mimeType, $size);
     }
 
-    /**
-     * @param \Dingo\Api\Http\Response $response
-     * @param array                    $messages
-     */
-    public function assertValidationErrorContain(DingoAPIResponse $response, array $messages)
-    {
-        $arrayResponse = json_decode($response->getContent());
-
-        foreach ($messages as $key => $value) {
-            $this->assertEquals($arrayResponse->errors->{$key}[0], $value);
-        }
-    }
 
     /**
      * get teh current logged in user OR create new one if no one exist
@@ -161,19 +149,26 @@ trait TestingTrait
      */
     public function createTestingUser($access = null, $userDetails = null)
     {
+
         // if no user detail provided, use the default details.
         $userDetails = $userDetails ? : [
-            'name'     => 'Mahmoud Zalt',
-            'email'    => 'testing@hello.dev',
-            'password' => 'secret.Pass7',
+            'name'     => 'Developer user',
+            'email'    => $this->faker->email,
+            'password' => 'testing-pass',
         ];
 
-        // create new user and login (true)
-        $user = App::make(CreateUserAction::class)->run($userDetails['email'], $userDetails['password'],
-            $userDetails['name'], null, null, true
-        );
+        // create new user and login
+        $user = factory(User::class)->create([
+            'email'    => $userDetails['email'],
+            'password' => Hash::make($userDetails['password']),
+            'name'     => $userDetails['name'],
+        ]);
 
+        // assign roles and permissions
         $user = $this->setupTestingUserAccess($user, $access ? : (isset($this->access) ? $this->access : null));
+
+        // log the user in
+        $user = App::make(ApiLoginThisUserObjectTask::class)->run($user);
 
         return $this->loggedInTestingUser = $user;
     }
@@ -198,38 +193,20 @@ trait TestingTrait
         return $user;
     }
 
-    /**
-     * @param null $userDetails
-     *
-     * @return  mixed
-     */
-    public function registerAndLoginTestingAdmin($userDetails = null)
-    {
-        $user = $this->createTestingUser($userDetails);
-
-        $user = $this->makeAdmin($user);
-
-        return $user;
-    }
 
     /**
-     * Normal user with Developer Role
-     *
-     * @param null $userDetails
-     *
-     * @return  \App\Containers\User\Models\User|mixed
+     * @param \Dingo\Api\Http\Response $response
+     * @param array                    $messages
      */
-    public function registerAndLoginTestingDeveloper($userDetails = null)
+    public function assertValidationErrorContain(DingoAPIResponse $response, array $messages)
     {
-        $user = $this->getTestingUser(null, $userDetails);
+        $arrayResponse = json_decode($response->getContent());
 
-        // Give Developer Role to this User if he doesn't have it already
-        if (!$user->hasRole('developer')) {
-            App::make(AssignRoleTask::class)->run($user, ['developer']);
+        foreach ($messages as $key => $value) {
+            $this->assertEquals($arrayResponse->errors->{$key}[0], $value);
         }
-
-        return $user;
     }
+
 
     /**
      * @param $keys
