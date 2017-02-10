@@ -14,15 +14,9 @@ class CreateAdminTest extends TestCase
 
     protected $endpoint = '/admins/create';
 
-    protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
-    ];
-
     public function testCreateAdmin_()
     {
-
-        $this->getTestingAdmin();
+        $this->getTestingAdmin(); // since we're using Admin here, we don't need to specify $access['role'] => 'admin'
 
         $data = [
             'email'    => 'hello@admin.dev',
