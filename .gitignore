@@ -5,3 +5,15 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 /laradock*/
+
+app/Containers/
+!app/Containers/Authentication/
+!app/Containers/Authorization/
+!app/Containers/Country/
+!app/Containers/Debugger/
+!app/Containers/Documentation/
+!app/Containers/Settings/
+!app/Containers/Socialauth/
+!app/Containers/Stripe/
+!app/Containers/User/
+!app/Containers/Welcome/
