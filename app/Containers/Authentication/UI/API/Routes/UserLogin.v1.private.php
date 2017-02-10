@@ -27,7 +27,7 @@
       "timezone": "UTC"
     },
     "token": {
-      "object": "Token",
+      "object": "token",
       "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
       "access_token": {
         "token_type": "Bearer",

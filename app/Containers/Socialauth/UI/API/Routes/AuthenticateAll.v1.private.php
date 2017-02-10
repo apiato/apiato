@@ -26,7 +26,7 @@
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": {
-      "object": "Token",
+      "object": "token",
       "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
       "access_token": {
         "token_type": "Bearer",
@@ -89,7 +89,7 @@ HTTP/1.1 200 OK
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
     "token": {
-      "object": "Token",
+      "object": "token",
       "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
       "access_token": {
         "token_type": "Bearer",

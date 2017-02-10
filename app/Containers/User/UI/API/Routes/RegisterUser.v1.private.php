@@ -39,7 +39,7 @@
          "timezone":"UTC"
       },
     "token": {
-      "object": "Token",
+      "object": "token",
       "token": null,
       "access_token": {
         "token_type": "Bearer",
