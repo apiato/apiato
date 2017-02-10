@@ -11,15 +11,14 @@ use App\Port\Request\Abstracts\Request;
  */
 class UpdateUserRequest extends Request
 {
-
     /**
      * Define which Roles and/or Permissions has access to this request..
      *
      * @var  array
      */
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => 'update-users'
+        'permissions' => 'update-users',
+        'roles'       => '',
     ];
 
     /**

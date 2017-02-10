@@ -18,8 +18,8 @@ class DeleteUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'roles'       => 'admin',
         'permissions' => 'delete-users',
+        'roles'       => '',
     ];
 
     /**
