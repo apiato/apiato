@@ -26,7 +26,21 @@
       "timezone_type": 3,
       "timezone": "UTC"
     },
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+    "token": {
+      "object": "Token",
+      "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
+      "access_token": {
+        "token_type": "Bearer",
+        "time_to_live": {
+          "minutes": 60
+        },
+        "expires_in": {
+          "date": "2017-02-10 23:43:41.668135",
+          "timezone_type": 3,
+          "timezone": "UTC"
+        }
+      }
+    },
     "updated_at": {
       "date": "2017-01-23 18:40:46.000000",
       "timezone_type": 3,

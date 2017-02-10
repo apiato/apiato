@@ -25,7 +25,21 @@
     "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+    "token": {
+      "object": "Token",
+      "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
+      "access_token": {
+        "token_type": "Bearer",
+        "time_to_live": {
+          "minutes": 60
+        },
+        "expires_in": {
+          "date": "2017-02-10 23:43:41.668135",
+          "timezone_type": 3,
+          "timezone": "UTC"
+        }
+      }
+    },
     "referral_code": "57aa0b88ab334",
     "gender": "male",
     "birth": "null",
@@ -74,7 +88,21 @@ HTTP/1.1 200 OK
     "points": 0,
     "email": "mahmoud@zalt.me",
     "confirmed": 0,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+        "token": {
+      "object": "Token",
+      "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
+      "access_token": {
+        "token_type": "Bearer",
+        "time_to_live": {
+          "minutes": 60
+        },
+        "expires_in": {
+          "date": "2017-02-10 23:43:41.668135",
+          "timezone_type": 3,
+          "timezone": "UTC"
+        }
+      }
+    },
     "referral_code": "57aa0b88ab334",
     "gender": "male",
     "birth": "null",

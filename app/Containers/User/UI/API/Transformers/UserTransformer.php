@@ -61,14 +61,14 @@ class UserTransformer extends Transformer
     private function transformToken($token)
     {
         return [
-            'object'       => 'Token',
+            'object'       => 'token',
+            'token'        => $token,
             'access_token' => [
                 'token_type'   => 'Bearer',
                 'time_to_live' => [
                     'minutes' => Config::get('jwt.ttl'),
                 ],
                 'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
-                'token'        => $token,
             ],
         ];
     }

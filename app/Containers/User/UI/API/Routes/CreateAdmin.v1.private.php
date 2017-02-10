@@ -28,7 +28,7 @@
          "timezone_type":3,
          "timezone":"UTC"
       },
-      "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+      "token":null,
       "roles":{
          "data":[
             {
