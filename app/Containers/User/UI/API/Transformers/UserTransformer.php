@@ -5,6 +5,8 @@ namespace App\Containers\User\UI\API\Transformers;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Port\Transformer\Abstracts\Transformer;
+use Carbon\Carbon;
+use Config;
 
 /**
  * Class UserTransformer.
@@ -45,7 +47,7 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
-            'token'                => $user->token,
+            'token'                => $this->transformToken($user->token),
         ];
 
         $response = $this->ifAdmin([
@@ -54,6 +56,21 @@ class UserTransformer extends Transformer
         ], $response);
 
         return $response;
+    }
+
+    private function transformToken($token)
+    {
+        return [
+            'object'       => 'Token',
+            'access_token' => [
+                'token_type'   => 'Bearer',
+                'time_to_live' => [
+                    'minutes' => Config::get('jwt.ttl'),
+                ],
+                'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
+                'token'        => $token,
+            ],
+        ];
     }
 
     public function includeRoles(User $user)
