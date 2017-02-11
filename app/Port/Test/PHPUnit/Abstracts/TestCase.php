@@ -3,7 +3,7 @@
 namespace App\Port\Test\PHPUnit\Abstracts;
 
 use Faker\Generator;
-use Illuminate\Contracts\Console\Kernel as LaravelPort;
+use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use App\Port\Test\PHPUnit\Traits\TestingTrait;
 
@@ -63,7 +63,7 @@ abstract class TestCase extends LaravelTestCase
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
-        $app->make(LaravelPort::class)->bootstrap();
+        $app->make(LaravelKernel::class)->bootstrap();
 
         // create instance of faker and make it available in all tests
         $this->faker = $app->make(Generator::class);

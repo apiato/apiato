@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Port\Middleware;
+namespace App\Port\Kernel;
 
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
- * Class PortKernel
+ * Class PortHttpKernel
  *
  * A.K.A (app/Http/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortKernel extends LaravelHttpKernel
+class PortHttpKernel extends LaravelHttpKernel
 {
 
     /**
