@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Portainers Tests">
+        <testsuite name="Container Tests">
             <directory>./app/Containers/</directory>
         </testsuite>
     </testsuites>
