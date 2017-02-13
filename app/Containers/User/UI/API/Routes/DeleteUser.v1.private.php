@@ -3,7 +3,8 @@
 /**
  * @apiGroup           Users
  * @apiName            DeleteUser
- * @api                {delete} /users Delete User
+ * @api                {delete} /users Delete User or Admin
+ * @apiDescription     Delete Users of any type (Admin, Client,...)
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
