@@ -6,7 +6,9 @@ storage/logs/laravel.log
 /public/uploads/
 /laradock*/
 /node_modules/
-/public/**/*
+!public/**/
+public/*/*
+!public/img/default-avatar.png
 
 !app/Containers/
 app/Containers/*
