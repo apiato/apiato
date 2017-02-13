@@ -139,13 +139,13 @@ trait TestingTrait
     public function getTestingAdmin($permissions = null)
     {
         if (!$admin = $this->loggedInTestingAdmin) {
-            $admin = $this->createTestingUser([
+            $admin = $this->loggedInTestingAdmin = $this->createTestingUser([
                 'roles'       => 'admin',
                 'permissions' => $permissions,
             ]);
         }
 
-        return $this->loggedInTestingAdmin = $admin;
+        return $admin;
     }
 
     /**
@@ -169,7 +169,7 @@ trait TestingTrait
 
         // if no user detail provided, use the default details.
         $userDetails = $userDetails ? : [
-            'name'     => 'Developer user',
+            'name'     => 'Testing User',
             'email'    => $this->faker->email,
             'password' => 'testing-pass',
         ];

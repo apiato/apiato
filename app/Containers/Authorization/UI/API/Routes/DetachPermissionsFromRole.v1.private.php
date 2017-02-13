@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            detachPermissionToRole
+ * @apiName            detachPermissionFromRole
  * @api                {post} /permissions/detach Detach Permissions from Role
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
