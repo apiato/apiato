@@ -30,7 +30,7 @@ class PermissionTransformer extends Transformer
     {
         return [
             'object'       => 'Permission',
-            'name'         => $permission->name,
+            'name'         => $permission->name, // << Unique Identifier
             'description'  => $permission->description,
             'display_name' => $permission->display_name,
         ];

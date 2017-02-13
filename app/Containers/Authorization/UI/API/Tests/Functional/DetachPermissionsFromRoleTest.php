@@ -7,23 +7,29 @@ use App\Containers\Authorization\Models\Role;
 use App\Port\Test\PHPUnit\Abstracts\TestCase;
 
 /**
- * Class AttachPermissionsToRoleTest.
+ * Class DetachPermissionsFromRoleTest.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AttachPermissionsToRoleTest extends TestCase
+class DetachPermissionsFromRoleTest extends TestCase
 {
 
-    protected $endpoint = '/permissions/attach';
+    protected $endpoint = '/permissions/detach';
 
     protected $access = [
         'roles'       => 'admin',
         'permissions' => '',
     ];
 
-    public function testAttachSinglePermissionToRole_()
+    public function testDetachSinglePermissionFromRole_()
     {
         $this->getTestingAdmin();
+
+        $permissionA = Permission::create([
+            'name'         => 'permission-A',
+            'description'  => 'AA',
+            'display_name' => 'A',
+        ]);
 
         $roleA = Role::create([
             'name'         => 'role-A',
@@ -31,11 +37,7 @@ class AttachPermissionsToRoleTest extends TestCase
             'display_name' => 'A',
         ]);
 
-        $permissionA = Permission::create([
-            'name'         => 'permission-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
+        $roleA->givePermissionTo($permissionA);
 
         $data = [
             'role_name'       => $roleA['name'],
@@ -52,21 +54,15 @@ class AttachPermissionsToRoleTest extends TestCase
 
         $this->assertEquals($roleA['name'], $responseObject->data->name);
 
-        $this->seeInDatabase('role_has_permissions', [
+        $this->missingFromDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,
-            'role_id' => $roleA->id
+            'role_id'       => $roleA->id
         ]);
     }
 
-    public function testAttachMultiplePermissionToRole_()
+    public function testDetachMultiplePermissionFromRole_()
     {
         $this->getTestingAdmin();
-
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
 
         $permissionA = Permission::create([
             'name'         => 'permission-A',
@@ -80,6 +76,15 @@ class AttachPermissionsToRoleTest extends TestCase
             'display_name' => 'B',
         ]);
 
+        $roleA = Role::create([
+            'name'         => 'role-A',
+            'description'  => 'AA',
+            'display_name' => 'A',
+        ]);
+
+        $roleA->givePermissionTo($permissionA);
+        $roleA->givePermissionTo($permissionB);
+
         $data = [
             'role_name'       => $roleA['name'],
             'permission_name' => [$permissionA['name'], $permissionB['name']]
@@ -91,12 +96,17 @@ class AttachPermissionsToRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $this->seeInDatabase('role_has_permissions', [
+        $responseObject = $this->getResponseObject($response);
+
+        $responseObject = $this->getResponseObject($response);
+
+        $this->assertEquals($roleA['name'], $responseObject->data->name);
+
+        $this->missingFromDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
-            'role_id' => $roleA->id
+            'role_id'       => $roleA->id
         ]);
-
     }
 
 

@@ -6,11 +6,11 @@ use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class AttachPermissionsToRoleTask.
+ * Class DetachPermissionsFromRoleTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AttachPermissionsToRoleTask extends Task
+class DetachPermissionsFromRoleTask extends Task
 {
 
     /**
@@ -39,7 +39,7 @@ class AttachPermissionsToRoleTask extends Task
     {
         $role = $this->getRoleAction->run($roleName);
 
-        $role->givePermissionTo($permissionNames);
+        $role->revokePermissionTo($permissionNames);
 
         return $role;
     }

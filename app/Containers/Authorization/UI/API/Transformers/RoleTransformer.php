@@ -30,7 +30,7 @@ class RoleTransformer extends Transformer
     {
         return [
             'object'       => 'Role',
-            'name'         => $role->name,
+            'name'         => $role->name, // << Unique Identifier
             'description'  => $role->description,
             'display_name' => $role->display_name,
         ];

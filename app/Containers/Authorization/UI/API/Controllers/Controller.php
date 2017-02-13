@@ -6,6 +6,7 @@ use App\Containers\Authorization\Actions\AssignRoleAction;
 use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Containers\Authorization\Actions\CreateRoleAction;
+use App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction;
 use App\Containers\Authorization\Actions\GetPermissionAction;
 use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Containers\Authorization\Actions\ListAllPermissionsAction;
@@ -14,6 +15,7 @@ use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
@@ -105,6 +107,21 @@ class Controller extends PortApiController
     public function attachPermissionToRole(
         AttachPermissionToRoleRequest $request,
         AttachPermissionsToRoleAction $action
+    ) {
+        $role = $action->run($request['role_name'], $request['permission_name']);
+
+        return $this->response->item($role, new RoleTransformer());
+    }
+
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction       $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function detachPermissionFromRole(
+        DetachPermissionToRoleRequest $request,
+        DetachPermissionsFromRoleAction $action
     ) {
         $role = $action->run($request['role_name'], $request['permission_name']);
 

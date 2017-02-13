@@ -2,8 +2,8 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            attachPermissionToRole
- * @api                {post} /permissions/attach Attach Permissions to Role
+ * @apiName            detachPermissionToRole
+ * @api                {post} /permissions/detach Detach Permissions from Role
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -11,7 +11,7 @@
  * @apiHeader          Authorization Bearer {User-Token}
  *
  * @apiParam           {String} role_name Name of the Role
- * @apiParam           {String|Array} permission_name Names of the Permissions
+ * @apiParam           {String|Array} permission_name Names of Permissions
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
@@ -41,8 +41,8 @@
 }
  */
 
-$router->post('permissions/attach', [
-    'uses'       => 'Controller@attachPermissionToRole',
+$router->post('permissions/detach', [
+    'uses'       => 'Controller@detachPermissionFromRole',
     'middleware' => [
         'api.auth',
     ],
