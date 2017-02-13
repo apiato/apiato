@@ -23,7 +23,7 @@ trait DebuggerTrait
      */
     public function runQueryDebugger($log = true, $terminal = false)
     {
-        if (Config::get('database.query_debugging')) {
+        if (Config::get('hello.query_debugger')) {
             DB::listen(function ($event) use ($terminal, $log) {
                 $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $event->sql), $event->bindings);
 
