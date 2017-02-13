@@ -1,14 +1,9 @@
 {
-  "name": "CoreModule",
-  "homepage": "https://github.com/llstarscreamll/CoreModule",
-  "authors": [
-    "Johan Alvarez <llstarscreamll@hotmail.com>"
-  ],
-  "description": "Assets para el CoreModule para Laravel 5.3",
+  "name": "Hello-API",
+  "homepage": "https://github.com/Porto-SAP/Hello-API",
+  "authors": [],
+  "description": "Assets Hello-API",
   "main": "",
-  "moduleType": [
-    "amd"
-  ],
   "license": "MIT",
   "private": true,
   "ignore": [
