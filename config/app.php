@@ -79,12 +79,6 @@ return [
 
     'locale' => 'en',
 
-    'supported_languages' => [
-        'en' => 'English',
-        'ar' => 'Arabic',
-        'ru' => 'Russian',
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

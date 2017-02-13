@@ -44,7 +44,7 @@ class Localization
         }
 
         // check the languages defined is supported
-        if (!array_key_exists($locale, $this->app->config->get('app.supported_languages'))) {
+        if (!array_key_exists($locale, $this->app->config->get('hello.supported_languages'))) {
             // respond with error
             return abort(403, 'Language not supported.');
         }

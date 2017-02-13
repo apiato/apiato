@@ -48,5 +48,17 @@ return [
         */
         'serializer'    => env('FRACTAL_SERIALIZER', 'DataArray'),
 
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supported Languages
+    |--------------------------------------------------------------------------
+    */
+    'supported_languages' => [
+        'en' => 'English',
+        'ar' => 'Arabic',
+        'ru' => 'Russian',
+    ],
+
 ];
