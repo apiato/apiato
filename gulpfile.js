@@ -14,6 +14,8 @@ require('laravel-elixir-vue');
  */
 
 var styles = [
+    /* Bootstrap */
+    './public/plugins/bootstrap/dist/css/bootstrap.min.css',
     /* Select2 */
     './public/plugins/select2/dist/css/select2.min.css',
     /* Bootstrap-Select */
@@ -38,6 +40,10 @@ var styles = [
 ];
 
 var scripts = [
+    /* jQuery */
+    './public/plugins/jquery/dist/jquery.min.js',
+    /* Bootstrap */
+    './public/plugins/bootstrap/dist/js/bootstrap.min.js',
     /* Metis Menu */
     './public/plugins/metisMenu/dist/metisMenu.min.js',
     /* SlimScroll */
