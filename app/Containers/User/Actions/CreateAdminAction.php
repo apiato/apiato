@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authorization\Tasks\AssignRoleTask;
+use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Port\Action\Abstracts\Action;
 
@@ -20,7 +20,7 @@ class CreateAdminAction extends Action
     private $createUserByCredentialsTask;
 
     /**
-     * @var  \App\Containers\Authorization\Tasks\AssignRoleTask
+     * @var  \App\Containers\Authorization\Tasks\AssignUserToRoleTask
      */
     private $assignRoleTask;
 
@@ -28,11 +28,11 @@ class CreateAdminAction extends Action
      * CreateAdminAction constructor.
      *
      * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask $createUserByCredentialsTask
-     * @param \App\Containers\Authorization\Tasks\AssignRoleTask     $assignRoleTask
+     * @param \App\Containers\Authorization\Tasks\AssignUserToRoleTask     $assignRoleTask
      */
     public function __construct(
         CreateUserByCredentialsTask $createUserByCredentialsTask,
-        AssignRoleTask $assignRoleTask
+        AssignUserToRoleTask $assignRoleTask
     ) {
         $this->createUserByCredentialsTask = $createUserByCredentialsTask;
         $this->assignRoleTask = $assignRoleTask;

@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\UI\API\Controllers;
 
-use App\Containers\Authorization\Actions\AssignRoleAction;
+use App\Containers\Authorization\Actions\AssignUserToRoleAction;
 use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Containers\Authorization\Actions\CreateRoleAction;
@@ -11,6 +11,7 @@ use App\Containers\Authorization\Actions\GetPermissionAction;
 use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Containers\Authorization\Actions\ListAllPermissionsAction;
 use App\Containers\Authorization\Actions\ListAllRolesAction;
+use App\Containers\Authorization\Actions\RevokeUserFromRoleAction;
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
@@ -20,8 +21,10 @@ use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
+use App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
+use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Port\Controller\Abstracts\PortApiController;
 
@@ -87,11 +90,25 @@ class Controller extends PortApiController
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\AssignRoleAction                $action
+     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction                $action
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function assignUserToRole(AssignUserToRoleRequest $request, AssignRoleAction $action)
+    public function assignUserToRole(AssignUserToRoleRequest $request, AssignUserToRoleAction $action)
+    {
+        $user = $action->run($request['user_id'], $request['roles_names']);
+
+        return $this->response->item($user, new UserTransformer());
+    }
+
+
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\RevokeUserFromRoleAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function revokeRoleFromUser(RevokeUserFromRoleRequest $request, RevokeUserFromRoleAction $action)
     {
         $user = $action->run($request['user_id'], $request['roles_names']);
 

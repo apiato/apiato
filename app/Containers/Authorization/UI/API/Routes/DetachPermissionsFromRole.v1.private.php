@@ -11,7 +11,7 @@
  * @apiHeader          Authorization Bearer {User-Token}
  *
  * @apiParam           {String} role_name Name of the Role
- * @apiParam           {String|Array} permission_name Names of Permissions
+ * @apiParam           {String-Array} permission_name Names of Permissions
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

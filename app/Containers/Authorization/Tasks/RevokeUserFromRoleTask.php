@@ -8,11 +8,11 @@ use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Port\Task\Abstracts\Task;
 
 /**
- * Class AssignRoleTask.
+ * Class RevokeUserFromRoleTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AssignRoleTask extends Task
+class RevokeUserFromRoleTask extends Task
 {
 
     /**
@@ -26,7 +26,7 @@ class AssignRoleTask extends Task
     private $findUserByIdTask;
 
     /**
-     * AssignRoleTask constructor.
+     * AssignUserToRoleTask constructor.
      *
      * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $roleRepository
      * @param \App\Containers\User\Tasks\FindUserByIdTask                    $findUserByIdTask
@@ -51,11 +51,11 @@ class AssignRoleTask extends Task
 
         if (is_array($roles)) {
             foreach ($roles as $role) {
-                $this->assignRole($user, $role);
+                $this->removeRole($user, $role);
             }
 
         } else {
-            $this->assignRole($user, $roles);
+            $this->removeRole($user, $roles);
         }
 
         return $user;
@@ -67,9 +67,9 @@ class AssignRoleTask extends Task
      *
      * @return  mixed
      */
-    private function assignRole($user, $role)
+    private function removeRole($user, $role)
     {
-        $user = $user->assignRole($this->roleRepository->findWhere(['name' => $role])->first());
+        $user = $user->removeRole($this->roleRepository->findWhere(['name' => $role])->first());
 
         return $user;
     }

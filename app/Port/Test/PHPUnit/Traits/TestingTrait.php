@@ -34,6 +34,8 @@ trait TestingTrait
      */
     public $loggedInTestingUser;
 
+    public $loggedInTestingAdmin;
+
     /**
      * @param        $endpoint
      * @param string $verb
@@ -101,7 +103,6 @@ trait TestingTrait
         return $this->getTestingFile($imageName, $stubDirPath, $mimeType, $size);
     }
 
-
     /**
      * get teh current logged in user OR create new one if no one exist
      *
@@ -137,10 +138,14 @@ trait TestingTrait
      */
     public function getTestingAdmin($permissions = null)
     {
-        return $this->getTestingUser([
-            'roles'        => 'admin',
-            '$permissions' => $permissions,
-        ]);
+        if (!$admin = $this->loggedInTestingAdmin) {
+            $admin = $this->createTestingUser([
+                'roles'       => 'admin',
+                'permissions' => $permissions,
+            ]);
+        }
+
+        return $this->loggedInTestingAdmin = $admin;
     }
 
     /**
@@ -205,7 +210,6 @@ trait TestingTrait
         return $user;
     }
 
-
     /**
      * @param \Dingo\Api\Http\Response $response
      * @param array                    $messages
@@ -218,7 +222,6 @@ trait TestingTrait
             $this->assertEquals($arrayResponse->errors->{$key}[0], $value);
         }
     }
-
 
     /**
      * @param $keys

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authorization\Tasks\AssignRoleTask;
+use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Port\Action\Abstracts\Action;
@@ -26,7 +26,7 @@ class CreateUserAction extends Action
     private $fireUserCreatedEventTask;
 
     /**
-     * @var  \App\Containers\Authorization\Tasks\AssignRoleTask
+     * @var  \App\Containers\Authorization\Tasks\AssignUserToRoleTask
      */
     private $assignRoleTask;
 
@@ -35,12 +35,12 @@ class CreateUserAction extends Action
      *
      * @param \App\Containers\User\Tasks\CreateUserByCredentialsTask $createUserByCredentialsTask
      * @param \App\Containers\User\Tasks\FireUserCreatedEventTask    $fireUserCreatedEventTask
-     * @param \App\Containers\Authorization\Tasks\AssignRoleTask     $assignRoleTask
+     * @param \App\Containers\Authorization\Tasks\AssignUserToRoleTask     $assignRoleTask
      */
     public function __construct(
         CreateUserByCredentialsTask $createUserByCredentialsTask,
         FireUserCreatedEventTask $fireUserCreatedEventTask,
-        AssignRoleTask $assignRoleTask
+        AssignUserToRoleTask $assignRoleTask
     ) {
         $this->createUserByCredentialsTask = $createUserByCredentialsTask;
         $this->fireUserCreatedEventTask = $fireUserCreatedEventTask;

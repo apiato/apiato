@@ -2,8 +2,8 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            assignUserToRole
- * @api                {post} /roles/assign Assign User to Roles
+ * @apiName            revokeRoleFromUser
+ * @api                {post} /roles/revoke Revoke/Remove Roles from User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -52,8 +52,8 @@
 }
  */
 
-$router->post('roles/assign', [
-    'uses'       => 'Controller@assignUserToRole',
+$router->post('roles/revoke', [
+    'uses'       => 'Controller@revokeRoleFromUser',
     'middleware' => [
         'api.auth',
     ],
