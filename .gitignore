@@ -5,8 +5,12 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 /laradock*/
+/node_modules/
+/public/**/*
 
-app/Containers/
+!app/Containers/
+app/Containers/*
+!app/Containers/Admin/
 !app/Containers/Authentication/
 !app/Containers/Authorization/
 !app/Containers/Country/
