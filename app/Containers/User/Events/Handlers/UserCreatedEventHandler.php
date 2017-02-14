@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Events\Handlers;
 
-use App\Containers\Email\Mails\WelcomeEmail;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -14,19 +13,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class UserCreatedEventHandler implements ShouldQueue
 {
 
-    /**
-     * @var  \App\Containers\Email\Mails\WelcomeEmail
-     */
-    private $welcomeEmail;
-
-    /**
-     * UserCreatedEventHandler constructor.
-     *
-     * @param \App\Containers\Email\Mails\WelcomeEmail $welcomeEmail
-     */
-    public function __construct(WelcomeEmail $welcomeEmail)
+    public function __construct()
     {
-        $this->welcomeEmail = $welcomeEmail;
+
     }
 
     /**
@@ -34,9 +23,9 @@ class UserCreatedEventHandler implements ShouldQueue
      */
     public function handle(UserCreatedEvent $event)
     {
-        $this->welcomeEmail->to($event->user->email, $event->user->name)->send([
-            'name'    => $event->user->name,
-            'appName' => 'Hello API'
-        ]);
+//        $this->welcomeEmail->to($event->user->email, $event->user->name)->send([
+//            'name'    => $event->user->name,
+//            'appName' => 'Hello API'
+//        ]);
     }
 }
