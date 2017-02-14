@@ -3,20 +3,32 @@
 namespace App\Port\Route\Providers;
 
 use App\Port\HashId\Traits\HashIdTrait;
-use App\Port\Route\Abstracts\PortRoutesServiceProviderAbstract;
 use App\Port\Loader\Loaders\RoutesLoaderTrait;
+use App\Port\Route\Abstracts\PortRoutesServiceProviderAbstract;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 
 /**
- * Class RoutesServiceProvider.
+ * Class MainRoutesServiceProvider.
+ *
+ * A.K.A app/Providers/RouteServiceProvider.php
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
+class MainRoutesServiceProvider extends PortRoutesServiceProviderAbstract
 {
+
     use RoutesLoaderTrait;
     use HashIdTrait;
+
+    /**
+     * This namespace is applied to your controller routes.
+     *
+     * In addition, it is set as the URL generator's root namespace.
+     *
+     * @var string
+     */
+    protected $namespace;
 
     /**
      * Instance of the Laravel default Router Class
@@ -56,6 +68,5 @@ class RoutesServiceProvider extends PortRoutesServiceProviderAbstract
 
         $this->runEndpointsHashedIdsDecoder();
     }
-
 
 }

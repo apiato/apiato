@@ -2,27 +2,16 @@
 
 namespace App\Containers\User\Models;
 
-use App\Containers\Authentication\Traits\TokenTrait;
-use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Port\Model\Abstracts\Model;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Spatie\Permission\Traits\HasRoles;
+use App\Port\Model\Abstracts\UserModel;
 
 /**
  * Class User.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends UserModel
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait;
 
     /**
      * The database table used by the model.

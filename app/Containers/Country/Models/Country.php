@@ -2,7 +2,6 @@
 
 namespace App\Containers\Country\Models;
 
-use App\Containers\Reward\Models\Reward;
 use App\Containers\User\Models\User;
 use Webpatser\Countries\Countries;
 
@@ -13,19 +12,6 @@ use Webpatser\Countries\Countries;
  */
 class Country extends Countries
 {
-
-    public function rewards()
-    {
-        return $this->belongsToMany(Reward::class);
-    }
-
-    /**
-     * for the currency
-     */
-    public function reward()
-    {
-        return $this->hasOne(Reward::class);
-    }
 
     public function users()
     {

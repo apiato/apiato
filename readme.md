@@ -105,7 +105,7 @@ Join our chatting room on Gitter by click on the icon below
 <a name="Documentation"></a>
 ## Documentation
 
-**Hello API** is architectured using the **Porto** Software Architectural Pattern. 
+**Hello API** is architectured using the **Porto** Software Architectural Pattern.
 <br>
 Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation)  before starting.
 

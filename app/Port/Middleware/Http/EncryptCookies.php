@@ -7,6 +7,8 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 /**
  * Class EncryptCookies
  *
+ * A.K.A app/Http/Middleware/EncryptCookies.php
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class EncryptCookies extends BaseEncrypter

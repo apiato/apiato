@@ -4,7 +4,8 @@ namespace App\Port\Test\PHPUnit\Abstracts;
 
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
-use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+//use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibilityPackage;
 use App\Port\Test\PHPUnit\Traits\TestingTrait;
 
 /**
@@ -12,7 +13,7 @@ use App\Port\Test\PHPUnit\Traits\TestingTrait;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class TestCase extends LaravelTestCase
+abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackage
 {
     use TestingTrait;
 

@@ -5,7 +5,7 @@ namespace App\Port\Exception\Handler;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortExceptionsHandler extends ExceptionHandler
+class PortExceptionsHandler extends LaravelExceptionHandler
 {
 
     /**
@@ -25,7 +25,7 @@ class PortExceptionsHandler extends ExceptionHandler
      */
     protected $dontReport = [
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+//        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
 //        \Illuminate\Auth\AuthenticationException::class,
 //        \Illuminate\Auth\Access\AuthorizationException::class,
 //        \Illuminate\Session\TokenMismatchException::class,
@@ -59,6 +59,8 @@ class PortExceptionsHandler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             $exception = new NotFoundHttpException($exception->getMessage(), $exception);
         }
+
+        // ..
 
         return parent::render($request, $exception);
     }
