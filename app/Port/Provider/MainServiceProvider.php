@@ -2,6 +2,7 @@
 
 namespace App\Port\Provider;
 
+use App\Port\Broadcast\Providers\MainBroadcastServiceProvider;
 use App\Port\Foundation\Portals\PortButler;
 use App\Port\Foundation\Providers\FoundationServiceProvider;
 use App\Port\Foundation\Traits\FractalTrait;
@@ -9,8 +10,9 @@ use App\Port\Foundation\Traits\QueryDebuggerTrait;
 use App\Port\Loader\AutoLoaderTrait;
 use App\Port\Loader\Helpers\LoaderHelper;
 use App\Port\Loader\Loaders\FactoriesLoaderTrait;
+use App\Port\Policy\Providers\MainAuthServiceProvider;
 use App\Port\Provider\Abstracts\ServiceProviderAbstract;
-use App\Port\Route\Providers\RoutesServiceProvider;
+use App\Port\Route\Providers\MainRoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
@@ -18,13 +20,12 @@ use Vinkla\Hashids\Facades\Hashids;
 use Vinkla\Hashids\HashidsServiceProvider;
 
 /**
- * Class MainServiceProvider
  * The main Service Provider where all Service Providers gets registered
  * this is the only Service Provider that gets injected in the Config/app.php.
  *
  * A.K.A app/Providers/AppServiceProvider.php
  *
- * Class PortServiceProvider
+ * Class MainServiceProvider
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
@@ -36,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use AutoLoaderTrait;
 
     /**
-     * Port Service Providers
+     * Register any Service Providers on the Port layer (including third party packages).
      *
      * @var array
      */
@@ -45,12 +46,14 @@ class MainServiceProvider extends ServiceProviderAbstract
         DingoApiServiceProvider::class,
         CorsServiceProvider::class,
         RepositoryServiceProvider::class,
-        RoutesServiceProvider::class,
+        MainRoutesServiceProvider::class,
+        MainAuthServiceProvider::class,
+        MainBroadcastServiceProvider::class,
         HashidsServiceProvider::class,
     ];
 
     /**
-     * Port Aliases (mainly for third party packages)
+     * Register any Alias on the Port layer (including third party packages).
      *
      * @var  array
      */
@@ -59,7 +62,9 @@ class MainServiceProvider extends ServiceProviderAbstract
     ];
 
     /**
-     * Perform post-registration booting of services.
+     * Bootstrap any application services.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -69,18 +74,14 @@ class MainServiceProvider extends ServiceProviderAbstract
     }
 
     /**
-     * Register bindings in the container.
+     * Register any application services.
+     *
+     * @return void
      */
     public function register()
     {
-        $this->app->bind('LoaderHelper', function () {
-            return $this->app->make(LoaderHelper::class);
-        });
-
-
-        $this->app->bind('PortButler', function () {
-            return $this->app->make(PortButler::class);
-        });
+        $this->app->alias(LoaderHelper::class, 'LoaderHelper');
+        $this->app->alias(PortButler::class, 'PortButler');
 
         $this->registerLoaders();
     }

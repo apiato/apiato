@@ -3,44 +3,29 @@
 namespace App\Port\Middleware\Http;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class RedirectIfAuthenticated
+ *
+ * A.K.A app/Http/Middleware/RedirectIfAuthenticated.php
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class RedirectIfAuthenticated
 {
     /**
-     * The Guard implementation.
-     *
-     * @var Guard
-     */
-    protected $auth;
-
-    /**
-     * Create a new filter instance.
-     *
-     * @param  Guard  $auth
-     * @return void
-     */
-    public function __construct(Guard $auth)
-    {
-        $this->auth = $auth;
-    }
-
-    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->check()) {
-            return redirect('/');
+        if (Auth::guard($guard)->check()) {
+            return redirect('/home');
         }
 
         return $next($request);

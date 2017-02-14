@@ -1,11 +1,16 @@
 {
   "require": {
     "guzzlehttp/guzzle": "^6.2",
-    "dingo/api": "v1.0.0-beta6",
-    "prettus/l5-repository": "^2.1",
-    "barryvdh/laravel-cors": "^0.8.0",
-    "vinkla/hashids": "3.0.0",
+    "dingo/api": "v1.0.0-beta8",
+    "prettus/l5-repository": "^2.6",
+    "barryvdh/laravel-cors": "0.8.*",
+    "vinkla/hashids": "3.1.*",
     "predis/predis": "^1.0",
     "pda/pheanstalk": "~3.0"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~5.7"
   }
 }

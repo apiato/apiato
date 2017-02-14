@@ -17,11 +17,17 @@ class PortHttpKernel extends LaravelHttpKernel
     /**
      * The application's global HTTP middleware stack.
      *
+     * These middleware are run during every request to your application.
+     *
      * @var array
      */
     protected $middleware = [
-        // Laravel default middleware's:
+        // Laravel middleware's:
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Port\Middleware\Http\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
         // CORS package middleware
         \Barryvdh\Cors\HandleCors::class,
     ];
@@ -33,19 +39,19 @@ class PortHttpKernel extends LaravelHttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // Laravel default middleware's:
             \App\Port\Middleware\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Port\Middleware\Http\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
         'api' => [
-            // Laravel default middleware's:
+            // Laravel middleware's:
             'bindings',
-            // Hello API Localization middleware
-            \App\Port\Middleware\Http\Localization::class,
+
             // Dingo Package throttle middleware
             'api.throttle',
         ],
@@ -54,12 +60,13 @@ class PortHttpKernel extends LaravelHttpKernel
     /**
      * The application's route middleware.
      *
+     * These middleware may be assigned to groups or used individually.
+     *
      * @var array
      */
     protected $routeMiddleware = [
 
     ];
-
 
     /**
      * @param array $middlewares

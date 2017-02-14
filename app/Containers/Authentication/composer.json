@@ -3,7 +3,7 @@
   "description": "Porto-SAP Container for Hello-API.",
   "require": {
     "tymon/jwt-auth": "0.5.*",
-    "jenssegers/agent": "^2.3"
+    "jenssegers/agent": "^2.4"
   },
   "scripts": {
     "post-create-project-cmd": [
