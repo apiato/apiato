@@ -12,9 +12,9 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Hello API',
-    'small-name' => 'Hello',
-    'big-name' => 'API',
+    'name' => env('APP_NAME', 'Hello API'),
+    'small-name' => env('APP_SMALL_NAME', 'API'),
+    'big-name' => env('APP_BIG_NAME', 'Hello'),
 
     /*
     |--------------------------------------------------------------------------

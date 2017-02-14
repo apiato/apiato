@@ -6,7 +6,7 @@
             <b>{{ config('app.big-name', 'API') }}</b>
         </span>
         <span class="logo-lg">
-            <b>{{ config('app.small-name', 'Hello') }}</b> {{ config('app.big-name', 'API') }}
+            <b>{{ config('app.big-name', 'API') }}</b> {{ config('app.small-name', 'Hello') }}
         </span>
     </a>
 
