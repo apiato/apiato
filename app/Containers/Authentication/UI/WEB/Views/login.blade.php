@@ -1,7 +1,7 @@
 @extends('admin::layouts.box-middle')
 
 @section('content')
-    <h3 class="text-center">Login</h3>
+    <h3 class="text-center">{{ trans('authentication::views.login-title') }}</h3>
 
     <form class="login-form" action="{{route('admin_login')}}" method="post">
         {{ csrf_field() }}

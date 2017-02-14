@@ -9,6 +9,7 @@ use App\Port\Loader\Loaders\ConsolesLoaderTrait;
 use App\Port\Loader\Loaders\MigrationsLoaderTrait;
 use App\Port\Loader\Loaders\ProvidersLoaderTrait;
 use App\Port\Loader\Loaders\ViewsLoaderTrait;
+use App\Port\Loader\Loaders\TranslationsLoaderTrait;
 
 /**
  * Class AutoLoaderTrait.
@@ -25,6 +26,7 @@ trait AutoLoaderTrait
     use ProvidersLoaderTrait;
     use ConsolesLoaderTrait;
     use AliasesLoaderTrait;
+    use TranslationsLoaderTrait;
 
     /**
      * * to be used from the `boot` function of the main service provider
@@ -51,7 +53,7 @@ trait AutoLoaderTrait
             $this->loadProvidersFromContainers($containerName);
             $this->loadMigrationsFromContainers($containerName);
             $this->loadViewsFromContainers($containerName);
-            $this->loadViewsFromContainers($containerName);
+            $this->loadTranslationsFromContainers($containerName);
             $this->loadConsolesFromContainers($containerName);
         }
     }
