@@ -3,7 +3,7 @@
 <head>
     {{-- pace --}}
     <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
-    <link href="{{ asset('plugins/pace/themes/white/pace-theme-flash.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/pace/themes/blue/pace-theme-flash.css') }}" rel="stylesheet">
 
    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
