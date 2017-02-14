@@ -1,11 +1,8 @@
-{{-- Notification Messages --}}
+{{-- notification messages --}}
 <div id="system-notifications" class="row">
-
     <div class="col-sm-8 col-sm-offset-2">
         
-        {{--
-            Validation error notification.
-        --}}
+        {{-- validation error notification --}}
         @if (isset($errors) && !$errors->isEmpty())
             <div class="alert alert-danger alert-dismissible margin-top-10" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

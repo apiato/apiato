@@ -1,5 +1,5 @@
 {{--
-    This partial renders the Error Messages from controllers or services.
+    This partial renders the error messages from actions or tasks.
 --}}
         
 @if (\Session::has('error') && !empty(\Session::get('error')))

@@ -1,8 +1,9 @@
-<!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar sidebar-left">
-    <!-- sidebar: style can be found in sidebar.less -->
+
+    {{-- sidebar: style can be found in sidebar.less --}}
     <section class="sidebar">
-        <!-- Sidebar user panel (optional) -->
+        
+        {{-- sidebar user panel --}}
         <div class="user-panel">
             <div class="pull-left image">
                 <img src="{{ asset('img/default-avatar.png') }}" class="img-circle" alt="User Image">
@@ -12,8 +13,11 @@
                 <p><small>since {{ Auth::user()->created_at->toFormattedDateString() }}</small></p>
             </div>
         </div>
-        <!-- Sidebar Menu -->
+        {{-- /sidebar user panel --}}
+
+        {{-- sidebar menu --}}
         <ul class="sidebar-menu">
+            {{-- this a example multilevel menu --}}
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-edit"></i>
@@ -22,6 +26,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
+                {{-- submenu --}}
                 <ul class="treeview-menu">
                     <li><a href="#">Basic form</a></li>
                     <li><a href="#">Advanced Plugins</a></li>
@@ -30,9 +35,11 @@
                     <li><a href="#">Text Editor</a></li>
                     <li><a href="#">Markdown</a></li>
                 </ul>
+                {{-- /submenu --}}
             </li>
         </ul>
-        <!-- /.sidebar-menu -->
+        {{-- /sidebar-menu --}}
+
     </section>
-    <!-- /.sidebar -->
+    {{-- /sidebar --}}
 </aside>

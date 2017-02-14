@@ -1,5 +1,5 @@
 {{--
-    This partial renders the Success Messages from controllers or services.
+    This partial renders the success messages from actions or tasks.
 --}}
 
 @if (\Session::has('success') && !empty(\Session::get('success')))

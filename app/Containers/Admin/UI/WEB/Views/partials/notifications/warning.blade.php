@@ -1,5 +1,5 @@
 {{--
-    This partial renders the Warning Messages from controllers or services.
+    This partial renders the warning messages from actions or tasks.
 --}}
         
 @if (\Session::has('warning') && !empty(\Session::get('warning')))
