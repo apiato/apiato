@@ -15,6 +15,7 @@ use App\Port\Provider\Abstracts\ServiceProviderAbstract;
 use App\Port\Route\Providers\MainRoutesServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
 use Vinkla\Hashids\Facades\Hashids;
 use Vinkla\Hashids\HashidsServiceProvider;
@@ -71,6 +72,9 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->bootLoaders();
 
         $this->overrideDefaultFractalSerializer();
+
+        // solves the "specified key was too long" error, introduced in L5.4
+        Schema::defaultStringLength(191);
     }
 
     /**
