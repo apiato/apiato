@@ -21,6 +21,7 @@
     <php>
         <env name="APP_ENV"             value="testing"/>
         <env name="API_FULL_URL"        value="http://api.hello.dev"/>
+        <env name="APP_LOCALE"        value="en"/>
 
         <env name="CACHE_DRIVER"        value="array"/>
         <env name="SESSION_DRIVER"      value="array"/>
