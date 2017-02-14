@@ -74,7 +74,7 @@ var scripts = [
 
 var fonts = [
     'public/plugins/fontawesome/fonts/',
-    'node_modules/bootstrap-sass/assets/fonts/',
+    'node_modules/bootstrap-sass/assets/fonts/bootstrap',
     'public/plugins/ionicons/fonts/'
 ];
 
