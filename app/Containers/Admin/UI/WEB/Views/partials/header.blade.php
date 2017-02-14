@@ -1,13 +1,12 @@
 <header class="main-header">
     
-    {{-- logo/name --}}
+    {{-- app logo/name --}}
     <a href="{{ url('/') }}" class="logo">
-        {{-- TODO: maybe we need 'app.fullname', 'app.small-name', 'app.big-name' config? --}}
         <span class="logo-mini">
-            <b>API</b>
+            <b>{{ config('app.big-name', 'API') }}</b>
         </span>
         <span class="logo-lg">
-            <b>Hello</b> API
+            <b>{{ config('app.small-name', 'Hello') }}</b> {{ config('app.big-name', 'API') }}
         </span>
     </a>
 

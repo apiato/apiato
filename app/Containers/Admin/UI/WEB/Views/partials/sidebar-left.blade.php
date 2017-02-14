@@ -9,8 +9,8 @@
                 <img src="{{ asset('img/default-avatar.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ Auth::user()->name }}</p>
-                <p><small>since {{ Auth::user()->created_at->toFormattedDateString() }}</small></p>
+                <p>{{ auth()->user()->name }}</p>
+                <p><small>since {{ auth()->user()->created_at->toFormattedDateString() }}</small></p>
             </div>
         </div>
         {{-- /sidebar user panel --}}
