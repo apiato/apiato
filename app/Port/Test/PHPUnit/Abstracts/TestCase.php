@@ -4,7 +4,9 @@ namespace App\Port\Test\PHPUnit\Abstracts;
 
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
-use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+//use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+use Illuminate\Support\Facades\DB;
+use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibilityPackage;
 use App\Port\Test\PHPUnit\Traits\TestingTrait;
 
 /**
@@ -12,7 +14,7 @@ use App\Port\Test\PHPUnit\Traits\TestingTrait;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class TestCase extends LaravelTestCase
+abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackage
 {
     use TestingTrait;
 
@@ -33,7 +35,7 @@ abstract class TestCase extends LaravelTestCase
         parent::setUp();
 
         // migrate the database
-        $this->artisan('migrate');
+        $this->migrateDatabase();
 
         // seed the database
         $this->seed();

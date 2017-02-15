@@ -10,7 +10,9 @@ use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
+use App\Containers\User\UI\API\Requests\GetUserRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
+use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -33,7 +35,7 @@ class Controller extends PortApiController
      */
     public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
-        $action->run();
+        $action->run($request->id);
 
         return $this->response->accepted(null, [
             'message' => 'User (' . $request->user()->id . ') Deleted Successfully.',
@@ -53,6 +55,19 @@ class Controller extends PortApiController
         return $this->response->paginator($users, new UserTransformer());
     }
 
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    {
+        $users = $action->run(['client']);
+
+        return $this->response->paginator($users, new UserTransformer());
+    }
+
   /**
    * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
    * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
@@ -61,7 +76,7 @@ class Controller extends PortApiController
    */
     public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
-        $users = $action->run(true, true);
+        $users = $action->run(['admin']);
 
         return $this->response->paginator($users, new UserTransformer());
     }
@@ -72,12 +87,22 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function refreshUser(Request $request, GetUserAction $action)
+    public function refreshUser(RefreshUserRequest $request, GetUserAction $action)
     {
-        $user = $action->run(
-            $request['user_id'],
-            $request->header('Authorization')
-        );
+        $user = $action->run($request->id, $request->header('Authorization'));
+
+        return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
+     * @param \App\Containers\User\Actions\GetUserAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function getUser(GetUserRequest $request, GetUserAction $action)
+    {
+        $user = $action->run($request->id);
 
         return $this->response->item($user, new UserTransformer());
     }

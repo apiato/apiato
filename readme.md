@@ -37,7 +37,7 @@
 
 ### What is Hello API
 
-Hello API is a **starter** providing the all common functionalities required to develop a modern API-Centric Application, to help building API's faster and smarter with **PHP** and **Laravel 5.3**.
+Hello API is a **starter** providing the all common functionalities required to develop a modern API-Centric Application, to help building API's faster and smarter with **PHP** and **Laravel 5.4**.
 
 It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
 
@@ -105,7 +105,7 @@ Join our chatting room on Gitter by click on the icon below
 <a name="Documentation"></a>
 ## Documentation
 
-**Hello API** is architectured using the **Porto** Software Architectural Pattern. 
+**Hello API** is architectured using the **Porto** Software Architectural Pattern.
 <br>
 Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation)  before starting.
 

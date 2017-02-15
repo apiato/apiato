@@ -8,10 +8,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default filesystem disk that should be used
-    | by the framework. A "local" driver, as well as a variety of cloud
-    | based drivers are available for your choosing. Just store away!
-    |
-    | Supported: "local", "ftp", "s3", "rackspace"
+    | by the framework. The "local" disk, as well as a variety of cloud
+    | based disks are available to your application. Just store away!
     |
     */
 
@@ -39,9 +37,23 @@ return [
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
+    | Supported Drivers: "local", "ftp", "s3", "rackspace"
+    |
     */
 
     'disks' => [
+
+        'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+        ],
+
+        'local-excels' => [
+            'driver' => 'local',
+            'root' => storage_path('uploads/excels'),
+        ],
+
+        // ===============
 
         'local' => [
             'driver' => 'local',
@@ -51,15 +63,16 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => env('AWS_KEY'),
+            'secret' => env('AWS_SECRET'),
+            'region' => env('AWS_REGION'),
+            'bucket' => env('AWS_BUCKET'),
         ],
 
     ],

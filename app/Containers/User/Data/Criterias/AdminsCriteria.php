@@ -13,16 +13,16 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
 class AdminsCriteria extends Criteria
 {
 
-  /**
-   * @param                                                   $model
-   * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
-   *
-   * @return mixed
-   */
-  public function apply($model, PrettusRepositoryInterface $repository)
-  {
-    return $model->whereHas('roles', function ($q) {
-      $q->where('name', 'admin');
-    });
-  }
+    /**
+     * @param                                                   $model
+     * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
+     *
+     * @return mixed
+     */
+    public function apply($model, PrettusRepositoryInterface $repository)
+    {
+        return $model->whereHas('roles', function ($q) {
+            $q->where('name', 'admin');
+        });
+    }
 }

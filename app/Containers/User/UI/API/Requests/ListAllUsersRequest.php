@@ -19,7 +19,7 @@ class ListAllUsersRequest extends Request
      */
     protected $access = [
         'permissions' => 'list-users',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**

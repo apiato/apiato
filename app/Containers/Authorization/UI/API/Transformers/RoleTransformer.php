@@ -30,6 +30,7 @@ class RoleTransformer extends Transformer
     {
         return [
             'object'       => 'Role',
+            'id'           => $role->getHashedKey(), // << Unique Identifier
             'name'         => $role->name, // << Unique Identifier
             'description'  => $role->description,
             'display_name' => $role->display_name,

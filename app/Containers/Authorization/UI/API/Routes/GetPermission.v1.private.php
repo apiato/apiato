@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            getPermission
- * @api                {get} /find-permission Get a Permission by unique name
+ * @api                {get} /permission/:name Find a Permission by its unique name
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -16,14 +16,16 @@
  * HTTP/1.1 200 OK
 {
    "data":{
-      "name":"",
-      "description":"Create, View, Modify, Assign, Attach.. Roles and Permissions for Users",
+      "object": "Permission",
+      "id": abcderf,
+      "name":"anything",
+      "description":"",
       "display_name":"bla bla bla"
    }
 }
  */
 
-$router->get('find-permission', [
+$router->get('permission/{name}', [
     'uses'       => 'Controller@getPermission',
     'middleware' => [
         'api.auth',

@@ -28,7 +28,7 @@ trait MiddlewaresLoaderTrait
 
         // Registering Route Middleware's apart
         foreach ($this->routeMiddleware as $key => $routeMiddleware) {
-            $this->app['router']->middleware($key, $routeMiddleware);
+            $this->app['router']->aliasMiddleware($key, $routeMiddleware);
         }
     }
 }

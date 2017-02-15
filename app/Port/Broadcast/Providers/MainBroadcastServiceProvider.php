@@ -6,12 +6,21 @@ use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class BroadcastServiceProvider
+ * Class MainBroadcastServiceProvider
+ *
+ * A.K.A app/Providers/MainBroadcastServiceProvider.php
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class BroadcastServiceProvider extends ServiceProvider
+class MainBroadcastServiceProvider extends ServiceProvider
 {
+
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
 
     /**
      * Bootstrap any application services.
@@ -22,11 +31,6 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
-        /*
-         * Authenticate the user's personal channel...
-         */
-        Broadcast::channel('App.User.*', function ($user, $userId) {
-            return (int)$user->id === (int)$userId;
-        });
+//        require base_path('routes/channels.php');
     }
 }

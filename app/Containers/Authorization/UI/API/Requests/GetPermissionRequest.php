@@ -38,7 +38,7 @@ class GetPermissionRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-
+        'name',
     ];
 
     /**

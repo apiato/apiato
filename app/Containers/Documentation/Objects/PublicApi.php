@@ -15,4 +15,11 @@ class PublicApi extends ApiTypeAbstract implements ApiTypeInterface
 
     public static $type = 'public';
 
+    private $routeFiles = '-f public.php';
+
+    public function getCommand()
+    {
+        return "-c {$this->getJsonFilePath()}   {$this->routeFiles}   -i app   -o {$this->getDocumentationPath()}";
+    }
+
 }

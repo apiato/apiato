@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            getRole
- * @api                {get} /find-role Get a Role by unique name
+ * @api                {get} /role/:name Find a Role by its unique name
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -16,6 +16,8 @@
  * HTTP/1.1 200 OK
 {
    "data":{
+      "object": "Role",
+      "id":"sdffsf",
       "name":"admin",
       "description":"Super Administrator",
       "display_name":""
@@ -23,7 +25,7 @@
 }
  */
 
-$router->get('find-role', [
+$router->get('role/{name}', [
     'uses'       => 'Controller@getRole',
     'middleware' => [
         'api.auth',

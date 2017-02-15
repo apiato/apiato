@@ -9,8 +9,8 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Container Tests">
-            <directory>./app/Containers/</directory>
+        <testsuite name="Containers Tests">
+            <directory suffix="Test.php">./app/Containers</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -19,15 +19,15 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV"             value="testing"/>
         <env name="API_FULL_URL"        value="http://api.hello.dev"/>
         <env name="APP_LOCALE"        value="en"/>
 
+        <env name="APP_ENV"             value="testing"/>
         <env name="CACHE_DRIVER"        value="array"/>
         <env name="SESSION_DRIVER"      value="array"/>
         <env name="QUEUE_DRIVER"        value="sync"/>
-        <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
 
+        <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
         <env name="DB_HOST"             value="127.0.0.1"/>
         <env name="DB_PORT"             value="3306"/>
         <env name="DB_NAME"             value="homestead"/>

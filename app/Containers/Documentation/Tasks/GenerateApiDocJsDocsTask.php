@@ -38,8 +38,8 @@ class GenerateApiDocJsDocsTask extends Task
      */
     public function run(ApiTypeInterface $type)
     {
-        // the actual command that needs to be executed
-        $command = "{$this->config->get('apidoc.executable')} -c {$type->getJsonFilePath()} -f {$type->getType()}.php -i app -o {$type->getDocumentationPath()}";
+        // the actual command that needs to be executed:
+        $command = $this->config->get('apidoc.executable') . ' ' . $type->getCommand();
 
         // execute the command
         ($process = new Process($command))->run();

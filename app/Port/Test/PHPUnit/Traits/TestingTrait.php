@@ -352,14 +352,16 @@ trait TestingTrait
      *
      * Example: you give it ('users/{id}/stores', 100) it returns 'users/100/stores'
      *
-     * @param      $endpoint
-     * @param      $id
-     * @param bool $skipEncoding
+     * @param        $endpoint
+     * @param        $id
+     * @param bool   $skipEncoding
+     * @param string $replace
      *
      * @return  mixed
      */
-    public function injectEndpointId($endpoint, $id, $skipEncoding = false)
+    public function injectEndpointId($endpoint, $id, $skipEncoding = false, $replace = '{id}')
     {
+
         // In case Hash ID is enabled it will encode the ID first
         if (Config::get('hello.hash-id')) {
 
@@ -368,7 +370,7 @@ trait TestingTrait
             }
         }
 
-        return str_replace("{id}", $id, $endpoint);
+        return str_replace($replace, $id, $endpoint);
     }
 
     /**

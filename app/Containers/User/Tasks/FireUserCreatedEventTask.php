@@ -36,8 +36,8 @@ class FireUserCreatedEventTask extends Action
      */
     public function run($user)
     {
-        // Fire a User Created Event
-        $this->eventsDispatcher->fire(New UserCreatedEvent($user));
+        // Dispatch a User Created Event
+        $this->eventsDispatcher->dispatch(New UserCreatedEvent($user));
 
         return $user;
     }

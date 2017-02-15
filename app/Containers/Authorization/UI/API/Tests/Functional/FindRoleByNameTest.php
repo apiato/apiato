@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Order\UI\API\Tests\Functional;
+namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Port\Test\PHPUnit\Abstracts\TestCase;
 
@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class FindRoleByNameTest extends TestCase
 {
 
-    protected $endpoint = '/find-role';
+    protected $endpoint = '/role/{name}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,17 +23,17 @@ class FindRoleByNameTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $data = ['name' => 'admin'];
+        $roleName = 'admin';
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get', $data, true);
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $roleName, true, '{name}'), 'get');
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
         $responseObject = $this->getResponseObject($response);
 
-        $this->assertEquals($data['name'], $responseObject->data->name);
+        $this->assertEquals($roleName, $responseObject->data->name);
     }
 
 }

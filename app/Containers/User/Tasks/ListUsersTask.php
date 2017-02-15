@@ -4,6 +4,7 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Criterias\AdminsCriteria;
+use App\Containers\User\Data\Criterias\RoleCriteria;
 use App\Port\Action\Abstracts\Action;
 use App\Port\Criteria\Eloquent\OrderByCreationDateDescendingCriteria;
 
@@ -37,14 +38,14 @@ class ListUsersTask extends Action
      *
      * @return  mixed
      */
-    public function run($order = true, $admins = false)
+    public function run($order = true, $roles = null)
     {
         if ($order) {
             $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
         }
 
-        if ($admins) {
-            $this->userRepository->pushCriteria(new AdminsCriteria());
+        if ($roles) {
+            $this->userRepository->pushCriteria(new RoleCriteria($roles));
         }
 
         $users = $this->userRepository->paginate();

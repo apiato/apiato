@@ -47,7 +47,8 @@ class ListAllAdminsTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(4, $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        $this->assertCount(4,
+            $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
 }
