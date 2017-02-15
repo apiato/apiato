@@ -12,6 +12,7 @@ use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\GetUserRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
+use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -86,12 +87,9 @@ class Controller extends PortApiController
      *
      * @return  \Dingo\Api\Http\Response
      */
-    public function refreshUser(Request $request, GetUserAction $action)
+    public function refreshUser(RefreshUserRequest $request, GetUserAction $action)
     {
-        $user = $action->run(
-            $request['user_id'],
-            $request->header('Authorization')
-        );
+        $user = $action->run($request->id, $request->header('Authorization'));
 
         return $this->response->item($user, new UserTransformer());
     }
