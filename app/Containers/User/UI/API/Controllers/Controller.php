@@ -10,6 +10,7 @@ use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
+use App\Containers\User\UI\API\Requests\GetUserRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
@@ -91,6 +92,19 @@ class Controller extends PortApiController
             $request['user_id'],
             $request->header('Authorization')
         );
+
+        return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
+     * @param \App\Containers\User\Actions\GetUserAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function getUser(GetUserRequest $request, GetUserAction $action)
+    {
+        $user = $action->run($request->id);
 
         return $this->response->item($user, new UserTransformer());
     }
