@@ -40,6 +40,6 @@
 $router->get('users/{id}', [
     'uses'       => 'Controller@getUser',
     'middleware' => [
-        'app.auth',
+        'api.auth',
     ],
 ]);
