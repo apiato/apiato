@@ -75,6 +75,8 @@ class MainServiceProvider extends ServiceProviderAbstract
 
         // solves the "specified key was too long" error, introduced in L5.4
         Schema::defaultStringLength(191);
+
+        $this->extendValidationRules();
     }
 
     /**
@@ -90,4 +92,14 @@ class MainServiceProvider extends ServiceProviderAbstract
         $this->registerLoaders();
     }
 
+    /**
+     * TODO: to be removed from this class and placed in a trait
+     *
+     * Extend the default Laravel validation rules.
+     */
+    private function extendValidationRules(){
+        \Validator::extend('no_spaces', function($attr, $value){
+            return preg_match('/^\S*$/u', $value);
+        }, ['String should not contain space.']);
+    }
 }

@@ -40,4 +40,21 @@ class CreateRoleTest extends TestCase
         $this->assertEquals($data['name'], $responseObject->data->name);
     }
 
+    public function testCreateRoleWithWrongName_()
+    {
+        $this->getTestingAdmin();
+
+        $data = [
+            'name'         => 'include space',
+            'display_name' => 'manager',
+            'description'  => 'he manages things',
+        ];
+
+        // send the HTTP request
+        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+
+        // assert response status is correct
+        $this->assertEquals('422', $response->getStatusCode());
+    }
+
 }
