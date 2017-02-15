@@ -1,21 +1,14 @@
 <?php
 
-/*********************************************************************************
+/**
  * @apiGroup           Users
  * @apiName            getUser
  * @api                {get} /users/:id Get User
+ * @apiDescription     Find a user by its ID
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
  * @apiHeader          Accept application/json
- * @apiHeader          Authorization Bearer {User-Token}
- *
- * @apiParam           search           ?search=field1:text here;field2:text here
- * @apiParam           searchFields     ?searchFields=field1:like;field2:=
- * @apiParam           paginate         ?page=3
- * @apiParam           order            ?orderBy=id
- * @apiParam           sort             ?sortedBy=asc
- * @apiParam           filter           ?filter=field1;field2;field3
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
