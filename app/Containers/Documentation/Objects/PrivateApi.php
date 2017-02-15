@@ -15,4 +15,11 @@ class PrivateApi extends ApiTypeAbstract implements ApiTypeInterface
 
     public static $type = 'private';
 
+    private $routeFiles = '-f public.php -f private.php';
+
+    public function getCommand()
+    {
+        return "-c {$this->getJsonFilePath()}   {$this->routeFiles}   -i app   -o {$this->getDocumentationPath()}";
+    }
+
 }
