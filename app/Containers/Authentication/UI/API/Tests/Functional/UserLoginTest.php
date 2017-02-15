@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Authentication\Tests\TestCase;
 
 /**
  * Class UserLoginTest.
