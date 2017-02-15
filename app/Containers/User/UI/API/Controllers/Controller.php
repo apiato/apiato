@@ -53,6 +53,19 @@ class Controller extends PortApiController
         return $this->response->paginator($users, new UserTransformer());
     }
 
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    {
+        $users = $action->run(['client']);
+
+        return $this->response->paginator($users, new UserTransformer());
+    }
+
   /**
    * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
    * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
@@ -61,7 +74,7 @@ class Controller extends PortApiController
    */
     public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
-        $users = $action->run(true, true);
+        $users = $action->run(['admin']);
 
         return $this->response->paginator($users, new UserTransformer());
     }

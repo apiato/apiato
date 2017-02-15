@@ -3,12 +3,9 @@
 /**
  * @apiGroup           Users
  * @apiName            ListAllUsers
- * @api                {get} /users Search & List all Users
- * @apiDescription     List all the Application Users. You can search for Users
- * by email, name and ID
- * Example: `?search=Mahmoud` or `?search=whatever@mail.com`.
- * You can specify the field as follow `?search=email:whatever@mail.com` or `?search=id:20`.
- * You can search by multiple fields as follow: `?search=name:Mahmoud&email:whatever@mail.com`.
+ * @api                {get} /users List All Users
+ * @apiDescription     List all Application Users of any roles. For listing all registered users "Clients" only you
+ *                     can use `/clients`. And for listing all Admins (users of role Admin) only you can use `/admins`.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

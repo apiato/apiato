@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\Authorization\Models\Role;
 use App\Containers\User\Models\User;
 use App\Port\Test\PHPUnit\Abstracts\TestCase;
 
@@ -11,31 +10,25 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ListAllAdminsTest extends TestCase
+class ListAllClientsTest extends TestCase
 {
 
-    protected $endpoint = '/admins';
+    protected $endpoint = '/clients';
 
     protected $access = [
         'roles'       => 'admin',
         'permissions' => 'list-users',
     ];
 
-    public function testListAllAdmins_()
+    public function testListAllClientsByAdmin_()
     {
         $this->getTestingAdmin();
 
-        // create some non-admin users
-        $user1 = factory(User::class)->create();
-        $adminRole = Role::where('name', 'admin')->first();
-        $user1->assignRole($adminRole);
+        // create some non-admin users who are clients
+        factory(User::class)->create()->assignRole('client');
+        factory(User::class)->create()->assignRole('client');
 
-        $user2 = factory(User::class)->create();
-        $adminRole = Role::where('name', 'admin')->first();
-        $user2->assignRole($adminRole);
-
-        // should not be returned
-        $user3 = factory(User::class)->create();
+        factory(User::class)->create();
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
@@ -47,8 +40,7 @@ class ListAllAdminsTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(4,
-            $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        $this->assertCount(2, $responseObject->data);
     }
 
 }

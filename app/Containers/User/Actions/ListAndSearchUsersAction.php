@@ -29,15 +29,14 @@ class ListAndSearchUsersAction extends Action
     }
 
     /**
-     * The search text is auto-magically applied.
-     *
-     * @param bool|true $order
+     * @param null $roles
+     * @param bool $order
      *
      * @return  mixed
      */
-    public function run($order = true, $admins = false)
+    public function run($roles = null, $order = true)
     {
-        $users = $this->listUsersTask->run($order, $admins);
+        $users = $this->listUsersTask->run($order, $roles);
 
         return $users;
     }

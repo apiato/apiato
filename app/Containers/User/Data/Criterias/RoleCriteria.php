@@ -6,12 +6,27 @@ use App\Port\Criteria\Abstracts\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class AdminsCriteria.
+ * Class RoleCriteria.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AdminsCriteria extends Criteria
+class RoleCriteria extends Criteria
 {
+
+    /**
+     * @var string
+     */
+    private $roles;
+
+    /**
+     * RoleCriteria constructor.
+     *
+     * @param $roles
+     */
+    public function __construct($roles)
+    {
+        $this->roles = $roles;
+    }
 
     /**
      * @param                                                   $model
@@ -22,7 +37,7 @@ class AdminsCriteria extends Criteria
     public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->whereHas('roles', function ($q) {
-            $q->where('name', 'admin');
+            $q->where('name', $this->roles);
         });
     }
 }

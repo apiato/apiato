@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            registerUser
- * @api                {post} /users/register Register User
+ * @api                {post} /users/register Register User (create client)
  * @apiDescription
  * @apiVersion         1.0.0
  * @apiPermission      none

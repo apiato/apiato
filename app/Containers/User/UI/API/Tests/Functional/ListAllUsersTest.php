@@ -24,8 +24,9 @@ class ListAllUsersTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        // create some non-admin users
-        factory(User::class, 4)->create();
+        // create some non-admin users who are clients
+        factory(User::class, 2)->create();
+        factory(User::class)->create()->assignRole('client');
 
         // send the HTTP request
         $response = $this->apiCall($this->endpoint, 'get');
@@ -37,8 +38,7 @@ class ListAllUsersTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(6,
-            $responseObject->data); // 6 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        $this->assertCount(5, $responseObject->data);
     }
 
 // TODO: uncomment this. was temporally commented out after upgrading from L5.3 to L5.4
