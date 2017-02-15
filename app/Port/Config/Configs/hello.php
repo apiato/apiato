@@ -15,7 +15,7 @@ return [
         | The Login Page View name
         |--------------------------------------------------------------------------
         */
-        'login-page-name' => 'login',
+        'login-url' => '/login',
     ],
 
     /*

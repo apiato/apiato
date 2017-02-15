@@ -20,7 +20,7 @@ class PortButler
      */
     public function getLoginWebPageName()
     {
-        $loginPage = Config::get('hello.containers.login-page-name');
+        $loginPage = Config::get('hello.containers.login-url');
 
         if (is_null($loginPage)) {
             throw new WrongConfigurationsException();
