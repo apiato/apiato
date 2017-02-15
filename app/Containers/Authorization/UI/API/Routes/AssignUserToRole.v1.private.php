@@ -37,11 +37,15 @@
       "roles":{
          "data":[
             {
+               "object": "Role",
+               "id": abcderf,
                "name":"admin",
                "description":"Super Administrator",
                "display_name":""
             },
             {
+               "object": "Role",
+               "id": ascderf,
                "name":"client",
                "description":"Normal Client",
                "display_name":""

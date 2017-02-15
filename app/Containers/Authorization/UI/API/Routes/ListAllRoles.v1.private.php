@@ -16,6 +16,7 @@
   "data": [
     {
       "object": "Role",
+      "id": "sdadsdasd",
       "name": "admin",
       "description": "Super Administrator",
       "display_name": null,
@@ -38,6 +39,7 @@
     },
     {
       "object": "Role",
+      "id": "adfghew",
       "name": "client",
       "description": "Normal Client",
       "display_name": null,
@@ -54,6 +56,7 @@
     },
     {
       "object": "Role",
+      "id": "sdfafs",
       "name": "developer",
       "description": "A developer account, has access to the API",
       "display_name": null,

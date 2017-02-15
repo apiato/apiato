@@ -16,8 +16,10 @@
  * HTTP/1.1 200 OK
 {
    "data":{
-      "name":"",
-      "description":"Create, View, Modify, Assign, Attach.. Roles and Permissions for Users",
+      "object": "Permission",
+      "id": abcderf,
+      "name":"anything",
+      "description":"",
       "display_name":"bla bla bla"
    }
 }

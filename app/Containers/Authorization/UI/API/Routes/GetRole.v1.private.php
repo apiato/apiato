@@ -16,6 +16,8 @@
  * HTTP/1.1 200 OK
 {
    "data":{
+      "object": "Role",
+      "id":"sdffsf",
       "name":"admin",
       "description":"Super Administrator",
       "display_name":""
