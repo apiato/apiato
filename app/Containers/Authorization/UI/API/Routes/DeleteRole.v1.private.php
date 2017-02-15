@@ -4,7 +4,7 @@
  * @apiGroup           RolePermission
  * @apiName            deleteRole
  * @api                {delete} /roles/:name Delete Role
- * @apiDescription     Delete Role by ID
+ * @apiDescription     Delete Role by name
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Role
  *
@@ -14,7 +14,7 @@
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK
 {
-    "message": "Role (14) Deleted Successfully."
+    "message": "Role (manager) Deleted Successfully."
 }
  */
 
