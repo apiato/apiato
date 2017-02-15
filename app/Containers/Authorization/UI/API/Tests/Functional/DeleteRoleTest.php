@@ -13,7 +13,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class DeleteRoleTest extends TestCase
 {
 
-    protected $endpoint = '/roles/{id}';
+    protected $endpoint = '/roles/{name}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -27,14 +27,14 @@ class DeleteRoleTest extends TestCase
         $role = factory(Role::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $role->id), 'delete');
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $role->name, true, '{name}'), 'delete');
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'Role (' . $role->id . ') Deleted Successfully.',
+            'message' => 'Role (' . $role->name . ') Deleted Successfully.',
         ], $response);
     }
 

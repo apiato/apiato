@@ -33,9 +33,9 @@ class DeleteRoleAction extends Action
      *
      * @return  bool
      */
-    public function run($roleId = null)
+    public function run($roleName = null)
     {
-        $isDeleted = $this->deleteRoleTask->run($roleId);
+        $isDeleted = $this->deleteRoleTask->run($roleName);
 
         return $isDeleted;
     }

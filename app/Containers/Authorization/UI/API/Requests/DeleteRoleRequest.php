@@ -28,7 +28,7 @@ class DeleteRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'id'
+
     ];
 
     /**
@@ -38,7 +38,7 @@ class DeleteRoleRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-        'id'
+        'name'
     ];
 
     /**
@@ -47,7 +47,7 @@ class DeleteRoleRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required|exists:roles,id'
+            'name' => 'required|exists:roles,name'
         ];
     }
 

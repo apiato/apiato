@@ -29,14 +29,14 @@ class DeleteRoleTask extends Action
     }
 
     /**
-     * @param $roleId
+     * @param $roleName
      *
      * @return bool
      */
-    public function run($roleId)
+    public function run($roleName)
     {
         // delete the record from the roles table.
-        $this->roleRepository->delete($roleId);
+        $this->roleRepository->delete($this->roleRepository->findWhere(['name' => $roleName])->first()->id);
 
         return true;
     }

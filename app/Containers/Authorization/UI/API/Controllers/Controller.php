@@ -111,10 +111,10 @@ class Controller extends PortApiController
      */
     public function deleteRole(DeleteRoleRequest $request, DeleteRoleAction $action)
     {
-        $action->run($request->id);
+        $action->run($request->name);
 
         return $this->response->accepted(null, [
-            'message' => 'Role (' . $request->id . ') Deleted Successfully.',
+            'message' => 'Role (' . $request->name . ') Deleted Successfully.',
         ]);
     }
 
