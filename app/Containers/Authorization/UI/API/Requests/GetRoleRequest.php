@@ -38,7 +38,7 @@ class GetRoleRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-
+        'name',
     ];
 
     /**
