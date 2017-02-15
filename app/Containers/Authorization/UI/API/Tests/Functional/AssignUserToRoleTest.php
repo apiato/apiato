@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Order\UI\API\Tests\Functional;
+namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
 use App\Port\Test\PHPUnit\Abstracts\TestCase;

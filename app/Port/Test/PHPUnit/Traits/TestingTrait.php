@@ -360,6 +360,7 @@ trait TestingTrait
      */
     public function injectEndpointId($endpoint, $id, $skipEncoding = false)
     {
+
         // In case Hash ID is enabled it will encode the ID first
         if (Config::get('hello.hash-id')) {
 
