@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Authorization\Tests\TestCase;
 
 /**
  * Class AssignUserToRoleTest.
