@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            registerUser
- * @api                {post} /users/register Register User (create client)
+ * @api                {post} /register Register User (create client)
  * @apiDescription
  * @apiVersion         1.0.0
  * @apiPermission      none
@@ -65,6 +65,6 @@
 }
  */
 
-$router->post('users/register', [
+$router->post('/register', [
     'uses'  => 'Controller@registerUser',
 ]);

@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class UserLoginTest extends TestCase
 {
 
-    protected $endpoint = '/users/login';
+    protected $endpoint = '/login';
 
     public function testUserLoginExistingUser_()
     {

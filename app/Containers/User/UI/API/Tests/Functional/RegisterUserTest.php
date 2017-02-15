@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    protected $endpoint = '/users/register';
+    protected $endpoint = '/register';
 
 
     protected $access = [
