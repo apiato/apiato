@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Stripe\Tests\TestCase;
 
 /**
  * Class CreateStripeAccountTest.
