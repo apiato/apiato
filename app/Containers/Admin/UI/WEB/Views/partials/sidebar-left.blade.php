@@ -14,30 +14,9 @@
         </div>
         {{-- /sidebar user panel --}}
 
-        {{-- sidebar menu --}}
-        <ul class="sidebar-menu">
-            {{-- this a example multilevel menu --}}
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-edit"></i>
-                    <span class="nav-label">Forms</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                {{-- submenu --}}
-                <ul class="treeview-menu">
-                    <li><a href="#">Basic form</a></li>
-                    <li><a href="#">Advanced Plugins</a></li>
-                    <li><a href="#">Wizard</a></li>
-                    <li><a href="#">File Upload</a></li>
-                    <li><a href="#">Text Editor</a></li>
-                    <li><a href="#">Markdown</a></li>
-                </ul>
-                {{-- /submenu --}}
-            </li>
-        </ul>
-        {{-- /sidebar-menu --}}
+        {{-- TODO: we should build a dynamic menu with options for sort, show/hide, etc, according to user preferences/permissions  --}}
+        {{-- main menu --}}
+        @include('partials.menu')
 
     </section>
     {{-- /sidebar --}}
