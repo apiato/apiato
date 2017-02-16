@@ -3,12 +3,12 @@
 /public/hot
 /storage/*.key
 /vendor
-/.idea
+/app/Containers/Documentation/ApiDocJs/private/header.md
 Homestead.json
 Homestead.yaml
 .env
-
 storage/logs/laravel.log
+
 /public/api/
 /public/uploads/
 /laradock*/

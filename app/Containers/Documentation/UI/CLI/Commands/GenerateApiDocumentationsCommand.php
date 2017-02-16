@@ -3,8 +3,9 @@
 namespace App\Containers\Documentation\UI\CLI\Commands;
 
 use App\Containers\Documentation\Actions\GenerateAPIDocsAction;
-use App\Containers\Documentation\Objects\PublicApi;
+use App\Containers\Documentation\Actions\ProcessMarkdownTemplatesAction;
 use App\Containers\Documentation\Objects\PrivateApi;
+use App\Containers\Documentation\Objects\PublicApi;
 use App\Port\Console\Abstracts\ConsoleCommand;
 
 /**
@@ -40,11 +41,17 @@ class GenerateApiDocumentationsCommand extends ConsoleCommand
     }
 
     /**
-     * @param \App\Containers\Documentation\Actions\GenerateAPIDocsAction $action
+     * @param \App\Containers\Documentation\Actions\ProcessMarkdownTemplatesAction $processMarkdownTemplatesAction
+     * @param \App\Containers\Documentation\Actions\GenerateAPIDocsAction          $generateAPIDocsAction
      */
-    public function handle(GenerateAPIDocsAction $action)
-    {
+    public function handle(
+        ProcessMarkdownTemplatesAction $processMarkdownTemplatesAction,
+        GenerateAPIDocsAction $generateAPIDocsAction
+    ) {
         // TODO: add optional argument array, allowing user to specify a type or more otherwise take all
+
+        // parse the markdown file.
+        $processMarkdownTemplatesAction->run();
 
         $types = [
             PrivateApi::$type,
@@ -54,7 +61,7 @@ class GenerateApiDocumentationsCommand extends ConsoleCommand
         echo "Generating API Documentations " . implode(' & ', $types) . ".\n";
 
         foreach ($types as $type) {
-            $documentationUrls[] = "> {your-domain}/{$action->run($type)}";
+            $documentationUrls[] = "> {your-domain}/{$generateAPIDocsAction->run($type)}";
         }
 
         echo "Done! You can access your API Docs at: \n" . implode("\n", $documentationUrls) . "\n";
