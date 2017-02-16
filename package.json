@@ -1,28 +1,29 @@
 {
   "private": true,
-  "devDependencies": {},
-  "dependencies": {
-    "apidoc": "^0.16.1"
-  },
-  "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "gulp": "^3.9.1",
-    "jquery": "^2",
-    "laravel-elixir": "^6.0.0-9",
-    "laravel-elixir-vue": "^0.1.4",
-    "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.14.0",
-    "vue": "^1.0.26",
-    "vue-resource": "^0.9.3"
-  },
   "name": "rewards-fox",
   "description": "RewardFox API",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "author": "Mahmoud Zalt",
-  "license": "MIT"
+  "devDependencies": {
+    "axios": "^0.15.2",
+    "bootstrap-sass": "^3.3.7",
+    "laravel-mix": "^0.6.0",
+    "lodash": "^4.16.2",
+    "vue": "^2.0.1",
+    "jquery": "^2",
+    "apidoc": "^0.16.1"
+  },
+  "dependencies": {
+    "admin-lte": "^2.3.11",
+    "animate.css": "^3.5.2",
+    "font-awesome": "^4.7.0",
+    "ionicons": "^3.0.0",
+    "moment": "^2.17.1",
+    "pace-progress": "^1.0.2"
+  }
 }

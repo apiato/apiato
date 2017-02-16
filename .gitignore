@@ -1,13 +1,22 @@
-.env
-.phpintel
-storage/logs/laravel.log
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
 /vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+
+storage/logs/laravel.log
 /public/api/
 /public/uploads/
 /laradock*/
+
 /node_modules/
 !public/**/
 public/*/*
+public/mix-manifest.json
 !public/img/default-avatar.png
 
 !app/Containers/
