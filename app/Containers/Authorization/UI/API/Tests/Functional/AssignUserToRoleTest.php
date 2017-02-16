@@ -53,8 +53,10 @@ class AssignUserToRoleTest extends TestCase
 
         $randomUser = factory(User::class)->create();
 
+        $role = factory(Role::class)->create();
+
         $data = [
-            'roles_ids' => 'admin',
+            'roles_ids' => $role->id,
             'user_id'   => $randomUser->id,
         ];
 
@@ -75,8 +77,14 @@ class AssignUserToRoleTest extends TestCase
 
         $randomUser = factory(User::class)->create();
 
+        $role1 = factory(Role::class)->create();
+        $role2 = factory(Role::class)->create();
+
         $data = [
-            'roles_ids' => ['admin', 'client'],
+            'roles_ids' => [
+                $role1->getHashedKey(),
+                $role2->getHashedKey(),
+            ],
             'user_id'   => $randomUser->getHashedKey(),
         ];
 
@@ -90,9 +98,9 @@ class AssignUserToRoleTest extends TestCase
 
         $this->assertTrue(count($responseObject->data->roles->data) > 1);
 
-        $this->assertEquals($data['roles_ids'][0], $responseObject->data->roles->data[0]->name);
+        $this->assertEquals($data['roles_ids'][0], $responseObject->data->roles->data[0]->id);
 
-        $this->assertEquals($data['roles_ids'][1], $responseObject->data->roles->data[1]->name);
+        $this->assertEquals($data['roles_ids'][1], $responseObject->data->roles->data[1]->id);
     }
 
 }

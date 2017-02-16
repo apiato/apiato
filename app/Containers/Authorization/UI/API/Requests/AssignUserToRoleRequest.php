@@ -48,7 +48,8 @@ class AssignUserToRoleRequest extends Request
     public function rules()
     {
         return [
-            'roles_ids'   => 'required|exists:roles,id',
+            'roles_ids'   => 'required',
+            'roles_ids.*' => 'exists:roles,id',
             'user_id'     => 'required|exists:users,id',
         ];
     }
