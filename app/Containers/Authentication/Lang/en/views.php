@@ -2,6 +2,7 @@
 
 return [
     'login-title' => 'Sign In',
+    'dashboard-title' => 'Dashboard',
     'welcome-user' => 'Welcome :user',
 
     // form fields

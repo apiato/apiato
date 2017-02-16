@@ -1,5 +1,7 @@
 @extends('admin::layouts.box-middle')
 
+@section('title') {{ trans('authentication::views.login-title') }} @endsection
+
 @section('content')
     <h3 class="text-center">{{ trans('authentication::views.login-title') }}</h3>
 

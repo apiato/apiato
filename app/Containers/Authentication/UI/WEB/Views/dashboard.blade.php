@@ -1,5 +1,7 @@
 @extends('admin::layouts.right-sidebar')
 
+@section('title') {{ trans('authentication::views.dashboard-title') }} @endsection
+
 @section('content')
 <div class="content animated fadeIn">
     <div class="jumbotron">
