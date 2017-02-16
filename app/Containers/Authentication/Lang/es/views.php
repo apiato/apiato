@@ -2,6 +2,7 @@
 
 return [
     'login-title' => 'Iniciar Sesión',
+    'welcome-user' => 'Bienvenido :user',
 
     // form fields
     'form-fields' => [
