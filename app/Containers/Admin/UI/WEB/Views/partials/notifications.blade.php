@@ -8,8 +8,8 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <strong>Error!!</strong>
-                <p>Hay problemas con la información suministrada.</p>
+                <strong>{{ trans('admin::views.error') }}</strong>
+                <p>{{ trans('admin::views.there-are-errors-on-your-input') }}</p>
             </div>
         @endif
 

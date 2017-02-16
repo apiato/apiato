@@ -11,17 +11,17 @@
         @endif
         
         <div class="form-group has-feedback">
-            <input type="text"  placeholder="email" id="email" name="email" class="form-control" />
+            <input type="text"  placeholder="{{ trans('authentication::views.form-fields.email') }}" id="email" name="email" class="form-control" />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         
         <div class="form-group has-feedback">
-        <input type="password" placeholder="password" id="password" name="password"  class="form-control"/>
+        <input type="password" placeholder="{{ trans('authentication::views.form-fields.password') }}" id="password" name="password"  class="form-control"/>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">{{ trans('authentication::views.form-fields.login-btn') }}</button>
         </div>
     </form>
 @endsection

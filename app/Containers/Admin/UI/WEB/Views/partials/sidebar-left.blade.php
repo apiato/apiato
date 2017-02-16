@@ -10,7 +10,6 @@
             </div>
             <div class="pull-left info">
                 <p>{{ auth()->user()->name }}</p>
-                <p><small>since {{ auth()->user()->created_at->toFormattedDateString() }}</small></p>
             </div>
         </div>
         {{-- /sidebar user panel --}}

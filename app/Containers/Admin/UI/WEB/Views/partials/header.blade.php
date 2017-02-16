@@ -40,7 +40,7 @@
                             <img src="{{ asset('img/default-avatar.png') }}" class="img-circle" alt="User Image">
                             <p>
                                 {{ auth()->user()->name }}
-                                <small>Member since {{ auth()->user()->created_at->toFormattedDateString() }}</small>
+                                <small>{{ trans('admin::views.member-since') }} {{ auth()->user()->created_at->toFormattedDateString() }}</small>
                             </p>
                         </li>
                         {{-- /user image --}}
@@ -49,12 +49,12 @@
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat">
-                                    {{ trans('core::views.profile') }}
+                                    {{ trans('admin::views.profile') }}
                                 </a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat logout">
-                                    {{ trans('core::views.logout') }}
+                                    {{ trans('admin::views.logout') }}
                                 </a>
                             </div>
                         </li>

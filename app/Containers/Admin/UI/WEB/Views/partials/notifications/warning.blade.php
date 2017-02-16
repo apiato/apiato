@@ -7,7 +7,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Alerta!!</strong><br>
+        <strong>{{ trans('admin::views.warning') }}</strong><br>
         @if(is_array(session('warning')))
         
             @foreach(\Session::get('warning') as $warning)

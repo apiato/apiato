@@ -7,7 +7,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error!!</strong><br>
+        <strong>{{ trans('admin::views.error') }}</strong><br>
         
         @if(is_array(session('error')))
         
