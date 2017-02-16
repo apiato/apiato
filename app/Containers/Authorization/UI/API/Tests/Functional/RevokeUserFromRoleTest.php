@@ -57,8 +57,8 @@ class RevokeUserFromRoleTest extends TestCase
         $randomUser->assignRole($roleA);
 
         $data = [
-            'roles_ids' => $roleA->getHashedKey(),
-            'user_id'   => $randomUser->getHashedKey(),
+            'roles_ids' => $roleA->id,
+            'user_id'   => $randomUser->id,
         ];
 
         // send the HTTP request
