@@ -30,12 +30,12 @@ class AssignUserToRoleAction extends Action
 
     /**
      * @param $userId
-     * @param $rolesNames array or string
+     * @param $rolesIds
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run($userId, $rolesNames)
+    public function run($userId, $rolesIds)
     {
-        return $this->assignUserToRoleTask->run($userId, $rolesNames);
+        return $this->assignUserToRoleTask->run($userId, $rolesIds);
     }
 }

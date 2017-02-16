@@ -38,38 +38,27 @@ class AssignUserToRoleTask extends Task
     }
 
     /**
-     * @param \App\Containers\User\Models\User $user | $userId
-     * @param                                  $roles
+     * @param $user
+     * @param $rolesIds
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  mixed|\Spatie\Permission\Contracts\Role
      */
-    public function run($user, $roles)
+    public function run($user, $rolesIds)
     {
         if (!$user instanceof User) {
             $user = $this->findUserByIdTask->run($user);
         }
 
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                $this->assignRole($user, $role);
-            }
-
-        } else {
-            $this->assignRole($user, $roles);
+        if (!is_array($rolesIds)) {
+            $rolesIds = [$rolesIds];
         }
 
-        return $user;
-    }
+        // TODO: run 1 query to get them all, let a task do that and call it from the action before (passing roles as param here)
+        foreach ($rolesIds as $roleId) {
+            $roles[] = $this->roleRepository->findWhere(['id' => $roleId])->first();
+        }
 
-    /**
-     * @param $user
-     * @param $role
-     *
-     * @return  mixed
-     */
-    private function assignRole($user, $role)
-    {
-        $user = $user->assignRole($this->roleRepository->findWhere(['name' => $role])->first());
+        $user = $user->assignRole($roles);
 
         return $user;
     }

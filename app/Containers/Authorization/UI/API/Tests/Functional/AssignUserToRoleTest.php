@@ -2,8 +2,9 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\User\Models\User;
+use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\User\Models\User;
 
 /**
  * Class AssignUserToRoleTest.
@@ -26,9 +27,11 @@ class AssignUserToRoleTest extends TestCase
 
         $randomUser = factory(User::class)->create();
 
+        $role = factory(Role::class)->create();
+
         $data = [
-            'roles_names' => 'admin',
-            'user_id'     => $randomUser->getHashedKey(),
+            'roles_ids' => $role->getHashedKey(),
+            'user_id'   => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -41,7 +44,7 @@ class AssignUserToRoleTest extends TestCase
 
         $this->assertEquals($data['user_id'], $responseObject->data->id);
 
-        $this->assertEquals($data['roles_names'], $responseObject->data->roles->data[0]->name);
+        $this->assertEquals($data['roles_ids'], $responseObject->data->roles->data[0]->id);
     }
 
     public function testAssignUserToRoleWithRealId_()
@@ -51,8 +54,8 @@ class AssignUserToRoleTest extends TestCase
         $randomUser = factory(User::class)->create();
 
         $data = [
-            'roles_names' => 'admin',
-            'user_id'     => $randomUser->id,
+            'roles_ids' => 'admin',
+            'user_id'   => $randomUser->id,
         ];
 
         // send the HTTP request
@@ -73,8 +76,8 @@ class AssignUserToRoleTest extends TestCase
         $randomUser = factory(User::class)->create();
 
         $data = [
-            'roles_names' => ['admin', 'client'],
-            'user_id'     => $randomUser->getHashedKey(),
+            'roles_ids' => ['admin', 'client'],
+            'user_id'   => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -87,9 +90,9 @@ class AssignUserToRoleTest extends TestCase
 
         $this->assertTrue(count($responseObject->data->roles->data) > 1);
 
-        $this->assertEquals($data['roles_names'][0], $responseObject->data->roles->data[0]->name);
+        $this->assertEquals($data['roles_ids'][0], $responseObject->data->roles->data[0]->name);
 
-        $this->assertEquals($data['roles_names'][1], $responseObject->data->roles->data[1]->name);
+        $this->assertEquals($data['roles_ids'][1], $responseObject->data->roles->data[1]->name);
     }
 
 }
