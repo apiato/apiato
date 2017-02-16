@@ -7,11 +7,8 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiHeader          Accept application/json (required)
- * @apiHeader          Authorization Bearer {User-Token} (required)
- *
- * @apiParam           {String}  password
- * @apiParam           {String}  name
+ * @apiParam           {String}  password (optional)
+ * @apiParam           {String}  name (optional)
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

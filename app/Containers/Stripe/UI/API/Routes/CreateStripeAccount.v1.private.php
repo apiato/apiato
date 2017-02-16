@@ -10,8 +10,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiHeader          Accept application/json
- *
  * @apiParam           customer_id
  * @apiParam           card_id
  * @apiParam           card_funding

@@ -4,11 +4,9 @@
  * @apiGroup           Users
  * @apiName            registerUser
  * @api                {post} /register Register User (create client)
- * @apiDescription
+ * @apiDescription     Register new user as client.
  * @apiVersion         1.0.0
  * @apiPermission      none
- *
- * @apiHeader          Accept application/json (required)
  *
  * @apiParam           {String}  email (required)
  * @apiParam           {String}  password (required)

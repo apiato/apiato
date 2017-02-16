@@ -7,8 +7,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiHeader          Accept application/json (required)
- *
  * @apiParam           {String}     email (required)
  * @apiParam           {String}     password (required)
  *

@@ -7,9 +7,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiHeader          Accept application/json
- * @apiHeader          Authorization Bearer {User-Token}
- *
  * @apiParam           {String} name Unique Role Name
  * @apiParam           {String} [description]
  * @apiParam           {String} [display_name]

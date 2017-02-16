@@ -8,9 +8,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiHeader          Accept application/json (required)
- * @apiHeader          Authorization Bearer {User-Token} (required)
- *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK
 {

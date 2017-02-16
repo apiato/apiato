@@ -1,10 +1,27 @@
 ## Usage Overview
 
 
+## **Headers**
+
+Some Endpoints requires specific headers to be sent when making the request.
+
+| Header        | Value Sample                 | When to send it                                                              |
+|---------------|------------------------------|------------------------------------------------------------------------------|
+| Accept        | `application/json`           | MUST be sent with every endpoint.                                            |
+| Authorization | `Bearer {Access-Token-Here}` | MUST be sent whenever the endpoint requires (Authenticated User) permission. |
+
+
+
+
+
+
+
+
+
 
 ## **Query Parameters**
 
-
+Query parameters are optional, you can apply them to some endopints whenever you need them.
 
 ### Ordering
 

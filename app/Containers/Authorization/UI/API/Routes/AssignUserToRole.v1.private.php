@@ -7,9 +7,6 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiHeader          Accept application/json
- * @apiHeader          Authorization Bearer {User-Token}
- *
  * @apiParam           {Number} user_id User ID
  * @apiParam           {Array-String} roles_ids Role ID or Array of Roles ID's
  *
