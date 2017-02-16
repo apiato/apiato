@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
+use App\Containers\Authorization\Models\Role;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -29,15 +30,17 @@ class DeleteRoleTask extends Action
     }
 
     /**
-     * @param $roleName
+     * @param Integer|Role $role
      *
-     * @return bool
+     * @return  bool
      */
-    public function run($roleName)
+    public function run($role)
     {
-        // delete the record from the roles table.
-        $this->roleRepository->delete($this->roleRepository->findWhere(['name' => $roleName])->first()->id);
+        if ($role instanceof Role) {
+            $role = $role->id;
+        }
 
-        return true;
+        // delete the record from the roles table.
+        return $this->roleRepository->delete($role);
     }
 }

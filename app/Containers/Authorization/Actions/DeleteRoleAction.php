@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\DeleteRoleTask;
+use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -19,23 +20,32 @@ class DeleteRoleAction extends Action
     private $deleteRoleTask;
 
     /**
+     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
+     */
+    private $getRoleTask;
+
+    /**
      * DeleteRoleAction constructor.
      *
      * @param \App\Containers\Authorization\Tasks\DeleteRoleTask $deleteRoleTask
+     * @param \App\Containers\Authorization\Tasks\GetRoleTask    $getRoleTask
      */
-    public function __construct(DeleteRoleTask $deleteRoleTask)
+    public function __construct(DeleteRoleTask $deleteRoleTask, GetRoleTask $getRoleTask)
     {
         $this->deleteRoleTask = $deleteRoleTask;
+        $this->getRoleTask = $getRoleTask;
     }
 
     /**
-     * @param $roleId
+     * @param $roleNameOrId
      *
      * @return  bool
      */
-    public function run($roleName = null)
+    public function run($roleNameOrId)
     {
-        $isDeleted = $this->deleteRoleTask->run($roleName);
+        $role = $this->getRoleTask->run($roleNameOrId);
+
+        $isDeleted = $this->deleteRoleTask->run($role);
 
         return $isDeleted;
     }
