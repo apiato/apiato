@@ -25,23 +25,14 @@ class DetachPermissionsFromRoleTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $permissionA = Permission::create([
-            'name'         => 'permission-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
+        $permissionA = factory(Permission::class)->create();
 
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
-
+        $roleA = factory(Role::class)->create();
         $roleA->givePermissionTo($permissionA);
 
         $data = [
-            'role_name'       => $roleA['name'],
-            'permission_name' => $permissionA['name'],
+            'role_id'         => $roleA->getHashedKey(),
+            'permissions_ids' => $permissionA->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -52,7 +43,7 @@ class DetachPermissionsFromRoleTest extends TestCase
 
         $responseObject = $this->getResponseObject($response);
 
-        $this->assertEquals($roleA['name'], $responseObject->data->name);
+        $this->assertEquals($roleA->name, $responseObject->data->name);
 
         $this->missingFromDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,
@@ -64,30 +55,16 @@ class DetachPermissionsFromRoleTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $permissionA = Permission::create([
-            'name'         => 'permission-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
+        $permissionA = factory(Permission::class)->create();
+        $permissionB = factory(Permission::class)->create();
 
-        $permissionB = Permission::create([
-            'name'         => 'permission-B',
-            'description'  => 'BB',
-            'display_name' => 'B',
-        ]);
-
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
-
+        $roleA = factory(Role::class)->create();
         $roleA->givePermissionTo($permissionA);
         $roleA->givePermissionTo($permissionB);
 
         $data = [
-            'role_name'       => $roleA['name'],
-            'permission_name' => [$permissionA['name'], $permissionB['name']]
+            'role_id'         => $roleA->getHashedKey(),
+            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         // send the HTTP request
@@ -98,9 +75,7 @@ class DetachPermissionsFromRoleTest extends TestCase
 
         $responseObject = $this->getResponseObject($response);
 
-        $responseObject = $this->getResponseObject($response);
-
-        $this->assertEquals($roleA['name'], $responseObject->data->name);
+        $this->assertEquals($roleA->name, $responseObject->data->name);
 
         $this->missingFromDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,

@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Actions\GetRoleAction;
+use App\Containers\Authorization\Models\Role;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -30,16 +31,20 @@ class DetachPermissionsFromRoleTask extends Task
     }
 
     /**
-     * @param string       $roleName
-     * @param array|string $permissionNames
+     * @param \App\Containers\Authorization\Models\Role $role
+     * @param                                           $permissionsIds
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Role|\Spatie\Permission\Traits\HasPermissions
      */
-    public function run($roleName, $permissionNames)
+    public function run(Role $role, $permissionsIds)
     {
-        $role = $this->getRoleAction->run($roleName);
-
-        $role->revokePermissionTo($permissionNames);
+        if (is_array($permissionsIds)) {
+            foreach ($permissionsIds as $permissionId) {
+                $role = $role->revokePermissionTo($permissionId);
+            }
+        } else {
+            $role = $role->revokePermissionTo($permissionsIds);
+        }
 
         return $role;
     }

@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask;
+use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Port\Action\Abstracts\Action;
 
 /**
@@ -19,23 +20,32 @@ class DetachPermissionsFromRoleAction extends Action
     private $detachPermissionsFromRoleTask;
 
     /**
+     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
+     */
+    private $getRoleTask;
+
+    /**
      * DetachPermissionsFromRoleAction constructor.
      *
      * @param \App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask
+     * @param \App\Containers\Authorization\Tasks\GetRoleTask                   $getRoleTask
      */
-    public function __construct(DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask)
+    public function __construct(DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask, GetRoleTask $getRoleTask)
     {
         $this->detachPermissionsFromRoleTask = $detachPermissionsFromRoleTask;
+        $this->getRoleTask = $getRoleTask;
     }
 
     /**
-     * @param string       $role
-     * @param array|string $permissions
+     * @param $roleId
+     * @param $permissions
      *
      * @return  mixed
      */
-    public function run($role, $permissions)
+    public function run($roleId, $permissionsIds)
     {
-        return $this->detachPermissionsFromRoleTask->run($role, $permissions);
+        $role = $this->getRoleTask->run($roleId);
+
+        return $this->detachPermissionsFromRoleTask->run($role, $permissionsIds);
     }
 }
