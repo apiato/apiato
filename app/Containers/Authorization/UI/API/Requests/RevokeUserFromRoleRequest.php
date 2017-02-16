@@ -28,6 +28,7 @@ class RevokeUserFromRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
+        'roles_ids',
         'user_id',
     ];
 
@@ -47,7 +48,8 @@ class RevokeUserFromRoleRequest extends Request
     public function rules()
     {
         return [
-            'roles_names' => 'required|exists:roles,name',
+            'roles_ids'   => 'required',
+            'roles_ids.*' => 'exists:roles,id',
             'user_id'     => 'required|exists:users,id',
         ];
     }

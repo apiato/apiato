@@ -3,8 +3,8 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Role;
-use App\Containers\User\Models\User;
 use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\User\Models\User;
 
 /**
  * Class RevokeUserFromRoleTest.
@@ -23,15 +23,18 @@ class RevokeUserFromRoleTest extends TestCase
 
     public function testRevokeUserFromRole_()
     {
-        $admin = $this->getTestingAdmin();
+        $roleA = factory(Role::class)->create();
+
+        $randomUser = factory(User::class)->create();
+        $randomUser->assignRole($roleA);
 
         $data = [
-            'roles_names' => 'admin',
-            'user_id'     => $admin->getHashedKey(),
+            'roles_ids' => $roleA->getHashedKey(),
+            'user_id'   => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -41,22 +44,25 @@ class RevokeUserFromRoleTest extends TestCase
         $this->assertEquals($data['user_id'], $responseObject->data->id);
 
         $this->missingFromDatabase('user_has_roles', [
-            'user_id' => $admin->id,
-            'role_id' => 2, // for admin, manually setting it now
+            'user_id' => $randomUser->id,
+            'role_id' => $roleA->id,
         ]);
     }
 
     public function testRevokeUserFromRoleWithRealId_()
     {
-        $admin = $this->getTestingAdmin();
+        $roleA = factory(Role::class)->create();
+
+        $randomUser = factory(User::class)->create();
+        $randomUser->assignRole($roleA);
 
         $data = [
-            'roles_names' => 'admin',
-            'user_id'     => $admin->id,
+            'roles_ids' => $roleA->getHashedKey(),
+            'user_id'   => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->apiCall($this->endpoint, 'post', $data);
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
         $this->assertEquals('400', $response->getStatusCode());
@@ -68,28 +74,16 @@ class RevokeUserFromRoleTest extends TestCase
 
     public function testRevokeUserFromManyRoles_()
     {
-        $this->getTestingUser();
+        $roleA = factory(Role::class)->create();
+        $roleB = factory(Role::class)->create();
 
         $randomUser = factory(User::class)->create();
-
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
-
-        $roleB = Role::create([
-            'name'         => 'role-B',
-            'description'  => 'BB',
-            'display_name' => 'B',
-        ]);
-
         $randomUser->assignRole($roleA);
         $randomUser->assignRole($roleB);
 
         $data = [
-            'roles_names' => ['role-A', 'role-B'],
-            'user_id'     => $randomUser->getHashedKey(),
+            'roles_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
+            'user_id'   => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request

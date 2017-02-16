@@ -126,7 +126,7 @@ class Controller extends PortApiController
      */
     public function revokeRoleFromUser(RevokeUserFromRoleRequest $request, RevokeUserFromRoleAction $action)
     {
-        $user = $action->run($request['user_id'], $request['roles_names']);
+        $user = $action->run($request['user_id'], $request['roles_ids']);
 
         return $this->response->item($user, new UserTransformer());
     }

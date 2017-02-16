@@ -10,8 +10,8 @@
  * @apiHeader          Accept application/json
  * @apiHeader          Authorization Bearer {User-Token}
  *
- * @apiParam           {Number} user_id the user ID
- * @apiParam           {Array-String} roles_names Name or Names of the Roles
+ * @apiParam           {Number} user_id user ID
+ * @apiParam           {Array-String} roles_ids Role ID or Array of Role ID's
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
