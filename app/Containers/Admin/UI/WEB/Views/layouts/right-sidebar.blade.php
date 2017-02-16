@@ -9,11 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'AppName') }} | @yield('title')</title>
 
-    {{-- compiled plugins --}}
+    {{-- app css --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- compiled css plugins --}}
     <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
 
     @yield ('styles')
@@ -50,6 +52,9 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    
+    {{-- app js --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- compiled plugins --}}
     <script src="{{ asset('js/plugins.js') }}"></script>
 

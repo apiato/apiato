@@ -13,6 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'AppName') }} | @yield('title')</title>
 
+    {{-- app css --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- compiled plugins --}}
     <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
 
@@ -41,6 +43,9 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    {{-- app js --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- compiled plugins --}}
     <script src="{{ asset('js/plugins.js') }}"></script>
 
