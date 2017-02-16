@@ -59,7 +59,7 @@ class Controller extends PortApiController
      */
     public function getPermission(GetPermissionRequest $request, GetPermissionAction $action)
     {
-        $permission = $action->run($request['name']);
+        $permission = $action->run($request['id']);
 
         return $this->response->item($permission, new PermissionTransformer());
     }
@@ -85,7 +85,7 @@ class Controller extends PortApiController
      */
     public function getRole(GetRoleRequest $request, GetRoleAction $action)
     {
-        $role = $action->run($request['name']);
+        $role = $action->run($request['id']);
 
         return $this->response->item($role, new RoleTransformer());
     }

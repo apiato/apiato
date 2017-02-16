@@ -28,7 +28,7 @@ class GetPermissionRequest extends Request
      * @var  array
      */
     protected $decode = [
-
+        'id',
     ];
 
     /**
@@ -38,7 +38,7 @@ class GetPermissionRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-        'name',
+        'id',
     ];
 
     /**
@@ -47,7 +47,7 @@ class GetPermissionRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|exists:permissions,name'
+            'id' => 'required|exists:permissions,id'
         ];
     }
 

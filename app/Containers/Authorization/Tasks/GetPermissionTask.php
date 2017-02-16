@@ -35,7 +35,6 @@ class GetPermissionTask extends Task
      */
     public function run($permissionNameOrId)
     {
-
         $query = ['id' => $permissionNameOrId];
 
         if (!is_numeric($permissionNameOrId)) {

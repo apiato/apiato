@@ -2,38 +2,39 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
+use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Tests\TestCase;
 
 /**
- * Class FindPermissionByNameTest.
+ * Class FindPermissionTest.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindPermissionByNameTest extends TestCase
+class FindPermissionTest extends TestCase
 {
 
-    protected $endpoint = '/permission/{name}';
+    protected $endpoint = '/permission/{id}';
 
     protected $access = [
         'roles'       => 'admin',
         'permissions' => '',
     ];
 
-    public function testGetPermission_()
+    public function testFindPermissionById_()
     {
         $this->getTestingAdmin();
 
-        $permissionName = 'delete-users';
+        $permissionA = factory(Permission::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $permissionName, true, '{name}'), 'get');
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $permissionA->id), 'get');
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
         $responseObject = $this->getResponseObject($response);
 
-        $this->assertEquals($permissionName, $responseObject->data->name);
+        $this->assertEquals($permissionA->name, $responseObject->data->name);
     }
 
 }
