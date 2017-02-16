@@ -21,7 +21,7 @@ class AttachPermissionsToRoleTask extends Task
      */
     public function run(Role $role, Array $permissions)
     {
-        $role->givePermissionTo($permissions);
+        $role = $role->givePermissionTo($permissions);
 
         return $role;
     }
