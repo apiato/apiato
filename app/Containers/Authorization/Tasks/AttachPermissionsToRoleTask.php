@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Tasks;
 
-use App\Containers\Authorization\Actions\GetRoleAction;
+use App\Containers\Authorization\Models\Role;
 use App\Port\Task\Abstracts\Task;
 
 /**
@@ -14,32 +14,14 @@ class AttachPermissionsToRoleTask extends Task
 {
 
     /**
-     * @var  \App\Containers\Authorization\Actions\GetRoleAction
-     */
-    private $getRoleAction;
-
-
-    /**
-     * AttachPermissionsToRoleTask constructor.
+     * @param \App\Containers\Authorization\Models\Role $role
+     * @param array                                     $permissions
      *
-     * @param \App\Containers\Authorization\Actions\GetRoleAction $getRoleAction
+     * @return  \App\Containers\Authorization\Models\Role
      */
-    public function __construct(GetRoleAction $getRoleAction)
+    public function run(Role $role, Array $permissions)
     {
-        $this->getRoleAction = $getRoleAction;
-    }
-
-    /**
-     * @param string       $roleName
-     * @param array|string $permissionNames
-     *
-     * @return  mixed
-     */
-    public function run($roleName, $permissionNames)
-    {
-        $role = $this->getRoleAction->run($roleName);
-
-        $role->givePermissionTo($permissionNames);
+        $role->givePermissionTo($permissions);
 
         return $role;
     }

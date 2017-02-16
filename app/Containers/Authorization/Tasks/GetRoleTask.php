@@ -29,13 +29,19 @@ class GetRoleTask extends Task
     }
 
     /**
-     * @param $roleName
+     * @param Integer|String $roleNameOrId
      *
      * @return  mixed
      */
-    public function run($roleName)
+    public function run($roleNameOrId)
     {
-        return $this->roleRepository->findWhere(['name' => $roleName])->first();
+        $query = ['id' => $roleNameOrId];
+
+        if (!is_numeric($roleNameOrId)) {
+            $query = ['name' => $roleNameOrId];
+        }
+
+        return $this->roleRepository->findWhere($query)->first();
     }
 
 }

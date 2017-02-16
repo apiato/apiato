@@ -29,13 +29,20 @@ class GetPermissionTask extends Task
     }
 
     /**
-     * @param $permissionName
+     * @param $permissionNameOrId
      *
      * @return  mixed
      */
-    public function run($permissionName)
+    public function run($permissionNameOrId)
     {
-        return $this->permissionRepository->findWhere(['name' => $permissionName])->first();
+
+        $query = ['id' => $permissionNameOrId];
+
+        if (!is_numeric($permissionNameOrId)) {
+            $query = ['name' => $permissionNameOrId];
+        }
+
+        return $this->permissionRepository->findWhere($query)->first();
     }
 
 }

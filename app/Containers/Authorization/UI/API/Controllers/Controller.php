@@ -141,7 +141,7 @@ class Controller extends PortApiController
         AttachPermissionToRoleRequest $request,
         AttachPermissionsToRoleAction $action
     ) {
-        $role = $action->run($request['role_name'], $request['permission_name']);
+        $role = $action->run($request['role_id'], $request['permissions_ids']);
 
         return $this->response->item($role, new RoleTransformer());
     }

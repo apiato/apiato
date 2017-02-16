@@ -28,7 +28,8 @@ class AttachPermissionToRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-
+        'permissions_ids',
+        'role_id',
     ];
 
     /**
@@ -47,8 +48,9 @@ class AttachPermissionToRoleRequest extends Request
     public function rules()
     {
         return [
-            'role_name'       => 'required|exists:roles,name',
-            'permission_name' => 'required|exists:permissions,name',
+            'permissions_ids'   => 'required',
+            'permissions_ids.*' => 'exists:permissions,id',
+            'role_id'           => 'required|exists:roles,id',
         ];
     }
 

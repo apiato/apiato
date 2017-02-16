@@ -25,21 +25,12 @@ class AttachPermissionsToRoleTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
-
-        $permissionA = Permission::create([
-            'name'         => 'permission-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
+        $roleA = factory(Role::class)->create();
+        $permissionA = factory(Permission::class)->create();
 
         $data = [
-            'role_name'       => $roleA['name'],
-            'permission_name' => $permissionA['name'],
+            'role_id'         => $roleA->getHashedKey(),
+            'permissions_ids' => $permissionA->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -54,7 +45,7 @@ class AttachPermissionsToRoleTest extends TestCase
 
         $this->seeInDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,
-            'role_id' => $roleA->id
+            'role_id'       => $roleA->id
         ]);
     }
 
@@ -62,27 +53,14 @@ class AttachPermissionsToRoleTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $roleA = Role::create([
-            'name'         => 'role-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
+        $roleA = factory(Role::class)->create();
 
-        $permissionA = Permission::create([
-            'name'         => 'permission-A',
-            'description'  => 'AA',
-            'display_name' => 'A',
-        ]);
-
-        $permissionB = Permission::create([
-            'name'         => 'permission-B',
-            'description'  => 'BB',
-            'display_name' => 'B',
-        ]);
+        $permissionA = factory(Permission::class)->create();
+        $permissionB = factory(Permission::class)->create();
 
         $data = [
-            'role_name'       => $roleA['name'],
-            'permission_name' => [$permissionA['name'], $permissionB['name']]
+            'role_id'         => $roleA->getHashedKey(),
+            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
         ];
 
         // send the HTTP request
@@ -94,7 +72,7 @@ class AttachPermissionsToRoleTest extends TestCase
         $this->seeInDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
-            'role_id' => $roleA->id
+            'role_id'       => $roleA->id
         ]);
 
     }
