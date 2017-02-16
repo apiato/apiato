@@ -36,7 +36,7 @@ class Controller extends PortWebController
         try {
             $result = $action->run($request->email, $request->password, $request->remember_me);
         } catch (AuthenticationFailedException $e) {
-            return redirect('login')->with('status', $e->getMessage());
+            return redirect('login')->with('error', $e->getMessage());
         }
 
         if (is_array($result)) {

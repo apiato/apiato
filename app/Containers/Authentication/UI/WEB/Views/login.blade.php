@@ -5,12 +5,10 @@
 @section('content')
     <h3 class="text-center">{{ trans('authentication::views.login-title') }}</h3>
 
+    @include('admin::partials.notifications')
+
     <form class="login-form" action="{{route('admin_login')}}" method="post">
         {{ csrf_field() }}
-
-        @if(session('status'))
-            <div class="text-red">{{ session('status') }}</div>
-        @endif
         
         <div class="form-group has-feedback">
             <input type="text"  placeholder="{{ trans('authentication::views.form-fields.email') }}" id="email" name="email" class="form-control" />
