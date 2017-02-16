@@ -34,7 +34,7 @@ class UserLoginTest extends TestCase
 
         // login success and redirect to welcome view
         $this->seePageIs('/dashboard')
-            ->see('Hello Admin');
+            ->see('Hello Super Admin');
     }
 
     public function testLoginWithInvalidCredentials()
