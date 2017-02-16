@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            createRole
- * @api                {post} /roles Create new Role
+ * @api                {post} /roles Create a Role
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

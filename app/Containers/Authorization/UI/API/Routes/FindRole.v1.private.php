@@ -10,8 +10,6 @@
  * @apiHeader          Accept application/json
  * @apiHeader          Authorization Bearer {User-Token}
  *
- * @apiParam           {String} name required
- *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
 {

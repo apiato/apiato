@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            deleteRole
- * @api                {delete} /roles/:id Delete Role
+ * @api                {delete} /roles/:id Delete a Role
  * @apiDescription     Delete Role by ID
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Role
