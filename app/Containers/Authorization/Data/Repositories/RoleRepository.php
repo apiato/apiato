@@ -23,7 +23,9 @@ class RoleRepository extends Repository
      * @var array
      */
     protected $fieldSearchable = [
-
+        'name'         => '=',
+        'display_name' => 'like',
+        'description'  => 'like',
     ];
 
 }
