@@ -13,8 +13,8 @@
             </div>
         @endif
 
-        @include('core::partials.notifications.success')
-        @include('core::partials.notifications.warning')
-        @include('core::partials.notifications.error')
+        @include('admin::partials.notifications.success')
+        @include('admin::partials.notifications.warning')
+        @include('admin::partials.notifications.error')
     </div>
 </div>
