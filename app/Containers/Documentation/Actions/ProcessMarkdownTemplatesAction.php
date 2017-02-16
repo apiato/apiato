@@ -16,7 +16,8 @@ class ProcessMarkdownTemplatesAction extends Action
 
     protected $headerMarkdownContent;
 
-    const PATH = 'Containers/Documentation/ApiDocJs/';
+    const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/';
+    const OUTPUT_PATH = 'api-markdowns/';
 
     /**
      * Read the markdown header template and fill it with some real data from the .env file.
@@ -24,7 +25,7 @@ class ProcessMarkdownTemplatesAction extends Action
     public function run()
     {
         // read the template file
-        $this->headerMarkdownContent = file_get_contents(app_path(self::PATH . 'private/header.template.md'));
+        $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
 
         $this->replace('api.domain.dev', Config::get('api.domain'));
         $this->replace('{{rate-limit-expires}}', Config::get('hello.api.limit_expires'));
@@ -34,7 +35,7 @@ class ProcessMarkdownTemplatesAction extends Action
         $this->replace('{{pagination-limit}}', Config::get('repository.pagination.limit'));
 
         // write the actual file
-        file_put_contents(app_path(self::PATH . '/private/header.md'), $this->headerMarkdownContent);
+        file_put_contents(public_path(self::OUTPUT_PATH . 'header.md'), $this->headerMarkdownContent);
     }
 
     /**

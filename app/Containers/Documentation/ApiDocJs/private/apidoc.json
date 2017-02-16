@@ -10,11 +10,7 @@
   },
   "header": {
     "title": "API Overview",
-    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
-  },
-  "footer": {
-    "title": "Footer",
-    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
+    "filename": "../public/api-markdowns/header.md"
   },
   "order": [
 

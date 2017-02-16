@@ -24,9 +24,9 @@ And to do that you must include the `Accept => application/json` HTTP header wit
 All REST API requests are throttled to prevent abuse and ensure stability. 
 The exact number of calls that your application can make per day varies based on the type of request you are making.
 
-The rate limit window is `5` minutes per endpoint, with most individual calls allowing for `100` requests in each window.
+The rate limit window is `{{rate-limit-expires}}` minutes per endpoint, with most individual calls allowing for `{{rate-limit}}` requests in each window.
 
-*In other words, each user is allowed `100` calls per endpoint per `5` minutes for each unique access token.*
+*In other words, each user is allowed `{{rate-limit}}` calls per endpoint per `{{rate-limit-expires}}` minutes for each unique access token.*
 
 
 For how many hits you can preform on an endpoint, you can always check the header:
@@ -40,14 +40,14 @@ X-RateLimit-Reset →1487227542
 
 ## **Tokens**
 
-The Access Token lives for `30 days, 0 hours, 0 minutes and 0 seconds`. (equivalent to `43200` minutes).
+The Access Token lives for `{{token-expires}}`. (equivalent to `{{token-expires-minutes}}` minutes).
 
 *You will need to re-autneticate the user when the token expires.*
 
 
 ## **Pagination**
 
-By default, all fetch requests return the first `10` items in the list. Check the **Query Parameters** for how to controll the pagination.
+By default, all fetch requests return the first `{{pagination-limit}}` items in the list. Check the **Query Parameters** for how to controll the pagination.
 
 
 ## **Responses**
@@ -102,7 +102,7 @@ Unless otherwise specified, all of API endpoints will return the information tha
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.poms.dev/endpoint?page=21"
+        "previous": "http://api.domain.dev/endpoint?page=21"
       }
     }
   }
@@ -140,7 +140,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 **Usage:**
 
 ```
-api.poms.dev/endpoint?orderBy=created_at
+api.domain.dev/endpoint?orderBy=created_at
 ```
 
 
@@ -156,7 +156,7 @@ By default the `orderBy` sorts the data in **Ascending** order, if you want the 
 **Usage:**
 
 ```
-api.poms.dev/endpoint?orderBy=name&sortedBy=desc
+api.domain.dev/endpoint?orderBy=name&sortedBy=desc
 ```
 
 Order By Accepts:
@@ -178,7 +178,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 #### Search any field:
 
 ```
-api.poms.dev/endpoint?search=keyword here
+api.domain.dev/endpoint?search=keyword here
 ```
 
 > Space should be replaced with `%20` (search=keyword%20here).
@@ -186,23 +186,23 @@ api.poms.dev/endpoint?search=keyword here
 #### Search any field for multiple keywords:
 
 ```
-api.poms.dev/endpoint?search=first keyword;second keyword
+api.domain.dev/endpoint?search=first keyword;second keyword
 ```
 
 #### Search in specific field:
 ```
-api.poms.dev/endpoint?search=field:keyword here
+api.domain.dev/endpoint?search=field:keyword here
 ```
 
 #### Search in specific fields for multiple keywords: 
 ```
-api.poms.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+api.domain.dev/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 #### Define query condition:
 
 ```
-api.poms.dev/endpoint?search=field:keyword&searchFields=name:like
+api.domain.dev/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Available Conditions: 
@@ -214,7 +214,7 @@ Available Conditions:
 #### Define query condition for multiple fields:
 
 ```
-api.poms.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+api.domain.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
 ```
 
 
@@ -228,7 +228,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request. And is u
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.poms.dev/endpoint?filter=id;name
+api.domain.dev/endpoint?filter=id;name
 ```
 
 
@@ -239,7 +239,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.poms.dev/endpoint?page=200
+api.domain.dev/endpoint?page=200
 ```
 
 
@@ -256,7 +256,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 **Usage:**
 
 ```
-api.poms.dev/endpoint?include=relationship
+api.domain.dev/endpoint?include=relationship
 ```
 
 
@@ -269,7 +269,7 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 **Usage:**
 
 ```
-api.poms.dev/endpoint?skipCache=true
+api.domain.dev/endpoint?skipCache=true
 ```
 
 
@@ -298,12 +298,12 @@ TO BE CONTINUE...
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.poms.dev/login"
+curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/login"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.poms.dev/users"
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.dev/users"
 ```
 
