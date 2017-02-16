@@ -28,7 +28,7 @@ class DeleteUserRequest extends Request
      * @var  array
      */
     protected $decode = [
-
+        'id',
     ];
 
     /**
@@ -38,7 +38,7 @@ class DeleteUserRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-
+        'id',
     ];
 
     /**
@@ -47,7 +47,7 @@ class DeleteUserRequest extends Request
     public function rules()
     {
         return [
-
+            'id' => 'required|exists:users,id',
         ];
     }
 

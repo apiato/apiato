@@ -5,7 +5,7 @@ namespace App\Port\Controller\Abstracts;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as LaravelController;
+use Illuminate\Routing\Controller as LaravelBaseController;
 
 /**
  * Class PortController.
@@ -16,7 +16,7 @@ use Illuminate\Routing\Controller as LaravelController;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class PortController extends LaravelController
+abstract class PortController extends LaravelBaseController
 {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

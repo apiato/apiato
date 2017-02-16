@@ -17,4 +17,7 @@ interface ApiTypeInterface
     public function getType();
 
     public function getUrl();
+
+    public function getCommand();
+
 }

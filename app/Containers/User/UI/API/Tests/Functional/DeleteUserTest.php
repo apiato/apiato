@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\User\Tests\TestCase;
 
 /**
  * Class DeleteUserTest.
@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class DeleteUserTest extends TestCase
 {
 
-    protected $endpoint = '/users';
+    protected $endpoint = '/users/{id}';
 
     protected $access = [
         'roles'       => '',
@@ -24,7 +24,7 @@ class DeleteUserTest extends TestCase
         $user = $this->getTestingUser();
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'delete');
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $user->id), 'delete');
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());

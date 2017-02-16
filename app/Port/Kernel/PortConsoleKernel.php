@@ -2,8 +2,6 @@
 
 namespace App\Port\Kernel;
 
-//use App\Port\Console\Commands\CloneContainersCommand;
-//use App\Port\Console\Commands\DeleteContainersCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
@@ -22,8 +20,7 @@ class PortConsoleKernel extends LaravelConsoleKernel
      * @var array
      */
     protected $commands = [
-//        CloneContainersCommand::class,
-//        DeleteContainersCommand::class,
+        //
     ];
 
     /**
@@ -34,8 +31,10 @@ class PortConsoleKernel extends LaravelConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
+        // $schedule->command('inspire')
+        //          ->hourly();
     }
+
 
     /**
      * Register the Closure based commands for the application.

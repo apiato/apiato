@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\User\Tests\TestCase;
 
 /**
  * Class CreateAdminTest.

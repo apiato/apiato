@@ -18,7 +18,8 @@
  * HTTP/1.1 200 OK
 {
    "data":{
-      "object":"role",
+      "object":"Role",
+      "id": abcderf,
       "name":"Manager",
       "description":"he manages things",
       "display_name":"something else"

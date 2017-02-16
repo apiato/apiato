@@ -6,6 +6,7 @@ use App\Containers\Authorization\Actions\AssignUserToRoleAction;
 use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Containers\Authorization\Actions\CreateRoleAction;
+use App\Containers\Authorization\Actions\DeleteRoleAction;
 use App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction;
 use App\Containers\Authorization\Actions\GetPermissionAction;
 use App\Containers\Authorization\Actions\GetRoleAction;
@@ -16,6 +17,7 @@ use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
@@ -101,6 +103,20 @@ class Controller extends PortApiController
         return $this->response->item($user, new UserTransformer());
     }
 
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\DeleteRoleAction          $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function deleteRole(DeleteRoleRequest $request, DeleteRoleAction $action)
+    {
+        $action->run($request->name);
+
+        return $this->response->accepted(null, [
+            'message' => 'Role (' . $request->name . ') Deleted Successfully.',
+        ]);
+    }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest $request

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Order\UI\API\Tests\Functional;
+namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Authorization\Tests\TestCase;
 
 /**
  * Class FindPermissionByNameTest.
@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class FindPermissionByNameTest extends TestCase
 {
 
-    protected $endpoint = '/find-permission';
+    protected $endpoint = '/permission/{name}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,17 +23,17 @@ class FindPermissionByNameTest extends TestCase
     {
         $this->getTestingAdmin();
 
-        $data = ['name' => 'delete-users'];
+        $permissionName = 'delete-users';
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get', $data, true);
+        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $permissionName, true, '{name}'), 'get');
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
         $responseObject = $this->getResponseObject($response);
 
-        $this->assertEquals($data['name'], $responseObject->data->name);
+        $this->assertEquals($permissionName, $responseObject->data->name);
     }
 
 }

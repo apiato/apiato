@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Containers\Order\UI\API\Tests\Functional;
+namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Authorization\Tests\TestCase;
 
 /**
  * Class DetachPermissionsFromRoleTest.

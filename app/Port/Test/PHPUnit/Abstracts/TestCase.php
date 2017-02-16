@@ -2,19 +2,26 @@
 
 namespace App\Port\Test\PHPUnit\Abstracts;
 
+use App\Port\Test\PHPUnit\Traits\CustomTestsHelpersTrait;
+use App\Port\Test\PHPUnit\Traits\GeneralTestsHelpersTrait;
+use App\Port\Test\PHPUnit\Traits\TestCaseTrait;
+use App\Port\Test\PHPUnit\Traits\TestingTrait;
+use App\Port\Test\PHPUnit\Traits\TestingUserTrait;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
-use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
-use App\Port\Test\PHPUnit\Traits\TestingTrait;
+use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibilityPackage;
+
+//use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 
 /**
  * Class TestCase.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class TestCase extends LaravelTestCase
+abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackage
 {
-    use TestingTrait;
+
+    use TestCaseTrait, GeneralTestsHelpersTrait, TestingUserTrait, CustomTestsHelpersTrait;
 
     /**
      * The base URL to use while testing the application.
@@ -33,7 +40,7 @@ abstract class TestCase extends LaravelTestCase
         parent::setUp();
 
         // migrate the database
-        $this->artisan('migrate');
+        $this->migrateDatabase();
 
         // seed the database
         $this->seed();
@@ -57,7 +64,7 @@ abstract class TestCase extends LaravelTestCase
         $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
         // override the default subDomain of the base URL when subDomain property is declared inside a test
-        if(property_exists($this, 'subDomain')){
+        if (property_exists($this, 'subDomain')) {
             $this->overrideSubDomain($this->subDomain);
         }
 

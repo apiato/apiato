@@ -4,7 +4,7 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Role;
 use App\Containers\User\Models\User;
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\User\Tests\TestCase;
 
 /**
  * Class ListAllUsersTest.
@@ -47,7 +47,8 @@ class ListAllAdminsTest extends TestCase
         $responseObject = $this->getResponseObject($response);
 
         // assert the returned data size is correct
-        $this->assertCount(4, $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        $this->assertCount(4,
+            $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
 }

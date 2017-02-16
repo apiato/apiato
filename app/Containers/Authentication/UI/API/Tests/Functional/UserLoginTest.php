@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\Authentication\Tests\TestCase;
 
 /**
  * Class UserLoginTest.
@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class UserLoginTest extends TestCase
 {
 
-    protected $endpoint = '/users/login';
+    protected $endpoint = '/login';
 
     public function testUserLoginExistingUser_()
     {

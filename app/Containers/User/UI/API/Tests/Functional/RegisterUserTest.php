@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase;
+use App\Containers\User\Tests\TestCase;
 
 /**
  * Class RegisterUserTest.
@@ -12,7 +12,7 @@ use App\Port\Test\PHPUnit\Abstracts\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    protected $endpoint = '/users/register';
+    protected $endpoint = '/register';
 
 
     protected $access = [

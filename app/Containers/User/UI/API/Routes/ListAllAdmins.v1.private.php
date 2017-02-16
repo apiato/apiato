@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @apiGroup           Admins
+ * @apiGroup           Users
  * @apiName            ListAllAdmins
- * @api                {get} /admins Search & List all Admins
- * @apiDescription     List all the Application Admins. You can search for Admins
- *                     by email, name and ID
+ * @api                {get} /admins List Admin Users
+ * @apiDescription     List all Users where role `Admin`.
+ *                     You can search for Users by email, name and ID.
  *                     Example: `?search=Mahmoud` or `?search=whatever@mail.com`.
  *                     You can specify the field as follow `?search=email:whatever@mail.com` or `?search=id:20`.
  *                     You can search by multiple fields as follow: `?search=name:Mahmoud&email:whatever@mail.com`.
@@ -13,7 +13,7 @@
  * @apiPermission      Authenticated Admin
  *
  * @apiHeader          Accept application/json 
- * @apiHeader          Authorization Bearer {Admin-Token} 
+ * @apiHeader          Authorization Bearer {User-Token}
  *
  * @apiParam           search           ?search=name:John Doe;email:john@mail.com 
  * @apiParam           searchFields     ?searchFields=name:like;email:= 

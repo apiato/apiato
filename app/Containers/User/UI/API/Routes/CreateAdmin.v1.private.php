@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @apiGroup           Admins
+ * @apiGroup           Users
  * @apiName            CreateAdmin
- * @api                {post} /admins/create Create Admin
- * @apiDescription     Creating Admins form the Dashboard
+ * @api                {post} /admins/create Create Admin User
+ * @apiDescription     Creating User with Role Admin, form the Dashboard.
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
