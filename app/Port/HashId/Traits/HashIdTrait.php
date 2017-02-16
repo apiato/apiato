@@ -48,31 +48,17 @@ trait HashIdTrait
     }
 
     /**
-     * @param $id
+     * Will be used by the Eloquent Models (since it's used as trait there).
+     *
+     * @param null $key
      *
      * @return  mixed
      */
-    public function decodeThisId($id)
-    {
-        if (Config::get('hello.hash-id')) {
-            return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
-        }
-
-        return $id;
-    }
-
-  /**
-   * Will be used by the Eloquent Models (since it's used as trait there).
-   *
-   * @param null $key
-   *
-   * @return  mixed
-   */
     public function getHashedKey($key = null)
     {
         // hash the ID only if hash-id enabled in the config
         if (Config::get('hello.hash-id')) {
-            return $this->encoder(($key) ?: $this->getKey());
+            return $this->encoder(($key) ? : $this->getKey());
         }
 
         return $this->getKey();
@@ -97,12 +83,41 @@ trait HashIdTrait
                     throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
                 }
 
-                // perform the decoding
-                $requestData[$id] = $this->decodeThisId($requestData[$id]);
+                if (Config::get('hello.hash-id')) {
+                    $requestData[$id] = is_array($requestData[$id]) ?
+                        $this->decodeThisArrayOfIds($requestData[$id]) :
+                        $this->decodeThisId($requestData[$id]);
+                }
+
             } // do nothing if the input is incorrect, because what if it's not required!
         }
 
         return $requestData;
+    }
+
+    /**
+     * @param array $ids
+     *
+     * @return  array
+     */
+    public function decodeThisArrayOfIds(array $ids)
+    {
+        $result = [];
+        foreach ($ids as $id) {
+            $result[] = $this->decodeThisId($id);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $id
+     *
+     * @return  mixed
+     */
+    public function decodeThisId($id)
+    {
+        return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
     }
 
     /**
