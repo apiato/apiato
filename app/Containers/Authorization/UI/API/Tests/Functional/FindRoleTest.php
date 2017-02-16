@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class FindRoleTest extends TestCase
 {
 
-    protected $endpoint = '/role/{id}';
+    protected $endpoint = '/roles/{id}';
 
     protected $access = [
         'roles'       => 'admin',

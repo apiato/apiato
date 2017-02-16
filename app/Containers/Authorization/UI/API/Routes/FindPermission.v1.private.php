@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            getPermission
- * @api                {get} /permission/:id Find a Permission by ID
+ * @api                {get} /permissions/:id Find a Permission by ID
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -20,7 +20,7 @@
 }
  */
 
-$router->get('permission/{id}', [
+$router->get('permissions/{id}', [
     'uses'       => 'Controller@getPermission',
     'middleware' => [
         'api.auth',
