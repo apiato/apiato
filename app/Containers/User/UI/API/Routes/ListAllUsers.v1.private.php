@@ -12,13 +12,6 @@
  * @apiHeader          Accept application/json (required)
  * @apiHeader          Authorization Bearer {User-Token} (required)
  *
- * @apiParam           search           ?search=name:John Doe;email:john@mail.com (optional)
- * @apiParam           searchFields     ?searchFields=name:like;email:= (optional)
- * @apiParam           paginate         ?page=3 (optional)
- * @apiParam           order            ?orderBy=id (optional)
- * @apiParam           sort             ?sortedBy=asc (optional)
- * @apiParam           filter           ?filter=id;name;age (optional)
- *
  * @apiSuccessExample  {json}    Success-Response:
  * HTTP/1.1 200 OK
 {
