@@ -59,6 +59,7 @@ return [
         'en' => 'English',
         'ar' => 'Arabic',
         'ru' => 'Russian',
+        'es' => 'Spanish',
     ],
 
     /*
