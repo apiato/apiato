@@ -3,7 +3,8 @@
 namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Task\Abstracts\Task;
+
 
 /**
  * Class FindSocialUserTask.

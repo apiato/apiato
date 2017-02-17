@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Containers\Authentication\Middlewares\WebAuthentication;
-use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
+use App\Ship\Middleware\Providers\PortMiddlewareServiceProvider;
 use Tymon\JWTAuth\Middleware\GetUserFromToken;
 use Tymon\JWTAuth\Middleware\RefreshToken;
 

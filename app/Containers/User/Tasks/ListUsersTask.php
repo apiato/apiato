@@ -5,8 +5,8 @@ namespace App\Containers\User\Tasks;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Criterias\AdminsCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
-use App\Port\Action\Abstracts\Action;
-use App\Port\Criteria\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Ship\Action\Abstracts\Action;
+use App\Ship\Criteria\Eloquent\OrderByCreationDateDescendingCriteria;
 
 /**
  * Class ListUsersTask.

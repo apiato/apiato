@@ -1,6 +1,6 @@
 <?php
 
-use App\Port\Loader\Loaders\SeederLoaderTrait;
+use App\Ship\Loader\Loaders\SeederLoaderTrait;
 use Illuminate\Database\Seeder as LaravelSeeder;
 
 /**

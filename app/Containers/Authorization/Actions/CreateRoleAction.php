@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\CreateRoleTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class CreateRoleAction

@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\ListAllRolesTask;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Task\Abstracts\Task;
 
 /**
  * Class ListAllRolesAction.

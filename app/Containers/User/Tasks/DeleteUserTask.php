@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class DeleteUserTask.

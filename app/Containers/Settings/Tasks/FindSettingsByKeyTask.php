@@ -3,7 +3,7 @@
 namespace App\Containers\Settings\Tasks;
 
 use App\Containers\Settings\Data\Repositories\SettingsRepository;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Task\Abstracts\Task;
 
 /**
  * Class FindSettingsByKeyTask

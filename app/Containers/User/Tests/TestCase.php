@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tests;
 
-use App\Port\Test\PHPUnit\Abstracts\TestCase as PortTestCase;
+use App\Ship\Test\PHPUnit\Abstracts\TestCase as PortTestCase;
 
 /**
  * Class TestCase

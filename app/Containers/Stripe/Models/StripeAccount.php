@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\Models;
 
 use App\Containers\User\Models\User;
-use App\Port\Model\Abstracts\Model;
+use App\Ship\Model\Abstracts\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**

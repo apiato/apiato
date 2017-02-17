@@ -4,7 +4,7 @@ namespace App\Containers\Stripe\Actions;
 
 use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
 use App\Containers\User\Models\User;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class CreateStripeAccountAction.

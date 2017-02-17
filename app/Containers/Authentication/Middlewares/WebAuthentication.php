@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
-use App\Port\Foundation\Portals\PortButler;
+use App\Ship\Foundation\Portals\PortButler;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class WebAuthentication
     protected $auth;
 
     /**
-     * @var  \App\Port\Foundation\Portals\PortButler
+     * @var  \App\Ship\Foundation\Portals\PortButler
      */
     private $portButler;
 

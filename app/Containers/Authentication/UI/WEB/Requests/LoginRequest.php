@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Requests;
 
-use App\Port\Request\Abstracts\Request;
+use App\Ship\Request\Abstracts\Request;
 
 /**
  * Class LoginRequest.

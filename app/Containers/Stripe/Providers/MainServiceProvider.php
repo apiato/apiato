@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\Providers;
 
-use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Laravel\StripeServiceProvider;
 

@@ -4,7 +4,7 @@ namespace App\Containers\Documentation\Actions;
 
 use App\Containers\Documentation\Exceptions\WrongDocTypeException;
 use App\Containers\Documentation\Tasks\GenerateApiDocJsDocsTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class GenerateAPIDocsAction.

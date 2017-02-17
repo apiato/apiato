@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\Data\Repositories;
 
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Port\Repository\Abstracts\Repository;
+use App\Ship\Repository\Abstracts\Repository;
 
 /**
  * Class StripeAccountRepository.

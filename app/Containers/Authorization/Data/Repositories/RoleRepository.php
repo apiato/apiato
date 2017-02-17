@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Data\Repositories;
 
-use App\Port\Repository\Abstracts\Repository;
+use App\Ship\Repository\Abstracts\Repository;
 
 /**
  * Class RoleRepository.

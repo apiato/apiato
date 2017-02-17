@@ -175,7 +175,7 @@ return [
          *
          * NOTE: all packages service providers must be registered inside their container's main service providers.
          */
-        App\Port\Provider\MainServiceProvider::class,
+        App\Ship\Provider\MainServiceProvider::class,
     ],
 
     /*

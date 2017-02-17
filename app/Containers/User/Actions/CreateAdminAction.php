@@ -4,7 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class CreateAdminAction.

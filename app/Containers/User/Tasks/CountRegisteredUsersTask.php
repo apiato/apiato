@@ -3,8 +3,8 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Port\Action\Abstracts\Action;
-use App\Port\Criteria\Eloquent\NotNullCriteria;
+use App\Ship\Action\Abstracts\Action;
+use App\Ship\Criteria\Eloquent\NotNullCriteria;
 
 /**
  * Class CountRegisteredUsersTask.

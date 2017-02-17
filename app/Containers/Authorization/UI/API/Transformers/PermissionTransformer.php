@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\UI\API\Transformers;
 
 use App\Containers\Authorization\Models\Permission;
-use App\Port\Transformer\Abstracts\Transformer;
+use App\Ship\Transformer\Abstracts\Transformer;
 
 /**
  * Class PermissionTransformer.

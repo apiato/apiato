@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Providers;
 
-use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
+use App\Ship\Middleware\Providers\PortMiddlewareServiceProvider;
 
 /**
  * Class MiddlewareServiceProvider

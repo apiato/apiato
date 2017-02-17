@@ -4,7 +4,7 @@ namespace App\Containers\Stripe\UI\API\Controllers;
 
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
-use App\Port\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\PortApiController;
 
 /**
  * Class Controller.

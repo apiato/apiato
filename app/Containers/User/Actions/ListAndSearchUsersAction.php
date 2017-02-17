@@ -3,7 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Containers\User\Tasks\ListUsersTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class ListAndSearchUsersAction.

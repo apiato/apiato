@@ -3,8 +3,8 @@
 namespace App\Containers\Country\Tasks;
 
 use App\Containers\Country\Data\Repositories\CountryRepository;
-use App\Port\Task\Abstracts\Task;
-use App\Port\Criteria\Eloquent\OrderByNameCriteria;
+use App\Ship\Task\Abstracts\Task;
+use App\Ship\Criteria\Eloquent\OrderByNameCriteria;
 
 /**
  * Class ListAllCountriesTask.

@@ -4,7 +4,7 @@ namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware;
 use App\Containers\Debugger\Traits\DebuggerTrait;
-use App\Port\Middleware\Providers\PortMiddlewareServiceProvider;
+use App\Ship\Middleware\Providers\PortMiddlewareServiceProvider;
 
 /**
  * Class MiddlewareServiceProvider.

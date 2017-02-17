@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class MainServiceProvider.

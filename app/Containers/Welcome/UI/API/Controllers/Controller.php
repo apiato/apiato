@@ -2,7 +2,7 @@
 
 namespace App\Containers\Welcome\UI\API\Controllers;
 
-use App\Port\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\PortApiController;
 use Illuminate\Support\Facades\Config;
 
 /**

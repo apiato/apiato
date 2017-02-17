@@ -5,7 +5,7 @@ namespace App\Containers\Country\UI\API\Controllers;
 use App\Containers\Country\UI\API\Transformers\CountryTransformer;
 
 use App\Containers\Country\Actions\ListAllCountriesAction;
-use App\Port\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\PortApiController;
 
 /**
  * Class Controller.

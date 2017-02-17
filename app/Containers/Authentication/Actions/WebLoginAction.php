@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\WebLoginTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class WebLoginAction.

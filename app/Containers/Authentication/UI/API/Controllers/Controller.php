@@ -7,8 +7,7 @@ use App\Containers\Authentication\Actions\ApiUserLogoutAction;
 use App\Containers\Authentication\UI\API\Requests\UserLoginRequest;
 use App\Containers\Authentication\UI\API\Requests\UserLogoutRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Port\Controller\Abstracts\PortApiController;
-use App\Port\Request\Manager\HttpRequest;
+use App\Ship\Controller\Abstracts\PortApiController;
 
 /**
  * Class Controller.

@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Exceptions\PermissionNotFoundException;
 use App\Containers\Authorization\Tasks\GetPermissionTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class GetPermissionAction.

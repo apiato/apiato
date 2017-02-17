@@ -2,7 +2,7 @@
 
 namespace App\Containers\Country\Data\Repositories;
 
-use App\Port\Repository\Abstracts\Repository;
+use App\Ship\Repository\Abstracts\Repository;
 
 /**
  * Class CountryRepository.

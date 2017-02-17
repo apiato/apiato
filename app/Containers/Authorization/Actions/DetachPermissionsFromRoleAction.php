@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class DetachPermissionsFromRoleAction.

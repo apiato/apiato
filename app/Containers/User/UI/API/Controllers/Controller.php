@@ -16,7 +16,7 @@ use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Port\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\PortApiController;
 use Dingo\Api\Http\Request;
 
 /**

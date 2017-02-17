@@ -2,7 +2,7 @@
 
 namespace App\Containers\Documentation\Actions;
 
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 use DateTime;
 use Illuminate\Support\Facades\Config;
 

@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\ListAllPermissionsTask;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Task\Abstracts\Task;
 
 /**
  * Class ListAllPermissionsAction.

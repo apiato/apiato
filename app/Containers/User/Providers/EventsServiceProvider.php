@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
-use App\Port\Event\Providers\MainEventsServiceProvider;
+use App\Ship\Event\Providers\MainEventsServiceProvider;
 
 /**
  * Class EventsServiceProvider

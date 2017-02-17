@@ -4,7 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\ApiLoginWithCredentialsTask;
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Action\Abstracts\Action;
 
 /**
  * Class ApiUserLoginAction.

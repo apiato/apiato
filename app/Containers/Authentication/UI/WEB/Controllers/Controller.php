@@ -7,7 +7,7 @@ use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
-use App\Port\Controller\Abstracts\PortWebController;
+use App\Ship\Controller\Abstracts\PortWebController;
 
 /**
  * Class Controller

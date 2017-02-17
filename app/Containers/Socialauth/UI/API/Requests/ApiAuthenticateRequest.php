@@ -2,7 +2,7 @@
 
 namespace App\Containers\SocialAuth\UI\API\Requests;
 
-use App\Port\Request\Abstracts\Request;
+use App\Ship\Request\Abstracts\Request;
 
 /**
  * Class ApiAuthenticateRequest.

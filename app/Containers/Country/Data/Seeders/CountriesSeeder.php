@@ -2,7 +2,7 @@
 
 namespace App\Containers\Country\Data\Seeders;
 
-use App\Port\Seeder\Abstracts\Seeder;
+use App\Ship\Seeder\Abstracts\Seeder;
 use Webpatser\Countries\CountriesFacade as Countries;
 
 /**

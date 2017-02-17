@@ -2,7 +2,7 @@
 
 namespace App\Containers\Settings\Providers;
 
-use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
 
 /**
  * Class MainServiceProvider.

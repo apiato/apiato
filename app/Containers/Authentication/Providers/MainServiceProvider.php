@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Providers;
 
-use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
 use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;

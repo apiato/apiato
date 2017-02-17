@@ -3,8 +3,8 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
-use App\Port\Action\Abstracts\Action;
-use App\Port\Event\Dispatcher\EventsDispatcher;
+use App\Ship\Action\Abstracts\Action;
+use App\Ship\Event\Dispatcher\EventsDispatcher;
 
 /**
  * Class FireUserCreatedEventTask.
@@ -15,14 +15,14 @@ class FireUserCreatedEventTask extends Action
 {
 
     /**
-     * @var  \App\Port\Event\Dispatcher\EventsDispatcher
+     * @var  \App\Ship\Event\Dispatcher\EventsDispatcher
      */
     private $eventsDispatcher;
 
     /**
      * FireUserCreatedEventTask constructor.
      *
-     * @param \App\Port\Event\Dispatcher\EventsDispatcher $eventsDispatcher
+     * @param \App\Ship\Event\Dispatcher\EventsDispatcher $eventsDispatcher
      */
     public function __construct(EventsDispatcher $eventsDispatcher)
     {

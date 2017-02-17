@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Providers;
 
-use App\Port\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
 
 use Spatie\Permission\PermissionServiceProvider;
 

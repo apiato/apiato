@@ -5,7 +5,7 @@ namespace App\Containers\User\Tasks;
 use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Task\Abstracts\Task;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 

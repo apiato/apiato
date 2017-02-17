@@ -2,7 +2,7 @@
 
 namespace App\Containers\Settings\Models;
 
-use App\Port\Model\Abstracts\Model;
+use App\Ship\Model\Abstracts\Model;
 
 /**
  * Class Settings
