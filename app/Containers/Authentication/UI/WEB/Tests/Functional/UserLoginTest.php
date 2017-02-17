@@ -20,7 +20,7 @@ class UserLoginTest extends TestCase
     protected $subDomain = 'admin';
     protected $endpoint = '/login';
 
-    public function testUserLogin_()
+    public function testUserLogin()
     {
         // go to the page
         $this->visit($this->endpoint)
@@ -30,11 +30,11 @@ class UserLoginTest extends TestCase
         // fill the login form
         $this->type('admin@admin.com', 'email')
             ->type('admin', 'password')
-            ->press('login');
+            ->press('Login');
 
         // login success and redirect to welcome view
         $this->seePageIs('/dashboard')
-            ->see('Hello Admin');
+            ->see('Hello Super Admin');
     }
 
     public function testLoginWithInvalidCredentials()
@@ -47,7 +47,7 @@ class UserLoginTest extends TestCase
         // fill the login form with wrong credentials
         $this->type('foo@foo.com', 'email')
             ->type('foo.123', 'password')
-            ->press('login');
+            ->press('Login');
 
         // we are redirected to the login page and we see errors
         $this->seePageIs($this->endpoint)

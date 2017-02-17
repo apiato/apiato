@@ -9,9 +9,19 @@
   "devDependencies": {
     "axios": "^0.15.2",
     "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.1.0",
     "laravel-mix": "^0.6.0",
     "lodash": "^4.16.2",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "jquery": "^2",
+    "apidoc": "^0.16.1",
+    "jquery": "^3.1.0"
+  },
+  "dependencies": {
+    "admin-lte": "^2.3.11",
+    "animate.css": "^3.5.2",
+    "font-awesome": "^4.7.0",
+    "ionicons": "^3.0.0",
+    "moment": "^2.17.1",
+    "pace-progress": "^1.0.2"
   }
 }

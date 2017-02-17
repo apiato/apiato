@@ -20,7 +20,7 @@ trait ViewsLoaderTrait
     {
         $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
 
-        $this->loadViews($containerViewDirectory);
+        $this->loadViews($containerViewDirectory, $containerName);
     }
 
     /**
@@ -38,10 +38,12 @@ trait ViewsLoaderTrait
     /**
      * @param $directory
      */
-    private function loadViews($directory)
+    private function loadViews($directory, string $containerName = '')
     {
         if (File::isDirectory($directory)) {
-            View::addLocation($directory);
+            empty($containerName)
+                ? View::addLocation($directory)
+                : View::addNamespace(camel_case($containerName), $directory);
         }
     }
 

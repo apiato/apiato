@@ -22,7 +22,7 @@ class Controller extends PortWebController
      */
     public function showLoginPage()
     {
-        return view('login');
+        return view('authentication::login');
     }
 
     /**
@@ -36,11 +36,11 @@ class Controller extends PortWebController
         try {
             $result = $action->run($request->email, $request->password, $request->remember_me);
         } catch (AuthenticationFailedException $e) {
-            return redirect('login')->with('status', $e->getMessage());
+            return redirect('login')->with('error', $e->getMessage());
         }
 
         if (is_array($result)) {
-            return view('login')->with($result);
+            return view('authentication::login')->with($result);
         }
 
         return redirect('dashboard');
@@ -53,7 +53,7 @@ class Controller extends PortWebController
      */
     public function viewDashboardPage(ViewDashboardRequest $request)
     {
-        return view('dashboard');
+        return view('authentication::dashboard');
     }
 
     /**
@@ -65,7 +65,7 @@ class Controller extends PortWebController
     {
         $action->run();
 
-        return view('login');
+        return view('authentication::login');
     }
 
 

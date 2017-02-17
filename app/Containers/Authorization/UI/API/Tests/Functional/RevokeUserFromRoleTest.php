@@ -21,6 +21,12 @@ class RevokeUserFromRoleTest extends TestCase
         'permissions' => '',
     ];
 
+    public function setUp()
+    {
+        putenv('HASH_ID=true');
+        parent::setup();
+    }
+
     public function testRevokeUserFromRole_()
     {
         $roleA = factory(Role::class)->create();

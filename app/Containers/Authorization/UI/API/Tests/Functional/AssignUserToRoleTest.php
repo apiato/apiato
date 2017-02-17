@@ -21,6 +21,12 @@ class AssignUserToRoleTest extends TestCase
         'permissions' => '',
     ];
 
+    public function setUp()
+    {
+        putenv('HASH_ID=true');
+        parent::setup();
+    }
+
     public function testAssignUserToRole_()
     {
         $this->getTestingAdmin();
