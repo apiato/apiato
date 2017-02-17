@@ -17,9 +17,9 @@ trait AliasesLoaderTrait
     /**
      * @param array $aliases
      */
-    public function loadPortInternalAliases()
+    public function loadShipInternalAliases()
     {
-        // `$this->aliases` is declared on the Main Service Provider of the Port layer
+        // `$this->aliases` is declared on the Main Service Provider of the Ship layer
         foreach (isset($this->aliases) ? $this->aliases : [] as $aliasKey => $aliasValue) {
             if (class_exists($aliasValue)) {
                 $this->loadAlias($aliasKey, $aliasValue);

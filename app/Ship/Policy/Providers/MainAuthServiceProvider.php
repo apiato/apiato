@@ -5,7 +5,7 @@ namespace App\Ship\Policy\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 /**
- * Class PortAuthServiceProvider
+ * Class ShipAuthServiceProvider
  *
  * This class is provided by Laravel as default provider,
  * to register authorization policies.

@@ -5,13 +5,13 @@ namespace App\Ship\Kernel;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
- * Class PortHttpKernel
+ * Class ShipHttpKernel
  *
  * A.K.A (app/Http/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortHttpKernel extends LaravelHttpKernel
+class ShipHttpKernel extends LaravelHttpKernel
 {
 
     /**

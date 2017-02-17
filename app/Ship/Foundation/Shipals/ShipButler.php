@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Ship\Foundation\Portals;
+namespace App\Ship\Foundation\Shipals;
 
 use App\Ship\Exception\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class PortButler.
+ * Class ShipButler.
  *
  * NOTE: You can access this Class functions with the facade [ModuleConfig].
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class PortButler
+class ShipButler
 {
 
     /**

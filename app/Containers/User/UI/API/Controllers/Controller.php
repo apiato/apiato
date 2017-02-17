@@ -16,7 +16,7 @@ use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Ship\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\ShipApiController;
 use Dingo\Api\Http\Request;
 
 /**
@@ -24,7 +24,7 @@ use Dingo\Api\Http\Request;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends PortApiController
+class Controller extends ShipApiController
 {
 
     /**

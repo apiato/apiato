@@ -27,7 +27,7 @@ trait ConsolesLoaderTrait
     /**
      * @param $portFolderName
      */
-    public function loadConsolesFromPort($portFolderName)
+    public function loadConsolesFromShip($portFolderName)
     {
         // TODO: Never Tested
 

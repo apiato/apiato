@@ -1,6 +1,6 @@
 {
   "name": "porto-sap/authorization",
-  "description": "Porto-SAP Container for Hello-API.",
+  "description": "Shipo-SAP Container for Hello-API.",
   "require": {
     "spatie/laravel-permission": "1.8.*"
   }

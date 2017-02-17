@@ -3,7 +3,7 @@
 namespace App\Ship\Loader\Loaders;
 
 use App;
-use App\Ship\Foundation\Portals\Facade\PortButler;
+use App\Ship\Foundation\Shipals\Facade\ShipButler;
 use App\Ship\Loader\Helpers\Facade\LoaderHelper;
 use File;
 
@@ -26,9 +26,9 @@ trait ProvidersLoaderTrait
     }
 
     /**
-     * loadProvidersFromPort
+     * loadProvidersFromShip
      */
-    public function loadProvidersFromPort()
+    public function loadProvidersFromShip()
     {
         foreach ($this->serviceProviders as $providerClass) {
             $this->loadProvider($providerClass);
@@ -51,7 +51,7 @@ trait ProvidersLoaderTrait
                 if (File::isFile($file)) {
 
                     // Check if this is the Main Service Provider
-                    if (PortButler::stringStartsWith($file->getFilename(), $mainServiceProviderNameStartWith)) {
+                    if (ShipButler::stringStartsWith($file->getFilename(), $mainServiceProviderNameStartWith)) {
 
                         $serviceProviderClass = LoaderHelper::getClassFullNameFromFile($file->getPathname());
 

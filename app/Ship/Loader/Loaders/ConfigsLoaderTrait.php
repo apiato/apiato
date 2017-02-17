@@ -25,7 +25,7 @@ trait ConfigsLoaderTrait
     /**
      * @param $portFolderName
      */
-    public function loadConfigsFromPort($portFolderName)
+    public function loadConfigsFromShip($portFolderName)
     {
         // `$this->portConfigsDirectories` is declared on the main service provider class
 

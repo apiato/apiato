@@ -44,7 +44,7 @@ class LoaderHelper
      *
      * @return  array
      */
-    public function getPortFoldersNames()
+    public function getShipFoldersNames()
     {
         $portFoldersNames = [];
 
@@ -64,7 +64,7 @@ class LoaderHelper
     {
         $containersPaths = File::directories(app_path('Containers'));
 
-        // TODO: preparing some code to implement the Ships concept to Porto
+        // TODO: preparing some code to implement the Ships concept to Shipo
 
 //        // Search for Ships "_SHIP" of Containers
 //        foreach ($containersPaths as $containersPath) {

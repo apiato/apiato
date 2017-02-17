@@ -32,17 +32,17 @@ trait AutoLoaderTrait
     public function bootLoaders()
     {
         // the config files should be loaded first from all the directories in their own loop
-        foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
-            $this->loadConfigsFromPort($portFolderName); // TODO: move this to the loop below at the top
+        foreach (LoaderHelper::getShipFoldersNames() as $portFolderName) {
+            $this->loadConfigsFromShip($portFolderName); // TODO: move this to the loop below at the top
         }
 
-        $this->loadProvidersFromPort();
+        $this->loadProvidersFromShip();
 
         // > iterate over all the port folders and autoload most of the components
-        foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
-            $this->loadMigrationsFromPort($portFolderName);
-            $this->loadViewsFromPort($portFolderName);
-            $this->loadConsolesFromPort($portFolderName);
+        foreach (LoaderHelper::getShipFoldersNames() as $portFolderName) {
+            $this->loadMigrationsFromShip($portFolderName);
+            $this->loadViewsFromShip($portFolderName);
+            $this->loadConsolesFromShip($portFolderName);
         }
 
         // > iterate over all the containers folders and autoload most of the components
@@ -62,7 +62,7 @@ trait AutoLoaderTrait
     public function registerLoaders()
     {
         $this->loadContainerFactories();
-        $this->loadPortInternalAliases();
+        $this->loadShipInternalAliases();
     }
 
 }

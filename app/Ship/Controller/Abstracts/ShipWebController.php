@@ -5,15 +5,15 @@ namespace App\Ship\Controller\Abstracts;
 use App\Ship\Controller\Contracts\WebControllerInterface;
 
 /**
- * Class PortWebController.
+ * Class ShipWebController.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class PortWebController extends PortController implements WebControllerInterface
+abstract class ShipWebController extends ShipController implements WebControllerInterface
 {
 
     /**
-     * PortWebController constructor.
+     * ShipWebController constructor.
      */
     public function __construct()
     {

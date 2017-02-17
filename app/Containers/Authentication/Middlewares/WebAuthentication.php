@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
-use App\Ship\Foundation\Portals\PortButler;
+use App\Ship\Foundation\Shipals\ShipButler;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class WebAuthentication
     protected $auth;
 
     /**
-     * @var  \App\Ship\Foundation\Portals\PortButler
+     * @var  \App\Ship\Foundation\Shipals\ShipButler
      */
     private $portButler;
 
@@ -34,7 +34,7 @@ class WebAuthentication
      *
      * @return void
      */
-    public function __construct(Guard $auth, PortButler $portButler)
+    public function __construct(Guard $auth, ShipButler $portButler)
     {
         $this->auth = $auth;
         $this->portButler = $portButler;

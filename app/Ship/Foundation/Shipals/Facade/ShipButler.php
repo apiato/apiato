@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Ship\Foundation\Portals\Facade;
+namespace App\Ship\Foundation\Shipals\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class PortButler
+ * Class ShipButler
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortButler extends Facade
+class ShipButler extends Facade
 {
 
     /**
@@ -19,7 +19,7 @@ class PortButler extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'PortButler';
+        return 'ShipButler';
     }
 
 }

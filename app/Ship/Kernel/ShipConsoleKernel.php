@@ -6,13 +6,13 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
 /**
- * Class PortConsoleKernel
+ * Class ShipConsoleKernel
  *
  * A.K.A (app/Console/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortConsoleKernel extends LaravelConsoleKernel
+class ShipConsoleKernel extends LaravelConsoleKernel
 {
     /**
      * The Artisan commands provided by your application.

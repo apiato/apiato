@@ -3,7 +3,7 @@
 namespace App\Ship\Provider;
 
 use App\Ship\Broadcast\Providers\MainBroadcastServiceProvider;
-use App\Ship\Foundation\Portals\PortButler;
+use App\Ship\Foundation\Shipals\ShipButler;
 use App\Ship\Foundation\Traits\FractalTrait;
 use App\Ship\Foundation\Traits\QueryDebuggerTrait;
 use App\Ship\Loader\AutoLoaderTrait;
@@ -37,7 +37,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     use AutoLoaderTrait;
 
     /**
-     * Register any Service Providers on the Port layer (including third party packages).
+     * Register any Service Providers on the Ship layer (including third party packages).
      *
      * @var array
      */
@@ -52,7 +52,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     ];
 
     /**
-     * Register any Alias on the Port layer (including third party packages).
+     * Register any Alias on the Ship layer (including third party packages).
      *
      * @var  array
      */
@@ -85,7 +85,7 @@ class MainServiceProvider extends ServiceProviderAbstract
     public function register()
     {
         $this->app->alias(LoaderHelper::class, 'LoaderHelper');
-        $this->app->alias(PortButler::class, 'PortButler');
+        $this->app->alias(ShipButler::class, 'ShipButler');
 
         $this->registerLoaders();
     }

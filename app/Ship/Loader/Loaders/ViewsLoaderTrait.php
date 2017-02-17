@@ -26,7 +26,7 @@ trait ViewsLoaderTrait
     /**
      * @param $portFolderName
      */
-    public function loadViewsFromPort($portFolderName)
+    public function loadViewsFromShip($portFolderName)
     {
         // TODO: Never Tested
 

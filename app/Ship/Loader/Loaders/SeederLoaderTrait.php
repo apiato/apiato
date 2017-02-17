@@ -30,7 +30,7 @@ trait SeederLoaderTrait
     public function runLoadingSeeders()
     {
         $this->loadSeedersFromContainers();
-        $this->loadSeedersFromPort();
+        $this->loadSeedersFromShip();
     }
 
     /**
@@ -53,14 +53,14 @@ trait SeederLoaderTrait
     }
 
     /**
-     * loadSeedersFromPort
+     * loadSeedersFromShip
      */
-    private function loadSeedersFromPort()
+    private function loadSeedersFromShip()
     {
         $seedersClasses = new Collection();
 
         // it has to do it's own loop for now
-        foreach (LoaderHelper::getPortFoldersNames() as $portFolderName) {
+        foreach (LoaderHelper::getShipFoldersNames() as $portFolderName) {
 
             $containersDirectories[] = base_path('app/Ship/') . $portFolderName . $this->seedersPath;
         }

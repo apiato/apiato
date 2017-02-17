@@ -3,7 +3,7 @@
 namespace App\Ship\Loader\Loaders;
 
 use App;
-use App\Ship\Kernel\PortHttpKernel;
+use App\Ship\Kernel\ShipHttpKernel;
 
 /**
  * Class MiddlewaresLoaderTrait.
@@ -18,9 +18,9 @@ trait MiddlewaresLoaderTrait
      */
     public function loadContainersInternalMiddlewares()
     {
-        // Get the singleton instance of the Porto PortoHttpKernel to
+        // Get the singleton instance of the Shipo ShipoHttpKernel to
         // register all the application Middleware's
-        $portHttpKernel = App::make(PortHttpKernel::class);
+        $portHttpKernel = App::make(ShipHttpKernel::class);
 
         // Registering single and grouped middleware's
         $portHttpKernel->registerMiddlewares($this->middleware);

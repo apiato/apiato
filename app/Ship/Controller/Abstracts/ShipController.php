@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as LaravelBaseController;
 
 /**
- * Class PortController.
+ * Class ShipController.
  *
  * A.K.A (app/Http/Controllers/Controller.php)
  *
@@ -16,7 +16,7 @@ use Illuminate\Routing\Controller as LaravelBaseController;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class PortController extends LaravelBaseController
+abstract class ShipController extends LaravelBaseController
 {
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

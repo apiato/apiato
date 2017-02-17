@@ -9,13 +9,13 @@ use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class PortExceptionsHandler
+ * Class ShipExceptionsHandler
  *
  * A.K.A (app/Exceptions/Handler.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PortExceptionsHandler extends LaravelExceptionHandler
+class ShipExceptionsHandler extends LaravelExceptionHandler
 {
 
     /**

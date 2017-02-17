@@ -6,11 +6,11 @@ use App\Ship\Controller\Contracts\ApiControllerInterface;
 use Dingo\Api\Routing\Helpers as DingoApiHelper;
 
 /**
- * Class PortApiController.
+ * Class ShipApiController.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class PortApiController extends PortController implements ApiControllerInterface
+abstract class ShipApiController extends ShipController implements ApiControllerInterface
 {
 
     use DingoApiHelper;

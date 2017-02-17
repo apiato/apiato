@@ -28,14 +28,14 @@ use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Ship\Controller\Abstracts\PortApiController;
+use App\Ship\Controller\Abstracts\ShipApiController;
 
 /**
  * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends PortApiController
+class Controller extends ShipApiController
 {
 
     /**

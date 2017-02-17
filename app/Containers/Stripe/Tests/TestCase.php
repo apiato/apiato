@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\Tests;
 
-use App\Ship\Test\PHPUnit\Abstracts\TestCase as PortTestCase;
+use App\Ship\Test\PHPUnit\Abstracts\TestCase as ShipTestCase;
 
 /**
  * Class TestCase
@@ -11,7 +11,7 @@ use App\Ship\Test\PHPUnit\Abstracts\TestCase as PortTestCase;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class TestCase extends PortTestCase
+class TestCase extends ShipTestCase
 {
     // ..
 }

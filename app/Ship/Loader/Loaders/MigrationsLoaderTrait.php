@@ -26,7 +26,7 @@ trait MigrationsLoaderTrait
     /**
      * @param $portFolderName
      */
-    public function loadMigrationsFromPort($portFolderName)
+    public function loadMigrationsFromShip($portFolderName)
     {
         $portMigrationDirectory = base_path('app/Ship/' . $portFolderName . '/Data/Migrations');
 

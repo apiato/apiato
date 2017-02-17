@@ -4,7 +4,7 @@ namespace App\Ship\Route\Providers;
 
 use App\Ship\HashId\Traits\HashIdTrait;
 use App\Ship\Loader\Loaders\RoutesLoaderTrait;
-use App\Ship\Route\Abstracts\PortRoutesServiceProviderAbstract;
+use App\Ship\Route\Abstracts\ShipRoutesServiceProviderAbstract;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 
@@ -15,7 +15,7 @@ use Illuminate\Routing\Router as LaravelRouter;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainRoutesServiceProvider extends PortRoutesServiceProviderAbstract
+class MainRoutesServiceProvider extends ShipRoutesServiceProviderAbstract
 {
 
     use RoutesLoaderTrait;

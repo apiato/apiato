@@ -6,11 +6,11 @@ use App\Ship\Loader\Loaders\MiddlewaresLoaderTrait;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelServiceProvider;
 
 /**
- * Class PortMiddlewareServiceProvider
+ * Class ShipMiddlewareServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-abstract class PortMiddlewareServiceProvider extends LaravelServiceProvider
+abstract class ShipMiddlewareServiceProvider extends LaravelServiceProvider
 {
 
     use MiddlewaresLoaderTrait;
