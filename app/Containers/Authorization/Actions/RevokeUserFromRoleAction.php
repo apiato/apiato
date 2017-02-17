@@ -6,7 +6,7 @@ use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\Authorization\Tasks\RevokeUserFromRoleTask;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 use Illuminate\Database\Eloquent\Collection;
 
 /**

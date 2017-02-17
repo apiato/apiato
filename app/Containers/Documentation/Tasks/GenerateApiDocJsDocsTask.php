@@ -3,7 +3,7 @@
 namespace App\Containers\Documentation\Tasks;
 
 use App\Containers\Documentation\Contracts\ApiTypeInterface;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Config\Repository as Config;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;

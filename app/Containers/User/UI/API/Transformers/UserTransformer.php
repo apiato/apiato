@@ -4,7 +4,7 @@ namespace App\Containers\User\UI\API\Transformers;
 
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
-use App\Ship\Transformer\Abstracts\Transformer;
+use App\Ship\Parents\Transformers\Transformer;
 use Carbon\Carbon;
 use Config;
 

@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
-use App\Ship\Seeder\Abstracts\Seeder;
+use App\Ship\Parents\Seeders\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 /**

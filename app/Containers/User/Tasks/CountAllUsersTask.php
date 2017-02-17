@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class CountAllUsersTask.

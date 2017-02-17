@@ -7,14 +7,14 @@ use App\Containers\Authentication\Actions\ApiUserLogoutAction;
 use App\Containers\Authentication\UI\API\Requests\UserLoginRequest;
 use App\Containers\Authentication\UI\API\Requests\UserLogoutRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Ship\Controller\Abstracts\ShipApiController;
+use App\Ship\Parents\Controllers\ApiController;
 
 /**
  * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends ShipApiController
+class Controller extends ApiController
 {
 
     /**

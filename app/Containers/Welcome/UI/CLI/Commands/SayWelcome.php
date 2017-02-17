@@ -2,7 +2,7 @@
 
 namespace App\Containers\Welcome\UI\CLI\Commands;
 
-use App\Ship\Console\Abstracts\ConsoleCommand;
+use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
  * Class SayWelcome

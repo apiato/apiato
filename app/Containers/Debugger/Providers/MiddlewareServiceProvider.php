@@ -4,7 +4,7 @@ namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware;
 use App\Containers\Debugger\Traits\DebuggerTrait;
-use App\Ship\Middleware\Providers\ShipMiddlewareServiceProvider;
+use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
  * Class MiddlewareServiceProvider.
@@ -13,7 +13,7 @@ use App\Ship\Middleware\Providers\ShipMiddlewareServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MiddlewareServiceProvider extends ShipMiddlewareServiceProvider
+class MiddlewareServiceProvider extends MiddlewareProvider
 {
     use DebuggerTrait;
 

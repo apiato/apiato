@@ -4,7 +4,7 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\UserNotFoundException;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 use Exception;
 
 /**

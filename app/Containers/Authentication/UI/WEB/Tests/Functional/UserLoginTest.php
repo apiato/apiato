@@ -2,8 +2,8 @@
 
 namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
 
-use App\Ship\Test\PHPUnit\Abstracts\TestCase;
-use App\Ship\Test\PHPUnit\Abstracts\WebTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase;
+use App\Ship\Parents\Tests\PhpUnit\WebTestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 /**

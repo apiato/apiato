@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Adapters\JwtAuthAdapter;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class GenerateTokenFromClaimsTask.

@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\CreatePermissionTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class CreatePermissionAction

@@ -5,7 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class GetUserAction.

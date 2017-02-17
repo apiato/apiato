@@ -3,7 +3,7 @@
 namespace App\Containers\Country\UI\API\Transformers;
 
 use App\Containers\Country\Models\Country;
-use App\Ship\Transformer\Abstracts\Transformer;
+use App\Ship\Parents\Transformers\Transformer;
 
 /**
  * Class CountryTransformer.

@@ -7,7 +7,7 @@ use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class AssignUserToRoleAction.

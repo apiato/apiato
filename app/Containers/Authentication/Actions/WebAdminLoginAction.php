@@ -4,7 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authorization\Tasks\IsUserAdminTask;
 use App\Containers\Authentication\Tasks\WebLoginTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class WebAdminLoginAction.

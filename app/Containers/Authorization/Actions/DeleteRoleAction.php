@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\DeleteRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class DeleteRoleAction.

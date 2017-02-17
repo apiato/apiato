@@ -2,7 +2,7 @@
 
 namespace App\Containers\Country\Providers;
 
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Parents\Providers\MainProvider;
 use Webpatser\Countries\CountriesFacade;
 use Webpatser\Countries\CountriesServiceProvider;
 
@@ -13,7 +13,7 @@ use Webpatser\Countries\CountriesServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends MainProvider
 {
 
     /**

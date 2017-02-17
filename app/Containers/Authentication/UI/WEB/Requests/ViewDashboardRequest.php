@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Requests;
 
-use App\Ship\Request\Abstracts\Request;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ViewDashboardRequest.

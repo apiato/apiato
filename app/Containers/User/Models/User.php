@@ -3,7 +3,7 @@
 namespace App\Containers\User\Models;
 
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Ship\Model\Abstracts\UserModel;
+use App\Ship\Parents\Models\UserModel;
 
 /**
  * Class User.

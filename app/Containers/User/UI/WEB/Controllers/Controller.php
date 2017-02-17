@@ -2,14 +2,14 @@
 
 namespace App\Containers\User\UI\WEB\Controllers;
 
-use App\Ship\Controller\Abstracts\ShipWebController;
+use App\Ship\Parents\Controllers\WebController;
 
 /**
  * Class Controller
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Controller extends ShipWebController
+class Controller extends WebController
 {
 
     /**

@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
 use App\Containers\User\Models\User;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class IsUserAdminTask.

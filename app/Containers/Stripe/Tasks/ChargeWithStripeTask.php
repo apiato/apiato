@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Tasks;
 use App\Containers\Stripe\Exceptions\StripeAccountNotFoundException;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Containers\User\Models\User;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 use Cartalyst\Stripe\Stripe;
 use Exception;

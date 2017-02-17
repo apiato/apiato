@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Tasks;
 
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Auth\AuthManager as Auth;
 
 /**

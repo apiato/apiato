@@ -2,7 +2,7 @@
 
 namespace App\Containers\Debugger\Providers;
 
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Parents\Providers\MainProvider;
 
 /**
  * Class MainServiceProvider.
@@ -11,7 +11,7 @@ use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends MainProvider
 {
 
     /**

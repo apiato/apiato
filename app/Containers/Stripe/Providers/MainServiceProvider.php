@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\Providers;
 
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Parents\Providers\MainProvider;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Laravel\StripeServiceProvider;
 
@@ -13,7 +13,7 @@ use Cartalyst\Stripe\Laravel\StripeServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends MainProvider
 {
 
     /**

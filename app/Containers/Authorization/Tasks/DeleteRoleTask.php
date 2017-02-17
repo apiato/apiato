@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\Authorization\Models\Role;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class DeleteRoleTask.

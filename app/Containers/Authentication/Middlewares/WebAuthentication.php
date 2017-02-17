@@ -2,7 +2,8 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
-use App\Ship\Foundation\Shipals\ShipButler;
+use App\Ship\Engine\Butlers\ShipButler;
+use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WebAuthentication
+class WebAuthentication extends Middleware
 {
 
     /**
@@ -23,7 +24,7 @@ class WebAuthentication
     protected $auth;
 
     /**
-     * @var  \App\Ship\Foundation\Shipals\ShipButler
+     * @var  \App\Ship\Engine\Butlers\ShipButler
      */
     private $portButler;
 

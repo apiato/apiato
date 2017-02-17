@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Tasks;
 use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\User\Models\User;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class CreateStripeAccountObjectTask.

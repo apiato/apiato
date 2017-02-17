@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Providers;
 
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Parents\Providers\MainProvider;
 use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
@@ -16,7 +16,7 @@ use Jenssegers\Agent\Facades\Agent;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends MainProvider
 {
 
     /**

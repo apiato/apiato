@@ -3,7 +3,7 @@
 namespace App\Containers\User\Data\Repositories;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Ship\Repository\Abstracts\Repository;
+use App\Ship\Parents\Repositories\Repository;
 
 /**
  * Class UserRepository.

@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Actions\CreatePermissionAction;
-use App\Ship\Seeder\Abstracts\Seeder;
+use App\Ship\Parents\Seeders\Seeder;
 
 /**
  * Class AuthorizationPermissionsSeeder_1

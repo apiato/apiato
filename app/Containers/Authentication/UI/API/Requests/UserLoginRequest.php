@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\UI\API\Requests;
 
-use App\Ship\Request\Abstracts\Request;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class UserLoginRequest.

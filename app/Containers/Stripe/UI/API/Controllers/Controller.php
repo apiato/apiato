@@ -4,14 +4,14 @@ namespace App\Containers\Stripe\UI\API\Controllers;
 
 use App\Containers\Stripe\Actions\CreateStripeAccountAction;
 use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
-use App\Ship\Controller\Abstracts\ShipApiController;
+use App\Ship\Parents\Controllers\ApiController;
 
 /**
  * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends ShipApiController
+class Controller extends ApiController
 {
 
     /**

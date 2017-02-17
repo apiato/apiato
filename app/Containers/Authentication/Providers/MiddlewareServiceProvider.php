@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Containers\Authentication\Middlewares\WebAuthentication;
-use App\Ship\Middleware\Providers\ShipMiddlewareServiceProvider;
+use App\Ship\Parents\Providers\MiddlewareProvider;
 use Tymon\JWTAuth\Middleware\GetUserFromToken;
 use Tymon\JWTAuth\Middleware\RefreshToken;
 
@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Middleware\RefreshToken;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class MiddlewareServiceProvider extends ShipMiddlewareServiceProvider
+class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
     protected $middleware = [

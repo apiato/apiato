@@ -3,7 +3,7 @@
 namespace App\Containers\Country\Actions;
 
 use App\Containers\Country\Tasks\ListAllCountriesTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class ListAllCountriesAction.

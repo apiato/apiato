@@ -3,7 +3,7 @@
 namespace App\Containers\Settings\Data\Repositories;
 
 use App\Containers\Settings\Models\Settings;
-use App\Ship\Repository\Abstracts\Repository;
+use App\Ship\Parents\Repositories\Repository;
 
 /**
  * Class SettingsRepository

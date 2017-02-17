@@ -4,7 +4,7 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
+use App\Ship\Parents\Providers\MainProvider;
 
 /**
  * Class MainServiceProvider.
@@ -13,7 +13,7 @@ use App\Ship\Provider\Abstracts\ServiceProviderAbstract;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ServiceProviderAbstract
+class MainServiceProvider extends MainProvider
 {
 
     /**

@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Data\Seeders;
 
 use App\Containers\Authorization\Actions\CreateRoleAction;
 use App\Containers\Authorization\Tasks\ListAllPermissionsTask;
-use App\Ship\Seeder\Abstracts\Seeder;
+use App\Ship\Parents\Seeders\Seeder;
 
 /**
  * Class AuthorizationRolesSeeder_2

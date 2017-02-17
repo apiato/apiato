@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Data\Criterias;
 
-use App\Ship\Criteria\Abstracts\Criteria;
+use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**

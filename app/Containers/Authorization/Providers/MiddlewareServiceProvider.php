@@ -2,14 +2,14 @@
 
 namespace App\Containers\Authorization\Providers;
 
-use App\Ship\Middleware\Providers\ShipMiddlewareServiceProvider;
+use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
  * Class MiddlewareServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class MiddlewareServiceProvider extends ShipMiddlewareServiceProvider
+class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
     protected $middleware = [

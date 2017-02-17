@@ -3,7 +3,7 @@
 namespace App\Containers\Country\Tasks;
 
 use App\Containers\Country\Data\Repositories\CountryRepository;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class FindCountryTaskById.

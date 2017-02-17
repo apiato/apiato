@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\UI\API\Transformers;
 
 use App\Containers\Authorization\Models\Role;
-use App\Ship\Transformer\Abstracts\Transformer;
+use App\Ship\Parents\Transformers\Transformer;
 
 /**
  * Class RoleTransformer.

@@ -2,7 +2,7 @@
 
 namespace App\Containers\Welcome\UI\API\Controllers;
 
-use App\Ship\Controller\Abstracts\ShipApiController;
+use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Config;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends ShipApiController
+class Controller extends ApiController
 {
 
     /**

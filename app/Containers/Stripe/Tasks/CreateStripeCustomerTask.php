@@ -3,7 +3,7 @@
 namespace App\Containers\Stripe\Tasks;
 
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;

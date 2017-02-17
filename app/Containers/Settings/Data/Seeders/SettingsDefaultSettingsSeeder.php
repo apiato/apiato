@@ -3,7 +3,7 @@
 namespace App\Containers\Settings\Data\Seeders;
 
 use App\Containers\Settings\Models\Settings;
-use App\Ship\Seeder\Abstracts\Seeder;
+use App\Ship\Parents\Seeders\Seeder;
 
 /**
  * Class SettingsDefaultSettingsSeeder

@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class ListAllRolesTask.

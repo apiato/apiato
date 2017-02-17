@@ -4,14 +4,14 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
-use App\Ship\Event\Providers\MainEventsServiceProvider;
+use App\Ship\Parents\Providers\EventsProvider;
 
 /**
  * Class EventsServiceProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EventsServiceProvider extends MainEventsServiceProvider
+class EventsServiceProvider extends EventsProvider
 {
 
     /**

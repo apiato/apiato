@@ -2,7 +2,7 @@
 
 namespace App\Containers\Welcome\UI\WEB\Tests\Acceptance;
 
-use App\Ship\Test\PHPUnit\Abstracts\TestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase;
 
 /**
  * Class WelcomeTest.

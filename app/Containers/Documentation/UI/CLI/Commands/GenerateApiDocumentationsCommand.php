@@ -6,7 +6,7 @@ use App\Containers\Documentation\Actions\GenerateAPIDocsAction;
 use App\Containers\Documentation\Actions\ProcessMarkdownTemplatesAction;
 use App\Containers\Documentation\Objects\PrivateApi;
 use App\Containers\Documentation\Objects\PublicApi;
-use App\Ship\Console\Abstracts\ConsoleCommand;
+use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
  * Class GenerateApiDocumentationsCommand

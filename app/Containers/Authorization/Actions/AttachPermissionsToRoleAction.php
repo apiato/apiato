@@ -5,7 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask;
 use App\Containers\Authorization\Tasks\GetPermissionTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class AttachPermissionsToRoleAction.

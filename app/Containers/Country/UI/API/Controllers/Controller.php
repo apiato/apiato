@@ -5,14 +5,14 @@ namespace App\Containers\Country\UI\API\Controllers;
 use App\Containers\Country\UI\API\Transformers\CountryTransformer;
 
 use App\Containers\Country\Actions\ListAllCountriesAction;
-use App\Ship\Controller\Abstracts\ShipApiController;
+use App\Ship\Parents\Controllers\ApiController;
 
 /**
  * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends ShipApiController
+class Controller extends ApiController
 {
 
     /**

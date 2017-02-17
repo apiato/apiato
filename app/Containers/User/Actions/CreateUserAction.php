@@ -5,7 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FireUserCreatedEventTask;
-use App\Ship\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class CreateUserAction.
