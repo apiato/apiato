@@ -28,8 +28,6 @@
 * [Credits](#Credits)
 * [License](#License)
 
-> If you used **Hello API** before `21 June 2016` you may need to check the branch [0.1](https://github.com/Porto-SAP/Hello-API/tree/release-0.1)
-
 
 <a name="Introduction"></a>
 ## Into
