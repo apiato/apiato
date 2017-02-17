@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           SocialAuth
- * @apiName            AuthWithTwitter
+ * @apiName            socialAuthTw
  * @api                {post} /auth/twitter
  * @apiDescription     After getting the User Token from twitter, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
@@ -11,14 +11,12 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiHeader          Accept application/json (required)
- *
  * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
  * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
  *
  * @apiSuccessExample  {json}    Success-Response:
  * HTTP/1.1 200 OK
-
+{
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
@@ -62,11 +60,11 @@
     }
   }
 }
- *
- * _____________________________________________________________________________________________________________________
- *
+ */
+
+/**
  * @apiGroup           SocialAuth
- * @apiName            AuthWithFacebook
+ * @apiName            socialAuthFb
  * @api                {post} /auth/facebook
  * @apiDescription     After getting the User Token from facebook, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
@@ -75,13 +73,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiHeader          Accept application/json (required)
- *
  * @apiParam           access_token     access_token=41EAAJyuLl3gaUBAPN6BrVIO.. (required)
  *
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
-
+{
   "data": {
     "id": 1,
     "name": "Mahmoud Zalt",
