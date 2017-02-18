@@ -10,7 +10,7 @@
  */
 
 // Default seeders directory in the container
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
+use App\Ship\Engine\Butlers\Facades\ShipButler;
 
 $containersFactoriesPath = '/Data/Factories/';
 
@@ -18,7 +18,7 @@ $containersFactoriesPath = '/Data/Factories/';
 // which will be used by Laravel when dealing with Model Factories.
 
 // Checkout the FactoriesLoaderTrait.php trait, to get an idea on how this works.
-foreach (LoaderButler::getContainersNames() as $containerName) {
+foreach (ShipButler::getContainersNames() as $containerName) {
 
     $containersDirectory = base_path('app/Containers/' . $containerName . $containersFactoriesPath);
 

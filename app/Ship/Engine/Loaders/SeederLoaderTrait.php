@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Loaders;
 
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
+use App\Ship\Engine\Butlers\Facades\ShipButler;
 use File;
 use Illuminate\Support\Collection;
 
@@ -40,7 +40,7 @@ trait SeederLoaderTrait
     {
         $seedersClasses = new Collection();
 
-        foreach (LoaderButler::getContainersNames() as $containerName) {
+        foreach (ShipButler::getContainersNames() as $containerName) {
 
             $containersDirectories[] = base_path('app/Containers/' . $containerName . $this->seedersPath);
 
@@ -60,7 +60,7 @@ trait SeederLoaderTrait
         $seedersClasses = new Collection();
 
         // it has to do it's own loop for now
-        foreach (LoaderButler::getShipFoldersNames() as $portFolderName) {
+        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
 
             // TODO: Currently only the Tests Seeder will work since this is statically defined.
             // Need to Loop over that Directory and load the any Seeder file there.
@@ -93,7 +93,7 @@ trait SeederLoaderTrait
 
                         // do not seed the classes now, just store them in a collection and w
                         $seedersClasses->push(
-                            LoaderButler::getClassFullNameFromFile(
+                            ShipButler::getClassFullNameFromFile(
                                 $seederClass->getPathname())
                         );
                     }

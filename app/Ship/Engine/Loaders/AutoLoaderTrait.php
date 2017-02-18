@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Loaders;
 
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
+use App\Ship\Engine\Butlers\Facades\ShipButler;
 
 /**
  * Class AutoLoaderTrait.
@@ -30,13 +30,13 @@ trait AutoLoaderTrait
         $this->loadProvidersFromShip();
 
         // > iterate over all the port folders and autoload most of the components
-        foreach (LoaderButler::getShipFoldersNames() as $portFolderName) {
+        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
             $this->loadMigrationsFromShip();
             $this->loadViewsFromShip($portFolderName);
         }
 
         // > iterate over all the containers folders and autoload most of the components
-        foreach (LoaderButler::getContainersNames() as $containerName) {
+        foreach (ShipButler::getContainersNames() as $containerName) {
             $this->loadConfigsFromContainers($containerName);
             $this->loadProvidersFromContainers($containerName);
             $this->loadMigrationsFromContainers($containerName);

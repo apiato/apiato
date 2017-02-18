@@ -6,8 +6,8 @@ use App\Ship\Engine\Loaders\AutoLoaderTrait;
 use App\Ship\Engine\Loaders\FactoriesLoaderTrait;
 use App\Ship\Engine\Traits\FractalTrait;
 use App\Ship\Features\Validations\ValidationTrait;
+use App\Ship\Engine\Butlers\ContainersButler;
 use App\Ship\Engine\Butlers\ShipButler;
-use App\Ship\Engine\Butlers\LoaderButler;
 use App\Ship\Parents\Providers\MainProvider;
 use App\Ship\Parents\Providers\RoutesProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
@@ -85,8 +85,8 @@ class PortoServiceProvider extends MainProvider
     public function register()
     {
         // Register Engine Facade Classes
-        $this->app->alias(LoaderButler::class, 'LoaderButler');
         $this->app->alias(ShipButler::class, 'ShipButler');
+        $this->app->alias(ContainersButler::class, 'ContainersButler');
 
         // Run the Loaders Register functions
         $this->runLoadersRegister();

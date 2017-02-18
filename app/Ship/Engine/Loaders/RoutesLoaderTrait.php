@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Loaders;
 
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
+use App\Ship\Engine\Butlers\Facades\ShipButler;
 use Dingo\Api\Routing\Router as DingoApiRouter;
 use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\Config;
@@ -22,8 +22,8 @@ trait RoutesLoaderTrait
      */
     public function runRoutesAutoLoader()
     {
-        $containersPaths = LoaderButler::getContainersPaths();
-        $containersNamespace = LoaderButler::getContainersNamespace();
+        $containersPaths = ShipButler::getContainersPaths();
+        $containersNamespace = ShipButler::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
             $this->loadRoutesFromContainersForApi($containerPath, $containersNamespace);

@@ -4,7 +4,6 @@ namespace App\Ship\Engine\Loaders;
 
 use App;
 use App\Ship\Engine\Butlers\Facades\ShipButler;
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
 use File;
 
 /**
@@ -53,7 +52,7 @@ trait ProvidersLoaderTrait
                     // Check if this is the Main Service Provider
                     if (ShipButler::stringStartsWith($file->getFilename(), $mainServiceProviderNameStartWith)) {
 
-                        $serviceProviderClass = LoaderButler::getClassFullNameFromFile($file->getPathname());
+                        $serviceProviderClass = ShipButler::getClassFullNameFromFile($file->getPathname());
 
                         $this->loadProvider($serviceProviderClass);
 

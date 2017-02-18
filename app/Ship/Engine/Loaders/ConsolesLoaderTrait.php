@@ -3,7 +3,7 @@
 namespace App\Ship\Engine\Loaders;
 
 use App;
-use App\Ship\Engine\Butlers\Facades\LoaderButler;
+use App\Ship\Engine\Butlers\Facades\ShipButler;
 use File;
 
 /**
@@ -45,7 +45,7 @@ trait ConsolesLoaderTrait
 
             foreach ($files as $consoleFile) {
 
-                $consoleClass = LoaderButler::getClassFullNameFromFile($consoleFile->getPathname());
+                $consoleClass = ShipButler::getClassFullNameFromFile($consoleFile->getPathname());
 
                 // when user from the Main Service Provider, which extends Laravel
                 // service provider you get access to `$this->commands`

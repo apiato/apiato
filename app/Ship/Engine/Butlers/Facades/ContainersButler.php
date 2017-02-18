@@ -5,11 +5,11 @@ namespace App\Ship\Engine\Butlers\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class LoaderButler
+ * Class ContainersButler
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class LoaderButler extends Facade
+class ContainersButler extends Facade
 {
 
     /**
@@ -19,7 +19,7 @@ class LoaderButler extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'LoaderButler';
+        return 'ContainersButler';
     }
 
 }
