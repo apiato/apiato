@@ -4,9 +4,11 @@
  * @apiGroup           RolePermission
  * @apiName            attachPermissionToRole
  * @api                {post} /permissions/attach Attach Permissions to Role
- * @apiDescription     When using Attach Permissions, make sure to never pass an existing permission
- *                     as it will cause an error. If you want to just update all permission, you can
- *                     use `/permissions/sync` instead, and just pass all permissions to it.
+ * @apiDescription     Attach new permissions to role. This endpoint does not sync the role with the
+ *                     new permissions. It simply attach new permission to the role. So make sure
+ *                     to never send an already attached permission since it will cause an error.
+ *                     To sync (update) all existing permissions with the new ones use
+ *                     `/permissions/sync` endpoint instead.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

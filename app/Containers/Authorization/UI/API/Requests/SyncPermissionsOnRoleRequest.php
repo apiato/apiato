@@ -5,11 +5,11 @@ namespace App\Containers\Authorization\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class SyncPermissionOnRoleRequest.
+ * Class SyncPermissionsOnRoleRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SyncPermissionOnRoleRequest extends Request
+class SyncPermissionsOnRoleRequest extends Request
 {
 
     /**

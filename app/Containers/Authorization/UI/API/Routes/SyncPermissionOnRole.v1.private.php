@@ -5,9 +5,8 @@
  * @apiName            syncPermissionOnRole
  * @api                {post} /permissions/sync Sync Permissions on Role
  * @apiDescription     You can use this endpoint instead of `permissions/attach` & `permissions/detach`.
- *                     When sending permissions to a role using the `sync` endpoint, the role will only
- *                     have the sent permissions, as this will override all existing permissions with
- *                     the new sent permissions.
+ *                     The sync endpoint will override all existing role permissions with the new
+ *                     one sent to this endpoint.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

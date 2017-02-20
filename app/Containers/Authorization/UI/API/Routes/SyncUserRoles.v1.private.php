@@ -2,13 +2,11 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            assignUserToRole
- * @api                {post} /roles/assign Assign User to Roles
- * @apiDescription     Assign new roles to user. This endpoint does not sync the user with the
- *                     new roles. It simply assign new role to the user. So make sure
- *                     to never send an already assigned role since it will cause an error.
- *                     To sync (update) all existing roles with the new ones use
- *                     `/roles/sync` endpoint instead.
+ * @apiName            syncUserRoles
+ * @api                {post} /roles/sync Sync User Roles
+ * @apiDescription     You can use this endpoint instead of `roles/assign` & `roles/revoke`.
+ *                     The sync endpoint will override all existing user roles with the new
+ *                     one sent to this endpoint.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -58,8 +56,8 @@
 }
  */
 
-$router->post('roles/assign', [
-    'uses'       => 'Controller@assignUserToRole',
+$router->post('roles/sync', [
+    'uses'       => 'Controller@syncUserRoles',
     'middleware' => [
         'api.auth',
     ],

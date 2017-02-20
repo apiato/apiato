@@ -14,6 +14,7 @@ use App\Containers\Authorization\Actions\ListAllPermissionsAction;
 use App\Containers\Authorization\Actions\ListAllRolesAction;
 use App\Containers\Authorization\Actions\RevokeUserFromRoleAction;
 use App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction;
+use App\Containers\Authorization\Actions\SyncUserRolesAction;
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
@@ -25,7 +26,8 @@ use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
 use App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\SyncPermissionOnRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
@@ -106,6 +108,19 @@ class Controller extends ApiController
     }
 
     /**
+     * @param \App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest $request
+     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction         $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function syncUserRoles(SyncUserRolesRequest $request, SyncUserRolesAction $action)
+    {
+        $user = $action->run($request['user_id'], $request['roles_ids']);
+
+        return $this->response->item($user, new UserTransformer());
+    }
+
+    /**
      * @param \App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest $request
      * @param \App\Containers\Authorization\Actions\DeleteRoleAction          $action
      *
@@ -149,13 +164,13 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionOnRoleRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest $request
      * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction         $action
      *
      * @return  \Dingo\Api\Http\Response
      */
     public function syncPermissionOnRole(
-        SyncPermissionOnRoleRequest $request,
+        SyncPermissionsOnRoleRequest $request,
         SyncPermissionsOnRoleAction $action
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
