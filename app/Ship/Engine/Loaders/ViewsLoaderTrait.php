@@ -28,11 +28,9 @@ trait ViewsLoaderTrait
      */
     public function loadViewsFromShip($portFolderName)
     {
-        // TODO: Never Tested
-
-        $portViewsDirectory = base_path('app/Ship/') . $portFolderName . '/Views/';
-
-        $this->loadViews($portViewsDirectory);
+//        $portViewsDirectory = base_path('app/Ship/') . $portFolderName . '/Views/';
+//
+//        $this->loadViews($portViewsDirectory);
     }
 
     /**
