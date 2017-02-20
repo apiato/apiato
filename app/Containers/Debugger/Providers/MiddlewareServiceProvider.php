@@ -15,9 +15,6 @@ use App\Ship\Parents\Providers\MiddlewareProvider;
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-    protected $middleware = [
-
-    ];
 
     protected $middlewareGroups = [
         'web' => [
