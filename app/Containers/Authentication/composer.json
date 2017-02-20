@@ -2,8 +2,7 @@
   "name": "porto-sap/authentication",
   "description": "Shipo-SAP Container for Hello-API.",
   "require": {
-    "tymon/jwt-auth": "0.5.*",
-    "jenssegers/agent": "^2.4"
+    "tymon/jwt-auth": "0.5.*"
   },
   "scripts": {
     "post-create-project-cmd": [

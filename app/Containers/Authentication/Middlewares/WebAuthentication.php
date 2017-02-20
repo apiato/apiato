@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
+
 use App\Ship\Engine\Butlers\ContainersButler;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
@@ -23,10 +24,6 @@ class WebAuthentication extends Middleware
      */
     protected $auth;
 
-    /**
-     * @var  \App\Ship\Engine\Butlers\ContainersButler
-     */
-    private $portButler;
 
     /**
      * Create a new middleware instance.
@@ -35,10 +32,9 @@ class WebAuthentication extends Middleware
      *
      * @return void
      */
-    public function __construct(Guard $auth, ContainersButler $portButler)
+    public function __construct(Guard $auth)
     {
         $this->auth = $auth;
-        $this->portButler = $portButler;
     }
 
     /**
@@ -52,7 +48,7 @@ class WebAuthentication extends Middleware
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {
-            return response()->view($this->portButler->getLoginWebPageName());
+            return response()->view(ContainersButler::getLoginWebPageName());
         }
 
         return $next($request);

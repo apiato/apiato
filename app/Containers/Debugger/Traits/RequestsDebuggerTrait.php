@@ -5,6 +5,7 @@ namespace App\Containers\Debugger\Traits;
 use App;
 use DB;
 use Illuminate\Support\Facades\Config;
+use Jenssegers\Agent\Facades\Agent;
 use Log;
 
 /**
@@ -24,24 +25,29 @@ trait RequestsDebuggerTrait
 
         $responseDataCut = 700; // show only the first xxx character from the response
         $tokenDataCut = 80; // show only the first xxx character from the token
-        
+
         if (App::environment() != 'testing' && Config::get('app.debug') === true) {
 
             Log::debug('');
             Log::debug('-----------------[] NEW REQUEST []---------------------------------------------------');
 
             Log::debug('REQUEST INFO: ');
-            Log::debug('   METHOD: ' . $request->getMethod());
-            Log::debug('   ENDPOINT: ' . $request->fullUrl());
+            Log::debug('   Method: ' . $request->getMethod());
+            Log::debug('   Endpoint: ' . $request->fullUrl());
             Log::debug('   IP: ' . $request->ip());
+            Log::debug('   Languages: ' . implode(', ', Agent::languages()));
 
             Log::debug('');
-            Log::debug('AUTH INFO: ');
+            Log::debug('USER INFO: ');
             $authHead = $request->header('Authorization');
             $end = !is_null($authHead) ? '...' : 'N/A';
             Log::debug('   Authorization = ' . substr($authHead, 0, $tokenDataCut) . $end);
             $user = $request->user() ? 'ID: ' . $request->user()->id . ' | Name: ' . $request->user()->name : 'N/A';
             Log::debug('   User: ' . $user);
+            Log::debug('   Platform: ' . Agent::platform());
+            Log::debug('   Device: ' . Agent::device());
+            $browser = Agent::browser();
+            Log::debug('   Browser: ' . $browser . ' version ' . Agent::version($browser));
 
             Log::debug('');
             Log::debug('REQUEST DATA: ');

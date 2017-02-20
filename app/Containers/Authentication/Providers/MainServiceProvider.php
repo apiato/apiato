@@ -3,8 +3,6 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
-use Jenssegers\Agent\AgentServiceProvider;
-use Jenssegers\Agent\Facades\Agent;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
@@ -26,7 +24,6 @@ class MainServiceProvider extends MainProvider
      */
     public $serviceProviders = [
         JWTAuthServiceProvider::class,
-        AgentServiceProvider::class,
         MiddlewareServiceProvider::class
     ];
 
@@ -38,7 +35,6 @@ class MainServiceProvider extends MainProvider
     public $aliases = [
         'JWTAuth'    => JWTAuth::class,
         'JWTFactory' => JWTFactory::class,
-        'Agent'      => Agent::class,
     ];
 
 }

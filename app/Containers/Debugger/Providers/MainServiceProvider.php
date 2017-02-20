@@ -4,6 +4,8 @@ namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Traits\QueryDebuggerTrait;
 use App\Ship\Parents\Providers\MainProvider;
+use Jenssegers\Agent\AgentServiceProvider;
+use Jenssegers\Agent\Facades\Agent;
 
 /**
  * Class MainServiceProvider.
@@ -14,6 +16,7 @@ use App\Ship\Parents\Providers\MainProvider;
  */
 class MainServiceProvider extends MainProvider
 {
+
     use QueryDebuggerTrait;
 
     /**
@@ -22,6 +25,7 @@ class MainServiceProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
+        AgentServiceProvider::class,
         MiddlewareServiceProvider::class,
     ];
 
@@ -31,7 +35,7 @@ class MainServiceProvider extends MainProvider
      * @var  array
      */
     public $aliases = [
-
+        'Agent' => Agent::class,
     ];
 
     /**
