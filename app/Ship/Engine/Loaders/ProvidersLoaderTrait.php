@@ -25,25 +25,15 @@ trait ProvidersLoaderTrait
     }
 
     /**
-     * loadProvidersFromShip
-     */
-    public function loadProvidersFromShip()
-    {
-        foreach ($this->serviceProviders as $providerClass) {
-            $this->loadProvider($providerClass);
-        }
-    }
-
-    /**
      * @param $directory
      */
     private function loadProviders($directory)
     {
+        $mainServiceProviderNameStartWith = 'Main';
+
         if (File::isDirectory($directory)) {
 
             $files = File::allFiles($directory);
-
-            $mainServiceProviderNameStartWith = 'Main';
 
             foreach ($files as $file) {
 
@@ -55,27 +45,26 @@ trait ProvidersLoaderTrait
                         $serviceProviderClass = ShipButler::getClassFullNameFromFile($file->getPathname());
 
                         $this->loadProvider($serviceProviderClass);
-
                     }
                 }
             }
         }
     }
 
-    /*
-     * loadProvider
+    /**
+     * @param $providerFullName
      */
-    private function loadProvider($provider)
+    private function loadProvider($providerFullName)
     {
-        App::register($provider);
+        App::register($providerFullName);
     }
 
     /**
-     * loadContainersInternalProviders
+     * @void
      */
-    public function loadContainersInternalProviders()
+    public function loadServiceProviders()
     {
-        foreach ($this->containerServiceProviders as $provider) {
+        foreach ($this->serviceProviders as $provider) {
             $this->loadProvider($provider);
         }
     }

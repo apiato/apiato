@@ -27,13 +27,8 @@ trait AutoLoaderTrait
     {
         // the config files should be loaded first from all the directories in their own loop
         $this->loadConfigsFromShip();
-        $this->loadProvidersFromShip();
-
-        // > iterate over all the port folders and autoload most of the components
-        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
-            $this->loadMigrationsFromShip();
-            $this->loadViewsFromShip($portFolderName);
-        }
+        $this->loadMigrationsFromShip();
+        $this->loadViewsFromShip();
 
         // > iterate over all the containers folders and autoload most of the components
         foreach (ShipButler::getContainersNames() as $containerName) {
@@ -52,7 +47,6 @@ trait AutoLoaderTrait
     public function runLoadersRegister()
     {
         $this->loadContainerFactories();
-        $this->loadShipInternalAliases();
     }
 
 }

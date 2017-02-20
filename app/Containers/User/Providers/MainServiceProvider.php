@@ -17,18 +17,11 @@ class MainServiceProvider extends MainProvider
 {
 
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Container Service Providers.
      *
      * @var array
      */
-    public $containerServiceProviders = [
+    public $serviceProviders = [
         EventsServiceProvider::class,
     ];
 
@@ -37,24 +30,16 @@ class MainServiceProvider extends MainProvider
      *
      * @var  array
      */
-    public $containerAliases = [
+    public $aliases = [
 
     ];
-
-    /**
-     * Perform post-registration booting of services.
-     */
-    public function boot()
-    {
-        $this->loadContainersInternalProviders();
-    }
 
     /**
      * Register anything in the container.
      */
     public function register()
     {
-        $this->loadContainersInternalAliases();
+        parent::register();
 
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }

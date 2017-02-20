@@ -3,11 +3,11 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
-use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\Facades\JWTFactory;
 use Jenssegers\Agent\AgentServiceProvider;
 use Jenssegers\Agent\Facades\Agent;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
+use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -20,18 +20,11 @@ class MainServiceProvider extends MainProvider
 {
 
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Container Service Providers.
      *
      * @var array
      */
-    public $containerServiceProviders = [
+    public $serviceProviders = [
         JWTAuthServiceProvider::class,
         AgentServiceProvider::class,
         MiddlewareServiceProvider::class
@@ -42,25 +35,10 @@ class MainServiceProvider extends MainProvider
      *
      * @var  array
      */
-    public $containerAliases = [
+    public $aliases = [
         'JWTAuth'    => JWTAuth::class,
         'JWTFactory' => JWTFactory::class,
-        'Agent' => Agent::class,
+        'Agent'      => Agent::class,
     ];
 
-    /**
-     * Perform post-registration booting of services.
-     */
-    public function boot()
-    {
-        $this->loadContainersInternalProviders();
-    }
-
-    /**
-     * Register anything in the container.
-     */
-    public function register()
-    {
-        $this->loadContainersInternalAliases();
-    }
 }

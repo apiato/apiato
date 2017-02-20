@@ -13,27 +13,13 @@ use Illuminate\Foundation\AliasLoader;
 trait AliasesLoaderTrait
 {
 
-
     /**
-     * @param array $aliases
+     * @void
      */
-    public function loadShipInternalAliases()
-    {
-        // `$this->aliases` is declared on the Main Service Provider of the Ship layer
-        foreach (isset($this->aliases) ? $this->aliases : [] as $aliasKey => $aliasValue) {
-            if (class_exists($aliasValue)) {
-                $this->loadAlias($aliasKey, $aliasValue);
-            }
-        }
-    }
-
-    /**
-     * loadContainersInternalAliases
-     */
-    public function loadContainersInternalAliases()
+    public function loadAliases()
     {
         // `$this->aliases` is declared on each Container's Main Service Provider
-        foreach (isset($this->containerAliases) ? $this->containerAliases : [] as $aliasKey => $aliasValue) {
+        foreach (isset($this->aliases) ? $this->aliases : [] as $aliasKey => $aliasValue) {
             if (class_exists($aliasValue)) {
                 $this->loadAlias($aliasKey, $aliasValue);
             }

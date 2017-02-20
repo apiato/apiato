@@ -17,18 +17,11 @@ class MainServiceProvider extends MainProvider
 {
 
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Container Service Providers.
      *
      * @var array
      */
-    public $containerServiceProviders = [
+    public $serviceProviders = [
         StripeServiceProvider::class,
     ];
 
@@ -37,23 +30,8 @@ class MainServiceProvider extends MainProvider
      *
      * @var  array
      */
-    public $containerAliases = [
+    public $aliases = [
         'Stripe' => Stripe::class,
     ];
 
-    /**
-     * Perform post-registration booting of services.
-     */
-    public function boot()
-    {
-        $this->loadContainersInternalProviders();
-    }
-
-    /**
-     * Register bindings in the container.
-     */
-    public function register()
-    {
-        $this->loadContainersInternalAliases();
-    }
 }

@@ -43,9 +43,9 @@ class PortoServiceProvider extends MainProvider
     public $serviceProviders = [
         DingoApiServiceProvider::class,
         CorsServiceProvider::class,
+        HashidsServiceProvider::class,
         RoutesProvider::class,
         RepositoryServiceProvider::class,
-        HashidsServiceProvider::class,
     ];
 
     /**
@@ -67,6 +67,9 @@ class PortoServiceProvider extends MainProvider
         // Run the Loaders Boot functions
         $this->runLoadersBoot();
 
+        // load all service providers defined in this class
+        parent::boot();
+
         // Change the default Fractal Serializer
         $this->overrideDefaultFractalSerializer();
 
@@ -84,6 +87,9 @@ class PortoServiceProvider extends MainProvider
      */
     public function register()
     {
+        // load all aliases defined in this class
+        parent::register();
+
         // Register Engine Facade Classes
         $this->app->alias(ShipButler::class, 'ShipButler');
         $this->app->alias(ContainersButler::class, 'ContainersButler');

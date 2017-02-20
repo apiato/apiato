@@ -15,4 +15,21 @@ abstract class MainProvider extends LaravelAppServiceProvider
 {
     use ProvidersLoaderTrait;
     use AliasesLoaderTrait;
+
+
+    /**
+     * Perform post-registration booting of services.
+     */
+    public function boot()
+    {
+        $this->loadServiceProviders();
+    }
+
+    /**
+     * Register anything in the container.
+     */
+    public function register()
+    {
+        $this->loadAliases();
+    }
 }

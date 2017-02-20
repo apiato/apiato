@@ -24,9 +24,9 @@ trait ViewsLoaderTrait
     }
 
     /**
-     * @param $portFolderName
+     * @param void
      */
-    public function loadViewsFromShip($portFolderName)
+    public function loadViewsFromShip()
     {
 //        $portViewsDirectory = base_path('app/Ship/') . $portFolderName . '/Views/';
 //

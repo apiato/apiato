@@ -37,19 +37,4 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         'web.auth'         => WebAuthentication::class,
     ];
 
-    /**
-     * Perform post-registration booting of services.
-     */
-    public function boot()
-    {
-        $this->loadContainersInternalMiddlewares();
-    }
-
-    /**
-     * Register anything in the container.
-     */
-    public function register()
-    {
-
-    }
 }
