@@ -130,4 +130,19 @@ return [
 
     ],
 
+
+    'settings' => [
+
+        /*
+        |--------------------------------------------------------------------------
+        | Enable/Disable Logging
+        |--------------------------------------------------------------------------
+        |
+        | By default errors logging is enabled, however to disable it just set the
+        | value to "false". This might be useful for your test environment.
+        |
+        */
+
+        'logging' => false,
+    ]
 ];

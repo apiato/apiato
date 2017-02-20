@@ -6,6 +6,7 @@
 Homestead.json
 Homestead.yaml
 .env
+composer.lock
 storage/logs/laravel.log
 /public/api/
 /public/api-markdowns/
