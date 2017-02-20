@@ -35,9 +35,8 @@ trait AutoLoaderTrait
             $this->loadConfigsFromContainers($containerName);
             $this->loadProvidersFromContainers($containerName);
             $this->loadMigrationsFromContainers($containerName);
-            $this->loadViewsFromContainers($containerName);
-            $this->loadViewsFromShip($containerName);
             $this->loadConsolesFromContainers($containerName);
+            $this->loadViewsFromContainers($containerName);
         }
     }
 
