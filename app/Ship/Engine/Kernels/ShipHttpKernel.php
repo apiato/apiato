@@ -68,28 +68,4 @@ class ShipHttpKernel extends LaravelHttpKernel
 
     ];
 
-    /**
-     * @param array $middlewares
-     *
-     * @return  $this
-     */
-    public function registerMiddlewares(array $middlewares = [])
-    {
-        $this->middleware = array_merge($this->middleware, $middlewares);
-
-        return $this;
-    }
-
-    /**
-     * @param array $middlewareGroups
-     *
-     * @return  $this
-     */
-    public function registerMiddlewareGroups(array $middlewareGroups = [])
-    {
-        $this->middlewareGroups = array_merge($this->middlewareGroups, $middlewareGroups);
-
-        return $this;
-    }
-
 }

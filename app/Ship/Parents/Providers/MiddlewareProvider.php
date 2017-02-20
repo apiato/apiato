@@ -19,7 +19,7 @@ abstract class MiddlewareProvider extends MainProvider
      */
     public function boot()
     {
-        $this->loadContainersInternalMiddlewares();
+        $this->loadMiddlewares();
     }
 
     /**

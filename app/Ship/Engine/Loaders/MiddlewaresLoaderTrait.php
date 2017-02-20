@@ -3,7 +3,6 @@
 namespace App\Ship\Engine\Loaders;
 
 use App;
-use App\Ship\Engine\Kernels\ShipHttpKernel;
 
 /**
  * Class MiddlewaresLoaderTrait.
@@ -16,19 +15,36 @@ trait MiddlewaresLoaderTrait
     /**
      * @void
      */
-    public function loadContainersInternalMiddlewares()
+    public function loadMiddlewares()
     {
-        // Get the singleton instance of the Shipo ShipoHttpKernel to
-        // register all the application Middleware's
-        $portHttpKernel = App::make(ShipHttpKernel::class);
+        $this->registerMiddlewareGroups($this->middlewareGroups);
+        $this->registerRouteMiddleware($this->routeMiddleware);
+    }
 
-        // Registering single and grouped middleware's
-        $portHttpKernel->registerMiddlewares($this->middleware);
-        $portHttpKernel->registerMiddlewareGroups($this->middlewareGroups);
 
-        // Registering Route Middleware's apart
-        foreach ($this->routeMiddleware as $key => $routeMiddleware) {
+    /**
+     * Registering Route Group's
+     *
+     * @void
+     */
+    private function registerMiddlewareGroups(array $middlewareGroups = [])
+    {
+        foreach ($middlewareGroups as $key => $middleware) {
+            $this->app['router']->middlewareGroup($key, $middleware);
+        }
+    }
+
+    /**
+     * Registering Route Middleware's
+     *
+     * @void
+     */
+    private function registerRouteMiddleware(array $routeMiddleware = [])
+    {
+        foreach ($routeMiddleware as $key => $routeMiddleware) {
             $this->app['router']->aliasMiddleware($key, $routeMiddleware);
         }
     }
+
+
 }
