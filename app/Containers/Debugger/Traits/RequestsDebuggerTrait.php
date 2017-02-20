@@ -22,44 +22,40 @@ trait RequestsDebuggerTrait
     public function runRequestDebugger($request, $response)
     {
 
+        $responseDataCut = 700; // show only the first xxx character from the response
+        $tokenDataCut = 80; // show only the first xxx character from the token
+        
         if (App::environment() != 'testing' && Config::get('app.debug') === true) {
 
             Log::debug('');
+            Log::debug('-----------------[] NEW REQUEST []---------------------------------------------------');
+
+            Log::debug('REQUEST INFO: ');
+            Log::debug('   METHOD: ' . $request->getMethod());
+            Log::debug('   ENDPOINT: ' . $request->fullUrl());
+            Log::debug('   IP: ' . $request->ip());
+
             Log::debug('');
-            Log::debug('REQUEST START------------------------------------------------------');
-
-            // Endpoint URL:
-            Log::debug('URL: ' . $request->getMethod() . ' ' . $request->fullUrl());
-
-            // Request Device IP:
-            Log::debug('IP: ' . $request->ip());
-
-            // Request Headers:
-            Log::debug('App Headers: ');
+            Log::debug('AUTH INFO: ');
             $authHead = $request->header('Authorization');
-            $end = $authHead ? '...' : 'N/A';
-            Log::debug('   Authorization = ' . substr($authHead, 0, 80) . $end);
+            $end = !is_null($authHead) ? '...' : 'N/A';
+            Log::debug('   Authorization = ' . substr($authHead, 0, $tokenDataCut) . $end);
+            $user = $request->user() ? 'ID: ' . $request->user()->id . ' | Name: ' . $request->user()->name : 'N/A';
+            Log::debug('   User: ' . $user);
 
-            // Request Data:
-            if ($request->all()) {
-                $data = http_build_query($request->all(), '', ' ; ');
-            } else {
-                $data = 'N/A';
-            }
-            Log::debug('Request Data: ' . $data);
+            Log::debug('');
+            Log::debug('REQUEST DATA: ');
+            $data = $request->all()? http_build_query($request->all(), '', ' + ') : 'N/A';
+            Log::debug('   ' . $data);
 
-            // Authenticated User:
-            if ($request->user()) {
-                $user = 'ID: ' . $request->user()->id;
-            } else {
-                $user = 'N/A';
-            }
-            Log::debug('Authenticated User: ' . $user);
+            Log::debug('');
+            Log::debug('RESPONSE DATA: ');
+            $response = ($response && method_exists($response, 'content')) ? $response->content() : 'N/A';
+            Log::debug('   ' . substr($response, 0, $responseDataCut) . '...');
 
-            // Response Content:
-            if ($response && method_exists($response, 'content')) {
-                Log::debug('Response: ' . substr($response->content(), 0, 700) . '...');
-            }
+            // ...
+
+            Log::debug('');
         }
     }
 
