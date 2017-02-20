@@ -26,7 +26,7 @@ trait RequestsDebuggerTrait
         $responseDataCut = 700; // show only the first xxx character from the response
         $tokenDataCut = 80; // show only the first xxx character from the token
 
-        if (App::environment() != 'testing' && Config::get('app.debug') === true) {
+        if (App::environment() != 'testing' && Config::get('debugger.requests.debug') === true) {
 
             Log::debug('');
             Log::debug('-----------------[] NEW REQUEST []---------------------------------------------------');
