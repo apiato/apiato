@@ -3,11 +3,10 @@
 namespace App\Ship\Parents\Requests;
 
 use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Ship\Features\Exceptions\ValidationFailedException;
 use App\Ship\Engine\Traits\HashIdTrait;
+use App\Ship\Features\Exceptions\ValidationFailedException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class Request
@@ -32,14 +31,9 @@ abstract class Request extends LaravelFormRequest
     {
         $requestData = parent::all();
 
-        // the hash ID feature must be enabled to use this decoder feature.
-        if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
-            $requestData = $this->decodeHashedIdsBeforeValidatingThem($requestData);
-        }
+        $requestData = $this->applyValidationRulesToUrlParams($requestData);
 
-        if (isset($this->urlParameters) && !empty($this->urlParameters)) {
-            $requestData = $this->applyValidationRulesToUrlParams($requestData);
-        }
+        $requestData = $this->decodeHashedIdsBeforeApplyingValidationRules($requestData);
 
         return $requestData;
     }
@@ -56,8 +50,10 @@ abstract class Request extends LaravelFormRequest
      */
     private function applyValidationRulesToUrlParams(Array $requestData)
     {
-        foreach ($this->urlParameters as $param) {
-            $requestData[$param] = $this->route($param);
+        if (isset($this->urlParameters) && !empty($this->urlParameters)) {
+            foreach ($this->urlParameters as $param) {
+                $requestData[$param] = $this->route($param);
+            }
         }
 
         return $requestData;

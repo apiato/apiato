@@ -73,23 +73,25 @@ trait HashIdTrait
      *
      * @return  array
      */
-    private function decodeHashedIdsBeforeValidatingThem(Array $requestData)
+    private function decodeHashedIdsBeforeApplyingValidationRules(Array $requestData)
     {
-        foreach ($this->decode as $id) {
 
-            if (isset($requestData[$id])) {
-                // validate the user is not trying to pass real ID
-                if (is_numeric($requestData[$id])) {
-                    throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
-                }
+        // the hash ID feature must be enabled to use this decoder feature.
+        if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
 
-                if (Config::get('hello.hash-id')) {
+            foreach ($this->decode as $id) {
+
+                if (isset($requestData[$id])) {
+                    // validate the user is not trying to pass real ID
+                    if (is_numeric($requestData[$id])) {
+                        throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
+                    }
+
                     $requestData[$id] = is_array($requestData[$id]) ?
-                        $this->decodeThisArrayOfIds($requestData[$id]) :
-                        $this->decodeThisId($requestData[$id]);
-                }
+                        $this->decodeThisArrayOfIds($requestData[$id]) : $this->decodeThisId($requestData[$id]);
 
-            } // do nothing if the input is incorrect, because what if it's not required!
+                } // do nothing if the input is incorrect, because what if it's not required!
+            }
         }
 
         return $requestData;
