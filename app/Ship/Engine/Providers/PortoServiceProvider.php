@@ -64,7 +64,7 @@ class PortoServiceProvider extends MainProvider
      */
     public function boot()
     {
-        // Run the Loaders Boot functions
+        // Autoload most of the Containers and Ship Components
         $this->runLoadersBoot();
 
         // load all service providers defined in this class
@@ -87,15 +87,11 @@ class PortoServiceProvider extends MainProvider
      */
     public function register()
     {
-        // load all aliases defined in this class
         parent::register();
 
         // Register Engine Facade Classes
         $this->app->alias(ShipButler::class, 'ShipButler');
         $this->app->alias(ContainersButler::class, 'ContainersButler');
-
-        // Run the Loaders Register functions
-        $this->runLoadersRegister();
     }
 
 }

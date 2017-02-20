@@ -33,19 +33,13 @@ trait AutoLoaderTrait
         // > iterate over all the containers folders and autoload most of the components
         foreach (ShipButler::getContainersNames() as $containerName) {
             $this->loadConfigsFromContainers($containerName);
-            $this->loadProvidersFromContainers($containerName);
+            $this->loadOnlyMainProvidersFromContainers($containerName);
             $this->loadMigrationsFromContainers($containerName);
             $this->loadConsolesFromContainers($containerName);
             $this->loadViewsFromContainers($containerName);
         }
-    }
 
-    /**
-     * to be used from the `register` function of the main service provider
-     */
-    public function runLoadersRegister()
-    {
-        $this->loadContainerFactories();
+        $this->loadFactoriesFromContainers();
     }
 
 }

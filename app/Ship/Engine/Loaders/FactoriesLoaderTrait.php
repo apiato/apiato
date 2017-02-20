@@ -18,7 +18,7 @@ trait FactoriesLoaderTrait
      * By default Laravel takes a shared factory directory to load from it all the factories.
      * This function changes the path to load the factories from the port directory instead.
      */
-    public function loadContainerFactories()
+    public function loadFactoriesFromContainers()
     {
         $newFactoriesPath = '/app/Ship/Engine/Loaders/FactoryMixer';
 

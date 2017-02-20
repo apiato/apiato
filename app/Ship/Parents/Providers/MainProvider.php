@@ -23,6 +23,7 @@ abstract class MainProvider extends LaravelAppServiceProvider
     public function boot()
     {
         $this->loadServiceProviders();
+        $this->loadAliases();
     }
 
     /**
@@ -30,6 +31,6 @@ abstract class MainProvider extends LaravelAppServiceProvider
      */
     public function register()
     {
-        $this->loadAliases();
+        //
     }
 }
