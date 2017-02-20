@@ -4,6 +4,9 @@
  * @apiGroup           RolePermission
  * @apiName            detachPermissionFromRole
  * @api                {post} /permissions/detach Detach Permissions from Role
+ * @apiDescription     Remove a permission from a Role. This doesn't not sync the Role it just remove
+ *                     any permission you want to revoke from that role. To sync permissions you can
+ *                     use `/permissions/sync` instead.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

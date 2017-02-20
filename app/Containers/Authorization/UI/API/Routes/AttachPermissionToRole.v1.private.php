@@ -4,6 +4,9 @@
  * @apiGroup           RolePermission
  * @apiName            attachPermissionToRole
  * @api                {post} /permissions/attach Attach Permissions to Role
+ * @apiDescription     When using Attach Permissions, make sure to never pass an existing permission
+ *                     as it will cause an error. If you want to just update all permission, you can
+ *                     use `/permissions/sync` instead, and just pass all permissions to it.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

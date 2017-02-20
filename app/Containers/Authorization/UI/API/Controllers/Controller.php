@@ -13,6 +13,7 @@ use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Containers\Authorization\Actions\ListAllPermissionsAction;
 use App\Containers\Authorization\Actions\ListAllRolesAction;
 use App\Containers\Authorization\Actions\RevokeUserFromRoleAction;
+use App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction;
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
@@ -24,6 +25,7 @@ use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
 use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
 use App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\SyncPermissionOnRoleRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
@@ -140,6 +142,21 @@ class Controller extends ApiController
     public function attachPermissionToRole(
         AttachPermissionToRoleRequest $request,
         AttachPermissionsToRoleAction $action
+    ) {
+        $role = $action->run($request['role_id'], $request['permissions_ids']);
+
+        return $this->response->item($role, new RoleTransformer());
+    }
+
+    /**
+     * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionOnRoleRequest $request
+     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction         $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
+    public function syncPermissionOnRole(
+        SyncPermissionOnRoleRequest $request,
+        SyncPermissionsOnRoleAction $action
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 

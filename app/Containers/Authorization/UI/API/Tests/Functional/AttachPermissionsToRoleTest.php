@@ -77,5 +77,4 @@ class AttachPermissionsToRoleTest extends TestCase
 
     }
 
-
 }
