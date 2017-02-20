@@ -8,37 +8,12 @@ use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
- * Class DebuggerTrait.
+ * Class RequestsDebuggerTrait.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait DebuggerTrait
+trait RequestsDebuggerTrait
 {
-
-    /**
-     * Write the DB queries in the Log and Display them in the
-     * terminal (in case you want to see them while executing the tests).
-     *
-     * @param bool|false $terminal
-     */
-    public function runQueryDebugger($log = true, $terminal = false)
-    {
-        if (Config::get('hello.query_debugger')) {
-            DB::listen(function ($event) use ($terminal, $log) {
-                $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $event->sql), $event->bindings);
-
-                $text = $event->connectionName . ' (' . $event->time . '): ' . $fullQuery;
-
-                if ($terminal) {
-                    dump($text);
-                }
-
-                if ($log) {
-                    Log::info($text);
-                }
-            });
-        }
-    }
 
     /**
      * @param $request

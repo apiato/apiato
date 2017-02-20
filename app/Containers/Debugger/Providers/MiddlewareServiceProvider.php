@@ -15,8 +15,6 @@ use App\Ship\Parents\Providers\MiddlewareProvider;
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-    use DebuggerTrait;
-
     protected $middleware = [
 
     ];
@@ -48,6 +46,6 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      */
     public function register()
     {
-        $this->runQueryDebugger(true, true);
+
     }
 }

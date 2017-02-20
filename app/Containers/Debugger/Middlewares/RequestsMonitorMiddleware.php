@@ -3,7 +3,7 @@
 namespace App\Containers\Debugger\Middlewares;
 
 use App;
-use App\Containers\Debugger\Traits\DebuggerTrait;
+use App\Containers\Debugger\Traits\RequestsDebuggerTrait;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Config;
@@ -17,7 +17,7 @@ use Log;
  */
 class RequestsMonitorMiddleware extends Middleware
 {
-    use DebuggerTrait;
+    use RequestsDebuggerTrait;
 
     /**
      * @param \Illuminate\Http\Request $request
