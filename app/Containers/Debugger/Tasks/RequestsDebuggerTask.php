@@ -84,38 +84,38 @@ class RequestsDebuggerTask
      */
     private function log($request, $user, $browser, $authHeader, $responseContent, $requestData)
     {
-        $print = "\n";
-        $print .= "----------------- NEW REQUEST ---------------------------------------------------";
+        $print = "----------------- NEW REQUEST ---------------------------------------------------";
         $print .= "\n \n";
+
         $print .= "REQUEST: \n";
         $print .= "   Endpoint: " . $request->fullUrl() . "\n";
         $print .= "   Method: " . $request->getMethod() . "\n";
         $print .= "   Version: " . $request->version() . "\n";
         $print .= "   IP: " . $request->ip() . " (Port: " . $request->getPort() . ") \n";
         $print .= "   Format: " . $request->format() . "\n";
-
         $print .= "\n \n";
-        $print .= "USER: \n";
 
-        $print .= "   Access Token: " . substr($authHeader, 0,
-            $this->tokenDataCut) . !is_null($authHeader) ? "..." : "N/A" . "\n";
+        $print .= "USER: \n";
+        $print .= "   Access Token: " . substr($authHeader, 0, $this->tokenDataCut) . (!is_null($authHeader) ? "..." : "N/A") . "\n";
         $print .= "   User: " . $user . "\n";
         $print .= "   Device: " . Agent::device() . " (Platform: " . Agent::platform() . ") \n";
         $print .= "   Browser: " . $browser . " (Version: " . Agent::version($browser) . ") \n";
         $print .= "   Languages: " . implode(", ", Agent::languages()) . "\n";
-
         $print .= "\n \n";
+
         $print .= "REQUEST DATA: \n";
         $print .= "   " . $requestData . "\n";
         $print .= "\n \n";
+
         $print .= "RESPONSE DATA: \n";
         $print .= "   " . substr($responseContent, 0, $this->responseDataCut) . "..." . "\n";
+
 
         // ...
         // ......
         // ...
 
-        $print .= "\n";
+
         // Log the String
         $this->logger->info($print);
     }
