@@ -2,6 +2,7 @@
 
 namespace App\Containers\Debugger\Providers;
 
+use App\Containers\Debugger\Tasks\QueryDebuggerTask;
 use App\Containers\Debugger\Traits\QueryDebuggerTrait;
 use App\Ship\Parents\Providers\MainProvider;
 use Jenssegers\Agent\AgentServiceProvider;
@@ -45,6 +46,6 @@ class MainServiceProvider extends MainProvider
     {
         parent::register();
 
-        $this->runQueryDebugger(true, true);
+        (new QueryDebuggerTask)->run(true, true);
     }
 }

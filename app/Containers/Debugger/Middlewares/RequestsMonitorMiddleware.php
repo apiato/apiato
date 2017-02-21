@@ -3,7 +3,7 @@
 namespace App\Containers\Debugger\Middlewares;
 
 use App;
-use App\Containers\Debugger\Traits\RequestsDebuggerTrait;
+use App\Containers\Debugger\Tasks\RequestsDebuggerTask;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Config;
@@ -17,7 +17,6 @@ use Log;
  */
 class RequestsMonitorMiddleware extends Middleware
 {
-    use RequestsDebuggerTrait;
 
     /**
      * @param \Illuminate\Http\Request $request
@@ -29,7 +28,7 @@ class RequestsMonitorMiddleware extends Middleware
     {
         $response = $next($request);
 
-        $this->runRequestDebugger($request, $response);
+        (new RequestsDebuggerTask())->run($request, $response);
 
         return $response;
     }

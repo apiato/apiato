@@ -21,6 +21,29 @@ return [
 
         'debug' => env('REQUESTS_DEBUG', false),
 
+        /*
+         |--------------------------------------------------------------------------
+         | Log File
+         |--------------------------------------------------------------------------
+         |
+         | What to name the log file in the `storage/log` path.
+         |
+         */
+
+        'log_file' => 'debugger.log',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Reduce the Log file
+        |--------------------------------------------------------------------------
+        |
+        | Show only certain number of characters from each of these printed results.
+        |
+        */
+        'response_show_first' => '700',
+
+        'token_show_first' => '80',
+
     ],
 
     /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Debugger\Traits;
+namespace App\Containers\Debugger\Tasks;
 
 use App;
 use DB;
@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Config;
 use Log;
 
 /**
- * Class QueryDebuggerTrait.
+ * Class QueryDebuggerTask.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-trait QueryDebuggerTrait
+class QueryDebuggerTask
 {
 
     /**
@@ -21,7 +21,7 @@ trait QueryDebuggerTrait
      *
      * @param bool|false $terminal
      */
-    public function runQueryDebugger($log = true, $terminal = false)
+    public function run($log = true, $terminal = false)
     {
         if (Config::get('debugger.queries.debug')) {
             DB::listen(function ($event) use ($terminal, $log) {
