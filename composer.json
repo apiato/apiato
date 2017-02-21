@@ -32,7 +32,7 @@
   "extra": {
     "merge-plugin": {
       "include": [
-        "app/Port/composer.json",
+        "app/Ship/composer.json",
         "app/Containers/*/composer.json"
       ],
       "recurse": true,
