@@ -30,7 +30,9 @@ trait MiddlewaresLoaderTrait
     private function registerMiddlewareGroups(array $middlewareGroups = [])
     {
         foreach ($middlewareGroups as $key => $middleware) {
-            $this->app['router']->middlewareGroup($key, $middleware);
+            if($middleware){
+                $this->app['router']->middlewareGroup($key, $middleware);
+            }
         }
     }
 
@@ -42,6 +44,7 @@ trait MiddlewaresLoaderTrait
     private function registerRouteMiddleware(array $routeMiddleware = [])
     {
         foreach ($routeMiddleware as $key => $routeMiddleware) {
+
             $this->app['router']->aliasMiddleware($key, $routeMiddleware);
         }
     }
