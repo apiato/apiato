@@ -3,7 +3,6 @@
 namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware;
-use App\Containers\Debugger\Traits\DebuggerTrait;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
