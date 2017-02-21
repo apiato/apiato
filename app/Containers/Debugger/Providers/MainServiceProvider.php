@@ -3,7 +3,6 @@
 namespace App\Containers\Debugger\Providers;
 
 use App\Containers\Debugger\Tasks\QueryDebuggerTask;
-use App\Containers\Debugger\Traits\QueryDebuggerTrait;
 use App\Ship\Parents\Providers\MainProvider;
 use Jenssegers\Agent\AgentServiceProvider;
 use Jenssegers\Agent\Facades\Agent;
@@ -17,8 +16,6 @@ use Jenssegers\Agent\Facades\Agent;
  */
 class MainServiceProvider extends MainProvider
 {
-
-    use QueryDebuggerTrait;
 
     /**
      * Container Service Providers.
