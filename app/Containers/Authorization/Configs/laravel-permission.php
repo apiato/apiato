@@ -130,19 +130,15 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Disable Logging
+    |--------------------------------------------------------------------------
+    |
+    | By default we'll make an entry in the application log when the permissions
+    | could not be loaded. Normally this only occurs while installing the packages.
+    | If for some reason you want to disable that logging, set this value to false.
+    |*/
 
-    'settings' => [
-
-        /*
-        |--------------------------------------------------------------------------
-        | Enable/Disable Logging
-        |--------------------------------------------------------------------------
-        |
-        | By default errors logging is enabled, however to disable it just set the
-        | value to "false". This might be useful for your test environment.
-        |
-        */
-
-        'logging' => false,
-    ]
+    'log_registration_exception' => false,
 ];

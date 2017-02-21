@@ -2,12 +2,6 @@
   "name": "porto-sap/authorization",
   "description": "Shipo-SAP Container for Hello-API.",
   "require": {
-    "spatie/laravel-permission": "dev-master"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Mahmoudz/laravel-permission"
-    }
-  ]
+    "spatie/laravel-permission": "1.9.*"
+  }
 }
