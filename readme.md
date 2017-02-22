@@ -17,6 +17,7 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](https://www.zalt.me)
 
+> Build better API's faster and smarter with **PHP** and **Laravel 5.4**.
 
 ## Content
 
@@ -35,20 +36,21 @@
 
 ### What is Hello API
 
-Hello API is a **starter** providing the all common functionalities required to develop a modern API-Centric Application, to help building API's faster and smarter with **PHP** and **Laravel 5.4**.
+Hello API is a **starter** providing the common functionalities required to build modern API-Centric Application. 
 
-It uses the best framework, packages, tools and conventions. All configured to work together in a beautiful piece of code.
+It uses the best frameworks, packages, tools and conventions to deliver one of the best PHP API starters.
 
-Setting up an API from scratch takes a lot of time, even with the existence of the many great Technologies and Tools. Hello API saves you time.
+`Why!?` Because setting up an API from scratch everytime is time consuming. 
+Hello API gives you the core features of robust API's, so you can focus on the business logic of your App instead.
 
 
 ### Why API-Centric Apps
 
-Web developers are used to serve HTML pages directly from the Backend. However, this traditional method has many disadvantages in nowadays.
-
 Today we’re living in a digital era, where almost everything is connected to the Internet.
 
 Building cross-devices applications is becoming a must. And to do it, you need APIs (Application Programing Interfaces).
+
+Web developers are used to serve HTML pages directly from the Backend. However, this traditional method has many disadvantages nowadays.
 
 API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
 As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
@@ -105,7 +107,7 @@ Join our chatting room on Gitter by click on the icon below
 
 **Hello API** is architectured using the **Porto** Software Architectural Pattern.
 <br>
-Thus you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation)  before starting.
+Thus you MUST read the [**Porto Document**](https://github.com/Porto-SAP/Documentation)  before starting.
 
 ###[Full Documentation](https://hello-api.readme.io/docs/installation)
 
