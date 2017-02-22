@@ -5,6 +5,7 @@ namespace App\Containers\Stripe\Tests\Unit;
 use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Containers\Stripe\Tests\TestCase;
+use App\Ship\Features\Payment\Proxies\PaymentsProxy;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -34,6 +35,30 @@ class ChargeUsersTest extends TestCase
 
         $stripe = App::make(ChargeWithStripeTask::class);
         $result = $stripe->charge($user, 1000, 'USD');
+
+        $this->assertEquals($result['payment_method'], 'stripe');
+        $this->assertEquals($result['description'], $payId);
+    }
+
+    public function testChargeWithStripeThroughPaymentProxy()
+    {
+        // get the logged in user (create one if no one is logged in)
+        $user = $this->createTestingUser();
+
+        // create stripe account for this user
+        $createStripeAccountAction = App::make(CreateStripeAccountObjectTask::class);
+        $stripeAccount = $createStripeAccountAction->run($user, 'cus_8mBD5S1SoyD4zL', 'card_18Uck6KFvMcBUkvQorbBkYhR', 'credit', '4242', 'WsNM4K8puHbdS2VP');
+
+        $payId = 'ch_z8WDARKFvzcBUkvQzrbBvfhz';
+
+        // mock the ChargeWithStripeTask external API call
+        $this->mock(ChargeWithStripeTask::class)->shouldReceive('run')->andReturn([
+            'payment_method' => 'stripe',
+            'description'    => $payId
+        ]);
+
+        // the proxy payment method
+        $result = $user->charge(1000, 'USD');
 
         $this->assertEquals($result['payment_method'], 'stripe');
         $this->assertEquals($result['description'], $payId);
