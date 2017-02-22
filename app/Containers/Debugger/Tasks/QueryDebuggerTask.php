@@ -21,20 +21,26 @@ class QueryDebuggerTask
      *
      * @param bool|false $terminal
      */
-    public function run($log = true, $terminal = false)
+    public function run()
     {
-        if (Config::get('debugger.queries.debug')) {
-            DB::listen(function ($event) use ($terminal, $log) {
+        $debuggerEnabled = Config::get('debugger.queries.debug');
+
+        if ($debuggerEnabled) {
+
+            $consoleOutputEnabled = Config::get('debugger.queries.output.console');
+            $logOutputEnabled = Config::get('debugger.queries.output.log');
+
+            DB::listen(function ($event) use ($consoleOutputEnabled, $logOutputEnabled) {
                 $fullQuery = vsprintf(str_replace(['%', '?'], ['%%', '%s'], $event->sql), $event->bindings);
 
-                $text = $event->connectionName . ' (' . $event->time . '): ' . $fullQuery;
+                $result = $event->connectionName . ' (' . $event->time . '): ' . $fullQuery;
 
-                if ($terminal) {
-                    dump($text);
+                if ($consoleOutputEnabled) {
+                    dump($result);
                 }
 
-                if ($log) {
-                    Log::info($text);
+                if ($logOutputEnabled) {
+                    Log::info($result);
                 }
             });
         }

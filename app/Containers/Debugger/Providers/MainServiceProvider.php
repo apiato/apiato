@@ -43,6 +43,6 @@ class MainServiceProvider extends MainProvider
     {
         parent::register();
 
-        (new QueryDebuggerTask)->run(true, true);
+        (new QueryDebuggerTask)->run();
     }
 }

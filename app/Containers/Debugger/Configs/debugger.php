@@ -65,6 +65,24 @@ return [
 
         'debug' => env('QUERIES_DEBUG', false),
 
+        /*
+         |--------------------------------------------------------------------------
+         | Output
+         |--------------------------------------------------------------------------
+         |
+         | Where to print the results. Log for the default Application Log file.
+         | And Console to print on the current terminal session, in case running
+         | your tests.
+         |
+         */
+
+        'output' => [
+
+            'log' => 'true',
+
+            'console' => 'true',
+        ]
+
     ]
 
 ];
