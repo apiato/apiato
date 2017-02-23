@@ -29,7 +29,7 @@ abstract class Exception extends SymfonyHttpException
      *
      * @var int
      */
-    protected $defaultHttpStatusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+    CONST DEFAULT_STATUS_CODE = Response::HTTP_INTERNAL_SERVER_ERROR;
 
     /**
      * @var string
@@ -58,36 +58,15 @@ abstract class Exception extends SymfonyHttpException
         // detect and set the running environment
         $this->environment = Config::get('app.env');
 
-        if (is_null($message) && property_exists($this, 'message')) {
-            $message = $this->message;
-        }
+        $message = $this->prepareMessage($message);
+        $error = $this->prepareError($errors);
+        $statusCode = $this->prepareStatusCode($statusCode);
 
-        if (is_null($errors)) {
-            $this->errors = new MessageBag();
-        } else {
-            $this->errors = is_array($errors) ? new MessageBag($errors) : $errors;
-        }
-
-        if (is_null($statusCode)) {
-            if (property_exists($this, 'httpStatusCode')) {
-                $statusCode = $this->httpStatusCode;
-            } else {
-                $statusCode = $this->defaultHttpStatusCode;
-            }
-        }
-
-        // if not testing environment, log the error message
-        if ($this->environment != 'testing') {
-            Log::error('[ERROR] ' .
-                'Status Code: ' . $statusCode . ' | ' .
-                'Message: ' . $message . ' | ' .
-                'Errors: ' . $this->errors . ' | ' .
-                'Code: ' . $code
-            );
-        }
+        $this->logTheError($statusCode, $message, $code);
 
         parent::__construct($statusCode, $message, $previous, $headers, $code);
     }
+
 
     /**
      * Help developers debug the error without showing these details to the end user.
@@ -130,4 +109,72 @@ abstract class Exception extends SymfonyHttpException
     {
         return !$this->errors->isEmpty();
     }
+
+
+    /**
+     * @param $statusCode
+     * @param $message
+     * @param $code
+     */
+    private function logTheError($statusCode, $message, $code)
+    {
+        // if not testing environment, log the error message
+        if ($this->environment != 'testing') {
+            Log::error('[ERROR] ' .
+                'Status Code: ' . $statusCode . ' | ' .
+                'Message: ' . $message . ' | ' .
+                'Errors: ' . $this->errors . ' | ' .
+                'Code: ' . $code
+            );
+        }
+    }
+
+    /**
+     * @param null $errors
+     *
+     * @return  \Illuminate\Support\MessageBag|null
+     */
+    private function prepareError($errors = null)
+    {
+        return is_null($errors) ? new MessageBag() : $this->prepareArrayError($errors);
+    }
+
+    /**
+     * @param array $errors
+     *
+     * @return  array|\Illuminate\Support\MessageBag
+     */
+    private function prepareArrayError(array $errors = [])
+    {
+        return is_array($errors) ? new MessageBag($errors) : $errors;
+    }
+
+    /**
+     * @param null $message
+     *
+     * @return  null
+     */
+    private function prepareMessage($message = null)
+    {
+        return is_null($message) && property_exists($this, 'message') ? $this->message : $message;
+    }
+
+    /**
+     * @param $statusCode
+     *
+     * @return  int
+     */
+    private function prepareStatusCode($statusCode = null)
+    {
+        return is_null($statusCode) ? $this->findStatusCode() : $statusCode;
+    }
+
+    /**
+     * @return  int
+     */
+    private function findStatusCode()
+    {
+        return property_exists($this, 'httpStatusCode') ? $this->httpStatusCode : Self::DEFAULT_STATUS_CODE;
+    }
+
 }
