@@ -2,7 +2,7 @@
 
 namespace App\Containers\SocialAuth\UI\WEB\Controllers;
 
-use App\Port\Controller\Abstracts\PortWebController;
+use App\Ship\Parents\Controllers\WebController;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
@@ -10,7 +10,7 @@ use Laravel\Socialite\Facades\Socialite;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Controller extends PortWebController
+class Controller extends WebController
 {
 
     /**
