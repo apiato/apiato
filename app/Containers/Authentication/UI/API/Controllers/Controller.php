@@ -25,8 +25,6 @@ class Controller extends ApiController
      */
     public function userLogin(UserLoginRequest $request, ApiUserLoginAction $action)
     {
-        dd(__('messages.welcome'));
-
         $user = $action->run($request['email'], $request['password']);
 
         return $this->response->item($user, new UserTransformer());
