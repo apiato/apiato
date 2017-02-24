@@ -12,7 +12,9 @@ use App\Containers\Authorization\Tests\TestCase;
 class CreateRoleTest extends TestCase
 {
 
-    protected $endpoint = '/roles';
+    protected $endpoint = 'post@roles';
+
+    protected $auth = true;
 
     protected $access = [
         'roles'       => 'admin',
@@ -21,8 +23,6 @@ class CreateRoleTest extends TestCase
 
     public function testCreateRole_()
     {
-        $this->getTestingAdmin();
-
         $data = [
             'name'         => 'Manager',
             'display_name' => 'manager',
@@ -30,7 +30,7 @@ class CreateRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -42,8 +42,6 @@ class CreateRoleTest extends TestCase
 
     public function testCreateRoleWithWrongName_()
     {
-        $this->getTestingAdmin();
-
         $data = [
             'name'         => 'include space',
             'display_name' => 'manager',
@@ -51,7 +49,7 @@ class CreateRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());

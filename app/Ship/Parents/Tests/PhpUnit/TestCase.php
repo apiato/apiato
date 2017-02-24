@@ -2,10 +2,13 @@
 
 namespace App\Ship\Parents\Tests\PhpUnit;
 
-use App\Ship\Features\Tests\PhpUnit\CustomTestsHelpersTrait;
-use App\Ship\Features\Tests\PhpUnit\GeneralTestsHelpersTrait;
 use App\Ship\Features\Tests\PhpUnit\TestingTrait;
-use App\Ship\Features\Tests\PhpUnit\TestingUserTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsAuthHelperTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsCustomHelperTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsMockHelperTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsRequestHelperTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsResponseHelperTrait;
+use App\Ship\Features\Tests\PhpUnit\TestsUploadHelperTrait;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibilityPackage;
@@ -19,8 +22,14 @@ use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibi
  */
 abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackage
 {
+    use TestCaseTrait;
 
-    use TestCaseTrait, GeneralTestsHelpersTrait, TestingUserTrait, CustomTestsHelpersTrait;
+    use TestsRequestHelperTrait,
+        TestsResponseHelperTrait,
+        TestsMockHelperTrait,
+        TestsAuthHelperTrait,
+        TestsUploadHelperTrait,
+        TestsCustomHelperTrait;
 
     /**
      * The base URL to use while testing the application.
@@ -63,9 +72,7 @@ abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackag
         $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
         // override the default subDomain of the base URL when subDomain property is declared inside a test
-        if (property_exists($this, 'subDomain')) {
-            $this->overrideSubDomain($this->subDomain);
-        }
+        $this->overrideSubDomain();
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 

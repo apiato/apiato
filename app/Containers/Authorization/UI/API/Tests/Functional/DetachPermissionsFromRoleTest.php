@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class DetachPermissionsFromRoleTest extends TestCase
 {
 
-    protected $endpoint = '/permissions/detach';
+    protected $endpoint = 'post@permissions/detach';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,8 +23,6 @@ class DetachPermissionsFromRoleTest extends TestCase
 
     public function testDetachSinglePermissionFromRole_()
     {
-        $this->getTestingAdmin();
-
         $permissionA = factory(Permission::class)->create();
 
         $roleA = factory(Role::class)->create();
@@ -36,7 +34,7 @@ class DetachPermissionsFromRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -53,8 +51,6 @@ class DetachPermissionsFromRoleTest extends TestCase
 
     public function testDetachMultiplePermissionFromRole_()
     {
-        $this->getTestingAdmin();
-
         $permissionA = factory(Permission::class)->create();
         $permissionB = factory(Permission::class)->create();
 
@@ -68,7 +64,7 @@ class DetachPermissionsFromRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class ListAllUsersTest extends TestCase
 {
 
-    protected $endpoint = '/users';
+    protected $endpoint = 'get@users';
 
     protected $access = [
         'roles'       => 'admin',
@@ -22,14 +22,12 @@ class ListAllUsersTest extends TestCase
 
     public function testListAllUsersByAdmin_()
     {
-        $this->getTestingAdmin();
-
         // create some non-admin users who are clients
         factory(User::class, 2)->create();
         factory(User::class)->create()->assignRole('client');
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        $response = $this->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

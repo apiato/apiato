@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class DeleteRoleTest extends TestCase
 {
 
-    protected $endpoint = '/roles/{id}';
+    protected $endpoint = 'delete@roles/{id}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -22,12 +22,10 @@ class DeleteRoleTest extends TestCase
 
     public function testDeleteExistingRole_()
     {
-        $this->getTestingAdmin();
-
         $role = factory(Role::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $role->id), 'delete');
+        $response = $this->injectId($role->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());

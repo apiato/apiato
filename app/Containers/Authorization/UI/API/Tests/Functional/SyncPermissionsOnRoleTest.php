@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class SyncPermissionsOnRoleTest extends TestCase
 {
 
-    protected $endpoint = '/permissions/sync';
+    protected $endpoint = 'post@permissions/sync';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,8 +23,6 @@ class SyncPermissionsOnRoleTest extends TestCase
 
     public function testSyncDuplicatedPermissionsToRole_()
     {
-        $this->getTestingAdmin();
-
         $permissionA = factory(Permission::class)->create(['display_name' => 'AAA']);
         $permissionB = factory(Permission::class)->create(['display_name' => 'BBB']);
 
@@ -37,7 +35,7 @@ class SyncPermissionsOnRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

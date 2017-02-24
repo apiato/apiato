@@ -12,7 +12,9 @@ use App\Containers\User\Tests\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    protected $endpoint = '/register';
+    protected $endpoint = 'post@register';
+
+    protected $auth = false;
 
 
     protected $access = [
@@ -29,7 +31,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -55,7 +57,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get', $data, false);
+        $response = $this->endpoint('get@register')->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('405', $response->getStatusCode());
@@ -75,7 +77,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // get the logged in user (create one if no one is logged in)
-        $this->createTestingUser(null, $userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = [
             'email'    => $userDetails['email'],
@@ -84,7 +86,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -98,7 +100,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -117,7 +119,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -135,7 +137,7 @@ class RegisterUserTest extends TestCase
             'name'  => 'Hello',
         ];
 
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -155,7 +157,7 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());

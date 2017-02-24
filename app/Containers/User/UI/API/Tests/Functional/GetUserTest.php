@@ -12,14 +12,19 @@ use App\Containers\User\Tests\TestCase;
 class GetUserTest extends TestCase
 {
 
-    protected $endpoint = '/users/{id}';
+    protected $endpoint = 'get@users/{id}';
+
+    protected $access = [
+        'roles'       => 'admin',
+        'permissions' => '',
+    ];
 
     public function testGetUser_()
     {
-        $admin = $this->getTestingAdmin();
+        $admin = $this->getTestingUser();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $admin->id), 'get', [], true);
+        $response = $this->injectId($admin->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

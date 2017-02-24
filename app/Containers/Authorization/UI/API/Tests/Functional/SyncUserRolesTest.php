@@ -14,7 +14,7 @@ use App\Containers\User\Models\User;
 class SyncUserRolesTest extends TestCase
 {
 
-    protected $endpoint = '/roles/sync';
+    protected $endpoint = 'post@roles/sync';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,8 +23,6 @@ class SyncUserRolesTest extends TestCase
 
     public function testSyncMultipleRolesOnUser()
     {
-        $this->getTestingUser();
-
         $role1 = factory(Role::class)->create(['display_name' => '111']);
         $role2 = factory(Role::class)->create(['display_name' => '222']);
 
@@ -41,7 +39,7 @@ class SyncUserRolesTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

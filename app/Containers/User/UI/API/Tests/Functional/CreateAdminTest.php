@@ -12,12 +12,15 @@ use App\Containers\User\Tests\TestCase;
 class CreateAdminTest extends TestCase
 {
 
-    protected $endpoint = '/admins/create';
+    protected $endpoint = 'post@admins/create';
+
+    protected $access = [
+        'permissions' => '',
+        'roles'       => 'admin',
+    ];
 
     public function testCreateAdmin_()
     {
-        $this->getTestingAdmin(); // since we're using Admin here, we don't need to specify $access['role'] => 'admin'
-
         $data = [
             'email'    => 'hello@admin.dev',
             'name'     => 'admin',
@@ -25,7 +28,7 @@ class CreateAdminTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

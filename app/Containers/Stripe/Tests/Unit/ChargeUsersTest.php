@@ -19,7 +19,7 @@ class ChargeUsersTest extends TestCase
     public function testChargeWithStripe()
     {
         // get the logged in user (create one if no one is logged in)
-        $user = $this->createTestingUser();
+        $user = $this->getTestingUser();
 
         // create stripe account for this user
         $createStripeAccountAction = App::make(CreateStripeAccountObjectTask::class);
@@ -43,7 +43,7 @@ class ChargeUsersTest extends TestCase
     public function testChargeWithStripeThroughPaymentProxy()
     {
         // get the logged in user (create one if no one is logged in)
-        $user = $this->createTestingUser();
+        $user = $this->getTestingUser();
 
         // create stripe account for this user
         $createStripeAccountAction = App::make(CreateStripeAccountObjectTask::class);

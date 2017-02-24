@@ -1,14 +1,12 @@
 <?php
 
-use App\Containers\User\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-// User
-$factory->define(User::class, function (Faker\Generator $faker) {
+$factory->define(App\Containers\User\Models\User::class, function (Faker\Generator $faker) {
+
     return [
-        'name'              => $faker->name,
-        'email'             => $faker->email,
-        'password'          => bcrypt('tester'),
+        'name'     => $faker->name,
+        'email'    => $faker->email,
+        'password' => Hash::make('testing-password'),
     ];
 });
-
-// ...

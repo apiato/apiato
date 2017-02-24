@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class ListPermissionsTest extends TestCase
 {
 
-    protected $endpoint = '/permissions';
+    protected $endpoint = 'get@permissions';
 
     protected $access = [
         'roles'       => 'admin',
@@ -22,10 +22,8 @@ class ListPermissionsTest extends TestCase
 
     public function testListAllPermissions_()
     {
-        $this->getTestingAdmin();
-
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        $response = $this->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

@@ -12,12 +12,12 @@ use App\Containers\Authentication\Tests\TestCase;
 class UserLogoutTest extends TestCase
 {
 
-    protected $endpoint = '/user/logout';
+    protected $endpoint = 'post@user/logout';
 
     public function testUserLogout_()
     {
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post');
+        $response = $this->makeCall();
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());
@@ -31,7 +31,7 @@ class UserLogoutTest extends TestCase
     public function testUserLogoutWithGetRequest()
     {
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        $response = $this->endpoint('get@user/logout')->makeCall();
 
         // assert response status is correct
         $this->assertEquals('405', $response->getStatusCode());
@@ -45,7 +45,7 @@ class UserLogoutTest extends TestCase
     public function testUserLogoutWithoutToken()
     {
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', [], false);
+        $response = $this->auth(false)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('401', $response->getStatusCode());

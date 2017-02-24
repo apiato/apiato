@@ -14,7 +14,7 @@ use App\Containers\User\Tests\TestCase;
 class ListAllAdminsTest extends TestCase
 {
 
-    protected $endpoint = '/admins';
+    protected $endpoint = 'get@admins';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,8 +23,6 @@ class ListAllAdminsTest extends TestCase
 
     public function testListAllAdmins_()
     {
-        $this->getTestingAdmin();
-
         // create some non-admin users
         $user1 = factory(User::class)->create();
         $adminRole = Role::where('name', 'admin')->first();
@@ -35,10 +33,10 @@ class ListAllAdminsTest extends TestCase
         $user2->assignRole($adminRole);
 
         // should not be returned
-        $user3 = factory(User::class)->create();
+        factory(User::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        $response = $this->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

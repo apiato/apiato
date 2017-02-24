@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class FindRoleTest extends TestCase
 {
 
-    protected $endpoint = '/roles/{id}';
+    protected $endpoint = 'get@roles/{id}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -22,12 +22,10 @@ class FindRoleTest extends TestCase
 
     public function testFindRoleById_()
     {
-        $this->getTestingAdmin();
-
         $roleA = factory(Role::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $roleA->id), 'get');
+        $response = $this->injectId($roleA->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

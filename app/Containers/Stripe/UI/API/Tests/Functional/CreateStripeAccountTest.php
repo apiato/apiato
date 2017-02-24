@@ -12,7 +12,12 @@ use App\Containers\Stripe\Tests\TestCase;
 class CreateStripeAccountTest extends TestCase
 {
 
-    protected $endpoint = '/stripes';
+    protected $endpoint = 'post@stripes';
+
+    protected $access = [
+        'permissions' => '',
+        'roles'       => 'client',
+    ];
 
     public function testCreateStripeAccount_()
     {
@@ -22,7 +27,7 @@ class CreateStripeAccountTest extends TestCase
             'password' => 'passssssssssss',
         ];
         // get the logged in user (create one if no one is logged in)
-        $user = $this->createTestingUser($userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = [
             'customer_id'      => 'cus_123456789',
@@ -33,7 +38,7 @@ class CreateStripeAccountTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());

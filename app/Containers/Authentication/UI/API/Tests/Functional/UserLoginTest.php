@@ -12,7 +12,9 @@ use App\Containers\Authentication\Tests\TestCase;
 class UserLoginTest extends TestCase
 {
 
-    protected $endpoint = '/login';
+    protected $endpoint = 'post@login';
+
+    protected $auth = false;
 
     public function testUserLoginExistingUser_()
     {
@@ -22,7 +24,7 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        $this->createTestingUser(null, $userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = [
             'email'    => $userDetails['email'],
@@ -30,7 +32,7 @@ class UserLoginTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -53,7 +55,7 @@ class UserLoginTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get', $data, false);
+        $response = $this->endpoint('get@login')->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('405', $response->getStatusCode());
@@ -72,7 +74,7 @@ class UserLoginTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('401', $response->getStatusCode());
@@ -91,14 +93,14 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        $this->createTestingUser(null, $userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = [
             'password' => $userDetails['password'],
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -117,14 +119,14 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        $this->createTestingUser(null, $userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = [
             'email' => $userDetails['email'],
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());
@@ -143,12 +145,12 @@ class UserLoginTest extends TestCase
             'password' => 'secret',
         ];
 
-        $this->createTestingUser(null, $userDetails);
+        $this->getTestingUser($userDetails);
 
         $data = []; // empty data
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, false);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('422', $response->getStatusCode());

@@ -12,7 +12,7 @@ use App\Containers\Country\Tests\TestCase;
 class ListAllCountriesTest extends TestCase
 {
 
-    protected $endpoint = '/countries';
+    protected $endpoint = 'get@countries';
 
     protected $access = [
         'roles'       => '',
@@ -21,13 +21,11 @@ class ListAllCountriesTest extends TestCase
 
     public function testListAllCountries_()
     {
-        $this->getTestingUser();
-
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'get');
+        $response = $this->makeCall();
 
         // assert response status is correct
-        $this->assertEquals($response->getStatusCode(), '200');
+        $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to object
         $responseObject = $this->getResponseObject($response);

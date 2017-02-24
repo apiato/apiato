@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class FindPermissionTest extends TestCase
 {
 
-    protected $endpoint = '/permissions/{id}';
+    protected $endpoint = 'get@permissions/{id}';
 
     protected $access = [
         'roles'       => 'admin',
@@ -22,12 +22,10 @@ class FindPermissionTest extends TestCase
 
     public function testFindPermissionById_()
     {
-        $this->getTestingAdmin();
-
         $permissionA = factory(Permission::class)->create();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $permissionA->id), 'get');
+        $response = $this->injectId($permissionA->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

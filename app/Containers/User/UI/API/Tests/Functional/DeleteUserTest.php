@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class DeleteUserTest extends TestCase
 {
 
-    protected $endpoint = '/users/{id}';
+    protected $endpoint = 'delete@users/{id}';
 
     protected $access = [
         'roles'       => '',
@@ -24,7 +24,7 @@ class DeleteUserTest extends TestCase
         $user = $this->getTestingUser();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $user->id), 'delete');
+        $response = $this->injectId($user->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('202', $response->getStatusCode());

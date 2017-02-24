@@ -14,7 +14,7 @@ use App\Containers\User\Models\User;
 class RevokeUserFromRoleTest extends TestCase
 {
 
-    protected $endpoint = '/roles/revoke';
+    protected $endpoint = 'post@roles/revoke';
 
     protected $access = [
         'roles'       => 'admin',
@@ -34,7 +34,7 @@ class RevokeUserFromRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -62,7 +62,7 @@ class RevokeUserFromRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data);
+        $response = $this->makeCall($data);
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
         $this->assertEquals('400', $response->getStatusCode());
@@ -87,7 +87,7 @@ class RevokeUserFromRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

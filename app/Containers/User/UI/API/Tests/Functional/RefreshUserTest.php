@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class RefreshUserTest extends TestCase
 {
 
-    protected $endpoint = '/users/{id}/refresh';
+    protected $endpoint = 'post@users/{id}/refresh';
 
     protected $access = [
         'roles'       => '',
@@ -21,11 +21,10 @@ class RefreshUserTest extends TestCase
 
     public function testRefreshUserById_()
     {
-        // get the logged in user (create one if no one is logged in)
-        $user = $this->createTestingUser();
+        $user = $this->getTestingUser();
 
         // send the HTTP request
-        $response = $this->apiCall($this->injectEndpointId($this->endpoint, $user->id), 'post');
+        $response = $this->injectId($user->id)->makeCall();
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

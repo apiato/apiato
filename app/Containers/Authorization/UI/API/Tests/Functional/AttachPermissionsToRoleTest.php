@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class AttachPermissionsToRoleTest extends TestCase
 {
 
-    protected $endpoint = '/permissions/attach';
+    protected $endpoint = 'post@permissions/attach';
 
     protected $access = [
         'roles'       => 'admin',
@@ -23,8 +23,6 @@ class AttachPermissionsToRoleTest extends TestCase
 
     public function testAttachSinglePermissionToRole_()
     {
-        $this->getTestingAdmin();
-
         $roleA = factory(Role::class)->create();
         $permissionA = factory(Permission::class)->create();
 
@@ -34,7 +32,7 @@ class AttachPermissionsToRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
@@ -51,8 +49,6 @@ class AttachPermissionsToRoleTest extends TestCase
 
     public function testAttachMultiplePermissionToRole_()
     {
-        $this->getTestingAdmin();
-
         $roleA = factory(Role::class)->create();
 
         $permissionA = factory(Permission::class)->create();
@@ -64,7 +60,7 @@ class AttachPermissionsToRoleTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->apiCall($this->endpoint, 'post', $data, true);
+        $response = $this->makeCall($data);
 
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());

@@ -2,14 +2,10 @@
 
 namespace App\Ship\Parents\Tests\PhpUnit;
 
-use App;
 use Artisan;
-use Dingo\Api\Http\Response as DingoAPIResponse;
 
 /**
  * Class TestCaseTrait
- *
- * Contains only functions needed by the main Test Case.
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
@@ -25,13 +21,17 @@ trait TestCaseTrait
     }
 
     /**
-     * override default URL subDomain in case you want to change it for some tests
+     * Override default URL subDomain in case you want to change it for some tests
      *
-     * @param      $subDomain
      * @param null $url
      */
-    public function overrideSubDomain($subDomain, $url = null)
+    public function overrideSubDomain($url = null)
     {
+        // `subDomain` is a property defined in your class.
+        if (!property_exists($this, 'subDomain')) {
+            return;
+        }
+
         $url = ($url) ? : $this->baseUrl;
 
         $info = parse_url($url);
@@ -41,9 +41,9 @@ trait TestCaseTrait
         $withoutDomain = (array_key_exists(count($array) - 2,
                 $array) ? $array[count($array) - 2] : '') . '.' . $array[count($array) - 1];
 
-        $newSubDomain = $info['scheme'] . '://' . $subDomain . '.' . $withoutDomain;
+        $newSubDomain = $info['scheme'] . '://' . $this->subDomain . '.' . $withoutDomain;
 
-        $this->baseUrl = $newSubDomain;
+        return $this->baseUrl = $newSubDomain;
     }
 
 }
