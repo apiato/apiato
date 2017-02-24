@@ -35,9 +35,9 @@ class CreateRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertEquals($data['name'], $responseObject->data->name);
+        $this->assertEquals($data['name'], $responseContent->data->name);
     }
 
     public function testCreateRoleWithWrongName_()

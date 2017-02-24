@@ -31,9 +31,9 @@ class ListRolesTest extends TestCase
         $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to Object
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertTrue(count($responseObject->data) > 0);
+        $this->assertTrue(count($responseContent->data) > 0);
     }
 
 }

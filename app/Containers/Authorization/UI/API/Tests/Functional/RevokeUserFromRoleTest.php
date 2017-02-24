@@ -39,9 +39,9 @@ class RevokeUserFromRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertEquals($data['user_id'], $responseObject->data->id);
+        $this->assertEquals($data['user_id'], $responseContent->data->id);
 
         $this->missingFromDatabase('user_has_roles', [
             'user_id' => $randomUser->id,

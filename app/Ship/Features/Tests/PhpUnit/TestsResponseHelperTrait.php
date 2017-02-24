@@ -24,7 +24,7 @@ trait TestsResponseHelperTrait
      *
      * @return  mixed
      */
-    public function getResponseObject(Response $httpResponse)
+    public function getResponseContent(Response $httpResponse)
     {
         return json_decode($httpResponse->getContent());
     }

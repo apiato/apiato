@@ -37,9 +37,9 @@ class AttachPermissionsToRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertEquals($roleA['name'], $responseObject->data->name);
+        $this->assertEquals($roleA['name'], $responseContent->data->name);
 
         $this->seeInDatabase('role_has_permissions', [
             'permission_id' => $permissionA->id,

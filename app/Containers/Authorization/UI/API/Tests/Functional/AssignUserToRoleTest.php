@@ -38,11 +38,11 @@ class AssignUserToRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertEquals($data['user_id'], $responseObject->data->id);
+        $this->assertEquals($data['user_id'], $responseContent->data->id);
 
-        $this->assertEquals($data['roles_ids'], $responseObject->data->roles->data[0]->id);
+        $this->assertEquals($data['roles_ids'], $responseContent->data->roles->data[0]->id);
     }
 
     public function testAssignUserToRoleWithRealId_()
@@ -88,13 +88,13 @@ class AssignUserToRoleTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertTrue(count($responseObject->data->roles->data) > 1);
+        $this->assertTrue(count($responseContent->data->roles->data) > 1);
 
-        $this->assertEquals($data['roles_ids'][0], $responseObject->data->roles->data[0]->id);
+        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
 
-        $this->assertEquals($data['roles_ids'][1], $responseObject->data->roles->data[1]->id);
+        $this->assertEquals($data['roles_ids'][1], $responseContent->data->roles->data[1]->id);
     }
 
 }

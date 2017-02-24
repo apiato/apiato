@@ -28,10 +28,9 @@ class ListAllCountriesTest extends TestCase
         $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to object
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
-        $this->assertCount(249, $responseObject->data);
+        $this->assertCount(249, $responseContent->data);
     }
-
 }

@@ -44,9 +44,9 @@ class CreateAdminTest extends TestCase
          // assert the data is stored in the database
         $this->seeInDatabase('users', ['email' => $data['email']]);
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertEquals($responseObject->data->roles->data[0]->name, $data['name']);
+        $this->assertEquals($responseContent->data->roles->data[0]->name, $data['name']);
     }
 
 }

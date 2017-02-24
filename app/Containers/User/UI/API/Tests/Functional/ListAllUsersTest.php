@@ -33,10 +33,10 @@ class ListAllUsersTest extends TestCase
         $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to Object
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
-        $this->assertCount(5, $responseObject->data);
+        $this->assertCount(5, $responseContent->data);
     }
 
 // TODO: uncomment this. was temporally commented out after upgrading from L5.3 to L5.4

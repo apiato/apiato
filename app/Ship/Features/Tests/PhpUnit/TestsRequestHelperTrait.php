@@ -184,13 +184,13 @@ trait TestsRequestHelperTrait
     }
 
     /**
-     * @param $responseObject
+     * @param $responseContent
      *
      * @return  mixed
      */
-    private function getResponse($responseObject)
+    private function getResponse($responseContent)
     {
-        return $responseObject->response;
+        return $responseContent->response;
     }
 
     /**

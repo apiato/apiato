@@ -42,11 +42,11 @@ class ListAllAdminsTest extends TestCase
         $this->assertEquals('200', $response->getStatusCode());
 
         // convert JSON response string to Object
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
         $this->assertCount(4,
-            $responseObject->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+            $responseContent->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
 }

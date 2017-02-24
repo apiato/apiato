@@ -44,13 +44,13 @@ class SyncUserRolesTest extends TestCase
         // assert response status is correct
         $this->assertEquals('200', $response->getStatusCode());
 
-        $responseObject = $this->getResponseObject($response);
+        $responseContent = $this->getResponseContent($response);
 
-        $this->assertTrue(count($responseObject->data->roles->data) > 1);
+        $this->assertTrue(count($responseContent->data->roles->data) > 1);
 
-        $this->assertEquals($data['roles_ids'][0], $responseObject->data->roles->data[0]->id);
+        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
 
-        $this->assertEquals($data['roles_ids'][1], $responseObject->data->roles->data[1]->id);
+        $this->assertEquals($data['roles_ids'][1], $responseContent->data->roles->data[1]->id);
     }
 
 }
