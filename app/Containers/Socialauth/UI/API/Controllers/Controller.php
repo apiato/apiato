@@ -5,14 +5,14 @@ namespace App\Containers\SocialAuth\UI\API\Controllers;
 use App\Containers\SocialAuth\Actions\SocialLoginAction;
 use App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
-use App\Port\Controller\Abstracts\PortApiController;
+use App\Ship\Parents\Controllers\ApiController;
 
 /**
  * Class Controller.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class Controller extends PortApiController
+class Controller extends ApiController
 {
 
     /**
