@@ -4,6 +4,7 @@ namespace App\Ship\Engine\Providers;
 
 use App\Ship\Engine\Loaders\AutoLoaderTrait;
 use App\Ship\Engine\Loaders\FactoriesLoaderTrait;
+use App\Ship\Engine\Loaders\LocalizationLoader;
 use App\Ship\Engine\Traits\FractalTrait;
 use App\Ship\Features\Validations\ValidationTrait;
 use App\Ship\Engine\Butlers\ContainersButler;
@@ -41,6 +42,7 @@ class PortoServiceProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
+        LocalizationLoader::class,
         DingoApiServiceProvider::class,
         CorsServiceProvider::class,
         HashidsServiceProvider::class,
