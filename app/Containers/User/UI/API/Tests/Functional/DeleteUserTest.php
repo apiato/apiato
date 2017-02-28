@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
+use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
 
 /**
@@ -35,4 +36,17 @@ class DeleteUserTest extends TestCase
         ], $response);
     }
 
+    public function testDeleteAnotherExistingUser_()
+    {
+        // make the call form the user token who has no access
+        $this->getTestingUserWithoutAccess();
+
+        $anotherUser = factory(User::class)->create();
+
+        // send the HTTP request
+        $response = $this->injectId($anotherUser->id)->makeCall();
+
+        // assert response status is correct
+        $this->assertEquals('500', $response->getStatusCode());
+    }
 }

@@ -18,7 +18,7 @@ class UpdateUserRequest extends Request
      */
     protected $access = [
         'permissions' => 'update-users',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**

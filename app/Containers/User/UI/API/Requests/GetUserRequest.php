@@ -19,7 +19,7 @@ class GetUserRequest extends Request
      */
     protected $access = [
         'permissions' => 'find-users',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**
@@ -57,7 +57,7 @@ class GetUserRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess',
+            'hasAccess|isOwner',
         ]);
     }
 }

@@ -33,9 +33,8 @@ class RefreshUserTest extends TestCase
 
     public function testRefreshAnotherUserById_()
     {
-        $user = $this->getTestingUser();
-
         $anotherUser = factory(User::class)->create();
+
         // send the HTTP request
         $response = $this->injectId($anotherUser->id)->makeCall();
 

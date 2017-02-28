@@ -19,7 +19,7 @@ class DeleteUserRequest extends Request
      */
     protected $access = [
         'permissions' => 'delete-users',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**
@@ -57,7 +57,7 @@ class DeleteUserRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess',
+            'hasAccess|isOwner',
         ]);
     }
 }
