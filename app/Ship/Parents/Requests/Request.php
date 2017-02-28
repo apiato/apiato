@@ -4,8 +4,6 @@ namespace App\Ship\Parents\Requests;
 
 use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Engine\Traits\HashIdTrait;
-use App\Ship\Features\Exceptions\ValidationFailedException;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
 
 /**
@@ -17,58 +15,39 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
  */
 abstract class Request extends LaravelFormRequest
 {
-
+    use RequestTrait;
     use HashIdTrait;
-    use AuthorizationTrait;
 
     /**
-     * Overriding this function to modify the any user input before
-     * applying the validation rules.
+     * check if a user has permission to perform an action.
+     * User can set multiple permissions (separated with "|") and if the user has
+     * any of the permissions, he will be authorize to proceed with this action.
      *
-     * @return  array
+     * @return  bool
      */
-    public function all()
+    public function hasAccess(User $user = null)
     {
-        $requestData = parent::all();
+        // if not in parameters, take from the request object {$this}
+        $user = $user ? : $this->user();
 
-        $requestData = $this->applyValidationRulesToUrlParams($requestData);
+        $hasAccess = array_merge(
+            $this->hasAnyPermissionAccess($user),
+            $this->hasAnyRoleAccess($user)
+        );
 
-        $requestData = $this->decodeHashedIdsBeforeApplyingValidationRules($requestData);
-
-        return $requestData;
+        // allow access if user has access to any of the defined roles or permissions.
+        return empty($hasAccess) ? true : in_array(true, $hasAccess);
     }
 
     /**
-     * apply validation rules to the ID's in the URL, since Laravel
-     * doesn't validate them by default!
+     * Check if the submitted ID (mainly URL ID's) is the same as
+     * the authenticated user ID (based on the user Token).
      *
-     * Now you can use validation riles like this: `'id' => 'required|integer|exists:items,id'`
-     *
-     * @param array $requestData
-     *
-     * @return  array
+     * @return  bool
      */
-    private function applyValidationRulesToUrlParams(Array $requestData)
+    public function isOwner()
     {
-        if (isset($this->urlParameters) && !empty($this->urlParameters)) {
-            foreach ($this->urlParameters as $param) {
-                $requestData[$param] = $this->route($param);
-            }
-        }
-
-        return $requestData;
+        return $this->user()->id == $this->id;
     }
 
-    /**
-     * Overriding this function to throw a custom
-     * exception instead of the default Laravel exception.
-     *
-     * @param \Illuminate\Contracts\Validation\Validator $validator
-     *
-     * @return mixed|void
-     */
-    public function failedValidation(Validator $validator)
-    {
-        throw new ValidationFailedException($validator->getMessageBag());
-    }
 }
