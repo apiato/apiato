@@ -3,7 +3,8 @@
 namespace App\Containers\Localization\Middlewares;
 
 use Closure;
-use Illuminate\Foundation\Application;
+use App;
+use Config;
 
 /**
  * Class Localization
@@ -12,18 +13,6 @@ use Illuminate\Foundation\Application;
  */
 class Localization
 {
-
-    /**
-     * Localization constructor.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     */
-    public function __construct(Application $app)
-    {
-        $this->app = $app;
-    }
-
-
     /**
      * Handle an incoming request.
      *
@@ -38,7 +27,7 @@ class Localization
         $lang = $this->validateLanguage($this->findLanguage($request));
 
         // set the local language
-        $this->app->setLocale($lang);
+        App::setLocale($lang);
 
         // get the response after the request is done
         $response = $next($request);
@@ -74,7 +63,7 @@ class Localization
     private function findLanguage($request)
     {
         // read the language from the request header, if the header is missed, take the default local language
-        return $request->header('Content-Language') ? : $this->app->config->get('app.locale');
+        return $request->header('Content-Language') ? : Config::get('app.locale');
     }
 
     /**
@@ -82,7 +71,7 @@ class Localization
      */
     private function getSupportedLanguages()
     {
-        return $this->app->config->get('localization.supported_languages');
+        return Config::get('localization.supported_languages');
     }
 
 }
