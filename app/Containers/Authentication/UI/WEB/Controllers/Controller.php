@@ -22,7 +22,7 @@ class Controller extends WebController
      */
     public function showLoginPage()
     {
-        return view('login');
+        return view('authentication::login');
     }
 
     /**
@@ -40,7 +40,7 @@ class Controller extends WebController
         }
 
         if (is_array($result)) {
-            return view('login')->with($result);
+            return view('authentication::login')->with($result);
         }
 
         return redirect('dashboard');
@@ -53,7 +53,7 @@ class Controller extends WebController
      */
     public function viewDashboardPage(ViewDashboardRequest $request)
     {
-        return view('dashboard');
+        return view('authentication::dashboard');
     }
 
     /**
@@ -65,7 +65,7 @@ class Controller extends WebController
     {
         $action->run();
 
-        return view('login');
+        return view('authentication::login');
     }
 
 

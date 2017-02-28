@@ -43,39 +43,12 @@ trait RoutesLoaderTrait
         $apiRoutesPath = $containerPath . '/UI/API/Routes';
 
         if (File::isDirectory($apiRoutesPath)) {
-
             // get all files from the container API routes directory
             $files = File::allFiles($apiRoutesPath);
 
             foreach ($files as $file) {
-
-                // get the version from the file name to register it
-                $apiVersionNumber = $this->getRouteFileVersionNumber($file);
-
-                $this->apiRouter->version('v' . $apiVersionNumber,
-                    function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
-
-                        $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
-
-                        $router->group([
-                            // Routes Namespace
-                            'namespace'  => $controllerNamespace,
-                            // Add Middleware's - 'api' is a group of middleware's
-                            'middleware' => ['api'],
-                            // The API limit time.
-                            'limit'      => Config::get('hello.api.limit'),
-                            // The API limit expiry time.
-                            'expires'    => Config::get('hello.api.limit_expires'),
-                        ], function ($router) use ($file) {
-
-                            require $file->getPathname();
-
-                        });
-
-                    });
-
+                $this->loadApiRoute($file, $containerPath, $containersNamespace);
             }
-
         }
     }
 
@@ -97,15 +70,56 @@ trait RoutesLoaderTrait
             $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers';
 
             foreach ($files as $file) {
-                $this->webRouter->group([
-                    'middleware' => ['web'],
-                    'namespace'  => $controllerNamespace,
-                ], function (LaravelRouter $router) use ($file) {
-                    require $file->getPathname();
-                });
+                $this->loadWebRoute($file, $controllerNamespace);
             }
         }
+    }
 
+    /**
+     * @param $file
+     * @param $controllerNamespace
+     */
+    private function loadWebRoute($file, $controllerNamespace)
+    {
+        $this->webRouter->group([
+            'middleware' => ['web'],
+            'namespace'  => $controllerNamespace,
+        ], function (LaravelRouter $router) use ($file) {
+            require $file->getPathname();
+        });
+    }
+
+    /**
+     * @param $file
+     * @param $containerPath
+     * @param $containersNamespace
+     */
+    private function loadApiRoute($file, $containerPath, $containersNamespace)
+    {
+        // get the version from the file name to register it
+        $apiVersionNumber = $this->getRouteFileVersionNumber($file);
+
+        $this->apiRouter->version('v' . $apiVersionNumber,
+            function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
+
+                $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
+
+                $router->group([
+                    // Routes Namespace
+                    'namespace'  => $controllerNamespace,
+                    // Add Middleware's - 'api' is a group of middleware's
+                    'middleware' => ['api'],
+                    // The API limit time.
+                    'limit'      => Config::get('hello.api.limit'),
+                    // The API limit expiry time.
+                    'expires'    => Config::get('hello.api.limit_expires'),
+                ], function ($router) use ($file) {
+
+                    require $file->getPathname();
+
+                });
+
+            });
     }
 
 

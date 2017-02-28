@@ -42,11 +42,7 @@ trait MigrationsLoaderTrait
     {
         if (File::isDirectory($directory)) {
 
-            App::afterResolving('migrator', function ($migrator) use ($directory) {
-                foreach ((array)$directory as $path) {
-                    $migrator->path($path);
-                }
-            });
+            $this->loadMigrationsFrom($directory);
 
         }
     }

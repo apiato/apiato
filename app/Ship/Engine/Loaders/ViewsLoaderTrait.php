@@ -3,7 +3,6 @@
 namespace App\Ship\Engine\Loaders;
 
 use File;
-use Illuminate\Support\Facades\View;
 
 /**
  * Class ViewsLoaderTrait.
@@ -14,13 +13,13 @@ trait ViewsLoaderTrait
 {
 
     /**
-     * loadViewsFromContainers
+     * @param $containerName
      */
     public function loadViewsFromContainers($containerName)
     {
         $containerViewDirectory = base_path('app/Containers/' . $containerName . '/UI/WEB/Views/');
 
-        $this->loadViews($containerViewDirectory);
+        $this->loadViews($containerViewDirectory, $containerName);
     }
 
     /**
@@ -28,18 +27,17 @@ trait ViewsLoaderTrait
      */
     public function loadViewsFromShip()
     {
-//        $portViewsDirectory = base_path('app/Ship/') . $portFolderName . '/Views/';
-//
-//        $this->loadViews($portViewsDirectory);
+        // ..
     }
 
     /**
      * @param $directory
+     * @param $containerName
      */
-    private function loadViews($directory)
+    private function loadViews($directory, $containerName)
     {
         if (File::isDirectory($directory)) {
-            View::addLocation($directory);
+            $this->loadViewsFrom($directory, strtolower($containerName));
         }
     }
 

@@ -14,6 +14,7 @@ trait AutoLoaderTrait
 
     // using each component loader trait
     use ConfigsLoaderTrait;
+    use LocalizationLoaderTrait;
     use MigrationsLoaderTrait;
     use ViewsLoaderTrait;
     use ProvidersLoaderTrait;
@@ -33,6 +34,7 @@ trait AutoLoaderTrait
         // > iterate over all the containers folders and autoload most of the components
         foreach (ShipButler::getContainersNames() as $containerName) {
             $this->loadConfigsFromContainers($containerName);
+            $this->loadLocalsFromContainers($containerName);
             $this->loadOnlyMainProvidersFromContainers($containerName);
             $this->loadMigrationsFromContainers($containerName);
             $this->loadConsolesFromContainers($containerName);

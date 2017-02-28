@@ -120,6 +120,9 @@
                 @endif
                 <input type="text"  placeholder="email" id="email" name="email"/>
                 <input type="password" placeholder="password" id="password" name="password"/>
+
+                <div class="text-red">{{ isset($errorMessage) ? $errorMessage : '' }}</div>
+
                 <button>login</button>
             </form>
         </div>
