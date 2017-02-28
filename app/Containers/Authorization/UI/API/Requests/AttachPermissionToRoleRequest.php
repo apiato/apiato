@@ -13,7 +13,7 @@ class AttachPermissionToRoleRequest extends Request
 {
 
     /**
-     * Define which Roles and/or Permissions has access to this request..
+     * Define which Roles and/or Permissions has access to this request.
      *
      * @var  array
      */
@@ -59,6 +59,8 @@ class AttachPermissionToRoleRequest extends Request
      */
     public function authorize()
     {
-        return $this->hasAccess();
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }
