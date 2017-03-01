@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Authentication
  * @apiName            UserLogout
- * @api                {post} /user/logout Logout a user
+ * @api                {post} /logout Logout a user
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -14,7 +14,7 @@
 }
  */
 
-$router->post('user/logout', [
+$router->post('logout', [
     'uses'       => 'Controller@userLogout',
     'middleware' => [
         'api.auth',

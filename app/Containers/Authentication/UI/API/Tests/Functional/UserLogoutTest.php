@@ -12,7 +12,7 @@ use App\Containers\Authentication\Tests\TestCase;
 class UserLogoutTest extends TestCase
 {
 
-    protected $endpoint = 'post@user/logout';
+    protected $endpoint = 'post@logout';
 
     public function testUserLogout_()
     {
@@ -31,7 +31,7 @@ class UserLogoutTest extends TestCase
     public function testUserLogoutWithGetRequest()
     {
         // send the HTTP request
-        $response = $this->endpoint('get@user/logout')->makeCall();
+        $response = $this->endpoint('get@logout')->makeCall();
 
         // assert response status is correct
         $this->assertEquals('405', $response->getStatusCode());

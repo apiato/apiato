@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class CreateAdminTest extends TestCase
 {
 
-    protected $endpoint = 'post@admins/create';
+    protected $endpoint = 'post@admins';
 
     protected $access = [
         'permissions' => '',

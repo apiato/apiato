@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            CreateAdmin
- * @api                {post} /admins/create Create Admin User
+ * @api                {post} /admins Create Admin User
  * @apiDescription     Creating User with Role Admin, form the Dashboard.
  * @apiVersion         1.0.0
  * @apiPermission      none
@@ -39,7 +39,7 @@
 }
  */
 
-$router->post('admins/create', [
+$router->post('admins', [
     'uses'  => 'Controller@createAdmin',
     'middleware' => [
       'api.auth',
