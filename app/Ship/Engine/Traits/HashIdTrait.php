@@ -87,7 +87,7 @@ trait HashIdTrait
                     }
 
                     $requestData[$id] = is_array($requestData[$id]) ?
-                        $this->decodeThisArrayOfIds($requestData[$id]) : $this->decodeThisId($requestData[$id]);
+                        $this->decodeArray($requestData[$id]) : $this->decode($requestData[$id]);
 
                 } // do nothing if the input is incorrect, because what if it's not required!
             }
@@ -101,11 +101,11 @@ trait HashIdTrait
      *
      * @return  array
      */
-    public function decodeThisArrayOfIds(array $ids)
+    public function decodeArray(array $ids)
     {
         $result = [];
         foreach ($ids as $id) {
-            $result[] = $this->decodeThisId($id);
+            $result[] = $this->decode($id);
         }
 
         return $result;
@@ -116,9 +116,21 @@ trait HashIdTrait
      *
      * @return  mixed
      */
-    public function decodeThisId($id)
+    public function decode($id)
     {
-        return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
+        $decoded = $this->decoder($id);
+
+        return is_array($decoded) ? $decoded[0] : $decoded;
+    }
+
+    /**
+     * @param $id
+     *
+     * @return  mixed
+     */
+    public function encode($id)
+    {
+        return $this->encoder($id);
     }
 
     /**
@@ -136,7 +148,7 @@ trait HashIdTrait
      *
      * @return  mixed
      */
-    private function encoder($id)
+    public function encoder($id)
     {
         return Hashids::encode($id);
     }

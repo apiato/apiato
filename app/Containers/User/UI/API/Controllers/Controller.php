@@ -38,7 +38,7 @@ class Controller extends ApiController
         $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $request->user()->id . ') Deleted Successfully.',
+            'message' => 'User (' . $this->encode($request->id) . ') Deleted Successfully.',
         ]);
     }
 

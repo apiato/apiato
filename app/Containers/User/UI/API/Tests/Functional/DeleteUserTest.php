@@ -32,7 +32,7 @@ class DeleteUserTest extends TestCase
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'User (' . $user->id . ') Deleted Successfully.',
+            'message' => 'User (' . $user->getHashedKey() . ') Deleted Successfully.',
         ], $response);
     }
 

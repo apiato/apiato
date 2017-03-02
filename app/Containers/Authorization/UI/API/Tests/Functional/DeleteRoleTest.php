@@ -32,7 +32,7 @@ class DeleteRoleTest extends TestCase
 
         // assert the returned message is correct
         $this->assertResponseContainKeyValue([
-            'message' => 'Role (' . $role->id . ') Deleted Successfully.',
+            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.',
         ], $response);
     }
 
