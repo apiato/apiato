@@ -118,9 +118,7 @@ trait HashIdTrait
      */
     public function decode($id)
     {
-        $decoded = $this->decoder($id);
-
-        return is_array($decoded) ? $decoded[0] : $decoded;
+        return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
     }
 
     /**
