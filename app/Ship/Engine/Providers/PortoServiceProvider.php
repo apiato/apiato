@@ -9,9 +9,10 @@ use App\Ship\Features\Validations\ValidationTrait;
 use App\Ship\Engine\Butlers\ContainersButler;
 use App\Ship\Engine\Butlers\ShipButler;
 use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\AuthProvider;
 use App\Ship\Parents\Providers\RoutesProvider;
+use Laravel\Passport\PassportServiceProvider;
 use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
-use Dingo\Api\Provider\LaravelServiceProvider as DingoApiServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Prettus\Repository\Providers\RepositoryServiceProvider;
 use Vinkla\Hashids\Facades\Hashids;
@@ -29,7 +30,6 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class PortoServiceProvider extends MainProvider
 {
-
     use FractalTrait;
     use FactoriesLoaderTrait;
     use AutoLoaderTrait;
@@ -41,17 +41,18 @@ class PortoServiceProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
-        DingoApiServiceProvider::class,
+        PassportServiceProvider::class,
         CorsServiceProvider::class,
         HashidsServiceProvider::class,
         RoutesProvider::class,
+        AuthProvider::class,
         RepositoryServiceProvider::class,
     ];
 
     /**
      * Register any Alias on the Ship layer (including third party packages).
      *
-     * @var  array
+     * @var array
      */
     protected $aliases = [
         'Hashids' => Hashids::class,
@@ -59,8 +60,6 @@ class PortoServiceProvider extends MainProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -82,8 +81,6 @@ class PortoServiceProvider extends MainProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
@@ -93,5 +90,4 @@ class PortoServiceProvider extends MainProvider
         $this->app->alias(ShipButler::class, 'ShipButler');
         $this->app->alias(ContainersButler::class, 'ContainersButler');
     }
-
 }

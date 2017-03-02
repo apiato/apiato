@@ -12,7 +12,6 @@ use App\Ship\Parents\Models\UserModel;
  */
 class User extends UserModel
 {
-
     /**
      * The database table used by the model.
      *
@@ -71,5 +70,4 @@ class User extends UserModel
     {
         return $this->hasOne(StripeAccount::class);
     }
-
 }

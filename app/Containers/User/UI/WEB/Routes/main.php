@@ -1,5 +1,5 @@
 <?php
 
-$router->get('/user', [
+Route::get('/user', [
     'uses' => 'Controller@sayWelcome',
 ]);

@@ -43,7 +43,7 @@
 }
  */
 
-$router->get('permissions', [
+Route::get('permissions', [
     'uses'       => 'Controller@listAllPermissions',
     'middleware' => [
         'api.auth',

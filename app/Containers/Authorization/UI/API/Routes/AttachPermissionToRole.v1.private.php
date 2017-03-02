@@ -45,7 +45,7 @@
 }
  */
 
-$router->post('permissions/attach', [
+Route::post('permissions/attach', [
     'uses'       => 'Controller@attachPermissionToRole',
     'middleware' => [
         'api.auth',

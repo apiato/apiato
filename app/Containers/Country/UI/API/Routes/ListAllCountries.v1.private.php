@@ -41,7 +41,7 @@
 }
  */
 
-$router->get('countries', [
+Route::get('countries', [
     'uses'       => 'Controller@listAllCountries',
     'middleware' => [
         'api.auth',

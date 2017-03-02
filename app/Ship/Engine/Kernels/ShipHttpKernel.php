@@ -5,7 +5,7 @@ namespace App\Ship\Engine\Kernels;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
- * Class ShipHttpKernel
+ * Class ShipHttpKernel.
  *
  * A.K.A (app/Http/Kernel.php)
  *
@@ -13,7 +13,6 @@ use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
  */
 class ShipHttpKernel extends LaravelHttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
@@ -51,9 +50,7 @@ class ShipHttpKernel extends LaravelHttpKernel
         'api' => [
             // Laravel middleware's:
             'bindings',
-
-            // Dingo Package throttle middleware
-            'api.throttle',
+            'throttle:120,1',
         ],
     ];
 
@@ -67,5 +64,4 @@ class ShipHttpKernel extends LaravelHttpKernel
     protected $routeMiddleware = [
 
     ];
-
 }

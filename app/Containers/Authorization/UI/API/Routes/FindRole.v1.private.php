@@ -20,7 +20,7 @@
 }
  */
 
-$router->get('roles/{id}', [
+Route::get('roles/{id}', [
     'uses'       => 'Controller@getRole',
     'middleware' => [
         'api.auth',

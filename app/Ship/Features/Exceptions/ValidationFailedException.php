@@ -2,7 +2,8 @@
 
 namespace App\Ship\Features\Exceptions;
 
-use Dingo\Api\Exception\ResourceException as DingoResourceException;
+// use Dingo\Api\Exception\ResourceException as DingoResourceException;
+use App\Ship\Parents\Exceptions\Exception as DingoResourceException;
 use Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -18,21 +19,20 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class ValidationFailedException extends DingoResourceException
 {
-
     public $httpStatusCode = SymfonyResponse::HTTP_UNPROCESSABLE_ENTITY;
 
     public $message = 'Invalid Input.';
 
-    /**
-     * ValidationFailedException constructor.
-     *
-     * @param null            $errors
-     * @param \Exception|null $previous
-     * @param array           $headers
-     * @param int             $code
-     */
-    public function __construct($errors = null, Exception $previous = null, $headers = [], $code = 0)
-    {
-        parent::__construct($this->message, $errors, $previous, $headers, $code);
-    }
+    // /**
+    //  * ValidationFailedException constructor.
+    //  *
+    //  * @param null            $errors
+    //  * @param \Exception|null $previous
+    //  * @param array           $headers
+    //  * @param int             $code
+    //  */
+    // public function __construct($errors = null, Exception $previous = null, $headers = [], $code = 0)
+    // {
+    //     parent::__construct($this->message, $errors, $previous, $headers, $code);
+    // }
 }

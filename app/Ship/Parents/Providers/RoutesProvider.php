@@ -2,12 +2,10 @@
 
 namespace App\Ship\Parents\Providers;
 
-
 use App\Ship\Engine\Traits\HashIdTrait;
 use App\Ship\Engine\Loaders\RoutesLoaderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
-use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Routing\Router as LaravelRouter;
+use Illuminate\Routing\Router;
 
 /**
  * Class RoutesProvider.
@@ -18,7 +16,6 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class RoutesProvider extends LaravelRouteServiceProvider
 {
-
     use RoutesLoaderTrait;
     use HashIdTrait;
 
@@ -32,7 +29,7 @@ class RoutesProvider extends LaravelRouteServiceProvider
     protected $namespace;
 
     /**
-     * Instance of the Laravel default Router Class
+     * Instance of the Laravel default Router Class.
      *
      * @var \Illuminate\Routing\Router
      */
@@ -51,7 +48,7 @@ class RoutesProvider extends LaravelRouteServiceProvider
     public function boot()
     {
         // initializing an instance of the Dingo Api router
-        $this->apiRouter = app(DingoApiRouter::class);
+        $this->apiRouter = app(Router::class);
 
         parent::boot();
     }
@@ -61,7 +58,7 @@ class RoutesProvider extends LaravelRouteServiceProvider
      *
      * @param \Illuminate\Routing\Router $webRouterParam
      */
-    public function map(LaravelRouter $webRouterParam)
+    public function map(Router $webRouterParam)
     {
         $this->webRouter = $webRouterParam;
 
@@ -69,5 +66,4 @@ class RoutesProvider extends LaravelRouteServiceProvider
 
         $this->runEndpointsHashedIdsDecoder();
     }
-
 }

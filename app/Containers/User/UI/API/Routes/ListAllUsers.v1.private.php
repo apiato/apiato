@@ -108,7 +108,7 @@
 }
  */
 
-$router->get('users', [
+Route::get('users', [
     'uses'       => 'Controller@listAllUsers',
     'middleware' => [
         'api.auth',

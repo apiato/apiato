@@ -45,7 +45,7 @@
 }
  */
 
-$router->post('permissions/detach', [
+Route::post('permissions/detach', [
     'uses'       => 'Controller@detachPermissionFromRole',
     'middleware' => [
         'api.auth',

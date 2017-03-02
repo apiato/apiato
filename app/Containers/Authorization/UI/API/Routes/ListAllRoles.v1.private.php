@@ -88,7 +88,7 @@
 }
  */
 
-$router->get('roles', [
+Route::get('roles', [
     'uses'       => 'Controller@listAllRoles',
     'middleware' => [
         'api.auth',

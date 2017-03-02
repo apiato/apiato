@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
         ],
     ],
@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model'  => env('USER_NAMESPACE') . User::class,
+            'model' => env('USER_NAMESPACE').User::class,
         ],
 
         // 'users' => [

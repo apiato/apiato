@@ -1,26 +1,26 @@
 <?php
 // TODO: these needs to be separated into multiple routes files
-$router->group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
+Route::group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
 
-    $router->get('/', [
+    Route::get('/', [
         'uses' => 'Controller@showLoginPage',
     ]);
 
-    $router->get('/login', [
+    Route::get('/login', [
         'uses' => 'Controller@showLoginPage',
     ]);
 
-    $router->post('/login', [
+    Route::post('/login', [
         'as'   => 'admin_login',
         'uses' => 'Controller@loginAdmin',
     ]);
 
-    $router->get('/logout', [
+    Route::get('/logout', [
         'as'   => 'admin_logout',
         'uses' => 'Controller@logoutAdmin',
     ]);
 
-    $router->get('/dashboard', [
+    Route::get('/dashboard', [
         'uses'       => 'Controller@viewDashboardPage',
         'middleware' => [
             'web.auth'

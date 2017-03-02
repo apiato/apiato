@@ -3,9 +3,10 @@
 namespace App\Ship\Parents\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as LaravelAuthServiceProvider;
+use Laravel\Passport\Passport;
 
 /**
- * Class ShipAuthServiceProvider
+ * Class ShipAuthServiceProvider.
  *
  * This class is provided by Laravel as default provider,
  * to register authorization policies.
@@ -16,7 +17,6 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as LaravelAuthSe
  */
 class AuthProvider extends LaravelAuthServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -35,13 +35,10 @@ class AuthProvider extends LaravelAuthServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
     public function boot()
     {
         $this->registerPolicies();
-
-        //
+        Passport::routes();
     }
 }

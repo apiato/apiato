@@ -39,7 +39,7 @@
 }
  */
 
-$router->post('admins', [
+Route::post('admins', [
     'uses'  => 'Controller@createAdmin',
     'middleware' => [
       'api.auth',

@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Controllers;
 
-use Dingo\Api\Routing\Helpers as DingoApiHelper;
+// use Dingo\Api\Routing\Helpers as DingoApiHelper;
 
 /**
  * Class ApiController.
@@ -11,6 +11,5 @@ use Dingo\Api\Routing\Helpers as DingoApiHelper;
  */
 abstract class ApiController extends Controller
 {
-
-    use DingoApiHelper;
+    // use DingoApiHelper;
 }

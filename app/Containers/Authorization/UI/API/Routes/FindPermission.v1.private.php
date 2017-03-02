@@ -20,7 +20,7 @@
 }
  */
 
-$router->get('permissions/{id}', [
+Route::get('permissions/{id}', [
     'uses'       => 'Controller@getPermission',
     'middleware' => [
         'api.auth',

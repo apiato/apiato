@@ -30,7 +30,6 @@ use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -41,12 +40,11 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
-
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest $request
      * @param \App\Containers\Authorization\Actions\ListAllPermissionsAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function listAllPermissions(ListAllPermissionsRequest $request, ListAllPermissionsAction $action)
     {
@@ -59,7 +57,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\GetPermissionRequest $request
      * @param \App\Containers\Authorization\Actions\GetPermissionAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function getPermission(GetPermissionRequest $request, GetPermissionAction $action)
     {
@@ -72,7 +70,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest $request
      * @param \App\Containers\Authorization\Actions\ListAllRolesAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function listAllRoles(ListAllRolesRequest $request, ListAllRolesAction $action)
     {
@@ -85,7 +83,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\GetRoleRequest $request
      * @param \App\Containers\Authorization\Actions\GetRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function getRole(GetRoleRequest $request, GetRoleAction $action)
     {
@@ -96,9 +94,9 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction                $action
+     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function assignUserToRole(AssignUserToRoleRequest $request, AssignUserToRoleAction $action)
     {
@@ -109,9 +107,9 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function syncUserRoles(SyncUserRolesRequest $request, SyncUserRolesAction $action)
     {
@@ -124,14 +122,14 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest $request
      * @param \App\Containers\Authorization\Actions\DeleteRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function deleteRole(DeleteRoleRequest $request, DeleteRoleAction $action)
     {
         $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'Role (' . $this->encode($request->id) . ') Deleted Successfully.',
+            'message' => 'Role ('.$this->encode($request->id).') Deleted Successfully.',
         ]);
     }
 
@@ -139,7 +137,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest $request
      * @param \App\Containers\Authorization\Actions\RevokeUserFromRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function revokeRoleFromUser(RevokeUserFromRoleRequest $request, RevokeUserFromRoleAction $action)
     {
@@ -152,7 +150,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\AttachPermissionsToRoleAction         $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function attachPermissionToRole(
         AttachPermissionToRoleRequest $request,
@@ -165,9 +163,9 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function syncPermissionOnRole(
         SyncPermissionsOnRoleRequest $request,
@@ -182,7 +180,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction       $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function detachPermissionFromRole(
         DetachPermissionToRoleRequest $request,
@@ -197,7 +195,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\CreateRoleRequest $request
      * @param \App\Containers\Authorization\Actions\CreateRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function createRole(CreateRoleRequest $request, CreateRoleAction $action)
     {
@@ -210,7 +208,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest $request
      * @param \App\Containers\Authorization\Actions\CreatePermissionAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function createPermission(CreatePermissionRequest $request, CreatePermissionAction $action)
     {
@@ -218,6 +216,4 @@ class Controller extends ApiController
 
         return $this->response->item($permission, new PermissionTransformer());
     }
-
-
 }

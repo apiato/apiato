@@ -4,7 +4,6 @@ namespace App\Ship\Engine\Traits;
 
 use App\Ship\Features\Exceptions\IncorrectIdException;
 use Illuminate\Support\Facades\Config;
-use Route;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
@@ -14,17 +13,17 @@ use Vinkla\Hashids\Facades\Hashids;
  */
 trait HashIdTrait
 {
-
     /**
-     * endpoint to be skipped from decoding their ID's (example for external ID's)
-     * @var  array
+     * endpoint to be skipped from decoding their ID's (example for external ID's).
+     *
+     * @var array
      */
     private $skippedEndpoints = [
 //        'orders/{id}/external',
     ];
 
     /**
-     * All ID's passed with all endpoints will be decoded before entering the Application
+     * All ID's passed with all endpoints will be decoded before entering the Application.
      */
     public function runEndpointsHashedIdsDecoder()
     {
@@ -37,7 +36,7 @@ trait HashIdTrait
                     $decoded = $this->decoder($id);
 
                     if (empty($decoded)) {
-                        throw new IncorrectIdException('ID (' . $id . ') is incorrect, consider using the hashed ID 
+                        throw new IncorrectIdException('ID ('.$id.') is incorrect, consider using the hashed ID
                         instead of the numeric ID.');
                     }
 
@@ -52,34 +51,31 @@ trait HashIdTrait
      *
      * @param null $key
      *
-     * @return  mixed
+     * @return mixed
      */
     public function getHashedKey($key = null)
     {
         // hash the ID only if hash-id enabled in the config
         if (Config::get('hello.hash-id')) {
-            return $this->encoder(($key) ? : $this->getKey());
+            return $this->encoder(($key) ?: $this->getKey());
         }
 
         return $this->getKey();
     }
 
-
     /**
      * without decoding the encoded ID's you won't be able to use
-     * validation features like `exists:table,id`
+     * validation features like `exists:table,id`.
      *
      * @param array $requestData
      *
-     * @return  array
+     * @return array
      */
-    protected function decodeHashedIdsBeforeApplyingValidationRules(Array $requestData)
+    protected function decodeHashedIdsBeforeApplyingValidationRules(array $requestData)
     {
         // the hash ID feature must be enabled to use this decoder feature.
         if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
-
             foreach ($this->decode as $id) {
-
                 if (isset($requestData[$id])) {
                     // validate the user is not trying to pass real ID
                     if (is_numeric($requestData[$id])) {
@@ -88,7 +84,6 @@ trait HashIdTrait
 
                     $requestData[$id] = is_array($requestData[$id]) ?
                         $this->decodeArray($requestData[$id]) : $this->decode($requestData[$id]);
-
                 } // do nothing if the input is incorrect, because what if it's not required!
             }
         }
@@ -99,7 +94,7 @@ trait HashIdTrait
     /**
      * @param array $ids
      *
-     * @return  array
+     * @return array
      */
     public function decodeArray(array $ids)
     {
@@ -114,7 +109,7 @@ trait HashIdTrait
     /**
      * @param $id
      *
-     * @return  mixed
+     * @return mixed
      */
     public function decode($id)
     {
@@ -124,7 +119,7 @@ trait HashIdTrait
     /**
      * @param $id
      *
-     * @return  mixed
+     * @return mixed
      */
     public function encode($id)
     {
@@ -134,7 +129,7 @@ trait HashIdTrait
     /**
      * @param $id
      *
-     * @return  mixed
+     * @return mixed
      */
     private function decoder($id)
     {
@@ -144,11 +139,10 @@ trait HashIdTrait
     /**
      * @param $id
      *
-     * @return  mixed
+     * @return mixed
      */
     public function encoder($id)
     {
         return Hashids::encode($id);
     }
-
 }

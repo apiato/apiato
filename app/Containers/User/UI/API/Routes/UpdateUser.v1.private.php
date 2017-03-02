@@ -45,7 +45,7 @@
 }
  */
 
-$router->put('users', [
+Route::put('users', [
     'uses'       => 'Controller@updateUser',
     'middleware' => [
         'api.auth',

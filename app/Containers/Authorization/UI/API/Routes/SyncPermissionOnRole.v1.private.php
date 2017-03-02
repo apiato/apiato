@@ -42,7 +42,7 @@
 }
  */
 
-$router->post('permissions/sync', [
+Route::post('permissions/sync', [
     'uses'       => 'Controller@syncPermissionOnRole',
     'middleware' => [
         'api.auth',

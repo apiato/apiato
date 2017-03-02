@@ -58,7 +58,7 @@
 }
  */
 
-$router->post('roles/assign', [
+Route::post('roles/assign', [
     'uses'       => 'Controller@assignUserToRole',
     'middleware' => [
         'api.auth',
