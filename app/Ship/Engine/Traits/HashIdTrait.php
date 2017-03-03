@@ -5,6 +5,7 @@ namespace App\Ship\Engine\Traits;
 use App\Ship\Features\Exceptions\IncorrectIdException;
 use Illuminate\Support\Facades\Config;
 use Vinkla\Hashids\Facades\Hashids;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class HashIdTrait.
