@@ -8,25 +8,32 @@ use App\Ship\Parents\Providers\MiddlewareProvider;
 /**
  * Class MiddlewareServiceProvider.
  *
- * The Main Service Provider of this container, it will be automatically registered in the framework.
- *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
+    /**
+     * Register Container Middleware Groups
+     *
+     * @var  array
+     */
     protected $middlewareGroups = [
         'web' => [
 
         ],
         'api' => [
-            // Hello API Requests Monitor
             RequestsMonitorMiddleware::class,
         ],
     ];
 
+    /**
+     * Register Route Middleware's
+     *
+     * @var  array
+     */
     protected $routeMiddleware = [
-
+        // ..
     ];
 
 }

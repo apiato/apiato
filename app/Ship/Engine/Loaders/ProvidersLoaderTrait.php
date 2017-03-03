@@ -65,6 +65,8 @@ trait ProvidersLoaderTrait
     }
 
     /**
+     * Load the all the registered Service Providers on the Main Service Provider.
+     *
      * @void
      */
     public function loadServiceProviders()

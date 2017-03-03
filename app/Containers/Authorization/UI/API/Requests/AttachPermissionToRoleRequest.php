@@ -13,7 +13,7 @@ class AttachPermissionToRoleRequest extends Request
 {
 
     /**
-     * Define which Roles and/or Permissions has access to this request..
+     * Define which Roles and/or Permissions has access to this request.
      *
      * @var  array
      */
@@ -28,7 +28,7 @@ class AttachPermissionToRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'permissions_ids',
+        'permissions_ids.*',
         'role_id',
     ];
 
@@ -59,6 +59,8 @@ class AttachPermissionToRoleRequest extends Request
      */
     public function authorize()
     {
-        return $this->hasAccess();
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }

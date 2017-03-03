@@ -131,7 +131,7 @@ class Controller extends ApiController
         $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'Role (' . $request->id . ') Deleted Successfully.',
+            'message' => 'Role (' . $this->encode($request->id) . ') Deleted Successfully.',
         ]);
     }
 

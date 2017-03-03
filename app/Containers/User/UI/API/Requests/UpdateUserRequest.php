@@ -12,13 +12,13 @@ use App\Ship\Parents\Requests\Request;
 class UpdateUserRequest extends Request
 {
     /**
-     * Define which Roles and/or Permissions has access to this request..
+     * Define which Roles and/or Permissions has access to this request.
      *
      * @var  array
      */
     protected $access = [
         'permissions' => 'update-users',
-        'roles'       => '',
+        'roles'       => 'admin',
     ];
 
     /**
@@ -57,6 +57,8 @@ class UpdateUserRequest extends Request
      */
     public function authorize()
     {
-        return $this->hasAccess();
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }

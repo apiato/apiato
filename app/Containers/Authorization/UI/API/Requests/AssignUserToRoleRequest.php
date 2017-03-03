@@ -13,7 +13,7 @@ class AssignUserToRoleRequest extends Request
 {
 
     /**
-     * Define which Roles and/or Permissions has access to this request..
+     * Define which Roles and/or Permissions has access to this request.
      *
      * @var  array
      */
@@ -29,7 +29,7 @@ class AssignUserToRoleRequest extends Request
      */
     protected $decode = [
         'user_id',
-        'roles_ids',
+        'roles_ids.*',
     ];
 
     /**
@@ -48,7 +48,7 @@ class AssignUserToRoleRequest extends Request
     public function rules()
     {
         return [
-            'roles_ids'   => 'required',
+            'roles_ids'   => 'array|required',
             'roles_ids.*' => 'exists:roles,id',
             'user_id'     => 'required|exists:users,id',
         ];
@@ -59,6 +59,8 @@ class AssignUserToRoleRequest extends Request
      */
     public function authorize()
     {
-        return $this->hasAccess();
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Ship\Parents\Tests\PhpUnit;
 
+use App\Ship\Engine\Traits\HashIdTrait;
 use App\Ship\Features\Tests\PhpUnit\TestingTrait;
 use App\Ship\Features\Tests\PhpUnit\TestsAuthHelperTrait;
 use App\Ship\Features\Tests\PhpUnit\TestsCustomHelperTrait;
@@ -24,7 +25,8 @@ abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackag
 {
     use TestCaseTrait;
 
-    use TestsRequestHelperTrait,
+    use HashIdTrait,
+        TestsRequestHelperTrait,
         TestsResponseHelperTrait,
         TestsMockHelperTrait,
         TestsAuthHelperTrait,

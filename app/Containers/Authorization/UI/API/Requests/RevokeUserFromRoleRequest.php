@@ -13,7 +13,7 @@ class RevokeUserFromRoleRequest extends Request
 {
 
     /**
-     * Define which Roles and/or Permissions has access to this request..
+     * Define which Roles and/or Permissions has access to this request.
      *
      * @var  array
      */
@@ -28,7 +28,7 @@ class RevokeUserFromRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'roles_ids',
+        'roles_ids.*',
         'user_id',
     ];
 
@@ -59,6 +59,8 @@ class RevokeUserFromRoleRequest extends Request
      */
     public function authorize()
     {
-        return $this->hasAccess();
+        return $this->check([
+            'hasAccess',
+        ]);
     }
 }

@@ -2,13 +2,10 @@
 
 namespace App\Containers\Debugger\Middlewares;
 
-use App;
 use App\Containers\Debugger\Tasks\RequestsDebuggerTask;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Config;
 use Illuminate\Http\Request;
-use Log;
 
 /**
  * Class RequestsMonitorMiddleware
