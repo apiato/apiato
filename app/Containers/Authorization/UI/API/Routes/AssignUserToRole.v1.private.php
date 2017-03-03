@@ -13,7 +13,7 @@
  * @apiPermission      Authenticated User
  *
  * @apiParam           {Number} user_id User ID
- * @apiParam           {Array-String} roles_ids Role ID or Array of Roles ID's
+ * @apiParam           {Array} roles_ids Role ID or Array of Roles ID's
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

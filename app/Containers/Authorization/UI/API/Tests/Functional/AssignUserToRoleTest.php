@@ -28,7 +28,7 @@ class AssignUserToRoleTest extends TestCase
         $role = factory(Role::class)->create();
 
         $data = [
-            'roles_ids' => $role->getHashedKey(),
+            'roles_ids' => [$role->getHashedKey()],
             'user_id'   => $randomUser->getHashedKey(),
         ];
 
@@ -42,7 +42,7 @@ class AssignUserToRoleTest extends TestCase
 
         $this->assertEquals($data['user_id'], $responseContent->data->id);
 
-        $this->assertEquals($data['roles_ids'], $responseContent->data->roles->data[0]->id);
+        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
     }
 
     public function testAssignUserToRoleWithRealId_()
@@ -52,8 +52,8 @@ class AssignUserToRoleTest extends TestCase
         $role = factory(Role::class)->create();
 
         $data = [
-            'roles_ids' => $role->id,
-            'user_id'   => $randomUser->id,
+            'roles_ids' => [$role->id], // testing against real ID's
+            'user_id'   => $randomUser->id, // testing against real ID's
         ];
 
         // send the HTTP request
@@ -63,7 +63,7 @@ class AssignUserToRoleTest extends TestCase
         $this->assertEquals('400', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
-            'message' => 'Only Hashed ID\'s allowed to be passed.',
+            'message' => 'Only Hashed ID\'s allowed.',
         ], $response);
     }
 

@@ -28,7 +28,7 @@ class SyncPermissionsOnRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'permissions_ids',
+        'permissions_ids.*',
         'role_id',
     ];
 
