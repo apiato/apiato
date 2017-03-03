@@ -23,6 +23,6 @@
 Route::get('permissions/{id}', [
     'uses'       => 'Controller@getPermission',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

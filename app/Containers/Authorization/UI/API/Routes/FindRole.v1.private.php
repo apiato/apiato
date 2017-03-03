@@ -23,6 +23,6 @@
 Route::get('roles/{id}', [
     'uses'       => 'Controller@getRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

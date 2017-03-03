@@ -44,6 +44,6 @@
 Route::get('countries', [
     'uses'       => 'Controller@listAllCountries',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

@@ -45,6 +45,6 @@
 Route::post('permissions/sync', [
     'uses'       => 'Controller@syncPermissionOnRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

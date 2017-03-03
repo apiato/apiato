@@ -6,7 +6,10 @@
     "vinkla/hashids": "3.1.*",
     "predis/predis": "^1.0",
     "pda/pheanstalk": "~3.0",
-    "laravel/passport": "^1.0.0"
+    "laravel/passport": "^1.0.0",
+    "laravel/scout": "^3.0.0",
+    "spatie/laravel-fractal":"^3.5.0",
+    "teamtnt/laravel-scout-tntsearch-driver":"*"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

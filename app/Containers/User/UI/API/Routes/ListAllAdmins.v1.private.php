@@ -110,6 +110,6 @@ HTTP/1.1 200 OK
 Route::get('admins', [
     'uses'       => 'Controller@listAllAdmins',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

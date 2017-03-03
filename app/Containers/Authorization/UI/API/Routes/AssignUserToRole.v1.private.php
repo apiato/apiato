@@ -61,6 +61,6 @@
 Route::post('roles/assign', [
     'uses'       => 'Controller@assignUserToRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

@@ -16,25 +16,24 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
-
     /**
      * @param \App\Containers\Authentication\UI\API\Requests\UserLoginRequest $request
      * @param \App\Containers\Authentication\Actions\ApiUserLoginAction       $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function userLogin(UserLoginRequest $request, ApiUserLoginAction $action)
     {
         $user = $action->run($request['email'], $request['password']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer(), 'user');
     }
 
     /**
      * @param \App\Containers\Authentication\UI\API\Requests\UserLogoutRequest $request
      * @param \App\Containers\Authentication\Actions\ApiUserLogoutAction       $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function userLogout(UserLogoutRequest $request, ApiUserLogoutAction $action)
     {
@@ -44,5 +43,4 @@ class Controller extends ApiController
             'message' => 'User Logged Out Successfully.',
         ]);
     }
-
 }

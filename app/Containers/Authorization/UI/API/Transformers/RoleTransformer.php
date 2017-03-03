@@ -12,13 +12,12 @@ use App\Ship\Parents\Transformers\Transformer;
  */
 class RoleTransformer extends Transformer
 {
-
     protected $availableIncludes = [
 
     ];
 
     protected $defaultIncludes = [
-        'permissions'
+        'permissions',
     ];
 
     /**
@@ -29,10 +28,9 @@ class RoleTransformer extends Transformer
     public function transform(Role $role)
     {
         return [
-            'object'       => 'Role',
-            'id'           => $role->getHashedKey(), // << Unique Identifier
-            'name'         => $role->name, // << Unique Identifier
-            'description'  => $role->description,
+            'id' => $role->getHashedKey(), // << Unique Identifier
+            'name' => $role->name, // << Unique Identifier
+            'description' => $role->description,
             'display_name' => $role->display_name,
         ];
     }
@@ -40,11 +38,10 @@ class RoleTransformer extends Transformer
     /**
      * @param \App\Containers\Authorization\Models\Role $role
      *
-     * @return  \League\Fractal\Resource\Collection
+     * @return \League\Fractal\Resource\Collection
      */
     public function includePermissions(Role $role)
     {
-        return $this->collection($role->permissions, new PermissionTransformer());
+        return $this->collection($role->permissions, new PermissionTransformer(), 'permission');
     }
-
 }

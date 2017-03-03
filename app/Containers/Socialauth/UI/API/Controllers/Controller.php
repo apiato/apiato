@@ -14,19 +14,17 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
-
     /**
      * @param \App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest $request
      * @param \App\Containers\SocialAuth\Actions\SocialLoginAction              $action
      * @param                                                                   $provider
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \Dingo\Api\Http\Response
      */
     public function authenticateAll(ApiAuthenticateRequest $request, SocialLoginAction $action, $provider)
     {
         $user = $action->run($provider, $request->all());
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer(), 'user');
     }
-
 }

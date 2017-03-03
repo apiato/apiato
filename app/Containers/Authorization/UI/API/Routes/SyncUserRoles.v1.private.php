@@ -59,6 +59,6 @@
 Route::post('roles/sync', [
     'uses'       => 'Controller@syncUserRoles',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

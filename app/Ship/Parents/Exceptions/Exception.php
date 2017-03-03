@@ -117,9 +117,6 @@ abstract class Exception extends SymfonyHttpException
     {
         // if not testing environment, log the error message
         if ($this->environment != 'testing') {
-            if ($this->expectsJson()) {
-                dd('test');
-            }
             Log::error('[ERROR] '.
                 'Status Code: '.$statusCode.' | '.
                 'Message: '.$message.' | '.

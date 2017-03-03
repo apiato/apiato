@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Config;
  */
 trait FractalTrait
 {
-
     /**
      * By default the Dingo API package (in the config file) creates an instance of the
      * fractal manager which takes the default serializer (specified by the fractal
@@ -26,28 +25,27 @@ trait FractalTrait
      */
     public function overrideDefaultFractalSerializer()
     {
-        $serializerName = Config::get('hello.api.serializer');
+        // $serializerName = Config::get('hello.api.serializer');
 
-        // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
-        if ($serializerName !== 'DataArray') {
-            app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
-                switch ($serializerName) {
-                    case 'JsonApi':
-                        $serializer = new \League\Fractal\Serializer\JsonApiSerializer(Config::get('api.domain'));
-                        break;
-                    case 'Array':
-                        $serializer = new \League\Fractal\Serializer\ArraySerializer(Config::get('api.domain'));
-                        break;
-                    default:
-                        throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
-                }
+        // // if DataArray `\League\Fractal\Serializer\DataArraySerializer` do noting since it's set by default by the Dingo API
+        // if ($serializerName !== 'DataArray') {
+        //     app('Dingo\Api\Transformer\Factory')->setAdapter(function () use ($serializerName) {
+        //         switch ($serializerName) {
+        //             case 'JsonApi':
+        //                 $serializer = new \League\Fractal\Serializer\JsonApiSerializer(Config::get('api.domain'));
+        //                 break;
+        //             case 'Array':
+        //                 $serializer = new \League\Fractal\Serializer\ArraySerializer(Config::get('api.domain'));
+        //                 break;
+        //             default:
+        //                 throw new UnsupportedFractalSerializerException('Unsupported ' . $serializerName);
+        //         }
 
-                $fractal = new \League\Fractal\Manager();
-                $fractal->setSerializer($serializer);
+        //         $fractal = new \League\Fractal\Manager();
+        //         $fractal->setSerializer($serializer);
 
-                return new \Dingo\Api\Transformer\Adapter\Fractal($fractal, 'include', ',', false);
-            });
-        }
+        //         return new \Dingo\Api\Transformer\Adapter\Fractal($fractal, 'include', ',', false);
+        //     });
+        // }
     }
-
 }

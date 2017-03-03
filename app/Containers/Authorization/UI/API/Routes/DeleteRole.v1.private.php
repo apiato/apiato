@@ -18,6 +18,6 @@
 Route::delete('roles/{id}', [
     'uses'       => 'Controller@deleteRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

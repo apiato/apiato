@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as LaravelAuthenticatableUser;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Passport\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 /**
  * Class UserModel.
@@ -20,5 +21,5 @@ use Laravel\Passport\HasApiTokens;
  */
 abstract class UserModel extends LaravelAuthenticatableUser implements ChargeableInterface
 {
-    use Notifiable, HashIdTrait, HasApiTokens, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait, ChargeableTrait;
+    use Notifiable, HashIdTrait, HasApiTokens, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait, ChargeableTrait, Searchable;
 }

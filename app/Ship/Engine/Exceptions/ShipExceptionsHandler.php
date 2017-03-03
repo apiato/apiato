@@ -3,13 +3,14 @@
 namespace App\Ship\Engine\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Config;
+use Response;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Ship\Engine\Traits\RestTrait;
 
 /**
- * Class ShipExceptionsHandler
+ * Class ShipExceptionsHandler.
  *
  * A.K.A (app/Exceptions/Handler.php)
  *
@@ -17,7 +18,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ShipExceptionsHandler extends LaravelExceptionHandler
 {
-
+    use RestTrait;
     /**
      * A list of the exception types that should not be reported.
      *
@@ -37,9 +38,7 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception $exception
-     *
-     * @return void
+     * @param \Exception $exception
      */
     public function report(Exception $exception)
     {
@@ -49,27 +48,39 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception               $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
      *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ModelNotFoundException) {
-            $exception = new NotFoundHttpException($exception->getMessage(), $exception);
+        if (!$this->isApiCall($request)) {
+            return parent::render($request, $exception);
+        } else {
+            $response = [];
+            if (Config::get('app.env') !== 'production') {
+                $response['exception'] = class_basename($exception).' in '.basename($exception->getFile()).' line '.$exception->getLine().': '.$exception->getMessage();
+            }
+            $response['message'] = $exception->getMessage();
+
+            if (isset($exception->httpStatusCode)) {
+                $response['status_code'] = $exception->httpStatusCode;
+            }
+
+            if (class_basename($exception) == 'ValidationFailedException') {
+                $response['errors'] = $exception->getErrors();
+            }
+
+            return Response::json($response, $exception->httpStatusCode ?? 500);
         }
-
-        // ..
-
-        return parent::render($request, $exception);
     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request                 $request
-     * @param  \Illuminate\Auth\AuthenticationException $exception
+     * @param \Illuminate\Http\Request                 $request
+     * @param \Illuminate\Auth\AuthenticationException $exception
      *
      * @return \Illuminate\Http\Response
      */

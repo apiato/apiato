@@ -17,7 +17,7 @@
 Route::post('logout', [
     'uses'       => 'Controller@userLogout',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);
 

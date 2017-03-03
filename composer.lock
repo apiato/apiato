@@ -1154,6 +1154,66 @@
             "time": "2016-08-23 12:49:27"
         },
         {
+            "name": "laravel/scout",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "1ddb0fa6f165bf6a69864960102062e7cf3f989d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/1ddb0fa6f165bf6a69864960102062e7cf3f989d",
+                "reference": "1ddb0fa6f165bf6a69864960102062e7cf3f989d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "~5.4",
+                "illuminate/contracts": "~5.4",
+                "illuminate/database": "~5.4",
+                "illuminate/pagination": "~5.4",
+                "illuminate/queue": "~5.4",
+                "illuminate/support": "~5.4",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "algolia/algoliasearch-client-php": "^1.10",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^1.10)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "time": "2017-03-01 14:37:40"
+        },
+        {
             "name": "laravel/socialite",
             "version": "v2.0.20",
             "source": {
@@ -1455,6 +1515,69 @@
                 "storage"
             ],
             "time": "2017-02-09 11:33:58"
+        },
+        {
+            "name": "league/fractal",
+            "version": "0.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "0546bd5c2aba414ba50c6ac676f507d42c6150a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/0546bd5c2aba414ba50c6ac676f507d42c6150a5",
+                "reference": "0546bd5c2aba414ba50c6ac676f507d42c6150a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "time": "2016-12-28 01:30:30"
         },
         {
             "name": "league/oauth1-client",
@@ -1927,16 +2050,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.7",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b5ea1ef3d8ff10c307ba8c5945c2f134e503278f"
+                "reference": "eeb4c23c7b84c1dc87db3c92856bd57ff1844ca4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b5ea1ef3d8ff10c307ba8c5945c2f134e503278f",
-                "reference": "b5ea1ef3d8ff10c307ba8c5945c2f134e503278f",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/eeb4c23c7b84c1dc87db3c92856bd57ff1844ca4",
+                "reference": "eeb4c23c7b84c1dc87db3c92856bd57ff1844ca4",
                 "shasum": ""
             },
             "require": {
@@ -1971,7 +2094,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-02-27 17:11:23"
+            "time": "2017-03-03 14:11:40"
         },
         {
             "name": "pda/pheanstalk",
@@ -2173,16 +2296,16 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.6.6",
+            "version": "2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "05945e652bfdacd456128d69bcae91701ccc9e32"
+                "reference": "d99a6250b944ee257eb41eddccdb22afbf27adef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/05945e652bfdacd456128d69bcae91701ccc9e32",
-                "reference": "05945e652bfdacd456128d69bcae91701ccc9e32",
+                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/d99a6250b944ee257eb41eddccdb22afbf27adef",
+                "reference": "d99a6250b944ee257eb41eddccdb22afbf27adef",
                 "shasum": ""
             },
             "require": {
@@ -2229,7 +2352,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2016-06-27 10:43:22"
+            "time": "2017-03-03 17:06:02"
         },
         {
             "name": "prettus/laravel-validation",
@@ -2522,6 +2645,115 @@
                 "uuid"
             ],
             "time": "2016-11-22 19:21:44"
+        },
+        {
+            "name": "spatie/fractalistic",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/fractalistic.git",
+                "reference": "59a2e7dfbd49e58b7de7d5621c1e7365786809f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/fractalistic/zipball/59a2e7dfbd49e58b7de7d5621c1e7365786809f9",
+                "reference": "59a2e7dfbd49e58b7de7d5621c1e7365786809f9",
+                "shasum": ""
+            },
+            "require": {
+                "league/fractal": "^0.14.0|^0.15.0",
+                "php": "^5.6|^7.0"
+            },
+            "require-dev": {
+                "illuminate/pagination": "^5.3",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Fractalistic\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A developer friendly wrapper around Fractal",
+            "homepage": "https://github.com/spatie/fractalistic",
+            "keywords": [
+                "api",
+                "fractal",
+                "fractalistic",
+                "spatie",
+                "transform"
+            ],
+            "time": "2017-01-19 20:51:03"
+        },
+        {
+            "name": "spatie/laravel-fractal",
+            "version": "3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-fractal.git",
+                "reference": "16689b0ce340bc139ba767f0bf2904e4eab2b254"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-fractal/zipball/16689b0ce340bc139ba767f0bf2904e4eab2b254",
+                "reference": "16689b0ce340bc139ba767f0bf2904e4eab2b254",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+                "illuminate/support": "~5.1.0|~5.2.0|~5.3.0|~5.4.0",
+                "php": "^5.6|^7.0",
+                "spatie/fractalistic": "^1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.2.0|3.3.0|~3.4.0",
+                "phpunit/phpunit": "^5.7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Fractal\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Fractal service provider for Laravel and Lumen",
+            "homepage": "https://github.com/spatie/laravel-fractal",
+            "keywords": [
+                "api",
+                "fractal",
+                "laravel",
+                "laravel-fractal",
+                "lumen",
+                "spatie",
+                "transform"
+            ],
+            "time": "2017-02-21 23:17:02"
         },
         {
             "name": "spatie/laravel-permission",
@@ -3467,6 +3699,118 @@
             "time": "2017-02-16 22:46:52"
         },
         {
+            "name": "teamtnt/laravel-scout-tntsearch-driver",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
+                "reference": "e4229c5241112680cd04d057299ee47555e0773b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/e4229c5241112680cd04d057299ee47555e0773b",
+                "reference": "e4229c5241112680cd04d057299ee47555e0773b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.3",
+                "illuminate/database": "~5.3",
+                "illuminate/support": "~5.3",
+                "laravel/scout": "*",
+                "teamtnt/tntsearch": "0.9.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "suggest": {
+                "teamtnt/tntsearch": "Required to use the TNTSearch engine."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TeamTNT\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "TNT Studio",
+                    "email": "info@tntstudio.hr"
+                }
+            ],
+            "description": "Driver for Laravel Scout search package based on https://github.com/teamtnt/tntsearch",
+            "keywords": [
+                "laravel",
+                "scout",
+                "search",
+                "tntsearch"
+            ],
+            "time": "2017-01-07 12:21:29"
+        },
+        {
+            "name": "teamtnt/tntsearch",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/teamtnt/tntsearch.git",
+                "reference": "0718aa20a899a14c10ea925553b2fc8692347069"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/0718aa20a899a14c10ea925553b2fc8692347069",
+                "reference": "0718aa20a899a14c10ea925553b2fc8692347069",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-sqlite3": "*",
+                "php": "~5.5|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TeamTNT\\TNTSearch\\": "src"
+                },
+                "files": [
+                    "helper/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nenad Tičarić",
+                    "email": "nticaric@gmail.com",
+                    "homepage": "http://www.tntstudio.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fully featured full text search engine written in PHP",
+            "homepage": "https://github.com/teamtnt/tntsearch",
+            "keywords": [
+                "fulltext",
+                "search",
+                "teamtnt",
+                "tntsearch"
+            ],
+            "time": "2016-11-09 19:13:06"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.0",
             "source": {
@@ -4244,27 +4588,27 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.6.2",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb"
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/6c52c2722f8460122f96f86346600e1077ce22cb",
-                "reference": "6c52c2722f8460122f96f86346600e1077ce22cb",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
+                "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-                "sebastian/comparator": "^1.1",
-                "sebastian/recursion-context": "^1.0|^2.0"
+                "sebastian/comparator": "^1.1|^2.0",
+                "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^2.0",
+                "phpspec/phpspec": "^2.5|^3.2",
                 "phpunit/phpunit": "^4.8 || ^5.6.5"
             },
             "type": "library",
@@ -4303,7 +4647,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-11-21 14:58:47"
+            "time": "2017-03-02 20:05:34"
         },
         {
             "name": "phpunit/php-code-coverage",

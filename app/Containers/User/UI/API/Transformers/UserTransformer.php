@@ -15,9 +15,8 @@ use Config;
  */
 class UserTransformer extends Transformer
 {
-
     /**
-     * @var  array
+     * @var array
      */
     protected $defaultIncludes = [
         'roles',
@@ -31,57 +30,57 @@ class UserTransformer extends Transformer
     public function transform(User $user)
     {
         $response = [
-            'object'               => 'User',
-            'id'                   => $user->getHashedKey(),
-            'name'                 => $user->name,
-            'email'                => $user->email,
-            'confirmed'            => $user->confirmed,
-            'nickname'             => $user->nickname,
-            'gender'               => $user->gender,
-            'birth'                => $user->birth,
+            'object' => 'User',
+            'id' => $user->getHashedKey(),
+            'name' => $user->name,
+            'email' => $user->email,
+            'confirmed' => $user->confirmed,
+            'nickname' => $user->nickname,
+            'gender' => $user->gender,
+            'birth' => $user->birth,
             'social_auth_provider' => $user->social_provider,
-            'social_id'            => $user->social_id,
-            'social_avatar'        => [
-                'avatar'   => $user->social_avatar,
+            'social_id' => $user->social_id,
+            'social_avatar' => [
+                'avatar' => $user->social_avatar,
                 'original' => $user->social_avatar_original,
             ],
-            'created_at'           => $user->created_at,
-            'updated_at'           => $user->updated_at,
-            'token'                => $this->transformToken($user->token),
+            'created_at' => $user->created_at,
+            'updated_at' => $user->updated_at,
+            // 'token' => $this->transformToken($user->token),
         ];
 
         $response = $this->ifAdmin([
-            'real_id'    => $user->id,
+            'real_id' => $user->id,
             'deleted_at' => $user->deleted_at,
         ], $response);
 
         return $response;
     }
 
-    /**
-     * TODO: remove from here
-     *
-     * @param null $token
-     *
-     * @return  array
-     */
-    private function transformToken($token = null)
-    {
-        return !$token ? null : [
-            'object'       => 'token',
-            'token'        => $token,
-            'access_token' => [
-                'token_type'   => 'Bearer',
-                'time_to_live' => [
-                    'minutes' => Config::get('jwt.ttl'),
-                ],
-                'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
-            ],
-        ];
-    }
+    // /**
+    //  * TODO: remove from here
+    //  *
+    //  * @param null $token
+    //  *
+    //  * @return  array
+    //  */
+    // private function transformToken($token = null)
+    // {
+    //     return !$token ? null : [
+    //         'object'       => 'token',
+    //         'token'        => $token,
+    //         'access_token' => [
+    //             'token_type'   => 'Bearer',
+    //             'time_to_live' => [
+    //                 'minutes' => Config::get('jwt.ttl'),
+    //             ],
+    //             'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
+    //         ],
+    //     ];
+    // }
 
     public function includeRoles(User $user)
     {
-        return $this->collection($user->roles, new RoleTransformer());
+        return $this->collection($user->roles, new RoleTransformer(), 'role');
     }
 }

@@ -110,6 +110,6 @@ HTTP/1.1 200 OK
 Route::get('clients', [
     'uses'       => 'Controller@listAllClients',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

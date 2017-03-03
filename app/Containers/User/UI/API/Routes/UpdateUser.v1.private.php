@@ -48,6 +48,6 @@
 Route::put('users', [
     'uses'       => 'Controller@updateUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

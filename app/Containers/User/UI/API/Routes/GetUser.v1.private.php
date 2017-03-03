@@ -38,6 +38,6 @@
 Route::get('users/{id}', [
     'uses'       => 'Controller@getUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

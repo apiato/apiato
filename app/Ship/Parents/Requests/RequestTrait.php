@@ -2,25 +2,21 @@
 
 namespace App\Ship\Parents\Requests;
 
-use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Ship\Engine\Traits\HashIdTrait;
 use App\Ship\Features\Exceptions\ValidationFailedException;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
 
 /**
- * Class RequestTrait
+ * Class RequestTrait.
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 trait RequestTrait
 {
-
     /**
      * Overriding this function to modify the any user input before
      * applying the validation rules.
      *
-     * @return  array
+     * @return array
      */
     public function all()
     {
@@ -46,7 +42,6 @@ trait RequestTrait
         throw new ValidationFailedException($validator->getMessageBag());
     }
 
-
     /**
      * Used from the `authorize` function if the Request class.
      * To call functions and compare their bool responses to determine
@@ -54,7 +49,7 @@ trait RequestTrait
      *
      * @param array $functions
      *
-     * @return  bool
+     * @return bool
      */
     protected function check(array $functions)
     {
@@ -99,9 +94,9 @@ trait RequestTrait
      *
      * @param array $requestData
      *
-     * @return  array
+     * @return array
      */
-    private function applyValidationRulesToUrlParams(Array $requestData)
+    private function applyValidationRulesToUrlParams(array $requestData)
     {
         if (isset($this->urlParameters) && !empty($this->urlParameters)) {
             foreach ($this->urlParameters as $param) {
@@ -115,7 +110,7 @@ trait RequestTrait
     /**
      * @param $user
      *
-     * @return  array
+     * @return array
      */
     private function hasAnyPermissionAccess($user)
     {
@@ -136,7 +131,7 @@ trait RequestTrait
     /**
      * @param $user
      *
-     * @return  array
+     * @return array
      */
     private function hasAnyRoleAccess($user)
     {
