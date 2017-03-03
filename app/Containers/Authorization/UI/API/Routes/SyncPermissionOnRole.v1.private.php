@@ -11,7 +11,7 @@
  * @apiPermission      Authenticated User
  *
  * @apiParam           {String} role_id Role ID
- * @apiParam           {String-Array} permissions_ids Permission ID or Array of Permissions ID's
+ * @apiParam           {Array} permissions_ids Permission ID or Array of Permissions ID's
  *
  * @apiSuccessExample  {json}       Success-Response:
 {
