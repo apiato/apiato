@@ -90,7 +90,11 @@ class RequestsDebuggerTask
         $print .= "REQUEST: \n";
         $print .= "   Endpoint: " . $request->fullUrl() . "\n";
         $print .= "   Method: " . $request->getMethod() . "\n";
-        $print .= "   Version: " . $request->version() . "\n";
+
+        if(method_exists($request, 'version')){
+            $print .= "   Version: " . $request->version() . "\n";
+        }
+
         $print .= "   IP: " . $request->ip() . " (Port: " . $request->getPort() . ") \n";
         $print .= "   Format: " . $request->format() . "\n";
         $print .= "\n \n";
