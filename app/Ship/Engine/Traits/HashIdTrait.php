@@ -72,8 +72,9 @@ trait HashIdTrait
      *
      * @return  array
      */
-    protected function decodeHashedIdsBeforeApplyingValidationRules(Array $requestData)
+    protected function decodeHashedIdsBeforeValidation(Array $requestData)
     {
+
         // the hash ID feature must be enabled to use this decoder feature.
         if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
 
