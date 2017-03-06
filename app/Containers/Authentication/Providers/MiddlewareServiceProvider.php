@@ -15,6 +15,21 @@ use Tymon\JWTAuth\Middleware\RefreshToken;
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
+
+    /**
+     * Register Middleware's
+     *
+     * @var  array
+     */
+    protected $middlewares = [
+        // ..
+    ];
+
+    /**
+     * Register Container Middleware Groups
+     *
+     * @var  array
+     */
     protected $middlewareGroups = [
         'web' => [
 

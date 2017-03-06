@@ -14,6 +14,15 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
     /**
+     * Register Middleware's
+     *
+     * @var  array
+     */
+    protected $middlewares = [
+        RequestsMonitorMiddleware::class,
+    ];
+
+    /**
      * Register Container Middleware Groups
      *
      * @var  array
@@ -23,7 +32,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 
         ],
         'api' => [
-            RequestsMonitorMiddleware::class,
+
         ],
     ];
 
