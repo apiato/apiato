@@ -23,8 +23,8 @@ class MainServiceProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
-        MiddlewareServiceProvider::class,
         AgentServiceProvider::class,
+        MiddlewareServiceProvider::class,
     ];
 
     /**
