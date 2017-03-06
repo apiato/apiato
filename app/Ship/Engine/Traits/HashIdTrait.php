@@ -26,7 +26,7 @@ trait HashIdTrait
     /**
      * All ID's passed with all endpoints will be decoded before entering the Application
      */
-    public function runEndpointsHashedIdsDecoder()
+    public function runHashedIdsDecoder()
     {
         if (Config::get('hello.hash-id')) {
             Route::bind('id', function ($id, $route) {

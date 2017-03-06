@@ -67,7 +67,7 @@ class RoutesProvider extends LaravelRouteServiceProvider
 
         $this->runRoutesAutoLoader();
 
-        $this->runEndpointsHashedIdsDecoder();
+        $this->runHashedIdsDecoder();
     }
 
 }
