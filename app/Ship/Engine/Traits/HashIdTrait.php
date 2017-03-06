@@ -166,6 +166,7 @@ trait HashIdTrait
                 $decodedIds[] = $this->decode($id);
             }
 
+            // callback return
             return $decodedIds;
         });
     }
@@ -185,7 +186,7 @@ trait HashIdTrait
         }
 
         foreach ($subject as $key => $value) {
-            if ($key == $findKey) {
+            if ($key == $findKey && isset($subject[$findKey])) {
                 $subject[$key] = $callback($subject[$findKey]);
                 break;
             }
