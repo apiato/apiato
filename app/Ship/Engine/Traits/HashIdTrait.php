@@ -156,7 +156,7 @@ trait HashIdTrait
     {
         $idToDecode = $this->removeLastOccurrenceFromString($key, '.*');
 
-        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) {
+        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) use ($key){
 
             if (!is_array($ids)) {
                 throw new IncorrectIdException('Expected ID\'s to be in array. Please wrap your ID\'s in an Array and send them back.');
@@ -165,7 +165,7 @@ trait HashIdTrait
             $decodedIds = [];
 
             foreach ($ids as $id) {
-                $decodedIds[] = $this->decode($id);
+                $decodedIds[] = $this->decode($id, $key);
             }
 
             // callback return
@@ -245,14 +245,15 @@ trait HashIdTrait
     }
 
     /**
-     * @param $id
+     * @param      $id
+     * @param null $parameter
      *
-     * @return  mixed
+     * @return  array
      */
-    public function decode($id)
+    public function decode($id, $parameter = null)
     {
-        if (is_int($id)) {
-            throw new IncorrectIdException('Only Hashed ID\'s allowed.');
+        if (is_numeric($id)) {
+            throw new IncorrectIdException('Only Hashed ID\'s allowed' . (!is_null($parameter) ? " ($parameter)." : '.'));
         }
 
         return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
