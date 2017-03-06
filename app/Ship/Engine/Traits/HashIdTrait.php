@@ -74,15 +74,11 @@ trait HashIdTrait
      */
     protected function decodeHashedIdsBeforeValidation(Array $requestData)
     {
-
         // the hash ID feature must be enabled to use this decoder feature.
         if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
-
             // iterate over each key (ID that needs to be decoded) and call keys locator to decode them
             foreach ($this->decode as $key) {
-
                 $requestData = $this->locateAndDecodeIds($requestData, $key);
-
             }
         }
 
@@ -108,7 +104,6 @@ trait HashIdTrait
      */
     private function locateAndDecodeIds($requestData, $key)
     {
-
         if ($this->stringEndsWithChars('.*', $key)) {
             // if the key of Type 3:
             $this->decodeType3Key($requestData, $key);
@@ -160,7 +155,6 @@ trait HashIdTrait
      */
     private function decodeType3Key(&$requestData, $key)
     {
-
         $idToDecode = $this->removeLastOccurrenceFromString($key, '.*');
 
         $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) {
@@ -178,7 +172,6 @@ trait HashIdTrait
             // callback return
             return $decodedIds;
         });
-
     }
 
     /**
@@ -236,7 +229,6 @@ trait HashIdTrait
     {
         return preg_match('/' . preg_quote($needle, '/') . '$/', $haystack);
     }
-
 
     /**
      * @param array $ids
