@@ -126,7 +126,7 @@ trait HashIdTrait
     {
         // decode single key
         if (isset($requestData[$key])) {
-            $requestData[$key] = $this->decode($requestData[$key]);
+            $requestData[$key] = $this->decode($requestData[$key], $key);
         }
     }
 
@@ -142,8 +142,7 @@ trait HashIdTrait
         array_walk_recursive($requestData, function (&$value, $key) use ($idToDecode) {
 
             if ($key == $idToDecode) {
-
-                $value = $this->decode($value);
+                $value = $this->decode($value, $key);
             }
 
         });
