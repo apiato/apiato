@@ -17,7 +17,6 @@ use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
-use Dingo\Api\Http\Request;
 
 /**
  * Class Controller.
@@ -68,12 +67,12 @@ class Controller extends ApiController
         return $this->response->paginator($users, new UserTransformer());
     }
 
-  /**
-   * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-   * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
-   *
-   * @return  \Dingo\Api\Http\Response
-   */
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+     *
+     * @return  \Dingo\Api\Http\Response
+     */
     public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
         $users = $action->run(['admin']);

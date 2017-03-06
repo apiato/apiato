@@ -14,6 +14,12 @@ abstract class MiddlewareProvider extends MainProvider
 
     use MiddlewaresLoaderTrait;
 
+    protected $middlewares = [];
+
+    protected $middlewareGroups = [];
+
+    protected $routeMiddleware = [];
+
     /**
      * Perform post-registration booting of services.
      */

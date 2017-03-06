@@ -18,9 +18,9 @@ trait MiddlewaresLoaderTrait
      */
     public function loadMiddlewares()
     {
-        $this->registerMiddleware(isset($this->middlewares) ? $this->middlewares : []);
-        $this->registerMiddlewareGroups((isset($this->middlewareGroups) ? $this->middlewareGroups : []));
-        $this->registerRouteMiddleware((isset($this->routeMiddleware) ? $this->routeMiddleware : []));
+        $this->registerMiddleware($this->middlewares);
+        $this->registerMiddlewareGroups($this->middlewareGroups);
+        $this->registerRouteMiddleware($this->routeMiddleware);
     }
 
     /**

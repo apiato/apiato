@@ -63,7 +63,7 @@ class AssignUserToRoleTest extends TestCase
         $this->assertEquals('400', $response->getStatusCode());
 
         $this->assertResponseContainKeyValue([
-            'message' => 'Only Hashed ID\'s allowed.',
+            'message' => 'Only Hashed ID\'s allowed (user_id).',
         ], $response);
     }
 

@@ -19,7 +19,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      * @var  array
      */
     protected $middlewares = [
-        LocalizationMiddleware::class
+
     ];
 
     /**
@@ -29,10 +29,10 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      */
     protected $middlewareGroups = [
         'web' => [
-
+            LocalizationMiddleware::class,
         ],
         'api' => [
-
+            LocalizationMiddleware::class,
         ],
     ];
 
