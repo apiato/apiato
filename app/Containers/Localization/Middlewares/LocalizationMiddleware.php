@@ -6,12 +6,14 @@ use Closure;
 use App;
 use Config;
 
+use App\Ship\Parents\Middlewares\Middleware;
+
 /**
- * Class Localization
+ * Class LocalizationMiddleware
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Localization
+class LocalizationMiddleware extends Middleware
 {
     /**
      * Handle an incoming request.
