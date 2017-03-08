@@ -38,6 +38,6 @@ trait ValidationTrait
             $queryResult = $queryBuilder->get();
 
             return $queryResult->isEmpty();
-        }, ["The composite ID's must be unique."]);
+        }, ["Duplicated record. This record has composite ID and it must be unique."]);
     }
 }
