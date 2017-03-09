@@ -43,6 +43,7 @@ class UpdateUserTask extends Task
      * @param null $tokenSecret
      *
      * @return  mixed
+     * @throws \App\Containers\Authentication\Exceptions\UpdateResourceFailedException
      */
     public function run(
         $userId,
@@ -56,44 +57,21 @@ class UpdateUserTask extends Task
         $refreshToken = null,
         $tokenSecret = null
     ) {
-        $attributes = [];
 
-        if ($password) {
-            $attributes['password'] = Hash::make($password);
-        }
+        // set all data in the array, then remove all null values and their keys
+        $attributes = array_filter([
+            'password'             => $password ? Hash::make($password) : null,
+            'name'                 => $name,
+            'email'                => $email,
+            'gender'               => $gender,
+            'birth'                => $birth,
+            'social_token'         => $token,
+            'social_expires_in'    => $expiresIn,
+            'social_refresh_token' => $refreshToken,
+            'social_token_secret'  => $tokenSecret,
+        ]);
 
-        if ($name) {
-            $attributes['name'] = $name;
-        }
-
-        if ($email) {
-            $attributes['email'] = $email;
-        }
-
-        if ($gender) {
-            $attributes['gender'] = $gender;
-        }
-
-        if ($birth) {
-            $attributes['birth'] = $birth;
-        }
-        if ($token) {
-            $attributes['social_token'] = $token;
-        }
-
-        if ($expiresIn) {
-            $attributes['social_expires_in'] = $expiresIn;
-        }
-
-        if ($refreshToken) {
-            $attributes['social_refresh_token'] = $refreshToken;
-        }
-
-        if ($tokenSecret) {
-            $attributes['social_token_secret'] = $tokenSecret;
-        }
-
-        // check if data is empty
+        // optionally, check if data is empty and return error
         if (!$attributes) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }

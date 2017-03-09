@@ -44,6 +44,18 @@ class UpdateUserTest extends TestCase
         $this->seeInDatabase('users', ['name' => $data['name']]);
     }
 
+    public function testUpdateExistingUserWithoutData_()
+    {
+        $data = [];
+
+        // send the HTTP request
+        $response = $this->makeCall($data);
+
+        // assert response status is correct
+        $this->assertEquals('417', $response->getStatusCode());
+    }
+
+
     public function testUpdateExistingUserWithEmptyValues()
     {
         $data = []; // empty data
