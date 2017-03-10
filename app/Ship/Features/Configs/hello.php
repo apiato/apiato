@@ -12,10 +12,10 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | The Login Page URL
+        | The Login Page View name
         |--------------------------------------------------------------------------
         */
-        'login-page-url' => 'login',
+        'login-page-name' => 'authentication::login',
     ],
 
     /*
