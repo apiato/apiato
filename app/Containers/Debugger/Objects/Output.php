@@ -3,8 +3,8 @@
 namespace App\Containers\Debugger\Objects;
 
 use Config;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Jenssegers\Agent\Facades\Agent;
 
 /**
@@ -43,8 +43,8 @@ class Output
     /**
      * Output constructor.
      *
-     * @param \Illuminate\Http\Request  $request
-     * @param \Illuminate\Http\Response $response
+     * @param \Symfony\Component\HttpFoundation\Request  $request
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
     public function __construct(Request $request, Response $response)
     {
