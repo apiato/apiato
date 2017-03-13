@@ -20,11 +20,11 @@ class Controller extends ApiController
      * @param \App\Containers\Authentication\UI\API\Requests\UserLoginRequest $request
      * @param \App\Containers\Authentication\Actions\ApiUserLoginAction       $action
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function userLogin(UserLoginRequest $request, ApiUserLoginAction $action)
     {
-        $user = $action->run($request['email'], $request['password']);
+        $user = $action->run($request);
 
         return $this->response->item($user, new UserTransformer(), 'user');
     }
@@ -33,7 +33,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authentication\UI\API\Requests\UserLogoutRequest $request
      * @param \App\Containers\Authentication\Actions\ApiUserLogoutAction       $action
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function userLogout(UserLogoutRequest $request, ApiUserLogoutAction $action)
     {

@@ -38,7 +38,7 @@ class CreateRoleTask extends Task
     public function run($name, $description = null, $displayName = null)
     {
 
-        return $this->roleRepository->create([
+        return $this->roleRepository->updateOrCreate([
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,

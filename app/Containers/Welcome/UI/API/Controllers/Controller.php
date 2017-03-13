@@ -3,7 +3,6 @@
 namespace App\Containers\Welcome\UI\API\Controllers;
 
 use App\Ship\Parents\Controllers\ApiController;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class Controller.
@@ -12,13 +11,11 @@ use Illuminate\Support\Facades\Config;
  */
 class Controller extends ApiController
 {
-
     /**
-     * @return  \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sayWelcome()
     {
-        return response()->json(['Welcome to ' . Config::get('api.name') . '.']);
+        return response()->json(['Welcome to '.env('API_NAME', 'Please Fill').'.']);
     }
-
 }

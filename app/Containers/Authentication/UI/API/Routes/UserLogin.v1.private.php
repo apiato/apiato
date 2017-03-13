@@ -67,6 +67,6 @@
  *
  * @apiErrorExample  {json}       Error-Response:
  */
-Route::post('/login', [
+Route::post('auth/login', [
     'uses' => 'Controller@userLogin',
 ]);

@@ -64,6 +64,7 @@ class PortoServiceProvider extends MainProvider
     protected $aliases = [
         'Hashids' => Hashids::class,
         'Fractal' => FractalFacade::class,
+        'UUID' => \Webpatser\Uuid\Uuid::class,
     ];
 
     /**

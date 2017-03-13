@@ -28,19 +28,22 @@ trait HashIdTrait
      */
     public function runEndpointsHashedIdsDecoder()
     {
+
         if (Config::get('hello.hash-id')) {
+
             Route::bind('id', function ($id, $route) {
+
                 // skip decoding some endpoints
                 if (!in_array($route->uri(), $this->skippedEndpoints)) {
 
                     // decode the ID in the URL
                     $decoded = $this->decoder($id);
-
+                    // dd($id);
                     if (empty($decoded)) {
                         throw new IncorrectIdException('ID ('.$id.') is incorrect, consider using the hashed ID
                         instead of the numeric ID.');
                     }
-
+                    // dd($decoded);
                     return $decoded[0];
                 }
             });
@@ -76,154 +79,21 @@ trait HashIdTrait
     {
         // the hash ID feature must be enabled to use this decoder feature.
         if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
+            foreach ($this->decode as $id) {
+                if (isset($requestData[$id])) {
+                    // validate the user is not trying to pass real ID
+                    if (is_numeric($requestData[$id])) {
+                        return $requestData;
+                        // throw new IncorrectIdException('Only Hashed ID\'s allowed to be passed.');
+                    }
 
-            // iterate over each key (ID that needs to be decoded) and call keys locator to decode them
-            foreach ($this->decode as $key) {
-                $requestData = $this->locateAndDecodeIds($requestData, $key);
+                    $requestData[$id] = is_array($requestData[$id]) ?
+                        $this->decodeArray($requestData[$id]) : $this->decode($requestData[$id]);
+                } // do nothing if the input is incorrect, because what if it's not required!
             }
         }
 
         return $requestData;
-    }
-
-    /**
-     * Expected Keys formats:.
-     *
-     * Type 1:
-     *   A
-     * Type 2:
-     *   A.*.B
-     *   A.*.B.*.C
-     * Type 3:
-     *   A.*
-     *   A.*.B.*
-     *
-     * @param $requestData
-     * @param $key
-     *
-     * @return mixed
-     */
-    private function locateAndDecodeIds($requestData, $key)
-    {
-        if ($this->stringEndsWithChars('.*', $key)) {
-            // if the key of Type 3:
-            $this->decodeType3Key($requestData, $key);
-        } elseif (str_contains($key, '.*.')) {
-            // if the key of Type 2:
-            $this->decodeType2Key($requestData, $key);
-        } else {
-            // if the key of Type 1:
-            $this->decodeType1Key($requestData, $key);
-        }
-
-        return $requestData;
-    }
-
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType1Key(&$requestData, $key)
-    {
-        // decode single key
-        if (isset($requestData[$key])) {
-            $requestData[$key] = $this->decode($requestData[$key]);
-        }
-    }
-
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType2Key(&$requestData, $key)
-    {
-        // get the last part of the key, which should be the ID that needs decoding
-        $idToDecode = substr($key, strrpos($key, '.*.') + 3);
-
-        array_walk_recursive($requestData, function (&$value, $key) use ($idToDecode) {
-            if ($key == $idToDecode) {
-                $value = $this->decode($value);
-            }
-        });
-    }
-
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType3Key(&$requestData, $key)
-    {
-        $idToDecode = $this->removeLastOccurrenceFromString($key, '.*');
-
-        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) {
-            if (!is_array($ids)) {
-                throw new IncorrectIdException('Expected ID\'s to be in array. Please wrap your ID\'s in an Array and send them back.');
-            }
-
-            $decodedIds = [];
-
-            foreach ($ids as $id) {
-                $decodedIds[] = $this->decode($id);
-            }
-
-            // callback return
-            return $decodedIds;
-        });
-    }
-
-    /**
-     * @param $subject
-     * @param $findKey
-     * @param $callback
-     *
-     * @return array
-     */
-    public function findKeyAndReturnValue(&$subject, $findKey, $callback)
-    {
-        // if the value is not an array, then you have reached the deepest point of the branch, so return the value.
-        if (!is_array($subject)) {
-            return $subject;
-        }
-
-        foreach ($subject as $key => $value) {
-            if ($key == $findKey && isset($subject[$findKey])) {
-                $subject[$key] = $callback($subject[$findKey]);
-                break;
-            }
-
-            // add the value with the recursive call
-            $this->findKeyAndReturnValue($value, $findKey, $callback);
-        }
-    }
-
-    /**
-     * @param $search
-     * @param $subject
-     *
-     * @return mixed
-     */
-    private function removeLastOccurrenceFromString($subject, $search)
-    {
-        $replace = '';
-
-        $pos = strrpos($subject, $search);
-
-        if ($pos !== false) {
-            $subject = substr_replace($subject, $replace, $pos, strlen($search));
-        }
-
-        return $subject;
-    }
-
-    /**
-     * @param $needle
-     * @param $haystack
-     *
-     * @return int
-     */
-    private function stringEndsWithChars($needle, $haystack)
-    {
-        return preg_match('/'.preg_quote($needle, '/').'$/', $haystack);
     }
 
     /**
@@ -248,10 +118,6 @@ trait HashIdTrait
      */
     public function decode($id)
     {
-        if (is_int($id)) {
-            throw new IncorrectIdException('Only Hashed ID\'s allowed.');
-        }
-
         return empty($this->decoder($id)) ? [] : $this->decoder($id)[0];
     }
 

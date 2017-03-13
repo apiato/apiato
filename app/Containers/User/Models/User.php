@@ -70,4 +70,10 @@ class User extends UserModel
     {
         return $this->hasOne(StripeAccount::class);
     }
+    
+    public function fullName()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
 }

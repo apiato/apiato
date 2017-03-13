@@ -38,16 +38,16 @@ class WebLoginTask extends Task
      */
     public function run($email, $password, $remember = false)
     {
-        if ($remember) {
-            $remember = true;
-        }
-
-        $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
-
-        if (!$correct) {
-            throw new AuthenticationFailedException();
-        }
-
+        // if ($remember) {
+        //     $remember = true;
+        // }
+        //
+        // $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
+        //
+        // if (!$correct) {
+        //     throw new AuthenticationFailedException();
+        // }
+        $user->createToken('Device 1', $scopes, $claims)->accessToken;
         return $this->auth->user();
     }
 

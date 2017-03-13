@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MissingTokenException extends Exception
+class UnauthenticatedException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_BAD_REQUEST;
+    public $httpStatusCode = Response::HTTP_UNAUTHORIZED;
 
-    public $message = 'Token is required.';
+    public $message = 'Unauthenticated';
 }

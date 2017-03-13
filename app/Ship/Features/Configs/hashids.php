@@ -38,9 +38,9 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'hello-api',
-            'length' => '8',
-            'alphabet' => 'abcdefghijklmnopqrstuvwxyz',
+            'salt' => env('APP_KEY'),
+            'length' => '32',
+            'alphabet' => '1234567890abcdefghijklmnopqrstuvwxyz',
         ],
 
         'alternative' => [

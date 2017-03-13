@@ -7,8 +7,10 @@ use ErrorException;
 use Illuminate\Support\Str;
 use Response;
 use Illuminate\Support\Collection;
-use Illuminate\Contracts\Pagination\Paginator;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use League\Fractal\Pagination\Paginator;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ResponseFactory
 {
@@ -30,6 +32,24 @@ class ResponseFactory
 
         return $response;
     }
+
+    /**
+     * Respond with a created response and associate a location if provided.
+     *
+     * @param null|string $location
+     *
+     * @return \Dingo\Api\Http\Response
+     */
+    public function success($content, $type)
+    {
+        $response = response()->json([
+            'GUID' => $content->getHashedKey(),
+            'message' => $type.' successfully created.',
+        ]);
+        $response->setStatusCode(201);
+        return $response;
+    }
+
 
     /**
      * Respond with an accepted response and associate a location and/or content if provided.
@@ -73,7 +93,7 @@ class ResponseFactory
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function collection(Collection $collection, $transformer, $type)
+    public function collection($collection, $transformer, $type)
     {
         return fractal()->collection($collection, $transformer, $type);
     }
@@ -103,17 +123,13 @@ class ResponseFactory
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function paginator(Paginator $paginator, $transformer, array $parameters = [], Closure $after = null)
+    public function paginator(LengthAwarePaginator $paginator, $transformer, $type)
     {
-        if ($paginator->isEmpty()) {
-            $class = get_class($paginator);
-        } else {
-            $class = get_class($paginator->first());
-        }
-
-        $binding = $this->transformer->register($class, $transformer, $parameters, $after);
-
-        return new Response($paginator, 200, [], $binding);
+        $data = $paginator->getCollection();
+        return  fractal()
+                ->collection($data, $transformer,$type)
+                ->paginateWith(new IlluminatePaginatorAdapter($paginator))
+                ->toArray();
     }
 
     /**

@@ -122,6 +122,6 @@ HTTP/1.1 200 OK
   }
 }
  */
-Route::post('auth/{provider}', [
+$router->post('auth/{provider}', [
     'uses' => 'Controller@authenticateAll',
 ]);

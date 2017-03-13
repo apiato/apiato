@@ -6,34 +6,32 @@ use App\Containers\Localization\Middlewares\Localization;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
- * Class MiddlewareServiceProvider
+ * Class MiddlewareServiceProvider.
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-
     /**
-     * Register Container Middleware Groups
+     * Register Container Middleware Groups.
      *
-     * @var  array
+     * @var array
      */
     protected $middlewareGroups = [
         'web' => [
-            Localization::class
+            Localization::class,
         ],
         'api' => [
-            Localization::class
+            Localization::class,
         ],
     ];
 
     /**
-     * Register Route Middleware's
+     * Register Route Middleware's.
      *
-     * @var  array
+     * @var array
      */
     protected $routeMiddleware = [
         // ..
     ];
-
 }

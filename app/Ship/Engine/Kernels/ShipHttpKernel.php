@@ -37,20 +37,20 @@ class ShipHttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $middlewareGroups = [
+
         'web' => [
             \App\Ship\Features\Middlewares\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Ship\Features\Middlewares\Http\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
         'api' => [
-            // Laravel middleware's:
+            'throttle:60,1',
             'bindings',
-            'throttle:120,1',
         ],
     ];
 
@@ -62,6 +62,12 @@ class ShipHttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Core\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        // 'site.binding' => \App\Core\Http\Middleware\CheckIfSiteExists::class,
     ];
 }

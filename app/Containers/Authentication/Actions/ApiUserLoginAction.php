@@ -5,7 +5,7 @@ namespace App\Containers\Authentication\Actions;
 use App\Containers\Authentication\Tasks\ApiLoginWithCredentialsTask;
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Ship\Parents\Actions\Action;
-
+use Illuminate\Http\Request;
 /**
  * Class ApiUserLoginAction.
  *
@@ -36,16 +36,16 @@ class ApiUserLoginAction extends Action
     }
 
     /**
-     * @param $email
-     * @param $password
+     * @param Request $request
      *
      * @return mixed
      */
-    public function run($email, $password)
+    public function run(Request $request)
     {
-        $token = $this->apiLoginWithCredentialsTask->run($email, $password);
+        $token = $this->apiLoginWithCredentialsTask->run($request);
 
-        $user = $this->getAuthenticatedUserTask->run($token);
+        $user = $this->getAuthenticatedUserTask->run();
+        $user->token = $token;
 
         return $user;
     }

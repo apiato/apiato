@@ -29,10 +29,13 @@ class UserTransformer extends Transformer
      */
     public function transform(User $user)
     {
+        // dd($user);
+        // dd(array_key_exists('token',$user['attributes']));
         $response = [
             'object' => 'User',
             'id' => $user->getHashedKey(),
-            'name' => $user->name,
+            // 'name' => $user->name,
+            'full_name' => $user->fullName(),
             'email' => $user->email,
             'confirmed' => $user->confirmed,
             'nickname' => $user->nickname,
@@ -46,7 +49,7 @@ class UserTransformer extends Transformer
             ],
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
-            // 'token' => $this->transformToken($user->token),
+            'token' => array_key_exists('token',$user['attributes']) ? $this->transformToken($user->token): null ,
         ];
 
         $response = $this->ifAdmin([
@@ -64,20 +67,21 @@ class UserTransformer extends Transformer
     //  *
     //  * @return  array
     //  */
-    // private function transformToken($token = null)
-    // {
-    //     return !$token ? null : [
-    //         'object'       => 'token',
-    //         'token'        => $token,
-    //         'access_token' => [
-    //             'token_type'   => 'Bearer',
-    //             'time_to_live' => [
-    //                 'minutes' => Config::get('jwt.ttl'),
-    //             ],
-    //             'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
-    //         ],
-    //     ];
-    // }
+    private function transformToken($token = null)
+    {
+        // dd($token);
+        return !$token ? null : [
+            'type'       => 'token',
+            'token'        => $token,
+            'access_token' => [
+                'token_type'   => 'Bearer',
+                // 'time_to_live' => [
+                //     'minutes' => Config::get('jwt.ttl'),
+                // ],
+                // 'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
+            ],
+        ];
+    }
 
     public function includeRoles(User $user)
     {

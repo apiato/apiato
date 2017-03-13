@@ -9,7 +9,8 @@
     "laravel/passport": "^1.0.0",
     "laravel/scout": "^3.0.0",
     "spatie/laravel-fractal":"^3.5.0",
-    "teamtnt/laravel-scout-tntsearch-driver":"*"
+    "teamtnt/laravel-scout-tntsearch-driver":"*",
+    "webpatser/laravel-uuid": "2.*"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

@@ -33,7 +33,13 @@
       }
    }
 }
- */
+*/
+Route::get('users/me', [
+    'uses'       => 'Controller@getAuthUser',
+    'middleware' => [
+        'auth:api',
+    ],
+]);
 
 Route::get('users/{id}', [
     'uses'       => 'Controller@getUser',
