@@ -4,6 +4,7 @@ namespace App\Ship\Parents\Requests;
 
 use App\Ship\Features\Exceptions\ValidationFailedException;
 use Illuminate\Contracts\Validation\Validator;
+use Dingo\Api\Http\Request as DingoRequest;
 
 /**
  * Class RequestTrait
@@ -40,7 +41,11 @@ trait RequestTrait
      */
     public function failedValidation(Validator $validator)
     {
-        throw new ValidationFailedException($validator->getMessageBag());
+        if ($this->container['request'] instanceof DingoRequest) {
+            throw new ValidationFailedException($validator->getMessageBag());
+        }
+
+        parent::failedValidation($validator);
     }
 
 

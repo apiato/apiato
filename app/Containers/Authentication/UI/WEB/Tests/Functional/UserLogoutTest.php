@@ -14,11 +14,26 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
  */
 class UserLogoutTest extends TestCase
 {
-    use WithoutMiddleware;
-
     // overrides the default subDomain in the base URL
     protected $subDomain = 'admin';
     protected $endpoint = '/logout';
+
+    public function setUp()
+    {
+        // we change the API_PREFIX for web routes to make available all the
+        // right web behavior. Maybe this should be seted up on
+        // TestCaseTrait->overrideSubDomain() method?
+        putenv("API_PREFIX=api");
+
+        parent::setUp();
+    }
+
+    public function tearDown()
+    {
+        // revert the API_PREFIX variable to null to avoid effects on other test
+        putenv("API_PREFIX=");
+        parent::tearDown();
+    }
 
     public function testUserLogout()
     {
