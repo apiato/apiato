@@ -2,26 +2,27 @@
 
 namespace App\Containers\Localization\Middlewares;
 
-use Closure;
 use App;
+use App\Ship\Parents\Middlewares\Middleware;
+use Closure;
 use Config;
+use Illuminate\Http\Request;
 
 /**
- * Class Localization
+ * Class LocalizationMiddleware
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Localization
+class LocalizationMiddleware extends Middleware
 {
+
     /**
-     * Handle an incoming request.
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     *
-     * @return mixed
+     * @return  mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         // find and validate the lang on that request
         $lang = $this->validateLanguage($this->findLanguage($request));

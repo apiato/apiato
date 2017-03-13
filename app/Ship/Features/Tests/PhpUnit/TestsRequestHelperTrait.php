@@ -97,7 +97,6 @@ trait TestsRequestHelperTrait
     {
         // In case Hash ID is enabled it will encode the ID first
         $id = $this->hashEndpointId($id, $skipEncoding);
-
         $this->endpoint = str_replace($replace, $id, $this->endpoint);
 
         return $this;

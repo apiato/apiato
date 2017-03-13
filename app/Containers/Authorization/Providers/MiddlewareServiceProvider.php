@@ -11,7 +11,20 @@ use App\Ship\Parents\Providers\MiddlewareProvider;
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
+    /**
+     * Register Middleware's
+     *
+     * @var  array
+     */
+    protected $middlewares = [
+        // ..
+    ];
 
+    /**
+     * Register Container Middleware Groups
+     *
+     * @var  array
+     */
     protected $middlewareGroups = [
         'web' => [
 

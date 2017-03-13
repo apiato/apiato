@@ -70,7 +70,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return \App\Ship\Parents\Factories\ResponseFactory
+     * @return  \Dingo\Api\Http\Response
      */
     public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {

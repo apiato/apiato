@@ -3,6 +3,7 @@
 namespace App\Ship\Engine\Loaders;
 
 use App;
+use Illuminate\Contracts\Http\Kernel;
 
 /**
  * Class MiddlewaresLoaderTrait.
@@ -17,8 +18,23 @@ trait MiddlewaresLoaderTrait
      */
     public function loadMiddlewares()
     {
+        $this->registerMiddleware($this->middlewares);
         $this->registerMiddlewareGroups($this->middlewareGroups);
         $this->registerRouteMiddleware($this->routeMiddleware);
+    }
+
+    /**
+     * Registering Route Group's
+     *
+     * @param array $middlewareGroups
+     */
+    private function registerMiddleware(array $middlewares = [])
+    {
+        $httpKernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
+
+        foreach ($middlewares as $middleware) {
+            $httpKernel->prependMiddleware($middleware);
+        }
     }
 
     /**

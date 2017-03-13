@@ -22,9 +22,9 @@ trait RequestTrait
     {
         $requestData = parent::all();
 
-        $requestData = $this->applyValidationRulesToUrlParams($requestData);
+        $requestData = $this->mergeUrlParametersWithRequestData($requestData);
 
-        $requestData = $this->decodeHashedIdsBeforeApplyingValidationRules($requestData);
+        $requestData = $this->decodeHashedIdsBeforeValidation($requestData);
 
         return $requestData;
     }
@@ -96,7 +96,8 @@ trait RequestTrait
      *
      * @return array
      */
-    private function applyValidationRulesToUrlParams(array $requestData)
+    private function mergeUrlParametersWithRequestData(Array $requestData)
+
     {
         if (isset($this->urlParameters) && !empty($this->urlParameters)) {
             foreach ($this->urlParameters as $param) {

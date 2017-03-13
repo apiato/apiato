@@ -40,7 +40,7 @@ class Controller extends WebController
         }
 
         if (is_array($result)) {
-            return view('authentication::login')->with($result);
+            return redirect('login')->with($result);
         }
 
         return redirect('dashboard');
@@ -65,7 +65,7 @@ class Controller extends WebController
     {
         $action->run();
 
-        return view('authentication::login');
+        return redirect('login');
     }
 
 

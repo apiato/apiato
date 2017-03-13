@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\Providers;
 
-use App\Containers\Localization\Middlewares\Localization;
+use App\Containers\Localization\Middlewares\LocalizationMiddleware;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
@@ -13,16 +13,25 @@ use App\Ship\Parents\Providers\MiddlewareProvider;
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
     /**
-     * Register Container Middleware Groups.
+     * Register Middleware's
+     *
+     * @var  array
+     */
+    protected $middlewares = [
+
+    ];
+
+    /**
+     * Register Container Middleware Groups
      *
      * @var array
      */
     protected $middlewareGroups = [
         'web' => [
-            Localization::class,
+            LocalizationMiddleware::class,
         ],
         'api' => [
-            Localization::class,
+            LocalizationMiddleware::class,
         ],
     ];
 

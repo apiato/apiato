@@ -15,7 +15,7 @@ Route::group(['domain' => 'admin.'. env('APP_URL')], function ($router) {
         'uses' => 'Controller@loginAdmin',
     ]);
 
-    Route::get('/logout', [
+    $router->post('/logout', [
         'as'   => 'admin_logout',
         'uses' => 'Controller@logoutAdmin',
     ]);
