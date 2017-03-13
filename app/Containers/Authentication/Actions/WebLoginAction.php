@@ -4,7 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Ship\Parents\Actions\Action;
-
+use Illuminate\Http\Request;
 /**
  * Class WebLoginAction.
  *
@@ -35,9 +35,9 @@ class WebLoginAction extends Action
      *
      * @return  mixed
      */
-    public function run($email, $password, $remember)
+    public function run(Request $request)
     {
-        $user = $this->webLoginTask->run($email, $password, $remember);
+        $user = $this->webLoginTask->run($request);
 
         return $user;
     }

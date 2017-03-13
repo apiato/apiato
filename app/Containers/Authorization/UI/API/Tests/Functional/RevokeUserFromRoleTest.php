@@ -29,7 +29,7 @@ class RevokeUserFromRoleTest extends TestCase
         $randomUser->assignRole($roleA);
 
         $data = [
-            'roles_ids' => [$roleA->getHashedKey()],
+            'roles_ids' => $roleA->getHashedKey(),
             'user_id'   => $randomUser->getHashedKey(),
         ];
 
@@ -57,7 +57,7 @@ class RevokeUserFromRoleTest extends TestCase
         $randomUser->assignRole($roleA);
 
         $data = [
-            'roles_ids' => [$roleA->id],
+            'roles_ids' => $roleA->id,
             'user_id'   => $randomUser->id,
         ];
 
@@ -69,6 +69,7 @@ class RevokeUserFromRoleTest extends TestCase
 
         $this->assertResponseContainKeyValue([
             'message' => 'Only Hashed ID\'s allowed (roles_ids.*).',
+
         ], $response);
     }
 

@@ -24,9 +24,9 @@
 }
  */
 
-$router->post('roles', [
+Route::post('roles', [
     'uses'       => 'Controller@createRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

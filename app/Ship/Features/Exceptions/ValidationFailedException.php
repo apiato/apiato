@@ -2,8 +2,8 @@
 
 namespace App\Ship\Features\Exceptions;
 
-use Dingo\Api\Exception\ResourceException as DingoResourceException;
 use Exception;
+use App\Ship\Parents\Exceptions\ResourceException;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
@@ -16,9 +16,8 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ValidationFailedException extends DingoResourceException
+class ValidationFailedException extends ResourceException
 {
-
     public $httpStatusCode = SymfonyResponse::HTTP_UNPROCESSABLE_ENTITY;
 
     public $message = 'Invalid Input.';

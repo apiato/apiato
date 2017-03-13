@@ -107,9 +107,9 @@ HTTP/1.1 200 OK
 }
  */
 
-$router->get('clients', [
+Route::get('clients', [
     'uses'       => 'Controller@listAllClients',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

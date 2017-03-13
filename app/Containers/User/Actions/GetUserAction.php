@@ -6,6 +6,7 @@ use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
+use Auth;
 
 /**
  * Class GetUserAction.
@@ -14,14 +15,13 @@ use App\Ship\Parents\Actions\Action;
  */
 class GetUserAction extends Action
 {
-
     /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
+     * @var \App\Containers\User\Tasks\FindUserByIdTask
      */
     private $findUserByIdTask;
 
     /**
-     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
+     * @var \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
      */
     private $getAuthenticatedUserTask;
 
@@ -43,15 +43,15 @@ class GetUserAction extends Action
      * @param      $userId
      * @param null $token
      *
-     * @return  mixed
+     * @return mixed
      */
-    public function run($userId, $token = null)
+    public function run($userId)
     {
         if ($userId) {
-            $user = $this->findUserByIdTask->run($userId)->withToken();
+            $user = $this->findUserByIdTask->run($userId);
         } else {
-            if ($token) {
-                $user = $this->getAuthenticatedUserTask->run()->withToken();
+            if (Auth::check()) {
+                $user = $this->getAuthenticatedUserTask->run();
             }
         }
 
@@ -61,5 +61,4 @@ class GetUserAction extends Action
 
         return $user;
     }
-
 }

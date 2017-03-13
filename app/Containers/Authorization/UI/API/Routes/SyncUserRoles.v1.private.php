@@ -11,7 +11,7 @@
  * @apiPermission      Authenticated User
  *
  * @apiParam           {Number} user_id User ID
- * @apiParam           {Array} roles_ids Role ID or Array of Roles ID's
+ * @apiParam           {Array-String} roles_ids Role ID or Array of Roles ID's
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
@@ -56,9 +56,9 @@
 }
  */
 
-$router->post('roles/sync', [
+Route::post('roles/sync', [
     'uses'       => 'Controller@syncUserRoles',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

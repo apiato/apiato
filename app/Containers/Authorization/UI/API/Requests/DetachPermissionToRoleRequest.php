@@ -29,7 +29,7 @@ class DetachPermissionToRoleRequest extends Request
      */
     protected $decode = [
         'role_id',
-        'permissions_ids.*',
+        'permissions_ids',
     ];
 
     /**

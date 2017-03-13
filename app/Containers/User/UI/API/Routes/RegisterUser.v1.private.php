@@ -63,6 +63,6 @@
 }
  */
 
-$router->post('/register', [
+Route::post('/register', [
     'uses'  => 'Controller@registerUser',
 ]);

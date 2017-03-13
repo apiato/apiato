@@ -29,7 +29,7 @@ class SyncUserRolesRequest extends Request
      */
     protected $decode = [
         'user_id',
-        'roles_ids.*',
+        'roles_ids',
     ];
 
     /**

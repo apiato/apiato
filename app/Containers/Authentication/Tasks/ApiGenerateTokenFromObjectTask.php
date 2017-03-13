@@ -16,21 +16,6 @@ class ApiGenerateTokenFromObjectTask extends Task
 {
 
     /**
-     * @var \App\Containers\Authentication\Adapters\JwtAuthAdapter
-     */
-    private $jwtAuthAdapter;
-
-    /**
-     * ApiLoginThisUserObjectTask constructor.
-     *
-     * @param \App\Containers\Authentication\Adapters\JwtAuthAdapter $jwtAuthAdapter
-     */
-    public function __construct(JwtAuthAdapter $jwtAuthAdapter)
-    {
-        $this->jwtAuthAdapter = $jwtAuthAdapter;
-    }
-
-    /**
      * @param $user
      *
      * @return  mixed

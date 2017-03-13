@@ -28,7 +28,7 @@ class RevokeUserFromRoleRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'roles_ids.*',
+        'roles_ids',
         'user_id',
     ];
 

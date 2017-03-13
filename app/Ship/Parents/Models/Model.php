@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Models;
 
 use App\Ship\Engine\Traits\HashIdTrait;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model as LaravelEloquentModel;
 
 /**
@@ -12,7 +13,6 @@ use Illuminate\Database\Eloquent\Model as LaravelEloquentModel;
  */
 abstract class Model extends LaravelEloquentModel
 {
-
     use HashIdTrait;
-
+    use Searchable;
 }

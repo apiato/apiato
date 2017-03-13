@@ -1,6 +1,6 @@
 <?php
 
 // Default root route
-$router->get('/', [
+Route::get('/', [
     'uses' => 'Controller@sayWelcome',
 ]);

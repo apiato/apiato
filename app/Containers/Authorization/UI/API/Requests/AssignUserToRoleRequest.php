@@ -29,7 +29,7 @@ class AssignUserToRoleRequest extends Request
      */
     protected $decode = [
         'user_id',
-        'roles_ids.*',
+        'roles_ids',
     ];
 
     /**
@@ -48,7 +48,7 @@ class AssignUserToRoleRequest extends Request
     public function rules()
     {
         return [
-            'roles_ids'   => 'array|required',
+            'roles_ids'   => 'required',
             'roles_ids.*' => 'exists:roles,id',
             'user_id'     => 'required|exists:users,id',
         ];

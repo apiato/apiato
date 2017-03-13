@@ -38,7 +38,7 @@ class CreatePermissionTask extends Task
     public function run($name, $description = null, $displayName = null)
     {
 
-        return $this->permissionRepository->create([
+        return $this->permissionRepository->updateOrCreate([
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,

@@ -3,11 +3,10 @@
 namespace App\Ship\Engine\Loaders;
 
 use App\Ship\Engine\Butlers\Facades\ShipButler;
-use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Routing\Router as LaravelRouter;
-use Illuminate\Support\Facades\Config;
+// use Illuminate\Routing\Router as LaravelRouter;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Finder\SplFileInfo;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class RoutesLoaderTrait.
@@ -16,9 +15,8 @@ use Symfony\Component\Finder\SplFileInfo;
  */
 trait RoutesLoaderTrait
 {
-
     /**
-     * Register all the containers routes files in the framework
+     * Register all the containers routes files in the framework.
      */
     public function runRoutesAutoLoader()
     {
@@ -32,7 +30,7 @@ trait RoutesLoaderTrait
     }
 
     /**
-     * Register the Containers API routes files
+     * Register the Containers API routes files.
      *
      * @param $containerPath
      * @param $containersNamespace
@@ -40,7 +38,7 @@ trait RoutesLoaderTrait
     private function loadRoutesFromContainersForApi($containerPath, $containersNamespace)
     {
         // get the container api routes path
-        $apiRoutesPath = $containerPath . '/UI/API/Routes';
+        $apiRoutesPath = $containerPath.'/UI/API/Routes';
 
         if (File::isDirectory($apiRoutesPath)) {
             // get all files from the container API routes directory
@@ -53,7 +51,7 @@ trait RoutesLoaderTrait
     }
 
     /**
-     * Register the Containers WEB routes files
+     * Register the Containers WEB routes files.
      *
      * @param $containerPath
      * @param $containersNamespace
@@ -61,13 +59,13 @@ trait RoutesLoaderTrait
     private function loadRoutesFromContainersForWeb($containerPath, $containersNamespace)
     {
         // get the container web routes path
-        $webRoutesPath = $containerPath . '/UI/WEB/Routes';
+        $webRoutesPath = $containerPath.'/UI/WEB/Routes';
 
         if (File::isDirectory($webRoutesPath)) {
             // get all files from the container Web routes directory
             $files = File::allFiles($webRoutesPath);
 
-            $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers';
+            $controllerNamespace = $containersNamespace.'\\Containers\\'.basename($containerPath).'\\UI\WEB\Controllers';
 
             foreach ($files as $file) {
                 $this->loadWebRoute($file, $controllerNamespace);
@@ -81,10 +79,10 @@ trait RoutesLoaderTrait
      */
     private function loadWebRoute($file, $controllerNamespace)
     {
-        $this->webRouter->group([
+        Route::group([
             'middleware' => ['web'],
-            'namespace'  => $controllerNamespace,
-        ], function (LaravelRouter $router) use ($file) {
+            'namespace' => $controllerNamespace,
+        ], function ($router) use ($file) {
             require $file->getPathname();
         });
     }
@@ -97,36 +95,25 @@ trait RoutesLoaderTrait
     private function loadApiRoute($file, $containerPath, $containersNamespace)
     {
         // get the version from the file name to register it
-        $apiVersionNumber = $this->getRouteFileVersionNumber($file);
+        // $apiVersionNumber = $this->getRouteFileVersionNumber($file);
+        $controllerNamespace = $containersNamespace.'\\Containers\\'.basename($containerPath).'\\UI\API\Controllers';
 
-        $this->apiRouter->version('v' . $apiVersionNumber,
-            function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
-
-                $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
-
-                $router->group([
-                    // Routes Namespace
-                    'namespace'  => $controllerNamespace,
-                    // Add Middleware's - 'api' is a group of middleware's
-                    'middleware' => ['api'],
-                    // The API limit time.
-                    'limit'      => Config::get('hello.api.limit'),
-                    // The API limit expiry time.
-                    'expires'    => Config::get('hello.api.limit_expires'),
-                ], function ($router) use ($file) {
-
-                    require $file->getPathname();
-
-                });
-
+        Route::group([
+                // Routes Namespace
+                'namespace' => $controllerNamespace,
+                // Add Middleware's - 'api' is a group of middleware's
+                'middleware' => ['api'],
+                // Add Domain - only for API domain
+                'domain' => 'api.'.env('APP_URL'),
+            ], function ($router) use ($file) {
+                require $file->getPathname();
             });
     }
-
 
     /**
      * @param $file
      *
-     * @return  int
+     * @return int
      */
     private function getRouteFileVersionNumber($file)
     {
@@ -139,13 +126,13 @@ trait RoutesLoaderTrait
 
         $apiVersionNumber = str_replace('v', '', $apiVersion);
 
-        return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
+        return is_int($apiVersionNumber) ? $apiVersionNumber : 1;
     }
 
     /**
      * @param \Symfony\Component\Finder\SplFileInfo $file
      *
-     * @return  mixed
+     * @return mixed
      */
     private function getRouteFileNameWithoutExtension(SplFileInfo $file)
     {

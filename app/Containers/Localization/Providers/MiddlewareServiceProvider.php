@@ -6,13 +6,12 @@ use App\Containers\Localization\Middlewares\LocalizationMiddleware;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
 /**
- * Class MiddlewareServiceProvider
+ * Class MiddlewareServiceProvider.
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-
     /**
      * Register Middleware's
      *
@@ -25,7 +24,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     /**
      * Register Container Middleware Groups
      *
-     * @var  array
+     * @var array
      */
     protected $middlewareGroups = [
         'web' => [
@@ -37,12 +36,11 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     ];
 
     /**
-     * Register Route Middleware's
+     * Register Route Middleware's.
      *
-     * @var  array
+     * @var array
      */
     protected $routeMiddleware = [
         // ..
     ];
-
 }

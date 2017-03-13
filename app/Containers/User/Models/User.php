@@ -12,7 +12,6 @@ use App\Ship\Parents\Models\UserModel;
  */
 class User extends UserModel
 {
-
     /**
      * The database table used by the model.
      *
@@ -70,6 +69,11 @@ class User extends UserModel
     public function stripeAccount()
     {
         return $this->hasOne(StripeAccount::class);
+    }
+    
+    public function fullName()
+    {
+        return $this->first_name.' '.$this->last_name;
     }
 
 }

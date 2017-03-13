@@ -17,11 +17,9 @@ trait ValidationTrait
      */
     public function extendValidationRules()
     {
-        // Validate String contains no space.
-        Validator::extend('no_spaces', function ($attribute, $value, $parameters, $validator) {
+        Validator::extend('no_spaces', function ($attr, $value) {
             return preg_match('/^\S*$/u', $value);
         }, ['String should not contain space.']);
-
         // Validate composite unique ID.
         // Usage: unique_composite:table,this-attribute-column,the-other-attribute-column
         // Example:    'values'               => 'required|unique_composite:item_variant_values,value,item_variant_name_id',

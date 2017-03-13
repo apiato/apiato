@@ -25,19 +25,18 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
-
     /**
      * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
      * @param \App\Containers\User\Actions\DeleteUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
         $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $this->encode($request->id) . ') Deleted Successfully.',
+            'message' => 'User ('.$this->encode($request->id).') Deleted Successfully.',
         ]);
     }
 
@@ -45,7 +44,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function listAllUsers(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
@@ -58,7 +57,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
@@ -84,7 +83,7 @@ class Controller extends ApiController
      * @param \Dingo\Api\Http\Request                    $request
      * @param \App\Containers\User\Actions\GetUserAction $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function refreshUser(RefreshUserRequest $request, GetUserAction $action)
     {
@@ -97,20 +96,33 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
      * @param \App\Containers\User\Actions\GetUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function getUser(GetUserRequest $request, GetUserAction $action)
     {
         $user = $action->run($request->id);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer(), 'user');
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
+     * @param \App\Containers\User\Actions\GetUserAction          $action
+     *
+     * @return \App\Ship\Parents\Factories\ResponseFactory
+     */
+    public function getAuthUser(GetUserAction $action)
+    {
+        $user = $action->run(auth()->user()->id);
+
+        return $this->response->item(auth()->user(), new UserTransformer(), 'user');
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
      * @param \App\Containers\User\Actions\CreateUserAction            $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
     {
@@ -124,7 +136,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
      * @param \App\Containers\User\Actions\CreateAdminAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function createAdmin(CreateAdminRequest $request, CreateAdminAction $action)
     {
@@ -137,7 +149,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
      * @param \App\Containers\User\Actions\UpdateUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return \App\Ship\Parents\Factories\ResponseFactory
      */
     public function updateUser(UpdateUserRequest $request, UpdateUserAction $action)
     {
