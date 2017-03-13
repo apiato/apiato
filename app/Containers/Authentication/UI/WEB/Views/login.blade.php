@@ -119,9 +119,9 @@
                     <div class="text-red">{{ session('status') }}</div>
                 @endif
                 <input type="text"  placeholder="email" id="email" name="email"/>
+                <span class="text-red">{{ $errors->first('email') }}</span>
                 <input type="password" placeholder="password" id="password" name="password"/>
-
-                <div class="text-red">{{ isset($errorMessage) ? $errorMessage : '' }}</div>
+                <span class="text-red">{{ $errors->first('password') }}</span>
 
                 <button>login</button>
             </form>
