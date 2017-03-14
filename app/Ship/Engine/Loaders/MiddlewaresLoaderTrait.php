@@ -44,14 +44,13 @@ trait MiddlewaresLoaderTrait
      */
     private function registerMiddlewareGroups(array $middlewareGroups = [])
     {
-
-        $current_groups = $this->app['router']->getMiddlewareGroups();
         foreach ($middlewareGroups as $key => $middleware) {
-            if(array_key_exists($key, $current_groups)){
-                $new_group = array_merge($current_groups[$key], $middleware);
-            }
-            if ($middleware) {
-                $this->app['router']->middlewareGroup($key, $new_group);
+            if (!is_array($middleware)) {
+                $this->app['router']->pushMiddlewareToGroup($key, $middleware);
+            } else {
+                foreach ($middleware as $item) {
+                    $this->app['router']->pushMiddlewareToGroup($key, $item);
+                }
             }
         }
     }

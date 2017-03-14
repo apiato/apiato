@@ -24,33 +24,6 @@ trait HashIdTrait
     ];
 
     /**
-     * All ID's passed with all endpoints will be decoded before entering the Application.
-     */
-    public function runHashedIdsDecoder()
-    {
-
-        if (Config::get('hello.hash-id')) {
-
-            Route::bind('id', function ($id, $route) {
-
-                // skip decoding some endpoints
-                if (!in_array($route->uri(), $this->skippedEndpoints)) {
-
-                    // decode the ID in the URL
-                    $decoded = $this->decoder($id);
-                    // dd($id);
-                    if (empty($decoded)) {
-                        throw new IncorrectIdException('ID ('.$id.') is incorrect, consider using the hashed ID
-                        instead of the numeric ID.');
-                    }
-                    // dd($decoded);
-                    return $decoded[0];
-                }
-            });
-        }
-    }
-
-    /**
      * Will be used by the Eloquent Models (since it's used as trait there).
      *
      * @param null $key
@@ -161,7 +134,7 @@ trait HashIdTrait
     {
         $idToDecode = $this->removeLastOccurrenceFromString($key, '.*');
 
-        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) use ($key){
+        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) use ($key) {
 
             if (!is_array($ids)) {
                 throw new IncorrectIdException('Expected ID\'s to be in array. Please wrap your ID\'s in an Array and send them back.');
@@ -293,5 +266,32 @@ trait HashIdTrait
     public function encoder($id)
     {
         return Hashids::encode($id);
+    }
+
+    /**
+     * Automatically decode any found `id` in the URL, no need to be used anymore.
+     * Since now the user will define what needs to be decoded in the request.
+     *
+     * All ID's passed with all endpoints will be decoded before entering the Application
+     */
+    public function runHashedIdsDecoder()
+    {
+        if (Config::get('hello.hash-id')) {
+            Route::bind('id', function ($id, $route) {
+                // skip decoding some endpoints
+                if (!in_array($route->uri(), $this->skippedEndpoints)) {
+
+                    // decode the ID in the URL
+                    $decoded = $this->decoder($id);
+
+                    if (empty($decoded)) {
+                        throw new IncorrectIdException('ID (' . $id . ') is incorrect, consider using the hashed ID
+                        instead of the numeric ID.');
+                    }
+
+                    return $decoded[0];
+                }
+            });
+        }
     }
 }

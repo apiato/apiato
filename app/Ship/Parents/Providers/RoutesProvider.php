@@ -2,7 +2,6 @@
 
 namespace App\Ship\Parents\Providers;
 
-use App\Ship\Engine\Traits\HashIdTrait;
 use App\Ship\Engine\Loaders\RoutesLoaderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 use Illuminate\Routing\Router;
@@ -17,7 +16,6 @@ use Illuminate\Routing\Router;
 class RoutesProvider extends LaravelRouteServiceProvider
 {
     use RoutesLoaderTrait;
-    use HashIdTrait;
 
     /**
      * This namespace is applied to your controller routes.
@@ -63,7 +61,5 @@ class RoutesProvider extends LaravelRouteServiceProvider
         $this->webRouter = $webRouterParam;
 
         $this->runRoutesAutoLoader();
-
-        $this->runHashedIdsDecoder();
     }
 }

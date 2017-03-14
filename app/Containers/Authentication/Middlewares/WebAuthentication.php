@@ -48,9 +48,8 @@ class WebAuthentication extends Middleware
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {
-            return response()->view(ContainersButler::getLoginWebPageName(), [
-                'errorMessage' => 'Credentials Incorrect.'
-            ]);
+            return redirect(ContainersButler::getLoginWebPageName())
+                ->with('errorMessage', 'Credentials Incorrect.');
         }
 
         return $next($request);
