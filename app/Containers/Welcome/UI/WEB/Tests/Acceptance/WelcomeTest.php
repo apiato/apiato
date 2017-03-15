@@ -16,10 +16,7 @@ class WelcomeTest extends TestCase
 
     public function testDisplayWelcomeView()
     {
-
-       $this->visit($this->page)
-           ->see('Hello API');
-
+        $this->visit($this->page)
+            ->see('Hello API');
     }
-
 }

@@ -45,5 +45,4 @@ trait TestCaseTrait
 
         return $this->baseUrl = $newSubDomain;
     }
-
 }

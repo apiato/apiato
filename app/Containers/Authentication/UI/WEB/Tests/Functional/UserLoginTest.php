@@ -2,9 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase;
-use App\Ship\Parents\Tests\PhpUnit\WebTestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Containers\Authentication\Tests\WebTestCase;
 
 /**
  * Class UserLoginTest
@@ -12,30 +10,11 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
  * @author  Johan Alvarez <llstarscreamll@hotmail.com>
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class UserLoginTest extends TestCase
+class UserLoginTest extends WebTestCase
 {
-    public function setUp()
-    {
-        // we change the API_PREFIX for web routes to make available all the
-        // right web behavior. Maybe this should be seted up on
-        // TestCaseTrait->overrideSubDomain() method?
-        putenv("API_PREFIX=api");
-
-        parent::setUp();
-    }
-
-    public function tearDown()
-    {
-        // revert the API_PREFIX variable to null to avoid effects on other test
-        putenv("API_PREFIX=");
-        parent::tearDown();
-    }
-
-    // overrides the default subDomain in the base URL
-    protected $subDomain = 'admin';
     protected $endpoint = '/login';
 
-    public function testUserLogin_()
+    public function testWebUserLogin_()
     {
         // go to the page
         $this->visit($this->endpoint)
@@ -52,7 +31,7 @@ class UserLoginTest extends TestCase
             ->see('Hello Admin');
     }
 
-    public function testLoginWithInvalidCredentials()
+    public function testWebUserLoginWithInvalidCredentials()
     {
         // go to the page
         $this->visit($this->endpoint)
@@ -69,7 +48,7 @@ class UserLoginTest extends TestCase
             ->see('Credentials Incorrect.');
     }
 
-    public function checkValidationMessages()
+    public function testValidationIsWorking()
     {
         // go to the page
         $this->visit($this->endpoint)
