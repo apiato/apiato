@@ -8,6 +8,7 @@ before_script:
 - mysql -e 'create database homestead;'
 - travis_retry composer self-update
 - composer install --prefer-source --no-interaction --dev
+- php artisan key:generate
 - php artisan migrate --seed
 
 script: vendor/bin/phpunit

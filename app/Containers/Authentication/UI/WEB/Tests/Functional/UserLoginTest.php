@@ -2,9 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Tests\Functional;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase;
-use App\Ship\Parents\Tests\PhpUnit\WebTestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Containers\Authentication\Tests\WebTestCase;
 
 /**
  * Class UserLoginTest
@@ -12,15 +10,11 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
  * @author  Johan Alvarez <llstarscreamll@hotmail.com>
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class UserLoginTest extends TestCase
+class UserLoginTest extends WebTestCase
 {
-    use WithoutMiddleware;
-
-    // overrides the default subDomain in the base URL
-    protected $subDomain = 'admin';
     protected $endpoint = '/login';
 
-    public function testUserLogin_()
+    public function testWebUserLogin_()
     {
         // go to the page
         $this->visit($this->endpoint)
@@ -37,7 +31,7 @@ class UserLoginTest extends TestCase
             ->see('Hello Admin');
     }
 
-    public function testLoginWithInvalidCredentials()
+    public function testWebUserLoginWithInvalidCredentials()
     {
         // go to the page
         $this->visit($this->endpoint)
@@ -52,5 +46,23 @@ class UserLoginTest extends TestCase
         // we are redirected to the login page and we see errors
         $this->seePageIs($this->endpoint)
             ->see('Credentials Incorrect.');
+    }
+
+    public function testValidationIsWorking()
+    {
+        // go to the page
+        $this->visit($this->endpoint)
+            ->seePageIs($this->endpoint)
+            ->see('Login');
+
+        // fill the login form with wrong credentials
+        $this->type('', 'email')
+            ->type('', 'password')
+            ->press('login');
+        
+        // we are redirected to the login page and we see validation errors
+        $this->seePageIs($this->endpoint)
+            ->see('email field is required.')
+            ->see('password field is required.');
     }
 }
