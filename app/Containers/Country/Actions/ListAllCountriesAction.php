@@ -14,26 +14,10 @@ class ListAllCountriesAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Country\Tasks\ListAllCountriesTask
-     */
-    private $listAllCountriesTask;
-
-    /**
-     * ListAllCountriesAction constructor.
-     *
-     * @param \App\Containers\Country\Tasks\ListAllCountriesTask $listAllCountriesTask
-     */
-    public function __construct(ListAllCountriesTask $listAllCountriesTask)
-    {
-        $this->listAllCountriesTask = $listAllCountriesTask;
-    }
-
-    /**
      * @return  mixed
      */
     public function run()
     {
-        return $this->listAllCountriesTask->run();
+        return $this->call(ListAllCountriesTask::class);
     }
-
 }

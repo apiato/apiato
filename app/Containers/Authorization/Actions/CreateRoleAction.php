@@ -12,22 +12,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class CreateRoleAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\CreateRoleTask
-     */
-    private $createRoleTask;
-
-    /**
-     * CreateRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\CreateRoleTask $createRoleTask
-     */
-    public function __construct(CreateRoleTask $createRoleTask)
-    {
-        $this->createRoleTask = $createRoleTask;
-    }
-
     /**
      * @param      $name
      * @param null $description
@@ -37,6 +21,6 @@ class CreateRoleAction extends Action
      */
     public function run($name, $description = null, $displayName = null)
     {
-        return $this->createRoleTask->run($name, $description, $displayName);
+        return $this->call(CreateRoleTask::class, [$name, $description, $displayName]);
     }
 }

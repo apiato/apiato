@@ -2,8 +2,8 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authorization\Tasks\IsUserAdminTask;
 use App\Containers\Authentication\Tasks\WebLoginTask;
+use App\Containers\Authorization\Tasks\IsUserAdminTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -13,29 +13,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class WebAdminLoginAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\WebLoginTask
-     */
-    private $webLoginTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\IsUserAdminTask
-     */
-    private $isUserAdminTask;
-
-    /**
-     * LoginAction constructor.
-     *
-     * @param \App\Containers\Authentication\Tasks\WebLoginTask            $webLoginTask
-     * @param \App\Containers\Authorization\Tasks\IsUserAdminTask $isUserAdminTask
-     */
-    public function __construct(WebLoginTask $webLoginTask, IsUserAdminTask $isUserAdminTask)
-    {
-        $this->webLoginTask = $webLoginTask;
-        $this->isUserAdminTask = $isUserAdminTask;
-    }
-
     /**
      * @param $email
      * @param $password
@@ -45,10 +22,10 @@ class WebAdminLoginAction extends Action
      */
     public function run($email, $password, $remember)
     {
-        $user = $this->webLoginTask->run($email, $password, $remember);
+        $user = $this->call(WebLoginTask::class, [$email, $password, $remember]);
 
-        if($user){
-            $this->isUserAdminTask->run($user);
+        if ($user) {
+            $this->call(IsUserAdminTask::class, [$user]);
         }
 
         return $user;

@@ -7,7 +7,7 @@ use App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask;
 use App\Containers\SocialAuth\Tasks\FindSocialUserTask;
 use App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask;
 use App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask;
-use App\Port\Action\Abstracts\Action;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class SocialLoginAction.
@@ -16,54 +16,6 @@ use App\Port\Action\Abstracts\Action;
  */
 class SocialLoginAction extends Action
 {
-
-    /**
-     * @var \App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask
-     */
-    private $getUserSocialProfileTask;
-
-    /**
-     * @var \App\Containers\SocialAuth\Tasks\FindSocialUserTask
-     */
-    private $findSocialUserTask;
-
-    /**
-     * @var \App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask
-     */
-    private $createUserBySocialProfileTask;
-
-    /**
-     * @var \App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask
-     */
-    private $updateUserSocialProfileTask;
-
-    /**
-     * @var \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask
-     */
-    private $apiLoginThisUserObjectTask;
-
-    /**
-     * SocialLoginAction constructor.
-     *
-     * @param \App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask       $getUserSocialProfileTask
-     * @param \App\Containers\SocialAuth\Tasks\FindSocialUserTask             $findSocialUserTask
-     * @param \App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask  $createUserBySocialProfileTask
-     * @param \App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask    $updateUserSocialProfileTask
-     * @param \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
-     */
-    public function __construct(
-        GetUserSocialProfileTask $getUserSocialProfileTask,
-        FindSocialUserTask $findSocialUserTask,
-        CreateUserBySocialProfileTask $createUserBySocialProfileTask,
-        UpdateUserSocialProfileTask $updateUserSocialProfileTask,
-        ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
-    ) {
-        $this->getUserSocialProfileTask = $getUserSocialProfileTask;
-        $this->findSocialUserTask = $findSocialUserTask;
-        $this->createUserBySocialProfileTask = $createUserBySocialProfileTask;
-        $this->updateUserSocialProfileTask = $updateUserSocialProfileTask;
-        $this->apiLoginThisUserObjectTask = $apiLoginThisUserObjectTask;
-    }
 
     /**
      * ----- if has social profile
@@ -81,8 +33,7 @@ class SocialLoginAction extends Action
         // TODO: needs refactoring so bad :D
 
         // fetch the user data from facebook
-        $socialUserProfile = $this->getUserSocialProfileTask->run($provider, $requestData);
-
+        $socialUserProfile = $this->call(GetUserSocialProfileTask::class, [$provider, $requestData]);
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
         $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;
@@ -91,27 +42,40 @@ class SocialLoginAction extends Action
         $avatar_original = isset($socialUserProfile->avatar_original) ? $socialUserProfile->avatar_original : null;
 
         // check if the social ID exist on any of our users, and get that user in case it was found
-        $socialUser = $this->findSocialUserTask->run($provider, $socialUserProfile->id);
-
+        $socialUser = $this->call(FindSocialUserTask::class, [$provider, $socialUserProfile->id]);
         if ($socialUser) {
             // THIS IS: A USER AND ALREADY HAVE A SOCIAL PROFILE
             // DO: UPDATE THE EXISTING USER SOCIAL PROFILE.
 
             // Only update tokens and updated information. Never override the user profile.
-            $user = $this->updateUserSocialProfileTask->run($socialUser->id, $socialUserProfile->token,
-                $expiresIn, $refreshToken, $tokenSecret, $socialUserProfile->avatar, $avatar_original);
-
+            $user = $this->call(UpdateUserSocialProfileTask::class, [
+                $socialUser->id,
+                $socialUserProfile->token,
+                $expiresIn,
+                $refreshToken,
+                $tokenSecret,
+                $socialUserProfile->avatar,
+                $avatar_original
+            ]);
         } else {
             // THIS IS: A NEW USER
             // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
-
-            $user = $this->createUserBySocialProfileTask->run($provider, $socialUserProfile->token,
+            $user = $this->call(CreateUserBySocialProfileTask::class, [
+                $provider,
+                $socialUserProfile->token,
                 $socialUserProfile->id,
-                $socialUserProfile->nickname, $socialUserProfile->name, $socialUserProfile->email,
-                $socialUserProfile->avatar, $tokenSecret, $expiresIn, $refreshToken, $avatar_original);
+                $socialUserProfile->nickname,
+                $socialUserProfile->name,
+                $socialUserProfile->email,
+                $socialUserProfile->avatar,
+                $tokenSecret,
+                $expiresIn,
+                $refreshToken,
+                $avatar_original
+            ]);
         }
 
-        $user = $this->apiLoginThisUserObjectTask->run($user);
+        $user = $this->call(ApiLoginThisUserObjectTask::class, [$user]);
 
         return $user;
     }

@@ -15,29 +15,13 @@ class GetPermissionAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authorization\Tasks\GetPermissionTask
-     */
-    private $getPermissionTask;
-
-    /**
-     * GetPermissionAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\GetPermissionTask $getPermissionTask
-     */
-    public function __construct(GetPermissionTask $getPermissionTask)
-    {
-        $this->getPermissionTask = $getPermissionTask;
-    }
-
-    /**
      * @param $permissionName
      *
      * @return  mixed
-     * @throws \App\Containers\Authorization\Exceptions\PermissionNotFoundException
      */
     public function run($permissionName)
     {
-        $permission = $this->getPermissionTask->run($permissionName);
+        $permission = $this->call(GetPermissionTask::class, [$permissionName]);
 
         if (!$permission) {
             throw new PermissionNotFoundException();

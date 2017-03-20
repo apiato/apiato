@@ -45,7 +45,7 @@ class PortoServiceProvider extends MainProvider
         CorsServiceProvider::class,
         HashidsServiceProvider::class,
         RoutesProvider::class,
-        RepositoryServiceProvider::class,
+        RepositoryServiceProvider::class
     ];
 
     /**

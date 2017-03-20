@@ -13,39 +13,16 @@ use App\Ship\Parents\Actions\Action;
  */
 class DetachPermissionsFromRoleAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask
-     */
-    private $detachPermissionsFromRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * DetachPermissionsFromRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask                   $getRoleTask
-     */
-    public function __construct(DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask, GetRoleTask $getRoleTask)
-    {
-        $this->detachPermissionsFromRoleTask = $detachPermissionsFromRoleTask;
-        $this->getRoleTask = $getRoleTask;
-    }
-
     /**
      * @param $roleId
-     * @param $permissions
+     * @param $permissionsIds
      *
      * @return  mixed
      */
     public function run($roleId, $permissionsIds)
     {
-        $role = $this->getRoleTask->run($roleId);
+        $role = $this->call(GetRoleTask::class, [$roleId]);
 
-        return $this->detachPermissionsFromRoleTask->run($role, $permissionsIds);
+        return $this->call(DetachPermissionsFromRoleTask::class, [$role, $permissionsIds]);
     }
 }

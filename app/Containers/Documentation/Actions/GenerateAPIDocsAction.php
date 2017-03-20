@@ -2,8 +2,8 @@
 
 namespace App\Containers\Documentation\Actions;
 
-use App\Containers\Documentation\Exceptions\WrongDocTypeException;
 use App\Containers\Documentation\Tasks\GenerateApiDocJsDocsTask;
+use App\Containers\Documentation\Tasks\ResolveClassTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -15,31 +15,6 @@ class GenerateAPIDocsAction extends Action
 {
 
     /**
-     * string
-     */
-    const TYPES_CLASSES_NAMESPACE = 'App\Containers\Documentation\Objects\\';
-
-    /**
-     * string
-     */
-    const TYPES_CLASSES_POSTFIX = 'Api';
-
-    /**
-     * @var  \App\Containers\Documentation\Tasks\GenerateApiDocJsDocsTask
-     */
-    private $generateApiDocJsDocsTask;
-
-    /**
-     * GenerateAPIDocsAction constructor.
-     *
-     * @param \App\Containers\Documentation\Tasks\GenerateApiDocJsDocsTask $generateApiDocJsDocsTask
-     */
-    public function __construct(GenerateApiDocJsDocsTask $generateApiDocJsDocsTask)
-    {
-        $this->generateApiDocJsDocsTask = $generateApiDocJsDocsTask;
-    }
-
-    /**
      * @param $types
      *
      * @return  string
@@ -47,11 +22,9 @@ class GenerateAPIDocsAction extends Action
     public function run($types)
     {
         // generate the full namespace of the types class based on this function param
-        if (!class_exists($typeClass = self::TYPES_CLASSES_NAMESPACE . ucwords($types) . self::TYPES_CLASSES_POSTFIX)) {
-            throw new WrongDocTypeException("The Documentation type ($typeClass) is not supported!");
-        }
+        $typeClass = $this->call(ResolveClassTask::class, [$types]);
 
         // create an instance of the Documentation Type Class and pass it as argument to this task
-        return $this->generateApiDocJsDocsTask->run(new $typeClass());
+        return $this->call(GenerateApiDocJsDocsTask::class, [new $typeClass()]);
     }
 }

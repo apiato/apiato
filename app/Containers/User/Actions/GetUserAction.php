@@ -16,30 +16,6 @@ class GetUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
-     */
-    private $getAuthenticatedUserTask;
-
-    /**
-     * GetUserAction constructor.
-     *
-     * @param \App\Containers\User\Tasks\FindUserByIdTask                   $findUserByIdTask
-     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
-     */
-    public function __construct(
-        FindUserByIdTask $findUserByIdTask,
-        GetAuthenticatedUserTask $getAuthenticatedUserTask
-    ) {
-        $this->findUserByIdTask = $findUserByIdTask;
-        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
-    }
-
-    /**
      * @param      $userId
      * @param null $token
      *
@@ -48,10 +24,10 @@ class GetUserAction extends Action
     public function run($userId, $token = null)
     {
         if ($userId) {
-            $user = $this->findUserByIdTask->run($userId)->withToken();
+            $user = $this->call(FindUserByIdTask::class, [$userId])->withToken();
         } else {
             if ($token) {
-                $user = $this->getAuthenticatedUserTask->run()->withToken();
+                $user = $this->call(GetAuthenticatedUserTask::class, [])->withToken();
             }
         }
 

@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
@@ -16,46 +15,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class AssignUserToRoleAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\AssignUserToRoleTask
-     */
-    private $assignUserToRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
-     */
-    private $roleRepository;
-
-    /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * AssignUserToRoleTask constructor.
-     *
-     * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $roleRepository
-     * @param \App\Containers\User\Tasks\FindUserByIdTask                    $findUserByIdTask
-     */
-    public function __construct(
-        AssignUserToRoleTask $assignUserToRoleTask,
-        RoleRepository $roleRepository,
-        FindUserByIdTask $findUserByIdTask,
-        GetRoleTask $getRoleTask
-    ) {
-        $this->assignUserToRoleTask = $assignUserToRoleTask;
-        $this->roleRepository = $roleRepository;
-        $this->findUserByIdTask = $findUserByIdTask;
-        $this->getRoleTask = $getRoleTask;
-    }
-
-
     /**
      * @param $user
      * @param $rolesIds
@@ -65,7 +24,7 @@ class AssignUserToRoleAction extends Action
     public function run($user, $rolesIds)
     {
         if (!$user instanceof User) {
-            $user = $this->findUserByIdTask->run($user);
+            $user = $this->call(FindUserByIdTask::class, [$user]);
         }
 
         if (!is_array($rolesIds)) {
@@ -73,9 +32,9 @@ class AssignUserToRoleAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = $this->getRoleTask->run($roleId);
+            $roles[] = $this->call(GetRoleTask::class, [$roleId]);
         }
 
-        return $this->assignUserToRoleTask->run($user, $roles);
+        return $this->call(AssignUserToRoleTask::class, [$user, $roles]);
     }
 }

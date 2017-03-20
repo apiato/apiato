@@ -12,22 +12,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class CreatePermissionAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\CreatePermissionTask
-     */
-    private $createPermissionTask;
-
-    /**
-     * CreatePermissionAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\CreatePermissionTask $createPermissionTask
-     */
-    public function __construct(CreatePermissionTask $createPermissionTask)
-    {
-        $this->createPermissionTask = $createPermissionTask;
-    }
-
     /**
      * @param      $name
      * @param null $description
@@ -37,6 +21,6 @@ class CreatePermissionAction extends Action
      */
     public function run($name, $description = null, $displayName = null)
     {
-        return $this->createPermissionTask->run($name, $description, $displayName);
+        return $this->call(CreatePermissionTask::class, [$name, $description, $displayName]);
     }
 }

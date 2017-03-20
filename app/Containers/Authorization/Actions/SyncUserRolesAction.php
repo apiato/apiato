@@ -3,8 +3,8 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\Authorization\Tasks\SyncUserRolesTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
+use App\Containers\Authorization\Tasks\SyncUserRolesTask;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
@@ -64,9 +64,8 @@ class SyncUserRolesAction extends Action
      */
     public function run($user, $rolesIds)
     {
-        
         if (!$user instanceof User) {
-            $user = $this->findUserByIdTask->run($user);
+            $user = $this->call(FindUserByIdTask::class, [$user]);
         }
 
         if (!is_array($rolesIds)) {
@@ -74,9 +73,9 @@ class SyncUserRolesAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = $this->getRoleTask->run($roleId);
+            $roles[] = $this->call(GetRoleTask::class, [$roleId]);
         }
 
-        return $this->syncUserRolesTask->run($user, $roles);
+        return $this->call(SyncUserRolesTask::class, [$user, $roles]);
     }
 }

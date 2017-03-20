@@ -2,6 +2,8 @@
 
 namespace App\Ship\Parents\Actions;
 
+use App\Ship\Engine\Traits\CallableTrait;
+
 /**
  * Class Action.
  *
@@ -9,5 +11,7 @@ namespace App\Ship\Parents\Actions;
  */
 abstract class Action
 {
+
+    use CallableTrait;
 
 }

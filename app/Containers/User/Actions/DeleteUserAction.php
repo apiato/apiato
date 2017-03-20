@@ -15,39 +15,15 @@ class DeleteUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\DeleteUserTask
-     */
-    private $deleteUserTask;
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
-     */
-    private $getAuthenticatedUserTask;
-
-    /**
-     * DeleteUserAction constructor.
-     *
-     * @param \App\Containers\User\Tasks\DeleteUserTask                     $deleteUserTask
-     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
-     */
-    public function __construct(DeleteUserTask $deleteUserTask, GetAuthenticatedUserTask $getAuthenticatedUserTask)
-    {
-        $this->deleteUserTask = $deleteUserTask;
-        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
-    }
-
-    /**
      * @param $userId
      *
      * @return  bool
      */
     public function run($userId = null)
     {
-        if(!$userId){
-            $userId = $this->getAuthenticatedUserTask->run()->id;
-        }
+        $userId = $userId ? : $this->call(GetAuthenticatedUserTask::class)->id;
 
-        $isDeleted = $this->deleteUserTask->run($userId);
+        $isDeleted = $this->call(DeleteUserTask::class, [$userId]);
 
         return $isDeleted;
     }

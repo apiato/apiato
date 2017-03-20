@@ -4,6 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\ApiLoginWithCredentialsTask;
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
+use App\Ship\Engine\Butlers\Facades\Call;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -13,28 +14,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class ApiUserLoginAction extends Action
 {
-
-    private $apiLoginWithCredentialsTask;
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
-     */
-    private $getAuthenticatedUserTask;
-
-    /**
-     * ApiUserLoginAction constructor.
-     *
-     * @param \App\Containers\Authentication\Tasks\ApiLoginWithCredentialsTask $apiLoginWithCredentialsTask
-     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask    $getAuthenticatedUserTask
-     */
-    public function __construct(
-        ApiLoginWithCredentialsTask $apiLoginWithCredentialsTask,
-        GetAuthenticatedUserTask $getAuthenticatedUserTask
-    ) {
-        $this->apiLoginWithCredentialsTask = $apiLoginWithCredentialsTask;
-        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
-    }
-
     /**
      * @param $email
      * @param $password
@@ -43,9 +22,9 @@ class ApiUserLoginAction extends Action
      */
     public function run($email, $password)
     {
-        $token = $this->apiLoginWithCredentialsTask->run($email, $password);
+        $token = $this->call(ApiLoginWithCredentialsTask::class, [$email, $password]);
 
-        $user = $this->getAuthenticatedUserTask->run($token);
+        $user = $this->call(GetAuthenticatedUserTask::class, [$token]);
 
         return $user;
     }

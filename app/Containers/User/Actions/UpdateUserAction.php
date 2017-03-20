@@ -15,28 +15,6 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\UpdateUserTask
-     */
-    private $updateUserTask;
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask
-     */
-    private $getAuthenticatedUserTask;
-
-    /**
-     * UpdateUserAction constructor.
-     *
-     * @param \App\Containers\User\Tasks\UpdateUserTask                     $updateUserTask
-     * @param \App\Containers\Authentication\Tasks\GetAuthenticatedUserTask $getAuthenticatedUserTask
-     */
-    public function __construct(UpdateUserTask $updateUserTask, GetAuthenticatedUserTask $getAuthenticatedUserTask)
-    {
-        $this->updateUserTask = $updateUserTask;
-        $this->getAuthenticatedUserTask = $getAuthenticatedUserTask;
-    }
-
-    /**
      * @param null $password
      * @param null $name
      * @param null $email
@@ -48,9 +26,9 @@ class UpdateUserAction extends Action
     public function run($password = null, $name = null, $email = null, $gender = null, $birth = null)
     {
         // user can only update himself
-        $userId = $this->getAuthenticatedUserTask->run()->id;
+        $userId = $this->call(GetAuthenticatedUserTask::class)->id;
 
-        $user = $this->updateUserTask->run($userId, $password, $name, $email, $gender, $birth);
+        $user = $this->call(UpdateUserTask::class, [$userId, $password, $name, $email, $gender, $birth]);
 
         return $user;
     }

@@ -2,9 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\SyncPermissionsOnRoleTask;
 use App\Containers\Authorization\Tasks\GetPermissionTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
+use App\Containers\Authorization\Tasks\SyncPermissionsOnRoleTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -16,56 +16,25 @@ class SyncPermissionsOnRoleAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authorization\Tasks\SyncPermissionsOnRoleTask
-     */
-    private $syncPermissionsOnRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetPermissionTask
-     */
-    private $getPermissionTask;
-
-    /**
-     * AttachPermissionsToRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\SyncPermissionsOnRoleTask $syncPermissionsOnRoleTask
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask                 $getRoleTask
-     */
-    public function __construct(
-        SyncPermissionsOnRoleTask $syncPermissionsOnRoleTask,
-        GetRoleTask $getRoleTask,
-        GetPermissionTask $getPermissionTask
-    ) {
-        $this->syncPermissionsOnRoleTask = $syncPermissionsOnRoleTask;
-        $this->getRoleTask = $getRoleTask;
-        $this->getPermissionTask = $getPermissionTask;
-    }
-
-    /**
      * @param $roleId
      * @param $permissionsIds
      *
-     * @return  \App\Containers\Authorization\Models\Role
+     * @return  mixed
      */
     public function run($roleId, $permissionsIds)
     {
-        $role = $this->getRoleTask->run($roleId);
+        $role = $this->call(GetRoleTask::class, [$roleId]);
 
         $permissions = [];
 
         if (is_array($permissionsIds)) {
-            foreach ($permissionsIds as $permissionId){
-                $permissions[] = $this->getPermissionTask->run($permissionId);
+            foreach ($permissionsIds as $permissionId) {
+                $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
             }
-        }else{
-            $permissions[] = $this->getPermissionTask->run($permissionsIds);
+        } else {
+            $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
         }
 
-        return $this->syncPermissionsOnRoleTask->run($role, $permissions);
+        return $this->call(SyncPermissionsOnRoleTask::class, [$role, $permissions]);
     }
 }

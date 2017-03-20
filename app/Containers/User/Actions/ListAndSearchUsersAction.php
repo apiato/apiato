@@ -14,21 +14,6 @@ class ListAndSearchUsersAction extends Action
 {
 
     /**
-     * @var  \App\Containers\User\Tasks\ListUsersTask
-     */
-    private $listUsersTask;
-
-    /**
-     * ListAndSearchUsersAction constructor.
-     *
-     * @param \App\Containers\User\Tasks\ListUsersTask $listUsersTask
-     */
-    public function __construct(ListUsersTask $listUsersTask)
-    {
-        $this->listUsersTask = $listUsersTask;
-    }
-
-    /**
      * @param null $roles
      * @param bool $order
      *
@@ -36,7 +21,7 @@ class ListAndSearchUsersAction extends Action
      */
     public function run($roles = null, $order = true)
     {
-        $users = $this->listUsersTask->run($order, $roles);
+        $users = $this->call(ListUsersTask::class, [$order, $roles]);
 
         return $users;
     }

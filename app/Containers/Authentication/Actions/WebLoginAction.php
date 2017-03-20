@@ -12,22 +12,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class WebLoginAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authentication\Tasks\WebLoginTask
-     */
-    private $webLoginTask;
-
-    /**
-     * LoginAction constructor.
-     *
-     * @param \App\Containers\Authentication\Tasks\WebLoginTask $webLoginTask
-     */
-    public function __construct(WebLoginTask $webLoginTask)
-    {
-        $this->webLoginTask = $webLoginTask;
-    }
-
     /**
      * @param $email
      * @param $password
@@ -37,7 +21,7 @@ class WebLoginAction extends Action
      */
     public function run($email, $password, $remember)
     {
-        $user = $this->webLoginTask->run($email, $password, $remember);
+        $user = $this->call(WebLoginTask::class, [$email, $password, $remember]);
 
         return $user;
     }

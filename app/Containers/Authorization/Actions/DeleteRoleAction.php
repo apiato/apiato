@@ -13,29 +13,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class DeleteRoleAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\DeleteRoleTask
-     */
-    private $deleteRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * DeleteRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\DeleteRoleTask $deleteRoleTask
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask    $getRoleTask
-     */
-    public function __construct(DeleteRoleTask $deleteRoleTask, GetRoleTask $getRoleTask)
-    {
-        $this->deleteRoleTask = $deleteRoleTask;
-        $this->getRoleTask = $getRoleTask;
-    }
-
     /**
      * @param $roleNameOrId
      *
@@ -43,9 +20,8 @@ class DeleteRoleAction extends Action
      */
     public function run($roleNameOrId)
     {
-        $role = $this->getRoleTask->run($roleNameOrId);
-
-        $isDeleted = $this->deleteRoleTask->run($role);
+        $role = $this->call(GetRoleTask::class, [$roleNameOrId]);
+        $isDeleted = $this->call(DeleteRoleTask::class, [$role]);
 
         return $isDeleted;
     }

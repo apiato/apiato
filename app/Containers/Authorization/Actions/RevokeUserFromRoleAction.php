@@ -16,41 +16,8 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class RevokeUserFromRoleAction extends Action
 {
-
     /**
-     * @var  \App\Containers\Authorization\Tasks\RevokeUserFromRoleTask
-     */
-    private $revokeUserFromRoleTask;
-
-    /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * RevokeUserFromRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\RevokeUserFromRoleTask $revokeUserFromRoleTask
-     * @param \App\Containers\User\Tasks\FindUserByIdTask                $findUserByIdTask
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask            $getRoleTask
-     */
-    public function __construct(
-        RevokeUserFromRoleTask $revokeUserFromRoleTask,
-        FindUserByIdTask $findUserByIdTask,
-        GetRoleTask $getRoleTask
-    ) {
-        $this->revokeUserFromRoleTask = $revokeUserFromRoleTask;
-        $this->findUserByIdTask = $findUserByIdTask;
-        $this->getRoleTask = $getRoleTask;
-    }
-
-    /**
-     * @param User|integer $userId
+     * @param User|integer  $userId
      * @param integer|array $rolesIds
      *
      * @return  \App\Containers\User\Models\User
@@ -58,7 +25,7 @@ class RevokeUserFromRoleAction extends Action
     public function run($user, $rolesIds)
     {
         if (!$user instanceof User) {
-            $user = $this->findUserByIdTask->run($user);
+            $user = $this->call(FindUserByIdTask::class, [$user]);
         }
 
         if (!is_array($rolesIds)) {
@@ -68,9 +35,10 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-            $roles->add($this->getRoleTask->run($roleId));
+            $role = $this->call(GetRoleTask::class, [$roleId]);
+            $roles->add($role);
         }
 
-        return $this->revokeUserFromRoleTask->run($user, $roles->pluck('name')->toArray());
+        return $this->call(revokeUserFromRoleTask::class, [$user, $roles->pluck('name')->toArray()]);
     }
 }

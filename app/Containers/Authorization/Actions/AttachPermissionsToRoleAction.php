@@ -14,38 +14,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class AttachPermissionsToRoleAction extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask
-     */
-    private $attachPermissionsToRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetPermissionTask
-     */
-    private $getPermissionTask;
-
-    /**
-     * AttachPermissionsToRoleAction constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask $attachPermissionsToRoleTask
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask                 $getRoleTask
-     */
-    public function __construct(
-        AttachPermissionsToRoleTask $attachPermissionsToRoleTask,
-        GetRoleTask $getRoleTask,
-        GetPermissionTask $getPermissionTask
-    ) {
-        $this->attachPermissionsToRoleTask = $attachPermissionsToRoleTask;
-        $this->getRoleTask = $getRoleTask;
-        $this->getPermissionTask = $getPermissionTask;
-    }
-
     /**
      * @param $roleId
      * @param $permissionsIds
@@ -54,18 +22,17 @@ class AttachPermissionsToRoleAction extends Action
      */
     public function run($roleId, $permissionsIds)
     {
-        $role = $this->getRoleTask->run($roleId);
-
+        $role = $this->call(GetRoleTask::class, [$roleId]);
         $permissions = [];
 
         if (is_array($permissionsIds)) {
-            foreach ($permissionsIds as $permissionId){
-                $permissions[] = $this->getPermissionTask->run($permissionId);
+            foreach ($permissionsIds as $permissionId) {
+                $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
             }
-        }else{
-            $permissions[] = $this->getPermissionTask->run($permissionsIds);
+        } else {
+            $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
         }
 
-        return $this->attachPermissionsToRoleTask->run($role, $permissions);
+        return $this->call(AttachPermissionsToRoleTask::class, [$role, $permissions]);
     }
 }
