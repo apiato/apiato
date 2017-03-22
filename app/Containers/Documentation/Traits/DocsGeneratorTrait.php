@@ -17,15 +17,15 @@ trait DocsGeneratorTrait
      */
     private function getFullApiUrl($type)
     {
-        return '> ' . $this->getApiDomain() . '/' . $this->getUrl($type);
+        return '> ' . $this->getAppUrl() . '/' . $this->getUrl($type);
     }
 
     /**
      * @return  mixed
      */
-    private function getApiDomain()
+    private function getAppUrl()
     {
-        return $this->config->get('api.domain');
+        return $this->config->get('app.url');
     }
 
     /**
