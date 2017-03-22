@@ -60,11 +60,16 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        $this->assertEquals('400', $response->getStatusCode());
+        if(\Config::get('hello.hash-id')){
+            $this->assertEquals('400', $response->getStatusCode());
 
-        $this->assertResponseContainKeyValue([
-            'message' => 'Only Hashed ID\'s allowed (user_id).',
-        ], $response);
+            $this->assertResponseContainKeyValue([
+                'message' => 'Only Hashed ID\'s allowed (user_id).',
+            ], $response);
+        }else{
+            $this->assertEquals('200', $response->getStatusCode());
+        }
+
     }
 
     public function testAssignUserToManyRoles_()

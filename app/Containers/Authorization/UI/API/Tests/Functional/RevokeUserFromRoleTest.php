@@ -64,12 +64,18 @@ class RevokeUserFromRoleTest extends TestCase
         // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        $this->assertEquals('400', $response->getStatusCode());
 
-        $this->assertResponseContainKeyValue([
-            'message' => 'Only Hashed ID\'s allowed (roles_ids.*).',
-        ], $response);
+        // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
+        if(\Config::get('hello.hash-id')){
+            $this->assertEquals('400', $response->getStatusCode());
+
+            $this->assertResponseContainKeyValue([
+                'message' => 'Only Hashed ID\'s allowed (roles_ids.*).',
+            ], $response);
+        }else{
+            $this->assertEquals('200', $response->getStatusCode());
+        }
+
     }
 
     public function testRevokeUserFromManyRoles_()

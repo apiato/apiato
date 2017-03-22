@@ -33,10 +33,10 @@ class DeleteUserTask extends Action
      *
      * @return bool
      */
-    public function run($userId)
+    public function run($user)
     {
         // delete the record from the users table.
-        $this->userRepository->delete($userId);
+        $this->userRepository->delete($user->id);
 
         return true;
     }

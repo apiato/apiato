@@ -34,10 +34,10 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
-        $action->run($request->id);
+        $user = $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'User (' . $this->encode($request->id) . ') Deleted Successfully.',
+            'message' => 'User (' . $user->getHashedKey() . ') Deleted Successfully.',
         ]);
     }
 

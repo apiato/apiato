@@ -4,6 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\DeleteUserTask;
+use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -23,8 +24,10 @@ class DeleteUserAction extends Action
     {
         $userId = $userId ? : $this->call(GetAuthenticatedUserTask::class)->id;
 
-        $isDeleted = $this->call(DeleteUserTask::class, [$userId]);
+        $user = $this->call(FindUserByIdTask::class, [$userId]);
 
-        return $isDeleted;
+        $this->call(DeleteUserTask::class, [$user]);
+
+        return $user;
     }
 }

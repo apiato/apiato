@@ -128,10 +128,10 @@ class Controller extends ApiController
      */
     public function deleteRole(DeleteRoleRequest $request, DeleteRoleAction $action)
     {
-        $action->run($request->id);
+        $role = $action->run($request->id);
 
         return $this->response->accepted(null, [
-            'message' => 'Role (' . $this->encode($request->id) . ') Deleted Successfully.',
+            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.',
         ]);
     }
 

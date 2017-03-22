@@ -21,8 +21,8 @@ class DeleteRoleAction extends Action
     public function run($roleNameOrId)
     {
         $role = $this->call(GetRoleTask::class, [$roleNameOrId]);
-        $isDeleted = $this->call(DeleteRoleTask::class, [$role]);
+        $this->call(DeleteRoleTask::class, [$role]);
 
-        return $isDeleted;
+        return $role;
     }
 }
