@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Containers\Documentation\Actions;
+namespace App\Containers\Documentation\Tasks;
 
-use App\Ship\Parents\Actions\Action;
-use DateTime;
+use App\Containers\Documentation\Traits\DocsGeneratorTrait;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ProcessMarkdownTemplatesAction.
+ * Class ProcessMarkdownTemplatesTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ProcessMarkdownTemplatesAction extends Action
+class ProcessMarkdownTemplatesTask extends Task
 {
+    use DocsGeneratorTrait;
 
     protected $headerMarkdownContent;
 
@@ -38,27 +39,4 @@ class ProcessMarkdownTemplatesAction extends Action
         file_put_contents(public_path(self::OUTPUT_PATH . 'header.md'), $this->headerMarkdownContent);
     }
 
-    /**
-     * @param $templateKey
-     * @param $value
-     */
-    private function replace($templateKey, $value)
-    {
-        $this->headerMarkdownContent = str_replace($templateKey, $value, $this->headerMarkdownContent);
-    }
-
-    /**
-     * @param $minutes
-     *
-     * @return  string
-     */
-    private function minutesToTimeDisplay($minutes)
-    {
-        $seconds = $minutes * 60;
-
-        $dtF = new DateTime('@0');
-        $dtT = new DateTime("@$seconds");
-
-        return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
-    }
 }

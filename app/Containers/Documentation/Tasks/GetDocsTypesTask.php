@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Documentation\Actions;
+namespace App\Containers\Documentation\Tasks;
 
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class GetDocsTypesAction.
+ * Class GetDocsTypesTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetDocsTypesAction extends Action
+class GetDocsTypesTask extends Task
 {
 
     /**

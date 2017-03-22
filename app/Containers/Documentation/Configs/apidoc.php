@@ -18,30 +18,33 @@ return [
     | API Types
     |--------------------------------------------------------------------------
     |
-    | Documentations of these types will be generated, automatically when
-    | running the API Docs auto generator command.
-    | IF you API doesn't support any of the types you can simply remove it
-    | from the types array.
+    | The `types` helps generating multiple documentations, by grouping them
+    | under types names. You can add or remove any type. By default
+    | `public` and `private` types are set.
+    |
+    | url: The url to access that generated API documentation.
+    |
+    | routes: The route file to read when generating this documentation.
+    |         Every route file will have the following name format:
+    |         `{endpoint-name}.v{version-number}.{documentation-type}.php`.
     |
     */
 
     'types' => [
 
-        /*
-        |--------------------------------------------------------------------------
-        | Documentations URL's
-        |--------------------------------------------------------------------------
-        |
-        | Specify the URL's to access your API documentations.
-        |
-        */
-
         'public' => [
             'url' => 'api/documentation',
+            'routes' => [
+                'public',
+            ],
         ],
 
         'private' => [
             'url' => 'api/private/documentation',
+            'routes' => [
+                'private',
+                'public',
+            ],
         ],
     ],
 

@@ -2,19 +2,21 @@
 
 namespace App\Containers\Documentation\Tasks;
 
-use App\Containers\Documentation\Contracts\ApiTypeInterface;
+use App\Containers\Documentation\Traits\DocsGeneratorTrait;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Config\Repository as Config;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 /**
- * Class GenerateApiDocJsDocsTask.
+ * Class GenerateAPIDocsTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GenerateApiDocJsDocsTask extends Task
+class GenerateAPIDocsTask extends Task
 {
+
+    use DocsGeneratorTrait;
 
     /**
      * @var  \Illuminate\Config\Repository
@@ -32,14 +34,18 @@ class GenerateApiDocJsDocsTask extends Task
     }
 
     /**
-     * @param \App\Containers\Documentation\Contracts\ApiTypeInterface $type
+     * @param $type
      *
      * @return  mixed
      */
-    public function run(ApiTypeInterface $type)
+    public function run($type, $console)
     {
+        $path = $this->getDocumentationPath($type);
+
+        $exe = $this->getExecutable();
+
         // the actual command that needs to be executed:
-        $command = $this->config->get('apidoc.executable') . ' ' . $type->getCommand();
+        $command = $exe . ' ' . "-c {$this->getJsonFilePath($type)} {$this->getEndpointFiles($type)}-i app -o {$path}";
 
         // execute the command
         ($process = new Process($command))->run();
@@ -49,10 +55,11 @@ class GenerateApiDocJsDocsTask extends Task
         }
 
         // echo the output
-        echo $type->getType() . ': ' . $process->getOutput();
+        $console->info('[' . $type . '] ' . $command);
+        $console->info('Result: ' . $process->getOutput());
 
         // return the past to that generated documentation
-        return $type->getUrl();
+        return $this->getFullApiUrl($type);
     }
 
 }
