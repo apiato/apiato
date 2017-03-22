@@ -1,6 +1,6 @@
 {
   "name": "porto-sap/authentication",
-  "description": "Shipo-SAP Container for Hello-API.",
+  "description": "Porto-SAP Container for Hello-API.",
   "require": {
     "tymon/jwt-auth": "0.5.*"
   },
