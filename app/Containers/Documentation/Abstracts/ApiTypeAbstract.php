@@ -41,7 +41,7 @@ abstract class ApiTypeAbstract
      */
     public function getUrl()
     {
-        return $this->config->get("{$this->getConfigFile()}.{$this->getType()}.url");
+        return $this->config->get("{$this->getConfigFile()}.types.{$this->getType()}.url");
     }
 
     /**

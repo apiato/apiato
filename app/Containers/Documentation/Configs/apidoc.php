@@ -15,19 +15,34 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Documentations URL's
+    | API Types
     |--------------------------------------------------------------------------
     |
-    | Specify the URL's to access your API documentations.
+    | Documentations of these types will be generated, automatically when
+    | running the API Docs auto generator command.
+    | IF you API doesn't support any of the types you can simply remove it
+    | from the types array.
     |
     */
 
-    'public' => [
-        'url' => 'api/documentation'
-    ],
+    'types' => [
 
-    'private' => [
-        'url' => 'api/private/documentation'
+        /*
+        |--------------------------------------------------------------------------
+        | Documentations URL's
+        |--------------------------------------------------------------------------
+        |
+        | Specify the URL's to access your API documentations.
+        |
+        */
+
+        'public' => [
+            'url' => 'api/documentation',
+        ],
+
+        'private' => [
+            'url' => 'api/private/documentation',
+        ],
     ],
 
     /*
