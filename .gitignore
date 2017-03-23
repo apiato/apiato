@@ -8,6 +8,6 @@ Homestead.yaml
 .env
 storage/logs/laravel.log
 /public/api/
-/public/api-markdowns/
+/public/api-rendered-markdowns/
 /public/uploads/
 /laradock*/
