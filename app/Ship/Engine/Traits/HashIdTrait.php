@@ -33,7 +33,7 @@ trait HashIdTrait
     public function getHashedKey($key = null)
     {
         // hash the ID only if hash-id enabled in the config
-        if (Config::get('hello.hash-id')) {
+        if (Config::get('apiato.hash-id')) {
             return $this->encoder(($key) ? : $this->getKey());
         }
 
@@ -51,7 +51,7 @@ trait HashIdTrait
     protected function decodeHashedIdsBeforeValidation(Array $requestData)
     {
         // the hash ID feature must be enabled to use this decoder feature.
-        if (Config::get('hello.hash-id') && isset($this->decode) && !empty($this->decode)) {
+        if (Config::get('apiato.hash-id') && isset($this->decode) && !empty($this->decode)) {
             // iterate over each key (ID that needs to be decoded) and call keys locator to decode them
             foreach ($this->decode as $key) {
                 $requestData = $this->locateAndDecodeIds($requestData, $key);
@@ -273,7 +273,7 @@ trait HashIdTrait
      */
     public function runHashedIdsDecoder()
     {
-        if (Config::get('hello.hash-id')) {
+        if (Config::get('apiato.hash-id')) {
             Route::bind('id', function ($id, $route) {
                 // skip decoding some endpoints
                 if (!in_array($route->uri(), $this->skippedEndpoints)) {

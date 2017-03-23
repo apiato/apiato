@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Hello Admin</div>
+                <div class="title">Apiato Admin</div>
             </div>
         </div>
     </body>

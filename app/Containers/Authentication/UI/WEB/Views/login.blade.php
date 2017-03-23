@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello API</title>
+        <title>apiato</title>
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 

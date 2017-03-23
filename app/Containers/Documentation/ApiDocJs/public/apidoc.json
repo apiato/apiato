@@ -1,9 +1,9 @@
 {
-  "name": "Hello API",
-  "description": "Hello API (Public API) Documentation",
-  "title": "Welcome to Hello API",
+  "name": "apiato",
+  "description": "apiato (Public API) Documentation",
+  "title": "Welcome to apiato",
   "version": "1.0.0",
-  "url" : "http://api.hello.dev",
+  "url" : "http://api.apiato.dev",
   "template": {
   	"withCompare": true,
   	"withGenerator": true

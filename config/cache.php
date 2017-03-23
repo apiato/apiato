@@ -86,6 +86,6 @@ return [
     |
     */
 
-    'prefix' => 'hello-api',
+    'prefix' => 'apiato',
 
 ];

@@ -1,6 +1,6 @@
 {
-  "name": "porto-sap/welcome",
-  "description": "Porto-SAP Container for Hello-API.",
+  "name": "apiato/welcome",
+  "description": "apiato Container for apiato.",
   "require": {
 
   }

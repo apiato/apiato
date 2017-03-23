@@ -1,23 +1,18 @@
-# Hello API
+# apiato
 
 
-![](http://s33.postimg.org/kd4gvx1lb/hello_api.jpg)
-
-
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/?branch=master)
-[![Build Status](https://travis-ci.org/Porto-SAP/Hello-API.svg?branch=master)](https://travis-ci.org/Porto-SAP/Hello-API)
-[![Build Status](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Porto-SAP/Hello-API/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
+[![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
+[![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Porto-SAP/Hello-API/master/LICENSE)
-[![Hello-API](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/Porto-SAP/Hello-API)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/apiato/apiato/master/LICENSE)
+[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 
 
-#### A `Hello World` project for API's.
 
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](https://www.zalt.me)
 
-> Build better API's faster and smarter with **PHP** and **Laravel 5.4**.
+> Build better API's faster with **PHP** and **Laravel 5.4**.
 
 ## Content
 
@@ -34,17 +29,19 @@
 ## Into
 
 
-### What is Hello API
+### What is `apiato`
 
-Hello API is a **starter** providing the common functionalities required to build modern API-Centric Application. 
+**apiato** is a starter project, designed to help you build scalable API's faster, by providing tools and 
+functionalities that facilitates the development of any API-Centric Application.
 
-It uses the best frameworks, packages, tools and conventions to deliver one of the best PHP API starters.
+apiato uses the best frameworks, tools and conventions in a very creative way to deliver a modern PHP Application.
 
-`Why!?` Because setting up an API from scratch everytime is time consuming. 
-Hello API gives you the core features of robust API's, so you can focus on the business logic of your App instead.
+`Why?` Why not! setting up a solid API from scratch is time consuming (and time equal money).
+apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster. 
+Skip the retetetive jobs and enjoy the open source.
 
 
-### Why API-Centric Apps
+#### Intro to API-Centric Apps
 
 Today we’re living in a digital era, where almost everything is connected to the Internet.
 
@@ -63,7 +60,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 <a name="Features"></a>
 ## Features
 
->The Hello API comes with great features:
+>The apiato comes with great features:
 
 - JSON Web Tokens (JWT) based Authentication, with pre-configured middleware's.
 - Role-Based Access Control (RBAC), seeded with a Super Admin Role and  Permissions.
@@ -88,7 +85,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - Maintainable and scalable Software Architectural Pattern (using Porto SAP).
 - Support Stripe payment gateways (easy to extend and cover other gatways).
 - Functional Tests covering all the existing Endpoints (using PHPUnit).
-- Fully detailed documentation (on hello-api.readme.io/docs).
+- Fully detailed documentation (on apiato.readme.io/docs).
 - 100% customizable and Open Code.
 - And much more...
 
@@ -98,24 +95,26 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 Join our chatting room on Gitter by click on the icon below
 
-[![Gitter](https://badges.gitter.im/porto-sap/Lobby.svg)](https://gitter.im/porto-sap/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/apiato/Lobby.svg)](https://gitter.im/apiato/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
 
 <a name="Documentation"></a>
 ## Documentation
 
-**Hello API** is architectured using the **Porto** Software Architectural Pattern.
-<br>
-Thus you MUST read the [**Porto Document**](https://github.com/Porto-SAP/Documentation)  before starting.
+**apiato** is built with a new architectural pattern called **[Porto](https://github.com/apiato/Documentation)**.
+> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time. -- [Mahmoud Zalt](https://github.com/Mahmoudz)
 
-###[Full Documentation](https://hello-api.readme.io/docs/installation)
+Reading the simple [**Porto Document**](https://github.com/apiato/Documentation) is essential before starting.
+
+
+[**Full Documentation**](https://apiato.readme.io/docs/installation)
 
 
 <a name="Contribution"></a>
 ## Contribution
 
-Just do it! :)
+Anytime.
 
 
 
@@ -132,7 +131,7 @@ Just do it! :)
 <a name="License"></a>
 ## License
 
-The MIT License [(MIT)](https://github.com/Porto-SAP/Hello-API/blob/master/LICENSE).
+The MIT License [(MIT)](https://github.com/apiato/apiato/blob/master/LICENSE).
 
 
 

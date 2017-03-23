@@ -102,7 +102,7 @@ Unless otherwise specified, all of API endpoints will return the information tha
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.hello.dev/endpoint?page=21"
+        "previous": "http://api.apiato.dev/endpoint?page=21"
       }
     }
   }
@@ -140,7 +140,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 **Usage:**
 
 ```
-api.hello.dev/endpoint?orderBy=created_at
+api.apiato.dev/endpoint?orderBy=created_at
 ```
 
 
@@ -156,7 +156,7 @@ By default the `orderBy` sorts the data in **Ascending** order, if you want the 
 **Usage:**
 
 ```
-api.hello.dev/endpoint?orderBy=name&sortedBy=desc
+api.apiato.dev/endpoint?orderBy=name&sortedBy=desc
 ```
 
 Order By Accepts:
@@ -178,7 +178,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 #### Search any field:
 
 ```
-api.hello.dev/endpoint?search=keyword here
+api.apiato.dev/endpoint?search=keyword here
 ```
 
 > Space should be replaced with `%20` (search=keyword%20here).
@@ -186,23 +186,23 @@ api.hello.dev/endpoint?search=keyword here
 #### Search any field for multiple keywords:
 
 ```
-api.hello.dev/endpoint?search=first keyword;second keyword
+api.apiato.dev/endpoint?search=first keyword;second keyword
 ```
 
 #### Search in specific field:
 ```
-api.hello.dev/endpoint?search=field:keyword here
+api.apiato.dev/endpoint?search=field:keyword here
 ```
 
 #### Search in specific fields for multiple keywords: 
 ```
-api.hello.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+api.apiato.dev/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 #### Define query condition:
 
 ```
-api.hello.dev/endpoint?search=field:keyword&searchFields=name:like
+api.apiato.dev/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Available Conditions: 
@@ -214,7 +214,7 @@ Available Conditions:
 #### Define query condition for multiple fields:
 
 ```
-api.hello.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+api.apiato.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
 ```
 
 
@@ -228,7 +228,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request. And is u
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.hello.dev/endpoint?filter=id;name
+api.apiato.dev/endpoint?filter=id;name
 ```
 
 
@@ -239,7 +239,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.hello.dev/endpoint?page=200
+api.apiato.dev/endpoint?page=200
 ```
 
 
@@ -256,7 +256,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 **Usage:**
 
 ```
-api.hello.dev/endpoint?include=relationship
+api.apiato.dev/endpoint?include=relationship
 ```
 
 
@@ -269,7 +269,7 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 **Usage:**
 
 ```
-api.hello.dev/endpoint?skipCache=true
+api.apiato.dev/endpoint?skipCache=true
 ```
 
 
@@ -298,12 +298,12 @@ TO BE CONTINUE...
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.hello.dev/login"
+curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.apiato.dev/login"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.hello.dev/users"
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.apiato.dev/users"
 ```
 

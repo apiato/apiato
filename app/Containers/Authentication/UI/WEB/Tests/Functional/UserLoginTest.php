@@ -28,7 +28,7 @@ class UserLoginTest extends WebTestCase
 
         // login success and redirect to welcome view
         $this->seePageIs('/dashboard')
-            ->see('Hello Admin');
+            ->see('Apiato Admin');
     }
 
     public function testWebUserLoginWithInvalidCredentials()

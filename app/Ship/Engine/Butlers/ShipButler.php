@@ -22,7 +22,7 @@ class ShipButler
      */
     public function getContainersNamespace()
     {
-        return Config::get('hello.containers.namespace');
+        return Config::get('apiato.containers.namespace');
     }
 
     /**

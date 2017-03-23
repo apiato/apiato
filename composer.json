@@ -1,11 +1,14 @@
 {
-  "name": "porto-sap/hello-api",
-  "description": "An API starter for building modern API's using PHP, Laravel and Porto SAP.",
+  "name": "apiato/apiato",
+  "description": "apiato is a starter project, designed to help building scalable API's faster with PHP and Laravel.",
   "keywords": [
-    "Porto SAP",
-    "Hello API",
+    "apiato",
+    "Porto",
     "Starter",
-    "API"
+    "API",
+    "Laravel",
+    "PHP",
+    "Porto SAP"
   ],
   "license": "MIT",
   "type": "project",

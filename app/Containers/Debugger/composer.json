@@ -1,6 +1,6 @@
 {
-  "name": "porto-sap/debugger",
-  "description": "Porto-SAP Container for Hello-API.",
+  "name": "apiato/debugger",
+  "description": "apiato Container.",
   "require": {
     "jenssegers/agent": "^2.4"
   }

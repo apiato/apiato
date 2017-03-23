@@ -18,7 +18,7 @@
          "name":"Afghanistan",
          "full_name":"Islamic Republic of Afghanistan",
          "iso_3166_2":"AF",
-         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/AF.png"
+         "country_flag":"http:\/\/api.apiato.dev\/assets\/flags\/AF.png"
       },
       {
          "type":"country",
@@ -26,7 +26,7 @@
          "name":"Albania",
          "full_name":"Republic of Albania",
          "iso_3166_2":"AL",
-         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/AL.png"
+         "country_flag":"http:\/\/api.apiato.dev\/assets\/flags\/AL.png"
       },
       {
          "type":"country",
@@ -34,7 +34,7 @@
          "name":"Algeria",
          "full_name":"People\u2019s Democratic Republic of Algeria",
          "iso_3166_2":"DZ",
-         "country_flag":"http:\/\/api.hello.dev\/assets\/flags\/DZ.png"
+         "country_flag":"http:\/\/api.apiato.dev\/assets\/flags\/DZ.png"
       }
       ...
    ]

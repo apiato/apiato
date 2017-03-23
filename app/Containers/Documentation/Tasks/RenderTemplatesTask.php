@@ -30,8 +30,8 @@ class RenderTemplatesTask extends Task
         $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
 
         $this->replace('api.domain.dev', Config::get('api.domain'));
-        $this->replace('{{rate-limit-expires}}', Config::get('hello.api.limit_expires'));
-        $this->replace('{{rate-limit}}', Config::get('hello.api.limit'));
+        $this->replace('{{rate-limit-expires}}', Config::get('apiato.api.limit_expires'));
+        $this->replace('{{rate-limit}}', Config::get('apiato.api.limit'));
         $this->replace('{{token-expires}}', $this->minutesToTimeDisplay(Config::get('jwt.ttl')));
         $this->replace('{{token-expires-minutes}}', Config::get('jwt.ttl'));
         $this->replace('{{pagination-limit}}', Config::get('repository.pagination.limit'));

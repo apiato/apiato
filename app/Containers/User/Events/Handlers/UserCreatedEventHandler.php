@@ -25,7 +25,7 @@ class UserCreatedEventHandler implements ShouldQueue
     {
 //        $this->welcomeEmail->to($event->user->email, $event->user->name)->send([
 //            'name'    => $event->user->name,
-//            'appName' => 'Hello API'
+//            'appName' => 'apiato'
 //        ]);
     }
 }

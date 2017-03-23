@@ -19,7 +19,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="API_FULL_URL"        value="http://api.hello.dev"/>
+        <env name="API_FULL_URL"        value="http://api.apiato.dev"/>
 
         <env name="APP_ENV"             value="testing"/>
         <env name="CACHE_DRIVER"        value="array"/>

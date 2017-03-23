@@ -25,8 +25,8 @@ class RegisterUserTest extends TestCase
     public function testRegisterNewUserWithCredentials_()
     {
         $data = [
-            'email'    => 'hello@mail.dev',
-            'name'     => 'Hello',
+            'email'    => 'apiato@mail.dev',
+            'name'     => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -51,8 +51,8 @@ class RegisterUserTest extends TestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email'    => 'hello@mail.dev',
-            'name'     => 'Hello',
+            'email'    => 'apiato@mail.dev',
+            'name'     => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -71,8 +71,8 @@ class RegisterUserTest extends TestCase
     public function testRegisterExistingUser()
     {
         $userDetails = [
-            'email'    => 'hello@mail.dev',
-            'name'     => 'Hello',
+            'email'    => 'apiato@mail.dev',
+            'name'     => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -95,7 +95,7 @@ class RegisterUserTest extends TestCase
     public function testRegisterNewUserWithoutEmail()
     {
         $data = [
-            'name'     => 'Hello',
+            'name'     => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -114,7 +114,7 @@ class RegisterUserTest extends TestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email'    => 'hello@mail.dev',
+            'email'    => 'apiato@mail.dev',
             'password' => 'secret',
         ];
 
@@ -133,8 +133,8 @@ class RegisterUserTest extends TestCase
     public function testRegisterNewUserWithoutPassword()
     {
         $data = [
-            'email' => 'hello@mail.dev',
-            'name'  => 'Hello',
+            'email' => 'apiato@mail.dev',
+            'name'  => 'Apiato',
         ];
 
         $response = $this->makeCall($data);
@@ -152,7 +152,7 @@ class RegisterUserTest extends TestCase
     {
         $data = [
             'email'    => 'missing-at.dev',
-            'name'     => 'Hello',
+            'name'     => 'Apiato',
             'password' => 'secret',
         ];
 

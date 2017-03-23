@@ -44,7 +44,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         'jwt.auth'         => GetUserFromToken::class,
         'jwt.refresh'      => RefreshToken::class,
 
-        // Hello API User Authentication middleware for Web Pages
+        // apiato User Authentication middleware for Web Pages
         'web.auth'         => WebAuthentication::class,
     ];
 

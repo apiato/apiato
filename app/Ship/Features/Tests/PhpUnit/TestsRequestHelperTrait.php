@@ -244,7 +244,7 @@ trait TestsRequestHelperTrait
      */
     private function hashEndpointId($id, $skipEncoding = false)
     {
-        return (Config::get('hello.hash-id') && !$skipEncoding) ? Hashids::encode($id) : $id;
+        return (Config::get('apiato.hash-id') && !$skipEncoding) ? Hashids::encode($id) : $id;
     }
 
     /**

@@ -22,7 +22,7 @@ class CreateAdminTest extends TestCase
     public function testCreateAdmin_()
     {
         $data = [
-            'email'    => 'hello@admin.dev',
+            'email'    => 'apiato@admin.dev',
             'name'     => 'admin',
             'password' => 'secret',
         ];

@@ -27,7 +27,7 @@ class UserLogoutTest extends WebTestCase
 
         // login success and redirect to welcome view
         $this->seePageIs('/dashboard')
-            ->see('Hello Admin');
+            ->see('Apiato Admin');
 
         // trigger the logout request
         $response = $this->post($this->endpoint);

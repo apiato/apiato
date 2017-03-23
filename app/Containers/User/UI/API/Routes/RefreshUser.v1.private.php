@@ -18,7 +18,7 @@
    "data":{
       "id":0,
       "name":"Mahmoud Zalt",
-      "email":"hello@mail.dev",
+      "email":"apiato@mail.dev",
       "confirmed":null,
       "nickname":null,
       "gender":null,

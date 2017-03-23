@@ -43,6 +43,6 @@ class SayWelcome extends ConsoleCommand
      */
     public function handle()
     {
-        echo "Welcome to Hello API :)\n";
+        echo "Welcome to apiato :)\n";
     }
 }

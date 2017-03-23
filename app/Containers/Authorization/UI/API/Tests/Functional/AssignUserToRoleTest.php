@@ -60,7 +60,7 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        if(\Config::get('hello.hash-id')){
+        if(\Config::get('apiato.hash-id')){
             $this->assertEquals('400', $response->getStatusCode());
 
             $this->assertResponseContainKeyValue([

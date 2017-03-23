@@ -2,6 +2,6 @@
 
 return [
 
-    'welcome' => 'Welcome to Hello API',
+    'welcome' => 'Welcome to apiato',
 
 ];

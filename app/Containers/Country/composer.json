@@ -1,6 +1,6 @@
 {
-  "name": "porto-sap/country",
-  "description": "Porto-SAP Container for Hello-API.",
+  "name": "apiato/country",
+  "description": "apiato Container.",
   "require": {
     "webpatser/laravel-countries": "1.5.*"
   }
