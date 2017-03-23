@@ -2,6 +2,7 @@
 
 namespace App\Containers\Documentation\Tasks;
 
+use App\Containers\Documentation\Exceptions\NoDocTypesFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 

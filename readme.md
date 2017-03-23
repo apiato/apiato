@@ -1,18 +1,25 @@
 # apiato
 
-
+[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
 [![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
-[![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
+[![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
+[![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 [![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/apiato/apiato/master/LICENSE)
-[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
+[![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
+[![composer.lock](https://poser.pugx.org/apiato/apiato/composerlock)](https://packagist.org/packages/apiato/apiato)
+[![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 
 
 
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](https://www.zalt.me)
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.co)
 
 > Build better API's faster with **PHP** and **Laravel 5.4**.
+
+
+<br>
+
+**NOTE:** This project used to be named `Hello API`. It was renamed to `apiato` in March, 22, 2017 for better SEO.
 
 ## Content
 
@@ -20,8 +27,6 @@
 * [Features](#Features)
 * [Chat](#Chat)
 * [Documentation](#Documentation)
-* [Contribution](#Contribution)
-* [Credits](#Credits)
 * [License](#License)
 
 
@@ -103,19 +108,12 @@ Join our chatting room on Gitter by click on the icon below
 ## Documentation
 
 **apiato** is built with a new architectural pattern called **[Porto](https://github.com/apiato/Documentation)**.
-> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time. -- [Mahmoud Zalt](https://github.com/Mahmoudz)
+> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
-Reading the simple [**Porto Document**](https://github.com/apiato/Documentation) is essential before starting.
-
-
-[**Full Documentation**](https://apiato.readme.io/docs/installation)
+Reading the simple [**Porto document**](https://github.com/apiato/Documentation) is essential before starting.
 
 
-<a name="Contribution"></a>
-## Contribution
-
-Anytime.
-
+### apiato full [documentation](https://apiato.readme.io/docs/installation) here.
 
 
 
@@ -124,21 +122,15 @@ Anytime.
 
 | Contributors           | Twitter                                 | Ask for Help                                                                                                          | Contact / Hire  | Site            |
 |------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| [Mahmoud Zalt](https://github.com/Mahmoudz) (Creator) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
+| [Mahmoud Zalt](https://github.com/Mahmoudz) (Maker) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
 
 
 
 <a name="License"></a>
 ## License
 
-The MIT License [(MIT)](https://github.com/apiato/apiato/blob/master/LICENSE).
+The MIT License [(MIT)](https://opensource.org/licenses/MIT).
 
 
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
-
-
-
-
-
-

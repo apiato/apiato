@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Requests;
 
 use App\Containers\Authorization\Traits\AuthorizationTrait;
+use App\Containers\User\Models\User;
 use App\Ship\Engine\Traits\HashIdTrait;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
 
@@ -22,6 +23,8 @@ abstract class Request extends LaravelFormRequest
      * check if a user has permission to perform an action.
      * User can set multiple permissions (separated with "|") and if the user has
      * any of the permissions, he will be authorize to proceed with this action.
+     *
+     * @param \App\Containers\User\Models\User|null $user
      *
      * @return  bool
      */
