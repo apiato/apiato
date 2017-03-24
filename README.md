@@ -19,7 +19,9 @@
 
 <br>
 
-**NOTE:** This project used to be named `Hello API`. It was renamed to `apiato` in March, 22, 2017 for better SEO.
+> apiato is the new name of Hello API.
+>
+> Hello API is the original project name, it has been renamed to apiato in March, 22, 2018 for no reason.
 
 ## Content
 
@@ -36,14 +38,14 @@
 
 ### What is `apiato`
 
-**apiato** is a starter project, designed to help you build scalable API's faster, by providing tools and 
-functionalities that facilitates the development of any API-Centric Application.
+**apiato** is a starter project, designed to help you build scalable API's faster, by providing tools and
+functionalities that facilitates the development of any API-Centric Applications.
 
 apiato uses the best frameworks, tools and conventions in a very creative way to deliver a modern PHP Application.
 
-`Why?` Why not! setting up a solid API from scratch is time consuming (and time equal money).
-apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster. 
-Skip the retetetive jobs and enjoy the open source.
+Why!? setting up a solid API from scratch is time consuming (and time is money).
+apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
+Skip the repetitive work and enjoy the open source fun.
 
 
 #### Intro to API-Centric Apps

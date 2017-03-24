@@ -1,0 +1,71 @@
+# ----
+# Site
+
+title: apiato
+url: "https://github.com/apiato/apiato"
+baseurl:
+google_analytics_key:
+show_full_navigation: true
+
+# Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
+logo: /siteicon.png
+description: Product documentation template for Jekyll.
+author:
+  name: Mahmoud Zalt
+  email: mahmoud@zalt.me
+  twitter: Mahmoud_Zalt
+social:
+  name: apiato
+  links:
+    - https://github.com/apiato/apiato
+
+# -----
+# Build
+
+permalink: pretty
+
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+collections:
+  docs:
+    title: Documentation
+    permalink: /:path/
+    output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: "docs"
+    values:
+      seo:
+        type: Documentation
+      _comments:
+        category: Group navigation links with this field
+        order: Used to sort links in the navigation
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      _comments:
+        type: Marks the impact of this release
+
+# -----------
+# CloudCannon
+
+types:
+  - minor
+  - major

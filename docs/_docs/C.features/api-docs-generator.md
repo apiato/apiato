@@ -1,0 +1,228 @@
+---
+title: "API Docs Generator"
+category: "Features"
+order: 1
+---
+
+Every great API needs a great Documentation. 
+
+apiato make writing and generating documentations very easy with the `php artisan apidoc:generate` command.
+
+![](https://s19.postimg.org/aeqv29ksz/Screen_Shot_2017-03-22_at_7.51.46_PM.png)
+
+## Requirements
+
+- Install the [ApiDocJs](http://apidocjs.com/) tool.
+
+- (Recommended) read the [Routes](doc:routes) page first.
+
+## Usage
+
+#### 1 - Write a PHP **DokBlock** on top of your endpoint like this:
+
+*For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation* 
+
+	 <?php
+	
+	/**
+	 * @apiGroup           Authentication
+	 * @apiName            UserLogin
+	 * @api                {post} /users/login User Login
+	 * @apiDescription     Description Here....
+	 * @apiVersion         1.0.0
+	 * @apiPermission      none
+	 *
+	 * @apiHeader          Accept application/json
+	 *
+	 * @apiParam           {String}     email
+	 * @apiParam           {String}     password
+	 *
+	 * @apiSuccessExample  {json}       Success-Response:
+	 *   HTTP/1.1 200 OK
+	 *   {
+	 *     "data": {
+	 *       "id": "owpzanmh",
+	 *       "name": "Super Admin",
+	 *       "email": "admin@admin.com"
+	 *       ...
+	 *   }
+	 *
+	 * @apiErrorExample  {json}       Error-Response:
+	 *   {
+	 *      "message":"401 Credentials Incorrect.",
+	 *      "status_code":401
+	 *   }
+	 *
+	 * @apiErrorExample  {json}       Error-Response:
+	 *   {
+	 *      "message":"Invalid Input.",
+	 *      "errors":{
+	 *         "email":[
+	 *            "The email field is required."
+	 *         ]
+	 *      },
+	 *      "status_code":422
+	 *   }
+	 */
+	
+	$router->post('users/login', [
+	    'uses' => 'Controller@userLogin',
+	]);
+	 
+**Note:** All the Endpoints `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.
+
+#### 2 - Run the documentations generator command from the root directory:
+
+```shell
+
+php artisan apidoc:generate
+
+```
+
+#### 3 - Visit this URL's as shown in your terminal:
+
+- Public (external) API at `http://apiato.dev/api/documentation/`
+
+- Private (internal) API at `http://apiato.dev/api/private/documentation/`.
+
+**NOTE:** Every time you do changes in the DocBlock of the Routes file you need to run this command.
+
+### Error: ApiDoc not found !!
+
+If you get an error (`apidoc not found`), 
+
+1. open the container config file `Containers/Documentation/Configs/apidoc.php` 
+
+2. edit the `executable` path to `$(npm bin)/apidoc` or to however you access the `apidoc` tool on your machine.
+
+```php
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Executable
+
+    |--------------------------------------------------------------------------
+
+    |
+
+    | Specify how you run or access the `apidoc` tool on your machine.
+
+    |
+
+    */
+
+    'executable' => 'apidoc',
+
+```
+
+## Edit the default generated values in the templates:
+
+apiato generates by defaults 2 API documentations, each one has it's own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
+
+`apidoc.json` Example file:
+
+	 {
+	  "name": "apiato",
+	  "description": "apiato (Private API) Documentation",
+	  "title": "Welcome to apiato",
+	  "version": "1.0.0",
+	  "url" : "http://api.apiato.dev",
+	  "template": {
+	  	"withCompare": true,
+	  	"withGenerator": true
+	  },
+	  "header": {
+	    "title": "API Overview",
+	    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
+	  },
+	  "footer": {
+	    "title": "Footer",
+	    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
+	  },
+	  "order": [
+	
+	  ]
+	}
+	 
+
+## Change the Documentations URL's
+
+Edit the config file of the Documentation Container `Containers/Documentation/Configs/apidoc.php`
+
+	 <?php
+	
+	return [
+	
+	    /*
+	    |--------------------------------------------------------------------------
+	    | Executable
+	    |--------------------------------------------------------------------------
+	    |
+	    | Specify how you run or access the `apidoc` tool on your machine.
+	    |
+	    */
+	
+	    'executable' => 'apidoc',
+	
+	    /*
+	    |--------------------------------------------------------------------------
+	    | API Types
+	    |--------------------------------------------------------------------------
+	    |
+	    | Documentations of these types will be generated, automatically when
+	    | running the API Docs auto generator command.
+	    | IF you API doesn't support any of the types you can simply remove it
+	    | from the types array.
+	    |
+	    */
+	
+	    'types' => [
+	
+	        /*
+	        |------------------------------------------------------------------------
+	        | Documentations URL's
+	        |------------------------------------------------------------------------
+	        |
+	        | Specify the URL's to access your API documentations.
+	        |
+	        */
+	
+	        'public' => [
+	            'url' => 'api/documentation',
+	        ],
+	
+	        'private' => [
+	            'url' => 'api/private/documentation',
+	        ],
+	    ],
+	
+	    /*
+	    |--------------------------------------------------------------------------
+	    | HTML files
+	    |--------------------------------------------------------------------------
+	    |
+	    | Specify where to put the generated HTML files.
+	    |
+	    */
+	
+	    'html_files' => 'public/'
+	];
+	 
+
+## Edit the Documentation Header
+
+The header usually is the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
+
+All this information are written in `app/Containers/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
+
+To edit the content just open the markdown file in any markdown editor and edit it.
+
+You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apidoc:generate` with real values from your application configuration files.
+
+Feel free to extend them to include more info about your API from the `app/Containers/Documentation/Actions/ProcessMarkdownTemplatesAction.php` class.
+
+## API Documentation Headers Example
+
+![](https://s19.postimg.org/nwxrejwyb/d17df37-_Screen__Shot_2017-02-16_at_5.08.54__PM.png)
