@@ -13,7 +13,7 @@ order: 4
 Clone the repo, install dependencies and setup the project:
 
 ```shell
-composer create-project porto-sap/apiato apiato
+composer create-project apiato/apiato apiato
 ```
 
 **Note:** make sure the `JWT_SECRET` is set in the `.env` file. If it still having the default value `xXxXx` then you have to place it manually.
@@ -23,7 +23,7 @@ composer create-project porto-sap/apiato apiato
 1) Clone the repository:
 
  ```shell
-git clone https://github.com/Porto-SAP/apiato.git
+git clone https://github.com/apiato/apiato.git
  ```
 
 2) Install all dependency packages (including Containers dependencies):
