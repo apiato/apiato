@@ -8,9 +8,17 @@
 
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Open+Sans:400,400italic,600,600italic,700,700italic|Inconsolata:400,700">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 		<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/touch-icon.png" sizes="192x192">
 		<link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
+
+        <!-- Start: Github Ribbon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+        <![endif]-->
+        <!-- End: Github Ribbon -->
 
 		{% feed_meta %}
 		{% seo %}
@@ -29,7 +37,9 @@
 	</head>
 
 	<body>
-		<header>
+    <a class="github-fork-ribbon" href="https://github.com/apiato/apiato" title="GitHub Repository">GitHub Repository</a>
+
+    <header>
 			<h1>
                 <!-- WARNING: when uncommenting the image go to `docs/css/main.scss` and change `$nav-header-height` from 30 to 60 `$nav-header-height: 60px;. Also remove the title from the div.-->
 				<!--<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>-->

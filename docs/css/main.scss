@@ -13,7 +13,7 @@ $brand-colour: #2196F3;
 $brand-colour-light: mix($brand-colour, $content-background-color, 10%);
 
 $nav-header-background-color: $brand-colour;
-$nav-header-height: 30px;
+$nav-header-height: 37px;
 $nav-background-color: #e6e9eb;
 $nav-width: 250px;
 
@@ -31,3 +31,4 @@ $full-width-break: $nav-width + ($space * 4) + $content-max-width;
 @import "code";
 @import "tables";
 @import "layout";
+@import "custom";
