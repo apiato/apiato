@@ -12,7 +12,7 @@
 
 
 
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.co)
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
 
 > Build better API's faster with **PHP** and **Laravel 5.4**.
 
@@ -115,7 +115,7 @@ Join our chatting room on Gitter by click on the icon below
 Reading the simple [**Porto document**](https://github.com/Mahmoudz/Porto) is essential before starting.
 
 
-### apiato full [documentation](https://apiato.readme.io/docs/installation) here.
+### apiato full [documentation](http://apiato.io/) here.
 
 
 
