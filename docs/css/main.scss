@@ -13,9 +13,11 @@ $brand-colour: #2196F3;
 $brand-colour-light: mix($brand-colour, $content-background-color, 10%);
 
 $nav-header-background-color: $brand-colour;
-$nav-header-height: 60px;
+$nav-header-height: 30px;
 $nav-background-color: #e6e9eb;
 $nav-width: 250px;
+
+$search-bar-place-holder-color: #a6aaad;
 
 $space: 12px;
 

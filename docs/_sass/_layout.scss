@@ -369,15 +369,29 @@ h4 svg {
 	box-sizing: border-box;
 	border: 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
-	border-left: 5px solid transparent;
+	//border-left: 5px solid transparent;
 	font-size: 1.5rem;
 	font-weight: 600;
 	line-height: 1.8;
-
+    color: $brand-colour;
 	&:focus {
 		outline: none;
 		border-left-color: $brand-colour;
 	}
+
+}::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+   color:    $search-bar-place-holder-color;
+ }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    $search-bar-place-holder-color;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    $search-bar-place-holder-color;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    $search-bar-place-holder-color;
 }
 
 .changelog {

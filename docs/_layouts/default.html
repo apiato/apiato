@@ -31,13 +31,14 @@
 	<body>
 		<header>
 			<h1>
-				<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>
-				{{ site.title }}
+                <!-- WARNING: when uncommenting the image go to `docs/css/main.scss` and change `$nav-header-height` from 30 to 60 `$nav-header-height: 60px;. Also remove the title from the div.-->
+				<!--<a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/emblem.svg" width="40" height="40" alt="{{ site.title }} logo"></a>-->
+				<div style="margin-left: 90px">{{ site.title }}</div>
 				<button type="button" class="open-nav" id="open-nav"></button>
 			</h1>
 
 			<form action="{{ site.baseurl }}/search/" method="get">
-				<input type="text" name="q" id="search-input" placeholder="Search" autofocus>
+				<input type="text" name="q" id="search-input" placeholder="Search.." autofocus>
 				<input type="submit" value="Search" style="display: none;">
 			</form>
 

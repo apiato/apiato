@@ -6,7 +6,7 @@ order: 10
 
 Users often need to control the data request, thus the apiato support out of the box the most useful and common parameters:
 
-##Sorting & Ordering:
+## Sorting & Ordering:
 
 ```
 
@@ -22,7 +22,7 @@ Users often need to control the data request, thus the apiato support out of the
 
 *(provided by the L5 Repository)*
 
-##Searching:
+## Searching:
 
 For the search to work you need to add `fieldSearchable` to the Repository of the Model.
 
@@ -58,7 +58,7 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-###Define search fields for search:
+### Define search fields for search:
 
 ```
 
@@ -72,7 +72,7 @@ Checkout the Search Page for full implementation example.
 
 See the [Search Parameter](doc:search-parameter) page, for how to set it up and control the searchability.
 
-###Define the query condition for search:
+### Define the query condition for search:
 
 ```
 
@@ -88,7 +88,7 @@ See the [Search Parameter](doc:search-parameter) page, for how to set it up and 
 
 *(provided by the L5 Repository)*
 
-##Filtering:
+## Filtering:
 
 Select your columns:
 
@@ -100,7 +100,7 @@ Select your columns:
 
 *(provided by the L5 Repository)*
 
-##Paging:
+## Paging:
 
 ```
 
@@ -110,7 +110,7 @@ Select your columns:
 
 *(provided by the Laravel Paginator)*
 
-##Relationships:
+## Relationships:
 
 Get an object with his relationships:
 
@@ -128,7 +128,7 @@ include=tags,user
 
 Similar to `include=` is the `with=` parameter (provided by the L5 Repository). There's no need to use it since it's almost the same as `include=` so we'll use that instead.
 
-##Caching skipping:
+## Caching skipping:
 
 Note: You need to turn the Eloquent Query Caching ON for this feature to work. Checkout the Configuration Page "ELOQUENT_QUERY_CACHE".
 
@@ -152,11 +152,12 @@ You can include these parameters on almost every `[GET]` endpoint)
 
 All the parameters that are provided by the L5 Repository are configurable from the `Ship/Features/Configs/repository.php` file.
 
-## See the Supported Parameters from the User Developer perspective:
+#### See the Supported Parameters from the User Developer perspective:
 
-1. Generate the Default API documentation
 
-2. Visit the documentation URL
+1) Generate the Default API documentation
+
+2) Visit the documentation URL
 
 More details in the [API Docs Generator](doc:api-docs-generator) page.
 
