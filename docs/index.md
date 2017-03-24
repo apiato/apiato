@@ -2,8 +2,6 @@
 title: "Welcome to apiato"
 ---
 
-## Introduction
-
 **apiato** is a starter project, designed to help you build scalable API's faster, by providing tools and
 functionalities that facilitates the development of any API-Centric Applications.
 
