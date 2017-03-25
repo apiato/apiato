@@ -4,7 +4,7 @@
 title: apiato
 url: "https://github.com/apiato/apiato"
 baseurl:
-google_analytics_key:
+google_analytics_key: UA-37514928-7
 show_full_navigation: true
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
