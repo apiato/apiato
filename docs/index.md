@@ -27,7 +27,7 @@ Skip the repetitive work and enjoy the open source fun.
 
 > apiato is the new name of Hello API.
 >
-> Hello API is the original project name, it has been renamed to apiato in March, 22, 2018 for no reason.
+> Hello API is the original project name, it has been renamed to apiato in March, 22, 2017 for no reason.
 
 ## How to read the docs
 
