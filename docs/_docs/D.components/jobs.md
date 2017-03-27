@@ -20,12 +20,12 @@ When a Job class is dispatched, it perform specific job and die.
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - Jobs
-	                - DoSomethingJob.php
-	                - DoSomethingElseJob.php 
+ - app
+    - Containers
+        - {container-name}
+            - Jobs
+                - DoSomethingJob.php
+                - DoSomethingElseJob.php
 ```
 
 ### Code Samples

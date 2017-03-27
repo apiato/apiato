@@ -23,14 +23,14 @@ Commands could be Closure based or Classes. For more details refer to this [link
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers	
-	        - {container-name}
-	            - UI
-	                - CLI
-	                    - Commands
-	                        - SayHello.php
-	                        - ... 
+ - app
+    - Containers
+        - {container-name}
+            - UI
+                - CLI
+                    - Commands
+                        - SayHello.php
+                        - ...
 ```
 
 ### Code Samples

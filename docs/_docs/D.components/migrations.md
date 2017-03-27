@@ -23,13 +23,13 @@ Migrations are the version control of your database. They are very useful for ge
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - User
-	            - Data
-	                - Migrations
-	                    - 2200_01_01_000001_create_users_table.php
-	                    - ... 
+ - app
+    - Containers
+        - User
+            - Data
+                - Migrations
+                    - 2200_01_01_000001_create_users_table.php
+                    - ...
 ```
 
 ### Code Samples

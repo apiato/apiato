@@ -23,13 +23,13 @@ Factories are mainly used from Tests.
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	             - Data
-	                - Factories
-	                    - UserFactory.php
-	                    - ... 
+ - app
+    - Containers
+        - {container-name}
+             - Data
+                - Factories
+                    - UserFactory.php
+                    - ...
 ```
 
 ### Code Samples

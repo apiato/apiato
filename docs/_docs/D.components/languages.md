@@ -17,17 +17,17 @@ Languages are not really Components, they are just files that holds translations
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - Resources
-	                - Languages
-	                   - en
-	                      - messages.php
-	                      - users.php
-	                   - ar
-	                      - messages.php
-	                      - users.php
+ - app
+    - Containers
+        - {container-name}
+            - Resources
+                - Languages
+                   - en
+                      - messages.php
+                      - users.php
+                   - ar
+                      - messages.php
+                      - users.php
 ```
 	 
 

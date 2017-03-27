@@ -25,33 +25,33 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - Tests
-	                - TestCase.php // the container test case
-	                - Unit
-	                    - CreateUserTest.php
-	                    - UpdateUserTest.php
-	                    - ...
-	            - UI
-	                - API
-	                    - Tests
-	                        - Functional
-	                            - LoginTest.php
-	                            - LogoutTest.php
-	                            - ...
-	                - WEB
-	                    - Tests
-	                        - Functional
-	                            - LoginTest.php
-	                            - LogoutTest.php
-	                            - ...
-	                - CLI
-	                    - Tests
-	                        - Functional
-	                            - BackupDataTest.php
-	                            - ... 
+ - app
+    - Containers
+        - {container-name}
+            - Tests
+                - TestCase.php // the container test case
+                - Unit
+                    - CreateUserTest.php
+                    - UpdateUserTest.php
+                    - ...
+            - UI
+                - API
+                    - Tests
+                        - Functional
+                            - LoginTest.php
+                            - LogoutTest.php
+                            - ...
+                - WEB
+                    - Tests
+                        - Functional
+                            - LoginTest.php
+                            - LogoutTest.php
+                            - ...
+                - CLI
+                    - Tests
+                        - Functional
+                            - BackupDataTest.php
+                            - ...
 ```
 
 ### Code Sample

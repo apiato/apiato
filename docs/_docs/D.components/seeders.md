@@ -25,14 +25,14 @@ Seeders are classes made to seed the database with real data, this data usually 
 ### Folder Structure
 
 ```
-	 - App
-	    - Containers
-	        - {container-name}
-	             - Data
-	                - Seeders
-	                    - ContainerNameRolesSeeder_1.php
-	                    - ContainerNamePermissions_2.php
-	                    - ... 
+ - App
+    - Containers
+        - {container-name}
+             - Data
+                - Seeders
+                    - ContainerNameRolesSeeder_1.php
+                    - ContainerNamePermissions_2.php
+                    - ...
 ```
 
 ### Code Samples

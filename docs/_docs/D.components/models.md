@@ -15,13 +15,13 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
 ### Folder Structure
 
 ```
-	 - App
-	    - Containers
-	        - {container-name}
-	            - Models
-	                - User.php
-	                - UserId.php
-	                - ... 
+ - App
+    - Containers
+        - {container-name}
+            - Models
+                - User.php
+                - UserId.php
+                - ...
 ```
 
 ### Code Sample

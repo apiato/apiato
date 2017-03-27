@@ -17,15 +17,15 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - UI
-	                - WEB
-	                    - Views
-	                        - welcome.php
-	                        - profile.php
-	                        - ... 
+ - app
+    - Containers
+        - {container-name}
+            - UI
+                - WEB
+                    - Views
+                        - welcome.php
+                        - profile.php
+                        - ...
 ```
 
 ### Code Sample

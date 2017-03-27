@@ -25,20 +25,20 @@ Configs are files that container configurations. For more details about them che
 ### Folder Structure
 
 ```
-	 - App
-	    - Containers
-	        - {container-name}
-	            - Configs
-	                - jwt.php
-	                - ...
-	    - Ship
-	        - Features
-	            - Configs
-	                - hello.php
-	                - ...
-	- config
-	    - app.php
-	    - ... 
+ - App
+    - Containers
+        - {container-name}
+            - Configs
+                - jwt.php
+                - ...
+    - Ship
+        - Features
+            - Configs
+                - hello.php
+                - ...
+- config
+    - app.php
+    - ...
 ```
 
 ### Code Samples

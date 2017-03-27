@@ -43,13 +43,13 @@ They are the place where you register things like container bindings, event list
 **Example: User Container `Service Providers`** 
 
 ```
-	 - app
-	    - Containers
-	        - User
-	            - Providers
-	                - UserServiceProvider.php
-	                - EventsServiceProvider.php
-	                - ... 
+ - app
+    - Containers
+        - User
+            - Providers
+                - UserServiceProvider.php
+                - EventsServiceProvider.php
+                - ...
 ```
             
 	                

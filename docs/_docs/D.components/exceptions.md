@@ -25,19 +25,19 @@ Exceptions are classes the handles errors, and helps developers debug their code
 ### Folder Structure
 
 ```
-	 - App
-	    - Containers
-	        - {container-name}
-	            - Exceptions
-	                - AccountFailedException.php
-	                - ...
-	                
-	    - Ship    
-	        - Features
-	            - Exceptions
-	            	  - IncorrectIdException.php
-	                - InternalErrorException.php
-	                - ... 
+ - App
+    - Containers
+        - {container-name}
+            - Exceptions
+                - AccountFailedException.php
+                - ...
+
+    - Ship
+        - Features
+            - Exceptions
+                  - IncorrectIdException.php
+                - InternalErrorException.php
+                - ...
 ```
 
 ### Code Samples

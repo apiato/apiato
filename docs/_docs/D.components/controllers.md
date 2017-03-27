@@ -17,16 +17,16 @@ Read from the [**Porto SAP Documentation (#Controllers)**](https://github.com/Ma
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - UI
-	                - API
-	                    - Controllers
-	                        - Controller.php
-	                - WEB
-	                    - Controllers
-	                        - Controller.php
+ - app
+    - Containers
+        - {container-name}
+            - UI
+                - API
+                    - Controllers
+                        - Controller.php
+                - WEB
+                    - Controllers
+                        - Controller.php
 ```
 
 ### Code Sample

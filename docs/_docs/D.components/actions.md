@@ -15,19 +15,13 @@ Read from the [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmou
 ### Folder Structure
 
 ```
-	 - app
-
-	    - Containers
-
-	        - {container-name}
-
-	            - Actions
-
-	                - CreateUserAction.php
-
-	                - DeleteUserAction.php
-
-	                - ... 
+ - app
+    - Containers
+        - {container-name}
+            - Actions
+                - CreateUserAction.php
+                - DeleteUserAction.php
+                - ...
 ```
 
 ### Code Sample

@@ -27,21 +27,21 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 ### Folder Structure
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - Data
-	                - Criterias
-	                  - ColourRedCriteria.php
-	                  - RaceCarsCriteria.php
-	                  - ...
-	    - Ship    
-	        - Features
-	            - Criterias
-	               - Eloquent
-	                  - CreatedTodayCriteria.php
-	                  - NotNullCriteria.php
-	                  - ... 
+ - app
+    - Containers
+        - {container-name}
+            - Data
+                - Criterias
+                  - ColourRedCriteria.php
+                  - RaceCarsCriteria.php
+                  - ...
+    - Ship
+        - Features
+            - Criterias
+               - Eloquent
+                  - CreatedTodayCriteria.php
+                  - NotNullCriteria.php
+                  - ...
 ```
 
 ### Code Samples

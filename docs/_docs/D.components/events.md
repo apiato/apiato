@@ -29,20 +29,20 @@ Events provide a simple observer implementation, allowing you to subscribe and l
 WILL BE UPDATED
 
 ```
-	 - app
-	    - Containers
-	        - {container-name}
-	            - Events
-	                - Events
-	                		- UserCreatedEvent.php
-			            		- ...
-	            		- Handlers
-	                		- UserCreatedEventHandler.php
-			            		- ...
-	            - Providers
-	            		- EventsServiceProvider.php
-	            		- UserServiceProvider.php
-	                - ... 
+ - app
+    - Containers
+        - {container-name}
+            - Events
+                - Events
+                        - UserCreatedEvent.php
+                            - ...
+                    - Handlers
+                        - UserCreatedEventHandler.php
+                            - ...
+            - Providers
+                    - EventsServiceProvider.php
+                    - UserServiceProvider.php
+                - ...
 
 ```
 

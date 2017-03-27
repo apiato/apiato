@@ -29,18 +29,17 @@ You can enable and disable Middlewares as you wish.
 ### Folder Structure
 
 ```
-	 - App
-	   - Containers
-	       - {container-name}
-	           - Middlewares
-	           - WebAuthentication.php
-	   - Ship
-	       - Features
-	           - Middleware
-	              - Http
-	              	 - EncryptCookies.php
-	                 - VerifyCsrfToken.php 
-
+ - App
+   - Containers
+       - {container-name}
+           - Middlewares
+           - WebAuthentication.php
+   - Ship
+       - Features
+           - Middleware
+              - Http
+                 - EncryptCookies.php
+                 - VerifyCsrfToken.php
 ```
 
 ### Code Sample
