@@ -19,20 +19,20 @@ When a Job class is dispatched, it perform specific job and die.
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
 	            - Jobs
 	                - DoSomethingJob.php
 	                - DoSomethingElseJob.php 
+```
 
 ### Code Samples
 
 **CreateAndValidateAddress with third party `Job`:** 
 
 ```php
- <?php
-
 namespace App\Containers\Shipment\Jobs;
 
 use App\Port\Job\Abstracts\Job;
@@ -61,13 +61,9 @@ Check the parent Job class.
 **Usage from `Action`:** 
 
 ```php
- <?php
-
-//
 
 dispatch(new CreateAndValidateAddressJob($recipients));
 
-//
 ```
 
 For more information about the Policies read [this](https://laravel.com/docs/5.3/queues).

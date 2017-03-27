@@ -24,6 +24,7 @@ Configs are files that container configurations. For more details about them che
 
 ### Folder Structure
 
+```
 	 - App
 	    - Containers
 	        - {container-name}
@@ -38,26 +39,29 @@ Configs are files that container configurations. For more details about them che
 	- config
 	    - app.php
 	    - ... 
+```
 
 ### Code Samples
 
 **Example simple Config file** 
 
-	 <?php
-	
-	return [
-	
-	    /*
-	    |--------------------------------------------------------------------------
-	    | JWT Authentication Secret
-	    |--------------------------------------------------------------------------
-	    |
-	    | Don't forget to set this, as it will be used to sign your tokens.
-	    | A helper command is provided for this: `php artisan jwt:generate`
-	    |
-	    */
-	
-	    'secret' => env('JWT_SECRET', 'defaultSecret!'),
-	  
-	  	'' => '',
-	] 
+```php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | JWT Authentication Secret
+    |--------------------------------------------------------------------------
+    |
+    | Don't forget to set this, as it will be used to sign your tokens.
+    | A helper command is provided for this: `php artisan jwt:generate`
+    |
+    */
+
+    'secret' => env('JWT_SECRET', 'defaultSecret!'),
+
+    '' => '',
+] 
+```

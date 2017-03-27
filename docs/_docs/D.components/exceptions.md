@@ -24,6 +24,7 @@ Exceptions are classes the handles errors, and helps developers debug their code
 
 ### Folder Structure
 
+```
 	 - App
 	    - Containers
 	        - {container-name}
@@ -37,54 +38,67 @@ Exceptions are classes the handles errors, and helps developers debug their code
 	            	  - IncorrectIdException.php
 	                - InternalErrorException.php
 	                - ... 
+```
 
 ### Code Samples
 
 **User `Exception`:**
 
-	 <?php
-	
-	namespace App\Containers\User\Exceptions;
-	
-	use App\Port\Exception\Abstracts\Exception;
-	use Symfony\Component\HttpFoundation\Response;
-	
-	class AccountFailedException extends Exception
-	{
-	    public $httpStatusCode = Response::HTTP_CONFLICT;
-	
-	    public $message = 'Failed creating new User.';
-	}
+```php
+<?php
+
+namespace App\Containers\User\Exceptions;
+
+use App\Port\Exception\Abstracts\Exception;
+use Symfony\Component\HttpFoundation\Response;
+
+class AccountFailedException extends Exception
+{
+    public $httpStatusCode = Response::HTTP_CONFLICT;
+
+    public $message = 'Failed creating new User.';
+}
+```
 	 
 **General `Exception`:**
 
-	 <?php
-	
-	namespace App\Port\Exception\Exceptions;
-	
-	use App\Port\Exception\Abstracts\Exception;
-	use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
-	
-	class InternalErrorException extends Exception
-	{
-	    public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
-	
-	    public $message = 'Something went wrong!';
-	}
-	 
+```php
+<?php
+
+namespace App\Port\Exception\Exceptions;
+
+use App\Port\Exception\Abstracts\Exception;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+
+class InternalErrorException extends Exception
+{
+    public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
+
+    public $message = 'Something went wrong!';
+}
+```
+
 **Exception usage from anywhere:** 
 
-	 <?php
-	
-	throw new AccountFailedException(); 
+```php
+<?php
+
+throw new AccountFailedException(); 
+```
+
 **Usage with Log for Debugging:** 
 
-	 <?php
-	
-	throw (new AccountFailedException())->debug($e); // debug() accepts string or \Exception instance 
+```php
+<?php
+
+throw (new AccountFailedException())->debug($e); // debug() accepts string or \Exception instance 
+```
 
 **Usage and overriding the default `message`:** 
 
-	 <?php
-	
-	throw new AccountFailedException('I am the message to be displayed for the user'); 
+```php
+<?php
+
+throw new AccountFailedException('I am the message to be displayed for the user'); 
+
+```

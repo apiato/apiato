@@ -26,6 +26,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -41,75 +42,90 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 	                  - CreatedTodayCriteria.php
 	                  - NotNullCriteria.php
 	                  - ... 
+```
 
 ### Code Samples
 
 **Example: a shared Criteria** 
 
-	 <?php
-	
-	namespace App\Ship\Features\Criterias\Eloquent;
-	
-	use App\Ship\Parents\Criterias\Criteria;
-	use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
-	
-	class OrderByCreationDateDescendingCriteria extends Criteria
-	{
-	    public function apply($model, PrettusRepositoryInterface $repository)
-	    {
-	        return $model->orderBy('created_at', 'desc');
-	    }
-	}
+```php
+<?php
+
+namespace App\Ship\Features\Criterias\Eloquent;
+
+use App\Ship\Parents\Criterias\Criteria;
+use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
+
+class OrderByCreationDateDescendingCriteria extends Criteria
+{
+    public function apply($model, PrettusRepositoryInterface $repository)
+    {
+        return $model->orderBy('created_at', 'desc');
+    }
+}
+```
+
+
 	 
 **Usage from `Task`:** 
 
-	 <?php
-	
-	public function run()
-	{
-	  $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria);
-	
-	  $users = $this->userRepository->paginate();
-	
-	  return $users;
-	} 
+
+```php
+<?php
+
+public function run()
+{
+    $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria);
+
+    $users = $this->userRepository->paginate();
+
+    return $users;
+} 
+```
+
+
 **Example: `Criteria` accepting data input:** 
 
-	 <?php
-	
-	namespace App\Ship\Features\Criterias\Eloquent;
-	
-	use App\Ship\Parents\Criterias\Criteria;
-	use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
-	
-	class ThisUserCriteria extends Criteria
-	{
-	
-	    private $userId;
-	
-	    public function __construct($userId)
-	    {
-	        $this->userId = $userId;
-	    }
-	
-	    public function apply($model, PrettusRepositoryInterface $repository)
-	    {
-	        return $model->where('user_id', '=', $this->userId);
-	    }
-	}
+```php
+<?php
+
+namespace App\Ship\Features\Criterias\Eloquent;
+
+use App\Ship\Parents\Criterias\Criteria;
+use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
+
+class ThisUserCriteria extends Criteria
+{
+
+    private $userId;
+
+    public function __construct($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    public function apply($model, PrettusRepositoryInterface $repository)
+    {
+        return $model->where('user_id', '=', $this->userId);
+    }
+}
+```
 	
 	 
 **Example: Passing data from `Task` to `Criteria`:** 
 
-	 <?php
-	
-	public function run($user)
-	{
-	  	$this->accountRepository->pushCriteria(new ThisUserCriteria($user->id));
-	
-		  $accounts = $this->accountRepository->paginate();
-	
-	  	return $accounts;
-	} 
+```php
+<?php
+
+public function run($user)
+{
+    $this->accountRepository->pushCriteria(new ThisUserCriteria($user->id));
+
+    $accounts = $this->accountRepository->paginate();
+
+    return $accounts;
+} 
+
+```
 
 For more information about the Criteria read [this](https://github.com/andersao/l5-repository#create-a-criteria).

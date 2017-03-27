@@ -22,42 +22,51 @@ Commands could be Closure based or Classes. For more details refer to this [link
 
 ### Folder Structure
 
+```
 	 - app
-	    - Containers
+	    - Containers	
 	        - {container-name}
 	            - UI
 	                - CLI
 	                    - Commands
 	                        - SayHello.php
 	                        - ... 
+```
 
 ### Code Samples
 
 **Example: a simple Command** 
 
-	 <?php
-	
-	namespace App\Containers\Welcome\UI\CLI\Commands;
-	
-	use App\Ship\Parents\Commands\ConsoleCommand;
-	
-	class SayWelcome extends ConsoleCommand
-	{
-	    protected $signature = 'say:welcome';
-	
-	    protected $description = 'Just Saying Welcome.';
-	
-	    public function __construct()
-	    {
-	        parent::__construct();
-	    }
-	
-	    public function handle()
-	    {
-	        dump('Welcome to apiato :)');
-	    }
-	}
-	 
+```php
+<?php
+
+namespace App\Containers\Welcome\UI\CLI\Commands;
+
+use App\Ship\Parents\Commands\ConsoleCommand;
+
+class SayWelcome extends ConsoleCommand
+{
+
+    protected $signature = 'say:welcome';
+
+    protected $description = 'Just Saying Welcome.';
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function handle()
+    {
+        dump('Welcome to apiato :)');
+    }
+}
+
+```
+
 **Usage from CLI (Terminal):** 
 
-	 php artisan say:welcome 
+```shell
+php artisan say:welcome 
+```
+
