@@ -1,12 +1,13 @@
 ---
-title: "jobs"
+title: "Jobs"
 category: "Components"
 order: 33
 ---
 
 ### Definition
 
-Jobs are normal classes (like commands) that when dispatched they perform specific job. Most of the times Jobs are queueable, means can be their jobs can be deferred for later.
+Jobs is a name given to classes that are usually created to be queued (deferred for later).
+When a Job class is dispatched, it perform specific job and die.
 
 ## Principles
 
@@ -29,44 +30,44 @@ Jobs are normal classes (like commands) that when dispatched they perform specif
 
 **CreateAndValidateAddress with third party `Job`:** 
 
-	 <?php
-	
-	namespace App\Containers\Shipment\Jobs;
-	
-	use App\Port\Job\Abstracts\Job;
-	use Illuminate\Bus\Queueable;
-	use Illuminate\Contracts\Queue\ShouldQueue;
-	use Illuminate\Queue\InteractsWithQueue;
-	use Illuminate\Queue\SerializesModels;
-	
-	class CreateAndValidateAddressJob extends Job implements ShouldQueue
-	{
-	
-	    use InteractsWithQueue, Queueable, SerializesModels;
-	
-	    private $recipients;
-	
-	    public function __construct(array $recipients)
-	    {
-	        $this->recipients = $recipients;
-	    }
-	
-	    public function handle()
-	    { 
-	        foreach ($this->recipients as $recipient) {
-	            // do whatever you like
-	        }
-	    }
-	}
-	 
+```php
+ <?php
+
+namespace App\Containers\Shipment\Jobs;
+
+use App\Port\Job\Abstracts\Job;
+
+class CreateAndValidateAddressJob extends Job
+{
+    private $recipients;
+
+    public function __construct(array $recipients)
+    {
+        $this->recipients = $recipients;
+    }
+
+    public function handle()
+    {
+        foreach ($this->recipients as $recipient) {
+            // do whatever you like
+        }
+    }
+}
+```
+
+Check the parent Job class.
+
+
 **Usage from `Action`:** 
 
-	 <?php
-	
-	//
-	
-	dispatch(new CreateAndValidateAddressJob($recipients));
-	
-	// 
+```php
+ <?php
+
+//
+
+dispatch(new CreateAndValidateAddressJob($recipients));
+
+//
+```
 
 For more information about the Policies read [this](https://laravel.com/docs/5.3/queues).
