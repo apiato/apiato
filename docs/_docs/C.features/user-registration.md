@@ -22,19 +22,21 @@ Go to `app/Containers/User/UI/API/Controllers/Controller.php` and set the last p
 
 Example:
 
-	 <?php
-	
-	    public function registerUser(RegisterRequest $request, RegisterUserAction $action)
-	    {
-	        $user = $action->run(
-	            $request['email'],
-	            $request['password'],
-	            $request['name'],
-	            true // << default to true means login after you register.
-	        );
-	
-	        return $this->response->item($user, new UserTransformer());
-	    } 
+```php
+<?php
+
+public function registerUser(RegisterRequest $request, RegisterUserAction $action)
+{
+    $user = $action->run(
+        $request['email'],
+        $request['password'],
+        $request['name'],
+        true // << default to true means login after you register.
+    );
+
+    return $this->response->item($user, new UserTransformer());
+} 
+```
 
 ## Register with Social Account
 

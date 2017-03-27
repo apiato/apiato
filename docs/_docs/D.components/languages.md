@@ -16,6 +16,7 @@ Languages are not really Components, they are just files that holds translations
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -27,18 +28,23 @@ Languages are not really Components, they are just files that holds translations
 	                   - ar
 	                      - messages.php
 	                      - users.php
+```
 	 
 
 ### Usage
 
 Nothing much to show here, here's how you use translated string:
 
-	 <?php
-	
-	__('messages.welcome');
-	
-	echo __('messages.welcome');
-	
-	dd(__('messages.welcome')); 
+
+```php
+<?php
+
+__('messages.welcome');
+
+echo __('messages.welcome');
+
+dd(__('messages.welcome')); 
+```
+
 
 For More info about the localization checkout the [Localization](doc:localization) page.

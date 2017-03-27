@@ -22,52 +22,54 @@ apiato make writing and generating documentations very easy with the `php artisa
 
 *For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation* 
 
-	 <?php
-	
-	/**
-	 * @apiGroup           Authentication
-	 * @apiName            UserLogin
-	 * @api                {post} /users/login User Login
-	 * @apiDescription     Description Here....
-	 * @apiVersion         1.0.0
-	 * @apiPermission      none
-	 *
-	 * @apiHeader          Accept application/json
-	 *
-	 * @apiParam           {String}     email
-	 * @apiParam           {String}     password
-	 *
-	 * @apiSuccessExample  {json}       Success-Response:
-	 *   HTTP/1.1 200 OK
-	 *   {
-	 *     "data": {
-	 *       "id": "owpzanmh",
-	 *       "name": "Super Admin",
-	 *       "email": "admin@admin.com"
-	 *       ...
-	 *   }
-	 *
-	 * @apiErrorExample  {json}       Error-Response:
-	 *   {
-	 *      "message":"401 Credentials Incorrect.",
-	 *      "status_code":401
-	 *   }
-	 *
-	 * @apiErrorExample  {json}       Error-Response:
-	 *   {
-	 *      "message":"Invalid Input.",
-	 *      "errors":{
-	 *         "email":[
-	 *            "The email field is required."
-	 *         ]
-	 *      },
-	 *      "status_code":422
-	 *   }
-	 */
-	
-	$router->post('users/login', [
-	    'uses' => 'Controller@userLogin',
-	]);
+```php
+<?php
+
+/**
+ * @apiGroup           Authentication
+ * @apiName            UserLogin
+ * @api                {post} /users/login User Login
+ * @apiDescription     Description Here....
+ * @apiVersion         1.0.0
+ * @apiPermission      none
+ *
+ * @apiHeader          Accept application/json
+ *
+ * @apiParam           {String}     email
+ * @apiParam           {String}     password
+ *
+ * @apiSuccessExample  {json}       Success-Response:
+ *   HTTP/1.1 200 OK
+ *   {
+ *     "data": {
+ *       "id": "owpzanmh",
+ *       "name": "Super Admin",
+ *       "email": "admin@admin.com"
+ *       ...
+ *   }
+ *
+ * @apiErrorExample  {json}       Error-Response:
+ *   {
+ *      "message":"401 Credentials Incorrect.",
+ *      "status_code":401
+ *   }
+ *
+ * @apiErrorExample  {json}       Error-Response:
+ *   {
+ *      "message":"Invalid Input.",
+ *      "errors":{
+ *         "email":[
+ *            "The email field is required."
+ *         ]
+ *      },
+ *      "status_code":422
+ *   }
+ */
+
+$router->post('users/login', [
+    'uses' => 'Controller@userLogin',
+]);
+```
 	 
 **Note:** All the Endpoints `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.
 
@@ -96,7 +98,7 @@ If you get an error (`apidoc not found`),
 2. edit the `executable` path to `$(npm bin)/apidoc` or to however you access the `apidoc` tool on your machine.
 
 ```php
-
+<?php
     /*
 
     |--------------------------------------------------------------------------
@@ -123,92 +125,101 @@ apiato generates by defaults 2 API documentations, each one has it's own `apidoc
 
 `apidoc.json` Example file:
 
-	 {
-	  "name": "apiato",
-	  "description": "apiato (Private API) Documentation",
-	  "title": "Welcome to apiato",
-	  "version": "1.0.0",
-	  "url" : "http://api.apiato.dev",
-	  "template": {
-	  	"withCompare": true,
-	  	"withGenerator": true
-	  },
-	  "header": {
-	    "title": "API Overview",
-	    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
-	  },
-	  "footer": {
-	    "title": "Footer",
-	    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
-	  },
-	  "order": [
-	
-	  ]
-	}
+```json
+{
+  "name": "apiato",
+  "description": "apiato (Private API) Documentation",
+  "title": "Welcome to apiato",
+  "version": "1.0.0",
+  "url" : "http://api.apiato.dev",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "header": {
+    "title": "API Overview",
+    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
+  },
+  "footer": {
+    "title": "Footer",
+    "filename": "app/Containers/Documentation/ApiDocJs/private/header.md"
+  },
+  "order": [
+
+  ]
+}
+```
 	 
 
 ## Change the Documentations URL's
 
 Edit the config file of the Documentation Container `Containers/Documentation/Configs/apidoc.php`
 
-	 <?php
-	
-	return [
-	
-	    /*
-	    |--------------------------------------------------------------------------
-	    | Executable
-	    |--------------------------------------------------------------------------
-	    |
-	    | Specify how you run or access the `apidoc` tool on your machine.
-	    |
-	    */
-	
-	    'executable' => 'apidoc',
-	
-	    /*
-	    |--------------------------------------------------------------------------
-	    | API Types
-	    |--------------------------------------------------------------------------
-	    |
-	    | Documentations of these types will be generated, automatically when
-	    | running the API Docs auto generator command.
-	    | IF you API doesn't support any of the types you can simply remove it
-	    | from the types array.
-	    |
-	    */
-	
-	    'types' => [
-	
-	        /*
-	        |------------------------------------------------------------------------
-	        | Documentations URL's
-	        |------------------------------------------------------------------------
-	        |
-	        | Specify the URL's to access your API documentations.
-	        |
-	        */
-	
-	        'public' => [
-	            'url' => 'api/documentation',
-	        ],
-	
-	        'private' => [
-	            'url' => 'api/private/documentation',
-	        ],
-	    ],
-	
-	    /*
-	    |--------------------------------------------------------------------------
-	    | HTML files
-	    |--------------------------------------------------------------------------
-	    |
-	    | Specify where to put the generated HTML files.
-	    |
-	    */
-	
-	    'html_files' => 'public/'
-	];
+```php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Executable
+    |--------------------------------------------------------------------------
+    |
+    | Specify how you run or access the `apidoc` tool on your machine.
+    |
+    */
+
+    'executable' => 'apidoc',
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Types
+    |--------------------------------------------------------------------------
+    |
+    | The `types` helps generating multiple documentations, by grouping them
+    | under types names. You can add or remove any type. By default
+    | `public` and `private` types are set.
+    |
+    | url: The url to access that generated API documentation.
+    |
+    | routes: The route file to read when generating this documentation.
+    |         Every route file will have the following name format:
+    |         `{endpoint-name}.v{version-number}.{documentation-type}.php`.
+    |
+    */
+
+    'types' => [
+
+        'public' => [
+            'url' => 'api/documentation',
+            'routes' => [
+                'public',
+            ],
+        ],
+
+        'private' => [
+            'url' => 'api/private/documentation',
+            'routes' => [
+                'private',
+                'public',
+            ],
+        ],
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTML files
+    |--------------------------------------------------------------------------
+    |
+    | Specify where to put the generated HTML files.
+    |
+    */
+
+    'html_files' => 'public/'
+];
+```
+
 	 
 
 ## Edit the Documentation Header

@@ -42,6 +42,7 @@ They are the place where you register things like container bindings, event list
 
 **Example: User Container `Service Providers`** 
 
+```
 	 - app
 	    - Containers
 	        - User
@@ -49,51 +50,58 @@ They are the place where you register things like container bindings, event list
 	                - UserServiceProvider.php
 	                - EventsServiceProvider.php
 	                - ... 
+```
+            
+	                
 In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `UserServiceProvider`. While the `UserServiceProvider` will get automatically registered (since it's named based on his Container name).
 
 ### Code Samples
 
 **Main Service Provider Example:** 
 
-	 <?php
-	
-	namespace App\Containers\Excel\Providers;
-	
-	use App\Ship\Parents\Providers\MainProvider;
-	use Maatwebsite\Excel\ExcelServiceProvider;
-	use Maatwebsite\Excel\Facades\Excel;
-	
-	class MainServiceProvider extends MainProvider
-	{
-	
-	    /**
-	     * Container Service Providers.
-	     *
-	     * @var array
-	     */
-	    public $serviceProviders = [
-	       // ...			
-	    ];
-	
-	    /**
-	     * Container Aliases
-	     *
-	     * @var  array
-	     */
-	    public $aliases = [
-	       // ...
-	    ];
-	
-	    /**
-	     * Register anything in the container.
-	     */
-	    public function register()
-	    {
-	        parent::register();
-	
-	        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
-	    }
-	}
+
+```php
+<?php
+
+namespace App\Containers\Excel\Providers;
+
+use App\Ship\Parents\Providers\MainProvider;
+use Maatwebsite\Excel\ExcelServiceProvider;
+use Maatwebsite\Excel\Facades\Excel;
+
+class MainServiceProvider extends MainProvider
+{
+
+    /**
+     * Container Service Providers.
+     *
+     * @var array
+     */
+    public $serviceProviders = [
+        // ...			
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    public $aliases = [
+        // ...
+    ];
+
+    /**
+     * Register anything in the container.
+     */
+    public function register()
+    {
+        parent::register();
+
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+    }
+}
+```
+
 	 
 **Note**: when defining `register()` or `boot()` function in your Main provider "only" you must call the parent functions (`parent::register()`, `parent::boot()`) from your extended function.
 
@@ -107,14 +115,18 @@ No need to register the Main `Service Provider` anywhere, it will be automatical
 
 You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follow:
 
-	 <?php
-	
-	    private $containerServiceProviders = [
-	        AuthServiceProvider::class,
-	        EventsServiceProvider::class,
-	        // ...
-	    ];
-	], 
+
+```php
+<?php
+
+private $containerServiceProviders = [
+    AuthServiceProvider::class,
+    EventsServiceProvider::class,
+    // ...
+];
+], 
+```
+
 > Same thing applies to **Aliases**.
 
 ### Third party packages Service Providers

@@ -10,7 +10,7 @@ For pagination apiato uses the [L5 Repository Package](https://packagist.org/pac
 
 Open the `.env` file and set a number for `PAGINATION_LIMIT`:
 
-```
+```env
 
 PAGINATION_LIMIT=10
 

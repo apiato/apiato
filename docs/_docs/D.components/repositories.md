@@ -30,6 +30,7 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -37,65 +38,74 @@ The Repository is used to separate the logic that retrieves the data and maps it
 	                - Repositories
 	                    - UserRepository.php
 	                    - ... 
+```
 
 ### Code Samples
 
 **User `Repository`:** 
 
-	 <?php
-	
-	namespace App\Containers\User\Data\Repositories;
-	
-	use App\Containers\User\Contracts\UserRepositoryInterface;
-	use App\Containers\User\Models\User;
-	use App\Ship\Parents\Repositories\Repository;
-	
-	class UserRepository extends Repository implements UserRepositoryInterface
-	{
-	    protected $fieldSearchable = [
-	        'name'  => 'like',
-	        'email' => '=',
-	    ];
-	}
+
+```php
+<?php
+
+namespace App\Containers\User\Data\Repositories;
+
+use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Models\User;
+use App\Ship\Parents\Repositories\Repository;
+
+class UserRepository extends Repository implements UserRepositoryInterface
+{
+    protected $fieldSearchable = [
+        'name'  => 'like',
+        'email' => '=',
+    ];
+}
+```
 	 
 **Usage:** 
 
-	 <?php
-	
-	// paginate the data by 10
-	$users = $userRepository->paginate(10);
-	
-	// search by 1 field
-	$cars = $carRepository->findByField('colour', $colour);
-	
-	// searching multiple fields
-	$offer = $offerRepository->findWhere([
-	  'offer_id' => $offer_id,
-	  'user_id'  => $user_id,
-	])->first();
-	
-	//.... 
+
+```php
+<?php
+
+// paginate the data by 10
+$users = $userRepository->paginate(10);
+
+// search by 1 field
+$cars = $carRepository->findByField('colour', $colour);
+
+// searching multiple fields
+$offer = $offerRepository->findWhere([
+    'offer_id' => $offer_id,
+    'user_id'  => $user_id,
+])->first();
+
+//.... 
+```
 
 Note: If the Repository belongs to Model with a name different than its Container name, the Repository class of that Model must set the property `$container` and define the Container name.
 
 **Example:** 
 
-	 <?php
-	
-	namespace App\Containers\Authorization\Data\Repositories;
-	
-	use App\Ship\Parents\Repositories\Repository;
-	
-	class RoleRepository extends Repository
-	{
-	    protected $container = 'Authorization'; // the container name. Must be set when the model has different name than the container
-	
-	    protected $fieldSearchable = [
-	
-	    ];
-	
-	}
-	 
+
+```php
+<?php
+
+namespace App\Containers\Authorization\Data\Repositories;
+
+use App\Ship\Parents\Repositories\Repository;
+
+class RoleRepository extends Repository
+{
+    protected $container = 'Authorization'; // the container name. Must be set when the model has different name than the container
+
+    protected $fieldSearchable = [
+
+    ];
+
+}
+```	 
 
 ### Other Properties:
 
@@ -105,20 +115,27 @@ To enable query parameters (`?search=text`,...) in your API you need to set the 
 
 **Example `$fieldSearchable` of a `Repository`:** 
 
+```php
 	 <?php
 	
 	protected $fieldSearchable = [
 	  'name'  => 'like',
 	  'email' => '=',
 	]; 
+```
+
+
 Continue reading to find more about those properties and what they do.
 
 ### All other Properties
 
 apiato uses the `andersao/l5-repository` package, to provide a lot of powerful features to the repository class. such as
 
-```
-
+```php
+<?php
+	 
+	 // ...
+	 
     protected $cacheMinutes = 1440; // 1 day
 
     protected $cacheOnly = ['all'];

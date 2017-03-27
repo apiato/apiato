@@ -49,23 +49,14 @@ Always use `getHashedKey()` on your models when you want to get the ID
 Example: 
 
 ```php
-
 $data = [
-
     'roles_ids' => [
-
         $role1->getHashedKey(),
-
         $role2->getHashedKey(),
-
     ],
-
     'user_id'   => $randomUser->getHashedKey(),
-
 ];
-
 $response = $this->makeCall($data);
-
 ```
 
 *Or you can do this manually `Hashids::encode($id);`. *
@@ -77,9 +68,7 @@ You can use this helper function `injectId($id, $skipEncoding = false, $replace 
 Example:
 
 ```php
-
 $response = $this->injectId($admin->id)->makeCall();
-
 ```
 
 More details on the [Tests Helpers](doc:tests-helpers) page.

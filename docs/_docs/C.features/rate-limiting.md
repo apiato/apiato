@@ -11,7 +11,6 @@ Every response contain API Limit `X-RateLimit-Limit:100` and the remaining calls
 **Response Header example:**
 
 ```
-
 Cache-Control:private, must-revalidate
 
 Connection:keep-alive
@@ -41,7 +40,6 @@ Go to `port/config/configs/hello.php` and change the `limit` value. You might as
 These values will be pointing to the `.env` file so go there and update those default variables:
 
 ```
-
 API_LIMIT=100
 
 API_LIMIT_EXPIRES=5

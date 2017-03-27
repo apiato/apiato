@@ -16,6 +16,7 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -32,38 +33,47 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
 	                   - Routes
 	                      - main.php
 	                      - ... 
+```
 
 ### Web Routes
 
 **Example: Endpoint to display a Hello View in the browser**
 
-	 <?php
-	
-	$router->get('/hello', [
-	    'uses' => 'Controller@sayHello',
-	]);
-	 
+```php
+<?php
+
+$router->get('/hello', [
+    'uses' => 'Controller@sayHello',
+]);
+```
+
 In all the Web `Routes` files the `$router` variable is an instance of the default Laravel Router `Illuminate\Routing\Router`.
 
 ### API Routes
 
 **Example: User Login API Endpoint**
 
-	 <?php
-	
-	$router->post('login', [
-	    'uses' => 'Controller@loginUser',
-	]); 
+```php
+<?php
+
+$router->post('login', [
+    'uses' => 'Controller@loginUser',
+]); 
+```
+
 **Example: Protected List All Users API Endpoint, for an API Routes file** 
 
-	 <?php
-	
-	$router->get('users', [
-	    'uses'       => 'Controller@listAllUsers',
-	    'middleware' => [
-	        'api.auth',
-	    ]
-	]); 
+```php
+<?php
+
+$router->get('users', [
+    'uses'       => 'Controller@listAllUsers',
+    'middleware' => [
+        'api.auth',
+    ]
+]); 
+```
+
 In all the API `Routes` files the `$router` variable is an instance of `Dingo\Api\Routing\Router` from the `dingo/api` package.
 
 ### Advanced

@@ -16,6 +16,7 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -25,41 +26,46 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 	                        - welcome.php
 	                        - profile.php
 	                        - ... 
+```
 
 ### Code Sample
 
 **Welcome page View** 
 
-	 <!DOCTYPE html>
-	<html>
-	    <head>
-	        <title>Welcome</title>
-	    </head>
-	    <body>
-	        <div class="container">
-	            <div class="content">
-	                <div class="title">Welcome</div>
-	            </div>
-	        </div>
-	    </body>
-	</html>
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="title">Welcome</div>
+    </div>
+</div>
+</body>
+</html>
+```
 	 
 **Example: Usage From Controller** 
 
-	 <?php
-	
-	namespace App\Containers\Welcome\UI\WEB\Controllers;
-	
-	use App\Ship\Parents\Controllers\WebController;
-	
-	class Controller extends WebController
-	{
-	    public function sayWelcome()
-	    {
-	        return view('just-welcome');
-	    }
-	}
+```php
+<?php
+
+namespace App\Containers\Welcome\UI\WEB\Controllers;
+
+use App\Ship\Parents\Controllers\WebController;
+
+class Controller extends WebController
+{
+    public function sayWelcome()
+    {
+        return view('just-welcome');
+    }
+}
 	 
+```
 
 ## Namespaces
 

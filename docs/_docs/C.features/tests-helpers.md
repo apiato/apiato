@@ -18,43 +18,46 @@ The `$endpoint = 'verb@uri';` property is where you define the endpoints you are
 
 **Example:** 
 
-	 <?php
-	
-	namespace App\Containers\User\UI\API\Tests\Functional;
-	
-	use App\Containers\User\Tests\TestCase;
-	
-	class RegisterUserTest extends TestCase
-	{
-	
-	    protected $endpoint = 'post@register';
-	
-	    protected $auth = false;
-	
-	    protected $access = [
-	        'roles'       => '',
-	        'permissions' => '',
-	    ];
-	
-	    public function testRegisterNewUserWithCredentials_()
-	    {
-	        // prepare your post data
-	        $data = [
-	            'email'    => 'hello@mail.dev',
-	            'name'     => 'Mahmoud',
-	            'password' => 'secret',
-	        ];
-	
-	        // send the HTTP request
-	        $response = $this->makeCall($data);
-	
-	        // assert response status is correct
-	        $this->assertEquals('200', $response->getStatusCode());
-	
-	        // ... add all your assertions
-	    }
-	  
-	} 
+```php
+<?php
+
+namespace App\Containers\User\UI\API\Tests\Functional;
+
+use App\Containers\User\Tests\TestCase;
+
+class RegisterUserTest extends TestCase
+{
+
+    protected $endpoint = 'post@register';
+
+    protected $auth = false;
+
+    protected $access = [
+        'roles'       => '',
+        'permissions' => '',
+    ];
+
+    public function testRegisterNewUserWithCredentials_()
+    {
+        // prepare your post data
+        $data = [
+            'email'    => 'hello@mail.dev',
+            'name'     => 'Mahmoud',
+            'password' => 'secret',
+        ];
+
+        // send the HTTP request
+        $response = $this->makeCall($data);
+
+        // assert response status is correct
+        $this->assertEquals('200', $response->getStatusCode());
+
+        // ... add all your assertions
+    }
+
+} 
+```
+
 
 #### Override the property value in some test functions
 
@@ -85,6 +88,7 @@ $response = $this->auth(false)->makeCall();
 The `$access` property is where you define the permissions/roles that you need to give to your testing users in that test class. So when using `$user = $this->getTestingUser();` it will automatically takes all the roles and permissions you gave him.
 
 ```php
+<?php
 
     protected $access = [
 
@@ -119,6 +123,7 @@ All the test helper functions are provided by traits classes living inside `app/
 **Usage:**
 
 ```php
+<?php
 
 $response = $this->makeCall();
 
@@ -147,6 +152,7 @@ $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
 **Usage:**
 
 ```php
+<?php
 
 $user = $this->getTestingUser();
 

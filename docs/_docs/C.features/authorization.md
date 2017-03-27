@@ -20,33 +20,34 @@ Behind the scenes apiato is using the [Laravel's authorization](https://laravel.
 
 **Example checking if user can delete a user:** 
 
-	 <?php
-	
-	namespace App\Containers\User\UI\API\Requests;
-	
-	use App\Ship\Parents\Requests\Request;
-	
-	class DeleteUserRequest extends Request
-	{
-	    /**
-	     * Define which Roles and/or Permissions has access to this request.
-	     *
-	     * @var  array
-	     */
-	    protected $access = [
-	        'permission' => 'delete-users|another-permissions..'
+```php
+<?php
+
+namespace App\Containers\User\UI\API\Requests;
+
+use App\Ship\Parents\Requests\Request;
+
+class DeleteUserRequest extends Request
+{
+    /**
+     * Define which Roles and/or Permissions has access to this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'delete-users|another-permissions..'
 	      	'roles'      => 'manger'
 	    ];
 	
 	    public function authorize()
-	    {
-	        return $this->check([
-	            'hasAccess|isOwner',
-	            'isKing',
-	        ]);
-	    }
+        {
+            return $this->check([
+                'hasAccess|isOwner',
+                'isKing',
+            ]);
+        }
 	}
-	 
+``` 
 
 **For detailed explanation of this example, please visit the [Requests](doc:requests) Page.**
 
@@ -69,13 +70,8 @@ Checkout each container seeding directory `app/Containers/{container-name}/Data/
 If you don't have the right permission to access a protected Endpoint by default you will get:
 
 ```
-
 {
-
-      message: "403 Forbidden",
-
-      status_code: 403
-
+   message: "403 Forbidden",
+   status_code: 403
 }
-
 ```

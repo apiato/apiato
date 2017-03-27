@@ -16,6 +16,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -30,64 +31,70 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 	                        - UpdateUserRequest.php
 	                        - DeleteUserRequest.php
 	                        - ... 
+```
 
 ### Code Samples
 
 **Example: Update User Requests** 
 
-	 <?php
-	
-	namespace App\Containers\User\UI\API\Requests;
-	
-	use App\Ship\Parents\Requests\Request;
-	
-	class UpdateUserRequest extends Request
-	{
-	
-	    protected $access = [
-	        'permission' => '',
-	        'roles'      => 'admin',
-	    ];
-	
-	    protected $decode = [
-	
-	    ];
-	
-	    protected $urlParameters = [
-	
-	    ];
-	
-	    public function rules()
-	    {
-	        return [
-	            'email'    => 'email|unique:users,email',
-	            'password' => 'min:100|max:200',
-	            'name'     => 'min:300|max:400',
-	        ];
-	    }
-	
-	    public function authorize()
-	    {
-	        return $this->check([
-	            'hasAccess|isOwner',
-	        ]);
-	    }
-	}
+```php
+<?php
+
+namespace App\Containers\User\UI\API\Requests;
+
+use App\Ship\Parents\Requests\Request;
+
+class UpdateUserRequest extends Request
+{
+
+    protected $access = [
+        'permission' => '',
+        'roles'      => 'admin',
+    ];
+
+    protected $decode = [
+
+    ];
+
+    protected $urlParameters = [
+
+    ];
+
+    public function rules()
+    {
+        return [
+            'email'    => 'email|unique:users,email',
+            'password' => 'min:100|max:200',
+            'name'     => 'min:300|max:400',
+        ];
+    }
+
+    public function authorize()
+    {
+        return $this->check([
+            'hasAccess|isOwner',
+        ]);
+    }
+}
+```
 	 
 *If you are wondering what are those properties doing on the request! keep reading*
 
 **Usage from Controller:** 
 
-	 <?php
-	
-	public function handle(UpdateUserRequest $updateUserRequest)
-	{
-	    $data = $updateUserRequest->all();
-	    // or
-	    $name = $updateUserRequest->name; 
-	    // or     
-	    $name = $updateUserRequest['name'];
-	} 
+```php
+<?php
+
+public function handle(UpdateUserRequest $updateUserRequest)
+{
+    $data = $updateUserRequest->all();
+    // or
+    $name = $updateUserRequest->name;
+    // or     
+    $name = $updateUserRequest['name'];
+} 
+```
+
 By just injecting the request class you already applied the validation and authorization rules.
 
 ### Request Properties
@@ -104,34 +111,37 @@ Thus these ID's needs to be Decoded somewhere, apiato has a property on its Requ
 
 Example:
 
-	 <?php
-	
-	namespace App\Containers\Authorization\UI\API\Requests;
-	
-	use App\Ship\Parents\Requests\Request;
-	
-	class AssignUserToRoleRequest extends Request
-	{
-	
-	    protected $decode = [
-	       'user_id',
-	       'item_id',
-	    ];
-	  
-	    public function rules()
-	    {
-	        return [
-	
-	        ];
-	    }
-	
-	    public function authorize()
-	    {
-	        return $this->check([
-	           // ..
-	        ]);
-	    }
-	}
+```php
+<?php
+
+namespace App\Containers\Authorization\UI\API\Requests;
+
+use App\Ship\Parents\Requests\Request;
+
+class AssignUserToRoleRequest extends Request
+{
+
+    protected $decode = [
+        'user_id',
+        'item_id',
+    ];
+
+    public function rules()
+    {
+        return [
+
+        ];
+    }
+
+    public function authorize()
+    {
+        return $this->check([
+            // ..
+        ]);
+    }
+}
+```
+
 	 
 **Note:** validations rules that relies on your ID like (`exists:users,id`) will not work unless you decode your ID before passing it to the validation.
 
@@ -143,41 +153,43 @@ Laravel by default doesn't allow validating the URL parameters (`/stores/999/ite
 
 Example: 
 
-	 <?php
-	
-	namespace App\Containers\Email\UI\API\Requests;
-	
-	use App\Ship\Parents\Requests\Request;
-	
-	class ConfirmUserEmailRequest extends Request
-	{
-	
-		  /**
-	     * Defining the URL parameters (`/stores/999/items`) allows applying
-	     * validation rules on them and allows accessing them like request data.
-	     *
-	     * @var  array
-	     */
-	    protected $urlParameters = [
-	        'id',
-	        'code',
-	    ];
-	
-	    public function rules()
-	    {
-	        return [
-	            'id'   => 'required|integer', // url parameter
-	            'code' => 'required|min:35|max:45', // url parameter
-	        ];
-	    }
-	
-	    public function authorize()
-	    {
-	        return $this->check([
-	           // nothing! this is open endpoint.
-	        ]);
-	    }
-	} 
+```php
+<?php
+
+namespace App\Containers\Email\UI\API\Requests;
+
+use App\Ship\Parents\Requests\Request;
+
+class ConfirmUserEmailRequest extends Request
+{
+
+    /**
+     * Defining the URL parameters (`/stores/999/items`) allows applying
+     * validation rules on them and allows accessing them like request data.
+     *
+     * @var  array
+     */
+    protected $urlParameters = [
+        'id',
+        'code',
+    ];
+
+    public function rules()
+    {
+        return [
+            'id'   => 'required|integer', // url parameter
+            'code' => 'required|min:35|max:45', // url parameter
+        ];
+    }
+
+    public function authorize()
+    {
+        return $this->check([
+            // nothing! this is open endpoint.
+        ]);
+    }
+} 
+```
 
 ### **access**
 
@@ -185,33 +197,37 @@ The **$access** property is used by the `hasAccess` function from the `authorize
 
 Example:
 
-	 <?php
-	
-	namespace App\Containers\User\UI\API\Requests;
-	
-	use App\Ship\Parents\Requests\Request;
-	
-	class DeleteUserRequest extends Request
-	{
-	    /**
-	     * Define which Roles and/or Permissions has access to this request.
-	     *
-	     * @var  array
-	     */
-	    protected $access = [
-	        'permission' => 'delete-users|another-permissions..'
+```php
+<?php
+
+namespace App\Containers\User\UI\API\Requests;
+
+use App\Ship\Parents\Requests\Request;
+
+class DeleteUserRequest extends Request
+{
+    /**
+     * Define which Roles and/or Permissions has access to this request.
+     *
+     * @var  array
+     */
+    protected $access = [
+        'permission' => 'delete-users|another-permissions..'
 	      	'roles'      => 'manger'
 	    ];
 	
 	    public function authorize()
-	    {
-	        return $this->check([
-	            'hasAccess|isOwner',
-	            'isKing',
-	        ]);
-	    }
+        {
+            return $this->check([
+                'hasAccess|isOwner',
+                'isKing',
+            ]);
+        }
 	}
 	 
+```
+
+
 #### What's going on in the authorize!?
 
 The `authorize` function is calling a `check` function which accepts an array of functions. Each of those functions returns a boolean.

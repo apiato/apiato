@@ -24,6 +24,7 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 
 ### Folder Structure
 
+```
 	 - app
 	    - Containers
 	        - {container-name}
@@ -51,38 +52,41 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 	                        - Functional
 	                            - BackupDataTest.php
 	                            - ... 
+```
 
 ### Code Sample
 
-	 <?php
-	
-	namespace App\Containers\User\UI\API\Tests\Functional;
-	
-	use App\Containers\{container-name}\Tests\TestCase;
+```php
+<?php
+
+namespace App\Containers\User\UI\API\Tests\Functional;
+
+use App\Containers\{container-name}\Tests\TestCase;
 	
 	class DeleteUserTest extends TestCase
-	{
-	    protected $endpoint = '/users';
-	
-	    protected $permissions = [
-	        'delete-users'
-	    ];
-	
-	    public function testDeleteExistingUser_()
-	    {
-	        // get a testing user of type admin.
-	        $user = $this->getLoggedInTestingAdmin();
-	
-	        // send the HTTP request
-	        $response = $this->apiCall($this->endpoint, 'delete');
-	
-	        // assert response status is correct
-	        $this->assertEquals($response->getStatusCode(), '202');
-	
-	        // ...
-	    }
-	
-	}
+    {
+        protected $endpoint = '/users';
+
+        protected $permissions = [
+            'delete-users'
+        ];
+
+        public function testDeleteExistingUser_()
+        {
+            // get a testing user of type admin.
+            $user = $this->getLoggedInTestingAdmin();
+
+            // send the HTTP request
+            $response = $this->apiCall($this->endpoint, 'delete');
+
+            // assert response status is correct
+            $this->assertEquals($response->getStatusCode(), '202');
+
+            // ...
+        }
+
+    }
 	 
+```
 
 ##### See the **Tests Helpers** Page

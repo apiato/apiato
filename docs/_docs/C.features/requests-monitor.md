@@ -28,35 +28,8 @@ tail -f storage/logs/debugger.log
 
 Screenshot example:
 
-[block:image]
+![](https://files.readme.io/25bf091-requests-debugger.png)
 
-{
-
-  "images": [
-
-    {
-
-      "image": [
-
-        "https://files.readme.io/25bf091-requests-debugger.png",
-
-        "requests-debugger.png",
-
-        2870,
-
-        1182,
-
-        "#34342e"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-[/block]
 
 ## Change the default log file
 
@@ -65,23 +38,18 @@ By default everything is logged in the `debugger.log` file, to change the defaul
 `Debugger/Configs/debugger.php` config file and set the file name:
 
 ```php
+<?php
 
 /*
 
  |--------------------------------------------------------------------------
-
  | Log File
-
  |--------------------------------------------------------------------------
-
  |
-
  | What to name the log file in the `storage/log` path.
-
  |
-
  */
-
+ 
 'log_file' => 'debugger.log',
 
 ```

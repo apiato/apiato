@@ -10,32 +10,4 @@ To see all the endpoints in a beautiful documentation run the `php artisan apido
 
 ## Screenshot of the default API Documentation:
 
-[block:image]
-
-{
-
-  "images": [
-
-    {
-
-      "image": [
-
-        "https://files.readme.io/f82a670-Screen_Shot_2017-02-16_at_9.05.09_PM.png",
-
-        "Screen Shot 2017-02-16 at 9.05.09 PM.png",
-
-        2572,
-
-        1646,
-
-        "#f1f1f1"
-
-      ]
-
-    }
-
-  ]
-
-}
-
-[/block]
+![](https://s19.postimg.org/nwxrejwyb/d17df37-_Screen__Shot_2017-02-16_at_5.08.54__PM.png)

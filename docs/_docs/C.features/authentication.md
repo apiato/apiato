@@ -26,7 +26,8 @@ To make an Endpoint accessible by Authenticated Users you should use the `api.au
 
 Example:
 
-```
+```php
+<?php
 
 $router->get('secret/docs', [
 
@@ -48,14 +49,12 @@ This Middleware is provided by the [dingo/api](https://github.com/dingo/api) pac
 
 **If authentication failed, users will get a JSON response:**
 
-```
+```php
+<?php
 
 {
-
   "message": "Failed to authenticate because of bad credentials or an invalid authorization header.",
-
   "status_code": 401
-
 }
 
 ```
@@ -66,16 +65,13 @@ To make a web page accessible by Authenticated Users you should use the `web.aut
 
 Example:
 
-```
+```pjp
+<?php
 
 $router->get('private/page', [
-
     'uses'       => 'Controller@showPrivatePage',
-
     'middleware' => [
-
         'web.auth',
-
     ],
 
 ]);
@@ -88,10 +84,10 @@ This Middleware is provided by apiato and is different than the default Laravel 
 
 To change the login page view go to the config file `app/Ship/Features/Configs/hello.php`, and set the name of your login page there as follow:
 
-```
+```php
+<?php
 
   'login-page-name' => 'login',
-
 ```
 
 This will be looking for (login.html or login.php or login.blade.php).

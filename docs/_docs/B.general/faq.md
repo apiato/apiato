@@ -15,25 +15,15 @@ You can configure NGINX to server the Front-end and the Back-end each on a diffe
 **Example project structure:**
 
 ```
-
 - MyProject
-
   - Server
-
     - Api   // < apiato Code
-
   - Clients
-
     - Web
-
       - Main App   // < Web App code (HTML, CSS, JS, ...)
-
     - Mobile
-
       - Android   // < Android App code
-
       - iOS   // < iPhone App code
-
 ```
 
 But if you still want to serve your front-end code from the apiato Containers, you can do that easily. It's just not recommended!

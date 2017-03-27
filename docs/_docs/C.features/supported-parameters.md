@@ -26,24 +26,27 @@ Users often need to control the data request, thus the apiato support out of the
 
 For the search to work you need to add `fieldSearchable` to the Repository of the Model.
 
-	 <?php
-	
-	protected $fieldSearchable = [
-		'name',
-		'email',
-	  // ...
-	];
-	
-	// OR
-	
-	protected $fieldSearchable = [
-		'name'  => 'like',
-		'email' => '=',
-	  // ...
-	];
-	    
+
+```php
+<?php
+
+protected $fieldSearchable = [
+    'name',
+    'email',
+    // ...
+];
+
+// OR
+
+protected $fieldSearchable = [
+    'name'  => 'like',
+    'email' => '=',
+    // ...
+];
 ```
 
+	    
+```
 ?search=John
 
 ?search=name:John
@@ -61,7 +64,6 @@ Checkout the Search Page for full implementation example.
 ### Define search fields for search:
 
 ```
-
 ?search=name:John&email:john@main.com
 
 ?search=name:John;email:john@main.com
@@ -75,7 +77,6 @@ See the [Search Parameter](doc:search-parameter) page, for how to set it up and 
 ### Define the query condition for search:
 
 ```
-
 ?searchFields=name:like
 
 ?searchFields=email:=
@@ -103,7 +104,6 @@ Select your columns:
 ## Paging:
 
 ```
-
 ?page=22
 
 ```
@@ -119,7 +119,6 @@ For this to work, your `Transformer` should have the relationships defined on it
 using `include` with comma `,` separator:
 
 ```
-
 include=tags,user
 
 ```
@@ -135,7 +134,6 @@ Note: You need to turn the Eloquent Query Caching ON for this feature to work. C
 To run a new query and force disabling the cache on certain endpoints, you can use this parameter
 
 ```
-
 ?skipCache=true
 
 ```

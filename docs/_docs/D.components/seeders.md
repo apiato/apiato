@@ -24,6 +24,7 @@ Seeders are classes made to seed the database with real data, this data usually 
 
 ### Folder Structure
 
+```
 	 - App
 	    - Containers
 	        - {container-name}
@@ -32,42 +33,47 @@ Seeders are classes made to seed the database with real data, this data usually 
 	                    - ContainerNameRolesSeeder_1.php
 	                    - ContainerNamePermissions_2.php
 	                    - ... 
+```
 
 ### Code Samples
 
 **Roles `Seeder`:** 
 
-	 <?php
-	
-	namespace App\Containers\Authorization\Data\Seeders;
-	
-	use App\Containers\Authorization\Actions\CreateRoleAction;
-	use App\Ship\Parents\Seeders\Seeder;
-	
-	class RolesSeeder extends Seeder
-	{
-	
-	    private $createRoleAction;
-	
-	    public function __construct(CreateRoleAction $createRoleAction)
-	    {
-	        $this->createRoleAction = $createRoleAction;
-	    }
-	
-	    public function run()
-	    {
-	        $this->createRoleAction->run('admin', 'Super Administrator')->givePermissionTo([
-	            'admin-access', 'manage-roles-permissions',
-	        ]);
-	
-	        $this->createRoleAction->run('client', 'Normal User');
-	
-	        // ...
-	
-	    }
-	}
-	
-	 
+
+```php
+<?php
+
+namespace App\Containers\Authorization\Data\Seeders;
+
+use App\Containers\Authorization\Actions\CreateRoleAction;
+use App\Ship\Parents\Seeders\Seeder;
+
+class RolesSeeder extends Seeder
+{
+
+    private $createRoleAction;
+
+    public function __construct(CreateRoleAction $createRoleAction)
+    {
+        $this->createRoleAction = $createRoleAction;
+    }
+
+    public function run()
+    {
+        $this->createRoleAction->run('admin', 'Super Administrator')->givePermissionTo([
+            'admin-access', 'manage-roles-permissions',
+        ]);
+
+        $this->createRoleAction->run('client', 'Normal User');
+
+        // ...
+
+    }
+}
+
+```
+
+
 Note: Same `Seeder` class is allowed to contain seeding for multiple `Models`.
 
 ### Run the Seeders
