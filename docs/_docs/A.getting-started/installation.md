@@ -216,36 +216,58 @@ X-RateLimit-Reset → 1475993702
 
 {
    "data":{
-      "id":0,
+      "object":"User",
+      "id":192,
       "name":"Mahmoud Zalt",
-      "email":"testing@whatever.dev",
-      "confirmed":"0",
-      "total_credits":0,
+      "email":"mahmoud@zalt.me",
+      "confirmed":null,
+      "nickname":null,
+      "gender":null,
+      "birth":null,
+      "social_auth_provider":null,
+      "social_id":null,
+      "social_avatar":{
+         "avatar":null,
+         "original":null
+      },
       "created_at":{
-         "date":"2016-12-23 19:51:11.000000",
+         "date":"2017-03-27 15:31:14.000000",
          "timezone_type":3,
          "timezone":"UTC"
       },
-      "token": {
-        "object": "token",
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-        "access_token": {
-          "token_type": "Bearer",
-          "time_to_live": {
-            "minutes": 60
-          },
-          "expires_in": {
-            "date": "2017-02-10 23:16:36.582734",
-            "timezone_type": 3,
-            "timezone": "UTC"
-          },
-        }
+      "updated_at":{
+         "date":"2017-03-27 15:31:14.000000",
+         "timezone_type":3,
+         "timezone":"UTC"
+      },
+      "token":{
+         "object":"token",
+         "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+         "access_token":{
+            "token_type":"Bearer",
+            "time_to_live":{
+               "minutes":"43200"
+            },
+            "expires_in":{
+               "date":"2017-04-26 15:31:14.000000",
+               "timezone_type":3,
+               "timezone":"UTC"
+            }
+         }
       },
       "roles":{
          "data":[
             {
-               "name":"Client User",
-               "description":null
+               "object":"Role",
+               "id":3,
+               "name":"client",
+               "description":"Awesome User",
+               "display_name":null,
+               "permissions":{
+                  "data":[
+
+                  ]
+               }
             }
          ]
       }
