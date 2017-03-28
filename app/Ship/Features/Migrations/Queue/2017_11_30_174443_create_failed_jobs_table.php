@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class CreateFailedJobsTable
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Config;
  */
 class CreateFailedJobsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -19,16 +19,14 @@ class CreateFailedJobsTable extends Migration
      */
     public function up()
     {
-        if(Config::get('queue.default') == 'database') {
-            Schema::create('failed_jobs', function (Blueprint $table) {
-                $table->increments('id');
-                $table->text('connection');
-                $table->text('queue');
-                $table->longText('payload');
-                $table->longText('exception');
-                $table->timestamp('failed_at')->useCurrent();
-            });
-        }
+        Schema::create('failed_jobs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
+        });
     }
 
     /**
