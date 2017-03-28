@@ -23,19 +23,14 @@ And the response will also contain the default language in the `Content-Language
 1. All supported languages must be added to the `supported_languages` in `app/Containers/Localization/Configs/localization.php` to prevent users from requesting unsupported languages, as follow:
 
 ```php
+<?php
 
     'supported_languages' => [
-
         'en' => 'English',
-
         'ar' => 'Arabic',
-
         'fr' => 'French',
-
         'ru' => 'Russian',
-
     ],
-
 ```
 
 2. Create your languages files:

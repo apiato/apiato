@@ -16,12 +16,12 @@ Default Settings should be seeded in `app/Containers/Settings/Database/Seeders/D
 
 ```php
 <?php
-
 $value = $this->findSettingsByKeyTask->run('whateverSettingsName');
+```
+
 You can search for settings by Key as in the example above, or create a class for each settings as follow:
 
-	 <?php
-	
-	$value = $this->findWhateverSettingsTask->run(); 
-
+```php
+<?php
+$value = $this->findWhateverSettingsTask->run();
 ```

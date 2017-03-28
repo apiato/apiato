@@ -30,7 +30,6 @@ X-RateLimit-Limit:100
 X-RateLimit-Remaining:77
 
 X-RateLimit-Reset:1458641529
-
 ```
 
 ## Change the default limit:
@@ -43,7 +42,6 @@ These values will be pointing to the `.env` file so go there and update those de
 API_LIMIT=100
 
 API_LIMIT_EXPIRES=5
-
 ```
 
 More details [here](https://github.com/dingo/api/wiki/Rate-Limiting)

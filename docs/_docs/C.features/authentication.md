@@ -12,13 +12,13 @@ Hellp Api provides 2 Authentication Middlewares:
 
 **api.auth**: provided by the Dingo Package 
 
-(`Dingo\Api\Http\Middleware\Auth`).
+(Dingo\Api\Http\Middleware\Auth).
 
 - Web Authentication Middlewares.  
 
 **web.auth**: provided by apiato
 
-(`App\Containers\Authentication\Middlewares\Authentication`).
+(App\Containers\Authentication\Middlewares\Authentication).
 
 ## API Authentication
 
@@ -94,4 +94,4 @@ This will be looking for (login.html or login.php or login.blade.php).
 
 ## Social Authentication
 
-For Social Authentication visit the [Social Authentication](doc:social-authentication) page.
+For Social Authentication visit the [Social Authentication](http://apiato.io/C.features/social-authentication/) page.

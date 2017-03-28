@@ -28,7 +28,7 @@ Right now you have to create your containers manually:
 
 *(The Ship engine will auto load and register everything automatically for you)*.
 
-For the autoloading to work flawlessly you MUST adhere to the component's naming conventions and structure. So you need to read the `documentation page` of every component before creating it.
+For the auto-loading to work flawlessly you MUST adhere to the component's naming conventions and structure. So you need to read the `documentation page` of every component before creating it.
 
 ##### Rules
 

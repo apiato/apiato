@@ -9,15 +9,11 @@ Users often need to control the data request, thus the apiato support out of the
 ## Sorting & Ordering:
 
 ```
-
 ?orderBy=id&sortedBy=asc
-
 ```
 
 ```
-
 ?orderBy=created_at&sortedBy=desc
-
 ```
 
 *(provided by the L5 Repository)*
@@ -48,11 +44,8 @@ protected $fieldSearchable = [
 	    
 ```
 ?search=John
-
 ?search=name:John
-
 ?search=name:John%20Doe
-
 ```
 
 Notice should replace the space with `%20`.
@@ -65,9 +58,7 @@ Checkout the Search Page for full implementation example.
 
 ```
 ?search=name:John&email:john@main.com
-
 ?search=name:John;email:john@main.com
-
 ```
 
 *(provided by the L5 Repository)*
@@ -78,13 +69,9 @@ See the [Search Parameter](doc:search-parameter) page, for how to set it up and 
 
 ```
 ?searchFields=name:like
-
 ?searchFields=email:=
-
 ?searchFields=name:like;email:=
-
 ?search=git&searchFields=url:like
-
 ```
 
 *(provided by the L5 Repository)*
@@ -94,9 +81,7 @@ See the [Search Parameter](doc:search-parameter) page, for how to set it up and 
 Select your columns:
 
 ```
-
 ?search=git&filter=id;url;note
-
 ```
 
 *(provided by the L5 Repository)*
@@ -105,7 +90,6 @@ Select your columns:
 
 ```
 ?page=22
-
 ```
 
 *(provided by the Laravel Paginator)*
@@ -120,7 +104,6 @@ using `include` with comma `,` separator:
 
 ```
 include=tags,user
-
 ```
 
 *(provided by the Fractal Transformer)*
@@ -135,7 +118,6 @@ To run a new query and force disabling the cache on certain endpoints, you can u
 
 ```
 ?skipCache=true
-
 ```
 
 It's not recommended to keep skipping cache as it has bad impact on the performance.

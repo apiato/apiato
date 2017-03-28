@@ -100,23 +100,15 @@ If you get an error (`apidoc not found`),
 ```php
 <?php
     /*
-
     |--------------------------------------------------------------------------
-
     | Executable
-
     |--------------------------------------------------------------------------
-
     |
-
     | Specify how you run or access the `apidoc` tool on your machine.
-
     |
-
     */
 
     'executable' => 'apidoc',
-
 ```
 
 ## Edit the default generated values in the templates:
