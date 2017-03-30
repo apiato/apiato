@@ -15,8 +15,8 @@ class GetUserTest extends TestCase
     protected $endpoint = 'get@users/{id}';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'search-users',
     ];
 
     public function testGetUser_()

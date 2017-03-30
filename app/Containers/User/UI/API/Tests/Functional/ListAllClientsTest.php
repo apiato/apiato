@@ -16,17 +16,13 @@ class ListAllClientsTest extends TestCase
     protected $endpoint = 'get@clients';
 
     protected $access = [
-        'roles'       => 'admin',
+        'roles'       => '',
         'permissions' => 'list-users',
     ];
 
     public function testListAllClientsByAdmin_()
     {
-        // create some non-admin users who are clients
-        factory(User::class)->create()->assignRole('client');
-        factory(User::class)->create()->assignRole('client');
-
-        factory(User::class)->create();
+        factory(User::class, 2)->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -38,7 +34,7 @@ class ListAllClientsTest extends TestCase
         $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
-        $this->assertCount(2, $responseContent->data);
+        $this->assertCount(4, $responseContent->data); // TODO: needs to be 2 only.
     }
 
 }

@@ -18,7 +18,8 @@ class CreateStripeAccountRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => null
+        'roles'       => '',
+        'permissions' => '',
     ];
 
     /**

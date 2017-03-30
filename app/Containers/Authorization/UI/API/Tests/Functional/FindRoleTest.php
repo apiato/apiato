@@ -16,8 +16,8 @@ class FindRoleTest extends TestCase
     protected $endpoint = 'get@roles/{id}';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testFindRoleById_()

@@ -37,6 +37,10 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        // ...
+        $this->createPermissionAction->run('manage-roles', 'Create, Update, Delete, List, Attach/detach permissions to Roles and List Permissions.');
+        $this->createPermissionAction->run('create-admins', 'Create new Users (Admins) from the dashboard.');
+        $this->createPermissionAction->run('manage-admins-access', 'Assign users to Roles.');
+        $this->createPermissionAction->run('access-dashboard', 'Access the admins dashboard.');
+
     }
 }

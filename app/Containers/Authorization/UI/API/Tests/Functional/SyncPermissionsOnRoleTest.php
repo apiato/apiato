@@ -17,8 +17,8 @@ class SyncPermissionsOnRoleTest extends TestCase
     protected $endpoint = 'post@permissions/sync';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testSyncDuplicatedPermissionsToRole_()

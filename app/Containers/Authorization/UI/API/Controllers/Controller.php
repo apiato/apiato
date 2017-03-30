@@ -4,7 +4,6 @@ namespace App\Containers\Authorization\UI\API\Controllers;
 
 use App\Containers\Authorization\Actions\AssignUserToRoleAction;
 use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
-use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Containers\Authorization\Actions\CreateRoleAction;
 use App\Containers\Authorization\Actions\DeleteRoleAction;
 use App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction;
@@ -205,19 +204,5 @@ class Controller extends ApiController
 
         return $this->response->item($role, new RoleTransformer());
     }
-
-    /**
-     * @param \App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest $request
-     * @param \App\Containers\Authorization\Actions\CreatePermissionAction          $action
-     *
-     * @return  \Dingo\Api\Http\Response
-     */
-    public function createPermission(CreatePermissionRequest $request, CreatePermissionAction $action)
-    {
-        $permission = $action->run($request['name'], $request['description'], $request['display_name']);
-
-        return $this->response->item($permission, new PermissionTransformer());
-    }
-
 
 }

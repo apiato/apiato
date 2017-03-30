@@ -17,8 +17,8 @@ class DetachPermissionsFromRoleTest extends TestCase
     protected $endpoint = 'post@permissions/detach';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testDetachSinglePermissionFromRole_()

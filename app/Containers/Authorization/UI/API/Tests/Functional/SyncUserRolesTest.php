@@ -17,8 +17,8 @@ class SyncUserRolesTest extends TestCase
     protected $endpoint = 'post@roles/sync';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-admins-access',
     ];
 
     public function testSyncMultipleRolesOnUser()

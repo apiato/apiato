@@ -16,8 +16,8 @@ class FindPermissionTest extends TestCase
     protected $endpoint = 'get@permissions/{id}';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testFindPermissionById_()

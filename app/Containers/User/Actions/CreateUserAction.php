@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authorization\Actions\AssignUserToRoleAction;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Ship\Parents\Actions\Action;
@@ -30,8 +29,10 @@ class CreateUserAction extends Action
     public function run($email, $password, $name, $gender = null, $birth = null, $login = false)
     {
         $user = $this->call(CreateUserByCredentialsTask::class, [$email, $password, $name, $gender, $birth, $login]);
-        // be default give all users the client role (normal user)
-        $this->call(AssignUserToRoleAction::class, [$user, ['client']]);
+
+        // example for how to set default permissions on every new user created.
+        // $this->call(AssignUserToRoleAction::class, [$user, ['client', 'developer']]);
+
         //  add Client as role for normal users
         $this->call(FireUserCreatedEventTask::class, [$user]);
 

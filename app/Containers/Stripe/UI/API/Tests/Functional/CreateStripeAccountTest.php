@@ -16,7 +16,7 @@ class CreateStripeAccountTest extends TestCase
 
     protected $access = [
         'permissions' => '',
-        'roles'       => 'client',
+        'roles'       => '',
     ];
 
     public function testCreateStripeAccount_()

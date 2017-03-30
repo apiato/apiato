@@ -27,12 +27,4 @@ trait AuthorizationTrait
         return $this->hasRole('admin');
     }
 
-    /**
-     * @return  mixed
-     */
-    public function hasClientRole()
-    {
-        return $this->hasRole('client');
-    }
-
 }

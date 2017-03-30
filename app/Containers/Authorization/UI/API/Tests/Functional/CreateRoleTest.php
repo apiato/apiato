@@ -17,8 +17,8 @@ class CreateRoleTest extends TestCase
     protected $auth = true;
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testCreateRole_()

@@ -18,8 +18,8 @@ class CreateAdminRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => '',
-        'roles'       => 'admin',
+        'permissions' => 'create-admins',
+        'roles'       => '',
     ];
 
     /**

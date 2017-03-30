@@ -18,8 +18,8 @@ class RefreshUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => '',
-        'roles'       => 'admin',
+        'permissions' => 'refresh-users',
+        'roles'       => '',
     ];
 
     /**
@@ -57,7 +57,8 @@ class RefreshUserRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess|isOwner',
+            'hasAccess',
+            'isOwner',
         ]);
     }
 

@@ -15,8 +15,8 @@ class CreateAdminTest extends TestCase
     protected $endpoint = 'post@admins';
 
     protected $access = [
-        'permissions' => '',
-        'roles'       => 'admin',
+        'permissions' => 'create-admins',
+        'roles'       => '',
     ];
 
     public function testCreateAdmin_()

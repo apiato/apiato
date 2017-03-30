@@ -159,7 +159,7 @@ trait TestsAuthHelperTrait
      *
      * @return  mixed
      */
-    private function setupTestingUserAccess($user, $access)
+    private function setupTestingUserAccess($user, $access = null)
     {
         $access = $access ? : $this->getAccess();
 

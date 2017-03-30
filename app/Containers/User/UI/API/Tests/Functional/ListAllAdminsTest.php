@@ -17,7 +17,7 @@ class ListAllAdminsTest extends TestCase
     protected $endpoint = 'get@admins';
 
     protected $access = [
-        'roles'       => 'admin',
+        'roles'       => '',
         'permissions' => 'list-users',
     ];
 
@@ -45,8 +45,8 @@ class ListAllAdminsTest extends TestCase
         $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
-        $this->assertCount(4,
-            $responseContent->data); // 4 = 4 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        $this->assertCount(3,
+            $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
 }

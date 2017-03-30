@@ -18,8 +18,8 @@ class GetUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'find-users',
-        'roles'       => 'admin',
+        'permissions' => 'search-users',
+        'roles'       => '',
     ];
 
     /**

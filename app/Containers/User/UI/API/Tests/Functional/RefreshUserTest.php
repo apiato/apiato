@@ -17,7 +17,7 @@ class RefreshUserTest extends TestCase
 
     protected $access = [
         'roles'       => '',
-        'permissions' => '',
+        'permissions' => 'refresh-users',
     ];
 
     public function testRefreshUserById_()

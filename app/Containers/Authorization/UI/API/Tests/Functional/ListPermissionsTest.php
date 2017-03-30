@@ -16,8 +16,8 @@ class ListPermissionsTest extends TestCase
     protected $endpoint = 'get@permissions';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testListAllPermissions_()

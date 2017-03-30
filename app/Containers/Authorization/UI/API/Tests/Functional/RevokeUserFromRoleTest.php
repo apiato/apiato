@@ -17,8 +17,8 @@ class RevokeUserFromRoleTest extends TestCase
     protected $endpoint = 'post@roles/revoke';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-admins-access',
     ];
 
     public function testRevokeUserFromRole_()

@@ -62,17 +62,14 @@ trait TestsRequestHelperTrait
     private $endpointUrl;
 
     /**
-     * @param        $this ->endpointUrl
-     * @param string $this ->endpointVerb
-     * @param array  $data
-     * @param bool   $protected
-     * @param array  $headers
+     * @param array $data
+     * @param array $headers
      *
      * @return  mixed
-     * @throws \Symfony\Component\Debug\Exception\UndefinedMethodException
      */
     public function makeCall(array $data = [], array $headers = [])
     {
+
         $this->parseEndpoint();
 
         $headers = $this->injectAccessToken($headers);
@@ -86,12 +83,11 @@ trait TestsRequestHelperTrait
      *
      * Example: you give it ('users/{id}/stores', 100) it returns 'users/100/stores'
      *
-     * @param        $this ->url
      * @param        $id
      * @param bool   $skipEncoding
      * @param string $replace
      *
-     * @return  mixed
+     * @return  $this
      */
     public function injectId($id, $skipEncoding = false, $replace = '{id}')
     {

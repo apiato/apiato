@@ -24,7 +24,6 @@ class ListAllUsersTest extends TestCase
     {
         // create some non-admin users who are clients
         factory(User::class, 2)->create();
-        factory(User::class)->create()->assignRole('client');
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -36,7 +35,7 @@ class ListAllUsersTest extends TestCase
         $responseContent = $this->getResponseContent($response);
 
         // assert the returned data size is correct
-        $this->assertCount(5, $responseContent->data);
+        $this->assertCount(4, $responseContent->data);
     }
 
 // TODO: uncomment this. was temporally commented out after upgrading from L5.3 to L5.4

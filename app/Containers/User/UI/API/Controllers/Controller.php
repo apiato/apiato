@@ -62,7 +62,7 @@ class Controller extends ApiController
      */
     public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
-        $users = $action->run(['client']);
+        $users = $action->run(); // TODO: anyone who is not an admin is a client.
 
         return $this->response->paginator($users, new UserTransformer());
     }
@@ -81,8 +81,8 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \Dingo\Api\Http\Request                    $request
-     * @param \App\Containers\User\Actions\GetUserAction $action
+     * @param \App\Containers\User\UI\API\Requests\RefreshUserRequest $request
+     * @param \App\Containers\User\Actions\GetUserAction              $action
      *
      * @return  \Dingo\Api\Http\Response
      */

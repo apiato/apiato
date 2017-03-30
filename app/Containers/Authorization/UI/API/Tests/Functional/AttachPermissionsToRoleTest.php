@@ -17,8 +17,8 @@ class AttachPermissionsToRoleTest extends TestCase
     protected $endpoint = 'post@permissions/attach';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testAttachSinglePermissionToRole_()

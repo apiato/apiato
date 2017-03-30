@@ -17,8 +17,8 @@ class AssignUserToRoleTest extends TestCase
     protected $endpoint = 'post@roles/assign';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-admins-access',
     ];
 
     public function testAssignUserToRole_()

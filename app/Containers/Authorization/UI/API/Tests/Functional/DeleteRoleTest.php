@@ -16,8 +16,8 @@ class DeleteRoleTest extends TestCase
     protected $endpoint = 'delete@roles/{id}';
 
     protected $access = [
-        'roles'       => 'admin',
-        'permissions' => '',
+        'roles'       => '',
+        'permissions' => 'manage-roles',
     ];
 
     public function testDeleteExistingRole_()
