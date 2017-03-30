@@ -3,8 +3,8 @@
 namespace App\Ship\Parents\Requests;
 
 use App\Ship\Features\Exceptions\ValidationFailedException;
-use Illuminate\Contracts\Validation\Validator;
 use Dingo\Api\Http\Request as DingoRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Class RequestTrait

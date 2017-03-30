@@ -5,6 +5,7 @@ namespace App\Ship\Engine\Providers;
 use App\Ship\Engine\Loaders\AutoLoaderTrait;
 use App\Ship\Engine\Loaders\FactoriesLoaderTrait;
 use App\Ship\Engine\Traits\FractalTrait;
+use App\Ship\Features\Generator\GeneratorsServiceProvider;
 use App\Ship\Features\Validations\ValidationTrait;
 use App\Ship\Engine\Butlers\ContainersButler;
 use App\Ship\Engine\Butlers\ShipButler;
@@ -45,7 +46,8 @@ class PortoServiceProvider extends MainProvider
         CorsServiceProvider::class,
         HashidsServiceProvider::class,
         RoutesProvider::class,
-        RepositoryServiceProvider::class
+        RepositoryServiceProvider::class,
+        GeneratorsServiceProvider::class,
     ];
 
     /**

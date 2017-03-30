@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Actions;
+
+use App\Ship\Parents\Actions\Action;
+
+class {{class-name}} extends Action
+{
+    public function run()
+    {
+        // $var = $this->call(MyTask::class, [$arg1, $arg2, ...]);
+    }
+}

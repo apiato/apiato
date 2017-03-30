@@ -64,7 +64,7 @@ class ShipButler
      */
     public function getContainersPaths()
     {
-        return File::directories(app_path('Containers'));;
+        return File::directories(app_path('Containers'));
     }
 
     /**

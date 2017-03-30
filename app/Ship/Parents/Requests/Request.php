@@ -2,7 +2,6 @@
 
 namespace App\Ship\Parents\Requests;
 
-use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Containers\User\Models\User;
 use App\Ship\Engine\Traits\HashIdTrait;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
@@ -16,6 +15,7 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
  */
 abstract class Request extends LaravelFormRequest
 {
+
     use RequestTrait;
     use HashIdTrait;
 
