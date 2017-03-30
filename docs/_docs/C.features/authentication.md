@@ -6,7 +6,7 @@ order: 2
 
 Middlewares are the best way to apply Authentication to your App. 
 
-Hellp Api provides 2 Authentication Middlewares:
+apiato provides 2 Authentication Middlewares:
 
 - API Authentication Middlewares.  
 
