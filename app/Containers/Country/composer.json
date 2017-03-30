@@ -1,7 +1,0 @@
-{
-  "name": "apiato/country",
-  "description": "apiato Container.",
-  "require": {
-    "webpatser/laravel-countries": "1.5.*"
-  }
-}
