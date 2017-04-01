@@ -11,25 +11,13 @@
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 
 
+> Build better API's faster with **PHP** and **Laravel 5.4**.
 
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
 
-> Build better API's faster with **PHP** and **Laravel 5.4**.
 
 
-<br>
-
-> apiato is the new name of Hello API.
->
-> Hello API is the original project name, it has been renamed to apiato in March, 22, 2017 for no reason.
-
-## Content
-
-* [Introduction](#Introduction)
-* [Features](#Features)
-* [Chat](#Chat)
-* [Documentation](#Documentation)
-* [License](#License)
+*`Hello API` was the first name of this project, it was renamed to `apiato` in March, 22, 2017 for no reason.*
 
 
 <a name="Introduction"></a>
@@ -96,14 +84,9 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - 100% customizable and Open Code.
 - And much more...
 
+<br>
 
-<a name="Chat"></a>
-## Chat
-
-Join our chatting room on Gitter by click on the icon below
-
-[![Gitter](https://badges.gitter.im/apiato/Lobby.svg)](https://gitter.im/apiato/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 <a name="Documentation"></a>
@@ -119,25 +102,34 @@ Reading the simple [**Porto document**](https://github.com/Mahmoudz/Porto) is es
 
 
 
+
+<a name="Chat"></a>
+## Get in touch
+
+Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ) chatting room, by click on the Slack icon below.
+
+[![](https://s19.postimg.org/ohxyvzpub/a35031db-77ee-4541-b582-c7c6d97f65ca.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
+
+
+
+
+
+
 <a name="Credits"></a>
 ## Credits
 
 | Contributors           | Twitter                                 | Ask for Help                                                                                                          | Contact / Hire  | Site            |
 |------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| [Mahmoud Zalt](https://github.com/Mahmoudz) (Maker) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
+| [Mahmoud Zalt](https://github.com/Mahmoudz) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
 
+
+## Donation
+Your Support Matters.
+
+[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=beer-square)](https://beerpay.io/apiato/apiato)  [![Beerpay](https://beerpay.io/apiato/apiato/make-wish.svg?style=flat-square)](https://beerpay.io/apiato/apiato?focus=wish)
 
 
 <a name="License"></a>
 ## License
 
 The MIT License [(MIT)](https://opensource.org/licenses/MIT).
-
-
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
-
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=beer-square)](https://beerpay.io/apiato/apiato)  [![Beerpay](https://beerpay.io/apiato/apiato/make-wish.svg?style=flat-square)](https://beerpay.io/apiato/apiato?focus=wish)

@@ -25,9 +25,8 @@ Skip the repetitive work and enjoy the open source fun.
 
  apiato [Features list](https://github.com/apiato/apiato#features) on Github.
 
-> apiato is the new name of Hello API.
->
-> Hello API is the original project name, it has been renamed to apiato in March, 22, 2017 for no reason.
+
+> `Hello API` was the first name of this project, it was renamed to `apiato` in March, 22, 2017 for no reason.
 
 ## How to read the docs
 
@@ -46,3 +45,20 @@ The documentation has 4 sections:
 With this documentation and my support you will never get lost.
 
 Happy coding :)
+
+
+
+<a name="Chat"></a>
+## Get in touch
+
+Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ) chatting room, by click on the Slack icon below.
+
+[![](https://s19.postimg.org/ohxyvzpub/a35031db-77ee-4541-b582-c7c6d97f65ca.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
+
+
+## Donation
+Your Support Matters.
+
+[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=beer-square)](https://beerpay.io/apiato/apiato)  [![Beerpay](https://beerpay.io/apiato/apiato/make-wish.svg?style=flat-square)](https://beerpay.io/apiato/apiato?focus=wish)
+
+Thanks,
