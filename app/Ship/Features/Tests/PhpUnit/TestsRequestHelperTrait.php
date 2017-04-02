@@ -57,14 +57,14 @@ trait TestsRequestHelperTrait
     protected $responseContentObject;
 
     /**
-     * property to be set before making a call to override the default class property
+     * Allows users to override the default class property `endpoint` directly before calling the `makeCall` function.
      *
      * @var string
      */
     protected $overrideEndpoint;
 
     /**
-     * property to be set before making a call to override the default class property
+     * Allows users to override the default class property `auth` directly before calling the `makeCall` function.
      *
      * @var string
      */
@@ -84,11 +84,6 @@ trait TestsRequestHelperTrait
         $url = $endpoint['url'];
 
         $headers = $this->injectAccessToken($headers);
-
-        /*        Passport::actingAs(
-            $this->getTestingUser(),
-            'api' // !  ['create-servers']
-        )*/;
 
         switch ($verb) {
             case 'put':
@@ -115,20 +110,29 @@ trait TestsRequestHelperTrait
                 throw new UndefinedMethodException('Unsupported HTTP Verb (' . $verb . ')!');
         }
 
-        // set the response content
+        return $this->setResponseObjectAndContent($httpResponse);
+    }
+
+    /**
+     * @param $httpResponse
+     *
+     * @return  mixed
+     */
+    public function setResponseObjectAndContent($httpResponse)
+    {
         $this->setResponseContent($httpResponse);
 
         return $this->response = $httpResponse;
     }
 
     /**
-     * get the json response content from the response object
-     *
      * @param $httpResponse
+     *
+     * @return  mixed
      */
     public function setResponseContent($httpResponse)
     {
-        $this->responseContent = $httpResponse->getContent();
+        return $this->responseContent = $httpResponse->getContent();
     }
 
     /**
@@ -144,7 +148,8 @@ trait TestsRequestHelperTrait
      */
     public function getResponseContentArray()
     {
-        return $this->responseContentArray ? : $this->responseContentArray = json_decode($this->getResponseContent(), true);
+        return $this->responseContentArray ? : $this->responseContentArray = json_decode($this->getResponseContent(),
+            true);
     }
 
     /**
@@ -152,23 +157,8 @@ trait TestsRequestHelperTrait
      */
     public function getResponseContentObject()
     {
-        return $this->responseContentObject ? : $this->responseContentObject = json_decode($this->getResponseContent(), false);
-    }
-
-    /**
-     * Transform headers array to array of $_SERVER vars with HTTP_* format.
-     *
-     * @param  array $headers
-     *
-     * @return array
-     */
-    protected function transformHeadersToServerVars(array $headers)
-    {
-        return collect($headers)->mapWithKeys(function ($value, $name) {
-            $name = strtr(strtoupper($name), '-', '_');
-
-            return [$this->formatServerHeaderKey($name) => $value];
-        })->all();
+        return $this->responseContentObject ? : $this->responseContentObject = json_decode($this->getResponseContent(),
+            false);
     }
 
     /**
@@ -209,6 +199,14 @@ trait TestsRequestHelperTrait
     }
 
     /**
+     * @return  string
+     */
+    public function getEndpoint()
+    {
+        return !is_null($this->overrideEndpoint) ? $this->overrideEndpoint : $this->endpoint;
+    }
+
+    /**
      * Override the default class auth property before making the call
      *
      * to be used as follow: $this->auth('false')->makeCall($data);
@@ -222,14 +220,6 @@ trait TestsRequestHelperTrait
         $this->overrideAuth = $auth;
 
         return $this;
-    }
-
-    /**
-     * @return  string
-     */
-    public function getEndpoint()
-    {
-        return !is_null($this->overrideEndpoint) ? $this->overrideEndpoint : $this->endpoint;
     }
 
     /**
@@ -368,4 +358,21 @@ trait TestsRequestHelperTrait
             throw new WrongEndpointFormatException();
         }
     }
+
+    /**
+     * Transform headers array to array of $_SERVER vars with HTTP_* format.
+     *
+     * @param  array $headers
+     *
+     * @return array
+     */
+    protected function transformHeadersToServerVars(array $headers)
+    {
+        return collect($headers)->mapWithKeys(function ($value, $name) {
+            $name = strtr(strtoupper($name), '-', '_');
+
+            return [$this->formatServerHeaderKey($name) => $value];
+        })->all();
+    }
+
 }

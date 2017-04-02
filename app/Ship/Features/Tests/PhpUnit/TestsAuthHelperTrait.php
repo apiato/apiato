@@ -6,7 +6,6 @@ use App;
 use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Models\User;
 use Artisan;
-use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Support\Facades\Hash;
 
 /**

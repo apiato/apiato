@@ -2,11 +2,9 @@
 
 namespace App\Ship\Features\Tests\PhpUnit;
 
-use Dingo\Api\Http\Response as DingoAPIResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Arr as LaravelArr;
-use Illuminate\Support\Str as LaravelStr;
 use Illuminate\Support\Str;
+use Illuminate\Support\Str as LaravelStr;
 
 /**
  * Class TestsResponseHelperTrait
@@ -17,17 +15,6 @@ use Illuminate\Support\Str;
  */
 trait TestsResponseHelperTrait
 {
-    /**
-     * @param array $messages
-     */
-    public function assertValidationErrorContain(array $messages)
-    {
-        $responseContent = $this->getResponseContentObject();
-
-        foreach ($messages as $key => $value) {
-            $this->assertEquals($responseContent->errors->{$key}[0], $value);
-        }
-    }
 
     /**
      * @param $keys
@@ -42,17 +29,6 @@ trait TestsResponseHelperTrait
 
         foreach ($keys as $key) {
             $this->assertTrue(array_key_exists($key, $arrayResponse));
-        }
-    }
-
-    /**
-     * @param array $responseContent
-     *
-     * @return  mixed
-     */
-    private function removeDataKeyFromResponse(array $responseContent){
-        if (array_key_exists('data',  $responseContent)) {
-            return $responseContent['data'];
         }
     }
 
@@ -88,6 +64,18 @@ trait TestsResponseHelperTrait
     }
 
     /**
+     * @param array $messages
+     */
+    public function assertValidationErrorContain(array $messages)
+    {
+        $responseContent = $this->getResponseContentObject();
+
+        foreach ($messages as $key => $value) {
+            $this->assertEquals($responseContent->errors->{$key}[0], $value);
+        }
+    }
+
+    /**
      * @param $key
      * @param $value
      *
@@ -106,6 +94,18 @@ trait TestsResponseHelperTrait
         }
 
         return trim($expected);
+    }
+
+    /**
+     * @param array $responseContent
+     *
+     * @return  mixed
+     */
+    private function removeDataKeyFromResponse(array $responseContent)
+    {
+        if (array_key_exists('data', $responseContent)) {
+            return $responseContent['data'];
+        }
     }
 
 }
