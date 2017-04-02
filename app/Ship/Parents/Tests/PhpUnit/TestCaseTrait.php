@@ -24,6 +24,8 @@ trait TestCaseTrait
      * Override default URL subDomain in case you want to change it for some tests
      *
      * @param null $url
+     *
+     * @return  string|void
      */
     public function overrideSubDomain($url = null)
     {
