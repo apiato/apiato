@@ -20,12 +20,12 @@ class UserLogoutTest extends TestCase
         $response = $this->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('202', $response->getStatusCode());
+        $response->assertStatus(202);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'User Logged Out Successfully.',
-        ], $response);
+        ]);
     }
 
     public function testUserLogoutWithGetRequest()
@@ -34,12 +34,12 @@ class UserLogoutTest extends TestCase
         $response = $this->endpoint('get@logout')->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('405', $response->getStatusCode());
+        $response->assertStatus(405);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => '405 Method Not Allowed',
-        ], $response);
+        ]);
     }
 
     public function testUserLogoutWithoutToken()
@@ -48,11 +48,11 @@ class UserLogoutTest extends TestCase
         $response = $this->auth(false)->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('401', $response->getStatusCode());
+        $response->assertStatus(401);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'Failed to authenticate because of bad credentials or an invalid authorization header.',
-        ], $response);
+        ]);
     }
 }

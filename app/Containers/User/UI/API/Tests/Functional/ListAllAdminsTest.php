@@ -39,10 +39,10 @@ class ListAllAdminsTest extends TestCase
         $response = $this->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
         // convert JSON response string to Object
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
         $this->assertCount(3,

@@ -6,6 +6,7 @@ use Dingo\Api\Http\Response as DingoAPIResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr as LaravelArr;
 use Illuminate\Support\Str as LaravelStr;
+use Illuminate\Support\Str;
 
 /**
  * Class TestsResponseHelperTrait
@@ -17,88 +18,67 @@ use Illuminate\Support\Str as LaravelStr;
 trait TestsResponseHelperTrait
 {
     /**
-     * get response object, get the string content from it and convert it to an std object
-     * making it easier to read
-     *
-     * @param $httpResponse
-     *
-     * @return  mixed
+     * @param array $messages
      */
-    public function getResponseContent(Response $httpResponse)
+    public function assertValidationErrorContain(array $messages)
     {
-        return json_decode($httpResponse->getContent());
-    }
-
-    /**
-     * @param $httpResponse
-     *
-     * @return  mixed
-     */
-    private function responseToArray($httpResponse)
-    {
-        if ($httpResponse instanceof \Illuminate\Http\Response) {
-            $httpResponse = json_decode($httpResponse->getContent(), true);
-        }
-
-        if (array_key_exists('data', $httpResponse)) {
-            $httpResponse = $httpResponse['data'];
-        }
-
-        return $httpResponse;
-    }
-
-    /**
-     * @param \Dingo\Api\Http\Response $httpResponse
-     * @param array                    $messages
-     */
-    public function assertValidationErrorContain(DingoAPIResponse $httpResponse, array $messages)
-    {
-        $arrayResponse = json_decode($httpResponse->getContent());
+        $responseContent = $this->getResponseContentObject();
 
         foreach ($messages as $key => $value) {
-            $this->assertEquals($arrayResponse->errors->{$key}[0], $value);
+            $this->assertEquals($responseContent->errors->{$key}[0], $value);
         }
     }
 
     /**
      * @param $keys
-     * @param $httpResponse
      */
-    public function assertResponseContainKeys($keys, $httpResponse)
+    public function assertResponseContainKeys($keys)
     {
         if (!is_array($keys)) {
             $keys = (array)$keys;
         }
 
+        $arrayResponse = $this->removeDataKeyFromResponse($this->getResponseContentArray());
+
         foreach ($keys as $key) {
-            $this->assertTrue(array_key_exists($key, $this->responseToArray($httpResponse)));
+            $this->assertTrue(array_key_exists($key, $arrayResponse));
+        }
+    }
+
+    /**
+     * @param array $responseContent
+     *
+     * @return  mixed
+     */
+    private function removeDataKeyFromResponse(array $responseContent){
+        if (array_key_exists('data',  $responseContent)) {
+            return $responseContent['data'];
         }
     }
 
     /**
      * @param $values
-     * @param $httpResponse
      */
-    public function assertResponseContainValues($values, $httpResponse)
+    public function assertResponseContainValues($values)
     {
         if (!is_array($values)) {
             $values = (array)$values;
         }
 
+        $arrayResponse = $this->removeDataKeyFromResponse($this->getResponseContentArray());
+
         foreach ($values as $value) {
-            $this->assertTrue(in_array($value, $this->responseToArray($httpResponse)));
+            $this->assertTrue(in_array($value, $arrayResponse));
         }
     }
 
     /**
      * @param $data
-     * @param $httpResponse
      */
-    public function assertResponseContainKeyValue($data, $httpResponse)
+    public function assertResponseContainKeyValue($data)
     {
-        $httpResponse = json_encode(LaravelArr::sortRecursive(
-            (array)$this->responseToArray($httpResponse)
-        ));
+        // `responseContentToArray` will remove the `data` node
+        $httpResponse = json_encode(LaravelArr::sortRecursive((array)$this->getResponseContentArray()));
 
         foreach (LaravelArr::sortRecursive($data) as $key => $value) {
             $expected = $this->formatToExpectedJson($key, $value);
@@ -108,26 +88,24 @@ trait TestsResponseHelperTrait
     }
 
     /**
-     * Format the given key and value into a JSON string for expectation checks.
+     * @param $key
+     * @param $value
      *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return string
+     * @return  string
      */
-    private function formatToKeyValueToString($key, $value)
+    private function formatToExpectedJson($key, $value)
     {
         $expected = json_encode([$key => $value]);
 
-        if (LaravelStr::startsWith($expected, '{')) {
+        if (Str::startsWith($expected, '{')) {
             $expected = substr($expected, 1);
         }
 
-        if (LaravelStr::endsWith($expected, '}')) {
+        if (Str::endsWith($expected, '}')) {
             $expected = substr($expected, 0, -1);
         }
 
-        return $expected;
+        return trim($expected);
     }
 
 }

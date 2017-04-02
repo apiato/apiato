@@ -32,16 +32,16 @@ class UpdateUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'email' => $user->email,
             'name'  => $data['name'],
-        ], $response);
+        ]);
 
         // assert data was updated in the database
-        $this->seeInDatabase('users', ['name' => $data['name']]);
+        $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
 
     public function testUpdateExistingUserWithoutData_()
@@ -52,7 +52,7 @@ class UpdateUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('417', $response->getStatusCode());
+        $response->assertStatus(417);
     }
 
 
@@ -64,11 +64,11 @@ class UpdateUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('417', $response->getStatusCode());
+        $response->assertStatus(417);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'Inputs are empty.',
-        ], $response);
+        ]);
     }
 }

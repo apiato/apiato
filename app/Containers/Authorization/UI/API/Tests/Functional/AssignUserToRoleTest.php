@@ -36,9 +36,9 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($data['user_id'], $responseContent->data->id);
 
@@ -61,13 +61,13 @@ class AssignUserToRoleTest extends TestCase
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
         if(\Config::get('apiato.hash-id')){
-            $this->assertEquals('400', $response->getStatusCode());
+            $response->assertStatus(400);
 
             $this->assertResponseContainKeyValue([
                 'message' => 'Only Hashed ID\'s allowed (user_id).',
-            ], $response);
+            ]);
         }else{
-            $this->assertEquals('200', $response->getStatusCode());
+            $response->assertStatus(200);
         }
 
     }
@@ -91,9 +91,9 @@ class AssignUserToRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertTrue(count($responseContent->data->roles->data) > 1);
 

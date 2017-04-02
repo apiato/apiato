@@ -31,20 +31,20 @@ class CreateAdminTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
             'name'  => $data['name'],
-        ], $response);
+        ]);
 
-         // assert response contain the token
-        $this->assertResponseContainKeys(['id', 'token'], $response);
+         // assdert response contain the token
+        $this->assertResponseContainKeys(['id', 'token']);
 
          // assert the data is stored in the database
-        $this->seeInDatabase('users', ['email' => $data['email']]);
+        $this->assertDatabaseHas('users', ['email' => $data['email']]);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($responseContent->data->roles->data[0]->name, $data['name']);
     }

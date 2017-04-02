@@ -35,16 +35,16 @@ class UserLoginTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
         // assert the response contain the expected data
         $this->assertResponseContainKeyValue([
             'email' => $userDetails['email'],
             'name'  => $userDetails['name'],
-        ], $response);
+        ]);
 
         // assert response contain the data
-        $this->assertResponseContainKeys(['id', 'token'], $response);
+        $this->assertResponseContainKeys(['id', 'token']);
     }
 
     public function testUserLoginExistingUserUsingGetRequest_()
@@ -58,12 +58,12 @@ class UserLoginTest extends TestCase
         $response = $this->endpoint('get@login')->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('405', $response->getStatusCode());
+        $response->assertStatus(405);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => '405 Method Not Allowed',
-        ], $response);
+        ]);
     }
 
     public function testUserLoginNonExistingUser_()
@@ -77,12 +77,12 @@ class UserLoginTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('401', $response->getStatusCode());
+        $response->assertStatus(401);
 
         // assert message is correct
         $this->assertResponseContainKeyValue([
             'message' => 'Credentials Incorrect.',
-        ], $response);
+        ]);
     }
 
     public function testUserLoginExistingUserWithoutEmail_()
@@ -103,10 +103,10 @@ class UserLoginTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert message is correct
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'email' => 'The email field is required.',
         ]);
     }
@@ -129,10 +129,10 @@ class UserLoginTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert message is correct
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'password' => 'The password field is required.',
         ]);
     }
@@ -153,10 +153,10 @@ class UserLoginTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert message is correct
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'email'    => 'The email field is required.',
             'password' => 'The password field is required.',
         ]);

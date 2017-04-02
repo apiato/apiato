@@ -28,7 +28,7 @@ class RefreshUserTest extends TestCase
         $response = $this->injectId($user->id)->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
     }
 
     public function testRefreshAnotherUserById_()
@@ -39,7 +39,7 @@ class RefreshUserTest extends TestCase
         $response = $this->injectId($anotherUser->id)->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('500', $response->getStatusCode());
+        $response->assertStatus(500);
     }
 
 }

@@ -42,9 +42,9 @@ class SyncUserRolesTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertTrue(count($responseContent->data->roles->data) > 1);
 

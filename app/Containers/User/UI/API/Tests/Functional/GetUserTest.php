@@ -27,9 +27,9 @@ class GetUserTest extends TestCase
         $response = $this->injectId($admin->id)->makeCall();
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($admin->name, $responseContent->data->name);
     }

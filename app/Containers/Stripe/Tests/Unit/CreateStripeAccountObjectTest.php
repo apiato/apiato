@@ -23,7 +23,7 @@ class CreateStripeAccountObjectTest extends TestCase
         $createStripeAccountAction = App::make(CreateStripeAccountObjectTask::class);
         $stripeAccount = $createStripeAccountAction->run($user, 'cus_8mBD5S1SoyD4zL', 'card_18Uck6KFvMcBUkvQorbBkYhR', 'credit', '4242', 'WsNM4K8puHbdS2VP');
 
-        $this->seeInDatabase('stripe_accounts', ['user_id' => $user->id]);
+        $this->assertDatabaseHas('stripe_accounts', ['user_id' => $user->id]);
     }
 
 }

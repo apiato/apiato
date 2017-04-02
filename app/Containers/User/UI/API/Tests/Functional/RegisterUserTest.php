@@ -34,18 +34,18 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
             'name'  => $data['name'],
-        ], $response);
+        ]);
 
          // assert response contain the token
-        $this->assertResponseContainKeys(['id', 'token'], $response);
+        $this->assertResponseContainKeys(['id', 'token']);
 
          // assert the data is stored in the database
-        $this->seeInDatabase('users', ['email' => $data['email']]);
+        $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
 
     public function testRegisterNewUserUsingGetVerb()
@@ -60,12 +60,12 @@ class RegisterUserTest extends TestCase
         $response = $this->endpoint('get@register')->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('405', $response->getStatusCode());
+        $response->assertStatus(405);
 
         // assert response contain the correct message
         $this->assertResponseContainKeyValue([
             'message' => '405 Method Not Allowed',
-        ], $response);
+        ]);
     }
 
     public function testRegisterExistingUser()
@@ -89,7 +89,7 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
     }
 
     public function testRegisterNewUserWithoutEmail()
@@ -103,10 +103,10 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert response contain the correct message
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'email' => 'The email field is required.',
         ]);
     }
@@ -122,10 +122,10 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert response contain the correct message
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'name' => 'The name field is required.',
         ]);
     }
@@ -140,10 +140,10 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert response contain the correct message
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'password' => 'The password field is required.',
         ]);
     }
@@ -160,10 +160,10 @@ class RegisterUserTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('422', $response->getStatusCode());
+        $response->assertStatus(422);
 
         // assert response contain the correct message
-        $this->assertValidationErrorContain($response, [
+        $this->assertValidationErrorContain([
             'email' => 'The email must be a valid email address.',
         ]);
     }

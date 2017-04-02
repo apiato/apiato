@@ -35,6 +35,28 @@ trait TestsRequestHelperTrait
     protected $auth = true;
 
     /**
+     * Http response
+     *
+     * @var  \Illuminate\Foundation\Testing\TestResponse
+     */
+    protected $response;
+
+    /**
+     * @var string
+     */
+    protected $responseContent;
+
+    /**
+     * @var array
+     */
+    protected $responseContentArray;
+
+    /**
+     * @var \stdClass
+     */
+    protected $responseContentObject;
+
+    /**
      * property to be set before making a call to override the default class property
      *
      * @var string
@@ -49,20 +71,6 @@ trait TestsRequestHelperTrait
     protected $overrideAuth;
 
     /**
-     * the $endpoint property will be extracted to $endpointVerb and $endpointUri after parsing
-     *
-     * @var string
-     */
-    private $endpointVerb;
-
-    /**
-     * the $endpoint property will be extracted to $endpointVerb and $endpointUri after parsing
-     *
-     * @var string
-     */
-    private $endpointUri;
-
-    /**
      * @param array $data
      * @param array $headers
      *
@@ -71,11 +79,16 @@ trait TestsRequestHelperTrait
     public function makeCall(array $data = [], array $headers = [])
     {
         // read the $endpoint property from the test and set the verb and the uri as properties on this trait
-        $this->parseEndpoint();
-        $verb = $this->endpointVerb;
-        $url = $this->buildUrlForUri($this->endpointUri);
+        $endpoint = $this->parseEndpoint();
+        $verb = $endpoint['verb'];
+        $url = $endpoint['url'];
 
         $headers = $this->injectAccessToken($headers);
+
+        /*        Passport::actingAs(
+            $this->getTestingUser(),
+            'api' // !  ['create-servers']
+        )*/;
 
         switch ($verb) {
             case 'put':
@@ -99,16 +112,54 @@ trait TestsRequestHelperTrait
                 $httpResponse = $this->json($verbName, $url, $data, $headers);
                 break;
             default:
-                throw new UndefinedMethodException('Undefined HTTP Verb (' . $verb . ').');
+                throw new UndefinedMethodException('Unsupported HTTP Verb (' . $verb . ')!');
         }
 
-        return $httpResponse;
+        // set the response content
+        $this->setResponseContent($httpResponse);
+
+        return $this->response = $httpResponse;
+    }
+
+    /**
+     * get the json response content from the response object
+     *
+     * @param $httpResponse
+     */
+    public function setResponseContent($httpResponse)
+    {
+        $this->responseContent = $httpResponse->getContent();
+    }
+
+    /**
+     * @return  string
+     */
+    public function getResponseContent()
+    {
+        return $this->responseContent;
+    }
+
+    /**
+     * @return  mixed
+     */
+    public function getResponseContentArray()
+    {
+        return $this->responseContentArray ? : $this->responseContentArray = json_decode($this->getResponseContent(), true);
+    }
+
+    /**
+     * @return  mixed
+     */
+    public function getResponseContentObject()
+    {
+        return $this->responseContentObject ? : $this->responseContentObject = json_decode($this->getResponseContent(), false);
     }
 
     /**
      * Transform headers array to array of $_SERVER vars with HTTP_* format.
      *
-     * @param  array  $headers
+     * @param  array $headers
+     *
      * @return array
      */
     protected function transformHeadersToServerVars(array $headers)
@@ -198,7 +249,7 @@ trait TestsRequestHelperTrait
     {
         // add `/` at the beginning in case it doesn't exist
         if (!Str::startsWith($uri, '/')) {
-            $uri = '/'.$uri;
+            $uri = '/' . $uri;
         }
 
         return Config::get('apiato.api.url') . $uri;
@@ -270,7 +321,9 @@ trait TestsRequestHelperTrait
     }
 
     /**
-     * read `$this->endpoint` property (`verb@uri`) and get `$this->endpointVerb` & `$this->endpointUri`
+     * read `$this->endpoint` property from the test class (`verb@uri`) and convert it to usable data
+     *
+     * @return  array
      */
     private function parseEndpoint()
     {
@@ -285,11 +338,14 @@ trait TestsRequestHelperTrait
 
         // get the verb and uri values from the array
         extract(array_combine(['verb', 'uri'], $asArray));
-
         /** @var TYPE_NAME $verb */
-        $this->endpointVerb = $verb;
         /** @var TYPE_NAME $uri */
-        $this->endpointUri = $uri;
+
+        return [
+            'verb' => $verb,
+            'uri'  => $uri,
+            'url'  => $this->buildUrlForUri($uri),
+        ];
     }
 
     /**

@@ -41,10 +41,10 @@ class CreateStripeAccountTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('202', $response->getStatusCode());
+        $response->assertStatus(202);
 
         // convert JSON response string to Object
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($responseContent->message, 'Stripe account created successfully.');
 

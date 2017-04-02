@@ -38,9 +38,9 @@ class SyncPermissionsOnRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $this->seeInDatabase('role_has_permissions', [
+        $this->assertDatabaseHas('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
             'role_id'       => $roleA->id

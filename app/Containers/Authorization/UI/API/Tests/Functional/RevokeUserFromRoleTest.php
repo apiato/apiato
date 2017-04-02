@@ -37,13 +37,13 @@ class RevokeUserFromRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $responseContent = $this->getResponseContent($response);
+        $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($data['user_id'], $responseContent->data->id);
 
-        $this->missingFromDatabase('user_has_roles', [
+        $this->assertDatabaseMissing('user_has_roles', [
             'user_id' => $randomUser->id,
             'role_id' => $roleA->id,
         ]);
@@ -67,13 +67,13 @@ class RevokeUserFromRoleTest extends TestCase
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
         if(\Config::get('apiato.hash-id')){
-            $this->assertEquals('400', $response->getStatusCode());
+            $response->assertStatus(400);
 
             $this->assertResponseContainKeyValue([
                 'message' => 'Only Hashed ID\'s allowed (roles_ids.*).',
-            ], $response);
+            ]);
         }else{
-            $this->assertEquals('200', $response->getStatusCode());
+            $response->assertStatus(200);
         }
 
     }
@@ -96,9 +96,9 @@ class RevokeUserFromRoleTest extends TestCase
         $response = $this->makeCall($data);
 
         // assert response status is correct
-        $this->assertEquals('200', $response->getStatusCode());
+        $response->assertStatus(200);
 
-        $this->missingFromDatabase('user_has_roles', [
+        $this->assertDatabaseMissing('user_has_roles', [
             'user_id' => $randomUser->id,
             'role_id' => $roleB->id,
             'role_id' => $roleA->id,
