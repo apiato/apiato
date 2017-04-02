@@ -12,26 +12,25 @@ use App\Ship\Features\Tests\PhpUnit\TestsResponseHelperTrait;
 use App\Ship\Features\Tests\PhpUnit\TestsUploadHelperTrait;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
-use Laravel\BrowserKitTesting\TestCase as LaravelFivePointThreeTestCaseCompatibilityPackage;
-
-//use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 
 /**
  * Class TestCase.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class TestCase extends LaravelFivePointThreeTestCaseCompatibilityPackage
+abstract class TestCase extends LaravelTestCase
 {
+
     use TestCaseTrait;
 
-    use HashIdTrait,
-        TestsRequestHelperTrait,
+    use TestsRequestHelperTrait,
         TestsResponseHelperTrait,
         TestsMockHelperTrait,
         TestsAuthHelperTrait,
         TestsUploadHelperTrait,
-        TestsCustomHelperTrait;
+        TestsCustomHelperTrait,
+        HashIdTrait;
 
     /**
      * The base URL to use while testing the application.

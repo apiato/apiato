@@ -287,6 +287,6 @@ Change the default URL from `apiato.dev` to `awesome.com`
 
 1) open your hosts (`sudo vi ect/hosts`) file and map your domain `awesome.com` to the IP address of your Virtual Host (Docker IP or Vagrant IP) or any host you are using in case you have the tools installed locally on your machine.
 
-2) open the .env file and replace `apiato.dev` with `awesome.com` in `APP_URL`, `APP_FULL_URL` and `API_DOMAIN` *(note the API domain should be api.*)*
+2) open the .env file and replace `apiato.dev` with `awesome.com` in `APP_URL`, and `API_URL` *(note the API domain should be api.*)*
 
 3) open `phpunit.xml` and change `API_BASE_URL` from `apiato.dev` to `awesome.com`

@@ -7,6 +7,7 @@ use App\Ship\Features\Exceptions\MissingTestEndpointException;
 use App\Ship\Features\Exceptions\UndefinedMethodException;
 use App\Ship\Features\Exceptions\WrongEndpointFormatException;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
@@ -48,18 +49,18 @@ trait TestsRequestHelperTrait
     protected $overrideAuth;
 
     /**
-     * the $endpoint property will be extracted to $endpointVerb and $endpointUrl after parsing
+     * the $endpoint property will be extracted to $endpointVerb and $endpointUri after parsing
      *
      * @var string
      */
     private $endpointVerb;
 
     /**
-     * the $endpoint property will be extracted to $endpointVerb and $endpointUrl after parsing
+     * the $endpoint property will be extracted to $endpointVerb and $endpointUri after parsing
      *
      * @var string
      */
-    private $endpointUrl;
+    private $endpointUri;
 
     /**
      * @param array $data
@@ -69,12 +70,54 @@ trait TestsRequestHelperTrait
      */
     public function makeCall(array $data = [], array $headers = [])
     {
-
+        // read the $endpoint property from the test and set the verb and the uri as properties on this trait
         $this->parseEndpoint();
+        $verb = $this->endpointVerb;
+        $url = $this->buildUrlForUri($this->endpointUri);
 
         $headers = $this->injectAccessToken($headers);
 
-        return $this->getResponse($this->httpRequest($data, $headers));
+        switch ($verb) {
+            case 'put':
+            case 'patch':
+            case 'delete':
+            case 'post':
+                $headers = $this->transformHeadersToServerVars($headers);
+                $httpResponse = $this->call($verb, $url, $data, [], [], $headers);
+                break;
+            case 'get':
+                $url = $this->dataArrayToQueryParam($data, $url);
+                $headers = $this->transformHeadersToServerVars($headers);
+                $httpResponse = $this->call($verb, $url, [], [], [], $headers);
+                break;
+            case 'json:post':
+            case 'json:put':
+            case 'json:patch':
+            case 'json:delete':
+            case 'json:get':
+                $verbName = $this->getJsonVerb($verb);
+                $httpResponse = $this->json($verbName, $url, $data, $headers);
+                break;
+            default:
+                throw new UndefinedMethodException('Undefined HTTP Verb (' . $verb . ').');
+        }
+
+        return $httpResponse;
+    }
+
+    /**
+     * Transform headers array to array of $_SERVER vars with HTTP_* format.
+     *
+     * @param  array  $headers
+     * @return array
+     */
+    protected function transformHeadersToServerVars(array $headers)
+    {
+        return collect($headers)->mapWithKeys(function ($value, $name) {
+            $name = strtr(strtoupper($name), '-', '_');
+
+            return [$this->formatServerHeaderKey($name) => $value];
+        })->all();
     }
 
     /**
@@ -101,7 +144,7 @@ trait TestsRequestHelperTrait
     /**
      * Override the default class endpoint property before making the call
      *
-     * to be used as follow: $this->endpoint('verb@url')->makeCall($data);
+     * to be used as follow: $this->endpoint('verb@uri')->makeCall($data);
      *
      * @param $endpoint
      *
@@ -147,45 +190,18 @@ trait TestsRequestHelperTrait
     }
 
     /**
-     * @param array $data
-     * @param array $headers
+     * @param $uri
      *
-     * @return  mixed
+     * @return  string
      */
-    private function httpRequest(array $data = [], array $headers = [])
+    private function buildUrlForUri($uri)
     {
-        $verb = $this->endpointVerb;
-        $url = $this->endpointUrl;
-
-        switch ($verb) {
-            case 'post':
-            case 'put':
-            case 'patch':
-            case 'delete':
-                $httpResponse = $this->{$verb}($url, $data, $headers);
-                break;
-            case 'get':
-                $url = $this->dataArrayToQueryParam($data, $url);
-                $httpResponse = $this->get($url, $headers);
-                break;
-            case 'json:post':
-                $httpResponse = $this->json('post', $url, $data, $headers);
-                break;
-            default:
-                throw new UndefinedMethodException('Undefined HTTP Verb (' . $verb . ').');
+        // add `/` at the beginning in case it doesn't exist
+        if (!Str::startsWith($uri, '/')) {
+            $uri = '/'.$uri;
         }
 
-        return $httpResponse;
-    }
-
-    /**
-     * @param $responseContent
-     *
-     * @return  mixed
-     */
-    private function getResponse($responseContent)
-    {
-        return $responseContent->response;
+        return Config::get('apiato.api.url') . $uri;
     }
 
     /**
@@ -222,13 +238,23 @@ trait TestsRequestHelperTrait
 
     /**
      * @param $data
-     * @param $endpointUrl
+     * @param $url
      *
-     * @return  null|string
+     * @return  string
      */
     private function dataArrayToQueryParam($data, $url)
     {
         return $data ? $url . '?' . http_build_query($data) : $url;
+    }
+
+    /**
+     * @param $text
+     *
+     * @return  string
+     */
+    private function getJsonVerb($text)
+    {
+        return Str::replaceFirst('json:', '', $text);
     }
 
 
@@ -244,7 +270,7 @@ trait TestsRequestHelperTrait
     }
 
     /**
-     * read `$this->endpoint` property (`verb@url`) and get `$this->endpointVerb` & `$this->endpointUrl`
+     * read `$this->endpoint` property (`verb@uri`) and get `$this->endpointVerb` & `$this->endpointUri`
      */
     private function parseEndpoint()
     {
@@ -257,13 +283,13 @@ trait TestsRequestHelperTrait
         // convert the string to array
         $asArray = explode($separator, $this->getEndpoint(), 2);
 
-        // get the verb and url values from the array
-        extract(array_combine(['verb', 'url'], $asArray));
+        // get the verb and uri values from the array
+        extract(array_combine(['verb', 'uri'], $asArray));
 
         /** @var TYPE_NAME $verb */
         $this->endpointVerb = $verb;
-        /** @var TYPE_NAME $url */
-        $this->endpointUrl = $url;
+        /** @var TYPE_NAME $uri */
+        $this->endpointUri = $uri;
     }
 
     /**
