@@ -629,6 +629,49 @@
             "time": "2017-03-29 16:04:15"
         },
         {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18 04:51:16"
+        },
+        {
             "name": "graham-campbell/manager",
             "version": "v2.5.0",
             "source": {
@@ -1252,6 +1295,70 @@
             "time": "2017-03-21 19:34:41"
         },
         {
+            "name": "laravel/passport",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/passport.git",
+                "reference": "55fb99f5feb3572634b6d37a8aa43bd8a7148960"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/55fb99f5feb3572634b6d37a8aa43bd8a7148960",
+                "reference": "55fb99f5feb3572634b6d37a8aa43bd8a7148960",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "~4.0",
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/auth": "~5.3",
+                "illuminate/console": "~5.3",
+                "illuminate/container": "~5.3",
+                "illuminate/contracts": "~5.3",
+                "illuminate/database": "~5.3",
+                "illuminate/encryption": "~5.3",
+                "illuminate/http": "~5.3",
+                "illuminate/support": "~5.3",
+                "league/oauth2-server": "~5.0",
+                "php": ">=5.6.4",
+                "symfony/process": "~3.1",
+                "symfony/psr-http-message-bridge": "^0.2.0",
+                "zendframework/zend-diactoros": "~1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Passport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Passport provides OAuth2 server support to Laravel.",
+            "keywords": [
+                "laravel",
+                "oauth",
+                "passport"
+            ],
+            "time": "2016-08-23 12:49:27"
+        },
+        {
             "name": "laravel/socialite",
             "version": "v2.0.21",
             "source": {
@@ -1362,6 +1469,114 @@
                 "psysh"
             ],
             "time": "2016-12-30 18:13:17"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "ddce703826f9c5229781933b1a39069e38e6a0f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/ddce703826f9c5229781933b1a39069e38e6a0f3",
+                "reference": "ddce703826f9c5229781933b1a39069e38e6a0f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mdanter/ecc": "~0.3.1",
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~4.5",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2016-10-31 20:09:32"
+        },
+        {
+            "name": "league/event",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/event.git",
+                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/event/zipball/e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
+                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
+                "phpspec/phpspec": "~2.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Event\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Event package",
+            "keywords": [
+                "emitter",
+                "event",
+                "listener"
+            ],
+            "time": "2015-05-21 12:24:47"
         },
         {
             "name": "league/flysystem",
@@ -1571,6 +1786,82 @@
                 "twitter"
             ],
             "time": "2016-08-17 00:36:58"
+        },
+        {
+            "name": "league/oauth2-server",
+            "version": "5.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth2-server.git",
+                "reference": "f78dc2eca0774ec3958bbcf9b2a23d5ae61fb5aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/f78dc2eca0774ec3958bbcf9b2a23d5ae61fb5aa",
+                "reference": "f78dc2eca0774ec3958bbcf9b2a23d5ae61fb5aa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "lcobucci/jwt": "^3.1",
+                "league/event": "^2.1",
+                "paragonie/random_compat": "^1.1 || ^2.0",
+                "php": ">=5.5.9",
+                "psr/http-message": "^1.0"
+            },
+            "replace": {
+                "league/oauth2server": "*",
+                "lncd/oauth2": "*"
+            },
+            "require-dev": {
+                "indigophp/hash-compat": "^1.1",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "zendframework/zend-diactoros": "^1.0"
+            },
+            "suggest": {
+                "indigophp/hash-compat": "Polyfill for hash_equals function for PHP 5.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-V5-WIP": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth2\\Server\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Bilbie",
+                    "email": "hello@alexbilbie.com",
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
+            "homepage": "https://oauth2.thephpleague.com/",
+            "keywords": [
+                "Authentication",
+                "api",
+                "auth",
+                "authorisation",
+                "authorization",
+                "oauth",
+                "oauth 2",
+                "oauth 2.0",
+                "oauth2",
+                "protect",
+                "resource",
+                "secure",
+                "server"
+            ],
+            "time": "2016-10-12 14:08:15"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -3276,6 +3567,60 @@
             "time": "2017-03-04 12:23:14"
         },
         {
+            "name": "symfony/psr-http-message-bridge",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/psr-http-message-bridge.git",
+                "reference": "dc7e308e1dc2898a46776e2221a643cb08315453"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/dc7e308e1dc2898a46776e2221a643cb08315453",
+                "reference": "dc7e308e1dc2898a46776e2221a643cb08315453",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/http-message": "~1.0",
+                "symfony/http-foundation": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7|~3.0"
+            },
+            "suggest": {
+                "zendframework/zend-diactoros": "To use the Zend Diactoros factory"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bridge\\PsrHttpMessage\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "PSR HTTP message bridge",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr-7"
+            ],
+            "time": "2015-05-29 17:57:12"
+        },
+        {
             "name": "symfony/routing",
             "version": "v3.2.6",
             "source": {
@@ -3801,6 +4146,56 @@
             ],
             "description": "Composer plugin to merge multiple composer.json files",
             "time": "2017-03-13 16:52:55"
+        },
+        {
+            "name": "zendframework/zend-diactoros",
+            "version": "1.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-diactoros.git",
+                "reference": "83e8d98b9915de76c659ce27d683c02a0f99fa90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/83e8d98b9915de76c659ce27d683c02a0f99fa90",
+                "reference": "83e8d98b9915de76c659ce27d683c02a0f99fa90",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "~1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6 || ^5.5",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev",
+                    "dev-develop": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Diactoros\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "PSR HTTP Message implementations",
+            "homepage": "https://github.com/zendframework/zend-diactoros",
+            "keywords": [
+                "http",
+                "psr",
+                "psr-7"
+            ],
+            "time": "2017-01-23 04:53:24"
         }
     ],
     "packages-dev": [

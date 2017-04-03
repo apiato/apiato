@@ -2,7 +2,8 @@
   "name": "apiato/authentication",
   "description": "apiato Container.",
   "require": {
-    "tymon/jwt-auth": "0.5.*"
+    "tymon/jwt-auth": "0.5.*",
+    "laravel/passport": "1.*"
   },
   "scripts": {
     "post-create-project-cmd": [

@@ -64,7 +64,6 @@ class User extends UserModel
     protected $hidden = [
         'password',
         'remember_token',
-        'token',
     ];
 
     public function stripeAccount()

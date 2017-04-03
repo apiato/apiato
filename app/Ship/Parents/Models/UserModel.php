@@ -10,6 +10,7 @@ use App\Ship\Features\Payment\Traits\ChargeableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as LaravelAuthenticatableUser;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -20,6 +21,6 @@ use Spatie\Permission\Traits\HasRoles;
 abstract class UserModel extends LaravelAuthenticatableUser implements ChargeableInterface
 {
 
-    use Notifiable, HashIdTrait, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait, ChargeableTrait;
+    use Notifiable, HashIdTrait, SoftDeletes, TokenTrait, HasRoles, AuthorizationTrait, ChargeableTrait, HasApiTokens;
 
 }

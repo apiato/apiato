@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
+use Laravel\Passport\PassportServiceProvider;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 use Tymon\JWTAuth\Providers\JWTAuthServiceProvider;
@@ -24,7 +25,9 @@ class MainServiceProvider extends MainProvider
      */
     public $serviceProviders = [
         JWTAuthServiceProvider::class,
-        MiddlewareServiceProvider::class
+        PassportServiceProvider::class,
+        AuthProvider::class,
+        MiddlewareServiceProvider::class,
     ];
 
     /**
