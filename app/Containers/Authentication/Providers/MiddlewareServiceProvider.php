@@ -4,8 +4,6 @@ namespace App\Containers\Authentication\Providers;
 
 use App\Containers\Authentication\Middlewares\WebAuthentication;
 use App\Ship\Parents\Providers\MiddlewareProvider;
-use Tymon\JWTAuth\Middleware\GetUserFromToken;
-use Tymon\JWTAuth\Middleware\RefreshToken;
 
 /**
  * Class MiddlewareServiceProvider
@@ -14,7 +12,6 @@ use Tymon\JWTAuth\Middleware\RefreshToken;
  */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-
 
     /**
      * Register Middleware's
@@ -32,20 +29,18 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      */
     protected $middlewareGroups = [
         'web' => [
-
+            // ..
         ],
         'api' => [
-
+            // ..
         ],
     ];
 
     protected $routeMiddleware = [
-        // JWT Package middleware's
-        'jwt.auth'         => GetUserFromToken::class,
-        'jwt.refresh'      => RefreshToken::class,
-
         // apiato User Authentication middleware for Web Pages
-        'web.auth'         => WebAuthentication::class,
+        'web.auth' => WebAuthentication::class,
+
+        // ..
     ];
 
 }

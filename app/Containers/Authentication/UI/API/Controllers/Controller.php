@@ -27,7 +27,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request['email'], $request['password']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer(), 'user');
     }
 
     /**

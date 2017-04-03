@@ -38,14 +38,14 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'apiato',
-            'length' => '8',
-            'alphabet' => 'abcdefghijklmnopqrstuvwxyz',
+            'salt'     => env('APP_KEY'),
+            'length'   => '32',
+            'alphabet' => '1234567890abcdefghijklmnopqrstuvwxyz',
         ],
 
         'alternative' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
+            'salt'     => 'your-salt-string',
+            'length'   => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
         ],
 

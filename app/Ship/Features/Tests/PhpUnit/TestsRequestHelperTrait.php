@@ -83,7 +83,7 @@ trait TestsRequestHelperTrait
         $verb = $endpoint['verb'];
         $url = $endpoint['url'];
 
-        $headers = $this->injectAccessToken($headers);
+//        $headers = $this->injectAccessToken($headers);
 
         switch ($verb) {
             case 'put':

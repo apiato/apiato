@@ -22,9 +22,9 @@ class JwtAuthAdapter
      *
      * @param \Tymon\JWTAuth\JWTAuth $jwtAuth
      */
-    public function __construct(JWTAuth $jwtAuth)
+    public function __construct()
     {
-        $this->jwtAuth = $jwtAuth;
+        $this->jwtAuth = '';
     }
 
     /**

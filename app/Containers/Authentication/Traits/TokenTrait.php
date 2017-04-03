@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\App;
  */
 trait TokenTrait
 {
-
+// TODO: remove all this
+// TODO: remove all this
+// TODO: remove all this
+// TODO: remove all this
+// TODO: remove all this
+// TODO: remove all this
     /**
      * inject a token in the user model itself.
      * if no token provided generate token first.
@@ -27,7 +32,7 @@ trait TokenTrait
     {
         // `$this->token` will be attached on the User where this trait is used.
         $this->token = $token;
-
+    // TODO: remove all this
         return $this;
     }
 
@@ -38,6 +43,8 @@ trait TokenTrait
      */
     public function withToken()
     {
-        return $this->injectToken(App::make(ApiGenerateTokenFromObjectTask::class)->run($this));
+//        return $this->injectToken(App::make(ApiGenerateTokenFromObjectTask::class)->run($this));
+        // TODO: remove all this
+        return $this;
     }
 }

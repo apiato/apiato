@@ -47,7 +47,7 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
-            'token'                => $this->transformToken($user->token),
+//            'token'                => $this->transformToken($user->token),
         ];
 
         $response = $this->ifAdmin([
@@ -73,9 +73,9 @@ class UserTransformer extends Transformer
             'access_token' => [
                 'token_type'   => 'Bearer',
                 'time_to_live' => [
-                    'minutes' => Config::get('jwt.ttl'),
+                    '...'
                 ],
-                'expires_in'   => Carbon::now()->addMinutes(Config::get('jwt.ttl')),
+                'expires_in'   => '...',
             ],
         ];
     }

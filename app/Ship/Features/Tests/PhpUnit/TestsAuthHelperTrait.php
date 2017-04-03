@@ -95,7 +95,10 @@ trait TestsAuthHelperTrait
         $user = $this->setupTestingUserAccess($user, $access);
 
         // log the user in
-        $user = App::make(ApiLoginThisUserObjectTask::class)->run($user);
+//        $user = App::make(ApiLoginThisUserObjectTask::class)->run($user);
+
+        // authentication the user
+        $this->actingAs($user, 'api');
 
         // set the created user
         return $this->testingUser = $user;

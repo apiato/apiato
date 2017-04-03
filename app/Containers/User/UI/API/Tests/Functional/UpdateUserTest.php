@@ -21,6 +21,7 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUser_()
     {
+
         $user = $this->getTestingUser();
 
         $data = [

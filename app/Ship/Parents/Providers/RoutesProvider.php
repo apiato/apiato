@@ -4,8 +4,6 @@ namespace App\Ship\Parents\Providers;
 
 use App\Ship\Engine\Loaders\RoutesLoaderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
-use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Routing\Router as LaravelRouter;
 
 /**
  * Class RoutesProvider.
@@ -16,7 +14,6 @@ use Illuminate\Routing\Router as LaravelRouter;
  */
 class RoutesProvider extends LaravelRouteServiceProvider
 {
-
     use RoutesLoaderTrait;
 
     /**
@@ -29,26 +26,11 @@ class RoutesProvider extends LaravelRouteServiceProvider
     protected $namespace;
 
     /**
-     * Instance of the Laravel default Router Class
-     *
-     * @var \Illuminate\Routing\Router
-     */
-    private $webRouter;
-
-    /**
-     * Instance of the Dingo Api router.
-     *
-     * @var \Dingo\Api\Routing\Router
-     */
-    public $apiRouter;
-
-    /**
      * Define your route model bindings, pattern filters, etc.
      */
     public function boot()
     {
-        // initializing an instance of the Dingo Api router
-        $this->apiRouter = app(DingoApiRouter::class);
+        //
 
         parent::boot();
     }
@@ -56,13 +38,13 @@ class RoutesProvider extends LaravelRouteServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param \Illuminate\Routing\Router $webRouterParam
+     * @return void
      */
-    public function map(LaravelRouter $webRouterParam)
+    public function map()
     {
-        $this->webRouter = $webRouterParam;
-
         $this->runRoutesAutoLoader();
+
+        //
     }
 
 }

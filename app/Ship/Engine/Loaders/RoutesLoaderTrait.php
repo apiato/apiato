@@ -3,10 +3,8 @@
 namespace App\Ship\Engine\Loaders;
 
 use App\Ship\Engine\Butlers\Facades\ShipButler;
-use Dingo\Api\Routing\Router as DingoApiRouter;
-use Illuminate\Routing\Router as LaravelRouter;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
@@ -26,8 +24,8 @@ trait RoutesLoaderTrait
         $containersNamespace = ShipButler::getContainersNamespace();
 
         foreach ($containersPaths as $containerPath) {
-            $this->loadRoutesFromContainersForApi($containerPath, $containersNamespace);
-            $this->loadRoutesFromContainersForWeb($containerPath, $containersNamespace);
+            $this->loadApiContainerRoutes($containerPath, $containersNamespace);
+            $this->loadWebContainerRoutes($containerPath, $containersNamespace);
         }
     }
 
@@ -37,17 +35,17 @@ trait RoutesLoaderTrait
      * @param $containerPath
      * @param $containersNamespace
      */
-    private function loadRoutesFromContainersForApi($containerPath, $containersNamespace)
+    private function loadApiContainerRoutes($containerPath, $containersNamespace)
     {
-        // get the container api routes path
+        // build the container api routes path
         $apiRoutesPath = $containerPath . '/UI/API/Routes';
+        // build the namespace from the path
+        $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
 
         if (File::isDirectory($apiRoutesPath)) {
-            // get all files from the container API routes directory
             $files = File::allFiles($apiRoutesPath);
-
             foreach ($files as $file) {
-                $this->loadApiRoute($file, $containerPath, $containersNamespace);
+                $this->loadApiRoute($file, $controllerNamespace);
             }
         }
     }
@@ -58,17 +56,15 @@ trait RoutesLoaderTrait
      * @param $containerPath
      * @param $containersNamespace
      */
-    private function loadRoutesFromContainersForWeb($containerPath, $containersNamespace)
+    private function loadWebContainerRoutes($containerPath, $containersNamespace)
     {
-        // get the container web routes path
+        // build the container web routes path
         $webRoutesPath = $containerPath . '/UI/WEB/Routes';
+        // build the namespace from the path
+        $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers';
 
         if (File::isDirectory($webRoutesPath)) {
-            // get all files from the container Web routes directory
             $files = File::allFiles($webRoutesPath);
-
-            $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\WEB\Controllers';
-
             foreach ($files as $file) {
                 $this->loadWebRoute($file, $controllerNamespace);
             }
@@ -81,45 +77,48 @@ trait RoutesLoaderTrait
      */
     private function loadWebRoute($file, $controllerNamespace)
     {
-        $this->webRouter->group([
-            'middleware' => ['web'],
-            'namespace'  => $controllerNamespace,
-        ], function (LaravelRouter $router) use ($file) {
-            require $file->getPathname();
-        });
+        Route::middleware('web')
+            ->namespace($controllerNamespace)
+            ->group($file->getPathname());
+
+//        $this->webRouter->group([
+//            'middleware' => ['web'],
+//            'namespace'  => $controllerNamespace,
+//        ], function (LaravelRouter $router) use ($file) {
+//            require $file->getPathname();
+//        });
     }
 
     /**
      * @param $file
-     * @param $containerPath
-     * @param $containersNamespace
+     * @param $controllerNamespace
      */
-    private function loadApiRoute($file, $containerPath, $containersNamespace)
+    private function loadApiRoute($file, $controllerNamespace)
     {
         // get the version from the file name to register it
-        $apiVersionNumber = $this->getRouteFileVersionNumber($file);
+//        $apiVersionNumber = $this->getRouteFileVersionNumber($file); // TODO: use the api version
 
-        $this->apiRouter->version('v' . $apiVersionNumber,
-            function (DingoApiRouter $router) use ($file, $containerPath, $containersNamespace) {
+        // The API limit time.
+//        'limit'      => Config::get('apiato.api.limit'),
+        // The API limit expiry time.
+//        'expires'    => Config::get('apiato.api.limit_expires'),
 
-                $controllerNamespace = $containersNamespace . '\\Containers\\' . basename($containerPath) . '\\UI\API\Controllers';
+        // TODO for subdomain try this:
+//        Route::group([
+//            // Routes Namespace
+//            'namespace' => $controllerNamespace,
+//            // Add Middleware's - 'api' is a group of middleware's
+//            'middleware' => ['api'],
+//            // Add Domain - only for API domain
+//            'domain' => 'api.'.env('APP_URL'),
+//        ], function ($router) use ($file) {
+//            require $file->getPathname();
+//        });
 
-                $router->group([
-                    // Routes Namespace
-                    'namespace'  => $controllerNamespace,
-                    // Add Middleware's - 'api' is a group of middleware's
-                    'middleware' => ['api'],
-                    // The API limit time.
-                    'limit'      => Config::get('apiato.api.limit'),
-                    // The API limit expiry time.
-                    'expires'    => Config::get('apiato.api.limit_expires'),
-                ], function ($router) use ($file) {
-
-                    require $file->getPathname();
-
-                });
-
-            });
+        Route::prefix('api') // TODO: remove this and replace it back with subdomain
+            ->middleware('api')
+            ->namespace($controllerNamespace)
+            ->group($file->getPathname());
     }
 
 

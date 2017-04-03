@@ -149,6 +149,6 @@ class Controller extends ApiController
             $request['birth']
         )->withToken();
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer(), 'user');
     }
 }

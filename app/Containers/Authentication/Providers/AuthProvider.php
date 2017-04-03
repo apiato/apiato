@@ -44,5 +44,7 @@ class AuthProvider extends ParentAuthProvider
         $this->registerPolicies();
 
         Passport::routes();
+
+        Passport::enableImplicitGrant();
     }
 }
