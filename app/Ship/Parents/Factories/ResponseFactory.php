@@ -24,7 +24,7 @@ class ResponseFactory
      *
      * @param null|string $location
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function created($location = null, $content = null)
     {
@@ -43,7 +43,7 @@ class ResponseFactory
      *
      * @param null|string $location
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function success($content, $type)
     {
@@ -62,7 +62,7 @@ class ResponseFactory
      * @param null|string $location
      * @param mixed       $content
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function accepted($location = null, $content = null)
     {
@@ -79,7 +79,7 @@ class ResponseFactory
     /**
      * Respond with a no content response.
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function noContent()
     {
@@ -96,7 +96,7 @@ class ResponseFactory
      * @param array|\Closure                 $parameters
      * @param \Closure|null                  $after
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function collection($collection, $transformer, $type)
     {
@@ -111,7 +111,7 @@ class ResponseFactory
      * @param array    $parameters
      * @param \Closure $after
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function item($item, $transformer, $type)
     {
@@ -126,7 +126,7 @@ class ResponseFactory
      * @param array                                      $parameters
      * @param \Closure                                   $after
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function paginator(LengthAwarePaginator $paginator, $transformer, $type)
     {

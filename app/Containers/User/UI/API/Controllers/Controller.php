@@ -30,7 +30,7 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
      * @param \App\Containers\User\Actions\DeleteUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
     {
@@ -46,72 +46,72 @@ class Controller extends ApiController
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function listAllUsers(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
         $users = $action->run();
 
-        return $this->respond($users, UserTransformer::class);
+        return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
         $users = $action->run(); // TODO: anyone who is not an admin is a client.
 
-        return $this->respond($users, UserTransformer::class);
+        return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
      * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
     {
         $users = $action->run(['admin']);
 
-        return $this->respond($users, UserTransformer::class);
+        return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RefreshUserRequest $request
      * @param \App\Containers\User\Actions\GetUserAction              $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function refreshUser(RefreshUserRequest $request, GetUserAction $action)
     {
         $user = $action->run($request->id, $request->header('Authorization'));
 
-        return $this->respond($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
      * @param \App\Containers\User\Actions\GetUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function getUser(GetUserRequest $request, GetUserAction $action)
     {
         $user = $action->run($request->id);
 
-        return $this->respond($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
      * @param \App\Containers\User\Actions\CreateUserAction            $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
     {
@@ -123,27 +123,27 @@ class Controller extends ApiController
             $request['birth']
         );
 
-        return $this->respond($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
      * @param \App\Containers\User\Actions\CreateAdminAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function createAdmin(CreateAdminRequest $request, CreateAdminAction $action)
     {
         $admin = $action->run($request['email'], $request['password'], $request['name']);
 
-        return $this->respond($admin, UserTransformer::class);
+        return $this->transform($admin, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
      * @param \App\Containers\User\Actions\UpdateUserAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function updateUser(UpdateUserRequest $request, UpdateUserAction $action)
     {
@@ -155,6 +155,6 @@ class Controller extends ApiController
             $request['birth']
         );
 
-        return $this->respond($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class);
     }
 }
