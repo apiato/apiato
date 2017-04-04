@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Controllers;
 
-use App\Ship\Engine\Traits\ResponseTrait;
+use App\Ship\Engine\Traits\FractalTrait;
 
 /**
  * Class ApiController.
@@ -11,6 +11,5 @@ use App\Ship\Engine\Traits\ResponseTrait;
  */
 abstract class ApiController extends Controller
 {
-
-    use ResponseTrait;
+    use FractalTrait;
 }
