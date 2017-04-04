@@ -48,6 +48,6 @@
 $router->post('permissions/attach', [
     'uses'       => 'Controller@attachPermissionToRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

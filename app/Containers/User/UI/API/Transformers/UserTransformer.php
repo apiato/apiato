@@ -5,7 +5,6 @@ namespace App\Containers\User\UI\API\Transformers;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Transformers\Transformer;
-use Carbon\Carbon;
 use Config;
 
 /**
@@ -47,13 +46,14 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
-//            'token'                => $this->transformToken($user->token),
+            'token'                => $this->transformToken($user->access_token),
         ];
 
-        $response = $this->ifAdmin([
-            'real_id'    => $user->id,
-            'deleted_at' => $user->deleted_at,
-        ], $response);
+        // TODO: uncomment this and  fix ifAdmin
+//        $response = $this->ifAdmin([
+//            'real_id'    => $user->id,
+//            'deleted_at' => $user->deleted_at,
+//        ], $response);
 
         return $response;
     }
@@ -68,14 +68,11 @@ class UserTransformer extends Transformer
     private function transformToken($token = null)
     {
         return !$token ? null : [
-            'object'       => 'token',
-            'token'        => $token,
+            'object'       => 'Token',
             'access_token' => [
                 'token_type'   => 'Bearer',
-                'time_to_live' => [
-                    '...'
-                ],
-                'expires_in'   => '...',
+                'value'        => $token,
+//                'expires_in'   => '...',
             ],
         ];
     }

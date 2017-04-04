@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Ship\Parents\Tasks\Task;
@@ -23,22 +22,14 @@ class CreateUserByCredentialsTask extends Task
     private $userRepository;
 
     /**
-     * @var \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask
-     */
-    private $apiLoginThisUserObjectTask;
-
-    /**
      * CreateUserByCredentialsTask constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface        $userRepository
-     * @param \App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
+     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
      */
     public function __construct(
-        UserRepositoryInterface $userRepository,
-        ApiLoginThisUserObjectTask $apiLoginThisUserObjectTask
+        UserRepositoryInterface $userRepository
     ) {
         $this->userRepository = $userRepository;
-        $this->apiLoginThisUserObjectTask = $apiLoginThisUserObjectTask;
     }
 
     /**
@@ -47,33 +38,38 @@ class CreateUserByCredentialsTask extends Task
      * @param      $name
      * @param null $gender
      * @param null $birth
-     * @param bool $login
      *
      * @return  mixed
      */
-    public function run($email, $password, $name, $gender = null, $birth = null, $login = false)
+    public function run($email, $password, $name = null, $gender = null, $birth = null)
     {
-        $hashedPassword = Hash::make($password);
-
         try {
             // create new user
             $user = $this->userRepository->create([
                 'name'     => $name,
                 'email'    => $email,
-                'password' => $hashedPassword,
+                'password' => $this->hashPass($password),
                 'gender'   => $gender,
                 'birth'    => $birth,
             ]);
+
         } catch (Exception $e) {
             throw (new AccountFailedException())->debug($e);
         }
 
-        if ($login) {
-            // login this user using it's object and inject it's token on it
-            $user = $this->apiLoginThisUserObjectTask->run($user);
-        }
-
         return $user;
+    }
+
+    /**
+     * TODO: remove from here
+     *
+     * @param $password
+     *
+     * @return  mixed
+     */
+    private function hashPass($password)
+    {
+        return Hash::make($password);
     }
 
 }

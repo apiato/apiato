@@ -111,6 +111,6 @@
 $router->get('users', [
     'uses'       => 'Controller@listAllUsers',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

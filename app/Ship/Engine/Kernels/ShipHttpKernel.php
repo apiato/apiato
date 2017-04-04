@@ -49,17 +49,10 @@ class ShipHttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
+            'throttle:60,1', // TODO: read from config file
             'bindings',
         ],
 
-//        'api' => [
-//            // Laravel middleware's
-//            'bindings',
-//
-//            // Dingo Package throttle middleware
-//            'api.throttle',
-//        ],
     ];
 
     /**
@@ -70,12 +63,12 @@ class ShipHttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 
 }

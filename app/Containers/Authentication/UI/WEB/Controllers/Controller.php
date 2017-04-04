@@ -4,7 +4,6 @@ namespace App\Containers\Authentication\UI\WEB\Controllers;
 
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
 use App\Containers\Authentication\Actions\WebLogoutAction;
-use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;

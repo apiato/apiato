@@ -29,7 +29,6 @@ use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -51,7 +50,7 @@ class Controller extends ApiController
     {
         $permissions = $action->run();
 
-        return $this->response->collection($permissions, new PermissionTransformer());
+        return $this->respond($permissions, PermissionTransformer::class);
     }
 
     /**
@@ -64,7 +63,7 @@ class Controller extends ApiController
     {
         $permission = $action->run($request['id']);
 
-        return $this->response->item($permission, new PermissionTransformer());
+        return $this->respond($permission, PermissionTransformer::class);
     }
 
     /**
@@ -77,7 +76,7 @@ class Controller extends ApiController
     {
         $roles = $action->run();
 
-        return $this->response->collection($roles, new RoleTransformer());
+        return $this->respond($roles, RoleTransformer::class);
     }
 
     /**
@@ -90,12 +89,12 @@ class Controller extends ApiController
     {
         $role = $action->run($request['id']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->respond($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction                $action
+     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -103,12 +102,12 @@ class Controller extends ApiController
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -116,7 +115,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
@@ -129,6 +128,7 @@ class Controller extends ApiController
     {
         $role = $action->run($request->id);
 
+        // TODO: update
         return $this->response->accepted(null, [
             'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.',
         ]);
@@ -144,7 +144,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
@@ -159,12 +159,12 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->respond($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction          $action
      *
      * @return  \Dingo\Api\Http\Response
      */
@@ -174,7 +174,7 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->respond($role, RoleTransformer::class);
     }
 
     /**
@@ -189,7 +189,7 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->respond($role, RoleTransformer::class);
     }
 
     /**
@@ -202,7 +202,7 @@ class Controller extends ApiController
     {
         $role = $action->run($request['name'], $request['description'], $request['display_name']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->respond($role, RoleTransformer::class);
     }
 
 }

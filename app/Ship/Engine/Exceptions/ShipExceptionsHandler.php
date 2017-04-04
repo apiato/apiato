@@ -2,13 +2,10 @@
 
 namespace App\Ship\Engine\Exceptions;
 
-use App\Ship\Engine\Traits\RestTrait;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as LaravelExceptionHandler;
-use Illuminate\Support\Facades\Config;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class ShipExceptionsHandler
@@ -19,7 +16,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ShipExceptionsHandler extends LaravelExceptionHandler
 {
-    use RestTrait;
+
+
+    const DEFAULT_MESSAGE = 'Oops something went wrong.';
+    const DEFAULT_CODE = 400;
 
     /**
      * A list of the exception types that should not be reported.
@@ -27,12 +27,12 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
      * @var array
      */
     protected $dontReport = [
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
-//        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
-//        \Illuminate\Auth\AuthenticationException::class,
-//        \Illuminate\Auth\Access\AuthorizationException::class,
-//        \Illuminate\Session\TokenMismatchException::class,
-//        \Illuminate\Validation\ValidationException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Session\TokenMismatchException::class,
+        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -59,45 +59,46 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        if ($exception instanceof ModelNotFoundException) {
-//            $exception = new NotFoundHttpException($exception->getMessage(), $exception);
-//        }
+        if ($request->expectsJson()) {
 
+            return $this->renderJson($exception);
 
-        // ----------------------------------
-        // TODO:
-
-        if (!$this->isApiCall($request)) {
-            return parent::render($request, $exception);
-        } else {
-            // dd(class_basename($exception));
-            $response = [];
-            if (Config::get('app.env') !== 'production') {
-                $response['exception'] = class_basename($exception).' in '.basename($exception->getFile()).' line '.$exception->getLine().': '.$exception->getMessage();
-            }
-            $response['message'] = $exception->getMessage();
-            if ($exception->getPrevious()) {
-                $response['previous_message'] = $exception->getPrevious()->getMessage();
-            }
-
-            if (isset($exception->httpStatusCode)) {
-                $response['status_code'] = $exception->httpStatusCode;
-            }
-
-            if (class_basename($exception) == 'ValidationFailedException') {
-                $response['errors'] = $exception->getErrors();
-            }
-
-            if(class_basename($exception) == 'AuthenticationException'){
-                $exception->httpStatusCode = 401;
-            }
-
-            // ----------------------------------
-
-            return Response::json($response, $exception->httpStatusCode ?? 500);
         }
 
-//        return parent::render($request, $exception);
+        return parent::render($request, $exception);
+    }
+
+    /**
+     * @param $exception
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    private function renderJson($exception)
+    {
+        // TODO: needs refactoring..
+
+        // default response message
+        $response['errors'] = self::DEFAULT_MESSAGE;
+
+        // If this exception is an instance of HttpException get the HTTP status else use the default
+        $response['status_code'] = $this->isHttpException($exception) ? $exception->getStatusCode() : self::DEFAULT_CODE;
+
+        // If debugging enabled, add the exception class name, message and stack trace to response
+        if (config('app.debug')) {
+            $response['exception'] = get_class($exception); // Reflection might be better here
+            $response['message'] = $exception->getMessage();
+        }
+
+        // if API debug is enabled
+        if (config('apiato.api.debug')) {
+            // include the trace in the response
+//            $response['trace'] = json_encode($exception->getTrace());
+            // log the error
+            Log::error($exception);
+        }
+
+        // Return a JSON response with the response array and status code
+        return response()->json($response, $response['status_code']);
     }
 
     /**

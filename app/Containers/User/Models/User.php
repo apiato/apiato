@@ -43,6 +43,7 @@ class User extends UserModel
         'social_avatar',
         'social_avatar_original',
         'social_nickname',
+        'access_token',
     ];
 
     /**
@@ -71,4 +72,18 @@ class User extends UserModel
         return $this->hasOne(StripeAccount::class);
     }
 
+    /**
+     * @param       $tokenName
+     * @param array $scopes
+     *
+     * @return  $this
+     */
+    public function attachAccessToken($tokenName, array $scopes = [])
+    {
+        // TODO: remove this func (attachAccessToken) from here
+
+        $this->access_token = $this->createToken($tokenName, $scopes)->accessToken;
+
+        return $this;
+    }
 }

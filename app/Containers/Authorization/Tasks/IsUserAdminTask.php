@@ -13,10 +13,12 @@ use App\Ship\Parents\Tasks\Task;
  */
 class IsUserAdminTask extends Task
 {
+
     /**
      * @param \App\Containers\User\Models\User|null $user
      *
      * @return  bool
+     * @throws \App\Containers\Authorization\Exceptions\UserNotAdminException
      */
     public function run(User $user = null)
     {

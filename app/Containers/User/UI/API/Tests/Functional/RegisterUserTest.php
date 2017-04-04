@@ -16,7 +16,6 @@ class RegisterUserTest extends TestCase
 
     protected $auth = false;
 
-
     protected $access = [
         'roles'       => '',
         'permissions' => '',
@@ -41,9 +40,6 @@ class RegisterUserTest extends TestCase
             'name'  => $data['name'],
         ]);
 
-         // assert response contain the token
-        $this->assertResponseContainKeys(['id', 'token']);
-
          // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
@@ -62,10 +58,9 @@ class RegisterUserTest extends TestCase
         // assert response status is correct
         $response->assertStatus(405);
 
-        // assert response contain the correct message
-        $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed',
-        ]);
+//        $this->assertResponseContainKeyValue([
+//            'message' => '405 Method Not Allowed',
+//        ]);
     }
 
     public function testRegisterExistingUser()
@@ -90,6 +85,8 @@ class RegisterUserTest extends TestCase
 
         // assert response status is correct
         $response->assertStatus(422);
+
+        $this->assertResponseContainKeys('email');
     }
 
     public function testRegisterNewUserWithoutEmail()

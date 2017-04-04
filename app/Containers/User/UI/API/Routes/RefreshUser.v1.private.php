@@ -54,6 +54,6 @@
 $router->post('users/{id}/refresh', [
     'uses' => 'Controller@refreshUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

@@ -61,6 +61,6 @@
 $router->post('roles/revoke', [
     'uses'       => 'Controller@revokeRoleFromUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

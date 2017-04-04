@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\Authentication\Exceptions\UpdateResourceFailedException;
+use App\Containers\User\Exceptions\UpdateResourceFailedException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Hash;
@@ -43,6 +43,7 @@ class UpdateUserTask extends Task
      * @param null $tokenSecret
      *
      * @return  mixed
+     * @throws \App\Containers\User\Exceptions\UpdateResourceFailedException
      * @throws \App\Containers\Authentication\Exceptions\UpdateResourceFailedException
      */
     public function run(
@@ -60,7 +61,7 @@ class UpdateUserTask extends Task
 
         // set all data in the array, then remove all null values and their keys
         $attributes = array_filter([
-            'password'             => $password ? Hash::make($password) : null,
+            'password'             => $password ? Hash::make($password) : null, // TODO: all Hash::make should be in single task
             'name'                 => $name,
             'email'                => $email,
             'gender'               => $gender,

@@ -46,6 +46,6 @@
 $router->get('permissions', [
     'uses'       => 'Controller@listAllPermissions',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

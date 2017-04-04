@@ -22,6 +22,6 @@
 $router->post('{{endpoint-url}}', [
     'uses'  => 'Controller@{{operation}}',
     'middleware' => [
-      'api.auth',
+      'auth:api',
     ],
 ]);

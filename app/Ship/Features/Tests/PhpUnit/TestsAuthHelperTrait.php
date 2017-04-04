@@ -94,9 +94,6 @@ trait TestsAuthHelperTrait
         // assign user roles and permissions based on the access property
         $user = $this->setupTestingUserAccess($user, $access);
 
-        // log the user in
-//        $user = App::make(ApiLoginThisUserObjectTask::class)->run($user);
-
         // authentication the user
         $this->actingAs($user, 'api');
 

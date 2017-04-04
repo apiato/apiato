@@ -21,7 +21,6 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUser_()
     {
-
         $user = $this->getTestingUser();
 
         $data = [
@@ -47,22 +46,17 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUserWithoutData_()
     {
-        $data = [];
-
         // send the HTTP request
-        $response = $this->makeCall($data);
+        $response = $this->makeCall();
 
         // assert response status is correct
         $response->assertStatus(417);
     }
 
-
     public function testUpdateExistingUserWithEmptyValues()
     {
-        $data = []; // empty data
-
         // send the HTTP request
-        $response = $this->makeCall($data);
+        $response = $this->makeCall();
 
         // assert response status is correct
         $response->assertStatus(417);

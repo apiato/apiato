@@ -17,8 +17,6 @@ class WebLogoutAction extends Action
      */
     public function run()
     {
-        $hasLoggedOut = $this->call(WebLogoutTask::class);
-
-        return $hasLoggedOut;
+        return $this->call(WebLogoutTask::class);
     }
 }

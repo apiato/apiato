@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authentication\Exceptions;
+namespace App\Containers\User\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;

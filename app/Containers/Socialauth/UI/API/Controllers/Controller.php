@@ -26,7 +26,7 @@ class Controller extends ApiController
     {
         $user = $action->run($provider, $request->all());
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
 }

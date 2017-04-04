@@ -31,6 +31,7 @@ class Controller extends ApiController
             $request->card_fingerprint
         );
 
+        // TODO: update
         return $this->response->accepted(null, [
             'message'           => 'Stripe account created successfully.',
             'stripe_account_id' => $stripeAccount->id,

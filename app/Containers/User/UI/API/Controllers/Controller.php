@@ -36,6 +36,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request->id);
 
+        // TODO: need update
         return $this->response->accepted(null, [
             'message' => 'User (' . $user->getHashedKey() . ') Deleted Successfully.',
         ]);
@@ -51,7 +52,7 @@ class Controller extends ApiController
     {
         $users = $action->run();
 
-        return $this->response->paginator($users, new UserTransformer());
+        return $this->respond($users, UserTransformer::class);
     }
 
     /**
@@ -64,7 +65,7 @@ class Controller extends ApiController
     {
         $users = $action->run(); // TODO: anyone who is not an admin is a client.
 
-        return $this->response->paginator($users, new UserTransformer());
+        return $this->respond($users, UserTransformer::class);
     }
 
     /**
@@ -77,7 +78,7 @@ class Controller extends ApiController
     {
         $users = $action->run(['admin']);
 
-        return $this->response->paginator($users, new UserTransformer());
+        return $this->respond($users, UserTransformer::class);
     }
 
     /**
@@ -90,7 +91,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request->id, $request->header('Authorization'));
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
@@ -103,7 +104,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request->id);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
@@ -114,10 +115,15 @@ class Controller extends ApiController
      */
     public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
     {
-        $user = $action->run($request['email'], $request['password'], $request['name'], $request['gender'],
-            $request['birth'], true);
+        $user = $action->run(
+            $request['email'],
+            $request['password'],
+            $request['name'],
+            $request['gender'],
+            $request['birth']
+        );
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->respond($user, UserTransformer::class);
     }
 
     /**
@@ -130,7 +136,7 @@ class Controller extends ApiController
     {
         $admin = $action->run($request['email'], $request['password'], $request['name']);
 
-        return $this->response->item($admin, new UserTransformer());
+        return $this->respond($admin, UserTransformer::class);
     }
 
     /**
@@ -147,8 +153,8 @@ class Controller extends ApiController
             $request['email'],
             $request['gender'],
             $request['birth']
-        )->withToken();
+        );
 
-        return $this->response->item($user, new UserTransformer(), 'user');
+        return $this->respond($user, UserTransformer::class);
     }
 }
