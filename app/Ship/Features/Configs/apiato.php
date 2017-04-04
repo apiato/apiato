@@ -2,6 +2,13 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application name
+    |--------------------------------------------------------------------------
+    */
+    'app_name' => env('APP_NAME', 'apiato'),
+
     'containers' => [
         /*
         |--------------------------------------------------------------------------
@@ -39,6 +46,7 @@ return [
         | API limit
         |--------------------------------------------------------------------------
         */
+        //TODO: ...
         'limit'         => env('API_LIMIT', 100),
 
         /*
@@ -46,15 +54,19 @@ return [
         | API limit expiration
         |--------------------------------------------------------------------------
         */
+        //TODO: ...
         'limit_expires' => env('API_LIMIT_EXPIRES', 5),
 
         /*
         |--------------------------------------------------------------------------
-        | The default API serializer
+        | Enable Disable API Debugging
         |--------------------------------------------------------------------------
+        |
+        | If enabled, the Error Exception trace will be injected in the JSON
+        | response, and it will be logged in the default Log file.
+        |
         */
-        'serializer'    => env('FRACTAL_SERIALIZER', 'DataArray'),
-
+        'debug' => env('API_DEBUG', true),
     ],
 
 ];
