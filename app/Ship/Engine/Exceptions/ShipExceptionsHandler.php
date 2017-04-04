@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Log;
 class ShipExceptionsHandler extends LaravelExceptionHandler
 {
 
-
     const DEFAULT_MESSAGE = 'Oops something went wrong.';
     const DEFAULT_CODE = 400;
 
@@ -61,7 +60,7 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
     {
         if ($request->expectsJson()) {
 
-            return $this->renderJson($exception);
+            return $this->renderJson($exception, $request);
 
         }
 
@@ -73,33 +72,43 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    private function renderJson($exception)
+    private function renderJson($exception, $request)
     {
         // TODO: needs refactoring..
 
         // default response message
-        $response['errors'] = self::DEFAULT_MESSAGE;
+        $responseMessage['errors'] = self::DEFAULT_MESSAGE;
 
         // If this exception is an instance of HttpException get the HTTP status else use the default
-        $response['status_code'] = $this->isHttpException($exception) ? $exception->getStatusCode() : self::DEFAULT_CODE;
+        $responseMessage['status_code'] = $this->isHttpException($exception) ? $exception->getStatusCode() : self::DEFAULT_CODE;
+
+
 
         // If debugging enabled, add the exception class name, message and stack trace to response
         if (config('app.debug')) {
-            $response['exception'] = get_class($exception); // Reflection might be better here
-            $response['message'] = $exception->getMessage();
+            $responseMessage['exception'] = get_class($exception); // Reflection might be better here
+            $responseMessage['message'] = $exception->getMessage();
         }
 
         // if API debug is enabled
         if (config('apiato.api.debug')) {
             // include the trace in the response
-//            $response['trace'] = json_encode($exception->getTrace());
+//            $responseMessage['trace'] = json_encode($exception->getTrace());
             // log the error
             Log::error($exception);
         }
 
+        //-----------------------------
+
+        if ($exception instanceof \Illuminate\Validation\ValidationException) {
+            $responseMessage['status_code'] = 422;
+            $responseMessage['errors'] = $exception->validator->errors()->getMessages();
+        }
+
         // Return a JSON response with the response array and status code
-        return response()->json($response, $response['status_code']);
+        return response()->json($responseMessage, $responseMessage['status_code']);
     }
+
 
     /**
      * Convert an authentication exception into an unauthenticated response.
