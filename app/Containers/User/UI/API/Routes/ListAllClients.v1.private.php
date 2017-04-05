@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            ListAllClients
- * @api                {get} /clients List Client Users
+ * @api                {get} /v1/clients List Client Users
  * @apiDescription     List all Users where role `Client`.
  *                     You can search for Users by email, name and ID.
  *                     Example: `?search=Mahmoud` or `?search=whatever@mail.com`.
