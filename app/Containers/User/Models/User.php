@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Models;
 
+use App\Containers\Authentication\Exceptions\OAuthException;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Models\UserModel;
 
@@ -77,12 +78,18 @@ class User extends UserModel
      * @param array $scopes
      *
      * @return  $this
-     */
+     * @throws \App\Containers\Authentication\Exceptions\OAuthException
+     */ //TODO: move this function somewhere else
     public function attachAccessToken($tokenName, array $scopes = [])
     {
-        // TODO: remove this func (attachAccessToken) from here
+        try {
+            $personalAccessTokenObject = $this->createToken($tokenName, $scopes);
 
-        $this->access_token = $this->createToken($tokenName, $scopes)->accessToken;
+            $this->access_token = $personalAccessTokenObject->accessToken;
+
+        } catch (\Exception $e) {
+            throw new OAuthException();
+        }
 
         return $this;
     }
