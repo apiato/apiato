@@ -38,22 +38,19 @@ class ListAllUsersTest extends TestCase
         $this->assertCount(4, $responseContent->data);
     }
 
-// TODO: uncomment this. was temporally commented out after upgrading from L5.3 to L5.4
-//       because the error handler is not capturing the authorization error and transforming it to 403
 
-//    public function testListAllUsersByNonAdmin_()
-//    {
-//        // by default permission is set, so we need to revoke it manually
-//        $this->getTestingUserWithoutPermissions();
-//
-//        // create some fake users
-//        factory(User::class, 4)->create();
-//
-//        // send the HTTP request
-//        $response = $this->apiCall($this->endpoint, 'get');
-//
-//        // assert response status is correct
-//        $response->assertStatus(403);
-//    }
+    public function testListAllUsersByNonAdmin_()
+    {
+        $this->getTestingUserWithoutAccess();
+
+        // create some fake users
+        factory(User::class, 2)->create();
+
+        // send the HTTP request
+        $response = $this->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(403);
+    }
 
 }

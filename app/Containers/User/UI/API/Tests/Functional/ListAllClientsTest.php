@@ -34,7 +34,7 @@ class ListAllClientsTest extends TestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(4, $responseContent->data); // TODO: needs to be 2 only.
+        $this->assertCount(4, $responseContent->data); // TODO: fix the response should be 2 only.
     }
 
 }
