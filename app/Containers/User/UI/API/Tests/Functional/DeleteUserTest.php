@@ -47,6 +47,6 @@ class DeleteUserTest extends TestCase
         $response = $this->injectId($anotherUser->id)->makeCall();
 
         // assert response status is correct
-        $response->assertStatus(400);
+        $response->assertStatus(403);
     }
 }

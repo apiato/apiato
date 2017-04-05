@@ -24,7 +24,7 @@ $router->group(['domain' => 'admin.'. parse_url(\Config::get('app.url'))['host']
     $router->get('/dashboard', [
         'uses'       => 'Controller@viewDashboardPage',
         'middleware' => [
-            'web.auth'
+            'auth:web'
         ],
     ]);
 });
