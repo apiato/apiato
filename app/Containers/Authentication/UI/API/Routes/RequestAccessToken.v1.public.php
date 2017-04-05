@@ -2,10 +2,10 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            RequestAccessTokenCredentials (Client)
+ * @apiName            RequestAccessTokenCredentials
  * @apiDescription     Use this endpoint to request an access token. You must have client ID and secret first.
  *                     You can generate them by creating new Client in our Web App.
- * @api                {post} /v1/oauth/token Request Access Token
+ * @api                {post} /v1/oauth/token Request Access Token (Client)
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
