@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class DeleteUserTest extends TestCase
 {
 
-    protected $endpoint = 'delete@users/{id}';
+    protected $endpoint = 'delete@v1/users/{id}';
 
     protected $access = [
         'roles'       => '',

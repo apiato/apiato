@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class SyncPermissionsOnRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@permissions/sync';
+    protected $endpoint = 'post@v1/permissions/sync';
 
     protected $access = [
         'roles'       => '',

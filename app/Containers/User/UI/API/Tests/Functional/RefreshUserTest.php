@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class RefreshUserTest extends TestCase
 {
 
-    protected $endpoint = 'post@users/{id}/refresh';
+    protected $endpoint = 'post@v1/users/{id}/refresh';
 
     protected $access = [
         'roles'       => '',

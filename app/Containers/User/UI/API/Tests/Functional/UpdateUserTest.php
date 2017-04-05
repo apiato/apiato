@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class UpdateUserTest extends TestCase
 {
 
-    protected $endpoint = 'put@users';
+    protected $endpoint = 'put@v1/users';
 
     protected $access = [
         'roles'       => '',

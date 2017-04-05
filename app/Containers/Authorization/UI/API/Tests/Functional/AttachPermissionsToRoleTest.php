@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class AttachPermissionsToRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@permissions/attach';
+    protected $endpoint = 'post@v1/permissions/attach';
 
     protected $access = [
         'roles'       => '',

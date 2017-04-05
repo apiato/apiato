@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    protected $endpoint = 'post@register';
+    protected $endpoint = 'post@v1/register';
 
     protected $auth = false;
 
@@ -57,14 +57,14 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->endpoint('get@register')->makeCall($data);
+        $response = $this->endpoint('get@v1/register')->makeCall($data);
 
         // assert response status is correct
         $response->assertStatus(405);
 
-//        $this->assertResponseContainKeyValue([
-//            'message' => '405 Method Not Allowed',
-//        ]);
+        $this->assertResponseContainKeyValue([
+            'errors' => '405 Method Not Allowed.',
+        ]);
     }
 
     public function testRegisterExistingUser()

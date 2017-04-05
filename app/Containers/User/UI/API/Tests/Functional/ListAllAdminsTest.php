@@ -14,7 +14,7 @@ use App\Containers\User\Tests\TestCase;
 class ListAllAdminsTest extends TestCase
 {
 
-    protected $endpoint = 'get@admins';
+    protected $endpoint = 'get@v1/admins';
 
     protected $access = [
         'roles'       => '',

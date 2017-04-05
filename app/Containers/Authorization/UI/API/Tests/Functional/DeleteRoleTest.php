@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class DeleteRoleTest extends TestCase
 {
 
-    protected $endpoint = 'delete@roles/{id}';
+    protected $endpoint = 'delete@v1/roles/{id}';
 
     protected $access = [
         'roles'       => '',

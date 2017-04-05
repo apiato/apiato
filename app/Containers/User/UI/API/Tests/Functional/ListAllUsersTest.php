@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class ListAllUsersTest extends TestCase
 {
 
-    protected $endpoint = 'get@users';
+    protected $endpoint = 'get@v1/users';
 
     protected $access = [
         'roles'       => 'admin',

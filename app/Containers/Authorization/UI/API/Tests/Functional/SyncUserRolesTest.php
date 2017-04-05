@@ -14,7 +14,7 @@ use App\Containers\User\Models\User;
 class SyncUserRolesTest extends TestCase
 {
 
-    protected $endpoint = 'post@roles/sync';
+    protected $endpoint = 'post@v1/roles/sync';
 
     protected $access = [
         'roles'       => '',
