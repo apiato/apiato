@@ -49,13 +49,17 @@ class UserTransformer extends Transformer
             'token'                => $this->transformToken($user->access_token),
         ];
 
-        // TODO: uncomment this and  fix ifAdmin
-//        $response = $this->ifAdmin([
-//            'real_id'    => $user->id,
-//            'deleted_at' => $user->deleted_at,
-//        ], $response);
+        $response = $this->ifAdmin([
+            'real_id'    => $user->id,
+            'deleted_at' => $user->deleted_at,
+        ], $response);
 
         return $response;
+    }
+
+    public function includeRoles(User $user)
+    {
+        return $this->collection($user->roles, new RoleTransformer());
     }
 
     /**
@@ -75,8 +79,4 @@ class UserTransformer extends Transformer
         ];
     }
 
-    public function includeRoles(User $user)
-    {
-        return $this->collection($user->roles, new RoleTransformer());
-    }
 }

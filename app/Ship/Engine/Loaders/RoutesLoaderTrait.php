@@ -3,6 +3,7 @@
 namespace App\Ship\Engine\Loaders;
 
 use App\Ship\Engine\Butlers\Facades\ShipButler;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Finder\SplFileInfo;
@@ -77,16 +78,12 @@ trait RoutesLoaderTrait
      */
     private function loadWebRoute($file, $controllerNamespace)
     {
-        Route::middleware('web')
-            ->namespace($controllerNamespace)
-            ->group($file->getPathname());
-
-//        $this->webRouter->group([
-//            'middleware' => ['web'],
-//            'namespace'  => $controllerNamespace,
-//        ], function (LaravelRouter $router) use ($file) {
-//            require $file->getPathname();
-//        });
+        Route::group([
+            'namespace'  => $controllerNamespace,
+            'middleware' => ['web'],
+        ], function ($router) use ($file) {
+            require $file->getPathname();
+        });
     }
 
     /**
@@ -95,50 +92,33 @@ trait RoutesLoaderTrait
      */
     private function loadApiRoute($file, $controllerNamespace)
     {
-        // get the version from the file name to register it
-//        $apiVersionNumber = $this->getRouteFileVersionNumber($file); // TODO: use the api version
-
-        // The API limit time.
-//        'limit'      => Config::get('apiato.api.limit'),
-        // The API limit expiry time.
-//        'expires'    => Config::get('apiato.api.limit_expires'),
-
-        // TODO for subdomain try this:
-//        Route::group([
-//            // Routes Namespace
-//            'namespace' => $controllerNamespace,
-//            // Add Middleware's - 'api' is a group of middleware's
-//            'middleware' => ['api'],
-//            // Add Domain - only for API domain
-//            'domain' => 'api.'.env('APP_URL'),
-//        ], function ($router) use ($file) {
-//            require $file->getPathname();
-//        });
-
-        Route::prefix('api') // TODO: remove this and replace it back with subdomain
-            ->middleware('api')
-            ->namespace($controllerNamespace)
-            ->group($file->getPathname());
+        Route::group([
+            'namespace'  => $controllerNamespace,
+            'middleware' => ['api'],
+            'domain'     => Config::get('apiato.api.url'),
+            'prefix'     => '/' . $this->getRouteFileVersionFromFileName($file),
+        ], function ($router) use ($file) {
+            require $file->getPathname();
+        });
     }
 
 
     /**
      * @param $file
      *
-     * @return  int
+     * @return  mixed
      */
-    private function getRouteFileVersionNumber($file)
+    private function getRouteFileVersionFromFileName($file)
     {
         $fileNameWithoutExtension = $this->getRouteFileNameWithoutExtension($file);
 
         $fileNameWithoutExtensionExploded = explode('.', $fileNameWithoutExtension);
 
         end($fileNameWithoutExtensionExploded);
+
         $apiVersion = prev($fileNameWithoutExtensionExploded); // get the array before the last one
 
-        $apiVersionNumber = str_replace('v', '', $apiVersion);
-
-        return (is_int($apiVersionNumber) ? $apiVersionNumber : 1);
+        return $apiVersion;
     }
 
     /**

@@ -99,7 +99,6 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
         }
 
         //-----------------------------
-        // TODO: refactor exceptions..
 
         if ($exception instanceof \Illuminate\Validation\ValidationException) {
             $responseMessage['status_code'] = 422;

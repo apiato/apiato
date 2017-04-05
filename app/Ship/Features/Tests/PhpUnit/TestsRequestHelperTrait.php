@@ -101,14 +101,7 @@ trait TestsRequestHelperTrait
                 throw new UndefinedMethodException('Unsupported HTTP Verb (' . $verb . ')!');
         }
 
-//--------------------
         $httpResponse = $this->json($verb, $url, $data, $headers);
-//--------------------
-//        $headers['CONTENT_TYPE'] = 'application/json';
-//        $headers['HTTP_ACCEPT'] = 'application/json';
-//
-//        $httpResponse = $this->call($verb, $url, $data, [], [], $this->transformHeadersToServerVars($headers));
-//--------------------
 
         return $this->setResponseObjectAndContent($httpResponse);
     }
