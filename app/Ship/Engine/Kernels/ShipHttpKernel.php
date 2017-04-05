@@ -2,6 +2,7 @@
 
 namespace App\Ship\Engine\Kernels;
 
+use App\Ship\Features\Middlewares\Http\ResponseHeadersMiddleware;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
@@ -49,6 +50,7 @@ class ShipHttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
+            ResponseHeadersMiddleware::class,
             'throttle:60,1', // TODO: read from config file
             'bindings',
         ],
@@ -65,10 +67,10 @@ class ShipHttpKernel extends LaravelHttpKernel
     protected $routeMiddleware = [
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+//        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+//        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 
 }
