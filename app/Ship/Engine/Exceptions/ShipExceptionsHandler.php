@@ -115,6 +115,11 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
             $responseMessage['errors'] = 'You have no access to this resource!';
         }
 
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException) {
+            $responseMessage['status_code'] = 405;
+            $responseMessage['errors'] = '405 Method Not Allowed.';
+        }
+
         // Return a JSON response with the response array and status code
         return response()->json($responseMessage, $responseMessage['status_code']);
     }
