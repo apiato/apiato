@@ -13,6 +13,6 @@ return [
     |
     */
 
-    'default_serializer' => env('FRACTAL_SERIALIZER', ''),
+    'default_serializer' => env('API_RESPONSE_SERIALIZER', 'League\Fractal\Serializer\DataArraySerializer'),
 
 ];
