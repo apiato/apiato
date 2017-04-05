@@ -32,9 +32,10 @@ class RenderTemplatesTask extends Task
         $this->replace('api.domain.dev', Config::get('apiato.api.url'));
         $this->replace('{{rate-limit-expires}}', Config::get('apiato.api.limit_expires'));
         $this->replace('{{rate-limit}}', Config::get('apiato.api.limit'));
-        // TODO: replace values
-//        $this->replace('{{token-expires}}', $this->minutesToTimeDisplay(Config::get('jwt.ttl')));
-//        $this->replace('{{token-expires-minutes}}', Config::get('jwt.ttl'));
+        $this->replace('{{access-token-expires-in}}', $this->minutesToTimeDisplay(Config::get('apiato.api.expires-in')));
+        $this->replace('{{access-token-expires-in-minutes}}', Config::get('apiato.api.expires-in'));
+        $this->replace('{{refresh-token-expires-in}}', $this->minutesToTimeDisplay(Config::get('apiato.api.refresh-expires-in')));
+        $this->replace('{{refresh-token-expires-in-minutes}}', Config::get('apiato.api.refresh-expires-in'));
         $this->replace('{{pagination-limit}}', Config::get('repository.pagination.limit'));
 
         // this is what the apidoc.json file will point to to load the header.md

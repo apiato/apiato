@@ -15,11 +15,9 @@ class GetAuthenticatedUserTask extends Task
 
 
     /**
-     * @param null $token
-     *
-     * @return  mixed
+     * @return  \Illuminate\Contracts\Auth\Authenticatable|null
      */
-    public function run($token = null) // TODO: remove this parameter
+    public function run()
     {
         return Auth::user();
     }

@@ -51,8 +51,8 @@ class AuthProvider extends ParentAuthProvider
             Passport::enableImplicitGrant();
         }
 
-        Passport::tokensExpireIn(Carbon::now()->addDays(Config::get('apiato.api.expires-in')));
+        Passport::tokensExpireIn(Carbon::now()->addMinutes(Config::get('apiato.api.expires-in')));
 
-        Passport::refreshTokensExpireIn(Carbon::now()->addDays(Config::get('apiato.api.refresh-expires-in')));
+        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(Config::get('apiato.api.refresh-expires-in')));
     }
 }
