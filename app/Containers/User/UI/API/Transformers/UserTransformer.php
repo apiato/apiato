@@ -69,11 +69,9 @@ class UserTransformer extends Transformer
     {
         return !$token ? null : [
             'object'       => 'Token',
-            'access_token' => [
-                'token_type'   => 'Bearer',
-                'value'        => $token,
-//                'expires_in'   => '...',
-            ],
+            'access_token' => $token,
+            'token_type'   => 'Bearer',
+            'expires_in'   => Config::get('apiato.api.expires-in'),
         ];
     }
 
