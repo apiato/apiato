@@ -32,23 +32,27 @@ return [
         | API URL
         |--------------------------------------------------------------------------
         */
-        'url'         => env('API_URL', 'localhost'),
+        'url'         => env('API_URL', 'http://localhost'),
 
         /*
         |--------------------------------------------------------------------------
-        | API limit
+        | Access Token Expiration
         |--------------------------------------------------------------------------
+        |
+        | In Days. Default to 3650 days = 10 years
+        |
         */
-        //TODO: ...
-        'limit'         => env('API_LIMIT', 100),
+        'expires-in' => env('API_TOKEN_EXPIRES', 3650),
 
         /*
         |--------------------------------------------------------------------------
-        | API limit expiration
+        | Refresh Token Expiration
         |--------------------------------------------------------------------------
+        |
+        | In Days. Default to 3650 days = 10 years
+        |
         */
-        //TODO: ...
-        'limit_expires' => env('API_LIMIT_EXPIRES', 5),
+        'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 3650),
 
         /*
         |--------------------------------------------------------------------------
@@ -60,6 +64,14 @@ return [
         |
         */
         'debug' => env('API_DEBUG', true),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Enable/Disable Implicit Grant
+        |--------------------------------------------------------------------------
+        */
+        'enabled-implicit-grant' => env('API_ENABLE_IMPLICIT_GRANT', true),
+
     ],
 
 ];

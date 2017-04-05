@@ -3,6 +3,8 @@
 namespace App\Containers\Authentication\Providers;
 
 use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
 use Laravel\Passport\Passport;
 
 /**
@@ -45,6 +47,12 @@ class AuthProvider extends ParentAuthProvider
 
         Passport::routes();
 
-        Passport::enableImplicitGrant();
+        if(Config::get('apiato.api.enabled-implicit-grant')){
+            Passport::enableImplicitGrant();
+        }
+
+        Passport::tokensExpireIn(Carbon::now()->addDays(Config::get('apiato.api.expires-in')));
+
+        Passport::refreshTokensExpireIn(Carbon::now()->addDays(Config::get('apiato.api.refresh-expires-in')));
     }
 }
