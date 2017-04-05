@@ -2,10 +2,12 @@
 
 namespace App\Containers\User\UI\API\Transformers;
 
+use App\Containers\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Transformers\Transformer;
 use Config;
+use App;
 
 /**
  * Class UserTransformer.
@@ -46,7 +48,7 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
-            'token'                => $this->transformToken($user->access_token),
+            'token'                => App::make(TokenTransformer::class)->transform($user->access_token),
         ];
 
         $response = $this->ifAdmin([
@@ -60,23 +62,6 @@ class UserTransformer extends Transformer
     public function includeRoles(User $user)
     {
         return $this->collection($user->roles, new RoleTransformer());
-    }
-
-    /**
-     * TODO: remove from here
-     *
-     * @param null $token
-     *
-     * @return  array
-     */
-    private function transformToken($token = null)
-    {
-        return !$token ? null : [
-            'object'       => 'Token',
-            'access_token' => $token,
-            'token_type'   => 'Bearer',
-            'expires_in'   => Config::get('apiato.api.expires-in'),
-        ];
     }
 
 }
