@@ -6,11 +6,11 @@ use App\Containers\User\Tasks\ListUsersTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
- * Class ListAndSearchUsersAction.
+ * Class ListAdminsAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ListAndSearchUsersAction extends Action
+class ListAdminsAction extends Action
 {
 
     /**
@@ -20,7 +20,7 @@ class ListAndSearchUsersAction extends Action
      */
     public function run($order = true)
     {
-        $users = $this->call(ListUsersTask::class, [$order, true]);
+        $users = $this->call(ListUsersTask::class, [$order, false, ['admin']]);
 
         return $users;
     }

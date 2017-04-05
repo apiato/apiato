@@ -6,7 +6,9 @@ use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetUserAction;
+use App\Containers\User\Actions\ListAdminsAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
+use App\Containers\User\Actions\ListClientsAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
@@ -54,26 +56,26 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+     * @param \App\Containers\User\Actions\ListClientsAction           $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function listAllClients(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    public function listAllClients(ListAllUsersRequest $request, ListClientsAction $action)
     {
-        $users = $action->run(); // TODO: anyone who is not an admin is a client.
+        $users = $action->run([true, false, null]);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
+     * @param \App\Containers\User\Actions\ListAdminsAction            $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function listAllAdmins(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    public function listAllAdmins(ListAllUsersRequest $request, ListAdminsAction $action)
     {
-        $users = $action->run(['admin']);
+        $users = $action->run();
 
         return $this->transform($users, UserTransformer::class);
     }

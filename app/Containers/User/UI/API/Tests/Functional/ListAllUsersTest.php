@@ -38,7 +38,6 @@ class ListAllUsersTest extends TestCase
         $this->assertCount(4, $responseContent->data);
     }
 
-
     public function testListAllUsersByNonAdmin_()
     {
         $this->getTestingUserWithoutAccess();
@@ -51,6 +50,11 @@ class ListAllUsersTest extends TestCase
 
         // assert response status is correct
         $response->assertStatus(403);
+
+        $this->assertResponseContainKeyValue([
+            'errors' => 'You have no access to this resource!',
+            'message' => 'This action is unauthorized.',
+        ]);
     }
 
 }

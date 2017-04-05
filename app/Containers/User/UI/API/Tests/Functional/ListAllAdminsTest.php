@@ -49,4 +49,23 @@ class ListAllAdminsTest extends TestCase
             $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
+    public function testListAllAdminsByNonAdmin_()
+    {
+        $this->getTestingUserWithoutAccess();
+
+        // create some fake users
+        factory(User::class, 2)->create();
+
+        // send the HTTP request
+        $response = $this->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(403);
+
+        $this->assertResponseContainKeyValue([
+            'errors' => 'You have no access to this resource!',
+            'message' => 'This action is unauthorized.',
+        ]);
+    }
+
 }
