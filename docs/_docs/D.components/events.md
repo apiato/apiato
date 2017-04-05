@@ -8,21 +8,29 @@ order: 22
 
 Events provide a simple observer implementation, allowing you to subscribe and listen for events in your application. 
 
+
+
 ## Principles
 
-- A Container MAY have more than one Events.
+- Every Event MUST have an Event Handler.
 
-- Events can be fired from other Containers.
+- A Container MAY have more than one Events (and their Handlers).
+
+- Events handlers SHOULD NOT contain business logic, they should call Actions to perform the business logic.
+
+- Events handlers SHOULD not call Tasks directly.
+
+- Events can be fired from Actions and/or Tasks (firing them from the same Component in every Container is recommended).
+
+- Events can be fired from other Containers as well.
+
 
 ### Rules
 
 - All Events MUST extend from `App\Ship\Parents\Events\Event`.
 
-- Every Event MUST have an Event Handler.
+- All Events MUST be registered in an `EventsServiceProvider` inside the Container (if not created, you need to create one).
 
-- All Events MUST be registered in an `EventsServiceProvider` inside the Container.
-
-- Events can be fired from Actions and Services.
 
 ### Folder Structure
 
@@ -34,15 +42,15 @@ WILL BE UPDATED
         - {container-name}
             - Events
                 - Events
-                        - UserCreatedEvent.php
-                            - ...
-                    - Handlers
-                        - UserCreatedEventHandler.php
-                            - ...
+                    - UserCreatedEvent.php
+                    - ...
+                - Handlers
+                    - UserCreatedEventHandler.php
+                    - ...
             - Providers
                     - EventsServiceProvider.php
                     - UserServiceProvider.php
-                - ...
+                    - ...
 
 ```
 
@@ -75,6 +83,7 @@ class UserCreatedEvent extends Event
         return [];
     }
 }
+
 ```
 
 
@@ -86,27 +95,26 @@ class UserCreatedEvent extends Event
 
 namespace App\Containers\User\Events\Handlers;
 
-use App\Containers\Store\Services\CreateStoreService;
+use App\Containers\Store\Actions\CreateStoreAction;
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserCreatedEventHandler implements ShouldQueue
 {
-    private $createStoreService;
+    private $createStoreAction;
 
     public function __construct(
-        CreateStoreService $createStoreService
+        CreateStoreAction $createStoreAction
     ) {
-        $this->createStoreService = $createStoreService;
+        $this->createStoreAction = $createStoreAction;
     }
 
     public function handle(UserCreatedEvent $event)
     {
-        // Do anything :)
+        // ..
 
-        // Example:
-        //    Create default store for the new user
-        $this->createStoreService->run($event->user);
+        // Create default store for the new user
+        $this->createStoreAction->run($event->user);
 
     }
 }
@@ -125,10 +133,9 @@ namespace App\Containers\User\Providers;
 
 use App\Containers\User\Events\Events\UserCreatedEvent;
 use App\Containers\User\Events\Handlers\UserCreatedEventHandler;
-use App\Containers\User\Providers\EventsServiceProvider;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use App\Ship\Parents\Providers\EventsProvider;
 
-class EventsServiceProvider extends EventsServiceProvider
+class EventsServiceProvider extends EventsProvider
 {
 
     /**
@@ -142,18 +149,24 @@ class EventsServiceProvider extends EventsServiceProvider
         ],
     ];
 
-    public function boot(DispatcherContract $events)
+    /**
+     * Register any other events for your application.
+     *
+     * @return void
+     */
+    public function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
         //
     }
 }
+
 	 
 ```
 
 
-**Note:** this MUST be registered in the Main Container Service Provider (in that case in the `UserServiceProvider`).
+**Note:** The Container Events Service Provider MUST be registered in the Main Container Service Provider.
 
 **Usage: Fire the Event:** 
 
@@ -172,11 +185,12 @@ public function run()
     // Do anything.. then:
 
     // Fire a User Created Event
-    $this->eventsDispatcher->fire(New UserCreatedEvent($user));
+
+     event(new UserCreatedEvent($user));
 }
 
 // .. 
 ```
 
 
-For more information about the `Events` read [this](https://laravel.com/docs/events).
+For more information about the `Events` and how to use them, visit [Laravel Events](https://laravel.com/docs/events).
