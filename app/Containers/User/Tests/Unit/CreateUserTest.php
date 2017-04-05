@@ -29,7 +29,7 @@ class CreateUserTest extends TestCase
         $this->assertInstanceOf(User::class, $user);
 
         // assert the user has logged in and has a token attached to it
-        $this->assertNotEmpty($user->token);
+        $this->assertNotEmpty($user->access_token);
 
         $this->assertEquals($user->name, $name);
     }

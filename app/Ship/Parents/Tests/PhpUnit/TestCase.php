@@ -22,9 +22,8 @@ use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 abstract class TestCase extends LaravelTestCase
 {
 
-    use TestCaseTrait;
-
-    use TestsRequestHelperTrait,
+    use TestCaseTrait,
+        TestsRequestHelperTrait,
         TestsResponseHelperTrait,
         TestsMockHelperTrait,
         TestsAuthHelperTrait,
@@ -53,6 +52,9 @@ abstract class TestCase extends LaravelTestCase
 
         // seed the database
         $this->seed();
+
+        // Install Passport Client for Testing
+        $this->setupPassportOAuth2();
     }
 
     /**

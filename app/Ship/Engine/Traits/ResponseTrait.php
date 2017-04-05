@@ -4,6 +4,7 @@ namespace App\Ship\Engine\Traits;
 
 use Fractal;
 use Illuminate\Http\JsonResponse;
+use ReflectionClass;
 
 /**
  * Class ResponseTrait
@@ -48,6 +49,21 @@ trait ResponseTrait
     public function accepted($message = null, $status = 202, array $headers = array(), $options = 0)
     {
         return new JsonResponse($message, $status, $headers, $options);
+    }
+
+    /**
+     * @param $object
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function deleted($object)
+    {
+        $id = $object->getHashedKey();
+        $objectType = (new ReflectionClass($object))->getShortName();
+
+        return $this->accepted([
+            'message' => "$objectType ($id) Deleted Successfully.",
+        ]);
     }
 
     /**

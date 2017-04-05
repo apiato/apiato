@@ -26,7 +26,7 @@ class RegisterUserTest extends TestCase
         $data = [
             'email'    => 'apiato@mail.dev',
             'name'     => 'Apiato',
-            'password' => 'secret',
+            'password' => 'secretpass',
         ];
 
         // send the HTTP request
@@ -39,6 +39,10 @@ class RegisterUserTest extends TestCase
             'email' => $data['email'],
             'name'  => $data['name'],
         ]);
+
+        $responseContent = $this->getResponseContentObject();
+
+        $this->assertNotEmpty($responseContent->data->token);
 
          // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
@@ -86,7 +90,9 @@ class RegisterUserTest extends TestCase
         // assert response status is correct
         $response->assertStatus(422);
 
-        $this->assertResponseContainKeys('email');
+        $this->assertValidationErrorContain([
+            'email' => 'The email has already been taken.',
+        ]);
     }
 
     public function testRegisterNewUserWithoutEmail()

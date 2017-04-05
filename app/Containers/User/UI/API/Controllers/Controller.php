@@ -36,10 +36,7 @@ class Controller extends ApiController
     {
         $user = $action->run($request->id);
 
-        // TODO: need update
-        return $this->response->accepted(null, [
-            'message' => 'User (' . $user->getHashedKey() . ') Deleted Successfully.',
-        ]);
+        return $this->deleted($user);
     }
 
     /**

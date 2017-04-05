@@ -18,7 +18,7 @@ class Controller extends ApiController
      */
     public function sayWelcome()
     {
-        return response()->json(['Welcome to ' . Config::get('apiato.app_name') . '.']);
+        return response()->json(['Welcome to ' . Config::get('app.name') . '.']);
     }
 
 }
