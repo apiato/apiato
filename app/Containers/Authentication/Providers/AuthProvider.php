@@ -6,6 +6,7 @@ use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Laravel\Passport\Passport;
+use Route;
 
 /**
  * Class ShipAuthServiceProvider
@@ -45,9 +46,22 @@ class AuthProvider extends ParentAuthProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        $this->registerPassport();
+    }
 
-        if(Config::get('apiato.api.enabled-implicit-grant')){
+    /**
+     * @void
+     */
+    private function registerPassport()
+    {
+        Route::group([
+            'prefix'     => '/v1',
+            'middleware' => ['api'],
+        ], function () {
+            Passport::routes();
+        });
+
+        if (Config::get('apiato.api.enabled-implicit-grant')) {
             Passport::enableImplicitGrant();
         }
 
