@@ -99,10 +99,21 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
         }
 
         //-----------------------------
+        // TODO: refactor exceptions..
 
         if ($exception instanceof \Illuminate\Validation\ValidationException) {
             $responseMessage['status_code'] = 422;
             $responseMessage['errors'] = $exception->validator->errors()->getMessages();
+        }
+
+        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+            $responseMessage['status_code'] = 401;
+            $responseMessage['errors'] = 'Missing or invalid Access Token!';
+        }
+
+        if ($exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
+            $responseMessage['status_code'] = 403;
+            $responseMessage['errors'] = 'You have no access to this resource!';
         }
 
         // Return a JSON response with the response array and status code
