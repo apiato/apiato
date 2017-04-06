@@ -82,18 +82,17 @@ class ShipExceptionsHandler extends LaravelExceptionHandler
         // If this exception is an instance of HttpException get the HTTP status else use the default
         $responseMessage['status_code'] = $this->isHttpException($exception) ? $exception->getStatusCode() : self::DEFAULT_CODE;
 
-
+        $responseMessage['message'] = $exception->getMessage();
 
         // If debugging enabled, add the exception class name, message and stack trace to response
         if (config('app.debug')) {
             $responseMessage['exception'] = get_class($exception); // Reflection might be better here
-            $responseMessage['message'] = $exception->getMessage();
         }
 
         // if API debug is enabled
         if (config('apiato.api.debug')) {
             // include the trace in the response
-//            $responseMessage['trace'] = json_encode($exception->getTrace());
+            $responseMessage['trace'] = json_encode($exception->getTrace());
             // log the error
             Log::error($exception);
         }
