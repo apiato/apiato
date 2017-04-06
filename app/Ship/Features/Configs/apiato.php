@@ -5,10 +5,10 @@ return [
     'containers' => [
         /*
         |--------------------------------------------------------------------------
-        | Default NAMESPACE
+        | Default Namespace
         |--------------------------------------------------------------------------
         */
-        'namespace'       => 'App',
+        'namespace'      => 'App',
 
         /*
         |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Turn On Off Hashed ID
+    | Enable / Disable Hashed ID
     |--------------------------------------------------------------------------
     */
     'hash-id'    => env('HASH_ID', true),
@@ -32,7 +32,7 @@ return [
         | API URL
         |--------------------------------------------------------------------------
         */
-        'url'         => env('API_URL', 'http://localhost'),
+        'url'                    => env('API_URL', 'http://localhost'),
 
         /*
         |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
         | In Minutes. Default to 5,256,000 minutes = 10 years
         |
         */
-        'expires-in' => env('API_TOKEN_EXPIRES', 5256000),
+        'expires-in'             => env('API_TOKEN_EXPIRES', 5256000),
 
         /*
         |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
         | In Minutes. Default to 5,256,000 minutes = 10 years
         |
         */
-        'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 5256000),
+        'refresh-expires-in'     => env('API_REFRESH_TOKEN_EXPIRES', 5256000),
 
         /*
         |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
         | response, and it will be logged in the default Log file.
         |
         */
-        'debug' => env('API_DEBUG', true),
+        'debug'                  => env('API_DEBUG', true),
 
         /*
         |--------------------------------------------------------------------------
