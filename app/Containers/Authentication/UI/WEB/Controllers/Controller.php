@@ -4,7 +4,7 @@ namespace App\Containers\Authentication\UI\WEB\Controllers;
 
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
 use App\Containers\Authentication\Actions\WebLogoutAction;
-use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
+use App\Containers\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;
 
@@ -25,12 +25,12 @@ class Controller extends WebController
     }
 
     /**
-     * @param \App\Containers\Authentication\UI\WEB\Requests\LoginRequest $request
-     * @param \App\Containers\Authentication\Actions\WebAdminLoginAction  $action
+     * @param \App\Containers\Authentication\UI\WEB\Requests\LogoutRequest $request
+     * @param \App\Containers\Authentication\Actions\WebAdminLoginAction   $action
      *
      * @return  $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function loginAdmin(LoginRequest $request, WebAdminLoginAction $action)
+    public function loginAdmin(LogoutRequest $request, WebAdminLoginAction $action)
     {
         try {
             $result = $action->run($request->email, $request->password, $request->remember_me);

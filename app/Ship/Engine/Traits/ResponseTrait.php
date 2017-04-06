@@ -39,10 +39,10 @@ trait ResponseTrait
     }
 
     /**
-     * @param string|array $message
-     * @param int          $status
-     * @param array        $headers
-     * @param int          $options
+     * @param null  $message
+     * @param int   $status
+     * @param array $headers
+     * @param int   $options
      *
      * @return  \Illuminate\Http\JsonResponse
      */
