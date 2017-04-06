@@ -26,11 +26,9 @@ class WebAuthentication extends Middleware
 
 
     /**
-     * Create a new middleware instance.
+     * WebAuthentication constructor.
      *
-     * @param  Guard $auth
-     *
-     * @return void
+     * @param \Illuminate\Contracts\Auth\Guard $auth
      */
     public function __construct(Guard $auth)
     {

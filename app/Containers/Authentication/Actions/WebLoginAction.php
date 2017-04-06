@@ -20,8 +20,6 @@ class WebLoginAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(WebLoginTask::class, [$request]);
-
-        return $user;
+        return $this->call(WebLoginTask::class, [$request]);;
     }
 }
