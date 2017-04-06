@@ -51,8 +51,8 @@ class ShipHttpKernel extends LaravelHttpKernel
 
         'api' => [
             ResponseHeadersMiddleware::class,
-            'throttle:60,1', // TODO: read from config file
             'bindings',
+            // The throttle Middleware is registered in the app/Ship/Engine/Loaders/RoutesLoaderTrait.php
         ],
 
     ];

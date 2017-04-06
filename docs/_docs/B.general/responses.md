@@ -1,5 +1,5 @@
 ---
-title: "Responses Format"
+title: "Responses"
 category: "General"
 order: 2
 ---

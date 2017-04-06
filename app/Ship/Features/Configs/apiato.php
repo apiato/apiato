@@ -72,6 +72,18 @@ return [
         */
         'enabled-implicit-grant' => env('API_ENABLE_IMPLICIT_GRANT', true),
 
+        /*
+        |--------------------------------------------------------------------------
+        | Rate Limit
+        |--------------------------------------------------------------------------
+        |
+        | Attempts per minutes.
+        | `throttle_attempts` the number of attempts per `throttle_expires` in
+        | minutes.
+        |
+        */
+        'throttle_attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
+        'throttle_expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
     ],
 
 ];

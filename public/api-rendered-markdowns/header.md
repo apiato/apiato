@@ -12,10 +12,11 @@ By default, all API calls expect input in `JSON` format, however you need to inf
 And to do that you must include the `Accept => application/json` HTTP header with every call.
 
 
-| Header        | Value Sample                 | When to send it                                                              |
-|---------------|------------------------------|------------------------------------------------------------------------------|
-| Accept        | `application/json`           | MUST be sent with every endpoint.                                            |
-| Authorization | `Bearer {Access-Token-Here}` | MUST be sent whenever the endpoint requires (Authenticated User) permission. |
+| Header        | Value Sample                        | When to send it                                                              |
+|---------------|-------------------------------------|------------------------------------------------------------------------------|
+| Accept        | `application/json`                  | MUST be sent with every endpoint.                                            |
+| Content-Type  | `application/x-www-form-urlencoded` | MUST be sent when passing Data.                                              |
+| Authorization | `Bearer {Access-Token-Here}`        | MUST be sent whenever the endpoint requires (Authenticated User).            |
 
 
 
@@ -24,17 +25,16 @@ And to do that you must include the `Accept => application/json` HTTP header wit
 All REST API requests are throttled to prevent abuse and ensure stability. 
 The exact number of calls that your application can make per day varies based on the type of request you are making.
 
-The rate limit window is `` minutes per endpoint, with most individual calls allowing for `` requests in each window.
+The rate limit window is `1` minutes per endpoint, with most individual calls allowing for `30` requests in each window.
 
-*In other words, each user is allowed `` calls per endpoint per `` minutes for each unique access token.*
+*In other words, each user is allowed to make `30` calls per endpoint every `1` minutes. (For each unique access token).*
 
 
 For how many hits you can preform on an endpoint, you can always check the header:
 
 ```
-X-RateLimit-Limit →100
-X-RateLimit-Remaining →50
-X-RateLimit-Reset →1487227542
+X-RateLimit-Limit →60
+X-RateLimit-Remaining →59
 ```
 
 

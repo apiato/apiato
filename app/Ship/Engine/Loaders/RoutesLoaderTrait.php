@@ -92,11 +92,15 @@ trait RoutesLoaderTrait
      */
     private function loadApiRoute($file, $controllerNamespace)
     {
+        $rateLimitMiddleware = 'throttle:' . Config::get('apiato.api.throttle_attempts') . ',' . Config::get('apiato.api.throttle_expires');
+
+        $versionPrefix = '/' . $this->getRouteFileVersionFromFileName($file);
+
         Route::group([
             'namespace'  => $controllerNamespace,
-            'middleware' => ['api'],
+            'middleware' => ['api', $rateLimitMiddleware],
             'domain'     => Config::get('apiato.api.url'),
-            'prefix'     => '/' . $this->getRouteFileVersionFromFileName($file),
+            'prefix'     => $versionPrefix,
         ], function ($router) use ($file) {
             require $file->getPathname();
         });
