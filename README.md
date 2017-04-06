@@ -111,8 +111,7 @@ Reading the simple [**Porto document**](https://github.com/Mahmoudz/Porto) is es
 
 Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ) chatting room, by click on the Slack icon below.
 
-[![](https://s19.postimg.org/ohxyvzpub/a35031db-77ee-4541-b582-c7c6d97f65ca.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
-
+[![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
 
 
 

@@ -44,9 +44,10 @@ The documentation has 4 sections:
   * **Code Sample**: a boilerplate to show how to write and use the component.
   * **Misc**: things related to the component, like configurations and other stuff you might need while coding.
 
-With this documentation and my support you will never get lost.
 
-Happy coding :)
+### Conventions
+
+> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[RFC2119](http://tools.ietf.org/html/rfc2119)].
 
 
 
