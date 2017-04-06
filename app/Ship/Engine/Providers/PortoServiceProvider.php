@@ -4,7 +4,7 @@ namespace App\Ship\Engine\Providers;
 
 use App\Ship\Engine\Loaders\AutoLoaderTrait;
 use App\Ship\Engine\Loaders\FactoriesLoaderTrait;
-use App\Ship\Features\Generator\GeneratorsServiceProvider;
+use App\Containers\Generator\GeneratorsServiceProvider;
 use App\Ship\Features\Validations\ValidationTrait;
 use App\Ship\Engine\Butlers\ContainersButler;
 use App\Ship\Engine\Butlers\ShipButler;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Features\Generator\Traits;
+namespace App\Containers\Generator\Traits;
 
 use Exception;
 

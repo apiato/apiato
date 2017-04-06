@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Ship\Features\Generator\Commands;
+namespace App\Containers\Generator\Commands;
 
-use App\Ship\Features\Generator\GeneratorCommand;
-use App\Ship\Features\Generator\Interfaces\ComponentsGenerator;
+use App\Containers\Generator\GeneratorCommand;
+use App\Containers\Generator\Interfaces\ComponentsGenerator;
 use Closure;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
@@ -35,7 +35,7 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var string
      */
-    protected $name = 'z-generate:route';
+    protected $name = 'apiato:route';
 
     /**
      * The console command description.
@@ -98,10 +98,11 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @param \Closure $argumentsReady
      * @param \Closure $stubReady
+     *
+     * @return mixed|void
      */
     public function fireMe(Closure $argumentsReady, Closure $stubReady)
     {
-
         $version = $this->getInput('version') ? : self::DEFAULT_VERSION;
         $type = $this->getInput('type') ? : self::DEFAULT_TYPE;
         $endpointName = Str::ucfirst($this->getInput('name'));

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Features\Generator;
+namespace App\Containers\Generator;
 
 class GeneratorException extends \Exception
 {

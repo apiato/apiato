@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Features\Generator;
+namespace App\Containers\Generator;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -39,7 +39,7 @@ class GeneratorsServiceProvider extends ServiceProvider
             $lowerClass = strtolower($class);
 
             $this->app->singleton("command.porto.$lowerClass", function ($app) use ($class) {
-                return $app['App\Ship\Features\Generator\Commands\\' . $class . 'Generator'];
+                return $app['App\Containers\Generator\Commands\\' . $class . 'Generator'];
             });
 
             $this->commands("command.porto.$lowerClass");

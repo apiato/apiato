@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Features\Generator\Exceptions;
+namespace App\Containers\Generator\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;

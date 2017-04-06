@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Ship\Features\Generator;
+namespace App\Containers\Generator;
 
-use App\Ship\Features\Generator\Exceptions\GeneratorErrorException;
-use App\Ship\Features\Generator\Interfaces\ComponentsGenerator;
-use App\Ship\Features\Generator\Traits\FileSystemTrait;
-use App\Ship\Features\Generator\Traits\FormatterTrait;
-use App\Ship\Features\Generator\Traits\ParserTrait;
-use App\Ship\Features\Generator\Traits\PrinterTrait;
+use App\Containers\Generator\Exceptions\GeneratorErrorException;
+use App\Containers\Generator\Interfaces\ComponentsGenerator;
+use App\Containers\Generator\Traits\FileSystemTrait;
+use App\Containers\Generator\Traits\FormatterTrait;
+use App\Containers\Generator\Traits\ParserTrait;
+use App\Containers\Generator\Traits\PrinterTrait;
 use Closure;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
@@ -60,7 +60,7 @@ abstract class GeneratorCommand extends Command
 
     /**
      * @void
-     * @throws \App\Ship\Features\Generator\Exceptions\GeneratorErrorException
+     * @throws \App\Containers\Generator\Exceptions\GeneratorErrorException
      */
     public function fire()
     {

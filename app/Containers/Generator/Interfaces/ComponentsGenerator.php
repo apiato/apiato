@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Features\Generator\Interfaces;
+namespace App\Containers\Generator\Interfaces;
 
 use Closure;
 

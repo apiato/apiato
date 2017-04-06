@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Ship\Features\Generator\Commands;
+namespace App\Containers\Generator\Commands;
 
-use App\Ship\Features\Generator\GeneratorCommand;
-use App\Ship\Features\Generator\Interfaces\ComponentsGenerator;
+use App\Containers\Generator\GeneratorCommand;
+use App\Containers\Generator\Interfaces\ComponentsGenerator;
 use Closure;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -20,7 +20,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var string
      */
-    protected $name = 'z-generate:action';
+    protected $name = 'apiato:action';
 
     /**
      * The console command description.
@@ -72,6 +72,8 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
     /**
      * @param \Closure $argumentsReady
      * @param \Closure $stubReady
+     *
+     * @return mixed|void
      */
     public function fireMe(Closure $argumentsReady, Closure $stubReady)
     {
