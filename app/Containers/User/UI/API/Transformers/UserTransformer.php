@@ -48,7 +48,7 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
-            'token'                => App::make(TokenTransformer::class)->transform($user->access_token),
+            'token'                => $user->access_token ? App::make(TokenTransformer::class)->transform($user->access_token) : null,
         ];
 
         $response = $this->ifAdmin([
