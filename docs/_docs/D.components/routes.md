@@ -74,15 +74,13 @@ $router->get('users', [
 ]); 
 ```
 
-In all the API `Routes` files the `$router` variable is an instance of `Dingo\Api\Routing\Router` from the `dingo/api` package.
-
 ### Advanced
 
 For the API Routes, apiato is using the `dingo/api` [package](https://github.com/dingo/api) and for API JWT Authentication we are using `tymon/jwt-auth` [package](https://github.com/tymondesigns/jwt-auth).
 
 ## Protect your Endpoints:
 
-Checkout the [Authorization](doc:authorization) Page.
+Checkout the [Authorization](http://apiato.io/C.features/authorization/) Page.
 
 ## Apply rate limiting:
 

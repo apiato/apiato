@@ -118,7 +118,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     protected $routeMiddleware = [
         'jwt.auth'         => GetUserFromToken::class,
         'jwt.refresh'      => RefreshToken::class,
-        'web.auth'         => WebAuthentication::class,
+        'auth:web'         => WebAuthentication::class,
     ];
 
     public function boot()
@@ -141,19 +141,16 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 
 namespace App\Ship\Engine\Kernels;
 
+use App\Ship\Features\Middlewares\Http\ResponseHeadersMiddleware;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 class ShipHttpKernel extends LaravelHttpKernel
 {
-
     protected $middleware = [
-        // Laravel middleware's:
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Ship\Features\Middlewares\Http\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-
-        // CORS package middleware
         \Barryvdh\Cors\HandleCors::class,
     ];
 
@@ -166,22 +163,19 @@ class ShipHttpKernel extends LaravelHttpKernel
             \App\Ship\Features\Middlewares\Http\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
         'api' => [
-            // Laravel middleware's:
+            ResponseHeadersMiddleware::class,
+            'throttle:60,1',
             'bindings',
-
-            // Dingo Package throttle middleware
-            'api.throttle',
         ],
     ];
 
     protected $routeMiddleware = [
-
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
     ];
-
 }
-	 
-
 ```
 

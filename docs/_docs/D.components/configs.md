@@ -29,12 +29,12 @@ Configs are files that container configurations. For more details about them che
     - Containers
         - {container-name}
             - Configs
-                - jwt.php
+                - conf1.php
                 - ...
     - Ship
         - Features
             - Configs
-                - hello.php
+                - apiato.php
                 - ...
 - config
     - app.php
@@ -50,18 +50,14 @@ Configs are files that container configurations. For more details about them che
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | JWT Authentication Secret
-    |--------------------------------------------------------------------------
-    |
-    | Don't forget to set this, as it will be used to sign your tokens.
-    | A helper command is provided for this: `php artisan jwt:generate`
-    |
-    */
+    'containers' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Default Namespace
+        |--------------------------------------------------------------------------
+        */
+        'namespace'       => 'App',
 
-    'secret' => env('JWT_SECRET', 'defaultSecret!'),
-
-    '' => '',
-] 
+        ....
+    ],
 ```

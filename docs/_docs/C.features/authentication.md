@@ -4,93 +4,261 @@ category: "Features"
 order: 2
 ---
 
-Middlewares are the best way to apply Authentication to your App. 
+Middlewares are the best solution to apply Authentication in your App. 
 
-apiato provides 2 Authentication Middlewares:
+in **apiato** you can use these two Authentication Middlewares, to protect your endopints:
 
-- API Authentication Middlewares.  
+- API Authentication: `auth:api`
+- Web Authentication: `auth:web`
 
-**api.auth**: provided by the Dingo Package 
 
-(Dingo\Api\Http\Middleware\Auth).
+## API Authentication (OAuth 2.0)
 
-- Web Authentication Middlewares.  
-
-**web.auth**: provided by apiato
-
-(App\Containers\Authentication\Middlewares\Authentication).
-
-## API Authentication
-
-To make an Endpoint accessible by Authenticated Users you should use the `api.auth` Middleware on your Endpoint. 
-
-Example:
+To protect an **API** Endpoint from being accessible by unauthenticated users you can use the `auth:api` Middleware.
 
 ```php
 <?php
 
-$router->get('secret/docs', [
-
-    'uses'       => 'Controller@getSecretDocs',
-
+$router->get('secret/info', [
+    'uses'       => 'Controller@getSecretInfo',
     'middleware' => [
-
-        'api.auth',
-
+        'auth:api',
     ],
-
 ]);
 
 ```
 
-The `api.auth` should be used for all the Endpoints requiring the user to be logged in. So the Endpoint protected with `api.auth` requires the user to send his token with the request. It will automatically login the user and attach its object to the request and making it accessible in the entire App.
+Any Endpoint protected with `auth:api` requires the user to send at least an access token with the request.
 
-This Middleware is provided by the [dingo/api](https://github.com/dingo/api) package. So you can read its documentation for more details. 
+This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/passport) package. So you can read its documentation for more details. 
 
-**If authentication failed, users will get a JSON response:**
+
+
+### How to get Access Token using OAuth 2.0
+
+> The Auth Endpoints and more, are documented by default in apiato. Go to [Documentation Generator Page](http://apiato.io/C.features/api-docs-generator/) and see how to generate the API documentation.
+
+
+
+
+<br>
+
+### A: For first-party clients
+
+First-party clients like your Frontend Mobile, Web,... Apps. That usually consumes your private API (Internal API).
+
+For this w'll use the **Resource owner credentials grant** (A.K.A Password Grant Tokens).
+
+With this grant type your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and your User credentails are correct (ensuring the user is registered and has the right access), before issuing an access token.
+
+
+**How it works:**
+
+1) Create a password type Client in your database to represent your App. you can use `php artisan passport:client --password`.
+
+2) Your user enters his (username + password) in your App login screen (assuming he registered already).
+
+3) Your Client App sends a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credetnails (`username` and `password`) and the client credentails (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
+
+Request:
+
+```shell
+curl --request POST \
+  --url http://api.apiato.dev/v1/oauth/token \
+  --header 'accept: application/json' \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'username=admin%40admin.com&password=admin&client_id=2&client_secret=SGUVv02b1ppQCgI7ZVeoTZDN6z8SSFLYiMOzzfiE&grant_type=password&scope='
+```
+
+Response:
+
+```json
+{
+  "token_type": "Bearer",
+  "expires_in": 31536000,
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...",
+  "refresh_token": "TPSPA1S6H8Wydjkjl+xt+hPGWTagL..."
+}
+```
+
+4) Your Client App should save the Tokens and start requesting secure data, by sending the Access Token in the HTTP Header `Authorization = Bearer {Access-Token}`.
+
+
+> WARNING: This method is still not so safe as it exposes your client credentials in the code, you need to hide your client credentials behind a proxy.
+
+More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#password-grant-tokens)
+
+
+## Login
+
+Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password` in addition to the User and Client Credentials, to get the user Access Token. Once issued, you can use that Access Token to make requests to protected resources (Endpoints). 
+
+The Acces Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
+
+**Keep in mind there's no session state when using Tokens for Authentication**
+
+
+## Logout
+
+Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
+
+```json
+{
+  "message": "Token revoked successfully."
+}
+```
+
+
+
+<br>
+
+### B: For third-party clients
+
+Third party clients like your User's custom external Apps, who wants to integrate with your Software. That usually consumes your public API (External API).
+
+For this w'll use the **Client credentials grant** (A.K.A Personal Access Tokens). *This grant type is the simplest and is suitable for machine-to-machine authentication.*
+
+With this grant type your server needs to authenticate the Client App only, before issuing an access token.
+
+**How it works**
+
+1) User logs in to your App, go to settings, create Client (of type `personal`) and copy the ID and Secret. *(Note this can be done via an API if you prefer)*
+
+You may generate a personal client for testing purposes using `php artisan passport:client --personal`.
+
+2) User add the Client credetnails to his "Server Side software" and send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the Client credentails (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=client_credentials`:
+
+Request:
+
+```shell
+curl --request POST \
+  --url http://api.apiato.dev/v1/oauth/token \
+  --header 'accept: application/json' \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'client_id=1&client_secret=y1RbtnOvh9rpA91zPI2tiVKmFlepNy9dhHkzUKle&grant_type=client_credentials&scope='
+```
+
+Response:
+
+```json
+{
+  "token_type": "Bearer",
+  "expires_in": 31536000,
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+}
+```
+
+3) The Client will be granted an Access Token to be saved. Then the Client can start requesting secure data, by sending the Access Token in the HTTP Header `Authorization = Bearer {Access-Token}`.
+
+Note: When a new user is registered, will be issued a personal Access Token automatically. Check the User "Registration page".
+
+
+More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#personal-access-tokens)
+
+
+
+
+
+<br>
+
+## Responses
+
+
+**Authentication faild JSON response:**
+
+```json
+{
+  "errors": "Missing or invalid Access Token!",
+  "status_code": 403,
+  "message": "Unauthenticated."
+}
+```
+
+**Wrong Client ID or Secret:**
+
+```json
+{
+  "error": "invalid_client",
+  "message": "Client authentication failed"
+}
+```
+
+
+## Change Tokens Expiration dates 
+
+Go to the `apiato.php` config file and edit this:
 
 ```php
 <?php
 
-{
-  "message": "Failed to authenticate because of bad credentials or an invalid authorization header.",
-  "status_code": 401
-}
+/*
+|--------------------------------------------------------------------------
+| Access Token Expiration
+|--------------------------------------------------------------------------
+|
+| In Days. Default to 3650 days = 10 years
+|
+*/
+'expires-in' => env('API_TOKEN_EXPIRES', 3650),
 
+/*
+|--------------------------------------------------------------------------
+| Refresh Token Expiration
+|--------------------------------------------------------------------------
+|
+| In Days. Default to 3650 days = 10 years
+|
+*/
+'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 3650),
 ```
+
+To change from days to minutes you need to edit the `boot` function in `App\Containers\Authentication\Providers\AuthProvider`.
+
+
+
+
+
+
 
 ## Web Authentication
 
-To make a web page accessible by Authenticated Users you should use the `web.auth` Middleware on your Endpoint. 
+To protect an **Web** Endpoint from being accessible by unauthenticated users you can use the `auth:web` Middleware.
 
 Example:
 
-```pjp
+```php
 <?php
 
 $router->get('private/page', [
     'uses'       => 'Controller@showPrivatePage',
     'middleware' => [
-        'web.auth',
+        'auth:web',
     ],
-
 ]);
-
 ```
 
 This Middleware is provided by apiato and is different than the default Laravel Auth Middleware.
 
 **If authentication failed, users will be redirected to a login page**
 
-To change the login page view go to the config file `app/Ship/Features/Configs/hello.php`, and set the name of your login page there as follow:
+To change the login page view go to the config file `app/Ship/Features/Configs/apiato.php`, and set the name of your login page there as follow:
 
 ```php
 <?php
 
-  'login-page-name' => 'login',
+/*
+|--------------------------------------------------------------------------
+| The Login Page URL
+|--------------------------------------------------------------------------
+*/
+
+'login-page-url' => 'login',
 ```
 
 This will be looking for (login.html or login.php or login.blade.php).
+
+
+
 
 ## Social Authentication
 

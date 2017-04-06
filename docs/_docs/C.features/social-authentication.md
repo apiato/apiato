@@ -21,9 +21,7 @@ For Social Authentication apiato uses [Socialite]( https://github.com/laravel/so
 ## Default Supported Auth Provide
 
 * Facebook
-
 * Twitter
-
 * Google Plus
 
 ## Support new Auth Provide

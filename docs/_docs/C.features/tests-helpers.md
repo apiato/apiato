@@ -4,9 +4,10 @@ category: "Features"
 order: 13
 ---
 
-apiato provides amazing helper functions, for faster and more enjoyable testing experience.
+apiato is built on top of the [Laravel's default Tests](https://laravel.com/docs/5.4/http-tests), and provides some awesome helper functions, for faster and more enjoyable testing experience.
 
-With the apiato testing helpers, all you have to do in your tests is prepare the data you want to send to an endpoint, use the http caller function to make your call, and start adding your custom assertions. Everything else is taken care of my apiato.
+With apiato you just prepare the data you want to send, make a the call with single function and start asserting the resopnse. Everything else is set for you.
+
 
 ## Tests properties:
 
@@ -157,18 +158,14 @@ $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
 $user = $this->getTestingUser();
 
 $user = $this->getTestingUser([
-
     'email'    => 'hello@mail.dev',
-
     'name'     => 'Hello',
-
     'password' => 'secret',
-
 ]);
 
 ```
 
-> Later all the test helper functions will be added to the docs, meanwhile to see all the available functions please check all the public functions in those traits `app/Ship/Features/Tests/*`.
+> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please check all the public functions in those traits `app/Ship/Features/Tests/*`.
 
 ## Misc
 
@@ -180,4 +177,4 @@ There's an instance of faker in every class.
 
 Just use it: `$this->faker->name;`
 
-See the [Tests](doc:tests) Page, for more details about the Tests components.
+See the [Tests](http://apiato.io/D.components/tests/) Page, for more details about the Tests components.

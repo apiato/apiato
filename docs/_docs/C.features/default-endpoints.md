@@ -6,7 +6,7 @@ order: 11
 
 apiato comes shipped with many **useful** API endpoints to help speeding up the development process.
 
-To see all the endpoints in a beautiful documentation run the `php artisan apidocjs:generate` command, after installing the apidocjs tool. See the [API Docs Generator](doc:api-docs-generator) page for more details.
+To see all the endpoints in a beautiful documentation run the `php artisan apidocjs:generate` command, after installing the apidocjs tool. See the [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) page for more details.
 
 ## Screenshot of the default API Documentation:
 

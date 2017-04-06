@@ -4,42 +4,72 @@ category: "Features"
 order: 4
 ---
 
-### Register Users by credentials
+### Register users by credentials (email and passwords)
 
-To register a User using credentials (email and password), 
+Call the `http://api.apiato.dev/v1/register` endpoint (you can find it's documentation after generating the API Docs.
 
-You just need to call the `http://api.apiato.dev/register` endpoint (you can find it's documentation after generating the API Doc at `http://apiato.dev/api/private/documentation/#api-Users-registerUser`).
+Check out the `registerUser` endpoint in the API Routes files.
 
-Check out the `registerUser` endpoint in the API Routes files (`app/Containers/User/UI/API/Routes/RegisterUser.v1.private.php`).
+This will registered new Users and generates Personal Access Tokens and respond with user object and token.
 
-This will automatically login the registered User and generates him a Token to be returned with the response.
 
-## Disable auto login
+**Registration request:**
 
-If you don't want to login the User after registration
-
-Go to `app/Containers/User/UI/API/Controllers/Controller.php` and set the last parameter in the Action to false. 
-
-Example:
-
-```php
-<?php
-
-public function registerUser(RegisterRequest $request, RegisterUserAction $action)
-{
-    $user = $action->run(
-        $request['email'],
-        $request['password'],
-        $request['name'],
-        true // << default to true means login after you register.
-    );
-
-    return $this->response->item($user, new UserTransformer());
-} 
+```http
+curl --request POST \
+  --url http://api.apiato.dev/v1/register \
+  --header 'accept: application/json' \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'email=apiato%40mail.com1&password=password&name=Mahmoud%20Zalt'
 ```
 
-## Register with Social Account
+**Registration response:**
+
+```json
+{
+  "data": {
+    "object": "User",
+    "id": 77,
+    "name": "Mahmoud Zalt",
+    "email": "apiato@mail.com",
+    "confirmed": null,
+    "nickname": "Mega",
+    "gender": "male",
+    "birth": null,
+    "social_auth_provider": null,
+    "social_id": null,
+    "social_avatar": {
+      "avatar": null,
+      "original": null
+    },
+    "created_at": {
+      "date": "2017-04-05 16:17:26.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "updated_at": {
+      "date": "2017-04-05 16:17:26.000000",
+      "timezone_type": 3,
+      "timezone": "UTC"
+    },
+    "token": {
+      "object": "Token",
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
+      "token_type": "Bearer",
+      "expires_in": "..."
+    },
+    "roles": {
+      "data": []
+    }
+  }
+}
+```
+
+Note: By default every registered user will have a Personal Access Token (the Token name is the user Email). All these Access Tokens will be linked to a default Client of type Personal.
+
+
+### Register users by Social Account
 
 > (Facebook, Twitter, Google..)
 
-Checkout the [Social Authentication](doc:social-authentication) Page for how to Sign up with Social Account.
+Checkout the [Social Authentication](http://apiato.io/C.features/authentication/) Page for how to Sign up with Social Account.

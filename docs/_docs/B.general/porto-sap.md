@@ -4,13 +4,13 @@ category: "General"
 order: 1
 ---
 
-As you may know already, apiato is architectured using the Porto Software Architectural Pattern. So you MUST read the [Porto Document](https://github.com/Porto-SAP/Documentation) before getting started.
+As you may know already, apiato is architectured using the Porto Software Architectural Pattern. So you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started.
 
 Porto consists of 2 layers the **Containers** layer and the **Ship** layer.
 
 ### Containers Layer
 
-Read about the Containers layer **[here](https://github.com/Mahmoudz/Porto#Containers-Layer)**
+Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Containers-Layer)
 
 #### Remove a Container (default Containers):
 
@@ -18,9 +18,11 @@ To remove a Container, simply delete the folder then run `composer update` to re
 
 #### Create new Container:
 
-*Soon a Container [generator](https://github.com/Porto-SAP/Generator) will be available.*
+**Option 1) Using the Code Generator:**
 
-Right now you have to create your containers manually:
+`php artisan apiato:container`
+
+**Option 2) manually:**
 
 1. Create a folder in the Containers folder.
 
