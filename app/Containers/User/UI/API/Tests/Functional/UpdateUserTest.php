@@ -12,7 +12,7 @@ use App\Containers\User\Tests\TestCase;
 class UpdateUserTest extends TestCase
 {
 
-    protected $endpoint = 'put@users';
+    protected $endpoint = 'put@v1/users';
 
     protected $access = [
         'roles'       => '',
@@ -46,22 +46,17 @@ class UpdateUserTest extends TestCase
 
     public function testUpdateExistingUserWithoutData_()
     {
-        $data = [];
-
         // send the HTTP request
-        $response = $this->makeCall($data);
+        $response = $this->makeCall();
 
         // assert response status is correct
         $response->assertStatus(417);
     }
 
-
     public function testUpdateExistingUserWithEmptyValues()
     {
-        $data = []; // empty data
-
         // send the HTTP request
-        $response = $this->makeCall($data);
+        $response = $this->makeCall();
 
         // assert response status is correct
         $response->assertStatus(417);

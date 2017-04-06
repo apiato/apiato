@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            assignUserToRole
- * @api                {post} /roles/assign Assign User to Roles
+ * @api                {post} /v1/roles/assign Assign User to Roles
  * @apiDescription     Assign new roles to user. This endpoint does not sync the user with the
  *                     new roles. It simply assign new role to the user. So make sure
  *                     to never send an already assigned role since it will cause an error.
@@ -61,6 +61,6 @@
 $router->post('roles/assign', [
     'uses'       => 'Controller@assignUserToRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

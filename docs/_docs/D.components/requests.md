@@ -260,6 +260,6 @@ The `hasAccess` function, checks if the passed URL ID is the same as the User ID
 
 Example:
 
-Let's say we have an endpoint `www.api.apiato.dev/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
+Let's say we have an endpoint `www.api.apiato.dev/v1/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.

@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            listAllPermissions
- * @api                {get} /permissions List all Permission
+ * @api                {get} /v1/permissions List all Permission
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -46,6 +46,6 @@
 $router->get('permissions', [
     'uses'       => 'Controller@listAllPermissions',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

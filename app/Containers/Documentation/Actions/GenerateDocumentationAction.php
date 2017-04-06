@@ -4,7 +4,6 @@ namespace App\Containers\Documentation\Actions;
 
 use App\Containers\Documentation\Tasks\GenerateAPIDocsTask;
 use App\Containers\Documentation\Tasks\GetDocsTypesTask;
-use App\Containers\Documentation\Tasks\ProcessMarkdownTemplatesTask;
 use App\Containers\Documentation\Tasks\RenderTemplatesTask;
 use App\Ship\Parents\Actions\Action;
 
@@ -28,6 +27,8 @@ class GenerateDocumentationAction extends Action
         $types = $this->call(GetDocsTypesTask::class);
 
         $console->info("Generating API Documentations for (" . implode(' & ', $types) . ")\n");
+
+        $documentationUrls = [];
 
         // for each type, generate docs.
         foreach ($types as $type) {

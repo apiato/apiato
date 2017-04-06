@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class RefreshUserTest extends TestCase
 {
 
-    protected $endpoint = 'post@users/{id}/refresh';
+    protected $endpoint = 'post@v1/users/{id}/refresh';
 
     protected $access = [
         'roles'       => '',
@@ -39,7 +39,7 @@ class RefreshUserTest extends TestCase
         $response = $this->injectId($anotherUser->id)->makeCall();
 
         // assert response status is correct
-        $response->assertStatus(500);
+        $response->assertStatus(403);
     }
 
 }

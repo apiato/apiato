@@ -12,7 +12,7 @@ use App\Containers\Stripe\Tests\TestCase;
 class CreateStripeAccountTest extends TestCase
 {
 
-    protected $endpoint = 'post@stripes';
+    protected $endpoint = 'post@v1/stripes';
 
     protected $access = [
         'permissions' => '',

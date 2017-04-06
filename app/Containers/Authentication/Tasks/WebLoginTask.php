@@ -38,17 +38,8 @@ class WebLoginTask extends Task
      */
     public function run($email, $password, $remember = false)
     {
-        if ($remember) {
-            $remember = true;
-        }
-
-        $correct = $this->auth->attempt(['email' => $email, 'password' => $password], $remember);
-
-        if (!$correct) {
-            throw new AuthenticationFailedException();
-        }
-
-        return $this->auth->user();
+        // TODO:..
+        dump('incomplete..');
     }
 
 }

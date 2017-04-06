@@ -5,10 +5,10 @@ return [
     'containers' => [
         /*
         |--------------------------------------------------------------------------
-        | Default NAMESPACE
+        | Default Namespace
         |--------------------------------------------------------------------------
         */
-        'namespace'       => 'App',
+        'namespace'      => 'App',
 
         /*
         |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Turn On Off Hashed ID
+    | Enable / Disable Hashed ID
     |--------------------------------------------------------------------------
     */
     'hash-id'    => env('HASH_ID', true),
@@ -32,28 +32,45 @@ return [
         | API URL
         |--------------------------------------------------------------------------
         */
-        'url'         => env('API_URL', 'localhost'),
+        'url'                    => env('API_URL', 'http://localhost'),
 
         /*
         |--------------------------------------------------------------------------
-        | API limit
+        | Access Token Expiration
         |--------------------------------------------------------------------------
+        |
+        | In Minutes. Default to 5,256,000 minutes = 10 years
+        |
         */
-        'limit'         => env('API_LIMIT', 100),
+        'expires-in'             => env('API_TOKEN_EXPIRES', 5256000),
 
         /*
         |--------------------------------------------------------------------------
-        | API limit expiration
+        | Refresh Token Expiration
         |--------------------------------------------------------------------------
+        |
+        | In Minutes. Default to 5,256,000 minutes = 10 years
+        |
         */
-        'limit_expires' => env('API_LIMIT_EXPIRES', 5),
+        'refresh-expires-in'     => env('API_REFRESH_TOKEN_EXPIRES', 5256000),
 
         /*
         |--------------------------------------------------------------------------
-        | The default API serializer
+        | Enable Disable API Debugging
+        |--------------------------------------------------------------------------
+        |
+        | If enabled, the Error Exception trace will be injected in the JSON
+        | response, and it will be logged in the default Log file.
+        |
+        */
+        'debug'                  => env('API_DEBUG', true),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Enable/Disable Implicit Grant
         |--------------------------------------------------------------------------
         */
-        'serializer'    => env('FRACTAL_SERIALIZER', 'DataArray'),
+        'enabled-implicit-grant' => env('API_ENABLE_IMPLICIT_GRANT', true),
 
     ],
 

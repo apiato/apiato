@@ -24,9 +24,9 @@ And to do that you must include the `Accept => application/json` HTTP header wit
 All REST API requests are throttled to prevent abuse and ensure stability. 
 The exact number of calls that your application can make per day varies based on the type of request you are making.
 
-The rate limit window is `5` minutes per endpoint, with most individual calls allowing for `100` requests in each window.
+The rate limit window is `` minutes per endpoint, with most individual calls allowing for `` requests in each window.
 
-*In other words, each user is allowed `100` calls per endpoint per `5` minutes for each unique access token.*
+*In other words, each user is allowed `` calls per endpoint per `` minutes for each unique access token.*
 
 
 For how many hits you can preform on an endpoint, you can always check the header:
@@ -40,7 +40,8 @@ X-RateLimit-Reset →1487227542
 
 ## **Tokens**
 
-The Access Token lives for `30 days, 0 hours, 0 minutes and 0 seconds`. (equivalent to `43200` minutes).
+The Access Token lives for `3650 days, 0 hours, 0 minutes and 0 seconds`. (equivalent to `5256000` minutes).
+While the Refresh Token lives for `3650 days, 0 hours, 0 minutes and 0 seconds`. (equivalent to `5256000` minutes).
 
 *You will need to re-autneticate the user when the token expires.*
 
@@ -102,7 +103,7 @@ Unless otherwise specified, all of API endpoints will return the information tha
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.apiato.dev/endpoint?page=21"
+        "previous": "http://http://api.apiato.dev/endpoint?page=21"
       }
     }
   }
@@ -140,7 +141,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 **Usage:**
 
 ```
-api.apiato.dev/endpoint?orderBy=created_at
+http://api.apiato.dev/endpoint?orderBy=created_at
 ```
 
 
@@ -156,7 +157,7 @@ By default the `orderBy` sorts the data in **Ascending** order, if you want the 
 **Usage:**
 
 ```
-api.apiato.dev/endpoint?orderBy=name&sortedBy=desc
+http://api.apiato.dev/endpoint?orderBy=name&sortedBy=desc
 ```
 
 Order By Accepts:
@@ -178,7 +179,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 #### Search any field:
 
 ```
-api.apiato.dev/endpoint?search=keyword here
+http://api.apiato.dev/endpoint?search=keyword here
 ```
 
 > Space should be replaced with `%20` (search=keyword%20here).
@@ -186,23 +187,23 @@ api.apiato.dev/endpoint?search=keyword here
 #### Search any field for multiple keywords:
 
 ```
-api.apiato.dev/endpoint?search=first keyword;second keyword
+http://api.apiato.dev/endpoint?search=first keyword;second keyword
 ```
 
 #### Search in specific field:
 ```
-api.apiato.dev/endpoint?search=field:keyword here
+http://api.apiato.dev/endpoint?search=field:keyword here
 ```
 
 #### Search in specific fields for multiple keywords: 
 ```
-api.apiato.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+http://api.apiato.dev/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 #### Define query condition:
 
 ```
-api.apiato.dev/endpoint?search=field:keyword&searchFields=name:like
+http://api.apiato.dev/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Available Conditions: 
@@ -214,7 +215,7 @@ Available Conditions:
 #### Define query condition for multiple fields:
 
 ```
-api.apiato.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+http://api.apiato.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
 ```
 
 
@@ -228,7 +229,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request. And is u
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.apiato.dev/endpoint?filter=id;name
+http://api.apiato.dev/endpoint?filter=id;name
 ```
 
 
@@ -239,7 +240,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.apiato.dev/endpoint?page=200
+http://api.apiato.dev/endpoint?page=200
 ```
 
 
@@ -256,7 +257,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 **Usage:**
 
 ```
-api.apiato.dev/endpoint?include=relationship
+http://api.apiato.dev/endpoint?include=relationship
 ```
 
 
@@ -269,7 +270,7 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 **Usage:**
 
 ```
-api.apiato.dev/endpoint?skipCache=true
+http://api.apiato.dev/endpoint?skipCache=true
 ```
 
 
@@ -298,12 +299,12 @@ TO BE CONTINUE...
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.apiato.dev/login"
+curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://http://api.apiato.dev/login"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.apiato.dev/users"
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://http://api.apiato.dev/users"
 ```
 

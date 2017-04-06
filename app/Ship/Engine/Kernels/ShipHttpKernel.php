@@ -2,6 +2,7 @@
 
 namespace App\Ship\Engine\Kernels;
 
+use App\Ship\Features\Middlewares\Http\ResponseHeadersMiddleware;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
@@ -22,7 +23,7 @@ class ShipHttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $middleware = [
-        // Laravel middleware's:
+        // Laravel middleware's
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Ship\Features\Middlewares\Http\TrimStrings::class,
@@ -49,12 +50,11 @@ class ShipHttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
-            // Laravel middleware's:
+            ResponseHeadersMiddleware::class,
+            'throttle:60,1', // TODO: read from config file
             'bindings',
-
-            // Dingo Package throttle middleware
-            'api.throttle',
         ],
+
     ];
 
     /**
@@ -65,7 +65,12 @@ class ShipHttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+//        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+//        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 
 }

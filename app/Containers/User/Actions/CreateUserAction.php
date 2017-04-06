@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Ship\Parents\Actions\Action;
@@ -15,27 +16,29 @@ class CreateUserAction extends Action
 {
 
     /**
-     * Create a new user object. Optionally can login the created user and return it with its token.
-     *
      * @param      $email
      * @param      $password
-     * @param      $name
-     * @param      $gender
-     * @param      $birth
-     * @param bool $login determine weather to login or not after creating
+     * @param null $name
+     * @param null $gender
+     * @param null $birth
      *
-     * @return mixed
+     * @return  mixed
      */
-    public function run($email, $password, $name, $gender = null, $birth = null, $login = false)
+    public function run($email, $password, $name = null, $gender = null, $birth = null)
     {
-        $user = $this->call(CreateUserByCredentialsTask::class, [$email, $password, $name, $gender, $birth, $login]);
+        // create user record in the datbase
+        $user = $this->call(CreateUserByCredentialsTask::class, [$email, $password, $name, $gender, $birth]);
 
-        // example for how to set default permissions on every new user created.
-        // $this->call(AssignUserToRoleAction::class, [$user, ['client', 'developer']]);
+        // Set default permissions on the new user
+        // $this->call(AssignUserToRoleAction::class, [$user, ['manager', '...']]);
 
-        //  add Client as role for normal users
+        // Creating an access token without scopes, and attach it to the new user
+        $user->attachAccessToken($email);
+
+        // Fire user created event
         $this->call(FireUserCreatedEventTask::class, [$user]);
 
+        // return the new created user object with access token attached on it
         return $user;
     }
 }

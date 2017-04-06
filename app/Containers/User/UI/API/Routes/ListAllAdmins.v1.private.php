@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            ListAllAdmins
- * @api                {get} /admins List Admin Users
+ * @api                {get} /v1/admins List Admin Users
  * @apiDescription     List all Users where role `Admin`.
  *                     You can search for Users by email, name and ID.
  *                     Example: `?search=Mahmoud` or `?search=whatever@mail.com`.
@@ -110,6 +110,6 @@ HTTP/1.1 200 OK
 $router->get('admins', [
     'uses'       => 'Controller@listAllAdmins',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

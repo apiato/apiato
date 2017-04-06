@@ -5,7 +5,7 @@ pre, code, tt {
 	border-radius: 2px;
 	line-height: 1.4;
 	font-weight: 400;
-	background-color: #404145;
+	background-color: #47555f;
 	color: #FAFAFA;
 	border-radius: 2px;
 }
@@ -32,6 +32,9 @@ pre {
 blockquote > code,
 li > code,
 p > code {
-	padding: 4px 6px;
+	padding: 2px 2px;
 	white-space: nowrap;
+    background: #eceff1;
+    color: #FF5722;
+    font-size: 19px;
 }

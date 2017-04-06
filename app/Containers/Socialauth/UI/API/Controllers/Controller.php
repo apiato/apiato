@@ -20,13 +20,13 @@ class Controller extends ApiController
      * @param \App\Containers\SocialAuth\Actions\SocialLoginAction              $action
      * @param                                                                   $provider
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function authenticateAll(ApiAuthenticateRequest $request, SocialLoginAction $action, $provider)
     {
         $user = $action->run($provider, $request->all());
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->transform($user, UserTransformer::class);
     }
 
 }

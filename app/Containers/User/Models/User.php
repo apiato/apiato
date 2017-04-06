@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Models;
 
+
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Models\UserModel;
 
@@ -43,6 +44,7 @@ class User extends UserModel
         'social_avatar',
         'social_avatar_original',
         'social_nickname',
+        'access_token',
     ];
 
     /**
@@ -64,7 +66,6 @@ class User extends UserModel
     protected $hidden = [
         'password',
         'remember_token',
-        'token',
     ];
 
     public function stripeAccount()

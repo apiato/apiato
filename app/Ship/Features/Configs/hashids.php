@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of Laravel Hashids.
- *
- * (c) Vincent Klaiber <apiato@vinkla.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 return [
 
     /*
@@ -38,14 +29,14 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'apiato',
-            'length' => '8',
-            'alphabet' => 'abcdefghijklmnopqrstuvwxyz',
+            'salt'     => env('APP_KEY'),
+            'length'   => env('HASH_ID_LENGTH', 32),
+            'alphabet' => '1234567890abcdefghijklmnopqrstuvwxyz',
         ],
 
         'alternative' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
+            'salt'     => 'your-salt-string',
+            'length'   => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
         ],
 

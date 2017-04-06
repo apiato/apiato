@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            detachPermissionFromRole
- * @api                {post} /permissions/detach Detach Permissions from Role
+ * @api                {post} /v1/permissions/detach Detach Permissions from Role
  * @apiDescription     Detach existing permission from role. This endpoint does not sync the role
  *                     It just detach the passed permissions from the role. So make sure
  *                     to never send an non attached permission since it will cause an error.
@@ -48,6 +48,6 @@
 $router->post('permissions/detach', [
     'uses'       => 'Controller@detachPermissionFromRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

@@ -3,7 +3,7 @@
 /**
  * @apiGroup           SocialAuth
  * @apiName            socialAuthTw
- * @api                {post} /auth/twitter
+ * @api                {post} /v1/auth/twitter
  * @apiDescription     After getting the User Token from twitter, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.
@@ -65,7 +65,7 @@
 /**
  * @apiGroup           SocialAuth
  * @apiName            socialAuthFb
- * @api                {post} /auth/facebook
+ * @api                {post} /v1/auth/facebook
  * @apiDescription     After getting the User Token from facebook, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.

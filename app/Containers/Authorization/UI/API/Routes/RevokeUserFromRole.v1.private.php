@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            revokeRoleFromUser
- * @api                {post} /roles/revoke Revoke/Remove Roles from User
+ * @api                {post} /v1/roles/revoke Revoke/Remove Roles from User
  * @apiDescription     Revoke existing roles from user. This endpoint does not sync the user
  *                     It just revoke the passed role from the user. So make sure
  *                     to never send a non assigned role since it will cause an error.
@@ -61,6 +61,6 @@
 $router->post('roles/revoke', [
     'uses'       => 'Controller@revokeRoleFromUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

@@ -12,10 +12,9 @@ use App\Containers\User\Tests\TestCase;
 class RegisterUserTest extends TestCase
 {
 
-    protected $endpoint = 'post@register';
+    protected $endpoint = 'post@v1/register';
 
     protected $auth = false;
-
 
     protected $access = [
         'roles'       => '',
@@ -27,7 +26,7 @@ class RegisterUserTest extends TestCase
         $data = [
             'email'    => 'apiato@mail.dev',
             'name'     => 'Apiato',
-            'password' => 'secret',
+            'password' => 'secretpass',
         ];
 
         // send the HTTP request
@@ -41,8 +40,9 @@ class RegisterUserTest extends TestCase
             'name'  => $data['name'],
         ]);
 
-         // assert response contain the token
-        $this->assertResponseContainKeys(['id', 'token']);
+        $responseContent = $this->getResponseContentObject();
+
+        $this->assertNotEmpty($responseContent->data->token);
 
          // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
@@ -57,14 +57,13 @@ class RegisterUserTest extends TestCase
         ];
 
         // send the HTTP request
-        $response = $this->endpoint('get@register')->makeCall($data);
+        $response = $this->endpoint('get@v1/register')->makeCall($data);
 
         // assert response status is correct
         $response->assertStatus(405);
 
-        // assert response contain the correct message
         $this->assertResponseContainKeyValue([
-            'message' => '405 Method Not Allowed',
+            'errors' => '405 Method Not Allowed.',
         ]);
     }
 
@@ -90,6 +89,10 @@ class RegisterUserTest extends TestCase
 
         // assert response status is correct
         $response->assertStatus(422);
+
+        $this->assertValidationErrorContain([
+            'email' => 'The email has already been taken.',
+        ]);
     }
 
     public function testRegisterNewUserWithoutEmail()

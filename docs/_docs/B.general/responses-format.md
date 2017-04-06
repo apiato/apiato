@@ -40,7 +40,7 @@ order: 2
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.dev/accounts?page=999"
+        "next": "http://api.apiato.dev/v1/accounts?page=999"
       }
     }
   }
@@ -60,55 +60,16 @@ When data is paginated the response payload will contain a `meta` description ab
       "current_page": 1,
       "total_pages": 2,
       "links": {
-        "next": "http://api.apiato.dev/accounts?page=2"
+        "next": "http://api.apiato.dev/v1/accounts?page=2"
       }
     }
   }
 ```
 
-### Error Response format?
+### Error Responses formats
 
-**Error Response:**
+Visit each feature, example the Authentication and there you will see how unauthenticate response looks like, same for Authorization, Validation and so on.
 
-```json
-{
-  "message": "error message goes here",
-  "status_code": 500,
-  "code": 105
-}
-```
-
-**Validation Error Response:**
-
-```json
-{
-    "message": "Could not create new user.",
-    "status_code": 422,
-    "errors": {
-    	"username": [
-        	"The username field is required."
-    	],
-        	"password": [
-        	"The password field is required."
-    	]
-	}
-}
-```
-
-### Response Header example:
-
-```
-Cache-Control:private, must-revalidate
-Connection:keep-alive
-Content-Type:application/json
-Date:Tue, 11 Nov 2011 11:11:11 GMT
-ETag:"244216122606707c90d40b45d8f85da1"
-Server:nginx/1.8.0
-Transfer-Encoding:chunked
-X-RateLimit-Limit:100
-X-RateLimit-Remaining:77
-X-RateLimit-Reset:1458641529
-```
 
 ### Change the Response payload format:
 
@@ -116,14 +77,11 @@ The default response format (specification) is the `DataArray` Fractal Serialize
 
 To change the default Fractal Serializer open the `.env` file and change the
 
+```text
+API_RESPONSE_SERIALIZER=League\Fractal\Serializer\DataArraySerializer
 ```
-FRACTAL_SERIALIZER=DataArray
-```
 
-The Supported Serializers are (`JsonApi`, `DataArray` and `Array`).
+The Supported Serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`).
 
-Check out the `overrideDefaultFractalSerializer()` inside the `boot()` function of the `src/Services/Core/Framework/Providers/CoreServiceProvider.php` file.
 
-### Need more info!
-
-For more details check out this [link](https://github.com/dingo/api/wiki/Errors-And-Error-Responses)
+More details at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).

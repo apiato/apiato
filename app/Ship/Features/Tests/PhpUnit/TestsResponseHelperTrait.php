@@ -99,13 +99,15 @@ trait TestsResponseHelperTrait
     /**
      * @param array $responseContent
      *
-     * @return  mixed
+     * @return  array|mixed
      */
     private function removeDataKeyFromResponse(array $responseContent)
     {
         if (array_key_exists('data', $responseContent)) {
             return $responseContent['data'];
         }
+
+        return $responseContent;
     }
 
 }

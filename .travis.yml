@@ -1,7 +1,8 @@
 language: php
 
 php:
-  - 7.0
+  - '7.0'
+  - '7.1'
 
 before_script:
 - cp .env.travis .env
@@ -10,5 +11,6 @@ before_script:
 - composer install --prefer-source --no-interaction --dev
 - php artisan key:generate
 - php artisan migrate --seed
+- php artisan passport:install
 
 script: vendor/bin/phpunit

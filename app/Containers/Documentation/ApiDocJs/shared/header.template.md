@@ -40,7 +40,8 @@ X-RateLimit-Reset →1487227542
 
 ## **Tokens**
 
-The Access Token lives for `{{token-expires}}`. (equivalent to `{{token-expires-minutes}}` minutes).
+The Access Token lives for `{{access-token-expires-in}}`. (equivalent to `{{access-token-expires-in-minutes}}` minutes).
+While the Refresh Token lives for `{{refresh-token-expires-in}}`. (equivalent to `{{refresh-token-expires-in-minutes}}` minutes).
 
 *You will need to re-autneticate the user when the token expires.*
 

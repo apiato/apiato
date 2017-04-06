@@ -23,7 +23,8 @@ Why!? setting up a solid API from scratch is time consuming (and time is money).
 apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
 Skip the repetitive work and enjoy the open source fun.
 
- apiato [Features list](https://github.com/apiato/apiato#features) on Github.
+
+**apiato [Features list](https://github.com/apiato/apiato#features) on Github.**
 
 
 > `Hello API` was the first name of this project, it was renamed to `apiato` in March, 22, 2017 for no reason.
@@ -31,6 +32,7 @@ Skip the repetitive work and enjoy the open source fun.
 ## How to read the docs
 
 The documentation has 4 sections:
+
 - **Getting Started**: contains mainly the project installation steps.
 - **General**: contains few general things to get you started.
 - **Features**: explains how to use each feature of apiato, and show how it works and how it can be configured to meet your needs.
@@ -53,12 +55,13 @@ Happy coding :)
 
 Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ) chatting room, by click on the Slack icon below.
 
-[![](https://s19.postimg.org/ohxyvzpub/a35031db-77ee-4541-b582-c7c6d97f65ca.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
+[![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5MDE0NTMtOTljOGU1NmFlZQ)
 
+<a name="Donations"></a>
+## Donations
 
-## Donation
-Your Support Matters.
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
+[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
-[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=beer-square)](https://beerpay.io/apiato/apiato)  [![Beerpay](https://beerpay.io/apiato/apiato/make-wish.svg?style=flat-square)](https://beerpay.io/apiato/apiato?focus=wish)
 
 Thanks,

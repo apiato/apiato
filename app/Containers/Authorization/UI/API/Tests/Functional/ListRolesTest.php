@@ -13,7 +13,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class ListRolesTest extends TestCase
 {
 
-    protected $endpoint = 'get@roles';
+    protected $endpoint = 'get@v1/roles';
 
     protected $access = [
         'roles'       => '',

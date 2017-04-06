@@ -57,30 +57,33 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 >The apiato comes with great features:
 
-- JSON Web Tokens (JWT) based Authentication, with pre-configured middleware's.
-- Role-Based Access Control (RBAC), seeded with a Super Admin Role and  Permissions.
+- OAuth2.0 authentication for first and third-party clients (using Laravel Passport).
+- Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and  Permissions.
 - Query Parameters support (orderBy, sortedBy, filter, include) with full-text search (search, searchFields).
-- User basic Endpoints and more (Login, Logout, Register, List, Update, Delete, Search).
-- API Throttling (Rate Limiting).
-- Easy API Documentations generator from artisan commands (using the ApiDocJS tool).
-- Auto encoding/decoding of real ID's, to prevent exposing real ID's to the outer world.
-- Data Caching support out of the box (with auto clearing on Create, Update and Delete).
+- Useful endpoints for managing users, roles/permissions, tokens and more, all implemented, documented and covered with functional Tests.
+- Easy API Documentations generator (using the ApiDocJS tool).
 - Supports for CORS "Cross-Origin Resource Sharing", allowing access from different domians.
+- Auto encoding/decoding of real ID's, to prevent exposing real ID's to the outer world.
+- API Throttling (Rate Limiting).
+- Exception handleing with custom JSON errors responses.
+- Data Caching support (with auto clearing on Create, Update and Delete).
+- Easy API versioning in the URL, through the route files names.
 - Social Authentication supported out of the box (Facebook, Twitter, Google+).
 - Localization support (multiple languages via Content-Language header).
 - Automatic Data Pagination (meta links to next and previous data).
 - Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
-- Type-Casting JSON responses with Transformers.
-- Custom Tests Helpers for faster automated testing (using PHPUnit).
+- Type-Casting JSON responses with Transformers (Using Fractal).
+- Custom Tests Helpers for faster and more enjoyable automated testing (using PHPUnit).
 - Optional support for the JSON API specification v1.0.
 - Automatic dates conversion to ISO format in responses.
 - Optional support for JSON with padding (JSONP).
-- WEB and API Authentication Middlewares.
-- Ready Admin dashboard infrastructure (just drop your admin views).
-- Maintainable and scalable Software Architectural Pattern (using Porto SAP).
 - Support Stripe payment gateways (easy to extend and cover other gatways).
-- Functional Tests covering all the existing Endpoints (using PHPUnit).
-- Fully detailed documentation (on apiato.readme.io/docs).
+- WEB and API Authentication Middlewares.
+- Maintainable and scalable Software Architectural Pattern (using Porto SAP).
+- Code generator, allows generating Containers of code for faster development.
+- Separation of Web, API and CLI routes, controllers, requests and more.
+- Ready Admin dashboard infrastructure.
+- Fully detailed documentation (on apiato.io).
 - 100% customizable and Open Code.
 - And much more...
 
@@ -118,15 +121,17 @@ Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5
 <a name="Credits"></a>
 ## Credits
 
-| Contributors           | Twitter                                 | Ask for Help                                                                                                          | Contact / Hire  | Site            |
-|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| [Mahmoud Zalt](https://github.com/Mahmoudz) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/mahmoudz) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
+| Contributors                                | Twitter                                           | Contact         | Site                                |
+|---------------------------------------------|---------------------------------------------------|-----------------|-------------------------------------|
+| [Mahmoud Zalt](https://github.com/Mahmoudz) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
 
 
-## Donation
-Your Support Matters.
+<a name="Donations"></a>
+## Donations
 
-[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=beer-square)](https://beerpay.io/apiato/apiato)  [![Beerpay](https://beerpay.io/apiato/apiato/make-wish.svg?style=flat-square)](https://beerpay.io/apiato/apiato?focus=wish)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
+
+[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
 
 <a name="License"></a>

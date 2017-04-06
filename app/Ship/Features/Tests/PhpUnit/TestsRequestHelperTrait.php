@@ -78,37 +78,30 @@ trait TestsRequestHelperTrait
      */
     public function makeCall(array $data = [], array $headers = [])
     {
+        // Get or create a testing user. It will get your existing user if you already called this function from your
+        // test. Or create one if you never called this function from your tests "Only if the endpoint is protected".
+        $this->getTestingUser();
+
         // read the $endpoint property from the test and set the verb and the uri as properties on this trait
         $endpoint = $this->parseEndpoint();
         $verb = $endpoint['verb'];
         $url = $endpoint['url'];
 
-        $headers = $this->injectAccessToken($headers);
-
+        // validating user http verb input + converting `get` data to query parameter
         switch ($verb) {
+            case 'get':
+                $url = $this->dataArrayToQueryParam($data, $url);
+                break;
+            case 'post':
             case 'put':
             case 'patch':
             case 'delete':
-            case 'post':
-                $headers = $this->transformHeadersToServerVars($headers);
-                $httpResponse = $this->call($verb, $url, $data, [], [], $headers);
-                break;
-            case 'get':
-                $url = $this->dataArrayToQueryParam($data, $url);
-                $headers = $this->transformHeadersToServerVars($headers);
-                $httpResponse = $this->call($verb, $url, [], [], [], $headers);
-                break;
-            case 'json:post':
-            case 'json:put':
-            case 'json:patch':
-            case 'json:delete':
-            case 'json:get':
-                $verbName = $this->getJsonVerb($verb);
-                $httpResponse = $this->json($verbName, $url, $data, $headers);
                 break;
             default:
                 throw new UndefinedMethodException('Unsupported HTTP Verb (' . $verb . ')!');
         }
+
+        $httpResponse = $this->json($verb, $url, $data, $headers);
 
         return $this->setResponseObjectAndContent($httpResponse);
     }

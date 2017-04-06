@@ -24,10 +24,10 @@ class GetUserAction extends Action
     public function run($userId, $token = null)
     {
         if ($userId) {
-            $user = $this->call(FindUserByIdTask::class, [$userId])->withToken();
+            $user = $this->call(FindUserByIdTask::class, [$userId]);
         } else {
             if ($token) {
-                $user = $this->call(GetAuthenticatedUserTask::class, [])->withToken();
+                $user = $this->call(GetAuthenticatedUserTask::class);
             }
         }
 

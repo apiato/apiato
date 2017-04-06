@@ -29,7 +29,6 @@ use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -45,92 +44,92 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest $request
      * @param \App\Containers\Authorization\Actions\ListAllPermissionsAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function listAllPermissions(ListAllPermissionsRequest $request, ListAllPermissionsAction $action)
     {
         $permissions = $action->run();
 
-        return $this->response->collection($permissions, new PermissionTransformer());
+        return $this->transform($permissions, PermissionTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\GetPermissionRequest $request
      * @param \App\Containers\Authorization\Actions\GetPermissionAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function getPermission(GetPermissionRequest $request, GetPermissionAction $action)
     {
         $permission = $action->run($request['id']);
 
-        return $this->response->item($permission, new PermissionTransformer());
+        return $this->transform($permission, PermissionTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest $request
      * @param \App\Containers\Authorization\Actions\ListAllRolesAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function listAllRoles(ListAllRolesRequest $request, ListAllRolesAction $action)
     {
         $roles = $action->run();
 
-        return $this->response->collection($roles, new RoleTransformer());
+        return $this->transform($roles, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\GetRoleRequest $request
      * @param \App\Containers\Authorization\Actions\GetRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function getRole(GetRoleRequest $request, GetRoleAction $action)
     {
         $role = $action->run($request['id']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->transform($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction                $action
+     * @param \App\Containers\Authorization\Actions\AssignUserToRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function assignUserToRole(AssignUserToRoleRequest $request, AssignUserToRoleAction $action)
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncUserRolesAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function syncUserRoles(SyncUserRolesRequest $request, SyncUserRolesAction $action)
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest $request
      * @param \App\Containers\Authorization\Actions\DeleteRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function deleteRole(DeleteRoleRequest $request, DeleteRoleAction $action)
     {
         $role = $action->run($request->id);
 
-        return $this->response->accepted(null, [
-            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.',
+        return $this->accepted([
+            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.'
         ]);
     }
 
@@ -138,20 +137,20 @@ class Controller extends ApiController
      * @param \App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest $request
      * @param \App\Containers\Authorization\Actions\RevokeUserFromRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function revokeRoleFromUser(RevokeUserFromRoleRequest $request, RevokeUserFromRoleAction $action)
     {
         $user = $action->run($request['user_id'], $request['roles_ids']);
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\AttachPermissionsToRoleAction         $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function attachPermissionToRole(
         AttachPermissionToRoleRequest $request,
@@ -159,14 +158,14 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->transform($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest $request
-     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction         $action
+     * @param \App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function syncPermissionOnRole(
         SyncPermissionsOnRoleRequest $request,
@@ -174,14 +173,14 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->transform($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest $request
      * @param \App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction       $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function detachPermissionFromRole(
         DetachPermissionToRoleRequest $request,
@@ -189,20 +188,20 @@ class Controller extends ApiController
     ) {
         $role = $action->run($request['role_id'], $request['permissions_ids']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->transform($role, RoleTransformer::class);
     }
 
     /**
      * @param \App\Containers\Authorization\UI\API\Requests\CreateRoleRequest $request
      * @param \App\Containers\Authorization\Actions\CreateRoleAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function createRole(CreateRoleRequest $request, CreateRoleAction $action)
     {
         $role = $action->run($request['name'], $request['description'], $request['display_name']);
 
-        return $this->response->item($role, new RoleTransformer());
+        return $this->transform($role, RoleTransformer::class);
     }
 
 }

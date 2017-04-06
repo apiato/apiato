@@ -14,14 +14,13 @@ class ListAndSearchUsersAction extends Action
 {
 
     /**
-     * @param null $roles
      * @param bool $order
      *
      * @return  mixed
      */
-    public function run($roles = null, $order = true)
+    public function run($order = true)
     {
-        $users = $this->call(ListUsersTask::class, [$order, $roles]);
+        $users = $this->call(ListUsersTask::class, [$order, true]);
 
         return $users;
     }

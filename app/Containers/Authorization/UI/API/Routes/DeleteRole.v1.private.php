@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            deleteRole
- * @api                {delete} /roles/:id Delete a Role
+ * @api                {delete} /v1/roles/:id Delete a Role
  * @apiDescription     Delete Role by ID
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Role
@@ -18,6 +18,6 @@
 $router->delete('roles/{id}', [
     'uses'       => 'Controller@deleteRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

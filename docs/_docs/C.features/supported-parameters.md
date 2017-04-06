@@ -63,7 +63,7 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-See the [Search Parameter](doc:search-parameter) page, for how to set it up and control the searchability.
+See the [Search Parameter](http://apiato.io/C.features/search-parameter/) page, for how to set it up and control the searchability.
 
 ### Define the query condition for search:
 
@@ -98,7 +98,7 @@ Select your columns:
 
 Get an object with his relationships:
 
-For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers](doc:transformers) for more details.*
+For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers](http://apiato.io/D.components/transformers/) for more details.*
 
 using `include` with comma `,` separator:
 
@@ -139,7 +139,7 @@ All the parameters that are provided by the L5 Repository are configurable from 
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](doc:api-docs-generator) page.
+More details in the [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) page.
 
 ### More
 

@@ -12,7 +12,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class CreateRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@roles';
+    protected $endpoint = 'post@v1/roles';
 
     protected $auth = true;
 

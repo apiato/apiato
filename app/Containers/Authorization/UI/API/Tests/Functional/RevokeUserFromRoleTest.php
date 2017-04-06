@@ -14,7 +14,7 @@ use App\Containers\User\Models\User;
 class RevokeUserFromRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@roles/revoke';
+    protected $endpoint = 'post@v1/roles/revoke';
 
     protected $access = [
         'roles'       => '',

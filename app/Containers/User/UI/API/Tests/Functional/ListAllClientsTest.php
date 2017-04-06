@@ -13,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class ListAllClientsTest extends TestCase
 {
 
-    protected $endpoint = 'get@clients';
+    protected $endpoint = 'get@v1/clients';
 
     protected $access = [
         'roles'       => '',
@@ -34,7 +34,26 @@ class ListAllClientsTest extends TestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(4, $responseContent->data); // TODO: needs to be 2 only.
+        $this->assertCount(3, $responseContent->data);
+    }
+
+    public function testListAllClientsByNonAdmin_()
+    {
+        $this->getTestingUserWithoutAccess();
+
+        // create some fake users
+        factory(User::class, 2)->create();
+
+        // send the HTTP request
+        $response = $this->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(403);
+
+        $this->assertResponseContainKeyValue([
+            'errors' => 'You have no access to this resource!',
+            'message' => 'This action is unauthorized.',
+        ]);
     }
 
 }

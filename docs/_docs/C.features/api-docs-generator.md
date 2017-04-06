@@ -6,7 +6,7 @@ order: 1
 
 Every great API needs a great Documentation. 
 
-apiato make writing and generating documentations very easy with the `php artisan apidoc:generate` command.
+apiato make writing and generating documentations very easy with the `php artisan apiato:documentation` command.
 
 ![](https://s19.postimg.org/aeqv29ksz/Screen_Shot_2017-03-22_at_7.51.46_PM.png)
 
@@ -14,7 +14,7 @@ apiato make writing and generating documentations very easy with the `php artisa
 
 - Install the [ApiDocJs](http://apidocjs.com/) tool.
 
-- (Recommended) read the [Routes](doc:routes) page first.
+- (Recommended) read the [Routes](http://apiato.io/D.components/routes/) page first.
 
 ## Usage
 
@@ -77,7 +77,7 @@ $router->post('users/login', [
 
 ```shell
 
-php artisan apidoc:generate
+php artisan apiato:documentation
 
 ```
 
@@ -209,6 +209,9 @@ return [
     */
 
     'html_files' => 'public/'
+    
+    
+    // ...
 ];
 ```
 

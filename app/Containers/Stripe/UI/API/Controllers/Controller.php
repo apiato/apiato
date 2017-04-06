@@ -18,7 +18,7 @@ class Controller extends ApiController
      * @param \App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest $request
      * @param \App\Containers\Stripe\Actions\CreateStripeAccountAction          $action
      *
-     * @return  \Dingo\Api\Http\Response
+     * @return  \Illuminate\Http\JsonResponse
      */
     public function createStripeAccount(CreateStripeAccountRequest $request, CreateStripeAccountAction $action)
     {
@@ -31,7 +31,7 @@ class Controller extends ApiController
             $request->card_fingerprint
         );
 
-        return $this->response->accepted(null, [
+        return $this->accepted([
             'message'           => 'Stripe account created successfully.',
             'stripe_account_id' => $stripeAccount->id,
         ]);

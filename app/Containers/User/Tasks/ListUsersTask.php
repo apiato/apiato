@@ -3,10 +3,10 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Data\Criterias\AdminsCriteria;
+use App\Containers\User\Data\Criterias\NoRolesCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
-use App\Ship\Parents\Actions\Action;
 use App\Ship\Features\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class ListUsersTask.
@@ -32,24 +32,30 @@ class ListUsersTask extends Action
     }
 
     /**
-     * The search text is auto-magically applied.
+     * * The search text is auto-magically applied.
      *
-     * @param bool|true $order
+     * @param bool $order
+     * @param bool $allUsers
+     * @param null $roles
      *
      * @return  mixed
      */
-    public function run($order = true, $roles = null)
+    public function run($order = true, $allUsers = false, $roles = null)
     {
+        // if he doesn't need all users means he might need to filter by roles
+        if (!$allUsers) {
+            if ($roles) {
+                $this->userRepository->pushCriteria(new RoleCriteria($roles));
+            }else{
+                // if no roles specified means he wants only users with has no roles (normal clients usually)
+                $this->userRepository->pushCriteria(new NoRolesCriteria());
+            }
+        }
+
         if ($order) {
             $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
         }
 
-        if ($roles) {
-            $this->userRepository->pushCriteria(new RoleCriteria($roles));
-        }
-
-        $users = $this->userRepository->paginate();
-
-        return $users;
+        return $this->userRepository->paginate();;
     }
 }

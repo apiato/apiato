@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            createRole
- * @api                {post} /roles Create a Role
+ * @api                {post} /v1/roles Create a Role
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -27,6 +27,6 @@
 $router->post('roles', [
     'uses'       => 'Controller@createRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

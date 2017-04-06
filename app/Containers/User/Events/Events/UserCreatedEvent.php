@@ -16,7 +16,7 @@ class UserCreatedEvent extends Event
     use SerializesModels;
 
     /**
-     * @var
+     * @var \App\Containers\User\Models\User
      */
     public $user;
 

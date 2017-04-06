@@ -14,7 +14,7 @@ use App\Containers\Authorization\Tests\TestCase;
 class DetachPermissionsFromRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@permissions/detach';
+    protected $endpoint = 'post@v1/permissions/detach';
 
     protected $access = [
         'roles'       => '',

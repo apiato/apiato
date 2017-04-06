@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            getRole
- * @api                {get} /roles/:id Find a Role by ID
+ * @api                {get} /v1/roles/:id Find a Role by ID
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -23,6 +23,6 @@
 $router->get('roles/{id}', [
     'uses'       => 'Controller@getRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

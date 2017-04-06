@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  * @apiName            attachPermissionToRole
- * @api                {post} /permissions/attach Attach Permissions to Role
+ * @api                {post} /v1/permissions/attach Attach Permissions to Role
  * @apiDescription     Attach new permissions to role. This endpoint does not sync the role with the
  *                     new permissions. It simply attach new permission to the role. So make sure
  *                     to never send an already attached permission since it will cause an error.
@@ -48,6 +48,6 @@
 $router->post('permissions/attach', [
     'uses'       => 'Controller@attachPermissionToRole',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);

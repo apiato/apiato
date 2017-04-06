@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            RefreshUser
- * @api                {post} /users/{id}/refresh Refresh User data
+ * @api                {post} /v1/users/{id}/refresh Refresh User data
  * @apiDescription     Request the latest user Data. You can send the
  * `token` header or `user_id` parameter to get the updated user data.
  * (You can use this Endpoint whenever the user object is updated for any reason to get
@@ -54,6 +54,6 @@
 $router->post('users/{id}/refresh', [
     'uses' => 'Controller@refreshUser',
     'middleware' => [
-        'api.auth',
+        'auth:api',
     ],
 ]);
