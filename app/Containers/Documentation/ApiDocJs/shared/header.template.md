@@ -114,17 +114,14 @@ Unless otherwise specified, all of API endpoints will return the information tha
 Header Response :
 
 ```
-Cache-Control →private, must-revalidate
-Connection →keep-alive
-Content-Type →application/json
-Date →Thu, 14 Feb 2014 22:33:55 GMT
-ETag →"9c83bf4cf0d09c34782572727281b85879dd4ff6"
-Server →nginx
-Transfer-Encoding →chunked
-X-Powered-By →PHP/7.0.9
-X-RateLimit-Limit →100
-X-RateLimit-Remaining →99
-X-RateLimit-Reset →1487277532
+Content-Type → application/json
+Date → Thu, 14 Feb 2014 22:33:55 GMT
+ETag → "9c83bf4cf0d09c34782572727281b85879dd4ff6"
+Server → nginx
+Transfer-Encoding → chunked
+X-Powered-By → PHP/7.0.9
+X-RateLimit-Limit → 100
+X-RateLimit-Remaining → 99
 ```
 
 
@@ -276,7 +273,7 @@ api.domain.dev/endpoint?skipCache=true
 
 
 
-## **Errors**
+## **Errors** (Outdated)
 
 
 General Errors:
@@ -299,12 +296,12 @@ TO BE CONTINUE...
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: multipart/form-data; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/login"
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/v2/register"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.dev/users"
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.dev/v1/users"
 ```
 

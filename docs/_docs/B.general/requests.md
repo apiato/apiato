@@ -16,3 +16,16 @@ And to do that you must include the `Accept => application/json` HTTP header wit
 | Content-Type  | `application/x-www-form-urlencoded` | MUST be sent when passing Data.                                              |
 | Authorization | `Bearer {Access-Token-Here}`        | MUST be sent whenever the endpoint requires (Authenticated User).            |
 
+
+
+#### Calling unprotected endpoint example:
+
+```shell
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/v2/register"
+```
+
+#### Calling protected endpoint (passing Bearer Token) example:
+
+```shell
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.dev/v1/users"
+```
