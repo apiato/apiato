@@ -5,12 +5,35 @@ order: 4
 ---
 
 
-## 1) Development Environment Setup
+
+* [A) Development Environment Setup](#Development-Environment)
+	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
+	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
+	* [Option 3: using something else!](#Development-Environment)
+* [B) Application Setup](#App)
+	* [1) Code Setup](#Code-Setup)
+		* [Option 1: Automatically via Composer](#App-Composer)
+		* [Option 2: Manually](#App-Git)
+	* [2) Database Setup](#Setup-Database)
+	* [3) OAuth Setup](#Prepare-OAuth)
+	* [4) Documentation Setup](#Documentation)
+	* [5) Testing Setup](#Testing)
+* [C) Play](#Play)
+
+
+ 
+ 
+
+
+
+<a name="Development-Environment"></a>
+## A) Development Environment Setup
 
 You can run **apiato** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
 We'll see how to use both tools and you can pick one, or you can use other options like [Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
 
-### Option A: Using Docker (with Laradock):
+<a name="Dev-Env-Opt-A"></a>
+### A.1) Using Docker (with Laradock)
 
 **Laradock** is a Docker PHP development environment. It facilitate running PHP Apps on Docker.
 
@@ -45,9 +68,9 @@ docker-compose up -d nginx mysql redis beanstalkd
 127.0.0.1  admin.apiato.dev
 ```
 
-6. Visit `http://apiato.dev`, `http://api.apiato.dev/v1` and `http://admin.apiato.dev` in your browser.
 
-### Option B: Using Vagrant (with Laravel Homestead):
+<a name="Dev-Env-Opt-A"></a>
+### A.2) Using Vagrant (with Laravel Homestead)
 
 1) Configure Homestead:
 
@@ -94,20 +117,25 @@ sites:
 homestead up --provision
 ```
 
-3. Visit `http://apiato.dev`, `http://api.apiato.dev/v1` and `http://admin.apiato.dev` in your browser.
-
-If you see `No input file specified` on the subdomains! try running this command `homestead halt && homestead up --provision`.
+*If you see `No input file specified` on the subdomains! try running this command `homestead halt && homestead up --provision`.*
 
 
 
 
 
+<a name="App"></a>
 
-## 2) Application Setup
+## B) Application Setup
 
 **apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
-### A) Install apiato automatically via Composer:
+
+<a name="Code-Setup"></a>
+### 1) Code Setup
+
+
+<a name="App-Composer"></a>
+#### 1.A) Automatically via Composer
 
 1) Clone the repo, install dependencies and setup the project:
 
@@ -117,16 +145,14 @@ composer create-project apiato/apiato api
 
 2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
 
-3) Install OAuth 2.0 via Passport by running this command:
 
-```shell
-php artisan passport:install
-```
+<a name="App-Git"></a>
+#### 1.B) Manually
+
+You can download the Code directly from the repository as `.ZIP` file or clone the repository using `Git` (recommended):
 
 
-### B) Install apiato manually via Git:
-
-1) Clone the repository:
+1) Clone the repository using `Git`:
 
  ```shell
 git clone https://github.com/apiato/apiato.git
@@ -152,19 +178,13 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-5) Install OAuth 2.0 via Passport by running this command:
-
-```shell
-php artisan passport:install
-```
-
-6) delete the `.git` folder from the root directory and initialize your own with `git init`.
+5) delete the `.git` folder from the root directory and initialize your own with `git init`.
 
 
 
 
-
-## 3) Database Setup
+<a name="Setup-Database"></a>
+### 2) Database Setup
 
 1) Migrate the Database:
 
@@ -183,14 +203,21 @@ php artisan db:seed
 **NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
 
 
+<a name="Prepare-OAuth"></a>
+### 3) OAuth 2.0 Setup 
 
 
+1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients which will be used to generate access tokens:
+
+```shell
+php artisan passport:install
+```
 
 
+<a name="Documentation"></a>
+### 4) Documentation Setup
 
-## 4) API Documentation Setup:
-
-if you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
+If you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
 
 1) Install [ApiDocJs](http://apidocjs.com/) using NPM or any other way:
 ```shell
@@ -202,20 +229,35 @@ npm install
 ##### Visit [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) for more details.
 
 
-<br>
 
-## Testing
+<a name="Testing"></a>
+### 5) Testing Setup
+
 1) Open `phpunit.xml` and make sure the environments are correct for your domain.
+ 
+2) run the tests
 
-2) Open your browser and visit the api domain
-
-```text
-http://api.apiato.dev
+```shell
+phpunit
 ```
 
-You should see a JSON response the message: `Welcome to apiato.`
 
-3) Let's make some HTTP calls to the API:
+
+
+
+<a name="Play"></a>
+## C) Play
+
+Now let's see it in action
+
+1. Open your web browser and visit: 
+
+- `http://apiato.dev` You should see an HTML page, with `apiato` in the middle.
+- `http://api.apiato.dev/v1` You should see a JSON response with message: `Welcome to apiato.`
+- `http://admin.apiato.dev` You should see an HTML Login page.
+
+
+2) Make some HTTP calls to the API:
 
 *To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or any other tool you prefer.*
 
@@ -238,8 +280,8 @@ Server → nginx
 Transfer-Encoding → chunked
 Vary → Origin
 X-Powered-By → PHP/7.7.7
-X-RateLimit-Limit → 99
-X-RateLimit-Remaining → 99
+X-RateLimit-Limit → 30
+X-RateLimit-Remaining → 29
 
 {
   "data": {
@@ -271,19 +313,13 @@ X-RateLimit-Remaining → 99
       "object": "Token",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
       "token_type": "Bearer",
-      "expires_in": "..."
+      "expires_in": 5256000
     },
     "roles": {
       "data": []
     }
   }
 }
-```
- 
-4) To run the automated tests you can always type:
-
-```shell
-phpunit
 ```
 
 
