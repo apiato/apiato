@@ -15,14 +15,21 @@ trait ResponseTrait
 {
 
     /**
-     * @param $data
-     * @param $transformerName
+     * @param            $data
+     * @param null       $transformerName
+     * @param array|null $includes
      *
      * @return  mixed
      */
-    public function transform($data, $transformerName = null)
+    public function transform($data, $transformerName = null, array $includes = null)
     {
-        return Fractal::create($data, new $transformerName)->toJson();
+        $transformer = new $transformerName;
+
+        if($includes){
+            $transformer->setDefaultIncludes($includes);
+        }
+
+        return Fractal::create($data, $transformer)->toJson();
     }
 
     /**
