@@ -52,12 +52,6 @@ curl --request POST \
       "timezone_type": 3,
       "timezone": "UTC"
     },
-    "token": {
-      "object": "Token",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
-      "token_type": "Bearer",
-      "expires_in": "..."
-    },
     "roles": {
       "data": []
     }
@@ -65,7 +59,7 @@ curl --request POST \
 }
 ```
 
-Note: By default every registered user will have a Personal Access Token (the Token name is the user Email). All these Access Tokens will be linked to a default Client of type Personal.
+Note: After registration you will have to send another call to `http://api.poms.dev/v1/oauth/token` inrodre to get the user access token.
 
 
 ### Register users by Social Account

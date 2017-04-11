@@ -309,12 +309,6 @@ X-RateLimit-Remaining → 29
       "timezone_type": 3,
       "timezone": "UTC"
     },
-    "token": {
-      "object": "Token",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
-      "token_type": "Bearer",
-      "expires_in": 5256000
-    },
     "roles": {
       "data": []
     }

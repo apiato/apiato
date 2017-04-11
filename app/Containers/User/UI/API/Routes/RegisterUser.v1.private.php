@@ -42,12 +42,6 @@
       "timezone_type": 3,
       "timezone": "UTC"
     },
-    "token": {
-      "object": "Token",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
-      "token_type": "Bearer",
-      "expires_in": "..."
-    },
     "roles": {
       "data": []
     }

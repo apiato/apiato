@@ -26,14 +26,14 @@ class CreateUserAction extends Action
      */
     public function run($email, $password, $name = null, $gender = null, $birth = null)
     {
-        // create user record in the datbase
+        // create user record in the database
         $user = $this->call(CreateUserByCredentialsTask::class, [$email, $password, $name, $gender, $birth]);
 
         // Set default permissions on the new user
         // $this->call(AssignUserToRoleAction::class, [$user, ['manager', '...']]);
 
         // Creating an access token without scopes, and attach it to the new user
-        $user->attachAccessToken($email);
+        //        $user->attachAccessToken($email);
 
         // Fire user created event
         $this->call(FireUserCreatedEventTask::class, [$user]);

@@ -13,7 +13,7 @@ use Exception;
 trait TokenTrait
 {
 
-    // TODO: rename this to HasApiTokens and combine both
+    // TODO: remove this to HasApiTokens and combine both !
 
     /**
      * @param       $tokenName
@@ -24,6 +24,8 @@ trait TokenTrait
      */
     public function attachAccessToken($tokenName, array $scopes = [])
     {
+        // TODO: not tested and most probably not working.
+
         try {
             $personalAccessTokenObject = $this->createToken($tokenName, $scopes);
 
