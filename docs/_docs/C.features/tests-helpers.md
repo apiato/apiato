@@ -169,7 +169,7 @@ $user = $this->getTestingUser([
 
 ## Misc
 
-### Need a faker instance!
+### faker
 
 Just use it from any test: `$this->faker->name;`
 
@@ -178,3 +178,12 @@ There's an instance of faker in every class.
 Just use it: `$this->faker->name;`
 
 See the [Tests](http://apiato.io/D.components/tests/) Page, for more details about the Tests components.
+
+
+
+### Testing Data Seeder
+
+1. Go to `Seeder/Data/Testing/Seeders/TestingDataSeeder.php` seeder class in the Seeder Container, and create your testing data.
+
+2. Run this comman `php artisan apiato:seed-test`
+

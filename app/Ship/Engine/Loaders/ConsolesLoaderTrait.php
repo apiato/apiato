@@ -25,17 +25,23 @@ trait ConsolesLoaderTrait
     }
 
     /**
-     * @param $portFolderName
+     *
      */
-    public function loadConsolesFromShip($portFolderName)
+    public function loadConsolesFromShip()
     {
 //        $portFolderName = base_path('app/Ship/') . $portFolderName . '/Commands/';
+
+//        $shipFolderNames = [
+//            $portFolderName = base_path('Ship/Features/Seeders/Commands/')
+//        ];
 //
-//        $this->loadTheConsoles($portFolderName);
+//        foreach ($shipFolderNames as $folder){
+//            $this->loadTheConsoles($folder);
+//        }
     }
 
     /**
-     * @param $consoleClass
+     * @param $directory
      */
     private function loadTheConsoles($directory)
     {

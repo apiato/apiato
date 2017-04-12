@@ -4,7 +4,7 @@ category: "Features"
 order: 2
 ---
 
-Middlewares are the best solution to apply Authentication in your App. 
+Middlewares are the best solution to apply Authentication in your App.
 
 in **apiato** you can use these two Authentication Middlewares, to protect your endopints:
 
@@ -28,9 +28,9 @@ $router->get('secret/info', [
 
 ```
 
-Any Endpoint protected with `auth:api` requires the user to send at least an access token with the request.
+All Endpoints protected with `auth:api` are accessible only when sending them a valid access token.
 
-This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/passport) package. So you can read its documentation for more details. 
+This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/passport) package. So you can read its documentation for more details.
 
 
 
@@ -39,6 +39,8 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 > The Auth Endpoints and more, are documented by default in apiato. Go to [Documentation Generator Page](http://apiato.io/C.features/api-docs-generator/) and see how to generate the API documentation.
 
 
+OAuth let's you authenticate using different methods, these methods are called `grants`.
+How to decide which grant type you should use! Check [this](https://oauth2.thephpleague.com/authorization-server/which-grant/), and keep reading this documentation.
 
 
 <br>
@@ -53,6 +55,11 @@ With this grant type your server needs to authenticate the Client App first (ens
 
 
 **How it works:**
+
+> Quick Overview:
+> - On register: the API returns user data. You will need to log that user in (using the same credentails he passed) to get his Access Token and make other API calls.
+> - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
+
 
 1) Create a password type Client in your database to represent your App. you can use `php artisan passport:client --password`.
 
@@ -84,14 +91,14 @@ Response:
 4) Your Client App should save the Tokens and start requesting secure data, by sending the Access Token in the HTTP Header `Authorization = Bearer {Access-Token}`.
 
 
-> WARNING: This method is still not so safe as it exposes your client credentials in the code, you need to hide your client credentials behind a proxy.
+> WARNING: This method is still not so safe as it exposes your client credentials in the code, you need to hide your client credentials behind a proxy. Check this [article](http://esbenp.github.io/2017/03/19/modern-rest-api-laravel-part-4/).
 
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#password-grant-tokens)
 
 
 ## Login
 
-Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password` in addition to the User and Client Credentials, to get the user Access Token. Once issued, you can use that Access Token to make requests to protected resources (Endpoints). 
+Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password` in addition to the User and Client Credentials, to get the user Access Token. Once issued, you can use that Access Token to make requests to protected resources (Endpoints).
 
 The Acces Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
 
@@ -184,7 +191,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
 ```
 
 
-## Change Tokens Expiration dates 
+## Change Tokens Expiration dates
 
 Go to the `apiato.php` config file and edit this:
 

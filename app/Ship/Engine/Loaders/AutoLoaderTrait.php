@@ -30,6 +30,7 @@ trait AutoLoaderTrait
         $this->loadConfigsFromShip();
         $this->loadMigrationsFromShip();
         $this->loadViewsFromShip();
+        $this->loadConsolesFromShip();
 
         // > iterate over all the containers folders and autoload most of the components
         foreach (ShipButler::getContainersNames() as $containerName) {

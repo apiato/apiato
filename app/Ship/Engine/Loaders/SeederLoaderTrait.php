@@ -57,20 +57,19 @@ trait SeederLoaderTrait
      */
     private function loadSeedersFromShip()
     {
-        $seedersClasses = new Collection();
-
-        // it has to do it's own loop for now
-        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
-
-            // TODO: Currently only the Tests Seeder will work since this is statically defined.
-            // Need to Loop over that Directory and load the any Seeder file there.
-            $containersDirectories[] = base_path('app/Ship/Features/Seeders/Tests');
-        }
-
-        $seedersClasses = $this->findSeedersClasses($containersDirectories, $seedersClasses);
-        $orderedSeederClasses = $this->sortSeeders($seedersClasses);
-
-        $this->loadSeeders($orderedSeederClasses);
+//        $seedersClasses = new Collection();
+//
+//        // it has to do it's own loop for now
+//        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
+//
+//            // Need to Loop over that Directory and load the any Seeder file there.
+//            $containersDirectories[] = base_path('app/Ship/Features/Seeders/Tests');
+//        }
+//
+//        $seedersClasses = $this->findSeedersClasses($containersDirectories, $seedersClasses);
+//        $orderedSeederClasses = $this->sortSeeders($seedersClasses);
+//
+//        $this->loadSeeders($orderedSeederClasses);
     }
 
     /**
