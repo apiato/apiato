@@ -39,7 +39,7 @@ class CreateAdminTest extends TestCase
         ]);
 
          // assdert response contain the token
-        $this->assertResponseContainKeys(['id', 'token']);
+        $this->assertResponseContainKeys(['id']);
 
          // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);

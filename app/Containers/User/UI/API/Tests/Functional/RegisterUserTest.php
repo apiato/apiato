@@ -42,7 +42,7 @@ class RegisterUserTest extends TestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertNotEmpty($responseContent->data->token);
+        $this->assertNotEmpty($responseContent->data);
 
          // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);

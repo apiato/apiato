@@ -28,9 +28,6 @@ class CreateUserTest extends TestCase
         // asset the returned object is an instance of the User
         $this->assertInstanceOf(User::class, $user);
 
-        // assert the user has logged in and has a token attached to it
-        $this->assertNotEmpty($user->access_token);
-
         $this->assertEquals($user->name, $name);
     }
 }
