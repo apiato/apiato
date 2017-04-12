@@ -15,6 +15,11 @@ trait ResponseTrait
 {
 
     /**
+     * @var  array
+     */
+    protected $metaData = [];
+
+    /**
      * @param            $data
      * @param null       $transformerName
      * @param array|null $includes
@@ -29,7 +34,19 @@ trait ResponseTrait
             $transformer->setDefaultIncludes($includes);
         }
 
-        return Fractal::create($data, $transformer)->toJson();
+        return Fractal::create($data, $transformer)->addMeta($this->metaData)->toJson();
+    }
+
+    /**
+     * @param $data
+     *
+     * @return  $this
+     */
+    public function withMeta($data)
+    {
+        $this->metaData = $data;
+
+        return $this;
     }
 
     /**
@@ -46,7 +63,7 @@ trait ResponseTrait
     }
 
     /**
-     * @param null  $message
+     * @param null  array or string $message
      * @param int   $status
      * @param array $headers
      * @param int   $options
@@ -63,8 +80,12 @@ trait ResponseTrait
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function deleted($object)
+    public function deleted($object = null)
     {
+        if(!$object){
+            return $this->accepted();
+        }
+
         $id = $object->getHashedKey();
         $objectType = (new ReflectionClass($object))->getShortName();
 
