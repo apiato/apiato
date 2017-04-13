@@ -32,7 +32,7 @@ abstract class Transformer extends FractalTransformer
     {
         $user = $this->user();
 
-        if (is_null($user) || !$user->hasAdminRole()) {
+        if (!is_null($user) && $user->hasAdminRole()) {
             return array_merge($clientResponse, $adminResponse);
         }
 
