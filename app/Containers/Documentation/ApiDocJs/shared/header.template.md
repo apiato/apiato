@@ -56,7 +56,7 @@ By default, all fetch requests return the first `{{pagination-limit}}` items in 
 Unless otherwise specified, all of API endpoints will return the information that you request in the JSON data format.
 
 
-#### Normal response example
+#### Standard Response Format
 
 ```shell
 {
@@ -88,30 +88,9 @@ Unless otherwise specified, all of API endpoints will return the information tha
 }
 ```
 
-
-#### Pagination
-
-*The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
-
-```shell
-  "data": [...],
-  "meta": {
-    "pagination": {
-      "total": 2000,
-      "count": 30,
-      "per_page": 30,
-      "current_page": 22,
-      "total_pages": 1111,
-      "links": {
-        "previous": "http://api.domain.dev/endpoint?page=21"
-      }
-    }
-  }
-```
-
 #### Header
 
-Header Response :
+Header Response:
 
 ```
 Content-Type → application/json
@@ -240,6 +219,23 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 api.domain.dev/endpoint?page=200
 ```
 
+*The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
+
+```shell
+  "data": [...],
+  "meta": {
+    "pagination": {
+      "total": 2000,
+      "count": 30,
+      "per_page": 30,
+      "current_page": 22,
+      "total_pages": 1111,
+      "links": {
+        "previous": "http://api.domain.dev/endpoint?page=21"
+      }
+    }
+  }
+```
 
 ### Relationships
 

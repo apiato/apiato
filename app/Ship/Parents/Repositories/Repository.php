@@ -26,6 +26,22 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
     }
 
     /**
+     * @param null   $limit
+     * @param array  $columns
+     * @param string $method
+     *
+     * @return  mixed
+     */
+    public function paginate($limit = null, $columns = ['*'], $method = "paginate")
+    {
+        // the priority is for the function parameter, if not available then take
+        // it from the request if available and if not keep it null.
+        $limit = $limit ? : Request::get('limit');
+
+        return parent::paginate($limit, $columns, $method);
+    }
+
+    /**
      * This function relies on the convention.
      * Conventions:
      *    - Repository name should be same like it's model name (model: Foo -> repository: FooRepository).
