@@ -56,6 +56,6 @@ class ListUsersTask extends Action
             $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
         }
 
-        return $this->userRepository->paginate();;
+        return $this->userRepository->paginate();
     }
 }

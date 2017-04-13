@@ -6,6 +6,7 @@ use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheable;
 use Prettus\Repository\Criteria\RequestCriteria as PrettusRequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusRepository;
 use Prettus\Repository\Traits\CacheableRepository as PrettusCacheableRepository;
+use Request;
 
 /**
  * Class Repository.
