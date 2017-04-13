@@ -7,8 +7,9 @@ Homestead.json
 Homestead.yaml
 .env
 storage/logs/laravel.log
+/public/api-rendered-markdowns/*
 /public/api/
-/public/api-rendered-markdowns/
+
 /public/uploads/
 /laradock*/
 /storage/*.index
