@@ -57,6 +57,7 @@ class AuthProvider extends ParentAuthProvider
         Route::group([
             'prefix'     => '/v1',
             'middleware' => ['api'],
+            'domain'     => Config::get('apiato.api.url'),
         ], function () {
             Passport::routes();
         });
