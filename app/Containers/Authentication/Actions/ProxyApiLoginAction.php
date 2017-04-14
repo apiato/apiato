@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Request;
 use Route;
@@ -44,6 +45,7 @@ class ProxyApiLoginAction // extends Action
      */
     public function run($email, $password, $client)
     {
+        // load the corresponding credentials of my trusted client.
         switch ($client) {
             case 'AdminWeb':
                 $clientId = env('CLIENT_WEB_ADMIN_ID');
@@ -66,18 +68,17 @@ class ProxyApiLoginAction // extends Action
         $data = [
             'username'      => $email,
             'password'      => $password,
-            'grant_type'    => 'password',
             'client_id'     => $clientId,
             'client_secret' => $clientSecret,
+            'grant_type'    => 'password',
             'scope'         => '',
         ];
 
-        $request = Request::create($authFullApiUrl, 'POST', $data, [],[], [
-//            'Content-Type' => 'application/x-www-form-urlencoded',
-//            'Accept' => 'application/json',
-        ]);
-        $response = Route::dispatch($request);
+        $request = Request::create($authFullApiUrl, 'POST', $data);
 
+        $response = App::handle($request);
+
+        // response content as Array
         return \GuzzleHttp\json_decode($response->getContent(), true);
     }
 }
