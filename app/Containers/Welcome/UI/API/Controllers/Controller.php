@@ -16,9 +16,17 @@ class Controller extends ApiController
     /**
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function sayWelcome()
+    public function apiRoot()
     {
         return response()->json(['Welcome to ' . Config::get('app.name') . '.']);
+    }
+
+    /**
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function v1ApiLandingPage()
+    {
+        return response()->json(['Welcome to ' . Config::get('app.name') . ' (API V1).']);
     }
 
 }

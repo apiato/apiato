@@ -122,6 +122,11 @@ trait RoutesLoaderTrait
 
         $apiVersion = prev($fileNameWithoutExtensionExploded); // get the array before the last one
 
+        // Skip versioning the API's root route
+        if($apiVersion === 'ApisRoot'){
+            $apiVersion = '';
+        }
+
         return $apiVersion;
     }
 
