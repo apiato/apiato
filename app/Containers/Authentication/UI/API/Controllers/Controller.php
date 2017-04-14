@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\UI\API\Controllers;
 
 use App\Containers\Authentication\Actions\ApiLogoutAction;
+use App\Containers\Authentication\Actions\ProxyApiLoginAction;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -28,5 +29,20 @@ class Controller extends ApiController
             'message' => 'Token revoked successfully.',
         ]);
     }
+
+    /**
+     * @param \App\Containers\Authentication\UI\API\Requests\LogoutRequest $request
+     * @param \App\Containers\Authentication\Actions\ProxyApiLoginAction   $action
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function proxyLoginForAdminWebClient(LogoutRequest $request, ProxyApiLoginAction $action)
+    {
+        $result = $action->run($request->email, $request->password, 'AdminWeb');
+
+        return $this->json($result);
+    }
+
+
 
 }
