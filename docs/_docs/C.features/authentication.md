@@ -90,10 +90,36 @@ Response:
 
 4) Your Client App should save the Tokens and start requesting secure data, by sending the Access Token in the HTTP Header `Authorization = Bearer {Access-Token}`.
 
-
-> WARNING: This method is still not so safe as it exposes your client credentials in the code, you need to hide your client credentials behind a proxy. Check this [article](http://esbenp.github.io/2017/03/19/modern-rest-api-laravel-part-4/).
-
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#password-grant-tokens)
+
+
+> WARNING: the Client ID and Secret should not be stored in JavaScript or browser cache, or made accessible in any way.
+
+
+So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And apiato by default provides you with a Login Proxy to use for all your trusted first party clients.
+
+
+
+
+### Login Proxy
+
+Concept: create endpoint for each trusted client, to be used for login. apiato by default has this url `clients/web/admin/login`, but you can add more as you need for each of your trusted first party clients apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
+
+That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the requred data.
+Then it returns the Auth response back to the client with the Tokens in it.
+
+Note: You have to manually exract the Client credentials from the DB after running `passport:install` and put them in the `.env`.
+
+Example:
+```
+CLIENT_WEB_ADMIN_ID=2
+CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
+```
+
+
+
+
+
 
 
 ## Login

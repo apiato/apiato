@@ -43,6 +43,4 @@ class Controller extends ApiController
         return $this->json($result);
     }
 
-
-
 }
