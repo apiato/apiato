@@ -16,7 +16,7 @@ class Controller extends WebController
      * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sayWelcome()
-    {
-        return view('user-welcome');
+    {   // user say welcome
+        return view('user::user-welcome');
     }
 }

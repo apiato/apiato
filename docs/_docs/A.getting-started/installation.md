@@ -253,7 +253,7 @@ Now let's see it in action
 1. Open your web browser and visit: 
 
 - `http://apiato.dev` You should see an HTML page, with `apiato` in the middle.
-- `http://api.apiato.dev/v1` You should see a JSON response with message: `Welcome to apiato.`
+- `http://api.apiato.dev/` You should see a JSON response with message: `Welcome to apiato.`, you can also to go `http://api.apiato.dev/v1` and see a welcome response to your API version 1 landing page
 - `http://admin.apiato.dev` You should see an HTML Login page.
 
 
