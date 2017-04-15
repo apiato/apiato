@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class OAuthProxyAction.
+ * Class OAuthProxyTask.
  */
-class OAuthProxyAction extends Action
+class OAuthProxyTask extends Action
 {
     /**
      * @string
@@ -25,6 +25,7 @@ class OAuthProxyAction extends Action
      * @param $client
      *
      * @return mixed
+     * @throws \App\Containers\Authentication\Exceptions\LoginFailedException
      * @internal param $refresh_token
      */
     public function run($data, $client)
