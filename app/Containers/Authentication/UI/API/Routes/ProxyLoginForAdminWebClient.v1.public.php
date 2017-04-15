@@ -3,10 +3,9 @@
 /**
  * @apiGroup           OAuth2
  * @apiName            ClientAdminWebAppLoginProxy
- * @api                {post} /v1/clients/web/admin/login Login (Password Grant)
- * @apiDescription     Login Users using their username and passwords. (For First-Party Clients)
+ * @api                {post} /v1/clients/web/admin/login Login (Password Grant with proxy)
+ * @apiDescription     Login Users using their username and password, without client_id and client_secret.
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
  *
  * @apiParam           {String}  email user email
  * @apiParam           {String}  password user password
@@ -16,8 +15,7 @@
 {
   "token_type": "Bearer",
   "expires_in": 315360000,
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbG...",
-  "refresh_token": "Oukd61zgKzt8TBwRjnasd..."
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbG..."
 }
  */
 $router->post('clients/web/admin/login', [
