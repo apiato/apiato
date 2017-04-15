@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Butlers;
 
-use App\Ship\Features\Exceptions\WrongConfigurationsException;
+use App\Ship\Exceptions\WrongConfigurationsException;
 use Illuminate\Support\Facades\Config;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Kernels;
 
-use App\Ship\Features\Middlewares\Http\ResponseHeadersMiddleware;
+use App\Ship\Middlewares\Http\ResponseHeadersMiddleware;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
@@ -26,7 +26,7 @@ class ShipHttpKernel extends LaravelHttpKernel
         // Laravel middleware's
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Ship\Features\Middlewares\Http\TrimStrings::class,
+        \App\Ship\Middlewares\Http\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
         // CORS package middleware
@@ -40,12 +40,12 @@ class ShipHttpKernel extends LaravelHttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \App\Ship\Features\Middlewares\Http\EncryptCookies::class,
+            \App\Ship\Middlewares\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Ship\Features\Middlewares\Http\VerifyCsrfToken::class,
+            \App\Ship\Middlewares\Http\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 

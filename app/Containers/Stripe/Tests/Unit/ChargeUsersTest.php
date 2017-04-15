@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Tests\Unit;
 use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
 use App\Containers\Stripe\Tasks\ChargeWithStripeTask;
 use App\Containers\Stripe\Tests\TestCase;
-use App\Ship\Features\Payment\Proxies\PaymentsProxy;
+use App\Ship\Payment\Proxies\PaymentsProxy;
 use Illuminate\Support\Facades\App;
 
 /**

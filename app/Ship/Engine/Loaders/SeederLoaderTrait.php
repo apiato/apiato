@@ -63,7 +63,7 @@ trait SeederLoaderTrait
 //        foreach (ShipButler::getShipFoldersNames() as $portFolderName) {
 //
 //            // Need to Loop over that Directory and load the any Seeder file there.
-//            $containersDirectories[] = base_path('app/Ship/Features/Seeders/Tests');
+//            $containersDirectories[] = base_path('app/Ship/Seeders/Tests');
 //        }
 //
 //        $seedersClasses = $this->findSeedersClasses($containersDirectories, $seedersClasses);

@@ -115,7 +115,7 @@ Or you can call `getTestingUserWithoutAccess()` to get user without permissions 
 
 ## Tests functions:
 
-All the test helper functions are provided by traits classes living inside `app/Ship/Features/Tests/*` folder. And they are all available for usage from every test class in your application.
+All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all available for usage from every test class in your application.
 
 #### makeCall
 
@@ -165,7 +165,7 @@ $user = $this->getTestingUser([
 
 ```
 
-> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please check all the public functions in those traits `app/Ship/Features/Tests/*`.
+> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please check all the public functions in those traits `app/Ship/Tests/*`.
 
 ## Misc
 

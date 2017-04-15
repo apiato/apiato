@@ -274,7 +274,7 @@ This Middleware is provided by apiato and is different than the default Laravel 
 
 **If authentication failed, users will be redirected to a login page**
 
-To change the login page view go to the config file `app/Ship/Features/Configs/apiato.php`, and set the name of your login page there as follow:
+To change the login page view go to the config file `app/Ship/Configs/apiato.php`, and set the name of your login page there as follow:
 
 ```php
 <?php

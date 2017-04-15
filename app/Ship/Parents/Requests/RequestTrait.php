@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Requests;
 
-use App\Ship\Features\Exceptions\ValidationFailedException;
+use App\Ship\Exceptions\ValidationFailedException;
 use Dingo\Api\Http\Request as DingoRequest;
 use Illuminate\Contracts\Validation\Validator;
 

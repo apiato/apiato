@@ -22,7 +22,7 @@ You can enable and disable Middlewares as you wish.
 
 - To register Middleware's in a Container the container needs to have `MiddlewareServiceProvider`. And like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
 
-- General Middlewares (like some default Laravel Middleware's) SHOULD live in the Ship layer `app/Ship/Features/Middlewares/*` and are registered in the Ship Main Provider `app/Ship/Engine/Providers/PortoServiceProvider.php`.
+- General Middlewares (like some default Laravel Middleware's) SHOULD live in the Ship layer `app/Ship/Middlewares/*` and are registered in the Ship Main Provider `app/Ship/Engine/Providers/PortoServiceProvider.php`.
 
 - Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense) example: the `jwt.auth` middleware "provided by the JWT package" is registered in the Authentication Container (`Containers/Authentication/Providers/MiddlewareServiceProvider.php`).
 

@@ -130,7 +130,7 @@ You can include these parameters on almost every `[GET]` endpoint)
 
 ## Configuration
 
-All the parameters that are provided by the L5 Repository are configurable from the `Ship/Features/Configs/repository.php` file.
+All the parameters that are provided by the L5 Repository are configurable from the `Ship/Configs/repository.php` file.
 
 #### See the Supported Parameters from the User Developer perspective:
 
