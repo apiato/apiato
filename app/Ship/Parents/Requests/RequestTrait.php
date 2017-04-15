@@ -2,10 +2,6 @@
 
 namespace App\Ship\Parents\Requests;
 
-use App\Ship\Exceptions\ValidationFailedException;
-use Dingo\Api\Http\Request as DingoRequest;
-use Illuminate\Contracts\Validation\Validator;
-
 /**
  * Class RequestTrait
  *
@@ -30,24 +26,6 @@ trait RequestTrait
 
         return $requestData;
     }
-
-    /**
-     * Overriding this function to throw a custom
-     * exception instead of the default Laravel exception.
-     *
-     * @param \Illuminate\Contracts\Validation\Validator $validator
-     *
-     * @return mixed|void
-     */
-    public function failedValidation(Validator $validator)
-    {
-        if ($this->container['request'] instanceof DingoRequest) {
-            throw new ValidationFailedException($validator->getMessageBag());
-        }
-
-        parent::failedValidation($validator);
-    }
-
 
     /**
      * Used from the `authorize` function if the Request class.
