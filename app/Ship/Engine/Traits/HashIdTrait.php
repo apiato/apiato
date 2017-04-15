@@ -2,7 +2,7 @@
 
 namespace App\Ship\Engine\Traits;
 
-use App\Ship\Features\Exceptions\IncorrectIdException;
+use App\Ship\Exceptions\IncorrectIdException;
 use Illuminate\Support\Facades\Config;
 use Route;
 use Vinkla\Hashids\Facades\Hashids;

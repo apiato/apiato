@@ -17,14 +17,14 @@ class SayWelcome extends ConsoleCommand
      *
      * @var string
      */
-    protected $signature = 'say:welcome';
+    protected $signature = 'apiato:welcome';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Just Saying Welcome.';
+    protected $description = 'Just saying Welcome.';
 
     /**
      * Create a new command instance.

@@ -61,4 +61,4 @@ All the composer dependencies should be defined in their Containers, in a compos
 
 By default this feature is turned off.
 
-To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The query result will be cleared on `create`, `update` and `delete`. However all these configurations can be changed from `Ship/Features/Configs/repository.php`.
+To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The query result will be cleared on `create`, `update` and `delete`. However all these configurations can be changed from `Ship/Configs/repository.php`.

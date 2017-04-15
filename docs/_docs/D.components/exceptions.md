@@ -18,7 +18,7 @@ Exceptions are classes the handles errors, and helps developers debug their code
 
 - All Exceptions MUST extend from `App\Ship\Parents\Exceptions\Exception`.
 
-- Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Features/Exceptions/*`).
+- Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Exceptions/*`).
 
 - Every Exception SHOULD have two properties `httpStatusCode` and `message`, both properties will be displayed when an error occurs. You can override those values while throwing the error.
 

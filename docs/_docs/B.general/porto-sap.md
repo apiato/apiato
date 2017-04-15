@@ -8,6 +8,8 @@ As you may know already, apiato is architectured using the Porto Software Archit
 
 Porto consists of 2 layers the **Containers** layer and the **Ship** layer.
 
+The Container layer holds the application business logic code, (wrapped in Containers). While the Ship layer holds your infrastructure code.
+
 ### Containers Layer
 
 Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Containers-Layer)

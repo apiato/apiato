@@ -30,7 +30,7 @@ trait MigrationsLoaderTrait
     {
         // TODO: Currently only the Queue Migration will work since this is statically defined.
         // Need to Loop over that Directory and load the any Migration file there.
-        $portMigrationDirectory = base_path('app/Ship/Features/Migrations/Queue');
+        $portMigrationDirectory = base_path('app/Ship/Migrations/Queue');
 
         $this->loadMigrations($portMigrationDirectory);
     }

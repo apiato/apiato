@@ -79,7 +79,7 @@ $result = $user->charge(1000, 'USD');
 ```
 
 	 
-Before using this feature you may need to check this class `app/Ship/Features/Payment/Proxies/PaymentsProxy.php`.
+Before using this feature you may need to check this class `app/Ship/Payment/Proxies/PaymentsProxy.php`.
 
 ## Mocking the real call for Testing:
 

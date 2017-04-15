@@ -3,13 +3,13 @@
 namespace App\Ship\Parents\Tests\PhpUnit;
 
 use App\Ship\Engine\Traits\HashIdTrait;
-use App\Ship\Features\Tests\PhpUnit\TestingTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsAuthHelperTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsCustomHelperTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsMockHelperTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsRequestHelperTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsResponseHelperTrait;
-use App\Ship\Features\Tests\PhpUnit\TestsUploadHelperTrait;
+use App\Ship\Tests\PhpUnit\TestingTrait;
+use App\Ship\Tests\PhpUnit\TestsAuthHelperTrait;
+use App\Ship\Tests\PhpUnit\TestsCustomHelperTrait;
+use App\Ship\Tests\PhpUnit\TestsMockHelperTrait;
+use App\Ship\Tests\PhpUnit\TestsRequestHelperTrait;
+use App\Ship\Tests\PhpUnit\TestsResponseHelperTrait;
+use App\Ship\Tests\PhpUnit\TestsUploadHelperTrait;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as LaravelKernel;
 use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;

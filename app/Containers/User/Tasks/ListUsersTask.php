@@ -5,7 +5,7 @@ namespace App\Containers\User\Tasks;
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Data\Criterias\NoRolesCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
-use App\Ship\Features\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Actions\Action;
 
 /**

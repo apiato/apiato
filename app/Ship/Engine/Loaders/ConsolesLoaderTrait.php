@@ -19,25 +19,25 @@ trait ConsolesLoaderTrait
      */
     public function loadConsolesFromContainers($containerName)
     {
-        $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands/');
+        $containerCommandsDirectory = base_path('app/Containers/' . $containerName . '/UI/CLI/Commands');
 
         $this->loadTheConsoles($containerCommandsDirectory);
     }
 
     /**
-     *
+     * @void
      */
     public function loadConsolesFromShip()
     {
-//        $portFolderName = base_path('app/Ship/') . $portFolderName . '/Commands/';
+        // Manually register Ship Consoles
+        $shipFolderPaths = [
+            'Seeders/Commands',
+            // ...
+        ];
 
-//        $shipFolderNames = [
-//            $portFolderName = base_path('Ship/Features/Seeders/Commands/')
-//        ];
-//
-//        foreach ($shipFolderNames as $folder){
-//            $this->loadTheConsoles($folder);
-//        }
+        foreach ($shipFolderPaths as $folderPath) {
+            $this->loadTheConsoles(base_path('app/Ship/' . $folderPath));
+        }
     }
 
     /**
@@ -50,7 +50,6 @@ trait ConsolesLoaderTrait
             $files = File::allFiles($directory);
 
             foreach ($files as $consoleFile) {
-
                 $consoleClass = ShipButler::getClassFullNameFromFile($consoleFile->getPathname());
 
                 // when user from the Main Service Provider, which extends Laravel
