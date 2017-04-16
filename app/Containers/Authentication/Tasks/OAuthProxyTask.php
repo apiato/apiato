@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Containers\Authentication\Actions;
+namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Exceptions\LoginFailedException;
-use App\Containers\Authentication\Tasks\GetRefreshCookieTask;
-use App\Containers\Authentication\Tasks\InjectClientIdAndSecretTask;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -13,7 +11,7 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class OAuthProxyTask.
  */
-class OAuthProxyTask extends Action
+class OAuthProxyTask extends Task
 {
     /**
      * @string
@@ -33,8 +31,28 @@ class OAuthProxyTask extends Action
         // Full url to the oauth token endpoint
         $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
 
-        // Inject the corresponding client_id and client_secret to the data array
-        $parameters = $this->call(InjectClientIdAndSecretTask::class, [$client, $data]);
+        // load the corresponding credentials of my trusted client.
+        switch ($client) {
+            case 'AdminWeb':
+                $clientId = env('CLIENT_WEB_ADMIN_ID');
+                $clientSecret = env('CLIENT_WEB_ADMIN_SECRET');
+                break;
+            case 'ClientWeb':
+                // ...
+                $clientId = null;
+                $clientSecret = null;
+                break;
+            case 'ClientMobile':
+                // ...
+                $clientId = null;
+                $clientSecret = null;
+                break;
+        }
+
+        $parameters = array_merge($data, [
+            'client_id'     => $clientId,
+            'client_secret' => $clientSecret,
+        ]);
 
         // Create and handle the oauth request
         $request = Request::create($authFullApiUrl, 'POST', $parameters);
@@ -49,7 +67,15 @@ class OAuthProxyTask extends Action
         }
 
         // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
-        $refreshCookie = $this->call(GetRefreshCookieTask::class, [$content['refresh_token']]);
+        $refreshCookie = cookie(
+            'refreshToken',
+            $content['refresh_token'],
+            Config::get('apiato.api.refresh-expires-in'),
+            null,
+            null,
+            false,
+            true // HttpOnly
+        );
 
         // Make sure we only send the refresh_token in the cookie
         unset($content['refresh_token']);

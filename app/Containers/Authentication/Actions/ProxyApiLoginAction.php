@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
+use App\Containers\Authentication\Tasks\OAuthProxyTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
