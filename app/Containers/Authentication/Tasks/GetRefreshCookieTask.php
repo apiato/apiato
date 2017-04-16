@@ -6,9 +6,9 @@ use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class GetRefreshCookie.
+ * Class GetRefreshCookieTask.
  */
-class GetRefreshCookie extends Task
+class GetRefreshCookieTask extends Task
 {
     public function run($refreshToken)
     {

@@ -8,12 +8,12 @@ use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class InjectClientIdAndSecret.
+ * Class InjectClientIdAndSecretTask.
  */
-class InjectClientIdAndSecret extends Task
+class InjectClientIdAndSecretTask extends Task
 {
     /**
-     * InjectClientIdAndSecret constructor.
+     * InjectClientIdAndSecretTask constructor.
      */
     public function __construct()
     {

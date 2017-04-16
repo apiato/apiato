@@ -3,8 +3,8 @@
 namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Exceptions\LoginFailedException;
-use App\Containers\Authentication\Tasks\GetRefreshCookie;
-use App\Containers\Authentication\Tasks\InjectClientIdAndSecret;
+use App\Containers\Authentication\Tasks\GetRefreshCookieTask;
+use App\Containers\Authentication\Tasks\InjectClientIdAndSecretTask;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -34,7 +34,7 @@ class OAuthProxyTask extends Action
         $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
 
         // Inject the corresponding client_id and client_secret to the data array
-        $parameters = $this->call(InjectClientIdAndSecret::class, [$client, $data]);
+        $parameters = $this->call(InjectClientIdAndSecretTask::class, [$client, $data]);
 
         // Create and handle the oauth request
         $request = Request::create($authFullApiUrl, 'POST', $parameters);
@@ -49,7 +49,7 @@ class OAuthProxyTask extends Action
         }
 
         // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
-        $refreshCookie = $this->call(GetRefreshCookie::class, [$content['refresh_token']]);
+        $refreshCookie = $this->call(GetRefreshCookieTask::class, [$content['refresh_token']]);
 
         // Make sure we only send the refresh_token in the cookie
         unset($content['refresh_token']);
