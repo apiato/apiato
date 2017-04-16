@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
+use App\Containers\Authentication\Tasks\CallOAuthServerTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -9,20 +10,31 @@ use App\Ship\Parents\Actions\Action;
  */
 class ProxyApiRefreshAction extends Action
 {
+
     /**
+     * @param $clientId
+     * @param $clientPassword
      * @param $refresh_token
-     * @param $client
      *
-     * @return mixed
+     * @return  mixed
      */
-    public function run($refresh_token, $client)
+    public function run($clientId, $clientPassword, $refresh_token)
     {
-        $data = [
+        $requestData = [
             'grant_type'    => 'refresh_token',
+            'client_id'     => $clientId,
+            'client_secret' => $clientPassword,
             'refresh_token' => $refresh_token,
             'scope'         => '',
         ];
 
-        return $this->call(OAuthProxyTask::class, [$data, $client]);
+        $responseContent = $this->call(CallOAuthServerTask::class, [$requestData]);
+
+        $refreshCookie = $this->call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
+
+        return [
+            'response-content' => $responseContent,
+            'refresh-cookie'   => $refreshCookie,
+        ];
     }
 }

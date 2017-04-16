@@ -5,6 +5,7 @@ namespace App\Containers\User\UI\API\Controllers;
 use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
+use App\Containers\User\Actions\GetAuthenticatedUserAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAdminsAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
@@ -12,6 +13,7 @@ use App\Containers\User\Actions\ListClientsAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
+use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\GetUserRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RefreshUserRequest;
@@ -104,6 +106,19 @@ class Controller extends ApiController
         $user = $action->run($request->id);
 
         return $this->transform($user, UserTransformer::class);
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest $request
+     * @param \App\Containers\User\Actions\GetAuthenticatedUserAction          $action
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request, GetAuthenticatedUserAction $action)
+    {
+        $user = $action->run();
+
+        return $this->transform($user, new UserTransformer());
     }
 
     /**
