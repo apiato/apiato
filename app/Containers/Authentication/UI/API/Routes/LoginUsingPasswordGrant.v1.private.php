@@ -25,3 +25,4 @@
 }
  */
 
+// Implementation in the Laravel Passport package

@@ -144,6 +144,7 @@ trait TestsAuthHelperTrait
         return $userDetails;
     }
 
+
     /**
      * @return  array|null
      */
