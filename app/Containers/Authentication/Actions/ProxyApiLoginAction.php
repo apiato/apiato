@@ -25,6 +25,6 @@ class ProxyApiLoginAction extends Action
             'scope'      => '',
         ];
 
-        return $this->call(OAuthProxyAction::class, [$data, $client]);
+        return $this->call(OAuthProxyTask::class, [$data, $client]);
     }
 }

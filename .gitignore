@@ -9,7 +9,6 @@ Homestead.yaml
 storage/logs/laravel.log
 /public/api-rendered-markdowns/*
 /public/api/
-
 /public/uploads/
 /laradock*/
 /storage/*.index
