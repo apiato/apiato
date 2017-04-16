@@ -45,7 +45,7 @@ class ProxyLoginTest extends TestCase
                 'password_client'        => '1',
                 'personal_access_client' => '0',
                 'revoked'                => '0',
-            ]
+            ],
         ]);
 
         // make the clients credentials available as env variables
@@ -54,13 +54,19 @@ class ProxyLoginTest extends TestCase
 
         $response = $this->endpoint($endpoint)->makeCall($data);
 
+        $responseContent = $this->getResponseContentArray();
+
         $response->assertStatus(200);
+
+        $response->assertCookie('refreshToken');
 
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
 
-        $this->assertResponseContainKeys(['expires_in', 'access_token', 'refresh_token']);
+        $this->assertResponseContainKeys(['expires_in', 'access_token']);
+
+        $this->assertArrayNotHasKey('refresh_token', $responseContent);
     }
 
 }
