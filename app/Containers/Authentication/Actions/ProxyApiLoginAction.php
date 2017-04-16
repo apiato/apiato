@@ -35,6 +35,9 @@ class ProxyApiLoginAction extends Action
 
         $refreshCookie = $this->call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
 
+        // Make sure we only send the refresh_token in the cookie
+        unset($responseContent['refresh_token']);
+
         return [
             'response-content' => $responseContent,
             'refresh-cookie'   => $refreshCookie,

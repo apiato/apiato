@@ -45,7 +45,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authentication\UI\API\Requests\LoginRequest $request
      * @param \App\Containers\Authentication\Actions\ProxyApiLoginAction  $action
      *
-     * @return  $this
+     * @return \Illuminate\Http\JsonResponse
      */
     public function proxyLoginForAdminWebClient(LoginRequest $request, ProxyApiLoginAction $action)
     {
@@ -65,7 +65,7 @@ class Controller extends ApiController
      * @param \App\Containers\Authentication\UI\API\Requests\RefreshRequest $request
      * @param \App\Containers\Authentication\Actions\ProxyApiRefreshAction  $action
      *
-     * @return  $this
+     * @return \Illuminate\Http\JsonResponse
      */
     public function proxyRefreshForAdminWebClient(RefreshRequest $request, ProxyApiRefreshAction $action)
     {

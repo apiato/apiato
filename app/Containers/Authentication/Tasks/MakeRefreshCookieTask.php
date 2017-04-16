@@ -31,9 +31,6 @@ class MakeRefreshCookieTask extends Task
             true // HttpOnly
         );
 
-        // Make sure we only send the refresh_token in the cookie
-        unset($refreshToken);
-
         return $refreshCookie;
     }
 }

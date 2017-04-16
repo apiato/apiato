@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\CallOAuthServerTask;
+use App\Containers\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -31,6 +32,9 @@ class ProxyApiRefreshAction extends Action
         $responseContent = $this->call(CallOAuthServerTask::class, [$requestData]);
 
         $refreshCookie = $this->call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
+
+        // Make sure we only send the refresh_token in the cookie
+        unset($responseContent['refresh_token']);
 
         return [
             'response-content' => $responseContent,
