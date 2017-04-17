@@ -20,6 +20,9 @@ class GenerateAPIDocsTask extends Task
      * @param $type
      *
      * @return  mixed
+     * @throws \Symfony\Component\Process\Exception\RuntimeException
+     * @throws \Symfony\Component\Process\Exception\LogicException
+     * @throws \Symfony\Component\Process\Exception\ProcessFailedException
      */
     public function run($type, $console)
     {
@@ -30,8 +33,10 @@ class GenerateAPIDocsTask extends Task
         // the actual command that needs to be executed:
         $command = $exe . ' ' . "-c {$this->getJsonFilePath($type)} {$this->getEndpointFiles($type)}-i app -o {$path}";
 
+        $process = new Process($command);
+
         // execute the command
-        ($process = new Process($command))->run();
+        $process->run();
 
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);

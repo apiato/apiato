@@ -224,7 +224,7 @@ If you are planning to use ApiDoc JS then proceed with this setup, else skip thi
 npm install
 ```
 
-2) run `php artisan apiato:documentation`
+2) run `php artisan apiato:docs`
 
 ##### Visit [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) for more details.
 

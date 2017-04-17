@@ -6,7 +6,7 @@ order: 1
 
 Every great API needs a great Documentation. 
 
-apiato make writing and generating documentations very easy with the `php artisan apiato:documentation` command.
+apiato make writing and generating documentations very easy with the `php artisan apiato:docs` command.
 
 ![](https://s19.postimg.org/aeqv29ksz/Screen_Shot_2017-03-22_at_7.51.46_PM.png)
 
@@ -77,7 +77,7 @@ $router->post('users/login', [
 
 ```shell
 
-php artisan apiato:documentation
+php artisan apiato:docs
 
 ```
 

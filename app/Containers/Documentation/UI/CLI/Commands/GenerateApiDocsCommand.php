@@ -18,7 +18,7 @@ class GenerateApiDocsCommand extends ConsoleCommand
      *
      * @var string
      */
-    protected $signature = "apiato:documentation";
+    protected $signature = "apiato:docs";
 
     /**
      * The console command description.

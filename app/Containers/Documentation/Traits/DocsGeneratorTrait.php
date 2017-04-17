@@ -3,6 +3,7 @@
 namespace App\Containers\Documentation\Traits;
 
 use DateTime;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class DocsGeneratorTrait
@@ -25,7 +26,7 @@ trait DocsGeneratorTrait
      */
     private function getAppUrl()
     {
-        return $this->config->get('app.url');
+        return Config::get('app.url');
     }
 
     /**
@@ -33,7 +34,7 @@ trait DocsGeneratorTrait
      */
     private function getHtmlPath()
     {
-        return $this->config->get("{$this->getConfigFile()}.html_files");
+        return Config::get("{$this->getConfigFile()}.html_files");
     }
 
     /**
@@ -67,7 +68,7 @@ trait DocsGeneratorTrait
      */
     private function getTypeConfig()
     {
-        return $this->config->get($this->getConfigFile() . '.types');
+        return Config::get($this->getConfigFile() . '.types');
     }
 
     /**
@@ -75,7 +76,7 @@ trait DocsGeneratorTrait
      */
     private function getExecutable()
     {
-        return $this->config->get($this->getConfigFile() . '.executable');
+        return Config::get($this->getConfigFile() . '.executable');
     }
 
     /**
