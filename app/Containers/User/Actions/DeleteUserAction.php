@@ -6,6 +6,7 @@ use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\DeleteUserTask;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class DeleteUserAction.
@@ -16,15 +17,17 @@ class DeleteUserAction extends Action
 {
 
     /**
-     * @param $userId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  bool
+     * @return  mixed
      */
-    public function run($userId = null)
+    public function run(Request $request)
     {
-        $userId = $userId ? : $this->call(GetAuthenticatedUserTask::class)->id;
-
-        $user = $this->call(FindUserByIdTask::class, [$userId]);
+        if ($userId = $request->id) {
+            $user = $this->call(FindUserByIdTask::class, [$userId]);
+        } else {
+            $user = $this->call(GetAuthenticatedUserTask::class);
+        }
 
         $this->call(DeleteUserTask::class, [$user]);
 

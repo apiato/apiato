@@ -14,14 +14,10 @@ class ListAdminsAction extends Action
 {
 
     /**
-     * @param bool $order
-     *
      * @return  mixed
      */
-    public function run($order = true)
+    public function run()
     {
-        $users = $this->call(ListUsersTask::class, [$order, false, ['admin']]);
-
-        return $users;
+        return $this->call(ListUsersTask::class, [true, false, ['admin']]);
     }
 }

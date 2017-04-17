@@ -13,7 +13,6 @@ use App\Ship\Parents\Tasks\Task;
 class AssignUserToRoleTask extends Task
 {
 
-
     /**
      * @param \App\Containers\User\Models\User $user
      * @param array                            $roles
@@ -22,9 +21,7 @@ class AssignUserToRoleTask extends Task
      */
     public function run(User $user, array $roles)
     {
-        $user = $user->assignRole($roles);
-
-        return $user;
+        return $user->assignRole($roles);
     }
 
 }

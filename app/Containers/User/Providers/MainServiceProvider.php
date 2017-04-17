@@ -2,8 +2,6 @@
 
 namespace App\Containers\User\Providers;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Providers\MainProvider;
 
 /**
@@ -41,6 +39,7 @@ class MainServiceProvider extends MainProvider
     {
         parent::register();
 
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        // do your binding here..
+        // $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }

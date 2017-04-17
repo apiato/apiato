@@ -2,9 +2,10 @@
 
 namespace App\Containers\User\Tasks;
 
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Containers\User\Exceptions\UpdateResourceFailedException;
-use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Ship\Parents\Tasks\Task;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -14,21 +15,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class UpdateUserTask extends Task
 {
-
-    /**
-     * @var  \App\Containers\User\Contracts\UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * UpdateUserTask constructor.
-     *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
-     */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
 
     /**
      * @param      $userId
@@ -44,7 +30,6 @@ class UpdateUserTask extends Task
      *
      * @return  mixed
      * @throws \App\Containers\User\Exceptions\UpdateResourceFailedException
-     * @throws \App\Containers\Authentication\Exceptions\UpdateResourceFailedException
      */
     public function run(
         $userId,
@@ -58,10 +43,9 @@ class UpdateUserTask extends Task
         $refreshToken = null,
         $tokenSecret = null
     ) {
-
         // set all data in the array, then remove all null values and their keys
         $attributes = array_filter([
-            'password'             => $password ? Hash::make($password) : null, // TODO: all Hash::make should be in single task
+            'password'             => $password ? Hash::make($password) : null,
             'name'                 => $name,
             'email'                => $email,
             'gender'               => $gender,
@@ -78,7 +62,7 @@ class UpdateUserTask extends Task
         }
 
         // updating the attributes
-        $user = $this->userRepository->update($attributes, $userId);
+        $user = App::make(UserRepository::class)->update($attributes, $userId);
 
         return $user;
     }

@@ -2,10 +2,11 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Support\Facades\App;
+use App\Containers\User\Data\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -17,25 +18,9 @@ class CreateUserByCredentialsTask extends Task
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * CreateUserByCredentialsTask constructor.
-     *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
-     */
-    public function __construct(
-        UserRepositoryInterface $userRepository
-    ) {
-        $this->userRepository = $userRepository;
-    }
-
-    /**
      * @param      $email
      * @param      $password
-     * @param      $name
+     * @param null $name
      * @param null $gender
      * @param null $birth
      *
@@ -45,10 +30,10 @@ class CreateUserByCredentialsTask extends Task
     {
         try {
             // create new user
-            $user = $this->userRepository->create([
-                'name'     => $name,
+            $user = App::make(UserRepository::class)->create([
+                'password' => Hash::make($password),
                 'email'    => $email,
-                'password' => $this->hashPass($password),
+                'name'     => $name,
                 'gender'   => $gender,
                 'birth'    => $birth,
             ]);
@@ -58,18 +43,6 @@ class CreateUserByCredentialsTask extends Task
         }
 
         return $user;
-    }
-
-    /**
-     * TODO: remove from here
-     *
-     * @param $password
-     *
-     * @return  mixed
-     */
-    private function hashPass($password)
-    {
-        return Hash::make($password);
     }
 
 }

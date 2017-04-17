@@ -2,12 +2,10 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\Authorization\Tasks\SyncUserRolesTask;
-use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class SyncUserRolesAction.
@@ -18,64 +16,25 @@ class SyncUserRolesAction extends Action
 {
 
     /**
-     * @var  \App\Containers\Authorization\Tasks\SyncUserRolesTask
-     */
-    private $syncUserRolesTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
-     */
-    private $roleRepository;
-
-    /**
-     * @var  \App\Containers\User\Tasks\FindUserByIdTask
-     */
-    private $findUserByIdTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * SyncUserRolesTask constructor.
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $roleRepository
-     * @param \App\Containers\User\Tasks\FindUserByIdTask                    $findUserByIdTask
+     * @return  mixed
      */
-    public function __construct(
-        SyncUserRolesTask $syncUserRolesTask,
-        RoleRepository $roleRepository,
-        FindUserByIdTask $findUserByIdTask,
-        GetRoleTask $getRoleTask
-    ) {
-        $this->syncUserRolesTask = $syncUserRolesTask;
-        $this->roleRepository = $roleRepository;
-        $this->findUserByIdTask = $findUserByIdTask;
-        $this->getRoleTask = $getRoleTask;
-    }
-
-
-    /**
-     * @param $user
-     * @param $rolesIds
-     *
-     * @return  \App\Containers\User\Models\User
-     */
-    public function run($user, $rolesIds)
+    public function run(Request $request)
     {
-        if (!$user instanceof User) {
-            $user = $this->call(FindUserByIdTask::class, [$user]);
-        }
+        $user = $this->call(FindUserByIdTask::class, [$request->user_id]);
 
-        if (!is_array($rolesIds)) {
-            $rolesIds = [$rolesIds];
+        // convert roles IDs to array (in case single id passed)
+        if (!is_array($rolesIds = $request->roles_ids)) {
+            $rolesIds = [$request->roles_ids];
         }
 
         foreach ($rolesIds as $roleId) {
             $roles[] = $this->call(GetRoleTask::class, [$roleId]);
         }
 
-        return $this->call(SyncUserRolesTask::class, [$user, $roles]);
+        $user->syncRoles($roles);
+
+        return $user;
     }
 }

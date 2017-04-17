@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use App\Containers\Authorization\Tasks\DeleteRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class DeleteRoleAction.
@@ -13,14 +14,15 @@ use App\Ship\Parents\Actions\Action;
  */
 class DeleteRoleAction extends Action
 {
+
     /**
-     * @param $roleNameOrId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  bool
+     * @return  mixed
      */
-    public function run($roleNameOrId)
+    public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$roleNameOrId]);
+        $role = $this->call(GetRoleTask::class, [$request->id]);
         $this->call(DeleteRoleTask::class, [$role]);
 
         return $role;

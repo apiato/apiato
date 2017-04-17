@@ -4,8 +4,8 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\GetPermissionTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\Authorization\Tasks\SyncPermissionsOnRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class SyncPermissionsOnRoleAction.
@@ -16,18 +16,16 @@ class SyncPermissionsOnRoleAction extends Action
 {
 
     /**
-     * @param $roleId
-     * @param $permissionsIds
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run($roleId, $permissionsIds)
+    public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$roleId]);
-
+        $role = $this->call(GetRoleTask::class, [$request->role_id]);
         $permissions = [];
 
-        if (is_array($permissionsIds)) {
+        if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
                 $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
             }
@@ -35,6 +33,8 @@ class SyncPermissionsOnRoleAction extends Action
             $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
         }
 
-        return $this->call(SyncPermissionsOnRoleTask::class, [$role, $permissions]);
+        $role->syncPermissions($permissions);
+
+        return $role;
     }
 }

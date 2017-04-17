@@ -2,10 +2,11 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class FindUserByIdTask.
@@ -16,31 +17,16 @@ class FindUserByIdTask extends Task
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * FindUserByIdTask constructor.
-     *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
-     */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
-    /**
      * @param $userId
      *
      * @return  mixed
-     * @throws \App\Containers\User\Tasks\UserNotFoundException
+     * @throws \App\Containers\User\Exceptions\UserNotFoundException
      */
     public function run($userId)
     {
         // find the user by its id
         try {
-            $user = $this->userRepository->find($userId);
+            $user = App::make(UserRepository::class)->find($userId);
         } catch (Exception $e) {
             throw new UserNotFoundException();
         }

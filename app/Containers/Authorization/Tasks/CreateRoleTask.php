@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Parents\Tasks\Task;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateRoleTask.
@@ -14,21 +15,6 @@ class CreateRoleTask extends Task
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
-     */
-    private $roleRepository;
-
-    /**
-     * CreateRoleTask constructor.
-     *
-     * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $roleRepository
-     */
-    public function __construct(RoleRepository $roleRepository)
-    {
-        $this->roleRepository = $roleRepository;
-    }
-
-    /**
      * @param $name
      * @param $description
      * @param $displayName
@@ -37,8 +23,7 @@ class CreateRoleTask extends Task
      */
     public function run($name, $description = null, $displayName = null)
     {
-
-        return $this->roleRepository->create([
+        return App::make(RoleRepository::class)->create([
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,

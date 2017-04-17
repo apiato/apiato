@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Tasks;
 
-use App\Containers\Authorization\Actions\GetRoleAction;
 use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Tasks\Task;
 
@@ -13,22 +12,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class DetachPermissionsFromRoleTask extends Task
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Actions\GetRoleAction
-     */
-    private $getRoleAction;
-
-
-    /**
-     * AttachPermissionsToRoleTask constructor.
-     *
-     * @param \App\Containers\Authorization\Actions\GetRoleAction $getRoleAction
-     */
-    public function __construct(GetRoleAction $getRoleAction)
-    {
-        $this->getRoleAction = $getRoleAction;
-    }
 
     /**
      * @param \App\Containers\Authorization\Models\Role $role

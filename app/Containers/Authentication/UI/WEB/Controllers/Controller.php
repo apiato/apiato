@@ -7,6 +7,7 @@ use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;
+use Exception;
 
 /**
  * Class Controller
@@ -26,23 +27,18 @@ class Controller extends WebController
 
     /**
      * @param \App\Containers\Authentication\UI\WEB\Requests\LoginRequest $request
-     * @param \App\Containers\Authentication\Actions\WebAdminLoginAction   $action
      *
-     * @return  $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function loginAdmin(LoginRequest $request, WebAdminLoginAction $action)
+    public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = $action->run($request->email, $request->password, $request->remember_me);
-        } catch (AuthenticationFailedException $e) {
+            $result = $this->call(WebAdminLoginAction::class, [$request]);
+        } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }
 
-        if (is_array($result)) {
-            return redirect('login')->with($result);
-        }
-
-        return redirect('dashboard');
+        return is_array($result) ? redirect('login')->with($result) : redirect('dashboard');
     }
 
     /**
@@ -56,16 +52,13 @@ class Controller extends WebController
     }
 
     /**
-     * @param \App\Containers\Authentication\Actions\WebLogoutAction $action
-     *
-     * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logoutAdmin(WebLogoutAction $action)
+    public function logoutAdmin()
     {
-        $action->run();
+        $this->call(WebLogoutAction::class);
 
         return redirect('login');
     }
-
 
 }

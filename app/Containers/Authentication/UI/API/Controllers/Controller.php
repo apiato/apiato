@@ -21,13 +21,12 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\Authentication\UI\API\Requests\LogoutRequest $request
-     * @param \App\Containers\Authentication\Actions\ApiLogoutAction       $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  $this
      */
-    public function logout(LogoutRequest $request, ApiLogoutAction $action)
+    public function logout(LogoutRequest $request)
     {
-        $action->run($request->bearerToken());
+        $this->call(ApiLogoutAction::class, [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -43,18 +42,16 @@ class Controller extends ApiController
      * their ID's and Secrets when contacting the OAuth server and obtain Tokens.
      *
      * @param \App\Containers\Authentication\UI\API\Requests\LoginRequest $request
-     * @param \App\Containers\Authentication\Actions\ProxyApiLoginAction  $action
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function proxyLoginForAdminWebClient(LoginRequest $request, ProxyApiLoginAction $action)
+    public function proxyLoginForAdminWebClient(LoginRequest $request)
     {
-        $result = $action->run(
+        $result = $this->call(ProxyApiLoginAction::class, [
+            $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),
-            $request->email,
-            $request->password
-        );
+        ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);
     }
@@ -63,17 +60,16 @@ class Controller extends ApiController
      * Read the comment in the function `proxyLoginForAdminWebClient`
      *
      * @param \App\Containers\Authentication\UI\API\Requests\RefreshRequest $request
-     * @param \App\Containers\Authentication\Actions\ProxyApiRefreshAction  $action
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function proxyRefreshForAdminWebClient(RefreshRequest $request, ProxyApiRefreshAction $action)
+    public function proxyRefreshForAdminWebClient(RefreshRequest $request)
     {
-        $result = $action->run(
+        $result = $this->call(ProxyApiRefreshAction::class, [
+            $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),
-            $request->cookie('refreshToken')
-        );
+        ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);
     }

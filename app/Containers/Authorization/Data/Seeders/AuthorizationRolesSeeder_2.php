@@ -2,9 +2,10 @@
 
 namespace App\Containers\Authorization\Data\Seeders;
 
-use App\Containers\Authorization\Actions\CreateRoleAction;
+use App\Containers\Authorization\Tasks\CreateRoleTask;
 use App\Containers\Authorization\Tasks\ListAllPermissionsTask;
 use App\Ship\Parents\Seeders\Seeder;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class AuthorizationRolesSeeder_2
@@ -13,29 +14,6 @@ use App\Ship\Parents\Seeders\Seeder;
  */
 class AuthorizationRolesSeeder_2 extends Seeder
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\ListAllPermissionsTask
-     */
-    private $listAllPermissionsTask;
-
-    /**
-     * @var  \App\Containers\Authorization\Actions\CreateRoleAction
-     */
-    private $createRoleAction;
-
-    /**
-     * AuthorizationRolesSeeder_2 constructor.
-     *
-     * @param \App\Containers\Authorization\Actions\CreateRoleAction     $createRoleAction
-     * @param \App\Containers\Authorization\Tasks\ListAllPermissionsTask $listAllPermissionsTask
-     */
-    public function __construct(CreateRoleAction $createRoleAction, ListAllPermissionsTask $listAllPermissionsTask)
-    {
-        $this->createRoleAction = $createRoleAction;
-        $this->listAllPermissionsTask = $listAllPermissionsTask;
-    }
-
 
     /**
      * Run the database seeds.
@@ -47,8 +25,8 @@ class AuthorizationRolesSeeder_2 extends Seeder
         // Default Role ----------------------------------------------------------------
 
         // give the super admin all the available permissions, while seeding
-        $this->createRoleAction->run('admin', 'Administrator')->givePermissionTo(
-            $this->listAllPermissionsTask->run()->pluck('name')->toArray()
+        App::make(CreateRoleTask::class)->run('admin', 'Administrator')->givePermissionTo(
+            App::make(ListAllPermissionsTask::class)->run()->pluck('name')->toArray()
         );
 
     }

@@ -23,17 +23,17 @@ class SocialLoginAction extends Action
      * ----- if has no social profile
      * --------- [C] create new record
      *
-     * @param            $provider
-     * @param array|null $requestData
+     * @param $request
+     * @param $provider
      *
      * @return  mixed
      */
-    public function run($provider, array $requestData = null)
+    public function run($request, $provider)
     {
         // TODO: needs refactoring so bad :D
 
         // fetch the user data from facebook
-        $socialUserProfile = $this->call(GetUserSocialProfileTask::class, [$provider, $requestData]);
+        $socialUserProfile = $this->call(GetUserSocialProfileTask::class, [$provider, $request->all()]);
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
         $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;

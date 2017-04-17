@@ -3,8 +3,8 @@
 /**
  * @apiGroup           Users
  * @apiName            GetAuthenticatedUser
- * @api                {get} /v1/userinfo Get Authenticated User
- * @apiDescription     Get information about the authenticated user.
+ * @api                {get} /v1/userinfo Get Authenticated User without specifying it's ID
+ * @apiDescription     Get the current authenticated user object.
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -48,7 +48,7 @@
  */
 
 $router->get('userinfo', [
-    'uses'       => 'Controller@getAuthenticatedUser',
+    'uses'       => 'Controller@getAuthenticatedUserData',
     'middleware' => [
         'auth:api',
     ],

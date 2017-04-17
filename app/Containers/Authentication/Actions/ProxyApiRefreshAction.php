@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Actions;
 use App\Containers\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ProxyApiRefreshAction.
@@ -13,19 +14,19 @@ class ProxyApiRefreshAction extends Action
 {
 
     /**
-     * @param $clientId
-     * @param $clientPassword
-     * @param $refresh_token
+     * @param \App\Ship\Parents\Requests\Request $request
+     * @param                                    $clientId
+     * @param                                    $clientPassword
      *
-     * @return  mixed
+     * @return  array
      */
-    public function run($clientId, $clientPassword, $refresh_token)
+    public function run(Request $request, $clientId, $clientPassword)
     {
         $requestData = [
             'grant_type'    => 'refresh_token',
             'client_id'     => $clientId,
             'client_secret' => $clientPassword,
-            'refresh_token' => $refresh_token,
+            'refresh_token' => $request->cookie('refreshToken'),
             'scope'         => '',
         ];
 

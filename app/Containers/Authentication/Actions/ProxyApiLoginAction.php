@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Actions;
 use App\Containers\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ProxyApiLoginAction.
@@ -13,21 +14,20 @@ class ProxyApiLoginAction extends Action
 {
 
     /**
-     * @param $clientId
-     * @param $clientPassword
-     * @param $email
-     * @param $password
+     * @param \App\Ship\Parents\Requests\Request $request
+     * @param                                    $clientId
+     * @param                                    $clientPassword
      *
-     * @return  mixed
+     * @return  array
      */
-    public function run($clientId, $clientPassword, $email, $password)
+    public function run(Request $request, $clientId, $clientPassword)
     {
         $requestData = [
             'grant_type'    => 'password',
             'client_id'     => $clientId,
             'client_secret' => $clientPassword,
-            'username'      => $email,
-            'password'      => $password,
+            'username'      => $request->email,
+            'password'      => $request->password,
             'scope'         => '',
         ];
 

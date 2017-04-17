@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 class GetAuthenticatedUserTask extends Task
 {
 
-
     /**
      * @return  \Illuminate\Contracts\Auth\Authenticatable|null
      */

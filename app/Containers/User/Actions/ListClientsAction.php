@@ -14,12 +14,10 @@ class ListClientsAction extends Action
 {
 
     /**
-     * @param bool $order
-     *
      * @return  mixed
      */
-    public function run($order = true)
+    public function run()
     {
-        return $this->call(ListUsersTask::class, [$order, false, []]);
+        return $this->call(ListUsersTask::class, [true, false, []]);
     }
 }

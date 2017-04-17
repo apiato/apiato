@@ -4,7 +4,8 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Http\Request;
+use App\Ship\Parents\Requests\Request;
+
 /**
  * Class WebLoginAction.
  *
@@ -14,7 +15,7 @@ class WebLoginAction extends Action
 {
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */

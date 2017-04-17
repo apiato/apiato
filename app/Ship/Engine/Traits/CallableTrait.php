@@ -20,7 +20,16 @@ trait CallableTrait
      */
     public function call($class, $args = [])
     {
-        return App::make($class)->run(...$args);
+        $action = App::make($class);
+
+        if(method_exists($action, 'setUI')){
+            // $this->ui is coming, should be attached on the parent controller, from where the actions was called.
+            // It can be WebController and ApiController. Each of them has ui, to inform the action
+            // if it needs to handle the request differently.
+            $action->setUI($this->ui);
+        }
+
+        return $action->run(...$args);
     }
 
 }

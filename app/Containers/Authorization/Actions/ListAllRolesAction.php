@@ -2,8 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\ListAllRolesTask;
+use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class ListAllRolesAction.
@@ -17,7 +18,7 @@ class ListAllRolesAction extends Action
      */
     public function run()
     {
-        return $this->call(ListAllRolesTask::class);
+        return App::make(RoleRepository::class)->all();
     }
 
 }

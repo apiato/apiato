@@ -2,8 +2,9 @@
 
 namespace App\Containers\Welcome\UI\API\Controllers;
 
+use App\Containers\Welcome\Actions\GetMessageForApiRootVisitorAction;
+use App\Containers\Welcome\Actions\GetMessageForApiV1VisitorAction;
 use App\Ship\Parents\Controllers\ApiController;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class Controller.
@@ -18,7 +19,9 @@ class Controller extends ApiController
      */
     public function apiRoot()
     {
-        return response()->json(['Welcome to ' . Config::get('app.name') . '.']);
+        $message = $this->call(GetMessageForApiRootVisitorAction::class);
+
+        return response()->json($message);
     }
 
     /**
@@ -26,7 +29,9 @@ class Controller extends ApiController
      */
     public function v1ApiLandingPage()
     {
-        return response()->json(['Welcome to ' . Config::get('app.name') . ' (API V1).']);
+        $message = $this->call(GetMessageForApiV1VisitorAction::class);
+
+        return response()->json($message);
     }
 
 }

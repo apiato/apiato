@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use App\Containers\Authorization\Tasks\DetachPermissionsFromRoleTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class DetachPermissionsFromRoleAction.
@@ -13,16 +14,16 @@ use App\Ship\Parents\Actions\Action;
  */
 class DetachPermissionsFromRoleAction extends Action
 {
+
     /**
-     * @param $roleId
-     * @param $permissionsIds
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run($roleId, $permissionsIds)
+    public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$roleId]);
+        $role = $this->call(GetRoleTask::class, [$request->role_id]);
 
-        return $this->call(DetachPermissionsFromRoleTask::class, [$role, $permissionsIds]);
+        return $this->call(DetachPermissionsFromRoleTask::class, [$role, $request->permissions_ids]);
     }
 }

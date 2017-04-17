@@ -4,7 +4,6 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Auth\AuthManager as Auth;
 
 /**
  * Class WebLoginTask.
@@ -13,22 +12,6 @@ use Illuminate\Auth\AuthManager as Auth;
  */
 class WebLoginTask extends Task
 {
-
-    /**
-     * @var  \Illuminate\Auth\AuthManager
-     */
-    private $auth;
-
-    /**
-     * WebAuthenticationTask constructor.
-     *
-     * @param \Illuminate\Auth\AuthManager $auth
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * @param            $email
      * @param            $password

@@ -2,10 +2,10 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class GetUserAction.
@@ -16,20 +16,16 @@ class GetUserAction extends Action
 {
 
     /**
-     * @param      $userId
-     * @param null $token
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
+     * @throws \App\Containers\User\Exceptions\UserNotFoundException
      */
-    public function run($userId, $token = null)
+    public function run(Request $request)
     {
-        if ($userId) {
-            $user = $this->call(FindUserByIdTask::class, [$userId]);
-        } else {
-            if ($token) {
-                $user = $this->call(GetAuthenticatedUserTask::class);
-            }
-        }
+        $userId = $request->id;
+
+        $user = $this->call(FindUserByIdTask::class, [$userId]);
 
         if (!$user) {
             throw new UserNotFoundException();

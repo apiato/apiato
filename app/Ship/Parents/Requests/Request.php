@@ -53,4 +53,19 @@ abstract class Request extends LaravelFormRequest
         return $this->user()->id == $this->id;
     }
 
+    /**
+     * To be used mainly from unit tests.
+     *
+     * @param array $parameters
+     * @param array $cookies
+     * @param array $files
+     * @param array $server
+     *
+     * @return void|static
+     */
+    public static function injectData($parameters = [], $cookies = [], $files = [], $server = [])
+    {
+        // For now doesn't matter which URI or Method is used.
+        return parent::create('/', 'GET', $parameters, $cookies, $files, $server);
+    }
 }

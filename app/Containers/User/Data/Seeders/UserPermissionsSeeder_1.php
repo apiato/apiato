@@ -3,7 +3,9 @@
 namespace App\Containers\User\Data\Seeders;
 
 use App\Containers\Authorization\Actions\CreatePermissionAction;
+use App\Containers\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class UserPermissionsSeeder_1
@@ -12,22 +14,6 @@ use App\Ship\Parents\Seeders\Seeder;
  */
 class UserPermissionsSeeder_1 extends Seeder
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Actions\CreatePermissionAction
-     */
-    private $createPermissionAction;
-
-    /**
-     * PermissionsSeeder constructor.
-     *
-     * @param \App\Containers\Authorization\Actions\CreatePermissionAction $createPermissionAction
-     */
-    public function __construct(CreatePermissionAction $createPermissionAction)
-    {
-        $this->createPermissionAction = $createPermissionAction;
-    }
-
     /**
      * Run the database seeds.
      *
@@ -37,11 +23,11 @@ class UserPermissionsSeeder_1 extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        $this->createPermissionAction->run('search-users', 'Find a User in the DB.');
-        $this->createPermissionAction->run('list-users', 'List all Users.');
-        $this->createPermissionAction->run('update-users', 'Update a User.');
-        $this->createPermissionAction->run('delete-users', 'Delete a User.');
-        $this->createPermissionAction->run('refresh-users', 'Refresh User data.');
+        App::make(CreatePermissionTask::class)->run('search-users', 'Find a User in the DB.');
+        App::make(CreatePermissionTask::class)->run('list-users', 'List all Users.');
+        App::make(CreatePermissionTask::class)->run('update-users', 'Update a User.');
+        App::make(CreatePermissionTask::class)->run('delete-users', 'Delete a User.');
+        App::make(CreatePermissionTask::class)->run('refresh-users', 'Refresh User data.');
 
         // ...
 

@@ -2,42 +2,25 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\App;
 
 /**
- * Class DeleteUserTask.
+ * Class DeleteUserTask
  *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class DeleteUserTask extends Action
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * UpdateUserAction constructor.
+     * @param $user
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
-     */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
-    /**
-     * @param $userId
-     *
-     * @return bool
+     * @return  bool
      */
     public function run($user)
     {
-        // delete the record from the users table.
-        $this->userRepository->delete($user->id);
-
-        return true;
+        return App::make(UserRepository::class)->delete($user->id);
     }
 }

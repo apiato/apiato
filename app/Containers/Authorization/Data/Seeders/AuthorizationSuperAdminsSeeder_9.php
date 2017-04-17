@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Data\Seeders;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Seeders\Seeder;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -14,21 +15,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthorizationSuperAdminsSeeder_9 extends Seeder
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Tasks\GetRoleTask
-     */
-    private $getRoleTask;
-
-    /**
-     * SuperAdminSeeder constructor.
-     *
-     * @param \App\Containers\Authorization\Tasks\GetRoleTask $getRoleTask
-     */
-    public function __construct(GetRoleTask $getRoleTask)
-    {
-        $this->getRoleTask = $getRoleTask;
-    }
 
     /**
      * Run the database seeds.
@@ -44,7 +30,7 @@ class AuthorizationSuperAdminsSeeder_9 extends Seeder
         $admin->email = 'admin@admin.com';
         $admin->password = Hash::make('admin');
         $admin->save();
-        $admin->assignRole($this->getRoleTask->run('admin'));
+        $admin->assignRole(App::make(GetRoleTask::class)->run('admin'));
 
         // ...
 

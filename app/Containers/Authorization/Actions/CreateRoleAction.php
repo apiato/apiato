@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\CreateRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class CreateRoleAction
@@ -12,15 +13,14 @@ use App\Ship\Parents\Actions\Action;
  */
 class CreateRoleAction extends Action
 {
+
     /**
-     * @param      $name
-     * @param null $description
-     * @param null $displayName
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run($name, $description = null, $displayName = null)
+    public function run(Request $request)
     {
-        return $this->call(CreateRoleTask::class, [$name, $description, $displayName]);
+        return $this->call(CreateRoleTask::class, [$request->name, $request->description, $request->display_name]);
     }
 }

@@ -17,14 +17,13 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest $request
-     * @param \App\Containers\SocialAuth\Actions\SocialLoginAction              $action
      * @param                                                                   $provider
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function authenticateAll(ApiAuthenticateRequest $request, SocialLoginAction $action, $provider)
+    public function authenticateAll(ApiAuthenticateRequest $request, $provider)
     {
-        $user = $action->run($provider, $request->all());
+        $user = $this->call(SocialLoginAction::class, [$request, $provider]);
 
         return $this->transform($user, UserTransformer::class);
     }

@@ -5,6 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class CreateAdminAction.
@@ -13,16 +14,15 @@ use App\Ship\Parents\Actions\Action;
  */
 class CreateAdminAction extends Action
 {
+
     /**
-     * @param $email
-     * @param $password
-     * @param $name
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run($email, $password, $name)
+    public function run(Request $request)
     {
-        $admin = $this->call(CreateUserByCredentialsTask::class, [$email, $password, $name]);
+        $admin = $this->call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
 
         $this->call(AssignUserToRoleTask::class, [$admin, ['admin']]);
 

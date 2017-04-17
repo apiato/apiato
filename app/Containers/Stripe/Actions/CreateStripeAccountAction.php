@@ -2,9 +2,11 @@
 
 namespace App\Containers\Stripe\Actions;
 
-use App\Containers\Stripe\Tasks\CreateStripeAccountObjectTask;
-use App\Containers\User\Models\User;
+use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
+use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateStripeAccountAction.
@@ -15,27 +17,21 @@ class CreateStripeAccountAction extends Action
 {
 
     /**
-     * @param \App\Containers\User\Models\User $user
-     * @param                                  $customer_id
-     * @param                                  $card_id
-     * @param                                  $card_funding
-     * @param                                  $card_last_digits
-     * @param                                  $card_fingerprint
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run(User $user, $customer_id, $card_id, $card_funding, $card_last_digits, $card_fingerprint)
+    public function run(Request $request)
     {
-        $stripeAccount = $this->call(CreateStripeAccountObjectTask::class, [
-            $user,
-            $customer_id,
-            $card_id,
-            $card_funding,
-            $card_last_digits,
-            $card_fingerprint
-        ]);
+        $stripeAccount = new StripeAccount();
+        $stripeAccount->customer_id = $request->customer_id;
+        $stripeAccount->card_id = $request->card_id;
+        $stripeAccount->card_funding = $request->card_funding;
+        $stripeAccount->card_last_digits = $request->card_last_digits;
+        $stripeAccount->card_fingerprint = $request->card_fingerprint;
+        $stripeAccount->user()->associate($request->user());
 
-        return $stripeAccount;
+        return $stripeAccount = App::make(StripeAccountRepository::class)->create($stripeAccount->toArray());
     }
 
 }

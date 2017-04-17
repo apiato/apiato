@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Tasks;
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class DeleteRoleTask.
@@ -13,22 +14,6 @@ use App\Ship\Parents\Actions\Action;
  */
 class DeleteRoleTask extends Action
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
-     */
-    private $roleRepository;
-
-    /**
-     * DeleteRoleTask constructor.
-     *
-     * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $roleRepository
-     */
-    public function __construct(RoleRepository $roleRepository)
-    {
-        $this->roleRepository = $roleRepository;
-    }
-
     /**
      * @param Integer|Role $role
      *
@@ -41,6 +26,6 @@ class DeleteRoleTask extends Action
         }
 
         // delete the record from the roles table.
-        return $this->roleRepository->delete($role);
+        return App::make(RoleRepository::class)->delete($role);
     }
 }

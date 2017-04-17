@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Data\Repositories;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Ship\Parents\Repositories\Repository;
 
 /**
@@ -10,7 +9,7 @@ use App\Ship\Parents\Repositories\Repository;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UserRepository extends Repository implements UserRepositoryInterface
+class UserRepository extends Repository
 {
 
     /**

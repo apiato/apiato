@@ -2,8 +2,9 @@
 
 namespace App\Containers\Authorization\Data\Seeders;
 
-use App\Containers\Authorization\Actions\CreatePermissionAction;
+use App\Containers\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class AuthorizationPermissionsSeeder_1
@@ -12,22 +13,6 @@ use App\Ship\Parents\Seeders\Seeder;
  */
 class AuthorizationPermissionsSeeder_1 extends Seeder
 {
-
-    /**
-     * @var  \App\Containers\Authorization\Actions\CreatePermissionAction
-     */
-    private $createPermissionAction;
-
-    /**
-     * PermissionsSeeder constructor.
-     *
-     * @param \App\Containers\Authorization\Actions\CreatePermissionAction $createPermissionAction
-     */
-    public function __construct(CreatePermissionAction $createPermissionAction)
-    {
-        $this->createPermissionAction = $createPermissionAction;
-    }
-
     /**
      * Run the database seeds.
      *
@@ -37,10 +22,10 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
     {
         // Default Permissions ----------------------------------------------------------
 
-        $this->createPermissionAction->run('manage-roles', 'Create, Update, Delete, List, Attach/detach permissions to Roles and List Permissions.');
-        $this->createPermissionAction->run('create-admins', 'Create new Users (Admins) from the dashboard.');
-        $this->createPermissionAction->run('manage-admins-access', 'Assign users to Roles.');
-        $this->createPermissionAction->run('access-dashboard', 'Access the admins dashboard.');
+        App::make(CreatePermissionTask::class)->run('manage-roles', 'Create, Update, Delete, List, Attach/detach permissions to Roles and List Permissions.');
+        App::make(CreatePermissionTask::class)->run('create-admins', 'Create new Users (Admins) from the dashboard.');
+        App::make(CreatePermissionTask::class)->run('manage-admins-access', 'Assign users to Roles.');
+        App::make(CreatePermissionTask::class)->run('access-dashboard', 'Access the admins dashboard.');
 
     }
 }

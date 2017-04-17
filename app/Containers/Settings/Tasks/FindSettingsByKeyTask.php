@@ -4,6 +4,7 @@ namespace App\Containers\Settings\Tasks;
 
 use App\Containers\Settings\Data\Repositories\SettingsRepository;
 use App\Ship\Parents\Tasks\Task;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class FindSettingsByKeyTask
@@ -12,22 +13,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class FindSettingsByKeyTask extends Task
 {
-
-    /**
-     * @var  \App\Containers\Settings\Data\Repositories\SettingsRepository
-     */
-    private $settingsRepository;
-
-    /**
-     * FindSettingsTask constructor.
-     *
-     * @param \App\Containers\Settings\Data\Repositories\SettingsRepository $settingsRepository
-     */
-    public function __construct(SettingsRepository $settingsRepository)
-    {
-        $this->settingsRepository = $settingsRepository;
-    }
-
     /**
      * @param $key
      *
@@ -35,7 +20,7 @@ class FindSettingsByKeyTask extends Task
      */
     public function run($key)
     {
-        $result = $this->settingsRepository->findWhere(['key' => $key])->first();
+        $result = App::make(SettingsRepository::class)->findWhere(['key' => $key])->first();
 
         return $result->value;
     }

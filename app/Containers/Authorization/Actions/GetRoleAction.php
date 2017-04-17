@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class GetRoleAction.
@@ -15,13 +16,14 @@ class GetRoleAction extends Action
 {
 
     /**
-     * @param Integer|String $roleNameOrId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
+     * @throws \App\Containers\Authorization\Exceptions\RoleNotFoundException
      */
-    public function run($roleNameOrId)
+    public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$roleNameOrId]);
+        $role = $this->call(GetRoleTask::class, [$roleId = $request->id]);
 
         if (!$role) {
             throw new RoleNotFoundException();

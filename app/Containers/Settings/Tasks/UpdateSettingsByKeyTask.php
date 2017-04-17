@@ -12,22 +12,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class UpdateSettingsByKeyTask extends Task
 {
-
-    /**
-     * @var  \App\Containers\Settings\Data\Repositories\SettingsRepository
-     */
-    private $settingsRepository;
-
-    /**
-     * FindSettingsTask constructor.
-     *
-     * @param \App\Containers\Settings\Data\Repositories\SettingsRepository $settingsRepository
-     */
-    public function __construct(SettingsRepository $settingsRepository)
-    {
-        $this->settingsRepository = $settingsRepository;
-    }
-
     /**
      * @param $key
      * @param $value
@@ -37,15 +21,15 @@ class UpdateSettingsByKeyTask extends Task
     public function run($key, $value)
     {
         // TODO: replace both queries with a single UpdateWhere instead of find and update.
-        //       this UpdateWhere will need to be added to the repository package (contribution).
+        // this UpdateWhere needs to be added to the repository package (contribution).
 
-        $setting = $this->settingsRepository->findWhere(['key' => $key])->first();
+        $settingsRepository = App::make(SettingsRepository::class);
 
-        $result = $this->settingsRepository->update([
+        $setting = $settingsRepository->findWhere(['key' => $key])->first();
+
+        return $settingsRepository->update([
             'value' => $value
         ], $setting->id);
-
-        return $result;
     }
 
 }

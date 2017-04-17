@@ -3,10 +3,10 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\Authorization\Tasks\RevokeUserFromRoleTask;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -16,19 +16,19 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class RevokeUserFromRoleAction extends Action
 {
+
     /**
-     * @param User|integer  $userId
-     * @param integer|array $rolesIds
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  mixed
      */
-    public function run($user, $rolesIds)
+    public function run(Request $request)
     {
-        if (!$user instanceof User) {
-            $user = $this->call(FindUserByIdTask::class, [$user]);
+        if (!$request->user_id instanceof User) {
+            $user = $this->call(FindUserByIdTask::class, [$request->user_id]);
         }
 
-        if (!is_array($rolesIds)) {
+        if (!is_array($rolesIds = $request->roles_ids)) {
             $rolesIds = [$rolesIds];
         }
 
@@ -39,6 +39,10 @@ class RevokeUserFromRoleAction extends Action
             $roles->add($role);
         }
 
-        return $this->call(revokeUserFromRoleTask::class, [$user, $roles->pluck('name')->toArray()]);
+        foreach ($roles->pluck('name')->toArray() as $roleName) {
+            $user->removeRole($roleName);
+        }
+
+        return $user;
     }
 }

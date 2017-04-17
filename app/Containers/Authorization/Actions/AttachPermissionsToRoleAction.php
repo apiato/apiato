@@ -6,6 +6,7 @@ use App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask;
 use App\Containers\Authorization\Tasks\GetPermissionTask;
 use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class AttachPermissionsToRoleAction.
@@ -14,18 +15,18 @@ use App\Ship\Parents\Actions\Action;
  */
 class AttachPermissionsToRoleAction extends Action
 {
+
     /**
-     * @param $roleId
-     * @param $permissionsIds
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \App\Containers\Authorization\Models\Role
+     * @return  mixed
      */
-    public function run($roleId, $permissionsIds)
+    public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$roleId]);
+        $role = $this->call(GetRoleTask::class, [$request->role_id]);
         $permissions = [];
 
-        if (is_array($permissionsIds)) {
+        if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
                 $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
             }
@@ -33,6 +34,6 @@ class AttachPermissionsToRoleAction extends Action
             $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
         }
 
-        return $this->call(AttachPermissionsToRoleTask::class, [$role, $permissions]);
+        return $role->givePermissionTo($permissions);
     }
 }

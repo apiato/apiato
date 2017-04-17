@@ -4,7 +4,9 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\UpdateUserTask;
+use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class UpdateUserAction.
@@ -15,21 +17,16 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @param null $password
-     * @param null $name
-     * @param null $email
-     * @param null $gender
-     * @param null $birth
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  mixed
      */
-    public function run($password = null, $name = null, $email = null, $gender = null, $birth = null)
+    public function run(Request $request)
     {
         // user can only update himself
         $userId = $this->call(GetAuthenticatedUserTask::class)->id;
 
-        $user = $this->call(UpdateUserTask::class, [$userId, $password, $name, $email, $gender, $birth]);
-
-        return $user;
+        return $this->call(UpdateUserTask::class,
+            [$userId, $request->password, $request->name, $request->email, $request->gender, $request->birth]);
     }
 }

@@ -3,18 +3,18 @@
 namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\CreateAdminAction;
-use App\Containers\User\Actions\CreateUserAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetAuthenticatedUserAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAdminsAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
 use App\Containers\User\Actions\ListClientsAction;
+use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
-use App\Containers\User\UI\API\Requests\GetUserRequest;
+use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
@@ -32,142 +32,108 @@ class Controller extends ApiController
 
     /**
      * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
-     * @param \App\Containers\User\Actions\DeleteUserAction          $action
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function deleteUser(DeleteUserRequest $request, DeleteUserAction $action)
+    public function deleteUser(DeleteUserRequest $request)
     {
-        $user = $action->run($request->id);
+        $user = $this->call(DeleteUserAction::class, [$request]);
 
         return $this->deleted($user);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-     * @param \App\Containers\User\Actions\ListAndSearchUsersAction    $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function listAllUsers(ListAllUsersRequest $request, ListAndSearchUsersAction $action)
+    public function listAllUsers(ListAllUsersRequest $request)
     {
-        $users = $action->run();
+        $users = $this->call(ListAndSearchUsersAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-     * @param \App\Containers\User\Actions\ListClientsAction           $action
      *
      * @return  mixed
      */
-    public function listAllClients(ListAllUsersRequest $request, ListClientsAction $action)
+    public function listAllClients(ListAllUsersRequest $request)
     {
-        $users = $action->run([true, false, null]);
+        $users = $this->call(ListClientsAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
-     * @param \App\Containers\User\Actions\ListAdminsAction            $action
      *
      * @return  mixed
      */
-    public function listAllAdmins(ListAllUsersRequest $request, ListAdminsAction $action)
+    public function listAllAdmins(ListAllUsersRequest $request)
     {
-        $users = $action->run();
+        $users = $this->call(ListAdminsAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\RefreshUserRequest $request
-     * @param \App\Containers\User\Actions\GetUserAction              $action
+     * @param \App\Containers\User\UI\API\Requests\GetUserByIdRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function refreshUser(RefreshUserRequest $request, GetUserAction $action)
+    public function getUser(GetUserByIdRequest $request)
     {
-        $user = $action->run($request->id, $request->header('Authorization'));
-
-        return $this->transform($user, UserTransformer::class);
-    }
-
-    /**
-     * @param \App\Containers\User\UI\API\Requests\GetUserRequest $request
-     * @param \App\Containers\User\Actions\GetUserAction          $action
-     *
-     * @return  \Illuminate\Http\JsonResponse
-     */
-    public function getUser(GetUserRequest $request, GetUserAction $action)
-    {
-        $user = $action->run($request->id);
+        $user = $this->call(GetUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest $request
-     * @param \App\Containers\User\Actions\GetAuthenticatedUserAction          $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request, GetAuthenticatedUserAction $action)
+    public function getAuthenticatedUserData(GetAuthenticatedUserRequest $request)
     {
-        $user = $action->run();
+        $user = $this->call(GetAuthenticatedUserAction::class);
 
-        return $this->transform($user, new UserTransformer());
+        return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
-     * @param \App\Containers\User\Actions\CreateUserAction            $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
+    public function registerUser(RegisterUserRequest $request)
     {
-        $user = $action->run(
-            $request['email'],
-            $request['password'],
-            $request['name'],
-            $request['gender'],
-            $request['birth']
-        );
+        $user = $this->call(RegisterUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
-     * @param \App\Containers\User\Actions\CreateAdminAction          $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function createAdmin(CreateAdminRequest $request, CreateAdminAction $action)
+    public function createAdmin(CreateAdminRequest $request)
     {
-        $admin = $action->run($request['email'], $request['password'], $request['name']);
+        $admin = $this->call(CreateAdminAction::class, [$request]);
 
         return $this->transform($admin, UserTransformer::class);
     }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
-     * @param \App\Containers\User\Actions\UpdateUserAction          $action
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  mixed
      */
-    public function updateUser(UpdateUserRequest $request, UpdateUserAction $action)
+    public function updateUser(UpdateUserRequest $request)
     {
-        $user = $action->run(
-            $request['password'],
-            $request['name'],
-            $request['email'],
-            $request['gender'],
-            $request['birth']
-        );
+        $user = $this->call(UpdateUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }

@@ -12,22 +12,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class FindWhateverSettingsTask extends Task
 {
-
-    /**
-     * @var  \App\Containers\Settings\Data\Repositories\SettingsRepository
-     */
-    private $settingsRepository;
-
-    /**
-     * FindSettingsTask constructor.
-     *
-     * @param \App\Containers\Settings\Data\Repositories\SettingsRepository $settingsRepository
-     */
-    public function __construct(SettingsRepository $settingsRepository)
-    {
-        $this->settingsRepository = $settingsRepository;
-    }
-
     /**
      * @return  mixed
      */
@@ -35,7 +19,7 @@ class FindWhateverSettingsTask extends Task
     {
         $settingsName = 'whatever';
 
-        $result = $this->settingsRepository->findWhere(['key' => $settingsName])->first();
+        $result = App::make(SettingsRepository::class)->findWhere(['key' => $settingsName])->first();
 
         return $result->value;
     }

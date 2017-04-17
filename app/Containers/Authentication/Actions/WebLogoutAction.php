@@ -2,8 +2,8 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\WebLogoutTask;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class WebLogoutAction.
@@ -17,6 +17,6 @@ class WebLogoutAction extends Action
      */
     public function run()
     {
-        return $this->call(WebLogoutTask::class);
+        Auth::logout();
     }
 }

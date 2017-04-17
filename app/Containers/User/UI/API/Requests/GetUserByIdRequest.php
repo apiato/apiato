@@ -5,11 +5,11 @@ namespace App\Containers\User\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class RefreshUserRequest.
+ * Class GetUserByIdRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RefreshUserRequest extends Request
+class GetUserByIdRequest extends Request
 {
 
     /**
@@ -18,7 +18,7 @@ class RefreshUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permissions' => 'refresh-users',
+        'permissions' => 'search-users',
         'roles'       => '',
     ];
 
@@ -57,9 +57,7 @@ class RefreshUserRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess',
-            'isOwner',
+            'hasAccess|isOwner',
         ]);
     }
-
 }
