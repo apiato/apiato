@@ -16,7 +16,6 @@ use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
-use App\Containers\User\UI\API\Requests\RefreshUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -29,6 +28,42 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
+     *
+     * @return  mixed
+     */
+    public function registerUser(RegisterUserRequest $request)
+    {
+        $user = $this->call(RegisterUserAction::class, [$request]);
+
+        return $this->transform($user, UserTransformer::class);
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
+     *
+     * @return  mixed
+     */
+    public function createAdmin(CreateAdminRequest $request)
+    {
+        $admin = $this->call(CreateAdminAction::class, [$request]);
+
+        return $this->transform($admin, UserTransformer::class);
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
+     *
+     * @return  mixed
+     */
+    public function updateUser(UpdateUserRequest $request)
+    {
+        $user = $this->call(UpdateUserAction::class, [$request]);
+
+        return $this->transform($user, UserTransformer::class);
+    }
 
     /**
      * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
@@ -102,39 +137,4 @@ class Controller extends ApiController
         return $this->transform($user, UserTransformer::class);
     }
 
-    /**
-     * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
-     *
-     * @return  mixed
-     */
-    public function registerUser(RegisterUserRequest $request)
-    {
-        $user = $this->call(RegisterUserAction::class, [$request]);
-
-        return $this->transform($user, UserTransformer::class);
-    }
-
-    /**
-     * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
-     *
-     * @return  mixed
-     */
-    public function createAdmin(CreateAdminRequest $request)
-    {
-        $admin = $this->call(CreateAdminAction::class, [$request]);
-
-        return $this->transform($admin, UserTransformer::class);
-    }
-
-    /**
-     * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
-     *
-     * @return  mixed
-     */
-    public function updateUser(UpdateUserRequest $request)
-    {
-        $user = $this->call(UpdateUserAction::class, [$request]);
-
-        return $this->transform($user, UserTransformer::class);
-    }
 }

@@ -33,27 +33,38 @@ Read from the [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmou
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Tasks\DeleteUserTask;
-
+use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
+use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
-class DeleteUserAction extends Action
+class CreateAdminAction extends Action
 {
-    private $deleteUserTask;
 
-    public function __construct(DeleteUserTask $deleteUserTask)
+    /**
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  mixed
+     */
+    public function run(Request $request)
     {
-        $this->deleteUserTask = $deleteUserTask;
-    }
+        $admin = $this->call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
 
-    public function run($userId)
-    {
-        return $this->deleteUserTask->run($userId);
+        $this->call(AssignUserToRoleTask::class, [$admin, ['admin']]);
+
+        return $admin;
     }
 }
+
 ```
 
-But injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it. 
+But injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
+
+
+The Action itself was also called using `$this->call()` which triggers the `run` function in it. 
+
+Each Action can know which UI called it using `$this->getUI()`, this could be useful when handling the same Action differently based on the UI type.
+
 
 **Same Example using the `call` function:** 
 
@@ -87,17 +98,18 @@ namespace App\Containers\Email\Actions;
 
 use App\Containers\Xxx\Tasks\Sample111Task;
 use App\Containers\Xxx\Tasks\Sample222Task;
+use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Actions\Action;
 
 class DemoAction extends Action
 {
 
-    public function run($xxx, $yyy, $zzz)
+    public function run(Request $request)
     {
 
-        $foo = $this->call(Sample111Task::class, [$xxx, $yyy]);
+        $foo = $this->call(Sample111Task::class, [$request->xxx, $request->yyy]);
 
-        $bar = $this->call(Sample222Task::class, [$foo, $zzz]);
+        $bar = $this->call(Sample222Task::class, [$request->foo, $request->zzz]);
 
         // ...
 
@@ -114,13 +126,11 @@ class DemoAction extends Action
  <?php
     //...
 
-    public function setUserEmailController(SetUserEmailRequest $request, SetUserEmailWithConfirmationAction $action)
+    public function deleteUser(DeleteUserRequest $request)
     {
+        $user = $this->call(DeleteUserAction::class, [$request]);
 
-        $action->run($request->id, $request->email);
-
-        return ...
-
+        return $this->deleted($user);
     }
 
     //...

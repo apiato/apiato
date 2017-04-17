@@ -11,8 +11,8 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 ### Rules
 
 - All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
-
 - A Request MUST have a `rules()` function, returning an array. And an `authorize()` function to check for authorization (can return true when no authorization required).
+- 
 
 ### Folder Structure
 
@@ -96,6 +96,8 @@ public function handle(UpdateUserRequest $updateUserRequest)
 ```
 
 By just injecting the request class you already applied the validation and authorization rules.
+
+When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
 
 ### Request Properties
 
@@ -263,3 +265,41 @@ Example:
 Let's say we have an endpoint `www.api.apiato.dev/v1/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
+
+
+
+
+## Unit Testing for Actions (Request)
+
+Since we're passing Requests objects to the Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
+
+```php
+// creating 
+$request = RegisterUserRequest::injectData($data);
+```
+Example Usage:
+
+```php
+$data = [
+    'email'    => 'Mahmoud@test.test',
+    'name'     => 'Mahmoud',
+    'password' => 'so-secret',
+];
+
+// create request object with some data
+$request = RegisterUserRequest::injectData($data);
+
+// create instance of the Action
+$action = App::make(RegisterUserAction::class);
+// invoje the run function
+$user = $action->run($request);
+
+// do any kind of assertions..
+$this->assertInstanceOf(User::class, $user);
+// ...
+
+```
+
+
+
+
