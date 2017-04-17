@@ -3,10 +3,9 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Containers\User\Exceptions\UpdateResourceFailedException;
+use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UpdateUserTask.
@@ -17,44 +16,16 @@ class UpdateUserTask extends Task
 {
 
     /**
-     * @param      $userId
-     * @param null $password
-     * @param null $name
-     * @param null $email
-     * @param null $gender
-     * @param null $birth
-     * @param null $token
-     * @param null $expiresIn
-     * @param null $refreshToken
-     * @param null $tokenSecret
+     * @param $userData
+     * @param $userId
      *
      * @return  mixed
-     * @throws \App\Containers\User\Exceptions\UpdateResourceFailedException
+     * @throws \App\Ship\Exceptions\UpdateResourceFailedException
      */
-    public function run(
-        $userId,
-        $password = null,
-        $name = null,
-        $email = null,
-        $gender = null,
-        $birth = null,
-        $token = null,
-        $expiresIn = null,
-        $refreshToken = null,
-        $tokenSecret = null
-    ) {
+    public function run($userData, $userId)
+    {
         // set all data in the array, then remove all null values and their keys
-        $attributes = array_filter([
-            'password'             => $password ? Hash::make($password) : null,
-            'name'                 => $name,
-            'email'                => $email,
-            'gender'               => $gender,
-            'birth'                => $birth,
-            'social_token'         => $token,
-            'social_expires_in'    => $expiresIn,
-            'social_refresh_token' => $refreshToken,
-            'social_token_secret'  => $tokenSecret,
-        ]);
+        $attributes = array_filter($userData);
 
         // optionally, check if data is empty and return error
         if (!$attributes) {
@@ -62,9 +33,7 @@ class UpdateUserTask extends Task
         }
 
         // updating the attributes
-        $user = App::make(UserRepository::class)->update($attributes, $userId);
-
-        return $user;
+        return App::make(UserRepository::class)->update($attributes, $userId);;
     }
 
 }

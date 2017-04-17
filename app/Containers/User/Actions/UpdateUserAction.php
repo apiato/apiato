@@ -4,9 +4,9 @@ namespace App\Containers\User\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\UpdateUserTask;
-use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UpdateUserAction.
@@ -26,7 +26,18 @@ class UpdateUserAction extends Action
         // user can only update himself
         $userId = $this->call(GetAuthenticatedUserTask::class)->id;
 
-        return $this->call(UpdateUserTask::class,
-            [$userId, $request->password, $request->name, $request->email, $request->gender, $request->birth]);
+        $userData = [
+            'password'             => $request->password ? Hash::make($request->password) : null,
+            'name'                 => $request->name,
+            'email'                => $request->email,
+            'gender'               => $request->gender,
+            'birth'                => $request->birth,
+            'social_token'         => $request->token,
+            'social_expires_in'    => $request->expiresIn,
+            'social_refresh_token' => $request->refreshToken,
+            'social_token_secret'  => $request->tokenSecret,
+        ];
+
+        return $this->call(UpdateUserTask::class, [$userData, $userId]);
     }
 }
