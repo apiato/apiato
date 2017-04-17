@@ -16,8 +16,7 @@ use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
 abstract class Request extends LaravelFormRequest
 {
 
-    use RequestTrait;
-    use HashIdTrait;
+    use RequestTrait, HashIdTrait, StateKeeperTrait;
 
     /**
      * check if a user has permission to perform an action.

@@ -12,7 +12,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 
 - All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
 - A Request MUST have a `rules()` function, returning an array. And an `authorize()` function to check for authorization (can return true when no authorization required).
-- 
+
 
 ### Folder Structure
 
@@ -35,7 +35,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 
 ### Code Samples
 
-**Example: Update User Requests** 
+**Example: Update User Requests**
 
 ```php
 <?php
@@ -77,10 +77,10 @@ class UpdateUserRequest extends Request
     }
 }
 ```
-	 
+
 *If you are wondering what are those properties doing on the request! keep reading*
 
-**Usage from Controller:** 
+**Usage from Controller:**
 
 ```php
 <?php
@@ -90,9 +90,9 @@ public function handle(UpdateUserRequest $updateUserRequest)
     $data = $updateUserRequest->all();
     // or
     $name = $updateUserRequest->name;
-    // or     
+    // or
     $name = $updateUserRequest['name'];
-} 
+}
 ```
 
 By just injecting the request class you already applied the validation and authorization rules.
@@ -144,16 +144,16 @@ class AssignUserToRoleRequest extends Request
 }
 ```
 
-	 
+
 **Note:** validations rules that relies on your ID like (`exists:users,id`) will not work unless you decode your ID before passing it to the validation.
 
 ### **urlParameters**
 
 The **$urlParameters** property is used for applying validation rules on the URL parameters:
 
-Laravel by default doesn't allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data. 
+Laravel by default doesn't allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
 
-Example: 
+Example:
 
 ```php
 <?php
@@ -190,7 +190,7 @@ class ConfirmUserEmailRequest extends Request
             // nothing! this is open endpoint.
         ]);
     }
-} 
+}
 ```
 
 ### **access**
@@ -217,7 +217,7 @@ class DeleteUserRequest extends Request
         'permission' => 'delete-users|another-permissions..'
 	      	'roles'      => 'manger'
 	    ];
-	
+
 	    public function authorize()
         {
             return $this->check([
@@ -226,7 +226,7 @@ class DeleteUserRequest extends Request
             ]);
         }
 	}
-	 
+
 ```
 
 
@@ -267,6 +267,21 @@ Let's say we have an endpoint `www.api.apiato.dev/v1/users/{ID}/delete` that del
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
 
+## Storing Data on the Request
+
+During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or maybe if you prefer to Tasks).
+
+To store some data on the reuqest use:
+
+```php
+$request->keep(['someKey' => $someValue]);
+```
+To retrieve the data back at any time during the request life-cycle use:
+
+```php
+$someValue = $request->retrieve('someKey')
+```
+
 
 
 ## Unit Testing for Actions (Request)
@@ -274,7 +289,7 @@ With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able t
 Since we're passing Requests objects to the Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
 
 ```php
-// creating 
+// creating
 $request = RegisterUserRequest::injectData($data);
 ```
 Example Usage:
