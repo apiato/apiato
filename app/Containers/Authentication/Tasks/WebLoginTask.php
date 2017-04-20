@@ -2,8 +2,9 @@
 
 namespace App\Containers\Authentication\Tasks;
 
-use App\Containers\Authentication\Exceptions\AuthenticationFailedException;
+use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Ship\Parents\Tasks\Task;
+use Auth;
 
 /**
  * Class WebLoginTask.
@@ -19,10 +20,13 @@ class WebLoginTask extends Task
      *
      * @return  mixed
      */
-    public function run($email, $password, $remember = false)
+    public function run($email, $password, bool $remember = false)
     {
-        // TODO:..
-        dump('incomplete..');
+        if (!$user = Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+            throw new LoginFailedException();
+        }
+
+        return Auth::user();
     }
 
 }

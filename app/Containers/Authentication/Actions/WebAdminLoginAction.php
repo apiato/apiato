@@ -24,7 +24,7 @@ class WebAdminLoginAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(WebLoginTask::class, [$request->email, $request->password, $request->remember_me]);
+        $user = $this->call(WebLoginTask::class, [$request->email, $request->password, $request->remember_me ?? false]);
 
         if (!$user->hasAdminRole()) {
             throw new UserNotAdminException();
