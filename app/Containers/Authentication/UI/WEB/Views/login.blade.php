@@ -113,7 +113,7 @@
     <div class="login-page">
         <h1 class="center">Login</h1>
         <div class="form">
-            <form class="login-form" action="{{route('admin_login')}}" method="post">
+            <form class="login-form" action="{{route('post_admin_login_form')}}" method="post">
                 {{ csrf_field() }}
                 @if(session('status'))
                     <div class="text-red">{{ session('status') }}</div>
