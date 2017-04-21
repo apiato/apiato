@@ -1,3 +1,7 @@
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
+
+> Build better API's faster with **PHP** and **Laravel 5.4**.
+
 # apiato
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
@@ -11,11 +15,6 @@
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 
 
-> Build better API's faster with **PHP** and **Laravel 5.4**.
-
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
-
-
 
 *`Hello API` was the first name of this project, it was renamed to `apiato` in March, 22, 2017 for no reason.*
 
@@ -26,10 +25,12 @@
 
 ### What is `apiato`
 
-**apiato** is a starter project, designed to help you build scalable API's faster, by providing tools and
-functionalities that facilitates the development of any API-Centric Applications.
+A flawless framework for building scalable and testable API-Centric Applications with PHP.
 
-apiato uses the best frameworks, tools and conventions in a very creative way to deliver a modern PHP Application.
+**apiato** is designed to help you build scalable API's faster, by providing tools and
+functionalities that facilitates the development of any API-Centric App.
+
+It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
 
 Why!? setting up a solid API from scratch is time consuming (and time is money).
 apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
@@ -98,8 +99,17 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 **apiato** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
-Reading the simple [**Porto document**](https://github.com/Mahmoudz/Porto) is essential before starting.
 
+Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in apiato, will help you understand how the code is organized and how things work.
+
+You do NOT have to follow any of the Porto conventions to benifit from every features apiato provide to your API.
+
+If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between `Controllers`.
+You can call any `Action` from any `Controller` using:
+
+```php
+$this->call(\MyAction::class, [$paramerter1, $paramerter2]);
+```
 
 ### apiato full [documentation](http://apiato.io/) here.
 
@@ -115,6 +125,10 @@ Join our [Slack](https://apiato.slack.com/shared_invite/MTYyMzk3MzIzNjIxLTE0OTA5
 
 
 
+<a name="Contribution"></a>
+## Contribution
+
+[Contributors Giude](http://apiato.io/B.general/contribution)
 
 
 <a name="Credits"></a>

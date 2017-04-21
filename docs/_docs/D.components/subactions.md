@@ -6,7 +6,7 @@ order: 16
 
 ### Definition & Principles
 
-Read from the [**Porto SAP Documentation (#SubActions)**](https://github.com/Mahmoudz/Porto#SubActions).
+Read from the [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#Sub-Actions).
 
 ### Rules
 
