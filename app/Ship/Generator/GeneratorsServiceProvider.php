@@ -27,6 +27,7 @@ class GeneratorsServiceProvider extends ServiceProvider
         $this->registerGenerators([
             'Action',
             'Route',
+            'Task',
         ]);
     }
 

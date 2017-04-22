@@ -7,11 +7,11 @@ use App\Ship\Generator\Interfaces\ComponentsGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 
 /**
- * Class ActionGenerator
+ * Class TaskGenerator
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
+class TaskGenerator extends GeneratorCommand implements ComponentsGenerator
 {
 
     /**
@@ -19,28 +19,28 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var string
      */
-    protected $name = 'apiato:action';
+    protected $name = 'apiato:task';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Action class';
+    protected $description = 'Create a new Task class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $fileType = 'Action';
+    protected $fileType = 'Task';
 
     /**
      * The structure of the file path.
      *
      * @var  string
      */
-    protected $pathStructure = '{container-name}/Actions/*';
+    protected $pathStructure = '{container-name}/Tasks/*';
 
     /**
      * The structure of the file name.
@@ -54,7 +54,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  string
      */
-    protected $stubName = 'action.stub';
+    protected $stubName = 'task.stub';
 
     /**
      * User required/optional inputs expected to be passed while calling the command.

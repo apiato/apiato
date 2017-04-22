@@ -17,7 +17,7 @@ This abstract class does all the work for you.
 
 #### Add new component generator.
 
-1. Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
+1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
 
 Each component should have 3 functions:
 
@@ -25,7 +25,20 @@ Each component should have 3 functions:
 - `getStubRenderMap:` returns array mapping keys and values to be replaced in the stub.
 - `getFileNameParsingMap:` returns array mapping keys and values to be replaced in file name (`$nameStructure`).
 
-2. Create the stub in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
+2 - Create the stub in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
+
+3 - Finally register the command in `app/Ship/Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
+
+```php
+        $this->registerGenerators([
+            'Action',
+            'Route',
+            'Task',
+            // ...
+        ]);
+```
+
+
 
 That's it.
 
@@ -33,6 +46,8 @@ Note: Once all the components are built and ready,
 I'll join and write the container command myself, since that cannot extend from the same abstract class of the components.
 It should be a stand alone command, which basically calls the components commands and pass user inputs to them.
 
+
+<br>
 
 Happy coding :)
 
