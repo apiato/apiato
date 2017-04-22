@@ -4,7 +4,6 @@ namespace App\Ship\Generator\Commands;
 
 use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
-use Closure;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -79,8 +78,8 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['container', InputArgument::REQUIRED, 'The name of the container'],
-        ['name', InputArgument::REQUIRED, 'The name of the endpoint (CreateUser, DeleteItem, ...)'],
+        ['container-name', InputArgument::REQUIRED, 'The name of the container'],
+        ['file-name', InputArgument::REQUIRED, 'The name of the endpoint (CreateUser, DeleteItem, ...)'],
         ['ui', InputArgument::REQUIRED, 'The UI of the route (Web or Api)'],
         ['operation', InputArgument::OPTIONAL, 'The operation (*, Create, Read, Update, Delete, List)'],
         ['type', InputArgument::OPTIONAL, 'The type of the endpoint (private, public)'],
@@ -90,55 +89,56 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
     ];
 
     /**
-     * This function get called by the fire function (at it's parent class) when the command is called,
-     * to renders the stub with data collected from the user as input (while calling the command and by
-     * his answers to the questions).
-     * > How to use it:
-     *     Add more formatted user input to the array argument and handle the rendering in the render function below.
-     *
-     * @param \Closure $argumentsReady
-     * @param \Closure $stubReady
-     *
-     * @return mixed|void
+     * @return  array
      */
-    public function fireMe(Closure $argumentsReady, Closure $stubReady)
+    public function getUserInputs()
     {
+        $container = $this->getInput('container-name');
+        $file = Str::ucfirst($this->getInput('file-name'));
+
+
         $version = $this->getInput('version') ? : self::DEFAULT_VERSION;
         $type = $this->getInput('type') ? : self::DEFAULT_TYPE;
-        $endpointName = Str::ucfirst($this->getInput('name'));
-
-        $this->getAndAssignInputContainerName();
-        $this->getAndAssignInputFilename([$endpointName, $type, $version]);
 
         $operation = Str::ucfirst($this->getInput('operation')); // TODO Later: if operation = null read it from the name
         $url = $this->getInput('url');
         $verb = $this->getInput('verb');
         $ui = $this->getInput('ui');
-        
 
-        // TODO: based on the operation you will need to create single or multiple endpoints and you will need to change the code inside those
-
-        $this->_callRenderStub($argumentsReady, $stubReady, [
-            $operation,
-            $url,
-            $version,
-            $verb
-        ]);
+        return [
+            'stub-parameters' => [
+                $container,
+                $file,
+                $operation,
+                $url,
+                $version,
+                $verb,
+                $ui,
+            ],
+            'file-parameters' => [
+                $file,
+                $type,
+                $version,
+//                $this->fileName = $this->getInput('name');
+            ],
+        ];
     }
 
-
     /**
+     * @param $container
+     * @param $endpointName
      * @param $operation
      * @param $url
      * @param $version
      * @param $verb
+     * @param $ui
      *
      * @return  array
      */
-    public function renderStub($operation, $url, $version, $verb)
+    public function getStubRenderMap($container, $endpointName, $operation, $url, $version, $verb, $ui)
     {
         return [
-            '{{container-name}}'   => $this->containerName,
+            '{{container-name}}'   => $container,
             '{{operation}}'        => $operation,
             '{{http-verb}}'        => $verb,
             '{{endpoint-url}}'     => $url,
@@ -148,12 +148,12 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
 
     /**
      * @param $endpointName
-     * @param $endpointVersion
      * @param $endpointType
+     * @param $endpointVersion
      *
-     * @return  mixed|string
+     * @return  array
      */
-    public function parseFilename($endpointName, $endpointType, $endpointVersion)
+    public function getFileNameParsingMap($endpointName, $endpointType, $endpointVersion)
     {
         return [
             '{endpoint-name}'      => $endpointName,

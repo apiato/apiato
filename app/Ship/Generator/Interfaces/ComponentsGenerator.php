@@ -13,11 +13,8 @@ interface ComponentsGenerator
 {
 
     /**
-     * @param \Closure $initialize
-     * @param \Closure $terminate
-     *
      * @return  mixed
      */
-    public function fireMe(Closure $initialize, Closure $terminate);
+    public function getUserInputs();
 
 }

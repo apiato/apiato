@@ -8,10 +8,14 @@ use App\Ship\Generator\Traits\FileSystemTrait;
 use App\Ship\Generator\Traits\FormatterTrait;
 use App\Ship\Generator\Traits\ParserTrait;
 use App\Ship\Generator\Traits\PrinterTrait;
-use Closure;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 
+/**
+ * Class GeneratorCommand
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 abstract class GeneratorCommand extends Command
 {
 
@@ -38,13 +42,40 @@ abstract class GeneratorCommand extends Command
      */
     CONST CONTAINER_DIRECTORY_NAME = 'Containers';
 
-    protected $fileName;
+    /**
+     * @var string
+     */
+    protected $filePath;
 
+    /**
+     * @var string
+     */
     protected $containerName;
 
+    /**
+     * @var string
+     */
+    protected $userData;
+
+    /**
+     * @var string
+     */
+    protected $parsedFileName;
+
+    /**
+     * @var string
+     */
     protected $stubContent;
 
-    protected $filePath;
+    /**
+     * @var string
+     */
+    protected $renderedStubContent;
+
+    /**
+     * @var  \Illuminate\Filesystem\Filesystem
+     */
+    private $fileSystem;
 
     /**
      * GeneratorCommand constructor.
@@ -64,36 +95,79 @@ abstract class GeneratorCommand extends Command
      */
     public function fire()
     {
-        if (!$this instanceof ComponentsGenerator) {
+        $this->validateGenerator($this);
+
+        // read required inputs. Every command must pass `container name` and `file name`
+        $this->containerName = $this->getInput('container-name');
+        $this->fileName = $this->getInput('file-name');
+
+        $this->printStartedMessage($this->containerName, $this->fileName);
+
+        // get the actual path of the output file
+        $this->filePath = $this->getFilePath($this->parsePathStructure($this->pathStructure));
+
+        // prepare stub content
+        $this->stubContent = $this->fileSystem->get($this->getStubFile());
+
+        // get user inputs
+        $this->userData = $this->getUserInputs();
+
+        // parse the file name according to user input
+        $this->parsedFileName = $this->parseFilename($this->userData['file-parameters']);
+
+        // render the stub
+        $this->renderedStubContent = $this->renderStub($this->userData['stub-parameters']);
+
+        $this->generateFile($this->filePath, $this->renderedStubContent);
+
+        $this->printFinishedMessage($this->fileType);
+    }
+
+    /**
+     * @param $generator
+     *
+     * @throws \App\Ship\Generator\Exceptions\GeneratorErrorException
+     */
+    private function validateGenerator($generator)
+    {
+        if (!$generator instanceof ComponentsGenerator) {
             throw new GeneratorErrorException(
                 'Your component maker command should implement ComponentsGenerator interface.'
             );
         }
+    }
 
-        // $initialize should be called after finishing collecting arguments in the generator.
-        // To prevent the user from having to call these functions in the same order from each component generator.
-        $initialize = function () {
+    /**
+     * @param array $arguments
+     *
+     * @return  mixed
+     */
+    private function parseFilename(array $arguments = [])
+    {
+        $map = $this->getFileNameParsingMap(...$arguments);
 
-            $this->printStartedMessage();
+        foreach ($map as $key => $value) {
+            $this->nameStructure = str_replace($key, $value, $this->nameStructure);
+        }
 
-            // get the actual path of the output file
-            $this->filePath = $this->getFilePath($this->parsePathStructure());
+        // after the loop is done $nameStructure will be come a parsed $nameStructure so I set it as $fileName
+        return $this->nameStructure;
+    }
 
-            // prepare stub content
-            $this->stubContent = $this->getStubContent();
-        };
+    /**
+     * @param $renderArguments
+     *
+     * @return  mixed
+     */
+    public function renderStub($renderArguments)
+    {
+        $map = $this->getStubRenderMap(...$renderArguments);
 
-        // $terminate should be called after finishing rendering the stub in the generator.
-        // To prevent the user from having to call these functions in the same order from each component generator.
-        $terminate = function () {
+        foreach ($map as $key => $value) {
+            $this->stubContent = str_replace($key, $value, $this->stubContent);
+        }
 
-            $this->generateFile();
-
-            $this->printFinishedMessage();
-        };
-
-        // let's call fireMe on the component, to collect user inputs and render the stub of the fired generator
-        $this->fireMe($initialize, $terminate);
+        return $this->stubContent;
     }
 
     /**
@@ -115,23 +189,13 @@ abstract class GeneratorCommand extends Command
     }
 
     /**
-     * Get the stub file for the generator.
-     *
-     * @return string
+     * @return  mixed
      */
     protected function getStubFile()
     {
         $path = __DIR__ . '/' . self::STUB_PATH;
 
         return str_replace('*', $this->stubName, $path);
-    }
-
-    /**
-     * @return  string
-     */
-    protected function getStubContent()
-    {
-        return $this->fileSystem->get($this->getStubFile());
     }
 
     /**
@@ -153,59 +217,6 @@ abstract class GeneratorCommand extends Command
     protected function getInput($arg, $trim = true)
     {
         return $trim ? $this->trimString($this->argument($arg)) : $this->argument($arg);
-    }
-
-
-    /**
-     * @return  string
-     */
-    public function getAndAssignInputContainerName()
-    {
-        return $this->containerName = $this->getInput('container');
-    }
-
-    /**
-     * @param array $args
-     *
-     * @return  mixed
-     */
-    public function getAndAssignInputFilename(array $args = array())
-    {
-
-        $map = $this->parseFilename(...$args);
-
-        foreach ($map as $key => $value) {
-            $this->nameStructure = str_replace($key, $value, $this->nameStructure);
-        }
-
-        // after the loop is done $nameStructure will be come a parsed $nameStructure so I set it as $fileName
-        return $this->fileName = $this->nameStructure;
-    }
-
-    /**
-     * This is just a facilitator function, instead of calling these 3 lines over and over from each component generator
-     * let the generator call this function at the end and it will take care of invoking those closure and calling the
-     * render function for you, at the end.
-     *
-     * @param \Closure $initializeWhenArgumentsReady
-     * @param \Closure $terminateWhenStubReady
-     * @param          $renderArguments
-     */
-    public function _callRenderStub(
-        Closure $initializeWhenArgumentsReady,
-        Closure $terminateWhenStubReady,
-        $renderArguments
-    ) {
-
-        $initializeWhenArgumentsReady();
-
-        $map = $this->renderStub(...$renderArguments);
-
-        foreach ($map as $key => $value) {
-            $this->stubContent = str_replace($key, $value, $this->stubContent);
-        }
-
-        $terminateWhenStubReady();
     }
 
 }

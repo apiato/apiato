@@ -5,17 +5,17 @@ namespace App\Ship\Generator\Traits;
 trait PrinterTrait
 {
 
-    public function printStartedMessage()
+    public function printStartedMessage($containerName, $fileName)
     {
-        $this->printInfoMessage('> Generating (' . $this->fileName . ') in (' . $this->containerName . ') Container.');
+        $this->printInfoMessage('> Generating (' . $fileName . ') in (' . $containerName . ') Container.');
     }
 
     /**
      * @void
      */
-    public function printFinishedMessage()
+    public function printFinishedMessage($type)
     {
-        $this->printInfoMessage($this->fileType . ' generated successfully.');
+        $this->printInfoMessage($type . ' generated successfully.');
     }
 
     /**

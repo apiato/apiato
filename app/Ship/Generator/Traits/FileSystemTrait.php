@@ -20,9 +20,9 @@ trait FileSystemTrait
     /**
      * @return  mixed
      */
-    public function generateFile()
+    public function generateFile($filePath, $stubContent)
     {
-        return $this->fileSystem->put($this->filePath, $this->stubContent);
+        return $this->fileSystem->put($filePath, $stubContent);
     }
 
     /**

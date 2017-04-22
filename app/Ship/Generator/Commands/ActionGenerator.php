@@ -64,35 +64,39 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['container', InputArgument::REQUIRED, 'The name of the container'],
-        ['file', InputArgument::REQUIRED, 'The name of the file (UpdateUser, CreateStore)'],
+        ['container-name', InputArgument::REQUIRED, 'The name of the container'],
+        ['file-name', InputArgument::REQUIRED, 'The name of the file (UpdateUser, CreateStore)'],
         ['operation', InputArgument::OPTIONAL, 'The operation (All, Create, Read, Update, Delete, List)'],
     ];
 
     /**
-     * @param \Closure $argumentsReady
-     * @param \Closure $stubReady
-     *
-     * @return mixed|void
+     * urn mixed|void
      */
-    public function fireMe(Closure $argumentsReady, Closure $stubReady)
+    public function getUserInputs()
     {
-        $this->getAndAssignInputContainerName();
-        $this->getAndAssignInputFilename();
+        $container = $this->getInput('container-name');
+        $file = $this->getInput('file-name');
 
-        // TODO: Get operation and pass it to the render to fill the class with the right code. sub stubs
-
-        $this->_callRenderStub($argumentsReady, $stubReady, []);
+        return [
+            'stub-parameters' => [
+                $container,
+                $file,
+            ],
+            'file-parameters' => [
+                $file,
+                $this->fileType
+            ],
+        ];
     }
 
     /**
      * @return  array
      */
-    public function renderStub()
+    public function getStubRenderMap($containerName, $fileName)
     {
         return [
-            '{{container-name}}' => $this->containerName,
-            '{{class-name}}'     => $this->fileName,
+            '{{container-name}}' => $containerName,
+            '{{class-name}}'     => $fileName,
         ];
     }
 
@@ -100,11 +104,11 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
     /**
      * @return  array
      */
-    public function parseFilename()
+    public function getFileNameParsingMap($file, $type)
     {
         return [
-            '{file-name}' => $this->getInput('file'),
-            '{file-type}' => $this->fileType,
+            '{file-name}' => $file,
+            '{file-type}' => $type,
         ];
     }
 
