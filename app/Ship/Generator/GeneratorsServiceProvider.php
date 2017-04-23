@@ -26,10 +26,10 @@ class GeneratorsServiceProvider extends ServiceProvider
     {
         $this->registerGenerators([
             'Action',
+            'Exception',
             'Route',
             'Task',
-            'Exception',
-            // ...
+            'Model',
         ]);
     }
 
@@ -47,7 +47,5 @@ class GeneratorsServiceProvider extends ServiceProvider
 
             $this->commands("command.porto.$lowerClass");
         }
-
     }
-
 }
