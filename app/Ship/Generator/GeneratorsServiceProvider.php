@@ -28,6 +28,8 @@ class GeneratorsServiceProvider extends ServiceProvider
             'Action',
             'Route',
             'Task',
+            'Exception',
+            // ...
         ]);
     }
 
