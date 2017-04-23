@@ -2,9 +2,11 @@
 
 namespace App\Ship\Parents\Requests;
 
+use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Models\User;
 use App\Ship\Engine\Traits\HashIdTrait;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
+use App;
 
 /**
  * Class Request
@@ -49,7 +51,7 @@ abstract class Request extends LaravelFormRequest
      */
     public function isOwner()
     {
-        return $this->user()->id == $this->id;
+        return App::make(GetAuthenticatedUserTask::class)->run()->id == $this->id;
     }
 
     /**

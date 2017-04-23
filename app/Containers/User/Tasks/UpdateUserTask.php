@@ -24,16 +24,11 @@ class UpdateUserTask extends Task
      */
     public function run($userData, $userId)
     {
-        // set all data in the array, then remove all null values and their keys
-        $attributes = array_filter($userData);
-
-        // optionally, check if data is empty and return error
-        if (!$attributes) {
+        if (empty($userData)) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 
-        // updating the attributes
-        return App::make(UserRepository::class)->update($attributes, $userId);;
+        return App::make(UserRepository::class)->update($userData, $userId);
     }
 
 }

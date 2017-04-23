@@ -11,6 +11,7 @@ use App\Ship\Parents\Requests\Request;
  */
 class UpdateUserRequest extends Request
 {
+
     /**
      * Define which Roles and/or Permissions has access to this request.
      *
@@ -27,7 +28,7 @@ class UpdateUserRequest extends Request
      * @var  array
      */
     protected $decode = [
-
+        'id',
     ];
 
     /**
@@ -37,7 +38,7 @@ class UpdateUserRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-
+        'id',
     ];
 
     /**
@@ -57,8 +58,11 @@ class UpdateUserRequest extends Request
      */
     public function authorize()
     {
+        // is this an admin who has access to permission `update-users`
+        // or the user is updating his own object (is the owner).
+
         return $this->check([
-            'hasAccess',
+            'hasAccess|isOwner',
         ]);
     }
 }

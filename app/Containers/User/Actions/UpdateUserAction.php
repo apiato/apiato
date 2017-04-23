@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Tasks\UpdateUserTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -23,9 +22,6 @@ class UpdateUserAction extends Action
      */
     public function run(Request $request)
     {
-        // user can only update himself
-        $userId = $this->call(GetAuthenticatedUserTask::class)->id;
-
         $userData = [
             'password'             => $request->password ? Hash::make($request->password) : null,
             'name'                 => $request->name,
@@ -38,6 +34,9 @@ class UpdateUserAction extends Action
             'social_token_secret'  => $request->tokenSecret,
         ];
 
-        return $this->call(UpdateUserTask::class, [$userData, $userId]);
+        // remove null values and their keys
+        $userData = array_filter($userData);
+
+        return $this->call(UpdateUserTask::class, [$userData, $request->id]);
     }
 }

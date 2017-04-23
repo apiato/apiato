@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Users
  * @apiName            UpdateUser
- * @api                {put} /v1/users Update User
+ * @api                {put} /v1/users/:id Update User
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -45,7 +45,7 @@
 }
  */
 
-$router->put('users', [
+$router->put('users/{id}', [
     'uses'       => 'Controller@updateUser',
     'middleware' => [
         'auth:api',
