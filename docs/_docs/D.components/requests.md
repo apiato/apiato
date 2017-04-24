@@ -292,7 +292,7 @@ Since we're passing Requests objects to the Actions. When writing unit tests we 
 // creating
 $request = RegisterUserRequest::injectData($data);
 ```
-Example Usage:
+Example One:
 
 ```php
 $data = [
@@ -305,16 +305,34 @@ $data = [
 $request = RegisterUserRequest::injectData($data);
 
 // create instance of the Action
-$action = App::make(RegisterUserAction::class);
-// invoje the run function
-$user = $action->run($request);
+$action = App::make(RegisterUserAction::class)->run($request);
 
 // do any kind of assertions..
 $this->assertInstanceOf(User::class, $user);
+
 // ...
 
 ```
 
 
+
+Example Two (With Authenticated User):
+
+```php
+$data = [
+   'store_id'  => $this->encode($store->id),
+   'items'     => $orderItems,
+   'recipient' => $receipient,
+];
+
+$user = factory(User::class)->create();
+
+$request = MakeOrderRequest::injectData($data, $user);
+
+$order = App::make(MakeOrderAction::class)->run($request);
+
+// .....
+
+```
 
 
