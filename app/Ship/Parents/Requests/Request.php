@@ -2,11 +2,11 @@
 
 namespace App\Ship\Parents\Requests;
 
+use App;
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\User\Models\User;
 use App\Ship\Engine\Traits\HashIdTrait;
 use Illuminate\Foundation\Http\FormRequest as LaravelFormRequest;
-use App;
 
 /**
  * Class Request
@@ -57,16 +57,25 @@ abstract class Request extends LaravelFormRequest
     /**
      * To be used mainly from unit tests.
      *
-     * @param array $parameters
-     * @param array $cookies
-     * @param array $files
-     * @param array $server
+     * @param array                                 $parameters
+     * @param \App\Containers\User\Models\User|null $user
+     * @param array                                 $cookies
+     * @param array                                 $files
+     * @param array                                 $server
      *
-     * @return void|static
+     * @return  static
      */
-    public static function injectData($parameters = [], $cookies = [], $files = [], $server = [])
+    public static function injectData($parameters = [], User $user = null, $cookies = [], $files = [], $server = [])
     {
+        // if user is passed, will be returned when asking for the authenticated user using `\Auth::user()`
+        if ($user) {
+            $app = App::getInstance();
+            $app['auth']->guard($driver = 'api')->setUser($user);
+            $app['auth']->shouldUse($driver);
+        }
+
         // For now doesn't matter which URI or Method is used.
         return parent::create('/', 'GET', $parameters, $cookies, $files, $server);
     }
+
 }
