@@ -6,6 +6,13 @@ order: 101
 
 
 
-## Coming Soon. To speed up the process, you can contribute. Check out the [Contribution Guide](http://apiato.io/B.general/contribution/).
+## The feature is under development. (80% complete)
 
-**Hint** `php artisan apiato:container`, `php artisan apiato:route`, `php artisan apiato:action`...
+Check out the [Contribution Guide](http://apiato.io/B.general/contribution/) if you like to speed up the process.
+
+Commands:
+
+`php artisan apiato:container`
+`php artisan apiato:route`
+`php artisan apiato:action`
+...

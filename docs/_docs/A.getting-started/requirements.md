@@ -7,7 +7,8 @@ order: 3
 ### Software's
 
 * [GIT](https://git-scm.com/downloads)
-* PHP >= 7.0
+* [PHP](php.net) >= 7.0
+* PHP Extensions:
    * OpenSSL PHP Extension
    * PDO PHP Extension
    * Mbstring PHP Extension
@@ -15,12 +16,7 @@ order: 3
    * BCMath PHP Extension *(required when the Hash ID feature is enabled)*
 * [Composer](https://getcomposer.org/download/)
 * [Node](https://nodejs.org/en/) *(required for the API Docs generator feature)*
-
-
-
-
-
-<!--- [MySQL](https://www.mysql.com/downloads/)
-- [Redis](http://redis.io/download)
-- [Beanstalkd](https://github.com/kr/beanstalkd)
--->
+* Web Server *([Nginx](https://www.nginx.com/) is recommended)*
+* Database Engine *(no recommendation)*
+* Cache Engine *([Redis](http://redis.io/download) is recommended)*
+* Queues Engine *([Beanstalkd](https://github.com/kr/beanstalkd) is recommended)*

@@ -9,7 +9,7 @@ order: 4
 * [A) Development Environment Setup](#Development-Environment)
 	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
 	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
-	* [Option 3: using something else!](#Development-Environment)
+	* [Option 3: using something else!](#Dev-Env-Opt-C)
 * [B) Application Setup](#App)
 	* [1) Code Setup](#Code-Setup)
 		* [Option 1: Automatically via Composer](#App-Composer)
@@ -69,7 +69,7 @@ docker-compose up -d nginx mysql redis beanstalkd
 ```
 
 
-<a name="Dev-Env-Opt-A"></a>
+<a name="Dev-Env-Opt-B"></a>
 ### A.2) Using Vagrant (with Laravel Homestead)
 
 1) Configure Homestead:
@@ -119,6 +119,12 @@ homestead up --provision
 
 *If you see `No input file specified` on the subdomains! try running this command `homestead halt && homestead up --provision`.*
 
+
+
+<a name="Dev-Env-Opt-C"></a>
+### A.3) Using something else
+
+If you're not into virtualization software's, you can setup your environment directly on your machine. Check the [software's requirments list](http://apiato.io/A.getting-started/requirements/).
 
 
 
