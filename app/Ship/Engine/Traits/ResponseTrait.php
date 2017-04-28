@@ -34,6 +34,10 @@ trait ResponseTrait
             $transformer->setDefaultIncludes($includes);
         }
 
+        if (!empty($requestIncludes = Request::get('include', null))) {
+            $transformer->setDefaultIncludes(explode(',', $requestIncludes));
+        }
+
         return Fractal::create($data, $transformer)->addMeta($this->metaData)->toJson();
     }
 
