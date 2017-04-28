@@ -2,6 +2,7 @@
 
 namespace App\Ship\Engine\Traits;
 
+use Request;
 use Fractal;
 use Illuminate\Http\JsonResponse;
 use ReflectionClass;
