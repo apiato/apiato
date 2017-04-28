@@ -2,6 +2,7 @@
 
 namespace App\Ship\Engine\Traits;
 
+use Request;
 use Fractal;
 use Illuminate\Http\JsonResponse;
 use ReflectionClass;
@@ -32,6 +33,10 @@ trait ResponseTrait
 
         if($includes){
             $transformer->setDefaultIncludes($includes);
+        }
+
+        if (!empty($requestIncludes = Request::get('include', null))) {
+            $transformer->setDefaultIncludes(explode(',', $requestIncludes));
         }
 
         return Fractal::create($data, $transformer)->addMeta($this->metaData)->toJson();
