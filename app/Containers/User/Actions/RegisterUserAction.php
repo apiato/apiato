@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Ship\Parents\Actions\Action;
@@ -23,14 +22,13 @@ class RegisterUserAction extends Action
      */
     public function run(Request $request)
     {
-        // create user record in the database
-        $user = $this->call(CreateUserByCredentialsTask::class,
-            [$request->email, $request->password, $request->name, $request->gender, $request->birth]);
-
-        // Fire user created event
-        $this->call(FireUserCreatedEventTask::class, [$user]);
-
-        // return the new created user object with access token attached on it
-        return $user;
+        // create user record in the database and return it.
+        return $this->call(CreateUserByCredentialsTask::class, [
+            $request->email,
+            $request->password,
+            $request->name,
+            $request->gender,
+            $request->birth
+        ]);
     }
 }
