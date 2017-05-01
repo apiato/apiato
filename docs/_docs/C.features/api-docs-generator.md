@@ -8,7 +8,7 @@ Every great API needs a great Documentation.
 
 apiato make writing and generating documentations very easy with the `php artisan apiato:docs` command.
 
-![](https://s19.postimg.org/aeqv29ksz/Screen_Shot_2017-03-22_at_7.51.46_PM.png)
+
 
 ## Requirements
 
@@ -18,7 +18,7 @@ apiato make writing and generating documentations very easy with the `php artisa
 
 ## Usage
 
-#### 1 - Write a PHP **DokBlock** on top of your endpoint like this:
+#### 1 - Write a PHP **docblock** on top of your endpoint like this:
 
 *For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation* 
 
@@ -95,7 +95,7 @@ If you get an error (`apidoc not found`),
 
 1. open the container config file `Containers/Documentation/Configs/apidoc.php` 
 
-2. edit the `executable` path to `$(npm bin)/apidoc` or to however you access the `apidoc` tool on your machine.
+2. edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
 ```php
 <?php
