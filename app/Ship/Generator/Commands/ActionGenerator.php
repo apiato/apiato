@@ -4,7 +4,6 @@ namespace App\Ship\Generator\Commands;
 
 use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * Class ActionGenerator
@@ -13,7 +12,6 @@ use Symfony\Component\Console\Input\InputArgument;
  */
 class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
 {
-
     /**
      * The console command name.
      *
@@ -47,7 +45,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  string
      */
-    protected $nameStructure = '{file-name}{file-type}';
+    protected $nameStructure = '{file-name}';
 
     /**
      * The name of the stub file.
@@ -63,9 +61,6 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['container-name', InputArgument::REQUIRED, 'The name of the container'],
-        ['file-name', InputArgument::REQUIRED, 'The name of the file (UpdateUser, CreateStore)'],
-        ['operation', InputArgument::OPTIONAL, 'The operation (All, Create, Read, Update, Delete, List)'],
     ];
 
     /**
@@ -73,42 +68,27 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
-        $container = $this->getInput('container-name');
-        $file = $this->getInput('file-name');
-
         return [
+            'path-parameters' => [
+                'container-name' => $this->containerName,
+            ],
             'stub-parameters' => [
-                $container,
-                $file,
+                'container-name' => $this->containerName,
+                'class-name' => $this->fileName,
             ],
             'file-parameters' => [
-                $file,
-                $this->fileType
+                'file-name' => $this->fileName,
             ],
         ];
     }
 
     /**
-     * @return  array
+     * Get the default file name for this component to be generated
+     *
+     * @return string
      */
-    public function getStubRenderMap($containerName, $fileName)
+    public function getDefaultFileName()
     {
-        return [
-            '{{container-name}}' => $containerName,
-            '{{class-name}}'     => $fileName,
-        ];
+        return 'DefaultAction';
     }
-
-
-    /**
-     * @return  array
-     */
-    public function getFileNameParsingMap($file, $type)
-    {
-        return [
-            '{file-name}' => $file,
-            '{file-type}' => $type,
-        ];
-    }
-
 }
