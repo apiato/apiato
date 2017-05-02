@@ -8,39 +8,39 @@ use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class ModelGenerator
+ * Class EventGenerator
  *
- * @author  Justin Atack  <justinatack@gmail.com>
+ * @author  Johannes Schobel  <johannes.schobel@googlemail.com>
  */
-class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
+class EventGenerator extends GeneratorCommand implements ComponentsGenerator
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'apiato:model';
+    protected $name = 'apiato:event';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Model class';
+    protected $description = 'Create a new Event class and its corresponding Handler';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $fileType = 'Model';
+    protected $fileType = 'Event';
 
     /**
      * The structure of the file path.
      *
      * @var  string
      */
-    protected $pathStructure = '{container-name}/Models/*';
+    protected $pathStructure = '{container-name}/Events/Events/*';
 
     /**
      * The structure of the file name.
@@ -54,7 +54,7 @@ class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  string
      */
-    protected $stubName = 'model.stub';
+    protected $stubName = 'event.stub';
 
     /**
      * User required/optional inputs expected to be passed while calling the command.
@@ -63,7 +63,8 @@ class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['repository', null, InputOption::VALUE_OPTIONAL, 'Generate the corresponding Repository for this Model?'],
+        ['model', null, InputOption::VALUE_OPTIONAL, 'The model to generate this Event for'],
+        ['handler', null, InputOption::VALUE_OPTIONAL, 'Generate a Handler for this Event?'],
     ];
 
     /**
@@ -71,22 +72,27 @@ class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
-        $repository = $this->checkParameterOrConfirm('repository', 'Do you want to generate the corresponding Repository for this Model?', true);
-        if($repository) {
-            // we need to generate a corresponding repository
+        $model = $this->checkParameterOrAsk('model', 'Enter the name of the Model to generate this Event for');
+
+        $handler = $this->checkParameterOrConfirm('handler', 'Do you want to generate a Handler for this Event?', true);
+        if($handler) {
+            // we need to generate a corresponding handler
             // so call the other command
-            $status = Artisan::call('apiato:repository', [
+            $status = Artisan::call('apiato:eventhandler', [
                                     '--container' => $this->containerName,
-                                    '--file' => $this->fileName . 'Repository'
+                                    '--file' => $this->fileName . 'Handler',
+                                    '--event' => $this->fileName
             ]);
 
             if($status == 0) {
-                $this->printInfoMessage('The Repository was successfully generated');
+                $this->printInfoMessage('The Handler for Event was successfully generated');
             }
             else {
-                $this->printErrorMessage('Could not generate the corresponding Repository!');
+                $this->printErrorMessage('Could not generate the corresponding Handler!');
             }
         }
+
+        $this->printInfoMessage('!!! Do not forget to register the Event and/or EventHandler !!!');
 
         return [
             'path-parameters' => [
@@ -95,6 +101,7 @@ class ModelGenerator extends GeneratorCommand implements ComponentsGenerator
             'stub-parameters' => [
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
+                'model' => $model,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,

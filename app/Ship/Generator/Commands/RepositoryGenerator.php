@@ -6,39 +6,39 @@ use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
 
 /**
- * Class ActionGenerator
+ * Class RepositoryGenerator
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
+class RepositoryGenerator extends GeneratorCommand implements ComponentsGenerator
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'apiato:action';
+    protected $name = 'apiato:repository';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Action class';
+    protected $description = 'Create a new Repository class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $fileType = 'Action';
+    protected $fileType = 'Repository';
 
     /**
      * The structure of the file path.
      *
      * @var  string
      */
-    protected $pathStructure = '{container-name}/Actions/*';
+    protected $pathStructure = '{container-name}/Data/Repositories/*';
 
     /**
      * The structure of the file name.
@@ -52,7 +52,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  string
      */
-    protected $stubName = 'action.stub';
+    protected $stubName = 'repository.stub';
 
     /**
      * User required/optional inputs expected to be passed while calling the command.
@@ -80,15 +80,5 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
                 'file-name' => $this->fileName,
             ],
         ];
-    }
-
-    /**
-     * Get the default file name for this component to be generated
-     *
-     * @return string
-     */
-    public function getDefaultFileName()
-    {
-        return 'DefaultAction';
     }
 }

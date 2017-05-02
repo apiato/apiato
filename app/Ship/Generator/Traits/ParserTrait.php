@@ -2,19 +2,57 @@
 
 namespace App\Ship\Generator\Traits;
 
+/**
+ * Trait ParserTrait
+ *
+ * @author  Johannes Schobel    <johannes.schobel@googlemail.com>
+ */
 trait ParserTrait
 {
-
     /**
+     * replaces the variables in the path structure with defined values
+     *
      * @return  mixed
      */
-    public function parsePathStructure($path)
+    public function parsePathStructure($path, $data)
     {
-        // replace strings in the paths string
-        $path = str_replace('{container-name}', $this->containerName, $path);
-        $path = str_replace('*', $this->fileName, $path);
+        $path = str_replace(array_map(array($this, 'maskPathVariables'), array_keys($data)), array_values($data), $path);
+        $path = str_replace('*', $this->parsedFileName, $path);
 
         return $path;
     }
 
+    /**
+     * replaces the variables in the file structure with defined values
+     *
+     * @return  mixed
+     */
+    public function parseFileStructure($filename, $data)
+    {
+        $filename = str_replace(array_map(array($this, 'maskFileVariables'), array_keys($data)), array_values($data), $filename);
+        return $filename;
+    }
+
+    /**
+     * replaces the variables in the stub file with defined values
+     *
+     * @return  mixed
+     */
+    public function parseStubContent($stub, $data)
+    {
+        $stub = str_replace(array_map(array($this, 'maskStubVariables'), array_keys($data)), array_values($data), $stub);
+        return $stub;
+    }
+
+    private function maskPathVariables($key) {
+        return '{' . $key . '}';
+    }
+
+    private function maskFileVariables($key) {
+        return '{' . $key . '}';
+    }
+
+    private function maskStubVariables($key) {
+        return '{{' . $key . '}}';
+    }
 }
