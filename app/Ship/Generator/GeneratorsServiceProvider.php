@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class GeneratorsServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -26,15 +25,20 @@ class GeneratorsServiceProvider extends ServiceProvider
     {
         $this->registerGenerators([
             'Action',
+            'Controller',
             'Exception',
+            'Model',
+            'Repository',
+            'Request',
             'Route',
             'Task',
-            'Model',
+            'Transformer'
         ]);
     }
 
     /**
      * Register the generators.
+     * @param array $classes
      */
     private function registerGenerators(array $classes)
     {
