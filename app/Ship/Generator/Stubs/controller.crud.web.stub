@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Containers\{{container-name}}\UI\{{user-interface}}\Controllers;
+
+use App\Ship\Parents\Controllers\WebController;
+use App\Ship\Parents\Requests\Request;
+
+class {{class-name}} extends WebController
+{
+    /**
+     * Show all entities
+     */
+    public function index(Request $request) {
+
+    }
+
+    /**
+     * Show one entity
+     */
+    public function show(Request $request) {
+
+    }
+
+    /**
+     * Create entity (show UI)
+     */
+    public function create(Request $request) {
+
+    }
+
+    /**
+     * Add a new entity
+     */
+    public function store(Request $request) {
+
+    }
+
+    /**
+     * Edit entity (show UI)
+     */
+    public function edit(Request $request) {
+
+    }
+
+    /**
+     * Update a given entity
+     */
+    public function update(Request $request) {
+
+    }
+
+    /**
+     * Delete a given entity
+     */
+    public function delete(Request $request) {
+
+    }
+}
