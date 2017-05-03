@@ -30,7 +30,7 @@ class ResponseHeadersMiddleware extends Middleware
 
         $contentType = 'application/json';
 
-        if(!$request->header('accept') === $contentType){
+        if ($request->header('accept') !== $contentType) {
             throw new MissingeptHeaderException();
         }
 
