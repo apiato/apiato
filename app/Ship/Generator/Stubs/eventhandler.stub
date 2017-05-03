@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Events\Handlers;
+
+use App\Containers\{{container-name}}\Events\Events\{{model}};
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+/**
+ * Class {{class-name}}
+ */
+class {{class-name}} implements ShouldQueue
+{
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * @param \App\Containers\{{container-name}}\Events\Events\{{model}} $event
+     */
+    public function handle({{model}} $event)
+    {
+        // do some crazy stuff...
+    }
+}

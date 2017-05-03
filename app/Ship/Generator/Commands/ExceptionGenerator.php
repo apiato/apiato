@@ -4,7 +4,6 @@ namespace App\Ship\Generator\Commands;
 
 use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * Class ExceptionGenerator
@@ -63,8 +62,6 @@ class ExceptionGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['container-name', InputArgument::REQUIRED, 'The name of the container'],
-        ['file-name', InputArgument::REQUIRED, 'The name of the file (UpdateUser, CreateStore)'],
     ];
 
     /**
@@ -72,42 +69,17 @@ class ExceptionGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
-        $container = $this->getInput('container-name');
-        $file = $this->getInput('file-name');
-
         return [
+            'path-parameters' => [
+                'container-name' => $this->containerName,
+            ],
             'stub-parameters' => [
-                $container,
-                $file,
+                'container-name' => $this->containerName,
+                'class-name' => $this->fileName,
             ],
             'file-parameters' => [
-                $file,
-                $this->fileType
+                'file-name' => $this->fileName,
             ],
         ];
     }
-
-    /**
-     * @return  array
-     */
-    public function getStubRenderMap($containerName, $fileName)
-    {
-        return [
-            '{{container-name}}' => $containerName,
-            '{{class-name}}'     => $fileName,
-        ];
-    }
-
-
-    /**
-     * @return  array
-     */
-    public function getFileNameParsingMap($file, $type)
-    {
-        return [
-            '{file-name}' => $file,
-            '{file-type}' => $type,
-        ];
-    }
-
 }

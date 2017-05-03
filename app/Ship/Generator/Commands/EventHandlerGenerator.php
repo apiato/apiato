@@ -4,41 +4,42 @@ namespace App\Ship\Generator\Commands;
 
 use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class ActionGenerator
+ * Class EventHandlerGenerator
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @author  Johannes Schobel  <johannes.schobel@googlemail.com>
  */
-class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
+class EventHandlerGenerator extends GeneratorCommand implements ComponentsGenerator
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'apiato:action';
+    protected $name = 'apiato:eventhandler';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Action class';
+    protected $description = 'Create a new EventHandler class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $fileType = 'Action';
+    protected $fileType = 'EventHandler';
 
     /**
      * The structure of the file path.
      *
      * @var  string
      */
-    protected $pathStructure = '{container-name}/Actions/*';
+    protected $pathStructure = '{container-name}/Events/Handlers/*';
 
     /**
      * The structure of the file name.
@@ -52,7 +53,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      *
      * @var  string
      */
-    protected $stubName = 'action.stub';
+    protected $stubName = 'eventhandler.stub';
 
     /**
      * User required/optional inputs expected to be passed while calling the command.
@@ -61,6 +62,7 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
+        ['event', null, InputOption::VALUE_OPTIONAL, 'The Event to generate this Handler for'],
     ];
 
     /**
@@ -68,6 +70,10 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
+        $event = $this->checkParameterOrAsk('event', 'Enter the name of the Event to generate this Handler for');
+
+        $this->printInfoMessage('!!! Do not forget to register the Event and/or EventHandler !!!');
+
         return [
             'path-parameters' => [
                 'container-name' => $this->containerName,
@@ -75,20 +81,11 @@ class ActionGenerator extends GeneratorCommand implements ComponentsGenerator
             'stub-parameters' => [
                 'container-name' => $this->containerName,
                 'class-name' => $this->fileName,
+                'model' => $event,
             ],
             'file-parameters' => [
                 'file-name' => $this->fileName,
             ],
         ];
-    }
-
-    /**
-     * Get the default file name for this component to be generated
-     *
-     * @return string
-     */
-    public function getDefaultFileName()
-    {
-        return 'DefaultAction';
     }
 }

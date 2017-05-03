@@ -5,7 +5,7 @@ namespace App\Ship\Generator\Commands;
 use App\Ship\Generator\GeneratorCommand;
 use App\Ship\Generator\Interfaces\ComponentsGenerator;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class RouteGenerator
@@ -14,7 +14,6 @@ use Symfony\Component\Console\Input\InputArgument;
  */
 class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
 {
-
     /**
      * Default version number.
      *
@@ -78,14 +77,11 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      * @var  array
      */
     public $inputs = [
-        ['container-name', InputArgument::REQUIRED, 'The name of the container'],
-        ['file-name', InputArgument::REQUIRED, 'The name of the endpoint (CreateUser, DeleteItem, ...)'],
-        ['ui', InputArgument::REQUIRED, 'The UI of the route (Web or Api)'],
-        ['operation', InputArgument::OPTIONAL, 'The operation (*, Create, Read, Update, Delete, List)'],
-        ['type', InputArgument::OPTIONAL, 'The type of the endpoint (private, public)'],
-        ['version', InputArgument::OPTIONAL, 'The version of the endpoint (1, 2, ...)'],
-        ['url', InputArgument::OPTIONAL, 'The URL of the endpoint (/stores, /cars, ...)'],
-        ['verb', InputArgument::OPTIONAL, 'The HTTP verb of the endpoint (Get, Post, ...)'],
+        ['operation', null, InputOption::VALUE_OPTIONAL, 'The operation from the Controller to be called (e.g., index)'],
+        ['doctype', null, InputOption::VALUE_OPTIONAL, 'The type of the endpoint (private, public)'],
+        ['docversion', null, InputOption::VALUE_OPTIONAL, 'The version of the endpoint (1, 2, ...)'],
+        ['url', null, InputOption::VALUE_OPTIONAL, 'The URI of the endpoint (/stores, /cars, ...)'],
+        ['verb', null, InputOption::VALUE_OPTIONAL, 'The HTTP verb of the endpoint (GET, POST, ...)'],
     ];
 
     /**
@@ -93,73 +89,34 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
      */
     public function getUserInputs()
     {
-        $container = $this->getInput('container-name');
-        $file = Str::ucfirst($this->getInput('file-name'));
+        $version = $this->checkParameterOrAsk('docversion', 'Define the version of this endpoint', self::DEFAULT_VERSION);
+        $doctype = $this->checkParameterOrChoice('doctype', 'Select the type for this endpoint', ['private', 'public']);
 
+        $operation = $this->checkParameterOrAsk('operation', 'Define the Operation to be invoked when calling the endpoint');
 
-        $version = $this->getInput('version') ? : self::DEFAULT_VERSION;
-        $type = $this->getInput('type') ? : self::DEFAULT_TYPE;
+        $verb = Str::upper($this->checkParameterOrAsk('verb', 'Enter the HTTP verb to be used to call this endpoint'));
 
-        $operation = Str::ucfirst($this->getInput('operation')); // TODO Later: if operation = null read it from the name
-        $url = $this->getInput('url');
-        $verb = $this->getInput('verb');
-        $ui = $this->getInput('ui');
+        // get the URI and remove the first trailing slash
+        $url = Str::lower($this->checkParameterOrAsk('url', 'Enter the relative URI of the endpoint'));
+        $url = ltrim($url, '/');
 
         return [
+            'path-parameters' => [
+                'container-name' => $this->containerName,
+            ],
             'stub-parameters' => [
-                $container,
-                $file,
-                $operation,
-                $url,
-                $version,
-                $verb,
-                $ui,
+                'container-name'            => $this->containerName,
+                'operation'                 => $operation,
+                'endpoint-url'              => $url,
+                'versioned-endpoint-url'    => '/v' . $version . '/' . $url,
+                'endpoint-version'          => $version,
+                'http-verb'                 => $verb,
             ],
             'file-parameters' => [
-                $file,
-                $type,
-                $version,
-//                $this->fileName = $this->getInput('name');
+                'endpoint-name'         => $this->fileName,
+                'endpoint-version'      => 'v' . $version,
+                'documentation-type'    => $doctype,
             ],
         ];
     }
-
-    /**
-     * @param $container
-     * @param $endpointName
-     * @param $operation
-     * @param $url
-     * @param $version
-     * @param $verb
-     * @param $ui
-     *
-     * @return  array
-     */
-    public function getStubRenderMap($container, $endpointName, $operation, $url, $version, $verb, $ui)
-    {
-        return [
-            '{{container-name}}'   => $container,
-            '{{operation}}'        => $operation,
-            '{{http-verb}}'        => $verb,
-            '{{endpoint-url}}'     => $url,
-            '{{endpoint-version}}' => $version,
-        ];
-    }
-
-    /**
-     * @param $endpointName
-     * @param $endpointType
-     * @param $endpointVersion
-     *
-     * @return  array
-     */
-    public function getFileNameParsingMap($endpointName, $endpointType, $endpointVersion)
-    {
-        return [
-            '{endpoint-name}'      => $endpointName,
-            '{documentation-type}' => $endpointType,
-            '{endpoint-version}'   => 'v' . $endpointVersion,
-        ];
-    }
-
 }

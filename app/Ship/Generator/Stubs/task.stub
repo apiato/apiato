@@ -12,8 +12,6 @@ class {{class-name}} extends Task
         // ..
     }
 
-
-
     public function run()
     {
         // ..
