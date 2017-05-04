@@ -200,10 +200,10 @@ return [
         'params'             => [
             'search'       => 'search',
             'searchFields' => 'searchFields',
-            'filter'       => 'filter',
             'orderBy'      => 'orderBy',
             'sortedBy'     => 'sortedBy',
-//            'with'         => 'with'
+            'filter'       => 'l5_filter', // we will override the filter in apiato.
+            'with'         => 'l5_with' // use `include` instead.
         ],
     ],
     /*
