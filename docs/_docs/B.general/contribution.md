@@ -114,13 +114,24 @@ This abstract class does all the work for you.
 
 1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
 
-Each component should have 3 functions:
+For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
-- `getUserInputs:` returns an array of 2 keys: the `stub-parameters` (are ordered parameters that will be passed to `getStubRenderMap`). And `file-parameters` (are ordered parameters that will be passed to `getFileNameParsingMap`).
-- `getStubRenderMap:` returns array mapping keys and values to be replaced in the stub.
-- `getFileNameParsingMap:` returns array mapping keys and values to be replaced in file name (`$nameStructure`).
+- `getUserInputs:` 
+    This method reads all parameters from the command line or provides a wizard to get information from the user.
+    The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
+    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the 
+    Generator itself. Simply add the options that are specifically needed for this generator.
+    
+    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available. 
+    Otherwise, they will ask the user for additional input.
+    
+    The method must return an array of 3 keys:
+  - `path-parameters` are used to replace variables within the path where the generator creates the file.
+  - `file-parameters` are used to replace variables within the name of the file to be created.
+  - `stub-parameters` are used to replace variables within the stub.
+  
 
-2 - Create the stub in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
+2 - Create the stub to be loaded in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
 
 3 - Finally register the command in `app/Ship/Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
 
@@ -133,7 +144,13 @@ Each component should have 3 functions:
         ]);
 ```
 
-That's it.
+4 - Default Filename (optional)
+
+You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
+
+5 - Enjoy your Generator
+
+That's it.. It's really that easy!
 
 Note: Once all the components are built and ready,
 I'll join and write the container command myself, since that cannot extend from the same abstract class of the components.

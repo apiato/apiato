@@ -4,9 +4,19 @@ category: "Features"
 order: 101
 ---
 
-## The feature is under development. (80% complete)
+## Introduction
 
-Check out the [Contribution Guide](http://apiato.io/B.general/contribution/) if you like to speed up the process.
+Code Generators are a nice way to speed up development by creating boiler-plate code based on your inputs. You may 
+already know several code generators from Laravel, like `php artisan make:controller` or others.
+
+In order to provide an easy to use approach for generating all kinds of components within a container (i.e., be sure to 
+read the docs about the [Porto architecture](http://apiato.io/B.general/porto-sap/)!), apiato provides some neat 
+generators specifically tailored for your needs.
+
+However, as some of them may be _complex_ to use, apiato offers some kind of **wizard based generators**, guiding you
+through the process of automatically generating code.
+
+## Available Code Generators
 
 Currently, the following commands for automatically generating code snippets are available:
 
@@ -38,3 +48,7 @@ the process of automatically generating code snippets.
 
 For example, you can direclty call `php artisan apiato:controller --file=UserController` to directly specify the class
 to be generated. The wizard, however, will ask you for the `--container` as well.
+
+## Contributing
+
+If you would like to add your own generators, please check out the [Contribution Guide](http://apiato.io/B.general/contribution/).
