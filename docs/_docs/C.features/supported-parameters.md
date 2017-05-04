@@ -86,6 +86,10 @@ Select your columns:
 
 *(provided by the L5 Repository)*
 
+Note that the transformer, which is used to output / format the data is also filtered. This means, that only the fields
+to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes) 
+of the object.
+
 ## Paging:
 
 ```

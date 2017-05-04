@@ -22,10 +22,6 @@ Currently, the following commands for automatically generating code snippets are
 
 * `php artisan apiato:action` : Creates a new `Action` within a container.
 * `php artisan apiato:controller` : Creates an empty or CRUD `Controller` within a container for a given UI (e.g., API or WEB). Generated methods may vary based on the selected UI.
-<!--
-* `php artisan apiato:event` : Creates a new `Event` within a container -- may also generate the corresponding `EventHandler`. Do not forget to register the `Event` and / or the `EventHandler`.
-* `php artisan apiato:eventhandler` : Creates a new `EventHandler` within a container. Do not forget to register the `Event` and / or the `EventHandler`.
--->
 * `php artisan apiato:exception` : Creates a new `Exception` within a container.
 * `php artisan apiato:model` : Creates a new `Model` within a container. Can automatically generate the corresponding `Repository`.
 * `php artisan apiato:repository` : Creates a new `Repository` within a container. Must follow the naming conventions (e.g., UserRepository for the Model User)
