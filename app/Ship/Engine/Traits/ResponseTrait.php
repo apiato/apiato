@@ -35,11 +35,33 @@ trait ResponseTrait
             $transformer->setDefaultIncludes($includes);
         }
 
-        if (!empty($requestIncludes = Request::get('include', null))) {
-            $transformer->setDefaultIncludes(explode(',', $requestIncludes));
+        // get the request
+        $request = request();
+
+        // check if the user requested a filter
+        $filterparam = $request->query->get('filter');
+        if($filterparam != null) {
+            // remove all includes from this transformer
+            $transformer->setDefaultIncludes([]);
         }
 
-        return Fractal::create($data, $transformer)->addMeta($this->metaData)->toJson();
+        // process the data
+        $raw = Fractal::create($data, $transformer);
+        $raw = $raw->addMeta($this->metaData)->toArray();
+
+        if($filterparam == null) {
+            // no filters are set..
+            // just output the data (with possible includes) and we are fine..
+            return $raw;
+        }
+
+        // otherwise - we need to sanitize the data
+        // process the filters
+        $this->filters = explode(';', $filterparam);
+
+        // now manipulate the data..
+        $result = $this->processTransformerKey($raw);
+        return $result;
     }
 
     /**
@@ -107,6 +129,43 @@ trait ResponseTrait
     public function noContent($status = 204)
     {
         return new JsonResponse(null, $status);
+    }
+
+    /**
+     * Traverse an array and process its nodes
+     *
+     * @param $obj
+     * @return mixed
+     */
+    private function processTransformerKey(&$obj)
+    {
+        foreach ($obj as $k => $v)
+        {
+            if (is_array($v))
+            {
+                // it is an array - so go one step deeper
+                $v = $this->processTransformerKey($v);
+                if(empty($v))
+                {
+                    // it is an empty array - delete the key as well
+                    unset($obj[$k]);
+                }
+                else
+                {
+                    $obj[$k] = $v;
+                }
+                continue;
+            }
+            else
+            {
+                // check if the array is not in our filter-list
+                if(! in_array($k, $this->filters)) {
+                    unset($obj[$k]);
+                    continue;
+                }
+            }
+        }
+        return $obj;
     }
 
 }
