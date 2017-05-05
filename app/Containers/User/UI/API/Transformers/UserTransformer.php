@@ -2,12 +2,9 @@
 
 namespace App\Containers\User\UI\API\Transformers;
 
-use App\Containers\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Transformers\Transformer;
-use Config;
-use App;
 
 /**
  * Class UserTransformer.
@@ -55,6 +52,8 @@ class UserTransformer extends Transformer
             ],
             'created_at'           => $user->created_at,
             'updated_at'           => $user->updated_at,
+            'readable_created_at'  => $user->created_at->diffForHumans(),
+            'readable_updated_at'  => $user->updated_at->diffForHumans(),
         ];
 
         $response = $this->ifAdmin([
