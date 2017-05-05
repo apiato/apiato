@@ -31,38 +31,27 @@ trait ResponseTrait
     {
         $transformer = new $transformerName;
 
+        // override default includes by the request includes
+        if ($requestIncludes = Request::get('include')) {
+            $includes = explode(',', $requestIncludes);
+        }
+
         if($includes){
             $transformer->setDefaultIncludes($includes);
         }
 
-        // get the request
-        $request = request();
+        $fractal = Fractal::create($data, $transformer)->addMeta($this->metaData);
 
-        // check if the user requested a filter
-        $filterparam = $request->query->get('filter');
-        if($filterparam != null) {
-            // remove all includes from this transformer
-            $transformer->setDefaultIncludes([]);
+        // apply request filters if available in the request
+        if($requestFilters = Request::get('filter')){
+            $result = $this->filterResponse($fractal->toArray(), explode(';', $requestFilters));
+        }else{
+            $result = $fractal->toJson();
         }
 
-        // process the data
-        $raw = Fractal::create($data, $transformer);
-        $raw = $raw->addMeta($this->metaData)->toArray();
-
-        if($filterparam == null) {
-            // no filters are set..
-            // just output the data (with possible includes) and we are fine..
-            return $raw;
-        }
-
-        // otherwise - we need to sanitize the data
-        // process the filters
-        $this->filters = explode(';', $filterparam);
-
-        // now manipulate the data..
-        $result = $this->processTransformerKey($raw);
         return $result;
     }
+
 
     /**
      * @param $data
@@ -103,21 +92,21 @@ trait ResponseTrait
     }
 
     /**
-     * @param $object
+     * @param $responseArrayect
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function deleted($object = null)
+    public function deleted($responseArrayect = null)
     {
-        if(!$object){
+        if(!$responseArrayect){
             return $this->accepted();
         }
 
-        $id = $object->getHashedKey();
-        $objectType = (new ReflectionClass($object))->getShortName();
+        $id = $responseArrayect->getHashedKey();
+        $responseArrayectType = (new ReflectionClass($responseArrayect))->getShortName();
 
         return $this->accepted([
-            'message' => "$objectType ($id) Deleted Successfully.",
+            'message' => "$responseArrayectType ($id) Deleted Successfully.",
         ]);
     }
 
@@ -131,41 +120,42 @@ trait ResponseTrait
         return new JsonResponse(null, $status);
     }
 
+
     /**
-     * Traverse an array and process its nodes
+     * @param $responseArray
+     * @param $filters
      *
-     * @param $obj
-     * @return mixed
+     * @return  mixed
      */
-    private function processTransformerKey(&$obj)
+    private function filterResponse($responseArray, $filters)
     {
-        foreach ($obj as $k => $v)
+        foreach ($responseArray as $k => $v)
         {
             if (is_array($v))
             {
                 // it is an array - so go one step deeper
-                $v = $this->processTransformerKey($v);
+                $v = $this->filterResponse($v, $filters);
                 if(empty($v))
                 {
                     // it is an empty array - delete the key as well
-                    unset($obj[$k]);
+                    unset($responseArray[$k]);
                 }
                 else
                 {
-                    $obj[$k] = $v;
+                    $responseArray[$k] = $v;
                 }
                 continue;
             }
             else
             {
                 // check if the array is not in our filter-list
-                if(! in_array($k, $this->filters)) {
-                    unset($obj[$k]);
+                if(! in_array($k, $filters)) {
+                    unset($responseArray[$k]);
                     continue;
                 }
             }
         }
-        return $obj;
+        return $responseArray;
     }
 
 }
