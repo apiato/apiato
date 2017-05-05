@@ -34,4 +34,39 @@ class GetUserTest extends TestCase
         $this->assertEquals($admin->name, $responseContent->data->name);
     }
 
+    public function testGetFilteredUserResponse_()
+    {
+        $admin = $this->getTestingUser();
+
+        // send the HTTP request
+        $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(200);
+
+        $responseContent = $this->getResponseContentObject();
+
+        $this->assertEquals($admin->name, $responseContent->data->name);
+        $this->assertEquals($admin->email, $responseContent->data->email);
+
+        $this->assertNotContains('id', json_decode($response->getContent(), true));
+    }
+
+    public function testGetUserWithRelation_()
+    {
+        $admin = $this->getTestingUser();
+
+        // send the HTTP request
+        $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(200);
+
+        $responseContent = $this->getResponseContentObject();
+
+        $this->assertEquals($admin->email, $responseContent->data->email);
+
+        $this->assertNotNull($responseContent->data->roles);
+    }
+
 }
