@@ -198,14 +198,49 @@ api.domain.dev/endpoint?search=field1:first keyword;field2:second keyword&search
 
 ### Filtering
 
-The `?orderBy=` parameter can be applied to any **`GET`** HTTP request. And is used to request only certain fields.
+The `?filter=` parameter can be applied to any HTTP request. And is used to controle the response size, by defining what data you want back in the response.
 
 **Usage:**
 
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.domain.dev/endpoint?filter=id;name
+api.domain.dev/endpoint?filter=id;status
+```
+
+Example Response, including only id and status:
+
+```json
+{
+  "data": [
+    {
+      "id": "0one37vjk49rp5ym",
+      "status": "approved",
+      "products": {
+        "data": [
+          {
+            "id": "bmo7y84xpgeza06k",
+            "status": "pending"
+          },
+          {
+            "id": "o0wzxbg0q4k7jp9d",
+            "status": "fulfilled"
+          }
+        ]
+      },
+      "recipients": {
+        "data": [
+          {
+            "id": "r6lbekg8rv5ozyad"
+          }
+        ]
+      },
+      "store": {
+        "data": {
+          "id": "r6lbekg8rv5ozyad"
+        }
+      }
+    }...
 ```
 
 

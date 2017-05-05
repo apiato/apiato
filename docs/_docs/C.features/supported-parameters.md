@@ -4,9 +4,16 @@ category: "Features"
 order: 10
 ---
 
-Users often need to control the data request, thus the apiato support out of the box the most useful and common parameters:
+Users often need to control the response data, thus the apiato supports some useful and common query parameters:
+
+
 
 ## Sorting & Ordering:
+
+The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
+
+By default the `orderBy` sorts the data in **Ascending** order, if you want the data sorted in **Descending** order, you can add `&sortedBy=desc`.
+
 
 ```
 ?orderBy=id&sortedBy=asc
@@ -14,11 +21,29 @@ Users often need to control the data request, thus the apiato support out of the
 
 ```
 ?orderBy=created_at&sortedBy=desc
+?orderBy=name&sortedBy=asc
 ```
+
+Order By Accepts:
+
+- `asc` for Ascending.
+- `desc` for Descending.
+
+
 
 *(provided by the L5 Repository)*
 
+
+
+
+
+
+
+
+
 ## Searching:
+
+The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
 For the search to work you need to add `fieldSearchable` to the Repository of the Model.
 
@@ -50,6 +75,31 @@ protected $fieldSearchable = [
 
 Notice should replace the space with `%20`.
 
+
+> Space should be replaced with `%20` (search=keyword%20here).
+
+#### Search any field for multiple keywords:
+
+```
+api.domain.dev/endpoint?search=first keyword;second keyword
+```
+
+#### Search in specific field:
+```
+api.domain.dev/endpoint?search=field:keyword here
+```
+
+#### Search in specific fields for multiple keywords: 
+```
+api.domain.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+```
+
+#### Define query condition:
+
+```
+api.domain.dev/endpoint?search=field:keyword&searchFields=name:like
+```
+
 Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
@@ -76,13 +126,61 @@ See the [Search Parameter](http://apiato.io/C.features/search-parameter/) page, 
 
 *(provided by the L5 Repository)*
 
+
+
+
+
+
+
+
 ## Filtering:
 
-Select your columns:
+The `?filter=` parameter can be applied to any HTTP request. And is used to controle the response size, by defining what data you want back in the response.
+
+**Usage:**
+
+Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-?search=git&filter=id;url;note
+api.domain.dev/endpoint?filter=id;status
 ```
+
+Example Response, including only id and status:
+
+```json
+{
+  "data": [
+    {
+      "id": "0one37vjk49rp5ym",
+      "status": "approved",
+      "products": {
+        "data": [
+          {
+            "id": "bmo7y84xpgeza06k",
+            "status": "pending"
+          },
+          {
+            "id": "o0wzxbg0q4k7jp9d",
+            "status": "fulfilled"
+          }
+        ]
+      },
+      "recipients": {
+        "data": [
+          {
+            "id": "r6lbekg8rv5ozyad"
+          }
+        ]
+      },
+      "store": {
+        "data": {
+          "id": "r6lbekg8rv5ozyad"
+        }
+      }
+    }...
+```
+
+
 
 *(provided by the L5 Repository)*
 
@@ -90,13 +188,50 @@ Note that the transformer, which is used to output / format the data is also fil
 to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes) 
 of the object.
 
-## Paging:
+
+
+
+
+
+
+
+
+
+## Pagination:
+
+The `?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
+
+**Usage:**
 
 ```
-?page=22
+api.domain.dev/endpoint?page=200
+```
+
+*The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
+
+```shell
+  "data": [...],
+  "meta": {
+    "pagination": {
+      "total": 2000,
+      "count": 30,
+      "per_page": 30,
+      "current_page": 22,
+      "total_pages": 1111,
+      "links": {
+        "previous": "http://api.domain.dev/endpoint?page=21"
+      }
+    }
+  }
 ```
 
 *(provided by the Laravel Paginator)*
+
+
+
+
+
+
 
 ## Relationships:
 
@@ -110,9 +245,29 @@ using `include` with comma `,` separator:
 include=tags,user
 ```
 
+The `?include=` parameter can be used with any endpoint, only if it supports it. 
+
+How to use it: let's say there's a Driver object and Car object. And there's an endopint `/cars` that returns all the cars objects. 
+The include allows getting the cars with their drivers `/cars?include=drivers`. 
+
+However, for this parameter to work, the endpoint `/cars` should clearly define that it
+accepts `driver` as relationship (in the **Available Relationships** section).
+
+**Usage:**
+
+```
+api.domain.dev/endpoint?include=relationship
+```
+
+
+
+
 *(provided by the Fractal Transformer)*
 
-Similar to `include=` is the `with=` parameter (provided by the L5 Repository). There's no need to use it since it's almost the same as `include=` so we'll use that instead.
+
+
+
+
 
 ## Caching skipping:
 
@@ -126,24 +281,44 @@ To run a new query and force disabling the cache on certain endpoints, you can u
 
 It's not recommended to keep skipping cache as it has bad impact on the performance.
 
+
+
+
 *(provided by the L5 Repository)*
 
-## Where to apply these parameters?
 
-You can include these parameters on almost every `[GET]` endpoint)
+
+
+
+
+
+
+
+
+
 
 ## Configuration
 
-All the parameters that are provided by the L5 Repository are configurable from the `Ship/Configs/repository.php` file.
+Most of thes parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
+Some of them are built in house, or inherited from other packages such as Fractal.
+
+
+
+
+
+
 
 #### See the Supported Parameters from the User Developer perspective:
-
 
 1) Generate the Default API documentation
 
 2) Visit the documentation URL
 
 More details in the [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) page.
+
+
+
+
 
 ### More
 
