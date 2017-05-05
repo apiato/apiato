@@ -20,8 +20,15 @@ class UserTransformer extends Transformer
     /**
      * @var  array
      */
-    protected $defaultIncludes = [
+    protected $availableIncludes = [
         'roles',
+    ];
+
+    /**
+     * @var  array
+     */
+    protected $defaultIncludes = [
+
     ];
 
     /**
