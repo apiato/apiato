@@ -57,4 +57,28 @@ class ListAllUsersTest extends TestCase
         ]);
     }
 
+    public function testSearchUsersByName()
+    {
+        $user = $this->getTestingUser([
+            'name' => 'mahmoudzzz'
+        ]);
+
+        // 3 random users
+        factory(User::class, 3)->create();
+
+        // send the HTTP request
+        $response = $this->endpoint($this->endpoint. '?search=name:mahmoudzzz')->makeCall();
+
+        // assert response status is correct
+        $response->assertStatus(200);
+
+        $responseArray = $response->decodeResponseJson();
+
+        $this->assertEquals($user->name, $responseArray['data'][0]['name']);
+
+        // assert only single user was returned
+        $this->assertCount(1, $responseArray['data']);
+    }
+
+
 }
