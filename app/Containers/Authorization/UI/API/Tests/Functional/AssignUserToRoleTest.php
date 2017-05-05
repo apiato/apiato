@@ -14,7 +14,7 @@ use App\Containers\User\Models\User;
 class AssignUserToRoleTest extends TestCase
 {
 
-    protected $endpoint = 'post@v1/roles/assign';
+    protected $endpoint = 'post@v1/roles/assign?include=roles';
 
     protected $access = [
         'roles'       => '',
