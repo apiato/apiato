@@ -6,11 +6,11 @@ use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 /**
- * Class MissingeptHeaderException
+ * Class MissingJSONHeaderException
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class MissingeptHeaderException extends Exception
+class MissingJSONHeaderException extends Exception
 {
 
     public $httpStatusCode = SymfonyResponse::HTTP_BAD_REQUEST;

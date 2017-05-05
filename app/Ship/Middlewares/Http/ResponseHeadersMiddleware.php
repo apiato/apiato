@@ -3,7 +3,7 @@
 namespace App\Ship\Middlewares\Http;
 
 use App;
-use App\Ship\Exceptions\MissingeptHeaderException;
+use App\Ship\Exceptions\MissingJSONHeaderException;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Config;
@@ -30,8 +30,10 @@ class ResponseHeadersMiddleware extends Middleware
 
         $contentType = 'application/json';
 
-        if ($request->header('accept') !== $contentType) {
-            throw new MissingeptHeaderException();
+        $acceptHeader = $request->header('accept');
+
+        if (strpos($acceptHeader, $contentType) === false) {
+            throw new MissingJSONHeaderException();
         }
 
         // get the response after the request is done
