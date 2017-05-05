@@ -131,6 +131,11 @@ trait ResponseTrait
     {
         foreach ($responseArray as $k => $v)
         {
+            if(in_array($k, $filters, true)) {
+                // we have found our element - so continue with the next one
+                continue;
+            }
+
             if (is_array($v))
             {
                 // it is an array - so go one step deeper
