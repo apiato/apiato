@@ -4,7 +4,7 @@ namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
 use App\Containers\User\Exceptions\AccountFailedException;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 use Exception;
 
 /**

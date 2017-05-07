@@ -3,7 +3,7 @@
 namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Ship\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 
 /**

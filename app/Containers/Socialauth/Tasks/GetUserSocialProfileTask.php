@@ -4,13 +4,14 @@ namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\SocialAuth\Extra\SocialProvider;
 use Laravel\Socialite\Facades\Socialite;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class GetUserSocialProfileTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetUserSocialProfileTask
+class GetUserSocialProfileTask extends Task
 {
 
     /**
