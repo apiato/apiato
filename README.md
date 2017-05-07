@@ -125,18 +125,24 @@ Join our [Slack](https://now-examples-slackin-bvfqosqozk.now.sh) chatting room, 
 
 
 
-<a name="Contribution"></a>
-## Contribution
+<a name="Contributors"></a>
+## Contributors
 
-[Contributors Giude](http://apiato.io/B.general/contribution)
+[Contribution Guide](http://apiato.io/B.general/contribution)
 
 
 <a name="Credits"></a>
 ## Credits
 
-| Contributors                                | Twitter                                           | Contact         | Site                                |
-|---------------------------------------------|---------------------------------------------------|-----------------|-------------------------------------|
-| [Mahmoud Zalt](https://github.com/Mahmoudz) | @[Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt) | mahmoud@zalt.me | [https://zalt.me](https://zalt.me/) |
+Created by [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt)).
+
+And a list of awesome contributors:
+
+- [Johan Alvarez](https://github.com/llstarscreamll)
+- [Toggi](https://github.com/toggi737)
+- [Johannes Schobel](https://github.com/johannesschobel)
+- [... See full list](https://github.com/apiato/apiato/graphs/contributors)
+- [Join Us?](http://apiato.io/B.general/contribution/)
 
 
 <a name="Donations"></a>
