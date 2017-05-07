@@ -139,7 +139,7 @@ Created by [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twi
 And a list of awesome contributors:
 
 - [Johan Alvarez](https://github.com/llstarscreamll)
-- [Toggi](https://github.com/toggi737)
+- [Þorgrímur Jónasarson](https://github.com/toggi737)
 - [Johannes Schobel](https://github.com/johannesschobel)
 - [... See full list](https://github.com/apiato/apiato/graphs/contributors)
 - [Join Us?](http://apiato.io/B.general/contribution/)
