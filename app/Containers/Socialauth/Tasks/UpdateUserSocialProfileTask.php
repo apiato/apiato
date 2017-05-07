@@ -4,7 +4,7 @@ namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\Authentication\Exceptions\UpdateResourceFailedException;
 use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Port\Task\Abstracts\Task;
+use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class UpdateUserSocialProfileTask.
