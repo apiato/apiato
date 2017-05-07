@@ -1,7 +1,7 @@
 ---
 title: "Authentication"
 category: "Features"
-order: 2
+order: 3
 ---
 
 Middlewares are the best solution to apply Authentication in your App.

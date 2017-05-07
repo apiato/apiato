@@ -1,7 +1,7 @@
 ---
 title: "Authorization"
 category: "Features"
-order: 3
+order: 4
 ---
 
 apiato provides a Role-Based Access Control (RBAC) from it's Authorization Container.

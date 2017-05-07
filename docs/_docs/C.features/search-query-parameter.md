@@ -1,7 +1,7 @@
 ---
-title: "Search Parameter"
+title: "Search Query Parameter"
 category: "Features"
-order: 12
+order: 101
 ---
 
 ## How it works

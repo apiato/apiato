@@ -1,7 +1,7 @@
 ---
 title: "Social Authentication"
 category: "Features"
-order: 5
+order: 6
 ---
 
 For Social Authentication apiato uses [Socialite]( https://github.com/laravel/socialite).

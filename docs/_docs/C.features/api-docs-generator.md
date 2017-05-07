@@ -1,7 +1,7 @@
 ---
 title: "API Docs Generator"
 category: "Features"
-order: 1
+order: 2
 ---
 
 Every great API needs a great Documentation. 

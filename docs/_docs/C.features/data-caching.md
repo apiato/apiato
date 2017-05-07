@@ -12,7 +12,7 @@ To enable it, go to `config/repository.php` config file and set `cache` > `enabl
 
 More details can be found [here](https://github.com/andersao/l5-repository#cache-config). 
 
-Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout the Supported Parameters page.
+Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout the Query parameters page.
 
 ## Change different caching settings
 

@@ -1,5 +1,5 @@
 ---
-title: "Supported Parameters"
+title: "Query Parameters"
 category: "Features"
 order: 10
 ---
@@ -113,7 +113,7 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-See the [Search Parameter](http://apiato.io/C.features/search-parameter/) page, for how to set it up and control the searchability.
+See the [Search query parameter](http://apiato.io/C.features/search-query-parameter/) page, for how to set it up and control the searchability.
 
 ### Define the query condition for search:
 
@@ -308,7 +308,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 
 
-#### See the Supported Parameters from the User Developer perspective:
+#### See the Query parameters from the User Developer perspective:
 
 1) Generate the Default API documentation
 

@@ -1,7 +1,7 @@
 ---
 title: "Code Generator"
 category: "Features"
-order: 101
+order: 1
 ---
 
 ## Introduction

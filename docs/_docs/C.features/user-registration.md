@@ -1,7 +1,7 @@
 ---
 title: "User Registration"
 category: "Features"
-order: 4
+order: 5
 ---
 
 ### Register users by credentials (email and passwords)
