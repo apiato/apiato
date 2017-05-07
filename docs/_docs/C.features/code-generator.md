@@ -48,3 +48,9 @@ to be generated. The wizard, however, will ask you for the `--container` as well
 ## Contributing
 
 If you would like to add your own generators, please check out the [Contribution Guide](http://apiato.io/B.general/contribution/).
+
+## For AngularJS 2 Users
+
+Checkout this [CRUD Containers generator package](https://github.com/llstarscreamll/Crud) for Angular 2.4+.
+ 
+ 
