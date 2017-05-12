@@ -110,7 +110,8 @@ class RouteGenerator extends GeneratorCommand implements ComponentsGenerator
                 'endpoint-url'              => $url,
                 'versioned-endpoint-url'    => '/v' . $version . '/' . $url,
                 'endpoint-version'          => $version,
-                'http-verb'                 => $verb,
+                'http-verb'                 => Str::lower($verb),
+                'doc-http-verb'             => Str::upper($verb),
             ],
             'file-parameters' => [
                 'endpoint-name'         => $this->fileName,
