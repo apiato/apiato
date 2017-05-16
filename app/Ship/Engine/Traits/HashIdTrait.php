@@ -62,16 +62,7 @@ trait HashIdTrait
     }
 
     /**
-     * Expected Keys formats:
-     *
-     * Type 1:
-     *   A
-     * Type 2:
-     *   A.*.B
-     *   A.*.B.*.C
-     * Type 3:
-     *   A.*
-     *   A.*.B.*
+     * Search the IDs to be decoded in the request data
      *
      * @param $requestData
      * @param $key
@@ -80,73 +71,55 @@ trait HashIdTrait
      */
     private function locateAndDecodeIds($requestData, $key)
     {
-        if ($this->stringEndsWithChars('.*', $key)) {
-            // if the key of Type 3:
-            $this->decodeType3Key($requestData, $key);
-        } elseif (str_contains($key, '.*.')) {
-            // if the key of Type 2:
-            $this->decodeType2Key($requestData, $key);
-        } else {
-            // if the key of Type 1:
-            $this->decodeType1Key($requestData, $key);
+        // split the key based on the "."
+        $fields = explode('.', $key);
+        // loop through all elements of the key.
+        $transformedData = $this->processField($requestData, $fields);
+
+        return $transformedData;
+    }
+
+    /**
+     * Recursive function to process (decode) the request data with a given key
+     *
+     * @param $data
+     * @param $keysTodo
+     * @return array
+     */
+    private function processField($data, $keysTodo)
+    {
+        // check if there are no more fields to be processed
+        if(empty($keysTodo))
+        {
+            // there are no more keys left - so basically we need to decode this entry
+            $decodedId = $this->decode($data);
+            return $decodedId;
         }
 
-        return $requestData;
-    }
+        // take the first element from the field
+        $field = array_shift($keysTodo);
 
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType1Key(&$requestData, $key)
-    {
-        // decode single key
-        if (isset($requestData[$key])) {
-            $requestData[$key] = $this->decode($requestData[$key], $key);
+        // is the current field an array?! we need to process it like crazy
+        if($field == '*') {
+            // process each field of the array (and go down one level!)
+            $fields = $data;
+            foreach($fields as $key => $value) {
+                $data[$key] = $this->processField($value, $keysTodo);
+            }
+            return $data;
+
         }
-    }
-
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType2Key(&$requestData, $key)
-    {
-        // get the last part of the key, which should be the ID that needs decoding
-        $idToDecode = substr($key, strrpos($key, '.*.') + 3);
-
-        array_walk_recursive($requestData, function (&$value, $key) use ($idToDecode) {
-
-            if ($key == $idToDecode) {
-                $value = $this->decode($value, $key);
+        else {
+            // check if the key we are looking for does, in fact, really exist
+            if(! array_key_exists($field, $data)) {
+                return $data;
             }
 
-        });
-    }
-
-    /**
-     * @param $requestData
-     * @param $key
-     */
-    private function decodeType3Key(&$requestData, $key)
-    {
-        $idToDecode = $this->removeLastOccurrenceFromString($key, '.*');
-
-        $this->findKeyAndReturnValue($requestData, $idToDecode, function ($ids) use ($key) {
-
-            if (!is_array($ids)) {
-                throw new IncorrectIdException('Expected ID\'s to be in array. Please wrap your ID\'s in an Array and send them back.');
-            }
-
-            $decodedIds = [];
-
-            foreach ($ids as $id) {
-                $decodedIds[] = $this->decode($id, $key);
-            }
-
-            // callback return
-            return $decodedIds;
-        });
+            // go down one level
+            $value = $data[$field];
+            $data[$field] = $this->processField($value, $keysTodo);
+            return $data;
+        }
     }
 
     /**
@@ -173,36 +146,6 @@ trait HashIdTrait
             // add the value with the recursive call
             $this->findKeyAndReturnValue($value, $findKey, $callback);
         }
-    }
-
-    /**
-     * @param $search
-     * @param $subject
-     *
-     * @return  mixed
-     */
-    private function removeLastOccurrenceFromString($subject, $search)
-    {
-        $replace = '';
-
-        $pos = strrpos($subject, $search);
-
-        if ($pos !== false) {
-            $subject = substr_replace($subject, $replace, $pos, strlen($search));
-        }
-
-        return $subject;
-    }
-
-    /**
-     * @param $needle
-     * @param $haystack
-     *
-     * @return  int
-     */
-    private function stringEndsWithChars($needle, $haystack)
-    {
-        return preg_match('/' . preg_quote($needle, '/') . '$/', $haystack);
     }
 
     /**

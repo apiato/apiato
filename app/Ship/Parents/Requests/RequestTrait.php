@@ -133,4 +133,16 @@ trait RequestTrait
 
         return $hasAccess;
     }
+
+    /**
+     * This method mimics the $request->input() method but works on the "decoded" values
+     *
+     * @param $key
+     * @param $default
+     * @return mixed
+     */
+    public function getInputByKey($key = null, $default = null)
+    {
+        return data_get($this->all(), $key, $default);
+    }
 }
