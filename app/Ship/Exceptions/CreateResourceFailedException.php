@@ -6,13 +6,13 @@ use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class UpdateResourceFailedException.
+ * Class CreateResourceFailedException.
  *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class UpdateResourceFailedException extends Exception
+class CreateResourceFailedException extends Exception
 {
     public $httpStatusCode = Response::HTTP_EXPECTATION_FAILED;
 
-    public $message = 'Failed to update Resource.';
+    public $message = 'Failed to create Resource.';
 }
