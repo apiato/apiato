@@ -3,8 +3,8 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Ship\Parents\Actions\Action;
 use App\Ship\Criterias\Eloquent\NotNullCriteria;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\App;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CountRegisteredUsersTask extends Action
+class CountRegisteredUsersTask extends Task
 {
     /**
      * @return  mixed

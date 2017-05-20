@@ -3,6 +3,7 @@
 namespace App\Containers\Debugger\Tasks;
 
 use App;
+use App\Ship\Parents\Tasks\Task;
 use DB;
 use Illuminate\Support\Facades\Config;
 use Log;
@@ -12,7 +13,7 @@ use Log;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class QueryDebuggerTask
+class QueryDebuggerTask extends Task
 {
 
     /**

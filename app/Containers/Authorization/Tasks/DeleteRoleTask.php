@@ -4,7 +4,7 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\Authorization\Models\Role;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\App;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DeleteRoleTask extends Action
+class DeleteRoleTask extends Task
 {
     /**
      * @param Integer|Role $role
