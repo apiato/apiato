@@ -37,6 +37,7 @@ trait ResponseTrait
         }
 
         if($includes){
+            $includes = array_unique(array_merge($transformer->getDefaultIncludes(), $includes));
             $transformer->setDefaultIncludes($includes);
         }
 
