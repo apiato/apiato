@@ -272,11 +272,19 @@ phpunit
 
 Now let's see it in action
 
-1. Open your web browser and visit: 
+1.a. Open your web browser and visit: 
 
 - `http://apiato.dev` You should see an HTML page, with `apiato` in the middle.
-- `http://api.apiato.dev/` You should see a JSON response with message: `Welcome to apiato.`, you can also to go `http://api.apiato.dev/v1` and see a welcome response to your API version 1 landing page
 - `http://admin.apiato.dev` You should see an HTML Login page.
+
+1.b. Open your HTTP client and call: 
+
+- `http://api.apiato.dev/` You should see a JSON response with message: `"Welcome to apiato."`, 
+- `http://api.apiato.dev/v1` You should see a JSON response with message: `"Welcome to apiato (API V1)."`,
+
+Note: Your request MUST contain `Accept` => `application/json` in the HTTP header.
+
+If you try to open `api.apiato.dev` in browser you will get a **Missing JSON Header Exception**.   
 
 
 2) Make some HTTP calls to the API:
