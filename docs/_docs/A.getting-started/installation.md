@@ -88,13 +88,28 @@ sites:
   	  to: /{full-path-to}/apiato/public
 ```
 
-1.3) You can also map other domains like `apiato.dev` and `admin.apiato.dev` to the user web apps:
+1.3) You can also map other domains like `apiato.dev` and `admin.apiato.dev` to other web apps:
 
 ```text
 	- map: apiato.dev
-  	  to: /{full-path-to}/apiato/clients/web/user
+  	  to: /{full-path-to}/clients/web/user
 	- map: admin.apiato.dev
-  	  to: /{full-path-to}/apiato/clients/web/admin
+  	  to: /{full-path-to}/clients/web/admin
+```
+
+Note: in the example above the `/{full-path-to}/clients/web/***` are separate apps, who live on their own 
+repositories and in different folder then the apiato one. 
+If your Admins, Users or other type of Apps are within apiato, then 
+you must point them all to the apiato project folder `/{full-path-to}/apiato/public`. 
+So in that case you would have something like this:
+ 
+```text
+    - map: api.apiato.dev
+      to: /{full-path-to}/apiato/public
+    - map: apiato.dev
+      to: /{full-path-to}/apiato/public
+    - map: admin.apiato.dev
+      to: /{full-path-to}/apiato/public
 ```
 
 2) Add the domain to the Hosts file:
@@ -117,7 +132,8 @@ sites:
 homestead up --provision
 ```
 
-*If you see `No input file specified` on the subdomains! try running this command `homestead halt && homestead up --provision`.*
+*If you see `No input file specified` on the sub-domains!  
+try running this command `homestead halt && homestead up --provision`.*
 
 
 
