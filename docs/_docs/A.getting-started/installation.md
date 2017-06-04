@@ -241,12 +241,20 @@ php artisan passport:install
 
 If you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
 
-1) Install [ApiDocJs](http://apidocjs.com/) using NPM or any other way:
+1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
+
+Install it Globally with `-g` or locally in the project without `-g` 
+
 ```shell
-npm install
+npm install apidoc -g
 ```
 
+Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on thr root. 
+
+
 2) run `php artisan apiato:docs`
+
+Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation`.
 
 ##### Visit [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) for more details.
 
