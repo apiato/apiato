@@ -8,9 +8,9 @@
  * @apiPermission      Authenticated User
  *
  * @apiSuccessExample  {json}       Success-Response:
- * HTTP/1.1 200 OK
+ * HTTP/1.1 202 Accepted
 {
-
+  "message": "Token revoked successfully."
 }
  */
 $router->post('logout', [
