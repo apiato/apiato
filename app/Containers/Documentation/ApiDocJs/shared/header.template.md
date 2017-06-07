@@ -288,6 +288,15 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 api.domain.dev/endpoint?include=relationship
 ```
 
+Every response contain an `include` in its `meta`  as follow:
+
+```
+   "meta":{
+      "include":[
+         "relationship-1",
+         "relationship-2",
+      ],
+```
 
 
 ### Caching

@@ -259,8 +259,25 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 api.domain.dev/endpoint?include=relationship
 ```
 
+**Where to define the includes:**
 
+Every Transformer can have 2 types of includes `$availableIncludes` and `$defaultIncludes`:
 
+```php
+    protected $availableIncludes = [
+        'products',
+        'store',
+        'recipients',
+    ];
+
+    protected $defaultIncludes = [
+        'invoice',
+    ];
+```
+
+`$defaultIncludes` will not be listed in the response, only the `$availableIncludes` will be.
+
+Visit the [Transformers](http://apiato.io/D.components/transformers/) page for more details.
 
 *(provided by the Fractal Transformer)*
 

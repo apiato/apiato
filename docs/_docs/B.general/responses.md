@@ -15,7 +15,7 @@ order: 2
       "id": 100,
       ...
       "relation 1": {
-        "data": [
+        "data": [ // mutiple data
           {
             "id": 11,
 			  ...
@@ -23,7 +23,7 @@ order: 2
         ]
       },
       "relation 2": {
-        "data": {
+        "data": { // single data
           "id": 22,
           ...
           }
@@ -43,7 +43,12 @@ order: 2
         "next": "http://api.apiato.dev/v1/accounts?page=999"
       }
     }
-  }
+  },
+  "include": [ // what can be incliuded
+    "xxx",
+    "yyy"
+  ],
+  "custom": []
 }
 ```
 
@@ -66,6 +71,14 @@ When data is paginated the response payload will contain a `meta` description ab
   }
 ```
 
+**Includes:**
+
+Informs the User about what relationships can be include in the response.
+Example: `?include=tags,user`
+
+For more details read the `Relationships` section in the [Query Parameters](http://apiato.io/C.features/query-parameters/) page.
+
+
 ### Error Responses formats
 
 Visit each feature, example the Authentication and there you will see how unauthenticate response looks like, same for Authorization, Validation and so on.
@@ -85,3 +98,28 @@ The Supported Serializers are (`ArraySerializer`, `DataArraySerializer` and `Jso
 
 
 More details at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
+
+
+#Building a Responses from the Controller:
+
+Array Response:
+
+```php
+        $xyz = ['xx', 'yy'];
+
+        return $this->json(['something' => $xyz]);
+```
+
+Array Data Object:
+
+```php
+        return $this->transform($order, OrderTransformer::class); // Order can be the Order object or/and Collection of Orders objects.
+```
+
+Override some includes:
+
+```php
+        return $this->transform($order, OrderTransformer::class, ['recipients', 'store']);
+```
+
+Visit the `app/Ship/Engine/Traits/ResponseTrait.php` file, for more available response features (such as `withMeta`, `accepted`, `deleted`,...).

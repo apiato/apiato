@@ -111,6 +111,48 @@ If you get an error (`apidoc not found`),
     'executable' => 'apidoc',
 ```
 
+
+### Shared response for faster updating and less outdated responses:
+
+To prevent duplicating the responses between routes, let's create a shared response for each object.
+
+Example: `_user.v1.public.php` will contaion all responses (single, multiple..) of the User:
+
+```php
+<?php
+
+/**
+ * @apiDefine UserSuccessSingleResponse
+ * @apiSuccessExample {json} Success-Response:
+HTTP/1.1 200 OK
+{
+   "data":{
+      "object":"User",
+      "id":eqwja3vw94kzmxr0,
+   },
+   "meta":{
+      "include":[],
+      "custom":[]
+   }
+}
+ */
+```
+
+**Usage of the shared User response from any endpoint:**
+ 
+ ```php
+* @apiUse UserSuccessSingleResponse
+ ```
+
+
+To avoid having to generate and update the Single and Multiple responses of the same object (recommended only for private API's) 
+you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse` 
+which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`  
+
+ 
+
+
+
 ## Edit the default generated values in the templates:
 
 apiato generates by defaults 2 API documentations, each one has it's own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`

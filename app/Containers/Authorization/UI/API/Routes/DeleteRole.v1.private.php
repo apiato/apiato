@@ -5,6 +5,7 @@
  * @apiName            deleteRole
  * @api                {delete} /v1/roles/:id Delete a Role
  * @apiDescription     Delete Role by ID
+ *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated Role
  *

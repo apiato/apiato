@@ -5,6 +5,7 @@
  * @apiName            ClientAdminWebAppLoginProxy
  * @api                {post} /v1/clients/web/admin/login Login (Password Grant with proxy)
  * @apiDescription     Login Users using their email and password, without client_id and client_secret.
+ *
  * @apiVersion         1.0.0
  *
  * @apiParam           {String}  email user email
