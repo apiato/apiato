@@ -70,7 +70,7 @@ class RevokeUserFromRoleTest extends TestCase
             $response->assertStatus(400);
 
             $this->assertResponseContainKeyValue([
-                'message' => 'Only Hashed ID\'s allowed (roles_ids.*).',
+                'message' => 'Only Hashed ID\'s allowed.',
             ]);
         }else{
             $response->assertStatus(200);
