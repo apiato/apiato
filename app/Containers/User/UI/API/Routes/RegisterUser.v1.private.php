@@ -4,7 +4,7 @@
  * @apiGroup           Users
  * @apiName            registerUser
  * @api                {post} /v1/register Register User (create client)
- * @apiDescription     Register new user as client.
+ * @apiDescription     Register users as (client).
  *
  * @apiVersion         1.0.0
  * @apiPermission      none

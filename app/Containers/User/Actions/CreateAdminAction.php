@@ -22,8 +22,15 @@ class CreateAdminAction extends Action
      */
     public function run(Request $request)
     {
-        $admin = $this->call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
+        $admin = $this->call(CreateUserByCredentialsTask::class, [
+            $isClient = false,
+            $request->email,
+            $request->password,
+            $request->name
+        ]);
 
+        // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles
+        // to your users manually. (To list admins in your dashboard look for users with `is_client=false`).
         $this->call(AssignUserToRoleTask::class, [$admin, ['admin']]);
 
         return $admin;

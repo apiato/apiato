@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
+use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
 
 /**
@@ -12,7 +13,7 @@ use App\Containers\User\Tests\TestCase;
 class CreateAdminTest extends TestCase
 {
 
-    protected $endpoint = 'post@v1/admins?include=roles';
+    protected $endpoint = 'post@v1/admins';
 
     protected $access = [
         'permissions' => 'create-admins',
@@ -38,15 +39,15 @@ class CreateAdminTest extends TestCase
             'name'  => $data['name'],
         ]);
 
-         // assdert response contain the token
+        // assdert response contain the token
         $this->assertResponseContainKeys(['id']);
 
-         // assert the data is stored in the database
+        // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
 
-        $responseContent = $this->getResponseContentObject();
+        $user = User::where(['email' => $data['email']])->first();
 
-        $this->assertEquals($responseContent->data->roles->data[0]->name, $data['name']);
+        $this->assertEquals($user->is_client, false);
     }
 
 }
