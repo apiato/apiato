@@ -31,7 +31,6 @@ class User extends UserModel
         'password',
         'device',
         'platform',
-        'confirmed',
         'gender',
         'birth',
         'social_provider',
@@ -43,7 +42,13 @@ class User extends UserModel
         'social_avatar',
         'social_avatar_original',
         'social_nickname',
-        'access_token',
+        'confirmed',
+        'is_client',
+    ];
+
+    protected $casts = [
+        'is_client' => 'boolean',
+        'confirmed' => 'boolean',
     ];
 
     /**
