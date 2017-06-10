@@ -63,7 +63,9 @@ But injecting each Task in the constructor and then using it below through its p
 
 The Action itself was also called using `$this->call()` which triggers the `run` function in it. 
 
-Each Action can know which UI called it using `$this->getUI()`, this could be useful when handling the same Action differently based on the UI type.
+
+Refer to the **Magical Call** page for more info and examples on how to use the call function.
+
 
 
 **Same Example using the `call` function:** 

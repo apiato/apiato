@@ -87,6 +87,10 @@ class Controller extends ApiController
 
 The second parameter of the `call` function is an array of the Action parameters in order. When you need to pass data to the Action, it's recommended to pass the Request Object as it should be the place that holds the state of your current request.
 
+
+Refer to the **Magical Call** page for more info and examples on how to use the call function.
+
+
 **Example: Usage from Routes Endpoint:**
 
 ```php
