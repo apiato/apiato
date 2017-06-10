@@ -80,5 +80,4 @@ class ListAllUsersTest extends TestCase
         $this->assertCount(1, $responseArray['data']);
     }
 
-
 }

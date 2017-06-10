@@ -6,11 +6,11 @@ use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class ClientsCriteria.
+ * Class HasAdminRoleCriteria.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AdminsCriteria extends Criteria
+class HasAdminRoleCriteria extends Criteria
 {
 
     /**
@@ -21,6 +21,8 @@ class AdminsCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->where('is_client', false);
+        return $model->whereHas('roles', function ($q) {
+            $q->where('name', 'admin');
+        });
     }
 }

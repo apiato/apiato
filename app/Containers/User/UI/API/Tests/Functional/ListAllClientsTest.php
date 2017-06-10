@@ -22,7 +22,11 @@ class ListAllClientsTest extends TestCase
 
     public function testListAllClientsByAdmin_()
     {
-        factory(User::class, 2)->create();
+        // should be returned
+        factory(User::class, 3)->states('client')->create();
+
+        // should not be returned
+        factory(User::class)->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -39,10 +43,8 @@ class ListAllClientsTest extends TestCase
 
     public function testListAllClientsByNonAdmin_()
     {
+        // prepare a user without any roles or permissions
         $this->getTestingUserWithoutAccess();
-
-        // create some fake users
-        factory(User::class, 2)->create();
 
         // send the HTTP request
         $response = $this->makeCall();

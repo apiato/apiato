@@ -4,8 +4,8 @@
  * @apiGroup           Users
  * @apiName            ListAllUsers
  * @api                {get} /v1/users List All Users
- * @apiDescription     List all Application Users of any roles. For listing all registered users "Clients" only you
- *                     can use `/clients`. And for listing all Admins (users of role Admin) only you can use `/admins`.
+ * @apiDescription     List all Application Users (clients and admins). For all registered users "Clients" only you
+ *                     can use `/clients`. And for all "Admins" only you can use `/admins`.
  *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User

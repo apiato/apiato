@@ -2,12 +2,12 @@
 
 namespace App\Containers\User\Tasks;
 
-use App\Containers\User\Data\Criterias\NoRolesCriteria;
+use App\Containers\User\Data\Criterias\AdminsCriteria;
+use App\Containers\User\Data\Criterias\ClientsCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class ListUsersTask.
@@ -18,30 +18,43 @@ class ListUsersTask extends Task
 {
 
     /**
-     * @param bool $ordered
-     * @param bool $allUsers
-     * @param null $roles
-     *
-     * @return  mixed
+     * @var  \App\Containers\User\Data\Repositories\UserRepository
      */
-    public function run($ordered = true, $allUsers = false, $roles = null)
+    private $userRepository;
+
+    /**
+     * ListUsersTask constructor.
+     *
+     * @param \App\Containers\User\Data\Repositories\UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
     {
-        $userRepository = App::make(UserRepository::class);
-        
-        // if he doesn't need all users means he might need to filter by roles
-        if (!$allUsers) {
-            if ($roles) {
-                $userRepository->pushCriteria(new RoleCriteria($roles));
-            } else {
-                // if no roles specified means he wants only users with has no roles (normal clients usually)
-                $userRepository->pushCriteria(new NoRolesCriteria());
-            }
-        }
-
-        if ($ordered) {
-            $userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
-        }
-
-        return $userRepository->paginate();
+        $this->userRepository = $userRepository;
     }
+
+    public function run()
+    {
+        return $this->userRepository->paginate();
+    }
+
+    public function clients()
+    {
+        $this->userRepository->pushCriteria(new ClientsCriteria());
+    }
+
+    public function admins()
+    {
+        $this->userRepository->pushCriteria(new AdminsCriteria());
+    }
+
+    public function ordered()
+    {
+        $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
+    }
+
+    public function withRole($roles)
+    {
+        $this->userRepository->pushCriteria(new RoleCriteria($roles));
+    }
+
 }

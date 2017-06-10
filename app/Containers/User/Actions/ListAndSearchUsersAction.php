@@ -18,6 +18,6 @@ class ListAndSearchUsersAction extends Action
      */
     public function run()
     {
-        return $this->call(ListUsersTask::class, [true, true]);
+        return $this->call(ListUsersTask::class, [], ['ordered']);
     }
 }
