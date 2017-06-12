@@ -75,7 +75,9 @@ Most of the third party packages Service Providers and Aliases SHOULD be registe
 Refer to the [Providers](http://apiato.io/D.components/providers/) page for more details.
 
 
-## How to access my API using URL `example.com/api/` instead of subdomain `api.example.com`? 
+## How to change API URL?
+
+Access API using URL `example.com/api/` instead of the subdomain `api.example.com`: 
 
 1. open `RoutesLoaderTrait` find `loadApiRoute` function
 2. set prefix to `'prefix' => 'api/' . $versionPrefix,` 
@@ -91,7 +93,7 @@ First remove the URL versioning:
 Second Implement the Header versioning anyway you prefere.
 
 
-### Where do I define the composer dependencies?
+## Where do I define the composer dependencies?
 
 All the composer dependencies should be defined in their Containers, in a composer.json file.
 
@@ -100,7 +102,7 @@ Framework core dependencies live on the project root composer.json file*.
 
 
 
-### How to enable Query Caching?
+## How to enable Query Caching?
 
 By default this feature is turned off.
 
@@ -108,9 +110,11 @@ To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The qu
 
 
 
-## Can I name my Actions `IndexAction`, `ShowAction`, `StoreAction`.. according to REST? 
+## Can I give my Actions REST names? 
 
-You can name anything, anyway you prefer, sa long as you’re just changing the name and not the naming format 
+Example: `IndexAction`, `ShowAction`, `StoreAction`...
+
+Yes, you can name anything, anyway you prefer, sa long as you’re just changing the name and not the naming format 
 *“like in case of routes files, they include the version number which gets applied to the api, 
 and the api type to help adding the route file to different docs automatically”*.
 

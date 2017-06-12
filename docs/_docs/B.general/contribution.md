@@ -19,8 +19,9 @@ The project is versioned under the [Semantic Versioning](http://semver.org/) gui
 
 ### Coding Standards
 
-The project is compliant with the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding standard
-and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) autoloading standard.
+The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) Coding Standard,
+[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) Coding Style
+and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) Autoloader.
 *If you notice any compliance oversights, you can send a patch via pull request.*
 
 
@@ -99,6 +100,20 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 
 
+# Contributing to apiato's Documentation:
+
+The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it lives in the `/docs` folder. 
+
+The content of the documentation can be found in the `docs/_docs` folder.
+
+To run the docs locally: 
+
+1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
+2. `cd docs/_docs`
+3. `bundle install`
+4. `bundle exec jekyll serve`
+5. Browse `http://localhost:4000`
+
 
 
 # Contributing to the Code Generator:
@@ -155,16 +170,6 @@ That's it.. It's really that easy!
 Note: Once all the components are built and ready,
 I'll join and write the container command myself, since that cannot extend from the same abstract class of the components.
 It should be a stand alone command, which basically calls the components commands and pass user inputs to them.
-
-
-
-
-
-
-
-
-
-
 
 
 
