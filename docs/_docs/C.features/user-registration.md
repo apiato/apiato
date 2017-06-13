@@ -59,7 +59,7 @@ curl --request POST \
 }
 ```
 
-Note: After registration you will have to send another call to `http://api.poms.dev/v1/oauth/token` inrodre to get the user access token.
+Note: After registration you will have to send another call to `http://api.example.com/v1/oauth/token` in order to get the user access token.
 
 
 ### Register users by Social Account

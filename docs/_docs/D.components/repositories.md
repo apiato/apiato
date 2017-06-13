@@ -142,4 +142,4 @@ apiato uses the `andersao/l5-repository` package, to provide a lot of powerful f
 
 ```
 
-To learn more about all the propteries you can use, visit the `andersao/l5-repository` package [documentation](https://github.com/andersao/l5-repository).
+To learn more about all the properties you can use, visit the `andersao/l5-repository` package [documentation](https://github.com/andersao/l5-repository).

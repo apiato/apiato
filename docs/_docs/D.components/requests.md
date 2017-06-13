@@ -214,8 +214,8 @@ class DeleteUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permission' => 'delete-users|another-permissions..'
-	      	'roles'      => 'manger'
+        'permission' => 'delete-users|another-permissions..',
+	        'roles'      => 'manger'
 	    ];
 
 	    public function authorize()

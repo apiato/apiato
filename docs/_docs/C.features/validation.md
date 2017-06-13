@@ -6,10 +6,9 @@ order: 100
 
 apiato uses the powerful [Laravel validation](https://laravel.com/docs/validation) system.
 
-But in apiato validation must be defined in the Requests compoenents, since every request might have different rules.
+But in apiato validation must be defined in the Requests components, since every request might have different rules.
 
 And the Validations rules are automatically applied, once injecting the Request in the Controller.
-
 
 **Example Request with Validation rules:**
 
@@ -89,11 +88,6 @@ Multiple Fields:
   "message": "The given data failed to pass validation."
 }
 ```
-
-
-
-
-
 
 
 More details about requests in the "Request Page".

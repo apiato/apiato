@@ -4,18 +4,22 @@ category: "Features"
 order: 13
 ---
 
-apiato is built on top of the [Laravel's default Tests](https://laravel.com/docs/5.4/http-tests), and provides some awesome helper functions, for faster and more enjoyable testing experience.
+apiato is built on top of the [Laravel's default Tests](https://laravel.com/docs/5.4/http-tests), and provides some 
+awesome helper functions, for faster and more enjoyable testing experience.
 
-With apiato you just prepare the data you want to send, make a the call with single function and start asserting the resopnse. Everything else is set for you.
+With apiato you just prepare the data you want to send, make a the call with single function and start asserting the 
+response. Everything else is set for you.
 
 
 ## Tests properties:
 
-Some of the test helper functions reads your test class properties, to perform their jobs. below we will see those properties and who uses them:
+Some of the test helper functions reads your test class properties, to perform their jobs. below we will see those 
+properties and who uses them:
 
 ### **$endpoint**:
 
-The `$endpoint = 'verb@uri';` property is where you define the endpoints you are trying to access when calling `$this->makeCall()`.
+The `$endpoint = 'verb@uri';` property is where you define the endpoints you are trying to access when calling 
+`$this->makeCall()`.
 
 **Example:** 
 
@@ -70,9 +74,11 @@ $response = $this->endpoint('get@myEndpoint')->makeCall();
 
 ### **$auth**:
 
-The `$auth = false;` property defines if the endpoint you are trying to call requires authentication or not. By default `$auth` is equal to true, also when not defined on your test class it will be default to true. 
+The `$auth = false;` property defines if the endpoint you are trying to call requires authentication or not. By default 
+`$auth` is equal to true, also when not defined on your test class it will be default to true. 
 
-When `$auth` is true, the `makeCall()` will create a testing user if no one already found, and it will inject his access token in the headers, before making the call.
+When `$auth` is true, the `makeCall()` will create a testing user if no one already found, and it will inject his 
+access token in the headers, before making the call.
 
 So only use this property when your endpoint is not protected, example for the register and login tests.
 
@@ -86,7 +92,9 @@ $response = $this->auth(false)->makeCall();
 
 ### **$access**:
 
-The `$access` property is where you define the permissions/roles that you need to give to your testing users in that test class. So when using `$user = $this->getTestingUser();` it will automatically takes all the roles and permissions you gave him.
+The `$access` property is where you define the permissions/roles that you need to give to your testing users in that 
+test class. So when using `$user = $this->getTestingUser();` it will automatically takes all the roles and permissions 
+you gave him.
 
 ```php
 <?php
@@ -115,7 +123,8 @@ Or you can call `getTestingUserWithoutAccess()` to get user without permissions 
 
 ## Tests functions:
 
-All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all available for usage from every test class in your application.
+All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all 
+available for usage from every test class in your application.
 
 #### makeCall
 
@@ -165,7 +174,8 @@ $user = $this->getTestingUser([
 
 ```
 
-> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please check all the public functions in those traits `app/Ship/Tests/*`.
+> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please 
+check all the public functions in those traits `app/Ship/Tests/*`.
 
 ## Misc
 
@@ -183,7 +193,8 @@ See the [Tests](http://apiato.io/D.components/tests/) Page, for more details abo
 
 ### Testing Data Seeder
 
-1. Go to `Seeder/Data/Testing/Seeders/TestingDataSeeder.php` seeder class in the Seeder Container, and create your testing data.
+1. Go to `Seeder/Data/Testing/Seeders/TestingDataSeeder.php` seeder class in the Seeder Container, and create your 
+testing data.
 
 2. Run this comman `php artisan apiato:seed-test`
 

@@ -7,13 +7,11 @@ order: 10
 Users often need to control the response data, thus the apiato supports some useful and common query parameters:
 
 
-
 ## Sorting & Ordering:
 
 The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
 
 By default the `orderBy` sorts the data in **Ascending** order, if you want the data sorted in **Descending** order, you can add `&sortedBy=desc`.
-
 
 ```
 ?orderBy=id&sortedBy=asc
@@ -29,24 +27,13 @@ Order By Accepts:
 - `asc` for Ascending.
 - `desc` for Descending.
 
-
-
 *(provided by the L5 Repository)*
-
-
-
-
-
-
-
-
 
 ## Searching:
 
 The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
 For the search to work you need to add `fieldSearchable` to the Repository of the Model.
-
 
 ```php
 <?php
@@ -74,7 +61,6 @@ protected $fieldSearchable = [
 ```
 
 Notice should replace the space with `%20`.
-
 
 > Space should be replaced with `%20` (search=keyword%20here).
 
@@ -127,15 +113,10 @@ See the [Search query parameter](http://apiato.io/C.features/search-query-parame
 *(provided by the L5 Repository)*
 
 
-
-
-
-
-
-
 ## Filtering:
 
-The `?filter=` parameter can be applied to any HTTP request. And is used to controle the response size, by defining what data you want back in the response.
+The `?filter=` parameter can be applied to any HTTP request. And is used to control the response size, by defining what 
+data you want back in the response.
 
 **Usage:**
 
@@ -181,21 +162,11 @@ Example Response, including only id and status:
 ```
 
 
-
 *(provided by the L5 Repository)*
 
 Note that the transformer, which is used to output / format the data is also filtered. This means, that only the fields
 to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes) 
 of the object.
-
-
-
-
-
-
-
-
-
 
 ## Pagination:
 
@@ -227,12 +198,6 @@ api.domain.dev/endpoint?page=200
 
 *(provided by the Laravel Paginator)*
 
-
-
-
-
-
-
 ## Relationships:
 
 Get an object with his relationships:
@@ -247,7 +212,7 @@ include=tags,user
 
 The `?include=` parameter can be used with any endpoint, only if it supports it. 
 
-How to use it: let's say there's a Driver object and Car object. And there's an endopint `/cars` that returns all the cars objects. 
+How to use it: let's say there's a Driver object and Car object. And there's an endpoint `/cars` that returns all the cars objects. 
 The include allows getting the cars with their drivers `/cars?include=drivers`. 
 
 However, for this parameter to work, the endpoint `/cars` should clearly define that it
@@ -281,11 +246,6 @@ Visit the [Transformers](http://apiato.io/D.components/transformers/) page for m
 
 *(provided by the Fractal Transformer)*
 
-
-
-
-
-
 ## Caching skipping:
 
 Note: You need to turn the Eloquent Query Caching ON for this feature to work. Checkout the Configuration Page "ELOQUENT_QUERY_CACHE".
@@ -299,31 +259,13 @@ To run a new query and force disabling the cache on certain endpoints, you can u
 It's not recommended to keep skipping cache as it has bad impact on the performance.
 
 
-
-
 *(provided by the L5 Repository)*
-
-
-
-
-
-
-
-
-
-
 
 
 ## Configuration
 
 Most of thes parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
 Some of them are built in house, or inherited from other packages such as Fractal.
-
-
-
-
-
-
 
 #### See the Query parameters from the User Developer perspective:
 
@@ -332,10 +274,6 @@ Some of them are built in house, or inherited from other packages such as Fracta
 2) Visit the documentation URL
 
 More details in the [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) page.
-
-
-
-
 
 ### More
 

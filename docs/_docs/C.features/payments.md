@@ -55,8 +55,6 @@ class PurchaseCreditTypeAction extends Action
     }
 }
 ```
-
-
 	 
 ## Charge users through the proxy
 

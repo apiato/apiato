@@ -6,7 +6,7 @@ order: 3
 
 Middlewares are the best solution to apply Authentication in your App.
 
-in **apiato** you can use these two Authentication Middlewares, to protect your endopints:
+in **apiato** you can use these two `Authentication Middlewares`, to protect your endpoints:
 
 - API Authentication: `auth:api`
 - Web Authentication: `auth:web`
@@ -57,7 +57,7 @@ With this grant type your server needs to authenticate the Client App first (ens
 **How it works:**
 
 > Quick Overview:
-> - On register: the API returns user data. You will need to log that user in (using the same credentails he passed) to get his Access Token and make other API calls.
+> - On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
 > - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
 
 
@@ -108,18 +108,13 @@ Concept: create endpoint for each trusted client, to be used for login. apiato b
 That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the requred data.
 Then it returns the Auth response back to the client with the Tokens in it.
 
-Note: You have to manually exract the Client credentials from the DB after running `passport:install` and put them in the `.env`.
+Note: You have to manually extract the Client credentials from the DB after running `passport:install` and put them in the `.env`.
 
 Example:
 ```
 CLIENT_WEB_ADMIN_ID=2
 CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 ```
-
-
-
-
-
 
 
 ## Login
@@ -185,14 +180,8 @@ Response:
 
 Note: When a new user is registered, will be issued a personal Access Token automatically. Check the User "Registration page".
 
-
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#personal-access-tokens)
 
-
-
-
-
-<br>
 
 ## Responses
 
@@ -289,8 +278,6 @@ To change the login page view go to the config file `app/Ship/Configs/apiato.php
 ```
 
 This will be looking for (login.html or login.php or login.blade.php).
-
-
 
 
 ## Social Authentication

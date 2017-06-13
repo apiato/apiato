@@ -61,9 +61,6 @@ class DeleteUserRequest extends Request
 
 **For detailed explanation of this example, please visit the [Requests](http://apiato.io/D.components/requests/) Page.**
 
-
-
-
 ### Responses
 
 **Authorization faild JSON response:**
@@ -89,5 +86,3 @@ By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard 
 + password: admin
 
 Checkout each container seeding directory `app/Containers/{container-name}/Data/Seeders/`, to edit the default **Admins**, **Roles** and **Permissions**.
-
-

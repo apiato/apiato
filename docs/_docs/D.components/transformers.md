@@ -167,7 +167,7 @@ class AccountTransformer extends Transformer
 
     public function includeTags(Account $account)
     {
-        // use collection with `multi` relationsip
+        // use collection with `multi` relationship
         return $this->collection($account->tags, new TagTransformer());
     }
 

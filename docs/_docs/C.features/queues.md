@@ -10,13 +10,6 @@ and if it's of type `database`, it will create your `jobs` migration file when r
 
 *More queue support and features are coming to apiato in the future releases.*
 
-
-
-
-
-
-
 ## Beanstalkd
 
 In order to use Beanstalkd as your queue driver, you need to require this package first `"pda/pheanstalk": "^3.1"` in any composer.json file you prefer.
-
