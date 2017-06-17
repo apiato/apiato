@@ -20,17 +20,18 @@ information is provided by the main developer).
 
 apiato, however, provides an easy-to-use approach for downloading, installing and continuously updating containers from
 3rd party developers. As an application developer, you simply need to include the respective `vendor/project` to the 
-`composer.json` file within the `Bootstrap` folder. 
+`composer.json` file within the `app/Containers` folder. 
 
-For example, the respective `/app/Containers/Bootstrap/composer.json` file may look something like this:
+For example, the respective `/app/Containers/composer.json` file may look something like this:
 ```
 {
-  "name": "apiato/bootstrap",
-  "description": "Bootstrap container.",
+  "name": "apiato/containers",
+  "description": "Composer file to include 3rd party containers.",
   "require": {
-    "johannesschobel/apiato-null"
+    "johannesschobel/apiato-null" : "dev-master"
   }
 }
+
 ```
 
 You then just need to call `composer update` in order to install the respective packages. The package (e.g., the container) 
@@ -78,6 +79,4 @@ that allows installing / updating containers.
 * You **must** provide the key `extra.apiato.container.name`. This key indicates the name of the folder (e.g., container) 
 when installing the package to the `/app/Containers` folder. In the shown example, the container would be installed to 
 `app/Containers/Foo`.
-
-
 
