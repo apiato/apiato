@@ -5,6 +5,7 @@ namespace App\Containers\User\UI\API\Controllers;
 use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\DeleteUserAction;
 use App\Containers\User\Actions\GetAuthenticatedUserAction;
+use App\Containers\User\Actions\GetMyProfileAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAdminsAction;
 use App\Containers\User\Actions\ListAndSearchUsersAction;
@@ -14,6 +15,7 @@ use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
+use App\Containers\User\UI\API\Requests\GetMyProfileRequest;
 use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
@@ -123,6 +125,18 @@ class Controller extends ApiController
         $user = $this->call(GetUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
+    }
+
+    /**
+     * @param GetMyProfileRequest $request
+     *
+     * @return mixed
+     */
+    public function getMyProfile(GetMyProfileRequest $request)
+    {
+        $user = $this->call(GetMyProfileAction::class, [$request]);
+
+        return $this->transform($user, UserTransformer::class, ['roles']);
     }
 
     /**
