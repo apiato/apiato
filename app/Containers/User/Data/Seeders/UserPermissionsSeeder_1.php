@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Data\Seeders;
 
-use App\Containers\Authorization\Actions\CreatePermissionAction;
 use App\Containers\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;
 use Illuminate\Support\Facades\App;
