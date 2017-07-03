@@ -266,6 +266,98 @@ Let's say we have an endpoint `www.api.apiato.dev/v1/users/{ID}/delete` that del
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
+### **getInputByKey**
+
+Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`, 
+however, it works on the **decoded** values instead of the original data.
+
+Consider the following `$request` data:
+```json
+{
+  "data" : {
+    "name"  : "foo",
+    "description" : "bar"
+  },
+  "id" : "a2423nadabada0"
+}
+```
+
+Calling `$request->input('id')` would return `"a2423nadabada0"`, however `$request->getInputByKey('id')` would return the 
+decoded value (e.g., `4`).
+
+Furthermore, one can define a `default` value to be returned, if the key is not present (or not set), like so:
+`$request->getInputByKey('data.name', 'Undefined')`
+
+### **sanitizeData**
+
+Especially for `PATCH` requests, one would like to submit only the fields to be changed to the API in order to 
+a) minimize the traffic and
+b) to partially update the respective resource.
+
+However, checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
+```php
+// ...
+if($request->has('data.name')) {
+   $data['name'] = $request->input('data.name'); // or use getInputByKey()
+}
+if($request->has('data.description')) {
+   $data['description'] = $request->input('data.description'); // or use getInputByKey()
+}
+// ...
+```
+
+In order to avoid those `if` blocks, usually `array_filter($data)` in order to remove `empty` fields from the request. 
+However, in PHP `false` and `'' (empty string)` is also considered as `empty` (which is clearly not what you want).
+You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
+
+In order to simplify sanitizing `Request Data`, apiato offers a convenient `sanitizeInput($fields)` method for developers.
+
+Consider the following `$request` data:
+```json
+{
+	"data" : {
+		"is_private" : false,
+		"description" : "this is a rather long description text",
+		"a" : null,
+		"b" : 3453,
+		"foo" : {
+			"a" : "a",
+			"b" : "b",
+			"c" : 1234
+		},
+		"bar" : [
+		    "a", "b", "c"
+		]
+	}
+}
+```
+
+The method lets you specify a list of `$fields` to be accessed and extracted from the `$request`. This is done using the
+DOT notation. Finally, call the `sanitizeInput()` method on the `$request`:
+```php
+$fields = ['data.name', 'data.description', 'data.is_private', 'data.blabla', 'data.foo.c'];
+$data = $request->sanitizeInput($fields);
+```
+
+The extracted `$data` looks like this:
+```php
+[
+  "data" => [
+    "is_private" => false
+    "description" => "this is a rather long description text"
+    "foo" => [
+      "c" => 1234
+    ]
+  ]
+]
+```
+
+Note that `data.blabla` is not within the `$data` array, as it was not present within the `$request`. Furthermore, all
+other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of 
+`filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify 
+the fields to would like to pass through. This makes partially updating an resource quite easy!
+
+**Heads Up:** Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
 
 ## Storing Data on the Request
 
@@ -313,8 +405,6 @@ $this->assertInstanceOf(User::class, $user);
 // ...
 
 ```
-
-
 
 Example Two (With Authenticated User):
 
