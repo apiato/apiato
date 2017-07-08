@@ -18,6 +18,7 @@ order: 4
 	* [3) OAuth Setup](#Prepare-OAuth)
 	* [4) Documentation Setup](#Documentation)
 	* [5) Testing Setup](#Testing)
+	* [6) Security](#Security)
 * [C) Play](#Play)
 
 
@@ -271,6 +272,16 @@ Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/C
 phpunit
 ```
 
+<a name="Security"></a>
+### 6) Security
+
+To increase the security of your App especially of you're planning to use the [Hashed ID](http://apiato.io/C.features/hash-id/) feature.
+
+It's recommended to set your own unique string in the `salt` in `app/Ship/Configs/hashids.php`, by default it's set to your `APP_KEY` 
+
+```php
+'salt'     => env('APP_KEY'),
+```
 
 
 
