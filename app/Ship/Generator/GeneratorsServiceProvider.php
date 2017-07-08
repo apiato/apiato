@@ -23,6 +23,7 @@ class GeneratorsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // TODO: these commands names should be collected from the directory, to remove the step of manual registration of commands.
         $this->registerGenerators([
             'Action',
             'Controller',
@@ -33,6 +34,7 @@ class GeneratorsServiceProvider extends ServiceProvider
             'Route',
             'Task',
             'Transformer'
+            // Register more generator commands here..
         ]);
     }
 
@@ -45,11 +47,13 @@ class GeneratorsServiceProvider extends ServiceProvider
         foreach ($classes as $class) {
             $lowerClass = strtolower($class);
 
-            $this->app->singleton("command.porto.$lowerClass", function ($app) use ($class) {
+            $keyName = "command.porto.$lowerClass";
+            
+            $this->app->singleton($keyName, function ($app) use ($class) {
                 return $app['App\Ship\Generator\Commands\\' . $class . 'Generator'];
             });
 
-            $this->commands("command.porto.$lowerClass");
+            $this->commands($keyName);
         }
     }
 }

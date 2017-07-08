@@ -20,7 +20,8 @@ class ShipConsoleKernel extends LaravelConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        // You can register your command manually here, or just put your command class in the `app/Ship/Commands`
+        // folder, and it will get auto-magically registered by the `app/Ship/Engine/Loaders/ConsolesLoaderTrait.php`.
     ];
 
     /**

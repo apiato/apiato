@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Seeders\Commands;
+namespace App\Ship\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;
 
@@ -40,7 +40,7 @@ class SeedTestingDataCommand extends ConsoleCommand
     public function handle()
     {
         $this->call('db:seed', [
-            '--class' => 'App\Ship\Seeders\Data\Testing\Seeders\TestingDataSeeder'
+            '--class' => 'App\Ship\Seeders\TestingDataSeeder'
         ]);
 
         $this->info('Testing Data Seeded Successfully.');

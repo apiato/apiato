@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Seeders\Data\Testing\Seeders;
+namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 

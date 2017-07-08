@@ -31,7 +31,7 @@ trait ConsolesLoaderTrait
     {
         // Manually register Ship Consoles
         $shipFolderPaths = [
-            'Seeders/Commands',
+            'Commands',
             // ...
         ];
 

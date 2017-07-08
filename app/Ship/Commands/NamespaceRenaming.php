@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\Application\UI\CLI\Commands;
+namespace App\Ship\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;
 use Illuminate\Filesystem\Filesystem;
 
 /**
- * Class Name
+ * Class NamespaceRenaming
  *
  * @author  Nasrul Hazim  <nasrulhazim.m@gmail.com>
  */
-class Name extends ConsoleCommand
+class NamespaceRenaming extends ConsoleCommand
 {
     /**
      * The console command name.
