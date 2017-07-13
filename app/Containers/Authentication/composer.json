@@ -2,7 +2,7 @@
   "name": "apiato/authentication",
   "description": "apiato Container.",
   "require": {
-    "laravel/passport": "2.*"
+    "laravel/passport": "3.*"
   },
   "scripts": {
     "post-create-project-cmd": [
