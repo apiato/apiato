@@ -5,7 +5,6 @@ namespace App\Containers\Authentication\Actions;
 use App\Containers\Authentication\Tasks\CheckIfUserIsConfirmedTask;
 use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
-use App\Containers\Authorization\Tasks\ValidateIsAdminTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
