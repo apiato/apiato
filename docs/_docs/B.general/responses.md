@@ -4,7 +4,7 @@ category: "General"
 order: 2
 ---
 
-#Responses Payloads:
+### Responses Payloads:
 
 **Specification: The default format has the following skeleton:**
 

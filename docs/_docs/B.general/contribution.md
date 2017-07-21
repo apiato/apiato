@@ -106,10 +106,25 @@ The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it live
 
 The content of the documentation can be found in the `docs/_docs` folder.
 
-To run the docs locally: 
+The styles are in `main.scss` and `docs/_sass/*`.
+Layout `docs/_layouts/default.html`.
+
+
+### To run the docs locally: 
+
+#### In Docker:
+
+1. `cd .../apiato/_docs`
+2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
+3. `bundle install`
+4. `jekyll serve`
+5. Browse `http://localhost:4000`
+6. Finally `jekyll build`
+
+#### Natively:
 
 1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
-2. `cd docs/_docs`
+2. `cd docs/`
 3. `bundle install`
 4. `bundle exec jekyll serve`
 5. Browse `http://localhost:4000`
