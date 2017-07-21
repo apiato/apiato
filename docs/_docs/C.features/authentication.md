@@ -4,7 +4,7 @@ category: "Features"
 order: 3
 ---
 
-In apiato, middlewares are the best solution to apply Authentication in your App.
+Middlewares are the best solution to apply Authentication in your App.
 
 in **apiato** you can use these two `Authentication Middlewares`, to protect your endpoints:
 
@@ -51,7 +51,7 @@ First-party clients like your Frontend Mobile, Web,... Apps. That usually consum
 
 For this w'll use the **Resource owner credentials grant** (A.K.A Password Grant Tokens).
 
-With this grant type your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and your User credentials are correct (ensuring the user is registered and has the right access), before issuing an access token.
+With this grant type your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and your User credentails are correct (ensuring the user is registered and has the right access), before issuing an access token.
 
 
 **How it works:**
@@ -65,7 +65,7 @@ With this grant type your server needs to authenticate the Client App first (ens
 
 2) Your user enters his (username + password) in your App login screen (assuming he registered already).
 
-3) Your Client App sends a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credentials (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
+3) Your Client App sends a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credetnails (`username` and `password`) and the client credentails (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
 
 Request:
 
@@ -92,15 +92,20 @@ Response:
 
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#password-grant-tokens)
 
+
 > WARNING: the Client ID and Secret should not be stored in JavaScript or browser cache, or made accessible in any way.
 
+
 So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And apiato by default provides you with a Login Proxy to use for all your trusted first party clients.
+
+
+
 
 ### Login Proxy
 
 Concept: create endpoint for each trusted client, to be used for login. apiato by default has this url `clients/web/admin/login`, but you can add more as you need for each of your trusted first party clients apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
 
-That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the required data.
+That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the requred data.
 Then it returns the Auth response back to the client with the Tokens in it.
 
 Note: You have to manually extract the Client credentials from the DB after running `passport:install` and put them in the `.env`.
@@ -111,21 +116,15 @@ CLIENT_WEB_ADMIN_ID=2
 CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 ```
 
+
 ## Login
 
 Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password` in addition to the User and Client Credentials, to get the user Access Token. Once issued, you can use that Access Token to make requests to protected resources (Endpoints).
 
-The Access Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
+The Acces Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
 
 **Keep in mind there's no session state when using Tokens for Authentication**
 
-### (Un)Confirmed Users
-
-apiato allows for configuring, whether `unconfirmed User`s login, or not. This behaviour may be configured within 
-`App\Containers\Authentication\Configs\authentication.php`. If this feature is enabled (value set to `true`), the API
-throws an additional exception, if the `User` is not yet `confirmed`.
-
-Default value for this behaviour is `true` (i.e., only confirmed `User`s are allowed to login!).
 
 ## Logout
 
@@ -136,6 +135,10 @@ Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containin
   "message": "Token revoked successfully."
 }
 ```
+
+
+
+<br>
 
 ### B: For third-party clients
 
@@ -151,7 +154,7 @@ With this grant type your server needs to authenticate the Client App only, befo
 
 You may generate a personal client for testing purposes using `php artisan passport:client --personal`.
 
-2) User add the Client credentials to his "Server Side software" and send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the Client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=client_credentials`:
+2) User add the Client credetnails to his "Server Side software" and send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the Client credentails (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=client_credentials`:
 
 Request:
 
@@ -183,7 +186,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
 ## Responses
 
 
-**Authentication failed JSON response:**
+**Authentication faild JSON response:**
 
 ```json
 {
@@ -201,6 +204,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
   "message": "Client authentication failed"
 }
 ```
+
 
 ## Change Tokens Expiration dates
 
@@ -231,6 +235,12 @@ Go to the `apiato.php` config file and edit this:
 ```
 
 To change from days to minutes you need to edit the `boot` function in `App\Containers\Authentication\Providers\AuthProvider`.
+
+
+
+
+
+
 
 ## Web Authentication
 
