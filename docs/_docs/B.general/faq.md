@@ -5,11 +5,11 @@ order: 3
 ---
 
 
-## Do I have to use the Porto SAP to benefit from apiato!?
+## Do I have to use the Porto SAP to benefit from APIATO!?
 
 NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer.
-And you can call the apiato provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
-You have the freedom to structure your own project anyway you like, and still use all the feature that apiato provide.
+And you can call the APIATO provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
+You have the freedom to structure your own project anyway you like, and still use all the feature that APIATO provide.
 
 
 ## How to use my custom domain?

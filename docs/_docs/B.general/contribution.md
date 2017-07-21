@@ -5,7 +5,7 @@ order: 4
 ---
 
 
-Thank you for considering to contribute to apiato. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
+Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
 
 
@@ -28,7 +28,7 @@ and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PS
 
 ## Git Branches
 
-The `master` branch contains the upcoming apiato release. While the other branches are for the stable realsese.
+The `master` branch contains the upcoming APIATO release. While the other branches are for the stable realsese.
 
 Bug fixes should be sent to the latest stable branch, never to the `master` branch unless they fix features that exist only in the upcoming release.
 
@@ -100,16 +100,31 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 
 
-# Contributing to apiato's Documentation:
+# Contributing to APIATO's Documentation:
 
 The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it lives in the `/docs` folder. 
 
 The content of the documentation can be found in the `docs/_docs` folder.
 
-To run the docs locally: 
+The styles are in `main.scss` and `docs/_sass/*`.
+Layout `docs/_layouts/default.html`.
+
+
+### To run the docs locally: 
+
+#### In Docker:
+
+1. `cd .../apiato/_docs`
+2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
+3. `bundle install`
+4. `jekyll serve`
+5. Browse `http://localhost:4000`
+6. Finally `jekyll build`
+
+#### Natively:
 
 1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
-2. `cd docs/_docs`
+2. `cd docs/`
 3. `bundle install`
 4. `bundle exec jekyll serve`
 5. Browse `http://localhost:4000`
@@ -173,7 +188,7 @@ It should be a stand alone command, which basically calls the components command
 
 
 
-# Contributing to apiato while working on your project:
+# Contributing to APIATO while working on your project:
 
 #### To Be Continue...
 
