@@ -29,7 +29,7 @@ order: 4
 <a name="Development-Environment"></a>
 ## A) Development Environment Setup
 
-You can run **apiato** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
+You can run **APIATO** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
 We'll see how to use both tools and you can pick one, or you can use other options like [Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
 
 <a name="Dev-Env-Opt-A"></a>
@@ -98,9 +98,9 @@ sites:
 ```
 
 Note: in the example above the `/{full-path-to}/clients/web/***` are separate apps, who live on their own 
-repositories and in different folder then the apiato one. 
-If your Admins, Users or other type of Apps are within apiato, then 
-you must point them all to the apiato project folder `/{full-path-to}/apiato/public`. 
+repositories and in different folder then the APIATO one. 
+If your Admins, Users or other type of Apps are within APIATO, then 
+you must point them all to the APIATO project folder `/{full-path-to}/apiato/public`. 
 So in that case you would have something like this:
  
 ```text
@@ -149,7 +149,7 @@ If you're not into virtualization software's, you can setup your environment dir
 
 ## B) Application Setup
 
-**apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
+**APIATO** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
 
 <a name="Code-Setup"></a>
@@ -282,7 +282,7 @@ Now let's see it in action
 
 1.a. Open your web browser and visit: 
 
-- `http://apiato.dev` You should see an HTML page, with `apiato` in the middle.
+- `http://apiato.dev` You should see an HTML page, with `APIATO` in the middle.
 - `http://admin.apiato.dev` You should see an HTML Login page.
 
 1.b. Open your HTTP client and call: 

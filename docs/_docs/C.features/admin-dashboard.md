@@ -4,7 +4,7 @@ category: "Features"
 order: 30
 ---
 
-*apiato doesn't recommend serving HTML pages. Instead you should build your own Frontend App completely isolated from the Backend code.*
+*APIATO doesn't recommend serving HTML pages. Instead you should build your own Frontend App completely isolated from the Backend code.*
 
 ## The provided Admin route:
 

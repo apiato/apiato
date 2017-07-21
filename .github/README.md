@@ -1,6 +1,9 @@
-# apiato
+# APIATO
 
-[![Untitled-1.jpg](https://s19.postimg.org/ddudhkhsj/Untitled-1.jpg)](https://postimg.org/image/w668l5e6n/)
+> Build better API's faster with **PHP** and **Laravel 5.4**.
+
+
+[![Untitled-1.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](https://apiato.io)
 
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
@@ -15,25 +18,22 @@
 
 
 
-> Build better API's faster with **PHP** and **Laravel 5.4**.
 
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
 
 <a name="Introduction"></a>
-## Into
 
 
-### What is `apiato`
+### What is `APIATO`
 
 A flawless framework for building scalable and testable API-Centric Applications with PHP.
 
-**apiato** is designed to help you build scalable API's faster, by providing tools and
+**APIATO** is designed to help you build scalable API's faster, by providing tools and
 functionalities that facilitates the development of any API-Centric App.
 
 It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
 
 Why!? setting up a solid API from scratch is time consuming (and time is money).
-apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
+APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
 Skip the repetitive work and enjoy the open source fun.
 
 
@@ -56,7 +56,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 <a name="Features"></a>
 ## Features
 
->The apiato comes with great features:
+> APIATO comes with great features:
 
 - OAuth2.0 authentication for first and third-party clients (using Laravel Passport).
 - Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and  Permissions.
@@ -88,32 +88,33 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 - 100% customizable and Open Code.
 - And much more...
 
-<br>
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7/big.png)](https://insight.sensiolabs.com/projects/1bdf99d7-13b1-46ca-8576-c6a702f9afd7)
 
 
 <a name="Documentation"></a>
 ## Documentation
 
-**apiato** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
+
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
+
+**APIATO** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 
-Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in apiato, will help you understand how the code is organized and how things work.
+Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in APIATO, will help you understand how the code is organized and how things work.
 
-You do **NOT** have to follow any of the Porto conventions to benifit from every feature apiato provide.
+You do **NOT** have to follow any of the Porto conventions to benifit from every feature APIATO provide.
 
 If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
 
-_You can call apiato `Actions` from your `Controllers` using the special `call` function:_
+_You can call APIATO `Actions` from your `Controllers` using the special `call` function:_
 
 ```php
 $this->call(\MyAction::class, [$paramerter1, $paramerter2]);
 // or you can inject the "MyAction" Class, in the parameter of the Controller function, as usual.
 ```
 
-## [Full Documentation Here](http://apiato.io/).
+## [Full Documentation Here](http://apiato.io/)
 
 
 
@@ -125,12 +126,6 @@ Join our [Slack](https://now-examples-slackin-bvfqosqozk.now.sh) chatting room, 
 
 [![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://now-examples-slackin-bvfqosqozk.now.sh)
 
-
-
-<a name="Contributors"></a>
-## Contributors
-
-[Contribution Guide](http://apiato.io/B.general/contribution)
 
 
 <a name="Credits"></a>

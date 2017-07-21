@@ -5,7 +5,7 @@ order: 4
 ---
 
 
-Thank you for considering to contribute to apiato. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
+Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
 
 
@@ -28,7 +28,7 @@ and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PS
 
 ## Git Branches
 
-The `master` branch contains the upcoming apiato release. While the other branches are for the stable realsese.
+The `master` branch contains the upcoming APIATO release. While the other branches are for the stable realsese.
 
 Bug fixes should be sent to the latest stable branch, never to the `master` branch unless they fix features that exist only in the upcoming release.
 
@@ -100,7 +100,7 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 
 
-# Contributing to apiato's Documentation:
+# Contributing to APIATO's Documentation:
 
 The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it lives in the `/docs` folder. 
 
@@ -188,7 +188,7 @@ It should be a stand alone command, which basically calls the components command
 
 
 
-# Contributing to apiato while working on your project:
+# Contributing to APIATO while working on your project:
 
 #### To Be Continue...
 

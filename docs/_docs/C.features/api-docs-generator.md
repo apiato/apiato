@@ -6,7 +6,7 @@ order: 2
 
 Every great API needs a great Documentation. 
 
-apiato make writing and generating documentations very easy with the `php artisan apiato:docs` command.
+APIATO make writing and generating documentations very easy with the `php artisan apiato:docs` command.
 
 
 
@@ -155,15 +155,15 @@ which you can find and modify it from `app/Containers/Documentation/UI/API/Route
 
 ## Edit the default generated values in the templates:
 
-apiato generates by defaults 2 API documentations, each one has it's own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
+APIATO generates by defaults 2 API documentations, each one has it's own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
 
 `apidoc.json` Example file:
 
 ```json
 {
-  "name": "apiato",
-  "description": "apiato (Private API) Documentation",
-  "title": "Welcome to apiato",
+  "name": "APIATO",
+  "description": "APIATO (Private API) Documentation",
+  "title": "Welcome to APIATO",
   "version": "1.0.0",
   "url" : "http://api.apiato.dev",
   "template": {

@@ -6,7 +6,7 @@ order: 3
 
 Middlewares are the best solution to apply Authentication in your App.
 
-in **apiato** you can use these two `Authentication Middlewares`, to protect your endpoints:
+in **APIATO** you can use these two `Authentication Middlewares`, to protect your endpoints:
 
 - API Authentication: `auth:api`
 - Web Authentication: `auth:web`
@@ -36,7 +36,7 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 
 ### How to get Access Token using OAuth 2.0
 
-> The Auth Endpoints and more, are documented by default in apiato. Go to [Documentation Generator Page](http://apiato.io/C.features/api-docs-generator/) and see how to generate the API documentation.
+> The Auth Endpoints and more, are documented by default in APIATO. Go to [Documentation Generator Page](http://apiato.io/C.features/api-docs-generator/) and see how to generate the API documentation.
 
 
 OAuth let's you authenticate using different methods, these methods are called `grants`.
@@ -96,14 +96,14 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#passw
 > WARNING: the Client ID and Secret should not be stored in JavaScript or browser cache, or made accessible in any way.
 
 
-So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And apiato by default provides you with a Login Proxy to use for all your trusted first party clients.
+So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And APIATO by default provides you with a Login Proxy to use for all your trusted first party clients.
 
 
 
 
 ### Login Proxy
 
-Concept: create endpoint for each trusted client, to be used for login. apiato by default has this url `clients/web/admin/login`, but you can add more as you need for each of your trusted first party clients apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
+Concept: create endpoint for each trusted client, to be used for login. APIATO by default has this url `clients/web/admin/login`, but you can add more as you need for each of your trusted first party clients apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
 
 That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the requred data.
 Then it returns the Auth response back to the client with the Tokens in it.

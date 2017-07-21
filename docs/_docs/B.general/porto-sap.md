@@ -4,7 +4,7 @@ category: "General"
 order: 1
 ---
 
-As you may know already, apiato is architectured using the Porto Software Architectural Pattern. So you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started.
+As you may know already, APIATO is architectured using the Porto Software Architectural Pattern. So you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started.
 
 Porto consists of 2 layers the **Containers** layer and the **Ship** layer.
 
