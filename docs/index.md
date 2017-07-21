@@ -2,6 +2,8 @@
 title: "Welcome to apiato"
 ---
 
+[![Untitled-1.jpg](https://s19.postimg.org/ddudhkhsj/Untitled-1.jpg)](https://postimg.org/image/w668l5e6n/)
+
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
 [![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
