@@ -8,7 +8,7 @@ google_analytics_key: UA-37514928-7
 show_full_navigation: true
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
-logo: images/apiato.jpg
+logo: /images/apiato.jpg
 description: APIATO, a flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.
 author:
   name: Mahmoud Zalt
@@ -17,8 +17,7 @@ author:
 social:
   name: APIATO
   links:
-    - http://apiato.io/
-    - https://github.com/apiato/apiato
+    - http://apiato.io
 twitter:
   username: Mahmoud_Zalt
 # -----
