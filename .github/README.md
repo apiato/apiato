@@ -102,16 +102,18 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in apiato, will help you understand how the code is organized and how things work.
 
-You do NOT have to follow any of the Porto conventions to benifit from every features apiato provide to your API.
+You do **NOT** have to follow any of the Porto conventions to benifit from every feature apiato provide.
 
-If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between `Controllers`.
-You can call any `Action` from any `Controller` using:
+If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
+
+_You can call apiato `Actions` from your `Controllers` using the special `call` function:_
 
 ```php
 $this->call(\MyAction::class, [$paramerter1, $paramerter2]);
+// or you can inject the "MyAction" Class, in the parameter of the Controller function, as usual.
 ```
 
-### apiato full [documentation](http://apiato.io/) here.
+### [Full Documentation](http://apiato.io/).
 
 
 
