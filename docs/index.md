@@ -2,7 +2,7 @@
 title: "Welcome to APIATO"
 ---
 
-[![Untitled-1.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](https://apiato.io)
+[![apiato.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](http://apiato.io)
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)

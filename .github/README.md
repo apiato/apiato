@@ -3,7 +3,7 @@
 > Build better API's faster with **PHP** and **Laravel 5.4**.
 
 
-[![Untitled-1.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](https://apiato.io)
+[![apiato.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](http://apiato.io)
 
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
