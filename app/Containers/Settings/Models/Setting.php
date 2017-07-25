@@ -5,11 +5,11 @@ namespace App\Containers\Settings\Models;
 use App\Ship\Parents\Models\Model;
 
 /**
- * Class Settings
+ * Class Setting
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Settings extends Model
+class Setting extends Model
 {
 
     /**
