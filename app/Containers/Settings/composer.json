@@ -1,6 +1,6 @@
 {
   "name": "apiato/settings",
-  "description": "apiato Container.",
+  "description": "Settings container for apiato.",
   "require": {
 
   }

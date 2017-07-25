@@ -7,19 +7,20 @@ use App\Containers\Settings\Exceptions\SettingNotFoundException;
 use App\Ship\Parents\Tasks\Task;
 
 /**
- * Class UpdateSettingsByKeyTask
+ * Class FindSettingsByKeyTask
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class UpdateSettingsByKeyTask extends Task
+class FindSettingByKeyTask extends Task
 {
+
     /**
      * @var SettingRepository
      */
     private $repository;
 
     /**
-     * UpdateSettingsByKeyTask constructor.
+     * FindSettingsByKeyTask constructor.
      * @param SettingRepository $repository
      */
     public function __construct(SettingRepository $repository)
@@ -29,22 +30,18 @@ class UpdateSettingsByKeyTask extends Task
 
     /**
      * @param $key
-     * @param $value
      *
      * @return mixed
      * @throws SettingNotFoundException
      */
-    public function run($key, $value)
+    public function run($key)
     {
-        $setting = $this->repository->findWhere(['key' => $key])->first();
+        $result = $this->repository->findWhere(['key' => $key])->first();
 
-        if(! $setting) {
+        if(!$result) {
             throw new SettingNotFoundException();
         }
 
-        return $this->repository->update([
-            'value' => $value
-        ], $setting->id);
+        return $result->value;
     }
-
 }
