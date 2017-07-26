@@ -16,7 +16,7 @@ trait StateKeeperTrait
      *
      * @var  array
      */
-    public $state = [];
+    public $stateKeeperStates = [];
 
     /**
      * @param array $data
@@ -26,7 +26,7 @@ trait StateKeeperTrait
     public function keep(array $data = [])
     {
         foreach ($data as $key => $value) {
-            $this->state[$key] = $value;
+            $this->stateKeeperStates[$key] = $value;
         }
 
         return $this;
@@ -39,7 +39,7 @@ trait StateKeeperTrait
      */
     public function retrieve($key)
     {
-        return $this->state[$key];
+        return $this->stateKeeperStates[$key];
     }
 
 }
