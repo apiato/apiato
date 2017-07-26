@@ -67,11 +67,6 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
         // it from the request if available and if not keep it null.
         $limit = $limit ? : Request::get('limit');
 
-        // disable the pagination if the limit is set to 0
-        if($limit == "0") {
-            return parent::all($columns);
-        }
-
         return parent::paginate($limit, $columns, $method);
     }
 
