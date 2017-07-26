@@ -39,20 +39,20 @@ return [
         | Access Token Expiration
         |--------------------------------------------------------------------------
         |
-        | In Minutes. Default to 5,256,000 minutes = 10 years
+        | In Minutes. Default to 1,440 minutes = 1 day
         |
         */
-        'expires-in'             => env('API_TOKEN_EXPIRES', 5256000),
+        'expires-in'             => env('API_TOKEN_EXPIRES', 1440),
 
         /*
         |--------------------------------------------------------------------------
         | Refresh Token Expiration
         |--------------------------------------------------------------------------
         |
-        | In Minutes. Default to 5,256,000 minutes = 10 years
+        | In Minutes. Default to 43,200 minutes = 30 days
         |
         */
-        'refresh-expires-in'     => env('API_REFRESH_TOKEN_EXPIRES', 5256000),
+        'refresh-expires-in'     => env('API_REFRESH_TOKEN_EXPIRES', 43200),
 
         /*
         |--------------------------------------------------------------------------
