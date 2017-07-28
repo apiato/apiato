@@ -18,6 +18,8 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
 
     use PrettusCacheableRepository;
 
+    protected $allowDisablePagination = false;
+
     /**
      * This function relies on the convention.
      * Conventions:
@@ -55,6 +57,12 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
     }
 
     /**
+     * Paginate the response
+     *
+     * Apply pagination to the response. Use ?limit= to specify the amount of entities in the response. By setting the
+     * allowDisablePagination parameter on a specific repository you can disable the pagination explicitly. The client
+     * can request all data (with no pagination) by applying ?limit=0 to the request!
+     *
      * @param null   $limit
      * @param array  $columns
      * @param string $method
@@ -67,7 +75,14 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
         // it from the request if available and if not keep it null.
         $limit = $limit ? : Request::get('limit');
 
+        // check, if the requester is allowed to circumvent the pagination for this specific repository
+        if($this->allowDisablePagination) {
+            // check, if he actually disabled it
+            if($limit == "0") {
+                return parent::all($columns);
+            }
+        }
+
         return parent::paginate($limit, $columns, $method);
     }
-
 }
