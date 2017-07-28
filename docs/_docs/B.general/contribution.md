@@ -28,7 +28,7 @@ and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PS
 
 ## Git Branches
 
-The `master` branch contains the upcoming APIATO release. While the other branches are for the stable realsese.
+The `master` branch contains the upcoming APIATO release. While the other branches are for the stable releases.
 
 Bug fixes should be sent to the latest stable branch, never to the `master` branch unless they fix features that exist only in the upcoming release.
 

@@ -195,7 +195,7 @@ class ConfirmUserEmailRequest extends Request
 
 ### **access**
 
-The **$access** property is used by the `hasAccess` function from the `authorize` function (`check`), to check if the user has the necessaire Roles & Permissions to call this endpoint.
+The **$access** property is used by the `hasAccess` function from the `authorize` function (`check`), to check if the user has the necessary Roles & Permissions to call this endpoint.
 
 Example:
 
@@ -363,7 +363,7 @@ the fields to would like to pass through. This makes partially updating an resou
 
 During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or maybe if you prefer to Tasks).
 
-To store some data on the reuqest use:
+To store some data on the request use:
 
 ```php
 $request->keep(['someKey' => $someValue]);
