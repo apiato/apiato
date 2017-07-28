@@ -19,8 +19,6 @@ class QueryDebuggerTask extends Task
     /**
      * Write the DB queries in the Log and Display them in the
      * terminal (in case you want to see them while executing the tests).
-     *
-     * @param bool|false $terminal
      */
     public function run()
     {

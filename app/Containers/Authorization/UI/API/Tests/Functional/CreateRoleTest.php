@@ -24,7 +24,7 @@ class CreateRoleTest extends TestCase
     public function testCreateRole_()
     {
         $data = [
-            'name'         => 'Manager',
+            'name'         => 'manager',
             'display_name' => 'manager',
             'description'  => 'he manages things',
         ];

@@ -153,4 +153,4 @@ And a list of awesome contributors:
 <a name="License"></a>
 ## License
 
-The MIT License [(MIT)](https://opensource.org/licenses/MIT).
+The MIT License [(MIT)](https://github.com/apiato/apiato/blob/master/LICENSE).

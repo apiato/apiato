@@ -24,7 +24,7 @@ class CreateRoleTask extends Task
     public function run($name, $description = null, $displayName = null)
     {
         return App::make(RoleRepository::class)->create([
-            'name'         => $name,
+            'name'         => strtolower($name),
             'description'  => $description,
             'display_name' => $displayName,
         ]);
