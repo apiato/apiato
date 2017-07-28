@@ -90,7 +90,7 @@ First remove the URL versioning:
 1. open `RoutesLoaderTrait` find `loadApiRoute` function
 2. remove the prefix `'prefix' => $versionPrefix,`
  
-Second Implement the Header versioning anyway you prefere.
+Second Implement the Header versioning anyway you prefer.
 
 
 ## Where do I define the composer dependencies?
@@ -141,7 +141,7 @@ If you have a question, or didn't find an answer you were looking for.
 First make sure your question is related to apiato and is not a general question.  
 If so, then consider visiting the [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for  
 *keywords* related to your issue *(filter open and closed issues)*. 
-Another option you have is to get help from the communty on [Slack](https://now-examples-slackin-bvfqosqozk.now.sh).
+Another option you have is to get help from the community on [Slack](https://now-examples-slackin-bvfqosqozk.now.sh).
 
 Lastly, if you got your question answered, consider sharing it, if you believe it can help others. 
 You can submit a PR adding the questions and answer here on the FAQ page. 

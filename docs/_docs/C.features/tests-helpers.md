@@ -196,5 +196,5 @@ See the [Tests](http://apiato.io/D.components/tests/) Page, for more details abo
 1. Go to `Seeder/Data/Testing/Seeders/TestingDataSeeder.php` seeder class in the Seeder Container, and create your 
 testing data.
 
-2. Run this comman `php artisan apiato:seed-test`
+2. Run this command `php artisan apiato:seed-test`
 

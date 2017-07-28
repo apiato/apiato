@@ -63,7 +63,7 @@ class DeleteUserRequest extends Request
 
 ### Responses
 
-**Authorization faild JSON response:**
+**Authorization failed JSON response:**
 
 ```json
 {

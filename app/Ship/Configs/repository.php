@@ -9,7 +9,9 @@ return [
     |
     */
     'pagination' => [
-        'limit' => env('PAGINATION_LIMIT', 15),
+        'limit' => env('PAGINATION_LIMIT_DEFAULT', 15),
+
+        'skip' => env('PAGINATION_SKIP_ENABLED', false),
     ],
 
     /*

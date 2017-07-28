@@ -58,6 +58,6 @@ return [
         */
         'namespace'       => 'App',
 
-        ....
+        // some other config params here...
     ],
 ```
