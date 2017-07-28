@@ -45,7 +45,7 @@ By default, all fetch requests return the first `{{pagination-limit}}` items in 
 
 ## **Limit:** 
 
-The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
+The `?limit=` parameter can be applied to define, how many record should be returned by the endpoint (see also `Pagination`!).
 
 **Usage:**
 
@@ -53,15 +53,15 @@ The `?limit=` parameter can be applied to define, how many results should be ret
 api.domain.dev/endpoint?limit=100
 ```
 
-This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be 
-combined in order to get the next 100 resources:
+The above example returns 100 resources. 
+
+The `limit` and `page` query parameters can be combined in order to get the next 100 resources:
 
 ```
 api.domain.dev/endpoint?limit=100&page=2
 ```
 
-If the feature is enabled for a specific repository, you can request all data that matches your criteria by calling `?limit=0`. 
-This will skip pagination and returns all data.
+You can skip the pagination limit to get all the data, by adding `?limit=0`, this will only work if 'skip pagination' is enabled on the server.
 
 ## **Responses**
 

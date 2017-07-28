@@ -39,3 +39,12 @@ In order to allow clients to request all data that matches their criteria (e.g.,
 you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
 get all data (with no pagination applied) by requesting `api.domain.dev/endpoint?limit=0`. This will return all matching
 entities.
+
+
+## Skip the Pagination Limit:
+
+You can allow developers to skip the pagination limit as follow:
+
+First you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
+
+Second inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data unpaginated.  

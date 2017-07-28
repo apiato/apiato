@@ -2,6 +2,7 @@
 
 namespace App\Ship\Parents\Repositories;
 
+use Illuminate\Support\Facades\Config;
 use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheable;
 use Prettus\Repository\Criteria\RequestCriteria as PrettusRequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusRepository;
@@ -17,8 +18,6 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
 {
 
     use PrettusCacheableRepository;
-
-    protected $allowDisablePagination = false;
 
     /**
      * This function relies on the convention.
@@ -59,9 +58,9 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
     /**
      * Paginate the response
      *
-     * Apply pagination to the response. Use ?limit= to specify the amount of entities in the response. By setting the
-     * allowDisablePagination parameter on a specific repository you can disable the pagination explicitly. The client
-     * can request all data (with no pagination) by applying ?limit=0 to the request!
+     * Apply pagination to the response. Use ?limit= to specify the amount of entities in the response.
+     * The client can request all data (skipping pagination) by applying ?limit=0 to the request, if
+     * PAGINATION_SKIP is set to true.
      *
      * @param null   $limit
      * @param array  $columns
@@ -75,12 +74,9 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
         // it from the request if available and if not keep it null.
         $limit = $limit ? : Request::get('limit');
 
-        // check, if the requester is allowed to circumvent the pagination for this specific repository
-        if($this->allowDisablePagination) {
-            // check, if he actually disabled it
-            if($limit == "0") {
-                return parent::all($columns);
-            }
+        // check, if skipping pagination is allowed and the requested by the user
+        if(Config::get('repository.pagination.skip') && $limit == "0") {
+            return parent::all($columns);
         }
 
         return parent::paginate($limit, $columns, $method);
