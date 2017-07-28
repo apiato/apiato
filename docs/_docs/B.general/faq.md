@@ -148,3 +148,63 @@ You can submit a PR adding the questions and answer here on the FAQ page.
 Or leave it somewhere on the repository or on Slack. Thanks in advanced :)
 
 
+
+## How to upgrade apiato?
+
+I've used apiato for a project and now I need to upgrade it.
+
+Checkout the project setup in [Contributing to APIATO](http://apiato.io/B.general/contribution/).
+
+1) Setup an upstream remote (to point to your fork of the apiato repository)
+
+`git remote add upstream git@github.com:username/apiato.git`
+
+```shell
+❯ git remote -vv
+origin      git@bitbucket.org:username/project-a.git (fetch)
+origin      git@bitbucket.org:username/project-a.git (push)
+upstream    git@github.com:apiato/apiato.git (fetch)
+upstream    git@github.com:apiato/apiato.git (push)
+```
+
+2) Create apiato branch
+
+`git checkout -b apiato`
+
+3) Let the apiato branch track the upstream master branch
+
+`git branch --set-upstream-to upstream/master`
+
+```shell
+❯ git branch -vv
+ apiato          77b4d945 [upstream/master] ...
+ master          77d302aa [origin/master] ...
+```
+
+4) Now you can move the updates to your master branch in 2 ways:
+
+
+**Option A**: merge the entire apiato branch with master and solve the conflicts manually. *(easier and faster)*
+
+`git checkout master`
+
+The git merging can be done in many ways:
+
+- Merge then solve the conflict manually `git merge apiato` *(recommended)*
+- Merge and keep your project changes `git merge -X ours apiato`
+- Merge and overwrite your project with the apiato changes `git merge -X theirs apiato`
+
+
+*-X is a shortcut for --strategy-option=*
+
+
+
+
+**Option B**: Manually cherry pick from apiato to master only the commits you need:
+
+`git checkout master`
+
+`git log apiato`      (to copy each commit ID, one by one)
+
+`git cherry-pick {commit-ID}`      (if you get any conflict solve it and keep moving)
+

@@ -7,9 +7,9 @@ order: 4
 
 Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
-
-
 # Standards and Practices
+
+
 
 ### Versioning
 
@@ -26,7 +26,7 @@ and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PS
 
 
 
-## Git Branches
+### Git Branches
 
 The `master` branch contains the upcoming APIATO release. While the other branches are for the stable releases.
 
@@ -36,7 +36,7 @@ Major new features should always be sent to the `master` branch, which contains 
 
 
 
-## Proposing Feature
+### Proposing Feature
 
 If you have a proposal or a feature request, you may create an issue with `[Feature]` in the title (`[Feature] support XML responses`).
 
@@ -45,7 +45,7 @@ The proposal will then be reviewed and either approved or denied.
 Once a proposal is approved, a pull request may be created implementing the new feature.
 
 
-## Reporting Bugs
+### Reporting Bugs
 
 Bugs are tracked in our project's [issue tracker](https://github.com/apiato/apiato/issues).
 
@@ -59,7 +59,7 @@ A good bug report includes the following sections:
 * Any other information that will help us debug and reproduce the issue, including stack traces, system/environment information, and screenshots
 
 
-## Fixing Bugs
+### Fixing Bugs
 
 If you see a bug report that you'd like to fix,
 please feel free to do so.
@@ -67,7 +67,7 @@ Following the directions and guidelines described in the "Adding New Features" s
 
 
 
-## Adding New Features
+### Adding New Features
 
 If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on. If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you from doing a lot of development work only to have your feature rejected.
 
@@ -83,7 +83,7 @@ When you do begin working on your feature, here are some guidelines to consider:
 
 
 
-## Important points to remember when contributing:
+### Important points to remember when contributing:
 
 - Be descriptive in your branch names, commit messages, and pull request title and descriptions.
 - Keep your commits atomic, that is, each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
@@ -94,9 +94,14 @@ When you do begin working on your feature, here are some guidelines to consider:
 
 
 
-## Security Vulnerabilities
+### Security Vulnerabilities
 
 If you discover a security vulnerability, please send email to `mahmoud@zalt.me`.
+
+
+
+
+<br>
 
 
 
@@ -128,6 +133,9 @@ Layout `docs/_layouts/default.html`.
 3. `bundle install`
 4. `bundle exec jekyll serve`
 5. Browse `http://localhost:4000`
+6. Finally `jekyll build`
+
+<br>
 
 
 
@@ -140,7 +148,7 @@ Each component command, "Except the Containers Generator" must extend from the `
 
 This abstract class does all the work for you.
 
-#### Add new component generator.
+### Add new component generator.
 
 1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
 
@@ -178,18 +186,114 @@ For each generator you need to implement exactly one method (as it is defined in
 
 You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
 
-5 - Enjoy your Generator
 
-That's it.. It's really that easy!
 
-Note: Once all the components are built and ready,
-I'll join and write the container command myself, since that cannot extend from the same abstract class of the components.
-It should be a stand alone command, which basically calls the components commands and pass user inputs to them.
+<br>
 
 
 
-# Contributing to APIATO while working on your project:
+# Contributing to APIATO
+ 
+Contribute to APIATO while working on your personal project.
 
-#### To Be Continue...
+
+### SETUP
+
+> One time setup
+
+In this scenario let's assume we have the following:
+
+* `Apiato`     # is the starter/framework project
+* `Project A`  # your personal project your building on top of apiato
 
 
+
+1) Create Project A from APIATO
+
+`composer create-project apiato/apiato project-a`
+
+2) Initialize git in Project A
+
+`git init`
+
+3.a) Setup your origin remote (to point to your project private repository url)
+
+`git remote add origin git@bitbucket.org:username/repo.git`
+
+*if you already have origin remote then update it with*
+
+`git remote set-url origin git@bitbucket.org:username/project-a.git`
+
+
+3.b) Setup an upstream remote (to point to your fork of the apiato repository)
+
+*assuming you already forked the repository*
+
+`git remote add upstream git@github.com:username/apiato.git`
+
+Now you should have the following remotes:
+
+```
+❯ git remote -vv
+origin      git@bitbucket.org:username/project-a.git (fetch)
+origin      git@bitbucket.org:username/project-a.git (push)
+upstream    git@github.com:username/apiato.git (fetch)
+upstream    git@github.com:username/apiato.git (push)
+```
+
+4.a) Create apiato branch
+
+`git checkout -b apiato`
+
+4.b) Let the apiato branch track the upstream master branch
+
+`git checkout apiato`
+
+`git branch --set-upstream-to upstream/master`
+
+Now you should have the following branches:
+
+```
+❯ git branch -vv
+ apiato           77b4d945 [upstream/master] ...
+ master           77d302aa [origin/master] ...
+```
+
+### USAGE (Contribution Steps)
+
+> Must do everytime before you contribute
+
+1) Update remotes (fetch)
+
+`git fetch --all`
+
+2) Go to the apiato branch 
+
+`git checkout apiato`
+
+3) Apply the changes of upstream master in the local apiato branch
+
+`git pull`    (this will pull from the upstream since this apiato branch is configured to track upstream)
+
+Or use `git reset --hard upstream/master` if you want to override your local changes on that branch
+
+
+4) Now you can cherry pick from master to apiato any commit you'd like to contribute:
+
+`git checkout apiato`
+
+`git log master`      (to copy each commit ID, one by one)
+
+`git cherry-pick {commit-ID}`
+
+*(repeat for all commits you want to submit)*
+
+5) push apiato branch to the upstream
+
+`git push upstream apiato:master`
+
+6) create a Pull Request (PR) from your forked repository to the apiato official repository.
+
+*W'll do our best to merge your PR in the shortest time possible. Thanks in advanced :)*
+
+Checkout [How to upgrade apiato?](http://apiato.io/B.general/faq/).
