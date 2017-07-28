@@ -42,7 +42,7 @@ to generate something for).
 If you do not provide respective information via command line options, a wizard is displayed to guide you through 
 the process of automatically generating code snippets.
 
-For example, you can direclty call `php artisan apiato:controller --file=UserController` to directly specify the class
+For example, you can directly call `php artisan apiato:controller --file=UserController` to directly specify the class
 to be generated. The wizard, however, will ask you for the `--container` as well.
 
 ## Contributing

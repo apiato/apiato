@@ -22,7 +22,7 @@ To remove a Container, simply delete the folder then run `composer update` to re
 
 **Option 1) Using the Code Generator:**
 
-`php artisan apiato:container`     (this method is not avaialble yet, so jump to the manual creation below.)
+`php artisan apiato:container`     (this method is not available yet, so jump to the manual creation below.)
 
 **Option 2) manually:**
 

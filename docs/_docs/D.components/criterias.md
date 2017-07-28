@@ -65,10 +65,7 @@ class OrderByCreationDateDescendingCriteria extends Criteria
 }
 ```
 
-
-	 
 **Usage from `Task`:** 
-
 
 ```php
 <?php
@@ -82,7 +79,6 @@ public function run()
     return $users;
 } 
 ```
-
 
 **Example: `Criteria` accepting data input:** 
 

@@ -18,7 +18,7 @@ order: 30
 
 ## How it works:
 
-Visting `http://apiato.dev/admin/dashboard` will redirect you to a login page for admins.
+Visiting `http://apiato.dev/admin/dashboard` will redirect you to a login page for admins.
 
 the default credentials are:
 
