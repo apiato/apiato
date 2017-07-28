@@ -15,7 +15,7 @@ order: 2
       "id": 100,
       ...
       "relation 1": {
-        "data": [ // mutiple data
+        "data": [ // multiple data
           {
             "id": 11,
 			  ...
@@ -44,7 +44,7 @@ order: 2
       }
     }
   },
-  "include": [ // what can be incliuded
+  "include": [ // what can be included
     "xxx",
     "yyy"
   ],
@@ -57,7 +57,8 @@ order: 2
 When data is paginated the response payload will contain a `meta` description about the pagination.
 
 ```json
-  "meta": {
+{
+  "meta" : {
     "pagination": {
       "total": 18,
       "count": 10,
@@ -69,6 +70,7 @@ When data is paginated the response payload will contain a `meta` description ab
       }
     }
   }
+}
 ```
 
 **Includes:**
@@ -81,7 +83,7 @@ For more details read the `Relationships` section in the [Query Parameters](http
 
 ### Error Responses formats
 
-Visit each feature, example the Authentication and there you will see how unauthenticate response looks like, same for Authorization, Validation and so on.
+Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same for Authorization, Validation and so on.
 
 
 ### Change the Response payload format:
