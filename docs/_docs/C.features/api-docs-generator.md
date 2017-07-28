@@ -116,7 +116,7 @@ If you get an error (`apidoc not found`),
 
 To prevent duplicating the responses between routes, let's create a shared response for each object.
 
-Example: `_user.v1.public.php` will contaion all responses (single, multiple..) of the User:
+Example: `_user.v1.public.php` will contain all responses (single, multiple..) of the User:
 
 ```php
 <?php

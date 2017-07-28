@@ -140,7 +140,7 @@ try running this command `homestead halt && homestead up --provision`.*
 <a name="Dev-Env-Opt-C"></a>
 ### A.3) Using something else
 
-If you're not into virtualization software's, you can setup your environment directly on your machine. Check the [software's requirments list](http://apiato.io/A.getting-started/requirements/).
+If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the [software's requirments list](http://apiato.io/A.getting-started/requirements/).
 
 
 

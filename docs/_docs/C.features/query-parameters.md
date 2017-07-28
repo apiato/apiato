@@ -198,6 +198,28 @@ api.domain.dev/endpoint?page=200
 
 *(provided by the Laravel Paginator)*
 
+## Limit: 
+
+The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
+
+**Usage:**
+
+```
+api.domain.dev/endpoint?limit=100
+```
+
+This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be 
+combined in order to get the next 100 resources:
+
+```
+api.domain.dev/endpoint?limit=100&page=2
+```
+
+In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination, 
+you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
+get all data (with no pagination applied) by requesting `api.domain.dev/endpoint?limit=0`. This will return all matching
+entities.
+
 ## Relationships:
 
 Get an object with his relationships:
@@ -264,7 +286,7 @@ It's not recommended to keep skipping cache as it has bad impact on the performa
 
 ## Configuration
 
-Most of thes parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
+Most of these parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
 Some of them are built in house, or inherited from other packages such as Fractal.
 
 #### See the Query parameters from the User Developer perspective:

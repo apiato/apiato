@@ -1,9 +1,7 @@
-## Usage Overview
+## **Usage Overview**
 
 Here are some information that should help you understand the basic usage of our RESTful API. 
 Including info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and more.
-
-
 
 ## **Headers**
 
@@ -18,8 +16,6 @@ And to do that you must include the `Accept => application/json` HTTP header wit
 | Content-Type  | `application/x-www-form-urlencoded` | MUST be sent when passing Data.                                              |
 | Authorization | `Bearer {Access-Token-Here}`        | MUST be sent whenever the endpoint requires (Authenticated User).            |
 
-
-
 ## **Rate limiting**
 
 All REST API requests are throttled to prevent abuse and ensure stability. 
@@ -29,7 +25,6 @@ The rate limit window is `{{rate-limit-expires}}` minutes per endpoint, with mos
 
 *In other words, each user is allowed to make `{{rate-limit-attempts}}` calls per endpoint every `{{rate-limit-expires}}` minutes. (For each unique access token).*
 
-
 For how many hits you can preform on an endpoint, you can always check the header:
 
 ```
@@ -37,19 +32,36 @@ X-RateLimit-Limit → 30
 X-RateLimit-Remaining → 29
 ```
 
-
 ## **Tokens**
 
 The Access Token lives for `{{access-token-expires-in}}`. (equivalent to `{{access-token-expires-in-minutes}}` minutes).
 While the Refresh Token lives for `{{refresh-token-expires-in}}`. (equivalent to `{{refresh-token-expires-in-minutes}}` minutes).
 
-*You will need to re-autneticate the user when the token expires.*
-
+*You will need to re-authenticate the user when the token expires.*
 
 ## **Pagination**
 
-By default, all fetch requests return the first `{{pagination-limit}}` items in the list. Check the **Query Parameters** for how to controll the pagination.
+By default, all fetch requests return the first `{{pagination-limit}}` items in the list. Check the **Query Parameters** for how to control the pagination.
 
+## **Limit:** 
+
+The `?limit=` parameter can be applied to define, how many record should be returned by the endpoint (see also `Pagination`!).
+
+**Usage:**
+
+```
+api.domain.dev/endpoint?limit=100
+```
+
+The above example returns 100 resources. 
+
+The `limit` and `page` query parameters can be combined in order to get the next 100 resources:
+
+```
+api.domain.dev/endpoint?limit=100&page=2
+```
+
+You can skip the pagination limit to get all the data, by adding `?limit=0`, this will only work if 'skip pagination' is enabled on the server.
 
 ## **Responses**
 
@@ -103,16 +115,13 @@ X-RateLimit-Limit → 100
 X-RateLimit-Remaining → 99
 ```
 
-
-
 ## **Query Parameters**
 
-Query parameters are optional, you can apply them to some endopints whenever you need them.
+Query parameters are optional, you can apply them to some endpoints whenever you need them.
 
 ### Ordering
 
 The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsible for listing records.
-
 
 **Usage:**
 
@@ -120,15 +129,11 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 api.domain.dev/endpoint?orderBy=created_at
 ```
 
-
-
 ### Sorting
 
 The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
 
-By default the `orderBy` sorts the data in **Ascending** order, if you want the data sorted in **Descending** order, you can add `&sortedBy=desc`.
-
-
+By default the `orderBy` sorts the data in **ascending** order, if you want the data sorted in **descending** order, you can add `&sortedBy=desc`.
 
 **Usage:**
 
@@ -141,14 +146,9 @@ Order By Accepts:
 - `asc` for Ascending.
 - `desc` for Descending.
 
-
-
-
-
 ### Searching
 
 The `?search=` parameter can be applied to any **`GET`** HTTP request.
-
 
 **Usage:**
 
@@ -194,11 +194,9 @@ Available Conditions:
 api.domain.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
 ```
 
-
-
 ### Filtering
 
-The `?filter=` parameter can be applied to any HTTP request. And is used to controle the response size, by defining what data you want back in the response.
+The `?filter=` parameter can be applied to any HTTP request. And is used to control the response size, by defining what data you want back in the response.
 
 **Usage:**
 
@@ -276,7 +274,7 @@ api.domain.dev/endpoint?page=200
 
 The `?include=` parameter can be used with any endpoint, only if it supports it. 
 
-How to use it: let's say there's a Driver object and Car object. And there's an endopint `/cars` that returns all the cars objects. 
+How to use it: let's say there's a Driver object and Car object. And there's an endpoint `/cars` that returns all the cars objects. 
 The include allows getting the cars with their drivers `/cars?include=drivers`. 
 
 However, for this parameter to work, the endpoint `/cars` should clearly define that it
@@ -301,7 +299,7 @@ Every response contain an `include` in its `meta`  as follow:
 
 ### Caching
 
-Some endpoints stores their response data in memory (chaching) after quering them for the first time, to speed up the response time.
+Some endpoints stores their response data in memory (caching) after querying them for the first time, to speed up the response time.
 The `?skipCache=` parameter can be used to force skip loading the response data from the server cache and instead get a fresh data from the database upon the request.
 
 **Usage:**
@@ -309,8 +307,6 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 ```
 api.domain.dev/endpoint?skipCache=true
 ```
-
-
 
 
 ## **Errors** (Outdated)
