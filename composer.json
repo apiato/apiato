@@ -1,6 +1,17 @@
 {
   "name": "apiato/apiato",
   "description": "apiato is a starter project, designed to help building scalable API's faster with PHP and Laravel.",
+  "homepage": "http://apiato.io/",
+  "support": {
+    "issues": "https://github.com/apiato/apiato/issues",
+    "source": "https://github.com/apiato/apiato"
+  },
+  "authors": [
+    {
+      "name": "Mahmoud Zalt",
+      "email": "mahmoud@zalt.me"
+    }
+  ],
   "keywords": [
     "apiato",
     "Porto",
