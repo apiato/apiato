@@ -1,0 +1,13 @@
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+Homestead.json
+Homestead.yaml
+.env
+storage/logs/laravel.log
+/public/api-rendered-markdowns/*
+/public/api/
+/public/uploads/
+/laradock*/

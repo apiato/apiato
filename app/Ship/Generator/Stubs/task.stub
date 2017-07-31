@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Tasks;
+
+use App\Ship\Parents\Tasks\Task;
+
+class {{class-name}} extends Task
+{
+
+    public function __construct()
+    {
+        // ..
+    }
+
+    public function run()
+    {
+        // ..
+    }
+}

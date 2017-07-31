@@ -1,0 +1,18 @@
+{
+  "name": "apiato",
+  "description": "apiato (Private API) Documentation",
+  "title": "Welcome to apiato",
+  "version": "1.0.0",
+  "url" : "http://api.apiato.dev",
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  },
+  "header": {
+    "title": "API Overview",
+    "filename": "../public/api-rendered-markdowns/header.md"
+  },
+  "order": [
+
+  ]
+}

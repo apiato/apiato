@@ -1,0 +1,34 @@
+---
+layout: null
+sitemap: false
+---
+
+$body-background-color: #00bdf4;
+
+$content-max-width: 1000px;
+$content-color: #222;
+$content-background-color: #ffffff;
+
+$brand-colour: #00bdf4;
+$brand-colour-light: mix($brand-colour, $content-background-color, 10%);
+
+$nav-header-background-color: $brand-colour;
+$nav-header-height: 37px;
+$nav-background-color: #f8fbfd;
+$nav-width: 225px;
+
+$search-bar-place-holder-color: #a6aaad;
+
+$space: 12px;
+
+$mobile-break: 700px;
+$full-width-break: $nav-width + ($space * 4) + $content-max-width;
+
+@import "mixins";
+@import "normalize";
+@import "pygments";
+@import "typography";
+@import "code";
+@import "tables";
+@import "layout";
+@import "custom";

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Containers Tests">
+            <directory suffix="Test.php">./app/Containers</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+            <exclude>
+                <!-- 
+                NOTE: Exclude the following directories because they fail when directly included with code-coverage
+                -->
+                <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
+                <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
+
+                <!-- 
+                NOTE: Excluded this file because it fails when directly included with code-coverage.
+                -->
+                <file>./app/Ship/Engine/Loaders/FactoryMixer/FactoriesLoader.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="API_FULL_URL"        value="http://api.apiato.dev"/>
+
+        <env name="APP_ENV"             value="testing"/>
+        <env name="CACHE_DRIVER"        value="array"/>
+        <env name="SESSION_DRIVER"      value="array"/>
+        <env name="QUEUE_DRIVER"        value="sync"/>
+
+        <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
+        <env name="DB_HOST"             value="127.0.0.1"/>
+        <env name="DB_PORT"             value="3306"/>
+        <env name="DB_NAME"             value="apiato_db"/>
+        <env name="DB_USERNAME"         value="apiato_db"/>
+        <env name="DB_PASSWORD"         value="secret"/>
+    </php>
+</phpunit>
