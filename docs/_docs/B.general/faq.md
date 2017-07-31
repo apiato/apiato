@@ -190,9 +190,9 @@ upstream    git@github.com:apiato/apiato.git (push)
 
 The git merging can be done in many ways:
 
-- Merge then solve the conflict manually `git merge apiato` *(recommended)*
-- Merge and keep your project changes `git merge -X ours apiato`
-- Merge and overwrite your project with the apiato changes `git merge -X theirs apiato`
+- Merge then solve the conflict manually `git merge --allow-unrelated-histories apiato` *(recommended)*
+- Merge and keep your project changes `git merge --allow-unrelated-histories -X ours apiato`
+- Merge and overwrite your project with the apiato changes `git merge --allow-unrelated-histories -X theirs apiato`
 
 
 *-X is a shortcut for --strategy-option=*
