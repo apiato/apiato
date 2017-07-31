@@ -3,11 +3,12 @@ pre, code, tt {
 	font-size: 0.85em;
 	white-space: pre-wrap;
 	border-radius: 2px;
-	line-height: 1.4;
+	line-height: 1.7;
 	font-weight: 400;
 	background-color: #47555f;
 	color: #FAFAFA;
-	border-radius: 2px;
+    padding: 2px 8px 2px 8px;
+    font-style: normal;
 }
 
 pre {
@@ -36,5 +37,5 @@ p > code {
 	white-space: nowrap;
     background: #ffffff;
     color: #FF5722;
-    font-size: 19px;
+    font-size: 16px;
 }
