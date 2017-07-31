@@ -16,20 +16,15 @@ title: "Welcome to APIATO"
 
 **Build better API's faster with PHP and Laravel 5.4**
 
-**APIATO** is a starter project, designed to help you build scalable API's faster, by providing tools and
-functionalities that facilitates the development of any API-Centric Applications.
+**APIATO** is a flawless framework for building scalable and testable API-Centric Applications with PHP. 
+It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
+           
 
-APIATO uses the best frameworks, tools and conventions in a very creative way to deliver a modern PHP Application.
+APIATO uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
 
-Why!? setting up a solid API from scratch is time consuming (and time is money).
-APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
-Skip the repetitive work and enjoy the open source fun.
-
+Why!? setting up a solid API from scratch is time consuming (and time is money). APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster. Skip the repetitive work and enjoy the open source fun.
 
 **APIATO [Features list](https://github.com/apiato/apiato#features) on Github.**
-
-
-> `Hello API` was the first name of this project, it was renamed to `APIATO` in March, 22, 2017 for no reason.
 
 ## How to read the docs
 
