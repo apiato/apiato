@@ -118,7 +118,6 @@ The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it live
 3. `bundle install`
 4. `jekyll serve`
 5. Browse `http://localhost:4000`
-6. Finally `jekyll build`
 
 #### Natively:
 

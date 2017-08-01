@@ -1,9 +1,11 @@
 # APIATO
 
-> Build better API's faster with **PHP** and **Laravel 5.4**.
+<h3 align="center">Build great API's faster | with PHP and Laravel 5.4</h3>
 
 
-[![apiato.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](http://apiato.io)
+<p align="center">
+   <img src="https://s19.postimg.org/o1y4gerrn/apiato.jpg" alt="APIATO Logo"/>
+</p>
 
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
@@ -18,12 +20,10 @@
 
 
 
-
-
 <a name="Introduction"></a>
 
 
-### What is `APIATO`
+### What is APIATO?
 
 A flawless framework for building scalable and testable API-Centric Applications with PHP.
 
@@ -37,7 +37,9 @@ APIATO gives you the core features of robust API's, so you can focus on your bus
 Skip the repetitive work and enjoy the open source fun.
 
 
-#### Intro to API-Centric Apps
+<br>
+
+### Why API-Centric Apps?
 
 Today we’re living in a digital era, where almost everything is connected to the Internet.
 
@@ -49,7 +51,6 @@ API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart
 As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
 
 API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
-
 
 
 
@@ -94,37 +95,41 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 <a name="Documentation"></a>
 ## Documentation
 
-
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
+
+
 
 **APIATO** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
+<br>
 
 Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in APIATO, will help you understand how the code is organized and how things work.
+However, you do **NOT** have to follow any of the Porto conventions to benifit from all the features that APIATO provides.
 
-You do **NOT** have to follow any of the Porto conventions to benifit from every feature APIATO provide.
 
 If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
 
-_You can call APIATO `Actions` from your `Controllers` using the special `call` function:_
-
-```php
-$this->call(\MyAction::class, [$paramerter1, $paramerter2]);
-// or you can inject the "MyAction" Class, in the parameter of the Controller function, as usual.
-```
-
-## [Full Documentation Here](http://apiato.io/)
+<br>
 
 
+<p align="center">
+	<a href="http://apiato.io/">
+	   <img src="https://s19.postimg.org/ecnn9vdw3/Screen_Shot_2017-08-01_at_5.08.54_AM.png" width=250px" alt="APIATO SLACK"/>
+	</a>
+</p>
 
 
-<a name="Chat"></a>
-## Get in touch
+---
 
-Join our [Slack](https://now-examples-slackin-bvfqosqozk.now.sh) chatting room, by click on the Slack icon below.
 
-[![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://now-examples-slackin-bvfqosqozk.now.sh)
+<p align="center">Join our Slack chatting room, <br> by click on the icon below.</p>
+
+<p align="center">
+	<a href="https://now-examples-slackin-bvfqosqozk.now.sh">
+	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="APIATO SLACK"/>
+	</a>
+</p>
 
 
 
@@ -138,7 +143,7 @@ And a list of awesome contributors:
 - [Johan Alvarez](https://github.com/llstarscreamll)
 - [Þorgrímur Jónasarson](https://github.com/toggi737)
 - [Johannes Schobel](https://github.com/johannesschobel)
-- [... See full list](https://github.com/apiato/apiato/graphs/contributors)
+- [See full list](https://github.com/apiato/apiato/graphs/contributors)
 - [Join Us?](http://apiato.io/B.general/contribution/)
 
 

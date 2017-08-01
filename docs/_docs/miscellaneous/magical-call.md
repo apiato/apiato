@@ -11,6 +11,14 @@ This magical function allows you to call any Action's or Task's `run` function, 
 Each Action knows which UI called it using `$this->getUI()`, this is useful when handling the same Action differently based on the UI type (Web or API).
 
 
+The function is mainly used for calling APIATO `Actions` from `Controllers` as follow:
+
+```php
+$this->call(\MyAction::class, [$paramerter1, $paramerter2]);
+// or you can inject the "MyAction" Class, in the parameter of the Controller function, as usual.
+```
+
+
 ##### Basic Usage:
 
 ```php
