@@ -14,7 +14,7 @@ APIATO make writing and generating documentations very easy with the `php artisa
 
 - Install the [ApiDocJs](http://apidocjs.com/) tool.
 
-- (Recommended) read the [Routes](http://apiato.io/D.components/routes/) page first.
+- (Recommended) read the [Routes]({{ site.baseurl }}{% link _docs/components/routes.md %}) page first.
 
 ## Usage
 

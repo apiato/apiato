@@ -187,7 +187,7 @@ There's an instance of faker in every class.
 
 Just use it: `$this->faker->name;`
 
-See the [Tests](http://apiato.io/D.components/tests/) Page, for more details about the Tests components.
+See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, for more details about the Tests components.
 
 
 

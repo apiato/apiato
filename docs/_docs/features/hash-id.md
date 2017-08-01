@@ -32,7 +32,7 @@ In parameters example: [GET] or [POST] `www.apiato.dev/items?id=abcdef`.
 
 in both cases you will need to inform your API about what's coming form the Request class. 
 
-Checkout the [Requests](http://apiato.io/D.components/requests/) page. After setting the `$decode` and `$urlParameters` properties on your Request class, the ID will be automatically decoded for you, to apply validation rules on it or/and use it from your controller (`$request->id` will return the decoded ID).
+Checkout the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %}) page. After setting the `$decode` and `$urlParameters` properties on your Request class, the ID will be automatically decoded for you, to apply validation rules on it or/and use it from your controller (`$request->id` will return the decoded ID).
 
 ## Configuration
 
@@ -71,7 +71,7 @@ Example:
 $response = $this->injectId($admin->id)->makeCall();
 ```
 
-More details on the [Tests Helpers](http://apiato.io/C.features/tests-helpers/) page.
+More details on the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) page.
 
 ## Availability
 

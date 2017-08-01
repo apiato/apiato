@@ -140,8 +140,7 @@ try running this command `homestead halt && homestead up --provision`.*
 <a name="Dev-Env-Opt-C"></a>
 ### A.3) Using something else
 
-If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the [software's requirments list](http://apiato.io/A.getting-started/requirements/).
-
+If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the [software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
 
 
 
@@ -256,7 +255,7 @@ Or install it by just running `npm install` on the root of the project, after ch
 
 Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation`.
 
-##### Visit [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) for more details.
+##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
 
 
 

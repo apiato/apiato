@@ -35,7 +35,7 @@ And the response will also contain the default language in the `Content-Language
 
 2. Create your languages files:
 
-Languages file can be placed in any container, not only the Localization Container. Refer to the [Localization](http://apiato.io/C.features/localization/) page for more info.
+Languages file can be placed in any container, not only the Localization Container. Refer to the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) page for more info.
 
 Example languages files are included in the Localization Container at `app/Containers/Localization/Resources/Languages`.
 

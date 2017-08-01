@@ -59,7 +59,7 @@ class DeleteUserRequest extends Request
 ``` 
 
 
-**For detailed explanation of this example, please visit the [Requests](http://apiato.io/D.components/requests/) Page.**
+**For detailed explanation of this example, please visit the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %}) Page.**
 
 ### Responses
 
@@ -76,7 +76,7 @@ class DeleteUserRequest extends Request
 
 ## Assign Roles & Permission to the Testing User:
 
-You will need to set `$access` property in your test class, check out the [Tests Helpers](http://apiato.io/C.features/tests-helpers/) page for more details.
+You will need to set `$access` property in your test class, check out the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) page for more details.
 
 ## Seeding some users (Admins):
 

@@ -47,4 +47,4 @@ dd(__('messages.welcome'));
 ```
 
 
-For More info about the localization checkout the [Localization](http://apiato.io/C.features/localization/) page.
+For More info about the localization checkout the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) page.

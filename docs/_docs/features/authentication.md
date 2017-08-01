@@ -36,7 +36,7 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 
 ### How to get Access Token using OAuth 2.0
 
-> The Auth Endpoints and more, are documented by default in APIATO. Go to [Documentation Generator Page](http://apiato.io/C.features/api-docs-generator/) and see how to generate the API documentation.
+> The Auth Endpoints and more, are documented by default in APIATO. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) and see how to generate the API documentation.
 
 
 OAuth let's you authenticate using different methods, these methods are called `grants`.
@@ -272,4 +272,4 @@ This will be looking for (login.html or login.php or login.blade.php).
 
 ## Social Authentication
 
-For Social Authentication visit the [Social Authentication](http://apiato.io/C.features/social-authentication/) page.
+For Social Authentication visit the [Social Authentication]({{ site.baseurl }}{% link _docs/features/social-authentication.md %}) page.

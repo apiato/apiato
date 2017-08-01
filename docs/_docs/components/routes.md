@@ -80,7 +80,7 @@ For the API Routes, apiato is using the `dingo/api` [package](https://github.com
 
 ## Protect your Endpoints:
 
-Checkout the [Authorization](http://apiato.io/C.features/authorization/) Page.
+Checkout the [Authorization]({{ site.baseurl }}{% link _docs/features/authorization.md %}) Page.
 
 ## Apply rate limiting:
 

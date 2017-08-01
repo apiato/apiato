@@ -10,7 +10,7 @@ Code Generators are a nice way to speed up development by creating boiler-plate 
 already know several code generators from Laravel, like `php artisan make:controller` or others.
 
 In order to provide an easy to use approach for generating all kinds of components within a container (i.e., be sure to 
-read the docs about the [Porto architecture](http://apiato.io/B.general/porto-sap/)!), apiato provides some neat 
+read the docs about the [Porto architecture]({{ site.baseurl }}{% link _docs/getting-started/porto-sap.md %})!), apiato provides some neat 
 generators specifically tailored for your needs.
 
 However, as some of them may be _complex_ to use, apiato offers some kind of **wizard based generators**, guiding you
@@ -47,7 +47,7 @@ to be generated. The wizard, however, will ask you for the `--container` as well
 
 ## Contributing
 
-If you would like to add your own generators, please check out the [Contribution Guide](http://apiato.io/B.general/contribution/).
+If you would like to add your own generators, please check out the [Contribution Guide]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
 ## For AngularJS 2 Users
 

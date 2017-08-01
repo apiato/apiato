@@ -72,7 +72,7 @@ In this case the code will live in:
 
 Most of the third party packages Service Providers and Aliases SHOULD be registered inside the Container's Main Service Providers, inside the `$serviceProviders` and `$aliases` properties. However, some more general Service Providers and Aliases (application features used by all containers) CAN be registered inside the Engine Main `PortoServiceProvider`.
 
-Refer to the [Providers](http://apiato.io/D.components/providers/) page for more details.
+Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md %}) page for more details.
 
 
 ## How to change API URL?
@@ -153,7 +153,7 @@ Or leave it somewhere on the repository or on Slack. Thanks in advanced :)
 
 I've used apiato for a project and now I need to upgrade it.
 
-Checkout the project setup in [Contributing to APIATO](http://apiato.io/B.general/contribution/).
+Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
 1) Setup an upstream remote (to point to your fork of the apiato repository)
 

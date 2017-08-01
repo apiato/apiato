@@ -99,7 +99,7 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-See the [Search query parameter](http://apiato.io/C.features/search-query-parameter/) page, for how to set it up and control the searchability.
+See the [Search query parameter]({{ site.baseurl }}{% link _docs/features/search-query-parameter.md %}) page, for how to set it up and control the searchability.
 
 ### Define the query condition for search:
 
@@ -224,7 +224,7 @@ entities.
 
 Get an object with his relationships:
 
-For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers](http://apiato.io/D.components/transformers/) for more details.*
+For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) for more details.*
 
 using `include` with comma `,` separator:
 
@@ -264,7 +264,7 @@ Every Transformer can have 2 types of includes `$availableIncludes` and `$defaul
 
 `$defaultIncludes` will not be listed in the response, only the `$availableIncludes` will be.
 
-Visit the [Transformers](http://apiato.io/D.components/transformers/) page for more details.
+Visit the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) page for more details.
 
 *(provided by the Fractal Transformer)*
 
@@ -295,7 +295,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](http://apiato.io/C.features/api-docs-generator/) page.
+More details in the [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) page.
 
 ### More
 

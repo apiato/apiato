@@ -78,7 +78,7 @@ When data is paginated the response payload will contain a `meta` description ab
 Informs the User about what relationships can be include in the response.
 Example: `?include=tags,user`
 
-For more details read the `Relationships` section in the [Query Parameters](http://apiato.io/C.features/query-parameters/) page.
+For more details read the `Relationships` section in the [Query Parameters]({{ site.baseurl }}{% link _docs/features/query-parameters.md %}) page.
 
 
 ### Error Responses formats

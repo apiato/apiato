@@ -66,4 +66,4 @@ Note: After registration you will have to send another call to `http://api.examp
 
 > (Facebook, Twitter, Google..)
 
-Checkout the [Social Authentication](http://apiato.io/C.features/authentication/) Page for how to Sign up with Social Account.
+Checkout the [Social Authentication]({{ site.baseurl }}{% link _docs/features/authentication.md %}) Page for how to Sign up with Social Account.
