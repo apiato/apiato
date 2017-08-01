@@ -2,8 +2,9 @@
 
 namespace App\Ship\Engine\Traits;
 
-use Request;
+use Collection;
 use Fractal;
+use Request;
 use Illuminate\Http\JsonResponse;
 use ReflectionClass;
 
@@ -25,10 +26,11 @@ trait ResponseTrait
      * @param null $transformerName
      * @param array|null $includes
      * @param array $meta
+     * @param String|null $resourceKey the resource key to be set
      *
      * @return mixed
      */
-    public function transform($data, $transformerName = null, array $includes = null, array $meta = [])
+    public function transform($data, $transformerName = null, array $includes = null, array $meta = [], $resourceKey = null)
     {
         $transformer = new $transformerName;
 
@@ -48,7 +50,14 @@ trait ResponseTrait
             'custom' => $meta,
         ];
 
-        $fractal = Fractal::create($data, $transformer)->addMeta($this->metaData);
+        // no resource key was set
+        if(!$resourceKey) {
+            // get the resource key from the model
+            $obj = $data instanceof Collection ? $data->first() : $data;
+            $resourceKey = $obj->getResourceKey();
+        }
+
+        $fractal = Fractal::create($data, $transformer)->withResourceName($resourceKey)->addMeta($this->metaData);
 
         // apply request filters if available in the request
         if($requestFilters = Request::get('filter')){
@@ -59,7 +68,6 @@ trait ResponseTrait
 
         return $result;
     }
-
 
     /**
      * @param $data
