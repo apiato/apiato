@@ -109,12 +109,6 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it lives in the `/docs` folder. 
 
-The content of the documentation can be found in the `docs/_docs` folder.
-
-The styles are in `main.scss` and `docs/_sass/*`.
-Layout `docs/_layouts/default.html`.
-
-
 ### To run the docs locally: 
 
 #### In Docker:
@@ -135,9 +129,20 @@ Layout `docs/_layouts/default.html`.
 5. Browse `http://localhost:4000`
 6. Finally `jekyll build`
 
-<br>
+### Documentation Tips:
 
+The content of the documentation can be found in the `docs/_docs` folder.
 
+The styles are in `main.scss` and `docs/_sass/*`.
+
+The Layout `docs/_layouts/default.html`.
+
+The docs folders `_docs/*` do not represent the categories displayed in the site. 
+
+To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
+you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
+
+To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
 
 # Contributing to the Code Generator:
 
