@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Models;
 
 use App\Ship\Engine\Traits\HashIdTrait;
+use App\Ship\Engine\Traits\HasResourceKeyTrait;
 use Spatie\Permission\Models\Permission as LaratrustPermission;
 
 /**
@@ -14,6 +15,7 @@ class Permission extends LaratrustPermission
 {
 
     use HashIdTrait;
+    use HasResourceKeyTrait;
 
     /**
      * The attributes that are mass assignable.

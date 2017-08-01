@@ -49,7 +49,7 @@ abstract class Transformer extends FractalTransformer
     public function item($data, $transformer, $resourceKey = null)
     {
         // set a default resource key if none is set
-        if(!$resourceKey) {
+        if(!$resourceKey && !$data) {
             $resourceKey = $data->getResourceKey();
         }
         return parent::item($data, $transformer, $resourceKey);
@@ -65,7 +65,7 @@ abstract class Transformer extends FractalTransformer
     public function collection($data, $transformer, $resourceKey = null)
     {
         // set a default resource key if none is set
-        if(!$resourceKey) {
+        if(!$resourceKey && !$data) {
             $obj = $data->first();
             $resourceKey = $obj->getResourceKey();
         }

@@ -2,8 +2,9 @@
 
 namespace App\Ship\Engine\Traits;
 
-use Collection;
 use Fractal;
+use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Support\Collection;
 use Request;
 use Illuminate\Http\JsonResponse;
 use ReflectionClass;
@@ -53,7 +54,16 @@ trait ResponseTrait
         // no resource key was set
         if(!$resourceKey) {
             // get the resource key from the model
-            $obj = $data instanceof Collection ? $data->first() : $data;
+            $obj = null;
+            if($data instanceof AbstractPaginator) {
+                $obj = $data->getCollection()->first();
+            }
+            elseif($data instanceof Collection) {
+                $obj = $data->first();
+            }
+            else {
+                $obj = $data;
+            }
             $resourceKey = $obj->getResourceKey();
         }
 
