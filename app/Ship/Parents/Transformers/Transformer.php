@@ -39,4 +39,37 @@ abstract class Transformer extends FractalTransformer
         return $clientResponse;
     }
 
+    /**
+     * @param mixed $data
+     * @param callable|FractalTransformer $transformer
+     * @param null $resourceKey
+     *
+     * @return \League\Fractal\Resource\Item
+     */
+    public function item($data, $transformer, $resourceKey = null)
+    {
+        // set a default resource key if none is set
+        if(!$resourceKey) {
+            $resourceKey = $data->getResourceKey();
+        }
+        return parent::item($data, $transformer, $resourceKey);
+    }
+
+    /**
+     * @param mixed $data
+     * @param callable|FractalTransformer $transformer
+     * @param null $resourceKey
+     *
+     * @return \League\Fractal\Resource\Collection
+     */
+    public function collection($data, $transformer, $resourceKey = null)
+    {
+        // set a default resource key if none is set
+        if(!$resourceKey) {
+            $obj = $data->first();
+            $resourceKey = $obj->getResourceKey();
+        }
+        return parent::collection($data, $transformer, $resourceKey);
+    }
+
 }
