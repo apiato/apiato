@@ -23,13 +23,13 @@ trait ResponseTrait
     protected $metaData = [];
 
     /**
-     * @param            $data
+     * @param $data
      * @param null $transformerName
      * @param array|null $includes
      * @param array $meta
-     * @param String|null $resourceKey the resource key to be set
+     * @param null $resourceKey
      *
-     * @return mixed
+     * @return array
      */
     public function transform($data, $transformerName = null, array $includes = null, array $meta = [], $resourceKey = null)
     {
@@ -73,7 +73,7 @@ trait ResponseTrait
         if($requestFilters = Request::get('filter')){
             $result = $this->filterResponse($fractal->toArray(), explode(';', $requestFilters));
         }else{
-            $result = $fractal->toJson();
+            $result = $fractal->toArray();
         }
 
         return $result;
@@ -99,7 +99,7 @@ trait ResponseTrait
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function json($message, $status = 200, array $headers = array(), $options = 0)
+    public function json($message, $status = 200, array $headers = [], $options = 0)
     {
         return new JsonResponse($message, $status, $headers, $options);
     }
@@ -112,7 +112,20 @@ trait ResponseTrait
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public function accepted($message = null, $status = 202, array $headers = array(), $options = 0)
+    public function accepted($message = null, $status = 202, array $headers = [], $options = 0)
+    {
+        return new JsonResponse($message, $status, $headers, $options);
+    }
+
+    /**
+     * @param null $message array or string
+     * @param int $status
+     * @param array $headers
+     * @param int $options
+     *
+     * @return JsonResponse
+     */
+    public function created($message = null, $status = 201, array $headers = [], $options = 0)
     {
         return new JsonResponse($message, $status, $headers, $options);
     }
@@ -146,14 +159,13 @@ trait ResponseTrait
         return new JsonResponse(null, $status);
     }
 
-
     /**
-     * @param $responseArray
-     * @param $filters
+     * @param array $responseArray
+     * @param array $filters
      *
-     * @return  mixed
+     * @return array
      */
-    private function filterResponse($responseArray, $filters)
+    private function filterResponse(array $responseArray, array $filters)
     {
         foreach ($responseArray as $k => $v)
         {
