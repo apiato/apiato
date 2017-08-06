@@ -18,21 +18,15 @@ The rate limit window is `1` minutes per endpoint, with most individual calls al
 To update these values go to `app/Ship/Configs/apiato.php` config file, or to the `ENV` file.
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Rate Limit
-|--------------------------------------------------------------------------
-|
-| Attempts per minutes.
-| `throttle_attempts` the number of attempts per `throttle_expires` in
-| minutes.
-|
-*/
-'throttle_attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
-'throttle_expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
+'throttle' => [
+    'enabled' => env('API_RATE_LIMIT_ENABLED', true),
+    'attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
+    'expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
+]
 ```
 
 ```php
+API_RATE_LIMIT_ENABLED=true
 API_RATE_LIMIT_ATTEMPTS=30
 API_RATE_LIMIT_EXPIRES=1
 ```
@@ -43,4 +37,12 @@ For how many hits you can preform on an endpoint, you can always check the heade
 X-RateLimit-Limit →30
 X-RateLimit-Remaining →29
 ```
+
+
+## Enable/Disable Rate Limiting:
+
+The API rate limiting middleware is enabled and applied to all the Container Endpoints by default.
+
+To disable it set `API_RATE_LIMIT_ENABLED` to `false` in the `.env` file.
+
 

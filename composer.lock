@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "16003e455446596e43de9ccc6e2eaad6f90d5705"
+                "reference": "e39d0a0c7e32cf4d14f0b8e1a44f71abfa678bd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/16003e455446596e43de9ccc6e2eaad6f90d5705",
-                "reference": "16003e455446596e43de9ccc6e2eaad6f90d5705",
+                "url": "https://api.github.com/repos/apiato/core/zipball/e39d0a0c7e32cf4d14f0b8e1a44f71abfa678bd2",
+                "reference": "e39d0a0c7e32cf4d14f0b8e1a44f71abfa678bd2",
                 "shasum": ""
             },
             "require": {
@@ -27,11 +27,6 @@
                 "prettus/l5-repository": "^2.6",
                 "spatie/laravel-fractal": "^3.5",
                 "vinkla/hashids": "3.1.*"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "~5.7"
             },
             "type": "library",
             "autoload": {
@@ -58,7 +53,7 @@
                 "apiato core",
                 "core"
             ],
-            "time": "2017-08-06 09:48:48"
+            "time": "2017-08-06 11:17:01"
         },
         {
             "name": "barryvdh/laravel-cors",

@@ -74,16 +74,19 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Rate Limit
+        | Rate Limit (throttle)
         |--------------------------------------------------------------------------
         |
         | Attempts per minutes.
-        | `throttle_attempts` the number of attempts per `throttle_expires` in
-        | minutes.
+        | `attempts` the number of attempts per `expires` in minutes.
         |
         */
-        'throttle_attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
-        'throttle_expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
+        'throttle' => [
+            'enabled'  => env('API_RATE_LIMIT_ENABLED', true),
+            'attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
+            'expires'  => env('API_RATE_LIMIT_EXPIRES', '1'),
+        ]
+
     ],
 
 ];

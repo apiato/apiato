@@ -5,6 +5,7 @@ order: 6
 ---
 
 
+
 Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
 # Standards and Practices
@@ -105,9 +106,10 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 
 
-# Contributing to APIATO's Documentation:
 
-The documentation is generated using (Jekyll)[https://jekyllrb.com/] and it lives in the `/docs` folder. 
+# Contributing to APIATO's Documentation
+
+The documentation is generated using [Jekyll](https://jekyllrb.com/) and it lives in the `/docs` folder. 
 
 ### To run the docs locally: 
 
@@ -143,64 +145,26 @@ you must add the category name to `docs/_config.yml` under `categories-order` in
 
 To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
 
-# Contributing to the Code Generator:
-
-Code Path: `app/Ship/Generator`.
-Commands paths: `app/Ship/Generator/Commands`.
-
-Each component command, "Except the Containers Generator" must extend from the `app/Ship/Generator/GeneratorCommand.php`.
-
-This abstract class does all the work for you.
-
-### Add new component generator.
-
-1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
-
-For each generator you need to implement exactly one method (as it is defined in the respective interface)
-
-- `getUserInputs:` 
-    This method reads all parameters from the command line or provides a wizard to get information from the user.
-    The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
-    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the 
-    Generator itself. Simply add the options that are specifically needed for this generator.
-    
-    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available. 
-    Otherwise, they will ask the user for additional input.
-    
-    The method must return an array of 3 keys:
-  - `path-parameters` are used to replace variables within the path where the generator creates the file.
-  - `file-parameters` are used to replace variables within the name of the file to be created.
-  - `stub-parameters` are used to replace variables within the stub.
-  
-
-2 - Create the stub to be loaded in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
-
-3 - Finally register the command in `app/Ship/Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
-
-```php
-        $this->registerGenerators([
-            'Action',
-            'Route',
-            'Task',
-            // ...
-        ]);
-```
-
-4 - Default Filename (optional)
-
-You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
-
 
 
 <br>
 
 
 
-# Contributing to APIATO
- 
-Contribute to APIATO while working on your personal project.
 
-> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core of apiato).
+# Contributing to APIATO
+
+> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core package of apiato).
+
+
+
+## Contributing to APIATO Skeleton Project
+
+The APIATO Skeleton, is the actual Apiato project on the repository `apiato/apiato`.
+
+This guide will help you contribute to the APIATO Skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
+
+
 
 ### SETUP
 
@@ -302,3 +266,91 @@ Or use `git reset --hard upstream/master` if you want to override your local cha
 *W'll do our best to merge your PR in the shortest time possible. Thanks in advanced :)*
 
 Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
+
+
+
+
+<br>
+
+## Contributing to APIATO Core Package
+
+The APIATO Core Package, is what provies most of the functionality of the APIATO project. 
+
+This guide will help you contribute to the APIATO Core Package, while the package is in the vendor direcotry.
+
+### SETUP
+
+1) Pull the package to the project vendor (even if it was there) using:
+
+`composer update apiato/core --prefer-source`
+
+
+_The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can commit and push from the vendor directory directly._
+
+
+2) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
+
+
+### USAGE
+
+**Edit > Commit > Push > PR :)**
+
+
+
+
+<br>
+
+
+# Contributing to the Code Generator
+
+- Core Repo: `apiato/core`.
+- Code Path: `/apiato/core/Generator`.
+- Commands paths: `/apiato/core/Generator/Commands`.
+
+Each component command, "Except the Containers Generator" must extend from the `Apiato\Core\Generator\GeneratorCommand.php`.
+
+This abstract class does all the work for you.
+
+### Add new component generator.
+
+1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
+
+For each generator you need to implement exactly one method (as it is defined in the respective interface)
+
+- `getUserInputs:` 
+    This method reads all parameters from the command line or provides a wizard to get information from the user.
+    The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
+    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the 
+    Generator itself. Simply add the options that are specifically needed for this generator.
+    
+    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available. 
+    Otherwise, they will ask the user for additional input.
+    
+    The method must return an array of 3 keys:
+  - `path-parameters` are used to replace variables within the path where the generator creates the file.
+  - `file-parameters` are used to replace variables within the name of the file to be created.
+  - `stub-parameters` are used to replace variables within the stub.
+  
+
+2 - Create the stub to be loaded in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
+
+3 - Finally register the command in `app/Ship/Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
+
+```php
+        $this->registerGenerators([
+            'Action',
+            'Route',
+            'Task',
+            // ...
+        ]);
+```
+
+4 - Default Filename (optional)
+
+You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
+
+
+
+
+
+
