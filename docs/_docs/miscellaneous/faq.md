@@ -92,13 +92,18 @@ Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md
 
 
 <a name="q5"></a>
-## How to change API URL?
+## How to change the default API URL (Subdomain and Prefix)?
 
-Access API using URL `example.com/api/` instead of the subdomain `api.example.com`: 
+By default Apiato uses `api.` as subdomain for all endpoints. And adds only the `v1` API version as prefix.
 
-1. open `RoutesLoaderTrait` find `loadApiRoute` function
-2. set prefix to `'prefix' => 'api/' . $versionPrefix,` 
-3. open `.env` change your api domain to `API_URL=http://example.com`
+To edit this, example changing `api.apiato.com` to `apiato.com/api/`. Do the following:
+
+1. Edit `.env`, change your api domain to `API_URL=http://apiato.com` instead of `API_URL=http://api.apiato.com` to remove the subdomain.
+2. Edit `app/Ship/Configs/apiato.php`, set prefix to `'prefix' => 'api/',`.
+3. That's it. Now you might need to update your tests endpoints, if they fail. Since each test can specify which endpoint to test, Example: In `CreateAdminTest` change `protected $endpoint = 'post@v1/admins';` to `protected $endpoint = 'post@api/v1/admins';`, including the new prefix.
+
+
+
 
 
 <a name="q6"></a>

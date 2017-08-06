@@ -22,11 +22,6 @@
                 -->
                 <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
                 <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
-
-                <!-- 
-                NOTE: Excluded this file because it fails when directly included with code-coverage.
-                -->
-                <file>./app/Ship/Engine/Loaders/FactoryMixer/FactoriesLoader.php</file>
             </exclude>
         </whitelist>
     </filter>
