@@ -17,4 +17,5 @@ interface ChargeableInterface
      * @return  mixed
      */
     public function charge($amount, $currency);
+
 }

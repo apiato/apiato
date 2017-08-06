@@ -2,14 +2,14 @@
 
 namespace App\Ship\Parents\Criterias;
 
-use Prettus\Repository\Contracts\CriteriaInterface as PrettusCriteria;
+use Apiato\Core\Abstracts\Criterias\Criteria as AbstractCriteria;
 
 /**
  * Class Criteria.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class Criteria implements PrettusCriteria
+abstract class Criteria extends AbstractCriteria
 {
 
 }

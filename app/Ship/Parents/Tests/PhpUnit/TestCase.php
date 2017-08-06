@@ -2,41 +2,17 @@
 
 namespace App\Ship\Parents\Tests\PhpUnit;
 
-use App\Ship\Engine\Traits\HashIdTrait;
-use App\Ship\Tests\PhpUnit\TestingTrait;
-use App\Ship\Tests\PhpUnit\TestsAuthHelperTrait;
-use App\Ship\Tests\PhpUnit\TestsCustomHelperTrait;
-use App\Ship\Tests\PhpUnit\TestsMockHelperTrait;
-use App\Ship\Tests\PhpUnit\TestsRequestHelperTrait;
-use App\Ship\Tests\PhpUnit\TestsResponseHelperTrait;
-use App\Ship\Tests\PhpUnit\TestsUploadHelperTrait;
+use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
 use Faker\Generator;
-use Illuminate\Contracts\Console\Kernel as LaravelKernel;
-use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
+use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 
 /**
- * Class TestCase.
+ * Class TestCase
  *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-abstract class TestCase extends LaravelTestCase
+abstract class TestCase extends AbstractTestCase
 {
-
-    use TestCaseTrait,
-        TestsRequestHelperTrait,
-        TestsResponseHelperTrait,
-        TestsMockHelperTrait,
-        TestsAuthHelperTrait,
-        TestsUploadHelperTrait,
-        TestsCustomHelperTrait,
-        HashIdTrait;
-
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl;
 
     /**
      * Setup the test environment, before each test.
@@ -46,15 +22,6 @@ abstract class TestCase extends LaravelTestCase
     public function setUp()
     {
         parent::setUp();
-
-        // migrate the database
-        $this->migrateDatabase();
-
-        // seed the database
-        $this->seed();
-
-        // Install Passport Client for Testing
-        $this->setupPassportOAuth2();
     }
 
     /**
@@ -62,7 +29,7 @@ abstract class TestCase extends LaravelTestCase
      */
     public function tearDown()
     {
-        $this->artisan('migrate:reset');
+        parent::tearDown();
     }
 
     /**
@@ -79,11 +46,12 @@ abstract class TestCase extends LaravelTestCase
 
         $app = require __DIR__ . '/../../../../../bootstrap/app.php';
 
-        $app->make(LaravelKernel::class)->bootstrap();
+        $app->make(ApiatoConsoleKernel::class)->bootstrap();
 
         // create instance of faker and make it available in all tests
         $this->faker = $app->make(Generator::class);
 
         return $app;
     }
+
 }

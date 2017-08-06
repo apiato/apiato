@@ -2,30 +2,22 @@
 
 namespace App\Ship\Parents\Providers;
 
-use App\Ship\Engine\Loaders\MiddlewaresLoaderTrait;
+use Apiato\Core\Abstracts\Providers\MiddlewareProvider as AbstratMiddlewareProvider;
 
 /**
  * Class MiddlewareProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-abstract class MiddlewareProvider extends MainProvider
+abstract class MiddlewareProvider extends AbstratMiddlewareProvider
 {
-
-    use MiddlewaresLoaderTrait;
-
-    protected $middlewares = [];
-
-    protected $middlewareGroups = [];
-
-    protected $routeMiddleware = [];
 
     /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->loadMiddlewares();
+        parent::boot();
     }
 
     /**
@@ -33,6 +25,7 @@ abstract class MiddlewareProvider extends MainProvider
      */
     public function register()
     {
-
+        parent::register();
     }
+
 }

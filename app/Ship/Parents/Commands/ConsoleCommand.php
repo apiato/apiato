@@ -2,14 +2,14 @@
 
 namespace App\Ship\Parents\Commands;
 
-use Illuminate\Console\Command as LaravelCommand;
+use Apiato\Core\Abstracts\Commands\ConsoleCommand as AbstractConsoleCommand;
 
 /**
  * Class ConsoleCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-abstract class ConsoleCommand extends LaravelCommand
+abstract class ConsoleCommand extends AbstractConsoleCommand
 {
 
 }

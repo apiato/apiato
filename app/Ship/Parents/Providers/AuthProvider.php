@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as LaravelAuthServiceProvider;
+use Apiato\Core\Abstracts\Providers\AuthProvider as AbstractAuthProvider;
 
 /**
  * Class ShipAuthServiceProvider
@@ -14,7 +14,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as LaravelAuthSe
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class AuthProvider extends LaravelAuthServiceProvider
+class AuthProvider extends AbstractAuthProvider
 {
 
     /**
@@ -40,8 +40,7 @@ class AuthProvider extends LaravelAuthServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
-        //
+        parent::boot();
     }
+
 }

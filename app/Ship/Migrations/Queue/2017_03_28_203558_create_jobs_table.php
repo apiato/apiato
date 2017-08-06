@@ -12,6 +12,7 @@ use Illuminate\Database\Migrations\Migration;
  */
 class CreateJobsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -43,4 +44,5 @@ class CreateJobsTable extends Migration
     {
         Schema::dropIfExists('jobs');
     }
+
 }

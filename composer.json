@@ -1,6 +1,6 @@
 {
   "name": "apiato/apiato",
-  "description": "apiato is a starter project, designed to help building scalable API's faster with PHP and Laravel.",
+  "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
   "homepage": "http://apiato.io/",
   "support": {
     "issues": "https://github.com/apiato/apiato/issues",
@@ -14,7 +14,6 @@
   ],
   "keywords": [
     "apiato",
-    "Porto",
     "Starter",
     "framework",
     "API framework",
@@ -33,6 +32,7 @@
     "ext-openssl": "*",
     "ext-pdo": "*",
     "ext-tokenizer": "*",
+    "apiato/core": "dev-master",
     "laravel/framework": "5.4.*",
     "laravel/tinker": "~1.0",
     "wikimedia/composer-merge-plugin": "^1.3.1"

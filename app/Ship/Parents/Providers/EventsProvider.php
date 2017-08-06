@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelEventServiceProvider;
+use Apiato\Core\Abstracts\Providers\EventsProvider as AbstractEventsProvider;
 
 /**
  * Class EventsProvider
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelEvent
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EventsProvider extends LaravelEventServiceProvider
+class EventsProvider extends AbstractEventsProvider
 {
 
     /**
@@ -20,7 +21,7 @@ class EventsProvider extends LaravelEventServiceProvider
      * @var array
      */
     protected $listen = [
-        //
+
     ];
 
 
@@ -32,8 +33,6 @@ class EventsProvider extends LaravelEventServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
     }
 
 }

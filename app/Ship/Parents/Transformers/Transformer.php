@@ -2,41 +2,14 @@
 
 namespace App\Ship\Parents\Transformers;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
-use Illuminate\Support\Facades\App;
-use League\Fractal\TransformerAbstract as FractalTransformer;
+use Apiato\Core\Abstracts\Transformers\Transformer as AbstractTransformer;
 
 /**
  * Class Transformer.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class Transformer extends FractalTransformer
+abstract class Transformer extends AbstractTransformer
 {
-
-    /**
-     * @return  mixed
-     */
-    public function user()
-    {
-        return App::make(GetAuthenticatedUserTask::class)->run();
-    }
-
-    /**
-     * @param $adminResponse
-     * @param $clientResponse
-     *
-     * @return  array
-     */
-    public function ifAdmin($adminResponse, $clientResponse)
-    {
-        $user = $this->user();
-
-        if (!is_null($user) && $user->hasAdminRole()) {
-            return array_merge($clientResponse, $adminResponse);
-        }
-
-        return $clientResponse;
-    }
 
 }

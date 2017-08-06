@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Ship\Engine\Kernels;
+namespace App\Ship\Kernels;
 
 use App\Ship\Middlewares\Http\ResponseHeadersMiddleware;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
- * Class ShipHttpKernel
+ * Class HttpKernel
  *
  * A.K.A (app/Http/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ShipHttpKernel extends LaravelHttpKernel
+class HttpKernel extends LaravelHttpKernel
 {
 
     /**
@@ -52,9 +52,8 @@ class ShipHttpKernel extends LaravelHttpKernel
         'api' => [
             ResponseHeadersMiddleware::class,
             'bindings',
-            // The throttle Middleware is registered in the app/Ship/Engine/Loaders/RoutesLoaderTrait.php
+            // The throttle Middleware is registered by the RoutesLoaderTrait in the Core
         ],
-
     ];
 
     /**
@@ -67,10 +66,10 @@ class ShipHttpKernel extends LaravelHttpKernel
     protected $routeMiddleware = [
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-//        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-//        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'can'      => \Illuminate\Auth\Middleware\Authorize::class,
+        'auth'     => \Illuminate\Auth\Middleware\Authenticate::class,
+        // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 
 }

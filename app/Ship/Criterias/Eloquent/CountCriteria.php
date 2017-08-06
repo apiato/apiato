@@ -39,4 +39,5 @@ class CountCriteria extends Criteria
     {
         return DB::table($model->getModel()->getTable())->select('*', DB::raw('count('.$this->field.') as total_count'))->groupBy($this->field);
     }
+
 }

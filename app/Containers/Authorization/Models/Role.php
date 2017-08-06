@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Models;
 
-use App\Ship\Engine\Traits\HashIdTrait;
+use Apiato\Core\Traits\HashIdTrait;
 use Spatie\Permission\Models\Role as LaratrustRole;
 
 /**

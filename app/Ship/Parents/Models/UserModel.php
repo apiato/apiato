@@ -2,13 +2,12 @@
 
 namespace App\Ship\Parents\Models;
 
+use Apiato\Core\Abstracts\Models\UserModel as AbstractUserModel;
+use Apiato\Core\Traits\HashIdTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Ship\Engine\Traits\HashIdTrait;
-use App\Ship\Engine\Traits\TokenTrait;
 use App\Ship\Payment\Contracts\ChargeableInterface;
 use App\Ship\Payment\Traits\ChargeableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as LaravelAuthenticatableUser;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -18,9 +17,15 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class UserModel extends LaravelAuthenticatableUser implements ChargeableInterface
+abstract class UserModel extends AbstractUserModel implements ChargeableInterface
 {
 
-    use Notifiable, HashIdTrait, SoftDeletes, HasRoles, AuthorizationTrait, ChargeableTrait, HasApiTokens, TokenTrait;
+    use AuthorizationTrait;
+    use Notifiable;
+    use SoftDeletes;
+    use HashIdTrait;
+    use HasRoles;
+    use HasApiTokens;
+    use ChargeableTrait;
 
 }

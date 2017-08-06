@@ -2,12 +2,14 @@
 
 namespace App\Ship\Parents\Actions;
 
+use Apiato\Core\Abstracts\Actions\SubAction as AbstractSubAction;
+
 /**
- * Class Action.
+ * Class SubAction.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class SubAction extends Action
+abstract class SubAction extends AbstractSubAction
 {
 
 }

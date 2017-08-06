@@ -13,6 +13,7 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
  */
 class ThisUserCriteria extends Criteria
 {
+
     /**
      * @var int
      */
@@ -42,4 +43,5 @@ class ThisUserCriteria extends Criteria
 
         return $model->where('user_id', '=', $this->userId);
     }
+
 }

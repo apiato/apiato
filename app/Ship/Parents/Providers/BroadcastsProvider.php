@@ -4,6 +4,7 @@ namespace App\Ship\Parents\Providers;
 
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider as LaravelBroadcastServiceProvider;
+use Apiato\Core\Abstracts\Providers\BroadcastsProvider as AbstractBroadcastsProvider;
 
 /**
  * Class BroadcastsProvider
@@ -12,7 +13,7 @@ use Illuminate\Support\ServiceProvider as LaravelBroadcastServiceProvider;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class BroadcastsProvider extends LaravelBroadcastServiceProvider
+class BroadcastsProvider extends AbstractBroadcastsProvider
 {
 
     /**
@@ -31,6 +32,7 @@ class BroadcastsProvider extends LaravelBroadcastServiceProvider
     {
         Broadcast::routes();
 
-//        require base_path('routes/channels.php');
+        // require base_path('routes/channels.php');
     }
+
 }

@@ -2,14 +2,14 @@
 
 namespace App\Ship\Parents\Seeders;
 
-use Illuminate\Database\Seeder as LaravelSeeder;
+use Apiato\Core\Abstracts\Seeders\Seeder as AbstractSeeder;
 
 /**
  * Class Seeder.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class Seeder extends LaravelSeeder
+abstract class Seeder extends AbstractSeeder
 {
 
 }

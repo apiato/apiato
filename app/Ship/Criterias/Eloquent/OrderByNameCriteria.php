@@ -23,4 +23,5 @@ class OrderByNameCriteria extends Criteria
     {
         return $model->orderBy('name', 'asc');
     }
+
 }

@@ -24,4 +24,5 @@ class CreatedTodayCriteria extends Criteria
     {
         return $model->where('created_at', '>=', Carbon::today()->toDateString());
     }
+
 }

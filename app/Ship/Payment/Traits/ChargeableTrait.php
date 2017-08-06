@@ -21,4 +21,5 @@ trait ChargeableTrait
     {
         return App::make(PaymentsProxy::class)->charge($this, $amount, $currency);
     }
+
 }

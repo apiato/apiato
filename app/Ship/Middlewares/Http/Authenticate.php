@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
  */
 class Authenticate
 {
+
     /**
      * The Guard implementation.
      *
@@ -50,4 +51,5 @@ class Authenticate
 
         return $next($request);
     }
+
 }

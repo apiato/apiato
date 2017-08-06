@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Ship\Seeders\Data\Testing\Seeders;
+namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 
 /**
- * Class TestingDataSeeder
+ * Class SeedTestingData
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class TestingDataSeeder extends Seeder
+class SeedTestingData extends Seeder
 {
 
     /**
@@ -19,7 +19,7 @@ class TestingDataSeeder extends Seeder
      */
     public function run()
     {
-        // Create Testing data here ..
+        // Create Testing data for live tests
     }
 
 }

@@ -2,28 +2,22 @@
 
 namespace App\Ship\Parents\Providers;
 
-use App\Ship\Engine\Loaders\AliasesLoaderTrait;
-use App\Ship\Engine\Loaders\ProvidersLoaderTrait;
-use Illuminate\Support\ServiceProvider as LaravelAppServiceProvider;
+use Apiato\Core\Abstracts\Providers\MainProvider as AbstractMainProvider;
 
 /**
  * Class MainProvider.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class MainProvider extends LaravelAppServiceProvider
+abstract class MainProvider extends AbstractMainProvider
 {
-    use ProvidersLoaderTrait;
-    use AliasesLoaderTrait;
-
 
     /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
-        $this->loadServiceProviders();
-        $this->loadAliases();
+        parent::boot();
     }
 
     /**
@@ -31,6 +25,7 @@ abstract class MainProvider extends LaravelAppServiceProvider
      */
     public function register()
     {
-        //
+        parent::register();
     }
+
 }

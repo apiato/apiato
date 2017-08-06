@@ -13,6 +13,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
  */
 class EncryptCookies extends BaseEncrypter
 {
+
     /**
      * The names of the cookies that should not be encrypted.
      *
@@ -21,4 +22,5 @@ class EncryptCookies extends BaseEncrypter
     protected $except = [
         //
     ];
+
 }

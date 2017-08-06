@@ -2,17 +2,14 @@
 
 namespace App\Ship\Parents\Models;
 
-use App\Ship\Engine\Traits\HashIdTrait;
-use Illuminate\Database\Eloquent\Model as LaravelEloquentModel;
+use Apiato\Core\Abstracts\Models\Model as AbstractModel;
 
 /**
  * Class Model.
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-abstract class Model extends LaravelEloquentModel
+abstract class Model extends AbstractModel
 {
-
-    use HashIdTrait;
 
 }

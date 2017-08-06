@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Ship\Engine\Kernels;
+namespace App\Ship\Kernels;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
 /**
- * Class ShipConsoleKernel
+ * Class ConsoleKernel
  *
  * A.K.A (app/Console/Kernel.php)
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ShipConsoleKernel extends LaravelConsoleKernel
+class ConsoleKernel extends LaravelConsoleKernel
 {
+
     /**
      * The Artisan commands provided by your application.
      *
      * @var array
      */
     protected $commands = [
-        //
+
     ];
 
     /**
@@ -35,7 +36,6 @@ class ShipConsoleKernel extends LaravelConsoleKernel
         //          ->hourly();
     }
 
-
     /**
      * Register the Closure based commands for the application.
      *
@@ -43,6 +43,7 @@ class ShipConsoleKernel extends LaravelConsoleKernel
      */
     protected function commands()
     {
-//        require base_path('routes/console.php');
+        // require base_path('routes/console.php');
     }
+
 }

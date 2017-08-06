@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\User\Tests\TestCase;
+use App\Containers\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 
 /**
