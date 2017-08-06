@@ -204,7 +204,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
 
 ## Change Tokens Expiration dates
 
-Go to the `apiato.php` config file and edit this:
+Go to the `app/Ship/Configs/apiato.php` config file and edit this:
 
 ```php
 <?php

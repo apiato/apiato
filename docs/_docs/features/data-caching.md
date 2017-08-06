@@ -22,4 +22,4 @@ To set cache settings on each repository, first the caching must be enabled, sec
 
 For an example look at the `app/Containers/Countries/Data/Repositories/CountryRepository.php` class. For more details about all the properties refer to [the L5 repository package documentation](https://github.com/andersao/l5-repository#cache-config).
 
-Note: you don't need to use the `CacheableRepository` trait or implement the `CacheableInterface` since they both exist on the Abstract repository class (`App\Ship\Parents\Repositories`).
+Note: you don't need to use the `CacheableRepository` trait or implement the `CacheableInterface` since they both exist on the Abstract repository class (`App\Ship\Parents\Repositories\Repository`).

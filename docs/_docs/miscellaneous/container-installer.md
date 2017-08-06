@@ -1,5 +1,5 @@
 ---
-title: "Containers"
+title: "Containers Installer"
 category: "Miscellaneous"
 order: 4
 ---
@@ -14,15 +14,14 @@ automatically downloaded and installed to your specific web application.
 
 ### Downloading and Installing 3rd Party Containers
 
-If you would like to use a specific container that was developed by a 3rd party developer, you can download them from 
-GitHub or any other platform. However, you will not be able to automatically update them later on (e.g., if additional 
-information is provided by the main developer).
+In order to use a specific container that is developed by a 3rd party developer, apiato provides an easy-to-use solution for downloading, installing and continuously updating containers from
+3rd party developers. 
 
-apiato, however, provides an easy-to-use approach for downloading, installing and continuously updating containers from
-3rd party developers. As an application developer, you simply need to include the respective `vendor/project` to the 
+As an application developer, you simply need to include the respective `vendor/project` to the 
 `composer.json` file within the `app/Containers` folder. 
 
 For example, the respective `/app/Containers/composer.json` file may look something like this:
+
 ```
 {
   "name": "apiato/containers",
@@ -34,13 +33,12 @@ For example, the respective `/app/Containers/composer.json` file may look someth
 
 ```
 
-You then just need to call `composer update` in order to install the respective packages. The package (e.g., the container) 
-`johannesschobel/apiato-null` is then installed to the `/app/Container` folder. However, the developer of this package 
-needs to follow some basic guidelines (please see below!) in order to make this happen. 
+You just need to call `composer update` in order to install the respective packages. The package (e.g., the container) 
+`johannesschobel/apiato-null` is then installed to the `/app/Container` folder. However, the developer of the package 
+needs to follow some basic guidelines listed below. 
 
-**Important Information:**
-Please **do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`
-again. 
+
+> Warning: **Do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`. 
 
 ### Developing a Container
 

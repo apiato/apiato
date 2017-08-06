@@ -4,25 +4,41 @@ category: "Miscellaneous"
 order: 5
 ---
 
+* [Do I have to use the Porto Architecture to benefit from APIATO](#q1)
+* [How to use my custom domain?](#q2)
+* [Where to put my frontend code?](#q3)
+* [Where do I register Service Providers and Aliases?](#q4)
+* [How to change API URL?](#q5)
+* [How to version my API in header instead of URL?](#q6)
+* [Where do I define my Composer dependencies?](#q7)
+* [How to enable Query Caching?](#q8)
+* [Can I give my Actions REST names?](#q9)
+* [How to upgrade apiato?](#q10)
+* [I have a question and I can't find answer!!](#q100)
 
-## Do I have to use the Porto SAP to benefit from APIATO!?
+<br>
+
+<a name="q1"></a>
+## Do I have to use the Porto Architecture to benefit from APIATO!?
 
 NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer.
 And you can call the APIATO provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
 You have the freedom to structure your own project anyway you like, and still use all the feature that APIATO provide.
 
 
+<a name="q2"></a>
 ## How to use my custom domain?
 
 Change the default URL from `apiato.dev` to `awesome.com`
 
-1) open your hosts (`sudo vi ect/hosts`) file and map your domain `awesome.com` to the IP address of your Virtual Host (Docker IP or Vagrant IP) or any host you are using in case you have the tools installed locally on your machine.
+1) Edit your hosts file `sudo vi ect/hosts`, and map your domain `awesome.com` to the IP address of your Virtual Host (Localhost, Docker IP, Vagrant IP, ...)
 
-2) open the .env file and replace `apiato.dev` with `awesome.com` in `APP_URL`, and `API_URL` *(note the API domain should be api.*)*
+2) Edit the `.env` file and replace `apiato.dev` with `awesome.com` in `APP_URL`, and `API_URL` *(note the API domain should be api.*)*
 
-3) open `phpunit.xml` and change `API_BASE_URL` from `apiato.dev` to `awesome.com`
+3) Edit the `phpunit.xml` file and change `API_BASE_URL` from `apiato.dev` to `awesome.com`
 
 
+<a name="q3"></a>
 ## Where to put my frontend code?
 
 It's recommended that the front-end Apps code live outside apiato completely. Example in `clients/web/` directory, separated from the Server code (apiato Code).
@@ -67,7 +83,7 @@ In this case the code will live in:
           - CLI
 ```
 
-
+<a name="q4"></a>
 ### Where do I register Service Providers and Aliases?
 
 Most of the third party packages Service Providers and Aliases SHOULD be registered inside the Container's Main Service Providers, inside the `$serviceProviders` and `$aliases` properties. However, some more general Service Providers and Aliases (application features used by all containers) CAN be registered inside the Engine Main `PortoServiceProvider`.
@@ -75,6 +91,7 @@ Most of the third party packages Service Providers and Aliases SHOULD be registe
 Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md %}) page for more details.
 
 
+<a name="q5"></a>
 ## How to change API URL?
 
 Access API using URL `example.com/api/` instead of the subdomain `api.example.com`: 
@@ -84,6 +101,7 @@ Access API using URL `example.com/api/` instead of the subdomain `api.example.co
 3. open `.env` change your api domain to `API_URL=http://example.com`
 
 
+<a name="q6"></a>
 ## How to version my API in header instead of URL? 
 
 First remove the URL versioning:
@@ -93,23 +111,28 @@ First remove the URL versioning:
 Second Implement the Header versioning anyway you prefer.
 
 
-## Where do I define the composer dependencies?
+<a name="q7"></a>
+## Where do I define my Composer dependencies?
 
-All the composer dependencies should be defined in their Containers, in a composer.json file.
+All the Composer dependencies should be defined in their Containers, in a `composer.json` file.
 
-*The Ship layer dependencies live on the root of the Ship layer in a composer.json file. Finally the 
-Framework core dependencies live on the project root composer.json file*.
+*The Ship layer dependencies live on the root of the Ship layer in a `composer.json` file. 
+Finally the Framework core dependencies live on the project root `composer.json` file*.
+
+Basically using any of the `composer.json` will do the same job. it's up to you to pick the most relevant location.
 
 
-
+<a name="q8"></a>
 ## How to enable Query Caching?
 
 By default this feature is turned off.
 
-To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The query result will be cleared on `create`, `update` and `delete`. However all these configurations can be changed from `Ship/Configs/repository.php`.
+To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The query result will be cleared on `create`, `update` and `delete`. 
+ 
+_All these configurations can be changed from `Ship/Configs/repository.php`_.
 
 
-
+<a name="q9"></a>
 ## Can I give my Actions REST names? 
 
 Example: `IndexAction`, `ShowAction`, `StoreAction`...
@@ -134,26 +157,15 @@ one “similar to TDD/BDD” with the help of a command that tells what you alre
 needs to be completed.. as well as what Tasks are available to be used from any Action..
 
 
-
-## I have a question and I can't find answer!!
-
-If you have a question, or didn't find an answer you were looking for. 
-First make sure your question is related to apiato and is not a general question.  
-If so, then consider visiting the [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for  
-*keywords* related to your issue *(filter open and closed issues)*. 
-Another option you have is to get help from the community on [Slack](https://now-examples-slackin-bvfqosqozk.now.sh).
-
-Lastly, if you got your question answered, consider sharing it, if you believe it can help others. 
-You can submit a PR adding the questions and answer here on the FAQ page. 
-Or leave it somewhere on the repository or on Slack. Thanks in advanced :)
-
-
-
+<a name="q10"></a>
 ## How to upgrade apiato?
 
 I've used apiato for a project and now I need to upgrade it.
 
-Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+> Checkout the [Upgrade Guide]({{ site.baseurl }}{% link _docs/miscellaneous/upgrade-guide.md %}).
+
+
+##### Upgrading methode:
 
 1) Setup an upstream remote (to point to your fork of the apiato repository)
 
@@ -208,3 +220,39 @@ The git merging can be done in many ways:
 
 `git cherry-pick {commit-ID}`      (if you get any conflict solve it and keep moving)
 
+<br>
+
+Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="q100"></a>
+## I have a question and I can't find answer!!
+
+If you have a question, or didn't find an answer you were looking for. 
+First make sure your question is related to apiato and is not a general question.  
+If so, then consider visiting the [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for  
+*keywords* related to your issue *(filter open and closed issues)*. 
+Another option you have is to get help from the community on [Slack](https://now-examples-slackin-bvfqosqozk.now.sh).
+
+Lastly, if you got your question answered, consider sharing it, if you believe it can help others. 
+You can submit a PR adding the questions and answer here on the FAQ page. 
+Or leave it somewhere on the repository or on Slack. Thanks in advanced :)

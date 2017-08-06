@@ -290,11 +290,13 @@ Furthermore, one can define a `default` value to be returned, if the key is not 
 
 ### **sanitizeData**
 
-Especially for `PATCH` requests, one would like to submit only the fields to be changed to the API in order to 
-a) minimize the traffic and
-b) to partially update the respective resource.
+Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
+ 
+a) minimize the traffic
+b) partially update the respective resource
 
-However, checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
+Checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
+
 ```php
 // ...
 if($request->has('data.name')) {
@@ -306,13 +308,16 @@ if($request->has('data.description')) {
 // ...
 ```
 
-In order to avoid those `if` blocks, usually `array_filter($data)` in order to remove `empty` fields from the request. 
-However, in PHP `false` and `'' (empty string)` is also considered as `empty` (which is clearly not what you want).
+So to avoid those `if` blocks, use `array_filter($data)` in order to remove `empty` fields from the request.
+ 
+However, in PHP `false` and `''` _(empty string)_ are also considered as `empty` (which is clearly not what you want).
+
 You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
 
 In order to simplify sanitizing `Request Data`, apiato offers a convenient `sanitizeInput($fields)` method for developers.
 
 Consider the following `$request` data:
+
 ```json
 {
 	"data" : {
@@ -334,12 +339,14 @@ Consider the following `$request` data:
 
 The method lets you specify a list of `$fields` to be accessed and extracted from the `$request`. This is done using the
 DOT notation. Finally, call the `sanitizeInput()` method on the `$request`:
+
 ```php
 $fields = ['data.name', 'data.description', 'data.is_private', 'data.blabla', 'data.foo.c'];
 $data = $request->sanitizeInput($fields);
 ```
 
 The extracted `$data` looks like this:
+
 ```php
 [
   "data" => [
@@ -357,7 +364,9 @@ other fields from the `$request` are omitted as they are not specified. So basic
 `filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify 
 the fields to would like to pass through. This makes partially updating an resource quite easy!
 
-**Heads Up:** Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
+**Heads Up:** 
+
+Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
 
 ## Storing Data on the Request
 
@@ -368,6 +377,7 @@ To store some data on the request use:
 ```php
 $request->keep(['someKey' => $someValue]);
 ```
+
 To retrieve the data back at any time during the request life-cycle use:
 
 ```php
@@ -421,7 +431,7 @@ $request = MakeOrderRequest::injectData($data, $user);
 
 $order = App::make(MakeOrderAction::class)->run($request);
 
-// .....
+// ...
 
 ```
 

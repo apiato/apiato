@@ -15,7 +15,7 @@ The rate limit window is `1` minutes per endpoint, with most individual calls al
 
 
 
-To update these values go to `apiato.php` config file, or to the `ENV` file.
+To update these values go to `app/Ship/Configs/apiato.php` config file, or to the `ENV` file.
 
 ```php
 /*

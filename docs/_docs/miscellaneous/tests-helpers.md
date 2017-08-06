@@ -174,8 +174,8 @@ $user = $this->getTestingUser([
 
 ```
 
-> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions please 
-check all the public functions in those traits `app/Ship/Tests/*`.
+> **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions  
+check all the public functions in all the traits in this directory `vendor/apiato/core/Traits/TestsTraits/PhpUnit/*`.
 
 ## Misc
 
@@ -191,10 +191,12 @@ See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, fo
 
 
 
-### Testing Data Seeder
+### Create live Testing Data
 
-1. Go to `Seeder/Data/Testing/Seeders/TestingDataSeeder.php` seeder class in the Seeder Container, and create your 
-testing data.
+To test your app with some live testing data (like creating items in an inventory) you can use this feature to 
+automatically genereate those data. This is also helpful for staging when real people are testing your app with some testing data.
+
+1. Go to `Seeder/SeedTestingData.php` seeder class, and create your live testing data.
 
 2. Run this command `php artisan apiato:seed-test`
 

@@ -86,6 +86,6 @@ Checkout the [Authorization]({{ site.baseurl }}{% link _docs/features/authorizat
 
 The API rate limiting middleware is applied to all the Module Endpoints by default, to edit the value check the `.env` file. To remove it edit the `app/Port/Routes/Traits/RoutesServiceProviderTrait.php` file `registerContainersApiRoutes` function.
 
-### Difference between Public Vs Private routes files
+### Difference between Public & Private routes files
 
 apiato has 2 types of endpoints, Public (External) mainly for third parties clients, and Private (Internal) for your own Apps. This will help generating separate documentations for each and keep your internal API private.

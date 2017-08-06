@@ -22,7 +22,7 @@ By default the `orderBy` sorts the data in **Ascending** order, if you want the 
 ?orderBy=name&sortedBy=asc
 ```
 
-Order By Accepts:
+Accepts:
 
 - `asc` for Ascending.
 - `desc` for Descending.

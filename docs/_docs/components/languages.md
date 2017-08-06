@@ -6,7 +6,7 @@ order: 34
 
 ### Definition
 
-Languages are not really Components, they are just files that holds translations.
+Languages are not real Components, they are just files that holds translations.
 
 ### Rules
 

@@ -111,7 +111,7 @@ class MainServiceProvider extends MainProvider
 
 No need to register the Main `Service Provider` anywhere, it will be automatically registered by the `Ship`, and it is responsible for registering all the Container Additional (Job Specific) Providers.
 
-### Container's Additional `Service Providers`
+### Container's Additional Service Providers
 
 You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follow:
 
@@ -127,7 +127,7 @@ private $containerServiceProviders = [
 ], 
 ```
 
-> Same thing applies to **Aliases**.
+> Same rule applies to **Aliases**.
 
 ### Third party packages Service Providers
 
@@ -135,14 +135,11 @@ If a package requires registering its service provider in the `config/app.php`, 
 
 ### Laravel Service Providers
 
-By default Laravel 5.4 provides 5 service providers in the `app/providers` directory. In apiato those providers have been renamed and replaced in the Ship Layer `app/Ship/Parents/Providers/*`:
+By default Laravel provides some service providers in its `app/providers` directory. 
+In apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers/*`:
 
 - AppServiceProvider
-
 - RouteServiceProvider
-
 - AuthServiceProvider
-
 - BroadcastServiceProvider
-
 - EventsServiceProvider

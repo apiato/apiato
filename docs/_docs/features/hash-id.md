@@ -75,6 +75,6 @@ More details on the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneou
 
 ## Availability
 
-You can use the `App\Ship\Engine\Traits\HashIdTrait` anywhere you like to gain access to the `encode` and `decode` functions.
+You can use the `Apiato\Core\Traits\HashIdTrait` to any model or class, in order to have the `encode` and `decode` functions.
 
 By default you have access to these functions `$this->encode($id)` and  `$this->decode($id)` from all your Tests class and Controllers.

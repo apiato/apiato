@@ -14,6 +14,8 @@ The requests monitor is provided by the Debugger Container, by a `RequestsMonito
 
 From the `.env` file set `REQUESTS_DEBUG` to true.
 
+Now in order for this start display the results you need to enable the debugging mode in Laravel by setting `APP_DEBUG` to true in the `.env` as well.
+
 ## Usage
 
 Simply tail the log file
@@ -57,7 +59,5 @@ By default everything is logged in the `debugger.log` file, to change the defaul
 This feature is provided by the `Debugger` Container via its `RequestsMonitorMiddleware` middleware.
 
 To see the results go ahead and Tail the default Laravel debug file `tail -f storage/logs/laravel.log`.
-
-Now in order for this start display the results you need to enable the debugging mode in Laravel by going to `config/app.php` and setting `debug` to true.
 
 Note: this will also not run in Testing environments, to enable it you need to manually edit the Middleware.

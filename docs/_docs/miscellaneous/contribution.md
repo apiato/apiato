@@ -200,6 +200,7 @@ You may provide another default filename by overriding the `getDefaultFileName()
  
 Contribute to APIATO while working on your personal project.
 
+> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core of apiato).
 
 ### SETUP
 
