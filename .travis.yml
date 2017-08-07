@@ -12,20 +12,11 @@ env:
   global:
     - setup=stable
 
-matrix:
-  fast_finish: true
-  include:
-    - php: 7.1
-      env: setup=normal
-    - php: 7.0
-      env: setup=normal
-
 before_install:
   - travis_retry composer self-update
 
 install:
   - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --prefer-stable --no-interaction --no-suggest; fi
-  - if [[ $setup = 'normal' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
 
 before_script:
   - cp .env.travis .env
@@ -36,7 +27,7 @@ before_script:
 
 script: vendor/bin/phpunit
 
-after_script:
-  - echo --------------- Begin Laravel.log ---------------
+after_failure:
+  - echo --------------- Begin > Laravel.log ---------------
   - cat storage/logs/laravel.log
-  - echo --------------- End Laravel.log ---------------
+  - echo --------------- End   > Laravel.log ---------------
