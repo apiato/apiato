@@ -18,20 +18,11 @@ class AuthProvider extends AbstractAuthProvider
 {
 
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * The policy mappings for the application.
      *
      * @var array
      */
-    protected $policies = [
-//        'App\Model' => 'App\Policies\ModelPolicy',
-    ];
+    protected $policies = [];
 
     /**
      * Register any authentication / authorization services.

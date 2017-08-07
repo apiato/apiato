@@ -5,11 +5,11 @@ namespace App\Ship\Providers;
 use App\Ship\Parents\Providers\MainProvider;
 
 /**
- * Class ServiceProvider
+ * Class ShipProvider
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ServiceProvider extends MainProvider
+class ShipProvider extends MainProvider
 {
 
     /**
@@ -18,7 +18,7 @@ class ServiceProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
-        //...
+        // ...
     ];
 
     /**
@@ -27,7 +27,7 @@ class ServiceProvider extends MainProvider
      * @var  array
      */
     protected $aliases = [
-        //...
+        // ...
     ];
 
     /**
@@ -38,6 +38,8 @@ class ServiceProvider extends MainProvider
     public function boot()
     {
         // ...
+        parent::boot();
+        // ...
     }
 
     /**
@@ -47,6 +49,8 @@ class ServiceProvider extends MainProvider
      */
     public function register()
     {
+        // ...
+        parent::register();
         // ...
     }
 

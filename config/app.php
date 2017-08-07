@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          *
-         * Porto Service Provider (The only exposed Service Provider).
+         * The Ship Provider (The only exposed Service Provider by the App).
          *
          * NOTE: all packages service providers must be registered inside their container's main service providers.
          */
-        Apiato\Core\Providers\PortoServiceProvider::class,
+        Apiato\Core\Providers\ApiatoProvider::class,
     ],
 
     /*

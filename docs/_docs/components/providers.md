@@ -36,7 +36,7 @@ They are the place where you register things like container bindings, event list
 
 - The Main Provider MUST be named `MainServiceProvider` in every container.
 
-- Only the Ship Main Provider (`App\Ship\Engine\Providers\PortoServiceProvider`) SHOULD be registered in the framework "Laravel" (`config/app.php`).
+- You should not register any Provider in the framework (`config/app.php`), only the `ApiatoProvider` should be registered there.
 
 ### Folder Structure
 
@@ -107,11 +107,11 @@ class MainServiceProvider extends MainProvider
 
 ### Register Service Providers:
 
-### Container's Main Service Provider
+#### Container's Main Service Provider
 
-No need to register the Main `Service Provider` anywhere, it will be automatically registered by the `Ship`, and it is responsible for registering all the Container Additional (Job Specific) Providers.
+No need to register the Main `Service Provider` anywhere, it will be automatically registered, and it is responsible for registering all the Container Additional (Job Specific) Providers.
 
-### Container's Additional Service Providers
+#### Container's Additional Service Providers
 
 You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follow:
 
@@ -129,11 +129,14 @@ private $containerServiceProviders = [
 
 > Same rule applies to **Aliases**.
 
-### Third party packages Service Providers
+#### Third party packages Service Providers
 
-If a package requires registering its service provider in the `config/app.php`, you can register that service provider in the Main container as well.
+If a package requires registering its service provider in the `config/app.php`, you SHOULD register its service provider in the Main container where you are using it.
+However, if it's a generic package used by the entire framework and not a specific Container or feature. Then you can register that service provider in the `app/Ship/Providers/ShipProvider.php`, but never in the `config/app.php`.
 
-### Laravel Service Providers
+
+
+### Information about Laravel Service Providers
 
 By default Laravel provides some service providers in its `app/providers` directory. 
 In apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers/*`:
@@ -143,3 +146,8 @@ In apiato those providers have been renamed and moved to the Ship Layer `app/Shi
 - AuthServiceProvider
 - BroadcastServiceProvider
 - EventsServiceProvider
+
+Note: you should not modify those providers, instead you need to extend them from your containers providers. 
+Example: the `app/Containers/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
+
+Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).

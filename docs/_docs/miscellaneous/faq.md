@@ -14,6 +14,7 @@ order: 5
 * [How to enable Query Caching?](#q8)
 * [Can I give my Actions REST names?](#q9)
 * [How to upgrade apiato?](#q10)
+* [How Service Providers are auto-loaded?](#q11)
 * [I have a question and I can't find answer!!](#q100)
 
 <br>
@@ -86,7 +87,8 @@ In this case the code will live in:
 <a name="q4"></a>
 ### Where do I register Service Providers and Aliases?
 
-Most of the third party packages Service Providers and Aliases SHOULD be registered inside the Container's Main Service Providers, inside the `$serviceProviders` and `$aliases` properties. However, some more general Service Providers and Aliases (application features used by all containers) CAN be registered inside the Engine Main `PortoServiceProvider`.
+Most of the third party packages Service Providers and Aliases SHOULD be registered inside the Container's Main Service Providers, inside the `$serviceProviders` and `$aliases` properties. 
+However, some more general Service Providers and Aliases (application features used by all containers) CAN be registered on the Ship layer in `app/Ship/Providers/ShipProvider.php` inside the `$serviceProviders` and `$aliases` properties.
 
 Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md %}) page for more details.
 
@@ -227,6 +229,28 @@ The git merging can be done in many ways:
 <br>
 
 Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+
+
+
+
+
+<a name="q11"></a>
+### How Service Providers are auto-loaded?
+
+Each Container has Main Provider and other Providers (Additional Providers). 
+When `runLoadersBoot()` is called it auto register all the Main Providers from all the Containers. 
+
+Each main provider calls its`boot()` function after being registered, which calls `loadServiceProviders()` to register all the other container Providers. 
+The other providers must be defined on its `$serviceProviders` property, otherwise will be ignored.
+
+
+On the other side the `ApiatoServiceProvider` is manually registered on the `app.php` file (and it's the only one registered there). 
+
+The `ApiatoServiceProvider` is the one who calls the `runLoadersBoot()`, on startup. 
+After he call that function he registers the Ship Providers which has all the other Ship Providers defined on its `$serviceProviders` property.
+
+
+
 
 
 

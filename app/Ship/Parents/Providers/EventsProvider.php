@@ -2,7 +2,6 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as LaravelEventServiceProvider;
 use Apiato\Core\Abstracts\Providers\EventsProvider as AbstractEventsProvider;
 
 /**
