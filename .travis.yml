@@ -17,6 +17,8 @@ matrix:
   include:
     - php: 7.1
       env: setup=normal
+    - php: 7.0
+      env: setup=normal
 
 before_install:
   - travis_retry composer self-update
@@ -33,3 +35,8 @@ before_script:
   - php artisan passport:install
 
 script: vendor/bin/phpunit
+
+after_script:
+  - echo --------------- Begin Laravel.log ---------------
+  - cat storage/logs/laravel.log
+  - echo --------------- End Laravel.log ---------------
