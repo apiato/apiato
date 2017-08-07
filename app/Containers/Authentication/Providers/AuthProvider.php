@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Providers;
 
+use Apiato\Core\Loaders\RoutesLoaderTrait;
 use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
@@ -20,6 +21,7 @@ use Route;
  */
 class AuthProvider extends ParentAuthProvider
 {
+    use RoutesLoaderTrait;
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -54,11 +56,9 @@ class AuthProvider extends ParentAuthProvider
      */
     private function registerPassport()
     {
-        Route::group([
-            'prefix'     => '/v1',
-            'middleware' => ['api'],
-            'domain'     => Config::get('apiato.api.url'),
-        ], function () {
+        $routeGroupArray = $this->getRouteGroup('/v1');
+
+        Route::group($routeGroupArray, function () {
             Passport::routes();
         });
 
