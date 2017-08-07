@@ -21,8 +21,10 @@ The project is versioned under the [Semantic Versioning](http://semver.org/) gui
 ### Coding Standards
 
 The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) Coding Standard,
-[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) Coding Style
-and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) Autoloader.
+[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) Coding Style and some of the
+[PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) Styles.
+ 
+As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) Autoloader.
 *If you notice any compliance oversights, you can send a patch via pull request.*
 
 
@@ -105,51 +107,7 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 <br>
 
 
-
-
-# Contributing to APIATO's Documentation
-
-The documentation is generated using [Jekyll](https://jekyllrb.com/) and it lives in the `/docs` folder. 
-
-### To run the docs locally: 
-
-#### In Docker:
-
-1. `cd .../apiato/_docs`
-2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
-3. `bundle install`
-4. `jekyll serve`
-5. Browse `http://localhost:4000`
-
-#### Natively:
-
-1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
-2. `cd docs/`
-3. `bundle install`
-4. `bundle exec jekyll serve`
-5. Browse `http://localhost:4000`
-6. Finally `jekyll build`
-
-### Documentation Tips:
-
-The content of the documentation can be found in the `docs/_docs` folder.
-
-The styles are in `main.scss` and `docs/_sass/*`.
-
-The Layout `docs/_layouts/default.html`.
-
-The docs folders `_docs/*` do not represent the categories displayed in the site. 
-
-To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
-you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
-
-To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
-
-
-
-<br>
-
-
+___
 
 
 # Contributing to APIATO
@@ -168,7 +126,7 @@ This guide will help you contribute to the APIATO Skeleton project, while workin
 
 ### SETUP
 
-> One time setup
+**One time setup**
 
 In this scenario let's assume we have the following:
 
@@ -230,7 +188,7 @@ Now you should have the following branches:
 
 ### USAGE (Contribution Steps)
 
-> Must do every time before you contribute
+**Must do every time before you contribute**
 
 1) Update remotes (fetch)
 
@@ -293,7 +251,57 @@ _The composer option `--prefer-source` will clone the package's git repository i
 
 ### USAGE
 
-**Edit > Commit > Push > PR :)**
+Edit > Commit > Push > PR :)
+
+
+
+
+
+
+
+<br>
+
+# Contributing to APIATO's Documentation
+
+The documentation is generated using [Jekyll](https://jekyllrb.com/) and it lives in the `/docs` folder. 
+
+### To run the docs locally: 
+
+#### In Docker:
+
+1. `cd .../apiato/_docs`
+2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
+3. `bundle install`
+4. `jekyll serve`
+5. Browse `http://localhost:4000`
+
+#### Natively:
+
+1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
+2. `cd docs/`
+3. `bundle install`
+4. `bundle exec jekyll serve`
+5. Browse `http://localhost:4000`
+6. Finally `jekyll build`
+
+### Documentation Tips:
+
+The content of the documentation can be found in the `docs/_docs` folder.
+
+The styles are in `main.scss` and `docs/_sass/*`.
+
+The Layout `docs/_layouts/default.html`.
+
+The docs folders `_docs/*` do not represent the categories displayed in the site. 
+
+To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
+you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
+
+To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
+
+
+
+
 
 
 

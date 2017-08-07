@@ -97,7 +97,7 @@ Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md
 
 By default Apiato uses `api.` as subdomain for all endpoints. And adds only the `v1` API version as prefix.
 
-To edit this, example changing `api.apiato.com` to `apiato.com/api/`. Do the following:
+To change this from `api.apiato.com` to `apiato.com/api/`, do the following:
 
 1. Edit `.env`, change your api domain to `API_URL=http://apiato.com` instead of `API_URL=http://api.apiato.com` to remove the subdomain.
 2. Edit `app/Ship/Configs/apiato.php`, set prefix to `'prefix' => 'api/',`.
@@ -165,7 +165,7 @@ needs to be completed.. as well as what Tasks are available to be used from any 
 
 
 <a name="q11"></a>
-### How Service Providers are auto-loaded?
+## How Service Providers are auto-loaded?
 
 Each Container has Main Provider and other Providers (Additional Providers). 
 When `runLoadersBoot()` is called it auto register all the Main Providers from all the Containers. 

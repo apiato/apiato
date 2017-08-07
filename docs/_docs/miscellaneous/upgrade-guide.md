@@ -4,19 +4,14 @@ category: "Miscellaneous"
 order: 20
 ---
 
-> Checkout the [Upgrade Guide]({{ site.baseurl }}{% link _docs/miscellaneous/upgrade-guide.md %}).
-
-
-
-
-## Upgrade from `4.1` to `5.0`:
+## Upgrade from 4.1 to 5.0:
 
 > Estimated upgrading time is 15 minutes.
 
 
-This guide will show you how to fresh install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) to the freshly installed one (Apiato 5.0).
+This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) to the freshly installed one (Apiato 5.0).
 
-*In the guide w'll be using the term `Old Project` (refering to your old project that was built with Apiato 4.1), and the term `New Project` (refering to the new freshly installed Apiato 5.0).*
+*In the guide w'll be using the term **Old Project** (refering to your old project that was built with Apiato 4.1), and the term New **Project** (refering to the new freshly installed Apiato 5.0).*
 
 
 
