@@ -4,13 +4,32 @@ php:
   - '7.0'
   - '7.1'
 
+dist: trusty
+
+sudo: false
+
+env:
+  global:
+    - setup=stable
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+      env: setup=normal
+
+before_install:
+  - travis_retry composer self-update
+
+install:
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --prefer-stable --no-interaction --no-suggest; fi
+  - if [[ $setup = 'normal' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+
 before_script:
-- cp .env.travis .env
-- mysql -e 'create database homestead;'
-- travis_retry composer self-update
-- composer install --prefer-source --no-interaction --dev
-- php artisan key:generate
-- php artisan migrate --seed
-- php artisan passport:install
+  - cp .env.travis .env
+  - mysql -e 'create database apiato_db;'
+  - php artisan key:generate
+  - php artisan migrate --seed
+  - php artisan passport:install
 
 script: vendor/bin/phpunit

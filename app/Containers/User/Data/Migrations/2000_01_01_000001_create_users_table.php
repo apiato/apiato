@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->boolean('confirmed')->default(false);
+            $table->boolean('is_client')->default(false);
 
             $table->string('gender')->nullable();
             $table->string('birth')->nullable();

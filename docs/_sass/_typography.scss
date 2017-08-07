@@ -1,17 +1,17 @@
 html {
 	height: 100%;
 	max-height: 100%;
-	font-size: 10px;
+	font-size: 8px;
 	-webkit-tap-highlight-color: transparent;
 }
 
 body {
 	height: 100%;
 	max-height: 100%;
-	font-family: "Merriweather", serif;
+    font-family: 'Source Sans Pro', sans-serif;
 	letter-spacing: 0.01rem;
 	font-size: 1.8em;
-	line-height: 1.75em;
+	line-height: 0.75em;
 	color: #3A4145;
 	font-weight: 400;
 	-webkit-font-feature-settings: 'kern' 1;
@@ -34,7 +34,7 @@ table {
 	-webkit-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	-moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 	-o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
-	font-family: "Open Sans", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 	text-rendering: geometricPrecision;
 }
 
@@ -44,9 +44,9 @@ h3,
 h4,
 h5,
 h6 {
-	color: #166cb1;
+	color: #0185ab;
 	line-height: 1.15em;
-	margin: 0 0 0.8em 0;
+	margin: 2.2em 0 0.8em 0;
 	font-weight: 100;
 }
 
@@ -78,13 +78,17 @@ h6 {
 }
 
 a {
-	color: #4a3bf5;
+	color: #6872e6;
 	transition: color 0.2s ease;
     font-size: 15px;
+    line-height: 1.75em;
+    text-decoration:none;
+
 }
 
 a:hover {
-	color: #111;
+	color: #1223ea;
+    cursor: pointer;
 }
 
 p,
@@ -95,8 +99,10 @@ figure {
 	-webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
 	-moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
 	-o-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
-	margin: 0 0 1.75em 0;
+	margin: 0 0 1em 0;
+    line-height: 1.5em;
 	text-rendering: geometricPrecision;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 ol,
@@ -131,6 +137,7 @@ dl dd {
 
 li {
 	margin: 0.4em 0;
+    line-height: 1.75em;
 }
 
 li li {

@@ -8,5 +8,12 @@ $factory->define(App\Containers\User\Models\User::class, function (Faker\Generat
         'name'     => $faker->name,
         'email'    => $faker->email,
         'password' => Hash::make('testing-password'),
+        'is_client' => false,
+    ];
+});
+
+$factory->state(App\Containers\User\Models\User::class, 'client', function ($faker) {
+    return [
+        'is_client' => true,
     ];
 });

@@ -18,6 +18,8 @@ class ListClientsAction extends Action
      */
     public function run()
     {
-        return $this->call(ListUsersTask::class, [true, false, []]);
+        return $this->call(ListUsersTask::class, [], [
+            'ordered', 'clients'
+        ]);
     }
 }

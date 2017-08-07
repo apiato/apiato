@@ -8,17 +8,18 @@ google_analytics_key: UA-37514928-7
 show_full_navigation: true
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
-logo: /siteicon.png
-description: Product documentation template for Jekyll.
+logo: /images/apiato.jpg
+description: APIATO, a flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.
 author:
   name: Mahmoud Zalt
   email: mahmoud@zalt.me
   twitter: Mahmoud_Zalt
 social:
-  name: apiato
+  name: APIATO
   links:
-    - https://github.com/apiato/apiato
-
+    - http://apiato.io
+twitter:
+  username: Mahmoud_Zalt
 # -----
 # Build
 
@@ -62,6 +63,13 @@ defaults:
     values:
       _comments:
         type: Marks the impact of this release
+
+categories-order:
+ - Getting Started
+ - Features
+ - Main Components
+ - Optional Components
+ - Miscellaneous
 
 # -----------
 # CloudCannon

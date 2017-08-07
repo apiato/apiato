@@ -31,6 +31,7 @@ class GeneratorsServiceProvider extends ServiceProvider
             'Repository',
             'Request',
             'Route',
+            'SubAction',
             'Task',
             'Transformer'
         ]);

@@ -3,6 +3,7 @@
 namespace App\Containers\Debugger\Tasks;
 
 use App;
+use App\Ship\Parents\Tasks\Task;
 use DB;
 use Illuminate\Support\Facades\Config;
 use Log;
@@ -12,14 +13,12 @@ use Log;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class QueryDebuggerTask
+class QueryDebuggerTask extends Task
 {
 
     /**
      * Write the DB queries in the Log and Display them in the
      * terminal (in case you want to see them while executing the tests).
-     *
-     * @param bool|false $terminal
      */
     public function run()
     {

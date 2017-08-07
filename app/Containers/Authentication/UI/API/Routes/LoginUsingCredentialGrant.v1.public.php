@@ -6,6 +6,7 @@
  * @api                {post} /v1/oauth/token Login (Client Credentials Grant)
  * @apiDescription     Login Users using their username and passwords. (For Third-Party Clients).
  *                     You must have client ID and secret first. You can generate them by creating new Client in our Web App.
+ *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *

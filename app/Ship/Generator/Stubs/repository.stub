@@ -19,6 +19,7 @@ class {{class-name}} extends Repository
 
     public function boot()
     {
+		parent::boot();
         // probably do some stuff here ...
     }
 }

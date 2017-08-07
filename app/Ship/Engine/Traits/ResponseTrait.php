@@ -22,12 +22,13 @@ trait ResponseTrait
 
     /**
      * @param            $data
-     * @param null       $transformerName
+     * @param null $transformerName
      * @param array|null $includes
+     * @param array $meta
      *
-     * @return  mixed
+     * @return mixed
      */
-    public function transform($data, $transformerName = null, array $includes = null)
+    public function transform($data, $transformerName = null, array $includes = null, array $meta = [])
     {
         $transformer = new $transformerName;
 
@@ -37,8 +38,15 @@ trait ResponseTrait
         }
 
         if($includes){
+            $includes = array_unique(array_merge($transformer->getDefaultIncludes(), $includes));
             $transformer->setDefaultIncludes($includes);
         }
+
+        // add specific meta information to the response message
+        $this->metaData = [
+            'include' => $transformer->getAvailableIncludes(),
+            'custom' => $meta,
+        ];
 
         $fractal = Fractal::create($data, $transformer)->addMeta($this->metaData);
 

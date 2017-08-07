@@ -24,6 +24,7 @@ class RegisterUserAction extends Action
     {
         // create user record in the database and return it.
         return $this->call(CreateUserByCredentialsTask::class, [
+            $isClient = true,
             $request->email,
             $request->password,
             $request->name,

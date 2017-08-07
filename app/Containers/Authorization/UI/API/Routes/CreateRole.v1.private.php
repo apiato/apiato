@@ -4,6 +4,7 @@
  * @apiGroup           RolePermission
  * @apiName            createRole
  * @api                {post} /v1/roles Create a Role
+ *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
@@ -11,17 +12,7 @@
  * @apiParam           {String} [description]
  * @apiParam           {String} [display_name]
  *
- * @apiSuccessExample  {json}       Success-Response:
- * HTTP/1.1 200 OK
-{
-   "data":{
-      "object":"Role",
-      "id": abcderf,
-      "name":"Manager",
-      "description":"he manages things",
-      "display_name":"something else"
-   }
-}
+ * @apiUse             RoleSuccessSingleResponse
  */
 
 $router->post('roles', [

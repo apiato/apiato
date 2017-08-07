@@ -161,7 +161,7 @@ header {
 	background-color: $content-background-color;
 	color: $content-color;
 
-	h3::before {
+	h2::before {
 		content: "";
 		@extend hr;
 		margin: 9px 0;
@@ -229,7 +229,7 @@ nav > ul {
 
 .nav-item {
 	display: block;
-	font-family: "Open Sans", sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 1;
 	margin: 0;
 
@@ -242,9 +242,10 @@ nav > ul {
 	}
 
 	> a {
-		color: #666;
+		color: #4c4b4b;
 		text-decoration: none;
-		font-size: 1.4rem;
+        font-size: 1.6rem;
+        line-height: 12px;
 		padding: $space / 2 0 $space / 2 $space * 2;
 		display: block;
 	}
@@ -252,7 +253,7 @@ nav > ul {
 	&.current > a,
 	> a:active,
 	> a:hover {
-		color: #111;
+		color: #1223ea;
 	}
 
 	&.top-level > a {
@@ -409,7 +410,7 @@ h4 svg {
 }
 
 .badge {
-	font-family: "Open Sans", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 	padding: 2px 5px;
 	text-transform: uppercase;
 	font-size: 0.8rem;

@@ -5,6 +5,7 @@
  * @apiName            ClientAdminWebAppRefreshProxy
  * @api                {post} /v1/clients/web/admin/refresh Refresh
  * @apiDescription     Refresh access token based on refreshToken http cookie.
+ *
  * @apiVersion         1.0.0
  *
  * @apiSuccessExample  {json}       Success-Response:

@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\Authorization\Models\Role;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
 
@@ -24,16 +23,10 @@ class ListAllAdminsTest extends TestCase
     public function testListAllAdmins_()
     {
         // create some non-admin users
-        $user1 = factory(User::class)->create();
-        $adminRole = Role::where('name', 'admin')->first();
-        $user1->assignRole($adminRole);
-
-        $user2 = factory(User::class)->create();
-        $adminRole = Role::where('name', 'admin')->first();
-        $user2->assignRole($adminRole);
+        $users = factory(User::class, 2)->create();
 
         // should not be returned
-        factory(User::class)->create();
+        factory(User::class)->states('client')->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -45,7 +38,7 @@ class ListAllAdminsTest extends TestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(3,
+        $this->assertCount(4,
             $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 

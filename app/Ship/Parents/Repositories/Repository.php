@@ -2,6 +2,7 @@
 
 namespace App\Ship\Parents\Repositories;
 
+use Illuminate\Support\Facades\Config;
 use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheable;
 use Prettus\Repository\Criteria\RequestCriteria as PrettusRequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusRepository;
@@ -55,6 +56,12 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
     }
 
     /**
+     * Paginate the response
+     *
+     * Apply pagination to the response. Use ?limit= to specify the amount of entities in the response.
+     * The client can request all data (skipping pagination) by applying ?limit=0 to the request, if
+     * PAGINATION_SKIP is set to true.
+     *
      * @param null   $limit
      * @param array  $columns
      * @param string $method
@@ -67,7 +74,11 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
         // it from the request if available and if not keep it null.
         $limit = $limit ? : Request::get('limit');
 
+        // check, if skipping pagination is allowed and the requested by the user
+        if(Config::get('repository.pagination.skip') && $limit == "0") {
+            return parent::all($columns);
+        }
+
         return parent::paginate($limit, $columns, $method);
     }
-
 }

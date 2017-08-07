@@ -2,7 +2,8 @@
 
 namespace App\Containers\Settings\Tasks;
 
-use App\Containers\Settings\Data\Repositories\SettingsRepository;
+use App\Containers\Settings\Data\Repositories\SettingRepository;
+use App\Containers\Settings\Exceptions\SettingNotFoundException;
 use App\Ship\Parents\Tasks\Task;
 
 /**
@@ -13,21 +14,35 @@ use App\Ship\Parents\Tasks\Task;
 class UpdateSettingsByKeyTask extends Task
 {
     /**
+     * @var SettingRepository
+     */
+    private $repository;
+
+    /**
+     * UpdateSettingsByKeyTask constructor.
+     * @param SettingRepository $repository
+     */
+    public function __construct(SettingRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
      * @param $key
      * @param $value
      *
-     * @return  mixed
+     * @return mixed
+     * @throws SettingNotFoundException
      */
     public function run($key, $value)
     {
-        // TODO: replace both queries with a single UpdateWhere instead of find and update.
-        // this UpdateWhere needs to be added to the repository package (contribution).
+        $setting = $this->repository->findWhere(['key' => $key])->first();
 
-        $settingsRepository = App::make(SettingsRepository::class);
+        if(! $setting) {
+            throw new SettingNotFoundException();
+        }
 
-        $setting = $settingsRepository->findWhere(['key' => $key])->first();
-
-        return $settingsRepository->update([
+        return $this->repository->update([
             'value' => $value
         ], $setting->id);
     }

@@ -4,12 +4,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Repository Pagination Limit Default
+    | Repository Pagination
     |--------------------------------------------------------------------------
     |
     */
     'pagination' => [
-        'limit' => env('PAGINATION_LIMIT', 15),
+
+        'limit' => env('PAGINATION_LIMIT_DEFAULT', 15),
+
+         // if enabled it allows users to skip pagination by passing `?limit=0`.
+        'skip' => env('PAGINATION_SKIP', false),
     ],
 
     /*
@@ -17,12 +21,11 @@ return [
     | Fractal Presenter Config
     |--------------------------------------------------------------------------
     |
-
-    Available serializers:
-    ArraySerializer
-    DataArraySerializer
-    JsonApiSerializer
-
+    | Available serializers:
+    |    * ArraySerializer
+    |    * DataArraySerializer
+    |    * JsonApiSerializer
+    |
     */
     'fractal'    => [
         'params'     => [
@@ -104,6 +107,7 @@ return [
         ],
 
         'params'  => [
+
             /*
             |--------------------------------------------------------------------------
             | Skip Cache Params
@@ -117,20 +121,20 @@ return [
         ],
 
         /*
-       |--------------------------------------------------------------------------
-       | Methods Allowed
-       |--------------------------------------------------------------------------
-       |
-       | methods cacheable : all, paginate, find, findByField, findWhere, getByCriteria
-       |
-       | Ex:
-       |
-       | 'only'  =>['all','paginate'],
-       |
-       | or
-       |
-       | 'except'  =>['find'],
-       */
+        |--------------------------------------------------------------------------
+        | Methods Allowed
+        |--------------------------------------------------------------------------
+        |
+        | methods cacheable : all, paginate, find, findByField, findWhere, getByCriteria
+        |
+        | Ex:
+        |
+        | 'only'  =>['all','paginate'],
+        |
+        | or
+        |
+        | 'except'  =>['find'],
+        */
         'allowed' => [
             'only'   => null,
             'except' => null,

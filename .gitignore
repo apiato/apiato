@@ -11,4 +11,3 @@ storage/logs/laravel.log
 /public/api/
 /public/uploads/
 /laradock*/
-/storage/*.index

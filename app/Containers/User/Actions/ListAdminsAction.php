@@ -18,6 +18,8 @@ class ListAdminsAction extends Action
      */
     public function run()
     {
-        return $this->call(ListUsersTask::class, [true, false, ['admin']]);
+        return $this->call(ListUsersTask::class, [], [
+            'ordered', 'admins'
+        ]);
     }
 }

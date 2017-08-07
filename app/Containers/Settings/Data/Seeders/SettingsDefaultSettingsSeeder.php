@@ -2,7 +2,6 @@
 
 namespace App\Containers\Settings\Data\Seeders;
 
-use App\Containers\Settings\Models\Settings;
 use App\Ship\Parents\Seeders\Seeder;
 
 /**
