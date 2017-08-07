@@ -303,9 +303,8 @@ _The composer option `--prefer-source` will clone the package's git repository i
 
 # Contributing to the Code Generator
 
-- Core Repo: `apiato/core`.
-- Code Path: `/apiato/core/Generator`.
-- Commands paths: `/apiato/core/Generator/Commands`.
+- Repository: `apiato/core`.
+- Code Path: `/Generator`.
 
 Each component command, "Except the Containers Generator" must extend from the `Apiato\Core\Generator\GeneratorCommand.php`.
 
@@ -313,7 +312,7 @@ This abstract class does all the work for you.
 
 ### Add new component generator.
 
-1 - Add create new command by copy pasting any of the demo commands provided. The `app/Ship/Generator/Commands/RouteGenerator.php` is great example.
+1 - Add create new command by copy pasting any of the demo commands provided. The `Generator/Commands/RouteGenerator.php` is great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
@@ -332,9 +331,9 @@ For each generator you need to implement exactly one method (as it is defined in
   - `stub-parameters` are used to replace variables within the stub.
   
 
-2 - Create the stub to be loaded in `app/Ship/Generator/Stubs`, copy any real component code and build the stub out of it.
+2 - Create the stub to be loaded in `Generator/Stubs`, copy any real component code and build the stub out of it.
 
-3 - Finally register the command in `app/Ship/Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
+3 - Finally register the command in `Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
 
 ```php
         $this->registerGenerators([

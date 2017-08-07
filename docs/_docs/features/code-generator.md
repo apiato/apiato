@@ -9,41 +9,32 @@ order: 1
 Code Generators are a nice way to speed up development by creating boiler-plate code based on your inputs. You may 
 already know several code generators from Laravel, like `php artisan make:controller` or others.
 
-In order to provide an easy to use approach for generating all kinds of components within a container (i.e., be sure to 
-read the docs about the [Porto architecture]({{ site.baseurl }}{% link _docs/getting-started/porto-sap.md %})!), apiato provides some neat 
-generators specifically tailored for your needs.
 
-However, as some of them may be _complex_ to use, apiato offers some kind of **wizard based generators**, guiding you
-through the process of automatically generating code.
+## Demo
+
+##### Generating a Route (endpoint) file:
+
+![](https://s1.postimg.org/wob3ntyhr/Screen_Shot_2017-08-07_at_3.07.35_PM.png)
+
+##### Result 
+ 
+![](https://s1.postimg.org/owudp9ucf/Screen_Shot_2017-08-07_at_3.10.02_PM.png)
 
 ## Available Code Generators
 
-Currently, the following commands for automatically generating code snippets are available:
+To see list of code generators type `php artisan` and view the list of apiato commands.
 
-* `php artisan apiato:action` : Creates a new `Action` within a container.
-* `php artisan apiato:controller` : Creates an empty or CRUD `Controller` within a container for a given UI (e.g., API or WEB). Generated methods may vary based on the selected UI.
-* `php artisan apiato:exception` : Creates a new `Exception` within a container.
-* `php artisan apiato:model` : Creates a new `Model` within a container. Can automatically generate the corresponding `Repository`.
-* `php artisan apiato:repository` : Creates a new `Repository` within a container. Must follow the naming conventions (e.g., UserRepository for the Model User)
-* `php artisan apiato:request` : Creates a `Request` stub within a container and its defined user-interface.
-* `php artisan apiato:route` : Creates a new `Route` within a container.
-* `php artisan apiato:task` : Creates a new `Task` within a container.
-* `php artisan apiato:transformer` : Creates an empty or full-blown `Transformer` within a container for a specified model. 
+To get more info about each command, add `--help` to the command. Example: `php artisan apiato:route --help`. The help page shows all options, which can be directly passed to the command.
 
-To get more information about respective generator, we refer to the `help` page of the command. To view this document,
-simply call `php artisan help apiato:controller`.
-
-The help page shows all options, which can be directly passed to the command.
-
-Please note that **all** generators automatically inherit the options `--container` and `--file` (these are documented
-as well in the help page). Furthermore, a generator may have specific options as well (e.g., the `--ui` (user-interface) 
-to generate something for).
-
-If you do not provide respective information via command line options, a wizard is displayed to guide you through 
-the process of automatically generating code snippets.
+If you do not provide respective information via the command line options, a wizard will be displayed to guide you through.
 
 For example, you can directly call `php artisan apiato:controller --file=UserController` to directly specify the class
 to be generated. The wizard, however, will ask you for the `--container` as well.
+
+Note that **all** generators automatically inherit the options `--container` and `--file` (these are documented
+as well in the help page). Furthermore, a generator may have specific options as well (e.g., the `--ui` (user-interface) 
+to generate something for).
+
 
 ## Contributing
 
