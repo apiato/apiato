@@ -156,4 +156,5 @@ return $this->json([
 - accepted
 - deleted
 - noContent
-- // Some functions might not be documented, so refer to the `ResponseTrait.php` and see the public functions.
+- // Some functions might not be documented, so refer to the `vendor/apiato/core/Traits/ResponseTrait.php` and see the public functions.
+

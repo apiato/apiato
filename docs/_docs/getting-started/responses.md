@@ -102,26 +102,6 @@ The Supported Serializers are (`ArraySerializer`, `DataArraySerializer` and `Jso
 More details at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
 
 
-#Building a Responses from the Controller:
+## Building a Responses from the Controller:
 
-Array Response:
-
-```php
-        $xyz = ['xx', 'yy'];
-
-        return $this->json(['something' => $xyz]);
-```
-
-Array Data Object:
-
-```php
-        return $this->transform($order, OrderTransformer::class); // Order can be the Order object or/and Collection of Orders objects.
-```
-
-Override some includes:
-
-```php
-        return $this->transform($order, OrderTransformer::class, ['recipients', 'store']);
-```
-
-Visit the `app/Ship/Engine/Traits/ResponseTrait.php` file, for more available response features (such as `withMeta`, `accepted`, `deleted`,...).
+Checkout the [Controller response builder helper functions]({{ site.baseurl }}{% link _docs/components/controllers.md %}).

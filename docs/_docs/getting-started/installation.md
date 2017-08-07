@@ -267,7 +267,7 @@ Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/C
 2) run the tests
 
 ```shell
-phpunit
+vendor/bin/phpunit
 ```
 
 
