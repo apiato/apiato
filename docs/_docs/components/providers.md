@@ -147,7 +147,12 @@ In apiato those providers have been renamed and moved to the Ship Layer `app/Shi
 - BroadcastServiceProvider
 - EventsServiceProvider
 
-Note: you should not modify those providers, instead you need to extend them from your containers providers. 
+**VIP Note:** you should not touch those providers, instead you have to extend them from a containers providers in order to modify them. 
 Example: the `app/Containers/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
+
+Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them. 
+Once extended the child Provider should be registered in its Container Main Provider, which makes it's parent available.
+
+This rule doesn't apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
 
 Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).

@@ -13,7 +13,6 @@ order: 5
 * [Where do I define my Composer dependencies?](#q7)
 * [How to enable Query Caching?](#q8)
 * [Can I give my Actions REST names?](#q9)
-* [How to upgrade apiato?](#q10)
 * [How Service Providers are auto-loaded?](#q11)
 * [I have a question and I can't find answer!!](#q100)
 
@@ -62,7 +61,7 @@ You can configure NGINX to server the Front-end and the Back-end each on a diffe
       - iOS   // < iPhone App code
 ```
 
-However, apiato does support serving HTML from within. So only of you prefer, you can serve HTML from apiato directly same as you are serving the API.
+However, apiato does support serving HTML from within. So only of you prefer, you can serve HTML from apiato directly same as serving the API.
 
 In this case the code will live in:
 
@@ -161,75 +160,6 @@ Back to that future feature, here’s how it works:
 imagine you can add all your endpoints “routes files” with no implementation and then implement them one by 
 one “similar to TDD/BDD” with the help of a command that tells what you already have been completed and what 
 needs to be completed.. as well as what Tasks are available to be used from any Action..
-
-
-<a name="q10"></a>
-## How to upgrade apiato?
-
-I've used apiato for a project and now I need to upgrade it.
-
-> Checkout the [Upgrade Guide]({{ site.baseurl }}{% link _docs/miscellaneous/upgrade-guide.md %}).
-
-
-##### Upgrading methode:
-
-1) Setup an upstream remote (to point to your fork of the apiato repository)
-
-`git remote add upstream git@github.com:username/apiato.git`
-
-```shell
-❯ git remote -vv
-origin      git@bitbucket.org:username/project-a.git (fetch)
-origin      git@bitbucket.org:username/project-a.git (push)
-upstream    git@github.com:apiato/apiato.git (fetch)
-upstream    git@github.com:apiato/apiato.git (push)
-```
-
-2) Create apiato branch
-
-`git checkout -b apiato`
-
-3) Let the apiato branch track the upstream master branch
-
-`git branch --set-upstream-to upstream/master`
-
-```shell
-❯ git branch -vv
- apiato          77b4d945 [upstream/master] ...
- master          77d302aa [origin/master] ...
-```
-
-4) Now you can move the updates to your master branch in 2 ways:
-
-
-**Option A**: merge the entire apiato branch with master and solve the conflicts manually. *(easier and faster)*
-
-`git checkout master`
-
-The git merging can be done in many ways:
-
-- Merge then solve the conflict manually `git merge --allow-unrelated-histories apiato` *(recommended)*
-- Merge and keep your project changes `git merge --allow-unrelated-histories -X ours apiato`
-- Merge and overwrite your project with the apiato changes `git merge --allow-unrelated-histories -X theirs apiato`
-
-
-*-X is a shortcut for --strategy-option=*
-
-
-
-
-**Option B**: Manually cherry pick from apiato to master only the commits you need:
-
-`git checkout master`
-
-`git log apiato`      (to copy each commit ID, one by one)
-
-`git cherry-pick {commit-ID}`      (if you get any conflict solve it and keep moving)
-
-<br>
-
-Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
-
 
 
 

@@ -121,7 +121,7 @@ Query parameters are optional, you can apply them to some endpoints whenever you
 
 ### Ordering
 
-The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsible for listing records.
+The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsible for ordering the listing of the records by a field.
 
 **Usage:**
 

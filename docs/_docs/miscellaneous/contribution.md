@@ -230,7 +230,7 @@ Now you should have the following branches:
 
 ### USAGE (Contribution Steps)
 
-> Must do everytime before you contribute
+> Must do every time before you contribute
 
 1) Update remotes (fetch)
 
