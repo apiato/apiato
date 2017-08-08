@@ -16,7 +16,6 @@ use App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction;
 use App\Containers\Authorization\Actions\SyncUserRolesAction;
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\CreatePermissionRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest;

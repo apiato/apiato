@@ -98,9 +98,19 @@ API_RESPONSE_SERIALIZER=League\Fractal\Serializer\DataArraySerializer
 
 The Supported Serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`).
 
+The `JsonApiSerializer` provides the possibility to append a `ResourceKey` for the transformed resource. There are a 
+few ways to set this key (used in this order by the framework):
 
-More details at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
+1) You can manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the 
+`top level` resource key and does not affect the resource keys from `included` resources!
+2) If you do not define the key in the `$this->transform` method, you can specify it on the respective `Model`. You can simply
+override the the `protected $resourceKey = 'FooBar';` in order to specify the latter.
+3) If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of 
+the `App\Containers\User\Models\User::class` is `User`.
 
+More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
+
+# Building a Responses from the Controller:
 
 ## Building a Responses from the Controller:
 

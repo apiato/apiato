@@ -14,11 +14,26 @@ use Illuminate\Support\Facades\App;
 class ListAllPermissionsTask extends Task
 {
     /**
+     * @var PermissionRepository
+     */
+    private $repository;
+
+    /**
+     * ListAllPermissionsTask constructor.
+     *
+     * @param PermissionRepository $repository
+     */
+    public function __construct(PermissionRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
      * @return  mixed
      */
     public function run()
     {
-        return App::make(PermissionRepository::class)->all();
+        return $this->repository->all();
     }
 
 }
