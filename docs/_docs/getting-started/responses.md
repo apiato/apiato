@@ -1,7 +1,7 @@
 ---
 title: "Responses"
 category: "Getting Started"
-order: 5
+order: 6
 ---
 
 ### Responses Payloads:

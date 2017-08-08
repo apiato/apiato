@@ -74,10 +74,6 @@ $router->get('users', [
 ]); 
 ```
 
-### Advanced
-
-For the API Routes, apiato is using the `dingo/api` [package](https://github.com/dingo/api) and for API JWT Authentication we are using `tymon/jwt-auth` [package](https://github.com/tymondesigns/jwt-auth).
-
 ## Protect your Endpoints:
 
 Checkout the [Authorization]({{ site.baseurl }}{% link _docs/features/authorization.md %}) Page.

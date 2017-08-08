@@ -58,7 +58,7 @@ return [
         |--------------------------------------------------------------------------
         |
         | The table that your application uses for users. This table's model will
-        | be using the "HasRoles" and "hasAccesss" traits.
+        | be using the "HasRoles" and "hasAccess" traits.
         |
         */
         'users' => 'users',
