@@ -4,6 +4,7 @@ namespace App\Ship\Parents\Models;
 
 use Apiato\Core\Abstracts\Models\UserModel as AbstractUserModel;
 use Apiato\Core\Traits\HashIdTrait;
+use Apiato\Core\Traits\HasResourceKeyTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Payment\Contracts\ChargeableInterface;
 use App\Ship\Payment\Traits\ChargeableTrait;
@@ -27,5 +28,6 @@ abstract class UserModel extends AbstractUserModel implements ChargeableInterfac
     use HasRoles;
     use HasApiTokens;
     use ChargeableTrait;
+    use HasResourceKeyTrait;
 
 }
