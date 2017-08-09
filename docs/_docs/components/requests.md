@@ -195,7 +195,9 @@ class ConfirmUserEmailRequest extends Request
 
 ### **access**
 
-The **$access** property is used by the `hasAccess` function from the `authorize` function (`check`), to check if the user has the necessary Roles & Permissions to call this endpoint.
+The **$access** property, allows the user to define set of Roles and Permissions than can access this endpoint. 
+ 
+The `$access` property is used by the `hasAccess` function defined below in the `authorize` function, to check if the user has the necessary Roles & Permissions to call this endpoint (basically access the controller function where this request object is injected).
 
 Example:
 
@@ -214,25 +216,23 @@ class DeleteUserRequest extends Request
      * @var  array
      */
     protected $access = [
-        'permission' => 'delete-users|another-permissions..',
-	        'roles'      => 'manger'
-	    ];
+        'permission' => 'delete-users|another-permissions',
+        'roles' => 'manger'
+    ];
 
-	    public function authorize()
-        {
-            return $this->check([
-                'hasAccess|isOwner',
-                'isKing',
-            ]);
-        }
-	}
-
+    public function authorize()
+    {
+        return $this->check([
+            'hasAccess|isOwner',
+            'isKing',
+        ]);
+    }
+}
 ```
 
+#### How the authorize function work
 
-#### What's going on in the authorize!?
-
-The `authorize` function is calling a `check` function which accepts an array of functions. Each of those functions returns a boolean.
+The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns a boolean.
 
 In the example above we are calling three functions `hasAccess`, `isOwner` and `isKing`.
 
@@ -241,6 +241,26 @@ The separator `|` between the functions indicates an `OR` operation, so if any o
 On the other side if `isKing` *(a custom function could be written by you anywhere)* returned false no matter what all other functions returns, the user will be prevented from accessing this endpoint, because the default operation between all functions in the array is `AND`.
 
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
+
+
+#### Allow a Role to access every endpoint
+
+You can allow some Roles to access every endpoint in the system without having to define that role in each Request object. 
+
+This is useful you want to let users with `Admin` role access everything.
+
+To do this define those roles in `app/Ship/Configs/apiato.php` as follow:
+
+```php
+'requests' => [
+    'allow-roles-to-access-all-routes' => ['admin',],
+],
+```
+
+This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manger'` becomes `'roles' => 'manger|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint function).
+
+
+
 
 ## Request Helper Functions
 
