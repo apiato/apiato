@@ -269,7 +269,7 @@ The documentation is generated using [Jekyll](https://jekyllrb.com/) and it live
 
 #### In Docker:
 
-1. `cd .../apiato/_docs`
+1. `cd .../apiato/docs`
 2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
 3. `bundle install`
 4. `jekyll serve`

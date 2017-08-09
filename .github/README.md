@@ -123,7 +123,7 @@ If you feel safe writting all your code in the `Controller` component; do it, no
 ---
 
 
-<p align="center">Join our Slack chatting room, <br> by click on the icon below.</p>
+<p align="center">Join our Slack chatting room, by clicking on the icon below.</p>
 
 <p align="center">
 	<a href="https://now-examples-slackin-bvfqosqozk.now.sh">

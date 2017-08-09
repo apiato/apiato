@@ -24,7 +24,9 @@ APIATO uses the best frameworks, tools and conventions in a creative way to deli
 
 Why!? setting up a solid API from scratch is time consuming (and time is money). APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster. Skip the repetitive work and enjoy the open source fun.
 
-**APIATO [Features list](https://github.com/apiato/apiato#features) on Github.**
+<br>
+
+**APIATO [Features list](https://github.com/apiato/apiato) on Github.**
 
 ## How to read the docs
 
@@ -54,6 +56,13 @@ The documentation has 4 sections:
 Join our [Slack](https://now-examples-slackin-bvfqosqozk.now.sh) chatting room, by click on the Slack icon below.
 
 [![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://now-examples-slackin-bvfqosqozk.now.sh)
+
+
+<a name="Testimonials"></a>
+## Testimonials
+
+[Some feedback from awesome people here.]({{ site.baseurl }}{% link _docs/miscellaneous/testimonials.md %})
+
 
 <a name="Donations"></a>
 ## Donations
