@@ -1,11 +1,11 @@
 ## Expected Behavior
-<!--- Describe the expected bahvior -->
+<!--- Describe the expected behavior -->
 
 ## Actual Behavior
 <!--- Describe the issue -->
 
 ## Steps to Reproduce the Problem
-<!--- Help us repoduce the issue (if applicable) -->
+<!--- Help us reproduce the issue (if applicable) -->
 
   1.
   2.
