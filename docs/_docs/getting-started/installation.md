@@ -6,11 +6,11 @@ order: 2
 
 
 
-* [A) Development Environment Setup](#Development-Environment)
+* [A) Environment Setup](#Development-Environment)
 	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
 	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
-	* [Option 3: using something else!](#Dev-Env-Opt-C)
-* [B) Application Setup](#App)
+	* [Option 3: Using MAMP/WAMP or something else](#Dev-Env-Opt-C)
+* [B) APIATO Installation](#App)
 	* [1) Code Setup](#Code-Setup)
 		* [Option 1: Automatically via Composer](#App-Composer)
 		* [Option 2: Manually](#App-Git)
@@ -146,7 +146,7 @@ If you're not into virtualization solutions, you can setup your environment dire
 
 <a name="App"></a>
 
-## B) Application Setup
+## B) APIATO Application Installation
 
 **APIATO** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
@@ -166,6 +166,7 @@ composer create-project apiato/apiato api
 
 2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
 
+3) Continue from [2) Database Setup](#Setup-Database) below.
 
 <a name="App-Git"></a>
 #### 1.B) Manually
