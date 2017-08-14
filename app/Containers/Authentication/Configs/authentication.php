@@ -8,10 +8,10 @@ return [
     |--------------------------------------------------------------------------
     | 
     | When set to true, the user must confirm his email before being able to 
-    | Login the first time, after registrtion.
+    | Login, after his registration.
     | 
     */    
   
-    'login_only_confirmed_users' => false,
+    'require_email_confirmation' => false,
 
 ];

@@ -119,13 +119,15 @@ The Access Token should be sent in the `Authorization` header of type `Bearer` E
 
 **Keep in mind there's no session state when using Tokens for Authentication**
 
-### (Un)Confirmed Users
 
-apiato allows for configuring, whether `unconfirmed User`s login, or not. This behaviour may be configured within 
-`App\Containers\Authentication\Configs\authentication.php`. If this feature is enabled (value set to `true`), the API
-throws an additional exception, if the `User` is not yet `confirmed`.
+## Force Email Confirmation
 
-Default value for this behaviour is `true` (i.e., only confirmed `User`s are allowed to login!).
+By default a user doesn't have to confirm his email address to be able to login.
+However, to force users to confirm their email (prevent unconfirmed users from accessing the site), you can set
+`'require_email_confirmation' => true,` in `App\Containers\Authentication\Configs\authentication.php`. 
+
+When email confirmation is enabled (value set to `true`), the API throws an exception, if the `User` is not yet `confirmed`.
+
 
 ## Logout
 
