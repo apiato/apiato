@@ -4,9 +4,9 @@ category: "Features"
 order: 3
 ---
 
-In apiato, middlewares are the best solution to apply Authentication in your App.
+Middlewares are the best solution to apply Authentication in your App.
 
-in **APIATO** you can use these two `Authentication Middlewares`, to protect your endpoints:
+In Apiato you can use these two `Authentication Middlewares`, to protect your endpoints:
 
 - API Authentication: `auth:api`
 - Web Authentication: `auth:web`
@@ -34,24 +34,26 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 
 
 
-### How to get Access Token using OAuth 2.0
+## How to get Access Token using OAuth 2.0
 
-> The Auth Endpoints and more, are documented by default in APIATO. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) and see how to generate the API documentation.
+All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) ro see how you can generate the API documentation, and read them.
 
 
-OAuth let's you authenticate using different methods, these methods are called `grants`.
+<br>
+
+> OAuth let's you authenticate using different methods, these methods are called `grants`.
 How to decide which grant type you should use! Check [this](https://oauth2.thephpleague.com/authorization-server/which-grant/), and keep reading this documentation.
 
 
 <br>
 
-### A: For first-party clients
+## A: For first-party clients
 
-First-party clients like your Frontend Mobile, Web,... Apps. That usually consumes your private API (Internal API).
+First-party clients (Your Frontend Mobile, Web,... Apps) usually consumes your private API (Internal API).
 
-For this w'll use the **Resource owner credentials grant** (A.K.A Password Grant Tokens).
+For first-party clients you need to use the **Resource owner credentials grant** (A.K.A Password Grant Tokens).
 
-With this grant type your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and your User credentials are correct (ensuring the user is registered and has the right access), before issuing an access token.
+When this grant type is used, your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and then needs to check if the user credentials are correct (ensuring the user is registered and has the right access), before issuing an access token.
 
 
 **How it works:**
@@ -60,14 +62,15 @@ With this grant type your server needs to authenticate the Client App first (ens
 > - On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
 > - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
 
+<br>
 
-1) Create a password type Client in your database to represent your App. you can use `php artisan passport:client --password`.
+1) Create a password type Client in your database to represent one of your Apps (ex: Mobile App). Use `php artisan passport:client --password` to generate the client.
 
-2) Your user enters his (username + password) in your App login screen (assuming he registered already).
+2) After registration the user can enter his (username + password) in your App login screen.
 
-3) Your Client App sends a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credentials (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
+3) Your App should send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credentials (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
 
-Request:
+**Request:**
 
 ```shell
 curl --request POST \
@@ -77,7 +80,7 @@ curl --request POST \
   --data 'username=admin%40admin.com&password=admin&client_id=2&client_secret=SGUVv02b1ppQCgI7ZVeoTZDN6z8SSFLYiMOzzfiE&grant_type=password&scope='
 ```
 
-Response:
+**Response:**
 
 ```json
 {
@@ -92,64 +95,54 @@ Response:
 
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#password-grant-tokens)
 
+<br>
+
 > WARNING: the Client ID and Secret should not be stored in JavaScript or browser cache, or made accessible in any way.
 
-So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And APIATO by default provides you with a Login Proxy to use for all your trusted first party clients.
+So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And Apiato by default provides you with a Login Proxy to use for all your trusted first party clients. W'll see below how you can use them.
 
-### Login Proxy
 
-Concept: create endpoint for each trusted client, to be used for login. APIATO by default has this url `clients/web/admin/login`, but you can add more as you need for each of your trusted first party clients apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
 
-That endpoint should append the corresponding client ID and Secret to your request and make another call to your Auth server with all the required data.
+
+### Login with Proxy for first-party clients (only)
+
+Concept: create endpoint for each trusted client, to be used for login. 
+
+Apiato by default has one url ready for your Web Admin Dashboard `clients/web/admin/login`. You can add more as you need for each of your trusted first party clients Apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
+
+Behind the scene, that endpoint is appendding the corresponding client ID and Secret to your request and making another call to your Auth server with all the required data. *(this way the client doesn't need to send the ID and Secret with the request, and he is using his own URL which gives even more control to which client is accessing your Server)*.
 Then it returns the Auth response back to the client with the Tokens in it.
 
-Note: You have to manually extract the Client credentials from the DB after running `passport:install` and put them in the `.env`.
+Note: You have to manually extract the Client credentials from the DB and put them in the `.env`, for each client.
 
-Example:
+When running `passport:install` it automatifally creates one client for you with ID 2, so you can use that for your first app. Or you can use `php artisan passport:client --password` to generate them.
+
+
+`.env` Example:
+
 ```
 CLIENT_WEB_ADMIN_ID=2
 CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 ```
 
-## Login
 
-Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password` in addition to the User and Client Credentials, to get the user Access Token. Once issued, you can use that Access Token to make requests to protected resources (Endpoints).
+## Login without Proxy for first-party clients
 
-The Access Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
-
-**Keep in mind there's no session state when using Tokens for Authentication**
+Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password`, the User credentials (`username` & `password`), Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
 
 
-## Force Email Confirmation
 
-By default a user doesn't have to confirm his email address to be able to login.
-However, to force users to confirm their email (prevent unconfirmed users from accessing the site), you can set
-`'require_email_confirmation' => true,` in `App\Containers\Authentication\Configs\authentication.php`. 
+## B: For third-party clients
 
-When email confirmation is enabled (value set to `true`), the API throws an exception, if the `User` is not yet `confirmed`.
+Third party clients (User's custom external Apps, who wants to integrate with your Software) always consumes your public API (External API) only.
 
-
-## Logout
-
-Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
-
-```json
-{
-  "message": "Token revoked successfully."
-}
-```
-
-### B: For third-party clients
-
-Third party clients like your User's custom external Apps, who wants to integrate with your Software. That usually consumes your public API (External API).
-
-For this w'll use the **Client credentials grant** (A.K.A Personal Access Tokens). *This grant type is the simplest and is suitable for machine-to-machine authentication.*
+For third-party clients you need to use the **Client credentials grant** (A.K.A Personal Access Tokens). *This grant type is the simplest and is suitable for machine-to-machine authentication.*
 
 With this grant type your server needs to authenticate the Client App only, before issuing an access token.
 
 **How it works**
 
-1) User logs in to your App, go to settings, create Client (of type `personal`) and copy the ID and Secret. *(Note this can be done via an API if you prefer)*
+1) User logs in to your Clients App Interface (an external App made for your users only), go to settings, create Client (of type `personal`) and copy the ID and Secret. *(Note this can be done via an API if you prefer)*
 
 You may generate a personal client for testing purposes using `php artisan passport:client --personal`.
 
@@ -171,7 +164,8 @@ Response:
 {
   "token_type": "Bearer",
   "expires_in": 31536000,
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...",
+  "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
 }
 ```
 
@@ -180,6 +174,32 @@ Response:
 Note: When a new user is registered, will be issued a personal Access Token automatically. Check the User "Registration page".
 
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#personal-access-tokens)
+
+
+## Login without Proxy for third-party clients
+
+We usually do not need a proxy for third-party clients as they are most likely making calls form their servers, thus the Client ID and Secret should be secure and not exposed to the users.
+
+Login by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=client_credentials`, Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
+
+
+Once issued, you can use that Access Token to make requests to protected resources (Endpoints).
+The Access Token should be sent in the `Authorization` header of type `Bearer` Example: `Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUz...`
+
+**Keep in mind there's no session state when using Tokens for Authentication**
+
+
+
+
+## Logout
+
+Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
+
+```json
+{
+  "message": "Token revoked successfully."
+}
+```
 
 
 ## Responses
@@ -201,6 +221,17 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
 {
   "error": "invalid_client",
   "message": "Client authentication failed"
+}
+```
+
+**Access Correct:**
+
+```json
+{
+  "token_type": "Bearer",
+  "expires_in": 31500,
+  "access_token": "tnJ1eXAiOiJKV1QiLCJhbGciOiJSUzI1Zx...",
+  "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
 }
 ```
 
@@ -270,6 +301,43 @@ To change the login page view go to the config file `app/Ship/Configs/apiato.php
 ```
 
 This will be looking for (login.html or login.php or login.blade.php).
+
+
+## Refresh Token
+
+In case your server is issuing a short-lived access tokens, the users will need to refresh their access tokens via the refresh token that was provided to them when the access token was issued.
+
+
+### Refresh Token via proxy for first-party clients
+
+By default Apiato provide this ready endpoint `http://api.poms.dev/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
+
+Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpont. Or by passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to this:
+
+```json
+{
+  "token_type": "Bearer",
+  "expires_in": 31500,
+  "access_token": "tnJ1eXAiOiJKV1QiLCJhbGciOiJSUzI1Zx...",
+  "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
+}
+```
+
+Containg new Access Token and new Refresh Token.
+
+
+### Refresh Token via non proxy
+
+The request to `http://api.poms.dev/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` & `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
+
+
+## Force Email Confirmation
+
+By default a user doesn't have to confirm his email address to be able to login.
+However, to force users to confirm their email (prevent unconfirmed users from accessing the site), you can set
+`'require_email_confirmation' => true,` in `App\Containers\Authentication\Configs\authentication.php`. 
+
+When email confirmation is enabled (value set to `true`), the API throws an exception, if the `User` is not yet `confirmed`.
 
 
 ## Social Authentication

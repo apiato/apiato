@@ -55,8 +55,6 @@ class ProxyLoginTest extends TestCase
 
         $response = $this->endpoint($endpoint)->makeCall($data);
 
-        $responseContent = $this->getResponseContentArray();
-
         $response->assertStatus(200);
 
         $response->assertCookie('refreshToken');
@@ -66,8 +64,6 @@ class ProxyLoginTest extends TestCase
         ]);
 
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
-
-        $this->assertArrayNotHasKey('refresh_token', $responseContent);
     }
 
     public function testClientWebAdminProxyUnconfirmedLogin_()

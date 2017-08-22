@@ -16,7 +16,8 @@
 {
   "token_type": "Bearer",
   "expires_in": 315360000,
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbG..."
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbG...",
+  "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
 }
  */
 $router->post('clients/web/admin/login', [

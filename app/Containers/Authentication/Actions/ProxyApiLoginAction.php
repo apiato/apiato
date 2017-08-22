@@ -34,15 +34,10 @@ class ProxyApiLoginAction extends Action
 
         $responseContent = $this->call(CallOAuthServerTask::class, [$requestData]);
 
-        // lets check, if only confirmed users shall be authenticated
-        // we do this here, because this assures, that the user that tries to login is, in fact, valid
-        // this, furthermore, assures that an attacker cannot "guess" unconfirmed e-mail addresses!
+        // check if user email is confirmed only if that feature is enabled.
         $this->call(CheckIfUserIsConfirmedTask::class, [], [ ['loginWithCredentials' => [$requestData['username'], $requestData['password']]]]);
 
         $refreshCookie = $this->call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
-
-        // Make sure we only send the refresh_token in the cookie
-        unset($responseContent['refresh_token']);
 
         return [
             'response-content' => $responseContent,
