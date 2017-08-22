@@ -2,6 +2,6 @@
   "name": "apiato/authorization",
   "description": "apiato Container.",
   "require": {
-    "spatie/laravel-permission": "1.9.*"
+    "spatie/laravel-permission": "^1.12"
   }
 }
