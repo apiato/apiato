@@ -39,27 +39,25 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) ro see how you can generate the API documentation, and read them.
 
 
-<br>
+## Quick Overview  
 
-> OAuth let's you authenticate using different methods, these methods are called `grants`.
+OAuth let's you authenticate using different methods, these methods are called `grants`.
 How to decide which grant type you should use! Check [this](https://oauth2.thephpleague.com/authorization-server/which-grant/), and keep reading this documentation.
 
+**Definitions:**
+- The Client credentials: are the `client_id` & `client_secret`.
+- The Proxy: is just an endpoint, that you should call instead of calling the Auth server endpoints directly, the proxy endpoint will append the client credentials to your request and calls the Auth server for you, then return its response back. Each first-client app should have its own proxy endpoints (at least one of Login and one of Token Refresh). By default Apiato provide an `Admin Web Client` endpoints.
 
-
-> **Definitions:**
-> - The Client credentials: are the `client_id` & `client_secret`.*
-> - The Proxy: is just an endpoint, that you should call instead of calling the Auth server endpoints directly, the proxy endpoint will append the client credentials to your request and calls the Auth server for you, then return its response back. Each first-client app should have its own proxy endpoints (at least one of Login and one of Token Refresh). By default Apiato provide an `Admin Web Client` endpoints*
-
-
-> **Quick Overview:**
+<br>
+ 
 > You can Login to the first party app with proxy or without proxy, while for the third party you only need to login without proxy. (same apply to refreshing token).
 > 
 > For first party apps:
-> - with proxy << best and easiest way, (requires manually generating clients creating proxy endpoints for each client) 
-> - without proxy << if your frontend is not exposing the client credentials, you can call the Auth server endpoints directly without proxy. 
+> - With Proxy << best and easiest way, (requires manually generating clients creating proxy endpoints for each client) 
+> - Without Proxy << if your frontend is not exposing the client credentials, you can call the Auth server endpoints directly without proxy. 
 >
 > For third party apps:
-> - without proxy << you don't need a proxy for the third party clients as they usually integrate with your API from the backend side which protects the client credentials.
+> - Without Proxy << you don't need a proxy for the third party clients as they usually integrate with your API from the backend side which protects the client credentials.
 
 
 <br>
@@ -73,9 +71,9 @@ For first-party clients you need to use the **Resource owner credentials grant**
 When this grant type is used, your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and then needs to check if the user credentials are correct (ensuring the user is registered and has the right access), before issuing an access token.
 
 
-> Note: 
-> - On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
-> - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
+**Note:** 
+- On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
+- On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
 
 
 **How it works:**
