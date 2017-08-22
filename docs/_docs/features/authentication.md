@@ -45,6 +45,23 @@ All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ s
 How to decide which grant type you should use! Check [this](https://oauth2.thephpleague.com/authorization-server/which-grant/), and keep reading this documentation.
 
 
+
+> **Definitions:**
+> - The Client credentials: are the `client_id` & `client_secret`.*
+> - The Proxy: is just an endpoint, that you should call instead of calling the Auth server endpoints directly, the proxy endpoint will append the client credentials to your request and calls the Auth server for you, then return its response back. Each first-client app should have its own proxy endpoints (at least one of Login and one of Token Refresh). By default Apiato provide an `Admin Web Client` endpoints*
+
+
+> **Quick Overview:**
+> You can Login to the first party app with proxy or without proxy, while for the third party you only need to login without proxy. (same apply to refreshing token).
+> 
+> For first party apps:
+> - with proxy << best and easiest way, (requires manually generating clients creating proxy endpoints for each client) 
+> - without proxy << if your frontend is not exposing the client credentials, you can call the Auth server endpoints directly without proxy. 
+>
+> For third party apps:
+> - without proxy << you don't need a proxy for the third party clients as they usually integrate with your API from the backend side which protects the client credentials.
+
+
 <br>
 
 ## A: For first-party clients
@@ -56,13 +73,12 @@ For first-party clients you need to use the **Resource owner credentials grant**
 When this grant type is used, your server needs to authenticate the Client App first (ensuring the request is coming from your trusted frontend App) and then needs to check if the user credentials are correct (ensuring the user is registered and has the right access), before issuing an access token.
 
 
-**How it works:**
-
-> Quick Overview:
+> Note: 
 > - On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
 > - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
 
-<br>
+
+**How it works:**
 
 1) Create a password type Client in your database to represent one of your Apps (ex: Mobile App). Use `php artisan passport:client --password` to generate the client.
 
@@ -102,9 +118,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#passw
 So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And Apiato by default provides you with a Login Proxy to use for all your trusted first party clients. W'll see below how you can use them.
 
 
-
-
-### Login with Proxy for first-party clients (only)
+### Login with Proxy for first-party clients
 
 Concept: create endpoint for each trusted client, to be used for login. 
 
@@ -116,7 +130,6 @@ Then it returns the Auth response back to the client with the Tokens in it.
 Note: You have to manually extract the Client credentials from the DB and put them in the `.env`, for each client.
 
 When running `passport:install` it automatifally creates one client for you with ID 2, so you can use that for your first app. Or you can use `php artisan passport:client --password` to generate them.
-
 
 `.env` Example:
 
