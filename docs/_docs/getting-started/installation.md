@@ -68,6 +68,9 @@ docker-compose up -d nginx mysql redis beanstalkd
 127.0.0.1  admin.apiato.dev
 ```
 
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.dev api.apiato.dev admin.apiato.dev`. 
+*(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
+
 
 <a name="Dev-Env-Opt-B"></a>
 ### A.2) Using Vagrant (with Laravel Homestead)
@@ -125,6 +128,10 @@ So in that case you would have something like this:
 192.168.10.10   api.apiato.dev
 192.168.10.10   admin.apiato.dev
 ```
+
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.dev api.apiato.dev admin.apiato.dev`. 
+*(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
+
 
 2.3) Run the Virtual Machine:
 
