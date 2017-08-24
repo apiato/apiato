@@ -4,7 +4,6 @@ namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\DeleteUserAction;
-use App\Containers\User\Actions\GetAuthenticatedUserAction;
 use App\Containers\User\Actions\GetMyProfileAction;
 use App\Containers\User\Actions\GetUserAction;
 use App\Containers\User\Actions\ListAdminsAction;
@@ -14,7 +13,6 @@ use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\GetMyProfileRequest;
 use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
 use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
@@ -132,23 +130,11 @@ class Controller extends ApiController
      *
      * @return mixed
      */
-    public function getMyProfile(GetMyProfileRequest $request)
+    public function getUserProfile(GetMyProfileRequest $request)
     {
         $user = $this->call(GetMyProfileAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
-    }
-
-    /**
-     * @param \App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest $request
-     *
-     * @return  mixed
-     */
-    public function getAuthenticatedUserData(GetAuthenticatedUserRequest $request)
-    {
-        $user = $this->call(GetAuthenticatedUserAction::class);
-
-        return $this->transform($user, UserTransformer::class);
     }
 
 }
