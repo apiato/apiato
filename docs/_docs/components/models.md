@@ -24,9 +24,15 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
                 - ...
 ```
 
+### Casts
+The casts attribute can be used to parse any of the model's attributes to a specific type. In the code sample below we can cast `total_credits` to `float`.
+
+Mor information about the applicable cast-types can be found in the laravel docs under: [eloquent-mutators](https://laravel.com/docs/5.4/eloquent-mutators).
+
+
 ### Code Sample
 
-**Tags Container `Model`:** 
+**Tags Container `Model`:**
 
 ```php
 <?php
@@ -61,7 +67,7 @@ class Demo extends Model
     {
         return $this->belongsTo(\App\Containes\User\Models\User::class);
     }
-} 
+}
 ```
 
 Notice the Tag Model has a relationship with User Model, that is in another Module.
