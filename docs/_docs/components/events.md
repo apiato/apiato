@@ -56,7 +56,16 @@ You can dispatch an Event from anywhere you want (ideally from Actions and Tasks
 Example: Dispatching the Event class from the example above
 ```php
 <?php
-// ...
-\App::make(Illuminate\Events\Dispatcher::class)->dispatch(New UserEmailChangedEvent($user));
-// ...
+
+// using helper function
+event(New UserEmailChangedEvent($user));
+
+// manually
+\App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New UserEmailChangedEvent($user));
+
+
+
+
+
+
 ```
