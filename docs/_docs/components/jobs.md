@@ -65,8 +65,11 @@ Check the parent Job class.
 ```php
 <?php
 
+// using helper function
 dispatch(new CreateAndValidateAddressJob($recipients));
 
+// manually
+App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New StatusChangedJob($object));
 ```
 
 For more information about the Policies read [this](https://laravel.com/docs/5.3/queues).
