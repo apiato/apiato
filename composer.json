@@ -81,10 +81,18 @@
     "post-create-project-cmd": [
       "@php artisan key:generate"
     ],
-    "post-autoload-dump": [
+    "post-install-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover"
+    ],
+    "post-update-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover"
     ]
+
+
+
+
   },
   "config": {
     "preferred-install": "dist",
