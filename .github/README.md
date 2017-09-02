@@ -1,6 +1,6 @@
 # APIATO
 
-<h3 align="center">Build great API's faster | with PHP and Laravel 5.4</h3>
+<h3 align="center">Build great API's faster | with PHP and laravel 5.5</h3>
 
 
 <p align="center">

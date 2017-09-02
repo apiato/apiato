@@ -14,7 +14,7 @@ title: "Welcome to APIATO"
 [![composer.lock](https://poser.pugx.org/apiato/apiato/composerlock)](https://packagist.org/packages/apiato/apiato)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 
-**Build better API's faster with PHP and Laravel 5.4**
+**Build better API's faster with PHP and laravel 5.5**
 
 **APIATO** is a flawless framework for building scalable and testable API-Centric Applications with PHP. 
 It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.

@@ -4,16 +4,23 @@ category: "Miscellaneous"
 order: 20
 ---
 
-## Upgrade from v5.0 to 7.0:
+## Upgrade Apiato from version 5.0 to 7.0:
 
 > Estimated upgrading time is 30 minutes.
 
-This upgrade is simple. You just have to do the following changes. 
-You can view the changes with the GitHub comparison tool [here](https://github.com/apiato/apiato/compare/5.0...master).
+By upgrading to `Apiato 7.0` you can benefit from all the features provided by `Laravel 5.5`. 
+
+*This upgrade is simple.* 
+
+You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...master).
+
+Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files (copy a file content from the Apiato repository and replace it with your older version).
 
 Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
 
-## Upgrade from 4.1 to 5.0:
+
+
+## Upgrade Apiato from version 4.1 to 5.0:
 
 > Estimated upgrading time is 15 minutes.
 
@@ -57,13 +64,6 @@ and you will need to update the namespace from `namespace App\Ship\Seeders\Data\
 15) Run your tests `vendor/bin/phpunit`.
 
 That's it :)
-
-
-
-
-
-
-
 
 ## How to manually upgrade older versions to 4.1?
 
