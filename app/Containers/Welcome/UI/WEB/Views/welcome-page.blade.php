@@ -40,10 +40,8 @@
             text-align: center;
         }
         .title {
-            font-size: 84px;
-        }
-        .subTitle {
-            font-size: 38px;
+            font-size: 150px;
+            color: #00bdf4;
         }
         .links > a {
             color: #636b6f;
@@ -55,9 +53,6 @@
             text-transform: uppercase;
         }
         .m-b-md {
-            margin-bottom: 30px;
-        }
-        .m-b-md-2 {
             margin-bottom: 60px;
         }
     </style>
@@ -78,7 +73,6 @@
     <div class="content">
 
         <div class="title m-b-md">Apiato</div>
-        <div class="subTitle m-b-md-2">(Porto SAP)</div>
 
         <div class="links">
             <a href="http://apiato.io/">Documentation</a>
