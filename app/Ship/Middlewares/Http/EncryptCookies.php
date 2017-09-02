@@ -2,7 +2,7 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
+use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 
 /**
  * Class EncryptCookies
@@ -11,7 +11,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class EncryptCookies extends BaseEncrypter
+class EncryptCookies extends Middleware
 {
 
     /**

@@ -4,6 +4,15 @@ category: "Miscellaneous"
 order: 20
 ---
 
+## Upgrade from v5.0 to 7.0:
+
+> Estimated upgrading time is 30 minutes.
+
+This upgrade is simple. You just have to do the following changes. 
+You can view the changes with the GitHub comparison tool [here](https://github.com/apiato/apiato/compare/5.0...master).
+
+Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
+
 ## Upgrade from 4.1 to 5.0:
 
 > Estimated upgrading time is 15 minutes.

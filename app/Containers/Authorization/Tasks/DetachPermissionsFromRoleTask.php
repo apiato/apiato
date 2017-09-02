@@ -21,6 +21,7 @@ class DetachPermissionsFromRoleTask extends Task
      */
     public function run(Role $role, $permissionsIds)
     {
+
         if (is_array($permissionsIds)) {
             foreach ($permissionsIds as $permissionId) {
                 $role = $role->revokePermissionTo($permissionId);

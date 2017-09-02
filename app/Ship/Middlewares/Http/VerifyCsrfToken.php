@@ -2,7 +2,7 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
 /**
  * Class VerifyCsrfToken
@@ -11,7 +11,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class VerifyCsrfToken extends BaseVerifier
+class VerifyCsrfToken extends Middleware
 {
 
     /**

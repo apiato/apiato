@@ -2,7 +2,7 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
+use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 
 /**
  * Class TrimStrings
@@ -11,7 +11,7 @@ use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class TrimStrings extends BaseTrimmer
+class TrimStrings extends Middleware
 {
 
     /**

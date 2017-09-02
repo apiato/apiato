@@ -3,7 +3,6 @@
 namespace App\Containers\User\Actions;
 
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
-use App\Containers\User\Tasks\FireUserCreatedEventTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
