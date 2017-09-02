@@ -23,10 +23,13 @@ class CreatePermissionTask extends Task
      */
     public function run($name, $description = null, $displayName = null)
     {
+        app()['cache']->forget('spatie.permission.cache');
+
         return App::make(PermissionRepository::class)->create([
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,
+            'guard_name'   => 'web',
         ]);
     }
 

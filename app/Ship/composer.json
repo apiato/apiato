@@ -1,11 +1,9 @@
 {
   "require": {
-    "apiato/core": "1.0.*",
+    "apiato/core": "^1.0",
     "predis/predis": "^1.1"
   },
   "require-dev": {
-    "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~5.7"
+
   }
 }

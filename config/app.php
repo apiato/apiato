@@ -164,11 +164,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-        Laravel\Tinker\TinkerServiceProvider::class,
-
-        /*
          * Application Service Providers...
          *
          * The Ship Provider (The only exposed Service Provider by the App).

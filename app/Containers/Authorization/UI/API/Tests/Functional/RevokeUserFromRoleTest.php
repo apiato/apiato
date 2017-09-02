@@ -43,7 +43,7 @@ class RevokeUserFromRoleTest extends TestCase
 
         $this->assertEquals($data['user_id'], $responseContent->data->id);
 
-        $this->assertDatabaseMissing('user_has_roles', [
+        $this->assertDatabaseMissing('model_has_roles', [
             'user_id' => $randomUser->id,
             'role_id' => $roleA->id,
         ]);
@@ -98,7 +98,7 @@ class RevokeUserFromRoleTest extends TestCase
         // assert response status is correct
         $response->assertStatus(200);
 
-        $this->assertDatabaseMissing('user_has_roles', [
+        $this->assertDatabaseMissing('model_has_roles', [
             'user_id' => $randomUser->id,
             'role_id' => $roleB->id,
             'role_id' => $roleA->id,

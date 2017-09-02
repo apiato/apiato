@@ -43,6 +43,10 @@ class ConsoleKernel extends LaravelConsoleKernel
      */
     protected function commands()
     {
+        // TODO: to uncomment.
+
+        // $this->load(__DIR__.'/Commands');
+
         // require base_path('routes/console.php');
     }
 

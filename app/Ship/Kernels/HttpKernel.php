@@ -26,8 +26,9 @@ class HttpKernel extends LaravelHttpKernel
         // Laravel middleware's
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Ship\Middlewares\Http\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Ship\Middlewares\Http\TrimStrings::class,
+        \App\Ship\Middlewares\Http\TrustProxies::class,
 
         // CORS package middleware
         \Barryvdh\Cors\HandleCors::class,

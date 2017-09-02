@@ -23,6 +23,7 @@ class UpdateUserTest extends TestCase
     {
         $user = $this->getTestingUser();
 
+
         $data = [
             'name'     => 'Updated Name',
             'password' => 'updated#Password',
