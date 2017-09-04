@@ -46,6 +46,12 @@ cd laradock
 ```
 This directory contains a `docker-compose.yml` file. (From the LaraDock project).
 
+2.1) If you haven't done so, rename `env-example` to `.env`.
+
+```shell
+cp env-example .env
+```
+
 3) Run the Docker containers:
 
 ```shell
