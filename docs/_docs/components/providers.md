@@ -63,7 +63,6 @@ In this example above only the `AuthServiceProvider` and `EventsServiceProvider`
 
 **Main Service Provider Example:** 
 
-
 ```php
 <?php
 
@@ -142,7 +141,7 @@ However, if it's a generic package used by the entire framework and not a specif
 #### Laravel 5.5 Auto Discovery feature.
 
 This feature is disabled in Apiato so far. 
-More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md/#q12 %}).
+More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
 
 
 ### Information about Laravel Service Providers
@@ -164,4 +163,4 @@ Once extended the child Provider should be registered in its Container Main Prov
 
 This rule doesn't apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
 
-Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md/#q11 %}).
+Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
