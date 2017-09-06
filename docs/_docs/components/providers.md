@@ -139,6 +139,11 @@ If a package requires registering its service provider in the `config/app.php`, 
 However, if it's a generic package used by the entire framework and not a specific Container or feature. Then you can register that service provider in the `app/Ship/Providers/ShipProvider.php`, but never in the `config/app.php`.
 
 
+#### Laravel 5.5 Auto Discovery feature.
+
+This feature is disabled in Apiato so far. 
+More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md/#q12 %}).
+
 
 ### Information about Laravel Service Providers
 
@@ -159,4 +164,4 @@ Once extended the child Provider should be registered in its Container Main Prov
 
 This rule doesn't apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
 
-Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
+Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md/#q11 %}).

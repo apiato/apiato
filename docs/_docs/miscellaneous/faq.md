@@ -14,7 +14,7 @@ order: 5
 * [How to enable Query Caching?](#q8)
 * [Can I give my Actions REST names?](#q9)
 * [How Service Providers are auto-loaded?](#q11)
-* [I would like to use Laravel's awesome Auto-Discovery Feature, but it does not work!](#q12)
+* [Why Laravel 5.5 Auto-Discovery feature not working?](#q12)
 * [I have a question and I can't find answer!!](#q100)
 
 <br>
@@ -185,15 +185,28 @@ Due to the nature and structure of APIATO applications, this features **is turne
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
 
-<a name="q11"></a>
-## I would like to use Laravel's awesome Auto-Discovery Feature, but it does not work!
+<a name="q12"></a>
+## Why Laravel 5.5 Auto-Discovery feature not working?
 
 That is, because this feature is turned off by default in APIATO. The Laravel `Auto-Discovery` feature registers 3rd-party 
 Service Providers during startup of the application and thereby messes with the way, APIATO handles / loads components. 
 This is especially in the context of `config` files problematic, as they are ignored.
 
+To re enable it go to the main `composer.json` file and remove the "*" from the `dont-discover`
+```json
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+        "*"
+      ]
+    },
+```
+
+After enabling the Auto-Discovery, you must move all the config files from the Containers and the Ship layer to the original config folder of Laravel. 
+Otherwise they won't be loaded (except your custom Configs "config files that doesn't belong to a composer package", they will still work fine). 
+
 > You **must** register 3rd-party Service Providers on your own in the `MainServiceProvider` of respective Container 
-(i.e., how you did it always before Laravel 5.4!)
+(i.e., same like in Laravel 5.4 and before).
 
 
 
