@@ -38,6 +38,10 @@ They are the place where you register things like container bindings, event list
 
 - You should not register any Provider in the framework (`config/app.php`), only the `ApiatoProvider` should be registered there.
 
+> **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`. 
+Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded 
+in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
+
 ### Folder Structure
 
 **Example: User Container `Service Providers`** 
