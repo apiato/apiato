@@ -58,6 +58,7 @@
   "extra": {
     "laravel": {
       "dont-discover": [
+        "*"
       ]
     },
     "merge-plugin": {
