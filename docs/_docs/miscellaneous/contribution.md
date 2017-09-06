@@ -8,16 +8,41 @@ order: 6
 
 Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
+
+
+
+* [Standards and Practices](#Standards-Practices)
+	* [Versioning](#Versioning)
+	* [Coding Standards](#Coding-Standards)
+	* [Git Branches](#Git-Branches)
+	* [Proposing Feature](#Proposing-Feature)
+	* [Reporting Bugs](#Reporting-Bugs)
+	* [Fixing Bugs](#Fixing-Bugs)
+	* [Adding New Features](#Adding-New-Features)
+	* [Important points to remember when contributing](#Important-points)
+	* [Security Vulnerabilities](#Security-Vulnerabilities)
+* [Contributing to APIATO](#Contributing-APIATO)
+	* [Skeleton Project](#Contributing-Skeleton-Project)
+	* [Core Package](#Contributing-Core-Package)
+	* [Documentation](#Contributing-Documentation)
+	* [Code Generator](#Contributing-Generator)
+
+
+
+
+
+
+<a name="Standards-Practices"></a>
 # Standards and Practices
 
 
-
+<a name="Versioning"></a>
 ### Versioning
 
 The project is versioned under the [Semantic Versioning](http://semver.org/) guidelines.
 
 
-
+<a name="Coding-Standards"></a>
 ### Coding Standards
 
 The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) Coding Standard,
@@ -28,26 +53,33 @@ As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards
 *If you notice any compliance oversights, you can send a patch via pull request.*
 
 
-
+<a name="Git-Branches"></a>
 ### Git Branches
 
 The `master` branch contains the upcoming APIATO release. While the other branches are for the stable releases.
 
-Bug fixes should be sent to the latest stable branch, never to the `master` branch unless they fix features that exist only in the upcoming release.
+Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist only in the upcoming release.
 
 Major new features should always be sent to the `master` branch, which contains the upcoming release.
 
+**Example:**
+
+Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0` (possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this case would be the `7.0`. The next release will be `7.1` or `8.0`.
+
+If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. And if your PR fixes a bug, then it should be sent to the latest release branch.
 
 
+<a name="Proposing-Feature"></a>
 ### Proposing Feature
 
-If you have a proposal or a feature request, you may create an issue with `[Feature]` in the title (`[Feature] support XML responses`).
+If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example `[Feature] Support XML responses`.
 
 The proposal should also describe the new feature, as well as implementation ideas.
 The proposal will then be reviewed and either approved or denied.
 Once a proposal is approved, a pull request may be created implementing the new feature.
 
 
+<a name="Reporting-Bugs"></a>
 ### Reporting Bugs
 
 Bugs are tracked in our project's [issue tracker](https://github.com/apiato/apiato/issues).
@@ -62,6 +94,7 @@ A good bug report includes the following sections:
 * Any other information that will help us debug and reproduce the issue, including stack traces, system/environment information, and screenshots
 
 
+<a name="Fixing-Bugs"></a>
 ### Fixing Bugs
 
 If you see a bug report that you'd like to fix,
@@ -69,7 +102,7 @@ please feel free to do so.
 Following the directions and guidelines described in the "Adding New Features" section below, you may create bugfix branches and send us pull requests.
 
 
-
+<a name="Adding-New-Features"></a>
 ### Adding New Features
 
 If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on. If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you from doing a lot of development work only to have your feature rejected.
@@ -85,7 +118,7 @@ When you do begin working on your feature, here are some guidelines to consider:
 
 
 
-
+<a name="Important-points"></a>
 ### Important points to remember when contributing:
 
 - Be descriptive in your branch names, commit messages, and pull request title and descriptions.
@@ -96,7 +129,7 @@ When you do begin working on your feature, here are some guidelines to consider:
 
 
 
-
+<a name="Security-Vulnerabilities"></a>
 ### Security Vulnerabilities
 
 If you discover a security vulnerability, please send email to `mahmoud@zalt.me`.
@@ -109,18 +142,18 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 ___
 
-
+<a name="Contributing-APIATO"></a>
 # Contributing to APIATO
 
 > The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core package of apiato).
 
 
+<a name="Contributing-Skeleton-Project"></a>
+## Contributing to the Skeleton Project
 
-## Contributing to APIATO Skeleton Project
+The APIATO skeleton, is the actual Apiato project on the repository `apiato/apiato`.
 
-The APIATO Skeleton, is the actual Apiato project on the repository `apiato/apiato`.
-
-This guide will help you contribute to the APIATO Skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
+This guide will help you contribute to the APIATO skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
 
 
 
@@ -230,17 +263,21 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 
 <br>
 
-## Contributing to APIATO Core Package
+<a name="Contributing-Core-Package"></a>
+## Contributing to the Core Package
 
-The APIATO Core Package, is what provies most of the functionality of the APIATO project. 
+The APIATO core package, is what provies most of the functionality of the APIATO project. 
 
-This guide will help you contribute to the APIATO Core Package, while the package is in the vendor direcotry.
+This guide will help you contribute to the APIATO core package, while the package is in the vendor direcotry.
+
 
 ### SETUP
 
+1) For the project `apiato/core`.
+
 1) Pull the package to the project vendor (even if it was there) using:
 
-`composer update apiato/core --prefer-source`
+`composer update {your-username}/core --prefer-source`
 
 
 _The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can commit and push from the vendor directory directly._
@@ -249,7 +286,7 @@ _The composer option `--prefer-source` will clone the package's git repository i
 2) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
 
 
-### USAGE
+### USAGE (Contribution Steps)
 
 Edit > Commit > Push > PR :)
 
@@ -257,15 +294,14 @@ Edit > Commit > Push > PR :)
 
 
 
-
-
 <br>
 
-# Contributing to APIATO's Documentation
+<a name="Contributing-Documentation"></a>
+## Contributing to the Documentation
 
 The documentation is generated using [Jekyll](https://jekyllrb.com/) and it lives in the `/docs` folder. 
 
-### To run the docs locally: 
+### Run the docs locally: 
 
 #### In Docker:
 
@@ -308,8 +344,10 @@ To set a link, use the internal links as follow: `[your-text]( { { site.baseurl 
 
 <br>
 
+<a name="Contributing-Generator"></a>
+## Contributing to the Code Generator
 
-# Contributing to the Code Generator
+The Code generator is part of the `apiato/core` package.
 
 - Repository: `apiato/core`.
 - Code Path: `/Generator`.
