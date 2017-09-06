@@ -119,6 +119,20 @@ return [
         |
         */
         'allow-roles-to-access-all-routes' => [],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Force Request Header to Contain header
+        |--------------------------------------------------------------------------
+        |
+        | By default users can send request without defining the accept header and
+        | setting it to [ accept = application/json ].
+        | To force the users to define that header, set this to true.
+        | When set to true, a PHP exception will be thrown preventing users from access
+        | When set to false, the header will contain a warning message.
+        |
+        */
+        'force-accept-header' => false,
     ],
 
 ];

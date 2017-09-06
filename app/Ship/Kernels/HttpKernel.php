@@ -2,7 +2,7 @@
 
 namespace App\Ship\Kernels;
 
-use App\Ship\Middlewares\Http\ResponseHeadersMiddleware;
+use App\Ship\Middlewares\Http\ValidateJsonContent;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
 /**
@@ -51,7 +51,7 @@ class HttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
-            ResponseHeadersMiddleware::class,
+            ValidateJsonContent::class,
             'bindings',
             // The throttle Middleware is registered by the RoutesLoaderTrait in the Core
         ],
