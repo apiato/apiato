@@ -2,6 +2,7 @@
 
 namespace App\Ship\Kernels;
 
+use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
 use App\Ship\Middlewares\Http\ValidateJsonContent;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
@@ -53,6 +54,7 @@ class HttpKernel extends LaravelHttpKernel
         'api' => [
             ValidateJsonContent::class,
             'bindings',
+            ProcessETagHeadersMiddleware::class,
             // The throttle Middleware is registered by the RoutesLoaderTrait in the Core
         ],
     ];
