@@ -1,7 +1,7 @@
 ---
 title: "Useful Commands"
 category: "Features"
-order: 102
+order: 103
 ---
 
 Apiato is shipped with many useful commands to help you speed up the development process. 
