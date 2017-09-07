@@ -143,10 +143,10 @@ return [
         | calculated hash of the content to be delivered.
         | Clients can add an "If-None-Match" HTTP Header to the Request and submit
         | an (old) ETag. These ETags are validated. If they match (are the same),
-        | an empty BODY with HTTP STATUS 304 (not modified) ist returned!
+        | an empty BODY with HTTP STATUS 304 (not modified) is returned!
         |
         */
-        'use-etag' => false,
+        'use-etag' => true,
     ],
 
 ];

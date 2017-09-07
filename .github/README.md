@@ -59,35 +59,40 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 > APIATO comes with great features:
 
-- OAuth2.0 authentication for first and third-party clients (using Laravel Passport).
-- Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and  Permissions.
-- Query Parameters support (orderBy, sortedBy, filter, include) with full-text search (search, searchFields).
-- Useful endpoints for managing users, roles/permissions, tokens and more, all implemented, documented and covered with functional Tests.
-- Easy API Documentations generator (using the ApiDocJS tool).
-- Supports for CORS "Cross-Origin Resource Sharing", allowing access from different domians.
-- Auto encoding/decoding of real ID's, to prevent exposing real ID's to the outer world.
-- API Throttling (Rate Limiting).
-- Exception handleing with custom JSON errors responses.
-- Data Caching support (with auto clearing on Create, Update and Delete).
-- Easy API versioning in the URL, through the route files names.
-- Social Authentication supported out of the box (Facebook, Twitter, Google+).
-- Localization support (multiple languages via Content-Language header).
-- Automatic Data Pagination (meta links to next and previous data).
-- Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
-- Type-Casting JSON responses with Transformers (Using Fractal).
-- Custom Tests Helpers for faster and more enjoyable automated testing (using PHPUnit).
-- Optional support for the JSON API specification v1.0.
-- Automatic dates conversion to ISO format in responses.
-- Optional support for JSON with padding (JSONP).
-- Support Stripe payment gateways (easy to extend and cover other gatways).
-- WEB and API Authentication Middlewares.
-- Maintainable and scalable Software Architectural Pattern (using Porto SAP).
-- Code generator, allows generating Containers of code for faster development.
-- Separation of Web, API and CLI routes, controllers, requests and more.
-- Ready Admin dashboard infrastructure.
-- Fully detailed documentation (on apiato.io).
-- 100% customizable and Open Code.
-- And much more...
+1. OAuth2.0 authentication for first and third-party clients (using Laravel Passport).
+2. Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and  Permissions.
+3. Query Parameters support (orderBy, sortedBy and filter) with full-text search (search, searchFields).
+4. Useful endpoints for managing users, roles/permissions, tokens and more. All implemented, documented and covered with functional Tests.
+5. API Documentations generator (auto generates API docs from PHP Docblock, using the ApiDocJS tool).
+6. Supports for CORS "Cross-Origin Resource Sharing", allowing access from different domians.
+7. Auto encoding/decoding of real ID's, to prevent exposing real ID's to the outer world.
+8. API Throttling (rate limiting to control the rate of traffic received).
+9. Include (a.k.a embedding, nesting or side-loading) relationships for complex data structures.
+10. Support Data Caching support (with auto clearing on Create, Update and Delete).
+11. API versioning in the URL or Header (versioning based on the route file name).
+12. Exception handleing with custom JSON errors responses.
+13. Support for Shallow ETag HTTP Header, to reduce client bandwidth.
+14. Localization support (multiple languages via Content-Language header).
+15. Automatic Data Pagination (meta links to next and previous data).
+16. WEB and API Authentication Middlewares. With Proxy endpoints for safer authentication from first-party clients.
+17. Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
+18. Social Authentication supported out of the box (Facebook, Twitter, Google+).
+19. Type-Casting JSON responses with Transformers (Using Fractal).
+20. Useful Tests Helpers for faster and more enjoyable automated testing (using PHPUnit).
+21. Support for the JSON API specification v1.0.
+22. Automatic dates conversion to ISO format in responses.
+23. Support Stripe payment gateways (extandable to support other payment gatways).
+24. System and User level Settings support (by the Settings Container).
+25. Support for JSON with padding (JSONP).
+26. Better Request Validation (easy validate User data, accessibility and ownership).
+27. Maintainable and scalable Software Architectural Pattern (using the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern).
+28. Code generator, allows generating Containers of code for faster development.
+29. Useful Commands such as "list all Application Actions", "encoding a decoded ID", "seeds testing/deployment data", and more.
+30. Separation of Web, API and CLI routes, controllers, requests and tests.
+31. Ready Admin dashboard infrastructure with Login view (admin.apiato.dev).
+32. Detailed documentation (on [www.apiato.io](www.apiato.io)).
+33. 100% customizable and Open Code. Using latest and greatest frameworks, tools, packages and standards.
+99. Much more...
 
 
 

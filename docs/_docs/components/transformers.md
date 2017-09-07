@@ -123,7 +123,7 @@ return $this->response->paginator($rewards, new RewardTransformer());
 
 ```
 
-### Relationships
+### Relationships (include)
 
 Loading relationships with the Transformer (calling other Transformers):
 

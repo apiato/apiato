@@ -220,9 +220,11 @@ you can manually override the `$allowDisablePagination` property in your specifi
 get all data (with no pagination applied) by requesting `api.domain.dev/endpoint?limit=0`. This will return all matching
 entities.
 
-## Relationships:
+## Relationships (include):
 
-Get an object with his relationships:
+Include relationships for complex data structures.
+
+Get an object with its relationships:
 
 For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) for more details.*
 

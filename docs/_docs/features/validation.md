@@ -10,6 +10,8 @@ But in apiato validation must be defined in the Requests components, since every
 
 And the Validations rules are automatically applied, once injecting the Request in the Controller.
 
+Requests helps validating User data, accessibility, ownership and more can be added if needed.
+
 **Example Request with Validation rules:**
 
 ```php
