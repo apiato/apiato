@@ -133,6 +133,20 @@ return [
         |
         */
         'force-accept-header' => false,
+
+        /*
+        |--------------------------------------------------------------------------
+        | Use ETags
+        |--------------------------------------------------------------------------
+        |
+        | This option appends an "ETag" HTTP Header to the Response. This ETag is a
+        | calculated hash of the content to be delivered.
+        | Clients can add an "If-None-Match" HTTP Header to the Request and submit
+        | an (old) ETag. These ETags are validated. If they match (are the same),
+        | an empty BODY with HTTP STATUS 304 (not modified) ist returned!
+        |
+        */
+        'use-etag' => false,
     ],
 
 ];
