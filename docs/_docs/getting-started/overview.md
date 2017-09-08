@@ -5,11 +5,11 @@ order: 3
 ---
 
 * [Quick Overview](#Quick-Overview)
-  * [Option 1: The basic flow](#basic-flow)
-  * [Option 2: Sample Route Endpoint](#sample-route)
-  * [Option 3: Sample Controller Function](#control-fun)
-  * [Option 3: Sample Action](#sample-action)
-  * [Option 3: Sample User Response](#user-res)
+  * [The basic flow](#basic-flow)
+  * [Sample Route Endpoint](#sample-route)
+  * [Controller Function](#control-fun)
+  * [Sample Action](#sample-action)
+  * [Sample User Response](#user-res)
 
 
 <a name="Quick-Overview"></a>
