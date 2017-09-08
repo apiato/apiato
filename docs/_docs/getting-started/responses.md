@@ -4,7 +4,19 @@ category: "Getting Started"
 order: 6
 ---
 
+<<<<<<< HEAD
+* [Responses Payloads](#Res-payload)
+* [Error Responses formats](#Error-res-format)
+* [Change the Response payload format](#change-res-payload-format)
+
+* [Building a Responses from the Controller](#build-res-from-con)
+  * [Building a Responses from the Controller](#build-res-from-controller)
+
+<a name="Res-payload"></a>
+### Responses Payloads:
+=======
 In Apiato you can define your own response payload or use one of the supported serializers.
+>>>>>>> c4176bb8a7ce226b118c152948bf3ab4d6a51fd4
 
 Currently the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided by [Fractal](http://fractal.thephpleague.com/transformers/).
 
@@ -91,8 +103,18 @@ Example: `?include=tags,user`
 
 For more details read the `Relationships` section in the [Query Parameters]({{ site.baseurl }}{% link _docs/features/query-parameters.md %}) page.
 
+<<<<<<< HEAD
+<a name="Error-res-format"></a>
+### Error Responses formats
+
+Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same for Authorization, Validation and so on.
+
+<a name="change-res-payload-format"></a>
+### Change the Response payload format:
+=======
 
 ### Change the default Response payload:
+>>>>>>> c4176bb8a7ce226b118c152948bf3ab4d6a51fd4
 
 The default response format (specification) is the `DataArray` Fractal Serializer.
 
@@ -122,6 +144,12 @@ override the the `protected $resourceKey = 'FooBar';` in order to specify the la
 3. If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of 
 the `App\Containers\User\Models\User::class` is `User`.
 
+<<<<<<< HEAD
+More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
+<a name="build-res-from-con"></a>
+# Building a Responses from the Controller:
+<a name="build-res-from-controller"></a>
+=======
 
 **Note:** Apiato the `DataArraySerializer` and uses the `object` keyword as resource key for each response, and it's set manually in each transformer, to be automated later.
 
@@ -132,6 +160,7 @@ Visit each feature, example the Authentication and there you will see how an una
 
 
 
+>>>>>>> c4176bb8a7ce226b118c152948bf3ab4d6a51fd4
 ## Building a Responses from the Controller:
 
 ### Building a Responses from the Controller:
