@@ -10,6 +10,8 @@ order: 5
   * [Calling protected endpoint (passing Bearer Token) example](#call-protected-EP)
 
 
+<br>
+
 <a name="send-http-req"></a>
 ## Sending HTTP Request
 

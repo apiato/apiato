@@ -4,6 +4,7 @@ category: "Getting Started"
 order: 6
 ---
 
+
 * [Apiato Response](#Res-payload)
 * [Default Apiato Responses Payload](#Def-Res-payload)
 * [Change the default Response payload](#change-apiao-res-payload)
@@ -12,9 +13,10 @@ order: 6
 * [Building a Responses from the Controller](#build-res-from-con)
 
 
+<br>
 
 <a name="Res-payload"></a>
-###Apiato Response
+### Apiato Response
 
 In Apiato you can define your own response payload or use one of the supported serializers.
 
