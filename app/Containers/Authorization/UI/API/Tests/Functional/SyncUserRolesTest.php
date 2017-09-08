@@ -48,9 +48,10 @@ class SyncUserRolesTest extends TestCase
 
         $this->assertTrue(count($responseContent->data->roles->data) > 1);
 
-        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
+        $roleIds = array_pluck($responseContent->data->roles->data, 'id');
+        $this->assertContains($data['roles_ids'][0], $roleIds);
 
-        $this->assertEquals($data['roles_ids'][1], $responseContent->data->roles->data[1]->id);
+        $this->assertContains($data['roles_ids'][1], $roleIds);
     }
 
 }
