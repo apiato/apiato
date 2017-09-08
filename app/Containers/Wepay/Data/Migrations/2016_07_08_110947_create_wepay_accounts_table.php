@@ -42,6 +42,6 @@ class CreateWepayAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('stripe_accounts');
+        Schema::drop('wepay_accounts');
     }
 }
