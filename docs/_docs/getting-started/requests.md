@@ -3,10 +3,13 @@ title: "Requests"
 category: "Getting Started"
 order: 5
 ---
+
 * [Sending HTTP Request](#send-http-req)
 * [Calling Endpoints](#call-EP)
   * [Calling unprotected endpoint example](#call-unprotected-EP)
   * [Calling protected endpoint (passing Bearer Token) example](#call-protected-EP)
+
+
 <a name="send-http-req"></a>
 ## Sending HTTP Request
 

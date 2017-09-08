@@ -266,16 +266,16 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 <a name="Contributing-Core-Package"></a>
 ## Contributing to the Core Package
 
-The APIATO core package, is what provies most of the functionality of the APIATO project. 
+The APIATO core package, is what provides most of the functionality of the APIATO project. 
 
 This guide will help you contribute to the APIATO core package, while the package is in the vendor direcotry.
 
 
 ### SETUP
 
-1) For the project `apiato/core`.
+1) Delete the `core` package `vendor/apiato/core` from the vendor directory.
 
-1) Pull the package to the project vendor (even if it was there) using:
+2) Pull the package to the project vendor (even if it was there) using:
 
 `composer update {your-username}/core --prefer-source`
 
@@ -283,8 +283,9 @@ This guide will help you contribute to the APIATO core package, while the packag
 _The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can commit and push from the vendor directory directly._
 
 
-2) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
+3) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
 
+You should now have the `.git` directory of the `core` package (your forked version).
 
 ### USAGE (Contribution Steps)
 

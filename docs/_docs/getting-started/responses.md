@@ -10,8 +10,9 @@ order: 6
 * [JsonApiSerializer Resource Key](#JsonApiSerializer-Resource-Key)
 * [Error Responses formats](#Error-Res-Format)
 * [Building a Responses from the Controller](#build-res-from-con)
-  * [Building a Responses from the Controller](#build-res-from-controller)
- <br />
+
+
+
 <a name="Res-payload"></a>
 ###Apiato Response
 
@@ -141,10 +142,8 @@ the `App\Containers\User\Models\User::class` is `User`.
 
 Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same for Authorization, Validation and so on.
 
-<a name="build-res-from-con"></a>
 
+<a name="build-res-from-con"></a>
 ## Building a Responses from the Controller:
-<a name="build-res-from-controller"></a>
-### Building a Responses from the Controller:
 
 Checkout the [Controller response builder helper functions]({{ site.baseurl }}{% link _docs/components/controllers.md %}).
