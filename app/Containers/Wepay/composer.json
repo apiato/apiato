@@ -1,0 +1,8 @@
+{
+  "name": "apiato/wepay",
+  "description": "apiato Container for Wepay.",
+  "require": {
+    "kevinem/wepay-laravel": "^0.1.0"
+  }
+}
+
