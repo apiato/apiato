@@ -33,7 +33,7 @@ class CreateWepayAccountTest extends TestCase
 
         $data = [
             'name'          => $this->faker->name,
-            'description'   => $this->faker->text,
+            'description'   => $this->faker->text(50),
             'type'          => 'personal',
             'imageUrl'      => 'https://someurl.com',
             'country'       => 'US',
