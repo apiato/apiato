@@ -4,6 +4,18 @@ category: "Getting Started"
 order: 4
 ---
 
+* [Simple Introduction](#intro)
+* [Containers Layer](#container-layer)
+  * [Remove a Container (default Containers)](#rm-container)
+  * [Create new Container](#new-Containter)
+    * [Option 1) Using the Code Generator](#use-Generator)
+    * [Option 2) manually](#manual-newCon)
+  * [Rules](#rules)
+* [Contributing to APIATO](#ship-layer)
+
+<a name="intro"></a>
+### Simple Introduction
+
 As you may know already, APIATO is architectured using the Porto Software Architectural Pattern. So you MUST read the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started.
 
 Porto consists of 2 layers the **Containers** layer and the **Ship** layer.
@@ -45,26 +57,3 @@ For the auto-loading to work flawlessly you MUST adhere to the component's namin
 ### Ship Layer
 
 Read about the Ship layer **[here](https://github.com/Mahmoudz/Porto#Port-Layer)**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
