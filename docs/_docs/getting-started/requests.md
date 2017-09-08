@@ -4,6 +4,12 @@ category: "Getting Started"
 order: 5
 ---
 
+* [Sending HTTP Request](#send-http-req)
+* [Calling Endpoints](#call-EP)
+  * [Calling unprotected endpoint example](#call-unprotected-EP)
+  * [Calling protected endpoint (passing Bearer Token) example](#call-protected-EP)
+
+<a name="send-http-req"></a>
 ## Sending HTTP Request
 
 Certain API calls require you to send data in a particular format as part of the API call. 
@@ -21,15 +27,15 @@ By default, all API calls expect input in `JSON` format, however you need to inf
 However, in Apiato you can force your users to send `application/json` by setting `'force-accept-header' => true,` in `app/Ship/Configs/apiato.php` 
 Or allow them to skip it by setting the `'force-accept-header' => false,` (By default this is set to false).
 
-
+<a name="call-EP"></a>
 ## Calling Endpoints
-
+<a name="call-unprotected-EP"></a>
 ### Calling unprotected endpoint example:
 
 ```shell
 curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/v2/register"
 ```
-
+<a name="call-protected-EP"></a>
 ### Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
