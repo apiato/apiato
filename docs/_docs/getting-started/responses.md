@@ -4,7 +4,6 @@ category: "Getting Started"
 order: 6
 ---
 
-
 * [Apiato Response](#Res-payload)
 * [Default Apiato Responses Payload](#Def-Res-payload)
 * [Change the default Response payload](#change-apiao-res-payload)
@@ -14,6 +13,7 @@ order: 6
   * [Building a Responses from the Controller](#build-res-from-controller)
 <a name="Res-payload"></a>
 ###Apiato Response
+
 In Apiato you can define your own response payload or use one of the supported serializers.
 
 Currently the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided by [Fractal](http://fractal.thephpleague.com/transformers/).
@@ -140,8 +140,8 @@ the `App\Containers\User\Models\User::class` is `User`.
 
 Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same for Authorization, Validation and so on.
 
-
 <a name="build-res-from-con"></a>
+
 ## Building a Responses from the Controller:
 <a name="build-res-from-controller"></a>
 ### Building a Responses from the Controller:
