@@ -3,16 +3,38 @@ title: "Requests"
 category: "Main Components"
 order: 3
 ---
+* [Definition & Principles](#definition-principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+* [Request Properties](#request-properties)
+* [**decode**](#decode)
+* [**urlParameters**](#urlparameters)
+* [**access**](#access)
+  + [How the authorize function work](#how-the-authorize-function-work)
+  + [Allow a Role to access every endpoint](#allow-a-role-to-access-every-endpoint)
+- [Request Helper Functions](#request-helper-functions)
+* [**hasAccess**](#hasaccess)
+* [**isOwner**](#isowner)
+* [**getInputByKey**](#getinputbykey)
+* [**sanitizeData**](#sanitizedata)
+- [Storing Data on the Request](#storing-data-on-the-request)
+- [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
+
+<a name="definition-principles"></a>
 
 ### Definition & Principles
 
 Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#Requests).
+
+<a name="rules"></a>
 
 ### Rules
 
 - All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
 - A Request MUST have a `rules()` function, returning an array. And an `authorize()` function to check for authorization (can return true when no authorization required).
 
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -32,6 +54,8 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
                         - DeleteUserRequest.php
                         - ...
 ```
+
+<a name="code-samples"></a>
 
 ### Code Samples
 
@@ -99,9 +123,13 @@ By just injecting the request class you already applied the validation and autho
 
 When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
 
+<a name="request-properties"></a>
+
 ### Request Properties
 
 apiato adds some new properties to the Request Class. Each of these properties is very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see description for each property:
+
+<a name="decode"></a>
 
 ### **decode**
 
@@ -146,6 +174,8 @@ class AssignUserToRoleRequest extends Request
 
 
 **Note:** validations rules that relies on your ID like (`exists:users,id`) will not work unless you decode your ID before passing it to the validation.
+
+<a name="urlparameters"></a>
 
 ### **urlParameters**
 
@@ -193,10 +223,12 @@ class ConfirmUserEmailRequest extends Request
 }
 ```
 
+<a name="access"></a>
+
 ### **access**
 
-The **$access** property, allows the user to define set of Roles and Permissions than can access this endpoint. 
- 
+The **$access** property, allows the user to define set of Roles and Permissions than can access this endpoint.
+
 The `$access` property is used by the `hasAccess` function defined below in the `authorize` function, to check if the user has the necessary Roles & Permissions to call this endpoint (basically access the controller function where this request object is injected).
 
 Example:
@@ -230,6 +262,8 @@ class DeleteUserRequest extends Request
 }
 ```
 
+<a name="how-the-authorize-function-work"></a>
+
 #### How the authorize function work
 
 The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns a boolean.
@@ -243,9 +277,11 @@ On the other side if `isKing` *(a custom function could be written by you anywhe
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
 
 
+<a name="allow-a-role-to-access-every-endpoint"></a>
+
 #### Allow a Role to access every endpoint
 
-You can allow some Roles to access every endpoint in the system without having to define that role in each Request object. 
+You can allow some Roles to access every endpoint in the system without having to define that role in each Request object.
 
 This is useful you want to let users with `Admin` role access everything.
 
@@ -261,10 +297,13 @@ This will append the `admin` role to all roles access in every request object. E
 
 
 
+<a name="request-helper-functions"></a>
 
 ## Request Helper Functions
 
 apiato also provides some helpful functions by default, so you can use them whenever you need them.
+
+<a name="hasaccess"></a>
 
 ### **hasAccess**
 
@@ -276,6 +315,8 @@ The `hasAccess` function, decides if the the user has Access or not based on the
 
 - If you do not need to set a roles/permissions just set `'permission' => ''` or  `'permission' => null`.
 
+<a name="isowner"></a>
+
 ### **isOwner**
 
 The `hasAccess` function, checks if the passed URL ID is the same as the User ID of the request.
@@ -286,9 +327,11 @@ Let's say we have an endpoint `www.api.apiato.dev/v1/users/{ID}/delete` that del
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
+<a name="getinputbykey"></a>
+
 ### **getInputByKey**
 
-Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`, 
+Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`,
 however, it works on the **decoded** values instead of the original data.
 
 Consider the following `$request` data:
@@ -302,16 +345,18 @@ Consider the following `$request` data:
 }
 ```
 
-Calling `$request->input('id')` would return `"a2423nadabada0"`, however `$request->getInputByKey('id')` would return the 
+Calling `$request->input('id')` would return `"a2423nadabada0"`, however `$request->getInputByKey('id')` would return the
 decoded value (e.g., `4`).
 
 Furthermore, one can define a `default` value to be returned, if the key is not present (or not set), like so:
 `$request->getInputByKey('data.name', 'Undefined')`
 
+<a name="sanitizedata"></a>
+
 ### **sanitizeData**
 
 Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
- 
+
 a) minimize the traffic
 b) partially update the respective resource
 
@@ -329,7 +374,7 @@ if($request->has('data.description')) {
 ```
 
 So to avoid those `if` blocks, use `array_filter($data)` in order to remove `empty` fields from the request.
- 
+
 However, in PHP `false` and `''` _(empty string)_ are also considered as `empty` (which is clearly not what you want).
 
 You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
@@ -380,13 +425,15 @@ The extracted `$data` looks like this:
 ```
 
 Note that `data.blabla` is not within the `$data` array, as it was not present within the `$request`. Furthermore, all
-other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of 
-`filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify 
+other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of
+`filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
 the fields to would like to pass through. This makes partially updating an resource quite easy!
 
-**Heads Up:** 
+**Heads Up:**
 
 Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
+
+<a name="storing-data-on-the-request"></a>
 
 ## Storing Data on the Request
 
@@ -405,6 +452,7 @@ $someValue = $request->retrieve('someKey')
 ```
 
 
+<a name="unit-testing-for-actions-request"></a>
 
 ## Unit Testing for Actions (Request)
 
@@ -454,5 +502,3 @@ $order = App::make(MakeOrderAction::class)->run($request);
 // ...
 
 ```
-
-

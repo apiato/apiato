@@ -3,6 +3,13 @@ title: "Commands"
 category: "Optional Components"
 order: 32
 ---
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+<a name="definition"></a>
 
 ### Definition
 
@@ -10,15 +17,21 @@ Commands are the console commands, it's a way to execute some code from the CLI.
 
 Commands could be Closure based or Classes. For more details refer to this [link](https://laravel.com/docs/artisan).
 
+<a name="principles"></a>
+
 ## Principles
 
 - Containers MAY or MAY NOT have one or more Commands.
 
 - Every should be calling Actions. And should not container any business logic.
 
+<a name="rules"></a>
+
 ### Rules
 
 - All Command MUST extend from `App\Ship\Parents\Commands\ConsoleCommand`.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -33,9 +46,11 @@ Commands could be Closure based or Classes. For more details refer to this [link
                         - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**Example: a simple Command** 
+**Example: a simple Command**
 
 ```php
 <?php
@@ -64,9 +79,8 @@ class SayWelcome extends ConsoleCommand
 
 ```
 
-**Usage from CLI (Terminal):** 
+**Usage from CLI (Terminal):**
 
 ```shell
-php artisan say:welcome 
+php artisan say:welcome
 ```
-

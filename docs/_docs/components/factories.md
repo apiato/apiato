@@ -4,21 +4,35 @@ category: "Optional Components"
 order: 25
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+<a name="definition"></a>
+
 ### Definition
 
-Factories (are a short name for Models Factories). 
+Factories (are a short name for Models Factories).
 
 Factories are used to generate some fake data with the help of Faker to be used for testing purposes.
 
 Factories are mainly used from Tests.
 
+<a name="principles"></a>
+
 ## Principles
 
 - Factories SHOULD be created in the Containers.
 
+<a name="rules"></a>
+
 ### Rules
 
 - A Factory is just a plain PHP script. *(No classes or namespaces required)*
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -32,9 +46,11 @@ Factories are mainly used from Tests.
                     - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**A User Model Factory:** 
+**A User Model Factory:**
 
 ```php
 <?php
@@ -50,17 +66,17 @@ $factory->define(App\Containers\User\Models\User::class, function (Faker\Generat
 
 // ...
 ```
-	 
-**Usage from `Tests` or anywhere else:** 
+
+**Usage from `Tests` or anywhere else:**
 
 ```php
 <?php
 
 // creating 4 users
-factory(User::class, 4)->create(); 
+factory(User::class, 4)->create();
 ```
 
-**Usage with relationships:** 
+**Usage with relationships:**
 
 ```php
 <?php
@@ -72,13 +88,13 @@ $rewards = factory(Reward::class, 3)->make()->each(function ($reward) use ($coun
     $reward->save();
     $reward->countries()->attach([$countries->random(1)->id, $countries->random(1)->id]);
     $reward->save();
-}); 
+});
 ```
 
 
 Use make instance of create and pass any data any way, then save after establishing the relations.
 
-**Usage while overriding some values:** 
+**Usage while overriding some values:**
 
 ```php
 <?php
@@ -88,13 +104,13 @@ $offer = factory(Offer::class)->make();
 $offer->user_id = $user->id;
 $offer->save();
 
-// ANOTHER EXAMPLE: 
+// ANOTHER EXAMPLE:
 
 // creating multiple Accounts
 factory(Account::class, 3)->make()->each(function ($account) use ($user) {
     $account->user_id = $user->id;
     $account->save();
-}); 
+});
 ```
 
 For more information about the Models Factories read [this](https://laravel.com/docs/master/testing#model-factories).

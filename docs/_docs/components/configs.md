@@ -4,15 +4,27 @@ category: "Optional Components"
 order: 31
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+
+<a name="definition"></a>
 ### Definition
 
 Configs are files that container configurations. For more details about them check this [doc](https://laravel.com/docs/5.3/configuration).
+
+<a name="principles"></a>
 
 ## Principles
 
 - Your custom config files and the third party packages config files, should be placed in the Container, unless it's too generic then it can be placed on the Ship Layer.
 
 - Container can have as many config files as it needs.
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -21,6 +33,8 @@ Configs are files that container configurations. For more details about them che
 - Framework config files (provided by laravel) lives at the default config directory on the root of the project.
 
 - You SHOULD not add any config file to the `app/config` directory.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -41,9 +55,11 @@ Configs are files that container configurations. For more details about them che
     - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**Example simple Config file** 
+**Example simple Config file**
 
 ```php
 <?php

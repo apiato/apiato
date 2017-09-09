@@ -4,17 +4,29 @@ category: "Optional Components"
 order: 20
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+<a name="definition"></a>
+
 ### Definition
 
 Criterias are classes used to hold and apply query condition when retrieving data from the database through a Repository.
 
 Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope. But with Criterias, your query conditions can be shared across multiple Models and Repositories. It allows you to define the query condition once and use it anywhere in the App.
 
+<a name="principles"></a>
+
 ## Principles
 
 - Every Container MAY have its own Criterias. However, shared Criterias SHOULD be created in the Ship layer.
 
 - A Criteria MUST not contain any extra code, if it needs data, the data SHOULD be passed to it from the Actions or the Task. It SHOULD not run (call) any Task for data.
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -23,6 +35,8 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 - Every Criteria SHOULD have an `apply()` function.
 
 - A simple query condition example `"where user_id = $id"`, this can be named "This User Criteria", and used with all Models who has relations with the User Model.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -44,9 +58,11 @@ Without using a Criteria class, you can add your query conditions to a Repositor
                   - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**Example: a shared Criteria** 
+**Example: a shared Criteria**
 
 ```php
 <?php
@@ -65,7 +81,7 @@ class OrderByCreationDateDescendingCriteria extends Criteria
 }
 ```
 
-**Usage from `Task`:** 
+**Usage from `Task`:**
 
 ```php
 <?php
@@ -77,10 +93,10 @@ public function run()
     $users = $this->userRepository->paginate();
 
     return $users;
-} 
+}
 ```
 
-**Example: `Criteria` accepting data input:** 
+**Example: `Criteria` accepting data input:**
 
 ```php
 <?php
@@ -106,9 +122,9 @@ class ThisUserCriteria extends Criteria
     }
 }
 ```
-	
-	 
-**Example: Passing data from `Task` to `Criteria`:** 
+
+
+**Example: Passing data from `Task` to `Criteria`:**
 
 ```php
 <?php
@@ -120,7 +136,7 @@ public function run($user)
     $accounts = $this->accountRepository->paginate();
 
     return $accounts;
-} 
+}
 
 ```
 

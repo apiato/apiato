@@ -4,15 +4,27 @@ category: "Optional Components"
 order: 15
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+
+<a name="definition"></a>
 ### Definition
 
 Exceptions are classes the handles errors, and helps developers debug their code in a more efficient way.
+
+<a name="principles"></a>
 
 ## Principles
 
 - Exceptions can be thrown from anywhere in the application.
 
 - Exceptions SHOULD be created inside the Containers. However, general Exceptions SHOULD be created the Port layer.
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -21,6 +33,8 @@ Exceptions are classes the handles errors, and helps developers debug their code
 - Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Exceptions/*`).
 
 - Every Exception SHOULD have two properties `httpStatusCode` and `message`, both properties will be displayed when an error occurs. You can override those values while throwing the error.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -39,6 +53,8 @@ Exceptions are classes the handles errors, and helps developers debug their code
                 - InternalErrorException.php
                 - ...
 ```
+
+<a name="code-samples"></a>
 
 ### Code Samples
 
@@ -59,7 +75,7 @@ class AccountFailedException extends Exception
     public $message = 'Failed creating new User.';
 }
 ```
-	 
+
 **General `Exception`:**
 
 ```php
@@ -78,27 +94,27 @@ class InternalErrorException extends Exception
 }
 ```
 
-**Exception usage from anywhere:** 
+**Exception usage from anywhere:**
 
 ```php
 <?php
 
-throw new AccountFailedException(); 
+throw new AccountFailedException();
 ```
 
-**Usage with Log for Debugging:** 
+**Usage with Log for Debugging:**
 
 ```php
 <?php
 
-throw (new AccountFailedException())->debug($e); // debug() accepts string or \Exception instance 
+throw (new AccountFailedException())->debug($e); // debug() accepts string or \Exception instance
 ```
 
-**Usage and overriding the default `message`:** 
+**Usage and overriding the default `message`:**
 
 ```php
 <?php
 
-throw new AccountFailedException('I am the message to be displayed for the user'); 
+throw new AccountFailedException('I am the message to be displayed for the user');
 
 ```
