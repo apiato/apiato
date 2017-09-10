@@ -34,7 +34,7 @@ _Example: the `jwt.auth` middleware "provided by the JWT package" is registered 
    - Containers
        - {container-name}
            - Middlewares
-           - WebAuthentication.php
+              - WebAuthentication.php
    - Ship
        - Features
            - Middleware
