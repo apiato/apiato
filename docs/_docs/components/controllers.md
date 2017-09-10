@@ -119,7 +119,7 @@ Many helper function are there to help you build your response faster, those hel
 **transform**
 This is the most useful function which you will be using in most cases.
 
-- First required parameter accespts data as object or Collection of objects.
+- First required parameter accepts data as object or Collection of objects.
 - Second required parameter is the transformer object
 - Third optional parameter take the includes that should be returned by the response, _($availableIncludes and $defaultIncludes in the transformer class)_.  
 - Fourth optional parameter accepts meta data to be injected in the response.
