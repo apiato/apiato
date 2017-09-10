@@ -4,15 +4,22 @@ category: "Features"
 order: 22
 ---
 
+- [Enable / Disable Eloquent Query Caching](#enable-disable-eloquent-query-caching)
+- [Change different caching settings](#change-different-caching-settings)
+
+<a name="enable-disable-eloquent-query-caching"></a>
+
 ## Enable / Disable Eloquent Query Caching
 
 By default caching is disabled.
 
 To enable it, go to `config/repository.php` config file and set `cache` > `enabled  => true`, or set it from the `.env` file using `ELOQUENT_QUERY_CACHE`.
 
-More details can be found [here](https://github.com/andersao/l5-repository#cache-config). 
+More details can be found [here](https://github.com/andersao/l5-repository#cache-config).
 
 Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout the Query parameters page.
+
+<a name="change-different-caching-settings"></a>
 
 ## Change different caching settings
 

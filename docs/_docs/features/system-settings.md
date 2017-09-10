@@ -4,13 +4,23 @@ category: "Features"
 order: 25
 ---
 
+- [Seed the default settings:](#seed-the-default-settings)
+- [Read settings:](#read-settings)
+
+<br>
+<br>
+
 At many cases you need to have some dynamic system settings, such as in a referral program, where you give 'gifts' to anyone who refers new users. But those gifts can be changed in the future, so it's better not have them statically created in the code, instead read from the database where an  Admin can manage them at any time.
 
 The `app/Containers/Settings` Container helps storing and retrieving those key values settings. It also seed the database with the default configurations during the installation.
 
+<a name="seed-the-default-settings"></a>
+
 #### Seed the default settings:
 
 Default Settings should be seeded in `app/Containers/Settings/Database/Seeders/DefaultSystemSettingsSeeder.php`
+
+<a name="read-settings"></a>
 
 #### Read settings:
 

@@ -4,15 +4,29 @@ category: "Optional Components"
 order: 24
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+* [Run the Seeders](#run-the-seeders)
+- [apiato testing seeder command](#apiato-testing-seeder-command)
+
+<a name="definition"></a>
+
 ### Definition
 
-Seeders (are a short name for Database Seeders). 
+Seeders (are a short name for Database Seeders).
 
 Seeders are classes made to seed the database with real data, this data usually should exist in the Application after the installation (Example: the default Users Roles and Permissions or the list of Countries).
+
+<a name="principles"></a>
 
 ## Principles
 
 - Seeders SHOULD be created in the Containers. (If the container is using a package that publishes a Seeder class, this class should be manually placed in the Container that make use of it. Do not reply on the package to place it on its right location).
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -21,6 +35,8 @@ Seeders are classes made to seed the database with real data, this data usually 
 - To avoid any conflict between containers seeders classes, you SHOULD always prepend the Seeders of each container with the container name. (Example: `UserPermissionsSeeder`, `ItemPermissionsSeeder`). *If 2 seeders classes have the same name but live in different containers, one of them will not be loaded.*
 
 - If you wish to order the seeding of the classes, you can just append `_1`, `_2` to your classes.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -35,9 +51,11 @@ Seeders are classes made to seed the database with real data, this data usually 
                     - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**Roles `Seeder`:** 
+**Roles `Seeder`:**
 
 
 ```php
@@ -71,6 +89,8 @@ class OrderPermissionsSeeder_1 extends Seeder
 
 Note: Same `Seeder` class is allowed to contain seeding for multiple `Models`.
 
+<a name="run-the-seeders"></a>
+
 ### Run the Seeders
 
 After registering the `Seeders` you can run this command:
@@ -95,6 +115,7 @@ For more information about the Database Seeders read [this](https://laravel.com/
 
 
 
+<a name="apiato-testing-seeder-command"></a>
 
 ## apiato testing seeder command
 
@@ -107,4 +128,3 @@ It's useful sometimes to create a big set of testing data. apiato facilitates th
 ```shell
 php artisan apiato:seed-test
 ```
-

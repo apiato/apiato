@@ -3,14 +3,24 @@ title: "Actions"
 category: "Main Components"
 order: 4
 ---
+- [Definition & Principles](#definition-principles)
+- [Rules](#rules)
+- [Folder Structure](#folder-structure)
+- [Code Sample](#code-sample)
+
+<a name="definition-principles"></a>
 
 ### Definition & Principles
 
 Read from the [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
 
+<a name="rules"></a>
+
 ### Rules
 
 - All Actions MUST extend from `App\Ship\Parents\Actions\Action`.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -24,9 +34,11 @@ Read from the [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmou
                 - ...
 ```
 
+<a name="code-sample"></a>
+
 ### Code Sample
 
-**Delete User Action:** 
+**Delete User Action:**
 
 ```php
 <?php
@@ -61,16 +73,16 @@ class CreateAdminAction extends Action
 But injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
 
 
-The Action itself was also called using `$this->call()` which triggers the `run` function in it. 
+The Action itself was also called using `$this->call()` which triggers the `run` function in it.
 
 
 Refer to the **Magical Call** page for more info and examples on how to use the call function.
 
 
 
-**Same Example using the `call` function:** 
+**Same Example using the `call` function:**
 
-	 
+
 ```php
 <?php
 
@@ -89,9 +101,9 @@ class DeleteUserAction extends Action
 
 }
 ```
-	
 
-**Example: Calling multiple Tasks:** 
+
+**Example: Calling multiple Tasks:**
 
 ```php
 <?php
@@ -120,9 +132,9 @@ class DemoAction extends Action
 }
 
 ```
-	 
 
-**Action usage from a Controller:** 
+
+**Action usage from a Controller:**
 
 ```php
  <?php
@@ -139,4 +151,3 @@ class DemoAction extends Action
 ```
 
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
-

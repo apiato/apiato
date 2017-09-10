@@ -4,17 +4,29 @@ category: "Optional Components"
 order: 30
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Sample](#code-sample)
+
+<a name="definition"></a>
+
 ### Definition
 
 Middleware provide a convenient mechanism for filtering HTTP requests entering your application. More about them [here](https://laravel.com/docs/middleware).
 
 You can enable and disable Middlewares as you wish.
 
+<a name="principles"></a>
+
 ## Principles
 
 - There's two types of Middlewares, General (applied on all the Routes by default) and Endpoints Middlewares (applied on some Endpoints).
 
 - The Middlewares CAN be placed in Ship layer or the Container layer depend on their roles.
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -24,8 +36,10 @@ You can enable and disable Middlewares as you wish.
 
 - General Middlewares (like some default Laravel Middleware's) SHOULD live in the Ship layer `app/Ship/Middlewares/*` and are registered in the Ship Main Provider.
 
-- Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense). 
+- Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense).
 _Example: the `jwt.auth` middleware "provided by the JWT package" is registered in the Authentication Container (`Containers/Authentication/Providers/MiddlewareServiceProvider.php`)_.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -43,9 +57,11 @@ _Example: the `jwt.auth` middleware "provided by the JWT package" is registered 
                  - VerifyCsrfToken.php
 ```
 
+<a name="code-sample"></a>
+
 ### Code Sample
 
-**Middleware Example:** 
+**Middleware Example:**
 
 ```php
 <?php
@@ -84,11 +100,11 @@ class WebAuthentication extends Middleware
         return $next($request);
     }
 }
-	 
+
 ```
 
 
-**Middleware registration inside the Container Example:** 
+**Middleware registration inside the Container Example:**
 
 ```php
 <?php
@@ -134,8 +150,8 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 }
 ```
 
-	 
-**Middleware registration inside the Ship layer (HTTP Kernel) Example:** 
+
+**Middleware registration inside the Ship layer (HTTP Kernel) Example:**
 
 ```php
 <?php
@@ -179,4 +195,3 @@ class ShipHttpKernel extends LaravelHttpKernel
     ];
 }
 ```
-

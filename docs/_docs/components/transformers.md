@@ -4,9 +4,22 @@ category: "Main Components"
 order: 12
 ---
 
+* [Definition & Principles](#definition-principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+* [Relationships (include)](#relationships-include)
+  + [From Front-end](#from-front-end)
+- [From Back-end](#from-back-end)
+- [Transformer Available helper functions:](#transformer-available-helper-functions)
+
+<a name="definition-principles"></a>
+
 ### Definition & Principles
 
 Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#Transformers).
+
+<a name="rules"></a>
 
 ### Rules
 
@@ -15,6 +28,8 @@ Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/M
 - Every Transformer SHOULD extend from `App\Ship\Parents\Transformers\Transformer`.
 
 - Each Transformer MUST have a `transform()` function.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -29,9 +44,11 @@ Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/M
                         - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**Reward Transformer with Country relation:** 
+**Reward Transformer with Country relation:**
 
 ```php
 <?php
@@ -86,8 +103,8 @@ class ItemTransformer extends Transformer
 }
 ```
 
-	 
-**Usage from Controller (Single Item)** 
+
+**Usage from Controller (Single Item)**
 
 ```php
 <?php
@@ -107,10 +124,10 @@ $this->response->array([
     'email'         =>  $user->email,
 ]);
 
-// more options are available 
+// more options are available
 ```
 
-**Usage from Controller (Multiple Items/Collection)** 
+**Usage from Controller (Multiple Items/Collection)**
 
 ```php
 <?php
@@ -119,19 +136,23 @@ $this->response->array([
 $rewards = $this->getRewards();
 
 // building the response with the transformer of the Model
-return $this->response->paginator($rewards, new RewardTransformer()); 
+return $this->response->paginator($rewards, new RewardTransformer());
 
 ```
+
+<a name="relationships-include"></a>
 
 ### Relationships (include)
 
 Loading relationships with the Transformer (calling other Transformers):
 
-This can be done in 2 ways: 
+This can be done in 2 ways:
 
 1. By the User, he can specify what to relations to return in the response.
 
 2. By the Developer, define what relations to include at run time.
+
+<a name="from-front-end"></a>
 
 #### From Front-end
 
@@ -179,10 +200,12 @@ class AccountTransformer extends Transformer
 
 }
 ```
-	 
+
 Now to get the `Tags` with the response when Accounts are requested pass the `?include=tags` parameter with the [GET] request.
 
 To get Tags with User use the comma separator: `?include=tags,user`.
+
+<a name="from-back-end"></a>
 
 ## From Back-end
 
@@ -192,10 +215,10 @@ From the controller you can dynamically set the `DefaultInclude` using (`setDefa
 <?php
 
 return $this->response->paginator($rewards, (new ProductsTransformer())->setDefaultIncludes(['tags']));
-	
+
 ```
 
-	 
+
 You need to have `includeTags` function defined on the transformer. Look at the full examples above.
 
 If you want to include a relation with every response from this transformer you can define the relation directly in the transformer on (`$defaultIncludes`)
@@ -211,10 +234,12 @@ protected $defaultIncludes = [
     'tags',
 ];
 
-// .. 
+// ..
 ```
 
 You need to have `includeUser` and `includeTags` functions defined on the transformer. Look at the full examples above.
+
+<a name="transformer-available-helper-functions"></a>
 
 ## Transformer Available helper functions:
 
