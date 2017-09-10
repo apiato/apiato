@@ -30,13 +30,13 @@ In URL example: `www.apiato.dev/items/abcdef`.
 
 In parameters example: [GET] or [POST] `www.apiato.dev/items?id=abcdef`.
 
-in both cases you will need to inform your API about what's coming form the Request class. 
+In both cases you will need to inform your API about what's coming from the Request class. 
 
 Checkout the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %}) page. After setting the `$decode` and `$urlParameters` properties on your Request class, the ID will be automatically decoded for you, to apply validation rules on it or/and use it from your controller (`$request->id` will return the decoded ID).
 
 ## Configuration
 
-you can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`.
+You can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`.
 
 ## Testing
 
