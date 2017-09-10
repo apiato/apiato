@@ -4,21 +4,30 @@ category: "Miscellaneous"
 order: 4
 ---
 
+- [Containers](#containers)
+  * [Downloading and Installing 3rd Party Containers](#downloading-and-installing-3rdPartyContainers)
+  * [Developing a Container](#developing-a-container)
+
+
+<a name="containers"></a>
+
 ## Containers
 
-apiato ships with a few pre-defined and pre-configured containers. However, other developers may provide additional 
-features in form of a respective container. This section explains, how so called `3rd party containers` may be 
+apiato ships with a few pre-defined and pre-configured containers. However, other developers may provide additional
+features in form of a respective container. This section explains, how so called `3rd party containers` may be
 automatically downloaded and installed to your specific web application.
 
-**Note that this feature is only available for apiato > 4.1.3** 
+**Note that this feature is only available for apiato > 4.1.3**
+
+<a name="downloading-and-installing-3rdPartyContainers"></a>
 
 ### Downloading and Installing 3rd Party Containers
 
 In order to use a specific container that is developed by a 3rd party developer, apiato provides an easy-to-use solution for downloading, installing and continuously updating containers from
-3rd party developers. 
+3rd party developers.
 
-As an application developer, you simply need to include the respective `vendor/project` to the 
-`composer.json` file within the `app/Containers` folder. 
+As an application developer, you simply need to include the respective `vendor/project` to the
+`composer.json` file within the `app/Containers` folder.
 
 For example, the respective `/app/Containers/composer.json` file may look something like this:
 
@@ -33,17 +42,19 @@ For example, the respective `/app/Containers/composer.json` file may look someth
 
 ```
 
-You just need to call `composer update` in order to install the respective packages. The package (e.g., the container) 
-`johannesschobel/apiato-null` is then installed to the `/app/Container` folder. However, the developer of the package 
-needs to follow some basic guidelines listed below. 
+You just need to call `composer update` in order to install the respective packages. The package (e.g., the container)
+`johannesschobel/apiato-null` is then installed to the `/app/Container` folder. However, the developer of the package
+needs to follow some basic guidelines listed below.
 
 
-> Warning: **Do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`. 
+> Warning: **Do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`.
+
+<a name="developing-a-container"></a>
 
 ### Developing a Container
 
-Developing a container that can be used by others is quite easy. Basically, you can `extract` already existing functionality 
-in a new container and provide the features. Note that you need to upload the container to `GitHub` and then release 
+Developing a container that can be used by others is quite easy. Basically, you can `extract` already existing functionality
+in a new container and provide the features. Note that you need to upload the container to `GitHub` and then release
 it on `Packagist` in order to be available via `Composer`. Please see a respective tutorial how to submit a package
 to `GitHub` and release it via `Packagist`.
 
@@ -52,7 +63,7 @@ within the main folder of the container.
 
 An example of such a `composer.json` file is shown below:
 
-``` 
+```
 {
   "name": "vendor/project",
   "description": "This is a short description for your container.",
@@ -69,12 +80,11 @@ An example of such a `composer.json` file is shown below:
     }
   }
 }
-``` 
+```
 
 **Important Information:**
-* You **must** add the respective `type : apiato-container` to the composer file. This way, the custom installer is used 
+* You **must** add the respective `type : apiato-container` to the composer file. This way, the custom installer is used
 that allows installing / updating containers.
-* You **must** provide the key `extra.apiato.container.name`. This key indicates the name of the folder (e.g., container) 
-when installing the package to the `/app/Containers` folder. In the shown example, the container would be installed to 
+* You **must** provide the key `extra.apiato.container.name`. This key indicates the name of the folder (e.g., container)
+when installing the package to the `/app/Containers` folder. In the shown example, the container would be installed to
 `app/Containers/Foo`.
-
