@@ -11,7 +11,7 @@ The exact number of calls that your application can make per day varies based on
 
 The rate limit window is `1` minute per endpoint, with most individual calls allowing for `30` requests in each window.
 
-*In other words, each user is allowed to make `30` calls per endpoint every `1` minutes. (For each unique access token).*
+*In other words, each user is allowed to make `30` calls per endpoint every `1` minute. (For each unique access token).*
 
 
 
