@@ -9,7 +9,7 @@ order: 16
 All REST API requests are throttled to prevent abuse and ensure stability. 
 The exact number of calls that your application can make per day varies based on the type of request you are making.
 
-The rate limit window is `1` minutes per endpoint, with most individual calls allowing for `30` requests in each window.
+The rate limit window is `1` minute per endpoint, with most individual calls allowing for `30` requests in each window.
 
 *In other words, each user is allowed to make `30` calls per endpoint every `1` minutes. (For each unique access token).*
 
