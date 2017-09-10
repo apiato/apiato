@@ -4,7 +4,7 @@ category: "Features"
 order: 24
 ---
 
-Currently the payment Supports `Stripe` only.
+Currently, only `Stripe` payments are supported.
 
 ## Charge users directly
 
