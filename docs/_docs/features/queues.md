@@ -5,8 +5,8 @@ order: 40
 ---
 
 Queues work normally as they would in Laravel ([docs](https://laravel.com/docs/queues)).
-The only difference here is that apiato, by default detect which queue driver you are planning to use (based on the configs),
-and if it's of type `database`, it will create your `jobs` migration file when running the migrate command (refer to `app/Ship/Migrations/` folder for more details).
+The only difference here is that apiato, by default, detects which queue driver you are planning to use (based on the configs).
+If it is of type `database`, it will create your `jobs` migration file when running the migrate command (refer to `app/Ship/Migrations/` folder for more details).
 
 *More queue support and features are coming to apiato in the future releases.*
 
