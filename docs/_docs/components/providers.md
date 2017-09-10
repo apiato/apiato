@@ -13,7 +13,7 @@ order: 13
   + [Container's Main Service Provider](#container-s-main-service-provider)
   + [Container's Additional Service Providers](#container-s-additional-service-providers)
   + [Third party packages Service Providers](#third-party-packages-service-providers)
-  + [Laravel 5.5 Auto Discovery feature.](#laravel-55-auto-discovery-feature)
++ [Laravel 5.5 Auto Discovery feature.](#laravel-55-auto-discovery-feature)
 * [Information about Laravel Service Providers](#information-about-laravel-service-providers)
 
 <a name="definition"></a>
@@ -28,7 +28,7 @@ They are the place where you register things like container bindings, event list
 
 <a name="principles"></a>
 
-## Principles
+### Principles
 
 - There are 2 types of Providers in a Container, the **Main Provider** and the **Additional (Job Specific) Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
 
@@ -170,7 +170,7 @@ However, if it's a generic package used by the entire framework and not a specif
 
 <a name="laravel-55-auto-discovery-feature"></a>
 
-#### Laravel 5.5 Auto Discovery feature.
+### Laravel 5.5 Auto Discovery feature.
 
 This feature is disabled in Apiato so far.
 More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).

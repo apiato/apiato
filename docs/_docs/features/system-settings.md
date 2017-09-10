@@ -4,8 +4,8 @@ category: "Features"
 order: 25
 ---
 
-- [Seed the default settings:](#seed-the-default-settings)
-- [Read settings:](#read-settings)
+- [Seed the default settings](#seed-the-default-settings)
+- [Read settings](#read-settings)
 
 <br>
 <br>
@@ -16,13 +16,13 @@ The `app/Containers/Settings` Container helps storing and retrieving those key v
 
 <a name="seed-the-default-settings"></a>
 
-#### Seed the default settings:
+#### Seed the default settings
 
 Default Settings should be seeded in `app/Containers/Settings/Database/Seeders/DefaultSystemSettingsSeeder.php`
 
 <a name="read-settings"></a>
 
-#### Read settings:
+#### Read settings
 
 ```php
 <?php

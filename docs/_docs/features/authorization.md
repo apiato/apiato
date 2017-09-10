@@ -5,9 +5,9 @@ order: 4
 ---
 
 - [How it works](#how-it-works)
-  * [Responses](#responses)
-- [Assign Roles & Permission to the Testing User:](#assign-roles-permission-to-the-testing-user)
-- [Seeding some users (Admins):](#seeding-some-users-admins)
+- [Responses](#responses)
+- [Assign Roles & Permission to the Testing User](#assign-roles-permission-to-the-testing-user)
+- [Seeding some users (Admins)](#seeding-some-users-admins)
 
 <br >
 <br >
@@ -72,7 +72,7 @@ class DeleteUserRequest extends Request
 
 <a name="responses"></a>
 
-### Responses
+## Responses
 
 **Authorization failed JSON response:**
 
@@ -86,13 +86,13 @@ class DeleteUserRequest extends Request
 
 <a name="assign-roles-permission-to-the-testing-user"></a>
 
-## Assign Roles & Permission to the Testing User:
+## Assign Roles & Permission to the Testing User
 
 You will need to set `$access` property in your test class, check out the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) page for more details.
 
 <a name="seeding-some-users-admins"></a>
 
-## Seeding some users (Admins):
+## Seeding some users (Admins)
 
 By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard and some default permissions. This Super Admin Credentials are:
 

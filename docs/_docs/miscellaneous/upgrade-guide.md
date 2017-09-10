@@ -4,14 +4,16 @@ category: "Miscellaneous"
 order: 20
 ---
 
-- [Upgrade Apiato from version 5.0 to 7.0:](#upgrade-apiato-from-version50To70)
-- [Upgrade Apiato from version 4.1 to 5.0:](#upgrade-apiato-from-version-41To50)
+- [Upgrade Apiato from version 5.0 to 7.0](#upgrade-apiato-from-version50To70)
+- [Upgrade Apiato from version 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
-      - [Upgrading method:](#upgrading-method)
+- [Upgrading method](#upgrading-method)
+
 <br>
+
 <a name="upgrade-apiato-from-version50To70"></a>
 
-## Upgrade Apiato from version 5.0 to 7.0:
+## Upgrade Apiato from version 5.0 to 7.0
 
 > Estimated upgrading time is 30 minutes.
 
@@ -31,7 +33,7 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
 
 <a name="upgrade-apiato-from-version-41To50"></a>
 
-## Upgrade Apiato from version 4.1 to 5.0:
+## Upgrade Apiato from version 4.1 to 5.0
 
 > Estimated upgrading time is 15 minutes.
 

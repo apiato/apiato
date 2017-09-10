@@ -1,12 +1,12 @@
 ---
 title: "Admin Dashboard"
-category: "Miscellaneous"
-order: 3
+category: "Features"
+order: 110
 ---
 
-- [The provided Admin route:](#the-provided-admin-route)
-- [How it works:](#how-it-works)
-- [Change default Admin credentials:](#change-default-admin-credentials)
+- [The provided Admin route](#the-provided-admin-route)
+- [How it works](#how-it-works)
+- [Change default Admin credentials](#change-default-admin-credentials)
 
 <br>
 <br>
@@ -16,7 +16,7 @@ order: 3
 
 <a name="the-provided-admin-route"></a>
 
-## The provided Admin route:
+## The provided Admin route
 
 - http://apiato.dev/admin/dashboard
 
@@ -28,7 +28,7 @@ order: 3
 
 <a name="how-it-works"></a>
 
-## How it works:
+## How it works
 
 Visiting `http://apiato.dev/admin/dashboard` will redirect you to a login page for admins.
 
@@ -40,6 +40,6 @@ the default credentials are:
 
 <a name="change-default-admin-credentials"></a>
 
-## Change default Admin credentials:
+## Change default Admin credentials
 
 you can change these default values from the seeder class in the Authorization container: `app/Containers/Authorization/Data/Seeders/RolesAndPermissionsSeeder.php`.

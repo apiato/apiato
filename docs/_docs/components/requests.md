@@ -8,18 +8,18 @@ order: 3
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Request Properties](#request-properties)
-* [**decode**](#decode)
-* [**urlParameters**](#urlparameters)
-* [**access**](#access)
-  + [How the authorize function work](#how-the-authorize-function-work)
-  + [Allow a Role to access every endpoint](#allow-a-role-to-access-every-endpoint)
-- [Request Helper Functions](#request-helper-functions)
-* [**hasAccess**](#hasaccess)
-* [**isOwner**](#isowner)
-* [**getInputByKey**](#getinputbykey)
-* [**sanitizeData**](#sanitizedata)
-- [Storing Data on the Request](#storing-data-on-the-request)
-- [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
+    * [decode](#decode)
+    * [urlParameters](#urlparameters)
+    * [access](#access)
+* [How the authorize function work](#how-the-authorize-function-work)
+* [Allow a Role to access every endpoint](#allow-a-role-to-access-every-endpoint)
+* [Request Helper Functions](#request-helper-functions)
+    * [hasAccess](#hasaccess)
+    * [isOwner](#isowner)
+    * [getInputByKey](#getinputbykey)
+    * [sanitizeData](#sanitizedata)
+* [Storing Data on the Request](#storing-data-on-the-request)
+* [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
 
 <a name="definition-principles"></a>
 
@@ -123,9 +123,17 @@ By just injecting the request class you already applied the validation and autho
 
 When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
 
+
+
+
+
+
+
+
+
 <a name="request-properties"></a>
 
-### Request Properties
+## Request Properties
 
 apiato adds some new properties to the Request Class. Each of these properties is very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see description for each property:
 
@@ -262,9 +270,13 @@ class DeleteUserRequest extends Request
 }
 ```
 
+
+
+
+
 <a name="how-the-authorize-function-work"></a>
 
-#### How the authorize function work
+## How the authorize function work
 
 The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns a boolean.
 
@@ -277,9 +289,11 @@ On the other side if `isKing` *(a custom function could be written by you anywhe
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
 
 
+
+
 <a name="allow-a-role-to-access-every-endpoint"></a>
 
-#### Allow a Role to access every endpoint
+## Allow a Role to access every endpoint
 
 You can allow some Roles to access every endpoint in the system without having to define that role in each Request object.
 
@@ -432,6 +446,11 @@ the fields to would like to pass through. This makes partially updating an resou
 **Heads Up:**
 
 Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
+
+
+
+
+
 
 <a name="storing-data-on-the-request"></a>
 

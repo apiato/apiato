@@ -7,23 +7,24 @@ order: 3
 - [API Authentication (OAuth 2.0)](#api-authentication-oauth-20)
 - [How to get Access Token using OAuth 2.0](#how-to-get-access-token-using-oauth-20)
 - [Quick Overview](#quick-overview)
-- [A: For first-party clients](#first-party-clients)
-  * [Login with Proxy for first-party clients](#login-with-proxy-for-first-party-clients)
-- [Login without Proxy for first-party clients](#login-without-proxy-for-first-party-clients)
-- [B: For third-party clients](#third-party-clients)
-- [Login without Proxy for third-party clients](#login-without-proxy-for-third-party-clients)
+    - [A: For first-party clients](#first-party-clients)
+        - [Login with Proxy for first-party clients](#login-with-proxy-for-first-party-clients)
+        - [Login without Proxy for first-party clients](#login-without-proxy-for-first-party-clients)
+    - [B: For third-party clients](#third-party-clients)
+        - [Login without Proxy for third-party clients](#login-without-proxy-for-third-party-clients)
 - [Logout](#logout)
 - [Responses](#responses)
 - [Change Tokens Expiration dates](#change-tokens-expiration-dates)
 - [Web Authentication](#web-authentication)
 - [Refresh Token](#refresh-token)
-  * [Refresh Token via proxy for first-party clients](#refresh-token-via-proxy-for-first-party-clients)
-  * [Refresh Token via non proxy](#refresh-token-via-non-proxy)
+  - [Refresh Token with proxy for first-party clients](#refresh-token-via-proxy-for-first-party-clients)
+  - [Refresh Token without proxy for first-party or third-party clients](#refresh-token-via-non-proxy)
 - [Force Email Confirmation](#force-email-confirmation)
 - [Social Authentication](#social-authentication)
+
 <br />
 <br />
-<br />
+
 Middlewares are the best solution to apply Authentication in your App.
 
 In Apiato you can use these two `Authentication Middlewares`, to protect your endpoints:
@@ -164,7 +165,7 @@ CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 
 <a name="login-without-proxy-for-first-party-clients"></a>
 
-## Login without Proxy for first-party clients
+### Login without Proxy for first-party clients
 
 Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password`, the User credentials (`username` & `password`), Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
 
@@ -216,7 +217,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#perso
 
 <a name="login-without-proxy-for-third-party-clients"></a>
 
-## Login without Proxy for third-party clients
+### Login without Proxy for third-party clients
 
 We usually do not need a proxy for third-party clients as they are most likely making calls form their servers, thus the Client ID and Secret should be secure and not exposed to the users.
 
@@ -357,7 +358,7 @@ In case your server is issuing a short-lived access tokens, the users will need 
 
 <a name="refresh-token-via-proxy-for-first-party-clients"></a>
 
-### Refresh Token via proxy for first-party clients
+### Refresh Token with proxy for first-party clients
 
 By default Apiato provide this ready endpoint `http://api.poms.dev/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
 
@@ -377,7 +378,7 @@ Containg new Access Token and new Refresh Token.
 
 <a name="refresh-token-via-non-proxy"></a>
 
-### Refresh Token via non proxy
+### Refresh Token without proxy for first-party or third-party clients
 
 The request to `http://api.poms.dev/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` & `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
 

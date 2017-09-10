@@ -6,8 +6,6 @@ order: 1
 
 - [Introduction](#introduction)
 - [Demo](#demo)
-      - [Generating a Route (endpoint) file:](#generating-a-route-endpoint-file)
-      - [Result](#result)
 - [Available Code Generators](#available-code-generators)
 - [Contributing](#contributing)
 - [For AngularJS 2 Users](#for-angularjs-users)

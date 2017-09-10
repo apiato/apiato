@@ -4,19 +4,15 @@ category: "Miscellaneous"
 order: 2
 ---
 
-- [Tests properties:](#tests-properties)
-  * [**$endpoint**:](#endpoint)
-    + [Override the property value in some test functions](#override-the-property-value-in-some-test-functions)
-  * [**$auth**:](#auth)
-    + [Override the property value in some test functions](#override-the-property-value-in-some-test-functions-1)
-  * [**$access**:](#access)
-    + [Override the property value in some test functions](#override-the-property-value-in-some-test-functions-2)
-- [Tests functions:](#tests-functions)
-    + [makeCall](#makecall)
-    + [getTestingUser](#gettestinguser)
-- [Misc](#misc)
-  * [faker](#faker)
-  * [Create live Testing Data](#create-live-testing-data)
+- [Tests properties](#tests-properties)
+    - [$endpoint](#endpoint)
+    - [$auth](#auth)
+    - [$access](#access)
+- [Tests functions](#tests-functions)
+    - [makeCall](#makecall)
+    - [getTestingUser](#gettestinguser)
+- [Faker](#faker)
+- [Create live Testing Data](#create-live-testing-data)
 
 <br>
 <br>
@@ -29,7 +25,7 @@ response. Everything else is set for you.
 
 <a name="tests-properties"></a>
 
-## Tests properties:
+## Tests properties
 
 Some of the test helper functions reads your test class properties, to perform their jobs. below we will see those
 properties and who uses them:
@@ -153,7 +149,7 @@ Or you can call `getTestingUserWithoutAccess()` to get user without permissions 
 
 <a name="tests-functions"></a>
 
-## Tests functions:
+## Tests functions
 
 All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all
 available for usage from every test class in your application.
@@ -213,13 +209,12 @@ $user = $this->getTestingUser([
 > **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions  
 check all the public functions in all the traits in this directory `vendor/apiato/core/Traits/TestsTraits/PhpUnit/*`.
 
-<a name="misc"></a>
 
-## Misc
+
 
 <a name="faker"></a>
 
-### faker
+## Faker
 
 Just use it from any test: `$this->faker->name;`
 
@@ -233,7 +228,7 @@ See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, fo
 
 <a name="create-live-testing-data"></a>
 
-### Create live Testing Data
+## Create live Testing Data
 
 To test your app with some live testing data (like creating items in an inventory) you can use this feature to
 automatically genereate those data. This is also helpful for staging when real people are testing your app with some testing data.

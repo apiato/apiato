@@ -9,9 +9,9 @@ order: 12
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Relationships (include)](#relationships-include)
-  + [From Front-end](#from-front-end)
-- [From Back-end](#from-back-end)
-- [Transformer Available helper functions:](#transformer-available-helper-functions)
+    * [From Front-end](#from-front-end)
+    * [From Back-end](#from-back-end)
+* [Transformer Available helper functions:](#transformer-available-helper-functions)
 
 <a name="definition-principles"></a>
 
@@ -152,6 +152,8 @@ This can be done in 2 ways:
 
 2. By the Developer, define what relations to include at run time.
 
+
+
 <a name="from-front-end"></a>
 
 #### From Front-end
@@ -207,7 +209,7 @@ To get Tags with User use the comma separator: `?include=tags,user`.
 
 <a name="from-back-end"></a>
 
-## From Back-end
+#### From Back-end
 
 From the controller you can dynamically set the `DefaultInclude` using (`setDefaultIncludes`) anytime you want.
 

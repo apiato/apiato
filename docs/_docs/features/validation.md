@@ -4,11 +4,6 @@ category: "Features"
 order: 100
 ---
 
-- [Responses](#responses)
-
-<br>
-<br>
-
 
 apiato uses the powerful [Laravel validation](https://laravel.com/docs/validation) system.
 

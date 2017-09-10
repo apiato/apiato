@@ -8,8 +8,8 @@ order: 14
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Testing](#testing)
-    + [for parameter ID's](#for-parameter-ids)
-    + [for URL ID's](#for-url-ids)
+    - [for Parameter ID's](#for-parameter-ids)
+    - [for URL ID's](#for-url-ids)
 - [Availability](#availability)
 
 <br>
@@ -62,7 +62,7 @@ In your tests you must hash the ID's before making the calls, because if you tel
 
 <a name="for-parameter-ids"></a>
 
-#### for parameter ID's
+### for Parameter ID's
 
 Always use `getHashedKey()` on your models when you want to get the ID
 
@@ -81,7 +81,7 @@ $response = $this->makeCall($data);
 
 *Or you can do this manually `Hashids::encode($id);`. *
 
-#### for URL ID's
+### for URL ID's
 
 You can use this helper function `injectId($id, $skipEncoding = false, $replace = '{id}')`.
 

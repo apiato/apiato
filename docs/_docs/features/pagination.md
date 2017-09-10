@@ -5,11 +5,12 @@ order: 23
 ---
 
 - [Change the the default pagination limit](#change-the-the-default-pagination-limit)
-- [Limit:](#limit)
-- [Skip the Pagination Limit:](#skip-the-pagination-limit)
+- [Limit](#limit)
+- [Skip the Pagination Limit](#skip-the-pagination-limit)
 
 <br>
 <br>
+
 For pagination apiato uses the [L5 Repository Package](https://packagist.org/packages/prettus/l5-repository) and the
 pagination gets applied whenever you use the `paginate` function on any model repository
 (example: `$stores = $this->storeRepository->paginate();`).
@@ -28,7 +29,7 @@ This is used in the `config/repository.php` which is the config file of the **L5
 
 <a name="limit"></a>
 
-## Limit:
+## Limit
 
 The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
 
@@ -53,7 +54,7 @@ entities.
 
 <a name="skip-the-pagination-limit"></a>
 
-## Skip the Pagination Limit:
+## Skip the Pagination Limit
 
 You can allow developers to skip the pagination limit as follow:
 

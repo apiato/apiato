@@ -6,11 +6,8 @@ order: 2
 
 - [Requirements](#requirements)
 - [Usage](#usage)
-    + [1 - Write a PHP **docblock** on top of your endpoint like this:](#write-a-php-docblock-on-top-of-your-endpoint)
-    + [2 - Run the documentations generator command from the root directory:](#run-documentations-generator-command-from-root-directory)
-    + [3 - Visit this URL's as shown in your terminal:](#visit-this-urls-as-shown-in-your-terminal)
-  * [Error: ApiDoc not found !!](#error-apidoc-not-found)
-  * [Shared response for faster updating and less outdated responses:](#shared-response-for-faster-updating-and-less-outdated-responses)
+  - [Error: ApiDoc not found](#error-apidoc-not-found)
+  - [Shared response for faster updating and less outdated responses](#shared-response-for-faster-updating-and-less-outdated-responses)
 - [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
 - [Change the Documentations URL's](#change-the-documentations-urls)
 - [Edit the Documentation Header](#edit-the-documentation-header)

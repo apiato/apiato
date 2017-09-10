@@ -6,7 +6,7 @@ order: 24
 
 - [Charge users directly](#charge-users-directly)
 - [Charge users through the proxy](#charge-users-through-the-proxy)
-- [Mocking the real call for Testing:](#mocking-the-real-call-for-testing)
+- [Mocking the real call for Testing](#mocking-the-real-call-for-testing)
 
 <br>
 <br>
@@ -92,7 +92,7 @@ Before using this feature you may need to check this class `app/Ship/Payment/Pro
 
 <a name="mocking-the-real-call-for-testing"></a>
 
-## Mocking the real call for Testing:
+## Mocking the real call for Testing
 
 
 ```php

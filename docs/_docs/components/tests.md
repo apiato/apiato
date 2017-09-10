@@ -9,7 +9,7 @@ order: 21
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
-    - [See the **Tests Helpers** Page](#see-the-tests-helpers-page)
+
 
 <a name="definition"></a>
 
@@ -106,6 +106,4 @@ use App\Containers\{container-name}\Tests\TestCase;
 
 ```
 
-<a name="see-the-tests-helpers-page"></a>
-
-##### See the **Tests Helpers** Page
+> See the **Tests Helpers** Page

@@ -12,7 +12,7 @@ order: 20
 <br>
 <br>
 
-apiato provides a simple and easy way to monitor and log all the HTTP requests coming to your application.
+Apiato provides a simple and easy way to monitor and log all the HTTP requests coming to your application.
 
 The request monitor can be very useful when testing and debugging your frontend Apps who consumes your API. Especially when the frontend apps (Mobile, Web,..) are built by other developers who are far from you.
 

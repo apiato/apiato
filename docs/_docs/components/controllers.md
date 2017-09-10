@@ -8,8 +8,8 @@ order: 2
 - [Rules](#rules)
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
-- [Controller response builder helper functions:](#controller-response-builder-helper-functions)
-    + [Some of the functions:](#some-of-the-functions)
+- [Controller response builder helper functions](#controller-response-builder-helper-functions)
+    - [Some of the functions](#some-of-the-functions)
 
 <a name="definition-principles"></a>
 
@@ -126,13 +126,13 @@ $router->post('logout', [
 
 <a name="controller-response-builder-helper-functions"></a>
 
-### Controller response builder helper functions:
+### Controller response builder helper functions
 
 Many helper function are there to help you build your response faster, those helpers exist in the `vendor/apiato/core/Traits/ResponseTrait.php`.
 
 <a name="some-of-the-functions"></a>
 
-##### Some of the functions:
+#### Some functions
 
 **transform**
 This is the most useful function which you will be using in most cases.

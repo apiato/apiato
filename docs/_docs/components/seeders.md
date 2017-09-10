@@ -10,7 +10,7 @@ order: 24
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Run the Seeders](#run-the-seeders)
-- [apiato testing seeder command](#apiato-testing-seeder-command)
+- [Testing seeder command](#apiato-testing-seeder-command)
 
 <a name="definition"></a>
 
@@ -117,7 +117,7 @@ For more information about the Database Seeders read [this](https://laravel.com/
 
 <a name="apiato-testing-seeder-command"></a>
 
-## apiato testing seeder command
+## Apiato testing seeder command
 
 It's useful sometimes to create a big set of testing data. apiato facilitates this task:
 
