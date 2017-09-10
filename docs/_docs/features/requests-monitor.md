@@ -14,7 +14,7 @@ The requests monitor is provided by the Debugger Container, by a `RequestsMonito
 
 From the `.env` file set `REQUESTS_DEBUG` to true.
 
-Now in order for this start display the results you need to enable the debugging mode in Laravel by setting `APP_DEBUG` to true in the `.env` as well.
+Now in order for this to start displaying the results you need to enable the debugging mode in Laravel by setting `APP_DEBUG` to true in the `.env` as well.
 
 ## Usage
 
@@ -35,9 +35,7 @@ Screenshot example:
 
 ## Change the default log file
 
-By default everything is logged in the `debugger.log` file, to change the default file go to 
-
-`Debugger/Configs/debugger.php` config file and set the file name:
+By default everything is logged in the `debugger.log` file, to change the default file go to `Debugger/Configs/debugger.php` config file and set the file name:
 
 ```php
 <?php
