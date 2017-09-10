@@ -4,11 +4,20 @@ category: "Features"
 order: 6
 ---
 
+- [How Social Authentication work](#how-social-authentication-work)
+- [Default Supported Auth Provide](#default-supported-auth-provide)
+- [Support new Auth Provide](#support-new-auth-provide)
+
+<br>
+<br>
+
 For Social Authentication apiato uses [Socialite]( https://github.com/laravel/socialite).
+
+<a name="how-social-authentication-work"></a>
 
 ## How Social Authentication work
 
-1. The Client (Mobile/Web) sends a request to the Auth Provider (Facebook, Twitter,...) 
+1. The Client (Mobile/Web) sends a request to the Auth Provider (Facebook, Twitter,...)
 
 2. The Auth Provider returns a Code (Auth Token)
 
@@ -18,11 +27,15 @@ For Social Authentication apiato uses [Socialite]( https://github.com/laravel/so
 
 5. The Server create or return the Authenticated User.
 
+<a name="default-supported-auth-provide"></a>
+
 ## Default Supported Auth Provide
 
 * Facebook
 * Twitter
 * Google Plus
+
+<a name="support-new-auth-provide"></a>
 
 ## Support new Auth Provide
 
@@ -38,7 +51,7 @@ For Social Authentication apiato uses [Socialite]( https://github.com/laravel/so
 
 $router->any('auth/twitter', [
     'uses' => 'Controller@authenticateTwitter',
-]); 
+]);
 ```
 
 4) Go to `app/Containers/SocialAuthentication/SocialProvider.php` and add your provider name as constant.
@@ -56,8 +69,8 @@ public function authenticateTwitter(AuthenticateOneRequest $request, SocialLogin
     return $this->response->item($user, new UserTransformer());
 }
 ```
-	    
-	     
+
+
 6) Go to the Provider website and create an App to get Key and Secret.
 
 7) Go to `config/services.php` and set your credentials.
@@ -73,20 +86,17 @@ public function authenticateTwitter(AuthenticateOneRequest $request, SocialLogin
     'client_secret' => env('AUTH_FACEBOOK_CLIENT_SECRET'), // App Secret
     'redirect'      => env('AUTH_FACEBOOK_CLIENT_REDIRECT'),
 ],
-	
+
 	    'twitter' => [ // https://apps.twitter.com/app
     'client_id'     => env('AUTH_TWITTER_CLIENT_ID'), // Consumer Key (API Key)
     'client_secret' => env('AUTH_TWITTER_CLIENT_SECRET'), // Consumer Secret (API Secret)
     'redirect'      => env('AUTH_TWITTER_CLIENT_REDIRECT'),
 ],
-	
+
 	    'google' => [ // https://console.developers.google.com/apis/credentials
     'client_id'     => env('AUTH_GOOGLE_CLIENT_ID'), // Client ID
     'client_secret' => env('AUTH_GOOGLE_CLIENT_SECRET'), // Client secret
     'redirect'      => env('AUTH_GOOGLE_CLIENT_REDIRECT'),
 ],
-	 
+
 ```
-
-
-

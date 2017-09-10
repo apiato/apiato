@@ -4,7 +4,16 @@ category: "Features"
 order: 24
 ---
 
+- [Charge users directly](#charge-users-directly)
+- [Charge users through the proxy](#charge-users-through-the-proxy)
+- [Mocking the real call for Testing:](#mocking-the-real-call-for-testing)
+
+<br>
+<br>
+
 Currently the payment Supports `Stripe` only.
+
+<a name="charge-users-directly"></a>
 
 ## Charge users directly
 
@@ -19,7 +28,7 @@ Same method should be applied to other payment gateways, but for this example we
 $user = new User();
 
 $createStripeAccountAction = App::make(CreateStripeAccountAction::class);
-$stripeAccount = $createStripeAccountAction->run($user, 'cus_8mBD5S1SoyD4zL', 'card_18Uck6KFvMcBUkvQorbBkYhR', 'credit', '4242', 'WsNM4K8puHbdS2VP'); 
+$stripeAccount = $createStripeAccountAction->run($user, 'cus_8mBD5S1SoyD4zL', 'card_18Uck6KFvMcBUkvQorbBkYhR', 'credit', '4242', 'WsNM4K8puHbdS2VP');
 ```
 
 2. Charge the user using **Stripe** method (`ChargeWithStripeTask`) task:
@@ -55,12 +64,14 @@ class PurchaseCreditTypeAction extends Action
     }
 }
 ```
-	 
+
+<a name="charge-users-through-the-proxy"></a>
+
 ## Charge users through the proxy
 
 This allows you to charge the user based on whichever payment method the user has, when you are not sure which one the user has used.
 
-**Usage:** 
+**Usage:**
 
 
 ```php
@@ -76,8 +87,10 @@ $result = $user->charge(1000, 'USD');
 
 ```
 
-	 
+
 Before using this feature you may need to check this class `app/Ship/Payment/Proxies/PaymentsProxy.php`.
+
+<a name="mocking-the-real-call-for-testing"></a>
 
 ## Mocking the real call for Testing:
 
@@ -95,7 +108,7 @@ $this->mock(ChargeWithStripeService::class)->shouldReceive('charge')->andReturn(
 $this->mock(ChargeWithPaypalService::class)->shouldReceive('charge')->andReturn([
 'payment_method' => 'paypal',
 'description'    => $payId
-]); 
+]);
 
 ```
 
