@@ -23,7 +23,7 @@ Users can skip the query caching and request new data by passing specific parame
 
 ## Change different caching settings
 
-You can use different cache setting for each repository
+You can use different cache setting for each repository.
 
 To set cache settings on each repository, first the caching must be enabled, second you need to set some properties on the repository class to override the default values.
 

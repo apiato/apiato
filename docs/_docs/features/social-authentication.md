@@ -37,7 +37,8 @@ For Social Authentication apiato uses [Socialite]( https://github.com/laravel/so
 
 <a name="support-new-auth-provide"></a>
 
-## Support new Auth Provide
+## Support new Auth Provider
+
 
 1) Check the Auth Provider is supported by [Socialite](https://socialiteproviders.github.io/).
 

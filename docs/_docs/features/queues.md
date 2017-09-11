@@ -4,9 +4,9 @@ category: "Features"
 order: 40
 ---
 
-Queues work normally as they do in Laravel ([docs](https://laravel.com/docs/queues)).
-The only difference here is that apiato, by default detect which queue driver you are planning to use (based on your config file),
-and if it's of type `database`, it creates the `jobs` migration file, when running the migrate command.
+Queues work normally as they would in Laravel ([docs](https://laravel.com/docs/queues)).
+The only difference here is that apiato, by default, detects which queue driver you are planning to use (based on the configs).
+If it is of type `database`, it will create your `jobs` migration file when running the migrate command
 
 `if(Config::get('queue.default') == 'database'){`
 

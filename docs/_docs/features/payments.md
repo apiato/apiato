@@ -11,7 +11,7 @@ order: 24
 <br>
 <br>
 
-Currently the payment Supports `Stripe` only.
+Currently the payment Supports `Stripe` and `WePay` only. (You can add yours and contribute)
 
 <a name="charge-users-directly"></a>
 

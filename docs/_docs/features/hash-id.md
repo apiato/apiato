@@ -52,7 +52,7 @@ Checkout the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %
 
 ## Configuration
 
-you can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`.
+You can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`.
 
 <a name="testing"></a>
 
