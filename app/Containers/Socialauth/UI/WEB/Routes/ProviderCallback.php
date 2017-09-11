@@ -1,12 +1,8 @@
 <?php
 
-// provider login redirect (WEB)
-$router->get('auth/{provider}', [
-    'uses' => 'Controller@redirectAll',
-]);
-
 // provider callback handler
 $router->any('auth/{provider}/callback', [
+    'as' => 'WEB_Socialauth_callback',
     'uses' => 'Controller@handleCallbackAll',
 ]);
 

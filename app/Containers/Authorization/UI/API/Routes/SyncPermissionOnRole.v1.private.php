@@ -17,6 +17,7 @@
  */
 
 $router->post('permissions/sync', [
+    'as' => 'API_Authorization_syncPermissionOnRole',
     'uses'       => 'Controller@syncPermissionOnRole',
     'middleware' => [
         'auth:api',

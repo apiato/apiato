@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           wepay
- * @apiName            createwepayAccount
+ * @apiName            createWepayAccount
  * @api                {post} /v1/wepays Create wepay Account
  * @apiDescription     Before calling this endpoint make sure to call wepay first and get the `customer_id`.
  *                     You may use "Wepay Checkout" or "wepay.js" to make your Wepay call. This Information
@@ -20,6 +20,7 @@
  */
 
 $router->post('/wepays', [
+    'as' => 'API_Wepay_createWepayAccount',
     'uses' => 'Controller@createWepayAccount',
     'middleware' => [
         'auth:api',

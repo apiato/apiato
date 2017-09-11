@@ -29,6 +29,7 @@
  */
 
 $router->patch('settings/{id}', [
+    'as' => 'API_Settings_updateSetting',
     'uses'  => 'Controller@updateSetting',
     'middleware' => [
       'auth:api',

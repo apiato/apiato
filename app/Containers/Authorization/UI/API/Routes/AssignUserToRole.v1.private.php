@@ -20,6 +20,7 @@
  */
 
 $router->post('roles/assign', [
+    'as' => 'API_Authorization_assignUserToRole',
     'uses'       => 'Controller@assignUserToRole',
     'middleware' => [
         'auth:api',

@@ -15,6 +15,7 @@
 }
  */
 $router->post('logout', [
+    'as' => 'API_Authentication_Logout',
     'uses'  => 'Controller@logout',
     'middleware' => [
         'auth:api',

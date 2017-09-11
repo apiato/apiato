@@ -12,6 +12,7 @@
  */
 
 $router->get('roles', [
+    'as' => 'API_Authorization_listAllRoles',
     'uses'       => 'Controller@listAllRoles',
     'middleware' => [
         'auth:api',

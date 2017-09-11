@@ -42,6 +42,7 @@
  */
 
 $router->get('settings', [
+    'as' => 'API_Settings_listAllSettings',
     'uses'  => 'Controller@listAllSettings',
     'middleware' => [
       'auth:api',
