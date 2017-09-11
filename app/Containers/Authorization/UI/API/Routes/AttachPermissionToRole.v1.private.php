@@ -20,6 +20,7 @@
  */
 
 $router->post('permissions/attach', [
+    'as' => 'API_Authorization_attachPermissionToRole',
     'uses'       => 'Controller@attachPermissionToRole',
     'middleware' => [
         'auth:api',
