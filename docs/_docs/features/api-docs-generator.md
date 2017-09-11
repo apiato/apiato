@@ -4,11 +4,23 @@ category: "Features"
 order: 2
 ---
 
-Every great API needs a great Documentation. 
+- [Requirements](#requirements)
+- [Usage](#usage)
+  - [Error: ApiDoc not found](#error-apidoc-not-found)
+  - [Shared response for faster updating and less outdated responses](#shared-response-for-faster-updating-and-less-outdated-responses)
+- [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
+- [Change the Documentations URL's](#change-the-documentations-urls)
+- [Edit the Documentation Header](#edit-the-documentation-header)
+- [API Documentation Headers Example](#api-documentation-headers-example)
+<br />
+
+<br />
+Every great API needs a great Documentation.
 
 APIATO make writing and generating documentations very easy with the `php artisan apiato:docs` command.
 
 
+<a name="requirements"></a>
 
 ## Requirements
 
@@ -16,11 +28,15 @@ APIATO make writing and generating documentations very easy with the `php artisa
 
 - (Recommended) read the [Routes]({{ site.baseurl }}{% link _docs/components/routes.md %}) page first.
 
+<a name="usage"></a>
+
 ## Usage
+
+<a name="write-a-php-docblock-on-top-of-your-endpoint"></a>
 
 #### 1 - Write a PHP **docblock** on top of your endpoint like this:
 
-*For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation* 
+*For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation*
 
 ```php
 <?php
@@ -70,8 +86,10 @@ $router->post('users/login', [
     'uses' => 'Controller@userLogin',
 ]);
 ```
-	 
+
 **Note:** All the Endpoints `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.
+
+<a name="run-documentations-generator-command-from-root-directory"></a>
 
 #### 2 - Run the documentations generator command from the root directory:
 
@@ -81,6 +99,8 @@ php artisan apiato:docs
 
 ```
 
+<a name="visit-this-urls-as-shown-in-your-terminal"></a>
+
 #### 3 - Visit this URL's as shown in your terminal:
 
 - Public (external) API at `http://apiato.dev/api/documentation/`
@@ -89,11 +109,13 @@ php artisan apiato:docs
 
 **NOTE:** Every time you do changes in the DocBlock of the Routes file you need to run this command.
 
+<a name="error-apidoc-not-found"></a>
+
 ### Error: ApiDoc not found !!
 
-If you get an error (`apidoc not found`), 
+If you get an error (`apidoc not found`),
 
-1. open the container config file `Containers/Documentation/Configs/apidoc.php` 
+1. open the container config file `Containers/Documentation/Configs/apidoc.php`
 
 2. edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
@@ -111,6 +133,8 @@ If you get an error (`apidoc not found`),
     'executable' => 'apidoc',
 ```
 
+
+<a name="shared-response-for-faster-updating-and-less-outdated-responses"></a>
 
 ### Shared response for faster updating and less outdated responses:
 
@@ -139,19 +163,20 @@ HTTP/1.1 200 OK
 ```
 
 **Usage of the shared User response from any endpoint:**
- 
+
  ```php
 * @apiUse UserSuccessSingleResponse
  ```
 
 
-To avoid having to generate and update the Single and Multiple responses of the same object (recommended only for private API's) 
-you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse` 
+To avoid having to generate and update the Single and Multiple responses of the same object (recommended only for private API's)
+you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse`
 which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`  
 
- 
 
 
+
+<a name="edit-the-default-generated-values-in-the-templates"></a>
 
 ## Edit the default generated values in the templates:
 
@@ -183,7 +208,9 @@ APIATO generates by defaults 2 API documentations, each one has it's own `apidoc
   ]
 }
 ```
-	 
+
+
+<a name="change-the-documentations-urls"></a>
 
 ## Change the Documentations URL's
 
@@ -251,13 +278,14 @@ return [
     */
 
     'html_files' => 'public/'
-    
-    
+
+
     // ...
 ];
 ```
 
-	 
+
+<a name="edit-the-documentation-header"></a>
 
 ## Edit the Documentation Header
 
@@ -270,6 +298,8 @@ To edit the content just open the markdown file in any markdown editor and edit 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apidoc:generate` with real values from your application configuration files.
 
 Feel free to extend them to include more info about your API from the `app/Containers/Documentation/Actions/ProcessMarkdownTemplatesAction.php` class.
+
+<a name="api-documentation-headers-example"></a>
 
 ## API Documentation Headers Example
 

@@ -11,9 +11,7 @@ order: 500
 
 #### Some feedback from awesome people.
 
-![]({{ site.baseurl }}/images/testimonials/A8.jpg)
 
----
 
 ![]({{ site.baseurl }}/images/testimonials/A7.jpg)
 
@@ -32,6 +30,11 @@ order: 500
 ---
 
 ![]({{ site.baseurl }}/images/testimonials/A9.jpg)
+
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/A8.jpg)
 
 ---
 
@@ -55,12 +58,40 @@ order: 500
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/b1.jpg)
+![]({{ site.baseurl }}/images/testimonials/B1.jpg)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/b2.jpg)
+![]({{ site.baseurl }}/images/testimonials/B2.jpg)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/b3.jpg)
+![]({{ site.baseurl }}/images/testimonials/B3.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P1.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P2.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P3.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P20.png)
+
+---
+ 
+![]({{ site.baseurl }}/images/testimonials/P4.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P8.jpg)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/P13.jpg)

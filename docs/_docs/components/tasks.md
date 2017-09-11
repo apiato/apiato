@@ -4,13 +4,24 @@ category: "Main Components"
 order: 5
 ---
 
+- [Definition & Principles](#definition-principles)
+- [Rules](#rules)
+- [Folder Structure](#folder-structure)
+- [Code Sample](#code-sample)
+
+<a name="definition-principles"></a>
+
 ### Definition & Principles
 
 Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#Tasks).
 
+<a name="rules"></a>
+
 ### Rules
 
 - All Tasks MUST extend from `App\Ship\Parents\Tasks\Task`.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -27,9 +38,11 @@ Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz
                 - ...
 ```
 
+<a name="code-sample"></a>
+
 ### Code Sample
 
-**Find User Task by ID:** 
+**Find User Task by ID:**
 
 ```php
 <?php
@@ -63,8 +76,8 @@ class FindUserByIdTask extends Task
 }
 ```
 
-	 
-**Tasks usage from an Action:** 
+
+**Tasks usage from an Action:**
 
 ```php
 <?php
@@ -102,7 +115,5 @@ class ValidateUserEmailByConfirmationCodeAction extends Action
         ...
     }
 }
-	 
+
 ```
-
-

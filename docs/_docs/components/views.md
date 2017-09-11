@@ -4,15 +4,27 @@ category: "Main Components"
 order: 11
 ---
 
+* [Definition & Principles](#definition-principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Sample](#code-sample)
+- [Namespaces](#namespaces)
+
+<a name="definition-principles"></a>
+
 ### Definition & Principles
 
 Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#Views).
+
+<a name="rules"></a>
 
 ### Rules
 
 - Views SHOULD be created inside the Containers. And they will be automatically available for use in the Web Controllers.
 
 - All Views are namespaced as the lower case of the Container name.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -28,9 +40,11 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
                         - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Sample
 
-**Welcome page View** 
+**Welcome page View**
 
 ```html
 <!DOCTYPE html>
@@ -47,8 +61,8 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 </body>
 </html>
 ```
-	 
-**Example: Usage From Controller** 
+
+**Example: Usage From Controller**
 
 ```php
 <?php
@@ -64,8 +78,10 @@ class Controller extends WebController
         return view('just-welcome');
     }
 }
-	 
+
 ```
+
+<a name="namespaces"></a>
 
 ## Namespaces
 

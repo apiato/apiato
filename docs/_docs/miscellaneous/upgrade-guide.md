@@ -4,13 +4,22 @@ category: "Miscellaneous"
 order: 20
 ---
 
-## Upgrade Apiato from version 5.0 to 7.0:
+- [Upgrade Apiato from version 5.0 to 7.0](#upgrade-apiato-from-version50To70)
+- [Upgrade Apiato from version 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
+- [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
+- [Upgrading method](#upgrading-method)
+
+<br>
+
+<a name="upgrade-apiato-from-version50To70"></a>
+
+## Upgrade Apiato from version 5.0 to 7.0
 
 > Estimated upgrading time is 30 minutes.
 
-By upgrading to `Apiato 7.0` you can benefit from all the features provided by `Laravel 5.5`. 
+By upgrading to `Apiato 7.0` you can benefit from all the features provided by `Laravel 5.5`.
 
-*This upgrade is simple.* 
+*This upgrade is simple.*
 
 You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...master).
 
@@ -18,11 +27,13 @@ Note: Some of the files are not required to be upgraded. And some of them, can b
 
 Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
 
-> **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`. 
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded 
+> **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
+Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
-## Upgrade Apiato from version 4.1 to 5.0:
+<a name="upgrade-apiato-from-version-41To50"></a>
+
+## Upgrade Apiato from version 4.1 to 5.0
 
 > Estimated upgrading time is 15 minutes.
 
@@ -41,7 +52,7 @@ This guide will show you how to freshly install the new Apiato 5.0, then migrate
 
 4) Open this file `app/Ship/composer.json` in your old project and only copy the required dependencies, from the old project to the same file in the new project.
 
-5) Again, open the `app/Ship/composer.json` file in the new project, and remove the following dependencies: 
+5) Again, open the `app/Ship/composer.json` file in the new project, and remove the following dependencies:
 `guzzlehttp/guzzle`, `prettus/l5-repository`, `barryvdh/laravel-cors`, `spatie/laravel-fractal`, `vinkla/hashids` and `johannesschobel/apiato-container-installer`.
 
 6) Move and replace the following directories from the old project to the new project: `config`, `public`, `resources`, `database` and `storage`.
@@ -61,14 +72,18 @@ and you will need to update the namespace from `namespace App\Ship\Seeders\Data\
 
 13) Run `composer update`. If you got any error at this step, try to solve it or open an [Issue](https://github.com/apiato/apiato/issues).
 
-14) Move the `.git` directory from the old project to the new one. Add all changes `git add .` then commit `git commit -m 'upgrade Apiato from 4.1 to 5.0'`. 
+14) Move the `.git` directory from the old project to the new one. Add all changes `git add .` then commit `git commit -m 'upgrade Apiato from 4.1 to 5.0'`.
 
 15) Run your tests `vendor/bin/phpunit`.
 
 That's it :)
 
+<a name="how-to-manually-upgrade-older-versions-to-41"></a>
+
 ## How to manually upgrade older versions to 4.1?
 
+
+<a name="upgrading-method"></a>
 
 ##### Upgrading method:
 
@@ -128,5 +143,3 @@ The git merging can be done in many ways:
 <br>
 
 Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
-
-

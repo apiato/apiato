@@ -4,10 +4,30 @@ category: "Features"
 order: 10
 ---
 
+- [Sorting & Ordering](#sorting-ordering)
+- [Searching](#searching)
+    - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
+    - [Search in specific field](#search-in-specific-field)
+    - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
+    - [Define query condition](#define-query-condition)
+    - [Define search fields for search](#define-search-fields-for-search)
+    - [Define the query condition for search](#define-the-query-condition-for-search)
+- [Filtering](#filtering)
+- [Pagination](#pagination)
+- [Limit](#limit)
+- [Relationships (include)](#relationships-include)
+- [Caching skipping](#caching-skipping)
+- [Configuration](#configuration)
+- [See the Query parameters from the User Developer perspective](#see-the-query-parameters-from-the-user-developer-perspective)
+- [More Information](#more)
+
+<br>
+<br>
+
 Users often need to control the response data, thus the apiato supports some useful and common query parameters:
 
-
-## Sorting & Ordering:
+<a name="sorting-ordering"></a>
+## Sorting & Ordering
 
 The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
 
@@ -29,7 +49,9 @@ Accepts:
 
 *(provided by the L5 Repository)*
 
-## Searching:
+<a name="Searching"></a>
+
+## Searching
 
 The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
@@ -53,7 +75,7 @@ protected $fieldSearchable = [
 ];
 ```
 
-	    
+
 ```
 ?search=John
 ?search=name:John
@@ -64,23 +86,31 @@ Notice should replace the space with `%20`.
 
 > Space should be replaced with `%20` (search=keyword%20here).
 
-#### Search any field for multiple keywords:
+<a name="search-any-field-for-multiple-keywords"></a>
+
+#### Search any field for multiple keywords
 
 ```
 api.domain.dev/endpoint?search=first keyword;second keyword
 ```
 
-#### Search in specific field:
+<a name="search-in-specific-field"></a>
+
+#### Search in specific field
 ```
 api.domain.dev/endpoint?search=field:keyword here
 ```
 
-#### Search in specific fields for multiple keywords: 
+<a name="search-any-field-for-multiple-keywords"></a>
+
+#### Search in specific fields for multiple keywords
 ```
 api.domain.dev/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
-#### Define query condition:
+<a name="define-query-condition"></a>
+
+#### Define query condition
 
 ```
 api.domain.dev/endpoint?search=field:keyword&searchFields=name:like
@@ -90,7 +120,9 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-### Define search fields for search:
+<a name="define-search-fields-for-search"></a>
+
+### Define search fields for search
 
 ```
 ?search=name:John&email:john@main.com
@@ -101,7 +133,9 @@ Checkout the Search Page for full implementation example.
 
 See the [Search query parameter]({{ site.baseurl }}{% link _docs/features/search-query-parameter.md %}) page, for how to set it up and control the searchability.
 
-### Define the query condition for search:
+<a name="define-the-query-condition-for-search"></a>
+
+### Define the query condition for search
 
 ```
 ?searchFields=name:like
@@ -113,9 +147,11 @@ See the [Search query parameter]({{ site.baseurl }}{% link _docs/features/search
 *(provided by the L5 Repository)*
 
 
-## Filtering:
+<a name="filtering"></a>
 
-The `?filter=` parameter can be applied to any HTTP request. And is used to control the response size, by defining what 
+## Filtering
+
+The `?filter=` parameter can be applied to any HTTP request. And is used to control the response size, by defining what
 data you want back in the response.
 
 **Usage:**
@@ -165,10 +201,12 @@ Example Response, including only id and status:
 *(provided by the L5 Repository)*
 
 Note that the transformer, which is used to output / format the data is also filtered. This means, that only the fields
-to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes) 
+to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes)
 of the object.
 
-## Pagination:
+<a name="pagination"></a>
+
+## Pagination
 
 The `?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
 
@@ -198,7 +236,9 @@ api.domain.dev/endpoint?page=200
 
 *(provided by the Laravel Paginator)*
 
-## Limit: 
+<a name="limit"></a>
+
+## Limit
 
 The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
 
@@ -208,19 +248,21 @@ The `?limit=` parameter can be applied to define, how many results should be ret
 api.domain.dev/endpoint?limit=100
 ```
 
-This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be 
+This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be
 combined in order to get the next 100 resources:
 
 ```
 api.domain.dev/endpoint?limit=100&page=2
 ```
 
-In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination, 
+In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
 you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
 get all data (with no pagination applied) by requesting `api.domain.dev/endpoint?limit=0`. This will return all matching
 entities.
 
-## Relationships (include):
+<a name="relationships-include"></a>
+
+## Relationships (include)
 
 Include relationships for complex data structures.
 
@@ -234,10 +276,10 @@ using `include` with comma `,` separator:
 include=tags,user
 ```
 
-The `?include=` parameter can be used with any endpoint, only if it supports it. 
+The `?include=` parameter can be used with any endpoint, only if it supports it.
 
-How to use it: let's say there's a Driver object and Car object. And there's an endpoint `/cars` that returns all the cars objects. 
-The include allows getting the cars with their drivers `/cars?include=drivers`. 
+How to use it: let's say there's a Driver object and Car object. And there's an endpoint `/cars` that returns all the cars objects.
+The include allows getting the cars with their drivers `/cars?include=drivers`.
 
 However, for this parameter to work, the endpoint `/cars` should clearly define that it
 accepts `driver` as relationship (in the **Available Relationships** section).
@@ -270,7 +312,9 @@ Visit the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers
 
 *(provided by the Fractal Transformer)*
 
-## Caching skipping:
+<a name="caching-skipping"></a>
+
+## Caching skipping
 
 Note: You need to turn the Eloquent Query Caching ON for this feature to work. Checkout the Configuration Page "ELOQUENT_QUERY_CACHE".
 
@@ -285,13 +329,16 @@ It's not recommended to keep skipping cache as it has bad impact on the performa
 
 *(provided by the L5 Repository)*
 
+<a name="configuration"></a>
 
 ## Configuration
 
 Most of these parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
 Some of them are built in house, or inherited from other packages such as Fractal.
 
-#### See the Query parameters from the User Developer perspective:
+<a name="see-the-query-parameters-from-the-user-developer-perspective"></a>
+
+## See the Query parameters from the User Developer perspective
 
 1) Generate the Default API documentation
 
@@ -299,7 +346,9 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 More details in the [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) page.
 
-### More
+<a name="more"></a>
+
+## More Information
 
 For more details on these parameters check out these links:
 

@@ -4,8 +4,6 @@ category: "Features"
 order: 101
 ---
 
-## How it works
-
 Below we'll see how to setup a Search Query Parameter, on a Model:
 
 1. Add searchable Fields on the Model Repository, *all the other steps are normal steps* 

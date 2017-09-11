@@ -4,11 +4,21 @@ category: "Optional Components"
 order: 23
 ---
 
+* [Definition](#definition)
+- [Principles](#principles)
+* [Rules](#rules)
+* [Folder Structure](#folder-structure)
+* [Code Samples](#code-samples)
+
+<a name="definition"></a>
+
 ### Definition
 
-Migrations (are the short name for Database Migrations). 
+Migrations (are the short name for Database Migrations).
 
 Migrations are the version control of your database. They are very useful for generating and documenting the database tables.
+
+<a name="principles"></a>
 
 ## Principles
 
@@ -16,9 +26,13 @@ Migrations are the version control of your database. They are very useful for ge
 
 - Migrations will be autoloaded in the framework
 
+<a name="rules"></a>
+
 ### Rules
 
 - No need to publish the DB Migrations. Just run the `artisan migrate` command and Laravel will read the Migrations from the Containers.
+
+<a name="folder-structure"></a>
 
 ### Folder Structure
 
@@ -32,9 +46,11 @@ Migrations are the version control of your database. They are very useful for ge
                     - ...
 ```
 
+<a name="code-samples"></a>
+
 ### Code Samples
 
-**User CreateUsersTable `Migrations`:** 
+**User CreateUsersTable `Migrations`:**
 
 
 ```php
@@ -64,7 +80,7 @@ class CreateUsersTable extends Migration
         Schema::drop('users');
     }
 }
-	 
+
 ```
 
 

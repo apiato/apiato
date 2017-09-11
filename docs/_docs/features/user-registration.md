@@ -4,6 +4,12 @@ category: "Features"
 order: 5
 ---
 
+- [Register users by credentials (email and passwords)](#register-users-by-credentials-email-and-passwords)
+- [Register users by Social Account](#register-users-by-social-account)
+
+
+<a name="register-users-by-credentials-email-and-passwords"></a>
+
 ### Register users by credentials (email and passwords)
 
 Call the `http://api.apiato.dev/v1/register` endpoint (you can find it's documentation after generating the API Docs.
@@ -61,6 +67,8 @@ curl --request POST \
 
 Note: After registration you will have to send another call to `http://api.example.com/v1/oauth/token` in order to get the user access token.
 
+
+<a name="register-users-by-social-account"></a>
 
 ### Register users by Social Account
 

@@ -4,6 +4,17 @@ category: "Miscellaneous"
 order: 1
 ---
 
+- [The Magical Call](#the-magical-call)
+    + [Basic Usage](#basic-usage)
+    + [Passing arguments to the run function](#passing-arguments-to-the-run-function)
+    + [Calling other functions before the run](#calling-other-functions-before-the-run)
+    + [Calling other functions and pass them arguments:](#calling-other-functions-and-pass-them-arguments)
+- [Use case example:](#use-case-example)
+    + [The ListUsersTask class:](#the-listuserstask-class)
+
+
+<a name="the-magical-call"></a>
+
 ### The Magical Call
 
 This magical function allows you to call any Action's or Task's `run` function, from any Controller or Action classes.
@@ -19,30 +30,38 @@ $this->call(\MyAction::class, [$paramerter1, $paramerter2]);
 ```
 
 
-##### Basic Usage:
+<a name="basic-usage"></a>
+
+##### Basic Usage
 
 ```php
 $foo = $this->call(ActionOrTask::class);
 ```
 
-##### Passing arguments to the `run` function:
+<a name="passing-arguments-to-the-run-function"></a>
+
+##### Passing arguments to the `run` function
 
 ```php
 $foo = $this->call(ActionOrTask::class, [$runArgument1, $runArgument2, $runArgument3]);
 ```
 
-##### Calling other functions before the `run`:
+<a name="calling-other-functions-before-the-run"></a>
+
+##### Calling other functions before the `run`
 
 ```php
 $foo = $this->call(ActionOrTask::class, [$runArgument], ['otherFunction1', 'otherFunction2']);
 ```
 
-##### Calling other functions and pass them arguments:
+<a name="calling-other-functions-and-pass-them-arguments"></a>
+
+##### Calling other functions and pass them arguments
 
 ```php
 $foo = $this->call(ActionOrTask::class, [$runArgument], [
-    ['function1' => ['function1-argument1', 'function1-argument2']], 
-    ['function2' => ['function2-argument1']], 
+    ['function1' => ['function1-argument1', 'function1-argument2']],
+    ['function2' => ['function2-argument1']],
 ]);
 
 
@@ -59,7 +78,9 @@ $foo = $this->call(ActionOrTask::class, [], [
 ]);
 ```
 
-### Use case example:
+<a name="use-case-example"></a>
+
+### Use case example
 
 ```php
 <?php
@@ -73,7 +94,9 @@ return $this->call(ListUsersTask::class, [], ['admins']);
 return $this->call(ListUsersTask::class, [], ['admins', ['roles' => ['manager', 'employee']]]);
 ```
 
-##### The ListUsersTask class:
+<a name="the-listuserstask-class"></a>
+
+##### The ListUsersTask class
 
 ```php
 <?php

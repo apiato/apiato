@@ -4,9 +4,18 @@ category: "Features"
 order: 4
 ---
 
+- [How it works](#how-it-works)
+- [Responses](#responses)
+- [Assign Roles & Permission to the Testing User](#assign-roles-permission-to-the-testing-user)
+- [Seeding some users (Admins)](#seeding-some-users-admins)
+
+<br >
+<br >
 apiato provides a Role-Based Access Control (RBAC) from it's Authorization Container.
 
 Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/5.4/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
+
+<a name="how-it-works"></a>
 
 ## How it works
 
@@ -16,13 +25,13 @@ Authorization in apiato is very simple and easy.
 
 2) Second create Roles, and attach some permissions to the roles.
 
-3) Now start creating users (or use existing users), to assign them to the new created Roles. 
+3) Now start creating users (or use existing users), to assign them to the new created Roles.
 
 *That should be done from your custom admin panel, which can consume the default provided Roles & Permissions API endpoints (Create Role, Assign User to Roles, List all Permission...).*
 
 3) Finally you need to protect your endpoints by Permissions (or/and Roles). The right place to do that is the Requests class.
 
-**Example protecting the (delete user) endpoint with `delete-users` permission:** 
+**Example protecting the (delete user) endpoint with `delete-users` permission:**
 
 ```php
 <?php
@@ -56,12 +65,14 @@ class DeleteUserRequest extends Request
     }
 }
 
-``` 
+```
 
 
 **For detailed explanation of this example, please visit the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %}) Page.**
 
-### Responses
+<a name="responses"></a>
+
+## Responses
 
 **Authorization failed JSON response:**
 
@@ -73,12 +84,15 @@ class DeleteUserRequest extends Request
 }
 ```
 
+<a name="assign-roles-permission-to-the-testing-user"></a>
 
-## Assign Roles & Permission to the Testing User:
+## Assign Roles & Permission to the Testing User
 
 You will need to set `$access` property in your test class, check out the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) page for more details.
 
-## Seeding some users (Admins):
+<a name="seeding-some-users-admins"></a>
+
+## Seeding some users (Admins)
 
 By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard and some default permissions. This Super Admin Credentials are:
 

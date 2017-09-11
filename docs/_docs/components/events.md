@@ -4,23 +4,34 @@ category: "Optional Components"
 order: 35
 ---
 
+- [Definition](#definition)
+- [Rules](#rules)
+- [Usage](#usage)
+- [Dispatch Events](#dispatch-events)
+
+<a name="definition"></a>
+
 ### Definition
 
 Events provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application. More details [here](https://laravel.com/docs/events).
+
+<a name="rules"></a>
 
 ### Rules
 
 - Events classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
 - All Events MUST extend from `App\Ship\Parents\Events\Event`.
 
+<a name="usage"></a>
+
 ### Usage
 
 In laravel you can create and register events in multiple way. The recommended way by Apiato is the following:
 
-Create an Event that handles itself. (This will remove the need for the `EventsServiceProvider` which map each Event to its handler). 
+Create an Event that handles itself. (This will remove the need for the `EventsServiceProvider` which map each Event to its handler).
 **But if you prefer using that method you can extend `Apiato\Core\Abstracts\Providers\EventsProvider`.**
 
-Event Class Example: 
+Event Class Example:
 
 ```php
 <?php
@@ -48,6 +59,8 @@ class UserEmailChangedEvent extends Event implements ShouldQueue
 ```  
 
 Events can implement `ShouldQueue` incase it needs to be queued and other interfaces as well. Refer to the [Laravel Events](https://laravel.com/docs/events) documentation for more details.  
+
+<a name="dispatch-events"></a>
 
 ### Dispatch Events
 
