@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Users
- * @apiName            ListAllAdmins
+ * @apiName            listAllAdmins
  * @api                {get} /v1/admins List Admin Users
  * @apiDescription     List all Users where role `Admin`.
  *                     You can search for Users by email, name and ID.
@@ -17,6 +17,7 @@
  */
 
 $router->get('admins', [
+    'as' => 'API_User_listAllAdmins',
     'uses'       => 'Controller@listAllAdmins',
     'middleware' => [
         'auth:api',

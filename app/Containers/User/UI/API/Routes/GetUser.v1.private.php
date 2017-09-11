@@ -13,6 +13,7 @@
  */
 
 $router->get('users/{id}', [
+    'as' => 'API_User_getUser',
     'uses'       => 'Controller@getUser',
     'middleware' => [
         'auth:api',
