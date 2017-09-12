@@ -35,7 +35,7 @@ For more details refer to this [link](https://laravel.com/docs/mail).
 ### Rules
 
 - All Notifications MUST extend from `App\Ship\Parents\Mails\Mail`.
-- Email Templates must be placed inside the Mail directory in a Templates directory `app/Containers/{container}/Mail/Templates`.
+- Email Templates must be placed inside the Mail directory in a Templates directory `app/Containers/{container}/Mails/Templates`.
 
 <a name="folder-structure"></a>
 
@@ -69,7 +69,7 @@ For more details refer to this [link](https://laravel.com/docs/mail).
 ```php
 <?php
 
-namespace App\Containers\User\Mail;
+namespace App\Containers\User\Mails;
 
 use App\Containers\User\Models\User;
 use Illuminate\Bus\Queueable;

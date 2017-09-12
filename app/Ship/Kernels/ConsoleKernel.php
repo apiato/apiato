@@ -32,8 +32,7 @@ class ConsoleKernel extends LaravelConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
@@ -43,10 +42,10 @@ class ConsoleKernel extends LaravelConsoleKernel
      */
     protected function commands()
     {
-        // TODO: to uncomment.
+        // NOTE: No need to load your Commands manually from here.
+        // As they are automatically registered by the Apiato Loader.
 
         // $this->load(__DIR__.'/Commands');
-
         // require base_path('routes/console.php');
     }
 

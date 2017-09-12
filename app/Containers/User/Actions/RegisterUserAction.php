@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Mail\UserRegisteredMail;
+use App\Containers\User\Mails\UserRegisteredMail;
 use App\Containers\User\Notifications\UserRegisteredNotification;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
