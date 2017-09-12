@@ -6,7 +6,7 @@ order: 6
 
 
 
-Thank you for considering to contribute to APIATO. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
+Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
 
 
 
@@ -21,7 +21,7 @@ Thank you for considering to contribute to APIATO. This project is powered and d
 	* [Adding New Features](#Adding-New-Features)
 	* [Important points to remember when contributing](#Important-points)
 	* [Security Vulnerabilities](#Security-Vulnerabilities)
-* [Contributing to APIATO](#Contributing-APIATO)
+* [Contributing to Apiato](#Contributing-Apiato)
 	* [Skeleton Project](#Contributing-Skeleton-Project)
 	* [Core Package](#Contributing-Core-Package)
 	* [Documentation](#Contributing-Documentation)
@@ -56,7 +56,7 @@ As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards
 <a name="Git-Branches"></a>
 ### Git Branches
 
-The `master` branch contains the upcoming APIATO release. While the other branches are for the stable releases.
+The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`). While the other branches are for the stable releases.
 
 Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist only in the upcoming release.
 
@@ -68,6 +68,7 @@ Say we are in version `7.0` right now. The repository would have at least the fo
 
 If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. And if your PR fixes a bug, then it should be sent to the latest release branch.
 
+> If you would like to always contribute to Apiato, it's better to use the master branche instead of the latest release branch, to always have the latest features and updates.
 
 <a name="Proposing-Feature"></a>
 ### Proposing Feature
@@ -142,8 +143,8 @@ If you discover a security vulnerability, please send email to `mahmoud@zalt.me`
 
 ___
 
-<a name="Contributing-APIATO"></a>
-# Contributing to APIATO
+<a name="Contributing-Apiato"></a>
+# Contributing to Apiato
 
 > The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core package of apiato).
 
@@ -151,9 +152,9 @@ ___
 <a name="Contributing-Skeleton-Project"></a>
 ## Contributing to the Skeleton Project
 
-The APIATO skeleton, is the actual Apiato project on the repository `apiato/apiato`.
+The Apiato skeleton, is the actual Apiato project on the repository `apiato/apiato`.
 
-This guide will help you contribute to the APIATO skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
+This guide will help you contribute to the Apiato skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
 
 
 
@@ -168,7 +169,7 @@ In this scenario let's assume we have the following:
 
 
 
-1) Create Project A from APIATO
+1) Create Project A from Apiato
 
 `composer create-project apiato/apiato project-a`
 
@@ -266,9 +267,9 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 <a name="Contributing-Core-Package"></a>
 ## Contributing to the Core Package
 
-The APIATO core package, is what provides most of the functionality of the APIATO project. 
+The Apiato core package, is what provides most of the functionality of the Apiato project. 
 
-This guide will help you contribute to the APIATO core package, while the package is in the vendor direcotry.
+This guide will help you contribute to the Apiato core package, while the package is in the vendor directory.
 
 
 ### SETUP
