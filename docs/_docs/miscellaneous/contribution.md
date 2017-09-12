@@ -19,7 +19,7 @@ Thank you for considering to contribute to Apiato. This project is powered and d
 	* [Reporting Bugs](#Reporting-Bugs)
 	* [Fixing Bugs](#Fixing-Bugs)
 	* [Adding New Features](#Adding-New-Features)
-	* [Important points to remember when contributing](#Important-points)
+	* [Important things to remember when contributing](#Important-points)
 	* [Security Vulnerabilities](#Security-Vulnerabilities)
 * [Contributing to Apiato](#Contributing-Apiato)
 	* [Skeleton Project](#Contributing-Skeleton-Project)
@@ -120,13 +120,14 @@ When you do begin working on your feature, here are some guidelines to consider:
 
 
 <a name="Important-points"></a>
-### Important points to remember when contributing:
+### Important things to remember when contributing:
 
-- Be descriptive in your branch names, commit messages, and pull request title and descriptions.
-- Keep your commits atomic, that is, each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
-- Once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should never create a new pull request for the same branch.
-- Comment on the pull request when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
-- Before writing any line of code, run the tests, and make sure all the tests passed in your environment. This will save you time, worrying of your changes caused those tests to fail.
+- [x] Update the `CHANGELOG.md`, to include your changes.
+- [x] Be descriptive in your branch names, commit messages, and pull request title and descriptions.
+- [x] Keep your commits atomic, that is, each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
+- [x] Once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
+- [x] Comment on the pull request when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
+- [x] Before writing any line of code, run the tests `vendor/bin/phpunit`, and make sure all the tests are passing in your machine.
 
 
 
