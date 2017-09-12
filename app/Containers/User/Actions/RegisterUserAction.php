@@ -2,9 +2,11 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\User\Notifications\UserRegisteredNotification;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * Class RegisterUserAction.
@@ -22,7 +24,7 @@ class RegisterUserAction extends Action
     public function run(Request $request)
     {
         // create user record in the database and return it.
-        return $this->call(CreateUserByCredentialsTask::class, [
+        $user = $this->call(CreateUserByCredentialsTask::class, [
             $isClient = true,
             $request->email,
             $request->password,
@@ -30,5 +32,9 @@ class RegisterUserAction extends Action
             $request->gender,
             $request->birth
         ]);
+
+        Notification::send($user, new UserRegisteredNotification($user));
+
+        return $user;
     }
 }

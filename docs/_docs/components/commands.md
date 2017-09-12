@@ -3,8 +3,9 @@ title: "Commands"
 category: "Optional Components"
 order: 32
 ---
+
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
@@ -23,13 +24,16 @@ Commands could be Closure based or Classes. For more details refer to this [link
 
 - Containers MAY or MAY NOT have one or more Commands.
 
-- Every should be calling Actions. And should not container any business logic.
+- Every Command SHOULD call an Action to perform its job. And should not container any business logic.
+
+- Ship may contain Application general Commands.
+
 
 <a name="rules"></a>
 
 ### Rules
 
-- All Command MUST extend from `App\Ship\Parents\Commands\ConsoleCommand`.
+- All Commands MUST extend from `App\Ship\Parents\Commands\ConsoleCommand`.
 
 <a name="folder-structure"></a>
 
@@ -42,8 +46,12 @@ Commands could be Closure based or Classes. For more details refer to this [link
             - UI
                 - CLI
                     - Commands
-                        - SayHello.php
+                        - SayHelloCommand.php
                         - ...
+    - Ship
+        - Commands
+            - GeneralCommand.php
+            - ...
 ```
 
 <a name="code-samples"></a>
