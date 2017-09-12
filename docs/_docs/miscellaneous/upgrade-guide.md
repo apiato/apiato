@@ -7,8 +7,7 @@ order: 20
 - [Upgrade Apiato from version 5.0 to 7.0](#upgrade-apiato-from-version50To70)
 - [Upgrade Apiato from version 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
-- [Upgrading method](#upgrading-method)
-
+- [Upcoming Release](#Upcoming-Release)
 <br>
 
 <a name="upgrade-apiato-from-version50To70"></a>
@@ -21,7 +20,7 @@ By upgrading to `Apiato 7.0` you can benefit from all the features provided by `
 
 *This upgrade is simple.*
 
-You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...master).
+You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...7.0).
 
 Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files (copy a file content from the Apiato repository and replace it with your older version).
 
@@ -29,7 +28,7 @@ Hint: You can do a git merge and solve the conflicts, if you don't want to manua
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
 Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
-in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
+in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`. (This should be a temporary situation)
 
 <a name="upgrade-apiato-from-version-41To50"></a>
 
@@ -81,9 +80,6 @@ That's it :)
 <a name="how-to-manually-upgrade-older-versions-to-41"></a>
 
 ## How to manually upgrade older versions to 4.1?
-
-
-<a name="upgrading-method"></a>
 
 ##### Upgrading method:
 
@@ -143,3 +139,10 @@ The git merging can be done in many ways:
 <br>
 
 Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+
+
+
+<a name="Upcoming-Release"></a>
+## Upcoming Release
+
+Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming feautes and changes. 
