@@ -2,13 +2,14 @@
 
 namespace App\Ship\Parents\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Apiato\Core\Abstracts\Notifications\Notification as ApiatoNotification;
+use Apiato\Core\Abstracts\Notifications\Notification as AbstractNotification;
 
-
-class Notification extends ApiatoNotification
+/**
+ * Class Notification
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class Notification extends AbstractNotification
 {
-
-    use Queueable;
 
 }

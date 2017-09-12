@@ -1,7 +1,7 @@
 ---
-title: "Commands"
+title: "Notifications"
 category: "Optional Components"
-order: 36
+order: 37
 ---
 
 * [Definition](#definition)
@@ -10,6 +10,7 @@ order: 36
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Select Channels](#Select-Channels)
+* [Queueing](#Queueing)
 
 <a name="definition"></a>
 
@@ -69,8 +70,9 @@ namespace App\Containers\User\Notifications;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Notifications\Notification;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserDiedNotification extends Notification
+class UserDiedNotification extends Notification implements ShouldQueue
 {
 
     use Queueable;
@@ -94,7 +96,7 @@ class UserDiedNotification extends Notification
 
 **Usage from an Action:**
 
-Notifications can be sent from Actions or Tasks.
+Notifications can be sent from Actions or Tasks using the `Notification` Facade.  
 
 ```php
 Notification::send($user, new UserDiedNotification($user));
@@ -105,3 +107,8 @@ Notification::send($user, new UserDiedNotification($user));
 
 To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels.
 You can override the **via** function `public function via($notifiable)`, of you want to use different channel for some Notifications. 
+
+<a name="Queueing"></a>
+## Queueing A Notification 
+
+To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.

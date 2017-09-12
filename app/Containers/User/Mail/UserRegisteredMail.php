@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Containers\User\Notifications;
+namespace App\Containers\User\Mail;
 
 use App\Containers\User\Models\User;
-use App\Ship\Parents\Notifications\Notification;
 use Illuminate\Bus\Queueable;
+use App\Ship\Parents\Mails\Mail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserRegisteredNotification extends Notification implements ShouldQueue
+class UserRegisteredMail extends Mail implements ShouldQueue
 {
-
     use Queueable;
 
     /**
@@ -28,15 +27,16 @@ class UserRegisteredNotification extends Notification implements ShouldQueue
     }
 
     /**
-     * @param  mixed $notifiable
+     * Build the message.
      *
-     * @return array
+     * @return $this
      */
-    public function toArray($notifiable)
+    public function build()
     {
-        return [
-            // ... do you own customization
-        ];
+        return $this->view('user::user-registered')
+            ->to($this->user->email, $this->user->name)
+            ->with([
+                'name' => $this->user->name,
+            ]);
     }
-
 }

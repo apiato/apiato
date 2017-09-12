@@ -2,11 +2,13 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\User\Mail\UserRegisteredMail;
 use App\Containers\User\Notifications\UserRegisteredNotification;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class RegisterUserAction.
@@ -32,6 +34,8 @@ class RegisterUserAction extends Action
             $request->gender,
             $request->birth
         ]);
+
+        Mail::send(new UserRegisteredMail($user));
 
         Notification::send($user, new UserRegisteredNotification($user));
 

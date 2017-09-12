@@ -61,10 +61,12 @@ return [
     ],
 
     'to' => [
+
         'support' => [
             'address' => env('MAIL_TO_SUPPORT_ADDRESS', null),
             'name' => env('MAIL_TO_SUPPORT_NAME', null)
         ],
+
         // .. add more below
     ],
 
