@@ -8,6 +8,7 @@ order: 35
 - [Rules](#rules)
 - [Usage](#usage)
 - [Dispatch Events](#dispatch-events)
+- [Queueing](#Queueing)
 
 <a name="definition"></a>
 
@@ -36,29 +37,37 @@ Event Class Example:
 ```php
 <?php
 
+namespace App\Containers\User\Events;
+
+use App\Containers\User\Models\User;
 use App\Ship\Parents\Events\Event;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-class UserEmailChangedEvent extends Event implements ShouldQueue
+class UserRegisteredEvent extends Event implements ShouldQueue
 {
-    public $user;
+    protected $user;
 
-    public function __construct($user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
 
     public function handle()
     {
-        Log::info('Queue Started: (User Email Changed Event) for [' . $this->user->getHashedKey() . '] new email ' . $this->user->email);
+        Log::info('New User registration. ID = ' . $this->user->getHashedKey() . ' | Email = ' . $this->user->email . '.');
 
         // ...
+    }
+
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
     }
 }
 ```  
 
-Events can implement `ShouldQueue` incase it needs to be queued and other interfaces as well. Refer to the [Laravel Events](https://laravel.com/docs/events) documentation for more details.  
 
 <a name="dispatch-events"></a>
 
@@ -75,10 +84,10 @@ event(New UserEmailChangedEvent($user));
 
 // manually
 \App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New UserEmailChangedEvent($user));
-
-
-
-
-
-
 ```
+
+<a name="Queueing"></a>
+## Queueing an Event
+
+Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued. 
+  

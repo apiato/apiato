@@ -109,6 +109,6 @@ To select a notification channel, apiato have the `app/Ship/Configs/notification
 You can override the **via** function `public function via($notifiable)`, of you want to use different channel for some Notifications. 
 
 <a name="Queueing"></a>
-## Queueing A Notification 
+## Queueing a Notification 
 
 To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.
