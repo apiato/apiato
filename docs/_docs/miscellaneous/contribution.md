@@ -155,8 +155,9 @@ ___
 
 The Apiato skeleton, is the actual Apiato project on the repository `apiato/apiato`.
 
-This guide will help you contribute to the Apiato skeleton project, while working on your personal project. So you don't have to write the code twice, which makes contribution fun an fast.
+This guide will help you contribute to the Apiato skeleton project, while working on your personal project. 
 
+If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will show you how to submit that change to Apiato.
 
 
 ### SETUP
@@ -166,13 +167,22 @@ This guide will help you contribute to the Apiato skeleton project, while workin
 In this scenario let's assume we have the following:
 
 * `Apiato`     # is the starter/framework project
-* `Project A`  # your personal project your building on top of apiato
-
+* `Project-A`  # your personal project your building on top of apiato
 
 
 1) Create Project A from Apiato
 
+If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need to pull the latest stable release of Apiato.
+
 `composer create-project apiato/apiato project-a`
+
+If you want to add new features or do anything else, that should be added to the next stable release, you need to pull the master branch and submit your PR there.   
+
+`composer create-project apiato/apiato:dev-master project-a`
+
+Or
+
+`composer create-project --stability=dev apiato/apiato project-a`
 
 2) Initialize git in Project A
 
@@ -203,11 +213,15 @@ upstream    git@github.com:username/apiato.git (fetch)
 upstream    git@github.com:username/apiato.git (push)
 ```
 
-4.a) Create apiato branch
+4) Do your first commit
+
+`git add . && git commit -m 'first commit'`
+
+5.a) Create apiato branch
 
 `git checkout -b apiato`
 
-4.b) Let the apiato branch track the upstream master branch
+5.b) Let the apiato branch track the upstream master branch
 
 `git checkout apiato`
 
@@ -233,18 +247,15 @@ Now you should have the following branches:
 
 `git checkout apiato`
 
-3) Apply the changes of upstream master in the local apiato branch
+3) Sync apiato branch with upstream/master
 
-`git pull`    (this will pull from the upstream since this apiato branch is configured to track upstream)
+`git reset --hard upstream/master`
 
-Or use `git reset --hard upstream/master` if you want to override your local changes on that branch
-
-
-4) Now you can cherry pick from master to apiato any commit you'd like to contribute:
+4) Now you can cherry pick the commits you'd like to contribute 
 
 `git checkout apiato`
 
-`git log master`      (to copy each commit ID, one by one)
+`git log master`      (copy the commit ID)
 
 `git cherry-pick {commit-ID}`
 
@@ -270,7 +281,7 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 
 The Apiato core package, is what provides most of the functionality of the Apiato project. 
 
-This guide will help you contribute to the Apiato core package, while the package is in the vendor directory.
+This guide will help you contribute to the Apiato core package, while the package is in your vendor directory. Without much effort.
 
 
 ### SETUP
@@ -281,9 +292,7 @@ This guide will help you contribute to the Apiato core package, while the packag
 
 `composer update {your-username}/core --prefer-source`
 
-
 _The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can commit and push from the vendor directory directly._
-
 
 3) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
 
