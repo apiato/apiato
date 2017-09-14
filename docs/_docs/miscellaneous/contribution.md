@@ -12,20 +12,20 @@ Thank you for considering to contribute to Apiato. This project is powered and d
 
 
 * [Standards and Practices](#Standards-Practices)
-	* [Versioning](#Versioning)
-	* [Coding Standards](#Coding-Standards)
-	* [Git Branches](#Git-Branches)
-	* [Proposing Feature](#Proposing-Feature)
-	* [Reporting Bugs](#Reporting-Bugs)
-	* [Fixing Bugs](#Fixing-Bugs)
-	* [Adding New Features](#Adding-New-Features)
-	* [Important things to remember when contributing](#Important-points)
-	* [Security Vulnerabilities](#Security-Vulnerabilities)
+    * [Versioning](#Versioning)
+    * [Coding Standards](#Coding-Standards)
+    * [Git Branches](#Git-Branches)
+    * [Proposing Feature](#Proposing-Feature)
+    * [Reporting Bugs](#Reporting-Bugs)
+    * [Fixing Bugs](#Fixing-Bugs)
+    * [Adding New Features](#Adding-New-Features)
+    * [Important things to remember when contributing](#Important-points)
+    * [Security Vulnerabilities](#Security-Vulnerabilities)
 * [Contributing to Apiato](#Contributing-Apiato)
-	* [Skeleton Project](#Contributing-Skeleton-Project)
-	* [Core Package](#Contributing-Core-Package)
-	* [Documentation](#Contributing-Documentation)
-	* [Code Generator](#Contributing-Generator)
+    * [Skeleton Project](#Contributing-Skeleton-Project)
+    * [Core Package](#Contributing-Core-Package)
+    * [Documentation](#Contributing-Documentation)
+    * [Code Generator](#Contributing-Generator)
 
 
 
@@ -253,7 +253,15 @@ Now you should have the following branches:
 
 4) Now you can cherry pick the commits you'd like to contribute 
 
-`git checkout apiato`
+4.a) First go to the apiato branch
+
+`git checkout apiato` 
+
+4.b) Create custom branch for your PR
+
+`git checkout -b feature-awesome`  (must be created from apiato)   
+
+4.c) Do the cherry-picking
 
 `git log master`      (copy the commit ID)
 
@@ -261,11 +269,13 @@ Now you should have the following branches:
 
 *(repeat for all commits you want to submit)*
 
-5) push apiato branch to the upstream
+5) Push apiato branch to the upstream
 
-`git push upstream apiato:master`
+`git push upstream feature-awesome`   (replace feature-awesome with your custom branch name)
 
-6) create a Pull Request (PR) from your forked repository to the apiato official repository.
+6) Create a Pull Request (PR) from your forked repository to the apiato official repository.
+
+Make sure you create a PR from your custom branch `feature-awesome` to `master` (or the latest stable release).
 
 *W'll do our best to merge your PR in the shortest time possible. Thanks in advanced :)*
 
