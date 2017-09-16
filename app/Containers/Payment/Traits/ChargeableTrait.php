@@ -27,9 +27,17 @@ trait ChargeableTrait
         return App::make(PaymentsProxy::class)->charge($this, $account, $amount, $currency);
     }
 
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart)
+    /**
+     * @param PaymentAccount $account
+     * @param ShoppingCart   $cart
+     * @param                $currency
+     *
+     * @return mixed
+     */
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency)
     {
-
+        $amount = $cart->getTotal();
+        return App::make(PaymentsProxy::class)->charge($this, $account, $amount, $currency);
     }
 
 }

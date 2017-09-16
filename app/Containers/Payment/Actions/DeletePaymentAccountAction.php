@@ -3,8 +3,8 @@
 namespace App\Containers\Payment\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
-use App\Containers\Payment\Tasks\DeletePaymentAccountTask;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
+use App\Containers\Payment\Tasks\DeletePaymentAccountTask;
 use App\Containers\Payment\Tasks\GetPaymentAccountByIdTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
