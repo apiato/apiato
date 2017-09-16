@@ -3,7 +3,7 @@
 /**
  * @apiGroup           Stripe
  * @apiName            createStripeAccount
- * @api                {post} /v1/stripes Create Stripe Account
+ * @api                {post} /v1/user/paymentaccounts/stripe Create Stripe Account
  * @apiDescription     Before calling this endpoint make sure to call Stripe first and get the `customer_id`.
  *                     You may use "Stripe Checkout" or "Stripe.js" to make your Stripe call. This Information
  *                     will be used to charge the user whenever he to purchase anything on the platform.
@@ -25,7 +25,7 @@
 }
  */
 
-$router->post('/stripes', [
+$router->post('/user/paymentaccounts/stripe', [
     'as' => 'API_Stripe_createStripeAccount',
     'uses' => 'Controller@createStripeAccount',
     'middleware' => [
