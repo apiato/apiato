@@ -36,6 +36,8 @@ class PaymentAccountTransformer extends Transformer
             'account_id' => $entity->accountable->getHashedKey(),
             'account_slug' => $entity->accountable->getPaymentGatewaySlug(),
 
+            'details' => $entity->accountable->getDetailAttributes(),
+
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
         ];

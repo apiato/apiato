@@ -30,4 +30,12 @@ interface PaymentGatewayAccount
      * @return boolean
      */
     public function checkIfPaymentDataIsSet(array $fields);
+
+    /**
+     * Returns a key => value list of attributes to be displayed in the DetailTransformer. This automatically excludes
+     * "hidden" elements, id, created/updated/deleted timestamps
+     *
+     * @return array
+     */
+    public function getDetailAttributes();
 }
