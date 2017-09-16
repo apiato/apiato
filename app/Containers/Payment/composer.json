@@ -1,0 +1,7 @@
+{
+  "name": "apiato/payment",
+  "description": "Payment Container for apiato.",
+  "require": {
+    "johannesschobel/laravel-shoppingcart" : "^0.2"
+  }
+}
