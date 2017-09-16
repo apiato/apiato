@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Config;
 class ChargeWithStripeTask extends Task implements ProcessTransactionTaskInterface
 {
 
-    public $stripe;
+    private $stripe;
 
     /**
      * StripeApi constructor.
