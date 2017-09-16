@@ -7,7 +7,7 @@ use App\Containers\Payment\Models\PaymentAccount;
 /**
  * Trait AccountableTrait
  *
- * @package App\Containers\Payment\Traits
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
 trait AccountableTrait
 {

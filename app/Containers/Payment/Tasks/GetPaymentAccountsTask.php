@@ -8,6 +8,11 @@ use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Criterias\Eloquent\ThisUserCriteria;
 use App\Ship\Parents\Tasks\Task;
 
+/**
+ * Class GetPaymentAccountsTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class GetPaymentAccountsTask extends Task
 {
     private $repository;

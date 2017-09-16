@@ -8,6 +8,11 @@ use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
+/**
+ * Class DeletePaymentAccountTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class DeletePaymentAccountTask extends Task
 {
     private $repository;

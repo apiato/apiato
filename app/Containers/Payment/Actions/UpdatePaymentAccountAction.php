@@ -9,6 +9,11 @@ use App\Containers\Payment\Tasks\UpdatePaymentAccountTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class UpdatePaymentAccountAction
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class UpdatePaymentAccountAction extends Action
 {
     public function run(Request $request)

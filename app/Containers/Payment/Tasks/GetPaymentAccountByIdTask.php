@@ -7,6 +7,11 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
+/**
+ * Class GetPaymentAccountByIdTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class GetPaymentAccountByIdTask extends Task
 {
     private $repository;

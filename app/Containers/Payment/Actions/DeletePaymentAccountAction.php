@@ -9,6 +9,11 @@ use App\Containers\Payment\Tasks\GetPaymentAccountByIdTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class DeletePaymentAccountAction
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class DeletePaymentAccountAction extends Action
 {
     public function run(Request $request)

@@ -8,6 +8,11 @@ use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
+/**
+ * Class AssignPaymentAccountToUserTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class AssignPaymentAccountToUserTask extends Task
 {
 

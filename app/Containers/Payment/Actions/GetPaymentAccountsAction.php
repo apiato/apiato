@@ -7,6 +7,11 @@ use App\Containers\Payment\Tasks\GetPaymentAccountsTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class GetPaymentAccountsAction
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class GetPaymentAccountsAction extends Action
 {
     public function run(Request $request)

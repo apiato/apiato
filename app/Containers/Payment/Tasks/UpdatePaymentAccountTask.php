@@ -8,6 +8,11 @@ use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
+/**
+ * Class UpdatePaymentAccountTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class UpdatePaymentAccountTask extends Task
 {
     private $repository;

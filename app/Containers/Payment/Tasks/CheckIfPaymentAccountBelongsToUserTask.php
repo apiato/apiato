@@ -7,6 +7,11 @@ use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
 
+/**
+ * Class CheckIfPaymentAccountBelongsToUserTask
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class CheckIfPaymentAccountBelongsToUserTask extends Task
 {
 
