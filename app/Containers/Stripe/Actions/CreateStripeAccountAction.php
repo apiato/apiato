@@ -4,12 +4,9 @@ namespace App\Containers\Stripe\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
-use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
-use App\Containers\Stripe\Models\StripeAccount;
 use App\Containers\Stripe\Tasks\CreateStripeAccountTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateStripeAccountAction.
