@@ -262,7 +262,7 @@ Install it Globally with `-g` or locally in the project without `-g`
 npm install apidoc -g
 ```
 
-Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on thr root. 
+Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the root. 
 
 
 2) run `php artisan apiato:docs`

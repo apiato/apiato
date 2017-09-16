@@ -90,7 +90,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 29. Useful Commands such as "list all Application Actions", "encoding a decoded ID", "seeds testing/deployment data", and more.
 30. Separation of UI's (Web, API and CLI) compnents (routes, controllers, requests, tests...).
 31. Ready Admin dashboard infrastructure with Login view (admin.apiato.dev).
-32. Detailed documentation (on [www.apiato.io](www.apiato.io)).
+32. Detailed documentation (on [apiato.io](http://apiato.io)).
 33. 100% customizable and Open Code. Using latest and greatest frameworks, tools, packages and standards.
 99. Much more...
 
@@ -149,7 +149,7 @@ And a list of awesome contributors:
 - [Þorgrímur Jónasarson](https://github.com/toggi737)
 - [Johannes Schobel](https://github.com/johannesschobel)
 - [See full list](https://github.com/apiato/apiato/graphs/contributors)
-- [Join Us?](http://apiato.io/B.general/contribution/)
+- [Join Us?](http://apiato.io/miscellaneous/contribution/)
 
 
 <a name="Donations"></a>
