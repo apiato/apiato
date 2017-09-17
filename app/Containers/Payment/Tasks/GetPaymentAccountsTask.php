@@ -19,7 +19,7 @@ class GetPaymentAccountsTask extends Task
 
     public function __construct(PaymentAccountRepository $repository)
     {
-        return $this->repository = $repository;
+        $this->repository = $repository;
     }
 
     public function run()

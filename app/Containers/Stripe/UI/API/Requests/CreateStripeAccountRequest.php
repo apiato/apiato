@@ -54,7 +54,7 @@ class CreateStripeAccountRequest extends Request
             'customer_id'       => 'required|min:3',
             'card_id'           => 'required|min:3',
             'card_funding'      => 'sometimes',
-            'card_last_digits'  => 'sometimes|integer|min:4|max:4',
+            'card_last_digits'  => 'sometimes|integer|min:0|max:9999',
             'card_fingerprint'  => 'sometimes|string',
         ];
     }
