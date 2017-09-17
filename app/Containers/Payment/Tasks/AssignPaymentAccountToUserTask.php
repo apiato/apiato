@@ -2,7 +2,7 @@
 
 namespace App\Containers\Payment\Tasks;
 
-use App\Containers\Payment\Contracts\PaymentGatewayAccount;
+use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
 use App\Containers\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
@@ -21,7 +21,7 @@ class AssignPaymentAccountToUserTask extends Task
         // ..
     }
 
-    public function run(PaymentGatewayAccount $account, User $user, array $info)
+    public function run(AbstractPaymentGatewayAccount $account, User $user, array $info)
     {
         try {
             return $user->paymentAccounts()->create([

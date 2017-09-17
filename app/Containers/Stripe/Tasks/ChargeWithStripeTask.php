@@ -3,8 +3,8 @@
 namespace App\Containers\Stripe\Tasks;
 
 use App\Containers\Payment\Contracts\ChargeableInterface;
-use App\Containers\Payment\Contracts\PaymentGatewayAccount;
-use App\Containers\Payment\Contracts\ProcessTransactionTaskInterface;
+use App\Containers\Payment\Contracts\PaymentChargerTaskInterface;
+use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
 use App\Containers\Stripe\Exceptions\StripeAccountNotFoundException;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Ship\Parents\Tasks\Task;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Config;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithStripeTask extends Task implements ProcessTransactionTaskInterface
+class ChargeWithStripeTask extends Task implements PaymentChargerTaskInterface
 {
 
     private $stripe;
@@ -33,16 +33,16 @@ class ChargeWithStripeTask extends Task implements ProcessTransactionTaskInterfa
     }
 
     /**
-     * @param ChargeableInterface      $user
-     * @param PaymentGatewayAccount    $account
-     * @param float                    $amount
-     * @param string                   $currency
+     * @param ChargeableInterface           $user
+     * @param AbstractPaymentGatewayAccount $account
+     * @param float                         $amount
+     * @param string                        $currency
      *
      * @return array|null
      * @throws StripeAccountNotFoundException
      * @throws StripeApiErrorException
      */
-    public function run(ChargeableInterface $user, PaymentGatewayAccount $account, $amount, $currency = 'USD')
+    public function run(ChargeableInterface $user, AbstractPaymentGatewayAccount $account, $amount, $currency = 'USD')
     {
         $valid = $account->checkIfPaymentDataIsSet(['customer_id', 'card_id', 'card_funding', 'card_last_digits', 'card_fingerprint']);
 

@@ -32,9 +32,11 @@ class PaymentAccountTransformer extends Transformer
 
             'name' => $entity->name,
 
-            'account_type' => $entity->accountable->getPaymentGatewayReadableName(),
-            'account_id' => $entity->accountable->getHashedKey(),
-            'account_slug' => $entity->accountable->getPaymentGatewaySlug(),
+            'account' => [
+                'type' => $entity->accountable->getPaymentGatewayReadableName(),
+                'id' => $entity->accountable->getHashedKey(),
+                'slug' => $entity->accountable->getPaymentGatewaySlug(),
+            ],
 
             'details' => $entity->accountable->getDetailAttributes(),
 

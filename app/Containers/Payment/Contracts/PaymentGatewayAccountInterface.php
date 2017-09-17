@@ -7,7 +7,7 @@ namespace App\Containers\Payment\Contracts;
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-interface PaymentGatewayAccount
+interface PaymentGatewayAccountInterface
 {
     /**
      * Returns the relative URL segment (xyz) for a payment account (e.g., /users/paymentaccounts/xyz). This is also the

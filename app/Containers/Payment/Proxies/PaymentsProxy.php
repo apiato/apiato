@@ -3,6 +3,8 @@
 namespace App\Containers\Payment\Proxies;
 
 use App\Containers\Payment\Contracts\ChargeableInterface;
+use App\Containers\Payment\Contracts\PaymentChargerTaskInterface;
+use App\Containers\Payment\Exceptions\ChargerTaskDoesNotImplementInterfaceException;
 use App\Containers\Payment\Exceptions\NoChargeTaskForPaymentGatewayDefinedException;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
@@ -15,14 +17,14 @@ use Illuminate\Support\Facades\App;
  */
 class PaymentsProxy
 {
-
     /**
-     * @param \App\Containers\Payment\Contracts\ChargeableInterface    $chargeable
-     * @param PaymentAccount                                           $account
-     * @param                                                          $amount
-     * @param string|null                                              $currency
+     * @param ChargeableInterface $chargeable
+     * @param PaymentAccount      $account
+     * @param                     $amount
+     * @param string|null         $currency
      *
      * @return mixed
+     * @throws ChargerTaskDoesNotImplementInterfaceException
      * @throws NoChargeTaskForPaymentGatewayDefinedException
      */
     public function charge(ChargeableInterface $chargeable, PaymentAccount $account, $amount, $currency = null)
@@ -40,10 +42,18 @@ class PaymentsProxy
             throw new NoChargeTaskForPaymentGatewayDefinedException();
         }
 
+        // create the task
         $charger = App::make($task);
+
+        // check if it implements the required interface
+        if (! ($charger instanceof  PaymentChargerTaskInterface)) {
+            throw new ChargerTaskDoesNotImplementInterfaceException();
+        }
 
         $typed_account = $account->accountable;
 
-        return $charger->run($chargeable, $typed_account, $amount, $currency);
+        $result = $charger->run($chargeable, $typed_account, $amount, $currency);
+
+        return $result;
     }
 }

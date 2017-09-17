@@ -2,9 +2,7 @@
 
 namespace App\Containers\Stripe\Models;
 
-use App\Containers\Payment\Contracts\PaymentGatewayAccount;
-use App\Containers\Payment\Traits\AccountableTrait;
-use App\Ship\Parents\Models\Model;
+use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -12,10 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class StripeAccount extends Model implements PaymentGatewayAccount
+class StripeAccount extends AbstractPaymentGatewayAccount
 {
     use SoftDeletes;
-    use AccountableTrait;
 
     /**
      * The attributes that are mass assignable.

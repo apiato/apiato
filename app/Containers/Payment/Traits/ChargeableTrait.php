@@ -14,7 +14,6 @@ use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
  */
 trait ChargeableTrait
 {
-
     /**
      * @param PaymentAccount $account
      * @param float          $amount
@@ -30,7 +29,7 @@ trait ChargeableTrait
     /**
      * @param PaymentAccount $account
      * @param ShoppingCart   $cart
-     * @param                $currency
+     * @param string         $currency
      *
      * @return mixed
      */

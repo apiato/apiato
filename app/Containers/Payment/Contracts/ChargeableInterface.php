@@ -12,13 +12,12 @@ use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
  */
 interface ChargeableInterface
 {
-
     /**
      * Charge the user on a given account
      *
-     * @param PaymentAccount $account
-     * @param                $amount
-     * @param                $currency
+     * @param PaymentAccount                $account
+     * @param                               $amount
+     * @param                               $currency
      *
      * @return mixed
      */
@@ -29,9 +28,10 @@ interface ChargeableInterface
      *
      * @param PaymentAccount $account
      * @param ShoppingCart   $cart
+     * @param                $currency
      *
      * @return mixed
      */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart);
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency);
 
 }
