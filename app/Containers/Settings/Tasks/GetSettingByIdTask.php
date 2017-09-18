@@ -10,25 +10,15 @@ class GetSettingByIdTask extends Task
 {
 
     /**
-     * @var SettingRepository
-     */
-    private $repository;
-
-    /**
-     * GetSettingByIdTask constructor.
+     * @param $id
      *
-     * @param SettingRepository $repository
+     * @return  mixed
      */
-    public function __construct(SettingRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
     public function run($id)
     {
-        $setting = $this->repository->find($id);
+        $setting = App::make(SettingRepository::class)->find($id);
 
-        if(!$setting) {
+        if (!$setting) {
             throw new SettingNotFoundException();
         }
 

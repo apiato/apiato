@@ -21,6 +21,7 @@ use App\Ship\Parents\Controllers\ApiController;
  */
 class Controller extends ApiController
 {
+
     /**
      * @param GetPaymentAccountsRequest $request
      *

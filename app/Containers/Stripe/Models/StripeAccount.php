@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class StripeAccount extends AbstractPaymentGatewayAccount
 {
+
     use SoftDeletes;
 
     /**
@@ -39,23 +40,18 @@ class StripeAccount extends AbstractPaymentGatewayAccount
     ];
 
     /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [];
-
-    /**
      * @return string
      */
-    public function getPaymentGatewayReadableName() {
+    public function getPaymentGatewayReadableName()
+    {
         return 'Stripe';
     }
 
     /**
      * @return string
      */
-    public function getPaymentGatewaySlug() {
+    public function getPaymentGatewaySlug()
+    {
         return 'stripe';
     }
 }

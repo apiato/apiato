@@ -17,11 +17,4 @@ class PaymentAccountRepository extends Repository
         'name'  => 'like',
     ];
 
-    public function boot()
-    {
-		parent::boot();
-        // probably do some stuff here ...
-    }
-
-    protected $container = 'Payment';
 }

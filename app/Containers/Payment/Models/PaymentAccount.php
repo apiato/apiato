@@ -16,10 +16,6 @@ class PaymentAccount extends Model
         'accountable_type',
     ];
 
-    protected $hidden = [];
-
-    protected $casts = [];
-
     protected $dates = [
         'created_at',
         'updated_at',

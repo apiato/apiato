@@ -5,7 +5,6 @@ namespace App\Containers\User\Actions;
 use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Exceptions\Exception;
 use App\Ship\Parents\Requests\Request;
 
 /**

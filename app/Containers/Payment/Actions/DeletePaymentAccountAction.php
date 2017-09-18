@@ -16,6 +16,12 @@ use App\Ship\Parents\Requests\Request;
  */
 class DeletePaymentAccountAction extends Action
 {
+
+    /**
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  mixed
+     */
     public function run(Request $request)
     {
         $user = $this->call(GetAuthenticatedUserTask::class);

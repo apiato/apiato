@@ -9,6 +9,12 @@ use App\Ship\Parents\Requests\Request;
 
 class UpdateSettingAction extends Action
 {
+
+    /**
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  mixed
+     */
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([

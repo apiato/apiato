@@ -15,23 +15,42 @@ use App\Ship\Parents\Tasks\Task;
  */
 class GetPaymentAccountsTask extends Task
 {
+
     private $repository;
 
+    /**
+     * GetPaymentAccountsTask constructor.
+     *
+     * @param \App\Containers\Payment\Data\Repositories\PaymentAccountRepository $repository
+     */
     public function __construct(PaymentAccountRepository $repository)
     {
         $this->repository = $repository;
     }
 
+    /**
+     * @return  mixed
+     */
     public function run()
     {
         return $this->repository->paginate();
     }
 
-    public function ordered() {
+    /**
+     * @return  mixed
+     */
+    public function ordered()
+    {
         return $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
     }
 
-    public function filterByUser(User $user) {
+    /**
+     * @param \App\Containers\User\Models\User $user
+     *
+     * @return  mixed
+     */
+    public function filterByUser(User $user)
+    {
         return $this->repository->pushCriteria(new ThisUserCriteria($user->id));
     }
 }

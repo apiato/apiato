@@ -15,11 +15,12 @@ use App\Ship\Parents\Tasks\Task;
 class CheckIfPaymentAccountBelongsToUserTask extends Task
 {
 
-    public function __construct()
-    {
-        // ..
-    }
-
+    /**
+     * @param \App\Containers\User\Models\User              $user
+     * @param \App\Containers\Payment\Models\PaymentAccount $account
+     *
+     * @return  bool
+     */
     public function run(User $user, PaymentAccount $account)
     {
         if ($user->id !== $account->user_id) {

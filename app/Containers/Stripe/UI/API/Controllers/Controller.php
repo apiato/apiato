@@ -31,6 +31,11 @@ class Controller extends ApiController
         ]);
     }
 
+    /**
+     * @param \App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest $request
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {
         $stripeAccount = $this->call(UpdateStripeAccountAction::class, [$request]);

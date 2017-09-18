@@ -14,6 +14,7 @@ use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
  */
 trait ChargeableTrait
 {
+
     /**
      * @param PaymentAccount $account
      * @param float          $amount
@@ -36,6 +37,7 @@ trait ChargeableTrait
     public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency)
     {
         $amount = $cart->getTotal();
+
         return App::make(PaymentsProxy::class)->charge($this, $account, $amount, $currency);
     }
 

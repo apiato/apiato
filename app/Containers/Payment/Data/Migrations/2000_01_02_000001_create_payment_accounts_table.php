@@ -14,11 +14,8 @@ class CreatePaymentAccountsTable extends Migration
         Schema::create('payment_accounts', function (Blueprint $table) {
 
             $table->increments('id');
-
             $table->integer('user_id')->unsigned();
-
             $table->string('name')->nullable();
-
             $table->morphs('accountable');
 
             $table->timestamps();

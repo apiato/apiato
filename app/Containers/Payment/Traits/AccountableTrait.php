@@ -11,7 +11,12 @@ use App\Containers\Payment\Models\PaymentAccount;
  */
 trait AccountableTrait
 {
-    public function paymentAccount() {
+
+    /**
+     * @return  mixed
+     */
+    public function paymentAccount()
+    {
         return $this->morphOne(PaymentAccount::class, 'accountable');
     }
 }

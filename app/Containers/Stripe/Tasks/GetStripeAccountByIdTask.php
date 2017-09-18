@@ -9,19 +9,19 @@ use Exception;
 
 class GetStripeAccountByIdTask extends Task
 {
-    private $repository;
 
-    public function __construct(StripeAccountRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
+    /**
+     * @param $id
+     *
+     * @return  mixed
+     */
     public function run($id)
     {
+        $repository = App::make(StripeAccountRepository::class);
+
         try {
-            return $this->repository->find($id);
-        }
-        catch (Exception $exception) {
+            return $repository->find($id);
+        } catch (Exception $exception) {
             throw new NotFoundException();
         }
     }
