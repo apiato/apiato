@@ -12,7 +12,7 @@ use App\Containers\Stripe\Tests\TestCase;
 class CreateStripeAccountTest extends TestCase
 {
 
-    protected $endpoint = 'post@v1/stripes';
+    protected $endpoint = 'post@v1/user/paymentaccounts/stripe';
 
     protected $access = [
         'permissions' => '',
@@ -35,6 +35,7 @@ class CreateStripeAccountTest extends TestCase
             'card_funding'     => 'qwerty',
             'card_last_digits' => '1234',
             'card_fingerprint' => 'zxcvbn',
+            'name'             => 'test account for stripe',
         ];
 
         // send the HTTP request

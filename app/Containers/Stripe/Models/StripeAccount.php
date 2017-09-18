@@ -2,8 +2,7 @@
 
 namespace App\Containers\Stripe\Models;
 
-use App\Containers\User\Models\User;
-use App\Ship\Parents\Models\Model;
+use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -11,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class StripeAccount extends Model
+class StripeAccount extends AbstractPaymentGatewayAccount
 {
     use SoftDeletes;
 
@@ -26,7 +25,6 @@ class StripeAccount extends Model
         'card_funding',
         'card_last_digits',
         'card_fingerprint',
-        'user_id',
     ];
 
     /**
@@ -45,17 +43,19 @@ class StripeAccount extends Model
      *
      * @var array
      */
-    protected $hidden = [
-
-    ];
+    protected $hidden = [];
 
     /**
-     * StripeAccount relationship with User
-     *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return string
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function getPaymentGatewayReadableName() {
+        return 'Stripe';
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentGatewaySlug() {
+        return 'stripe';
     }
 }

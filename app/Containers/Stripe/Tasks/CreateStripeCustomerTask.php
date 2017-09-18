@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Config;
 class CreateStripeCustomerTask extends Task
 {
 
-    public $stripe;
+    private $stripe;
 
     /**
      * StripeApi constructor.
@@ -29,10 +29,11 @@ class CreateStripeCustomerTask extends Task
     }
 
     /**
-     * @param        $email
+     * @param string $email
      * @param string $description
      *
-     * @return  array stripe customer object
+     * @return array stripe customer object
+     * @throws StripeApiErrorException
      */
     public function run($email, $description = '')
     {

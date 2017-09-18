@@ -20,14 +20,12 @@ class CreateStripeAccountsTable extends Migration
     {
         Schema::create('stripe_accounts', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('customer_id');
             $table->string('card_id')->nullable();
             $table->string('card_funding')->nullable();
             $table->string('card_last_digits')->nullable();
             $table->string('card_fingerprint')->nullable();
-
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
             $table->softDeletes();

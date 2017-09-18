@@ -5,11 +5,11 @@ namespace App\Containers\Stripe\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class CreateStripeAccountRequest.
+ * Class UpdateStripeAccountRequest
  *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class CreateStripeAccountRequest extends Request
+class UpdateStripeAccountRequest extends Request
 {
 
     /**
@@ -28,7 +28,7 @@ class CreateStripeAccountRequest extends Request
      * @var  array
      */
     protected $decode = [
-
+        'id',
     ];
 
     /**
@@ -38,7 +38,7 @@ class CreateStripeAccountRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-
+        'id',
     ];
 
     /**
@@ -49,10 +49,10 @@ class CreateStripeAccountRequest extends Request
     public function rules()
     {
         return [
-            'name'              => 'required|string|max:190',
+            'id'                => 'required|exists:stripe_accounts,id',
 
-            'customer_id'       => 'required|min:3',
-            'card_id'           => 'required|min:3',
+            'customer_id'       => 'sometimes|min:3',
+            'card_id'           => 'sometimes|min:3',
             'card_funding'      => 'sometimes',
             'card_last_digits'  => 'sometimes|integer|min:0|max:9999',
             'card_fingerprint'  => 'sometimes|string',
