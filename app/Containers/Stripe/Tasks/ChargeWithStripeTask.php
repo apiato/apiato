@@ -2,11 +2,12 @@
 
 namespace App\Containers\Stripe\Tasks;
 
+use App\Containers\Payment\Contracts\ChargeableInterface;
+use App\Containers\Payment\Contracts\PaymentChargerTaskInterface;
+use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
 use App\Containers\Stripe\Exceptions\StripeAccountNotFoundException;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
-use App\Containers\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
-
 use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Config;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithStripeTask extends Task
+class ChargeWithStripeTask extends Task implements PaymentChargerTaskInterface
 {
 
-    public $stripe;
+    private $stripe;
 
     /**
      * StripeApi constructor.
@@ -32,17 +33,20 @@ class ChargeWithStripeTask extends Task
     }
 
     /**
-     * @param \App\Containers\User\Models\User $user
-     * @param                                  $amount
-     * @param string                           $currency
+     * @param ChargeableInterface           $user
+     * @param AbstractPaymentGatewayAccount $account
+     * @param float                         $amount
+     * @param string                        $currency
      *
-     * @return  array|null
+     * @return array|null
+     * @throws StripeAccountNotFoundException
+     * @throws StripeApiErrorException
      */
-    public function run(User $user, $amount, $currency = 'USD')
+    public function run(ChargeableInterface $user, AbstractPaymentGatewayAccount $account, $amount, $currency = 'USD')
     {
-        $stripeAccount = $user->stripeAccount;
+        $valid = $account->checkIfPaymentDataIsSet(['customer_id', 'card_id', 'card_funding', 'card_last_digits', 'card_fingerprint']);
 
-        if(!$stripeAccount){
+        if($valid == false) {
             throw new StripeAccountNotFoundException('We could not find your credit card information. 
             For security reasons, we do not store your credit card information on our server. 
             So please login to our Web App and enter your credit card information directly into Stripe, 
@@ -51,9 +55,8 @@ class ChargeWithStripeTask extends Task
         }
 
         try {
-
             $response = $this->stripe->charges()->create([
-                'customer' => $user->stripeAccount->customer_id,
+                'customer' => $account->customer_id,
                 'currency' => $currency,
                 'amount'   => $amount,
             ]);

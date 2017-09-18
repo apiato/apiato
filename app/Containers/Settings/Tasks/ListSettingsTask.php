@@ -8,6 +8,7 @@ use App\Ship\Parents\Tasks\Task;
 
 class ListSettingsTask extends Task
 {
+
     /**
      * @var SettingRepository
      */
@@ -15,6 +16,7 @@ class ListSettingsTask extends Task
 
     /**
      * ListSettingsTask constructor.
+     *
      * @param SettingRepository $repository
      */
     public function __construct(SettingRepository $repository)

@@ -15,6 +15,7 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class Controller extends ApiController
 {
+
     /**
      * List all application settings
      *

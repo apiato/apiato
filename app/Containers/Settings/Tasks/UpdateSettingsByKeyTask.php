@@ -13,19 +13,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class UpdateSettingsByKeyTask extends Task
 {
-    /**
-     * @var SettingRepository
-     */
-    private $repository;
-
-    /**
-     * UpdateSettingsByKeyTask constructor.
-     * @param SettingRepository $repository
-     */
-    public function __construct(SettingRepository $repository)
-    {
-        $this->repository = $repository;
-    }
 
     /**
      * @param $key
@@ -36,9 +23,11 @@ class UpdateSettingsByKeyTask extends Task
      */
     public function run($key, $value)
     {
-        $setting = $this->repository->findWhere(['key' => $key])->first();
+        $repository = App::make(SettingRepository::class);
 
-        if(! $setting) {
+        $setting = $repository->findWhere(['key' => $key])->first();
+
+        if (!$setting) {
             throw new SettingNotFoundException();
         }
 

@@ -8,6 +8,12 @@ use App\Ship\Parents\Requests\Request;
 
 class CreateSettingAction extends Action
 {
+
+    /**
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  mixed
+     */
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([

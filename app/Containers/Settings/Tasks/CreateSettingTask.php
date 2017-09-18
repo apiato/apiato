@@ -4,23 +4,10 @@ namespace App\Containers\Settings\Tasks;
 
 use App\Containers\Settings\Data\Repositories\SettingRepository;
 use App\Ship\Parents\Tasks\Task;
+use Illuminate\Support\Facades\App;
 
 class CreateSettingTask extends Task
 {
-    /**
-     * @var SettingRepository
-     */
-    private $repository;
-
-    /**
-     * CreateSettingTask constructor.
-     *
-     * @param SettingRepository $repository
-     */
-    public function __construct(SettingRepository $repository)
-    {
-        $this->repository = $repository;
-    }
 
     /**
      * @param array $data
@@ -29,6 +16,6 @@ class CreateSettingTask extends Task
      */
     public function run(array $data)
     {
-        return $this->repository->create($data);
+        return App::make(SettingRepository::class)->create($data);
     }
 }

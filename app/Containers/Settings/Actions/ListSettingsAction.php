@@ -8,9 +8,11 @@ use App\Ship\Parents\Requests\Request;
 
 class ListSettingsAction extends Action
 {
+
     /**
-     * @param Request $request
-     * @return mixed
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  mixed
      */
     public function run(Request $request)
     {

@@ -2,7 +2,7 @@
 
 namespace App\Containers\User\Models;
 
-use App\Containers\Stripe\Models\StripeAccount;
+use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Parents\Models\UserModel;
 
 /**
@@ -72,9 +72,8 @@ class User extends UserModel
         'remember_token',
     ];
 
-    public function stripeAccount()
-    {
-        return $this->hasOne(StripeAccount::class);
+    public function paymentAccounts() {
+        return $this->hasMany(PaymentAccount::class);
     }
 
 }
