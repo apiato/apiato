@@ -14,7 +14,7 @@
 - Support WePay payment gateway (in a new container).
 - Add `force-accept-header` to the Apiato config file.
 - Add `notification.php` config file.  
-- Add migration file for the notification.  
+- Add migration file for the notification.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -26,3 +26,6 @@
 
 ### Fixed
 - Fix Social Authentication errors. 
+
+### Removed
+- ...
