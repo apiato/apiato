@@ -15,6 +15,7 @@
 - Add `force-accept-header` to the Apiato config file.
 - Add `notification.php` config file.  
 - Add migration file for the notification.
+- Refactored the entire `Payment` process. It is now a "generic" plug-and-play architecture to handle different payment gateways (e.g., `Stripe`, `PayPal`, ...) see the corresponding docs for this feature.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -23,9 +24,10 @@
 - Rename Middleware from `ResponseHeadersMiddleware` to `ValidateJsonContent`.
 - Move Model traits from the Core Abstract class to the Ship Parent Class. To give user more control.
 - Remove Exception when accept header is not provided by the request. 
+- Changed Generators to add various fields (e.g., the `as` name for `Routes`)
 
 ### Fixed
 - Fix Social Authentication errors. 
 
 ### Removed
-- ...
+- Removed the `App/Ship/Payment` container as it now lives in `App/Containers/Payment`
