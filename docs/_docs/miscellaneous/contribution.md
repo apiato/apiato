@@ -380,7 +380,12 @@ This abstract class does all the work for you.
 
 ### Add new component generator.
 
-1 - Add create new command by copy pasting any of the demo commands provided. The `Generator/Commands/RouteGenerator.php` is great example.
+General Info: the only function that gets called whenever a command is executed is the `handle()` function. 
+This function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all the generator commands.
+For better understanding of how things work. Make sure you read that function.    
+
+
+1 - Add create new command by copy pasting any of the existing components commands aslready supported. The `Generator/Commands/RouteGenerator.php` is great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
@@ -415,8 +420,6 @@ For each generator you need to implement exactly one method (as it is defined in
 4 - Default Filename (optional)
 
 You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
-
-
 
 
 
