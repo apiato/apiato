@@ -4,7 +4,6 @@ namespace App\Ship\Middlewares\Http;
 
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use function config;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Config;
 
