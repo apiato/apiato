@@ -4,6 +4,6 @@
     "predis/predis": "^1.1"
   },
   "require-dev": {
-
+    "barryvdh/laravel-debugbar": "3.*"
   }
 }

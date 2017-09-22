@@ -3,6 +3,8 @@
 namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
+use Barryvdh\Debugbar\Facade;
+use Barryvdh\Debugbar\ServiceProvider;
 
 /**
  * Class ShipProvider
@@ -18,6 +20,7 @@ class ShipProvider extends MainProvider
      * @var array
      */
     public $serviceProviders = [
+        ServiceProvider::class,
         // ...
     ];
 
@@ -27,6 +30,7 @@ class ShipProvider extends MainProvider
      * @var  array
      */
     protected $aliases = [
+        'Debugbar' => Facade::class,
         // ...
     ];
 

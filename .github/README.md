@@ -76,22 +76,23 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 15. Automatic Data Pagination (meta links to next and previous data).
 16. WEB and API Authentication Middlewares. With Proxy endpoints for safer authentication from first-party clients.
 17. Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
-18. Social Authentication supported out of the box (Facebook, Twitter, Google+).
-19. Type-Casting JSON responses with Transformers (Using Fractal).
-20. Useful Tests Helpers for faster and more enjoyable automated testing (using PHPUnit).
-21. Support multiple response payload formats (JSON API specification v1.0, Data Array and pure Data).
-22. Automatic dates conversion to ISO format in responses.
-23. Support Stripe payment gateway (extandable to support other payment gatways).
-24. System and User level Settings out of the box (by the Settings Container).
-25. Support JSONP (JSON with padding).
-26. Better Request Validation (easy validate User data, accessibility and ownership).
-27. Maintainable and scalable Software Architectural Pattern (using the [Porto SAP](https://github.com/Mahmoudz/Porto)).
-28. Code generator, allows generating Containers of code for faster development.
-29. Useful Commands such as "list all Application Actions", "encoding a decoded ID", "seeds testing/deployment data", and more.
-30. Separation of UI's (Web, API and CLI) compnents (routes, controllers, requests, tests...).
-31. Ready Admin dashboard infrastructure with Login view (admin.apiato.dev).
-32. Detailed documentation (on [apiato.io](http://apiato.io)).
-33. 100% customizable and Open Code. Using latest and greatest frameworks, tools, packages and standards.
+18. Profiler, to display profiling data from any part of your application in the response (using Laravel Debugbar).
+19. Social Authentication supported out of the box (Facebook, Twitter, Google+).
+20. Type-Casting JSON responses with Transformers (using Fractal).
+21. Useful Tests Helpers for faster and more enjoyable automated testing (using PHPUnit).
+22. Support multiple response payload formats (JSON API specification v1.0, Data Array and pure Data).
+23. Automatic dates conversion to ISO format in responses.
+24. Support Stripe payment gateway (extandable to support other payment gatways).
+25. System and User level Settings out of the box (by the Settings Container).
+26. Support JSONP (JSON with padding).
+27. Better Request Validation (easy validate User data, accessibility and ownership).
+28. Maintainable and scalable Software Architectural Pattern (using the [Porto SAP](https://github.com/Mahmoudz/Porto)).
+29. Code generator, allows generating Containers of code for faster development.
+30. Useful Commands such as "list all Application Actions", "encoding a decoded ID", "seeds testing/deployment data", and more.
+31. Separation of UI's (Web, API and CLI) compnents (routes, controllers, requests, tests...).
+32. Ready Admin dashboard infrastructure with Login view (admin.apiato.dev).
+33. Detailed documentation (on [apiato.io](http://apiato.io)).
+34. 100% customizable and Open Code. Using latest and greatest frameworks, tools, packages and standards.
 99. Much more...
 
 
