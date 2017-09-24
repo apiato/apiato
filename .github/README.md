@@ -149,6 +149,7 @@ And a list of awesome contributors:
 - [Johan Alvarez](https://github.com/llstarscreamll)
 - [Þorgrímur Jónasarson](https://github.com/toggi737)
 - [Johannes Schobel](https://github.com/johannesschobel)
+- [Abdelrhman Soliman](https://github.com/Nasr-Z1)
 - [See full list](https://github.com/apiato/apiato/graphs/contributors)
 - [Join Us?](http://apiato.io/miscellaneous/contribution/)
 
