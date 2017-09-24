@@ -17,6 +17,7 @@
 - Add migration file for the notification.
 - Refactored the entire `Payment` process. It is now a "generic" plug-and-play architecture to handle different payment gateways (e.g., `Stripe`, `PayPal`, ...) see the corresponding docs for this feature.
 - Add profiling to the response, via `ProfilerMiddleware`.
+- Add notifications generator.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
