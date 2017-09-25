@@ -7,7 +7,7 @@ use App\Containers\Payment\Actions\GetPaymentAccountDetailsAction;
 use App\Containers\Payment\Actions\GetPaymentAccountsAction;
 use App\Containers\Payment\Actions\UpdatePaymentAccountAction;
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
-use App\Containers\Payment\UI\API\Requests\GetPaymentAccountDetails;
+use App\Containers\Payment\UI\API\Requests\GetPaymentAccountDetailsRequest;
 use App\Containers\Payment\UI\API\Requests\GetPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
@@ -35,11 +35,11 @@ class Controller extends ApiController
     }
 
     /**
-     * @param GetPaymentAccountDetails $request
+     * @param GetPaymentAccountDetailsRequest $request
      *
      * @return array
      */
-    public function getPaymentAccountDetails(GetPaymentAccountDetails $request)
+    public function getPaymentAccountDetails(GetPaymentAccountDetailsRequest $request)
     {
         $paymentAccount = $this->call(GetPaymentAccountDetailsAction::class, [$request]);
 

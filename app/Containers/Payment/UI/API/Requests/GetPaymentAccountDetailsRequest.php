@@ -5,9 +5,9 @@ namespace App\Containers\Payment\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class GetPaymentAccountDetails.
+ * Class GetPaymentAccountDetailsRequest.
  */
-class GetPaymentAccountDetails extends Request
+class GetPaymentAccountDetailsRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
