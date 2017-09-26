@@ -3,8 +3,8 @@
 namespace App\Containers\Stripe\Tasks;
 
 use App\Containers\Payment\Contracts\ChargeableInterface;
-use App\Containers\Payment\Contracts\PaymentChargerTaskInterface;
-use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
+use App\Containers\Payment\Contracts\PaymentChargerInterface;
+use App\Containers\Payment\Models\AbstractPaymentAccount;
 use App\Containers\Stripe\Exceptions\StripeAccountNotFoundException;
 use App\Containers\Stripe\Exceptions\StripeApiErrorException;
 use App\Ship\Parents\Tasks\Task;
@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Config;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class ChargeWithStripeTask extends Task implements PaymentChargerTaskInterface
+class ChargeWithStripeTask extends Task implements PaymentChargerInterface
 {
 
     private $stripe;
 
     /**
-     * StripeApi constructor.
+     * ChargeWithStripeTask constructor.
      *
      * @param \Cartalyst\Stripe\Stripe $stripe
      */
@@ -33,17 +33,20 @@ class ChargeWithStripeTask extends Task implements PaymentChargerTaskInterface
     }
 
     /**
-     * @param ChargeableInterface           $user
-     * @param AbstractPaymentGatewayAccount $account
-     * @param float                         $amount
-     * @param string                        $currency
+     * @param \App\Containers\Payment\Contracts\ChargeableInterface $user
+     * @param \App\Containers\Payment\Models\AbstractPaymentAccount $account
+     * @param float                                                 $amount
+     * @param string                                                $currency
      *
      * @return array|null
      * @throws StripeAccountNotFoundException
      * @throws StripeApiErrorException
      */
-    public function run(ChargeableInterface $user, AbstractPaymentGatewayAccount $account, $amount, $currency = 'USD')
+    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD')
     {
+        // NOTE: you should not call this function directly. Instead use the Payment Gateway in the Payment container.
+        // Or even better to use the charge function in the ChargeableTrait.
+
         $valid = $account->checkIfPaymentDataIsSet(['customer_id', 'card_id', 'card_funding', 'card_last_digits', 'card_fingerprint']);
 
         if($valid == false) {
