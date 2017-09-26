@@ -24,9 +24,7 @@ class ChargeUserTest extends TestCase
         $this->mockPayments();
 
         // create testing user
-        $user = $this->getTestingUser([
-            'total_credits' => 10000
-        ]);
+        $user = $this->getTestingUser();
 
         $stripeAccount = factory(StripeAccount::class)->create([
             'customer_id' => 'cus_8mBD5S1SoyD4zL',
