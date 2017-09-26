@@ -2,9 +2,9 @@
 
 /**
  * @apiGroup           Payment
- * @apiName            getPaymentAccountDetails
+ * @apiName            getPaymentAccount
  *
- * @api                {GET} /v1/user/paymentaccounts/:id Get Payment Account Details
+ * @api                {GET} /v1/user/paymentaccounts/:id Get Payment Account by ID
  * @apiDescription     Get Details for a specific payment account. Note that this outputs respective "visible" fields
  *                     from the model of the Payment Provider (e.g., Paypal)
  *
@@ -16,13 +16,13 @@
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
 {
-  // Insert the response of the request here...
+  // TODO: Insert the response of the request here.
 }
  */
 
 $router->get('user/paymentaccounts/{id}', [
-    'as' => 'API_Payment_getPaymentAccountDetails',
-    'uses'  => 'Controller@getPaymentAccountDetails',
+    'as' => 'API_Payment_getPaymentAccount',
+    'uses'  => 'Controller@getPaymentAccount',
     'middleware' => [
       'auth:api',
     ],

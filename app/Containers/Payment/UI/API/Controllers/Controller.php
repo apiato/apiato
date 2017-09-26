@@ -7,8 +7,8 @@ use App\Containers\Payment\Actions\GetPaymentAccountDetailsAction;
 use App\Containers\Payment\Actions\GetPaymentAccountsAction;
 use App\Containers\Payment\Actions\UpdatePaymentAccountAction;
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
-use App\Containers\Payment\UI\API\Requests\GetPaymentAccountDetailsRequest;
-use App\Containers\Payment\UI\API\Requests\GetPaymentAccountsRequest;
+use App\Containers\Payment\UI\API\Requests\GetPaymentAccountRequest;
+use App\Containers\Payment\UI\API\Requests\ListAllPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -16,18 +16,18 @@ use App\Ship\Parents\Controllers\ApiController;
 /**
  * Class Controller
  *
- * @package App\Containers\Payment\UI\API\Controllers
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class Controller extends ApiController
 {
 
     /**
-     * @param GetPaymentAccountsRequest $request
+     * @param ListAllPaymentAccountsRequest $request
      *
      * @return array
      */
-    public function getPaymentAccounts(GetPaymentAccountsRequest $request)
+    public function listAllPaymentAccounts(ListAllPaymentAccountsRequest $request)
     {
         $paymentAccounts = $this->call(GetPaymentAccountsAction::class, [$request]);
 
@@ -35,11 +35,11 @@ class Controller extends ApiController
     }
 
     /**
-     * @param GetPaymentAccountDetailsRequest $request
+     * @param GetPaymentAccountRequest $request
      *
      * @return array
      */
-    public function getPaymentAccountDetails(GetPaymentAccountDetailsRequest $request)
+    public function getPaymentAccount(GetPaymentAccountRequest $request)
     {
         $paymentAccount = $this->call(GetPaymentAccountDetailsAction::class, [$request]);
 

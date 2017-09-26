@@ -5,7 +5,10 @@ namespace App\Containers\Payment\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class DeletePaymentAccountRequest.
+ * Class DeletePaymentAccountRequest
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class DeletePaymentAccountRequest extends Request
 {
