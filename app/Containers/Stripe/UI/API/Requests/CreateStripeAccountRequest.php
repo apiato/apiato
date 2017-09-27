@@ -49,13 +49,12 @@ class CreateStripeAccountRequest extends Request
     public function rules()
     {
         return [
-            'name'              => 'required|string|max:190',
-
             'customer_id'       => 'required|min:3',
             'card_id'           => 'required|min:3',
             'card_funding'      => 'sometimes',
             'card_last_digits'  => 'sometimes|integer|min:0|max:9999',
             'card_fingerprint'  => 'sometimes|string',
+            'nickname'          => 'required|string|max:190',
         ];
     }
 

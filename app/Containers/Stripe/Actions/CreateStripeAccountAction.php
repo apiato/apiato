@@ -32,15 +32,12 @@ class CreateStripeAccountAction extends Action
             'card_funding',
             'card_last_digits',
             'card_fingerprint',
-        ]);
-
-        $info = $request->sanitizeInput([
-            'name',
+            'nickname',
         ]);
 
         $account = $this->call(CreateStripeAccountTask::class, [$data]);
 
-        $result = $this->call(AssignPaymentAccountToUserTask::class, [$account, $user, $info]);
+        $result = $this->call(AssignPaymentAccountToUserTask::class, [$account, $user, $data['nickname']]);
 
         return $result;
     }

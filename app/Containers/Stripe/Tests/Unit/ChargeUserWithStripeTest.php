@@ -9,16 +9,16 @@ use App\Containers\User\Tests\TestCase;
 use Illuminate\Support\Facades\App;
 
 /**
- * Class ChargeUserTest
+ * Class ChargeUserWithStripeTest
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ChargeUserTest extends TestCase
+class ChargeUserWithStripeTest extends TestCase
 {
 
     use MockablePaymentsTrait;
 
-    public function testChargeUser_()
+    public function testChargeUserWithStripe()
     {
         // Mock the payments
         $this->mockPayments();
@@ -30,15 +30,15 @@ class ChargeUserTest extends TestCase
             'customer_id' => 'cus_8mBD5S1SoyD4zL',
         ]);
 
-        App::make(AssignPaymentAccountToUserTask::class)->run($stripeAccount, $user, ['name' => 'stripe']);
+        App::make(AssignPaymentAccountToUserTask::class)->run($stripeAccount, $user, 'nickname');
 
         $amount = 100;
 
         // Star the test:
 
-        $acccount = $user->paymentAccounts->first();
+        $account = $user->paymentAccounts->first();
 
-        $stripeResponse = $user->charge($acccount, $amount);
+        $stripeResponse = $user->charge($account, $amount);
 
         $this->assertEquals($stripeResponse['payment_method'], 'stripe');
     }

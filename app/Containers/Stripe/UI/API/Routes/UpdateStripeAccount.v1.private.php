@@ -4,7 +4,7 @@
  * @apiGroup           Stripe
  * @apiName            updateStripeAccount
  *
- * @api                {PATCH} /v1/user/paymentaccounts/stripe/:id Update Stripe Account
+ * @api                {PATCH} /v1/user/payments/accounts/stripe/:id Update Stripe Account
  * @apiDescription     Update a stripe account.
  *
  * @apiVersion         1.0.0
@@ -19,7 +19,7 @@
 }
  */
 
-$router->patch('user/paymentaccounts/stripe/{id}', [
+$router->patch('user/payments/accounts/stripe/{id}', [
     'as' => 'API_Stripe_updateStripeAccount',
     'uses'  => 'Controller@updateStripeAccount',
     'middleware' => [
