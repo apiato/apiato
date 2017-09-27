@@ -27,6 +27,7 @@
 - Move Model traits from the Core Abstract class to the Ship Parent Class. To give user more control.
 - Remove Exception when accept header is not provided by the request. 
 - Changed Generators to add various fields (e.g., the `as` name for `Routes`)
+- Refactor the Stripe container to work with the new payment gateway.
 
 ### Fixed
 - Fix Social Authentication errors. 

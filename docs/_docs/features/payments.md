@@ -14,13 +14,25 @@ order: 24
 <br>
 <br>
 
-APIATO provides a generic `Payment` container that acts as *gateway* for specific Payment Providers (like `Stripe`, 
-`PayPal` or others). All payment providers **must** use the provided `Contracts` from this container.
+Apiato provides a `Payment` container that acts as *gateway* for multiple payment providers (`Stripe`, 
+`PayPal`...).
+
+
+
+
+
+<a name="how-it-works"></a>
+## How to charge users?
+
+// To be continue...
+
+
+
 
 <a name="user"></a>
 ## User Model (Chargeable)
 
-In APIATO, all entities that implement the `\App\Containers\Payment\Contracts\ChargeableInterface` Interface can be 
+All entities that implement the `\App\Containers\Payment\Contracts\ChargeableInterface` Interface can be 
 charged using a specific payment gateway (e.g., `PayPal`). By default, the `User` model already implements this interface, 
 while the corresponding `\App\Containers\Payment\Traits\ChargeableTrait` Trait already provides an implementation for the 
 required methods. For basic applications you are already set up and ready to go!
@@ -60,7 +72,7 @@ to the `PaymentAccount` later on.
 
 Next, you need to create a `Model` (and an optional `Repository`) to access the information stored in the database.  In 
 order to _connect_ this custom `Payment Gateway Model` to a user (and one of his `PaymentAccount`s), the model **must** 
-`extend AbstractPaymentGatewayAccount` from the `Payment` container. This abstract class directly extends the `Model` class 
+`extend AbstractPaymentAccount` from the `Payment` container. This abstract class directly extends the `Model` class 
 but implements specific interfaces and uses Traits to connect it to the `PaymentAccount`.
 
 The `Interface` requires you to implement additional methods on your `Account`, like:
@@ -112,7 +124,7 @@ distributes to the correct Task that charges the User. This charge is resolved v
 in the `Payment` container. See the `payment.gateways.x.charger_task` key for more details (where `x` is the `slug` of 
 the `PaymentGateway`).
 
-The `Task` that handles charging the `User` must implement the `PaymentChargerTaskInterface`, where a generic `run()`
+The `Task` that handles charging the `User` must implement the `PaymentChargerTaskInterface`, where a generic `charge()`
 method is defined.
 
 <a name="mocking-the-real-call-for-testing"></a>
