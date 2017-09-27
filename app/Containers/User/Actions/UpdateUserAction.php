@@ -35,7 +35,7 @@ class UpdateUserAction extends Action
         ];
 
         // remove null values and their keys
-        $userData = $request->sanitizeInput(array_keys($userData));
+        $userData = array_filter($userData);
 
         return $this->call(UpdateUserTask::class, [$userData, $request->id]);
     }
