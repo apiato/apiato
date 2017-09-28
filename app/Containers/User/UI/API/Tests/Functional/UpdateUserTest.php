@@ -23,7 +23,6 @@ class UpdateUserTest extends TestCase
     {
         $user = $this->getTestingUser();
 
-
         $data = [
             'name'     => 'Updated Name',
             'password' => 'updated#Password',
@@ -38,8 +37,8 @@ class UpdateUserTest extends TestCase
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'object' => 'User',
-            'email' => $user->email,
-            'name'  => $data['name'],
+            'email'  => $user->email,
+            'name'   => $data['name'],
         ]);
 
         // assert data was updated in the database
@@ -94,7 +93,7 @@ class UpdateUserTest extends TestCase
         $this->assertValidationErrorContain([
             // messages should be updated after modifying the validation rules, to pass this test
             'password' => 'The password must be at least 6 characters.',
-            'name' => 'The name must be at least 2 characters.',
+            'name'     => 'The name must be at least 2 characters.',
         ]);
 
     }
