@@ -203,7 +203,7 @@ To re enable it go to the main `composer.json` file and remove the "*" from the 
 ```
 
 After enabling the Auto-Discovery, you must move all the config files from the Containers and the Ship layer to the original config folder of Laravel. 
-Otherwise they won't be loaded (except your custom Configs "config files that doesn't belong to a composer package", they will still work fine). 
+Otherwise they won't be loaded (except your custom Configs "config files that does not belong to a composer package", they will still work fine). 
 
 > You **must** register 3rd-party Service Providers on your own in the `MainServiceProvider` of respective Container 
 (i.e., same like in Laravel 5.4 and before).
@@ -227,7 +227,7 @@ Otherwise they won't be loaded (except your custom Configs "config files that do
 <a name="q100"></a>
 ## I have a question and I can't find answer!!
 
-If you have a question, or didn't find an answer you were looking for. 
+If you have a question, or did not find an answer you were looking for. 
 First make sure your question is related to apiato and is not a general question.  
 If so, then consider visiting the [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for  
 *keywords* related to your issue *(filter open and closed issues)*. 

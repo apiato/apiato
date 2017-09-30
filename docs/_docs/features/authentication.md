@@ -149,12 +149,12 @@ Concept: create endpoint for each trusted client, to be used for login.
 
 Apiato by default has one url ready for your Web Admin Dashboard `clients/web/admin/login`. You can add more as you need for each of your trusted first party clients Apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
 
-Behind the scene, that endpoint is appendding the corresponding client ID and Secret to your request and making another call to your Auth server with all the required data. *(this way the client doesn't need to send the ID and Secret with the request, and he is using his own URL which gives even more control to which client is accessing your Server)*.
+Behind the scene, that endpoint is appending the corresponding client ID and Secret to your request and making another call to your Auth server with all the required data. *(this way the client does not need to send the ID and Secret with the request, and he is using his own URL which gives even more control to which client is accessing your Server)*.
 Then it returns the Auth response back to the client with the Tokens in it.
 
 Note: You have to manually extract the Client credentials from the DB and put them in the `.env`, for each client.
 
-When running `passport:install` it automatifally creates one client for you with ID 2, so you can use that for your first app. Or you can use `php artisan passport:client --password` to generate them.
+When running `passport:install` it automatically creates one client for you with ID 2, so you can use that for your first app. Or you can use `php artisan passport:client --password` to generate them.
 
 `.env` Example:
 
@@ -362,7 +362,7 @@ In case your server is issuing a short-lived access tokens, the users will need 
 
 By default Apiato provide this ready endpoint `http://api.poms.dev/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
 
-Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpont. Or by passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to this:
+Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpoint. Or by passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to this:
 
 ```json
 {
@@ -387,7 +387,7 @@ The request to `http://api.poms.dev/v1/oauth/token` should contain `grant_type=r
 
 ## Force Email Confirmation
 
-By default a user doesn't have to confirm his email address to be able to login.
+By default a user does not have to confirm his email address to be able to login.
 However, to force users to confirm their email (prevent unconfirmed users from accessing the site), you can set
 `'require_email_confirmation' => true,` in `App\Containers\Authentication\Configs\authentication.php`.
 
