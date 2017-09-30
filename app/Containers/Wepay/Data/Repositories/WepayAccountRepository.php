@@ -6,11 +6,11 @@ use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Repositories\Repository;
 
 /**
- * Class wepayAccountRepository.
+ * Class WepayAccountRepository.
  *
  * @author Rockers Technologies <jaimin.rockersinfo@gmail.com>
  */
-class wepayAccountRepository extends Repository
+class WepayAccountRepository extends Repository
 {
 
     /**

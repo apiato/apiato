@@ -39,7 +39,7 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
 
 This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) to the freshly installed one (Apiato 5.0).
 
-*In the guide w'll be using the term **Old Project** (refering to your old project that was built with Apiato 4.1), and the term New **Project** (refering to the new freshly installed Apiato 5.0).*
+*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1), and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
 
 
 
@@ -145,4 +145,4 @@ Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link
 <a name="Upcoming-Release"></a>
 ## Upcoming Release
 
-Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming feautes and changes. 
+Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features and changes. 

@@ -189,7 +189,7 @@ class AssignUserToRoleRequest extends Request
 
 The **$urlParameters** property is used for applying validation rules on the URL parameters:
 
-Laravel by default doesn't allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
+Laravel by default does not allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
 
 Example:
 

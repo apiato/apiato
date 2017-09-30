@@ -4,7 +4,7 @@ namespace App\Containers\Wepay\Actions;
 
 use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
-use App\Containers\Wepay\Data\Repositories\wepayAccountRepository;
+use App\Containers\Wepay\Data\Repositories\WepayAccountRepository;
 use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -37,7 +37,7 @@ class CreateWepayAccountAction extends Action
         $wepayAccount->country      = $request->country;
         $wepayAccount->currencies   = $request->currencies;
 
-        $wepayAccount = App::make(wepayAccountRepository::class)->create($wepayAccount->toArray());
+        $wepayAccount = App::make(WepayAccountRepository::class)->create($wepayAccount->toArray());
 
         $result = $this->call(AssignPaymentAccountToUserTask::class, [$wepayAccount, $user, $request->nickname]);
 

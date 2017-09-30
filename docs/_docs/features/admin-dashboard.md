@@ -12,7 +12,7 @@ order: 110
 <br>
 
 
-*APIATO doesn't recommend serving HTML pages. Instead you should build your own Frontend App completely isolated from the Backend code.*
+*APIATO does not recommend serving HTML pages. Instead you should build your own Frontend App completely isolated from the Backend code.*
 
 <a name="the-provided-admin-route"></a>
 

@@ -18,6 +18,7 @@
 - Refactored the entire `Payment` process. It is now a "generic" plug-and-play architecture to handle different payment gateways (e.g., `Stripe`, `PayPal`, ...) see the corresponding docs for this feature.
 - Add profiling to the response, via `ProfilerMiddleware`.
 - Add notifications generator.
+- Add the container generator
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -28,6 +29,7 @@
 - Remove Exception when accept header is not provided by the request. 
 - Changed Generators to add various fields (e.g., the `as` name for `Routes`)
 - Refactor the Stripe container to work with the new payment gateway.
+- Changed the "namespace" of all `generator` commands (from `apiato:x` to `apiato:generate:x`)
 
 ### Fixed
 - Fix Social Authentication errors. 

@@ -35,9 +35,9 @@ If you are missing a payment gateway, you can contribute to enhance the features
 ## How to charge users?
 
 1) Use the `App\Containers\Payment\Traits\ChargeableTrait` on the Model you want to charge. And implement `\App\Containers\Payment\Contracts\ChargeableInterface` Interface. 
-The User by default is setup to be chargable.
+The User by default is setup to be chargeable.
 
-2) To charge a user, the user must first create a payment account (Stripe, PayPal, WePay,...). Use the decicated endpoints to create those endpoints (`createStripeAccount`, `createWepayAccount`,...). A User may have multiple `PaymentAccount`.
+2) To charge a user, the user must first create a payment account (Stripe, PayPal, WePay,...). Use the respective endpoints to create those endpoints (`createStripeAccount`, `createWepayAccount`,...). A User may have multiple `PaymentAccount`.
 
 3) Then charge the user as follow `$user->charge($account, $amount);`. By providing the `$account` and the `$amount`.
 
@@ -55,7 +55,7 @@ $user->charge($acccount, $amount, 'USD');
 ```
 
 `$user->paymentAccounts` will return a *generic* `PaymentAccount` to  
-traform it to the dedicated payment account (`PaypalAccount`, `StripeAccount`...) You can call the `accountable()` function on the selected payment. See [Polymorphic Relationships](https://laravel.com/docs/5.5/eloquent-relationships#polymorphic-relations)
+transform it to the dedicated payment account (`PaypalAccount`, `StripeAccount`...) You can call the `accountable()` function on the selected payment. See [Polymorphic Relationships](https://laravel.com/docs/5.5/eloquent-relationships#polymorphic-relations)
 for more details.
 
 
@@ -70,7 +70,7 @@ Apiato already provides some generic routes in order to allow users to manage th
 - `GET /user/paymentaccounts/{id}`: Get the details of one specific `PaymentAccount`.
 - `PATCH /user/paymentaccounts/{id}`: Update a `PaymentAccount` (this does **not** update the credentials for the corresponding payment gateway).
 - `DELETE /user/paymentaccounts/{id}`: Delete a `PaymentAccount` including the payment gateway details (e.g., user credentials for `PayPal`).
-- To create payment account use the decicated endpoint (`createStripeAccount`, `createWepayAccount`,...) provided by the payment gateway container (Stripe, WePay,...). Each payment container has its own endpoint to `create` and `update` account details, since each payment requires different data.
+- To create payment account use the dedicated endpoint (`createStripeAccount`, `createWepayAccount`,...) provided by the payment gateway container (Stripe, WePay,...). Each payment container has its own endpoint to `create` and `update` account details, since each payment requires different data.
 
 
 

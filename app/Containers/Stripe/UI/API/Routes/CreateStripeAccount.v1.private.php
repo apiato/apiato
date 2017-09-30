@@ -16,7 +16,7 @@
  * @apiParam           {String} card_funding
  * @apiParam           {String} card_last_digits
  * @apiParam           {String} card_fingerprint
- * @apiParam           {String} nickname payment nickname for your useage
+ * @apiParam           {String} nickname payment nickname for your usage
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK

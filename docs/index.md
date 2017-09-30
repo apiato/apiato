@@ -17,7 +17,8 @@ title: "Welcome to APIATO"
 **Build better API's faster with PHP and laravel 5.5**
 
 **APIATO** is a flawless framework for building scalable and testable API-Centric Applications with PHP. 
-It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
+It is designed to help you build scalable API's faster, by providing tools and features that facilitates the development 
+of any API-Centric App.
            
 
 APIATO uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.

@@ -2,6 +2,6 @@
 
 // API Root route
 $router->get('/', [
-    'as'   => 'apis_root_page',
+    'as'   => 'api_welcome_root_page',
     'uses' => 'Controller@apiRoot',
 ]);

@@ -26,7 +26,7 @@ By default, all API calls expect input in `JSON` format, however you need to inf
 | If-None-Match | `811b22676b6a4a0489c920073c0df914`  | MAY be sent to indicate a specific **ETag** of an prior Request to this Endpoint. If both ETags match (i.e., are the same) a HTTP 304 (not modified) is returned. |
 
 
-> Normally you should include the `Accept => application/json` HTTP header when you call a JOSN API.
+> Normally you should include the `Accept => application/json` HTTP header when you call a JSON API.
 However, in Apiato you can force your users to send `application/json` by setting `'force-accept-header' => true,` in `app/Ship/Configs/apiato.php`
 Or allow them to skip it by setting the `'force-accept-header' => false,` (By default this is set to false).
 

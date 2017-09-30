@@ -68,7 +68,7 @@ Say we are in version `7.0` right now. The repository would have at least the fo
 
 If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. And if your PR fixes a bug, then it should be sent to the latest release branch.
 
-> If you would like to always contribute to Apiato, it's better to use the master branche instead of the latest release branch, to always have the latest features and updates.
+> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release branch, to always have the latest features and updates.
 
 <a name="Proposing-Feature"></a>
 ### Proposing Feature
@@ -355,7 +355,7 @@ The docs folders `_docs/*` do not represent the categories displayed in the site
 To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
 you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
 
-To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
+To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags
 
 
 
@@ -385,7 +385,7 @@ This function exist on the abstract class `Apiato\Core\Generator\GeneratorComman
 For better understanding of how things work. Make sure you read that function.    
 
 
-1 - Add create new command by copy pasting any of the existing components commands aslready supported. The `Generator/Commands/RouteGenerator.php` is great example.
+1 - Add create new command by copy pasting any of the existing components commands already supported. The `Generator/Commands/RouteGenerator.php` is a great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
@@ -410,17 +410,15 @@ For each generator you need to implement exactly one method (as it is defined in
 
 ```php
         $this->registerGenerators([
-            'Action',
-            'Route',
-            'Task',
+            ActionGenerator::class,
+            RouteGenerator::class,
+            TaskGenerator::class,
             // ...
         ]);
 ```
 
-4 - Default Filename (optional)
+4 - Default FileName & FileExtension(optional)
 
-You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
-
-
-
+You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()` 
+method, which simply returns a `string`.
 

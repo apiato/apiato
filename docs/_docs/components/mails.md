@@ -124,7 +124,7 @@ $this->view('user::user-registered')
 <a name="config"></a>
 ## Configure Emails
 
-Open the `.env` file and set the From mail and adress, this will be used globally whenever the `from` function is not called in the Mail. 
+Open the `.env` file and set the From mail and address, this will be used globally whenever the `from` function is not called in the Mail. 
 
 ```markdown
 MAIL_FROM_ADDRESS=test@test.test

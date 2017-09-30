@@ -27,7 +27,9 @@ interface PaymentGatewayAccountInterface
     /**
      * Checks, if required fields are set (i.e., they are NOT NULL)
      *
-     * @return boolean
+     * @param array $fields
+     *
+     * @return bool
      */
     public function checkIfPaymentDataIsSet(array $fields);
 
