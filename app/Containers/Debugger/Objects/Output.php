@@ -56,6 +56,8 @@ class Output
     }
 
     /**
+     * @param $text
+     *
      * @return  string
      */
     protected function set($text)

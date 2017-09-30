@@ -18,6 +18,7 @@ class GenerateAPIDocsTask extends Task
 
     /**
      * @param $type
+     * @param $console
      *
      * @return  mixed
      * @throws \Symfony\Component\Process\Exception\RuntimeException

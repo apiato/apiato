@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\App;
 use KevinEm\WePay\Laravel\WePayLaravel;
 
 /**
- * Class ChargeUserWithWeapyTest
+ * Class ChargeUserWithWepayTest
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ChargeUserWithWeapyTest extends TestCase
+class ChargeUserWithWepayTest extends TestCase
 {
 
     use MockablePaymentsTrait;

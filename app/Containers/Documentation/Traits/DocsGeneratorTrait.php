@@ -14,7 +14,9 @@ trait DocsGeneratorTrait
 {
 
     /**
-     * @return  mixed
+     * @param $type
+     *
+     * @return mixed
      */
     private function getFullApiUrl($type)
     {
@@ -40,7 +42,9 @@ trait DocsGeneratorTrait
     /**
      * Where to generate the new documentation.
      *
-     * @return  string
+     * @param $type
+     *
+     * @return string
      */
     private function getDocumentationPath($type)
     {
@@ -48,7 +52,9 @@ trait DocsGeneratorTrait
     }
 
     /**
-     * @return  string
+     * @param $type
+     *
+     * @return string
      */
     private function getJsonFilePath($type)
     {
