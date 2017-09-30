@@ -28,7 +28,7 @@ Exceptions are classes the handles errors, and helps developers debug their code
 
 ### Rules
 
-- All Exceptions MUST extend from `App\Ship\Parents\Exceptions\Exception`.
+- All Exceptions MUST extend `App\Ship\Parents\Exceptions\Exception`.
 
 - Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Exceptions/*`).
 

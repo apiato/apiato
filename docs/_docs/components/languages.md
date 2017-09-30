@@ -47,7 +47,7 @@ Languages are not real Components, they are just files that holds translations.
 
 ### Usage
 
-Nothing much to show here, here's how you use translated string:
+Nothing much to show here, here's how you use translated strings:
 
 
 ```php
@@ -61,4 +61,4 @@ dd(__('messages.welcome'));
 ```
 
 
-For More info about the localization checkout the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) page.
+For more info about the localization checkout the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) page.
