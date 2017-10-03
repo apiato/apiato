@@ -235,6 +235,10 @@ php artisan migrate
 php artisan db:seed
 ```
 
+3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set to it). 
+
+To give the `admin` role, access to all the seeded permissions in the system, run the following command `php artisan apiato:permissions:toRole admin` at any time.
+
 **NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
 
 
