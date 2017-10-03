@@ -19,6 +19,7 @@
 - Add profiling to the response, via `ProfilerMiddleware`.
 - Add notifications generator.
 - Add the container generator
+- Add feature to read custom stub files form `app/Ship/Generators/CustomStubs`
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
