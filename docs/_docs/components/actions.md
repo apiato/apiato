@@ -12,13 +12,13 @@ order: 4
 
 ### Definition & Principles
 
-Read from the [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
+Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
 
 <a name="rules"></a>
 
 ### Rules
 
-- All Actions MUST extend from `App\Ship\Parents\Actions\Action`.
+- All Actions MUST extend `App\Ship\Parents\Actions\Action`.
 
 <a name="folder-structure"></a>
 
@@ -76,7 +76,7 @@ But injecting each Task in the constructor and then using it below through its p
 The Action itself was also called using `$this->call()` which triggers the `run` function in it.
 
 
-Refer to the **Magical Call** page for more info and examples on how to use the call function.
+Refer to the [**Magical Call**]({{ site.baseurl }}{% link _docs/miscellaneous/magical-call.md %})  page for more info and examples on how to use the call function.
 
 
 
