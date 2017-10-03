@@ -4,7 +4,6 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class ListAllPermissionsTask.
@@ -13,6 +12,7 @@ use Illuminate\Support\Facades\App;
  */
 class ListAllPermissionsTask extends Task
 {
+
     /**
      * @var PermissionRepository
      */
@@ -29,11 +29,13 @@ class ListAllPermissionsTask extends Task
     }
 
     /**
+     * @param bool $skipPagination
+     *
      * @return  mixed
      */
-    public function run()
+    public function run($skipPagination = false)
     {
-        return $this->repository->all();
+        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
     }
 
 }

@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class AuthorizationSuperAdminsSeeder_9
+ * Class AuthorizationDefaultUsersSeeder_3
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class AuthorizationSuperAdminsSeeder_9 extends Seeder
+class AuthorizationDefaultUsersSeeder_3 extends Seeder
 {
 
     /**
@@ -23,7 +23,7 @@ class AuthorizationSuperAdminsSeeder_9 extends Seeder
      */
     public function run()
     {
-        // Default Users ----------------------------------------------------------------
+        // Default Users (with roles) -----------------------------------------------------------
 
         $admin = new User();
         $admin->name = 'Super Admin';
