@@ -33,6 +33,7 @@
 - Changed Generators to add various fields (e.g., the `as` name for `Routes`)
 - Refactor the Stripe container to work with the new payment gateway.
 - Changed the "namespace" of all `generator` commands (from `apiato:x` to `apiato:generate:x`)
+- When seeding data, the default Super Admin will be given the `admin` Role, but the `admin` role will not be given any permission. Can optionally use `php artisan apiato:permissions:toRole admin` to give the `admin` role all system permissions.    
 
 ### Fixed
 - Fix Social Authentication errors. 
