@@ -2,9 +2,6 @@
 
 namespace App\Containers\Authentication\UI\API\Controllers;
 
-use App\Containers\Authentication\Actions\ApiLogoutAction;
-use App\Containers\Authentication\Actions\ProxyApiLoginAction;
-use App\Containers\Authentication\Actions\ProxyApiRefreshAction;
 use App\Containers\Authentication\UI\API\Requests\LoginRequest;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
@@ -26,7 +23,7 @@ class Controller extends ApiController
      */
     public function logout(LogoutRequest $request)
     {
-        $this->call(ApiLogoutAction::class, [$request]);
+        $this->call('Authentication@ApiLogoutAction', [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -47,7 +44,7 @@ class Controller extends ApiController
      */
     public function proxyLoginForAdminWebClient(LoginRequest $request)
     {
-        $result = $this->call(ProxyApiLoginAction::class, [
+        $result = $this->call('Authentication@ProxyApiLoginAction', [
             $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),
@@ -65,7 +62,7 @@ class Controller extends ApiController
      */
     public function proxyRefreshForAdminWebClient(RefreshRequest $request)
     {
-        $result = $this->call(ProxyApiRefreshAction::class, [
+        $result = $this->call('Authentication@ProxyApiRefreshAction', [
             $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),

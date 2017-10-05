@@ -2,10 +2,6 @@
 
 namespace App\Containers\Payment\UI\API\Controllers;
 
-use App\Containers\Payment\Actions\DeletePaymentAccountAction;
-use App\Containers\Payment\Actions\GetPaymentAccountDetailsAction;
-use App\Containers\Payment\Actions\GetPaymentAccountsAction;
-use App\Containers\Payment\Actions\UpdatePaymentAccountAction;
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Requests\GetPaymentAccountRequest;
 use App\Containers\Payment\UI\API\Requests\ListAllPaymentAccountsRequest;
@@ -29,7 +25,7 @@ class Controller extends ApiController
      */
     public function listAllPaymentAccounts(ListAllPaymentAccountsRequest $request)
     {
-        $paymentAccounts = $this->call(GetPaymentAccountsAction::class, [$request]);
+        $paymentAccounts = $this->call('Payment@GetPaymentAccountsAction', [$request]);
 
         return $this->transform($paymentAccounts, PaymentAccountTransformer::class);
     }
@@ -41,7 +37,7 @@ class Controller extends ApiController
      */
     public function getPaymentAccount(GetPaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call(GetPaymentAccountDetailsAction::class, [$request]);
+        $paymentAccount = $this->call('Payment@GetPaymentAccountDetailsAction', [$request]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -53,7 +49,7 @@ class Controller extends ApiController
      */
     public function updatePaymentAccount(UpdatePaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call(UpdatePaymentAccountAction::class, [$request]);
+        $paymentAccount = $this->call('Payment@UpdatePaymentAccountAction', [$request]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -65,7 +61,7 @@ class Controller extends ApiController
      */
     public function deletePaymentAccount(DeletePaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call(DeletePaymentAccountAction::class, [$request]);
+        $paymentAccount = $this->call('Payment@DeletePaymentAccountAction', [$request]);
 
         return $this->noContent();
     }

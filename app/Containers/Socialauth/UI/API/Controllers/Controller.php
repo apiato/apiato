@@ -2,7 +2,6 @@
 
 namespace App\Containers\SocialAuth\UI\API\Controllers;
 
-use App\Containers\SocialAuth\Actions\SocialLoginAction;
 use App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -23,7 +22,7 @@ class Controller extends ApiController
      */
     public function authenticateAll(ApiAuthenticateRequest $request, $provider)
     {
-        $user = $this->call(SocialLoginAction::class, [$request, $provider]);
+        $user = $this->call('SocialAuth@SocialLoginAction', [$request, $provider]);
 
         return $this->transform($user, UserTransformer::class);
     }

@@ -2,7 +2,6 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Tasks\ListUsersTask;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -18,6 +17,6 @@ class ListAndSearchUsersAction extends Action
      */
     public function run()
     {
-        return $this->call(ListUsersTask::class, [], ['ordered']);
+        return $this->call('User@ListUsersTask', [], ['ordered']);
     }
 }

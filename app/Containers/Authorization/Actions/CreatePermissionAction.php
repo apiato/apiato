@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -21,6 +20,7 @@ class CreatePermissionAction extends Action
      */
     public function run(Request $request)
     {
-        return $this->call(CreatePermissionTask::class, [$request->name, $request->description, $request->display_name]);
+        return $this->call('Authorization@CreatePermissionTask',
+            [$request->name, $request->description, $request->display_name]);
     }
 }

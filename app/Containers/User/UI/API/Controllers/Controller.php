@@ -2,15 +2,6 @@
 
 namespace App\Containers\User\UI\API\Controllers;
 
-use App\Containers\User\Actions\CreateAdminAction;
-use App\Containers\User\Actions\DeleteUserAction;
-use App\Containers\User\Actions\GetMyProfileAction;
-use App\Containers\User\Actions\GetUserAction;
-use App\Containers\User\Actions\ListAdminsAction;
-use App\Containers\User\Actions\ListAndSearchUsersAction;
-use App\Containers\User\Actions\ListClientsAction;
-use App\Containers\User\Actions\RegisterUserAction;
-use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\User\UI\API\Requests\GetMyProfileRequest;
@@ -36,7 +27,7 @@ class Controller extends ApiController
      */
     public function registerUser(RegisterUserRequest $request)
     {
-        $user = $this->call(RegisterUserAction::class, [$request]);
+        $user = $this->call('User@RegisterUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -48,7 +39,7 @@ class Controller extends ApiController
      */
     public function createAdmin(CreateAdminRequest $request)
     {
-        $admin = $this->call(CreateAdminAction::class, [$request]);
+        $admin = $this->call('User@CreateAdminAction', [$request]);
 
         return $this->transform($admin, UserTransformer::class);
     }
@@ -60,7 +51,7 @@ class Controller extends ApiController
      */
     public function updateUser(UpdateUserRequest $request)
     {
-        $user = $this->call(UpdateUserAction::class, [$request]);
+        $user = $this->call('User@UpdateUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -72,7 +63,7 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = $this->call(DeleteUserAction::class, [$request]);
+        $user = $this->call('User@DeleteUserAction', [$request]);
 
         return $this->deleted($user);
     }
@@ -84,7 +75,7 @@ class Controller extends ApiController
      */
     public function listAllUsers(ListAllUsersRequest $request)
     {
-        $users = $this->call(ListAndSearchUsersAction::class);
+        $users = $this->call('User@ListAndSearchUsersAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -96,7 +87,7 @@ class Controller extends ApiController
      */
     public function listAllClients(ListAllUsersRequest $request)
     {
-        $users = $this->call(ListClientsAction::class);
+        $users = $this->call('User@ListClientsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -108,7 +99,7 @@ class Controller extends ApiController
      */
     public function listAllAdmins(ListAllUsersRequest $request)
     {
-        $users = $this->call(ListAdminsAction::class);
+        $users = $this->call('User@ListAdminsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -120,7 +111,7 @@ class Controller extends ApiController
      */
     public function getUser(GetUserByIdRequest $request)
     {
-        $user = $this->call(GetUserAction::class, [$request]);
+        $user = $this->call('User@GetUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -132,7 +123,7 @@ class Controller extends ApiController
      */
     public function getUserProfile(GetMyProfileRequest $request)
     {
-        $user = $this->call(GetMyProfileAction::class, [$request]);
+        $user = $this->call('User@GetMyProfileAction', [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

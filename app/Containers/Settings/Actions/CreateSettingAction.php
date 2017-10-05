@@ -2,7 +2,6 @@
 
 namespace App\Containers\Settings\Actions;
 
-use App\Containers\Settings\Tasks\CreateSettingTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -21,7 +20,7 @@ class CreateSettingAction extends Action
             'value'
         ]);
 
-        $setting = $this->call(CreateSettingTask::class, [$data]);
+        $setting = $this->call('Settings@CreateSettingTask', [$data]);
 
         return $setting;
     }

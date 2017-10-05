@@ -2,8 +2,6 @@
 
 namespace App\Containers\Stripe\UI\API\Controllers;
 
-use App\Containers\Stripe\Actions\CreateStripeAccountAction;
-use App\Containers\Stripe\Actions\UpdateStripeAccountAction;
 use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -23,7 +21,7 @@ class Controller extends ApiController
      */
     public function createStripeAccount(CreateStripeAccountRequest $request)
     {
-        $stripeAccount = $this->call(CreateStripeAccountAction::class, [$request]);
+        $stripeAccount = $this->call('Stripe@CreateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account created successfully.',
@@ -38,7 +36,7 @@ class Controller extends ApiController
      */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {
-        $stripeAccount = $this->call(UpdateStripeAccountAction::class, [$request]);
+        $stripeAccount = $this->call('Stripe@UpdateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account updated successfully.',

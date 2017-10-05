@@ -2,8 +2,6 @@
 
 namespace App\Containers\Authentication\UI\WEB\Controllers;
 
-use App\Containers\Authentication\Actions\WebAdminLoginAction;
-use App\Containers\Authentication\Actions\WebLogoutAction;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;
@@ -33,7 +31,7 @@ class Controller extends WebController
     public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = $this->call(WebAdminLoginAction::class, [$request]);
+            $result = $this->call('Authentication@WebAdminLoginAction', [$request]);
         } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }
@@ -56,7 +54,7 @@ class Controller extends WebController
      */
     public function logoutAdmin()
     {
-        $this->call(WebLogoutAction::class);
+        $this->call('Authentication@WebLogoutAction');
 
         return redirect('login');
     }

@@ -15,6 +15,7 @@ use Lcobucci\JWT\Parser;
  */
 class ApiLogoutAction extends Action
 {
+
     /**
      * @param \App\Ship\Parents\Requests\Request $request
      *

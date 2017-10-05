@@ -2,10 +2,6 @@
 
 namespace App\Containers\Settings\UI\API\Controllers;
 
-use App\Containers\Settings\Actions\CreateSettingAction;
-use App\Containers\Settings\Actions\DeleteSettingAction;
-use App\Containers\Settings\Actions\ListSettingsAction;
-use App\Containers\Settings\Actions\UpdateSettingAction;
 use App\Containers\Settings\UI\API\Requests\CreateSettingRequest;
 use App\Containers\Settings\UI\API\Requests\DeleteSettingRequest;
 use App\Containers\Settings\UI\API\Requests\ListAllSettingsRequest;
@@ -25,7 +21,7 @@ class Controller extends ApiController
      */
     public function listAllSettings(ListAllSettingsRequest $request)
     {
-        $settings = $this->call(ListSettingsAction::class, [$request]);
+        $settings = $this->call('Settings@ListSettingsAction', [$request]);
 
         return $this->transform($settings, SettingTransformer::class);
     }
@@ -39,7 +35,7 @@ class Controller extends ApiController
      */
     public function createSetting(CreateSettingRequest $request)
     {
-        $setting = $this->call(CreateSettingAction::class, [$request]);
+        $setting = $this->call('Settings@CreateSettingAction', [$request]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -53,7 +49,7 @@ class Controller extends ApiController
      */
     public function updateSetting(UpdateSettingRequest $request)
     {
-        $setting = $this->call(UpdateSettingAction::class, [$request]);
+        $setting = $this->call('Settings@UpdateSettingAction', [$request]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -67,7 +63,7 @@ class Controller extends ApiController
      */
     public function deleteSetting(DeleteSettingRequest $request)
     {
-        $setting = $this->call(DeleteSettingAction::class, [$request]);
+        $setting = $this->call('Settings@DeleteSettingAction', [$request]);
 
         return $this->noContent();
     }

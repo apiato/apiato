@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Exceptions\PermissionNotFoundException;
-use App\Containers\Authorization\Tasks\GetPermissionTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -23,7 +22,7 @@ class GetPermissionAction extends Action
      */
     public function run(Request $request)
     {
-        $permission = $this->call(GetPermissionTask::class, [$request->id]);
+        $permission = $this->call('Authorization@GetPermissionTask', [$request->id]);
 
         if (!$permission) {
             throw new PermissionNotFoundException();

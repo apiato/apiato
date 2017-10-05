@@ -2,8 +2,6 @@
 
 namespace App\Containers\Payment\Actions;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
-use App\Containers\Payment\Tasks\GetPaymentAccountsTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -22,9 +20,9 @@ class GetPaymentAccountsAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(GetAuthenticatedUserTask::class);
+        $user = $this->call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccounts = $this->call(GetPaymentAccountsTask::class, [], ['ordered', ['filterByUser' => [$user]]]);
+        $paymentAccounts = $this->call('Payment@GetPaymentAccountsTask', [], ['ordered', ['filterByUser' => [$user]]]);
 
         return $paymentAccounts;
     }

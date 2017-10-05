@@ -2,9 +2,7 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Containers\User\Models\User;
-use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,7 +23,7 @@ class RevokeUserFromRoleAction extends Action
     public function run(Request $request)
     {
         if (!$request->user_id instanceof User) {
-            $user = $this->call(FindUserByIdTask::class, [$request->user_id]);
+            $user = $this->call('User@FindUserByIdTask', [$request->user_id]);
         }
 
         if (!is_array($rolesIds = $request->roles_ids)) {
@@ -35,7 +33,7 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-            $role = $this->call(GetRoleTask::class, [$roleId]);
+            $role = $this->call('Authorization@GetRoleTask', [$roleId]);
             $roles->add($role);
         }
 

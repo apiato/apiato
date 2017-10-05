@@ -2,7 +2,6 @@
 
 namespace App\Containers\Wepay\UI\API\Controllers;
 
-use App\Containers\Wepay\Actions\CreateWepayAccountAction;
 use App\Containers\Wepay\UI\API\Requests\CreateWepayAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -21,11 +20,11 @@ class Controller extends ApiController
      */
     public function createWepayAccount(CreateWepayAccountRequest $request)
     {
-        $wepayAccount = $this->call(CreateWepayAccountAction::class, [$request]);
+        $wepayAccount = $this->call('Wepay@CreateWepayAccountAction', [$request]);
 
         return $this->accepted([
-            'message'         => 'Wepay account created successfully.',
-            'wepayAccountId'  => $wepayAccount->id,
+            'message'        => 'Wepay account created successfully.',
+            'wepayAccountId' => $wepayAccount->id,
         ]);
     }
 

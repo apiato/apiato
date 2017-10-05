@@ -2,8 +2,6 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\CheckIfUserIsConfirmedTask;
-use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -22,9 +20,9 @@ class WebLoginAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(WebLoginTask::class, [$request]);
+        $user = $this->call('Authentication@WebLoginTask', [$request]);
 
-        $this->call(CheckIfUserIsConfirmedTask::class, [], [['setUser' => [$user]]]);
+        $this->call('Authentication@CheckIfUserIsConfirmedTask', [], [['setUser' => [$user]]]);
 
         return $user;
     }

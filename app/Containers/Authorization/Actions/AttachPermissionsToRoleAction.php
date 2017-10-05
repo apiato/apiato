@@ -2,9 +2,6 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask;
-use App\Containers\Authorization\Tasks\GetPermissionTask;
-use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -23,15 +20,15 @@ class AttachPermissionsToRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$request->role_id]);
+        $role = $this->call('Authorization@GetRoleTask', [$request->role_id]);
         $permissions = [];
 
         if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
-                $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
+                $permissions[] = $this->call('Authorization@GetPermissionTask', [$permissionId]);
             }
         } else {
-            $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
+            $permissions[] = $this->call('Authorization@GetPermissionTask', [$permissionsIds]);
         }
 
         return $role->givePermissionTo($permissions);

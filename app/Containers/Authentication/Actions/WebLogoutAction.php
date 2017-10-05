@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class WebLogoutAction extends Action
 {
+
     /**
      * @return bool
      */
