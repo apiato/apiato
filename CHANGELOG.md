@@ -21,7 +21,7 @@
 - Add the container generator
 - Add feature to read custom stub files form `app/Ship/Generators/CustomStubs`
 - Add command to sync all system permission with a given role.
-
+- Support Apiato new class calling style `controllerName@ClassActionOrTask` in the magic call, example: `$role = $this->call('Authorization@GetRoleTask', [$request->role_id]);`. 
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.

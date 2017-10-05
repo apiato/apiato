@@ -6,6 +6,7 @@ order: 1
 
 - [The Magical Call](#the-magical-call)
     + [Basic Usage](#basic-usage)
+    + [Usage options](#Usage-options)
     + [Passing arguments to the run function](#passing-arguments-to-the-run-function)
     + [Calling other functions before the run](#calling-other-functions-before-the-run)
     + [Calling other functions and pass them arguments:](#calling-other-functions-and-pass-them-arguments)
@@ -14,28 +15,43 @@ order: 1
 
 
 <a name="the-magical-call"></a>
-
 ### The Magical Call
 
-This magical function allows you to call any Action's or Task's `run` function, from any Controller or Action classes.
+This magical function allows you to call any Action or Task `run` function, from any Controller or Action classes.
 
-Each Action knows which UI called it using `$this->getUI()`, this is useful when handling the same Action differently based on the UI type (Web or API).
+The function `call` is mainly used for calling Apiato `Actions` from `Controllers` and for calling Apiato `Tasks`.
+
+Each Action knows which UI called it using `$this->getUI()`, this is useful for handling the same Action differently based on the UI type (Web or API).
 
 
-The function is mainly used for calling APIATO `Actions` from `Controllers` as follow:
+
+<a name="Usage-options"></a>
+### Usage options
+
+In the first argument you can pass the Class full name, as follow `App\Containers\User\Tasks\CreateUserTask::class`, 
+or you can pass the container name and class name, as follow `User@CreateUserTask`.
+
+It is highly recommended to use the apiato caller style `containerName@className` as it helps removing direct dependencies between containers. 
+The function will verify the Container exist before calling the function and inform the user to install Container if not exist.
+
+Note: When a class is directly called using his full name, a warning will be logged informing you to use the "apiato caller style". 
 
 ```php
-$this->call(\MyAction::class, [$paramerter1, $paramerter2]);
-// or you can inject the "MyAction" Class, in the parameter of the Controller function, as usual.
+<?php
+
+// Call "AssignUserToRoleTask" Task from the "Authorization" Container using the apiato caller style 
+$this->call('Authorization@AssignUserToRoleTask');
+
+// Call "AssignUserToRoleTask" Task from the "Authorization" Container using class full name 
+$this->call(\App\Containers\Authorization\Tasks\AssignUserToRoleTask::class);
 ```
 
 
 <a name="basic-usage"></a>
-
 ##### Basic Usage
 
 ```php
-$foo = $this->call(ActionOrTask::class);
+$foo = $this->call('Container@ActionOrTask');
 ```
 
 <a name="passing-arguments-to-the-run-function"></a>
@@ -43,38 +59,47 @@ $foo = $this->call(ActionOrTask::class);
 ##### Passing arguments to the `run` function
 
 ```php
-$foo = $this->call(ActionOrTask::class, [$runArgument1, $runArgument2, $runArgument3]);
+$foo = $this->call('Container@ActionOrTask', [$runArgument1, $runArgument2, $runArgument3]);
 ```
 
 <a name="calling-other-functions-before-the-run"></a>
 
-##### Calling other functions before the `run`
+##### Calling other functions before calling the `run`
 
 ```php
-$foo = $this->call(ActionOrTask::class, [$runArgument], ['otherFunction1', 'otherFunction2']);
+$foo = $this->call('Container@ActionOrTask', [$runArgument], ['otherFunction1', 'otherFunction2']);
 ```
 
 <a name="calling-other-functions-and-pass-them-arguments"></a>
 
-##### Calling other functions and pass them arguments
+##### Calling other functions and pass them arguments before calling the `run`
 
 ```php
-$foo = $this->call(ActionOrTask::class, [$runArgument], [
-    ['function1' => ['function1-argument1', 'function1-argument2']],
-    ['function2' => ['function2-argument1']],
+$foo = $this->call('Container@ActionOrTask', [$runArgument], [
+    [
+       'function1' => ['function1-argument1', 'function1-argument2']
+    ],
+    [
+       'function2' => ['function2-argument1']
+    ],
 ]);
 
-
-$foo = $this->call(ActionOrTask::class, [$runArgument], [
+$foo = $this->call('Container@ActionOrTask', [$runArgument], [
     'function-without-argument',
-    ['function1' => ['function1-argument1', 'function1-argument2']],  
+    [
+      'function1' => ['function1-argument1', 'function1-argument2']
+    ],  
 ]);
 
-$foo = $this->call(ActionOrTask::class, [], [
+$foo = $this->call('Container@ActionOrTask', [], [
     'function-without-argument',
-    ['function1' => ['function1-argument1', 'function1-argument2']],
+    [
+      'function1' => ['function1-argument1', 'function1-argument2']
+    ],
     'another-function-without-argument',
-    ['function2' => ['function2-argument1', 'function2-argument2', 'function2-argument3']],
+    [
+      'function2' => ['function2-argument1', 'function2-argument2', 'function2-argument3']
+    ],
 ]);
 ```
 
@@ -85,13 +110,14 @@ $foo = $this->call(ActionOrTask::class, [], [
 ```php
 <?php
 
-return $this->call(ListUsersTask::class, [], ['ordered']);
+return $this->call('User@ListUsersTask', [], ['ordered']);
+// can be called this way as well $this->call(ListUsersTask::class, [], ['ordered']);
 
-return $this->call(ListUsersTask::class, [], ['ordered', 'clients']);
+return $this->call('User@ListUsersTask', [], ['ordered', 'clients']);
 
-return $this->call(ListUsersTask::class, [], ['admins']);
+return $this->call('User@ListUsersTask', [], ['admins']);
 
-return $this->call(ListUsersTask::class, [], ['admins', ['roles' => ['manager', 'employee']]]);
+return $this->call('User@ListUsersTask', [], ['admins', ['roles' => ['manager', 'employee']]]);
 ```
 
 <a name="the-listuserstask-class"></a>
