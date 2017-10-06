@@ -17,13 +17,14 @@ order: 1
 <a name="the-magical-call"></a>
 ### The Magical Call
 
-This magical function allows you to call any Action or Task `run` function, from any Controller or Action classes.
+This magical function allows you to call any Action or Task `run` function, from any (Controller, Action, Command and Transformer).
 
-The function `call` is mainly used for calling Apiato `Actions` from `Controllers` and for calling Apiato `Tasks`.
+The function `call` is mainly used for calling Apiato `Actions` from `Controllers` and for calling Apiato `Tasks` from `Actions`.
 
 Each Action knows which UI called it using `$this->getUI()`, this is useful for handling the same Action differently based on the UI type (Web or API).
 
-
+> Note: only in the case of Console Commands use the function `$this->apiatoCall(...)` instead of `$this->call(...)` , 
+to avoid conflict between the Laravel default `call()` provided `Illuminate\Console\Command` and Apiato's `call()`.
 
 <a name="Usage-options"></a>
 ### Usage options
@@ -75,6 +76,7 @@ $foo = $this->call('Container@ActionOrTask', [$runArgument], ['otherFunction1', 
 ##### Calling other functions and pass them arguments before calling the `run`
 
 ```php
+<?php
 $foo = $this->call('Container@ActionOrTask', [$runArgument], [
     [
        'function1' => ['function1-argument1', 'function1-argument2']

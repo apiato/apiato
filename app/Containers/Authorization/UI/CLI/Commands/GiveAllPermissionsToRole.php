@@ -2,10 +2,7 @@
 
 namespace App\Containers\Authorization\UI\CLI\Commands;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\Authorization\Tasks\ListAllPermissionsTask;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use Illuminate\Support\Facades\App;
 
 class GiveAllPermissionsToRole extends ConsoleCommand
 {
@@ -18,9 +15,11 @@ class GiveAllPermissionsToRole extends ConsoleCommand
     {
         $roleName = $this->argument('role');
 
-        $allPermissionsNames = App::make(ListAllPermissionsTask::class)->run(true)->pluck('name')->toArray();
+        $allPermissionsNames = $this->apiatoCall('Authorization@ListAllPermissionsTask', [true]);
 
-        $role = App::make(GetRoleTask::class)->run($roleName)->syncPermissions($allPermissionsNames);
+        $role = $this->apiatoCall('Authorization@GetRoleTask', [$roleName]);
+
+        $role->syncPermissions($allPermissionsNames = $allPermissionsNames->pluck('name')->toArray());
 
         $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . implode(' - ',
                 $allPermissionsNames) . '.');
