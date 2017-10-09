@@ -4,7 +4,13 @@ namespace App\Containers\Settings\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class ListSettingsAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class ListSettingsAction extends Action
 {
 
@@ -15,7 +21,7 @@ class ListSettingsAction extends Action
      */
     public function run(Request $request)
     {
-        $settings = $this->call('Settings@ListSettingsTask', [], ['ordered']);
+        $settings = Apiato::call('Settings@ListSettingsTask', [], ['ordered']);
 
         return $settings;
     }

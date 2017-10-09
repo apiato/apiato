@@ -11,6 +11,7 @@ use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class RegisterUserAction.
@@ -28,7 +29,7 @@ class RegisterUserAction extends Action
     public function run(Request $request)
     {
         // create user record in the database and return it.
-        $user = $this->call('User@CreateUserByCredentialsTask', [
+        $user = Apiato::call('User@CreateUserByCredentialsTask', [
             $isClient = true,
             $request->email,
             $request->password,

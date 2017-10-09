@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authorization\UI\CLI\Commands;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 class GiveAllPermissionsToRole extends ConsoleCommand
@@ -15,9 +16,9 @@ class GiveAllPermissionsToRole extends ConsoleCommand
     {
         $roleName = $this->argument('role');
 
-        $allPermissionsNames = $this->apiatoCall('Authorization@ListAllPermissionsTask', [true]);
+        $allPermissionsNames = Apiato::call('Authorization@ListAllPermissionsTask', [true]);
 
-        $role = $this->apiatoCall('Authorization@GetRoleTask', [$roleName]);
+        $role = Apiato::call('Authorization@GetRoleTask', [$roleName]);
 
         $role->syncPermissions($allPermissionsNames = $allPermissionsNames->pluck('name')->toArray());
 

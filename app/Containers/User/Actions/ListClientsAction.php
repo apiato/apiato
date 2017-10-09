@@ -3,6 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Ship\Parents\Actions\Action;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class ListClientsAction.
@@ -17,7 +18,7 @@ class ListClientsAction extends Action
      */
     public function run()
     {
-        return $this->call('User@ListUsersTask', [], [
+        return Apiato::call('User@ListUsersTask', [], [
             'ordered',
             'clients'
         ]);

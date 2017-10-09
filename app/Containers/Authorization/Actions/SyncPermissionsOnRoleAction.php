@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class SyncPermissionsOnRoleAction.
@@ -20,15 +21,15 @@ class SyncPermissionsOnRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call('Authorization@GetRoleTask', [$request->role_id]);
+        $role = Apiato::call('Authorization@GetRoleTask', [$request->role_id]);
         $permissions = [];
 
         if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
-                $permissions[] = $this->call('Authorization@GetPermissionTask', [$permissionId]);
+                $permissions[] = Apiato::call('Authorization@GetPermissionTask', [$permissionId]);
             }
         } else {
-            $permissions[] = $this->call('Authorization@GetPermissionTask', [$permissionsIds]);
+            $permissions[] = Apiato::call('Authorization@GetPermissionTask', [$permissionsIds]);
         }
 
         $role->syncPermissions($permissions);

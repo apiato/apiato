@@ -7,6 +7,7 @@ use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\App;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class CreateWepayAccountAction.
@@ -23,7 +24,7 @@ class CreateWepayAccountAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call('Authentication@GetAuthenticatedUserTask');
+        $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         $wepayAccount = new WepayAccount();
         $wepayAccount->name = $request->name;
@@ -37,7 +38,7 @@ class CreateWepayAccountAction extends Action
 
         $wepayAccount = App::make(WepayAccountRepository::class)->create($wepayAccount->toArray());
 
-        $result = $this->call('Payment@AssignPaymentAccountToUserTask', [$wepayAccount, $user, $request->nickname]);
+        $result = Apiato::call('Payment@AssignPaymentAccountToUserTask', [$wepayAccount, $user, $request->nickname]);
 
         return $result;
     }

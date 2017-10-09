@@ -8,6 +8,7 @@ use App\Containers\Payment\UI\API\Requests\ListAllPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller
@@ -25,7 +26,7 @@ class Controller extends ApiController
      */
     public function listAllPaymentAccounts(ListAllPaymentAccountsRequest $request)
     {
-        $paymentAccounts = $this->call('Payment@GetPaymentAccountsAction', [$request]);
+        $paymentAccounts = Apiato::call('Payment@GetPaymentAccountsAction', [$request]);
 
         return $this->transform($paymentAccounts, PaymentAccountTransformer::class);
     }
@@ -37,7 +38,7 @@ class Controller extends ApiController
      */
     public function getPaymentAccount(GetPaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call('Payment@GetPaymentAccountDetailsAction', [$request]);
+        $paymentAccount = Apiato::call('Payment@GetPaymentAccountDetailsAction', [$request]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -49,7 +50,7 @@ class Controller extends ApiController
      */
     public function updatePaymentAccount(UpdatePaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call('Payment@UpdatePaymentAccountAction', [$request]);
+        $paymentAccount = Apiato::call('Payment@UpdatePaymentAccountAction', [$request]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -61,7 +62,7 @@ class Controller extends ApiController
      */
     public function deletePaymentAccount(DeletePaymentAccountRequest $request)
     {
-        $paymentAccount = $this->call('Payment@DeletePaymentAccountAction', [$request]);
+        $paymentAccount = Apiato::call('Payment@DeletePaymentAccountAction', [$request]);
 
         return $this->noContent();
     }

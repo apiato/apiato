@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Ship\Parents\Actions\Action;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class ListAllPermissionsAction.
@@ -17,7 +18,7 @@ class ListAllPermissionsAction extends Action
      */
     public function run()
     {
-        return $this->call('Authorization@ListAllPermissionsTask');
+        return Apiato::call('Authorization@ListAllPermissionsTask');
     }
 
 }

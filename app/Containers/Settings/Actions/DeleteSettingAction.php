@@ -4,7 +4,13 @@ namespace App\Containers\Settings\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class DeleteSettingAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class DeleteSettingAction extends Action
 {
 
@@ -15,9 +21,9 @@ class DeleteSettingAction extends Action
      */
     public function run(Request $request)
     {
-        $setting = $this->call('Settings@GetSettingByIdTask', [$request->id]);
+        $setting = Apiato::call('Settings@GetSettingByIdTask', [$request->id]);
 
-        $result = $this->call('Settings@DeleteSettingTask', [$setting]);
+        $result = Apiato::call('Settings@DeleteSettingTask', [$setting]);
 
         return $result;
     }

@@ -4,6 +4,7 @@ namespace App\Containers\Wepay\UI\API\Controllers;
 
 use App\Containers\Wepay\UI\API\Requests\CreateWepayAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller.
@@ -20,7 +21,7 @@ class Controller extends ApiController
      */
     public function createWepayAccount(CreateWepayAccountRequest $request)
     {
-        $wepayAccount = $this->call('Wepay@CreateWepayAccountAction', [$request]);
+        $wepayAccount = Apiato::call('Wepay@CreateWepayAccountAction', [$request]);
 
         return $this->accepted([
             'message'        => 'Wepay account created successfully.',

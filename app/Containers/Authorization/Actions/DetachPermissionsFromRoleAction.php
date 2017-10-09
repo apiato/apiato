@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class DetachPermissionsFromRoleAction.
@@ -20,8 +21,8 @@ class DetachPermissionsFromRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call('Authorization@GetRoleTask', [$request->role_id]);
+        $role = Apiato::call('Authorization@GetRoleTask', [$request->role_id]);
 
-        return $this->call('Authorization@DetachPermissionsFromRoleTask', [$role, $request->permissions_ids]);
+        return Apiato::call('Authorization@DetachPermissionsFromRoleTask', [$role, $request->permissions_ids]);
     }
 }

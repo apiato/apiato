@@ -3,6 +3,7 @@
 namespace App\Containers\User\Actions;
 
 use App\Ship\Parents\Actions\Action;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class ListAndSearchUsersAction.
@@ -17,6 +18,6 @@ class ListAndSearchUsersAction extends Action
      */
     public function run()
     {
-        return $this->call('User@ListUsersTask', [], ['ordered']);
+        return Apiato::call('User@ListUsersTask', [], ['ordered']);
     }
 }

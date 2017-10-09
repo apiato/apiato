@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\UI\WEB\Controllers;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;
@@ -31,7 +32,7 @@ class Controller extends WebController
     public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = $this->call('Authentication@WebAdminLoginAction', [$request]);
+            $result = Apiato::call('Authentication@WebAdminLoginAction', [$request]);
         } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }
@@ -54,7 +55,7 @@ class Controller extends WebController
      */
     public function logoutAdmin()
     {
-        $this->call('Authentication@WebLogoutAction');
+        Apiato::call('Authentication@WebLogoutAction');
 
         return redirect('login');
     }

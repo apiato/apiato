@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -31,9 +32,9 @@ class ProxyApiRefreshAction extends Action
             'scope'         => '',
         ];
 
-        $responseContent = $this->call('Authentication@CallOAuthServerTask', [$requestData]);
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);
 
-        $refreshCookie = $this->call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
+        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [
             'response-content' => $responseContent,

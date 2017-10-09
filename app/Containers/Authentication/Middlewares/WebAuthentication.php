@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Middlewares;
 
-use Apiato\Core\Butlers\Facades\ShipButler;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -45,7 +45,7 @@ class WebAuthentication extends Middleware
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {
-            return redirect(ShipButler::getLoginWebPageName())
+            return redirect(Apiato::getLoginWebPageName())
                 ->with('errorMessage', 'Credentials Incorrect.');
         }
 

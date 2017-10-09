@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class GetRoleAction.
@@ -22,7 +23,7 @@ class GetRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call('Authorization@GetRoleTask', [$roleId = $request->id]);
+        $role = Apiato::call('Authorization@GetRoleTask', [$roleId = $request->id]);
 
         if (!$role) {
             throw new RoleNotFoundException();

@@ -4,6 +4,7 @@ namespace App\Containers\User\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class CreateAdminAction.
@@ -20,7 +21,7 @@ class CreateAdminAction extends Action
      */
     public function run(Request $request)
     {
-        $admin = $this->call('User@CreateUserByCredentialsTask', [
+        $admin = Apiato::call('User@CreateUserByCredentialsTask', [
             $isClient = false,
             $request->email,
             $request->password,
@@ -29,7 +30,7 @@ class CreateAdminAction extends Action
 
         // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles
         // to your users manually. (To list admins in your dashboard look for users with `is_client=false`).
-        $this->call('Authorization@AssignUserToRoleTask', [$admin, ['admin']]);
+        Apiato::call('Authorization@AssignUserToRoleTask', [$admin, ['admin']]);
 
         return $admin;
     }

@@ -4,6 +4,7 @@ namespace App\Containers\Payment\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class GetPaymentAccountsAction
@@ -20,9 +21,9 @@ class GetPaymentAccountsAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call('Authentication@GetAuthenticatedUserTask');
+        $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccounts = $this->call('Payment@GetPaymentAccountsTask', [], ['ordered', ['filterByUser' => [$user]]]);
+        $paymentAccounts = Apiato::call('Payment@GetPaymentAccountsTask', [], ['ordered', ['filterByUser' => [$user]]]);
 
         return $paymentAccounts;
     }

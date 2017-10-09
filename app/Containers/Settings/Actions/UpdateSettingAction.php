@@ -4,7 +4,13 @@ namespace App\Containers\Settings\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class UpdateSettingAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class UpdateSettingAction extends Action
 {
 
@@ -20,9 +26,9 @@ class UpdateSettingAction extends Action
             'value'
         ]);
 
-        $setting = $this->call('Settings@GetSettingByIdTask', [$request->id]);
+        $setting = Apiato::call('Settings@GetSettingByIdTask', [$request->id]);
 
-        $setting = $this->call('Settings@UpdateSettingTask', [$setting, $data]);
+        $setting = Apiato::call('Settings@UpdateSettingTask', [$setting, $data]);
 
         return $setting;
     }

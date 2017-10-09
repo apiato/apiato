@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class AssignUserToRoleAction.
@@ -20,7 +21,7 @@ class AssignUserToRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call('User@FindUserByIdTask', [$request->user_id]);
+        $user = Apiato::call('User@FindUserByIdTask', [$request->user_id]);
 
         // convert roles IDs to array (in case single id passed)
         if (!is_array($rolesIds = $request->roles_ids)) {
@@ -28,9 +29,9 @@ class AssignUserToRoleAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = $this->call('Authorization@GetRoleTask', [$roleId]);
+            $roles[] = Apiato::call('Authorization@GetRoleTask', [$roleId]);
         }
 
-        return $this->call('Authorization@AssignUserToRoleTask', [$user, $roles]);
+        return Apiato::call('Authorization@AssignUserToRoleTask', [$user, $roles]);
     }
 }

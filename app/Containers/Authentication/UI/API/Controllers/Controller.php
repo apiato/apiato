@@ -7,6 +7,7 @@ use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Support\Facades\Cookie;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller
@@ -23,7 +24,7 @@ class Controller extends ApiController
      */
     public function logout(LogoutRequest $request)
     {
-        $this->call('Authentication@ApiLogoutAction', [$request]);
+        Apiato::call('Authentication@ApiLogoutAction', [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -44,7 +45,7 @@ class Controller extends ApiController
      */
     public function proxyLoginForAdminWebClient(LoginRequest $request)
     {
-        $result = $this->call('Authentication@ProxyApiLoginAction', [
+        $result = Apiato::call('Authentication@ProxyApiLoginAction', [
             $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),
@@ -62,7 +63,7 @@ class Controller extends ApiController
      */
     public function proxyRefreshForAdminWebClient(RefreshRequest $request)
     {
-        $result = $this->call('Authentication@ProxyApiRefreshAction', [
+        $result = Apiato::call('Authentication@ProxyApiRefreshAction', [
             $request,
             env('CLIENT_WEB_ADMIN_ID'),
             env('CLIENT_WEB_ADMIN_SECRET'),

@@ -5,6 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Containers\User\Exceptions\UserNotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class GetUserAction.
@@ -24,7 +25,7 @@ class GetUserAction extends Action
     {
         $userId = $request->id;
 
-        $user = $this->call('User@FindUserByIdTask', [$userId]);
+        $user = Apiato::call('User@FindUserByIdTask', [$userId]);
 
         if (!$user) {
             throw new UserNotFoundException();
