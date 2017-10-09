@@ -34,7 +34,7 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-            $role = Apiato::call('Authorization@GetRoleTask', [$roleId]);
+            $role = Apiato::call('Authorization@FindRoleTask', [$roleId]);
             $roles->add($role);
         }
 

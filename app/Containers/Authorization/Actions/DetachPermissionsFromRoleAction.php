@@ -21,7 +21,7 @@ class DetachPermissionsFromRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = Apiato::call('Authorization@GetRoleTask', [$request->role_id]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$request->role_id]);
 
         return Apiato::call('Authorization@DetachPermissionsFromRoleTask', [$role, $request->permissions_ids]);
     }

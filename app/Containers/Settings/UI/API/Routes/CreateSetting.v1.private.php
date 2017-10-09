@@ -29,7 +29,7 @@
  */
 
 $router->post('settings', [
-    'as' => 'API_Settings_createSetting',
+    'as' => 'api_settings_create_setting',
     'uses'  => 'Controller@createSetting',
     'middleware' => [
       'auth:api',

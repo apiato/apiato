@@ -21,7 +21,7 @@
  */
 
 $router->delete('user/paymentaccounts/{id}', [
-    'as' => 'API_Payment_deletePaymentAccount',
+    'as' => 'api_payment_delete_payment_account',
     'uses'  => 'Controller@deletePaymentAccount',
     'middleware' => [
       'auth:api',

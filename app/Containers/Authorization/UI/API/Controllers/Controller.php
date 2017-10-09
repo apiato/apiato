@@ -7,10 +7,10 @@ use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
-use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
-use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
+use App\Containers\Authorization\UI\API\Requests\FindPermissionRequest;
+use App\Containers\Authorization\UI\API\Requests\FindRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\GetAllPermissionsRequest;
+use App\Containers\Authorization\UI\API\Requests\GetAllRolesRequest;
 use App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
@@ -29,49 +29,49 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\GetAllPermissionsRequest $request
      *
      * @return  mixed
      */
-    public function listAllPermissions(ListAllPermissionsRequest $request)
+    public function getAllPermissions(GetAllPermissionsRequest $request)
     {
-        $permissions = Apiato::call('Authorization@ListAllPermissionsAction');
+        $permissions = Apiato::call('Authorization@GetAllPermissionsAction');
 
         return $this->transform($permissions, PermissionTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetPermissionRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\FindPermissionRequest $request
      *
      * @return  mixed
      */
-    public function getPermission(GetPermissionRequest $request)
+    public function findPermission(FindPermissionRequest $request)
     {
-        $permission = Apiato::call('Authorization@GetPermissionAction', [$request]);
+        $permission = Apiato::call('Authorization@FindPermissionAction', [$request]);
 
         return $this->transform($permission, PermissionTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\GetAllRolesRequest $request
      *
      * @return  mixed
      */
-    public function listAllRoles(ListAllRolesRequest $request)
+    public function getAllRoles(GetAllRolesRequest $request)
     {
-        $roles = Apiato::call('Authorization@ListAllRolesAction');
+        $roles = Apiato::call('Authorization@GetAllRolesAction');
 
         return $this->transform($roles, RoleTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetRoleRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\FindRoleRequest $request
      *
      * @return  mixed
      */
-    public function getRole(GetRoleRequest $request)
+    public function findRole(FindRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@GetRoleAction', [$request]);
+        $role = Apiato::call('Authorization@FindRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }

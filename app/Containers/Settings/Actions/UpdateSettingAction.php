@@ -26,7 +26,7 @@ class UpdateSettingAction extends Action
             'value'
         ]);
 
-        $setting = Apiato::call('Settings@GetSettingByIdTask', [$request->id]);
+        $setting = Apiato::call('Settings@FindSettingByIdTask', [$request->id]);
 
         $setting = Apiato::call('Settings@UpdateSettingTask', [$setting, $data]);
 
