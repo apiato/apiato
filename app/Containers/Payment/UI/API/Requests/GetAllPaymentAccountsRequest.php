@@ -6,6 +6,9 @@ use App\Ship\Parents\Requests\Request;
 
 /**
  * Class GetAllPaymentAccountsRequest.
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class GetAllPaymentAccountsRequest extends Request
 {
