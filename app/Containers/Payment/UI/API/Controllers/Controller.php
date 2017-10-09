@@ -27,7 +27,7 @@ class Controller extends ApiController
      *
      * @return array
      */
-    public function getPaymentAccounts(GetAllPaymentAccountsRequest $request)
+    public function getAllPaymentAccounts(GetAllPaymentAccountsRequest $request)
     {
         $paymentAccounts = $this->call(GetAllPaymentAccountsAction::class, [$request]);
 
@@ -39,7 +39,7 @@ class Controller extends ApiController
      *
      * @return array
      */
-    public function getPaymentAccountDetails(FindPaymentAccountDetails $request)
+    public function findPaymentAccountDetails(FindPaymentAccountDetails $request)
     {
         $paymentAccount = $this->call(FindPaymentAccountDetailsAction::class, [$request]);
 

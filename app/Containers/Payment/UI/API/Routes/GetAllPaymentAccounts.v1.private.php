@@ -21,7 +21,7 @@
 
 $router->get('user/paymentaccounts', [
     'as' => 'API_Payment_getPaymentAccounts',
-    'uses'  => 'Controller@getPaymentAccounts',
+    'uses'  => 'Controller@getAllPaymentAccounts',
     'middleware' => [
       'auth:api',
     ],

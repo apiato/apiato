@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            listAllRoles
+ * @apiName            getAllRoles
  * @api                {get} /v1/roles Get All Roles
  *
  * @apiVersion         1.0.0
@@ -12,8 +12,8 @@
  */
 
 $router->get('roles', [
-    'as' => 'API_Authorization_listAllRoles',
-    'uses'       => 'Controller@listAllRoles',
+    'as' => 'API_Authorization_getAllRoles',
+    'uses'       => 'Controller@getAllRoles',
     'middleware' => [
         'auth:api',
     ],

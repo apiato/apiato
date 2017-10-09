@@ -82,7 +82,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function listAllUsers(GetAllUsersRequest $request)
+    public function getAllUsers(GetAllUsersRequest $request)
     {
         $users = $this->call(GetAllAndSearchUsersAction::class);
 
@@ -94,7 +94,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function listAllClients(GetAllUsersRequest $request)
+    public function getAllClients(GetAllUsersRequest $request)
     {
         $users = $this->call(GetAllClientsAction::class);
 
@@ -106,7 +106,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function listAllAdmins(GetAllUsersRequest $request)
+    public function getAllAdmins(GetAllUsersRequest $request)
     {
         $users = $this->call(GetAllAdminsAction::class);
 
@@ -118,7 +118,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function getUser(FindUserByIdRequest $request)
+    public function findUser(FindUserByIdRequest $request)
     {
         $user = $this->call(FindUserAction::class, [$request]);
 
@@ -130,7 +130,7 @@ class Controller extends ApiController
      *
      * @return mixed
      */
-    public function getUserProfile(FindMyProfileRequest $request)
+    public function findUserProfile(FindMyProfileRequest $request)
     {
         $user = $this->call(FindMyProfileAction::class, [$request]);
 

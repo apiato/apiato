@@ -17,7 +17,7 @@
 
 $router->get('user/profile', [
     'as' => 'API_User_getUserProfile',
-    'uses'  => 'Controller@getUserProfile',
+    'uses'  => 'Controller@findUserProfile',
     'middleware' => [
       'auth:api',
     ],

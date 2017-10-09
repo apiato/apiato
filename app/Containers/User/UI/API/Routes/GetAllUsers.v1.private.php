@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Users
- * @apiName            listAllUsers
+ * @apiName            getAllUsers
  * @api                {get} /v1/users Get All Users
  * @apiDescription     Get All Application Users (clients and admins). For all registered users "Clients" only you
  *                     can use `/clients`. And for all "Admins" only you can use `/admins`.
@@ -14,8 +14,8 @@
  */
 
 $router->get('users', [
-    'as' => 'API_User_listAllUsers',
-    'uses'       => 'Controller@listAllUsers',
+    'as' => 'API_User_getAllUsers',
+    'uses'       => 'Controller@getAllUsers',
     'middleware' => [
         'auth:api',
     ],

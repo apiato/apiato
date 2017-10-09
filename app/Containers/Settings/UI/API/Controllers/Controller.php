@@ -23,7 +23,7 @@ class Controller extends ApiController
      *
      * @return mixed
      */
-    public function listAllSettings(GetAllSettingsRequest $request)
+    public function getAllSettings(GetAllSettingsRequest $request)
     {
         $settings = $this->call(GetAllSettingsAction::class, [$request]);
 

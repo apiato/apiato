@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Setting
- * @apiName            listAllSettings
+ * @apiName            getAllSettings
  *
  * @api                {GET} /v1/settings Get All Settings
  * @apiDescription     Get All settings for the application
@@ -42,8 +42,8 @@
  */
 
 $router->get('settings', [
-    'as' => 'API_Settings_listAllSettings',
-    'uses'  => 'Controller@listAllSettings',
+    'as' => 'API_Settings_getAllSettings',
+    'uses'  => 'Controller@getAllSettings',
     'middleware' => [
       'auth:api',
     ],

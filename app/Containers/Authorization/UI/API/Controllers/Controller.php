@@ -44,7 +44,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function listAllPermissions(GetAllPermissionsRequest $request)
+    public function getAllPermissions(GetAllPermissionsRequest $request)
     {
         $permissions = $this->call(GetAllPermissionsAction::class);
 
@@ -56,7 +56,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function getPermission(FindPermissionRequest $request)
+    public function findPermission(FindPermissionRequest $request)
     {
         $permission = $this->call(FindPermissionAction::class, [$request]);
 
@@ -68,7 +68,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function listAllRoles(GetAllRolesRequest $request)
+    public function getAllRoles(GetAllRolesRequest $request)
     {
         $roles = $this->call(GetAllRolesAction::class);
 
@@ -80,7 +80,7 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function getRole(FindRoleRequest $request)
+    public function findRole(FindRoleRequest $request)
     {
         $role = $this->call(FindRoleAction::class, [$request]);
 
