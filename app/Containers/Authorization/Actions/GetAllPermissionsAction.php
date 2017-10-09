@@ -18,7 +18,7 @@ class GetAllPermissionsAction extends Action
      */
     public function run()
     {
-        return Apiato::call('Authorization@ListAllPermissionsTask');
+        return Apiato::call('Authorization@GetAllPermissionsTask');
     }
 
 }

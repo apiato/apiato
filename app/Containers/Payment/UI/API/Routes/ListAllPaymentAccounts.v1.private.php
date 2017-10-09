@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Payment
- * @apiName            listAllPaymentAccounts
+ * @apiName            getAllPaymentAccounts
  *
  * @api                {GET} /v1/user/paymentaccounts Get Payment Accounts
  * @apiDescription     Get all Payment Accounts for this user
@@ -20,8 +20,8 @@
  */
 
 $router->get('user/paymentaccounts', [
-    'as' => 'API_Payment_listAllPaymentAccounts',
-    'uses'  => 'Controller@listAllPaymentAccounts',
+    'as' => 'api_payment_get_all_payment_accounts',
+    'uses'  => 'Controller@getAllPaymentAccounts',
     'middleware' => [
       'auth:api',
     ],

@@ -18,7 +18,7 @@ class GetAllAdminsAction extends Action
      */
     public function run()
     {
-        return Apiato::call('User@ListUsersTask', [], [
+        return Apiato::call('User@GetAllUsersTask', [], [
             'ordered',
             'admins'
         ]);

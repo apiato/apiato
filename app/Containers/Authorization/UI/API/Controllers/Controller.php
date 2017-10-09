@@ -35,7 +35,7 @@ class Controller extends ApiController
      */
     public function getAllPermissions(GetAllPermissionsRequest $request)
     {
-        $permissions = Apiato::call('Authorization@ListAllPermissionsAction');
+        $permissions = Apiato::call('Authorization@GetAllPermissionsAction');
 
         return $this->transform($permissions, PermissionTransformer::class);
     }
@@ -59,7 +59,7 @@ class Controller extends ApiController
      */
     public function getAllRoles(GetAllRolesRequest $request)
     {
-        $roles = Apiato::call('Authorization@ListAllRolesAction');
+        $roles = Apiato::call('Authorization@GetAllRolesAction');
 
         return $this->transform($roles, RoleTransformer::class);
     }

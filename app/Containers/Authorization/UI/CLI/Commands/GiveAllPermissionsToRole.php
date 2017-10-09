@@ -16,7 +16,7 @@ class GiveAllPermissionsToRole extends ConsoleCommand
     {
         $roleName = $this->argument('role');
 
-        $allPermissionsNames = Apiato::call('Authorization@ListAllPermissionsTask', [true]);
+        $allPermissionsNames = Apiato::call('Authorization@GetAllPermissionsTask', [true]);
 
         $role = Apiato::call('Authorization@GetRoleTask', [$roleName]);
 

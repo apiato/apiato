@@ -7,11 +7,11 @@ use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
- * Class ListSettingsAction
+ * Class GetAllSettingsAction
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ListSettingsAction extends Action
+class GetAllSettingsAction extends Action
 {
 
     /**
@@ -21,7 +21,7 @@ class ListSettingsAction extends Action
      */
     public function run(Request $request)
     {
-        $settings = Apiato::call('Settings@ListSettingsTask', [], ['ordered']);
+        $settings = Apiato::call('Settings@GetAllSettingsTask', [], ['ordered']);
 
         return $settings;
     }

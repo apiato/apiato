@@ -27,7 +27,7 @@ class Controller extends ApiController
      */
     public function getAllSettings(GetAllSettingsRequest $request)
     {
-        $settings = Apiato::call('Settings@ListSettingsAction', [$request]);
+        $settings = Apiato::call('Settings@GetAllSettingsAction', [$request]);
 
         return $this->transform($settings, SettingTransformer::class);
     }

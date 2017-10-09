@@ -5,12 +5,12 @@ namespace App\Containers\Payment\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class ListAllPaymentAccountsRequest
+ * Class GetAllPaymentAccountsRequest
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ListAllPaymentAccountsRequest extends Request
+class GetAllPaymentAccountsRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

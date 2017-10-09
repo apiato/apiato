@@ -76,7 +76,7 @@ class Controller extends ApiController
      */
     public function getAllUsers(GetAllUsersRequest $request)
     {
-        $users = Apiato::call('User@ListAndSearchUsersAction');
+        $users = Apiato::call('User@GetAllAndSearchUsersAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -88,7 +88,7 @@ class Controller extends ApiController
      */
     public function getAllClients(GetAllUsersRequest $request)
     {
-        $users = Apiato::call('User@ListClientsAction');
+        $users = Apiato::call('User@GetAllClientsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -100,7 +100,7 @@ class Controller extends ApiController
      */
     public function getAllAdmins(GetAllUsersRequest $request)
     {
-        $users = Apiato::call('User@ListAdminsAction');
+        $users = Apiato::call('User@GetAllAdminsAction');
 
         return $this->transform($users, UserTransformer::class);
     }

@@ -4,7 +4,7 @@ namespace App\Containers\Payment\UI\API\Controllers;
 
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Requests\GetPaymentAccountRequest;
-use App\Containers\Payment\UI\API\Requests\ListAllPaymentAccountsRequest;
+use App\Containers\Payment\UI\API\Requests\GetAllPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -20,11 +20,11 @@ class Controller extends ApiController
 {
 
     /**
-     * @param ListAllPaymentAccountsRequest $request
+     * @param GetAllPaymentAccountsRequest $request
      *
      * @return array
      */
-    public function listAllPaymentAccounts(ListAllPaymentAccountsRequest $request)
+    public function getAllPaymentAccounts(GetAllPaymentAccountsRequest $request)
     {
         $paymentAccounts = Apiato::call('Payment@GetPaymentAccountsAction', [$request]);
 
