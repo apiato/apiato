@@ -2,12 +2,15 @@
 
 namespace App\Containers\Authorization\Actions;
 
+<<<<<<< HEAD
 use App\Containers\Authorization\Tasks\FindRoleTask;
+=======
+>>>>>>> apiato
 use App\Containers\User\Models\User;
-use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Database\Eloquent\Collection;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class RevokeUserFromRoleAction.
@@ -25,7 +28,7 @@ class RevokeUserFromRoleAction extends Action
     public function run(Request $request)
     {
         if (!$request->user_id instanceof User) {
-            $user = $this->call(FindUserByIdTask::class, [$request->user_id]);
+            $user = Apiato::call('User@FindUserByIdTask', [$request->user_id]);
         }
 
         if (!is_array($rolesIds = $request->roles_ids)) {
@@ -35,7 +38,11 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
+<<<<<<< HEAD
             $role = $this->call(FindRoleTask::class, [$roleId]);
+=======
+            $role = Apiato::call('Authorization@GetRoleTask', [$roleId]);
+>>>>>>> apiato
             $roles->add($role);
         }
 

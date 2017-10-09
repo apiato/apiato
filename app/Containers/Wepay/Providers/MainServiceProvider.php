@@ -4,6 +4,7 @@ namespace App\Containers\Wepay\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
 use KevinEm\WePay\Laravel\Base;
+use KevinEm\WePay\Laravel\Facades\WePayLaravel;
 use KevinEm\WePay\Laravel\Providers\WePayServiceProvider;
 
 /**
@@ -31,7 +32,7 @@ class MainServiceProvider extends MainProvider
      * @var  array
      */
     public $aliases = [
-        'Wepay' => Base::class,
+        'Wepay' => WePayLaravel::class,
     ];
 
 }

@@ -1,10 +1,10 @@
-# APIATO
+# Apiato
 
 <h3 align="center">Build great API's faster | with PHP and laravel 5.5</h3>
 
 
 <p align="center">
-   <img src="https://s19.postimg.org/o1y4gerrn/apiato.jpg" alt="APIATO Logo"/>
+   <img src="https://s19.postimg.org/o1y4gerrn/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
 
@@ -23,17 +23,17 @@
 <a name="Introduction"></a>
 
 
-### What is APIATO?
+### What is Apiato?
 
 A flawless framework for building scalable and testable API-Centric Applications with PHP.
 
-**APIATO** is designed to help you build scalable API's faster, by providing tools and
+**Apiato** is designed to help you build scalable API's faster, by providing tools and
 functionalities that facilitates the development of any API-Centric App.
 
 It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
 
 Why!? setting up a solid API from scratch is time consuming (and time is money).
-APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
+Apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
 Skip the repetitive work and enjoy the open source fun.
 
 
@@ -57,7 +57,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 <a name="Features"></a>
 ## Features
 
-> APIATO comes with great features:
+> Apiato comes with great features:
 
 1. Authentication with OAuth2.0 for first/third-party clients (using Laravel Passport).
 2. Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and Permissions.
@@ -105,13 +105,13 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 
 
-**APIATO** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
+**Apiato** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 <br>
 
-Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in APIATO, will help you understand how the code is organized and how things work.
-However, you do **NOT** have to follow any of the Porto conventions to benifit from all the features that APIATO provides.
+Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in Apiato, will help you understand how the code is organized and how things work.
+However, you do **NOT** have to follow any of the Porto conventions to benifit from all the features that Apiato provides.
 
 
 If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
@@ -121,7 +121,7 @@ If you feel safe writting all your code in the `Controller` component; do it, no
 
 <p align="center">
 	<a href="http://apiato.io/">
-	   <img src="https://s19.postimg.org/ecnn9vdw3/Screen_Shot_2017-08-01_at_5.08.54_AM.png" width=250px" alt="APIATO SLACK"/>
+	   <img src="https://s19.postimg.org/ecnn9vdw3/Screen_Shot_2017-08-01_at_5.08.54_AM.png" width=250px" alt="Apiato Docs"/>
 	</a>
 </p>
 
@@ -133,7 +133,7 @@ If you feel safe writting all your code in the `Controller` component; do it, no
 
 <p align="center">
 	<a href="https://now-examples-slackin-bvfqosqozk.now.sh">
-	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="APIATO SLACK"/>
+	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 	</a>
 </p>
 
@@ -149,8 +149,11 @@ And a list of awesome contributors:
 - [Johan Alvarez](https://github.com/llstarscreamll)
 - [Þorgrímur Jónasarson](https://github.com/toggi737)
 - [Johannes Schobel](https://github.com/johannesschobel)
+- [FWidm](https://github.com/FWidm)
+- [Abdelrhman Soliman](https://github.com/Nasr-Z1)
+- [Dan Anderson](https://github.com/droplister)
 - [See full list](https://github.com/apiato/apiato/graphs/contributors)
-- [Join Us?](http://apiato.io/miscellaneous/contribution/)
+- [Join Us?](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato)
 
 
 <a name="Donations"></a>

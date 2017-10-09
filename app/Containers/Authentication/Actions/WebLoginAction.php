@@ -2,10 +2,9 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\CheckIfUserIsConfirmedTask;
-use App\Containers\Authentication\Tasks\WebLoginTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class WebLoginAction.
@@ -22,9 +21,9 @@ class WebLoginAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(WebLoginTask::class, [$request]);
+        $user = Apiato::call('Authentication@WebLoginTask', [$request]);
 
-        $this->call(CheckIfUserIsConfirmedTask::class, [], [['setUser' => [$user]]]);
+        Apiato::call('Authentication@CheckIfUserIsConfirmedTask', [], [['setUser' => [$user]]]);
 
         return $user;
     }

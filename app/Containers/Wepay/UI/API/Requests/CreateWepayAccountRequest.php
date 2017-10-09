@@ -59,6 +59,7 @@ class CreateWepayAccountRequest extends Request
             'imageUrl'    => 'required',
             'country'     => 'required',
             'currencies'  => 'required',
+            'nickname'          => 'required|string|max:190',
         ];
     }
 

@@ -195,6 +195,6 @@ Example: the `app/Containers/Authentication/Providers/AuthProvider.php` is exten
 Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them.
 Once extended the child Provider should be registered in its Container Main Provider, which makes it's parent available.
 
-This rule doesn't apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
+This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
 
 Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).

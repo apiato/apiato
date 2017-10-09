@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Apiato</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -31,14 +31,15 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 100px;
+                color: #00bdf4;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Apiato Admin</div>
+                <div class="title">Welcome Admin</div>
             </div>
         </div>
     </body>

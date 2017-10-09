@@ -2,17 +2,18 @@
 
 namespace App\Containers\Wepay\Models;
 
-use App\Containers\User\Models\User;
-use App\Ship\Parents\Models\Model;
+use App\Containers\Payment\Models\AbstractPaymentAccount;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class WepayAccount.
+ * Class WepayAccount
  *
- * @author Rockers Technologies <jaimin.rockersinfo@gmail.com>
+ * @author  Rockers Technologies <jaimin.rockersinfo@gmail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WepayAccount extends Model
+class WepayAccount extends AbstractPaymentAccount
 {
+
     use SoftDeletes;
 
     /**
@@ -54,12 +55,18 @@ class WepayAccount extends Model
     ];
 
     /**
-     * StripeAccount relationship with User
-     *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return string
      */
-    public function user()
+    public function getPaymentGatewayReadableName()
     {
-        return $this->belongsTo(User::class);
+        return 'Wepay';
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentGatewaySlug()
+    {
+        return 'wepay';
     }
 }

@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Containers\Payment\Proxies;
+namespace App\Containers\Payment\Gateway;
 
 use App\Containers\Payment\Contracts\ChargeableInterface;
-use App\Containers\Payment\Contracts\PaymentChargerTaskInterface;
+use App\Containers\Payment\Contracts\PaymentChargerInterface;
 use App\Containers\Payment\Exceptions\ChargerTaskDoesNotImplementInterfaceException;
 use App\Containers\Payment\Exceptions\NoChargeTaskForPaymentGatewayDefinedException;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 /**
- * Class PaymentsProxy
+ * Class PaymentsGateway
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class PaymentsProxy
+class PaymentsGateway
 {
+
     /**
      * @param ChargeableInterface $chargeable
      * @param PaymentAccount      $account
@@ -29,30 +32,28 @@ class PaymentsProxy
      */
     public function charge(ChargeableInterface $chargeable, PaymentAccount $account, $amount, $currency = null)
     {
-        if ($currency === null) {
-            $currency = config('payment.currency');
-        }
-
+        $currency = ($currency === null) ? Config::get('payment.currency') : $currency;
+ 
         // check, if the account is owned by user to be charged
         App::make(CheckIfPaymentAccountBelongsToUserTask::class)->run($chargeable, $account);
 
-        $task = config('payment.gateways.' . $account->accountable->getPaymentGatewaySlug() . '.charge_task', null);
+        $typedAccount = $account->accountable;
 
-        if (null === $task) {
+        $chargerTaskTaskName = Config::get('payment.gateways.' . $typedAccount->getPaymentGatewaySlug() . '.charge_task', null);
+
+        if ($chargerTaskTaskName === null) {
             throw new NoChargeTaskForPaymentGatewayDefinedException();
         }
 
         // create the task
-        $charger = App::make($task);
+        $chargerTask = App::make($chargerTaskTaskName);
 
         // check if it implements the required interface
-        if (! ($charger instanceof  PaymentChargerTaskInterface)) {
+        if (!$chargerTask instanceof PaymentChargerInterface) {
             throw new ChargerTaskDoesNotImplementInterfaceException();
         }
 
-        $typed_account = $account->accountable;
-
-        $result = $charger->run($chargeable, $typed_account, $amount, $currency);
+        $result = $chargerTask->charge($chargeable, $typedAccount, $amount, $currency);
 
         return $result;
     }

@@ -29,7 +29,7 @@ Events provides a simple observer implementation, allowing you to subscribe and 
 
 In laravel you can create and register events in multiple way. The recommended way by Apiato is the following:
 
-Create an Event that handles itself. (This will remove the need for the `EventsServiceProvider` which map each Event to its handler).
+Create an Event that handles itself. (This will remove the need for the `EventsServiceProvider` which maps each Event to its handler).
 **But if you prefer using that method you can extend `Apiato\Core\Abstracts\Providers\EventsProvider`.**
 
 Event Class Example:
@@ -66,7 +66,7 @@ class UserRegisteredEvent extends Event implements ShouldQueue
         return new PrivateChannel('channel-name');
     }
 }
-```  
+```
 
 
 <a name="dispatch-events"></a>
@@ -89,5 +89,4 @@ event(New UserEmailChangedEvent($user));
 <a name="Queueing"></a>
 ## Queueing an Event
 
-Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued. 
-  
+Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued.

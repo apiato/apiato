@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\Models;
 
-use App\Containers\Payment\Models\AbstractPaymentGatewayAccount;
+use App\Containers\Payment\Models\AbstractPaymentAccount;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class StripeAccount extends AbstractPaymentGatewayAccount
+class StripeAccount extends AbstractPaymentAccount
 {
 
     use SoftDeletes;

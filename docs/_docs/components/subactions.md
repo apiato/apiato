@@ -58,7 +58,7 @@ class ValidateAddressSubAction extends SubAction
     {
         $hasValidAddress = true;
 
-        $easyPostResponse = $this->call(ValidateAddressWithEasyPostTask::class, [$recipient]);
+        $easyPostResponse = Apiato::call(ValidateAddressWithEasyPostTask::class, [$recipient]);
 
         ...
     }

@@ -2,21 +2,22 @@
 
 namespace App\Containers\Wepay\Tasks;
 
-use App\Containers\Wepay\Exceptions\WepayAccountNotFoundException;
+use App\Containers\Payment\Contracts\ChargeableInterface;
+use App\Containers\Payment\Contracts\PaymentChargerInterface;
+use App\Containers\Payment\Models\AbstractPaymentAccount;
 use App\Containers\Wepay\Exceptions\WepayApiErrorException;
-use App\Containers\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
-
-use KevinEm\WePay\Laravel\WePayLaravel;
 use Exception;
 use Illuminate\Support\Facades\Config;
+use KevinEm\WePay\Laravel\WePayLaravel;
 
 /**
- * Class ChargeWithWepayTask.
+ * Class ChargeWithWepayTask
  *
- * @author Rockers Technologies <jaimin.rockersinfo@gmail.com>
+ * @author  Rockers Technologies <jaimin.rockersinfo@gmail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ChargeWithWepayTask extends Task
+class ChargeWithWepayTask extends Task implements PaymentChargerInterface
 {
 
     public $wepayLaravel;
@@ -28,27 +29,29 @@ class ChargeWithWepayTask extends Task
      */
     public function __construct(WePayLaravel $wepayLaravel)
     {
-        $this->wepayLaravel = $wepayLaravel->make(Config::get('services.wepay.client_secret'), Config::get('services.wepay.version'));
+        $this->wepayLaravel = $wepayLaravel->make(Config::get('services.wepay.client_secret'),
+            Config::get('services.wepay.version'));
     }
 
     /**
-     * @param \App\Containers\User\Models\User $user
-     * @param                                  $amount
-     * @param string                           $currency
+     * @param \App\Containers\Payment\Contracts\ChargeableInterface $user
+     * @param \App\Containers\Payment\Models\AbstractPaymentAccount $account
+     * @param                                                       $amount
+     * @param string                                                $currency
      *
      * @return  array|null
      */
-    public function run(User $user, $amount, $currency = 'USD')
+    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD')
     {
-        $stripeAccount = $user->stripeAccount;
-
-        if(!$wepayAccount){
-            throw new WepayAccountNotFoundException('We could not find your credit card information. 
-            For security reasons, we do not store your credit card information on our server. 
-            So please login to our Web App and enter your credit card information directly into Stripe, 
-            then try to purchase the credits again. 
-            Thanks.');
-        }
+//        $valid = $account->checkIfPaymentDataIsSet([...]);
+//
+//        if(!$valid){
+//            throw new WepayAccountNotFoundException('We could not find your credit card information.
+//            For security reasons, we do not store your credit card information on our server.
+//            So please login to our Web App and enter your credit card information directly into Stripe,
+//            then try to purchase the credits again.
+//            Thanks.');
+//        }
 
         try {
 

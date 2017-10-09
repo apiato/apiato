@@ -77,7 +77,7 @@ class Controller extends ApiController
      */
     public function registerUser(RegisterUserRequest $request)
     {
-        $user = $this->call(RegisterUserAction::class, [$request]);
+        $user = Apiato::call(RegisterUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -89,7 +89,7 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = $this->call(DeleteUserAction::class, [$request]);
+        $user = Apiato::call(DeleteUserAction::class, [$request]);
 
         return $this->deleted($user);
     }
@@ -98,7 +98,7 @@ class Controller extends ApiController
 }
 ```
 
-**Notice** we call the Action using `$this->call()` which triggers the `run` function in the Action as well inform the action which UI called it, (`$this->getUI()`) in case you wanna handle the same Action differently based on the UI type.
+**Notice** we call the Action using `Apiato::call()` which triggers the `run` function in the Action as well inform the action which UI called it, (`$this->getUI()`) in case you wanna handle the same Action differently based on the UI type.
 
 The second parameter of the `call` function is an array of the Action parameters in order. When you need to pass data to the Action, it's recommended to pass the Request Object as it should be the place that holds the state of your current request.
 

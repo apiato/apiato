@@ -32,7 +32,7 @@ You can enable and disable Middlewares as you wish.
 
 - If the Middleware is written inside a Container it MUST be registered inside that Container.
 
-- To register Middleware's in a Container the container needs to have `MiddlewareServiceProvider`. And like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
+- To register Middlewares in a Container the container needs to have a `MiddlewareServiceProvider`. And like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
 
 - General Middlewares (like some default Laravel Middleware's) SHOULD live in the Ship layer `app/Ship/Middlewares/*` and are registered in the Ship Main Provider.
 

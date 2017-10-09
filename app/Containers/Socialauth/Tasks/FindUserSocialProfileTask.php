@@ -5,7 +5,6 @@ namespace App\Containers\SocialAuth\Tasks;
 use App\Containers\SocialAuth\Extra\SocialProvider;
 use App\Ship\Parents\Tasks\Task;
 use Laravel\Socialite\Facades\Socialite;
-use App\Ship\Parents\Tasks\Task;
 
 /**
  * Class FindUserSocialProfileTask.

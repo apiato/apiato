@@ -21,7 +21,7 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
 ### Rules
 
 - All Models MUST extend from `App\Ship\Parents\Models\Model`.
-- If the Model's name differs from the Container name you have to set the `$container` attribute in the repository - [more details]({{ site.baseurl }}{% link _docs/components/repositories.md %}).
+- If the name of a model differs from the Container name you have to set the `$container` attribute in the repository - [more details]({{ site.baseurl }}{% link _docs/components/repositories.md %}).
 
 <a name="folder-structure"></a>
 
@@ -42,8 +42,9 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
 ### Casts
 The casts attribute can be used to parse any of the model's attributes to a specific type. In the code sample below we can cast `total_credits` to `float`.
 
-More information about the applicable cast-types can be found in the laravel [eloquent-mutators](https://laravel.com/docs/5.4/eloquent-mutators) documentation.
+More information about the applicable cast-types can be found in the laravel [eloquent-mutators](https://laravel.com/docs/5.5/eloquent-mutators) documentation.
 
+You can place any dates inside of the `$dates` to parse those automatically.
 
 <a name="code-sample"></a>
 

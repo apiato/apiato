@@ -2,10 +2,15 @@
 
 namespace App\Containers\Settings\Actions;
 
-use App\Containers\Settings\Tasks\CreateSettingTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class CreateSettingAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class CreateSettingAction extends Action
 {
 
@@ -21,7 +26,7 @@ class CreateSettingAction extends Action
             'value'
         ]);
 
-        $setting = $this->call(CreateSettingTask::class, [$data]);
+        $setting = Apiato::call('Settings@CreateSettingTask', [$data]);
 
         return $setting;
     }

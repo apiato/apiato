@@ -19,7 +19,7 @@ Thank you for considering to contribute to Apiato. This project is powered and d
     * [Reporting Bugs](#Reporting-Bugs)
     * [Fixing Bugs](#Fixing-Bugs)
     * [Adding New Features](#Adding-New-Features)
-    * [Important things to remember when contributing](#Important-points)
+    * [Contribution Guidelines](#Contribution-Guidelines)
     * [Security Vulnerabilities](#Security-Vulnerabilities)
 * [Contributing to Apiato](#Contributing-Apiato)
     * [Skeleton Project](#Contributing-Skeleton-Project)
@@ -68,7 +68,7 @@ Say we are in version `7.0` right now. The repository would have at least the fo
 
 If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. And if your PR fixes a bug, then it should be sent to the latest release branch.
 
-> If you would like to always contribute to Apiato, it's better to use the master branche instead of the latest release branch, to always have the latest features and updates.
+> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release branch, to always have the latest features and updates.
 
 <a name="Proposing-Feature"></a>
 ### Proposing Feature
@@ -104,30 +104,32 @@ Following the directions and guidelines described in the "Adding New Features" s
 
 
 <a name="Adding-New-Features"></a>
+
 ### Adding New Features
 
-If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on. If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you from doing a lot of development work only to have your feature rejected.
-
-When you do begin working on your feature, here are some guidelines to consider:
-
-* **Write tests** for any new features you add. (code without tests could be accepted in some cases).
-* **Ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally will help save time.
-* **Use topic/feature branches.**
-* **Submit one feature per pull request.** If you have multiple features you wish to submit, please break them up into separate pull requests.
-* **Send coherent history**. Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
-* **Update the Documentation**.
+If you have an idea for a new feature, 
+it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) or active [pull requests](https://github.com/apiato/apiato/pulls) first 
+to see if the feature is already being worked on. 
+If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. 
+This will save you from doing a lot of development work only to have your feature rejected.
 
 
 
-<a name="Important-points"></a>
-### Important things to remember when contributing:
+<a name="Contribution-Guidelines"></a>
+### Contribution Guidelines
+Important things to remember when contributing:
 
-- [x] Update the `CHANGELOG.md`, to include your changes.
-- [x] Be descriptive in your branch names, commit messages, and pull request title and descriptions.
-- [x] Keep your commits atomic, that is, each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
-- [x] Once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
-- [x] Comment on the pull request when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
-- [x] Before writing any line of code, run the tests `vendor/bin/phpunit`, and make sure all the tests are passing in your machine.
+* **Run tests first** Before writing any line of code, run the tests `vendor/bin/phpunit`, and make sure all the tests are passing in your machine.
+* **Use topic/feature branches** Be descriptive in your branch names, (same apply to pull request title and descriptions).
+* **Keep your commits atomic** each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
+* **Send coherent history** make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
+* **Write tests** (classes or functions) as required. Your changes must be covered with Tests (Functional or Unit). (Code without tests could be accepted in some cases).
+* **Ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally `vendor/bin/phpunit` after adding your changes will save you time.
+* **Update the Documentation** `docs/_docs/*`. 
+* **Update the CHANGELOG** `CHANGELOG.md`.
+* **Submit one feature/change per pull request.** If you have multiple features/changes you wish to submit, please break them up into separate pull requests.
+* **Push additional changes to the same PR** once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
+* **Comment on the pull request** when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
 
 
 
@@ -355,7 +357,7 @@ The docs folders `_docs/*` do not represent the categories displayed in the site
 To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
 you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
 
-To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOET: reomve the spaces between the tags
+To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags
 
 
 
@@ -385,7 +387,7 @@ This function exist on the abstract class `Apiato\Core\Generator\GeneratorComman
 For better understanding of how things work. Make sure you read that function.    
 
 
-1 - Add create new command by copy pasting any of the existing components commands aslready supported. The `Generator/Commands/RouteGenerator.php` is great example.
+1 - Add create new command by copy pasting any of the existing components commands already supported. The `Generator/Commands/RouteGenerator.php` is a great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
@@ -410,17 +412,15 @@ For each generator you need to implement exactly one method (as it is defined in
 
 ```php
         $this->registerGenerators([
-            'Action',
-            'Route',
-            'Task',
+            ActionGenerator::class,
+            RouteGenerator::class,
+            TaskGenerator::class,
             // ...
         ]);
 ```
 
-4 - Default Filename (optional)
+4 - Default FileName & FileExtension(optional)
 
-You may provide another default filename by overriding the `getDefaultFileName()` method, which simply returns a `string`.
-
-
-
+You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()` 
+method, which simply returns a `string`.
 

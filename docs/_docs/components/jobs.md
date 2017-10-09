@@ -15,7 +15,7 @@ order: 33
 ### Definition
 
 Jobs is a name given to classes that are usually created to be queued (deferred for later).
-When a Job class is dispatched, it perform specific job and die.
+When a Job class is dispatched, it performs a specific job and dies.
 
 <a name="principles"></a>
 

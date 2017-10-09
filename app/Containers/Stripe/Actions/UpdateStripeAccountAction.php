@@ -2,13 +2,22 @@
 
 namespace App\Containers\Stripe\Actions;
 
+<<<<<<< HEAD
 use App\Containers\Authentication\Tasks\FindAuthenticatedUserTask;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
 use App\Containers\Stripe\Tasks\FindStripeAccountByIdTask;
 use App\Containers\Stripe\Tasks\UpdateStripeAccountTask;
+=======
+>>>>>>> apiato
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class UpdateStripeAccountAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class UpdateStripeAccountAction extends Action
 {
 
@@ -19,13 +28,21 @@ class UpdateStripeAccountAction extends Action
      */
     public function run(Request $request)
     {
+<<<<<<< HEAD
         $user = $this->call(FindAuthenticatedUserTask::class);
 
         // check, if this account does - in fact - belong to our user
         $accountId = $request->getInputByKey('id');
         $account = $this->call(FindStripeAccountByIdTask::class, [$accountId]);
+=======
+        $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
+
+        // check, if this account does - in fact - belong to our user
+        $accountId = $request->getInputByKey('id');
+        $account = Apiato::call('Payment@GetStripeAccountByIdTask', [$accountId]);
+>>>>>>> apiato
         $paymentAccount = $account->paymentAccount;
-        $this->call(CheckIfPaymentAccountBelongsToUserTask::class, [$user, $paymentAccount]);
+        Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);
 
         // we own this account - so it is safe to update it
         $data = $request->sanitizeInput([
@@ -36,7 +53,7 @@ class UpdateStripeAccountAction extends Action
             'card_fingerprint',
         ]);
 
-        $account = $this->call(UpdateStripeAccountTask::class, [$account, $data]);
+        $account = Apiato::call('Stripe@UpdateStripeAccountTask', [$account, $data]);
 
         return $account;
     }

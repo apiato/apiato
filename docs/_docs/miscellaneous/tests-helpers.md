@@ -231,7 +231,7 @@ See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, fo
 ## Create live Testing Data
 
 To test your app with some live testing data (like creating items in an inventory) you can use this feature to
-automatically genereate those data. This is also helpful for staging when real people are testing your app with some testing data.
+automatically generate those data. This is also helpful for staging when real people are testing your app with some testing data.
 
 1. Go to `Seeder/SeedTestingData.php` seeder class, and create your live testing data.
 

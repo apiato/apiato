@@ -42,7 +42,7 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 - Repository name should be same like it's model name (model: `Foo` -> repository: `FooRepository`).
 
-- If a Repository belongs to Model with name different than its Container name, The Repository must set `$container='ContainerName'` property. *See an example below*
+- If a Repository belongs to a Model whose name is not equal to its Container name, then the Repository must set the `$container` property like this: `$container='ContainerName'`. *See an example below*
 
 <a name="folder-structure"></a>
 
@@ -125,7 +125,7 @@ class RoleRepository extends Repository
     ];
 
 }
-```	 
+```
 
 <a name="other-properties"></a>
 

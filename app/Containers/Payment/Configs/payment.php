@@ -9,11 +9,17 @@ return [
 
     'gateways' => [
         'stripe' => [
-            'container' => 'Stripe',
+            'container'   => 'Stripe',
             'charge_task' => App\Containers\Stripe\Tasks\ChargeWithStripeTask::class,
         ],
-        'paypal' => [],
-        'wepay' => []
+        'wepay'  => [
+            'container'   => 'Wepay',
+            'charge_task' => App\Containers\Wepay\Tasks\ChargeWithWepayTask::class,
+        ],
+        'paypal' => [
+            // ...
+        ],
+        // ...
     ],
 
 ];

@@ -173,8 +173,18 @@ If you're not into virtualization solutions, you can setup your environment dire
 
 1) Clone the repo, install dependencies and setup the project:
 
+
+Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
+
 ```shell
 composer create-project apiato/apiato api
+```
+
+Latest [master](https://github.com/apiato/apiato/commits/master) dev version:
+*This gives you features from the upcoming release.* 
+
+```shell
+composer create-project apiato/apiato:dev-master api
 ```
 
 2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
@@ -234,6 +244,10 @@ php artisan migrate
 ```shell
 php artisan db:seed
 ```
+
+3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set to it). 
+
+To give the `admin` role, access to all the seeded permissions in the system, run the following command `php artisan apiato:permissions:toRole admin` at any time.
 
 **NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
 

@@ -39,7 +39,7 @@ class Controller extends ApiController
 {
 	public function sayHello(SayHelloRequest $request)
 	{
-            $helloMessage = $this->call(SayHelloAction::class);
+            $helloMessage = Apiato::call(SayHelloAction::class);
 
             $this->json([
                 $helloMessage

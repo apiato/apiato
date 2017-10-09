@@ -8,6 +8,8 @@ order: 4
 - [Responses](#responses)
 - [Assign Roles & Permission to the Testing User](#assign-roles-permission-to-the-testing-user)
 - [Seeding some users (Admins)](#seeding-some-users-admins)
+- [Roles & Permissions guards](#Roles-Permissions-guards)
+
 
 <br >
 <br >
@@ -85,18 +87,36 @@ class DeleteUserRequest extends Request
 ```
 
 <a name="assign-roles-permission-to-the-testing-user"></a>
-
 ## Assign Roles & Permission to the Testing User
 
 You will need to set `$access` property in your test class, check out the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) page for more details.
 
-<a name="seeding-some-users-admins"></a>
 
+<a name="seeding-some-users-admins"></a>
 ## Seeding some users (Admins)
 
-By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard and some default permissions. This Super Admin Credentials are:
+By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard. 
+
+This Super Admin Credentials are:
 
 + email: admin@admin.com
 + password: admin
 
-Checkout each container seeding directory `app/Containers/{container-name}/Data/Seeders/`, to edit the default **Admins**, **Roles** and **Permissions**.
+This Admin seeded by `app/Containers/Authorization/Data/Seeders/AuthorizationDefaultUsersSeeder_3.php`. 
+
+The Default Super User, has a default role `admin`.
+
+The `admin` default role **has no permissions given to it**. 
+
+To give permissions to the `admin` role (or any other role), you can use the dedicated endpoints (from your custom Admin Interface) or use this command `php artisan apiato:permissions:toRole admin` to give it all the permissions in the system.
+
+Checkout each container **Seeders** directory `app/Containers/{container-name}/Data/Seeders/`, to edit the default **Users**, **Roles** and **Permissions**.
+
+<a name="Roles-Permissions-guards"></a>
+## Roles & Permissions guards
+
+By default Apiato uses a single guard called `web` for all it's roles and permissions, you can add/edit this behavior and support multiple guards at any time. Refer to the [laravel-permission](https://github.com/spatie/laravel-permission#using-multiple-guards) package for more details.
+
+
+
+

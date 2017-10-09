@@ -5,8 +5,15 @@ namespace App\Containers\Payment\Models;
 use App\Ship\Parents\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class PaymentAccount
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class PaymentAccount extends Model
 {
+
     use SoftDeletes;
 
     protected $fillable = [
@@ -21,7 +28,16 @@ class PaymentAccount extends Model
         'updated_at',
     ];
 
-    public function accountable() {
+    protected $casts = [
+        'user_id' => 'integer',
+    ];
+
+
+    /**
+     * @return  \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function accountable()
+    {
         return $this->morphTo();
     }
 }

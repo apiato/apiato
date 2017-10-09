@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\App;
  */
 class GetAllRolesAction extends Action
 {
+
     /**
      * @return  mixed
      */

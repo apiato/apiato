@@ -27,5 +27,7 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
         App::make(CreatePermissionTask::class)->run('manage-admins-access', 'Assign users to Roles.');
         App::make(CreatePermissionTask::class)->run('access-dashboard', 'Access the admins dashboard.');
 
+        // ...
+
     }
 }

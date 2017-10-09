@@ -2,43 +2,44 @@
 
 namespace App\Containers\Payment\Traits;
 
+use App\Containers\Payment\Gateway\PaymentsGateway;
 use App\Containers\Payment\Models\PaymentAccount;
-use App\Containers\Payment\Proxies\PaymentsProxy;
 use Illuminate\Support\Facades\App;
 use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
 
 /**
  * Class ChargeableTrait.
  *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 trait ChargeableTrait
 {
 
     /**
-     * @param PaymentAccount $account
-     * @param float          $amount
-     * @param string         $currency
+     * @param \App\Containers\Payment\Models\PaymentAccount $account
+     * @param                                               $amount
+     * @param null                                          $currencyCode
      *
-     * @return
+     * @return  mixed
      */
-    public function charge(PaymentAccount $account, $amount, $currency)
+    public function charge(PaymentAccount $account, $amount, $currencyCode = null)
     {
-        return App::make(PaymentsProxy::class)->charge($this, $account, $amount, $currency);
+        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currencyCode);
     }
 
     /**
-     * @param PaymentAccount $account
-     * @param ShoppingCart   $cart
-     * @param string         $currency
+     * @param \App\Containers\Payment\Models\PaymentAccount     $account
+     * @param \JohannesSchobel\ShoppingCart\Models\ShoppingCart $cart
+     * @param null                                              $currency
      *
-     * @return mixed
+     * @return  mixed
      */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency)
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency = null)
     {
         $amount = $cart->getTotal();
 
-        return App::make(PaymentsProxy::class)->charge($this, $account, $amount, $currency);
+        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
     }
 
 }

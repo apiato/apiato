@@ -3,7 +3,6 @@
 namespace App\Containers\Wepay\UI\API\Tests\Functional;
 
 use App\Containers\Wepay\Tests\TestCase;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateWepayAccountTest.
@@ -13,7 +12,7 @@ use Illuminate\Support\Facades\App;
 class CreateWepayAccountTest extends TestCase
 {
 
-    protected $endpoint = 'post@v1/wepays';
+    protected $endpoint = 'post@v1/user/payments/accounts/wepay';
 
     protected $access = [
         'permissions' => '',
@@ -38,6 +37,7 @@ class CreateWepayAccountTest extends TestCase
             'imageUrl'      => 'https://someurl.com',
             'country'       => 'US',
             'currencies'    => 'USD',
+            'nickname'      => 'test account for wepay',
         ];
 
         // send the HTTP request

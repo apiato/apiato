@@ -2,17 +2,26 @@
 
 namespace App\Containers\Settings\UI\API\Controllers;
 
+<<<<<<< HEAD
 use App\Containers\Settings\Actions\CreateSettingAction;
 use App\Containers\Settings\Actions\DeleteSettingAction;
 use App\Containers\Settings\Actions\GetAllSettingsAction;
 use App\Containers\Settings\Actions\UpdateSettingAction;
+=======
+>>>>>>> apiato
 use App\Containers\Settings\UI\API\Requests\CreateSettingRequest;
 use App\Containers\Settings\UI\API\Requests\DeleteSettingRequest;
 use App\Containers\Settings\UI\API\Requests\GetAllSettingsRequest;
 use App\Containers\Settings\UI\API\Requests\UpdateSettingRequest;
 use App\Containers\Settings\UI\API\Transformers\SettingTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class Controller
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class Controller extends ApiController
 {
 
@@ -25,7 +34,11 @@ class Controller extends ApiController
      */
     public function getAllSettings(GetAllSettingsRequest $request)
     {
+<<<<<<< HEAD
         $settings = $this->call(GetAllSettingsAction::class, [$request]);
+=======
+        $settings = Apiato::call('Settings@ListSettingsAction', [$request]);
+>>>>>>> apiato
 
         return $this->transform($settings, SettingTransformer::class);
     }
@@ -39,7 +52,7 @@ class Controller extends ApiController
      */
     public function createSetting(CreateSettingRequest $request)
     {
-        $setting = $this->call(CreateSettingAction::class, [$request]);
+        $setting = Apiato::call('Settings@CreateSettingAction', [$request]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -53,7 +66,7 @@ class Controller extends ApiController
      */
     public function updateSetting(UpdateSettingRequest $request)
     {
-        $setting = $this->call(UpdateSettingAction::class, [$request]);
+        $setting = Apiato::call('Settings@UpdateSettingAction', [$request]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -67,7 +80,7 @@ class Controller extends ApiController
      */
     public function deleteSetting(DeleteSettingRequest $request)
     {
-        $setting = $this->call(DeleteSettingAction::class, [$request]);
+        $setting = Apiato::call('Settings@DeleteSettingAction', [$request]);
 
         return $this->noContent();
     }

@@ -4,7 +4,7 @@ category: "Features"
 order: 99
 ---
 
-Since Laravel doesn't support API versioning, **apiato** provide a very easy way to implement versioning for your API.
+Since Laravel does not support API versioning, **apiato** provide a very easy way to implement versioning for your API.
 
 
 ### How it works

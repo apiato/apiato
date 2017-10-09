@@ -189,7 +189,7 @@ class AssignUserToRoleRequest extends Request
 
 The **$urlParameters** property is used for applying validation rules on the URL parameters:
 
-Laravel by default doesn't allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
+Laravel by default does not allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
 
 Example:
 
@@ -348,7 +348,7 @@ With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able t
 Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`,
 however, it works on the **decoded** values instead of the original data.
 
-Consider the following `$request` data:
+Consider the following Request data in case you are passing `application/json` data instead of `x-www-form-urlencoded`:
 ```json
 {
   "data" : {
@@ -377,6 +377,7 @@ b) partially update the respective resource
 Checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
 
 ```php
+<?php
 // ...
 if($request->has('data.name')) {
    $data['name'] = $request->input('data.name'); // or use getInputByKey()
@@ -393,9 +394,10 @@ However, in PHP `false` and `''` _(empty string)_ are also considered as `empty`
 
 You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
 
-In order to simplify sanitizing `Request Data`, apiato offers a convenient `sanitizeInput($fields)` method for developers.
+In order to simplify sanitizing `Request Data` when using `application/json` instead of `x-www-form-urlencoded`, 
+apiato offers a convenient `sanitizeInput($fields)` method.
 
-Consider the following `$request` data:
+Consider the following Request data:
 
 ```json
 {
@@ -442,6 +444,9 @@ Note that `data.blabla` is not within the `$data` array, as it was not present w
 other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of
 `filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
 the fields to would like to pass through. This makes partially updating an resource quite easy!
+
+
+
 
 **Heads Up:**
 
