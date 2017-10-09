@@ -5,7 +5,7 @@ namespace App\Containers\SocialAuth\Actions;
 use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask;
 use App\Containers\SocialAuth\Tasks\FindSocialUserTask;
-use App\Containers\SocialAuth\Tasks\GetUserSocialProfileTask;
+use App\Containers\SocialAuth\Tasks\FindUserSocialProfileTask;
 use App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask;
 use App\Ship\Parents\Actions\Action;
 
@@ -33,7 +33,7 @@ class SocialLoginAction extends Action
         // TODO: needs refactoring so bad :D
 
         // fetch the user data from facebook
-        $socialUserProfile = $this->call(GetUserSocialProfileTask::class, [$provider, $request->all()]);
+        $socialUserProfile = $this->call(FindUserSocialProfileTask::class, [$provider, $request->all()]);
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
         $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;

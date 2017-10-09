@@ -5,7 +5,7 @@ namespace App\Containers\Authorization\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class GetRoleRequest.
+ * Class FindRoleRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

@@ -23,7 +23,7 @@ class UserPermissionsSeeder_1 extends Seeder
         // Default Permissions ----------------------------------------------------------
 
         App::make(CreatePermissionTask::class)->run('search-users', 'Find a User in the DB.');
-        App::make(CreatePermissionTask::class)->run('list-users', 'List all Users.');
+        App::make(CreatePermissionTask::class)->run('list-users', 'Get All Users.');
         App::make(CreatePermissionTask::class)->run('update-users', 'Update a User.');
         App::make(CreatePermissionTask::class)->run('delete-users', 'Delete a User.');
         App::make(CreatePermissionTask::class)->run('refresh-users', 'Refresh User data.');

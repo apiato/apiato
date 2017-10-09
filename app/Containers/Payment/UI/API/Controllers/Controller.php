@@ -3,12 +3,12 @@
 namespace App\Containers\Payment\UI\API\Controllers;
 
 use App\Containers\Payment\Actions\DeletePaymentAccountAction;
-use App\Containers\Payment\Actions\GetPaymentAccountDetailsAction;
-use App\Containers\Payment\Actions\GetPaymentAccountsAction;
+use App\Containers\Payment\Actions\FindPaymentAccountDetailsAction;
+use App\Containers\Payment\Actions\GetAllPaymentAccountsAction;
 use App\Containers\Payment\Actions\UpdatePaymentAccountAction;
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
-use App\Containers\Payment\UI\API\Requests\GetPaymentAccountDetails;
-use App\Containers\Payment\UI\API\Requests\GetPaymentAccountsRequest;
+use App\Containers\Payment\UI\API\Requests\FindPaymentAccountDetails;
+use App\Containers\Payment\UI\API\Requests\GetAllPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -23,25 +23,25 @@ class Controller extends ApiController
 {
 
     /**
-     * @param GetPaymentAccountsRequest $request
+     * @param GetAllPaymentAccountsRequest $request
      *
      * @return array
      */
-    public function getPaymentAccounts(GetPaymentAccountsRequest $request)
+    public function getPaymentAccounts(GetAllPaymentAccountsRequest $request)
     {
-        $paymentAccounts = $this->call(GetPaymentAccountsAction::class, [$request]);
+        $paymentAccounts = $this->call(GetAllPaymentAccountsAction::class, [$request]);
 
         return $this->transform($paymentAccounts, PaymentAccountTransformer::class);
     }
 
     /**
-     * @param GetPaymentAccountDetails $request
+     * @param FindPaymentAccountDetails $request
      *
      * @return array
      */
-    public function getPaymentAccountDetails(GetPaymentAccountDetails $request)
+    public function getPaymentAccountDetails(FindPaymentAccountDetails $request)
     {
-        $paymentAccount = $this->call(GetPaymentAccountDetailsAction::class, [$request]);
+        $paymentAccount = $this->call(FindPaymentAccountDetailsAction::class, [$request]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }

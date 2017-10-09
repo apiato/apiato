@@ -4,18 +4,18 @@ namespace App\Containers\User\UI\API\Controllers;
 
 use App\Containers\User\Actions\CreateAdminAction;
 use App\Containers\User\Actions\DeleteUserAction;
-use App\Containers\User\Actions\GetMyProfileAction;
-use App\Containers\User\Actions\GetUserAction;
-use App\Containers\User\Actions\ListAdminsAction;
-use App\Containers\User\Actions\ListAndSearchUsersAction;
-use App\Containers\User\Actions\ListClientsAction;
+use App\Containers\User\Actions\FindMyProfileAction;
+use App\Containers\User\Actions\FindUserAction;
+use App\Containers\User\Actions\GetAllAdminsAction;
+use App\Containers\User\Actions\GetAllAndSearchUsersAction;
+use App\Containers\User\Actions\GetAllClientsAction;
 use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Actions\UpdateUserAction;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\GetMyProfileRequest;
-use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
-use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
+use App\Containers\User\UI\API\Requests\FindMyProfileRequest;
+use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
+use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -78,61 +78,61 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllUsers(ListAllUsersRequest $request)
+    public function listAllUsers(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListAndSearchUsersAction::class);
+        $users = $this->call(GetAllAndSearchUsersAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllClients(ListAllUsersRequest $request)
+    public function listAllClients(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListClientsAction::class);
+        $users = $this->call(GetAllClientsAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllAdmins(ListAllUsersRequest $request)
+    public function listAllAdmins(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListAdminsAction::class);
+        $users = $this->call(GetAllAdminsAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\GetUserByIdRequest $request
+     * @param \App\Containers\User\UI\API\Requests\FindUserByIdRequest $request
      *
      * @return  mixed
      */
-    public function getUser(GetUserByIdRequest $request)
+    public function getUser(FindUserByIdRequest $request)
     {
-        $user = $this->call(GetUserAction::class, [$request]);
+        $user = $this->call(FindUserAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
 
     /**
-     * @param GetMyProfileRequest $request
+     * @param FindMyProfileRequest $request
      *
      * @return mixed
      */
-    public function getUserProfile(GetMyProfileRequest $request)
+    public function getUserProfile(FindMyProfileRequest $request)
     {
-        $user = $this->call(GetMyProfileAction::class, [$request]);
+        $user = $this->call(FindMyProfileAction::class, [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

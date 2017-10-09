@@ -7,10 +7,10 @@ use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\Authorization\Actions\CreateRoleAction;
 use App\Containers\Authorization\Actions\DeleteRoleAction;
 use App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction;
-use App\Containers\Authorization\Actions\GetPermissionAction;
-use App\Containers\Authorization\Actions\GetRoleAction;
-use App\Containers\Authorization\Actions\ListAllPermissionsAction;
-use App\Containers\Authorization\Actions\ListAllRolesAction;
+use App\Containers\Authorization\Actions\FindPermissionAction;
+use App\Containers\Authorization\Actions\FindRoleAction;
+use App\Containers\Authorization\Actions\GetAllPermissionsAction;
+use App\Containers\Authorization\Actions\GetAllRolesAction;
 use App\Containers\Authorization\Actions\RevokeUserFromRoleAction;
 use App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction;
 use App\Containers\Authorization\Actions\SyncUserRolesAction;
@@ -19,10 +19,10 @@ use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\GetPermissionRequest;
-use App\Containers\Authorization\UI\API\Requests\GetRoleRequest;
-use App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest;
-use App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest;
+use App\Containers\Authorization\UI\API\Requests\FindPermissionRequest;
+use App\Containers\Authorization\UI\API\Requests\FindRoleRequest;
+use App\Containers\Authorization\UI\API\Requests\GetAllPermissionsRequest;
+use App\Containers\Authorization\UI\API\Requests\GetAllRolesRequest;
 use App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
@@ -40,49 +40,49 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\ListAllPermissionsRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\GetAllPermissionsRequest $request
      *
      * @return  mixed
      */
-    public function listAllPermissions(ListAllPermissionsRequest $request)
+    public function listAllPermissions(GetAllPermissionsRequest $request)
     {
-        $permissions = $this->call(ListAllPermissionsAction::class);
+        $permissions = $this->call(GetAllPermissionsAction::class);
 
         return $this->transform($permissions, PermissionTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetPermissionRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\FindPermissionRequest $request
      *
      * @return  mixed
      */
-    public function getPermission(GetPermissionRequest $request)
+    public function getPermission(FindPermissionRequest $request)
     {
-        $permission = $this->call(GetPermissionAction::class, [$request]);
+        $permission = $this->call(FindPermissionAction::class, [$request]);
 
         return $this->transform($permission, PermissionTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\ListAllRolesRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\GetAllRolesRequest $request
      *
      * @return  mixed
      */
-    public function listAllRoles(ListAllRolesRequest $request)
+    public function listAllRoles(GetAllRolesRequest $request)
     {
-        $roles = $this->call(ListAllRolesAction::class);
+        $roles = $this->call(GetAllRolesAction::class);
 
         return $this->transform($roles, RoleTransformer::class);
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetRoleRequest $request
+     * @param \App\Containers\Authorization\UI\API\Requests\FindRoleRequest $request
      *
      * @return  mixed
      */
-    public function getRole(GetRoleRequest $request)
+    public function getRole(FindRoleRequest $request)
     {
-        $role = $this->call(GetRoleAction::class, [$request]);
+        $role = $this->call(FindRoleAction::class, [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }

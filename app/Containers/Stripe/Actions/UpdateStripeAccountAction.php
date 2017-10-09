@@ -2,9 +2,9 @@
 
 namespace App\Containers\Stripe\Actions;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
+use App\Containers\Authentication\Tasks\FindAuthenticatedUserTask;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
-use App\Containers\Stripe\Tasks\GetStripeAccountByIdTask;
+use App\Containers\Stripe\Tasks\FindStripeAccountByIdTask;
 use App\Containers\Stripe\Tasks\UpdateStripeAccountTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -19,11 +19,11 @@ class UpdateStripeAccountAction extends Action
      */
     public function run(Request $request)
     {
-        $user = $this->call(GetAuthenticatedUserTask::class);
+        $user = $this->call(FindAuthenticatedUserTask::class);
 
         // check, if this account does - in fact - belong to our user
         $accountId = $request->getInputByKey('id');
-        $account = $this->call(GetStripeAccountByIdTask::class, [$accountId]);
+        $account = $this->call(FindStripeAccountByIdTask::class, [$accountId]);
         $paymentAccount = $account->paymentAccount;
         $this->call(CheckIfPaymentAccountBelongsToUserTask::class, [$user, $paymentAccount]);
 

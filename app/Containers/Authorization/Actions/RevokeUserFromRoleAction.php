@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
+use App\Containers\Authorization\Tasks\FindRoleTask;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
@@ -35,7 +35,7 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-            $role = $this->call(GetRoleTask::class, [$roleId]);
+            $role = $this->call(FindRoleTask::class, [$roleId]);
             $roles->add($role);
         }
 

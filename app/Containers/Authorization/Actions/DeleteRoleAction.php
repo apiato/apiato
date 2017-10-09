@@ -3,7 +3,7 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Containers\Authorization\Tasks\DeleteRoleTask;
-use App\Containers\Authorization\Tasks\GetRoleTask;
+use App\Containers\Authorization\Tasks\FindRoleTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -22,7 +22,7 @@ class DeleteRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$request->id]);
+        $role = $this->call(FindRoleTask::class, [$request->id]);
         $this->call(DeleteRoleTask::class, [$role]);
 
         return $role;

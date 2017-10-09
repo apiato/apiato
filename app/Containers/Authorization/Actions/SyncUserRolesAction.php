@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
+use App\Containers\Authorization\Tasks\FindRoleTask;
 use App\Containers\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -30,7 +30,7 @@ class SyncUserRolesAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = $this->call(GetRoleTask::class, [$roleId]);
+            $roles[] = $this->call(FindRoleTask::class, [$roleId]);
         }
 
         $user->syncRoles($roles);

@@ -4,11 +4,11 @@ namespace App\Containers\Settings\UI\API\Controllers;
 
 use App\Containers\Settings\Actions\CreateSettingAction;
 use App\Containers\Settings\Actions\DeleteSettingAction;
-use App\Containers\Settings\Actions\ListSettingsAction;
+use App\Containers\Settings\Actions\GetAllSettingsAction;
 use App\Containers\Settings\Actions\UpdateSettingAction;
 use App\Containers\Settings\UI\API\Requests\CreateSettingRequest;
 use App\Containers\Settings\UI\API\Requests\DeleteSettingRequest;
-use App\Containers\Settings\UI\API\Requests\ListAllSettingsRequest;
+use App\Containers\Settings\UI\API\Requests\GetAllSettingsRequest;
 use App\Containers\Settings\UI\API\Requests\UpdateSettingRequest;
 use App\Containers\Settings\UI\API\Transformers\SettingTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -17,15 +17,15 @@ class Controller extends ApiController
 {
 
     /**
-     * List all application settings
+     * Get All application settings
      *
-     * @param ListAllSettingsRequest $request
+     * @param GetAllSettingsRequest $request
      *
      * @return mixed
      */
-    public function listAllSettings(ListAllSettingsRequest $request)
+    public function listAllSettings(GetAllSettingsRequest $request)
     {
-        $settings = $this->call(ListSettingsAction::class, [$request]);
+        $settings = $this->call(GetAllSettingsAction::class, [$request]);
 
         return $this->transform($settings, SettingTransformer::class);
     }

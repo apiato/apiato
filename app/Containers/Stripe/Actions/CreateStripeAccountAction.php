@@ -2,7 +2,7 @@
 
 namespace App\Containers\Stripe\Actions;
 
-use App\Containers\Authentication\Tasks\GetAuthenticatedUserTask;
+use App\Containers\Authentication\Tasks\FindAuthenticatedUserTask;
 use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
 use App\Containers\Stripe\Tasks\CreateStripeAccountTask;
 use App\Ship\Parents\Actions\Action;
@@ -24,7 +24,7 @@ class CreateStripeAccountAction extends Action
     public function run(Request $request)
     {
 
-        $user = $this->call(GetAuthenticatedUserTask::class);
+        $user = $this->call(FindAuthenticatedUserTask::class);
 
         $data = $request->sanitizeInput([
             'customer_id',
