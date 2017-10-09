@@ -2,12 +2,6 @@
 
 namespace App\Containers\Stripe\Actions;
 
-<<<<<<< HEAD
-use App\Containers\Authentication\Tasks\FindAuthenticatedUserTask;
-use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
-use App\Containers\Stripe\Tasks\CreateStripeAccountTask;
-=======
->>>>>>> apiato
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -28,11 +22,7 @@ class CreateStripeAccountAction extends Action
     public function run(Request $request)
     {
 
-<<<<<<< HEAD
-        $user = $this->call(FindAuthenticatedUserTask::class);
-=======
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
->>>>>>> apiato
 
         $data = $request->sanitizeInput([
             'customer_id',

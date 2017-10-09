@@ -19,13 +19,8 @@
 }
  */
 
-<<<<<<< HEAD
 $router->patch('user/paymentaccounts/stripe/{id}', [
     'as' => 'api_stripe_update_stripe_account',
-=======
-$router->patch('user/payments/accounts/stripe/{id}', [
-    'as' => 'API_Stripe_updateStripeAccount',
->>>>>>> apiato
     'uses'  => 'Controller@updateStripeAccount',
     'middleware' => [
       'auth:api',

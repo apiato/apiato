@@ -2,10 +2,6 @@
 
 namespace App\Containers\Authorization\Actions;
 
-<<<<<<< HEAD
-use App\Containers\Authorization\Tasks\FindRoleTask;
-=======
->>>>>>> apiato
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -38,11 +34,7 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-<<<<<<< HEAD
-            $role = $this->call(FindRoleTask::class, [$roleId]);
-=======
             $role = Apiato::call('Authorization@GetRoleTask', [$roleId]);
->>>>>>> apiato
             $roles->add($role);
         }
 

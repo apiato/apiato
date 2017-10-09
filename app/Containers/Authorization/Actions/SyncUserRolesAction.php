@@ -2,11 +2,6 @@
 
 namespace App\Containers\Authorization\Actions;
 
-<<<<<<< HEAD
-use App\Containers\Authorization\Tasks\FindRoleTask;
-use App\Containers\User\Tasks\FindUserByIdTask;
-=======
->>>>>>> apiato
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -34,11 +29,7 @@ class SyncUserRolesAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-<<<<<<< HEAD
-            $roles[] = $this->call(FindRoleTask::class, [$roleId]);
-=======
             $roles[] = Apiato::call('Authorization@GetRoleTask', [$roleId]);
->>>>>>> apiato
         }
 
         $user->syncRoles($roles);

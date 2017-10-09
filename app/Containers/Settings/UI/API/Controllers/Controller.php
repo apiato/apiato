@@ -2,13 +2,6 @@
 
 namespace App\Containers\Settings\UI\API\Controllers;
 
-<<<<<<< HEAD
-use App\Containers\Settings\Actions\CreateSettingAction;
-use App\Containers\Settings\Actions\DeleteSettingAction;
-use App\Containers\Settings\Actions\GetAllSettingsAction;
-use App\Containers\Settings\Actions\UpdateSettingAction;
-=======
->>>>>>> apiato
 use App\Containers\Settings\UI\API\Requests\CreateSettingRequest;
 use App\Containers\Settings\UI\API\Requests\DeleteSettingRequest;
 use App\Containers\Settings\UI\API\Requests\GetAllSettingsRequest;
@@ -34,11 +27,7 @@ class Controller extends ApiController
      */
     public function getAllSettings(GetAllSettingsRequest $request)
     {
-<<<<<<< HEAD
-        $settings = $this->call(GetAllSettingsAction::class, [$request]);
-=======
         $settings = Apiato::call('Settings@ListSettingsAction', [$request]);
->>>>>>> apiato
 
         return $this->transform($settings, SettingTransformer::class);
     }

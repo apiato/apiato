@@ -2,13 +2,6 @@
 
 namespace App\Containers\Stripe\Actions;
 
-<<<<<<< HEAD
-use App\Containers\Authentication\Tasks\FindAuthenticatedUserTask;
-use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
-use App\Containers\Stripe\Tasks\FindStripeAccountByIdTask;
-use App\Containers\Stripe\Tasks\UpdateStripeAccountTask;
-=======
->>>>>>> apiato
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -28,19 +21,11 @@ class UpdateStripeAccountAction extends Action
      */
     public function run(Request $request)
     {
-<<<<<<< HEAD
-        $user = $this->call(FindAuthenticatedUserTask::class);
-
-        // check, if this account does - in fact - belong to our user
-        $accountId = $request->getInputByKey('id');
-        $account = $this->call(FindStripeAccountByIdTask::class, [$accountId]);
-=======
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         // check, if this account does - in fact - belong to our user
         $accountId = $request->getInputByKey('id');
         $account = Apiato::call('Payment@GetStripeAccountByIdTask', [$accountId]);
->>>>>>> apiato
         $paymentAccount = $account->paymentAccount;
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);
 

@@ -2,14 +2,6 @@
 
 namespace App\Containers\SocialAuth\Actions;
 
-<<<<<<< HEAD
-use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
-use App\Containers\SocialAuth\Tasks\CreateUserBySocialProfileTask;
-use App\Containers\SocialAuth\Tasks\FindSocialUserTask;
-use App\Containers\SocialAuth\Tasks\FindUserSocialProfileTask;
-use App\Containers\SocialAuth\Tasks\UpdateUserSocialProfileTask;
-=======
->>>>>>> apiato
 use App\Ship\Parents\Actions\Action;
 use Apiato\Core\Foundation\Facades\Apiato;
 
@@ -37,11 +29,7 @@ class SocialLoginAction extends Action
         // TODO: needs refactoring so bad :D
 
         // fetch the user data from facebook
-<<<<<<< HEAD
-        $socialUserProfile = $this->call(FindUserSocialProfileTask::class, [$provider, $request->all()]);
-=======
         $socialUserProfile = Apiato::call('SocialAuth@GetUserSocialProfileTask', [$provider, $request->all()]);
->>>>>>> apiato
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
         $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;

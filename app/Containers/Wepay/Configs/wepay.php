@@ -2,7 +2,6 @@
 
 return [
 
-<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Wepay Container
@@ -13,8 +12,6 @@ return [
     |
     */
 
-];
-=======
     'client_id' => env('WEPAY_CLIENT_ID'),
 
     'client_secret' => env('WEPAY_CLIENT_SECRET'),
@@ -28,4 +25,3 @@ return [
     'version' => env('WEPAY_VERSION')
 
 ];
->>>>>>> apiato

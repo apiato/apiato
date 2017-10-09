@@ -2,21 +2,6 @@
 
 namespace App\Containers\Authorization\UI\API\Controllers;
 
-<<<<<<< HEAD
-use App\Containers\Authorization\Actions\AssignUserToRoleAction;
-use App\Containers\Authorization\Actions\AttachPermissionsToRoleAction;
-use App\Containers\Authorization\Actions\CreateRoleAction;
-use App\Containers\Authorization\Actions\DeleteRoleAction;
-use App\Containers\Authorization\Actions\DetachPermissionsFromRoleAction;
-use App\Containers\Authorization\Actions\FindPermissionAction;
-use App\Containers\Authorization\Actions\FindRoleAction;
-use App\Containers\Authorization\Actions\GetAllPermissionsAction;
-use App\Containers\Authorization\Actions\GetAllRolesAction;
-use App\Containers\Authorization\Actions\RevokeUserFromRoleAction;
-use App\Containers\Authorization\Actions\SyncPermissionsOnRoleAction;
-use App\Containers\Authorization\Actions\SyncUserRolesAction;
-=======
->>>>>>> apiato
 use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
 use App\Containers\Authorization\UI\API\Requests\CreateRoleRequest;
@@ -50,11 +35,7 @@ class Controller extends ApiController
      */
     public function getAllPermissions(GetAllPermissionsRequest $request)
     {
-<<<<<<< HEAD
-        $permissions = $this->call(GetAllPermissionsAction::class);
-=======
         $permissions = Apiato::call('Authorization@ListAllPermissionsAction');
->>>>>>> apiato
 
         return $this->transform($permissions, PermissionTransformer::class);
     }
@@ -66,11 +47,7 @@ class Controller extends ApiController
      */
     public function findPermission(FindPermissionRequest $request)
     {
-<<<<<<< HEAD
-        $permission = $this->call(FindPermissionAction::class, [$request]);
-=======
         $permission = Apiato::call('Authorization@GetPermissionAction', [$request]);
->>>>>>> apiato
 
         return $this->transform($permission, PermissionTransformer::class);
     }
@@ -82,11 +59,7 @@ class Controller extends ApiController
      */
     public function getAllRoles(GetAllRolesRequest $request)
     {
-<<<<<<< HEAD
-        $roles = $this->call(GetAllRolesAction::class);
-=======
         $roles = Apiato::call('Authorization@ListAllRolesAction');
->>>>>>> apiato
 
         return $this->transform($roles, RoleTransformer::class);
     }
@@ -98,11 +71,7 @@ class Controller extends ApiController
      */
     public function findRole(FindRoleRequest $request)
     {
-<<<<<<< HEAD
-        $role = $this->call(FindRoleAction::class, [$request]);
-=======
         $role = Apiato::call('Authorization@GetRoleAction', [$request]);
->>>>>>> apiato
 
         return $this->transform($role, RoleTransformer::class);
     }
