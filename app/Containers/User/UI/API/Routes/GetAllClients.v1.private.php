@@ -17,7 +17,7 @@
  */
 
 $router->get('clients', [
-    'as' => 'API_User_getAllClients',
+    'as' => 'api_user_get_all_clients',
     'uses'       => 'Controller@getAllClients',
     'middleware' => [
         'auth:api',

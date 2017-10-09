@@ -42,7 +42,7 @@
  */
 
 $router->get('settings', [
-    'as' => 'API_Settings_getAllSettings',
+    'as' => 'api_settings_get_all_settings',
     'uses'  => 'Controller@getAllSettings',
     'middleware' => [
       'auth:api',

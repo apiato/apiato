@@ -2,6 +2,6 @@
 
 // provider login redirect (WEB)
 $router->get('auth/{provider}', [
-    'as' => 'WEB_Socialauth_redirect',
+    'as' => 'web_socialauth_redirect',
     'uses' => 'Controller@redirectAll',
 ]);
