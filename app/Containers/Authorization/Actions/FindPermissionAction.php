@@ -23,7 +23,7 @@ class FindPermissionAction extends Action
      */
     public function run(Request $request)
     {
-        $permission = Apiato::call('Authorization@GetPermissionTask', [$request->id]);
+        $permission = Apiato::call('Authorization@FindPermissionTask', [$request->id]);
 
         if (!$permission) {
             throw new PermissionNotFoundException();

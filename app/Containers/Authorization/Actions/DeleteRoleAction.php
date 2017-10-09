@@ -21,7 +21,7 @@ class DeleteRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = Apiato::call('Authorization@GetRoleTask', [$request->id]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$request->id]);
         Apiato::call('Authorization@DeleteRoleTask', [$role]);
 
         return $role;

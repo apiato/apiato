@@ -29,7 +29,7 @@ class AssignUserToRoleAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = Apiato::call('Authorization@GetRoleTask', [$roleId]);
+            $roles[] = Apiato::call('Authorization@FindRoleTask', [$roleId]);
         }
 
         return Apiato::call('Authorization@AssignUserToRoleTask', [$user, $roles]);

@@ -21,7 +21,7 @@ class DeleteSettingAction extends Action
      */
     public function run(Request $request)
     {
-        $setting = Apiato::call('Settings@GetSettingByIdTask', [$request->id]);
+        $setting = Apiato::call('Settings@FindSettingByIdTask', [$request->id]);
 
         $result = Apiato::call('Settings@DeleteSettingTask', [$setting]);
 

@@ -24,7 +24,7 @@ class UpdatePaymentAccountAction extends Action
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         $paymentAccountId = $request->getInputByKey('id');
-        $paymentAccount = Apiato::call('Payment@GetPaymentAccountByIdTask', [$paymentAccountId]);
+        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$paymentAccountId]);
 
         // check if this account belongs to our user
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);

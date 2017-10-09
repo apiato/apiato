@@ -6,11 +6,11 @@ use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class FindAuthenticatedUserTask.
+ * Class GetAuthenticatedUserTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindAuthenticatedUserTask extends Task
+class GetAuthenticatedUserTask extends Task
 {
 
     /**

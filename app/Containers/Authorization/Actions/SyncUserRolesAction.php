@@ -29,7 +29,7 @@ class SyncUserRolesAction extends Action
         }
 
         foreach ($rolesIds as $roleId) {
-            $roles[] = Apiato::call('Authorization@GetRoleTask', [$roleId]);
+            $roles[] = Apiato::call('Authorization@FindRoleTask', [$roleId]);
         }
 
         $user->syncRoles($roles);

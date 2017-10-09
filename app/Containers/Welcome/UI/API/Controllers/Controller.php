@@ -18,7 +18,7 @@ class Controller extends ApiController
      */
     public function apiRoot()
     {
-        $message = Apiato::call('Welcome@GetMessageForApiRootVisitorAction');
+        $message = Apiato::call('Welcome@FindMessageForApiRootVisitorAction');
 
         return response()->json($message);
     }
@@ -28,7 +28,7 @@ class Controller extends ApiController
      */
     public function v1ApiLandingPage()
     {
-        $message = Apiato::call('Welcome@GetMessageForApiV1VisitorAction');
+        $message = Apiato::call('Welcome@FindMessageForApiV1VisitorAction');
 
         return response()->json($message);
     }

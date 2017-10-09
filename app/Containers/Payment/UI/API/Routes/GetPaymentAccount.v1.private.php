@@ -4,8 +4,8 @@
  * @apiGroup           Payment
  * @apiName            getPaymentAccount
  *
- * @api                {GET} /v1/user/paymentaccounts/:id Get Payment Account by ID
- * @apiDescription     Get Details for a specific payment account. Note that this outputs respective "visible" fields
+ * @api                {GET} /v1/user/paymentaccounts/:id Find Payment Account by ID
+ * @apiDescription     Find Details for a specific payment account. Note that this outputs respective "visible" fields
  *                     from the model of the Payment Provider (e.g., Paypal)
  *
  * @apiVersion         1.0.0

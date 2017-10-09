@@ -112,7 +112,7 @@ class Controller extends ApiController
      */
     public function findUser(FindUserByIdRequest $request)
     {
-        $user = Apiato::call('User@GetUserAction', [$request]);
+        $user = Apiato::call('User@FindUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -124,7 +124,7 @@ class Controller extends ApiController
      */
     public function findUserProfile(FindMyProfileRequest $request)
     {
-        $user = Apiato::call('User@GetMyProfileAction', [$request]);
+        $user = Apiato::call('User@FindMyProfileAction', [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

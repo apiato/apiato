@@ -22,17 +22,17 @@ class AttachPermissionsToRoleAction extends Action
     public function run(Request $request)
     {
 
-        $role = Apiato::call('Authorization@GetRoleTask', [$request->role_id]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$request->role_id]);
 
         $permissions = [];
 
         if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
 
-                $permissions[] = Apiato::call('Authorization@GetPermissionTask', [$permissionId]);
+                $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionId]);
             }
         } else {
-            $permissions[] = Apiato::call('Authorization@GetPermissionTask', [$permissionsIds]);
+            $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionsIds]);
 
         }
 

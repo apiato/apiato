@@ -29,7 +29,7 @@ class SocialLoginAction extends Action
         // TODO: needs refactoring so bad :D
 
         // fetch the user data from facebook
-        $socialUserProfile = Apiato::call('SocialAuth@GetUserSocialProfileTask', [$provider, $request->all()]);
+        $socialUserProfile = Apiato::call('SocialAuth@FindUserSocialProfileTask', [$provider, $request->all()]);
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
         $tokenSecret = isset($socialUserProfile->tokenSecret) ? $socialUserProfile->tokenSecret : null;
