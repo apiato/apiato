@@ -5,7 +5,7 @@ namespace App\Containers\User\UI\API\Controllers;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\FindMyProfileRequest;
+use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
 use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
@@ -76,7 +76,7 @@ class Controller extends ApiController
      */
     public function getAllUsers(GetAllUsersRequest $request)
     {
-        $users = Apiato::call('User@GetAllAndSearchUsersAction');
+        $users = Apiato::call('User@GetAllUsersAction');
 
         return $this->transform($users, UserTransformer::class);
     }
@@ -110,21 +110,21 @@ class Controller extends ApiController
      *
      * @return  mixed
      */
-    public function findUser(FindUserByIdRequest $request)
+    public function findUserById(FindUserByIdRequest $request)
     {
-        $user = Apiato::call('User@FindUserAction', [$request]);
+        $user = Apiato::call('User@FindUserByIdAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
 
     /**
-     * @param FindMyProfileRequest $request
+     * @param GetAuthenticatedUserRequest $request
      *
      * @return mixed
      */
-    public function findUserProfile(FindMyProfileRequest $request)
+    public function getAuthenticatedUserAction(GetAuthenticatedUserRequest $request)
     {
-        $user = Apiato::call('User@FindMyProfileAction', [$request]);
+        $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

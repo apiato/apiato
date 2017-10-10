@@ -8,11 +8,11 @@ use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
- * Class FindUserAction.
+ * Class FindUserByIdAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserAction extends Action
+class FindUserByIdAction extends Action
 {
 
     /**

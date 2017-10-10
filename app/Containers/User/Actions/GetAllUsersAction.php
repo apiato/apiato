@@ -6,11 +6,11 @@ use App\Ship\Parents\Actions\Action;
 use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
- * Class GetAllAndSearchUsersAction.
+ * Class GetAllUsersAction.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetAllAndSearchUsersAction extends Action
+class GetAllUsersAction extends Action
 {
 
     /**

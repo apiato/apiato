@@ -8,11 +8,11 @@ use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
- * Class FindMyProfileAction
+ * Class GetAuthenticatedUserAction
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class FindMyProfileAction extends Action
+class GetAuthenticatedUserAction extends Action
 {
     public function run(Request $request)
     {
