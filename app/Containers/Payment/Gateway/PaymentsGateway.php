@@ -39,7 +39,7 @@ class PaymentsGateway
 
         $typedAccount = $account->accountable;
 
-        $chargerTaskTaskName = Config::get('payment.gateways.' . $typedAccount->getPaymentGatewaySlug() . '.charge_task', null);
+        $chargerTaskTaskName = Config::get('payment-container.gateways.' . $typedAccount->getPaymentGatewaySlug() . '.charge_task', null);
 
         if ($chargerTaskTaskName === null) {
             throw new NoChargeTaskForPaymentGatewayDefinedException();

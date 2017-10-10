@@ -66,7 +66,7 @@ trait DocsGeneratorTrait
      */
     private function getConfigFile()
     {
-        return 'apidoc';
+        return 'documentation-container';
     }
 
     /**

@@ -2,11 +2,11 @@
 
 namespace App\Containers\Localization\Middlewares;
 
-use App;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Config;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class LocalizationMiddleware
@@ -72,7 +72,7 @@ class LocalizationMiddleware extends Middleware
      */
     private function getSupportedLanguages()
     {
-        return Config::get('localization.supported_languages');
+        return Config::get('localization-container.supported_languages');
     }
 
 }

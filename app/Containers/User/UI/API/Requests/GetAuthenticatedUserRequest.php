@@ -5,9 +5,9 @@ namespace App\Containers\User\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class FindMyProfileRequest.
+ * Class GetAuthenticatedUserRequest.
  */
-class FindMyProfileRequest extends Request
+class GetAuthenticatedUserRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

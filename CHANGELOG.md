@@ -23,6 +23,8 @@
 - Add command to sync all system permission with a given role.
 - Support Apiato new class calling style `controllerName@ClassActionOrTask` in the magic call, example: `$role = $this->call('Authorization@FindRoleTask', [$request->role_id]);`. 
 - Add new Facade class `Apiato` containing the old Butlers classes functions, in addition to the `call` magical methode (`Apiato::call()`) in the `CallableTrait`.
+- Add container specific config file to each container.
+- Add readme.md file to each container.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -34,7 +36,16 @@
 - Changed Generators to add various fields (e.g., the `as` name for `Routes`)
 - Refactor the Stripe container to work with the new payment gateway.
 - Changed the "namespace" of all `generator` commands (from `apiato:x` to `apiato:generate:x`)
-- When seeding data, the default Super Admin will be given the `admin` Role, but the `admin` role will not be given any permission. Can optionally use `php artisan apiato:permissions:toRole admin` to give the `admin` role all system permissions.
+- When seeding data, the default Super Admin will be given the `admin` Role, but the `admin` role will not be given any permission. Can optionally use `php artisan apiato:permissions:toRole admin` to give the `admin` role all system permissions.    
+- Renamed `FindUserAction` to `FindUserByIdAction`. And the controller function `findUser` to `findUserById`, and update the endpoint calling it.
+- Renamed `FindMyProfileAction` to `GetAuthenticatedUserAction`. And rename the controller function `findUserProfile` to `getAuthenticatedUserAction`, and update the endpoint calling it. Also rename it's request from `FindMyProfileRequest` to `GetAuthenticatedUserRequest`.
+- Renamed `GetAllAndSearchUsersAction` to `GetAllUsersAction`.
+- Used `Apiato::call` in Seeder classes, instead of `App::make('Task')`. 
+- Renamed `authentication.php` config file to `authentication-container.php`.
+- Renamed `apidoc.php` config file to `documentation-container.php`.
+- Renamed `localization.php` config file to `localization-container.php`.
+- Renamed `payment.php` config file to `payment-container.php`.
+- Renamed `wepay.php` config file to `wepay-container.php`.
 - Rename `ListAll` to `GetAll` in every Actions/Tasks/controller functions/route files/requests
 - Rename `Get` to `Find` in every Actions/Tasks/controller functions/route files/requests
 

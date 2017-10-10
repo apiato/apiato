@@ -104,17 +104,11 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
 
 
-
-**Apiato** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
+**Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
-<br>
-
-Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in Apiato, will help you understand how the code is organized and how things work.
-However, you do **NOT** have to follow any of the Porto conventions to benifit from all the features that Apiato provides.
-
-
-If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
+You are **NOT** forced to build your Application using the Porto architecture.
+You can build it using the [MVC](http://apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 <br>
 

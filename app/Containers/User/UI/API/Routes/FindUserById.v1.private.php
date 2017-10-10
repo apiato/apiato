@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Users
- * @apiName            getUser
+ * @apiName            findUserById
  * @api                {get} /v1/users/:id Find User
  * @apiDescription     Find a user by its ID
  *
@@ -13,8 +13,8 @@
  */
 
 $router->get('users/{id}', [
-    'as' => 'api_user_get_user',
-    'uses'       => 'Controller@findUser',
+    'as' => 'api_user_find_user',
+    'uses'       => 'Controller@findUserById',
     'middleware' => [
         'auth:api',
     ],

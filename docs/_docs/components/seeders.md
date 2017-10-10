@@ -47,7 +47,7 @@ Seeders are classes made to seed the database with real data, this data usually 
              - Data
                 - Seeders
                     - ContainerNameRolesSeeder_1.php
-                    - ContainerNamePermissions_2.php
+                    - ContainerNamePermissionsSeeder_2.php
                     - ...
 ```
 
@@ -63,20 +63,19 @@ Seeders are classes made to seed the database with real data, this data usually 
 
 namespace App\Containers\Order\Data\Seeders;
 
-use Illuminate\Support\Facades\App;
-use App\Containers\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 class OrderPermissionsSeeder_1 extends Seeder
 {
 
     public function run()
     {
-        App::make(CreatePermissionTask::class)->run('approve-reject-orders');
-        App::make(CreatePermissionTask::class)->run('find-orders');
-        App::make(CreatePermissionTask::class)->run('list-orders');
-        App::make(CreatePermissionTask::class)->run('update-orders');
-        App::make(CreatePermissionTask::class)->run('delete-orders');
+        Apiato::call('Authorization@CreatePermissionTask', ['approve-reject-orders']);
+        Apiato::call('Authorization@CreatePermissionTask', ['find-orders']);
+        Apiato::call('Authorization@CreatePermissionTask', ['list-orders']);
+        Apiato::call('Authorization@CreatePermissionTask', ['update-orders']);
+        Apiato::call('Authorization@CreatePermissionTask', ['delete-orders']);
 
         // ...
 
