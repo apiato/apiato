@@ -20,7 +20,7 @@ class GetAllDocsTypesTask extends Task
      */
     public function run()
     {
-        if (!$configTypes = Config::get('apidoc.types')) {
+        if (!$configTypes = Config::get('documentation-container.types')) {
             throw new NoDocTypesFoundException();
         }
 

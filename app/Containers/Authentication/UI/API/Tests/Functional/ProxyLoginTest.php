@@ -103,7 +103,7 @@ class ProxyLoginTest extends TestCase
 
         $response = $this->endpoint($endpoint)->makeCall($data);
 
-        if(\Config::get('authentication.require_email_confirmation')){
+        if(\Config::get('container.authentication.require_email_confirmation')){
             $response->assertStatus(409);
         }else{
             $response->assertStatus(200);

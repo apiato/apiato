@@ -23,6 +23,8 @@
 - Add command to sync all system permission with a given role.
 - Support Apiato new class calling style `controllerName@ClassActionOrTask` in the magic call, example: `$role = $this->call('Authorization@FindRoleTask', [$request->role_id]);`. 
 - Add new Facade class `Apiato` containing the old Butlers classes functions, in addition to the `call` magical methode (`Apiato::call()`) in the `CallableTrait`.
+- Add container specific config file to each container.
+- Add readme.md file to each container.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -39,6 +41,7 @@
 - Renamed `FindMyProfileAction` to `GetAuthenticatedUserAction`. And rename the controller function `findUserProfile` to `getAuthenticatedUserAction`, and update the endpoint calling it. Also rename it's request from `FindMyProfileRequest` to `GetAuthenticatedUserRequest`.
 - Renamed `GetAllAndSearchUsersAction` to `GetAllUsersAction`.
 - Used `Apiato::call` in Seeder classes, instead of `App::make('Task')`. 
+- Renamed `authentication.php` config file to `authentication-container.php`.
 
 ### Fixed
 - Fix Social Authentication errors. 

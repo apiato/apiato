@@ -25,7 +25,10 @@ class CreateWepayCustomerTask extends Task
      */
     public function __construct(WePayLaravel $wepayLaravel)
     {
-        $this->wepayLaravel = $wepayLaravel->make(Config::get('services.wepay.client_secret'), Config::get('services.wepay.version'));
+        $this->wepayLaravel = $wepayLaravel->make(
+            Config::get('wepay-container.client_secret'),
+            Config::get('wepay-container.version')
+        );
     }
 
     /**
