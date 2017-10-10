@@ -42,6 +42,10 @@
 - Renamed `GetAllAndSearchUsersAction` to `GetAllUsersAction`.
 - Used `Apiato::call` in Seeder classes, instead of `App::make('Task')`. 
 - Renamed `authentication.php` config file to `authentication-container.php`.
+- Renamed `apidoc.php` config file to `documentation-container.php`.
+- Renamed `localization.php` config file to `localization-container.php`.
+- Renamed `payment.php` config file to `payment-container.php`.
+- Renamed `wepay.php` config file to `wepay-container.php`.
 
 ### Fixed
 - Fix Social Authentication errors. 
