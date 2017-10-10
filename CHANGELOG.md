@@ -35,6 +35,10 @@
 - Refactor the Stripe container to work with the new payment gateway.
 - Changed the "namespace" of all `generator` commands (from `apiato:x` to `apiato:generate:x`)
 - When seeding data, the default Super Admin will be given the `admin` Role, but the `admin` role will not be given any permission. Can optionally use `php artisan apiato:permissions:toRole admin` to give the `admin` role all system permissions.    
+- Renamed `FindUserAction` to `FindUserByIdAction`. And the controller function `findUser` to `findUserById`, and update the endpoint calling it.
+- Renamed `FindMyProfileAction` to `GetAuthenticatedUserAction`. And rename the controller function `findUserProfile` to `getAuthenticatedUserAction`, and update the endpoint calling it. Also rename it's request from `FindMyProfileRequest` to `GetAuthenticatedUserRequest`.
+- Renamed `GetAllAndSearchUsersAction` to `GetAllUsersAction`.
+- Used `Apiato::call` in Seeder classes, instead of `App::make('Task')`. 
 
 ### Fixed
 - Fix Social Authentication errors. 

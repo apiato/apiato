@@ -2,9 +2,8 @@
 
 namespace App\Containers\Authorization\Data\Seeders;
 
-use App\Containers\Authorization\Tasks\CreatePermissionTask;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Seeders\Seeder;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class AuthorizationPermissionsSeeder_1
@@ -21,11 +20,10 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
     public function run()
     {
         // Default Permissions ----------------------------------------------------------
-
-        App::make(CreatePermissionTask::class)->run('manage-roles', 'Create, Update, Delete, Get All, Attach/detach permissions to Roles and Get All Permissions.');
-        App::make(CreatePermissionTask::class)->run('create-admins', 'Create new Users (Admins) from the dashboard.');
-        App::make(CreatePermissionTask::class)->run('manage-admins-access', 'Assign users to Roles.');
-        App::make(CreatePermissionTask::class)->run('access-dashboard', 'Access the admins dashboard.');
+        Apiato::call('Authorization@CreatePermissionTask', ['manage-roles', 'Create, Update, Delete, Get All, Attach/detach permissions to Roles and Get All Permissions.']);
+        Apiato::call('Authorization@CreatePermissionTask', ['create-admins', 'Create new Users (Admins) from the dashboard.']);
+        Apiato::call('Authorization@CreatePermissionTask', ['manage-admins-access', 'Assign users to Roles.']);
+        Apiato::call('Authorization@CreatePermissionTask', ['access-dashboard', 'Access the admins dashboard.']);
 
         // ...
 
