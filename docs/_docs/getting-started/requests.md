@@ -1,7 +1,7 @@
 ---
 title: "Requests"
 category: "Getting Started"
-order: 5
+order: 4
 ---
 
 * [Sending HTTP Request](#send-http-req)
