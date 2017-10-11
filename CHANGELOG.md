@@ -46,6 +46,8 @@
 - Renamed `localization.php` config file to `localization-container.php`.
 - Renamed `payment.php` config file to `payment-container.php`.
 - Renamed `wepay.php` config file to `wepay-container.php`.
+- Rename `ListAll` to `GetAll` in every Actions/Tasks/controller functions/route files/requests
+- Rename `Get` to `Find` in every Actions/Tasks/controller functions/route files/requests
 
 ### Fixed
 - Fix Social Authentication errors. 
