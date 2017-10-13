@@ -9,7 +9,6 @@ order: 5
 * [Where to put my frontend code?](#q3)
 * [Where do I register Service Providers and Aliases?](#q4)
 * [How to change API URL?](#q5)
-* [How to version my API in header instead of URL?](#q6)
 * [Where do I define my Composer dependencies?](#q7)
 * [How to enable Query Caching?](#q8)
 * [Can I give my Actions REST names?](#q9)
@@ -108,15 +107,6 @@ To change this from `api.apiato.com` to `apiato.com/api/`, do the following:
 3. That's it. Now you might need to update your tests endpoints, if they fail. Since each test can specify which endpoint to test, Example: In `CreateAdminTest` change `protected $endpoint = 'post@v1/admins';` to `protected $endpoint = 'post@api/v1/admins';`, including the new prefix.
 
 To remove the version prefix as well, set `enable_version_prefix` to `false` in `app/Ship/Configs/apiato.php`.
-
-
-
-<a name="q6"></a>
-## How to version my API in header instead of URL?
-
-First remove the URL version prefix:
-1. Edit `app/Ship/Configs/apiato.php`, set prefix to `'enable_version_prefix' => 'false',`.
-2. Implement the Header versioning anyway you prefer. (this is not implemented in Apiato yet. _Consider a contribution_).
 
 
 

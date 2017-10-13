@@ -4,7 +4,8 @@ category: "Getting Started"
 order: 4
 ---
 
-* [Sending HTTP Request](#send-http-req)
+* [Form content types](#form-content-types)
+* [HTTP Request Headers](#send-http-req)
 * [Calling Endpoints](#call-EP)
   * [Calling unprotected endpoint example](#call-unprotected-EP)
   * [Calling protected endpoint (passing Bearer Token) example](#call-protected-EP)
@@ -12,11 +13,26 @@ order: 4
 
 <br>
 
-<a name="send-http-req"></a>
-## Sending HTTP Request
+<a name="form-content-types"></a>
+## Form content types (W3C)
 
-Certain API calls require you to send data in a particular format as part of the API call.
-By default, all API calls expect input in `JSON` format, however you need to inform the server that you are sending a JSON-formatted payload.
+By default Apiato is configured to encode simple text/ASCII data `x-www-form-urlencoded`. However, it does support other types as well. 
+
+
+#### ASCII payload
+
+To tell the web server that you are posting simple text/ASCII payload (`name=Mahmoud+Zalt&age=18`), you need to include `Content-Type = x-www-form-urlencoded` in the request header.
+
+#### JSON payload
+
+To tell the web server that you are posting JSON-formatted payload (`{name : 'Mahmoud Zalt', age: 18}`), you need to include `Content-Type = application/json` in the request header.
+
+*(you may wish return Json data in this case as well, you can do so by changing the response serializer from `DataArraySerializer` to `JsonApiSerializer`, more about that in the response page).*
+
+
+
+<a name="send-http-req"></a>
+## HTTP Request Headers
 
 | Header        | Value Sample                        | When to send it                                                              |
 |---------------|-------------------------------------|------------------------------------------------------------------------------|
@@ -29,6 +45,7 @@ By default, all API calls expect input in `JSON` format, however you need to inf
 > Normally you should include the `Accept => application/json` HTTP header when you call a JSON API.
 However, in Apiato you can force your users to send `application/json` by setting `'force-accept-header' => true,` in `app/Ship/Configs/apiato.php`
 Or allow them to skip it by setting the `'force-accept-header' => false,` (By default this is set to false).
+
 
 <a name="call-EP"></a>
 ## Calling Endpoints

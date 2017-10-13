@@ -8,7 +8,7 @@ order: 5
 * [Apiato Response](#Res-payload)
 * [Default Apiato Responses Payload](#Def-Res-payload)
 * [Change the default Response payload](#change-apiao-res-payload)
-* [JsonApiSerializer Resource Key](#JsonApiSerializer-Resource-Key)
+* [Resource Keys](#Resource-Keys)
 * [Error Responses formats](#Error-Res-Format)
 * [Building a Responses from the Controller](#build-res-from-con)
 
@@ -108,7 +108,7 @@ For more details read the `Relationships` section in the [Query Parameters]({{ s
 <a name="change-apiao-res-payload"></a>
 ### Change the default Response payload:
 
-The default response format (specification) is the `DataArray` Fractal Serializer.
+The default response format (specification) is the `DataArray` Fractal Serializer (`League\Fractal\Serializer\DataArraySerializer`). 
 
 To change the default Fractal Serializer open the `.env` file and change the
 
@@ -118,26 +118,33 @@ API_RESPONSE_SERIALIZER=League\Fractal\Serializer\DataArraySerializer
 
 The Supported Serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`).
 
-
 More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
 
+In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some JSON response standards:
 
-<a name="JsonApiSerializer-Resource-Key"></a>
-#### JsonApiSerializer Resource Key
+* [JSEND](https://labs.omniti.com/labs/jsend) (very basic)
+* [JSON API](http://jsonapi.org/format/) (very popular and well documented)
+* [HAL](http://stateless.co/hal_specification.html) (useful in case of hypermedia)
 
-The `JsonApiSerializer` allows appending a `ResourceKey` to the transformed resource.
 
-There are a few ways to set this resource key:
+<a name="Resource-Keys"></a>
+### Resource Keys
 
-1. You can manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the
+#### For JsonApiSerializer. 
+
+The transformer allows appending a `ResourceKey` to the transformed resource.
+You can set the `ResourceKey` in your response payload in 2 ways:
+
+1. Manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the
 `top level` resource key and does not affect the resource keys from `included` resources!
-2. If you do not define the key in the `$this->transform` method, you can specify it on the respective `Model`. You can simply
-override the the `protected $resourceKey = 'FooBar';` in order to specify the latter.
-3. If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
+2. Specify it on the respective `Model`. By overriding the the $resourceKey, (`protected $resourceKey = 'FooBar';`). If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
 the `App\Containers\User\Models\User::class` is `User`.
 
+#### For DataArraySerializer.
 
-**Note:** Apiato the `DataArraySerializer` and uses the `object` keyword as resource key for each response, and it's set manually in each transformer, to be automated later.
+By default the `object` keyword is used as a resource key for each response, and it's set manually in each transformer, *to be automated later*.
+
+
 
 <a name="Error-Res-Format"></a>
 ### Error Responses formats
