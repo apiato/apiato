@@ -50,6 +50,7 @@
 - Rename `ListAll` to `GetAll` in every Actions/Tasks/controller functions/route files/requests
 - Rename `Get` to `Find` in every Actions/Tasks/controller functions/route files/requests
 - Slight adaptations to the `Exception` message format (due to `ExceptionFormatters`)
+- Use `App/Ship/Exceptions/NotFoundException` instead of `App/Containers/User/Exceptions/UserNotFoundException`
 
 ### Fixed
 - Fix Social Authentication errors. 
@@ -57,3 +58,4 @@
 ### Removed
 - Removed the `App/Ship/Payment` container as it now lives in `App/Containers/Payment`
 - Removed the `ShipButler` and `ContainerButler` in favor of the new Apiato class.
+- Removed the `App/Containers/User/Exceptions/UserNotFoundException`
