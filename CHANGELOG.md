@@ -51,6 +51,7 @@
 - Rename `Get` to `Find` in every Actions/Tasks/controller functions/route files/requests
 - Slight adaptations to the `Exception` message format (due to `ExceptionFormatters`)
 - Use `App/Ship/Exceptions/NotFoundException` instead of `App/Containers/User/Exceptions/UserNotFoundException`
+- Change Containers Installer repository.
 
 ### Fixed
 - Fix Social Authentication errors. 
