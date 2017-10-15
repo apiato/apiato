@@ -2,8 +2,8 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Exceptions\AccountFailedException;
+use App\Containers\Socialauth\Exceptions\AccountFailedException;
+use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
@@ -16,16 +16,16 @@ class CreateUserBySocialProfileTask extends Task
 {
 
     /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
+     * @var  \App\Containers\User\Data\Repositories\UserRepository
      */
     private $userRepository;
 
     /**
      * CreateUserBySocialProfileTask constructor.
      *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
+     * @param \App\Containers\User\Data\Repositories\UserRepository $userRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
