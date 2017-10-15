@@ -1,41 +1,51 @@
 ---
-title: "Exception Formatters"
+title: "Exceptions Formatters"
 category: "Optional Components"
 order: 16
 ---
 
-* [Definition](#definition)
+- [Definition & Principles](#definition-principles)
+- [Rules](#rules)
+- [Folder Structure](#folder-structure)
+- [Code Sample](#code-sample)
 - [Create your own Formatter](#own-formatters)
   - [Registering Your Formatters](#registering-own-formatters)
 
 
-<a name="definition"></a>
-## Definition
-
+<a name="definition-principles"></a>
+### Definition & Principles
 
 In Apiato you can format any Exception response the way you want, using the Exception Formatters (same like [`Transformers`]({{ site.baseurl }}{% link _docs/components/transformers.md %}) but for Exception Responses). 
 
 Apiato uses the [Heimdal](https://github.com/esbenp/heimdal) package, which allows you to format your API exceptions responses using Formatter classes. 
 For more details visit the package [documentation](https://github.com/esbenp/heimdal).
 
-
-
 By default Apiato have basic `ExceptionFormatters` for outputting `Exceptions` in a good format. 
 
 These Formatters can by modified, example: in case using the `JSON API` payloads, you may change the provided formatters to return [JSON API Error response](http://jsonapi.org/format/#error-objects) .
 
-<a name="own-formatters"></a>
 
-## Create your own Formatter
+<a name="rules"></a>
+### Rules
 
-You can add your own formatters (or override existing ones) anytime. 
+- All Formatters MUST extend from `Apiato\Core\Exceptions\Formatters\ExceptionsFormatter`.
 
-All Formatters live in `App/Ship/Exceptions/Formatters`.
- 
-By default Apiato provides formatters to format basic Exceptions (or HTTP Exceptions) as well as "common" Exceptions like `AuthenticationException` and so on.
+<a name="folder-structure"></a>
+### Folder Structure
+
+```
+ - app
+    - Ship
+        - Exceptions
+            - Formatters
+                - HttpExceptionFormatter.php
+                - ExceptionFormatter.php
+                - ...
+```
 
 
-#### Simple Formatter Example: 
+<a name="code-sample"></a>
+### Code Sample
 
 ```php
 <?php
@@ -70,7 +80,6 @@ class AuthorizationExceptionFormatter extends CoreExceptionsFormatter
         return self::STATUS_CODE;
     }
 }
-
 ```
 
 - The `responseData` is where you format the response.
@@ -91,10 +100,19 @@ class AuthorizationExceptionFormatter extends CoreExceptionsFormatter
     }
 ```
 
+<a name="own-formatters"></a>
+### Create your own Formatter
+
+You can add your own formatters (or override existing ones) anytime. 
+
+All Formatters live in `App/Ship/Exceptions/Formatters`.
+ 
+By default Apiato provides formatters to format basic Exceptions (or HTTP Exceptions) as well as "common" Exceptions like `AuthenticationException` and so on.
+
+
 
 <a name="registering-own-formatters"></a>
-
-### Registering Your Formatters
+#### Registering Your Formatters
 
 In order to inform Apiato to use your new `AwesomeExceptionFormatter` you need to `register` it. This can be done in the 
 `App/Ship/Configs/optimus.heimdal.php` configuration file.
