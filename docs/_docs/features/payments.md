@@ -21,7 +21,7 @@ Apiato provides a `Payment` container that acts as *gateway* for multiple paymen
 <a name="available-payment-gateways"></a>
 ## Supported Payment Gateways
 
-Currently, APIATO Supports the following payment gateways:
+Currently, Apiato Supports the following payment gateways:
 
 * `Stripe`
 * `PayPal`

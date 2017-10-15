@@ -27,7 +27,7 @@ Note: Some of the files are not required to be upgraded. And some of them, can b
 Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
+Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`. (This should be a temporary situation)
 
 <a name="upgrade-apiato-from-version-41To50"></a>
@@ -138,7 +138,7 @@ The git merging can be done in many ways:
 
 <br>
 
-Checkout the project setup in [Contributing to APIATO]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+Checkout the project setup in [Contributing to Apiato]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
 
 

@@ -4,7 +4,7 @@ category: "Miscellaneous"
 order: 5
 ---
 
-* [Do I have to use the Porto Architecture to benefit from APIATO](#q1)
+* [Do I have to use the Porto Architecture to benefit from Apiato](#q1)
 * [How to use my custom domain?](#q2)
 * [Where to put my frontend code?](#q3)
 * [Where do I register Service Providers and Aliases?](#q4)
@@ -19,11 +19,11 @@ order: 5
 <br>
 
 <a name="q1"></a>
-## Do I have to use the Porto Architecture to benefit from APIATO!?
+## Do I have to use the Porto Architecture to benefit from Apiato!?
 
 NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer.
-And you can call the APIATO provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
-You have the freedom to structure your own project anyway you like, and still use all the feature that APIATO provide.
+And you can call the Apiato provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
+You have the freedom to structure your own project anyway you like, and still use all the feature that Apiato provide.
 
 
 <a name="q2"></a>
@@ -92,7 +92,7 @@ However, some more general Service Providers and Aliases (application features u
 Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md %}) page for more details.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
+Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
 <a name="q5"></a>
@@ -171,15 +171,15 @@ The `ApiatoServiceProvider` is the one who calls the `runLoadersBoot()`, on star
 After he call that function he registers the Ship Providers which has all the other Ship Providers defined on its `$serviceProviders` property.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
+Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
 
 <a name="q12"></a>
 ## Why is the Laravel 5.5 Auto-Discovery feature not working?
 
-That is, because this feature is turned off by default in APIATO. The Laravel `Auto-Discovery` feature registers 3rd-party
-Service Providers during startup of the application and thereby messes with the way, APIATO handles / loads components.
+That is, because this feature is turned off by default in Apiato. The Laravel `Auto-Discovery` feature registers 3rd-party
+Service Providers during startup of the application and thereby messes with the way, Apiato handles / loads components.
 This is especially problematic in the context of `config` files, as they are ignored.
 
 To re-enable it go to the main `composer.json` file and remove the "*" from the `dont-discover`

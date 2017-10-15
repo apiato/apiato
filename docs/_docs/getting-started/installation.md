@@ -10,7 +10,7 @@ order: 2
 	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
 	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
 	* [Option 3: Using MAMP/WAMP or something else](#Dev-Env-Opt-C)
-* [B) APIATO Installation](#App)
+* [B) Apiato Installation](#App)
 	* [1) Code Setup](#Code-Setup)
 		* [Option 1: Automatically via Composer](#App-Composer)
 		* [Option 2: Manually](#App-Git)
@@ -29,7 +29,7 @@ order: 2
 <a name="Development-Environment"></a>
 ## A) Development Environment Setup
 
-You can run **APIATO** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
+You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
 We'll see how to use both tools and you can pick one, or you can use other options like [Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
 
 <a name="Dev-Env-Opt-A"></a>
@@ -107,9 +107,9 @@ sites:
 ```
 
 Note: in the example above the `/{full-path-to}/clients/web/***` are separate apps, who live on their own 
-repositories and in different folder then the APIATO one. 
-If your Admins, Users or other type of Apps are within APIATO, then 
-you must point them all to the APIATO project folder `/{full-path-to}/apiato/public`. 
+repositories and in different folder then the Apiato one. 
+If your Admins, Users or other type of Apps are within Apiato, then 
+you must point them all to the Apiato project folder `/{full-path-to}/apiato/public`. 
 So in that case you would have something like this:
  
 ```text
@@ -159,9 +159,9 @@ If you're not into virtualization solutions, you can setup your environment dire
 
 <a name="App"></a>
 
-## B) APIATO Application Installation
+## B) Apiato Application Installation
 
-**APIATO** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
+**Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
 
 <a name="Code-Setup"></a>
@@ -309,7 +309,7 @@ Now let's see it in action
 
 1.a. Open your web browser and visit: 
 
-- `http://apiato.dev` You should see an HTML page, with `APIATO` in the middle.
+- `http://apiato.dev` You should see an HTML page, with `Apiato` in the middle.
 - `http://admin.apiato.dev` You should see an HTML Login page.
 
 1.b. Open your HTTP client and call: 
