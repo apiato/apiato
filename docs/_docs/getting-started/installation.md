@@ -4,13 +4,7 @@ category: "Getting Started"
 order: 2
 ---
 
-
-
-* [A) Environment Setup](#Development-Environment)
-	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
-	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
-	* [Option 3: Using MAMP/WAMP or something else](#Dev-Env-Opt-C)
-* [B) Apiato Installation](#App)
+* [A) Apiato Installation](#App)
 	* [1) Code Setup](#Code-Setup)
 		* [Option 1: Automatically via Composer](#App-Composer)
 		* [Option 2: Manually](#App-Git)
@@ -18,6 +12,10 @@ order: 2
 	* [3) OAuth Setup](#Prepare-OAuth)
 	* [4) Documentation Setup](#Documentation)
 	* [5) Testing Setup](#Testing)
+* [B) Environment Setup](#Development-Environment)
+	* [Option 1: Using Docker and Laradock](#Dev-Env-Opt-A)
+	* [Option 2: Using Vagrant and Homestead](#Dev-Env-Opt-B)
+	* [Option 3: Using MAMP/WAMP or something else](#Dev-Env-Opt-C)
 * [C) Play](#Play)
 
 
@@ -25,9 +23,155 @@ order: 2
  
 
 
+<a name="App"></a>
+## A) Apiato Application Installation
+
+**Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
+
+
+<a name="Code-Setup"></a>
+### 1) Code Setup
+
+
+<a name="App-Composer"></a>
+#### 1.A) Automatically via Composer
+
+1) Clone the repo, install dependencies and setup the project:
+
+
+Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
+
+```shell
+composer create-project apiato/apiato my-api
+```
+
+Latest [master](https://github.com/apiato/apiato/commits/master) dev version *(unstable)*:
+*This gives you features from the upcoming release.* 
+
+```shell
+composer create-project apiato/apiato:dev-master my-api
+```
+
+2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
+
+3) Continue from [2) Database Setup](#Setup-Database) below.
+
+<a name="App-Git"></a>
+#### 1.B) Manually
+
+You can download the Code directly from the repository as `.ZIP` file or clone the repository using `Git` (recommended):
+
+
+1) Clone the repository using `Git`:
+
+ ```shell
+git clone https://github.com/apiato/apiato.git
+ ```
+
+2) Install all dependency packages (including Containers dependencies):
+
+```shell
+composer install
+```
+
+3) Create `.env` file and copy the content of `.env.example` inside it.
+
+```shell
+cp .env.example .env
+```
+
+*Check all the variables and edit whatever you want.*
+
+4) Generate a random key `APP_KEY`
+
+```shell
+php artisan key:generate
+```
+
+5) delete the `.git` folder from the root directory and initialize your own with `git init`.
+
+
+
+
+<a name="Setup-Database"></a>
+### 2) Database Setup
+
+1) Migrate the Database:
+
+b. Run the migration artisan command:
+
+```shell
+php artisan migrate
+```
+
+2) Seed the database with the artisan command:
+
+```shell
+php artisan db:seed
+```
+
+3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set to it). 
+
+To give the `admin` role, access to all the seeded permissions in the system, run the following command `php artisan apiato:permissions:toRole admin` at any time.
+
+**NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
+
+
+<a name="Prepare-OAuth"></a>
+### 3) OAuth 2.0 Setup 
+
+
+1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients which will be used to generate access tokens:
+
+```shell
+php artisan passport:install
+```
+
+
+<a name="Documentation"></a>
+### 4) Documentation Setup
+
+If you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
+
+1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
+
+Install it Globally with `-g` or locally in the project without `-g` 
+
+```shell
+npm install apidoc -g
+```
+
+Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the root. 
+
+
+2) run `php artisan apiato:docs`
+
+Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation`.
+
+##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
+
+
+
+<a name="Testing"></a>
+### 5) Testing Setup
+
+1) Open `phpunit.xml` and make sure the environments are correct for your domain.
+ 
+2) run the tests
+
+```shell
+vendor/bin/phpunit
+```
+
+
+
+
+
+
+
 
 <a name="Development-Environment"></a>
-## A) Development Environment Setup
+## B) Development Environment Setup
 
 You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
 We'll see how to use both tools and you can pick one, or you can use other options like [Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
@@ -157,146 +301,10 @@ If you're not into virtualization solutions, you can setup your environment dire
 
 
 
-<a name="App"></a>
-
-## B) Apiato Application Installation
-
-**Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
-
-
-<a name="Code-Setup"></a>
-### 1) Code Setup
-
-
-<a name="App-Composer"></a>
-#### 1.A) Automatically via Composer
-
-1) Clone the repo, install dependencies and setup the project:
-
-
-Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
-
-```shell
-composer create-project apiato/apiato api
-```
-
-Latest [master](https://github.com/apiato/apiato/commits/master) dev version:
-*This gives you features from the upcoming release.* 
-
-```shell
-composer create-project apiato/apiato:dev-master api
-```
-
-2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
-
-3) Continue from [2) Database Setup](#Setup-Database) below.
-
-<a name="App-Git"></a>
-#### 1.B) Manually
-
-You can download the Code directly from the repository as `.ZIP` file or clone the repository using `Git` (recommended):
-
-
-1) Clone the repository using `Git`:
-
- ```shell
-git clone https://github.com/apiato/apiato.git
- ```
-
-2) Install all dependency packages (including Containers dependencies):
-
-```shell
-composer install
-```
-
-3) Create `.env` file and copy the content of `.env.example` inside it.
-
-```shell
-cp .env.example .env
-```
-
-*Check all the variables and edit whatever you want.*
-
-4) Generate a random key `APP_KEY`
-
-```shell
-php artisan key:generate
-```
-
-5) delete the `.git` folder from the root directory and initialize your own with `git init`.
 
 
 
 
-<a name="Setup-Database"></a>
-### 2) Database Setup
-
-1) Migrate the Database:
-
-b. Run the migration artisan command:
-
-```shell
-php artisan migrate
-```
-
-2) Seed the database with the artisan command:
-
-```shell
-php artisan db:seed
-```
-
-3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set to it). 
-
-To give the `admin` role, access to all the seeded permissions in the system, run the following command `php artisan apiato:permissions:toRole admin` at any time.
-
-**NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
-
-
-<a name="Prepare-OAuth"></a>
-### 3) OAuth 2.0 Setup 
-
-
-1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients which will be used to generate access tokens:
-
-```shell
-php artisan passport:install
-```
-
-
-<a name="Documentation"></a>
-### 4) Documentation Setup
-
-If you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
-
-1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
-
-Install it Globally with `-g` or locally in the project without `-g` 
-
-```shell
-npm install apidoc -g
-```
-
-Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the root. 
-
-
-2) run `php artisan apiato:docs`
-
-Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation`.
-
-##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
-
-
-
-<a name="Testing"></a>
-### 5) Testing Setup
-
-1) Open `phpunit.xml` and make sure the environments are correct for your domain.
- 
-2) run the tests
-
-```shell
-vendor/bin/phpunit
-```
 
 
 
