@@ -68,7 +68,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 9. Include (a.k.a embedding, nesting or side-loading) relationships for complex data structures.
 10. Support Data Caching (with auto clearing on Create, Update and Delete).
 11. API versioning in the URL or Header (versioning based on the route file name).
-12. Exception handleing with custom JSON errors responses.
+12. Exception handleing with custom JSON errors responses (using Exceptions Formatters).
 13. Support Shallow ETag HTTP Header, to reduce client bandwidth.
 14. Localization (multiple languages via Content-Language header).
 15. Automatic Data Pagination (meta links to next and previous data).

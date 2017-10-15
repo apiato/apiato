@@ -25,7 +25,7 @@
 - Add new Facade class `Apiato` containing the old Butlers classes functions, in addition to the `call` magical methode (`Apiato::call()`) in the `CallableTrait`.
 - Add container specific config file to each container.
 - Add readme.md file to each container.
-- Add possibility to `customize` the way, `Exceptions` are displayed (cf. `ExceptionFormatters`)
+- Add support for Exceptions Formatters (with some default Formatters). To allows users customize `Exceptions` JSON responses.
 
 ### Changed
 - Upgrade Mail to use Laravel 5.5 Mails. And add Ship directory for Mail in addition to user mail sample in the User container.
@@ -50,8 +50,10 @@
 - Rename `ListAll` to `GetAll` in every Actions/Tasks/controller functions/route files/requests
 - Rename `Get` to `Find` in every Actions/Tasks/controller functions/route files/requests
 - Slight adaptations to the `Exception` message format (due to `ExceptionFormatters`)
-- Use `App/Ship/Exceptions/NotFoundException` instead of `App/Containers/User/Exceptions/UserNotFoundException`
-- Change Containers Installer repository.
+- Change Containers Installer repository. 
+- Moved `AccountFailedException` from User container to the Socialauth container.
+- Moved `App\Ship\Handlers\ExceptionsHandler` to `App\Ship\Exceptions\Handlers\ExceptionsHandler`.
+- Change the directory of the Core Exceptions handler and rename it to become `Apiato\Core\Exceptions\Handlers\ExceptionsHandler`.
 
 ### Fixed
 - Fix Social Authentication errors. 
@@ -60,3 +62,4 @@
 - Removed the `App/Ship/Payment` container as it now lives in `App/Containers/Payment`
 - Removed the `ShipButler` and `ContainerButler` in favor of the new Apiato class.
 - Removed the `App/Containers/User/Exceptions/UserNotFoundException`
+- Removed the `App/Containers/User/Exceptions/UserNotFoundException` and replace it with `App/Ship/Exceptions/NotFoundException`. 
