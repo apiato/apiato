@@ -48,6 +48,7 @@ class UpdateUserRequest extends Request
     {
         return [
             'email'    => 'email|unique:users,email',
+            'id'       => 'required|exists:users,id',
             'password' => 'min:6|max:40',
             'name'     => 'min:2|max:50',
         ];

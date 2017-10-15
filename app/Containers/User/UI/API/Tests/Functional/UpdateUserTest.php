@@ -57,7 +57,7 @@ class UpdateUserTest extends TestCase
         $response = $this->injectId($fakeUserId)->makeCall($data);
 
         // assert response status is correct
-        $response->assertStatus(400);
+        $response->assertStatus(422);
 
         $this->assertResponseContainKeyValue([
             'status' => 'error'
@@ -70,10 +70,10 @@ class UpdateUserTest extends TestCase
         $response = $this->makeCall();
 
         // assert response status is correct
-        $response->assertStatus(417);
+        $response->assertStatus(422);
 
         $this->assertResponseContainKeyValue([
-            'message' => 'Inputs are empty.'
+            'message' => 'The given data was invalid.'
         ]);
     }
 
