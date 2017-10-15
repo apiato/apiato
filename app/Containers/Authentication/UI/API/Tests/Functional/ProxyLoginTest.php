@@ -4,6 +4,8 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\DB;
+use function file_exists;
+use function storage_path;
 
 /**
  * Class ProxyLoginTest
@@ -19,6 +21,8 @@ class ProxyLoginTest extends TestCase
         'permissions' => '',
         'roles'       => '',
     ];
+
+    private $testingFilesCreated = false;
 
     public function testClientWebAdminProxyLogin_()
     {
@@ -53,6 +57,10 @@ class ProxyLoginTest extends TestCase
         putenv('CLIENT_WEB_ADMIN_ID=' . $clientId);
         putenv('CLIENT_WEB_ADMIN_SECRET=' . $clientSecret);
 
+        // create testing oauth keys files
+        $publicFilePath = $this->createTestingKey('oauth-public.key');
+        $privateFilePath = $this->createTestingKey('oauth-private.key');
+
         $response = $this->endpoint($endpoint)->makeCall($data);
 
         $response->assertStatus(200);
@@ -64,6 +72,12 @@ class ProxyLoginTest extends TestCase
         ]);
 
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
+
+        // delete testing keys files if they were created for this test
+        if ($this->testingFilesCreated) {
+            unlink($publicFilePath);
+            unlink($privateFilePath);
+        }
     }
 
     public function testClientWebAdminProxyUnconfirmedLogin_()
@@ -72,14 +86,13 @@ class ProxyLoginTest extends TestCase
 
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
-            'email'    => 'testing2@mail.com',
-            'password' => 'testingpass',
+            'email'     => 'testing2@mail.com',
+            'password'  => 'testingpass',
             'confirmed' => false,
         ];
 
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
-
 
         $clientId = '100';
         $clientSecret = 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX';
@@ -101,14 +114,42 @@ class ProxyLoginTest extends TestCase
         putenv('CLIENT_WEB_ADMIN_ID=' . $clientId);
         putenv('CLIENT_WEB_ADMIN_SECRET=' . $clientSecret);
 
+        // create testing oauth keys files
+        $publicFilePath = $this->createTestingKey('oauth-public.key');
+        $privateFilePath = $this->createTestingKey('oauth-private.key');
+
         $response = $this->endpoint($endpoint)->makeCall($data);
 
-        if(\Config::get('authentication-container.require_email_confirmation')){
+        if (\Config::get('authentication-container.require_email_confirmation')) {
             $response->assertStatus(409);
-        }else{
+        } else {
             $response->assertStatus(200);
         }
 
+        // delete testing keys files if they were created for this test
+        if ($this->testingFilesCreated) {
+            unlink($publicFilePath);
+            unlink($privateFilePath);
+        }
     }
 
+    /**
+     * @param $fileName
+     *
+     * @return  string
+     */
+    private function createTestingKey($fileName)
+    {
+        $filePath = storage_path($fileName);
+
+        if (!file_exists($filePath)) {
+            $keysStubDirectory = __DIR__ . '/Stubs/';
+
+            copy($keysStubDirectory . $fileName, $filePath);
+
+            $this->testingFilesCreated = true;
+        }
+
+        return $filePath;
+    }
 }
