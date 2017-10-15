@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Ship\Handlers;
+namespace App\Ship\Exceptions\Handlers;
 
-use Apiato\Core\Exceptions\ApiatoExceptionsHandler;
+
+use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 
 /**
  * Class ExceptionsHandler
@@ -12,7 +14,7 @@ use Exception;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ExceptionsHandler extends ApiatoExceptionsHandler
+class ExceptionsHandler extends CoreExceptionsHandler
 {
 
     /**
@@ -51,14 +53,29 @@ class ExceptionsHandler extends ApiatoExceptionsHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception               $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return  \Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request                 $request
+     * @param  \Illuminate\Auth\AuthenticationException $exception
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $request->expectsJson()
+            ? response()->json(['error' => 'Unauthenticated.'], 401)
+            : redirect()->guest('login');
     }
 
 }

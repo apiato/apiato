@@ -2,41 +2,58 @@
 
 namespace App\Ship\Exceptions\Formatters;
 
-use Apiato\Core\Abstracts\Exceptions\Formatters\BaseFormatter;
+use Apiato\Core\Exceptions\Formatters\ExceptionsFormatter as CoreExceptionsFormatter;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class ValidationExceptionFormatter extends BaseFormatter
+/**
+ * Class ValidationExceptionFormatter
+ *
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class ValidationExceptionFormatter extends CoreExceptionsFormatter
 {
-    public function format(JsonResponse $response, Exception $e, array $reporterResponses)
+
+    /**
+     * Status Code.
+     *
+     * @var  integer
+     */
+    CONST STATUS_CODE = 422;
+
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  array
+     */
+    public function responseData(Exception $exception, JsonResponse $response)
     {
-        $response->setStatusCode(422);
+        return [
+            'code'    => $exception->getCode(),
+            'message' => $exception->getMessage(),
+            'errors'      => $exception->errors(),
+            'status_code' => self::STATUS_CODE,
+        ];
+    }
 
-        $data = $response->getData(true);
-
-        $data = array_merge($data, [
-            'errors' => $e->errors(),
-            'code' => $e->getCode(),
-            'message' => $e->getMessage(),
-            'status_code' => 422,
-        ]);
-
-        if (config('app.debug')) {
-            $data = array_merge($data, [
-                'exception' => get_class($e),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
-        }
-
-        if (config('apiato.api.debug')) {
-            $data = array_merge($data, [
-                'trace' => (string) $e,
-            ]);
-        }
-
-        $response->setData($data);
-
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  mixed
+     */
+    function modifyResponse(Exception $exception, JsonResponse $response)
+    {
         return $response;
+    }
+
+    /**
+     * @return  int
+     */
+    public function statusCode()
+    {
+        return self::STATUS_CODE;
     }
 }

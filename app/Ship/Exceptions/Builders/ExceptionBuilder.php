@@ -2,12 +2,22 @@
 
 namespace App\Ship\Exceptions\Builders;
 
-use Apiato\Core\Abstracts\Exceptions\Builders\BaseExceptionBuilder;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class ExceptionBuilder extends BaseExceptionBuilder
+/**
+ * Class ExceptionBuilder
+ *
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
+ */
+class ExceptionBuilder
 {
+
+    /**
+     * @param \Exception $e
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
     public static function make(Exception $e)
     {
         return new JsonResponse([

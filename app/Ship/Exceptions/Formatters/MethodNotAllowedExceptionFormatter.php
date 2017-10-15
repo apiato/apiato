@@ -2,27 +2,59 @@
 
 namespace App\Ship\Exceptions\Formatters;
 
+use Apiato\Core\Exceptions\Formatters\ExceptionsFormatter as CoreExceptionsFormatter;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class MethodNotAllowedExceptionFormatter extends ExceptionFormatter
+/**
+ * Class MethodNotAllowedExceptionFormatter
+ *
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class MethodNotAllowedExceptionFormatter extends CoreExceptionsFormatter
 {
-    public function format(JsonResponse $response, Exception $e, array $reporterResponses)
+
+    /**
+     * Status Code.
+     *
+     * @var  integer
+     */
+    CONST STATUS_CODE = 405;
+
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  array
+     */
+    public function responseData(Exception $exception, JsonResponse $response)
     {
-        // build the basic exception
-        parent::format($response, $e, $reporterResponses);
-
-        $httpstatus = 405;
-
-        // add the http status
-        $response->setStatusCode($httpstatus);
-        $data = $response->getData(true);
-
-        $data = array_merge($data, [
-            'status_code' => $httpstatus,
-            'errors' => 'Method Not Allowed!',
-        ]);
-
-        $response->setData($data);
+        return [
+            'code'    => $exception->getCode(),
+            'message' => $exception->getMessage(),
+            'errors'      => 'Method Not Allowed!',
+            'status_code' => self::STATUS_CODE,
+        ];
     }
+
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  mixed
+     */
+    function modifyResponse(Exception $exception, JsonResponse $response)
+    {
+        return $response;
+    }
+
+    /**
+     * @return  int
+     */
+    public function statusCode()
+    {
+        return self::STATUS_CODE;
+    }
+
 }

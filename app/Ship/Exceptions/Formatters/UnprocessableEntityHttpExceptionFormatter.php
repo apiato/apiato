@@ -2,41 +2,81 @@
 
 namespace App\Ship\Exceptions\Formatters;
 
-use Apiato\Core\Abstracts\Exceptions\Formatters\BaseFormatter;
+use Apiato\Core\Exceptions\Formatters\ExceptionsFormatter as CoreExceptionsFormatter;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class UnprocessableEntityHttpExceptionFormatter extends BaseFormatter
+/**
+ * Class UnprocessableEntityHttpExceptionFormatter
+ *
+ * @author Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class UnprocessableEntityHttpExceptionFormatter extends CoreExceptionsFormatter
 {
-    public function format(JsonResponse $response, Exception $e, array $reporterResponses)
-    {
-        $response->setStatusCode(422);
 
+    /**
+     * Status Code.
+     *
+     * @var  int
+     */
+    CONST STATUS_CODE = 422;
+
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  array
+     */
+    public function responseData(Exception $exception, JsonResponse $response)
+    {
         // Laravel validation errors will return JSON string
-        $decoded = json_decode($e->getMessage(), true);
+        $decoded = json_decode($exception->getMessage(), true);
         // Message was not valid JSON
         // This occurs when we throw UnprocessableEntityHttpExceptions
         if (json_last_error() !== JSON_ERROR_NONE) {
             // Mimick the structure of Laravel validation errors
-            $decoded = [[$e->getMessage()]];
+            $decoded = [[$exception->getMessage()]];
         }
 
         // Laravel errors are formatted as {"field": [/*errors as strings*/]}
-        $data = array_reduce($decoded, function ($carry, $item) use ($e) {
-            return array_merge($carry, array_map(function ($current) use ($e) {
+        $responseData = array_reduce($decoded, function ($carry, $item) use ($exception) {
+            return array_merge($carry, array_map(function ($current) use ($exception) {
                 return [
-                    'status' => '422',
-                    'code' => $e->getCode(),
-                    'title' => 'Validation error',
+                    'status' => self::STATUS_CODE,
+                    'code'   => $exception->getCode(),
+                    'title'  => 'Validation error',
                     'detail' => $current
                 ];
             }, $item));
         }, []);
 
-        $response->setData([
-            'errors' => $data
-        ]);
+        return [
+            'code'    => $exception->getCode(),
+            'message' => $exception->getMessage(),
+            'errors' => $responseData,
+        ];
+    }
 
+
+    /**
+     * @param \Exception                    $exception
+     * @param \Illuminate\Http\JsonResponse $response
+     *
+     * @return  mixed
+     */
+    function modifyResponse(Exception $exception, JsonResponse $response)
+    {
         return $response;
     }
+
+    /**
+     * @return  int
+     */
+    public function statusCode()
+    {
+        return self::STATUS_CODE;
+    }
+
+
 }
