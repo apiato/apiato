@@ -14,9 +14,12 @@ order: 5
 * [Can I give my Actions REST names?](#q9)
 * [How are Service Providers auto-loaded?](#q11)
 * [Why is the Laravel 5.5 Auto-Discovery feature not working?](#q12)
+* [How to create third-party Containers?](#q13)
 * [I have a question and I can't find answer!!](#q100)
 
 <br>
+
+
 
 <a name="q1"></a>
 ## Do I have to use the Porto Architecture to benefit from Apiato!?
@@ -199,15 +202,13 @@ Otherwise they won't be loaded (except your custom Configs "config files that do
 (i.e., same like in Laravel 5.4 and before).
 
 
+<a name="q13"></a>
+## How to create third-party Containers?
 
-
-
-
-
-
-
-
-
+You can create your own Containers *(use the containers generator command to quickly create them)*, and publish them to your own repository. 
+The only requirement is to have the package type set to `apiato-container` (`"type": "apiato-container"`) in your `composer.json` file.
+  
+The `apiato/containers-installer` will download your Container to the `app/containers/` directory. 
 
 
 

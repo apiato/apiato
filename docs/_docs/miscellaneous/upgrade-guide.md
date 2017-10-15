@@ -52,7 +52,7 @@ This guide will show you how to freshly install the new Apiato 5.0, then migrate
 4) Open this file `app/Ship/composer.json` in your old project and only copy the required dependencies, from the old project to the same file in the new project.
 
 5) Again, open the `app/Ship/composer.json` file in the new project, and remove the following dependencies:
-`guzzlehttp/guzzle`, `prettus/l5-repository`, `barryvdh/laravel-cors`, `spatie/laravel-fractal`, `vinkla/hashids` and `apiato/containers-installer`.
+`guzzlehttp/guzzle`, `prettus/l5-repository`, `barryvdh/laravel-cors`, `spatie/laravel-fractal`, `vinkla/hashids` and `johannesschobel/apiato-container-installer`.
 
 6) Move and replace the following directories from the old project to the new project: `config`, `public`, `resources`, `database` and `storage`.
 

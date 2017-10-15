@@ -13,12 +13,12 @@
     }
   ],
   "keywords": [
-    "apiato",
-    "Starter",
-    "framework",
-    "API framework",
+    "Apiato",
     "API",
-    "Laravel",
+    "Framework",
+    "API framework",
+    "API Starter",
+    "Laravel API",
     "PHP",
     "Hello API",
     "Porto",
@@ -90,10 +90,6 @@
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover"
     ]
-
-
-
-
   },
   "config": {
     "preferred-install": "dist",
