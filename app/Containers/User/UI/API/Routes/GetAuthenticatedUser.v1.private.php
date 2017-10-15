@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           Users
- * @apiName            getAuthenticatedUserAction
+ * @apiName            getAuthenticatedUser
  *
  * @api                {GET} /v1/user/profile Find Logged in User data (Profile Information)
  * @apiDescription     Find the user details of the logged in user from its Token. (without specifying his ID)
@@ -14,8 +14,8 @@
  */
 
 $router->get('user/profile', [
-    'as' => 'api_user_get_user_profile',
-    'uses'  => 'Controller@getAuthenticatedUserAction',
+    'as' => 'api_user_get_authenticated_user',
+    'uses'  => 'Controller@getAuthenticatedUser',
     'middleware' => [
       'auth:api',
     ],
