@@ -60,7 +60,7 @@ class UpdateUserTest extends TestCase
         $response->assertStatus(400);
 
         $this->assertResponseContainKeyValue([
-            'errors' => 'Oops something went wrong.'
+            'status' => 'error'
         ]);
     }
 
