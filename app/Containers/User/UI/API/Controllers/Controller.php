@@ -122,7 +122,7 @@ class Controller extends ApiController
      *
      * @return mixed
      */
-    public function getAuthenticatedUserAction(GetAuthenticatedUserRequest $request)
+    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request)
     {
         $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
