@@ -207,7 +207,9 @@ Otherwise they won't be loaded (except your custom Configs "config files that do
 
 You can create your own Containers *(use the containers generator command to quickly create them)*, and publish them to your own repository. 
 The only requirement is to have the package type set to `apiato-container` (`"type": "apiato-container"`) in your `composer.json` file.
-  
+
+To use install the Container in your project add it as dependency to `app/Ship/composer.json`.
+
 The `apiato/containers-installer` will download your Container to the `app/containers/` directory. 
 
 

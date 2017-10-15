@@ -76,7 +76,6 @@
 
         <div class="links">
             <a href="http://apiato.io/">Documentation</a>
-            <a href="https://github.com/Mahmoudz/Porto/">Architecture</a>
             <a href="https://github.com/apiato/apiato">GitHub</a>
         </div>
     </div>
