@@ -4,14 +4,27 @@ category: "Miscellaneous"
 order: 20
 ---
 
+- [Upgrade Apiato from version 7.0 to 8.0](#upgrade-apiato-from-version70To80)
 - [Upgrade Apiato from version 5.0 to 7.0](#upgrade-apiato-from-version50To70)
 - [Upgrade Apiato from version 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
-- [Upcoming Release](#Upcoming-Release)
+- [Manual Upgrading Guide](#Manual-Upgrading-Guide)
+- [Upcoming Release Notes](#Upcoming-Release)
+
 <br>
 
-<a name="upgrade-apiato-from-version50To70"></a>
 
+<a name="upgrade-apiato-from-version70To80"></a>
+## Upgrade Apiato from version 7.0 to 8.0
+
+> Estimated upgrading time is 45 minutes.
+
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
+
+
+
+
+<a name="upgrade-apiato-from-version50To70"></a>
 ## Upgrade Apiato from version 5.0 to 7.0
 
 > Estimated upgrading time is 30 minutes.
@@ -30,8 +43,9 @@ Hint: You can do a git merge and solve the conflicts, if you don't want to manua
 Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`. (This should be a temporary situation)
 
-<a name="upgrade-apiato-from-version-41To50"></a>
 
+
+<a name="upgrade-apiato-from-version-41To50"></a>
 ## Upgrade Apiato from version 4.1 to 5.0
 
 > Estimated upgrading time is 15 minutes.
@@ -77,11 +91,22 @@ and you will need to update the namespace from `namespace App\Ship\Seeders\Data\
 
 That's it :)
 
-<a name="how-to-manually-upgrade-older-versions-to-41"></a>
 
+
+
+<a name="how-to-manually-upgrade-older-versions-to-41"></a>
 ## How to manually upgrade older versions to 4.1?
 
-##### Upgrading method:
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
+
+
+
+
+<a name="Manual-Upgrading-Guide"></a>
+## Manual Upgrading Guide:
+
+*This guide will show you, how to keep you project synced with the latest master branch of Apiato. 
+And can be used to upgrade older projects to the newest once*
 
 1) Setup an upstream remote (to point to your fork of the apiato repository)
 
@@ -109,7 +134,20 @@ upstream    git@github.com:apiato/apiato.git (push)
  master          77d302aa [origin/master] ...
 ```
 
-4) Now you can move the updates to your master branch in 2 ways:
+
+4) Fetch everything from upstream
+
+```php
+git fetch upstream 
+```
+
+5) Let your apiato branch get the upstream logs
+
+```php
+git reset --hard upstream/master
+```
+
+6) Now you can move the updates to your master branch in 2 ways:
 
 
 **Option A**: merge the entire apiato branch with master and solve the conflicts manually. *(easier and faster)*
@@ -118,9 +156,9 @@ upstream    git@github.com:apiato/apiato.git (push)
 
 The git merging can be done in many ways:
 
-- Merge then solve the conflict manually `git merge --allow-unrelated-histories apiato` *(recommended)*
-- Merge and keep your project changes `git merge --allow-unrelated-histories -X ours apiato`
-- Merge and overwrite your project with the apiato changes `git merge --allow-unrelated-histories -X theirs apiato`
+- Merge then solve the conflict manually `git merge --allow-unrelated-histories apiato`.
+- Merge and keep your project changes `git merge --allow-unrelated-histories -X ours apiato`.
+- Merge and overwrite your project with the apiato changes `git merge --allow-unrelated-histories -X theirs apiato`.
 
 
 *-X is a shortcut for --strategy-option=*
@@ -140,9 +178,15 @@ The git merging can be done in many ways:
 
 Checkout the project setup in [Contributing to Apiato]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
+7) Run Composer update then run all the tests (`composer update && vendor/bin/phpunit`), and fix the occurring problems, if there's any. 
+You may want to update some of your custom containers dependencies as well.
+
+See the [Upcoming Release Notes](#Upcoming-Release) for details about the changes.
+
+
 
 
 <a name="Upcoming-Release"></a>
-## Upcoming Release
+## Upcoming Release Notes
 
 Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features and changes. 
