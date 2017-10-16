@@ -73,6 +73,8 @@ class AccountFailedException extends Exception
     public $httpStatusCode = Response::HTTP_CONFLICT;
 
     public $message = 'Failed creating new User.';
+    
+    public $code = 4711;
 }
 ```
 
@@ -91,6 +93,41 @@ class InternalErrorException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
     public $message = 'Something went wrong!';
+}
+```
+
+**General `Exception` with CustomData:**
+
+```php
+<?php
+
+namespace App\Port\Exception\Exceptions;
+
+use App\Port\Exception\Abstracts\Exception;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+
+class AwesomeExceptionWithCustomData extends Exception
+{
+    public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
+
+    public $message = 'Something went wrong!';
+    
+    public $code = 1234;
+    
+    /*
+     * Everything you add here will be automatically added to the ExceptionFormatter on the top level!
+     * You can define any structure you want or maybe include translated messages
+     */
+    public function addCustomData() {
+        return [
+            'title' => 'nice',
+            'description' => 'one fancy description here',
+            'foo' => true,
+            'meta' => [
+                'bar' => 1234,
+            ]
+        ];
+    }
 }
 ```
 
@@ -118,3 +155,13 @@ throw (new AccountFailedException())->debug($e); // debug() accepts string or \E
 throw new AccountFailedException('I am the message to be displayed for the user');
 
 ```
+
+**Usage and overwriting pre-set CustomData**
+```php
+<?php
+
+throw (new AwesomeExceptionWithCustomData())->overrideCustomData(['foo' => 'bar']);
+
+```
+
+
