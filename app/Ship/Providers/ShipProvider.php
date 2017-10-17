@@ -5,6 +5,7 @@ namespace App\Ship\Providers;
 use App\Ship\Parents\Providers\MainProvider;
 use Barryvdh\Debugbar\Facade;
 use Barryvdh\Debugbar\ServiceProvider;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class ShipProvider
@@ -31,6 +32,7 @@ class ShipProvider extends MainProvider
      */
     protected $aliases = [
         'Debugbar' => Facade::class,
+        'Apiato' => Apiato::class,
         // ...
     ];
 
