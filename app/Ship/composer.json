@@ -1,6 +1,6 @@
 {
   "require": {
-    "apiato/core": "^2.0",
+    "apiato/core": "dev-master",
     "predis/predis": "^1.1"
   },
   "require-dev": {
