@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Actions;
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class WebAdminLoginAction.
