@@ -35,7 +35,8 @@ class CreateWepayCustomerTask extends Task
      * @param        $email
      * @param string $description
      *
-     * @return  array Wepay customer object
+     * @return array Wepay customer object
+     * @throws WepayApiErrorException
      */
     public function run($email, $description = '')
     {

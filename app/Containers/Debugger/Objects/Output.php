@@ -2,7 +2,7 @@
 
 namespace App\Containers\Debugger\Objects;
 
-use Config;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Jenssegers\Agent\Facades\Agent;

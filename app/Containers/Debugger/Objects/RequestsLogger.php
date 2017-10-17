@@ -2,9 +2,9 @@
 
 namespace App\Containers\Debugger\Objects;
 
-use App;
-use Config;
 use DB;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 use Log;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
@@ -66,6 +66,6 @@ class RequestsLogger
         $handler->setFormatter(new LineFormatter(null, null, true, true));
 
         $this->logger = new Logger("REQUESTS DEBUGGER");
-        $this->logger->pushHandler($handler, Logger::INFO);
+        $this->logger->pushHandler($handler);
     }
 }

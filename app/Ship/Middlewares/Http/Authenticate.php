@@ -25,7 +25,6 @@ class Authenticate
      * Create a new middleware instance.
      *
      * @param  Guard  $auth
-     * @return void
      */
     public function __construct(Guard $auth)
     {

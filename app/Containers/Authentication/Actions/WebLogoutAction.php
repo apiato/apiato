@@ -14,7 +14,7 @@ class WebLogoutAction extends Action
 {
 
     /**
-     * @return bool
+     * @return void
      */
     public function run()
     {

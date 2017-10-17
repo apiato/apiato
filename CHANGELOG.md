@@ -37,7 +37,7 @@
 - Add feature to read custom stub files form `app/Ship/Generators/CustomStubs`
 - Add command to sync all system permission with a given role.
 - Support Apiato new class calling style `controllerName@ClassActionOrTask` in the magic call, example: `$role = $this->call('Authorization@FindRoleTask', [$request->role_id]);`. 
-- Add new Facade class `Apiato` containing the old Butlers classes functions, in addition to the `call` magical methode (`Apiato::call()`) in the `CallableTrait`.
+- Add new Facade class `Apiato` containing the old Butlers classes functions, in addition to the `call` magical method (`Apiato::call()`) in the `CallableTrait`.
 - Add container specific config file to each container.
 - Add `readme.md` file to each container.
 - Add support for Exceptions Formatters (with some default Formatters). To allows users customize `Exceptions` JSON responses.

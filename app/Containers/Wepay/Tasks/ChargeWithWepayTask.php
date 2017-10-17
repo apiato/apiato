@@ -38,10 +38,11 @@ class ChargeWithWepayTask extends Task implements PaymentChargerInterface
     /**
      * @param \App\Containers\Payment\Contracts\ChargeableInterface $user
      * @param \App\Containers\Payment\Models\AbstractPaymentAccount $account
-     * @param                                                       $amount
+     * @param float                                                 $amount
      * @param string                                                $currency
      *
-     * @return  array|null
+     * @return array|null
+     * @throws WepayApiErrorException
      */
     public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD')
     {

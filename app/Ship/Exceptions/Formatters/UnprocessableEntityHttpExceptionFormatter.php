@@ -35,7 +35,7 @@ class UnprocessableEntityHttpExceptionFormatter extends CoreExceptionsFormatter
         // Message was not valid JSON
         // This occurs when we throw UnprocessableEntityHttpExceptions
         if (json_last_error() !== JSON_ERROR_NONE) {
-            // Mimick the structure of Laravel validation errors
+            // Mimic the structure of Laravel validation errors
             $decoded = [[$exception->getMessage()]];
         }
 

@@ -40,7 +40,7 @@ order: 7
 - URLs should include nouns, not verbs.
 - Use plural nouns only for consistency (no singular nouns).
 - Use HTTP verbs (GET, POST, PUT, DELETE) to operate on the collections and elements.
-- You shouldn’t need to go deeper than resource/identifier/resource.
+- You should not need to go deeper than resource/identifier/resource.
 - Put the version number at the base of your URL, for example `http://apiato.dev/v1/path/to/resource`.
 - If an input data changes the logic of the endpoint, it should be passed in the URL. If not can go in the header "like Auth Token".
 - Don't use query parameters to alter state.

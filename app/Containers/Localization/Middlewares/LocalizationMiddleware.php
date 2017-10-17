@@ -4,6 +4,7 @@ namespace App\Containers\Localization\Middlewares;
 
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;

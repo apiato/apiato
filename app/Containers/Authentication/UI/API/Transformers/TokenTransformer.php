@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\UI\API\Transformers;
 
 use App\Ship\Parents\Transformers\Transformer;
-use Config;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class TokenTransformer.

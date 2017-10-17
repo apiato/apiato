@@ -44,7 +44,8 @@ class CreateUserBySocialProfileTask extends Task
      * @param null $refreshToken
      * @param null $avatar_original
      *
-     * @return  mixed
+     * @return mixed
+     * @throws AccountFailedException
      */
     public function run(
         $provider,
