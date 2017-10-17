@@ -2,9 +2,8 @@
 
 namespace App\Containers\Welcome\UI\API\Controllers;
 
-use App\Containers\Welcome\Actions\GetMessageForApiRootVisitorAction;
-use App\Containers\Welcome\Actions\GetMessageForApiV1VisitorAction;
 use App\Ship\Parents\Controllers\ApiController;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller.
@@ -19,7 +18,7 @@ class Controller extends ApiController
      */
     public function apiRoot()
     {
-        $message = $this->call(GetMessageForApiRootVisitorAction::class);
+        $message = Apiato::call('Welcome@FindMessageForApiRootVisitorAction');
 
         return response()->json($message);
     }
@@ -29,7 +28,7 @@ class Controller extends ApiController
      */
     public function v1ApiLandingPage()
     {
-        $message = $this->call(GetMessageForApiV1VisitorAction::class);
+        $message = Apiato::call('Welcome@FindMessageForApiV1VisitorAction');
 
         return response()->json($message);
     }

@@ -2,11 +2,15 @@
 
 namespace App\Containers\Authorization\UI\CLI\Commands;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\Authorization\Tasks\ListAllPermissionsTask;
+use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use Illuminate\Support\Facades\App;
 
+/**
+ * Class GiveAllPermissionsToRole
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class GiveAllPermissionsToRole extends ConsoleCommand
 {
 
@@ -14,13 +18,22 @@ class GiveAllPermissionsToRole extends ConsoleCommand
 
     protected $description = 'Give all system Permissions to a specific Role.';
 
+    /**
+     * @void
+     */
     public function handle()
     {
         $roleName = $this->argument('role');
 
-        $allPermissionsNames = App::make(ListAllPermissionsTask::class)->run(true)->pluck('name')->toArray();
+        $allPermissions = Apiato::call('Authorization@GetAllPermissionsTask', [true]);
 
-        $role = App::make(GetRoleTask::class)->run($roleName)->syncPermissions($allPermissionsNames);
+        $role = Apiato::call('Authorization@FindRoleTask', [$roleName]);
+
+        if (!$role) {
+            throw new RoleNotFoundException("Role $roleName is not found!");
+        }
+
+        $role->syncPermissions($allPermissionsNames = $allPermissions->pluck('name')->toArray());
 
         $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . implode(' - ',
                 $allPermissionsNames) . '.');

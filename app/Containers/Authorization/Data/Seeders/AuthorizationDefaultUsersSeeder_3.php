@@ -2,10 +2,8 @@
 
 namespace App\Containers\Authorization\Data\Seeders;
 
-use App\Containers\Authorization\Tasks\GetRoleTask;
-use App\Containers\User\Models\User;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Seeders\Seeder;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -23,14 +21,13 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
      */
     public function run()
     {
-        // Default Users (with roles) -----------------------------------------------------------
-
-        $admin = new User();
-        $admin->name = 'Super Admin';
-        $admin->email = 'admin@admin.com';
-        $admin->password = Hash::make('admin');
-        $admin->save();
-        $admin->assignRole(App::make(GetRoleTask::class)->run('admin'));
+        // Default Users (with their roles) ---------------------------------------------
+        Apiato::call('User@CreateUserByCredentialsTask', [
+            $isClient = false,
+            'admin@admin.com',
+            Hash::make('admin'),
+            'Super Admin',
+        ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
 
         // ...
 

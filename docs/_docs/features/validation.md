@@ -44,14 +44,17 @@ class RegisterUserRequest extends Request
 ```php
     public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
     {
-        $user = $action->run(
-            $request['email'],
-            $request['password'],
-            $request['name'],
-            $request['gender'],
-            $request['birth']
-        );
-
+        // if the actions takes the request object, you can pass the entire request instance as parameter
+        $user = Apiato::call('User@RegisterUserAction', [
+            [
+                $request['email'],
+                $request['password'],
+                $request['name'],
+                $request['gender'],
+                $request['birth']
+            ]
+        ]);
+        
         return $this->transform($user, UserTransformer::class);
     }
 ```

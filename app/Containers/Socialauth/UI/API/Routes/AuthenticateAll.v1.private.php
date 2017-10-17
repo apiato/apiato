@@ -123,6 +123,6 @@ HTTP/1.1 200 OK
 }
  */
 $router->post('auth/{provider}', [
-    'as' => 'API_Socialauth_socialAuth',
+    'as' => 'api_socialauth_social_auth',
     'uses' => 'Controller@authenticateAll',
 ]);

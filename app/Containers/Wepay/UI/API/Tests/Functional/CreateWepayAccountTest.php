@@ -3,7 +3,6 @@
 namespace App\Containers\Wepay\UI\API\Tests\Functional;
 
 use App\Containers\Wepay\Tests\TestCase;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateWepayAccountTest.

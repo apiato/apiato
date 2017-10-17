@@ -4,27 +4,29 @@ category: "Miscellaneous"
 order: 5
 ---
 
-* [Do I have to use the Porto Architecture to benefit from APIATO](#q1)
+* [Do I have to use the Porto Architecture to benefit from Apiato](#q1)
 * [How to use my custom domain?](#q2)
 * [Where to put my frontend code?](#q3)
 * [Where do I register Service Providers and Aliases?](#q4)
 * [How to change API URL?](#q5)
-* [How to version my API in header instead of URL?](#q6)
 * [Where do I define my Composer dependencies?](#q7)
 * [How to enable Query Caching?](#q8)
 * [Can I give my Actions REST names?](#q9)
 * [How are Service Providers auto-loaded?](#q11)
 * [Why is the Laravel 5.5 Auto-Discovery feature not working?](#q12)
+* [How to create third-party Containers?](#q13)
 * [I have a question and I can't find answer!!](#q100)
 
 <br>
 
+
+
 <a name="q1"></a>
-## Do I have to use the Porto Architecture to benefit from APIATO!?
+## Do I have to use the Porto Architecture to benefit from Apiato!?
 
 NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer.
-And you can call the APIATO provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
-You have the freedom to structure your own project anyway you like, and still use all the feature that APIATO provide.
+And you can call the Apiato provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer.
+You have the freedom to structure your own project anyway you like, and still use all the feature that Apiato provide.
 
 
 <a name="q2"></a>
@@ -93,7 +95,7 @@ However, some more general Service Providers and Aliases (application features u
 Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md %}) page for more details.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
+Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
 <a name="q5"></a>
@@ -108,15 +110,6 @@ To change this from `api.apiato.com` to `apiato.com/api/`, do the following:
 3. That's it. Now you might need to update your tests endpoints, if they fail. Since each test can specify which endpoint to test, Example: In `CreateAdminTest` change `protected $endpoint = 'post@v1/admins';` to `protected $endpoint = 'post@api/v1/admins';`, including the new prefix.
 
 To remove the version prefix as well, set `enable_version_prefix` to `false` in `app/Ship/Configs/apiato.php`.
-
-
-
-<a name="q6"></a>
-## How to version my API in header instead of URL?
-
-First remove the URL version prefix:
-1. Edit `app/Ship/Configs/apiato.php`, set prefix to `'enable_version_prefix' => 'false',`.
-2. Implement the Header versioning anyway you prefer. (this is not implemented in Apiato yet. _Consider a contribution_).
 
 
 
@@ -181,15 +174,15 @@ The `ApiatoServiceProvider` is the one who calls the `runLoadersBoot()`, on star
 After he call that function he registers the Ship Providers which has all the other Ship Providers defined on its `$serviceProviders` property.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of APIATO applications, this features **is turned off**, because it messes up how `config` files are loaded
+Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
 
 <a name="q12"></a>
 ## Why is the Laravel 5.5 Auto-Discovery feature not working?
 
-That is, because this feature is turned off by default in APIATO. The Laravel `Auto-Discovery` feature registers 3rd-party
-Service Providers during startup of the application and thereby messes with the way, APIATO handles / loads components.
+That is, because this feature is turned off by default in Apiato. The Laravel `Auto-Discovery` feature registers 3rd-party
+Service Providers during startup of the application and thereby messes with the way, Apiato handles / loads components.
 This is especially problematic in the context of `config` files, as they are ignored.
 
 To re-enable it go to the main `composer.json` file and remove the "*" from the `dont-discover`
@@ -209,15 +202,15 @@ Otherwise they won't be loaded (except your custom Configs "config files that do
 (i.e., same like in Laravel 5.4 and before).
 
 
+<a name="q13"></a>
+## How to create third-party Containers?
 
+You can create your own Containers *(use the containers generator command to quickly create them)*, and publish them to your own repository. 
+The only requirement is to have the package type set to `apiato-container` (`"type": "apiato-container"`) in your `composer.json` file.
 
+To use install the Container in your project add it as dependency to `app/Ship/composer.json`.
 
-
-
-
-
-
-
+The `apiato/containers-installer` will download your Container to the `app/containers/` directory. 
 
 
 

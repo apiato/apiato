@@ -89,9 +89,9 @@ class ListAndSearchUsersAction extends Action
 
 <?php
 
-public function listAllUsers(ListAndSearchUsersAction $action)
+public function listAllUsers()
 {
-    $users = $action->run();
+    $users = Apiato::call('User@ListAndSearchUsersAction');
 
     return $this->response->paginator($users, new UserTransformer());
 } 

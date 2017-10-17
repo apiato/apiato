@@ -2,10 +2,10 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\User\Tasks\UpdateUserTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\Hash;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class UpdateUserAction.
@@ -37,6 +37,6 @@ class UpdateUserAction extends Action
         // remove null values and their keys
         $userData = array_filter($userData);
 
-        return $this->call(UpdateUserTask::class, [$userData, $request->id]);
+        return Apiato::call('User@UpdateUserTask', [$userData, $request->id]);
     }
 }

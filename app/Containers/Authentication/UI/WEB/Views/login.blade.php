@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>apiato</title>
+        <title>Apiato</title>
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 

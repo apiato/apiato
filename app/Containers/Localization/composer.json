@@ -1,0 +1,8 @@
+{
+  "name": "apiato/localization",
+  "description": "apiato Container.",
+  "type": "apiato-container",
+  "require": {
+
+  }
+}

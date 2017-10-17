@@ -49,6 +49,7 @@ use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
 use App\Containers\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 class CreateAdminAction extends Action
 {
@@ -60,9 +61,9 @@ class CreateAdminAction extends Action
      */
     public function run(Request $request)
     {
-        $admin = $this->call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
+        $admin = Apiato::call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
 
-        $this->call(AssignUserToRoleTask::class, [$admin, ['admin']]);
+        Apiato::call(AssignUserToRoleTask::class, [$admin, ['admin']]);
 
         return $admin;
     }
@@ -73,7 +74,7 @@ class CreateAdminAction extends Action
 But injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
 
 
-The Action itself was also called using `$this->call()` which triggers the `run` function in it.
+The Action itself was also called using `Apiato::call()` which triggers the `run` function in it.
 
 
 Refer to the [**Magical Call**]({{ site.baseurl }}{% link _docs/miscellaneous/magical-call.md %})  page for more info and examples on how to use the call function.
@@ -96,7 +97,7 @@ class DeleteUserAction extends Action
 
     public function run($userId)
     {
-        return $this->call(DeleteUserTask::class, [$userId]); // <<<<<
+        return Apiato::call(DeleteUserTask::class, [$userId]); // <<<<<
     }
 
 }
@@ -121,9 +122,9 @@ class DemoAction extends Action
     public function run(Request $request)
     {
 
-        $foo = $this->call(Sample111Task::class, [$request->xxx, $request->yyy]);
+        $foo = Apiato::call(Sample111Task::class, [$request->xxx, $request->yyy]);
 
-        $bar = $this->call(Sample222Task::class, [$request->foo, $request->zzz]);
+        $bar = Apiato::call(Sample222Task::class, [$request->foo, $request->zzz]);
 
         // ...
 
@@ -142,7 +143,7 @@ class DemoAction extends Action
 
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = $this->call(DeleteUserAction::class, [$request]);
+        $user = Apiato::call(DeleteUserAction::class, [$request]);
 
         return $this->deleted($user);
     }

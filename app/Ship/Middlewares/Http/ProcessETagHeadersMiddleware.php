@@ -5,7 +5,6 @@ namespace App\Ship\Middlewares\Http;
 use App;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Config;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 

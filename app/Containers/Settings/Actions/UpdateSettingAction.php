@@ -2,11 +2,15 @@
 
 namespace App\Containers\Settings\Actions;
 
-use App\Containers\Settings\Tasks\GetSettingByIdTask;
-use App\Containers\Settings\Tasks\UpdateSettingTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
+/**
+ * Class UpdateSettingAction
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
 class UpdateSettingAction extends Action
 {
 
@@ -22,9 +26,9 @@ class UpdateSettingAction extends Action
             'value'
         ]);
 
-        $setting = $this->call(GetSettingByIdTask::class, [$request->id]);
+        $setting = Apiato::call('Settings@FindSettingByIdTask', [$request->id]);
 
-        $setting = $this->call(UpdateSettingTask::class, [$setting, $data]);
+        $setting = Apiato::call('Settings@UpdateSettingTask', [$setting, $data]);
 
         return $setting;
     }

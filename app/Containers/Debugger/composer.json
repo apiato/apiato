@@ -1,6 +1,7 @@
 {
   "name": "apiato/debugger",
   "description": "apiato Container.",
+  "type": "apiato-container",
   "require": {
     "jenssegers/agent": "^2.4"
   }

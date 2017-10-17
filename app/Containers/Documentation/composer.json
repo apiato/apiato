@@ -1,0 +1,8 @@
+{
+  "name": "apiato/documentation",
+  "description": "apiato Container.",
+  "type": "apiato-container",
+  "require": {
+
+  }
+}

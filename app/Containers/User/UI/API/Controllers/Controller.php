@@ -2,20 +2,12 @@
 
 namespace App\Containers\User\UI\API\Controllers;
 
-use App\Containers\User\Actions\CreateAdminAction;
-use App\Containers\User\Actions\DeleteUserAction;
-use App\Containers\User\Actions\GetMyProfileAction;
-use App\Containers\User\Actions\GetUserAction;
-use App\Containers\User\Actions\ListAdminsAction;
-use App\Containers\User\Actions\ListAndSearchUsersAction;
-use App\Containers\User\Actions\ListClientsAction;
-use App\Containers\User\Actions\RegisterUserAction;
-use App\Containers\User\Actions\UpdateUserAction;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\GetMyProfileRequest;
-use App\Containers\User\UI\API\Requests\GetUserByIdRequest;
-use App\Containers\User\UI\API\Requests\ListAllUsersRequest;
+use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
+use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
+use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -36,7 +28,7 @@ class Controller extends ApiController
      */
     public function registerUser(RegisterUserRequest $request)
     {
-        $user = $this->call(RegisterUserAction::class, [$request]);
+        $user = Apiato::call('User@RegisterUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -48,7 +40,7 @@ class Controller extends ApiController
      */
     public function createAdmin(CreateAdminRequest $request)
     {
-        $admin = $this->call(CreateAdminAction::class, [$request]);
+        $admin = Apiato::call('User@CreateAdminAction', [$request]);
 
         return $this->transform($admin, UserTransformer::class);
     }
@@ -60,7 +52,7 @@ class Controller extends ApiController
      */
     public function updateUser(UpdateUserRequest $request)
     {
-        $user = $this->call(UpdateUserAction::class, [$request]);
+        $user = Apiato::call('User@UpdateUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -72,67 +64,67 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = $this->call(DeleteUserAction::class, [$request]);
+        $user = Apiato::call('User@DeleteUserAction', [$request]);
 
         return $this->deleted($user);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllUsers(ListAllUsersRequest $request)
+    public function getAllUsers(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListAndSearchUsersAction::class);
+        $users = Apiato::call('User@GetAllUsersAction');
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllClients(ListAllUsersRequest $request)
+    public function getAllClients(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListClientsAction::class);
+        $users = Apiato::call('User@GetAllClientsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ListAllUsersRequest $request
+     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
      *
      * @return  mixed
      */
-    public function listAllAdmins(ListAllUsersRequest $request)
+    public function getAllAdmins(GetAllUsersRequest $request)
     {
-        $users = $this->call(ListAdminsAction::class);
+        $users = Apiato::call('User@GetAllAdminsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\GetUserByIdRequest $request
+     * @param \App\Containers\User\UI\API\Requests\FindUserByIdRequest $request
      *
      * @return  mixed
      */
-    public function getUser(GetUserByIdRequest $request)
+    public function findUserById(FindUserByIdRequest $request)
     {
-        $user = $this->call(GetUserAction::class, [$request]);
+        $user = Apiato::call('User@FindUserByIdAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
 
     /**
-     * @param GetMyProfileRequest $request
+     * @param GetAuthenticatedUserRequest $request
      *
      * @return mixed
      */
-    public function getUserProfile(GetMyProfileRequest $request)
+    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request)
     {
-        $user = $this->call(GetMyProfileAction::class, [$request]);
+        $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

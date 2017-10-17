@@ -63,9 +63,9 @@ $router->any('auth/twitter', [
 ```php
 <?php
 
-public function authenticateTwitter(AuthenticateOneRequest $request, SocialLoginAction $action)
+public function authenticateTwitter(AuthenticateOneRequest $request)
 {
-    $user = $action->run(SocialProvider::TWITTER);
+    $user = Apiato::call('Socialauth@SocialLoginAction', [SocialProvider::TWITTER]);
 
     return $this->response->item($user, new UserTransformer());
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Apiato</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -76,7 +76,6 @@
 
         <div class="links">
             <a href="http://apiato.io/">Documentation</a>
-            <a href="https://github.com/Mahmoudz/Porto/">Architecture</a>
             <a href="https://github.com/apiato/apiato">GitHub</a>
         </div>
     </div>

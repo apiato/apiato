@@ -2,11 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Tasks\AttachPermissionsToRoleTask;
-use App\Containers\Authorization\Tasks\GetPermissionTask;
-use App\Containers\Authorization\Tasks\GetRoleTask;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class AttachPermissionsToRoleAction.
@@ -23,15 +21,19 @@ class AttachPermissionsToRoleAction extends Action
      */
     public function run(Request $request)
     {
-        $role = $this->call(GetRoleTask::class, [$request->role_id]);
+
+        $role = Apiato::call('Authorization@FindRoleTask', [$request->role_id]);
+
         $permissions = [];
 
         if (is_array($permissionsIds = $request->permissions_ids)) {
             foreach ($permissionsIds as $permissionId) {
-                $permissions[] = $this->call(GetPermissionTask::class, [$permissionId]);
+
+                $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionId]);
             }
         } else {
-            $permissions[] = $this->call(GetPermissionTask::class, [$permissionsIds]);
+            $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionsIds]);
+
         }
 
         return $role->givePermissionTo($permissions);

@@ -10,14 +10,12 @@
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
-[![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
-[![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
-[![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
-[![Dependency Status](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/578988f4c3d40f0046852116)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce8fed7f8fcd492ebbe5ef0fb36c0a9a)](https://www.codacy.com/app/mahmoudz/apiato?utm_source=github.com&utm_medium=referral&utm_content=apiato/apiato&utm_campaign=badger)
 [![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
-[![composer.lock](https://poser.pugx.org/apiato/apiato/composerlock)](https://packagist.org/packages/apiato/apiato)
+[![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
+[![Dependency Status](https://www.versioneye.com/user/projects/59ddea8a2de28c000f857199/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59ddea8a2de28c000f857199)
+[![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
-
 
 
 <a name="Introduction"></a>
@@ -70,7 +68,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 9. Include (a.k.a embedding, nesting or side-loading) relationships for complex data structures.
 10. Support Data Caching (with auto clearing on Create, Update and Delete).
 11. API versioning in the URL or Header (versioning based on the route file name).
-12. Exception handleing with custom JSON errors responses.
+12. Exception handleing with custom JSON errors responses (using Exceptions Formatters).
 13. Support Shallow ETag HTTP Header, to reduce client bandwidth.
 14. Localization (multiple languages via Content-Language header).
 15. Automatic Data Pagination (meta links to next and previous data).
@@ -104,17 +102,11 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
 
 
-
-**Apiato** is built with a new architectural pattern called **[Porto](https://github.com/Mahmoudz/Porto)**.
+**Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
-<br>
-
-Taking a look at the [**Porto document**](https://github.com/Mahmoudz/Porto) before digging in Apiato, will help you understand how the code is organized and how things work.
-However, you do **NOT** have to follow any of the Porto conventions to benifit from all the features that Apiato provides.
-
-
-If you feel safe writting all your code in the `Controller` component; do it, no one can stop you! You might also consider using the `Action` component as a "Service Class" to share code between your `Controllers`.
+You are **NOT** forced to build your Application using the Porto architecture.
+You can build it using the [MVC](http://apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 <br>
 

@@ -19,7 +19,7 @@
  */
 
 $router->delete('settings/{id}', [
-    'as' => 'API_Settings_deleteSetting',
+    'as' => 'api_settings_delete_setting',
     'uses'  => 'Controller@deleteSetting',
     'middleware' => [
       'auth:api',

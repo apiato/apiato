@@ -63,7 +63,7 @@ class RegisterUserTest extends TestCase
         $response->assertStatus(405);
 
         $this->assertResponseContainKeyValue([
-            'errors' => '405 Method Not Allowed.',
+            'errors' => 'Method Not Allowed!',
         ]);
     }
 

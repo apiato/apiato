@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class ProfilerMiddleware
  *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class ProfilerMiddleware extends Middleware
 {
@@ -25,11 +25,11 @@ class ProfilerMiddleware extends Middleware
     {
         $response = $next($request);
 
-        if (
-            $response instanceof JsonResponse &&
-            app()->bound('debugbar') &&
-            Config::get('debugbar.enabled')
-        ) {
+        if (!Config::get('debugbar.enabled')) {
+            return $response;
+        }
+
+        if ($response instanceof JsonResponse && app()->bound('debugbar')) {
             $profilerData = ['_profiler' => app('debugbar')->getData()];
 
             $response->setData($response->getData(true) + $profilerData);

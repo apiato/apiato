@@ -2,8 +2,7 @@
 
 namespace App\Containers\Authentication\Actions;
 
-use App\Containers\Authentication\Tasks\CallOAuthServerTask;
-use App\Containers\Authentication\Tasks\MakeRefreshCookieTask;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 
@@ -23,7 +22,7 @@ class ProxyApiRefreshAction extends Action
     public function run(Request $request, $clientId, $clientPassword)
     {
         // use the refresh token sent in request data, if not exist try to get it from the cookie
-        $refreshToken = $request->refresh_token ?: $request->cookie('refreshToken');
+        $refreshToken = $request->refresh_token ? : $request->cookie('refreshToken');
 
         $requestData = [
             'grant_type'    => 'refresh_token',
@@ -33,9 +32,9 @@ class ProxyApiRefreshAction extends Action
             'scope'         => '',
         ];
 
-        $responseContent = $this->call(CallOAuthServerTask::class, [$requestData]);
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);
 
-        $refreshCookie = $this->call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
+        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [
             'response-content' => $responseContent,

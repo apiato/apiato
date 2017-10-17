@@ -20,6 +20,6 @@
 }
  */
 $router->post('clients/web/admin/refresh', [
-    'as' => 'API_Authentication_ClientAdminWebAppRefreshProxy',
+    'as' => 'api_authentication_client_admin_web_app_refresh_proxy',
     'uses'  => 'Controller@proxyRefreshForAdminWebClient',
 ]);
