@@ -5,6 +5,7 @@ namespace App\Containers\Authorization\UI\API\Tests\Functional;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tests\TestCase;
 use App\Containers\User\Models\User;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class RevokeUserFromRoleTest.
@@ -66,7 +67,7 @@ class RevokeUserFromRoleTest extends TestCase
 
 
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        if(\Config::get('apiato.hash-id')){
+        if (Config::get('apiato.hash-id')){
             $response->assertStatus(400);
 
             $this->assertResponseContainKeyValue([

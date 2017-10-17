@@ -18,7 +18,8 @@ class WebLoginTask extends Task
      * @param            $password
      * @param bool|false $remember
      *
-     * @return  mixed
+     * @return mixed
+     * @throws LoginFailedException
      */
     public function run($email, $password, bool $remember = false)
     {

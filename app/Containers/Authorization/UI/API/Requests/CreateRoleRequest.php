@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
-use Validator;
 
 /**
  * Class CreateRoleRequest.
