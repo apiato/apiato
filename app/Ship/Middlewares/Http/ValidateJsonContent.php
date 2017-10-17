@@ -6,8 +6,8 @@ use App;
 use App\Ship\Exceptions\MissingJSONHeaderException;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Config;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class ValidateJsonContent
@@ -21,7 +21,8 @@ class ValidateJsonContent extends Middleware
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next
      *
-     * @return  mixed
+     * @return mixed
+     * @throws MissingJSONHeaderException
      */
     public function handle(Request $request, Closure $next)
     {
