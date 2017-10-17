@@ -15,7 +15,7 @@
 - ...
 
 
-## v8.0.0 (2017-10-16)
+## v7.1.0 (2017-10-17)
 
 ### Added
 - Support ETags via a Middleware.
