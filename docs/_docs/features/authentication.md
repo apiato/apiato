@@ -373,7 +373,7 @@ Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_tok
 }
 ```
 
-Containg new Access Token and new Refresh Token.
+Containing new Access Token and new Refresh Token.
 
 
 <a name="refresh-token-via-non-proxy"></a>
