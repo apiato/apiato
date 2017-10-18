@@ -13,7 +13,6 @@ title: "Welcome to Apiato"
 [![Dependency Status](https://www.versioneye.com/user/projects/59ddea8a2de28c000f857199/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59ddea8a2de28c000f857199)
 [![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
-[![composer.lock](https://poser.pugx.org/apiato/apiato/composerlock)](https://packagist.org/packages/apiato/apiato)
 [![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 
 <br>
