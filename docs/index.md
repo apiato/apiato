@@ -1,8 +1,8 @@
 ---
-title: "Welcome to APIATO"
+title: "Welcome to Apiato"
 ---
 
-[![apiato.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](http://apiato.io)
+[![apiato.jpg](https://s19.postimg.org/o1y4gerrn/apiato.jpg)](https://github.com/apiato)
 
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
@@ -16,21 +16,27 @@ title: "Welcome to APIATO"
 [![composer.lock](https://poser.pugx.org/apiato/apiato/composerlock)](https://packagist.org/packages/apiato/apiato)
 [![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 
+<br>
 
-**Build better API's faster with PHP and laravel 5.5**
-
-**APIATO** is a flawless framework for building scalable and testable API-Centric Applications with PHP. 
-It is designed to help you build scalable API's faster, by providing tools and features that facilitates the development 
-of any API-Centric App.
-           
-
-APIATO uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
-
-Why!? setting up a solid API from scratch is time consuming (and time is money). APIATO gives you the core features of robust API's, so you can focus on your business logic and deliver faster. Skip the repetitive work and enjoy the open source fun.
+**Build great API's faster, with PHP and laravel 5.5**
 
 <br>
 
-**APIATO [Features list](https://github.com/apiato/apiato) on Github.**
+**Apiato** A flawless framework for building scalable and testable API-Centric Applications with PHP.
+           
+Apiato is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
+
+It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
+
+Why!? setting up a solid API from scratch is time consuming (and time is money). Apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster. Skip the repetitive work and enjoy the open source fun.
+
+
+
+## Features
+
+**See [Features list](https://github.com/apiato/apiato#features) on Github.**
+
+
 
 ## How to read the docs
 
@@ -38,11 +44,11 @@ The documentation has 4 sections:
 
 - **Getting Started**: contains mainly the project installation steps.
 - **General**: contains few general things to get you started.
-- **Features**: explains how to use each feature of APIATO, and show how it works and how it can be configured to meet your needs.
+- **Features**: explains how to use each feature of Apiato, and show how it works and how it can be configured to meet your needs.
 - **Components**: explains how, where and why you need to use each component "class". In each component page you will see:
   * **Definition**: what is the the component and what it's role.
   * **Principles**: the general principles of the component, which could be applied to any programming language.
-  * **Rules**: how to apply the component principles in APIATO (a PHP/Laravel project), to ensure a smooth operation.
+  * **Rules**: how to apply the component principles in Apiato (a PHP/Laravel project), to ensure a smooth operation.
   * **Folder Structure**: the folder structure, that shows where to place your component.
   * **Code Sample**: a boilerplate to show how to write and use the component.
   * **Misc**: things related to the component, like configurations and other stuff you might need while coding.
@@ -74,5 +80,4 @@ Join our [Slack](https://now-examples-slackin-bvfqosqozk.now.sh) chatting room, 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
-
-Thanks,
+*Thanks.*
