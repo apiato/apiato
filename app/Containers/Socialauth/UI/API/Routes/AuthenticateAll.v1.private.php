@@ -7,58 +7,54 @@
  * @apiDescription     After getting the User Token from twitter, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.
- * For testing purposes use this endpoint `auth/twitter/test` to get the code/token.
+ * For testing purposes use this endpoint `auth/twitter/` to get the token.
+ *
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           oauth_token              ?oauth_token=FeUoXZRIThimLxKjg6HqyzELREJr103L (required)
- * @apiParam           oauth_verifier           ?oauth_verifier=144hi333mLxKjg6HqyzELRE13LxYz (required)
+ * @apiParam           oauth_token
+ * @apiParam           oauth_secret
  *
  * @apiSuccessExample  {json}    Success-Response:
  * HTTP/1.1 200 OK
 {
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "points": 0,
-    "email": "mahmoud@zalt.me",
-    "confirmed": 0,
-    "token": {
-      "object": "token",
-      "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
-      "access_token": {
-        "token_type": "Bearer",
-        "time_to_live": {
-          "minutes": 60
+    "data": {
+        "object": "User",
+        "id": "eqwja3vw94kzmxr0",
+        "name": "Mahmoud Zalt",
+        "email": null,
+        "confirmed": false,
+        "nickname": null,
+        "gender": null,
+        "birth": null,
+        "social_auth_provider": "twitter",
+        "social_id": "42719726",
+        "social_avatar": {
+            "avatar": "http://pbs.twimg.com/profile_images/1111111111/PENrcePC_normal.jpg",
+            "original": null
         },
-        "expires_in": {
-          "date": "2017-02-10 23:43:41.668135",
-          "timezone_type": 3,
-          "timezone": "UTC"
+        "created_at": {
+            "date": "2017-10-20 21:45:03.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "updated_at": {
+            "date": "2017-10-20 21:45:03.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "readable_created_at": "48 minutes ago",
+        "readable_updated_at": "48 minutes ago"
+    },
+    "meta": {
+        "include": [
+            "roles"
+        ],
+        "custom": {
+            "token_type": "personal",
+            "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI..."
         }
-      }
-    },
-    "referral_code": "57aa0b88ab334",
-    "gender": "male",
-    "birth": "null",
-    "nickname": "MEGA",
-    "social_auth_provider": "twitter",
-    "social_id": "5713788888",
-    "social_avatar": {
-        "avatar": "https://graph.twitter.com/v2.6/88208885713788888/picture?type=normal",
-        "original": "https://graph.twitter.com/v2.6/88208885713788888/picture?width=1920"
-    },
-    "created_at": {
-      "date": "2016-08-09 16:57:44.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-08-09 16:59:04.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
     }
-  }
 }
  */
 
@@ -69,57 +65,53 @@
  * @apiDescription     After getting the User Token from facebook, call this Endpoint
  * passing the user token to it in order to fetch his data and create the user in our
  * database if not exist or return the existing one.
- * For testing purposes use this endpoint `auth/facebook/test` to get the code/token.
+ * For testing purposes use this endpoint `auth/facebook` to get the token.
+ *
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           access_token     access_token=41EAAJyuLl3gaUBAPN6BrVIO.. (required)
+ * @apiParam           oauth_token
  *
  * @apiSuccessExample  {json}    Success-Response:
 HTTP/1.1 200 OK
 {
-  "data": {
-    "id": 1,
-    "name": "Mahmoud Zalt",
-    "points": 0,
-    "email": "mahmoud@zalt.me",
-    "confirmed": 0,
-    "token": {
-      "object": "token",
-      "token": "eyJ0eXAxOiJKV1QcLCJhbGciO2JIUzI1NiJz..."
-      "access_token": {
-        "token_type": "Bearer",
-        "time_to_live": {
-          "minutes": 60
+    "data": {
+        "object": "User",
+        "id": "eqwja3vw94kzmxr1",
+        "name": "Mahmoud Zalt",
+        "email": null,
+        "confirmed": false,
+        "nickname": null,
+        "gender": null,
+        "birth": null,
+        "social_auth_provider": "facebook",
+        "social_id": "42719726",
+        "social_avatar": {
+            "avatar": null,
+            "original": null
         },
-        "expires_in": {
-          "date": "2017-02-10 23:43:41.668135",
-          "timezone_type": 3,
-          "timezone": "UTC"
+        "created_at": {
+            "date": "2017-10-20 21:45:03.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "updated_at": {
+            "date": "2017-10-20 21:45:03.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "readable_created_at": "48 minutes ago",
+        "readable_updated_at": "48 minutes ago"
+    },
+    "meta": {
+        "include": [
+            "roles"
+        ],
+        "custom": {
+            "token_type": "personal",
+            "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUxI..."
         }
-      }
-    },
-    "referral_code": "57aa0b88ab334",
-    "gender": "male",
-    "birth": "null",
-    "nickname": "MEGA",
-    "social_auth_provider": "facebook",
-    "social_id": "88208885713788888",
-    "social_avatar": {
-        "avatar": "https://graph.facebook.com/v2.6/88208885713788888/picture?type=normal",
-        "original": "https://graph.facebook.com/v2.6/88208885713788888/picture?width=1920"
-    },
-    "created_at": {
-      "date": "2016-08-09 16:57:44.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2016-08-09 16:59:04.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
     }
-  }
 }
  */
 $router->post('auth/{provider}', [
