@@ -30,11 +30,7 @@ class Controller extends WebController
      */
     public function handleCallbackAll($provider)
     {
-        $user = Socialite::driver($provider)->user();
-
-        // TODO: to be continue.. (move the codes to action), add business logic (store/update User)..
-
-        dd($user);
+        return Socialite::driver($provider)->user();
     }
 
 }
