@@ -42,20 +42,43 @@ class LocalizationMiddleware extends Middleware
     }
 
     /**
-     * @param $lang
+     * @param $request_languages
      *
      * @return string
      * @throws UnsupportedLanguageException
      */
-    private function validateLanguage($lang)
+    private function validateLanguage($request_languages)
     {
-        // check the languages defined is supported
-        if (!array_key_exists($lang, $this->getSupportedLanguages())) {
-            // throw an exception
-            throw new UnsupportedLanguageException();
+        /*
+         * be sure to check $lang of the format "de-DE,de;q=0.8,en-US;q=0.6,en;q=0.4"
+         * this means:
+         *  1) give me de-DE if it is available
+         *  2) otherwise, give me de
+         *  3) otherwise, give me en-US
+         *  4) if all fails, give me en
+        */
+
+        // split it up by ","
+        $languages = explode(',', $request_languages);
+
+        $supported_languages = $this->getSupportedLanguages();
+
+        foreach ($languages as $language)
+        {
+            // split it up by ";"
+            $locale = explode(';', $language);
+
+            $current_locale = $locale[0];
+
+            // now check, if this locale is "supported"
+            if ( array_key_exists($current_locale, $supported_languages))
+            {
+                return $current_locale;
+            }
         }
 
-        return $lang;
+        // we have not found any language that is supported
+        throw new UnsupportedLanguageException();
     }
 
     /**
