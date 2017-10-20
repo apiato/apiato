@@ -4,8 +4,6 @@ namespace App\Containers\Localization\UI\API\Transformers;
 
 use App\Containers\Localization\Models\Localization;
 use App\Ship\Parents\Transformers\Transformer;
-use Illuminate\Support\Facades\Config;
-use Locale;
 
 class LocalizationTransformer extends Transformer
 {
@@ -35,8 +33,8 @@ class LocalizationTransformer extends Transformer
             'id' => $entity->code,
 
             'code' => $entity->code,
-            'default_name' => Locale::getDisplayLanguage($entity->code, Config::get('app.locale')),
-            'locale_name' => Locale::getDisplayLanguage($entity->code, $entity->code),
+            'default_name' => $entity->getDefaultName(),
+            'locale_name' => $entity->getLocaleName(),
         ];
 
         $response = $this->ifAdmin([
