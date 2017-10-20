@@ -7,6 +7,11 @@ use App\Containers\Localization\UI\API\Requests\GetAllLocalizationsRequest;
 use App\Containers\Localization\UI\API\Transformers\LocalizationTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
+/**
+ * Class Controller
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class Controller extends ApiController
 {
     /**

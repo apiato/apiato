@@ -12,7 +12,7 @@ order: 6
 <br>
 <br>
 
-For Social Authentication apiato uses [Socialite]( https://github.com/laravel/socialite).
+For Social Authentication Apiato uses [Socialite]( https://github.com/laravel/socialite).
 
 
 

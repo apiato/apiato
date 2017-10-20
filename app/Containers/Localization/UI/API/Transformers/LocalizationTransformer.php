@@ -5,6 +5,11 @@ namespace App\Containers\Localization\UI\API\Transformers;
 use App\Containers\Localization\Models\Localization;
 use App\Ship\Parents\Transformers\Transformer;
 
+/**
+ * Class LocalizationTransformer
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
+ */
 class LocalizationTransformer extends Transformer
 {
     /**

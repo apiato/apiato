@@ -5,7 +5,9 @@ namespace App\Containers\Localization\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class GetAllLocalizationsRequest.
+ * Class GetAllLocalizationsRequest
+ *
+ * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
 class GetAllLocalizationsRequest extends Request
 {
