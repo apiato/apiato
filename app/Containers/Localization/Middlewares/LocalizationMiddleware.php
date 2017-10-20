@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\Middlewares;
 
-use App\Ship\Exceptions\UnsupportedLanguageException;
+use App\Containers\Localization\Exceptions\UnsupportedLanguageException;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\Request;
