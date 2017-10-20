@@ -2,9 +2,9 @@
 
 namespace App\Containers\Localization\Middlewares;
 
+use App\Ship\Exceptions\UnsupportedLanguageException;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -44,14 +44,15 @@ class LocalizationMiddleware extends Middleware
     /**
      * @param $lang
      *
-     * @return string|Exception
+     * @return string
+     * @throws UnsupportedLanguageException
      */
     private function validateLanguage($lang)
     {
         // check the languages defined is supported
         if (!array_key_exists($lang, $this->getSupportedLanguages())) {
-            // respond with error
-            $lang = abort(403, 'Language not supported.');
+            // throw an exception
+            throw new UnsupportedLanguageException();
         }
 
         return $lang;
@@ -64,8 +65,11 @@ class LocalizationMiddleware extends Middleware
      */
     private function findLanguage($request)
     {
-        // read the language from the request header, if the header is missed, take the default local language
-        return $request->header('Content-Language') ? : Config::get('app.locale');
+        /*
+         * read the accept-language from the request
+         * if the header is missing, use the default local language
+         */
+        return $request->header('Accept-Language') ? : Config::get('app.locale');
     }
 
     /**
