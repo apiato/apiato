@@ -70,7 +70,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 11. API versioning in the URL or Header (versioning based on the route file name).
 12. Exception handleing with custom JSON errors responses (using Exceptions Formatters).
 13. Support Shallow ETag HTTP Header, to reduce client bandwidth.
-14. Localization (multiple languages via Content-Language header).
+14. Localization (Support multiple languages easily and switch between them via request header field).
 15. Automatic Data Pagination (meta links to next and previous data).
 16. WEB and API Authentication Middlewares. With Proxy endpoints for safer authentication from first-party clients.
 17. Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
