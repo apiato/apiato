@@ -124,7 +124,7 @@ You can build it using the [MVC](http://apiato.io/getting-started/architecture/#
 <p align="center">Join our Slack chatting room, by clicking on the icon below.</p>
 
 <p align="center">
-	<a href="https://now-examples-slackin-bvfqosqozk.now.sh">
+	<a href="https://slackin-mezlsumyvc.now.sh/">
 	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 	</a>
 </p>
