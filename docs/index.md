@@ -19,21 +19,45 @@ title: "Welcome to Apiato"
 
 **Build great API's faster, with PHP and laravel 5.5**
 
-<br>
+## What is Apiato
 
-**Apiato** A flawless framework for building scalable and testable API-Centric Applications with PHP.
+**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP.
            
-Apiato is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
+It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
 
-It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
+Apiato uses the best frameworks, tools and conventions in a very creative way, to deliver a rich set of features for a modern PHP Application.
 
-Why!? setting up a solid API from scratch is time consuming (and time is money). Apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster. Skip the repetitive work and enjoy the open source fun.
+**Why!?** Because setting up a solid API from scratch is time consuming (and of course, time is money!). 
+Apiato gives you the core features of robust API's fully documented, for free; so you can focus on writing your business logic, thus deliver faster to your clients.
 
+
+### Why API-Centric Apps
+
+Today we’re living in a digital era, where almost everything is connected to the Internet.
+
+Building cross-devices applications is becoming a must. And to do it, you need APIs (Application Programing Interfaces).
+
+Web developers are used to serve HTML pages directly from the Backend. However, this traditional method has many disadvantages nowadays.
+
+API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
+As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
+
+API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
 
 
 ## Features
 
-**See [Features list](https://github.com/apiato/apiato#features) on Github.**
+Apiato comes with great features. **Read the full [features list](https://github.com/apiato/apiato#features) on Github.**
+
+
+
+## Software Architecture
+
+**Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
+> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
+
+You are **NOT** forced to build your Application using the Porto architecture.
+You can build it using the [MVC](http://apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 
 
@@ -76,7 +100,8 @@ Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on 
 <a name="Donations"></a>
 ## Donations
 
+Help me keep the project development going, by [contributing](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little.
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
-*Thanks.*

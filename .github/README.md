@@ -21,21 +21,17 @@
 <a name="Introduction"></a>
 
 
-### What is Apiato?
+### What is Apiato
 
-A flawless framework for building scalable and testable API-Centric Applications with PHP.
+**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP.
+      
+It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
 
-**Apiato** is designed to help you build scalable API's faster, by providing tools and
-functionalities that facilitates the development of any API-Centric App.
+Apiato uses the best frameworks, tools and conventions in a very creative way, to deliver a rich set of features for a modern PHP Application.
 
-It uses the best frameworks, tools and conventions in a creative way to deliver a rich set of features in a modern PHP Application.
+**Why!?** Because setting up a solid API from scratch is time consuming (and of course, time is money!). 
+Apiato gives you the core features of robust API's fully documented, for free; so you can focus on writing your business logic, thus deliver faster to your clients.
 
-Why!? setting up a solid API from scratch is time consuming (and time is money).
-Apiato gives you the core features of robust API's, so you can focus on your business logic and deliver faster.
-Skip the repetitive work and enjoy the open source fun.
-
-
-<br>
 
 ### Why API-Centric Apps?
 
@@ -150,6 +146,8 @@ And a list of awesome contributors:
 
 <a name="Donations"></a>
 ## Donations
+
+Help me keep the project development going, by [contributing](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little.
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
 
