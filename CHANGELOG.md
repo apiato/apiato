@@ -7,6 +7,7 @@
 
 ### Changed
 - Changed the `Content-Language` header field (for requesting resources in a specific language) to `Accept-Language` instead (cf. [Specs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language)).
+- Rename `GiveAllPermissionsToRole` to `GiveAllPermissionsToRoleCommand`.
 
 ### Fixed
 - ... 
