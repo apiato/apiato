@@ -7,6 +7,7 @@
 
 ### Changed
 - Changed the `Content-Language` header field (for requesting resources in a specific language) to `Accept-Language` instead (cf. [Specs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language)).
+- The structure of the `supported_languages` in `App/Containers/Localization/Configs` was changed in order to support `regions`.
 
 ### Fixed
 - ... 
