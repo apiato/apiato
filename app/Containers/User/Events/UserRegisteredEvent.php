@@ -26,7 +26,6 @@ class UserRegisteredEvent extends Event implements ShouldQueue
         $this->user = $user;
     }
 
-
     /**
      * Handle the Event. (Single Listener Implementation)
      */
