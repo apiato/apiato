@@ -5,29 +5,56 @@ namespace App\Containers\Localization\Models;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
-class Region //extends Model
+/**
+ * Class Region
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class Region
 {
-    private $region = null;
 
-    public function __construct($region)
-    {
-        $this->region = $region;
-    }
+    /**
+     * @var  null
+     */
+    private $region = null;
 
     /**
      * A resource key to be used by the the JSON API Serializer responses.
      */
     protected $resourceKey = 'regions';
 
-    public function getDefaultName() {
+
+    /**
+     * Region constructor.
+     *
+     * @param $region
+     */
+    public function __construct($region)
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return  string
+     */
+    public function getDefaultName()
+    {
         return Locale::getDisplayRegion($this->region, Config::get('app.locale'));
     }
 
-    public function getLocaleName() {
+    /**
+     * @return  string
+     */
+    public function getLocaleName()
+    {
         return Locale::getDisplayRegion($this->region, $this->region);
     }
 
-    public function getRegion() {
+    /**
+     * @return  null
+     */
+    public function getRegion()
+    {
         return $this->region;
     }
 }

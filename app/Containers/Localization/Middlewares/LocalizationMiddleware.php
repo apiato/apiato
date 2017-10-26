@@ -68,22 +68,19 @@ class LocalizationMiddleware extends Middleware
 
         $supported_languages = $this->getSupportedLanguages();
 
-        foreach ($language_iterator as $language)
-        {
+        foreach ($language_iterator as $language) {
             // split it up by ";"
             $locale = explode(';', $language);
 
             $current_locale = $locale[0];
 
             // now check, if this locale is "supported"
-            if (array_search($current_locale, $supported_languages) !== false)
-            {
+            if (array_search($current_locale, $supported_languages) !== false) {
                 return $current_locale;
             }
 
             // now check, if the language to be checked is in the form of de-DE
-            if (Str::contains($current_locale, '-'))
-            {
+            if (Str::contains($current_locale, '-')) {
                 // extract the "main" part ("de") and append it to the end of the languages to be checked
                 $base = explode('-', $current_locale);
                 $language_iterator[] = $base[0];
@@ -125,8 +122,7 @@ class LocalizationMiddleware extends Middleware
 
         foreach ($locales as $key => $value) {
             // it is a "simple" language code (e.g., "en")!
-            if (! is_array($value))
-            {
+            if (!is_array($value)) {
                 $supported_locales[] = $value;
             }
 

@@ -15,11 +15,10 @@
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
 {
-  // Insert the response of the request here...
+  // TODO..
 }
  */
 
-/** @var Route $router */
 $router->get('localizations', [
     'as' => 'api_localization_get_all_localizations',
     'uses'  => 'Controller@getAllLocalizations',

@@ -23,7 +23,7 @@ class Controller extends ApiController
      */
     public function getAllLocalizations(GetAllLocalizationsRequest $request)
     {
-        $localizations = Apiato::call('Localization@GetAllLocalizationsAction', [$request]);
+        $localizations = Apiato::call('Localization@GetAllLocalizationsAction');
 
         return $this->transform($localizations, LocalizationTransformer::class);
     }

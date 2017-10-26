@@ -7,14 +7,38 @@ use Apiato\Core\Traits\HasResourceKeyTrait;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
-class Localization //extends Model
+/**
+ * Class Localization
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class Localization
 {
+
     use HashIdTrait;
     use HasResourceKeyTrait;
 
+    /**
+     * @var  null
+     */
     private $language = null;
+
+    /**
+     * @var  array
+     */
     private $regions = [];
 
+    /**
+     * A resource key to be used by the the JSON API Serializer responses.
+     */
+    protected $resourceKey = 'localizations';
+
+    /**
+     * Localization constructor.
+     *
+     * @param       $language
+     * @param array $regions
+     */
     public function __construct($language, array $regions = [])
     {
         $this->language = $language;
@@ -25,23 +49,34 @@ class Localization //extends Model
     }
 
     /**
-     * A resource key to be used by the the JSON API Serializer responses.
+     * @return  string
      */
-    protected $resourceKey = 'localizations';
-
-    public function getDefaultName() {
+    public function getDefaultName()
+    {
         return Locale::getDisplayLanguage($this->language, Config::get('app.locale'));
     }
 
-    public function getLocaleName() {
+    /**
+     * @return  string
+     */
+    public function getLocaleName()
+    {
         return Locale::getDisplayLanguage($this->language, $this->language);
     }
 
-    public function getLanguage() {
+    /**
+     * @return  null
+     */
+    public function getLanguage()
+    {
         return $this->language;
     }
 
-    public function getRegions() {
+    /**
+     * @return  array
+     */
+    public function getRegions()
+    {
         return $this->regions;
     }
 }

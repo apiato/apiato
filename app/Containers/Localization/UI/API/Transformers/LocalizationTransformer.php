@@ -12,6 +12,7 @@ use App\Ship\Parents\Transformers\Transformer;
  */
 class LocalizationTransformer extends Transformer
 {
+
     /**
      * @var  array
      */
@@ -35,12 +36,12 @@ class LocalizationTransformer extends Transformer
     {
         $response = [
             'object' => 'Localization',
-            'id' => $entity->getLanguage(),
+            'id'     => $entity->getLanguage(),
 
             'language' => [
-                'code' => $entity->getLanguage(),
+                'code'         => $entity->getLanguage(),
                 'default_name' => $entity->getDefaultName(),
-                'locale_name' => $entity->getLocaleName(),
+                'locale_name'  => $entity->getLocaleName(),
             ],
         ];
 
@@ -50,9 +51,9 @@ class LocalizationTransformer extends Transformer
 
         foreach ($entity_regions as $region) {
             $regions[] = [
-                'code' => $region->getRegion(),
+                'code'         => $region->getRegion(),
                 'default_name' => $region->getDefaultName(),
-                'locale_name' => $region->getLocaleName(),
+                'locale_name'  => $region->getLocaleName(),
             ];
         }
 
