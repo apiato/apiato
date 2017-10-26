@@ -6,7 +6,9 @@ use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class InvalidCredentialsException.
+ * Class LoginFailedException
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class LoginFailedException extends Exception
 {

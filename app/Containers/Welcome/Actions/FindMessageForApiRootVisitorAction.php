@@ -18,6 +18,6 @@ class FindMessageForApiRootVisitorAction extends Action
      */
     public function run()
     {
-        return ['Welcome to ' . Config::get('app.name') . '.'];
+        return [trans('localization::messages.welcome')];
     }
 }

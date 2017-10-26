@@ -35,12 +35,31 @@ class LocalizationTransformer extends Transformer
     {
         $response = [
             'object' => 'Localization',
-            'id' => $entity->code,
+            'id' => $entity->getLanguage(),
 
-            'code' => $entity->code,
-            'default_name' => $entity->getDefaultName(),
-            'locale_name' => $entity->getLocaleName(),
+            'language' => [
+                'code' => $entity->getLanguage(),
+                'default_name' => $entity->getDefaultName(),
+                'locale_name' => $entity->getLocaleName(),
+            ],
         ];
+
+        // now we manually build the regions
+        $regions = [];
+        $entity_regions = $entity->getRegions();
+
+        foreach ($entity_regions as $region) {
+            $regions[] = [
+                'code' => $region->getRegion(),
+                'default_name' => $region->getDefaultName(),
+                'locale_name' => $region->getLocaleName(),
+            ];
+        }
+
+        // now add the regions
+        $response = array_merge($response, [
+            'regions' => $regions,
+        ]);
 
         $response = $this->ifAdmin([
 

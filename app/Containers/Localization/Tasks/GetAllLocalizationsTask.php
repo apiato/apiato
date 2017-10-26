@@ -24,8 +24,17 @@ class GetAllLocalizationsTask extends Task
 
         $localizations = new Collection();
 
-        foreach ($supported_localizations as $key => $value) {
-            $localizations->push(new Localization($key));
+        foreach ($supported_localizations as $key => $value)
+        {
+            // it is a simple key
+            if (! is_array($value)) {
+                $localizations->push(new Localization($value));
+            }
+
+            // it is a composite key
+            if (is_array($value)) {
+                $localizations->push(new Localization($key, $value));
+            }
         }
 
         return $localizations;

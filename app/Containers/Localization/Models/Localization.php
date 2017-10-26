@@ -12,11 +12,16 @@ class Localization //extends Model
     use HashIdTrait;
     use HasResourceKeyTrait;
 
-    public $code;
+    private $language = null;
+    private $regions = [];
 
-    public function __construct($code)
+    public function __construct($language, array $regions = [])
     {
-        $this->code = $code;
+        $this->language = $language;
+
+        foreach ($regions as $region) {
+            $this->regions[] = new Region($region);
+        }
     }
 
     /**
@@ -25,10 +30,18 @@ class Localization //extends Model
     protected $resourceKey = 'localizations';
 
     public function getDefaultName() {
-        return Locale::getDisplayLanguage($this->code, Config::get('app.locale'));
+        return Locale::getDisplayLanguage($this->language, Config::get('app.locale'));
     }
 
     public function getLocaleName() {
-        return Locale::getDisplayLanguage($this->code, $this->code);
+        return Locale::getDisplayLanguage($this->language, $this->language);
+    }
+
+    public function getLanguage() {
+        return $this->language;
+    }
+
+    public function getRegions() {
+        return $this->regions;
     }
 }
