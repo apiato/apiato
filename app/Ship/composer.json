@@ -5,5 +5,10 @@
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "3.*"
+  },
+  "autoload": {
+    "files": [
+      "Helpers/mix.php"
+    ]
   }
 }
