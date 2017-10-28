@@ -13,25 +13,31 @@ order: 2
     - [getTestingUser](#gettestinguser)
 - [Faker](#faker)
 - [Create live Testing Data](#create-live-testing-data)
+- [Debugging with PsySH](#Debugging-with-PsySH)
 
 <br>
 <br>
-apiato is built on top of the [Laravel's default Tests](https://laravel.com/docs/5.4/http-tests), and provides some
-awesome helper functions, for faster and more enjoyable testing experience.
 
-With apiato you just prepare the data you want to send, make a the call with single function and start asserting the
-response. Everything else is set for you.
+Apiato provides additional helper functions, on top of the [Laravel's default Tests](https://laravel.com/docs/5.4/http-tests), 
+to make testing your API much faster and fun.
+
+Writing functional tests, makes implementing, debugging and modifying a feature faster.  
+
+
+With apiato you just prepare the data you want to send for your POST request, call the `call()` function and start asserting the response. 
+Everything else is set for you. 
+There are helper functions to create and preare a testing user with the right authorization (roles and permissions) for each request.
+
+
 
 
 <a name="tests-properties"></a>
-
 ## Tests properties
 
 Some of the test helper functions reads your test class properties, to perform their jobs. below we will see those
 properties and who uses them:
 
 <a name="endpoint"></a>
-
 ### **$endpoint**:
 
 The `$endpoint = 'verb@uri';` property is where you define the endpoints you are trying to access when calling
@@ -81,7 +87,6 @@ class RegisterUserTest extends TestCase
 
 
 <a name="override-the-property-value-in-some-test-functions"></a>
-
 #### Override the property value in some test functions
 
 ```php
@@ -91,7 +96,6 @@ $response = $this->endpoint('get@myEndpoint')->makeCall();
 ```
 
 <a name="auth"></a>
-
 ### **$auth**:
 
 The `$auth = false;` property defines if the endpoint you are trying to call requires authentication or not. By default
@@ -103,7 +107,6 @@ access token in the headers, before making the call.
 So only use this property when your endpoint is not protected, example for the register and login tests.
 
 <a name="override-the-property-value-in-some-test-functions-1"></a>
-
 #### Override the property value in some test functions
 
 ```php
@@ -113,7 +116,6 @@ $response = $this->auth(false)->makeCall();
 ```
 
 <a name="access"></a>
-
 ### **$access**:
 
 The `$access` property is where you define the permissions/roles that you need to give to your testing users in that
@@ -134,7 +136,6 @@ you gave him.
 ```
 
 <a name="override-the-property-value-in-some-test-functions-2"></a>
-
 #### Override the property value in some test functions
 
 Call the `getTestingUser` and pass whichever roles and permissions to him.
@@ -148,14 +149,12 @@ $this->getTestingUser(['permissions' => 'jump', 'roles' => 'jumper']);
 Or you can call `getTestingUserWithoutAccess()` to get user without permissions and roles.
 
 <a name="tests-functions"></a>
-
 ## Tests functions
 
 All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all
 available for usage from every test class in your application.
 
 <a name="makeCall"></a>
-
 #### makeCall
 
 `makeCall(array $data = [], array $headers = [])` is one of the most important helper functions for an API.
@@ -186,7 +185,6 @@ $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
 ```
 
 <a name="gettestinguser"></a>
-
 #### getTestingUser
 
 `getTestingUser($userDetails = null, $access = null)` is another very important helper function:
@@ -213,7 +211,6 @@ check all the public functions in all the traits in this directory `vendor/apiat
 
 
 <a name="faker"></a>
-
 ## Faker
 
 Just use it from any test: `$this->faker->name;`
@@ -227,7 +224,6 @@ See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, fo
 
 
 <a name="create-live-testing-data"></a>
-
 ## Create live Testing Data
 
 To test your app with some live testing data (like creating items in an inventory) you can use this feature to
@@ -236,3 +232,14 @@ automatically generate those data. This is also helpful for staging when real pe
 1. Go to `Seeder/SeedTestingData.php` seeder class, and create your live testing data.
 
 2. Run this command `php artisan apiato:seed-test`
+
+
+
+<a name="Debugging-with-PsySH"></a>
+## Debugging with PsySH
+
+For better debugging and development, you can open a runtime developer console while executing your test.
+
+Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). **The package is required by the Laravel Tinker Package.**
+
+To use it set the breakpoint `eval(\Psy\sh());` anywhere you want in any Actions, Controllers, Tasks... and run your test normally.
