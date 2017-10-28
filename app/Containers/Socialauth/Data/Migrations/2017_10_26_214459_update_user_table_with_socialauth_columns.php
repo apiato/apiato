@@ -30,15 +30,15 @@ class UpdateUserTableWithSocialauthColumns extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('social_provider');
-            $table->dropColumn('social_nickname');
-            $table->dropColumn('social_id');
-            $table->dropColumn('social_token');
-            $table->dropColumn('social_token_secret');
-            $table->dropColumn('social_refresh_token');
-            $table->dropColumn('social_expires_in');
-            $table->dropColumn('social_avatar');
-            $table->dropColumn('social_avatar_original');
+//            $table->dropColumn('social_provider');
+//            $table->dropColumn('social_nickname');
+//            $table->dropColumn('social_id');
+//            $table->dropColumn('social_token');
+//            $table->dropColumn('social_token_secret');
+//            $table->dropColumn('social_refresh_token');
+//            $table->dropColumn('social_expires_in');
+//            $table->dropColumn('social_avatar');
+//            $table->dropColumn('social_avatar_original');
         });
     }
 }
