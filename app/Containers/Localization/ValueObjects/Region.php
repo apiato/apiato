@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Containers\Localization\Models;
+namespace App\Containers\Localization\ValueObjects;
 
+use App\Ship\Parents\ValueObjects\ValueObject;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
@@ -10,7 +11,7 @@ use Locale;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Region
+class Region extends ValueObject
 {
 
     /**
@@ -22,7 +23,6 @@ class Region
      * A resource key to be used by the the JSON API Serializer responses.
      */
     protected $resourceKey = 'regions';
-
 
     /**
      * Region constructor.

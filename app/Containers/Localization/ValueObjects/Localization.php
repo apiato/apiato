@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Containers\Localization\Models;
+namespace App\Containers\Localization\ValueObjects;
 
-use Apiato\Core\Traits\HashIdTrait;
-use Apiato\Core\Traits\HasResourceKeyTrait;
+use App\Ship\Parents\ValueObjects\ValueObject;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
@@ -12,11 +11,8 @@ use Locale;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Localization
+class Localization extends ValueObject
 {
-
-    use HashIdTrait;
-    use HasResourceKeyTrait;
 
     /**
      * @var  null
