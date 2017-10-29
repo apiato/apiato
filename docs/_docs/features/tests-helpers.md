@@ -23,7 +23,6 @@ to make testing your API much faster and fun.
 
 Writing functional tests, makes implementing, debugging and modifying a feature faster.  
 
-
 With apiato you just prepare the data you want to send for your POST request, call the `call()` function and start asserting the response. 
 Everything else is set for you. 
 There are helper functions to create and preare a testing user with the right authorization (roles and permissions) for each request.
@@ -110,9 +109,7 @@ So only use this property when your endpoint is not protected, example for the r
 #### Override the property value in some test functions
 
 ```php
-
 $response = $this->auth(false)->makeCall();
-
 ```
 
 <a name="access"></a>
@@ -126,13 +123,9 @@ you gave him.
 <?php
 
     protected $access = [
-
         'roles'         => 'admin', // or   ['client', 'admin']
-
         'permissions'   => 'delete-users',
-
     ];
-
 ```
 
 <a name="override-the-property-value-in-some-test-functions-2"></a>
@@ -141,9 +134,7 @@ you gave him.
 Call the `getTestingUser` and pass whichever roles and permissions to him.
 
 ```php
-
 $this->getTestingUser(['permissions' => 'jump', 'roles' => 'jumper']);
-
 ```
 
 Or you can call `getTestingUserWithoutAccess()` to get user without permissions and roles.
@@ -167,11 +158,8 @@ available for usage from every test class in your application.
 $response = $this->makeCall();
 
 $response = $this->makeCall([
-
     'email'    => $userDetails['email'],
-
     'password' => $userDetails['password'],
-
 ]);
 
 $response = $this->makeCall($data, $headers);
@@ -181,7 +169,6 @@ $response = $this->endpoint('get@register')->makeCall($data);
 $response = $this->auth(false)->makeCall();
 
 $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
-
 ```
 
 <a name="gettestinguser"></a>
@@ -240,6 +227,6 @@ automatically generate those data. This is also helpful for staging when real pe
 
 For better debugging and development, you can open a runtime developer console while executing your test.
 
-Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). **The package is required by the Laravel Tinker Package.**
+Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). *The package is required by the Laravel Tinker Package.*
 
 To use it set the breakpoint `eval(\Psy\sh());` anywhere you want in any Actions, Controllers, Tasks... and run your test normally.
