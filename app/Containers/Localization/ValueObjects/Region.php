@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\ValueObjects;
 
-use App\Ship\Parents\ValueObject\ValueObject;
+use App\Ship\Parents\ValueObjects\ValueObject;
 use Illuminate\Support\Facades\Config;
 use Locale;
 

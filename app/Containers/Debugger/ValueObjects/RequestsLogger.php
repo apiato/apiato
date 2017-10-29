@@ -2,7 +2,7 @@
 
 namespace App\Containers\Debugger\ValueObjects;
 
-use App\Ship\Parents\ValueObject\ValueObject;
+use App\Ship\Parents\ValueObjects\ValueObject;
 use DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
