@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\Tasks;
 
-use App\Containers\Localization\Models\Localization;
+use App\Containers\Localization\ValueObjects\Localization;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
