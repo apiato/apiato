@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- Added a new config flag (`apiato.requests.force-valid-includes` (default `true`)) to notify users about potential "invalid" `?include` query parameters
 - Added ValueObjects class type to be extended by classes that do not requires to be stored in the DB or have ID.
 
 ### Changed
@@ -14,7 +15,7 @@
 - Move `Output` and `RequestLogger` from Model to ValueObjects folder in the debugger container.
 
 ### Fixed
-- ... 
+- Fixed "bug", where an Exception is thrown if the user requested an invalid `?include` parameter. Now a "real" Apiato Exception is thrown.
 
 ### Removed
 - ...
