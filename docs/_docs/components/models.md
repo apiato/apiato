@@ -36,7 +36,6 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
 
 <a name="code-sample"></a>
 ### Code Sample
-**Tags Container `Model`:**
 
 ```php
 <?php

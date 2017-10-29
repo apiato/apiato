@@ -36,7 +36,6 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 ```
 
 ### Code Sample
-**Tags Container `Model`:**
 
 ```php
 <?php
