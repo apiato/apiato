@@ -1,7 +1,7 @@
 ---
 title: "Tests Helpers"
-category: "Miscellaneous"
-order: 2
+category: "Features"
+order: 201
 ---
 
 - [Tests properties](#tests-properties)
