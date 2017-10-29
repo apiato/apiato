@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- ...
+- Added a new config flag (`apiato.requests.force-valid-includes` (default `true`)) to notify users about potential "invalid" `?include` query parameters
 
 ### Changed
 - Changed the `Content-Language` header field (for requesting resources in a specific language) to `Accept-Language` instead (cf. [Specs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language)).
@@ -11,7 +11,7 @@
 - The structure of the `supported_languages` in `App/Containers/Localization/Configs` was changed in order to support `regions`.
 
 ### Fixed
-- ... 
+- Fixed "bug", where an Exception is thrown if the user requested an invalid `?include` parameter. Now a "real" Apiato Exception is thrown.
 
 ### Removed
 - ...
