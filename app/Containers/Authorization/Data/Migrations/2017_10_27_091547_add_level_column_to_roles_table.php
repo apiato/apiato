@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Config;
 
-class UpdateRolesTable extends Migration
+class AddLevelColumnToRolesTable extends Migration
 {
     /**
      * Run the migrations.
