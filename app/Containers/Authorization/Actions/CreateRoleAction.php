@@ -21,7 +21,14 @@ class CreateRoleAction extends Action
      */
     public function run(Request $request)
     {
+
+        $level = 0;
+        if ($request->has('level')) {
+            $level = $request->level;
+        }
+
         return Apiato::call('Authorization@CreateRoleTask',
-            [$request->name, $request->description, $request->display_name]);
+            [$request->name, $request->description, $request->display_name, $level]
+        );
     }
 }
