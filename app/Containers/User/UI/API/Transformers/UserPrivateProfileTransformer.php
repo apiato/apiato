@@ -7,11 +7,11 @@ use App\Containers\User\Models\User;
 use App\Ship\Parents\Transformers\Transformer;
 
 /**
- * Class MyselfTransformer.
+ * Class UserPrivateProfileTransformer.
  *
  * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class MyselfTransformer extends Transformer
+class UserPrivateProfileTransformer extends Transformer
 {
 
     /**
