@@ -8,6 +8,7 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 /**
  * Class ForgotPasswordAction
@@ -23,6 +24,10 @@ class ForgotPasswordAction extends Action
     public function run(Request $request)
     {
         $user = Apiato::call('User@FindUserByEmailTask', [$request->email]);
+
+        if(!$user){
+            throw new ResourceNotFoundException("User Email ($request->email) not found.");
+        }
 
         // generate token
         $token = Apiato::call('User@CreatePasswordResetTask', [$user]);

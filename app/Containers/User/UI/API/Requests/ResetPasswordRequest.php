@@ -35,7 +35,9 @@ class ResetPasswordRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-        // 'id',
+         'token',
+         'email',
+         'password',
     ];
 
     /**

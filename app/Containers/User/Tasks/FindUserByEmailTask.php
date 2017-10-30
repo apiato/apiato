@@ -23,7 +23,6 @@ class FindUserByEmailTask extends Task
      */
     public function run($email)
     {
-        // find the user by its email
         try {
             $user = App::make(UserRepository::class)->findByField('email', $email)->first();
         } catch (Exception $e) {

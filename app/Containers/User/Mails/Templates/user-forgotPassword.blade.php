@@ -6,7 +6,7 @@
 <body>
 <h3>Reset password</h3>
 <div>
-    Please follow that link to reset your password: <a href="{{$reseturl}}?email={{$email}}&token={{$token}}">{{$reseturl}}?email={{$email}}&token={{$token}}</a>
+    Please click on the link to reset your password: <a href="{{env('APP_URL')}}/{{$reseturl}}?email={{$email}}&token={{$token}}">{{env('APP_URL')}}/{{$reseturl}}?email={{$email}}&token={{$token}}</a>.
 </div>
 </body>
 </html>
