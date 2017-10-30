@@ -4,7 +4,7 @@
  * @apiGroup           User
  * @apiName            forgotPassword
  *
- * @api                {POST} /v1/forgotpassword Forgot password
+ * @api                {POST} /v1/password-forgot Forgot password
  * @apiDescription     Forgot password endpoint.
  *
  * @apiVersion         1.0.0
@@ -14,12 +14,12 @@
  * @apiParam           {String}  reseturl (required|max:255)
  *
  * @apiSuccessExample  {json}  Success-Response:
- * HTTP/1.1 204 OK
+ * HTTP/1.1 202 OK
 {}
  */
 
 /** @var Route $router */
-$router->post('forgotpassword', [
+$router->post('password-forgot', [
     'as' => 'api_user_forgot_password',
     'uses'  => 'Controller@forgotPassword',
     'middleware' => [

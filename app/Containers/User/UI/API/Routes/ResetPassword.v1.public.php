@@ -4,7 +4,7 @@
  * @apiGroup           User
  * @apiName            resetPassword
  *
- * @api                {POST} /v1/resetpassword Reset Password
+ * @api                {POST} /v1/password-reset Reset Password
  * @apiDescription     Resets a password for an user.
  *
  * @apiVersion         1.0.0
@@ -15,12 +15,12 @@
  * @apiParam           {String}  password (required|min:6|max:255) the new password
  *
  * @apiSuccessExample  {json}  Success-Response:
- * HTTP/1.1 202 OK
+ * HTTP/1.1 204 OK
 {}
  */
 
 /** @var Route $router */
-$router->post('resetpassword', [
+$router->post('password-reset', [
     'as' => 'api_user_reset_password',
     'uses'  => 'Controller@resetPassword',
     'middleware' => [

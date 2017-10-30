@@ -20,6 +20,7 @@ order: 3
   - [Refresh Token with proxy for first-party clients](#refresh-token-via-proxy-for-first-party-clients)
   - [Refresh Token without proxy for first-party or third-party clients](#refresh-token-via-non-proxy)
 - [Force Email Confirmation](#force-email-confirmation)
+- [Reset Password](#Reset-Password)
 - [Social Authentication](#social-authentication)
 
 <br />
@@ -33,7 +34,6 @@ In Apiato you can use these two `Authentication Middlewares`, to protect your en
 - Web Authentication: `auth:web`
 
 <a name="api-authentication-oauth-20"></a>
-
 ## API Authentication (OAuth 2.0)
 
 To protect an **API** Endpoint from being accessible by unauthenticated users you can use the `auth:api` Middleware.
@@ -56,13 +56,11 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 
 
 <a name="how-to-get-access-token-using-oauth-20"></a>
-
 ## How to get Access Token using OAuth 2.0
 
 All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) ro see how you can generate the API documentation, and read them.
 
 <a name="quick-overview"></a>
-
 ## Quick Overview  
 
 OAuth let's you authenticate using different methods, these methods are called `grants`.
@@ -87,7 +85,6 @@ How to decide which grant type you should use! Check [this](https://oauth2.theph
 <br>
 
 <a name="first-party-clients"></a>
-
 ## A: For first-party clients
 
 First-party clients (Your Frontend Mobile, Web,... Apps) usually consumes your private API (Internal API).
@@ -98,6 +95,7 @@ When this grant type is used, your server needs to authenticate the Client App f
 
 
 **Note:**
+
 - On register: the API returns user data. You will need to log that user in (using the same credentials he passed) to get his Access Token and make other API calls.
 - On login: the API returns the user Access Token with Refresh Token. You will need to request the User data by making another call to the user endpoint, using his Access Token.
 
@@ -142,7 +140,6 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#passw
 So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And Apiato by default provides you with a Login Proxy to use for all your trusted first party clients. W'll see below how you can use them.
 
 <a name="login-with-proxy-for-first-party-clients"></a>
-
 ### Login with Proxy for first-party clients
 
 Concept: create endpoint for each trusted client, to be used for login.
@@ -164,14 +161,12 @@ CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 ```
 
 <a name="login-without-proxy-for-first-party-clients"></a>
-
 ### Login without Proxy for first-party clients
 
 Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password`, the User credentials (`username` & `password`), Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
 
 
 <a name="third-party-clients"></a>
-
 ## B: For third-party clients
 
 Third party clients (User's custom external Apps, who wants to integrate with your Software) always consumes your public API (External API) only.
@@ -216,7 +211,6 @@ Note: When a new user is registered, will be issued a personal Access Token auto
 More info at [Laravel Passport Here](https://laravel.com/docs/5.4/passport#personal-access-tokens)
 
 <a name="login-without-proxy-for-third-party-clients"></a>
-
 ### Login without Proxy for third-party clients
 
 We usually do not need a proxy for third-party clients as they are most likely making calls form their servers, thus the Client ID and Secret should be secure and not exposed to the users.
@@ -232,7 +226,6 @@ The Access Token should be sent in the `Authorization` header of type `Bearer` E
 
 
 <a name="logout"></a>
-
 ## Logout
 
 Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
@@ -244,7 +237,6 @@ Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containin
 ```
 
 <a name="Responses"></a>
-
 ## Responses
 
 
@@ -277,8 +269,8 @@ Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containin
   "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
 }
 ```
-<a name="change-tokens-expiration-dates"></a>
 
+<a name="change-tokens-expiration-dates"></a>
 ## Change Tokens Expiration dates
 
 Go to the `app/Ship/Configs/apiato.php` config file and edit this:
@@ -310,7 +302,6 @@ Go to the `app/Ship/Configs/apiato.php` config file and edit this:
 To change from days to minutes you need to edit the `boot` function in `App\Containers\Authentication\Providers\AuthProvider`.
 
 <a name="web-authentication"></a>
-
 ## Web Authentication
 
 To protect an **Web** Endpoint from being accessible by unauthenticated users you can use the `auth:web` Middleware.
@@ -350,7 +341,6 @@ This will be looking for (login.html or login.php or login.blade.php).
 
 
 <a name="refresh_token"></a>
-
 ## Refresh Token
 
 In case your server is issuing a short-lived access tokens, the users will need to refresh their access tokens via the refresh token that was provided to them when the access token was issued.
@@ -359,7 +349,6 @@ In case your server is issuing a short-lived access tokens, the users will need 
 <a name="refresh-token-via-proxy-for-first-party-clients"></a>
 
 ### Refresh Token with proxy for first-party clients
-
 By default Apiato provide this ready endpoint `http://api.poms.dev/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
 
 Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpoint. Or by passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to this:
@@ -377,14 +366,12 @@ Containing new Access Token and new Refresh Token.
 
 
 <a name="refresh-token-via-non-proxy"></a>
-
 ### Refresh Token without proxy for first-party or third-party clients
 
 The request to `http://api.poms.dev/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` & `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
 
 
 <a name="force-email-confirmation"></a>
-
 ## Force Email Confirmation
 
 By default a user does not have to confirm his email address to be able to login.
@@ -393,8 +380,21 @@ However, to force users to confirm their email (prevent unconfirmed users from a
 
 When email confirmation is enabled (value set to `true`), the API throws an exception, if the `User` is not yet `confirmed`.
 
-<a name="social-authentication"></a>
 
+
+<a name="Reset-Password"></a>
+## Reset Password
+
+Use the `/password-forgot` (`app/Containers/User/UI/API/Routes/ForgotPassword.v1.public.php`) 
+and `/password-reset`  (`app/Containers/User/UI/API/Routes/ResetPassword.v1.public.php`)  endpoints.
+
+First you need to send a request to the `/password-forgot` endpoint. 
+It will send you an email with a link when you make a request to that link, it will call the `/password-reset` endpoint. 
+
+Note: You must setup the email to get this function to work, 
+however for testing purposes set the `MAIL_DRIVER=log` in your `.env` file inorder to the see the email content in the log file `laravel.log`. 
+
+<a name="social-authentication"></a>
 ## Social Authentication
 
 For Social Authentication visit the [Social Authentication]({{ site.baseurl }}{% link _docs/features/social-authentication.md %}) page.

@@ -6,21 +6,26 @@ use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Support\Facades\App;
 
+/**
+ * Class FindUserByEmailTask
+ *
+ * @author  Sebastian Weckend
+ */
 class FindUserByEmailTask extends Task
 {
-    protected $repository;
 
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
+    /**
+     * @param $email
+     *
+     * @return  mixed
+     */
     public function run($email)
     {
         // find the user by its email
         try {
-            $user = $this->repository->findByField('email', $email)->first();
+            $user = App::make(UserRepository::class)->findByField('email', $email)->first();
         } catch (Exception $e) {
             throw new NotFoundException();
         }
