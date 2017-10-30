@@ -54,7 +54,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 > Apiato comes with great features:
 
 1. Authentication with OAuth2.0 for first/third-party clients (using Laravel Passport).
-2. Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and Permissions.
+2. Role-Based Access Control (RBAC), seeded with a Super Admin, Roles and Permissions. In addition to permissions inheritance with Levels.
 3. Query Parameters support (orderBy, sortedBy and filter) with full-text search (search, searchFields).
 4. Useful endpoints for managing users, roles/permissions, tokens and more. All implemented, documented and tested.
 5. API Documentations generator, to generate API docs from PHP Docblock (using the ApiDocJS tool).
