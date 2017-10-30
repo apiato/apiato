@@ -11,7 +11,7 @@ return [
     |
     */
     'allowed-reset-password-urls' => [
-        // 'your.domain/resetpassword',
+         // 'password-reset',
     ],
 
 ];

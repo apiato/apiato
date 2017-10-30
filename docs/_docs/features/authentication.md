@@ -391,6 +391,8 @@ and `/password-reset`  (`app/Containers/User/UI/API/Routes/ResetPassword.v1.publ
 First you need to send a request to the `/password-forgot` endpoint. 
 It will send you an email with a link when you make a request to that link, it will call the `/password-reset` endpoint. 
 
+Note: For security reason, make sure the reset password URL is set in `app/Containers/User/Configs/user-container.php`. 
+
 Note: You must setup the email to get this function to work, 
 however for testing purposes set the `MAIL_DRIVER=log` in your `.env` file inorder to the see the email content in the log file `laravel.log`. 
 

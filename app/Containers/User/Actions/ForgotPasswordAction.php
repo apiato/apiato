@@ -27,11 +27,18 @@ class ForgotPasswordAction extends Action
         // generate token
         $token = Apiato::call('User@CreatePasswordResetTask', [$user]);
 
-        // send email
-        if (!in_array($reseturl = $request->reseturl, config('user-container.allowed-reset-password-urls'))) {
+        $reseturl = $request->reseturl;
+
+        // get last segment of the URL
+        $url = explode('/', $reseturl);
+        $lastSegment = $url[count($url)-1];
+
+        // validate the allowed endpoint is being used
+        if (!in_array($lastSegment, config('user-container.allowed-reset-password-urls'))) {
             throw new NotFoundException("The URL is incorrect ($reseturl)");
         }
 
+        // send email
         Mail::send(new UserForgotPasswordMail($user, $token, $reseturl));
     }
 }
