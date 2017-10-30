@@ -13,6 +13,7 @@
 - The route `/logout` now uses `DELETE` instead of `POST` (to be more RESTful)
 - Move `Localization` and `Region` from Model to ValueObjects folder in the localization container.
 - Move `Output` and `RequestLogger` from Model to ValueObjects folder in the debugger container.
+- The route `/user/profile` (the profile of the current user) now uses a dedicated `UserPrivateProfileTransformer` in order to allow adding "private" information more easily (instead of using if-blocks in the `UserTransformer`) 
 
 ### Fixed
 - Fixed "bug", where an Exception is thrown if the user requested an invalid `?include` parameter. Now a "real" Apiato Exception is thrown.

@@ -10,6 +10,7 @@ use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
 use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
+use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -126,7 +127,7 @@ class Controller extends ApiController
     {
         $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
-        return $this->transform($user, UserTransformer::class, ['roles']);
+        return $this->transform($user, UserPrivateProfileTransformer::class);
     }
 
 }
