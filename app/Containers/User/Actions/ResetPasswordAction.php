@@ -20,6 +20,8 @@ class ResetPasswordAction extends Action
 
     /**
      * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @throws InternalErrorException
      */
     public function run(Request $request)
     {
@@ -41,7 +43,7 @@ class ResetPasswordAction extends Action
                 }
             );
         } catch (Exception $e) {
-            throw (new InternalErrorException())->debug($e);
+            throw new InternalErrorException();
         }
     }
 }

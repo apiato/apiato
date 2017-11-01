@@ -18,16 +18,15 @@ class CreatePasswordResetTask extends Task
     /**
      * @param \App\Containers\User\Models\User $user
      *
-     * @return  mixed
+     * @return mixed
+     * @throws InternalErrorException
      */
     public function run(User $user)
     {
         try {
-            $token = app('auth.password.broker')->createToken($user);
+            return app('auth.password.broker')->createToken($user);
         } catch (Exception $e) {
-            throw (new InternalErrorException())->debug($e);
+            throw new InternalErrorException();
         }
-
-        return $token;
     }
 }

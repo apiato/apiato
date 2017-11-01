@@ -19,16 +19,15 @@ class FindUserByEmailTask extends Task
     /**
      * @param $email
      *
-     * @return  mixed
+     * @return mixed
+     * @throws NotFoundException
      */
     public function run($email)
     {
         try {
-            $user = App::make(UserRepository::class)->findByField('email', $email)->first();
+            return App::make(UserRepository::class)->findByField('email', $email)->first();
         } catch (Exception $e) {
             throw new NotFoundException();
         }
-
-        return $user;
     }
 }
