@@ -123,9 +123,8 @@ By default Apiato uses a single guard called `web` for all it's roles and permis
 <a name="Permissions-Inheriting-with-Levels"></a>
 ## Permissions Inheriting with Levels
 
-
-When you create a role you can set an optional parameter called "level". 
-It is set to 0 by default, (default seeded admin has it set to 999).
+When you create a role you can set an optional parameter, called `level`, which is set to `0` by default, 
+The default seeded `admin` role has it set to `999`.
 
 Level allows inheriting permissions.
 Role with higher level is inheriting permission from roles with lower level.
@@ -138,11 +137,11 @@ User has a level 1, moderator level 2 and admin level 3.
 It means, moderator and administrator has also permission to read articles, but administrator can manage comments as well.
 
 ```php
-if ($user->level() > 10) {
+if ($user->getRoleLevel() > 10) {
     //
 }
 ```
 
-If user has multiple roles, method `level()` returns the highest one.
+If user has multiple roles, the `getRoleLevel()` method returns the highest one.
 
 If you don't need the permissions inheriting feature, simply ignore the optional level parameter when creating roles.
