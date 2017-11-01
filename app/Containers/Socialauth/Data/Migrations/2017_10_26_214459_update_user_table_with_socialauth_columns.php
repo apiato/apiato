@@ -15,9 +15,9 @@ class UpdateUserTableWithSocialauthColumns extends Migration
             $table->string('social_provider')->nullable();
             $table->string('social_nickname')->nullable();
             $table->string('social_id')->nullable();
-            $table->string('social_token')->nullable();
-            $table->string('social_token_secret')->nullable();
-            $table->string('social_refresh_token')->nullable();
+            $table->longText('social_token')->nullable();
+            $table->longText('social_token_secret')->nullable();
+            $table->longText('social_refresh_token')->nullable();
             $table->string('social_expires_in')->nullable();
             $table->string('social_avatar')->nullable();
             $table->string('social_avatar_original')->nullable();
