@@ -1,7 +1,7 @@
 ---
 title: "Upgrade Guide"
 category: "Miscellaneous"
-order: 20
+order: 12
 ---
 
 - [Upgrade from 7.0 to 7.1](#upgrade-apiato-from-version70To71)

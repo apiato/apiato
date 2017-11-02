@@ -1,7 +1,7 @@
 ---
 title: "Frequently Asked Questions"
 category: "Miscellaneous"
-order: 5
+order: 10
 ---
 
 * [Do I have to use the Porto Architecture to benefit from Apiato](#q1)

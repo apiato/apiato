@@ -1,7 +1,7 @@
 ---
 title: "Testimonials"
 category: "Miscellaneous"
-order: 500
+order: 30
 ---
 
 
