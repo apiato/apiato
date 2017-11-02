@@ -4,7 +4,7 @@
 
 
 <p align="center">
-   <img src="https://s19.postimg.org/o1y4gerrn/apiato.jpg" alt="Apiato Logo"/>
+   <img src="https://github.com/apiato/apiato/blob/master/docs/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
 
