@@ -4,7 +4,7 @@
  * @apiGroup           User
  * @apiName            resetPassword
  *
- * @api                {GET/POST} /v1/password-reset Reset Password
+ * @api                {GET/POST} /v1/password/reset Reset Password
  * @apiDescription     Resets a password for an user.
  *
  * @apiVersion         1.0.0
@@ -19,7 +19,7 @@
 {}
  */
 
-$router->any('password-reset', [
+$router->any('password/reset', [
     'as' => 'api_user_reset_password',
     'uses'  => 'Controller@resetPassword',
 ]);

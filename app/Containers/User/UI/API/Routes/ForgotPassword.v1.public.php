@@ -4,7 +4,7 @@
  * @apiGroup           User
  * @apiName            forgotPassword
  *
- * @api                {POST} /v1/password-forgot Forgot password
+ * @api                {POST} /v1/password/forgot Forgot password
  * @apiDescription     Forgot password endpoint.
  *
  * @apiVersion         1.0.0
@@ -18,7 +18,7 @@
 {}
  */
 
-$router->post('password-forgot', [
+$router->post('password/forgot', [
     'as' => 'api_user_forgot_password',
     'uses'  => 'Controller@forgotPassword',
 ]);

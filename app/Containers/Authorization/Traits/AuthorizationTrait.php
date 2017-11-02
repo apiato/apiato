@@ -27,4 +27,14 @@ trait AuthorizationTrait
         return $this->hasRole('admin');
     }
 
+    /**
+     * Return the "highest" role of a user (0 if the user does not have any role)
+     *
+     * @return int
+     */
+    public function getRoleLevel()
+    {
+        return ($role = $this->roles()->orderBy('level', 'DESC')->first()) ? $role->level : 0;
+    }
+
 }
