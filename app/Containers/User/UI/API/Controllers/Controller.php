@@ -5,11 +5,14 @@ namespace App\Containers\User\UI\API\Controllers;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
-use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
+use App\Containers\User\UI\API\Requests\ForgotPasswordRequest;
 use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
+use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
+use App\Containers\User\UI\API\Requests\ResetPasswordRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
+use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -126,7 +129,31 @@ class Controller extends ApiController
     {
         $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
-        return $this->transform($user, UserTransformer::class, ['roles']);
+        return $this->transform($user, UserPrivateProfileTransformer::class);
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ResetPasswordRequest $request
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        Apiato::call('User@ResetPasswordAction', [$request]);
+
+        return $this->noContent(204);
+    }
+
+    /**
+     * @param \App\Containers\User\UI\API\Requests\ForgotPasswordRequest $request
+     *
+     * @return  \Illuminate\Http\JsonResponse
+     */
+    public function forgotPassword(ForgotPasswordRequest $request)
+    {
+        Apiato::call('User@ForgotPasswordAction', [$request]);
+
+        return $this->noContent(202);
     }
 
 }

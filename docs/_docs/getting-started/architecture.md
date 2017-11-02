@@ -12,7 +12,7 @@ order: 6
     + [Create new Container](#new-Containter)
       * [Option 1) Using the Code Generator](#use-Generator)
       * [Option 2) Manually](#manual-new-container)
-    + [Containter Conventions](#Containter-Conventions)
+    + [Container Conventions](#Containter-Conventions)
   * [The Ship Layer](#ship-layer)
 - [MVC](#mvc-intro)
   * [MVC Introduction](#mvc-introduction)
@@ -44,7 +44,7 @@ The two most common architectures, used for building projects on top of Apiato a
 - **Porto** (Route Request Controller Action Task Model Transformer).
 - **MVC** (Model View Controller).
 
-Porto is the recommended architercute for building scalable API's with Apiato. 
+Porto is the recommended architecture for building scalable API's with Apiato. 
 However, Apiato also support building API's using the popular MVC architecture (with a little modifications).
 
 Below you will see how you can both any of the architectures to build your project.
@@ -107,7 +107,7 @@ For the auto-loading to work flawlessly you MUST adhere to the component's namin
 
 
 <a name="Containter-Conventions"></a>
-#### Containter Conventions
+#### Container Conventions
 
 - Containers names SHOULD start with Capital. Use CamelCase to rename Containers.
 - Namespace should be the same as the container name, (if container name is "Printer" the namespace should be "App\Containers\Printer").
@@ -139,7 +139,7 @@ Below you will learn how you can build your API on top of Apiato, using your pre
 <a name="Difference-mvc"></a>
 #### Difference between Standard MVC and Apiato's MVC
 
-The Porto architecture, does not replace the MVC architecture, instead it extendeds it for good. 
+The Porto architecture, does not replace the MVC architecture, instead it extends it for good. 
 So Models, Views, Routes and Controllers all still exist, but in different places with a strict set of responsibilities for each component "Class type".
 
 
@@ -197,7 +197,7 @@ In Laravel 5.5, the Controllers classes live in the `app/Http/Controllers/` fold
 
 In Laravel 5.5, the Models classes live in the root of the `app/` folder. But In Apiato MVC, the Models classes should live in `app/Containers/Application/Models/`.
 
-All model must exetend from `App\Ship\Parents\Models\Model`.
+All model must `extend` from `App\Ship\Parents\Models\Model`.
 
 > Note the `User` Model should remain in the User Container (`app/Containers/User/Models/User.php`), to keep all the features working without any modifications.
 
@@ -217,7 +217,7 @@ Transformers must extend from `App\Ship\Parents\Transformers\Transformer`.
 
 In Laravel 5.5, the Service Providers classes live in the `app/Providers/` folder. But In Apiato MVC, the Controllers classes can live in `app/Containers/Application/Providers/`, but also can live anywhere else.
 
-If you want the Service Providers to be automatiocally loaded (without having to register it in the `config/app.php` file), rename your file to  `MainServiceProvider.php` (full path `app/Containers/Application/Providers/MainServiceProvider.php`). Otherwise you can create Service Providers anywhere and register them manually in Laravel.
+If you want the Service Providers to be automatically loaded (without having to register it in the `config/app.php` file), rename your file to  `MainServiceProvider.php` (full path `app/Containers/Application/Providers/MainServiceProvider.php`). Otherwise you can create Service Providers anywhere and register them manually in Laravel.
 
 
 ##### 9) Create Migrations
@@ -249,8 +249,8 @@ You can use Actions/Tasks classes anyway you want:
 - Using Apiato Facade with full class name `$user = \Apiato::call(GetDriversAction::class, [$request->id]);`
 - Using the helper call function with full class name `$user = $this->call(GetDriversAction::class, [$request->id]);`
 - Using the helper call function with Apiato caller style `$user = $this->call('Car@GetDriversAction', [$request->id]);`
-- Without Apiato involvment using plain PHP `$user = $action = new GetDriversAction::class; $action->run($request->id);`
-- Without Apiato involvment using plain Laravel IoC `$user = \App::make(GetDriversAction::class)->run($request->id);`
+- Without Apiato involvement using plain PHP `$user = $action = new GetDriversAction::class; $action->run($request->id);`
+- Without Apiato involvement using plain Laravel IoC `$user = \App::make(GetDriversAction::class)->run($request->id);`
 
 Be creative, at the end of the day it's a class with a function.
 

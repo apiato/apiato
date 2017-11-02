@@ -44,7 +44,6 @@ class RegisterUserAction extends Action
 
         App::make(Dispatcher::class)->dispatch(New UserRegisteredEvent($user));
 
-
         return $user;
     }
 }

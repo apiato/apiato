@@ -23,6 +23,8 @@ class AssignUserToRoleAction extends Action
     {
         $user = Apiato::call('User@FindUserByIdTask', [$request->user_id]);
 
+        $roles = [];
+
         // convert roles IDs to array (in case single id passed)
         if (!is_array($rolesIds = $request->roles_ids)) {
             $rolesIds = [$request->roles_ids];

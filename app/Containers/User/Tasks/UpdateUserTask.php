@@ -23,8 +23,10 @@ class UpdateUserTask extends Task
      * @param $userData
      * @param $userId
      *
-     * @return  mixed
-     * @throws \App\Ship\Exceptions\UpdateResourceFailedException
+     * @return mixed
+     * @throws InternalErrorException
+     * @throws NotFoundException
+     * @throws UpdateResourceFailedException
      */
     public function run($userData, $userId)
     {

@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Containers\User\Exceptions\AccountFailedException;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Facades\App;
@@ -25,7 +25,8 @@ class CreateUserByCredentialsTask extends Task
      * @param null $gender
      * @param null $birth
      *
-     * @return  mixed
+     * @return mixed
+     * @throws CreateResourceFailedException
      */
     public function run($isClient = true, $email, $password, $name = null, $gender = null, $birth = null)
     {
@@ -41,7 +42,7 @@ class CreateUserByCredentialsTask extends Task
             ]);
 
         } catch (Exception $e) {
-            throw (new AccountFailedException())->debug($e);
+            throw (new CreateResourceFailedException())->debug($e);
         }
 
         return $user;

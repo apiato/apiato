@@ -21,7 +21,8 @@ class UpdatePaymentAccountTask extends Task
      * @param \App\Containers\Payment\Models\PaymentAccount $account
      * @param array                                         $data
      *
-     * @return  mixed
+     * @return mixed
+     * @throws UpdateResourceFailedException
      */
     public function run(PaymentAccount $account, array $data)
     {

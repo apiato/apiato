@@ -2,9 +2,10 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\Authentication\Exceptions\UpdateResourceFailedException;
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\User\Data\Repositories\UserRepository;
+use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
+use Illuminate\Support\Facades\App;
 
 /**
  * Class UpdateUserSocialProfileTask.
@@ -13,22 +14,6 @@ use App\Ship\Parents\Tasks\Task;
  */
 class UpdateUserSocialProfileTask extends Task
 {
-
-    /**
-     * @var \App\Containers\User\Contracts\UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * UpdateUserAction constructor.
-     *
-     * @param \App\Containers\User\Contracts\UserRepositoryInterface $userRepository
-     */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
 
     /**
      * @param      $userId
@@ -107,12 +92,12 @@ class UpdateUserSocialProfileTask extends Task
         }
 
         // check if data is empty
-        if (!empty($attributes)) {
+        if (empty($attributes)) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 
         // updating the attributes
-        $user = $this->userRepository->update($attributes, $userId);
+        $user = App::make(UserRepository::class)->update($attributes, $userId);
 
         return $user;
     }

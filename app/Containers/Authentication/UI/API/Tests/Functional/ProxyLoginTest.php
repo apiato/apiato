@@ -4,8 +4,6 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\DB;
-use function file_exists;
-use function storage_path;
 
 /**
  * Class ProxyLoginTest

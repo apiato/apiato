@@ -20,7 +20,7 @@ class Controller extends ApiController
     /**
      * @param \App\Containers\Authentication\UI\API\Requests\LogoutRequest $request
      *
-     * @return  $this
+     * @return \Illuminate\Http\JsonResponse
      */
     public function logout(LogoutRequest $request)
     {

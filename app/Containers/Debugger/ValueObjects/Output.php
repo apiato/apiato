@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Containers\Debugger\Objects;
+namespace App\Containers\Debugger\ValueObjects;
 
-use Config;
+use App\Ship\Parents\ValueObjects\ValueObject;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Jenssegers\Agent\Facades\Agent;
@@ -12,7 +13,7 @@ use Jenssegers\Agent\Facades\Agent;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Output
+class Output extends ValueObject
 {
 
     /**

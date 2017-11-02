@@ -14,7 +14,8 @@ class CreateStripeAccountTask extends Task
     /**
      * @param array $data
      *
-     * @return  mixed
+     * @return mixed
+     * @throws CreateResourceFailedException
      */
     public function run(array $data)
     {

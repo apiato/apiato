@@ -7,11 +7,11 @@ use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
- * Class GiveAllPermissionsToRole
+ * Class GiveAllPermissionsToRoleCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class GiveAllPermissionsToRole extends ConsoleCommand
+class GiveAllPermissionsToRoleCommand extends ConsoleCommand
 {
 
     protected $signature = 'apiato:permissions:toRole {role}';

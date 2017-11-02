@@ -2,10 +2,10 @@
 
 namespace App\Containers\SocialAuth\UI\API\Controllers;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller.
@@ -23,9 +23,12 @@ class Controller extends ApiController
      */
     public function authenticateAll(ApiAuthenticateRequest $request, $provider)
     {
-        $user = Apiato::call('SocialAuth@SocialLoginAction', [$request, $provider]);
+        $data = Apiato::call('Socialauth@SocialLoginAction', [$request, $provider]);
 
-        return $this->transform($user, UserTransformer::class);
+        return $this->transform($data['user'], UserTransformer::class, [], [
+            'token_type'   => 'personal',
+            'access_token' => $data['token']->accessToken,
+        ]);
     }
 
 }

@@ -15,13 +15,14 @@ class CreateRoleTask extends Task
 {
 
     /**
-     * @param $name
-     * @param $description
-     * @param $displayName
+     * @param     $name
+     * @param     $description
+     * @param     $displayName
+     * @param int $level
      *
-     * @return  mixed
+     * @return mixed
      */
-    public function run($name, $description = null, $displayName = null)
+    public function run($name, $description = null, $displayName = null, $level = 0)
     {
         app()['cache']->forget('spatie.permission.cache');
 
@@ -30,6 +31,7 @@ class CreateRoleTask extends Task
             'description'  => $description,
             'display_name' => $displayName,
             'guard_name'   => 'web',
+            'level'        => $level,
         ]);
     }
 

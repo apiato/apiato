@@ -2,12 +2,8 @@
 
 namespace App\Containers\Wepay\Tests\Unit;
 
-use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
 use App\Containers\Payment\Traits\MockablePaymentsTrait;
 use App\Containers\User\Tests\TestCase;
-use App\Containers\Wepay\Models\WepayAccount;
-use Illuminate\Support\Facades\App;
-use KevinEm\WePay\Laravel\WePayLaravel;
 
 /**
  * Class ChargeUserWithWepayTest

@@ -4,9 +4,9 @@ category: "Miscellaneous"
 order: 20
 ---
 
-- [Upgrade Apiato from version 7.0 to 8.0](#upgrade-apiato-from-version70To80)
-- [Upgrade Apiato from version 5.0 to 7.0](#upgrade-apiato-from-version50To70)
-- [Upgrade Apiato from version 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
+- [Upgrade from 7.0 to 7.1](#upgrade-apiato-from-version70To71)
+- [Upgrade from 5.0 to 7.0](#upgrade-apiato-from-version50To70)
+- [Upgrade from 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
 - [Manual Upgrading Guide](#Manual-Upgrading-Guide)
 - [Upcoming Release Notes](#Upcoming-Release)
@@ -14,8 +14,8 @@ order: 20
 <br>
 
 
-<a name="upgrade-apiato-from-version70To80"></a>
-## Upgrade Apiato from version 7.0 to 8.0
+<a name="upgrade-apiato-from-version70To71"></a>
+## Upgrade from 7.0 to 7.1
 
 > Estimated upgrading time is 45 minutes.
 
@@ -25,7 +25,7 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
 
 
 <a name="upgrade-apiato-from-version50To70"></a>
-## Upgrade Apiato from version 5.0 to 7.0
+## Upgrade from 5.0 to 7.0
 
 > Estimated upgrading time is 30 minutes.
 
@@ -46,7 +46,7 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
 
 
 <a name="upgrade-apiato-from-version-41To50"></a>
-## Upgrade Apiato from version 4.1 to 5.0
+## Upgrade from 4.1 to 5.0
 
 > Estimated upgrading time is 15 minutes.
 
@@ -106,11 +106,13 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
 ## Manual Upgrading Guide:
 
 *This guide will show you, how to keep you project synced with the latest master branch of Apiato. 
-And can be used to upgrade older projects to the newest once*
+And the same method can be used to upgrade older version to the newer one*
 
 1) Setup an upstream remote (to point to your fork of the apiato repository)
 
-`git remote add upstream git@github.com:username/apiato.git`
+```shell
+git remote add upstream git@github.com:username/apiato.git
+```
 
 ```shell
 ❯ git remote -vv
@@ -122,11 +124,15 @@ upstream    git@github.com:apiato/apiato.git (push)
 
 2) Create apiato branch
 
-`git checkout -b apiato`
+```shell
+git checkout -b apiato
+```
 
 3) Let the apiato branch track the upstream master branch
 
-`git branch --set-upstream-to upstream/master`
+```shell
+git branch --set-upstream-to upstream/master
+```
 
 ```shell
 ❯ git branch -vv
@@ -137,13 +143,13 @@ upstream    git@github.com:apiato/apiato.git (push)
 
 4) Fetch everything from upstream
 
-```php
+```shell
 git fetch upstream 
 ```
 
 5) Let your apiato branch get the upstream logs
 
-```php
+```shell
 git reset --hard upstream/master
 ```
 
@@ -152,7 +158,9 @@ git reset --hard upstream/master
 
 **Option A**: merge the entire apiato branch with master and solve the conflicts manually. *(easier and faster)*
 
-`git checkout master`
+```shell
+git checkout master
+```
 
 The git merging can be done in many ways:
 
@@ -168,18 +176,30 @@ The git merging can be done in many ways:
 
 **Option B**: Manually cherry pick from apiato to master only the commits you need:
 
-`git checkout master`
+```shell
+git checkout master
+```
 
-`git log apiato`      (to copy each commit ID, one by one)
+```shell
+git log apiato          
+```
+(to copy each commit ID, one by one)
 
-`git cherry-pick {commit-ID}`      (if you get any conflict solve it and keep moving)
+```shell
+git cherry-pick {commit-ID}     
+``` 
+(if you get any conflict solve it and keep moving)
 
 <br>
 
 Checkout the project setup in [Contributing to Apiato]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
-7) Run Composer update then run all the tests (`composer update && vendor/bin/phpunit`), and fix the occurring problems, if there's any. 
+7) Run Composer update then run all the tests, and fix the occurring problems, if there's any. 
 You may want to update some of your custom containers dependencies as well.
+
+```shell
+composer update && vendor/bin/phpunit
+```
 
 See the [Upcoming Release Notes](#Upcoming-Release) for details about the changes.
 

@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\Authorization\Models\User;
 use App\Containers\Authorization\Tests\TestCase;
 
 /**
