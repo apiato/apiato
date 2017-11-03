@@ -73,7 +73,7 @@ You can build it using the [MVC](http://docs.apiato.io/getting-started/architect
 
 <p align="center">
 	<a href="http://docs.apiato.io/">
-	   <img src="https://s19.postimg.org/ecnn9vdw3/Screen_Shot_2017-08-01_at_5.08.54_AM.png" width=250px" alt="Apiato Docs"/>
+	   <img src="https://github.com/apiato/apiato/blob/master/docs/images/documentation-button.png" width=250px" alt="Apiato Docs"/>
 	</a>
 </p>
 
