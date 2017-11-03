@@ -9,7 +9,7 @@ show_full_navigation: true
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /images/apiato-icon.png
-description: APIATO, a flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.
+description: Apiato is a flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.
 author:
   name: Mahmoud Zalt
   email: mahmoud@zalt.me
