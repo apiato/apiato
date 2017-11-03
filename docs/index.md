@@ -2,7 +2,7 @@
 title: "Welcome to Apiato"
 ---
 
-![]({{ site.baseurl }}/images/apiato-icon-medium.png)
+[![apiato.jpg]({{ site.baseurl }}/images/apiato.jpg)](https://apiato.io)
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
@@ -13,9 +13,8 @@ title: "Welcome to Apiato"
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 [![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 
-<br>
-
 **Build great API's faster, with PHP and laravel 5.5**
+
 
 ## What is Apiato
 
