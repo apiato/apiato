@@ -82,7 +82,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 28. Code generator commands, for generating full CRUD operations, and other useful Commands.
 29. Separation of UI's (Web, API and CLI) components (routes, controllers, requests, tests...).
 30. Ready Admin dashboard infrastructure with Login view (admin.apiato.dev).
-31. Fully detailed documentation, with code samples, principles, definitions and guidelines. (at [apiato.io](http://apiato.io)).
+31. Fully detailed documentation, with code samples, principles, definitions and guidelines. (at [docs.apiato.io](http://docs.apiato.io)).
 32. 100% customizable and open code. Using latest and greatest frameworks, tools, packages and standards.
 99. Much more...
 
@@ -99,13 +99,13 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 You are **NOT** forced to build your Application using the Porto architecture.
-You can build it using the [MVC](http://apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
+You can build it using the [MVC](http://docs.apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 <br>
 
 
 <p align="center">
-	<a href="http://apiato.io/">
+	<a href="http://docs.apiato.io/">
 	   <img src="https://s19.postimg.org/ecnn9vdw3/Screen_Shot_2017-08-01_at_5.08.54_AM.png" width=250px" alt="Apiato Docs"/>
 	</a>
 </p>
@@ -138,13 +138,13 @@ And a list of awesome contributors:
 - [Abdelrhman Soliman](https://github.com/Nasr-Z1)
 - [Dan Anderson](https://github.com/droplister)
 - [See full list](https://github.com/apiato/apiato/graphs/contributors)
-- [Join Us?](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato)
+- [Join Us?](http://docs.apiato.io/miscellaneous/contribution/#Contributing-Apiato)
 
 
 <a name="Donations"></a>
 ## Donations
 
-Help me keep the project development going, by [contributing](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little.
+Help me keep the project development going, by [contributing](http://docs.apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little.
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
 
