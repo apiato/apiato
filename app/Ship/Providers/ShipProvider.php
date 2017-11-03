@@ -53,9 +53,13 @@ class ShipProvider extends MainProvider
      */
     public function register()
     {
-        // ...
+        /**
+         * Load the ide-helper service provider only in non production environments.
+         */
+        if ($this->app->environment() !== 'production')
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
         parent::register();
-        // ...
     }
 
 }
