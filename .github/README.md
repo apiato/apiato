@@ -4,7 +4,7 @@
 
 
 <p align="center">
-   <img src="https://github.com/apiato/apiato/blob/master/docs/images/apiato-icon-medium.png" alt="Apiato Logo"/>
+   <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
 </p>
 
 
@@ -52,7 +52,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 > Apiato comes with great features:
 
-<img src="https://github.com/apiato/apiato/blob/master/docs/images/features.png" alt="Apiato Features"/>
+<img src="https://github.com/apiato/documentation/blob/master/images/features.png" alt="Apiato Features"/>
 
 
 
@@ -73,7 +73,7 @@ You can build it using the [MVC](http://docs.apiato.io/getting-started/architect
 
 <p align="center">
 	<a href="http://docs.apiato.io/">
-	   <img src="https://github.com/apiato/apiato/blob/master/docs/images/documentation-button.png" width=250px" alt="Apiato Docs"/>
+	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=250px" alt="Apiato Docs"/>
 	</a>
 </p>
 
