@@ -3,15 +3,19 @@
 namespace App\Ship\Exceptions\Codes;
 
 /**
- * Class ApplicationErrorCodes
+ * Class ApplicationErrorCodesTable
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class ApplicationErrorCodes
+class ApplicationErrorCodesTable
 {
     /**
      * The Application Errors defined by Apiato
      * Apiato reserves the error codes 000000 - 099999 for itself.
+     *
+     * Do not manually change this file, as this will be changed occasionally by Apiato.
+     * If you do like to create your own (custom) error codes, please use the
+     * App\Ship\Exceptions\Codes\CustomErrorCodesTable class and follow the scheme defined in this class here
      */
     const BASE_GENERAL_ERROR = [
         'code' => 1001,
@@ -203,11 +207,4 @@ class ApplicationErrorCodes
         'title' => '',
         'description' => '',
     ];
-
-    /**
-     * Add your custom application error codes here
-     */
-
-
-
 }

@@ -64,7 +64,8 @@ class ErrorCodeManager
     public static function getCodeTables()
     {
         $codeTables = [
-            ApplicationErrorCodes::class,
+            ApplicationErrorCodesTable::class,
+            CustomErrorCodesTable::class,
         ];
 
         return $codeTables;

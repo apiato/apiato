@@ -7,6 +7,7 @@
 - Added ValueObjects class type to be extended by classes that do not requires to be stored in the DB or have ID.
 - Added a `level` to the roles in order to indicate some kind of hierarchy (e.g., `admin` is "better" than `manager`).
 - Added `/password-forgot` and `/password-reset` endpoints.
+- Added Error Code Tables (`ApplicationErrorCodesTable` and `CustomErrorCodesTable`) in order to define exception codes in one place.
 
 ### Changed
 - Changed the `Content-Language` header field (for requesting resources in a specific language) to `Accept-Language` instead (cf. [Specs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language)).
