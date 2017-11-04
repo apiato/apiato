@@ -2,12 +2,14 @@
 
 namespace App\Ship\Exceptions\Codes;
 
+use App\Ship\Parents\Exceptions\ErrorCodesTable;
+
 /**
  * Class CustomErrorCodesTable
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class CustomErrorCodesTable
+class CustomErrorCodesTable extends ErrorCodesTable
 {
     /**
      * Use this class to define your own custom error code tables. Please follow the scheme defined in the other file

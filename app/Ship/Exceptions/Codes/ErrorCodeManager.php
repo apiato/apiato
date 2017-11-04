@@ -17,7 +17,7 @@ class ErrorCodeManager
      *
      * @return mixed
      */
-    public static function _getCode(array $error)
+    public static function getCode(array $error)
     {
         return self::getKeyFromArray($error, 'code', 0);
     }
@@ -27,7 +27,7 @@ class ErrorCodeManager
      *
      * @return mixed
      */
-    public static function _getTitle(array $error)
+    public static function getTitle(array $error)
     {
         return self::getKeyFromArray($error, 'title', '');
     }
@@ -37,7 +37,7 @@ class ErrorCodeManager
      *
      * @return mixed
      */
-    public static function _getDescription(array $error)
+    public static function getDescription(array $error)
     {
         return self::getKeyFromArray($error, 'description', '');
     }

@@ -2,12 +2,14 @@
 
 namespace App\Ship\Exceptions\Codes;
 
+use App\Ship\Parents\Exceptions\ErrorCodesTable;
+
 /**
  * Class ApplicationErrorCodesTable
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class ApplicationErrorCodesTable
+class ApplicationErrorCodesTable extends ErrorCodesTable
 {
     /**
      * The Application Errors defined by Apiato
