@@ -15,43 +15,43 @@ class ApplicationErrorCodes
      */
     const BASE_GENERAL_ERROR = [
         'code' => 1001,
-        'title' => 'An unknown error.',
-        'description' => 'Something unexpected happend.',
+        'title' => 'Unknown / Unspecified Error.',
+        'description' => 'Something unexpected happened.',
     ];
     const BASE_INTERNAL_ERROR = [
         'code' => 1002,
-        'title' => '',
-        'description' => '',
+        'title' => 'Internal Error',
+        'description' => 'An internal error occurred.',
     ];
     const BASE_NOT_IMPLEMENTED = [
         'code' => 1003,
-        'title' => '',
-        'description' => '',
+        'title' => 'Not Implemented',
+        'description' => 'This class, method or route is not implemented.',
     ];
     const BASE_CONTAINER_MISSING = [
         'code' => 1010,
-        'title' => '',
-        'description' => '',
+        'title' => 'Container Missing',
+        'description' => 'The requested container cannot be found.',
     ];
     const BASE_CLASS_MISSING = [
         'code' => 1011,
-        'title' => '',
-        'description' => '',
+        'title' => 'Class Missing',
+        'description' => 'The requested class cannot be found.',
     ];
     const BASE_METHOD_MISSING = [
         'code' => 1012,
-        'title' => '',
-        'description' => '',
+        'title' => 'Method Missing',
+        'description' => 'The requested method cannot be found.',
     ];
     const BASE_CONFIGURATION_GENERAL_ERROR = [
         'code' => 1020,
-        'title' => '',
-        'description' => '',
+        'title' => 'Configuration Error',
+        'description' => 'An unexpected error occurred in the configuration.',
     ];
     const BASE_CONFIGURATION_WRONG = [
         'code' => 1021,
-        'title' => '',
-        'description' => '',
+        'title' => 'Wrong Configuration',
+        'description' => 'A wrong configuration was found.',
     ];
     const AUTHENTICATION_GENERAL_ERROR = [
         'code' => 1100,
