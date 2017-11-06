@@ -8,7 +8,7 @@
 </p>
 
 
-[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
+[![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors) [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce8fed7f8fcd492ebbe5ef0fb36c0a9a)](https://www.codacy.com/app/mahmoudz/apiato?utm_source=github.com&utm_medium=referral&utm_content=apiato/apiato&utm_campaign=badger)
 [![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
@@ -119,6 +119,36 @@ Help me keep the project development going, by [contributing](http://docs.apiato
 
 
 <a name="License"></a>
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
+<a href="graphs/contributors"><img src="https://opencollective.com/apiato/contributors.svg?width=890" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/apiato#backer)]
+
+<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
+
+<a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/3/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/4/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/5/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/6/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
+
+
+
 ## License
 
 The MIT License [(MIT)](https://github.com/apiato/apiato/blob/master/LICENSE).
