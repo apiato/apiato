@@ -13,7 +13,7 @@
 [![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
 [![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
 [![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers) 
-[![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors) [![apiato]
+[![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 
 <a name="Introduction"></a>
@@ -49,6 +49,24 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 
 <img src="https://github.com/apiato/documentation/blob/master/images/features.png" alt="Apiato Features"/>
 
+<a name="Sponsors"></a>
+## Sponsors
+
+Support this project by becoming a sponsor. 
+
+Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
+
+<a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/3/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/4/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/5/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/6/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
+
 <a name="Documentation"></a>
 ## Documentation
 
@@ -58,7 +76,7 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 You are **NOT** forced to build your Application using the Porto architecture.
-You can build it using the [MVC](http://docs.apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
+You can build it using the [MVC](http://docs.apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benefit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 <br>
 
@@ -93,7 +111,7 @@ You can build it using the [MVC](http://docs.apiato.io/getting-started/architect
 
 #### Awesome contributors:
 
-<a href="../graphs/contributors"><img src="https://opencollective.com/apiato/contributors.svg?width=890" /></a>
+<a href="https://github.com/apiato/apiato/graphs/contributors"><img src="https://opencollective.com/apiato/contributors.svg?width=890" /></a>
 
 <a name="Donations"></a>
 ## Donations
@@ -112,24 +130,6 @@ or become a backer on [Open Collective](https://opencollective.com/apiato#backer
 or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
 
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
-
-<a name="Sponsors"></a>
-## Sponsors
-
-Support this project by becoming a sponsor. 
-
-Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
-
-<a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/3/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/4/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/5/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/6/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
 
 <a name="License"></a>
 ## License
