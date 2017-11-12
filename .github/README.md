@@ -79,14 +79,14 @@ Your logo will show up on the [github repository](https://github.com/apiato/apia
 **Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
-You are **NOT** forced to build your Application using the Porto architecture.
+It's completely **optional** to build your application using the the Porto architecture.
 You can build it using the [MVC](http://docs.apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benefit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
 
 <br>
 
 <p align="center">
 	<a href="http://docs.apiato.io/">
-	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=250px" alt="Apiato Docs"/>
+	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=350px" alt="Apiato Docs"/>
 	</a>
 </p>
 

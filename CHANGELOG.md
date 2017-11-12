@@ -3,6 +3,23 @@
 ## [Unreleased]
 
 ### Added
+- Nothing.
+
+### Changed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+### Removed
+- Nothing.
+
+
+
+
+## v7.2.0 (2017-11-11)
+
+### Added
 - Added a new config flag (`apiato.requests.force-valid-includes` (default `true`)) to notify users about potential "invalid" `?include` query parameters
 - Added ValueObjects class type to be extended by classes that do not requires to be stored in the DB or have ID.
 - Added a `level` to the roles in order to indicate some kind of hierarchy (e.g., `admin` is "better" than `manager`).
@@ -22,7 +39,7 @@
 - Fixed "bug", where an Exception is thrown if the user requested an invalid `?include` parameter. Now a "real" Apiato Exception is thrown.
 
 ### Removed
-- ...
+- Nothing.
 
 
 ___
