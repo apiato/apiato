@@ -42,7 +42,7 @@ class CreatePermissionTables extends Migration
                 ->on($tableNames['permissions'])
                 ->onDelete('cascade');
 
-            $table->primary(['permission_id', 'model_id', 'model_type']);
+            $table->primary(['model_type', 'model_id', 'permission_id']);
         });
 
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $foreignKeys) {
@@ -54,7 +54,7 @@ class CreatePermissionTables extends Migration
                 ->on($tableNames['roles'])
                 ->onDelete('cascade');
 
-            $table->primary(['role_id', 'model_id', 'model_type']);
+            $table->primary(['model_id', 'role_id', 'model_type']);
         });
 
         Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames) {
@@ -71,7 +71,7 @@ class CreatePermissionTables extends Migration
                 ->on($tableNames['roles'])
                 ->onDelete('cascade');
 
-            $table->primary(['permission_id', 'role_id']);
+            $table->primary(['role_id', 'permission_id']);
         });
     }
 
