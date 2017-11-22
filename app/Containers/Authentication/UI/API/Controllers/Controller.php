@@ -2,12 +2,13 @@
 
 namespace App\Containers\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authentication\UI\API\Requests\LoginRequest;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller
@@ -47,8 +48,8 @@ class Controller extends ApiController
     {
         $result = Apiato::call('Authentication@ProxyApiLoginAction', [
             $request,
-            env('CLIENT_WEB_ADMIN_ID'),
-            env('CLIENT_WEB_ADMIN_SECRET'),
+            Config::get('authentication-container.clients.web.admin.id'),
+            Config::get('authentication-container.clients.web.admin.secret'),
         ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);
@@ -65,8 +66,8 @@ class Controller extends ApiController
     {
         $result = Apiato::call('Authentication@ProxyApiRefreshAction', [
             $request,
-            env('CLIENT_WEB_ADMIN_ID'),
-            env('CLIENT_WEB_ADMIN_SECRET'),
+            Config::get('authentication-container.clients.web.admin.id'),
+            Config::get('authentication-container.clients.web.admin.secret'),
         ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);
