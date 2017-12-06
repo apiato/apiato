@@ -19,6 +19,9 @@ return [
             'en-GB',
             'en-US',
         ],
+        'zh' => [
+            'zh-CN'
+        ],
         'es',
         'fr',
     ],
