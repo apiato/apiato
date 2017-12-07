@@ -2,9 +2,8 @@
 
 namespace App\Containers\Settings\Actions;
 
-use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class UpdateSettingAction
@@ -15,20 +14,14 @@ class UpdateSettingAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param $id
+     * @param $sanitizedData
      *
      * @return  mixed
      */
-    public function run(Request $request)
+    public function run($id, $sanitizedData)
     {
-        $data = $request->sanitizeInput([
-            'key',
-            'value'
-        ]);
-
-        $setting = Apiato::call('Settings@FindSettingByIdTask', [$request->id]);
-
-        $setting = Apiato::call('Settings@UpdateSettingTask', [$setting, $data]);
+        $setting = Apiato::call('Settings@UpdateSettingTask', [$id, $sanitizedData]);
 
         return $setting;
     }

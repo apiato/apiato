@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
+use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\App;
 
@@ -15,22 +16,24 @@ class CreatePermissionTask extends Task
 {
 
     /**
-     * @param      $name
-     * @param null $description
-     * @param null $displayName
+     * @param string      $name
+     * @param string|null $description
+     * @param string|null $displayName
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Permission
      */
-    public function run($name, $description = null, $displayName = null)
+    public function run(string $name, string $description = null, string $displayName = null): Permission
     {
         app()['cache']->forget('spatie.permission.cache');
 
-        return App::make(PermissionRepository::class)->create([
+        $permission = App::make(PermissionRepository::class)->create([
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,
             'guard_name'   => 'web',
         ]);
+
+        return $permission;
     }
 
 }

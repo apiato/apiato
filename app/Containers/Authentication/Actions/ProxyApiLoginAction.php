@@ -4,7 +4,6 @@ namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ProxyApiLoginAction.
@@ -13,20 +12,21 @@ class ProxyApiLoginAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
-     * @param                                    $clientId
-     * @param                                    $clientPassword
+     * @param string $clientId
+     * @param string $clientPassword
+     * @param string $email
+     * @param string $password
      *
      * @return  array
      */
-    public function run(Request $request, $clientId, $clientPassword)
+    public function run(string $clientId, string $clientPassword, string $email, string $password): array
     {
         $requestData = [
             'grant_type'    => 'password',
             'client_id'     => $clientId,
             'client_secret' => $clientPassword,
-            'username'      => $request->email,
-            'password'      => $request->password,
+            'username'      => $email,
+            'password'      => $password,
             'scope'         => '',
         ];
 

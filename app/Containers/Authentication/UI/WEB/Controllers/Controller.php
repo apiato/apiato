@@ -32,7 +32,7 @@ class Controller extends WebController
     public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = Apiato::call('Authentication@WebAdminLoginAction', [$request]);
+            $result = Apiato::call('Authentication@WebAdminLoginAction', [$request->email, $request->password, $request->remember_me]);
         } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }

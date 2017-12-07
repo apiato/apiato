@@ -18,21 +18,17 @@ class GetAllLocalizationsTask extends Task
     /**
      * @return  \Illuminate\Support\Collection
      */
-    public function run()
+    public function run(): Collection
     {
         $supported_localizations = Config::get('localization-container.supported_languages');
 
         $localizations = new Collection();
 
-        foreach ($supported_localizations as $key => $value)
-        {
+        foreach ($supported_localizations as $key => $value) {
             // it is a simple key
-            if (! is_array($value)) {
+            if (!is_array($value)) {
                 $localizations->push(new Localization($value));
-            }
-
-            // it is a composite key
-            if (is_array($value)) {
+            } else { // it is a composite key
                 $localizations->push(new Localization($key, $value));
             }
         }

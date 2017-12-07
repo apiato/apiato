@@ -2,6 +2,7 @@
 
 namespace App\Containers\Payment\Actions;
 
+use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -15,15 +16,14 @@ class FindPaymentAccountDetailsAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param $paymentAccountId
      *
-     * @return  mixed
+     * @return  \App\Containers\Payment\Models\PaymentAccount
      */
-    public function run(Request $request)
+    public function run($paymentAccountId): PaymentAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccountId = $request->getInputByKey('id');
         $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$paymentAccountId]);
 
         // check if this account belongs to our user

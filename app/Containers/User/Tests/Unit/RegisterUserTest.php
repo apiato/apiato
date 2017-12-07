@@ -20,15 +20,13 @@ class RegisterUserTest extends TestCase
     {
         $data = [
             'email'    => 'Mahmoud@test.test',
-            'name'     => 'Mahmoud',
             'password' => 'so-secret',
+            'name'     => 'Mahmoud',
         ];
 
-        // create request object and inject this data in it
-        $request = RegisterUserRequest::injectData($data);
 
         $action = App::make(RegisterUserAction::class);
-        $user = $action->run($request);
+        $user = $action->run($data['email'], $data['password'], $data['name']);
 
         // asset the returned object is an instance of the User
         $this->assertInstanceOf(User::class, $user);

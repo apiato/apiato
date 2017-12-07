@@ -27,7 +27,7 @@ class Controller extends ApiController
      */
     public function getAllSettings(GetAllSettingsRequest $request)
     {
-        $settings = Apiato::call('Settings@GetAllSettingsAction', [$request]);
+        $settings = Apiato::call('Settings@GetAllSettingsAction');
 
         return $this->transform($settings, SettingTransformer::class);
     }
@@ -41,7 +41,12 @@ class Controller extends ApiController
      */
     public function createSetting(CreateSettingRequest $request)
     {
-        $setting = Apiato::call('Settings@CreateSettingAction', [$request]);
+        $sanitizedData = $request->sanitizeInput([
+            'key',
+            'value'
+        ]);
+
+        $setting = Apiato::call('Settings@CreateSettingAction', [$sanitizedData]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -55,7 +60,12 @@ class Controller extends ApiController
      */
     public function updateSetting(UpdateSettingRequest $request)
     {
-        $setting = Apiato::call('Settings@UpdateSettingAction', [$request]);
+        $sanitizedData = $request->sanitizeInput([
+            'key',
+            'value'
+        ]);
+
+        $setting = Apiato::call('Settings@UpdateSettingAction', [$request->id, $sanitizedData]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -69,7 +79,7 @@ class Controller extends ApiController
      */
     public function deleteSetting(DeleteSettingRequest $request)
     {
-        $setting = Apiato::call('Settings@DeleteSettingAction', [$request]);
+        Apiato::call('Settings@DeleteSettingAction', [$request->id]);
 
         return $this->noContent();
     }

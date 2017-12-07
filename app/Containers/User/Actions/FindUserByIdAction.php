@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
@@ -16,15 +17,12 @@ class FindUserByIdAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param $userId
      *
-     * @return mixed
-     * @throws NotFoundException
+     * @return  \App\Containers\User\Models\User
      */
-    public function run(Request $request)
+    public function run($userId): User
     {
-        $userId = $request->id;
-
         $user = Apiato::call('User@FindUserByIdTask', [$userId]);
 
         if (!$user) {

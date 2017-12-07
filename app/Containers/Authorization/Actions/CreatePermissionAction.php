@@ -2,9 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\Models\Permission;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class CreatePermissionAction
@@ -15,13 +15,16 @@ class CreatePermissionAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param string      $name
+     * @param string|null $description
+     * @param string|null $displayName
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Permission
      */
-    public function run(Request $request)
+    public function run(string $name, string $description = null, string $displayName = null): Permission
     {
-        return Apiato::call('Authorization@CreatePermissionTask',
-            [$request->name, $request->description, $request->display_name]);
+        $permission = Apiato::call('Authorization@CreatePermissionTask', [$name, $description, $displayName]);
+
+        return $permission;
     }
 }

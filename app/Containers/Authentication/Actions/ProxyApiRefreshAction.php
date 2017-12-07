@@ -4,7 +4,6 @@ namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ProxyApiRefreshAction.
@@ -13,16 +12,17 @@ class ProxyApiRefreshAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
-     * @param                                    $clientId
-     * @param                                    $clientPassword
+     * @param string      $clientId
+     * @param string      $clientPassword
+     * @param string      $refreshToken
+     * @param string|null $cookie
      *
      * @return  array
      */
-    public function run(Request $request, $clientId, $clientPassword)
+    public function run(string $clientId, string $clientPassword, string $refreshToken, string $cookie = null): array
     {
         // use the refresh token sent in request data, if not exist try to get it from the cookie
-        $refreshToken = $request->refresh_token ? : $request->cookie('refreshToken');
+        $refreshToken = $refreshToken ?? $cookie;
 
         $requestData = [
             'grant_type'    => 'refresh_token',

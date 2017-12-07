@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Tasks;
 use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * Class WebLoginTask.
@@ -13,15 +14,15 @@ use Auth;
  */
 class WebLoginTask extends Task
 {
+
     /**
-     * @param            $email
-     * @param            $password
-     * @param bool|false $remember
+     * @param string $email
+     * @param string $password
+     * @param bool   $remember
      *
-     * @return mixed
-     * @throws LoginFailedException
+     * @return  \Illuminate\Contracts\Auth\Authenticatable
      */
-    public function run($email, $password, bool $remember = false)
+    public function run(string $email, string $password, bool $remember = false) : Authenticatable
     {
         if (!$user = Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
             throw new LoginFailedException();

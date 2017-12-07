@@ -19,15 +19,15 @@ class SocialLoginAction extends Action
      * ----- if has no social profile
      * --------- [C] create new record
      *
-     * @param $request
+     * @param $data
      * @param $provider
      *
      * @return  mixed
      */
-    public function run($request, $provider)
+    public function run($data, $provider)
     {
         // fetch the user data from the support platforms
-        $socialUserProfile = Apiato::call('Socialauth@FindUserSocialProfileTask', [$provider, $request->all()]);
+        $socialUserProfile = Apiato::call('Socialauth@FindUserSocialProfileTask', [$provider, $data]);
 
         // check if the social ID exist on any of our users, and get that user in case it was found
         $socialUser = Apiato::call('Socialauth@FindSocialUserTask', [$provider, $socialUserProfile->id]);

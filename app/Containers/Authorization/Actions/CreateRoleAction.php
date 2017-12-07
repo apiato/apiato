@@ -3,8 +3,8 @@
 namespace App\Containers\Authorization\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 
 /**
  * Class CreateRoleAction
@@ -15,16 +15,17 @@ class CreateRoleAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param string      $name
+     * @param string|null $description
+     * @param string|null $displayName
+     * @param int         $level
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Role
      */
-    public function run(Request $request)
+    public function run(string $name, string $description = null, string $displayName = null, int $level = 0): Role
     {
-        $level = $request->has('level') ? $request->level : 0;
+        $role = Apiato::call('Authorization@CreateRoleTask', [$name, $description, $displayName, $level]);
 
-        return Apiato::call('Authorization@CreateRoleTask',
-            [$request->name, $request->description, $request->display_name, $level]
-        );
+        return $role;
     }
 }

@@ -15,11 +15,9 @@ class GetAllSettingsAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
-     *
      * @return  mixed
      */
-    public function run(Request $request)
+    public function run()
     {
         $settings = Apiato::call('Settings@GetAllSettingsTask', [], ['ordered']);
 

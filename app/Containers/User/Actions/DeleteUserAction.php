@@ -2,9 +2,9 @@
 
 namespace App\Containers\User\Actions;
 
-use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\User\Models\User;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class DeleteUserAction.
@@ -15,17 +15,14 @@ class DeleteUserAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param null $userId
      *
-     * @return  mixed
+     * @return  \App\Containers\User\Models\User
      */
-    public function run(Request $request)
+    public function run($userId = null): User
     {
-        if ($userId = $request->id) {
-            $user = Apiato::call('User@FindUserByIdTask', [$userId]);
-        } else {
-            $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
-        }
+        $user = $userId ?
+            Apiato::call('User@FindUserByIdTask', [$userId]) : Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         Apiato::call('User@DeleteUserTask', [$user]);
 

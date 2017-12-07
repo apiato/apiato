@@ -3,6 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
+use App\Containers\User\Models\User;
 use App\Ship\Exceptions\InternalErrorException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
@@ -27,8 +28,10 @@ class UpdateUserTask extends Task
      * @throws InternalErrorException
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
+     *
+     * @return  \App\Containers\User\Models\User
      */
-    public function run($userData, $userId)
+    public function run($userData, $userId): User
     {
         if (empty($userData)) {
             throw new UpdateResourceFailedException('Inputs are empty.');

@@ -3,6 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
+use App\Containers\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
@@ -18,18 +19,24 @@ class CreateUserByCredentialsTask extends Task
 {
 
     /**
-     * @param bool $isClient
-     * @param      $email
-     * @param      $password
-     * @param null $name
-     * @param null $gender
-     * @param null $birth
+     * @param bool        $isClient
+     * @param string      $email
+     * @param string      $password
+     * @param string|null $name
+     * @param string|null $gender
+     * @param string|null $birth
      *
-     * @return mixed
-     * @throws CreateResourceFailedException
+     * @return  mixed
      */
-    public function run($isClient = true, $email, $password, $name = null, $gender = null, $birth = null)
-    {
+    public function run(
+        bool $isClient = true,
+        string $email,
+        string $password,
+        string $name = null,
+        string $gender = null,
+        string $birth = null
+    ): User {
+
         try {
             // create new user
             $user = App::make(UserRepository::class)->create([

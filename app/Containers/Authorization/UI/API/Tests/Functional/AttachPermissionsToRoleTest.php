@@ -28,7 +28,7 @@ class AttachPermissionsToRoleTest extends TestCase
 
         $data = [
             'role_id'         => $roleA->getHashedKey(),
-            'permissions_ids' => [$permissionA->getHashedKey()],
+            'permissions_ids' => $permissionA->getHashedKey(),
         ];
 
         // send the HTTP request

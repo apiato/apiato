@@ -3,6 +3,7 @@
 namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\RoleRepository;
+use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\App;
 
@@ -17,13 +18,15 @@ class FindRoleTask extends Task
     /**
      * @param $roleNameOrId
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Role
      */
-    public function run($roleNameOrId)
+    public function run($roleNameOrId): Role
     {
         $query = is_numeric($roleNameOrId) ? ['id' => $roleNameOrId] : ['name' => $roleNameOrId];
 
-        return App::make(RoleRepository::class)->findWhere($query)->first();
+        $role = App::make(RoleRepository::class)->findWhere($query)->first();
+
+        return $role;
     }
 
 }

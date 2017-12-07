@@ -2,7 +2,7 @@
 
 namespace App\Containers\Documentation\UI\CLI\Commands;
 
-use App\Containers\Documentation\Actions\GenerateDocumentationAction;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
@@ -37,12 +37,9 @@ class GenerateApiDocsCommand extends ConsoleCommand
         parent::__construct();
     }
 
-    /**
-     * @param \App\Containers\Documentation\Actions\GenerateDocumentationAction $action
-     */
-    public function handle(GenerateDocumentationAction $action)
+    public function handle()
     {
-        $action->run($this);
+        Apiato::call('Documentation@GenerateDocumentationAction', [$this]);
     }
 
 }

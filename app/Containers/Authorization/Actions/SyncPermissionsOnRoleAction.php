@@ -2,9 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\Models\Role;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class SyncPermissionsOnRoleAction.
@@ -15,23 +15,21 @@ class SyncPermissionsOnRoleAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param $roleId
+     * @param $singleOrMultiplePermissionIds
      *
-     * @return  mixed
+     * @return  \App\Containers\Authorization\Models\Role
      */
-    public function run(Request $request)
+    public function run($roleId, $singleOrMultiplePermissionIds): Role
     {
-        $role = Apiato::call('Authorization@FindRoleTask', [$request->role_id]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$roleId]);
 
-        $permissions = [];
+        // convert to array in case single ID was passed
+        $permissionsIds = (array)$singleOrMultiplePermissionIds;
 
-        if (is_array($permissionsIds = $request->permissions_ids)) {
-            foreach ($permissionsIds as $permissionId) {
-                $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionId]);
-            }
-        } else {
-            $permissions[] = Apiato::call('Authorization@FindPermissionTask', [$permissionsIds]);
-        }
+        $permissions = array_map(function ($permissionId) {
+            return Apiato::call('Authorization@FindPermissionTask', [$permissionId]);
+        }, $permissionsIds);
 
         $role->syncPermissions($permissions);
 
