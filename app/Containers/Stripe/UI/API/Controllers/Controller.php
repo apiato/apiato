@@ -22,16 +22,7 @@ class Controller extends ApiController
      */
     public function createStripeAccount(CreateStripeAccountRequest $request)
     {
-        $sanitizedData = $request->sanitizeInput([
-            'customer_id',
-            'card_id',
-            'card_funding',
-            'card_last_digits',
-            'card_fingerprint',
-            'nickname',
-        ]);
-
-        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [$sanitizedData]);
+        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account created successfully.',
@@ -46,15 +37,7 @@ class Controller extends ApiController
      */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {
-        $sanitizedData = $request->sanitizeInput([
-            'customer_id',
-            'card_id',
-            'card_funding',
-            'card_last_digits',
-            'card_fingerprint',
-        ]);
-
-        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [$request->getInputByKey('id'), $sanitizedData]);
+        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account updated successfully.',
