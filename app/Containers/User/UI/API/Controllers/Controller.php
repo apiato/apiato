@@ -67,9 +67,9 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = Apiato::call('User@DeleteUserAction', [$request]);
+        Apiato::call('User@DeleteUserAction', [$request]);
 
-        return $this->deleted($user);
+        return $this->noContent();
     }
 
     /**

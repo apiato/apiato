@@ -28,12 +28,7 @@ class DeleteUserTest extends TestCase
         $response = $this->injectId($user->id)->makeCall();
 
         // assert response status is correct
-        $response->assertStatus(202);
-
-        // assert the returned message is correct
-        $this->assertResponseContainKeyValue([
-            'message' => 'User (' . $user->getHashedKey() . ') Deleted Successfully.',
-        ]);
+        $response->assertStatus(204);
     }
 
     public function testDeleteAnotherExistingUser_()

@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authorization\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 
 /**

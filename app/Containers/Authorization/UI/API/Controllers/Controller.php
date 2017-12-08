@@ -107,11 +107,9 @@ class Controller extends ApiController
      */
     public function deleteRole(DeleteRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@DeleteRoleAction', [$request]);
+        Apiato::call('Authorization@DeleteRoleAction', [$request]);
 
-        return $this->accepted([
-            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.'
-        ]);
+        return $this->noContent();
     }
 
     /**
