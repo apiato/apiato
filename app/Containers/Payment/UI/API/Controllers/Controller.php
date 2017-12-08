@@ -62,7 +62,7 @@ class Controller extends ApiController
      */
     public function deletePaymentAccount(DeletePaymentAccountRequest $request)
     {
-        $paymentAccount = Apiato::call('Payment@DeletePaymentAccountAction', [$request]);
+        Apiato::call('Payment@DeletePaymentAccountAction', [$request]);
 
         return $this->noContent();
     }
