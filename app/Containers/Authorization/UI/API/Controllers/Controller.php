@@ -47,7 +47,7 @@ class Controller extends ApiController
      */
     public function findPermission(FindPermissionRequest $request)
     {
-        $permission = Apiato::call('Authorization@FindPermissionAction', [$request->id]);
+        $permission = Apiato::call('Authorization@FindPermissionAction', [$request]);
 
         return $this->transform($permission, PermissionTransformer::class);
     }
@@ -71,7 +71,7 @@ class Controller extends ApiController
      */
     public function findRole(FindRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@FindRoleAction', [$request->id]);
+        $role = Apiato::call('Authorization@FindRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }
@@ -83,7 +83,7 @@ class Controller extends ApiController
      */
     public function assignUserToRole(AssignUserToRoleRequest $request)
     {
-        $user = Apiato::call('Authorization@AssignUserToRoleAction', [$request->user_id, $request->roles_ids]);
+        $user = Apiato::call('Authorization@AssignUserToRoleAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -95,7 +95,7 @@ class Controller extends ApiController
      */
     public function syncUserRoles(SyncUserRolesRequest $request)
     {
-        $user = Apiato::call('Authorization@SyncUserRolesAction', [$request->user_id, $request->roles_ids]);
+        $user = Apiato::call('Authorization@SyncUserRolesAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -107,7 +107,7 @@ class Controller extends ApiController
      */
     public function deleteRole(DeleteRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@DeleteRoleAction', [$request->id]);
+        $role = Apiato::call('Authorization@DeleteRoleAction', [$request]);
 
         return $this->accepted([
             'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.'
@@ -121,7 +121,7 @@ class Controller extends ApiController
      */
     public function revokeRoleFromUser(RevokeUserFromRoleRequest $request)
     {
-        $user = Apiato::call('Authorization@RevokeUserFromRoleAction', [$request->user_id, $request->roles_ids]);
+        $user = Apiato::call('Authorization@RevokeUserFromRoleAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -133,8 +133,7 @@ class Controller extends ApiController
      */
     public function attachPermissionToRole(AttachPermissionToRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@AttachPermissionsToRoleAction',
-            [$request->role_id, $request->permissions_ids]);
+        $role = Apiato::call('Authorization@AttachPermissionsToRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }
@@ -146,7 +145,7 @@ class Controller extends ApiController
      */
     public function syncPermissionOnRole(SyncPermissionsOnRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@SyncPermissionsOnRoleAction', [$request->role_id, $request->permissions_ids]);
+        $role = Apiato::call('Authorization@SyncPermissionsOnRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }
@@ -158,7 +157,7 @@ class Controller extends ApiController
      */
     public function detachPermissionFromRole(DetachPermissionToRoleRequest $request)
     {
-        $role = Apiato::call('Authorization@DetachPermissionsFromRoleAction', [$request->role_id, $request->permissions_ids]);
+        $role = Apiato::call('Authorization@DetachPermissionsFromRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }
@@ -170,9 +169,7 @@ class Controller extends ApiController
      */
     public function createRole(CreateRoleRequest $request)
     {
-        $level = $request->has('level') ? $request->level : 0;
-
-        $role = Apiato::call('Authorization@CreateRoleAction', [$request->name, $request->description, $request->display_name, $level]);
+        $role = Apiato::call('Authorization@CreateRoleAction', [$request]);
 
         return $this->transform($role, RoleTransformer::class);
     }

@@ -2,8 +2,9 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
+use Apiato\Core\Foundation\Facades\Apiato;
+use Illuminate\Support\Collection;
 
 /**
  * Class GetAllPermissionsAction.
@@ -14,9 +15,9 @@ class GetAllPermissionsAction extends Action
 {
 
     /**
-     * @return  mixed
+     * @return  Collection
      */
-    public function run()
+    public function run(): Collection
     {
         $permissions = Apiato::call('Authorization@GetAllPermissionsTask');
 

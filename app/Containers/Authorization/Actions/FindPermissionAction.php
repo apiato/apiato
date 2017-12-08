@@ -2,10 +2,11 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Exceptions\PermissionNotFoundException;
 use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class FindPermissionAction.
@@ -16,13 +17,14 @@ class FindPermissionAction extends Action
 {
 
     /**
-     * @param $permissionId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \App\Containers\Authorization\Models\Permission
+     * @return Permission
+     * @throws \App\Containers\Authorization\Exceptions\PermissionNotFoundException
      */
-    public function run($permissionId): Permission
+    public function run(Request $request): Permission
     {
-        $permission = Apiato::call('Authorization@FindPermissionTask', [$permissionId]);
+        $permission = Apiato::call('Authorization@FindPermissionTask', [$request->id]);
 
         if (!$permission) {
             throw new PermissionNotFoundException();

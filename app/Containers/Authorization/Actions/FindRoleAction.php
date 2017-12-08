@@ -17,13 +17,14 @@ class FindRoleAction extends Action
 {
 
     /**
-     * @param $roleId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \App\Containers\Authorization\Models\Role
+     * @return Role
+     * @throws \App\Containers\Authorization\Exceptions\RoleNotFoundException
      */
-    public function run($roleId): Role
+    public function run(Request $request): Role
     {
-        $role = Apiato::call('Authorization@FindRoleTask', [$roleId]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$roleId = $request->id]);
 
         if (!$role) {
             throw new RoleNotFoundException();
