@@ -3,7 +3,6 @@
 namespace App\Containers\Authorization\Actions;
 
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Collection;
 
 /**
  * Class GetAllRolesAction.
@@ -14,9 +13,9 @@ class GetAllRolesAction extends Action
 {
 
     /**
-     * @return Collection
+     * @return mixed
      */
-    public function run(): Collection
+    public function run()
     {
         $roles = Apiato::call('Authorization@GetAllRolesTask');
 

@@ -5,7 +5,6 @@ namespace App\Containers\Settings\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Collection;
 
 /**
  * Class GetAllSettingsAction
@@ -20,7 +19,7 @@ class GetAllSettingsAction extends Action
      *
      * @return  mixed
      */
-    public function run(Request $request) : Collection
+    public function run(Request $request)
     {
         $settings = Apiato::call('Settings@GetAllSettingsTask', [], ['ordered']);
 

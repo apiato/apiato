@@ -5,7 +5,6 @@ namespace App\Containers\Payment\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Collection;
 
 /**
  * Class GetAllPaymentAccountsAction
@@ -18,9 +17,9 @@ class GetAllPaymentAccountsAction extends Action
     /**
      * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  Collection
+     * @return  mixed
      */
-    public function run(Request $request): Collection
+    public function run(Request $request)
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

@@ -4,7 +4,6 @@ namespace App\Containers\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Collection;
 
 /**
  * Class GetAllAdminsAction.
@@ -15,9 +14,9 @@ class GetAllAdminsAction extends Action
 {
 
     /**
-     * @return  Collection
+     * @return  mixed
      */
-    public function run(): Collection
+    public function run()
     {
         return Apiato::call('User@GetAllUsersTask', [], [
             'ordered',
