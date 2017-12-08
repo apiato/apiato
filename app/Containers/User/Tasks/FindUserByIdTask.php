@@ -23,16 +23,14 @@ class FindUserByIdTask extends Task
      * @return User
      * @throws NotFoundException
      */
-    public function run($userId)
+    public function run($userId): User
     {
         // find the user by its id
         try {
-            $user = App::make(UserRepository::class)->find($userId);
+            return App::make(UserRepository::class)->find($userId);
         } catch (Exception $e) {
             throw new NotFoundException();
         }
-
-        return $user;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
+use App\Containers\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
@@ -17,12 +18,12 @@ class FindUserByEmailTask extends Task
 {
 
     /**
-     * @param $email
+     * @param string $email
      *
-     * @return mixed
+     * @return User
      * @throws NotFoundException
      */
-    public function run($email)
+    public function run(string $email): User
     {
         try {
             return App::make(UserRepository::class)->findByField('email', $email)->first();

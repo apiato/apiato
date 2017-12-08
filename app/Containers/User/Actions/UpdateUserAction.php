@@ -2,10 +2,11 @@
 
 namespace App\Containers\User\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\Hash;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class UpdateUserAction.
@@ -16,48 +17,28 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @param string $id
-     * @param string $email
-     * @param string $password
-     * @param string $name
-     * @param string $gender
-     * @param string $birth
-     * @param string $token
-     * @param string $expiresIn
-     * @param string $refreshToken
-     * @param string $tokenSecret
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  mixed
+     * @return User
      */
-    public function run(
-        string $id,
-        string $email = null,
-        string $password = null,
-        string $name = null,
-        string $gender = null,
-        string $birth = null,
-        string $token = null,
-        string $expiresIn = null,
-        string $refreshToken = null,
-        string $tokenSecret = null
-    ): User {
-
+    public function run(Request $request): User
+    {
         $userData = [
-            'email'                => $email,
-            'password'             => $password ? Hash::make($password) : null,
-            'name'                 => $name,
-            'gender'               => $gender,
-            'birth'                => $birth,
-            'social_token'         => $token,
-            'social_expires_in'    => $expiresIn,
-            'social_refresh_token' => $refreshToken,
-            'social_token_secret'  => $tokenSecret,
+            'password'             => $request->password ? Hash::make($request->password) : null,
+            'name'                 => $request->name,
+            'email'                => $request->email,
+            'gender'               => $request->gender,
+            'birth'                => $request->birth,
+            'social_token'         => $request->token,
+            'social_expires_in'    => $request->expiresIn,
+            'social_refresh_token' => $request->refreshToken,
+            'social_token_secret'  => $request->tokenSecret,
         ];
 
         // remove null values and their keys
         $userData = array_filter($userData);
 
-        $user = Apiato::call('User@UpdateUserTask', [$userData, $id]);
+        $user = Apiato::call('User@UpdateUserTask', [$userData, $request->id]);
 
         return $user;
     }

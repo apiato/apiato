@@ -31,13 +31,7 @@ class Controller extends ApiController
      */
     public function registerUser(RegisterUserRequest $request)
     {
-        $user = Apiato::call('User@RegisterUserAction', [
-            $request->email,
-            $request->password,
-            $request->name,
-            $request->gender,
-            $request->birth,
-        ]);
+        $user = Apiato::call('User@RegisterUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -49,11 +43,7 @@ class Controller extends ApiController
      */
     public function createAdmin(CreateAdminRequest $request)
     {
-        $admin = Apiato::call('User@CreateAdminAction', [
-            $request->email,
-            $request->password,
-            $request->name
-        ]);
+        $admin = Apiato::call('User@CreateAdminAction', [$request]);
 
         return $this->transform($admin, UserTransformer::class);
     }
@@ -65,18 +55,7 @@ class Controller extends ApiController
      */
     public function updateUser(UpdateUserRequest $request)
     {
-        $user = Apiato::call('User@UpdateUserAction', [
-            $request->id,
-            $request->email,
-            $request->password,
-            $request->name,
-            $request->gender,
-            $request->birth,
-            $request->token,
-            $request->expiresIn,
-            $request->refreshToken,
-            $request->tokenSecret,
-        ]);
+        $user = Apiato::call('User@UpdateUserAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -88,7 +67,7 @@ class Controller extends ApiController
      */
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = Apiato::call('User@DeleteUserAction', [$request->id]);
+        $user = Apiato::call('User@DeleteUserAction', [$request]);
 
         return $this->deleted($user);
     }
@@ -136,7 +115,7 @@ class Controller extends ApiController
      */
     public function findUserById(FindUserByIdRequest $request)
     {
-        $user = Apiato::call('User@FindUserByIdAction', [$request->id]);
+        $user = Apiato::call('User@FindUserByIdAction', [$request]);
 
         return $this->transform($user, UserTransformer::class);
     }
@@ -148,7 +127,7 @@ class Controller extends ApiController
      */
     public function getAuthenticatedUser(GetAuthenticatedUserRequest $request)
     {
-        $user = Apiato::call('User@GetAuthenticatedUserAction');
+        $user = Apiato::call('User@GetAuthenticatedUserAction', [$request]);
 
         return $this->transform($user, UserPrivateProfileTransformer::class);
     }
@@ -160,11 +139,7 @@ class Controller extends ApiController
      */
     public function resetPassword(ResetPasswordRequest $request)
     {
-        Apiato::call('User@ResetPasswordAction', [
-            $request->email,
-            $request->password,
-            $request->token
-        ]);
+        Apiato::call('User@ResetPasswordAction', [$request]);
 
         return $this->noContent(204);
     }
@@ -176,7 +151,7 @@ class Controller extends ApiController
      */
     public function forgotPassword(ForgotPasswordRequest $request)
     {
-        Apiato::call('User@ForgotPasswordAction', [$request->email, $request->reseturl]);
+        Apiato::call('User@ForgotPasswordAction', [$request]);
 
         return $this->noContent(202);
     }

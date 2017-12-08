@@ -17,13 +17,14 @@ class FindUserByIdAction extends Action
 {
 
     /**
-     * @param $userId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \App\Containers\User\Models\User
+     * @return User
+     * @throws NotFoundException
      */
-    public function run($userId): User
+    public function run(Request $request): User
     {
-        $user = Apiato::call('User@FindUserByIdTask', [$userId]);
+        $user = Apiato::call('User@FindUserByIdTask', [$request->id]);
 
         if (!$user) {
             throw new NotFoundException();
