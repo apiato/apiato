@@ -14,13 +14,13 @@ use Illuminate\Contracts\Auth\Authenticatable;
  */
 class WebLoginTask extends Task
 {
-
     /**
      * @param string $email
      * @param string $password
      * @param bool   $remember
      *
-     * @return  \Illuminate\Contracts\Auth\Authenticatable
+     * @return Authenticatable
+     * @throws LoginFailedException
      */
     public function run(string $email, string $password, bool $remember = false) : Authenticatable
     {

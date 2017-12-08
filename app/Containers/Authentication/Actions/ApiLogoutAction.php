@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
@@ -16,13 +17,13 @@ class ApiLogoutAction extends Action
 {
 
     /**
-     * @param string $bearerToken
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  bool
      */
-    public function run(string $bearerToken): bool
+    public function run(Request $request) : bool
     {
-        $id = App::make(Parser::class)->parse($bearerToken)->getHeader('jti');
+        $id = App::make(Parser::class)->parse($request->bearerToken())->getHeader('jti');
 
         DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => true]);
 

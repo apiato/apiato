@@ -5,6 +5,7 @@ namespace App\Containers\Authentication\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
@@ -16,15 +17,15 @@ class WebAdminLoginAction extends Action
 {
 
     /**
-     * @param string $email
-     * @param string $password
-     * @param bool   $rememberMe
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \Illuminate\Contracts\Auth\Authenticatable
+     * @return Authenticatable
+     * @throws UserNotAdminException
      */
-    public function run(string $email, string $password, bool $rememberMe = false): Authenticatable
+    public function run(Request $request) : Authenticatable
     {
-        $user = Apiato::call('Authentication@WebLoginTask', [$email, $password, $rememberMe]);
+        $user = Apiato::call('Authentication@WebLoginTask',
+            [$request->email, $request->password, $request->remember_me ?? false]);
 
         Apiato::call('Authentication@CheckIfUserIsConfirmedTask', [], [['setUser' => [$user]]]);
 
