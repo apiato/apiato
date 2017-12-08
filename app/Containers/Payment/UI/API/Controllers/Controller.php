@@ -2,13 +2,13 @@
 
 namespace App\Containers\Payment\UI\API\Controllers;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Requests\FindPaymentAccountRequest;
 use App\Containers\Payment\UI\API\Requests\GetAllPaymentAccountsRequest;
 use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class Controller

@@ -7,7 +7,6 @@ use App\Containers\Authorization\Models\Permission;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreatePermissionTask

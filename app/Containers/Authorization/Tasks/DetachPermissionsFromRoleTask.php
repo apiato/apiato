@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authorization\Tasks;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Tasks\Task;
 

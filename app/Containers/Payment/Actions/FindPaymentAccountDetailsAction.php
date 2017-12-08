@@ -2,10 +2,10 @@
 
 namespace App\Containers\Payment\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class FindPaymentAccountDetailsAction

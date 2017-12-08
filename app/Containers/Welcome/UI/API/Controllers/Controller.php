@@ -2,8 +2,8 @@
 
 namespace App\Containers\Welcome\UI\API\Controllers;
 
-use App\Ship\Parents\Controllers\ApiController;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Ship\Parents\Controllers\ApiController;
 
 /**
  * Class Controller.

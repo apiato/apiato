@@ -7,7 +7,6 @@ use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class DeletePaymentAccountTask

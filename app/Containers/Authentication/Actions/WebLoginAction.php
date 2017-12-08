@@ -2,9 +2,9 @@
 
 namespace App\Containers\Authentication\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Apiato\Core\Foundation\Facades\Apiato;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**

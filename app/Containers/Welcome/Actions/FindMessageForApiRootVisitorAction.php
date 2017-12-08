@@ -3,7 +3,6 @@
 namespace App\Containers\Welcome\Actions;
 
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class WelcomeApiRootVisitorAction.

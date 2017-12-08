@@ -4,9 +4,9 @@ namespace App\Containers\Debugger\ValueObjects;
 
 use App\Ship\Parents\ValueObjects\ValueObject;
 use Illuminate\Support\Facades\Config;
+use Jenssegers\Agent\Facades\Agent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Jenssegers\Agent\Facades\Agent;
 
 /**
  * Class Output

@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Events\UserRegisteredEvent;
 use App\Containers\User\Mails\UserRegisteredMail;
 use App\Containers\User\Models\User;
@@ -12,7 +13,6 @@ use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class RegisterUserAction.

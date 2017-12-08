@@ -4,9 +4,9 @@ namespace App\Containers\Wepay\Tasks;
 
 use App\Containers\Wepay\Exceptions\WepayApiErrorException;
 use App\Ship\Parents\Tasks\Task;
-use KevinEm\WePay\Laravel\WePayLaravel;
 use Exception;
 use Illuminate\Support\Facades\Config;
+use KevinEm\WePay\Laravel\WePayLaravel;
 
 /**
  * Class CreateWepayCustomerTask.

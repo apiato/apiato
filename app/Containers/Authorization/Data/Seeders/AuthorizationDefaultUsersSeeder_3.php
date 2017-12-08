@@ -4,7 +4,6 @@ namespace App\Containers\Authorization\Data\Seeders;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Seeders\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class AuthorizationDefaultUsersSeeder_3
