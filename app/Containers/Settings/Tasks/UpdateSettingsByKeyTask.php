@@ -3,7 +3,7 @@
 namespace App\Containers\Settings\Tasks;
 
 use App\Containers\Settings\Data\Repositories\SettingRepository;
-use App\Containers\Settings\Exceptions\SettingNotFoundException;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
@@ -28,7 +28,7 @@ class UpdateSettingsByKeyTask extends Task
      * @param $value
      *
      * @return mixed
-     * @throws SettingNotFoundException
+     * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
     public function run($key, $value)
@@ -36,7 +36,7 @@ class UpdateSettingsByKeyTask extends Task
         $setting = $this->repository->findWhere(['key' => $key])->first();
 
         if (!$setting) {
-            throw new SettingNotFoundException();
+            throw new NotFoundException();
         }
 
         try {
