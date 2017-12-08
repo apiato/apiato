@@ -21,17 +21,7 @@ class Controller extends ApiController
      */
     public function createWepayAccount(CreateWepayAccountRequest $request)
     {
-        $wepayAccount = Apiato::call('Wepay@CreateWepayAccountAction', [
-            $request->name,
-            $request->description,
-            $request->type,
-            $request->imageUrl,
-            $request->gaqDomains,
-            $request->mcc,
-            $request->country,
-            $request->currencies,
-            $request->nickname,
-        ]);
+        $wepayAccount = Apiato::call('Wepay@CreateWepayAccountAction', [$request]);
 
         return $this->accepted([
             'message'        => 'Wepay account created successfully.',
