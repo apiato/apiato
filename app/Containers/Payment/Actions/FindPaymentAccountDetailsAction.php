@@ -16,15 +16,15 @@ class FindPaymentAccountDetailsAction extends Action
 {
 
     /**
-     * @param $paymentAccountId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  \App\Containers\Payment\Models\PaymentAccount
      */
-    public function run($paymentAccountId): PaymentAccount
+    public function run(Request $request): PaymentAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$paymentAccountId]);
+        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$request->id]);
 
         // check if this account belongs to our user
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);

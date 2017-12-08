@@ -3,7 +3,6 @@
 namespace App\Containers\Payment\Tasks;
 
 use App\Containers\Payment\Data\Repositories\PaymentAccountRepository;
-use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
@@ -13,26 +12,28 @@ use Illuminate\Support\Facades\App;
  * Class FindPaymentAccountByIdTask
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class FindPaymentAccountByIdTask extends Task
 {
+    private $repository;
+
+    public function __construct(PaymentAccountRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param $id
      *
-     * @return  mixed
+     * @return mixed
+     * @throws NotFoundException
      */
-    public function run($id): PaymentAccount
+    public function run($id)
     {
-        $repository = App::make(PaymentAccountRepository::class);
-
         try {
-            $paymentAccount = $repository->find($id);
+            return $this->repository->find($id);
         } catch (Exception $exception) {
             throw new NotFoundException();
         }
-
-        return $paymentAccount;
     }
 }

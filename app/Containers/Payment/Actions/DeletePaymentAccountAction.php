@@ -2,26 +2,28 @@
 
 namespace App\Containers\Payment\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class DeletePaymentAccountAction
  *
  * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class DeletePaymentAccountAction extends Action
 {
 
     /**
-     * @param $paymentAccountId
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return  void
      */
-    public function run($paymentAccountId): void
+    public function run(Request $request): void
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$paymentAccountId]);
+        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$request->id]);
 
         // check if this account belongs to our user
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);

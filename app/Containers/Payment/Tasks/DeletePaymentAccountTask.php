@@ -17,16 +17,21 @@ use Illuminate\Support\Facades\App;
 class DeletePaymentAccountTask extends Task
 {
 
+    private $repository;
+
+    public function __construct(PaymentAccountRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function run(PaymentAccount $account)
     {
-        $repository = App::make(PaymentAccountRepository::class);
-
         try {
             // first, get the associated account and remove this one!
             $account->accountable->delete();
 
             // then remove the payment account
-            return $repository->delete($account->id);
+            return $this->repository->delete($account->id);
         } catch (Exception $exception) {
             throw new DeleteResourceFailedException();
         }
