@@ -35,7 +35,7 @@ class LocalizationTransformer extends Transformer
     public function transform(Localization $entity)
     {
         $response = [
-            '' => 'Localization',
+            'object' => 'Localization',
             'id'     => $entity->getLanguage(),
 
             'language' => [
