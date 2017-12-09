@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Debugger\Value;
+namespace App\Containers\Debugger\Values;
 
 use App\Ship\Parents\Values\Value;
 use Illuminate\Support\Facades\App;
