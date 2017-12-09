@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - '7.0'
   - '7.1'
 
 dist: trusty
@@ -15,8 +14,6 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      env: setup=normal
     - php: 7.1
       env: setup=normal
 
