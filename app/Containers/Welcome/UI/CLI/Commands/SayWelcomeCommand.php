@@ -5,11 +5,11 @@ namespace App\Containers\Welcome\UI\CLI\Commands;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
- * Class SayWelcome
+ * Class SayWelcomeCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class SayWelcome extends ConsoleCommand
+class SayWelcomeCommand extends ConsoleCommand
 {
 
     /**
