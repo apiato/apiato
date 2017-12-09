@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\UI\API\Transformers;
 
-use App\Containers\Localization\ValueObjects\Localization;
+use App\Containers\Localization\Values\Localization;
 use App\Ship\Parents\Transformers\Transformer;
 
 /**
@@ -35,7 +35,7 @@ class LocalizationTransformer extends Transformer
     public function transform(Localization $entity)
     {
         $response = [
-            'object' => 'Localization',
+            '' => 'Localization',
             'id'     => $entity->getLanguage(),
 
             'language' => [
