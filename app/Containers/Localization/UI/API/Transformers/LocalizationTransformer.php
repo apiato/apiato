@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\UI\API\Transformers;
 
-use App\Containers\Localization\ValueObjects\Localization;
+use App\Containers\Localization\Values\Localization;
 use App\Ship\Parents\Transformers\Transformer;
 
 /**

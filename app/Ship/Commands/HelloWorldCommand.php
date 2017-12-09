@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\Welcome\UI\CLI\Commands;
+namespace App\Ship\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 /**
- * Class SayWelcome
+ * Class HelloWorldCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class SayWelcome extends ConsoleCommand
+class HelloWorldCommand extends ConsoleCommand
 {
 
     /**
@@ -17,14 +17,14 @@ class SayWelcome extends ConsoleCommand
      *
      * @var string
      */
-    protected $signature = 'apiato:welcome';
+    protected $signature = 'hello:world';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Just saying Welcome.';
+    protected $description = 'Hello World!';
 
     /**
      * Create a new command instance.
@@ -43,6 +43,6 @@ class SayWelcome extends ConsoleCommand
      */
     public function handle()
     {
-        echo "Welcome to apiato :)\n";
+        echo "Hello World :)\n";
     }
 }

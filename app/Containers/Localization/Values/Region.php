@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\Localization\ValueObjects;
+namespace App\Containers\Localization\Values;
 
-use App\Ship\Parents\ValueObjects\ValueObject;
+use App\Ship\Parents\Values\Value;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
@@ -11,7 +11,7 @@ use Locale;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Region extends ValueObject
+class Region extends Value
 {
 
     /**

@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Containers\Debugger\ValueObjects;
+namespace App\Containers\Debugger\Values;
 
-use App\Ship\Parents\ValueObjects\ValueObject;
-use DB;
+use App\Ship\Parents\Values\Value;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
-use Log;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -16,7 +14,7 @@ use Monolog\Logger;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class RequestsLogger extends ValueObject
+class RequestsLogger extends Value
 {
 
     CONST TESTING_ENV = 'testing';
@@ -39,7 +37,7 @@ class RequestsLogger extends ValueObject
     }
 
     /**
-     * @param \App\Containers\Debugger\ValueObjects\Output $output
+     * @param \App\Containers\Debugger\Value\Output $output
      */
     public function releaseOutput(Output $output)
     {
