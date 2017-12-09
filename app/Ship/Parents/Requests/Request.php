@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Requests;
 
 use Apiato\Core\Abstracts\Requests\Request as AbstractRequest;
+use App\Ship\Defaults\Transporters\DefaultTransporter;
 
 /**
  * Class Request
@@ -12,4 +13,8 @@ use Apiato\Core\Abstracts\Requests\Request as AbstractRequest;
 abstract class Request extends AbstractRequest
 {
 
+    /**
+     * @var string
+     */
+    protected $transporter = DefaultTransporter::class;
 }

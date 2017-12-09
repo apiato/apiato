@@ -4,8 +4,9 @@ namespace App\Containers\Authorization\Tasks;
 
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\Authorization\Models\Permission;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
+use Exception;
 
 /**
  * Class CreatePermissionTask
@@ -15,25 +16,37 @@ use Illuminate\Support\Facades\App;
 class CreatePermissionTask extends Task
 {
 
+    private $repository;
+
+    public function __construct(PermissionRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param string      $name
      * @param string|null $description
      * @param string|null $displayName
      *
-     * @return  \App\Containers\Authorization\Models\Permission
+     * @return Permission
+     * @throws CreateResourceFailedException
      */
     public function run(string $name, string $description = null, string $displayName = null): Permission
     {
         app()['cache']->forget('spatie.permission.cache');
 
-        $permission = App::make(PermissionRepository::class)->create([
+        $data = [
             'name'         => $name,
             'description'  => $description,
             'display_name' => $displayName,
             'guard_name'   => 'web',
-        ]);
+        ];
 
-        return $permission;
+        try {
+            return $this->repository->create($data);
+        }
+        catch (Exception $exception) {
+            throw new CreateResourceFailedException();
+        }
     }
-
 }

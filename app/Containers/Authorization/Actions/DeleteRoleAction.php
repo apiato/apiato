@@ -3,8 +3,8 @@
 namespace App\Containers\Authorization\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class DeleteRoleAction.
@@ -15,16 +15,14 @@ class DeleteRoleAction extends Action
 {
 
     /**
-     * @param string $roleId
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  mixed
+     * @return  void
      */
-    public function run($roleId): Role
+    public function run(Request $request): void
     {
-        $role = Apiato::call('Authorization@FindRoleTask', [$roleId]);
+        $role = Apiato::call('Authorization@FindRoleTask', [$request->id]);
 
         Apiato::call('Authorization@DeleteRoleTask', [$role]);
-
-        return $role;
     }
 }

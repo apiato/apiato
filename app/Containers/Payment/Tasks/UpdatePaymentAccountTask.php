@@ -7,7 +7,6 @@ use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class UpdatePaymentAccountTask
@@ -16,6 +15,12 @@ use Illuminate\Support\Facades\App;
  */
 class UpdatePaymentAccountTask extends Task
 {
+    private $repository;
+
+    public function __construct(PaymentAccountRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param \App\Containers\Payment\Models\PaymentAccount $account
@@ -26,10 +31,8 @@ class UpdatePaymentAccountTask extends Task
      */
     public function run(PaymentAccount $account, array $data)
     {
-        $repository = App::make(PaymentAccountRepository::class);
-
         try {
-            return $repository->update($data, $account->id);
+            return $this->repository->update($data, $account->id);
         } catch (Exception $exception) {
             throw new UpdateResourceFailedException();
         }

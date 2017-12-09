@@ -23,7 +23,7 @@ class Controller extends ApiController
      */
     public function authenticateAll(ApiAuthenticateRequest $request, $provider)
     {
-        $data = Apiato::call('Socialauth@SocialLoginAction', [$request->all(), $provider]);
+        $data = Apiato::call('Socialauth@SocialLoginAction', [$request, $provider]);
 
         return $this->transform($data['user'], UserTransformer::class, [], [
             'token_type'   => 'personal',

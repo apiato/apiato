@@ -28,12 +28,7 @@ class DeleteRoleTest extends TestCase
         $response = $this->injectId($role->id)->makeCall();
 
         // assert response status is correct
-        $response->assertStatus(202);
-
-        // assert the returned message is correct
-        $this->assertResponseContainKeyValue([
-            'message' => 'Role (' . $role->getHashedKey() . ') Deleted Successfully.',
-        ]);
+        $response->assertStatus(204);
     }
 
 }

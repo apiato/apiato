@@ -2,10 +2,10 @@
 
 namespace App\Containers\Authorization\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class SyncUserRolesAction.
@@ -16,21 +16,24 @@ class SyncUserRolesAction extends Action
 {
 
     /**
-     * @param $userId
-     * @param $singleOrMultipleRoleIds
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run($userId, $singleOrMultipleRoleIds): User
+    public function run(Request $request): User
     {
-        $user = Apiato::call('User@FindUserByIdTask', [$userId]);
+        $user = Apiato::call('User@FindUserByIdTask', [$request->user_id]);
+
+        $roles = [];
 
         // convert roles IDs to array (in case single id passed)
-        $rolesIds = (array)$singleOrMultipleRoleIds;
+        if (!is_array($rolesIds = $request->roles_ids)) {
+            $rolesIds = [$request->roles_ids];
+        }
 
-        $roles = array_map(function($roleId){
-            return Apiato::call('Authorization@FindRoleTask', [$roleId]);
-        }, $rolesIds);
+        foreach ($rolesIds as $roleId) {
+            $roles[] = Apiato::call('Authorization@FindRoleTask', [$roleId]);
+        }
 
         $user->syncRoles($roles);
 

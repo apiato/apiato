@@ -2,8 +2,8 @@
 
 namespace App\Containers\Wepay\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
 use App\Containers\Wepay\Models\WepayAccount;
+use App\Ship\Parents\Requests\Request;
 
 /**
  * Class CreateWepayAccountRequest.

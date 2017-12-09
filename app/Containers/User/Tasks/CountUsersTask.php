@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\App;
 class CountUsersTask extends Task
 {
     /**
-     * @return  mixed
+     * @return  int
      */
-    public function run()
+    public function run(): int
     {
         return App::make(UserRepository::class)->all()->count();
     }

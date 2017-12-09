@@ -2,8 +2,8 @@
 
 namespace App\Containers\Debugger\Middlewares;
 
-use App\Containers\Debugger\ValueObjects\Output;
-use App\Containers\Debugger\ValueObjects\RequestsLogger;
+use App\Containers\Debugger\Values\Output;
+use App\Containers\Debugger\Values\RequestsLogger;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\Request;

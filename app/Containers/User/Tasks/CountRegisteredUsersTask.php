@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\App;
 class CountRegisteredUsersTask extends Task
 {
     /**
-     * @return  mixed
+     * @return  int
      */
-    public function run()
+    public function run(): int
     {
         return App::make(UserRepository::class)->pushCriteria(new NotNullCriteria('email'))->all()->count();
     }

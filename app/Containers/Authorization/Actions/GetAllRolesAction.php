@@ -2,9 +2,8 @@
 
 namespace App\Containers\Authorization\Actions;
 
-use App\Containers\Authorization\Data\Repositories\RoleRepository;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class GetAllRolesAction.
@@ -15,11 +14,13 @@ class GetAllRolesAction extends Action
 {
 
     /**
-     * @return  mixed
+     * @return mixed
      */
     public function run()
     {
-        return App::make(RoleRepository::class)->all();
+        $roles = Apiato::call('Authorization@GetAllRolesTask');
+
+        return $roles;
     }
 
 }

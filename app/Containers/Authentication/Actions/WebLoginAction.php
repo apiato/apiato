@@ -4,6 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
@@ -15,15 +16,13 @@ class WebLoginAction extends Action
 {
 
     /**
-     * @param string $email
-     * @param string $password
-     * @param bool   $remember
+     * @param \App\Ship\Parents\Requests\Request $request
      *
-     * @return  \Illuminate\Contracts\Auth\Authenticatable
+     * @return Authenticatable
      */
-    public function run(string $email, string $password, bool $remember = false): Authenticatable
+    public function run(Request $request) : Authenticatable
     {
-        $user = Apiato::call('Authentication@WebLoginTask', [$email, $password, $remember]);
+        $user = Apiato::call('Authentication@WebLoginTask', [$request]);
 
         Apiato::call('Authentication@CheckIfUserIsConfirmedTask', [], [['setUser' => [$user]]]);
 

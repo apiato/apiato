@@ -48,7 +48,8 @@ class ConsoleKernel extends LaravelConsoleKernel
         // As they are automatically registered by the Apiato Loader.
 
         // $this->load(__DIR__.'/Commands');
-        // require base_path('routes/console.php');
+
+        require app_path('Ship/Commands/Routes.php');
     }
 
 }

@@ -2,9 +2,8 @@
 
 namespace App\Containers\Localization\Actions;
 
-use App\Ship\Parents\Actions\Action;
 use Apiato\Core\Foundation\Facades\Apiato;
-use Illuminate\Support\Collection;
+use App\Ship\Parents\Actions\Action;
 
 /**
  * Class GetAllLocalizationsAction
@@ -15,9 +14,9 @@ class GetAllLocalizationsAction extends Action
 {
 
     /**
-     * @return  \Illuminate\Support\Collection
+     * @return  mixed
      */
-    public function run(): Collection
+    public function run()
     {
         $localizations = Apiato::call('Localization@GetAllLocalizationsTask');
 

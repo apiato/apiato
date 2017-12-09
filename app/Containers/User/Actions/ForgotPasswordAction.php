@@ -6,6 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Mails\UserForgotPasswordMail;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -18,17 +19,20 @@ class ForgotPasswordAction extends Action
 {
 
     /**
-     * @param $email
-     * @param $resetUrl
+     * @param \App\Ship\Parents\Requests\Request $request
+     *
+     * @return void
+     * @throws NotFoundException
      */
-    public function run($email, $resetUrl): void
+    public function run(Request $request): void
     {
-        $user = Apiato::call('User@FindUserByEmailTask', [$email]);
+        $user = Apiato::call('User@FindUserByEmailTask', [$request->email]);
 
         // generate token
         $token = Apiato::call('User@CreatePasswordResetTask', [$user]);
 
         // get last segment of the URL
+        $resetUrl = $request->reseturl;
         $url = explode('/', $resetUrl);
         $lastSegment = $url[count($url) - 1];
 

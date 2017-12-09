@@ -25,7 +25,7 @@ class Controller extends ApiController
      */
     public function logout(LogoutRequest $request)
     {
-        Apiato::call('Authentication@ApiLogoutAction', [$request->bearerToken()]);
+        Apiato::call('Authentication@ApiLogoutAction', [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -47,10 +47,9 @@ class Controller extends ApiController
     public function proxyLoginForAdminWebClient(LoginRequest $request)
     {
         $result = Apiato::call('Authentication@ProxyApiLoginAction', [
+            $request,
             Config::get('authentication-container.clients.web.admin.id'),
             Config::get('authentication-container.clients.web.admin.secret'),
-            $request->email,
-            $request->password,
         ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);
@@ -66,10 +65,9 @@ class Controller extends ApiController
     public function proxyRefreshForAdminWebClient(RefreshRequest $request)
     {
         $result = Apiato::call('Authentication@ProxyApiRefreshAction', [
+            $request,
             Config::get('authentication-container.clients.web.admin.id'),
             Config::get('authentication-container.clients.web.admin.secret'),
-            $request->refresh_token,
-            $request->cookie('refreshToken'),
         ]);
 
         return $this->json($result['response-content'])->withCookie($result['refresh-cookie']);

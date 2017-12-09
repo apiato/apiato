@@ -2,7 +2,7 @@
 
 namespace App\Containers\Localization\Tasks;
 
-use App\Containers\Localization\ValueObjects\Localization;
+use App\Containers\Localization\Values\Localization;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
@@ -16,9 +16,9 @@ class GetAllLocalizationsTask extends Task
 {
 
     /**
-     * @return  \Illuminate\Support\Collection
+     * @return  mixed
      */
-    public function run(): Collection
+    public function run()
     {
         $supported_localizations = Config::get('localization-container.supported_languages');
 

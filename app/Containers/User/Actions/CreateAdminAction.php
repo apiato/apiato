@@ -2,10 +2,10 @@
 
 namespace App\Containers\User\Actions;
 
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Requests\Request;
-use Apiato\Core\Foundation\Facades\Apiato;
 
 /**
  * Class CreateAdminAction.
@@ -16,20 +16,17 @@ class CreateAdminAction extends Action
 {
 
     /**
-     * @param string $email
-     * @param string $password
-     * @param string $name
-     * @param bool   $isClient
+     * @param \App\Ship\Parents\Requests\Request $request
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run(string $email, string $password, string $name, bool $isClient = false): User
+    public function run(Request $request): User
     {
         $admin = Apiato::call('User@CreateUserByCredentialsTask', [
-            $isClient,
-            $email,
-            $password,
-            $name
+            $isClient = false,
+            $request->email,
+            $request->password,
+            $request->name
         ]);
 
         // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles

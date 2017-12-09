@@ -3,8 +3,8 @@
 namespace App\Containers\User\Mails;
 
 use App\Containers\User\Models\User;
-use Illuminate\Bus\Queueable;
 use App\Ship\Parents\Mails\Mail;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserRegisteredMail extends Mail implements ShouldQueue
