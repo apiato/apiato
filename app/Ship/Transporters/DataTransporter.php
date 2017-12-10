@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Ship\Defaults\Transporters;
+namespace App\Ship\Transporters;
 
 use App\Ship\Parents\Transporters\Transporter;
 
 /**
- * Class DefaultTransporter
+ * Class DataTransporter
  *
  * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
-class DefaultTransporter extends Transporter
+class DataTransporter extends Transporter
 {
     /*
      * README FIRST and be sure to fully understand this concept!
