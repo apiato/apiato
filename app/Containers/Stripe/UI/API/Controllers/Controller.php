@@ -6,6 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class Controller.
@@ -22,7 +23,7 @@ class Controller extends ApiController
      */
     public function createStripeAccount(CreateStripeAccountRequest $request)
     {
-        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [$request]);
+        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [new DataTransporter($request)]);
 
         return $this->accepted([
             'message'           => 'Stripe account created successfully.',
@@ -37,7 +38,7 @@ class Controller extends ApiController
      */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {
-        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [$request]);
+        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [new DataTransporter($request)]);
 
         return $this->accepted([
             'message'           => 'Stripe account updated successfully.',

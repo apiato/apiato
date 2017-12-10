@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class UpdateStripeAccountAction
@@ -16,21 +16,21 @@ class UpdateStripeAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  \App\Containers\Stripe\Models\StripeAccount
      */
-    public function run(Request $request): StripeAccount
+    public function run(DataTransporter $data): StripeAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         // check, if this account does - in fact - belong to our user
-        $account = Apiato::call('Payment@FindStripeAccountByIdTask', [$request->id]);
+        $account = Apiato::call('Payment@FindStripeAccountByIdTask', [$data->id]);
         $paymentAccount = $account->paymentAccount;
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);
 
         // we own this account - so it is safe to update it
-        $data = $request->sanitizeInput([
+        $sanitizedData = $data->sanitizeInput([
             'customer_id',
             'card_id',
             'card_funding',
@@ -38,7 +38,7 @@ class UpdateStripeAccountAction extends Action
             'card_fingerprint',
         ]);
 
-        $account = Apiato::call('Stripe@UpdateStripeAccountTask', [$account, $data]);
+        $account = Apiato::call('Stripe@UpdateStripeAccountTask', [$account, $sanitizedData]);
 
         return $account;
     }
