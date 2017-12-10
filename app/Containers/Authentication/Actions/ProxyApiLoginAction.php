@@ -3,8 +3,8 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authentication\Transporters\ProxyApiLoginTransporter;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 
 /**
  * Class ProxyApiLoginAction.
@@ -13,21 +13,19 @@ class ProxyApiLoginAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
-     * @param                                    $clientId
-     * @param                                    $clientPassword
+     * @param \App\Containers\Authentication\Transporters\ProxyApiLoginTransporter $data
      *
-     * @return  array
+     * @return array
      */
-    public function run(Request $request, $clientId, $clientPassword) : array
+    public function run(ProxyApiLoginTransporter $data): array
     {
         $requestData = [
-            'grant_type'    => 'password',
-            'client_id'     => $clientId,
-            'client_secret' => $clientPassword,
-            'username'      => $request->email,
-            'password'      => $request->password,
-            'scope'         => '',
+            'grant_type'    => $data->grant_type ?? 'password',
+            'client_id'     => $data->client_id,
+            'client_secret' => $data->client_password,
+            'username'      => $data->email,
+            'password'      => $data->password,
+            'scope'         => $data->scope ?? '',
         ];
 
         $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);
@@ -39,8 +37,8 @@ class ProxyApiLoginAction extends Action
         $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [
-            'response-content' => $responseContent,
-            'refresh-cookie'   => $refreshCookie,
+            'response_content' => $responseContent,
+            'refresh_cookie'   => $refreshCookie,
         ];
     }
 }
