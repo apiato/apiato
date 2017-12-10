@@ -4,7 +4,7 @@ namespace App\Containers\SocialAuth\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class SocialLoginAction.
@@ -20,12 +20,12 @@ class SocialLoginAction extends Action
      * ----- if has no social profile
      * --------- [C] create new record
      *
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  mixed
      * @throws \Dto\Exceptions\InvalidDataTypeException
      */
-    public function run(DataTransporter $data)
+    public function run(Transporter $data)
     {
         // fetch the user data from the support platforms
         $socialUserProfile = Apiato::call('Socialauth@FindUserSocialProfileTask', [$data->provider, $data->toArray()]);

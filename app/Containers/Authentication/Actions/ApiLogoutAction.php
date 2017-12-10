@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
@@ -17,11 +17,11 @@ class ApiLogoutAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  bool
      */
-    public function run(DataTransporter $data): bool
+    public function run(Transporter $data): bool
     {
         $id = App::make(Parser::class)->parse($data->bearerToken)->getHeader('jti');
 

@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class UpdateStripeAccountAction
@@ -16,11 +16,11 @@ class UpdateStripeAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\Stripe\Models\StripeAccount
      */
-    public function run(DataTransporter $data): StripeAccount
+    public function run(Transporter $data): StripeAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

@@ -6,7 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class FindRoleAction.
@@ -17,11 +17,11 @@ class FindRoleAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\Authorization\Models\Role
      */
-    public function run(DataTransporter $data): Role
+    public function run(Transporter $data): Role
     {
         $role = Apiato::call('Authorization@FindRoleTask', [$data->id]);
 

@@ -5,7 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -17,11 +17,11 @@ class RevokeUserFromRoleAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run(DataTransporter $data): User
+    public function run(Transporter $data): User
     {
         // if user ID is passed then convert it to instance of User (could be user Id Or Model)
         if (!$data->user_id instanceof User) {

@@ -4,7 +4,7 @@ namespace App\Containers\Documentation\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class GenerateApiDocsCommand

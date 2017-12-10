@@ -6,7 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Mails\UserForgotPasswordMail;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Support\Facades\Mail;
 
 /**
@@ -19,9 +19,9 @@ class ForgotPasswordAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      */
-    public function run(DataTransporter $data): void
+    public function run(Transporter $data): void
     {
         $user = Apiato::call('User@FindUserByEmailTask', [$data->email]);
 

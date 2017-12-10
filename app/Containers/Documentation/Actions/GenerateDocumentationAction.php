@@ -4,7 +4,7 @@ namespace App\Containers\Documentation\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class GenerateDocumentationAction.
@@ -15,9 +15,9 @@ class GenerateDocumentationAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      */
-    public function run(DataTransporter $data): void
+    public function run(Transporter $data): void
     {
         $console = $data->command_instance;
 

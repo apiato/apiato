@@ -6,7 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Wepay\Data\Repositories\WepayAccountRepository;
 use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -18,11 +18,11 @@ class CreateWepayAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\Wepay\Models\WepayAccount
      */
-    public function run(DataTransporter $data): WepayAccount
+    public function run(Transporter $data): WepayAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
