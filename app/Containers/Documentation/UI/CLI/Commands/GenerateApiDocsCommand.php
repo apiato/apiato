@@ -4,7 +4,7 @@ namespace App\Containers\Documentation\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use App\Ship\Parents\Transporters\Transporter;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class GenerateApiDocsCommand
@@ -30,8 +30,6 @@ class GenerateApiDocsCommand extends ConsoleCommand
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {

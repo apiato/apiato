@@ -37,7 +37,7 @@ class RequestsLogger extends Value
     }
 
     /**
-     * @param \App\Containers\Debugger\Value\Output $output
+     * @param \App\Containers\Debugger\Values\Output $output
      */
     public function releaseOutput(Output $output)
     {
