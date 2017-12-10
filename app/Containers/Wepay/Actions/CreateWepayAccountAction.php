@@ -6,7 +6,7 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Wepay\Data\Repositories\WepayAccountRepository;
 use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -18,27 +18,27 @@ class CreateWepayAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  \App\Containers\Wepay\Models\WepayAccount
      */
-    public function run(Request $request): WepayAccount
+    public function run(DataTransporter $data): WepayAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         $wepayAccount = new WepayAccount();
-        $wepayAccount->name = $request->name;
-        $wepayAccount->description = $request->description;
-        $wepayAccount->type = $request->type;
-        $wepayAccount->imageUrl = $request->imageUrl;
-        $wepayAccount->gaqDomains = json_decode($request->gaqDomains);
-        $wepayAccount->mcc = $request->mcc;
-        $wepayAccount->country = $request->country;
-        $wepayAccount->currencies = $request->currencies;
+        $wepayAccount->name = $data->name;
+        $wepayAccount->description = $data->description;
+        $wepayAccount->type = $data->type;
+        $wepayAccount->imageUrl = $data->imageUrl;
+        $wepayAccount->gaqDomains = json_decode($data->gaqDomains);
+        $wepayAccount->mcc = $data->mcc;
+        $wepayAccount->country = $data->country;
+        $wepayAccount->currencies = $data->currencies;
 
         $wepayAccount = App::make(WepayAccountRepository::class)->create($wepayAccount->toArray());
 
-        Apiato::call('Payment@AssignPaymentAccountToUserTask', [$wepayAccount, $user, $request->nickname]);
+        Apiato::call('Payment@AssignPaymentAccountToUserTask', [$wepayAccount, $user, $data->nickname]);
 
         return $wepayAccount;
     }
