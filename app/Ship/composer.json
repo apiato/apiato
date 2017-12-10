@@ -1,9 +1,9 @@
 {
   "require": {
-    "apiato/core": "dev-master"
+    "apiato/core": "dev-master",
+    "barryvdh/laravel-debugbar": "3.*"
   },
   "require-dev": {
-    "barryvdh/laravel-debugbar": "3.*",
     "barryvdh/laravel-ide-helper": "2.4.*"
   },
   "autoload": {
