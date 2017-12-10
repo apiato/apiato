@@ -5,7 +5,7 @@ namespace App\Containers\Payment\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class UpdatePaymentAccountAction
@@ -17,20 +17,20 @@ class UpdatePaymentAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  \App\Containers\Payment\Models\PaymentAccount
      */
-    public function run(Request $request): PaymentAccount
+    public function run(DataTransporter $data): PaymentAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
-        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$request->id]);
+        $paymentAccount = Apiato::call('Payment@FindPaymentAccountByIdTask', [$data->id]);
 
         // check if this account belongs to our user
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);
 
-        $data = $request->sanitizeInput([
+        $data = $data->sanitizeInput([
             'name'
         ]);
 

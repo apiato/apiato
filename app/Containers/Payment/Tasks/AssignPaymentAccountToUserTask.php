@@ -21,8 +21,7 @@ class AssignPaymentAccountToUserTask extends Task
      * @param \App\Containers\User\Models\User                      $user
      * @param string|null                                           $paymentNickName
      *
-     * @return \Illuminate\Database\Eloquent\Model
-     * @throws CreateResourceFailedException
+     * @return  \Illuminate\Database\Eloquent\Model
      */
     public function run(AbstractPaymentAccount $account, User $user, string $paymentNickName = null)
     {
