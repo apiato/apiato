@@ -18,6 +18,7 @@ use App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest;
 use App\Containers\Authorization\UI\API\Transformers\PermissionTransformer;
 use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
+use App\Ship\Transporters\DataTransporter;
 use App\Ship\Parents\Controllers\ApiController;
 
 /**
@@ -83,7 +84,7 @@ class Controller extends ApiController
      */
     public function assignUserToRole(AssignUserToRoleRequest $request)
     {
-        $user = Apiato::call('Authorization@AssignUserToRoleAction', [$request]);
+        $user = Apiato::call('Authorization@AssignUserToRoleAction', [new DataTransporter($request)]);
 
         return $this->transform($user, UserTransformer::class);
     }
