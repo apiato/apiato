@@ -23,7 +23,7 @@ class Controller extends ApiController
      */
     public function createStripeAccount(CreateStripeAccountRequest $request)
     {
-        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [new DataTransporter($request)]);
+        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [$request->toTransporter()]);
 
         return $this->accepted([
             'message'           => 'Stripe account created successfully.',
@@ -38,7 +38,7 @@ class Controller extends ApiController
      */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {
-        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [new DataTransporter($request)]);
+        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [$request->toTransporter()]);
 
         return $this->accepted([
             'message'           => 'Stripe account updated successfully.',

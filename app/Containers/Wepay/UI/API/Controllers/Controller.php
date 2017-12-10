@@ -22,7 +22,7 @@ class Controller extends ApiController
      */
     public function createWepayAccount(CreateWepayAccountRequest $request)
     {
-        $wepayAccount = Apiato::call('Wepay@CreateWepayAccountAction', [new DataTransporter($request)]);
+        $wepayAccount = Apiato::call('Wepay@CreateWepayAccountAction', [$request->toTransporter()]);
 
         return $this->accepted([
             'message'        => 'Wepay account created successfully.',

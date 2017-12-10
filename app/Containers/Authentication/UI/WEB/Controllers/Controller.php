@@ -44,7 +44,7 @@ class Controller extends WebController
     public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = Apiato::call('Authentication@WebAdminLoginAction', [new DataTransporter($request)]);
+            $result = Apiato::call('Authentication@WebAdminLoginAction', [$request->toTransporter()]);
         } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }

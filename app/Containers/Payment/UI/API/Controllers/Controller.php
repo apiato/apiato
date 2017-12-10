@@ -39,7 +39,7 @@ class Controller extends ApiController
      */
     public function getPaymentAccount(FindPaymentAccountRequest $request)
     {
-        $paymentAccount = Apiato::call('Payment@FindPaymentAccountDetailsAction', [new DataTransporter($request)]);
+        $paymentAccount = Apiato::call('Payment@FindPaymentAccountDetailsAction', [$request->toTransporter()]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -51,7 +51,7 @@ class Controller extends ApiController
      */
     public function updatePaymentAccount(UpdatePaymentAccountRequest $request)
     {
-        $paymentAccount = Apiato::call('Payment@UpdatePaymentAccountAction', [new DataTransporter($request)]);
+        $paymentAccount = Apiato::call('Payment@UpdatePaymentAccountAction', [$request->toTransporter()]);
 
         return $this->transform($paymentAccount, PaymentAccountTransformer::class);
     }
@@ -63,7 +63,7 @@ class Controller extends ApiController
      */
     public function deletePaymentAccount(DeletePaymentAccountRequest $request)
     {
-        Apiato::call('Payment@DeletePaymentAccountAction', [new DataTransporter($request)]);
+        Apiato::call('Payment@DeletePaymentAccountAction', [$request->toTransporter()]);
 
         return $this->noContent();
     }
