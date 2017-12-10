@@ -25,6 +25,7 @@ class DetachPermissionsFromRoleTask extends Task
         if (!is_array($singleOrMultiplePermissionIds)) {
             $singleOrMultiplePermissionIds = [$singleOrMultiplePermissionIds];
         };
+
         // remove each permission ID found in the array from that role.
         array_map(function ($permissionId) use ($role) {
             $permission = Apiato::call('Authorization@FindPermissionTask', [$permissionId]);

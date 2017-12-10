@@ -34,6 +34,7 @@ class RoleTransformer extends Transformer
             'name'         => $role->name, // << Unique Identifier
             'description'  => $role->description,
             'display_name' => $role->display_name,
+            'level'        => $role->level,
         ];
     }
 

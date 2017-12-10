@@ -5,7 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class CreatePermissionAction
@@ -16,14 +16,14 @@ class CreatePermissionAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  \App\Containers\Authorization\Models\Permission
      */
-    public function run(Request $request): Permission
+    public function run(DataTransporter $data): Permission
     {
         $permission = Apiato::call('Authorization@CreatePermissionTask',
-            [$request->name, $request->description, $request->display_name]
+            [$data->name, $data->description, $data->display_name]
         );
 
         return $permission;

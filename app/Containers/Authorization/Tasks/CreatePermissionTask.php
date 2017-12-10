@@ -16,8 +16,16 @@ use Exception;
 class CreatePermissionTask extends Task
 {
 
+    /**
+     * @var  \App\Containers\Authorization\Data\Repositories\PermissionRepository
+     */
     private $repository;
 
+    /**
+     * CreatePermissionTask constructor.
+     *
+     * @param \App\Containers\Authorization\Data\Repositories\PermissionRepository $repository
+     */
     public function __construct(PermissionRepository $repository)
     {
         $this->repository = $repository;
@@ -35,18 +43,17 @@ class CreatePermissionTask extends Task
     {
         app()['cache']->forget('spatie.permission.cache');
 
-        $data = [
-            'name'         => $name,
-            'description'  => $description,
-            'display_name' => $displayName,
-            'guard_name'   => 'web',
-        ];
-
         try {
-            return $this->repository->create($data);
-        }
-        catch (Exception $exception) {
+            $permission = $this->repository->create([
+                'name'         => $name,
+                'description'  => $description,
+                'display_name' => $displayName,
+                'guard_name'   => 'web',
+            ]);
+        } catch (Exception $exception) {
             throw new CreateResourceFailedException();
         }
+
+        return $permission;
     }
 }

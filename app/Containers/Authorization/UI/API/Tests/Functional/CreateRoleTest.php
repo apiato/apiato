@@ -27,6 +27,7 @@ class CreateRoleTest extends TestCase
             'name'         => 'manager',
             'display_name' => 'manager',
             'description'  => 'he manages things',
+            'level'        => 7,
         ];
 
         // send the HTTP request
@@ -38,12 +39,32 @@ class CreateRoleTest extends TestCase
         $responseContent = $this->getResponseContentObject();
 
         $this->assertEquals($data['name'], $responseContent->data->name);
+        $this->assertEquals($data['level'], $responseContent->data->level);
+    }
+
+    public function testCreateRoleWithoutLevel_()
+    {
+        $data = [
+            'name'         => 'manager',
+            'display_name' => 'manager',
+            'description'  => 'he manages things',
+        ];
+
+        // send the HTTP request
+        $response = $this->makeCall($data);
+
+        // assert response status is correct
+        $response->assertStatus(200);
+
+        $responseContent = $this->getResponseContentObject();
+
+        $this->assertEquals(0, $responseContent->data->level);
     }
 
     public function testCreateRoleWithWrongName_()
     {
         $data = [
-            'name'         => 'include space',
+            'name'         => 'include Space',
             'display_name' => 'manager',
             'description'  => 'he manages things',
         ];

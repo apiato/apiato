@@ -27,10 +27,12 @@ class FindUserByIdTask extends Task
     {
         // find the user by its id
         try {
-            return App::make(UserRepository::class)->find($userId);
+            $user = App::make(UserRepository::class)->find($userId);
         } catch (Exception $e) {
             throw new NotFoundException();
         }
+
+        return $user;
     }
 
 }
