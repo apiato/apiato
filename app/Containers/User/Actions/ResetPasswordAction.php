@@ -5,7 +5,7 @@ namespace App\Containers\User\Actions;
 use App\Ship\Exceptions\InternalErrorException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Exceptions\Exception;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -19,18 +19,15 @@ class ResetPasswordAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
-     *
-     * @return void
-     * @throws InternalErrorException
+     * @param \App\Ship\Transporters\DataTransporter $data
      */
-    public function run(Request $request): void
+    public function run(DataTransporter $data): void
     {
         $data = [
-            'email'                 => $request->email,
-            'token'                 => $request->token,
-            'password'              => $request->password,
-            'password_confirmation' => $request->password,
+            'email'                 => $data->email,
+            'token'                 => $data->token,
+            'password'              => $data->password,
+            'password_confirmation' => $data->password,
         ];
 
         try {

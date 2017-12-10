@@ -24,10 +24,12 @@ class UpdateUserTask extends Task
      * @param $userData
      * @param $userId
      *
-     * @return User
+     * @return mixed
      * @throws InternalErrorException
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
+     *
+     * @return  \App\Containers\User\Models\User
      */
     public function run($userData, $userId): User
     {
@@ -36,12 +38,14 @@ class UpdateUserTask extends Task
         }
 
         try {
-            return App::make(UserRepository::class)->update($userData, $userId);
+            $user = App::make(UserRepository::class)->update($userData, $userId);
         } catch (ModelNotFoundException $exception) {
             throw new NotFoundException('User Not Found.');
         } catch (Exception $exception) {
             throw new InternalErrorException();
         }
+
+        return $user;
     }
 
 }

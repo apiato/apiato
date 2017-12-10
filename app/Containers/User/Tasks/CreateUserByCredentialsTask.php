@@ -26,14 +26,20 @@ class CreateUserByCredentialsTask extends Task
      * @param string|null $gender
      * @param string|null $birth
      *
-     * @return User
-     * @throws CreateResourceFailedException
+     * @return  mixed
      */
-    public function run($isClient = true, $email, $password, $name = null, $gender = null, $birth = null): User
-    {
+    public function run(
+        bool $isClient = true,
+        string $email,
+        string $password,
+        string $name = null,
+        string $gender = null,
+        string $birth = null
+    ): User {
+
         try {
             // create new user
-            return App::make(UserRepository::class)->create([
+            $user = App::make(UserRepository::class)->create([
                 'password'  => Hash::make($password),
                 'email'     => $email,
                 'name'      => $name,
@@ -43,8 +49,10 @@ class CreateUserByCredentialsTask extends Task
             ]);
 
         } catch (Exception $e) {
-            throw new CreateResourceFailedException();
+            throw (new CreateResourceFailedException())->debug($e);
         }
+
+        return $user;
     }
 
 }
