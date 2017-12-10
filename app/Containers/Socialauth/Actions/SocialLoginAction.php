@@ -4,6 +4,7 @@ namespace App\Containers\SocialAuth\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class SocialLoginAction.
@@ -19,18 +20,18 @@ class SocialLoginAction extends Action
      * ----- if has no social profile
      * --------- [C] create new record
      *
-     * @param $request
-     * @param $provider
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  mixed
+     * @throws \Dto\Exceptions\InvalidDataTypeException
      */
-    public function run($request, $provider)
+    public function run(DataTransporter $data)
     {
         // fetch the user data from the support platforms
-        $socialUserProfile = Apiato::call('Socialauth@FindUserSocialProfileTask', [$provider, $request->all()]);
+        $socialUserProfile = Apiato::call('Socialauth@FindUserSocialProfileTask', [$data->provider, $data->toArray()]);
 
         // check if the social ID exist on any of our users, and get that user in case it was found
-        $socialUser = Apiato::call('Socialauth@FindSocialUserTask', [$provider, $socialUserProfile->id]);
+        $socialUser = Apiato::call('Socialauth@FindSocialUserTask', [$data->provider, $socialUserProfile->id]);
 
         // checking if some data are available in the response
         // (these lines are written to make this function compatible with multiple providers)
@@ -57,7 +58,7 @@ class SocialLoginAction extends Action
             // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
         } else {
             $user = Apiato::call('Socialauth@CreateUserBySocialProfileTask', [
-                $provider,
+                $data->provider,
                 $socialUserProfile->token,
                 $socialUserProfile->id,
                 $socialUserProfile->nickname,
