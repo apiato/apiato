@@ -16,9 +16,9 @@ class GetAllLocalizationsTask extends Task
 {
 
     /**
-     * @return  mixed
+     * @return  \Illuminate\Support\Collection
      */
-    public function run()
+    public function run(): Collection
     {
         $supported_localizations = Config::get('localization-container.supported_languages');
 

@@ -26,9 +26,11 @@ class DataTransporter extends Transporter
         'properties' => [
             'additionalProperties' => true,
         ],
-        'required' => [], // defined required fields ['first_name', 'last_name'],
+        'required' => [  // defined Transporter required fields ['first_name', 'last_name'],
+
+        ],
         'default' => [
-//            'always' => 'available',
+//            'foo' => 'bar',
         ]
     ];
 }
