@@ -5,7 +5,7 @@ namespace App\Containers\Settings\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Settings\Models\Setting;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class CreateSettingAction
@@ -16,13 +16,13 @@ class CreateSettingAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param \App\Ship\Transporters\DataTransporter $data
      *
      * @return  \App\Containers\Settings\Models\Setting
      */
-    public function run(Request $request) : Setting
+    public function run(DataTransporter $data): Setting
     {
-        $data = $request->sanitizeInput([
+        $data = $data->sanitizeInput([
             'key',
             'value'
         ]);
