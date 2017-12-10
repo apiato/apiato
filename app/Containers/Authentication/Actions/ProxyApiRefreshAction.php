@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\Authentication\Transporters\ProxyRefreshTransporter;
 use App\Ship\Parents\Actions\Action;
 
@@ -19,6 +20,10 @@ class ProxyApiRefreshAction extends Action
      */
     public function run(ProxyRefreshTransporter $data): array
     {
+        if(!$data->refresh_token){
+            throw new RefreshTokenMissedException();
+        }
+
         $requestData = [
             'grant_type'    => $data->grant_type ?? 'refresh_token',
             'refresh_token' => $data->refresh_token,
