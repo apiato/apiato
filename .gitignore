@@ -15,4 +15,3 @@ storage/logs/laravel.log
 /.idea
 _ide_helper*.php
 .phpstorm.meta.php
-composer.lock
