@@ -3,8 +3,8 @@
 namespace App\Containers\Authentication\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Transporters\ProxyApiLoginTransporter;
-use App\Containers\Authentication\Transporters\ProxyRefreshTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
 use App\Containers\Authentication\UI\API\Requests\LoginRequest;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
