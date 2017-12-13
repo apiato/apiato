@@ -7,24 +7,24 @@ use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 
 /**
- * Class ColumnBetweenDatesCriteria
+ * Class ThisBetweenDatesCriteria
  * @package App\Containers\WeatherData\Data\Criterias
  * @author Fabian Widmann <fabian.widmann@gmail.com>
  *
- * Retrieves all entities whose date $field's value is between $from and $to.
+ * Retrieves all entities whose date $field's value is between $start and $end.
  */
-class ColumnBetweenDatesCriteria extends Criteria
+class ThisBetweenDatesCriteria extends Criteria
 {
 
     /**
      * @var Carbon
      */
-    private $from;
+    private $start;
 
     /**
      * @var Carbon
      */
-    private $to;
+    private $end;
 
     /**
      * @var string
@@ -32,10 +32,10 @@ class ColumnBetweenDatesCriteria extends Criteria
     private $field;
 
 
-    public function __construct($field, Carbon $from, Carbon $to)
+    public function __construct($field, Carbon $start, Carbon $end)
     {
-        $this->from = $from;
-        $this->to = $to;
+        $this->start = $start;
+        $this->end = $end;
         $this->field = $field;
     }
 
@@ -47,7 +47,7 @@ class ColumnBetweenDatesCriteria extends Criteria
      */
     public function apply($model, $repository)
     {
-        return $model->whereBetween($this->field, [$this->from->toDateString(), $this->to->toDateString()]);
+        return $model->whereBetween($this->field, [$this->start->toDateString(), $this->end->toDateString()]);
     }
 
 }
