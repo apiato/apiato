@@ -4,7 +4,7 @@ namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
-use App\Containers\Authentication\Transporters\ProxyRefreshTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -14,7 +14,7 @@ class ProxyApiRefreshAction extends Action
 {
 
     /**
-     * @param \App\Containers\Authentication\Transporters\ProxyRefreshTransporter $data
+     * @param \App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter $data
      *
      * @return  array
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Authentication\Transporters;
+namespace App\Containers\Authentication\Data\Transporters;
 
 use App\Ship\Parents\Transporters\Transporter;
 

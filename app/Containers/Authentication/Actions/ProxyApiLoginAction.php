@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Transporters\ProxyApiLoginTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter;
 use App\Ship\Parents\Actions\Action;
 
 /**
@@ -13,7 +13,7 @@ class ProxyApiLoginAction extends Action
 {
 
     /**
-     * @param \App\Containers\Authentication\Transporters\ProxyApiLoginTransporter $data
+     * @param \App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter $data
      *
      * @return array
      */
