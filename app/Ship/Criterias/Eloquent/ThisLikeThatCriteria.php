@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
 
 /**
  * Class ThisLikeThatCriteria
- * @package App\Ship\Criterias\Eloquent
+ * 
  * @author Fabian Widmann <fabian.widmann@gmail.com>
  *
  * Retrieves all entities where $field contains one or more of the given items in $valueString.
@@ -17,22 +17,22 @@ class ThisLikeThatCriteria extends Criteria
 {
 
     /**
-     * @var string - name of the column
+     * @var string name of the column
      */
     private $field;
 
     /**
-     * @var string - contains values separated by $separator
+     * @var string contains values separated by $separator
      */
     private $valueString;
 
     /**
-     * @var string - separates separate items in the given $values string. Default is csv.
+     * @var string separates separate items in the given $values string. Default is csv.
      */
     private $separator;
 
     /**
-     * @var string - this character is replaced with '%'. Default is *.
+     * @var string this character is replaced with '%'. Default is *.
      */
     private $wildcard;
 
@@ -47,8 +47,10 @@ class ThisLikeThatCriteria extends Criteria
 
     /**
      * Applies the criteria - if more than one value is separated by the configured separator we will "OR" all the params.
+     * 
      * @param  $model
      * @param  $repository
+     * 
      * @return  mixed
      */
     public function apply($model, $repository)
