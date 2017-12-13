@@ -8,7 +8,7 @@ use Illuminate\Database\Query\Builder;
 
 /**
  * Class ThisBetweenDatesCriteria
- * @package App\Containers\WeatherData\Data\Criterias
+ * 
  * @author Fabian Widmann <fabian.widmann@gmail.com>
  *
  * Retrieves all entities whose date $field's value is between $start and $end.
@@ -41,13 +41,14 @@ class ThisBetweenDatesCriteria extends Criteria
 
     /**
      * Applies the criteria
+     * 
      * @param Builder $model
-     * @param  $repository
-     * @return  mixed
+     * @param         $repository
+     * 
+     * @return        mixed
      */
     public function apply($model, $repository)
     {
         return $model->whereBetween($this->field, [$this->start->toDateString(), $this->end->toDateString()]);
     }
-
 }
