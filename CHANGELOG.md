@@ -33,6 +33,7 @@ ___
 - Fixed "bug" in order to prevent duplicate index name in oracle DB. 
 - Removed the `composer.lock` entry from the `.gitignore` file [issues/335](https://github.com/apiato/apiato/issues/335)
 - Fix test failing.
+- Fixed some smaller issues (e.g., rename file (not class!), corrected docs-link, ...)
 
 ### Removed
 - Removed the `composer.lock` entry from the `.gitignore` file
