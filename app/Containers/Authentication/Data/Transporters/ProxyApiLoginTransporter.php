@@ -16,6 +16,7 @@ class ProxyApiLoginTransporter extends Transporter
      * @var array
      */
     protected $schema = [
+        'type' => 'object',
         'properties' => [
             'email',
             'password',

@@ -16,6 +16,7 @@ class ProxyRefreshTransporter extends Transporter
      * @var array
      */
     protected $schema = [
+        'type' => 'object',
         'properties' => [
             'refresh_token',
             'client_id',
