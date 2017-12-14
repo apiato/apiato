@@ -14,10 +14,33 @@
 ### Removed
 - Nothing.
 
+___
 
+## v7.3.2 (2017-12-11)
 
+### Added
+- Add new command "apiato:create:admin" to create admins from the CLI [issues/284](https://github.com/apiato/apiato/issues/284)
+- Added Broadcast routes [issues/327](https://github.com/apiato/apiato/issues/327)
+- Allow for nested `?includes` (via `include=parent.child`) [issues/324](https://github.com/apiato/apiato/issues/324)
 
-## v7.2.0 (2017-11-11)
+### Changed
+- Specify `apiato/core` version accordingly [issues/334](https://github.com/apiato/apiato/issues/334)
+- Get rid of env() calls [issues/314](https://github.com/apiato/apiato/issues/314)
+- Calling an `Action` is now done using `Transporters` instead of `Requests`
+- Rename `ValueObjects` to `Values` [issues/334](https://github.com/apiato/apiato/issues/334)
+
+### Fixed
+- Fixed "bug" in order to prevent duplicate index name in oracle DB. 
+- Removed the `composer.lock` entry from the `.gitignore` file [issues/335](https://github.com/apiato/apiato/issues/335)
+- Fix test failing.
+- Fixed some smaller issues (e.g., rename file (not class!), corrected docs-link, ...)
+
+### Removed
+- Removed the `composer.lock` entry from the `.gitignore` file
+
+___
+
+## v7.2.2 (2017-12-11)
 
 ### Added
 - Added a new config flag (`apiato.requests.force-valid-includes` (default `true`)) to notify users about potential "invalid" `?include` query parameters
@@ -37,6 +60,8 @@
 
 ### Fixed
 - Fixed "bug", where an Exception is thrown if the user requested an invalid `?include` parameter. Now a "real" Apiato Exception is thrown.
+- Fixed "bug" in order to prevent duplicate index name in oracle DB.
+- Removed the `composer.lock` entry from the `.gitignore` file
 
 ### Removed
 - Nothing.
