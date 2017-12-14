@@ -7,7 +7,6 @@ use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;
 use App\Ship\Parents\Controllers\WebController;
-use App\Ship\Transporters\DataTransporter;
 use Exception;
 
 /**
@@ -27,9 +26,11 @@ class Controller extends WebController
     }
 
     /**
-     * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param  \App\Containers\Authentication\UI\WEB\Requests\LogoutRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logoutAdmin(LogoutRequest $equest)
+    public function logoutAdmin(LogoutRequest $request)
     {
         Apiato::call('Authentication@WebLogoutAction');
 
@@ -44,7 +45,7 @@ class Controller extends WebController
     public function loginAdmin(LoginRequest $request)
     {
         try {
-            $result = Apiato::call('Authentication@WebAdminLoginAction', [new DataTransporter($request)]);
+            $result = Apiato::call('Authentication@WebAdminLoginAction', [$request->toTransporter()]);
         } catch (Exception $e) {
             return redirect('login')->with('status', $e->getMessage());
         }

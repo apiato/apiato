@@ -9,7 +9,6 @@ use App\Containers\Settings\UI\API\Requests\GetAllSettingsRequest;
 use App\Containers\Settings\UI\API\Requests\UpdateSettingRequest;
 use App\Containers\Settings\UI\API\Transformers\SettingTransformer;
 use App\Ship\Parents\Controllers\ApiController;
-use App\Ship\Transporters\DataTransporter;
 
 /**
  * Class Controller
@@ -42,7 +41,7 @@ class Controller extends ApiController
      */
     public function createSetting(CreateSettingRequest $request)
     {
-        $setting = Apiato::call('Settings@CreateSettingAction', [new DataTransporter($request)]);
+        $setting = Apiato::call('Settings@CreateSettingAction', [$request->toTransporter()]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -56,7 +55,7 @@ class Controller extends ApiController
      */
     public function updateSetting(UpdateSettingRequest $request)
     {
-        $setting = Apiato::call('Settings@UpdateSettingAction', [new DataTransporter($request)]);
+        $setting = Apiato::call('Settings@UpdateSettingAction', [$request->toTransporter()]);
 
         return $this->transform($setting, SettingTransformer::class);
     }
@@ -70,7 +69,7 @@ class Controller extends ApiController
      */
     public function deleteSetting(DeleteSettingRequest $request)
     {
-        Apiato::call('Settings@DeleteSettingAction', [new DataTransporter($request)]);
+        Apiato::call('Settings@DeleteSettingAction', [$request->toTransporter()]);
 
         return $this->noContent();
     }

@@ -5,7 +5,7 @@ namespace App\Containers\Payment\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class UpdatePaymentAccountAction
@@ -17,11 +17,11 @@ class UpdatePaymentAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\Payment\Models\PaymentAccount
      */
-    public function run(DataTransporter $data): PaymentAccount
+    public function run(Transporter $data): PaymentAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

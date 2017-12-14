@@ -8,7 +8,7 @@ use App\Containers\User\Mails\UserRegisteredMail;
 use App\Containers\User\Models\User;
 use App\Containers\User\Notifications\UserRegisteredNotification;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
@@ -23,11 +23,11 @@ class RegisterUserAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run(DataTransporter $data): User
+    public function run(Transporter $data): User
     {
         // create user record in the database and return it.
         $user = Apiato::call('User@CreateUserByCredentialsTask', [

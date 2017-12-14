@@ -30,8 +30,6 @@ class GenerateApiDocsCommand extends ConsoleCommand
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {

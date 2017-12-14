@@ -5,7 +5,7 @@ namespace App\Containers\Authorization\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
+use App\Ship\Parents\Transporters\Transporter;
 
 /**
  * Class SyncUserRolesAction.
@@ -16,11 +16,11 @@ class SyncUserRolesAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param \App\Ship\Parents\Transporters\Transporter $data
      *
      * @return  \App\Containers\User\Models\User
      */
-    public function run(DataTransporter $data): User
+    public function run(Transporter $data): User
     {
         $user = Apiato::call('User@FindUserByIdTask', [$data->user_id]);
 
