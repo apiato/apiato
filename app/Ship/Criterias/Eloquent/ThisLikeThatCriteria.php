@@ -3,6 +3,8 @@
 namespace App\Ship\Criterias\Eloquent;
 
 use App\Ship\Parents\Criterias\Criteria;
+use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class ThisLikeThatCriteria
@@ -46,12 +48,12 @@ class ThisLikeThatCriteria extends Criteria
     /**
      * Applies the criteria - if more than one value is separated by the configured separator we will "OR" all the params.
      *
-     * @param  $model
-     * @param  $repository
+     * @param  Builder $model
+     * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
      *
      * @return  mixed
      */
-    public function apply($model, $repository)
+    public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->where(function ($query) {
             $values = explode($this->separator, $this->valueString);
