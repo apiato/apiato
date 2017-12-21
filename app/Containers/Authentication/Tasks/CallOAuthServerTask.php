@@ -44,7 +44,7 @@ class CallOAuthServerTask extends Task
 
         // If the internal request to the oauth token endpoint was not successful we throw an exception
         if (!$response->isSuccessful()) {
-            throw new LoginFailedException($content['message'] . '. (OAuth 2.0 is not installed).', null, $response->getStatusCode());
+            throw new LoginFailedException($content['message'], null, $response->getStatusCode());
         }
 
         return $content;
