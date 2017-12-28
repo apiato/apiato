@@ -16,8 +16,8 @@ interface ChargeableInterface
      * Charge the user on a given account
      *
      * @param PaymentAccount                $account
-     * @param                               $amount
-     * @param                               $currency
+     * @param int|float                     $amount
+     * @param string|null                   $currency
      *
      * @return mixed
      */
@@ -28,10 +28,9 @@ interface ChargeableInterface
      *
      * @param PaymentAccount $account
      * @param ShoppingCart   $cart
-     * @param                $currency
      *
      * @return mixed
      */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency);
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart);
 
 }

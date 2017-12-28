@@ -6,7 +6,7 @@ use App\Containers\Payment\Models\AbstractPaymentAccount;
 
 /**
  * Interface  PaymentChargerInterface
- * @package  App\Containers\Payment\Contracts
+ *
  * @author   Johannes Schobel <johannes.schobel@googlemail.com>
  */
 interface PaymentChargerInterface

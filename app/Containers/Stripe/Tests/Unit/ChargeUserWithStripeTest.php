@@ -34,8 +34,7 @@ class ChargeUserWithStripeTest extends TestCase
 
         $amount = 100;
 
-        // Star the test:
-
+        // Start the test:
         $account = $user->paymentAccounts->first();
 
         $stripeResponse = $user->charge($account, $amount);

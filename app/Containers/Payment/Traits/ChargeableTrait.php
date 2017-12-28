@@ -18,26 +18,31 @@ trait ChargeableTrait
 
     /**
      * @param \App\Containers\Payment\Models\PaymentAccount $account
-     * @param                                               $amount
-     * @param null                                          $currencyCode
+     * @param int|float                                     $amount
+     * @param string|null                                   $currency
      *
      * @return  mixed
      */
-    public function charge(PaymentAccount $account, $amount, $currencyCode = null)
+    public function charge(PaymentAccount $account, $amount, $currency = null)
     {
-        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currencyCode);
+        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
     }
 
     /**
      * @param \App\Containers\Payment\Models\PaymentAccount     $account
      * @param \JohannesSchobel\ShoppingCart\Models\ShoppingCart $cart
-     * @param null                                              $currency
      *
      * @return  mixed
      */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart, $currency = null)
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart)
     {
-        $amount = $cart->getTotal();
+        // get the "value" of the shopping cart
+        // note that MONEY stores the values internally as integers converted to strings. So we must divide by 100 to
+        // get the float value. This is, because working (e.g., calculating) with FLOATs is quite ugly :(
+        $amount = (int)$cart->getTotal()->getAmount();
+        $amount = floatval($amount/100);
+
+        $currency = $cart->getTotal()->getCurrency();
 
         return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
     }
