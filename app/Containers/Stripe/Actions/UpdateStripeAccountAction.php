@@ -25,7 +25,7 @@ class UpdateStripeAccountAction extends Action
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
         // check, if this account does - in fact - belong to our user
-        $account = Apiato::call('Payment@FindStripeAccountByIdTask', [$data->id]);
+        $account = Apiato::call('Stripe@FindStripeAccountByIdTask', [$data->id]);
         $paymentAccount = $account->paymentAccount;
         Apiato::call('Payment@CheckIfPaymentAccountBelongsToUserTask', [$user, $paymentAccount]);
 
