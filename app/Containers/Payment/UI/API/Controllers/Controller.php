@@ -27,7 +27,7 @@ class Controller extends ApiController
      */
     public function getAllPaymentAccounts(GetAllPaymentAccountsRequest $request)
     {
-        $paymentAccounts = Apiato::call('Payment@FindPaymentAccountsAction');
+        $paymentAccounts = Apiato::call('Payment@GetAllPaymentAccountsAction');
 
         return $this->transform($paymentAccounts, PaymentAccountTransformer::class);
     }
