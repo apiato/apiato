@@ -37,8 +37,8 @@ class ChargeUserWithStripeTest extends TestCase
         // Start the test:
         $account = $user->paymentAccounts->first();
 
-        $stripeResponse = $user->charge($account, $amount);
+        $transaction = $user->charge($account, $amount);
 
-        $this->assertEquals($stripeResponse['payment_method'], 'stripe');
+        $this->assertEquals($transaction->gateway, 'Stripe');
     }
 }
