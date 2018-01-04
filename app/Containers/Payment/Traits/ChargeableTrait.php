@@ -4,6 +4,7 @@ namespace App\Containers\Payment\Traits;
 
 use App\Containers\Payment\Gateway\PaymentsGateway;
 use App\Containers\Payment\Models\PaymentAccount;
+use App\Containers\Payment\Models\PaymentTransaction;
 use Illuminate\Support\Facades\App;
 use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
 
@@ -21,30 +22,36 @@ trait ChargeableTrait
      * @param int|float                                     $amount
      * @param string|null                                   $currency
      *
-     * @return  mixed
+     * @return  PaymentTransaction
      */
-    public function charge(PaymentAccount $account, $amount, $currency = null)
+    public function charge(PaymentAccount $account, $amount, $currency = null) : PaymentTransaction
     {
-        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
+        $transaction = App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
+
+        return $transaction;
     }
 
     /**
      * @param \App\Containers\Payment\Models\PaymentAccount     $account
      * @param \JohannesSchobel\ShoppingCart\Models\ShoppingCart $cart
      *
-     * @return  mixed
+     * @return  PaymentTransaction
      */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart)
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart) : PaymentTransaction
     {
-        // get the "value" of the shopping cart
-        // note that MONEY stores the values internally as integers converted to strings. So we must divide by 100 to
-        // get the float value. This is, because working (e.g., calculating) with FLOATs is quite ugly :(
-        $amount = (int)$cart->getTotal()->getAmount();
-        $amount = floatval($amount/100);
+        /**
+         * get the "value" of the shopping cart
+         * Note that MONEY stores the values internally as integers with the smallest currency value (e.g., 500 means 5.00 USD).
+         * Basically, we need to re-format it to a respective float value. However, the problem is, that some currencies do not have
+         * "smaller" currencies (cents), like others do. JPY (Yen) is such an example.
+         * In order to handle this "automatically", we simply use the formatXXX() functions from the shopping cart!
+         */
+        $amount = $cart->formatMoney($cart->getTotal());
+        $amount = floatval($amount);
 
         $currency = $cart->getTotal()->getCurrency();
 
-        return App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
+        return $this->charge($account, $amount, $currency);
     }
 
 }
