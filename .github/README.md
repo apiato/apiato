@@ -67,75 +67,7 @@ Your logo will show up on the [github repository](https://github.com/apiato/apia
 <a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/JHiroABWV9N5QKgcFuTA2NxX/apiato/apiato'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/JHiroABWV9N5QKgcFuTA2NxX/apiato/apiato.svg' />
-</a>
 
-<a name="Documentation"></a>
-## Documentation
-
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
-
-**Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
-> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
-
-It's completely **optional** to build your application using the Porto architecture.
-Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-started/architecture/#mvc-introduction) architecture, and still benefit from all the features of Apiato.
-
-<br>
-
-<p align="center">
-	<a href="http://docs.apiato.io/">
-	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=350px" alt="Apiato Docs"/>
-	</a>
-</p>
-
----
-
-<p align="center">Join our Slack chatting room, by clicking on the icon below.</p>
-
-<p align="center">
-	<a href="https://slackin-mezlsumyvc.now.sh/">
-	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
-	</a>
-</p>
-
-<a name="Contributors"></a>
-## Contributors
-
-#### Creators:
-
-- [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt)).
-
-#### Core contributors:
-
-- [Johannes Schobel](https://github.com/johannesschobel)
-- [Johan Alvarez](https://github.com/llstarscreamll)
-- Join us, by submitting 20 useful PR's.
-
-#### Awesome contributors:
-
-<a href="https://github.com/apiato/apiato/graphs/contributors"><img src="https://opencollective.com/apiato/contributors.svg?width=890" /></a>
-
-<a name="Donations"></a>
-## Donations
-
-> Help keeping the project development going, by [contributing](http://docs.apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little. 
-> Thanks in advance.
-
-Donate directly via [Paypal](https://www.paypal.me/mzalt)
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
-
-or become a backer on [Open Collective](https://opencollective.com/apiato#backer)
-
-<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
-
-or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
-
-[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
-
-<a name="License"></a>
 ## License
 
 The [MIT](https://github.com/apiato/apiato/blob/master/LICENSE) License.
