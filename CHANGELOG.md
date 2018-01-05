@@ -3,10 +3,10 @@
 ## [Unreleased]
 
 ### Added
-- Nothing.
+- Added a `PaymentTransaction` in order to log all `Payments`.
 
 ### Changed
-- Nothing.
+- Adapted the existing `ChargerTasks` for `Stripe` and `Wepay` in order to follow the `PaymentTransaction` approach.
 
 ### Fixed
 - Nothing.
