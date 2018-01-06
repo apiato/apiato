@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authorization\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,4 +16,6 @@ class UserNotAdminException extends Exception
     public $httpStatusCode = Response::HTTP_UNAUTHORIZED;
 
     public $message = 'This User does not have an Admin permission.';
+
+    public $code = ApplicationErrorCodesTable::AUTHORIZATION_INSUFFICIENT_ROLE;
 }

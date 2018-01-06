@@ -2,6 +2,7 @@
 
 namespace App\Containers\Documentation\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,4 +16,6 @@ class WrongDocTypeException extends Exception
     public $httpStatusCode = Response::HTTP_MISDIRECTED_REQUEST;
 
     public $message = 'Unsupported Documentation Type.';
+
+    public $code = ApplicationErrorCodesTable::BASE_CONFIGURATION_GENERAL_ERROR;
 }
