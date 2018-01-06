@@ -59,6 +59,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => 'Wrong Configuration',
         'description' => 'A wrong configuration was found.',
     ];
+
     const AUTHENTICATION_GENERAL_ERROR = [
         'code' => 1100,
         'title' => '',
@@ -104,8 +105,14 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const REQUEST_GENERAL_ERROR = [
         'code' => 1300,
+        'title' => '',
+        'description' => '',
+    ];
+    const REQUEST_GENERAL_WRONG_METHOD = [
+        'code' => 1301,
         'title' => '',
         'description' => '',
     ];
@@ -124,6 +131,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const RESPONSE_GENERAL_ERROR = [
         'code' => 1350,
         'title' => '',
@@ -139,6 +147,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const RESOURCE_GENERAL_ERROR = [
         'code' => 1400,
         'title' => '',
@@ -164,6 +173,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const VALIDATION_GENERAL_ERROR = [
         'code' => 1500,
         'title' => '',
@@ -179,6 +189,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const USER_GENERAL_ERROR = [
         'code' => 1800,
         'title' => '',
@@ -199,6 +210,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const TEST_GENERAL_ERROR = [
         'code' => 1900,
         'title' => '',
@@ -206,6 +218,11 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
     ];
     const TEST_ENDPOINT_MISSING = [
         'code' => 1901,
+        'title' => '',
+        'description' => '',
+    ];
+    const TEST_ENDPOINT_WRONG_DECLARATION = [
+        'code' => 1902,
         'title' => '',
         'description' => '',
     ];
