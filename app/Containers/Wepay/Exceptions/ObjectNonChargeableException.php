@@ -2,6 +2,7 @@
 
 namespace App\Containers\Wepay\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -15,4 +16,6 @@ class ObjectNonChargeableException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
     public $message = 'Internal Error.';
+
+    public $code = ApplicationErrorCodesTable::PAYMENT_GENERAL_ERROR;
 }

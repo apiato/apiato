@@ -225,6 +225,32 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'description' => '',
     ];
 
+    const PAYMENT_GENERAL_ERROR = [
+        'code' => 1700,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_TRANSACTION_FAILED = [
+        'code' => 1701,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_METHOD_NOT_FOUND = [
+        'code' => 1702,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_ACCOUNT_NOT_FOUND = [
+        'code' => 1703,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_GATEWAY_API_ERROR = [
+        'code' => 1704,
+        'title' => '',
+        'description' => '',
+    ];
+
     const USER_GENERAL_ERROR = [
         'code' => 1800,
         'title' => '',

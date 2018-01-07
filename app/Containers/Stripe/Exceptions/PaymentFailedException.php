@@ -2,6 +2,7 @@
 
 namespace App\Containers\Stripe\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -15,4 +16,6 @@ class PaymentFailedException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_PAYMENT_REQUIRED;
 
     public $message = 'Payment failed!';
+
+    public $code = ApplicationErrorCodesTable::PAYMENT_TRANSACTION_FAILED;
 }
