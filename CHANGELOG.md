@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- Nothing.
+- Added the `TinkerServiceProvider` to `core` in order to allow for using `php artisan tinker` from the console.
 
 ### Changed
 - Nothing.
