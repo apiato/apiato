@@ -9,7 +9,7 @@
 - Nothing.
 
 ### Fixed
-- Nothing.
+- Fixed Issue in `CountCriteria` [PR](https://github.com/apiato/apiato/pull/363)
 
 ### Removed
 - Nothing.
