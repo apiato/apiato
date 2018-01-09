@@ -38,7 +38,7 @@ class CountCriteria extends Criteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return DB::table($model->getModel()->getTable())->select($this->field,DB::raw('count('.$this->field.') as total_count'))->groupBy($this->field);;
+        return DB::table($model->getModel()->getTable())->select($this->field, DB::raw('count(' . $this->field . ') as total_count'))->groupBy($this->field);
     }
 
 }
