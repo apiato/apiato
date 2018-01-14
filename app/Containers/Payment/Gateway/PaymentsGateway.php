@@ -7,6 +7,7 @@ use App\Containers\Payment\Contracts\PaymentChargerInterface;
 use App\Containers\Payment\Exceptions\ChargerTaskDoesNotImplementInterfaceException;
 use App\Containers\Payment\Exceptions\NoChargeTaskForPaymentGatewayDefinedException;
 use App\Containers\Payment\Models\PaymentAccount;
+use App\Containers\Payment\Models\PaymentTransaction;
 use App\Containers\Payment\Tasks\CheckIfPaymentAccountBelongsToUserTask;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -26,14 +27,14 @@ class PaymentsGateway
      * @param                     $amount
      * @param string|null         $currency
      *
-     * @return mixed
+     * @return PaymentTransaction
      * @throws ChargerTaskDoesNotImplementInterfaceException
      * @throws NoChargeTaskForPaymentGatewayDefinedException
      */
-    public function charge(ChargeableInterface $chargeable, PaymentAccount $account, $amount, $currency = null)
+    public function charge(ChargeableInterface $chargeable, PaymentAccount $account, $amount, $currency = null) : PaymentTransaction
     {
         $currency = ($currency === null) ? Config::get('payment.currency') : $currency;
- 
+
         // check, if the account is owned by user to be charged
         App::make(CheckIfPaymentAccountBelongsToUserTask::class)->run($chargeable, $account);
 
@@ -53,8 +54,17 @@ class PaymentsGateway
             throw new ChargerTaskDoesNotImplementInterfaceException();
         }
 
-        $result = $chargerTask->charge($chargeable, $typedAccount, $amount, $currency);
+        /** @var PaymentTransaction $transaction */
+        $transaction = $chargerTask->charge($chargeable, $typedAccount, $amount, $currency);
 
-        return $result;
+        // now set some details of the transaction
+        $transaction->user_id = $chargeable->id;
+        $transaction->gateway = $typedAccount->getPaymentGatewayReadableName();
+        $transaction->amount = $amount;
+        $transaction->currency = $currency;
+
+        $transaction->save();
+
+        return $transaction;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Containers\Payment\Contracts;
 
 use App\Containers\Payment\Models\AbstractPaymentAccount;
+use App\Containers\Payment\Models\PaymentTransaction;
 
 /**
  * Interface  PaymentChargerInterface
@@ -20,8 +21,8 @@ interface PaymentChargerInterface
      * @param float                  $amount  the amount to be charged
      * @param string                 $currency
      *
-     * @return mixed
+     * @return PaymentTransaction
      */
-    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency);
+    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency) : PaymentTransaction;
 
 }

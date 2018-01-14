@@ -2,6 +2,8 @@
 
 namespace App\Containers\Payment\Traits;
 
+use App\Containers\Payment\Models\PaymentTransaction;
+
 /**
  * Class MockablePaymentsTrait.
  *
@@ -14,10 +16,23 @@ trait MockablePaymentsTrait
     {
         // Mock Stripe charging
         if (class_exists($chargeWithStripeTask = \App\Containers\Stripe\Tasks\ChargeWithStripeTask::class)) {
-            $this->mock($chargeWithStripeTask)->shouldReceive('charge')->andReturn([
-                'payment_method' => 'stripe',
-                'description'    => '1'
-            ]);
+            $this->mock($chargeWithStripeTask)
+                 ->shouldReceive('charge')
+                 ->andReturn(new PaymentTransaction([
+                        'user_id' => 1,
+
+                        'gateway' => 'Stripe',
+                        'transaction_id' => 'tx_1234567890',
+                        'status' => 'success',
+                        'is_successful' => true,
+
+                        'amount' => '100',
+                        'currency' => 'USD',
+
+                        'data' => [],
+                        'custom' => [],
+                    ])
+                 );
         }
 
     }

@@ -4,9 +4,10 @@
 
 ### Added
 - Added the `TinkerServiceProvider` to `core` in order to allow for using `php artisan tinker` from the console.
+- Added a `PaymentTransaction` in order to log all `Payments`.
 
 ### Changed
-- Nothing.
+- Adapted the existing `ChargerTasks` for `Stripe` and `Wepay` in order to follow the `PaymentTransaction` approach.
 
 ### Fixed
 - Fixed Issue in `CountCriteria` [PR](https://github.com/apiato/apiato/pull/363)

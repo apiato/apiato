@@ -5,6 +5,7 @@ namespace App\Containers\Wepay\Tasks;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Contracts\PaymentChargerInterface;
 use App\Containers\Payment\Models\AbstractPaymentAccount;
+use App\Containers\Payment\Models\PaymentTransaction;
 use App\Containers\Wepay\Exceptions\WepayApiErrorException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
@@ -41,10 +42,10 @@ class ChargeWithWepayTask extends Task implements PaymentChargerInterface
      * @param float                                                 $amount
      * @param string                                                $currency
      *
-     * @return array|null
+     * @return PaymentTransaction
      * @throws WepayApiErrorException
      */
-    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD')
+    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD') : PaymentTransaction
     {
 //        $valid = $account->checkIfPaymentDataIsSet([...]);
 //
@@ -73,14 +74,17 @@ class ChargeWithWepayTask extends Task implements PaymentChargerInterface
         }
 
         if ($response['paid'] !== true) {
-            return null;
+            throw new WepayApiErrorException('Transaction was not set to PAID.');
         }
 
-        // this data will be stored on the pivot table (user credits)
-        return [
-            'payment_method' => 'Wepay',
-            'description'    => $response['id'] // the charge id
-        ];
+        $transaction = new PaymentTransaction([
+            'transaction_id' => $response['id'],
+            'status' => $response['status'],
+            'is_successful' => true,
+            'data' => $response,
+        ]);
+
+        return $transaction;
     }
 
 }
