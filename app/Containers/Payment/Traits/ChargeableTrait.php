@@ -51,7 +51,16 @@ trait ChargeableTrait
 
         $currency = $cart->getTotal()->getCurrency();
 
-        return $this->charge($account, $amount, $currency);
+        $transaction = $this->charge($account, $amount, $currency);
+
+        $custom = $transaction->custom ? $transaction->custom : [];
+        $transaction->custom = array_merge(
+            $custom,
+            ['cart' => $cart]
+        );
+        $transaction->save();
+
+        return $transaction;
     }
 
 }
