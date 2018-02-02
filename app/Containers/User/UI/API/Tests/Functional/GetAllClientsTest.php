@@ -3,14 +3,17 @@
 namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class GetAllUsersTest.
  *
+ * @group user
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetAllClientsTest extends TestCase
+class GetAllClientsTest extends ApiTestCase
 {
 
     protected $endpoint = 'get@v1/clients';
@@ -20,6 +23,9 @@ class GetAllClientsTest extends TestCase
         'permissions' => 'list-users',
     ];
 
+    /**
+     * @test
+     */
     public function testGetAllClientsByAdmin_()
     {
         // should be returned
@@ -41,6 +47,9 @@ class GetAllClientsTest extends TestCase
         $this->assertCount(3, $responseContent->data);
     }
 
+    /**
+     * @test
+     */
     public function testGetAllClientsByNonAdmin_()
     {
         // prepare a user without any roles or permissions

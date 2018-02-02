@@ -4,14 +4,17 @@ namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class DetachPermissionsFromRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DetachPermissionsFromRoleTest extends TestCase
+class DetachPermissionsFromRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/permissions/detach';
@@ -21,6 +24,9 @@ class DetachPermissionsFromRoleTest extends TestCase
         'permissions' => 'manage-roles',
     ];
 
+    /**
+     * @test
+     */
     public function testDetachSinglePermissionFromRole_()
     {
         $permissionA = factory(Permission::class)->create();
@@ -48,6 +54,9 @@ class DetachPermissionsFromRoleTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testDetachMultiplePermissionFromRole_()
     {
         $permissionA = factory(Permission::class)->create();

@@ -4,14 +4,17 @@ namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class AttachPermissionsToRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AttachPermissionsToRoleTest extends TestCase
+class AttachPermissionsToRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/permissions/attach';
@@ -21,6 +24,9 @@ class AttachPermissionsToRoleTest extends TestCase
         'permissions' => 'manage-roles',
     ];
 
+    /**
+     * @test
+     */
     public function testAttachSinglePermissionToRole_()
     {
         $roleA = factory(Role::class)->create();

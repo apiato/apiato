@@ -7,6 +7,9 @@
 ///**
 // * Class UserLoginTest
 // *
+// * @group authentication
+// * @group web
+// *
 // * @author  Johan Alvarez <llstarscreamll@hotmail.com>
 // * @author  Mahmoud Zalt  <mahmoud@zalt.me>
 // */
@@ -14,6 +17,9 @@
 //{
 //    protected $endpoint = '/logout';
 //
+//    /**
+//     * @test
+//     */
 //    public function testWebUserLogout()
 //    {
 //        // go to the page

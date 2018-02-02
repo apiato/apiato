@@ -3,7 +3,6 @@
 namespace App\Containers\User\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Ship\Parents\Commands\ConsoleCommand;
 use App\Ship\Transporters\DataTransporter;
 

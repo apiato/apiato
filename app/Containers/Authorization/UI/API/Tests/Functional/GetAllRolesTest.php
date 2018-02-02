@@ -2,14 +2,17 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class GetAllRolesTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetAllRolesTest extends TestCase
+class GetAllRolesTest extends ApiTestCase
 {
 
     protected $endpoint = 'get@v1/roles';
@@ -19,6 +22,9 @@ class GetAllRolesTest extends TestCase
         'permissions' => 'manage-roles',
     ];
 
+    /**
+     * @test
+     */
     public function testGetAllRoles_()
     {
         $this->getTestingUser();

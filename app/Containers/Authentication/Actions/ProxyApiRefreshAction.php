@@ -3,8 +3,8 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
+use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Ship\Parents\Actions\Action;
 
 /**

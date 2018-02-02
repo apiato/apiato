@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Tests;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
+use App\Containers\Authentication\Tests\TestCase as BaseTestCase;
 
 /**
  * Class WebTestCase
@@ -11,7 +11,7 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class WebTestCase extends ShipTestCase
+class WebTestCase extends BaseTestCase
 {
     // overrides the default subDomain in the base URL
     protected $subDomain = 'admin';

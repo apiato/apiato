@@ -3,14 +3,17 @@
 namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class DeleteUserTest.
  *
+ * @group user
+ * @group api
+ *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class DeleteUserTest extends TestCase
+class DeleteUserTest extends ApiTestCase
 {
 
     protected $endpoint = 'delete@v1/users/{id}';
@@ -20,6 +23,9 @@ class DeleteUserTest extends TestCase
         'permissions' => 'delete-users',
     ];
 
+    /**
+     * @test
+     */
     public function testDeleteExistingUser_()
     {
         $user = $this->getTestingUser();
@@ -31,6 +37,9 @@ class DeleteUserTest extends TestCase
         $response->assertStatus(204);
     }
 
+    /**
+     * @test
+     */
     public function testDeleteAnotherExistingUser_()
     {
         // make the call form the user token who has no access

@@ -2,14 +2,17 @@
 
 namespace App\Containers\Wepay\UI\API\Tests\Functional;
 
-use App\Containers\Wepay\Tests\TestCase;
+use App\Containers\Wepay\Tests\ApiTestCase;
 
 /**
  * Class CreateWepayAccountTest.
  *
+ * @group wepay
+ * @group api
+ *
  * @author Rockers Technologies <jaimin.rockersinfo@gmail.com>
  */
-class CreateWepayAccountTest extends TestCase
+class CreateWepayAccountTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/user/payments/accounts/wepay';
@@ -19,6 +22,9 @@ class CreateWepayAccountTest extends TestCase
         'roles'       => '',
     ];
 
+    /**
+     * @test
+     */
     public function testCreateWepayAccount_()
     {
         $userDetails = [

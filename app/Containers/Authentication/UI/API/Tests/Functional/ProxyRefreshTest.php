@@ -2,16 +2,19 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\Authentication\Tests\TestCase;
+use App\Containers\Authentication\Tests\ApiTestCase;
 use Config;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProxyRefreshTest
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ProxyRefreshTest extends TestCase
+class ProxyRefreshTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/clients/web/admin/refresh';
@@ -23,6 +26,9 @@ class ProxyRefreshTest extends TestCase
 
     private $testingFilesCreated = false;
 
+    /**
+     * @test
+     */
     public function testRefreshWithoutBeingCreatedOrPassed()
     {
         $user = $this->getTestingUser([

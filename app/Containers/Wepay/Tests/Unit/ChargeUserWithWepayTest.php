@@ -8,6 +8,9 @@ use App\Containers\User\Tests\TestCase;
 /**
  * Class ChargeUserWithWepayTest
  *
+ * @group wepay
+ * @group unit
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class ChargeUserWithWepayTest extends TestCase
@@ -15,6 +18,9 @@ class ChargeUserWithWepayTest extends TestCase
 
     use MockablePaymentsTrait;
 
+    /**
+     * @test
+     */
     public function testChargeUserWithWePay_()
     {
 
