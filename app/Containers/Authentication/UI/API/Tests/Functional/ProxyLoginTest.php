@@ -2,16 +2,19 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\Authentication\Tests\TestCase;
+use App\Containers\Authentication\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProxyLoginTest
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ProxyLoginTest extends TestCase
+class ProxyLoginTest extends ApiTestCase
 {
 
     protected $endpoint; // testing multiple endpoints form the tests
@@ -23,6 +26,9 @@ class ProxyLoginTest extends TestCase
 
     private $testingFilesCreated = false;
 
+    /**
+     * @test
+     */
     public function testClientWebAdminProxyLogin_()
     {
         $endpoint = 'post@v1/clients/web/admin/login';
@@ -79,6 +85,9 @@ class ProxyLoginTest extends TestCase
         }
     }
 
+    /**
+     * @test
+     */
     public function testClientWebAdminProxyUnconfirmedLogin_()
     {
         $endpoint = 'post@v1/clients/web/admin/login';

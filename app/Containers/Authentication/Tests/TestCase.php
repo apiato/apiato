@@ -5,13 +5,11 @@ namespace App\Containers\Authentication\Tests;
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
 
 /**
- * Class WebTestCase
+ * Class TestCase.
  *
- * Container TestCase class. Use this class to put your container specific tests helper functions.
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * This is the container Main TestCase class. Use this class to add your container specific helper functions.
  */
 class TestCase extends ShipTestCase
 {
-
+    // ..
 }

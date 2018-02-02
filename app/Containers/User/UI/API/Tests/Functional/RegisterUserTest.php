@@ -2,14 +2,17 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class RegisterUserTest.
  *
+ * @group user
+ * @group api
+ *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RegisterUserTest extends TestCase
+class RegisterUserTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/register';
@@ -21,6 +24,9 @@ class RegisterUserTest extends TestCase
         'permissions' => '',
     ];
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserWithCredentials_()
     {
         $data = [
@@ -48,6 +54,9 @@ class RegisterUserTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
@@ -67,6 +76,9 @@ class RegisterUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterExistingUser()
     {
         $userDetails = [
@@ -95,6 +107,9 @@ class RegisterUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserWithoutEmail()
     {
         $data = [
@@ -114,6 +129,9 @@ class RegisterUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserWithoutName()
     {
         $data = [
@@ -133,6 +151,9 @@ class RegisterUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserWithoutPassword()
     {
         $data = [
@@ -151,6 +172,9 @@ class RegisterUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRegisterNewUserWithInvalidEmail()
     {
         $data = [

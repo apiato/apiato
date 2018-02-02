@@ -3,14 +3,17 @@
 namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class GetAllUsersTest.
  *
+ * @group user
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class GetAllAdminsTest extends TestCase
+class GetAllAdminsTest extends ApiTestCase
 {
 
     protected $endpoint = 'get@v1/admins';
@@ -20,6 +23,9 @@ class GetAllAdminsTest extends TestCase
         'permissions' => 'list-users',
     ];
 
+    /**
+     * @test
+     */
     public function testGetAllAdmins_()
     {
         // create some non-admin users
@@ -42,6 +48,9 @@ class GetAllAdminsTest extends TestCase
             $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
     }
 
+    /**
+     * @test
+     */
     public function testGetAllAdminsByNonAdmin_()
     {
         $this->getTestingUserWithoutAccess();

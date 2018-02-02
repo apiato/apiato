@@ -3,14 +3,17 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class FindRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindRoleTest extends TestCase
+class FindRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'get@v1/roles/{id}';
@@ -20,6 +23,9 @@ class FindRoleTest extends TestCase
         'permissions' => 'manage-roles',
     ];
 
+    /**
+     * @test
+     */
     public function testFindRoleById_()
     {
         $roleA = factory(Role::class)->create();

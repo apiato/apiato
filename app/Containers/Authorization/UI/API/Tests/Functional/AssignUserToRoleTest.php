@@ -3,16 +3,19 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\Config;
 
 /**
  * Class AssignUserToRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class AssignUserToRoleTest extends TestCase
+class AssignUserToRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/roles/assign?include=roles';
@@ -22,6 +25,9 @@ class AssignUserToRoleTest extends TestCase
         'permissions' => 'manage-admins-access',
     ];
 
+    /**
+     * @test
+     */
     public function testAssignUserToRole_()
     {
         $randomUser = factory(User::class)->create();
@@ -46,6 +52,9 @@ class AssignUserToRoleTest extends TestCase
         $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
     }
 
+    /**
+     * @test
+     */
     public function testAssignUserToRoleWithRealId_()
     {
         $randomUser = factory(User::class)->create();
@@ -73,6 +82,9 @@ class AssignUserToRoleTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
     public function testAssignUserToManyRoles_()
     {
         $randomUser = factory(User::class)->create();

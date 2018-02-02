@@ -2,14 +2,17 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class CreateRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class CreateRoleTest extends TestCase
+class CreateRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/roles';

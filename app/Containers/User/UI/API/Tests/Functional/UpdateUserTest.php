@@ -2,14 +2,17 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class UpdateUserTest.
  *
+ * @group user
+ * @group api
+ *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class UpdateUserTest extends TestCase
+class UpdateUserTest extends ApiTestCase
 {
 
     protected $endpoint = 'put@v1/users/{id}';
@@ -19,6 +22,9 @@ class UpdateUserTest extends TestCase
         'permissions' => 'update-users',
     ];
 
+    /**
+     * @test
+     */
     public function testUpdateExistingUser_()
     {
         $user = $this->getTestingUser();
@@ -45,6 +51,9 @@ class UpdateUserTest extends TestCase
         $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
 
+    /**
+     * @test
+     */
     public function testUpdateNonExistingUser_()
     {
         $data = [
@@ -64,6 +73,9 @@ class UpdateUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testUpdateExistingUserWithoutData_()
     {
         // send the HTTP request
@@ -77,6 +89,9 @@ class UpdateUserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testUpdateExistingUserWithEmptyValues()
     {
         $data = [

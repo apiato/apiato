@@ -7,6 +7,9 @@
 ///**
 // * Class UserLoginTest
 // *
+// * @group authentication
+// * @group web
+// *
 // * @author  Johan Alvarez <llstarscreamll@hotmail.com>
 // * @author  Mahmoud Zalt  <mahmoud@zalt.me>
 // */
@@ -14,6 +17,9 @@
 //{
 //    protected $endpoint = '/login';
 //
+//    /**
+//     * @test
+//     */
 //    public function testWebUserLogin_()
 //    {
 //        // go to the page
@@ -31,6 +37,9 @@
 //            ->see('Apiato Admin');
 //    }
 //
+//    /**
+//     * @test
+//     */
 //    public function testWebUserLoginWithInvalidCredentials()
 //    {
 //        // go to the page
@@ -48,6 +57,9 @@
 //            ->see('Credentials Incorrect.');
 //    }
 //
+//    /**
+//     * @test
+//     */
 //    public function testValidationIsWorking()
 //    {
 //        // go to the page

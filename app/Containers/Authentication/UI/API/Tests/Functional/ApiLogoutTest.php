@@ -2,14 +2,17 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\Authentication\Tests\TestCase;
+use App\Containers\Authentication\Tests\ApiTestCase;
 
 /**
  * Class ApiLogoutTest
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ApiLogoutTest extends TestCase
+class ApiLogoutTest extends ApiTestCase
 {
 
     protected $endpoint = 'delete@v1/logout';
@@ -19,6 +22,9 @@ class ApiLogoutTest extends TestCase
         'roles'       => '',
     ];
 
+    /**
+     * @test
+     */
     public function testLogout()
     {
         $response = $this->makeCall([], [

@@ -3,16 +3,19 @@
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\Config;
 
 /**
  * Class RevokeUserFromRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RevokeUserFromRoleTest extends TestCase
+class RevokeUserFromRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/roles/revoke';
@@ -22,6 +25,9 @@ class RevokeUserFromRoleTest extends TestCase
         'permissions' => 'manage-admins-access',
     ];
 
+    /**
+     * @test
+     */
     public function testRevokeUserFromRole_()
     {
         $roleA = factory(Role::class)->create();
@@ -50,6 +56,9 @@ class RevokeUserFromRoleTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     */
     public function testRevokeUserFromRoleWithRealId_()
     {
         $roleA = factory(Role::class)->create();
@@ -79,6 +88,9 @@ class RevokeUserFromRoleTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
     public function testRevokeUserFromManyRoles_()
     {
         $roleA = factory(Role::class)->create();

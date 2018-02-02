@@ -4,14 +4,17 @@ namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\Authorization\Models\Permission;
 use App\Containers\Authorization\Models\Role;
-use App\Containers\Authorization\Tests\TestCase;
+use App\Containers\Authorization\Tests\ApiTestCase;
 
 /**
  * Class SyncPermissionsOnRoleTest.
  *
+ * @group authorization
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class SyncPermissionsOnRoleTest extends TestCase
+class SyncPermissionsOnRoleTest extends ApiTestCase
 {
 
     protected $endpoint = 'post@v1/permissions/sync';
@@ -21,6 +24,9 @@ class SyncPermissionsOnRoleTest extends TestCase
         'permissions' => 'manage-roles',
     ];
 
+    /**
+     * @test
+     */
     public function testSyncDuplicatedPermissionsToRole_()
     {
         $permissionA = factory(Permission::class)->create(['display_name' => 'AAA']);

@@ -2,14 +2,17 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
-use App\Containers\User\Tests\TestCase;
+use App\Containers\User\Tests\ApiTestCase;
 
 /**
  * Class FindUsersTest.
  *
+ * @group user
+ * @group api
+ *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class FindUserTest extends TestCase
+class FindUserTest extends ApiTestCase
 {
 
     protected $endpoint = 'get@v1/users/{id}';
@@ -19,6 +22,9 @@ class FindUserTest extends TestCase
         'permissions' => 'search-users',
     ];
 
+    /**
+     * @test
+     */
     public function testFindUser_()
     {
         $admin = $this->getTestingUser();
@@ -34,6 +40,9 @@ class FindUserTest extends TestCase
         $this->assertEquals($admin->name, $responseContent->data->name);
     }
 
+    /**
+     * @test
+     */
     public function testFindFilteredUserResponse_()
     {
         $admin = $this->getTestingUser();
@@ -52,6 +61,9 @@ class FindUserTest extends TestCase
         $this->assertNotContains('id', json_decode($response->getContent(), true));
     }
 
+    /**
+     * @test
+     */
     public function testFindUserWithRelation_()
     {
         $admin = $this->getTestingUser();
