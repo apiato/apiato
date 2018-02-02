@@ -2,6 +2,7 @@
 
 namespace App\Ship\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,5 +17,7 @@ class NotFoundException extends Exception
     public $httpStatusCode = Response::HTTP_NOT_FOUND;
 
     public $message = 'The requested Resource was not found.';
+
+    public $code = ApplicationErrorCodesTable::RESOURCE_NOT_FOUND;
 
 }

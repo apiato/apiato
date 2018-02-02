@@ -2,6 +2,7 @@
 
 namespace App\Containers\Socialauth\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,4 +16,6 @@ class UnsupportedSocialAuthProviderException extends Exception
     public $httpStatusCode = Response::HTTP_NOT_ACCEPTABLE;
 
     public $message = 'Unsupported Social Auth Provider.';
+
+    public $code = ApplicationErrorCodesTable::BASE_INTERNAL_ERROR;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Ship\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -16,5 +17,7 @@ class WrongEndpointFormatException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
     public $message = 'tests ($this->endpoint) property must be formatted as "verb@url".';
+
+    public $code = ApplicationErrorCodesTable::TEST_ENDPOINT_WRONG_DECLARATION;
 
 }

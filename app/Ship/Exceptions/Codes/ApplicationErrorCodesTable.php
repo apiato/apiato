@@ -59,71 +59,114 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => 'Wrong Configuration',
         'description' => 'A wrong configuration was found.',
     ];
+    const BASE_CONFIGURATION_OAUTH_MISSING = [
+        'code' => 1022,
+        'title' => 'OAuth Missing',
+        'description' => 'OAuth is not installed or not properly configured.',
+    ];
+
     const AUTHENTICATION_GENERAL_ERROR = [
         'code' => 1100,
-        'title' => '',
-        'description' => '',
+        'title' => 'General Error',
+        'description' => 'A general error occurred during the authentication process.',
     ];
     const AUTHENTICATION_NOT_ALLOWED = [
         'code' => 1101,
-        'title' => '',
-        'description' => '',
+        'title' => 'Not Allowed',
+        'description' => 'You are not allowed to perform this action.',
     ];
     const AUTHENTICATION_INVALID_CREDENTIALS = [
         'code' => 1102,
-        'title' => '',
-        'description' => '',
+        'title' => 'Invalid Credentials',
+        'description' => 'The credentials did not match any user.',
+    ];
+    const AUTHENTICATION_LOGIN_FAILED = [
+        'code' => 1103,
+        'title' => 'Login Failed',
+        'description' => 'The login failed because of various reasons.',
     ];
     const AUTHENTICATION_TOKEN_ERROR = [
         'code' => 1110,
-        'title' => '',
-        'description' => '',
+        'title' => 'Token Error',
+        'description' => 'Something is wrong with the authentication token.',
     ];
     const AUTHENTICATION_TOKEN_EXPIRED = [
         'code' => 1111,
-        'title' => '',
-        'description' => '',
+        'title' => 'Token Expired',
+        'description' => 'The authentication token has expired.',
     ];
     const AUTHENTICATION_TOKEN_BLACKLISTED = [
         'code' => 1112,
-        'title' => '',
-        'description' => '',
+        'title' => 'Token Blacklisted',
+        'description' => 'The authentication token is blacklisted and cannot be used any more.',
     ];
     const AUTHORIZATION_FAILED = [
         'code' => 1120,
-        'title' => '',
-        'description' => '',
+        'title' => 'Authorization Failed',
+        'description' => 'The application failed to authorize the user',
     ];
     const AUTHORIZATION_NOT_AUTHORIZED = [
         'code' => 1121,
-        'title' => '',
-        'description' => '',
+        'title' => 'Not Authorized',
+        'description' => 'The user is not authorized.',
     ];
     const AUTHORIZATION_INSUFFICIENT_ROLE = [
         'code' => 1122,
-        'title' => '',
-        'description' => '',
+        'title' => 'Insufficient Role',
+        'description' => 'The user has an insufficient role to perform the requested operation.',
     ];
+    const AUTHORIZATION_UNKNOWN_ROLE = [
+        'code' => 1123,
+        'title' => 'Unknown Role',
+        'description' => 'The role was not found.',
+    ];
+    const AUTHORIZATION_UNKNOWN_PERMISSION = [
+        'code' => 1124,
+        'title' => 'Unknown Permission',
+        'description' => 'The permission was not found.',
+    ];
+
     const REQUEST_GENERAL_ERROR = [
         'code' => 1300,
-        'title' => '',
-        'description' => '',
+        'title' => 'General Error',
+        'description' => 'A general error occurred in the context of the request.',
+    ];
+    const REQUEST_GENERAL_WRONG_METHOD = [
+        'code' => 1301,
+        'title' => 'Wrong Request Method',
+        'description' => 'The endpoint was called with a wrong HTTP Method (e.g., GET instead of POST).',
     ];
     const REQUEST_TOKEN_MISSING = [
         'code' => 1301,
-        'title' => '',
-        'description' => '',
+        'title' => 'Token Missing',
+        'description' => 'The authorization token is missing.',
     ];
     const REQUEST_TOKEN_EXPIRED = [
         'code' => 1302,
-        'title' => '',
-        'description' => '',
+        'title' => 'Token Expired',
+        'description' => 'The authorization token has expired.',
+    ];
+    const REQUEST_REFRESHTOKEN_MISSING = [
+        'code' => 1303,
+        'title' => 'Refresh-Token Missing',
+        'description' => 'The refresh token is missing.',
+    ];
+    const REQUEST_REFRESHTOKEN_EXPIRED = [
+        'code' => 1304,
+        'title' => 'Refresh-Token Expired',
+        'description' => 'The refresh token has expired.',
     ];
     const REQUEST_HEADER_JSON_MISSING = [
         'code' => 1310,
         'title' => '',
         'description' => '',
     ];
+    const REQUEST_HEADER_LANGUAGE_WRONG = [
+        'code' => 1311,
+        'title' => 'Wrong Accept Language',
+        'description' => 'Unknown Accept Language found.',
+    ];
+
     const RESPONSE_GENERAL_ERROR = [
         'code' => 1350,
         'title' => '',
@@ -139,6 +182,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const RESOURCE_GENERAL_ERROR = [
         'code' => 1400,
         'title' => '',
@@ -164,6 +208,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const VALIDATION_GENERAL_ERROR = [
         'code' => 1500,
         'title' => '',
@@ -179,6 +224,33 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
+    const PAYMENT_GENERAL_ERROR = [
+        'code' => 1700,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_TRANSACTION_FAILED = [
+        'code' => 1701,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_METHOD_NOT_FOUND = [
+        'code' => 1702,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_ACCOUNT_NOT_FOUND = [
+        'code' => 1703,
+        'title' => '',
+        'description' => '',
+    ];
+    const PAYMENT_GATEWAY_API_ERROR = [
+        'code' => 1704,
+        'title' => '',
+        'description' => '',
+    ];
+
     const USER_GENERAL_ERROR = [
         'code' => 1800,
         'title' => '',
@@ -199,6 +271,7 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'title' => '',
         'description' => '',
     ];
+
     const TEST_GENERAL_ERROR = [
         'code' => 1900,
         'title' => '',
@@ -206,6 +279,11 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
     ];
     const TEST_ENDPOINT_MISSING = [
         'code' => 1901,
+        'title' => '',
+        'description' => '',
+    ];
+    const TEST_ENDPOINT_WRONG_DECLARATION = [
+        'code' => 1902,
         'title' => '',
         'description' => '',
     ];

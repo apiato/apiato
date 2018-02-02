@@ -2,6 +2,7 @@
 
 namespace App\Ship\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -16,5 +17,7 @@ class IncorrectIdException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_BAD_REQUEST;
 
     public $message = 'ID input is incorrect.';
+
+    public $code = ApplicationErrorCodesTable::VALIDATION_WRONG_ID;
 
 }

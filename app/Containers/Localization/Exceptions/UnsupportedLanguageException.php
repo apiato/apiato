@@ -2,6 +2,7 @@
 
 namespace App\Containers\Localization\Exceptions;
 
+use App\Ship\Exceptions\Codes\ApplicationErrorCodesTable;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -16,5 +17,7 @@ class UnsupportedLanguageException extends Exception
     public $httpStatusCode = SymfonyResponse::HTTP_PRECONDITION_FAILED;
 
     public $message = 'Unsupported Language!';
+
+    public $code = ApplicationErrorCodesTable::REQUEST_HEADER_LANGUAGE_WRONG;
 
 }
