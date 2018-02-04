@@ -9,6 +9,8 @@
 ### Changed
 - Adapted the existing `ChargerTasks` for `Stripe` and `Wepay` in order to follow the `PaymentTransaction` approach.
 
+- Rename `Socialauth` container to `SocialAuth`
+
 ### Fixed
 - Fixed Issue in `CountCriteria` [PR](https://github.com/apiato/apiato/pull/363)
 
