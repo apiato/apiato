@@ -32,7 +32,7 @@
     "ext-openssl": "*",
     "ext-pdo": "*",
     "ext-tokenizer": "*",
-    "fideloper/proxy": "~3.3",
+    "fideloper/proxy": "~4.0",
     "laravel/framework": "5.6.*",
     "laravel/tinker": "~1.0",
     "doctrine/dbal": "2.5.*",
