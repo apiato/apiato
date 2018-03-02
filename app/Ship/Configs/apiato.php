@@ -163,6 +163,21 @@ return [
         |
         */
         'use-etag' => true,
+
+        /*
+        |--------------------------------------------------------------------------
+        | Automatically Apply RequestCriteria
+        |--------------------------------------------------------------------------
+        |
+        | This option describes, if the RequestCriteria is automatically applied
+        | for all Requests to the API. If you "concatenate" several repositories in
+        | one request, this may cause issues, as the RequestCriteria is applied
+        | TO ALL Repositories!
+        |
+        | Default Value: true (it is automatically applied to ALL Repositories)
+        |
+        */
+        'automatically-apply-request-criteria' => true,
     ],
 
 ];
