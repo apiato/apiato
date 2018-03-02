@@ -4,7 +4,6 @@ namespace App\Containers\SocialAuth\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class FindSocialUserTask.
@@ -13,6 +12,14 @@ use Illuminate\Support\Facades\App;
  */
 class FindSocialUserTask extends Task
 {
+
+    private $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param $socialProvider
      * @param $socialId
@@ -21,7 +28,7 @@ class FindSocialUserTask extends Task
      */
     public function run($socialProvider, $socialId)
     {
-        return App::make(UserRepository::class)->findWhere([
+        return $this->repository->findWhere([
             'social_provider' => $socialProvider,
             'social_id'       => $socialId,
         ])->first();

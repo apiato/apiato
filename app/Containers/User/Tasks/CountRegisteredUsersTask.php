@@ -5,7 +5,6 @@ namespace App\Containers\User\Tasks;
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Criterias\Eloquent\NotNullCriteria;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CountRegisteredUsersTask.
@@ -14,12 +13,20 @@ use Illuminate\Support\Facades\App;
  */
 class CountRegisteredUsersTask extends Task
 {
+
+    private $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @return  int
      */
     public function run(): int
     {
-        return App::make(UserRepository::class)->pushCriteria(new NotNullCriteria('email'))->all()->count();
+        return $this->repository->pushCriteria(new NotNullCriteria('email'))->all()->count();
     }
 
 }
