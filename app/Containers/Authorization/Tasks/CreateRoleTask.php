@@ -19,7 +19,7 @@ class CreateRoleTask extends Task
     /**
      * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * CreateRoleTask constructor.

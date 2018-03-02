@@ -14,7 +14,7 @@ use App\Ship\Parents\Tasks\Task;
 class FindRoleTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(RoleRepository $repository)
     {

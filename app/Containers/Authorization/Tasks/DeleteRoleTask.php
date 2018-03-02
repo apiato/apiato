@@ -16,7 +16,7 @@ use Exception;
 class DeleteRoleTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(RoleRepository $repository)
     {

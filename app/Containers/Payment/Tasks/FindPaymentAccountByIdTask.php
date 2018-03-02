@@ -17,7 +17,7 @@ use Exception;
 class FindPaymentAccountByIdTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(PaymentAccountRepository $repository)
     {

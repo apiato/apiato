@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class UpdateUserTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(UserRepository $repository)
     {

@@ -16,7 +16,7 @@ use App\Ship\Transporters\DataTransporter;
 class CreateWepayAccountAction extends Action
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(WepayAccountRepository $repository)
     {

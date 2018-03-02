@@ -13,7 +13,7 @@ use App\Ship\Parents\Tasks\Task;
 class FindSocialUserTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(UserRepository $repository)
     {

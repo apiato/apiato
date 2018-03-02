@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
 class CreateUserByCredentialsTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(UserRepository $repository)
     {

@@ -14,7 +14,7 @@ use App\Ship\Parents\Tasks\Task;
 class CountRegisteredUsersTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(UserRepository $repository)
     {

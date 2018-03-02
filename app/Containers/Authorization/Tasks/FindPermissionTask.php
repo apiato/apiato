@@ -14,7 +14,7 @@ use App\Ship\Parents\Tasks\Task;
 class FindPermissionTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(PermissionRepository $repository)
     {

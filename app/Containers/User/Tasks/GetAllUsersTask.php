@@ -20,7 +20,7 @@ class GetAllUsersTask extends Task
     /**
      * @var  \App\Containers\User\Data\Repositories\UserRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * GetAllUsersTask constructor.

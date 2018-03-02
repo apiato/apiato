@@ -15,7 +15,7 @@ use Exception;
 class CreateUserBySocialProfileTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(UserRepository $repository)
     {
