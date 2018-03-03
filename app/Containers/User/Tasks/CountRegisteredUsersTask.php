@@ -26,7 +26,8 @@ class CountRegisteredUsersTask extends Task
      */
     public function run(): int
     {
-        return $this->repository->pushCriteria(new NotNullCriteria('email'))->all()->count();
+        $this->repository->pushCriteria(new NotNullCriteria('email'));
+        return $this->repository->all()->count();
     }
 
 }

@@ -18,9 +18,13 @@ class GetAllAdminsAction extends Action
      */
     public function run()
     {
-        return Apiato::call('User@GetAllUsersTask', [], [
-            'ordered',
-            'admins'
-        ]);
+        return Apiato::call('User@GetAllUsersTask',
+            [],
+            [
+                'addRequestCriteria',
+                'admins',
+                'ordered',
+            ]
+        );
     }
 }

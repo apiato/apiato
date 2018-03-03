@@ -6,7 +6,7 @@ use App\Containers\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Parents\Tasks\Task;
 
 /**
- * Class GetAllPermissionsTask.
+ * Class GetAllRolesTask.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

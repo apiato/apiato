@@ -29,7 +29,7 @@ class Controller extends WebController
     /**
      * @return  \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function logoutAdmin(LogoutRequest $equest)
+    public function logoutAdmin(LogoutRequest $request)
     {
         Apiato::call('Authentication@WebLogoutAction');
 
