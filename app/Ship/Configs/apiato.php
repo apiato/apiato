@@ -177,7 +177,7 @@ return [
         | Default Value: true (it is automatically applied to ALL Repositories)
         |
         */
-        'automatically-apply-request-criteria' => true,
+        'automatically-apply-request-criteria' => env('API_REQUEST_APPLY_REQUEST_CRITERIA', true),
     ],
 
 ];
