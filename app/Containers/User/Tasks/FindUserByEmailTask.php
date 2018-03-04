@@ -7,7 +7,6 @@ use App\Containers\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class FindUserByEmailTask
@@ -16,6 +15,13 @@ use Illuminate\Support\Facades\App;
  */
 class FindUserByEmailTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param string $email
@@ -26,7 +32,7 @@ class FindUserByEmailTask extends Task
     public function run(string $email): User
     {
         try {
-            return App::make(UserRepository::class)->findByField('email', $email)->first();
+            return $this->repository->findByField('email', $email)->first();
         } catch (Exception $e) {
             throw new NotFoundException();
         }

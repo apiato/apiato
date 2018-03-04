@@ -7,10 +7,16 @@ use App\Containers\Settings\Models\Setting;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 class UpdateSettingTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(SettingRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param $id
@@ -22,7 +28,7 @@ class UpdateSettingTask extends Task
     public function run($id, $data): Setting
     {
         try {
-            return App::make(SettingRepository::class)->update($data, $id);
+            return $this->repository->update($data, $id);
         }
         catch (Exception $exception) {
             throw new UpdateResourceFailedException();

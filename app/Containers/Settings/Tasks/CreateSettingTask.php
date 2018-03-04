@@ -7,10 +7,16 @@ use App\Containers\Settings\Models\Setting;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 class CreateSettingTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(SettingRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param array $data
@@ -21,7 +27,7 @@ class CreateSettingTask extends Task
     public function run(array $data): Setting
     {
         try {
-            return App::make(SettingRepository::class)->create($data);
+            return $this->repository->create($data);
         }
         catch (Exception $exception) {
             throw new CreateResourceFailedException();

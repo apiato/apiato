@@ -10,7 +10,7 @@ use Exception;
 class FindSettingByIdTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(SettingRepository $repository)
     {

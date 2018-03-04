@@ -7,10 +7,16 @@ use App\Containers\Settings\Models\Setting;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 class DeleteSettingTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(SettingRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param Setting $setting
@@ -21,7 +27,7 @@ class DeleteSettingTask extends Task
     public function run(Setting $setting)
     {
         try {
-            return App::make(SettingRepository::class)->delete($setting->id);
+            return $this->repository->delete($setting->id);
         }
         catch (Exception $exception) {
             throw new DeleteResourceFailedException();

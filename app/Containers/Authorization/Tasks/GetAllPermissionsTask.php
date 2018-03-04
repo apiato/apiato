@@ -16,7 +16,7 @@ class GetAllPermissionsTask extends Task
     /**
      * @var PermissionRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * GetAllPermissionsTask constructor.

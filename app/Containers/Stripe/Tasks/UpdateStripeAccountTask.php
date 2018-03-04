@@ -11,7 +11,7 @@ use Exception;
 class UpdateStripeAccountTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(StripeAccountRepository $repository)
     {
