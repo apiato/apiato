@@ -7,7 +7,6 @@ use App\Containers\User\Models\User;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class DeleteUserTask
@@ -16,6 +15,13 @@ use Illuminate\Support\Facades\App;
  */
 class DeleteUserTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      *
@@ -27,7 +33,7 @@ class DeleteUserTask extends Task
     public function run(User $user)
     {
         try {
-            return App::make(UserRepository::class)->delete($user->id);
+            return $this->repository->delete($user->id);
         }
         catch (Exception $exception) {
             throw new DeleteResourceFailedException();

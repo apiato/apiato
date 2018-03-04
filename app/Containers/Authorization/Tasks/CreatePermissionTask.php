@@ -19,7 +19,7 @@ class CreatePermissionTask extends Task
     /**
      * @var  \App\Containers\Authorization\Data\Repositories\PermissionRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * CreatePermissionTask constructor.

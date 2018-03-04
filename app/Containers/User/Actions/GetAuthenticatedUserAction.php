@@ -17,6 +17,7 @@ class GetAuthenticatedUserAction extends Action
 
     /**
      * @return  \App\Containers\User\Models\User
+     * @throws  NotFoundException
      */
     public function run(): User
     {

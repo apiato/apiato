@@ -7,7 +7,6 @@ use App\Containers\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -18,6 +17,13 @@ use Illuminate\Support\Facades\Hash;
 class CreateUserByCredentialsTask extends Task
 {
 
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param bool        $isClient
      * @param string      $email
@@ -27,6 +33,7 @@ class CreateUserByCredentialsTask extends Task
      * @param string|null $birth
      *
      * @return  mixed
+     * @throws  CreateResourceFailedException
      */
     public function run(
         bool $isClient = true,
@@ -39,7 +46,7 @@ class CreateUserByCredentialsTask extends Task
 
         try {
             // create new user
-            $user = App::make(UserRepository::class)->create([
+            $user = $this->repository->create([
                 'password'  => Hash::make($password),
                 'email'     => $email,
                 'name'      => $name,

@@ -7,7 +7,6 @@ use App\Containers\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class FindUserByIdTask.
@@ -16,6 +15,13 @@ use Illuminate\Support\Facades\App;
  */
 class FindUserByIdTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param $userId
@@ -27,7 +33,7 @@ class FindUserByIdTask extends Task
     {
         // find the user by its id
         try {
-            $user = App::make(UserRepository::class)->find($userId);
+            $user = $this->repository->find($userId);
         } catch (Exception $e) {
             throw new NotFoundException();
         }

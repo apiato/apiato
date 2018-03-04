@@ -18,9 +18,13 @@ class GetAllClientsAction extends Action
      */
     public function run()
     {
-        return Apiato::call('User@GetAllUsersTask', [], [
-            'ordered',
-            'clients'
-        ]);
+        return Apiato::call('User@GetAllUsersTask',
+            [],
+            [
+                'addRequestCriteria',
+                'clients',
+                'ordered',
+            ]
+        );
     }
 }

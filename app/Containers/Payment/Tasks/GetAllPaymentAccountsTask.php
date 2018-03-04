@@ -16,7 +16,7 @@ use App\Ship\Parents\Tasks\Task;
 class GetAllPaymentAccountsTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     /**
      * GetAllPaymentAccountsTask constructor.

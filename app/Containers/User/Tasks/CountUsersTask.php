@@ -4,7 +4,6 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CountAllUsersTask.
@@ -13,12 +12,20 @@ use Illuminate\Support\Facades\App;
  */
 class CountUsersTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @return  int
      */
     public function run(): int
     {
-        return App::make(UserRepository::class)->all()->count();
+        return $this->repository->all()->count();
     }
 
 }

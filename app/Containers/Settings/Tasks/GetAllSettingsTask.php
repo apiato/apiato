@@ -12,7 +12,7 @@ class GetAllSettingsTask extends Task
     /**
      * @var SettingRepository
      */
-    private $repository;
+    protected $repository;
 
     /**
      * GetAllSettingsTask constructor.

@@ -15,7 +15,7 @@ use Exception;
  */
 class UpdatePaymentAccountTask extends Task
 {
-    private $repository;
+    protected $repository;
 
     public function __construct(PaymentAccountRepository $repository)
     {

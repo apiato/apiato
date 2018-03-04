@@ -20,41 +20,41 @@ class GetAllUsersTask extends Task
     /**
      * @var  \App\Containers\User\Data\Repositories\UserRepository
      */
-    private $userRepository;
+    protected $repository;
 
     /**
      * GetAllUsersTask constructor.
      *
-     * @param \App\Containers\User\Data\Repositories\UserRepository $userRepository
+     * @param \App\Containers\User\Data\Repositories\UserRepository $repository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $repository)
     {
-        $this->userRepository = $userRepository;
+        $this->repository = $repository;
     }
 
     public function run()
     {
-        return $this->userRepository->paginate();
+        return $this->repository->paginate();
     }
 
     public function clients()
     {
-        $this->userRepository->pushCriteria(new ClientsCriteria());
+        $this->repository->pushCriteria(new ClientsCriteria());
     }
 
     public function admins()
     {
-        $this->userRepository->pushCriteria(new AdminsCriteria());
+        $this->repository->pushCriteria(new AdminsCriteria());
     }
 
     public function ordered()
     {
-        $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
+        $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
     }
 
     public function withRole($roles)
     {
-        $this->userRepository->pushCriteria(new RoleCriteria($roles));
+        $this->repository->pushCriteria(new RoleCriteria($roles));
     }
 
 }
