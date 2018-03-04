@@ -5,7 +5,6 @@ namespace App\Containers\SocialAuth\Tasks;
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class UpdateUserSocialProfileTask.
@@ -14,6 +13,13 @@ use Illuminate\Support\Facades\App;
  */
 class UpdateUserSocialProfileTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param      $userId
@@ -30,6 +36,7 @@ class UpdateUserSocialProfileTask extends Task
      * @param null $email
      *
      * @return  mixed
+     * @throws  UpdateResourceFailedException
      */
     public function run(
         $userId,
@@ -97,7 +104,7 @@ class UpdateUserSocialProfileTask extends Task
         }
 
         // updating the attributes
-        $user = App::make(UserRepository::class)->update($attributes, $userId);
+        $user = $this->repository->update($attributes, $userId);
 
         return $user;
     }

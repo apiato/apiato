@@ -16,7 +16,7 @@ use Exception;
 class UpdateSettingsByKeyTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(SettingRepository $repository)
     {

@@ -6,10 +6,16 @@ use App\Containers\Stripe\Data\Repositories\StripeAccountRepository;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
-use Illuminate\Support\Facades\App;
 
 class CreateStripeAccountTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(StripeAccountRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param array $data
@@ -19,10 +25,8 @@ class CreateStripeAccountTask extends Task
      */
     public function run(array $data)
     {
-        $repository = App::make(StripeAccountRepository::class);
-
         try {
-            return $repository->create($data);
+            return $this->repository->create($data);
         } catch (Exception $exception) {
             throw new CreateResourceFailedException();
         }

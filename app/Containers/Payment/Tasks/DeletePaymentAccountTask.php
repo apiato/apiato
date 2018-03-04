@@ -16,7 +16,7 @@ use Exception;
 class DeletePaymentAccountTask extends Task
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(PaymentAccountRepository $repository)
     {

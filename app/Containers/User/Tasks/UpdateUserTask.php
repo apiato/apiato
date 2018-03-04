@@ -10,7 +10,6 @@ use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class UpdateUserTask.
@@ -19,6 +18,13 @@ use Illuminate\Support\Facades\App;
  */
 class UpdateUserTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param $userData
@@ -38,7 +44,7 @@ class UpdateUserTask extends Task
         }
 
         try {
-            $user = App::make(UserRepository::class)->update($userData, $userId);
+            $user = $this->repository->update($userData, $userId);
         } catch (ModelNotFoundException $exception) {
             throw new NotFoundException('User Not Found.');
         } catch (Exception $exception) {

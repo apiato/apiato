@@ -5,7 +5,6 @@ namespace App\Containers\Authorization\Tasks;
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class FindPermissionTask.
@@ -14,6 +13,13 @@ use Illuminate\Support\Facades\App;
  */
 class FindPermissionTask extends Task
 {
+
+    protected $repository;
+
+    public function __construct(PermissionRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param $permissionNameOrId
@@ -24,7 +30,7 @@ class FindPermissionTask extends Task
     {
         $query = is_numeric($permissionNameOrId) ? ['id' => $permissionNameOrId] : ['name' => $permissionNameOrId];
 
-        $permission = App::make(PermissionRepository::class)->findWhere($query)->first();
+        $permission = $this->repository->findWhere($query)->first();
 
         return $permission;
     }

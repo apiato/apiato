@@ -19,6 +19,7 @@ class FindUserSocialProfileTask extends Task
      * @param array|null $requestData
      *
      * @return  mixed
+     * @throws  UnsupportedSocialAuthProviderException
      */
     public function run($provider, array $requestData = null)
     {

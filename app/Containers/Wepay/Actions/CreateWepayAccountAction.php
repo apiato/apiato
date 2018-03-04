@@ -7,7 +7,6 @@ use App\Containers\Wepay\Data\Repositories\WepayAccountRepository;
 use App\Containers\Wepay\Models\WepayAccount;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateWepayAccountAction.
@@ -16,6 +15,13 @@ use Illuminate\Support\Facades\App;
  */
 class CreateWepayAccountAction extends Action
 {
+
+    protected $repository;
+
+    public function __construct(WepayAccountRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * @param \App\Ship\Transporters\DataTransporter $data
@@ -36,7 +42,7 @@ class CreateWepayAccountAction extends Action
         $wepayAccount->country = $data->country;
         $wepayAccount->currencies = $data->currencies;
 
-        $wepayAccount = App::make(WepayAccountRepository::class)->create($wepayAccount->toArray());
+        $wepayAccount = $this->repository->create($wepayAccount->toArray());
 
         Apiato::call('Payment@AssignPaymentAccountToUserTask', [$wepayAccount, $user, $data->nickname]);
 

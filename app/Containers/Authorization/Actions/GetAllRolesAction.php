@@ -18,7 +18,7 @@ class GetAllRolesAction extends Action
      */
     public function run()
     {
-        $roles = Apiato::call('Authorization@GetAllRolesTask');
+        $roles = Apiato::call('Authorization@GetAllRolesTask', [], ['addRequestCriteria']);
 
         return $roles;
     }
