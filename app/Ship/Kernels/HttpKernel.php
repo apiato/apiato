@@ -73,6 +73,7 @@ class HttpKernel extends LaravelHttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'can'      => \Illuminate\Auth\Middleware\Authorize::class,
         'auth'     => \Illuminate\Auth\Middleware\Authenticate::class,
+        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
