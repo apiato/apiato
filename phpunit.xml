@@ -36,7 +36,7 @@
         <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
         <env name="DB_HOST"             value="127.0.0.1"/>
         <env name="DB_PORT"             value="3306"/>
-        <env name="DB_NAME"             value="apiato_db"/>
+        <env name="DB_DATABASE"         value="apiato_db"/>
         <env name="DB_USERNAME"         value="apiato_db"/>
         <env name="DB_PASSWORD"         value="secret"/>
     </php>
