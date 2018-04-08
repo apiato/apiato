@@ -23,7 +23,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        \League\OAuth2\Server\Exception\OAuthServerException::class,
     ];
 
     /**
