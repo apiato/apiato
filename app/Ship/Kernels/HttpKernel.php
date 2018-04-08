@@ -2,6 +2,7 @@
 
 namespace App\Ship\Kernels;
 
+use App\Ship\Middlewares\Http\Authenticate;
 use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
 use App\Ship\Middlewares\Http\ProfilerMiddleware;
 use App\Ship\Middlewares\Http\ValidateJsonContent;
@@ -72,7 +73,7 @@ class HttpKernel extends LaravelHttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'can'      => \Illuminate\Auth\Middleware\Authorize::class,
-        'auth'     => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth'     => Authenticate::class, // we use our own Authenticate middleware that extends the one from laravel!
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];

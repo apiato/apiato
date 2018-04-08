@@ -137,22 +137,22 @@ class ApplicationErrorCodesTable extends ErrorCodesTable
         'description' => 'The endpoint was called with a wrong HTTP Method (e.g., GET instead of POST).',
     ];
     const REQUEST_TOKEN_MISSING = [
-        'code' => 1301,
+        'code' => 1302,
         'title' => 'Token Missing',
         'description' => 'The authorization token is missing.',
     ];
     const REQUEST_TOKEN_EXPIRED = [
-        'code' => 1302,
+        'code' => 1303,
         'title' => 'Token Expired',
         'description' => 'The authorization token has expired.',
     ];
     const REQUEST_REFRESHTOKEN_MISSING = [
-        'code' => 1303,
+        'code' => 1304,
         'title' => 'Refresh-Token Missing',
         'description' => 'The refresh token is missing.',
     ];
     const REQUEST_REFRESHTOKEN_EXPIRED = [
-        'code' => 1304,
+        'code' => 1305,
         'title' => 'Refresh-Token Expired',
         'description' => 'The refresh token has expired.',
     ];

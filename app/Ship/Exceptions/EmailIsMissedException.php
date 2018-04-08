@@ -16,7 +16,7 @@ class EmailIsMissedException extends Exception
 
     public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
 
-    public $message = 'One of the Emails is missed, check your configuration files.';
+    public $message = 'One of the Emails is missing, check your configuration files.';
 
     public $code = ApplicationErrorCodesTable::BASE_CONFIGURATION_WRONG;
 }
