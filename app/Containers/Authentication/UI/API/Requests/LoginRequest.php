@@ -48,10 +48,33 @@ class LoginRequest extends Request
      */
     public function rules()
     {
-        return [
-            'email'    => 'required|email|max:40|exists:users,email',
+        $prefix = config('authentication-container.login.prefix', '');
+
+        $allowedLoginFields = config('authentication-container.login.allowed_login_attributes', ['email' => []]);
+
+        $rules = [
             'password' => 'required|min:3|max:30',
         ];
+
+        foreach ($allowedLoginFields as $key => $optionalValidators)
+        {
+            // build all other login fields together
+            $allOtherLoginFields = array_except($allowedLoginFields, $key);
+            $allOtherLoginFields = array_keys($allOtherLoginFields);
+            $allOtherLoginFields = preg_filter('/^/', $prefix, $allOtherLoginFields);
+            $allOtherLoginFields = implode(',', $allOtherLoginFields);
+
+            $validators = implode('|', $optionalValidators);
+
+            $keyname = $prefix . $key;
+
+            $rules = array_merge($rules,
+                [
+                    $keyname => "required_without_all:{$allOtherLoginFields}|exists:users,{$key}|{$validators}",
+                ]);
+        }
+
+        return $rules;
     }
 
     /**

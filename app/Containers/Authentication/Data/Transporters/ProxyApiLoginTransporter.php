@@ -19,6 +19,9 @@ class ProxyApiLoginTransporter extends Transporter
         'type' => 'object',
         'properties' => [
             'email',
+            // 'name',
+            // 'phone',
+
             'password',
             'client_id',
             'client_password',
@@ -26,7 +29,6 @@ class ProxyApiLoginTransporter extends Transporter
             'scope',
         ],
         'required'   => [
-            'email',
             'password',
             'client_id',
             'client_password',
