@@ -1,5 +1,13 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Prettus Repository Config
+|--------------------------------------------------------------------------
+|
+|
+*/
+
 return [
 
     /*
@@ -204,10 +212,11 @@ return [
         'params'             => [
             'search'       => 'search',
             'searchFields' => 'searchFields',
+            'filter'       => 'l5_filter', // we will override the filter in apiato
             'orderBy'      => 'orderBy',
             'sortedBy'     => 'sortedBy',
-            'filter'       => 'l5_filter', // we will override the filter in apiato.
-            'with'         => 'l5_with' // use `include` instead.
+            'with'         => 'l5_with', // use `include` instead
+            'searchJoin'   => 'searchJoin',
         ],
     ],
     /*
@@ -225,6 +234,10 @@ return [
             'interfaces'   => 'Repositories',
             'transformers' => 'Transformers',
             'presenters'   => 'Presenters',
+            'validators'   => 'Validators',
+            'controllers'  => 'Http/Controllers',
+            'provider'     => 'RepositoryServiceProvider',
+            'criteria'     => 'Criteria'
         ],
     ],
 ];
