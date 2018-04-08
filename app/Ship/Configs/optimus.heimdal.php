@@ -9,7 +9,6 @@ return [
     'formatters' => [
         // insert your custom Exception Formatters here!
 
-
         // Apiato Exception Formatters below
         \Illuminate\Validation\ValidationException::class => \App\Ship\Exceptions\Formatters\ValidationExceptionFormatter::class,
         SymfonyException\UnprocessableEntityHttpException::class => \App\Ship\Exceptions\Formatters\UnprocessableEntityHttpExceptionFormatter::class,
