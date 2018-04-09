@@ -12,6 +12,7 @@ return [
         // Apiato Exception Formatters below
         \Illuminate\Validation\ValidationException::class => \App\Ship\Exceptions\Formatters\ValidationExceptionFormatter::class,
         SymfonyException\UnprocessableEntityHttpException::class => \App\Ship\Exceptions\Formatters\UnprocessableEntityHttpExceptionFormatter::class,
+        \App\Containers\Authentication\Exceptions\AuthenticationException::class => \App\Ship\Exceptions\Formatters\AuthenticationExceptionFormatter::class,
         Illuminate\Auth\AuthenticationException::class => \App\Ship\Exceptions\Formatters\AuthenticationExceptionFormatter::class,
         Illuminate\Auth\Access\AuthorizationException::class => \App\Ship\Exceptions\Formatters\AuthorizationExceptionFormatter::class,
         SymfonyException\MethodNotAllowedHttpException::class => \App\Ship\Exceptions\Formatters\MethodNotAllowedExceptionFormatter::class,
