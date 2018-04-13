@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\UI\API\Tests\Functional;
 
+use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\Authentication\Tests\ApiTestCase;
 use Config;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,8 @@ class ProxyRefreshTest extends ApiTestCase
 
         $response->assertStatus(400);
 
-        $this->assertResponseContainKeyValue(['message' => 'We couldn\'t find your Refresh Token!']);
+        $message = (new RefreshTokenMissedException())->getMessage();
+        $this->assertResponseContainKeyValue(['message' => $message]);
 
         // delete testing keys files if they were created for this test
         if ($this->testingFilesCreated) {
