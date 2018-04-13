@@ -14,5 +14,5 @@ class NoDocTypesFoundException extends Exception
 {
     public $httpStatusCode = Response::HTTP_MISDIRECTED_REQUEST;
 
-    public $message = 'Please Update your config file.';
+    public $message = 'Please update your config file.';
 }
