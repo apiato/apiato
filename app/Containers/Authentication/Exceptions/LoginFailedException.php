@@ -14,5 +14,5 @@ class LoginFailedException extends Exception
 {
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'Login failed.';
+    public $message = 'An Exception happened during the Login Process.';
 }
