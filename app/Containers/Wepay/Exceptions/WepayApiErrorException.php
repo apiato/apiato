@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class WepayApiErrorException extends Exception
 {
-
     public $httpStatusCode = SymfonyResponse::HTTP_EXPECTATION_FAILED;
 
     public $message = 'Wepay API error.';
