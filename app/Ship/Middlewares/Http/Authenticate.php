@@ -2,53 +2,25 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use Closure;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\Request;
+use App\Containers\Authentication\Exceptions\AuthenticationException;
+use Exception;
+use Illuminate\Auth\Middleware\Authenticate as LaravelAuthenticate;
 
 /**
  * Class Authenticate
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class Authenticate
+class Authenticate extends LaravelAuthenticate
 {
 
-    /**
-     * The Guard implementation.
-     *
-     * @var Guard
-     */
-    protected $auth;
-
-    /**
-     * Create a new middleware instance.
-     *
-     * @param  Guard  $auth
-     */
-    public function __construct(Guard $auth)
+    public function authenticate(array $guards)
     {
-        $this->auth = $auth;
-    }
-
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next)
-    {
-        if ($this->auth->guest()) {
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('auth/login');
-            }
+        try {
+            return parent::authenticate($guards);
         }
-
-        return $next($request);
+        catch (Exception $exception) {
+            throw new AuthenticationException();
+        }
     }
-
 }

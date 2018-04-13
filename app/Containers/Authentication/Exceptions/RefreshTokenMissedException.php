@@ -14,5 +14,5 @@ class RefreshTokenMissedException extends Exception
 {
     public $httpStatusCode = Response::HTTP_BAD_REQUEST;
 
-    public $message = 'We couldn\'t find your Refresh Token!';
+    public $message = 'We could not find the Refresh Token. Maybe none is provided?';
 }
