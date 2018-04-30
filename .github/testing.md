@@ -12,6 +12,8 @@ Note that jscs is deprecating, replaced by eslint, but is still useful
 
 ## Usage
 * `cd apiato/`
+* `composer validate`
+* `yarn check`
 * `eslint resources/`
 * `jshint resources/`
 * `jscs resources/`
