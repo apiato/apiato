@@ -3,13 +3,13 @@
   "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
   "homepage": "http://apiato.io/",
   "support": {
-    "issues": "https://github.com/bingalls/accommo-api/issues",
-    "source": "https://github.com/bingalls/accommo-api"
+    "issues": "https://github.com/apiato/apiato/issues",
+    "source": "https://github.com/apiato/apiato"
   },
   "authors": [
     {
-    "issues": "https://github.com/apiato/apiato/issues",
-    "source": "https://github.com/apiato/apiato"
+      "name": "Mahmoud Zalt",
+      "email": "mahmoud@zalt.me"
     }
   ],
   "keywords": [
