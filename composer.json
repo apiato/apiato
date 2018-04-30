@@ -1,6 +1,6 @@
 {
-  "name": "bingalls/accommo-api",
-  "description": "Laravel demo of bookings API.",
+  "name": "apiato/apiato",
+  "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
   "homepage": "http://apiato.io/",
   "support": {
     "issues": "https://github.com/bingalls/accommo-api/issues",
@@ -8,17 +8,21 @@
   },
   "authors": [
     {
-      "name": "Bruce Ingalls"
+    "issues": "https://github.com/apiato/apiato/issues",
+    "source": "https://github.com/apiato/apiato"
     }
   ],
   "keywords": [
-    "accommodation",
-    "api",
-    "booking",
-    "graphql",
-    "ReST",
-    "Laravel",
-    "PHP"
+    "Apiato",
+    "API",
+    "Framework",
+    "API framework",
+    "API Starter",
+    "Laravel API",
+    "PHP",
+    "Hello API",
+    "Porto",
+    "Porto SAP"
   ],
   "license": "MIT",
   "type": "project",
