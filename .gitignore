@@ -9,10 +9,13 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
+package-lock.json
 yarn-error.log
+yarn.lock
 .env
 storage/logs/laravel.log
 /public/api-rendered-markdowns/*
+!/public/api-rendered-markdowns/.gitkeep
 /public/api/
 /public/uploads/
 /laradock*/

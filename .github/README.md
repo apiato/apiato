@@ -97,6 +97,9 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 </p>
 
 <a name="Contributors"></a>
+## Testing
+See [.github/testing.md](https://github.com/apiato/apiato/blob/master/.github/testing.md)
+
 ## Contributors
 
 #### Creators:

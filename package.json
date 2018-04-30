@@ -11,7 +11,9 @@
     "postinstall": "opencollective postinstall"
   },
   "dependencies": {
+    "ajv": "^6.4.0",
     "apidoc": "*",
+    "nsp": "^3.2.1",
     "opencollective": "^1.0.3"
   },
   "devDependencies": {

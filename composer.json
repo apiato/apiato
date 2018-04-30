@@ -1,28 +1,24 @@
 {
-  "name": "apiato/apiato",
-  "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
+  "name": "bingalls/accommo-api",
+  "description": "Laravel demo of bookings API.",
   "homepage": "http://apiato.io/",
   "support": {
-    "issues": "https://github.com/apiato/apiato/issues",
-    "source": "https://github.com/apiato/apiato"
+    "issues": "https://github.com/bingalls/accommo-api/issues",
+    "source": "https://github.com/bingalls/accommo-api"
   },
   "authors": [
     {
-      "name": "Mahmoud Zalt",
-      "email": "mahmoud@zalt.me"
+      "name": "Bruce Ingalls"
     }
   ],
   "keywords": [
-    "Apiato",
-    "API",
-    "Framework",
-    "API framework",
-    "API Starter",
-    "Laravel API",
-    "PHP",
-    "Hello API",
-    "Porto",
-    "Porto SAP"
+    "accommodation",
+    "api",
+    "booking",
+    "graphql",
+    "ReST",
+    "Laravel",
+    "PHP"
   ],
   "license": "MIT",
   "type": "project",
@@ -32,17 +28,19 @@
     "ext-openssl": "*",
     "ext-pdo": "*",
     "ext-tokenizer": "*",
-    "fideloper/proxy": "~4.0",
-    "laravel/framework": "5.6.*",
-    "laravel/tinker": "~1.0",
     "doctrine/dbal": "2.5.*",
+    "fideloper/proxy": "~4.0",
+    "folklore/graphql": "^1.1",
+    "laravel/framework": "~5.6.7",
+    "laravel/tinker": "~1.0",
     "wikimedia/composer-merge-plugin": "^1.3.1"
   },
   "require-dev": {
     "filp/whoops": "~2.0",
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~7.0"
+    "phpunit/phpunit": "~7.0",
+    "roave/security-advisories": "dev-master"
   },
   "autoload": {
     "classmap": [
