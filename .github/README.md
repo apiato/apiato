@@ -92,7 +92,7 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 
 <p align="center">
 	<a href="https://slackin-mezlsumyvc.now.sh/">
-	   <img src="https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
+	   <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 	</a>
 </p>
 
