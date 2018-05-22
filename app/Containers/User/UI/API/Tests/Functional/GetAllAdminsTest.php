@@ -28,7 +28,7 @@ class GetAllAdminsTest extends ApiTestCase
      */
     public function testGetAllAdmins_()
     {
-        $currentUserCount = User::where('is_client', 0)->get()->count();
+        $currentAdminCount = User::where('is_client', 0)->get()->count();
 
         // create some admin users
         $createdAdminUsers = factory(User::class, 4)->create();
@@ -46,7 +46,7 @@ class GetAllAdminsTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert admin count before seeding + amount of admin users seeded equals total admin count
-        $this->assertCount($currentUserCount + $createdAdminUsers->count(),
+        $this->assertCount($currentAdminCount + $createdAdminUsers->count(),
             $responseContent->data); 
     }
 
