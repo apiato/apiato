@@ -28,11 +28,13 @@ class GetAllAdminsTest extends ApiTestCase
      */
     public function testGetAllAdmins_()
     {
-        // create some non-admin users
-        $users = factory(User::class, 2)->create();
+        $currentAdminCount = User::where('is_client', 0)->get()->count();
 
-        // should not be returned
-        factory(User::class)->states('client')->create();
+        // create some admin users
+        $createdAdminUsers = factory(User::class, 4)->create();
+
+        // create some non-admin users
+        factory(User::class, 3)->states('client')->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -43,9 +45,9 @@ class GetAllAdminsTest extends ApiTestCase
         // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
 
-        // assert the returned data size is correct
-        $this->assertCount(4,
-            $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        // assert admin count before seeding + amount of admin users seeded equals total admin count
+        $this->assertCount($currentAdminCount + $createdAdminUsers->count(),
+            $responseContent->data); 
     }
 
     /**
