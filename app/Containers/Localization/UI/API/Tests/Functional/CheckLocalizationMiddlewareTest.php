@@ -62,7 +62,7 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
         $response->assertHeader('content-language', $language);
     }
 
-    public function test_if_middleware_throws_error_on_wrong_language()
+    public function test_if_middleware_sets_fallback_app_language_instead_wrong_language()
     {
         $language = 'xxx';
 
@@ -75,7 +75,11 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
         $response = $this->makeCall($data, $requestHeaders);
 
         // assert the response status
-        $response->assertStatus(412);
-    }
+        $response->assertStatus(200);
 
+        $fallbackLanguage = Config::get('app.fallback_locale');
+
+        // check if the header is properly set
+        $response->assertHeader('content-language', $fallbackLanguage);
+    }
 }

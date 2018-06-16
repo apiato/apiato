@@ -87,8 +87,8 @@ class LocalizationMiddleware extends Middleware
             }
         }
 
-        // we have not found any language that is supported
-        throw new UnsupportedLanguageException();
+        // return fallback locale if we have not found any language that is supported
+        return Config::get('app.fallback_locale');
     }
 
     /**
