@@ -33,7 +33,7 @@ class CheckWebLocalizationMiddlewareTest extends TestCase
         $response->assertHeader('content-language', $defaultLanguage);
     }
 
-    public function test_if_middleware_sets_custom_language()
+    public function test_if_middleware_sets_default_app_language_for_custom_request_header()
     {
         $language = 'fr';
 
