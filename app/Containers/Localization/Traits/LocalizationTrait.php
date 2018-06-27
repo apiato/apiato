@@ -82,6 +82,26 @@ trait LocalizationTrait
     }
 
     /**
+     * @param $request
+     *
+     * @return  string
+     */
+    private function findLanguageFromUrl(Request $request)
+    {
+        /*
+         * read the language segment from url
+         * if the segment is missing, use the default local language
+         */
+        $language = Config::get('app.locale');
+
+        if ($request->lang) {
+            $language = $request->lang;
+        }
+
+        return $language;
+    }
+
+    /**
      * @return array
      */
     private function getSupportedLanguages()
