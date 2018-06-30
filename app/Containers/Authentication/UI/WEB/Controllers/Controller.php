@@ -33,7 +33,7 @@ class Controller extends WebController
     {
         Apiato::call('Authentication@WebLogoutAction');
 
-        return redirect('login');
+        return redirect(route('get_admin_login_form'));
     }
 
     /**
@@ -46,10 +46,10 @@ class Controller extends WebController
         try {
             $result = Apiato::call('Authentication@WebAdminLoginAction', [new DataTransporter($request)]);
         } catch (Exception $e) {
-            return redirect('login')->with('status', $e->getMessage());
+            return redirect(route('get_admin_login_form'))->with('status', $e->getMessage());
         }
 
-        return is_array($result) ? redirect('login')->with($result) : redirect('dashboard');
+        return is_array($result) ? redirect(route('get_admin_login_form'))->with($result) : redirect(route('get_admin_dashboard_page'));
     }
 
     /**

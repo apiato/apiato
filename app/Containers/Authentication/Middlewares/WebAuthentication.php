@@ -45,7 +45,7 @@ class WebAuthentication extends Middleware
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {
-            return redirect(Apiato::getLoginWebPageName())
+            return redirect(route(Apiato::getLoginWebPageName()))
                 ->with('errorMessage', 'Credentials Incorrect.');
         }
 

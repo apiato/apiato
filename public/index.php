@@ -7,6 +7,12 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+/**
+ * Register Helper functions before vendor functions
+ */
+
+require __DIR__.'/../app/Ship/Helpers/mix.php';
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
