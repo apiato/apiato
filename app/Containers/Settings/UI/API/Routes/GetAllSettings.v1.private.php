@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Setting
+ * @apiGroup           Settings
  * @apiName            getAllSettings
  *
  * @api                {GET} /v1/settings Get All Settings
