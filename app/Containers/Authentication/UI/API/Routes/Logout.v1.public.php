@@ -2,7 +2,7 @@
 /**
  * @apiGroup           OAuth2
  * @apiName            Logout
- * @api                {DELETE} /v1/logout
+ * @api                {DELETE} /v1/logout Logout
  * @apiDescription     User Logout. (Revoking Access Token)
  *
  * @apiVersion         1.0.0
