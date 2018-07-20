@@ -4,6 +4,7 @@
     "barryvdh/laravel-debugbar": "3.*"
   },
   "require-dev": {
+    "codedungeon/phpunit-result-printer": "^0.19.10",
     "barryvdh/laravel-ide-helper": "2.4.*"
   },
   "autoload": {
