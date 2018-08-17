@@ -17,6 +17,11 @@ use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
 trait ChargeableTrait
 {
 
+    public function paymentAccounts()
+    {
+        return $this->morphMany(PaymentAccount::class, 'chargeable');
+    }
+
     /**
      * @param \App\Containers\Payment\Models\PaymentAccount $account
      * @param int|float                                     $amount
@@ -62,5 +67,5 @@ trait ChargeableTrait
 
         return $transaction;
     }
-
+    
 }

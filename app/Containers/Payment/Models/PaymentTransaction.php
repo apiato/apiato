@@ -53,4 +53,12 @@ class PaymentTransaction extends Model
      * A resource key to be used by the the JSON API Serializer responses.
      */
     protected $resourceKey = 'paymenttransactions';
+
+    /**
+     * @return  \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function chargeable()
+    {
+        return $this->morphTo();
+    }
 }

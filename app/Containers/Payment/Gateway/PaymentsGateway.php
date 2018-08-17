@@ -58,7 +58,8 @@ class PaymentsGateway
         $transaction = $chargerTask->charge($chargeable, $typedAccount, $amount, $currency);
 
         // now set some details of the transaction
-        $transaction->user_id = $chargeable->id;
+        $transaction->chargeable_id = $chargeable->id;
+        $transaction->chargeable_type = get_class($chargeable);
         $transaction->gateway = $typedAccount->getPaymentGatewayReadableName();
         $transaction->amount = $amount;
         $transaction->currency = $currency;

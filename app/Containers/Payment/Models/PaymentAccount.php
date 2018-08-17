@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class PaymentAccount extends Model
 {
-
+    
     use SoftDeletes;
 
     protected $fillable = [
@@ -37,6 +37,14 @@ class PaymentAccount extends Model
      * @return  \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function accountable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * @return  \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function chargeable()
     {
         return $this->morphTo();
     }
