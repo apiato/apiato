@@ -40,10 +40,14 @@ class RenderTemplatesTask extends Task
 
         // this is what the apidoc.json file will point to to load the header.md
         // example: "filename": "../public/api-rendered-markdowns/header.md"
-        $path = public_path(self::OUTPUT_PATH . 'header.md');
+        $path = public_path(self::OUTPUT_PATH);
+
+        if (!file_exists($path )) {
+            app('files')->makeDirectory($path , $mode = 0777, true, true);
+        }
 
         // write the actual file
-        file_put_contents($path, $this->headerMarkdownContent);
+        file_put_contents($path . 'header.md', $this->headerMarkdownContent);
 
         return $path;
     }
