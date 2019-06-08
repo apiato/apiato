@@ -4,5 +4,8 @@
   "type": "apiato-container",
   "require": {
     "jenssegers/agent": "^2.4"
+  },
+  "require-dev": {
+    "barryvdh/laravel-debugbar": "3.*"
   }
 }
