@@ -78,9 +78,9 @@ return [
 
         'output' => [
 
-            'log' => 'true',
+            'log' => true,
 
-            'console' => 'true',
+            'console' => true,
         ]
 
     ]
