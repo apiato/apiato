@@ -1,6 +1,6 @@
 # Apiato
 
-<h3 align="center">Build great API's faster | with PHP and laravel 5.6</h3>
+<h3 align="center">Build great API's faster | with PHP and laravel</h3>
 
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
@@ -20,7 +20,7 @@
 
 ### What is Apiato
 
-**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP.
+**Apiato** is a framework (or starter project) for building scalable and testable API-Centric Applications with PHP. It is build on top of Laravel.
       
 It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
 
@@ -52,10 +52,6 @@ API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work o
 <a name="Sponsors"></a>
 ## Sponsors
 
-Support this project by becoming a sponsor. 
-
-Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
-
 <a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
 <a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
@@ -66,6 +62,10 @@ Your logo will show up on the [github repository](https://github.com/apiato/apia
 <a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
+
+
+*Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]*
+
 
 <a name="Documentation"></a>
 ## Documentation
@@ -99,15 +99,12 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 <a name="Contributors"></a>
 ## Contributors
 
-#### Creators:
-
-- [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt)).
-
 #### Core contributors:
 
+- [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt)).
 - [Johannes Schobel](https://github.com/johannesschobel)
 - [Johan Alvarez](https://github.com/llstarscreamll)
-- Join us, by submitting 20 useful PR's.
+- Join us and keep the poroject alive.
 
 #### Awesome contributors:
 
@@ -123,13 +120,13 @@ Donate directly via [Paypal](https://www.paypal.me/mzalt)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
 
-or become a backer on [Open Collective](https://opencollective.com/apiato#backer)
-
-<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
-
 or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
 
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
+
+or become a backer on [Open Collective](https://opencollective.com/apiato#backer)
+
+<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
 
 <a name="License"></a>
 ## License
