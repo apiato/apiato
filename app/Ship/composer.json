@@ -1,6 +1,6 @@
 {
   "require": {
-    "apiato/core": "dev-master"
+    "apiato/core": "~2.4"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "2.4.*"
