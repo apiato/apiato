@@ -23,7 +23,7 @@ class Controller extends WebController
      */
     public function showLoginPage()
     {
-        return view('authentication::login');
+        return view('main');
     }
 
     /**
@@ -46,10 +46,20 @@ class Controller extends WebController
         try {
             $result = Apiato::call('Authentication@WebAdminLoginAction', [new DataTransporter($request)]);
         } catch (Exception $e) {
-            return redirect('login')->with('status', $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'title' => __('Error'),
+                'code' => $e->getCode(),
+                'message' => __($e->getMessage())
+            ]);
         }
 
-        return is_array($result) ? redirect('login')->with($result) : redirect('dashboard');
+        return response()->json([
+            'status' => 'success',
+            'title' => __('Success'),
+            'message' => $result,
+            'redirect' => '/dashboard'
+        ]);
     }
 
     /**

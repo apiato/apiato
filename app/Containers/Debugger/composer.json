@@ -3,7 +3,7 @@
   "description": "apiato Container.",
   "type": "apiato-container",
   "require": {
-    "jenssegers/agent": "^2.4"
+    "jenssegers/agent": "2.*"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "3.*"

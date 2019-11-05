@@ -1,9 +1,15 @@
 {
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/apiato/core"
+    }
+  ],
   "require": {
     "apiato/core": "dev-master"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "2.4.*"
+    "barryvdh/laravel-ide-helper": "2.*"
   },
   "autoload": {
     "files": [

@@ -26,7 +26,9 @@ class ShipProvider extends MainProvider
      */
     protected $aliases = [];
 
-
+	/**
+	* 
+	*/
     public function __construct()
     {
         parent::__construct(app());
@@ -34,11 +36,11 @@ class ShipProvider extends MainProvider
         if (class_exists('Barryvdh\Debugbar\ServiceProvider')) {
             $this->serviceProviders[] = \Barryvdh\Debugbar\ServiceProvider::class;
         }
-
         if (class_exists('Barryvdh\Debugbar\Facade')) {
             $this->aliases[] = \Barryvdh\Debugbar\Facade::class;
         }
     }
+	
     /**
      * Bootstrap any application services.
      *
@@ -63,9 +65,9 @@ class ShipProvider extends MainProvider
          */
         if ($this->app->environment() !== 'production' && class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
-
+		}
+		
         parent::register();
     }
-    
+
 }

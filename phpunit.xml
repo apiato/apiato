@@ -26,18 +26,19 @@
         </whitelist>
     </filter>
     <php>
-        <env name="API_FULL_URL"        value="http://api.apiato.dev"/>
+        <env name="API_FULL_URL"        value="http://api.apiato.local"/>
 
         <env name="APP_ENV"             value="testing"/>
         <env name="CACHE_DRIVER"        value="array"/>
         <env name="SESSION_DRIVER"      value="array"/>
         <env name="QUEUE_DRIVER"        value="sync"/>
 
-        <env name="DB_CONNECTION"       value="testing_sqlite_in_memory"/>
+        <env name="DB_CONNECTION"       value="mysql"/>
         <env name="DB_HOST"             value="127.0.0.1"/>
         <env name="DB_PORT"             value="3306"/>
-        <env name="DB_DATABASE"         value="apiato_db"/>
-        <env name="DB_USERNAME"         value="apiato_db"/>
-        <env name="DB_PASSWORD"         value="secret"/>
+        <env name="DB_DATABASE"         value="apiato"/>
+        <env name="DB_USERNAME"         value="root"/>
+        <env name="DB_PASSWORD"         value=""/>
+        <env name="DB_PREFIX"			value="hungnm_"/>
     </php>
 </phpunit>

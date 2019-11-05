@@ -3,6 +3,7 @@
 namespace App\Containers\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Support\Arr;
 
 /**
  * Class LoginRequest.
@@ -59,7 +60,7 @@ class LoginRequest extends Request
         foreach ($allowedLoginFields as $key => $optionalValidators)
         {
             // build all other login fields together
-            $allOtherLoginFields = array_except($allowedLoginFields, $key);
+            $allOtherLoginFields = Arr::except($allowedLoginFields, $key);
             $allOtherLoginFields = array_keys($allOtherLoginFields);
             $allOtherLoginFields = preg_filter('/^/', $prefix, $allOtherLoginFields);
             $allOtherLoginFields = implode(',', $allOtherLoginFields);

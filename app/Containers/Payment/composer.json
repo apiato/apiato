@@ -3,6 +3,5 @@
   "description": "Payment Container for apiato.",
   "type": "apiato-container",
   "require": {
-    "johannesschobel/laravel-shoppingcart" : "^0"
   }
 }
