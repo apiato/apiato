@@ -17,7 +17,7 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
             <exclude>
-                <!-- 
+                <!--
                 NOTE: Exclude the following directories because they fail when directly included with code-coverage
                 -->
                 <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
@@ -26,7 +26,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="API_FULL_URL"        value="http://api.apiato.dev"/>
+        <env name="API_FULL_URL"        value="http://api.apiato.test"/>
 
         <env name="APP_ENV"             value="testing"/>
         <env name="CACHE_DRIVER"        value="array"/>

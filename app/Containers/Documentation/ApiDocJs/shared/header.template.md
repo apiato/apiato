@@ -50,7 +50,7 @@ The `?limit=` parameter can be applied to define, how many record should be retu
 **Usage:**
 
 ```
-api.domain.dev/endpoint?limit=100
+api.domain.test/endpoint?limit=100
 ```
 
 The above example returns 100 resources. 
@@ -58,7 +58,7 @@ The above example returns 100 resources.
 The `limit` and `page` query parameters can be combined in order to get the next 100 resources:
 
 ```
-api.domain.dev/endpoint?limit=100&page=2
+api.domain.test/endpoint?limit=100&page=2
 ```
 
 You can skip the pagination limit to get all the data, by adding `?limit=0`, this will only work if 'skip pagination' is enabled on the server.
@@ -126,7 +126,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 **Usage:**
 
 ```
-api.domain.dev/endpoint?orderBy=created_at
+api.domain.test/endpoint?orderBy=created_at
 ```
 
 ### Sorting
@@ -138,7 +138,7 @@ By default the `orderBy` sorts the data in **ascending** order, if you want the 
 **Usage:**
 
 ```
-api.domain.dev/endpoint?orderBy=name&sortedBy=desc
+api.domain.test/endpoint?orderBy=name&sortedBy=desc
 ```
 
 Order By Accepts:
@@ -155,7 +155,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 #### Search any field:
 
 ```
-api.domain.dev/endpoint?search=keyword here
+api.domain.test/endpoint?search=keyword here
 ```
 
 > Space should be replaced with `%20` (search=keyword%20here).
@@ -163,23 +163,23 @@ api.domain.dev/endpoint?search=keyword here
 #### Search any field for multiple keywords:
 
 ```
-api.domain.dev/endpoint?search=first keyword;second keyword
+api.domain.test/endpoint?search=first keyword;second keyword
 ```
 
 #### Search in specific field:
 ```
-api.domain.dev/endpoint?search=field:keyword here
+api.domain.test/endpoint?search=field:keyword here
 ```
 
 #### Search in specific fields for multiple keywords: 
 ```
-api.domain.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+api.domain.test/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 #### Define query condition:
 
 ```
-api.domain.dev/endpoint?search=field:keyword&searchFields=name:like
+api.domain.test/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Available Conditions: 
@@ -191,7 +191,7 @@ Available Conditions:
 #### Define query condition for multiple fields:
 
 ```
-api.domain.dev/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+api.domain.test/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
 ```
 
 ### Filtering
@@ -203,7 +203,7 @@ The `?filter=` parameter can be applied to any HTTP request. And is used to cont
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.domain.dev/endpoint?filter=id;status
+api.domain.test/endpoint?filter=id;status
 ```
 
 Example Response, including only id and status:
@@ -249,7 +249,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.domain.dev/endpoint?page=200
+api.domain.test/endpoint?page=200
 ```
 
 *The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
@@ -264,7 +264,7 @@ api.domain.dev/endpoint?page=200
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.domain.dev/endpoint?page=21"
+        "previous": "http://api.domain.test/endpoint?page=21"
       }
     }
   }
@@ -283,7 +283,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 **Usage:**
 
 ```
-api.domain.dev/endpoint?include=relationship
+api.domain.test/endpoint?include=relationship
 ```
 
 Every response contain an `include` in its `meta`  as follow:
@@ -305,7 +305,7 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 **Usage:**
 
 ```
-api.domain.dev/endpoint?skipCache=true
+api.domain.test/endpoint?skipCache=true
 ```
 
 
@@ -332,12 +332,12 @@ TO BE CONTINUE...
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.dev/v2/register"
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@admin.com" -F "password=admin" -F "=" "http://api.domain.test/v2/register"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:
 
 ```shell
-curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.dev/v1/users"
+curl -X GET -H "Accept: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." -H "http://api.domain.test/v1/users"
 ```
 

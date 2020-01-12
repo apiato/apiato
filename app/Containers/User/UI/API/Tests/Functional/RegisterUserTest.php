@@ -30,7 +30,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterNewUserWithCredentials_()
     {
         $data = [
-            'email'    => 'apiato@mail.dev',
+            'email'    => 'apiato@mail.test',
             'name'     => 'Apiato',
             'password' => 'secretpass',
         ];
@@ -60,7 +60,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterNewUserUsingGetVerb()
     {
         $data = [
-            'email'    => 'apiato@mail.dev',
+            'email'    => 'apiato@mail.test',
             'name'     => 'Apiato',
             'password' => 'secret',
         ];
@@ -82,7 +82,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterExistingUser()
     {
         $userDetails = [
-            'email'    => 'apiato@mail.dev',
+            'email'    => 'apiato@mail.test',
             'name'     => 'Apiato',
             'password' => 'secret',
         ];
@@ -135,7 +135,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterNewUserWithoutName()
     {
         $data = [
-            'email'    => 'apiato@mail.dev',
+            'email'    => 'apiato@mail.test',
             'password' => 'secret',
         ];
 
@@ -157,7 +157,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterNewUserWithoutPassword()
     {
         $data = [
-            'email' => 'apiato@mail.dev',
+            'email' => 'apiato@mail.test',
             'name'  => 'Apiato',
         ];
 
@@ -178,7 +178,7 @@ class RegisterUserTest extends ApiTestCase
     public function testRegisterNewUserWithInvalidEmail()
     {
         $data = [
-            'email'    => 'missing-at.dev',
+            'email'    => 'missing-at.test',
             'name'     => 'Apiato',
             'password' => 'secret',
         ];

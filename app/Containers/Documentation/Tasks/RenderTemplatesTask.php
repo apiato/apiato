@@ -29,7 +29,7 @@ class RenderTemplatesTask extends Task
         // read the template file
         $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
 
-        $this->replace('api.domain.dev', Config::get('apiato.api.url'));
+        $this->replace('api.domain.test', Config::get('apiato.api.url'));
         $this->replace('{{rate-limit-expires}}', Config::get('apiato.api.throttle.expires'));
         $this->replace('{{rate-limit-attempts}}', Config::get('apiato.api.throttle.attempts'));
         $this->replace('{{access-token-expires-in}}', $this->minutesToTimeDisplay(Config::get('apiato.api.expires-in')));

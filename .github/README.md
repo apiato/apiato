@@ -104,7 +104,7 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 - [Mahmoud Zalt](https://zalt.me/) (Twitter [@Mahmoud_Zalt](https://twitter.com/Mahmoud_Zalt)).
 - [Johannes Schobel](https://github.com/johannesschobel)
 - [Johan Alvarez](https://github.com/llstarscreamll)
-- Join us and keep the poroject alive.
+- Join us and keep the project alive.
 
 #### Awesome contributors:
 

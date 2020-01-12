@@ -3,7 +3,7 @@
   "description": "apiato (Private API) Documentation",
   "title": "Welcome to apiato",
   "version": "1.0.0",
-  "url" : "http://api.apiato.dev",
+  "url" : "http://api.apiato.test",
   "template": {
   	"withCompare": true,
   	"withGenerator": true
