@@ -2,6 +2,7 @@
 
 namespace Apiato\Core\Traits\TestsTraits\PhpUnit;
 
+use Illuminate\Support\Arr;
 use App;
 use App\Ship\Exceptions\MissingTestEndpointException;
 use App\Ship\Exceptions\UndefinedMethodException;
@@ -269,7 +270,7 @@ trait TestsRequestHelperTrait
      */
     private function headersContainAuthorization($headers)
     {
-        return array_has($headers, 'Authorization');
+        return Arr::has($headers, 'Authorization');
     }
 
     /**

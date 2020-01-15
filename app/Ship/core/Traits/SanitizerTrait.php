@@ -2,6 +2,7 @@
 
 namespace Apiato\Core\Traits;
 
+use Illuminate\Support\Arr;
 use Apiato\Core\Abstracts\Requests\Request;
 use Apiato\Core\Abstracts\Transporters\Transporter;
 use App\Ship\Exceptions\InternalErrorException;
@@ -31,7 +32,7 @@ trait SanitizerTrait
         foreach ($fields as $field) {
             // create a multidimensional array based on $fields
             // which was submitted as DOT notation (e.g., data.name)
-            array_set($search, $field, true);
+            Arr::set($search, $field, true);
         }
 
         // check, if the keys exist in both arrays

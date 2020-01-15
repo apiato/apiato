@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
+use Illuminate\Support\Arr;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tests\ApiTestCase;
 use App\Containers\User\Models\User;
@@ -110,7 +111,7 @@ class AssignUserToRoleTest extends ApiTestCase
 
         $this->assertTrue(count($responseContent->data->roles->data) > 1);
 
-        $roleIds = array_pluck($responseContent->data->roles->data, 'id');
+        $roleIds = Arr::pluck($responseContent->data->roles->data, 'id');
         $this->assertContains($data['roles_ids'][0], $roleIds);
 
         $this->assertContains($data['roles_ids'][1], $roleIds);
