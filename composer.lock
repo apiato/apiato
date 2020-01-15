@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d566be801cd2e5d280bae0d9cfea1aa1",
+    "content-hash": "da8f1671607a14d7e1c4e30c0df74398",
     "packages": [
         {
             "name": "apiato/containers-installer",
@@ -2810,6 +2810,48 @@
                 "serialize"
             ],
             "time": "2019-11-29T22:36:02+00:00"
+        },
+        {
+            "name": "optimus/heimdal",
+            "version": "dev-2020-updates",
+            "dist": {
+                "type": "path",
+                "url": "app/Ship/core/Exceptions/heimdal-package",
+                "reference": "a1cbba991b3a21f4c6ac3668506f2f05cb376ff1",
+                "shasum": null
+            },
+            "require": {
+                "laravel/framework": "~5.3|~6.0"
+            },
+            "require-dev": {
+                "bugsnag/bugsnag-laravel": "^2.4",
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "~2.1"
+            },
+            "suggest": {
+                "asm89/stack-cors": "Needed to add CORS headers if add_cors_headers configuration is true",
+                "rollbar/rollbar": "Needed to report exceptions to Rollbar.com",
+                "sentry/sentry": "Needed to report exceptions to Sentry.io"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Optimus\\Heimdal\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "files": [
+                    "tests/helpers.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "paragonie/random_compat",
@@ -8332,7 +8374,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "optimus/heimdal": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
