@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @apiGroup           {{container-name}}
+ * @apiName            {{operation}}
+ *
+ * @api                {{{doc-http-verb}}} {{doc-endpoint-url}} Endpoint title here..
+ * @apiDescription     Endpoint description here..
+ *
+ * @apiVersion         {{endpoint-version}}.0.0
+ * @apiPermission      none
+ *
+ * @apiParam           {String}  parameters here..
+ *
+ * @apiSuccessExample  {json}  Success-Response:
+ * HTTP/1.1 200 OK
+{
+  // Insert the response of the request here...
+}
+ */
+
+/** @var Route $router */
+$router->{{http-verb}}('{{endpoint-url}}', [
+    'as' => '{{route-name}}',
+    'uses'  => 'Controller@{{operation}}',
+    'middleware' => [
+      'auth:{{auth-middleware}}',
+    ],
+]);

@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Actions;
+
+use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
+
+class Delete{{model}}Action extends Action
+{
+    public function run(Request $request)
+    {
+        return Apiato::call('{{container-name}}@Delete{{model}}Task', [$request->id]);
+    }
+}

@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Data\Repositories;
+
+use App\Ship\Parents\Repositories\Repository;
+
+/**
+ * Class {{class-name}}
+ */
+class {{class-name}} extends Repository
+{
+
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'id' => '=',
+        // ...
+    ];
+
+}

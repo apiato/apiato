@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Data\Seeders;
+
+use App\Ship\Parents\Seeders\Seeder;
+
+class {{class-name}} extends Seeder
+{
+    public function run()
+    {
+        // ...
+    }
+}

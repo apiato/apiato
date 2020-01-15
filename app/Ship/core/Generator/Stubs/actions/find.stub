@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Actions;
+
+use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
+
+class Find{{model}}ByIdAction extends Action
+{
+    public function run(Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Find{{model}}ByIdTask', [$request->id]);
+
+        return ${{entity}};
+    }
+}

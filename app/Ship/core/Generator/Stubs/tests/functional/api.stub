@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Containers\{{container-name}}\UI\API\Tests\Functional;
+
+use App\Containers\{{container-name}}\Tests\ApiTestCase;
+
+/**
+ * Class {{class-name}}.
+ *
+ * @group {{_container-name}}
+ * @group api
+ */
+class {{class-name}} extends ApiTestCase
+{
+
+    // the endpoint to be called within this test (e.g., get@v1/users)
+    protected $endpoint = 'method@endpoint';
+
+    // fake some access rights
+    protected $access = [
+        'permissions' => '',
+        'roles'       => '',
+    ];
+
+    /**
+     * @test
+     */
+    public function test_()
+    {
+        $data = [
+            // 'key' => 'value',
+        ];
+
+        // send the HTTP request
+        $response = $this->makeCall($data);
+
+        // assert the response status
+        $response->assertStatus(200);
+
+        // make other asserts here
+    }
+
+}

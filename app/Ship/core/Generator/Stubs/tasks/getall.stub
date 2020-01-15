@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Tasks;
+
+use App\Containers\{{container-name}}\Data\Repositories\{{model}}Repository;
+use App\Ship\Parents\Tasks\Task;
+
+class GetAll{{models}}Task extends Task
+{
+
+    protected $repository;
+
+    public function __construct({{model}}Repository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function run()
+    {
+        return $this->repository->paginate();
+    }
+}

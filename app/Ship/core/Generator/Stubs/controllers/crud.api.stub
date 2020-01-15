@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Containers\{{container-name}}\UI\{{user-interface}}\Controllers;
+
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Create{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Delete{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\GetAll{{models}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Find{{model}}ByIdRequest;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Update{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Transformers\{{model}}Transformer;
+use App\Ship\Parents\Controllers\{{base-controller}};
+use Apiato\Core\Foundation\Facades\Apiato;
+
+/**
+ * Class {{class-name}}
+ *
+ * @package App\Containers\{{container-name}}\UI\{{user-interface}}\Controllers
+ */
+class {{class-name}} extends {{base-controller}}
+{
+    /**
+     * @param Create{{model}}Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function create{{model}}(Create{{model}}Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Create{{model}}Action', [$request]);
+
+        return $this->created($this->transform(${{entity}}, {{model}}Transformer::class));
+    }
+
+    /**
+     * @param Find{{model}}ByIdRequest $request
+     * @return array
+     */
+    public function find{{model}}ById(Find{{model}}ByIdRequest $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Find{{model}}ByIdAction', [$request]);
+
+        return $this->transform(${{entity}}, {{model}}Transformer::class);
+    }
+
+    /**
+     * @param GetAll{{models}}Request $request
+     * @return array
+     */
+    public function getAll{{models}}(GetAll{{models}}Request $request)
+    {
+        ${{entities}} = Apiato::call('{{container-name}}@GetAll{{models}}Action', [$request]);
+
+        return $this->transform(${{entities}}, {{model}}Transformer::class);
+    }
+
+    /**
+     * @param Update{{model}}Request $request
+     * @return array
+     */
+    public function update{{model}}(Update{{model}}Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Update{{model}}Action', [$request]);
+
+        return $this->transform(${{entity}}, {{model}}Transformer::class);
+    }
+
+    /**
+     * @param Delete{{model}}Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete{{model}}(Delete{{model}}Request $request)
+    {
+        Apiato::call('{{container-name}}@Delete{{model}}Action', [$request]);
+
+        return $this->noContent();
+    }
+}

@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Actions;
+
+use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
+
+class Update{{model}}Action extends Action
+{
+    public function run(Request $request)
+    {
+        $data = $request->sanitizeInput([
+            // add your request data here
+        ]);
+
+        ${{entity}} = Apiato::call('{{container-name}}@Update{{model}}Task', [$request->id, $data]);
+
+        return ${{entity}};
+    }
+}

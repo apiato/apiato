@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Values;
+
+use App\Ship\Parents\Values\Value;
+
+class {{class-name}} extends Value
+{
+
+    /**
+     * A resource key to be used by the the JSON API Serializer responses.
+     */
+    protected $resourceKey = '{{resource-key}}';
+
+}

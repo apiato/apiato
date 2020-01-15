@@ -18,6 +18,7 @@
     "Framework",
     "API framework",
     "API Starter",
+    "PHP API Starter",
     "Laravel API",
     "PHP",
     "Hello API",
@@ -65,6 +66,7 @@
     "merge-plugin": {
       "include": [
         "app/Ship/composer.json",
+        "app/Ship/core/composer.json",
         "app/Containers/*/composer.json",
         "app/Containers/composer.json"
       ],

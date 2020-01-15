@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Containers\{{container-name}}\UI\CLI\Tests\Functional;
+
+use App\Containers\{{container-name}}\Tests\CliTestCase;
+
+/**
+ * Class {{class-name}}.
+ *
+ * @group {{_container-name}}
+ * @group cli
+ */
+class {{class-name}} extends CliTestCase
+{
+
+    /**
+     * @test
+     */
+    public function test_()
+    {
+        // make something here
+
+        // assert basic stuff here
+    }
+
+}

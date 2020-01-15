@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+/**
+ * Class {{class-name]].
+ *
+ * A custom Service Provider - remember to register the latter in the MainServiceProvider of this Container.
+ */
+class {{class-name}} extends ServiceProvider
+{
+
+    /**
+     * Register anything in the container.
+     */
+    public function register()
+    {
+        parent::register();
+
+        // ...
+    }
+}

@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Mails;
+
+use App\Containers\User\Models\User;
+use App\Ship\Parents\Mails\Mail;
+use Illuminate\Bus\Queueable;
+
+/**
+ * Class {{class-name}}
+ */
+class {{class-name}} extends Mail
+{
+    use Queueable;
+
+    protected $recipient;
+
+    /**
+     * {{class-name}} constructor.
+     *
+     * @param $recipient
+     */
+    public function __construct(User $recipient)
+    {
+        $this->recipient = $recipient;
+    }
+
+    public function build()
+    {
+        return $this->view('{{_container-name}}::{{view}}')
+            ->to($this->recipient->email, $this->recipient->name)
+            ->with([
+                // place your replacement variables here...
+                //'name' => $this->recipient->name,
+            ]);
+    }
+}

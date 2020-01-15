@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Containers\{{container-name}}\UI\{{user-interface}}\Controllers;
+
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Create{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Delete{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\GetAll{{models}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Find{{model}}ByIdRequest;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Update{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Store{{model}}Request;
+use App\Containers\{{container-name}}\UI\{{user-interface}}\Requests\Edit{{model}}Request;
+use App\Ship\Parents\Controllers\WebController;
+use Apiato\Core\Foundation\Facades\Apiato;
+
+/**
+ * Class {{class-name}}
+ *
+ * @package App\Containers\{{container-name}}\UI\{{user-interface}}\Controllers
+ */
+class {{class-name}} extends WebController
+{
+    /**
+     * Show all entities
+     *
+     * @param GetAll{{models}}Request $request
+     */
+    public function index(GetAll{{models}}Request $request)
+    {
+        ${{entities}} = Apiato::call('{{container-name}}@GetAll{{models}}Action', [$request]);
+
+        // ..
+    }
+
+    /**
+     * Show one entity
+     *
+     * @param Find{{model}}ByIdRequest $request
+     */
+    public function show(Find{{model}}ByIdRequest $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Find{{model}}ByIdAction', [$request]);
+
+        // ..
+    }
+
+    /**
+     * Create entity (show UI)
+     *
+     * @param Create{{model}}Request $request
+     */
+    public function create(Create{{model}}Request $request)
+    {
+        // ..
+    }
+
+    /**
+     * Add a new entity
+     *
+     * @param Store{{model}}Request $request
+     */
+    public function store(Store{{model}}Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Create{{model}}Action', [$request]);
+
+        // ..
+    }
+
+    /**
+     * Edit entity (show UI)
+     *
+     * @param Edit{{model}}Request $request
+     */
+    public function edit(Edit{{model}}Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Get{{model}}ByIdAction', [$request]);
+
+        // ..
+    }
+
+    /**
+     * Update a given entity
+     *
+     * @param Update{{model}}Request $request
+     */
+    public function update(Update{{model}}Request $request)
+    {
+        ${{entity}} = Apiato::call('{{container-name}}@Update{{model}}Action', [$request]);
+
+        // ..
+    }
+
+    /**
+     * Delete a given entity
+     *
+     * @param Delete{{model}}Request $request
+     */
+    public function delete(Delete{{model}}Request $request)
+    {
+         $result = Apiato::call('{{container-name}}@Delete{{model}}Action', [$request]);
+
+         // ..
+    }
+}

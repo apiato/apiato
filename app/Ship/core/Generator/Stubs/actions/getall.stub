@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Containers\{{container-name}}\Actions;
+
+use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Requests\Request;
+use Apiato\Core\Foundation\Facades\Apiato;
+
+class GetAll{{models}}Action extends Action
+{
+    public function run(Request $request)
+    {
+        ${{entities}} = Apiato::call('{{container-name}}@GetAll{{models}}Task', [], ['addRequestCriteria']);
+
+        return ${{entities}};
+    }
+}
