@@ -56,18 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'apiato@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
-
-    'to' => [
-
-        'support' => [
-            'address' => env('MAIL_TO_SUPPORT_ADDRESS', null),
-            'name' => env('MAIL_TO_SUPPORT_NAME', null)
-        ],
-
-        // .. add more below
     ],
 
     /*
@@ -129,5 +119,18 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | If you are using the "log" driver, you may specify the logging channel
+    | if you prefer to keep mail messages separate from other log entries
+    | for simpler reading. Otherwise, the default channel will be used.
+    |
+    */
+
+    'log_channel' => env('MAIL_LOG_CHANNEL'),
 
 ];
