@@ -3,6 +3,6 @@
   "description": "apiato Container.",
   "type": "apiato-container",
   "require": {
-    "laravel/passport": "~5.0"
+    "laravel/passport": "~7.3.3"
   }
 }

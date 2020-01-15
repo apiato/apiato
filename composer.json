@@ -56,7 +56,7 @@
         }
     },
     "autoload-dev": {
-        "psr-4": []
+        "psr-4": {}
     },
     "extra": {
         "laravel": {

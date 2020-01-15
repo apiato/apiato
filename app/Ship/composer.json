@@ -1,16 +1,15 @@
 {
   "require": {
-    "illuminate/support": "~5.5",
+    "illuminate/support": "~6.11",
     "apiato/containers-installer" : "1.0.*",
     "guzzlehttp/guzzle": "^6.3",
     "prettus/l5-repository": "^2.6",
     "barryvdh/laravel-cors": "^0.11",
     "spatie/laravel-fractal": "^5.3",
-    "vinkla/hashids": "^5.0",
-    "optimus/heimdal" : "~1.5",
+    "vinkla/hashids": "^7.0",
     "dto/dto" : "^3.2"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "2.4.*"
+    "barryvdh/laravel-ide-helper": "2.6.*"
   }
 }
