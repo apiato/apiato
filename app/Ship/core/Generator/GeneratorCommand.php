@@ -301,15 +301,15 @@ abstract class GeneratorCommand extends Command
     private function sanitizeUserData($data) {
 
         if (! array_key_exists('path-parameters', $data)) {
-            $data['path-parameters'] = array();
+            $data['path-parameters'] = [];
         }
 
         if (! array_key_exists('stub-parameters', $data)) {
-            $data['stub-parameters'] = array();
+            $data['stub-parameters'] = [];
         }
 
         if (! array_key_exists('file-parameters', $data)) {
-            $data['file-parameters'] = array();
+            $data['file-parameters'] = [];
         }
 
         return $data;

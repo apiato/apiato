@@ -160,7 +160,7 @@ class Apiato
     {
         $php_code = file_get_contents($filePathName);
 
-        $classes = array();
+        $classes = [];
         $tokens = token_get_all($php_code);
         $count = count($tokens);
         for ($i = 2; $i < $count; $i++) {

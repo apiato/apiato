@@ -40,7 +40,7 @@ class SeedTestingDataCommand extends ConsoleCommand
     public function handle()
     {
         $this->call('db:seed', [
-            '--class' => 'App\Ship\Seeders\SeedTestingData'
+            '--class' => \App\Ship\Seeders\SeedTestingData::class
         ]);
 
         $this->info('Testing Data Seeded Successfully.');
