@@ -25,7 +25,7 @@ class CreateStripeCustomerTask extends Task
      */
     public function __construct(Stripe $stripe)
     {
-        $this->stripe = $stripe->make(Config::get('services.stripe.secret'), Config::get('services.stripe.version'));
+        $this->stripe = $stripe->make(Config::get('settings.stripe.secret'), Config::get('settings.stripe.version'));
     }
 
     /**
