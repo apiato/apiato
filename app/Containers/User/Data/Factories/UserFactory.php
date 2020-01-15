@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 $factory->define(App\Containers\User\Models\User::class, function (Faker\Generator $faker) {
@@ -9,7 +10,7 @@ $factory->define(App\Containers\User\Models\User::class, function (Faker\Generat
         'name'           => $faker->name,
         'email'          => $faker->unique()->safeEmail,
         'password'       => $password ? : $password = Hash::make('testing-password'),
-        'remember_token' => str_random(10),
+        'remember_token' => Str::random(10),
         'is_client'      => false,
     ];
 });

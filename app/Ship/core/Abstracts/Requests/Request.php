@@ -2,6 +2,7 @@
 
 namespace Apiato\Core\Abstracts\Requests;
 
+use Illuminate\Support\Arr;
 use Apiato\Core\Abstracts\Transporters\Transporter;
 use Apiato\Core\Exceptions\UndefinedTransporterException;
 use Apiato\Core\Traits\HashIdTrait;
@@ -145,13 +146,13 @@ abstract class Request extends LaravelRequest
 
         foreach ($fields as $oldKey => $newKey) {
             // the key to be mapped does not exist - skip it
-            if (!array_has($data, $oldKey)) {
+            if (!Arr::has($data, $oldKey)) {
                 continue;
             }
 
             // set the new field and remove the old one
-            array_set($data, $newKey, array_get($data, $oldKey));
-            array_forget($data, $oldKey);
+            Arr::set($data, $newKey, Arr::get($data, $oldKey));
+            Arr::forget($data, $oldKey);
         }
 
         // overwrite the initial request
