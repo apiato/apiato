@@ -40,7 +40,7 @@ class SeedDeploymentDataCommand extends ConsoleCommand
     public function handle()
     {
         $this->call('db:seed', [
-            '--class' => 'App\Ship\Seeders\SeedDeploymentData'
+            '--class' => \App\Ship\Seeders\SeedDeploymentData::class
         ]);
 
         $this->info('Deployment Data Seeded Successfully.');
