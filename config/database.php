@@ -35,12 +35,6 @@ return [
 
     'connections' => [
 
-        'testing_sqlite' => [
-          'driver'   => 'sqlite',
-          'database' => ':memory:',
-          'prefix'   => 'test',
-        ],
-
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
