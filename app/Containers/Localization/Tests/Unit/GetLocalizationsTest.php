@@ -40,7 +40,7 @@ class GetLocalizationsTest extends TestCase
 
         $unsupportedLocale = new Localization('fr');
 
-        $this->assertContains($unsupportedLocale, $localizations, '', false, false, false);
+        $this->assertContainsEquals($unsupportedLocale, $localizations);
     }
 
     public function test_if_specific_locale_with_regions_is_returned()
@@ -50,7 +50,7 @@ class GetLocalizationsTest extends TestCase
 
         $unsupportedLocale = new Localization('en', ['en-GB', 'en-US']);
 
-        $this->assertContains($unsupportedLocale, $localizations, '', false, false, false);
+        $this->assertContainsEquals($unsupportedLocale, $localizations);
     }
 
     public function test_if_wrong_locale_is_not_returned()
@@ -60,6 +60,6 @@ class GetLocalizationsTest extends TestCase
 
         $unsupportedLocale = new Localization('xxx');
 
-        $this->assertNotContains($unsupportedLocale, $localizations, '', false, false, false);
+        $this->assertNotContainsEquals($unsupportedLocale, $localizations);
     }
 }
