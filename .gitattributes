@@ -1,6 +1,7 @@
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
+*.js linguist-vendored
 .github export-ignore
 CHANGELOG.md export-ignore
 .scrutinizer.yml export-ignore
