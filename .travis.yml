@@ -33,6 +33,10 @@ before_script:
 
 script: vendor/bin/phpunit
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 after_failure:
   - echo --------------- Begin > Laravel.log ---------------
   - cat storage/logs/laravel.log
