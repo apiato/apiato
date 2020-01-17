@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "da8f1671607a14d7e1c4e30c0df74398",
@@ -2817,8 +2817,7 @@
             "dist": {
                 "type": "path",
                 "url": "app/Ship/core/Exceptions/heimdal-package",
-                "reference": "a1cbba991b3a21f4c6ac3668506f2f05cb376ff1",
-                "shasum": null
+                "reference": "a1cbba991b3a21f4c6ac3668506f2f05cb376ff1"
             },
             "require": {
                 "laravel/framework": "~5.3|~6.0"
