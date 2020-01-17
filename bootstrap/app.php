@@ -2,19 +2,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| Set PHPs serialization precision 
-|--------------------------------------------------------------------------
-| Make sure that everyone who has the right php version is using the more 
-| precise serialization_precision
-| refer to: https://github.com/apiato/apiato/issues/257 for an explanation
-| of the issue.
-*/
-if (version_compare(phpversion(), '7.1', '>=')) {
-    ini_set( 'serialize_precision', -1 );
-}
-
-/*
-|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
@@ -25,7 +12,7 @@ if (version_compare(phpversion(), '7.1', '>=')) {
 */
 
 $app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
 /*
