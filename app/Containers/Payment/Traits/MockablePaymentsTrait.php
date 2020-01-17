@@ -16,7 +16,7 @@ trait MockablePaymentsTrait
     {
         // Mock Stripe charging
         if (class_exists($chargeWithStripeTask = \App\Containers\Stripe\Tasks\ChargeWithStripeTask::class)) {
-            $this->mock($chargeWithStripeTask)
+            $this->mockIt($chargeWithStripeTask)
                  ->shouldReceive('charge')
                  ->andReturn(new PaymentTransaction([
                         'user_id' => 1,
