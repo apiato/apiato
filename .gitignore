@@ -3,14 +3,13 @@
 /public/storage
 /storage/*.key
 /vendor
-/.idea
-/.vscode
-/.vagrant
+.env
+.env.backup
+.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env
 storage/logs/laravel.log
 /public/api-rendered-markdowns/*
 /public/api/
@@ -18,3 +17,6 @@ storage/logs/laravel.log
 /laradock*/
 _ide_helper*.php
 .phpstorm.meta.php
+/.vagrant
+/.idea
+/.vscode
