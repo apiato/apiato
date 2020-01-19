@@ -1,7 +1,0 @@
-global_exclude_dirs:
-  - vendor
-
-exclude_patterns:
-  -  app/Ship/core/Generator/Commands/ContainerApiGenerator.php
-  -  app/Ship/core/Generator/Commands/ContainerWebGenerator.php
-  -  app/Containers/Debugger/Tasks/QueryDebuggerTask.php
