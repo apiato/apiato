@@ -27,13 +27,13 @@ class HttpKernel extends LaravelHttpKernel
      */
     protected $middleware = [
         // Laravel middleware's
+        \App\Ship\Middlewares\Http\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Ship\Middlewares\Http\TrimStrings::class,
         \App\Ship\Middlewares\Http\TrustProxies::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
-        // CORS package middleware
+      // CORS package middleware
         \Barryvdh\Cors\HandleCors::class,
     ];
 
@@ -54,11 +54,11 @@ class HttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
-            ValidateJsonContent::class,
-            'bindings',
-            ProcessETagHeadersMiddleware::class,
-            ProfilerMiddleware::class,
-            // The throttle Middleware is registered by the RoutesLoaderTrait in the Core
+          // Note: The throttle Middleware is registered by the RoutesLoaderTrait in the Core
+          ValidateJsonContent::class,
+          'bindings',
+          ProcessETagHeadersMiddleware::class,
+          ProfilerMiddleware::class,
         ],
     ];
 
@@ -75,8 +75,27 @@ class HttpKernel extends LaravelHttpKernel
         'can'      => \Illuminate\Auth\Middleware\Authorize::class,
         'auth'     => Authenticate::class,
         'signed'   => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 
+    /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+      \Illuminate\Session\Middleware\StartSession::class,
+      \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+      \App\Http\Middleware\Authenticate::class,
+      \Illuminate\Routing\Middleware\ThrottleRequests::class,
+      \Illuminate\Session\Middleware\AuthenticateSession::class,
+      \Illuminate\Routing\Middleware\SubstituteBindings::class,
+      \Illuminate\Auth\Middleware\Authorize::class,
+    ];
 }
