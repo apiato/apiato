@@ -2,7 +2,7 @@
 
 # Apiato
 
-<h3 align="center">Build great API's faster | with PHP and laravel</h3>
+<h3 align="center">Build great API's faster | With PHP 7.4 and laravel 6</h3>
 
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
@@ -20,7 +20,7 @@
 
 <a name="Introduction"></a>
 
-**Apiato** is a framework (or starter project) for building scalable and testable API-Centric Applications with PHP. It is build on top of Laravel.
+**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP, build on top of Laravel.
       
 It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
 
