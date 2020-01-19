@@ -1,8 +1,8 @@
 {
   "require": {
     "illuminate/support": "~6.11",
-    "apiato/containers-installer" : "1.0.*",
-    "guzzlehttp/guzzle": "^6.3",
+    "apiato/containers-installer" : "^1.0",
+    "guzzlehttp/guzzle": "^6.5",
     "prettus/l5-repository": "^2.6",
     "barryvdh/laravel-cors": "^0.11",
     "spatie/laravel-fractal": "^5.6",
