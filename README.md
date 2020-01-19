@@ -88,9 +88,9 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 ## Contributing
 
 Feel free to dive in! Fix open [Issues](https://github.com/apiato/apiato/issues/) and submit new [features](https://github.com/apiato/apiato/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc).
-
+<br>
 Make sure you check our [contribution guide](http://docs.apiato.io/miscellaneous/contribution/) before getting started.
-
+<br>
 Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
 
 

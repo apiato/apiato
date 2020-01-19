@@ -7,7 +7,7 @@ return [
      * may be left empty to use Fractal's default one. This can either be a
      * string or a League\Fractal\Serializer\SerializerAbstract subclass.
      */
-    'default_serializer' => env(League\Fractal\Serializer\DataArraySerializer::class, League\Fractal\Serializer\DataArraySerializer::class),
+    'default_serializer' => League\Fractal\Serializer\DataArraySerializer::class,
 
     /*
      * The default paginator to be used when performing a transformation. It
