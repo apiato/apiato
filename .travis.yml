@@ -2,6 +2,8 @@ language: php
 
 php:
   - '7.2'
+  - '7.3'
+  - '7.4'
 
 dist: trusty
 
@@ -10,12 +12,6 @@ sudo: false
 env:
   global:
     - setup=stable
-
-matrix:
-  fast_finish: true
-  include:
-    - php: 7.2
-      env: setup=normal
 
 before_install:
   - travis_retry composer self-update
@@ -41,3 +37,6 @@ after_failure:
   - echo --------------- Begin > Laravel.log ---------------
   - cat storage/logs/laravel.log
   - echo --------------- End   > Laravel.log ---------------
+
+after_success:
+  - php artisan -V
