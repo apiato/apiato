@@ -24,7 +24,7 @@ class SayWelcomeCommand extends ConsoleCommand
      *
      * @var string
      */
-    protected $description = 'Just saying Welcome.';
+    protected $description = 'Just saying welcome from a container.';
 
     /**
      * Create a new command instance.
@@ -43,6 +43,6 @@ class SayWelcomeCommand extends ConsoleCommand
      */
     public function handle()
     {
-        echo "Welcome to apiato :)\n";
+        echo "Welcome to Apiato :)\n";
     }
 }

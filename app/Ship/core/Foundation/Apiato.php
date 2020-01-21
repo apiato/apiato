@@ -22,6 +22,13 @@ class Apiato
     use CallableTrait;
 
     /**
+     * The Apiato version.
+     *
+     * @var string
+     */
+    const VERSION = '8.0.1';
+
+    /**
      * Get the containers namespace value from the containers config file
      *
      * @return  string
