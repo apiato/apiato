@@ -15,20 +15,12 @@ trait FactoriesLoaderTrait
 {
 
     /**
-     * By default Laravel takes a shared factory directory to load from it all the factories.
-     * This function changes the path to load the factories from the port directory instead.
+     * @param $containerName
      */
-    public function loadFactoriesFromContainers()
+    public function loadFactoriesFromContainers($containerName)
     {
-        $loadersDirectory = str_replace(getcwd(), '', __DIR__);
+        $containerFactoriesDirectory = base_path('app/Containers/' . $containerName . '/Data/Factories');
 
-        $newFactoriesPath = $loadersDirectory . '/FactoryMixer';
-
-        App::singleton(Factory::class, function ($app) use ($newFactoriesPath) {
-            $faker = $app->make(Generator::class);
-
-            return Factory::construct($faker, base_path() . $newFactoriesPath);
-        });
+        $this->loadFactoriesFrom($containerFactoriesDirectory);
     }
-
 }

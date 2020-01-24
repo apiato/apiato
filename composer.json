@@ -35,7 +35,7 @@
         "ext-tokenizer": "*",
         "doctrine/dbal": "2.5.*",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.10",
+        "laravel/framework": "^6.12.0",
         "laravel/tinker": "^2.0",
         "wikimedia/composer-merge-plugin": "^1.3.1"
     },
