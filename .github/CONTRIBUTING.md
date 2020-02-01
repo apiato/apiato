@@ -1,3 +1,3 @@
-### First off all, thank you for taking the time to contribute back :)
+# Thank you for your consideration
 
-The full contribution guide is in the project [site](http://docs.apiato.io/miscellaneous/contribution/).
+Checkout out our [contribution guide](http://docs.apiato.io/miscellaneous/contribution/).

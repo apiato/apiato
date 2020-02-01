@@ -203,7 +203,7 @@ Apiato exists thanks to all the people who contribute.
             <a href="https://github.com/shalawani">@shalawani</a>
         </td>
         <td align="center" valign="top">
-            <img width="125" height="125" src="https://raw.githubusercontent.com/laradock/laradock/master/.github/home-page-images/join-us.png">
+            <img width="125" height="125" src="https://github.com/apiato/documentation/blob/master/images/join-us.png">
             <br>
             <strong>< Join Us ></strong>
             <br>
@@ -223,19 +223,11 @@ Apiato exists thanks to all the people who contribute.
 
 Help us sustain the project.
 
-<b>Option 1:</b> Donate directly to [Paypal](https://paypal.me/mzmmzz).
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/mzmmzz)
-
-<b>Option 2:</b> Support us via [Beerpay](https://beerpay.io/apiato/apiato).
-
-[![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
-
-<b>Option 3:</b> Become a backer on [Open Collective](https://opencollective.com/apiato#backer).
-
-<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
-
-
+<b>Option 1:</b> Donate via [Paypal](https://paypal.me/mzmmzz).
+<br>
+<b>Option 2:</b> Become a Sponsor via [Github Sponsors](https://github.com/sponsors/Mahmoudz).
+<br>
+<b>Option 3:</b> Become a Sponsor/Backer via [Open Collective](https://opencollective.com/apiato/contribute).
 
 <a name="Sponsors"></a>
 ## Sponsors
@@ -297,6 +289,59 @@ Your logo will show up on the [github repository](https://github.com/apiato/apia
 <br>
 For more info contact <a href = "mailto: support@apiato.io">support@apiato.io</a>.
 
+<a name="Backers"></a>
+## Backers
+
+<a href="https://opencollective.com/apiato/backer/0/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/0/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/1/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/1/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/2/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/2/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/3/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/3/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/4/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/4/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/5/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/5/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/6/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/6/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/7/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/7/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/8/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/8/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/9/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/9/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/10/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/10/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/11/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/11/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/12/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/12/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/13/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/13/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/14/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/14/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/15/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/15/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/16/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/16/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/17/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/17/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/18/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/18/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/19/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/19/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/20/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/20/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/21/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/21/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/22/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/22/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/23/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/23/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/24/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/24/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/25/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/25/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/26/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/26/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/27/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/27/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/28/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/28/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/29/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/29/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/30/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/30/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/31/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/31/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/32/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/32/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/33/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/33/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/34/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/34/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/35/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/35/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/36/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/36/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/37/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/37/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/38/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/38/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/39/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/39/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/40/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/40/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/41/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/41/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/42/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/42/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/43/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/43/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/44/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/44/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/45/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/45/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/46/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/46/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/47/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/47/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/48/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/48/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/backer/49/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/backer/49/avatar.svg?requireActive=false"></a>
 
 
 <a name="License"></a>
