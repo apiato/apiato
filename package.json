@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "apidoc": "^0.19.1",
+    "apidoc-swagger": "^0.3.2",
     "axios": "^0.19",
     "cross-env": "^5.1",
     "laravel-mix": "^4.0.7",
