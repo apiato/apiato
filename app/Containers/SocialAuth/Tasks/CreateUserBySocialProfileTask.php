@@ -2,7 +2,7 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\Socialauth\Exceptions\AccountFailedException;
+use App\Containers\SocialAuth\Exceptions\AccountFailedException;
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
