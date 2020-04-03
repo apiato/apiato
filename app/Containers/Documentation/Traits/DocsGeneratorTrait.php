@@ -86,6 +86,14 @@ trait DocsGeneratorTrait
     }
 
     /**
+     * @return  mixed
+     */
+    private function getSwaggerConverter()
+    {
+        return Config::get($this->getConfigFile() . '.swagger-converter');
+    }
+
+    /**
      * @param $type
      *
      * @return  mixed
