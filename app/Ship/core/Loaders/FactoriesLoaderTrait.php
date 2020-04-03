@@ -20,14 +20,14 @@ trait FactoriesLoaderTrait
      */
     public function loadFactoriesFromContainers()
     {
-        $loadersDirectory = str_replace(getcwd(), '', __DIR__);
+        $loadersDirectory = dirname(realpath(__FILE__));
 
         $newFactoriesPath = $loadersDirectory . '/FactoryMixer';
 
         App::singleton(Factory::class, function ($app) use ($newFactoriesPath) {
             $faker = $app->make(Generator::class);
 
-            return Factory::construct($faker, base_path() . $newFactoriesPath);
+            return Factory::construct($faker, $newFactoriesPath);
         });
     }
 
