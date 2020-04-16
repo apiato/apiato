@@ -26,7 +26,7 @@ return [
          | Log File
          |--------------------------------------------------------------------------
          |
-         | What to name the log file in the `storage/log` path.
+         | What to name the log file in the `storage/logs` path.
          |
          */
 
