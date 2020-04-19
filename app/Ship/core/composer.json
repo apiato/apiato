@@ -1,27 +1,16 @@
 {
   "require": {
-    "illuminate/support": "~6.11",
-    "apiato/containers-installer" : "^1.0",
-    "guzzlehttp/guzzle": "^6.5",
+    "illuminate/support": "~7.5",
+    "apiato/containers-installer": "^1.0",
     "prettus/l5-repository": "^2.6",
-    "barryvdh/laravel-cors": "^0.11",
-    "spatie/laravel-fractal": "^5.6",
-    "vinkla/hashids": "^7.0",
-    "dto/dto" : "^3.2",
-    "optimus/heimdal": "@dev"
+    "barryvdh/laravel-cors": "^1.0.5",
+    "spatie/laravel-fractal": "^5.7",
+    "vinkla/hashids": "^8.0",
+    "dto/dto": "^3.2"
   },
   "autoload": {
     "psr-4": {
       "Apiato\\Core\\": ""
-    }
-  },
-  "repositories": {
-    "dev-package": {
-      "type": "path",
-      "url": "app/Ship/core/Exceptions/heimdal-package",
-      "options": {
-        "symlink": true
-      }
     }
   }
 }
