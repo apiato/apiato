@@ -60,12 +60,10 @@ class GetAllAdminsTest extends ApiTestCase
 
         // send the HTTP request
         $response = $this->makeCall();
-
         // assert response status is correct
         $response->assertStatus(403);
 
         $this->assertResponseContainKeyValue([
-            'errors' => 'You have no access to this resource!',
             'message' => 'This action is unauthorized.',
         ]);
     }
