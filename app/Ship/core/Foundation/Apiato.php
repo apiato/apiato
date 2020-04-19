@@ -26,7 +26,7 @@ class Apiato
      *
      * @var string
      */
-    const VERSION = '8.0.1';
+    const VERSION = '9.0.0';
 
     /**
      * Get the containers namespace value from the containers config file
