@@ -34,7 +34,7 @@ class HttpKernel extends LaravelHttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
       // CORS package middleware
-        \Barryvdh\Cors\HandleCors::class,
+        \Fruitcake\Cors\HandleCors::class,
     ];
 
     /**

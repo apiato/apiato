@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'executable' => '$(npm bin)/apidoc',
+    'executable' => 'node_modules/.bin/apidoc',
 
     /*
     |--------------------------------------------------------------------------

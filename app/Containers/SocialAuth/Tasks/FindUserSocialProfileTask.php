@@ -2,7 +2,7 @@
 
 namespace App\Containers\SocialAuth\Tasks;
 
-use App\Containers\Socialauth\Exceptions\UnsupportedSocialAuthProviderException;
+use App\Containers\SocialAuth\Exceptions\UnsupportedSocialAuthProviderException;
 use App\Ship\Parents\Tasks\Task;
 use Laravel\Socialite\Facades\Socialite;
 

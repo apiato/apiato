@@ -2,8 +2,8 @@
 
 namespace App\Ship\Exceptions\Builders;
 
-use Exception;
 use Illuminate\Http\JsonResponse;
+use Throwable;
 
 /**
  * Class ExceptionBuilder
@@ -18,7 +18,7 @@ class ExceptionBuilder
      *
      * @return  \Illuminate\Http\JsonResponse
      */
-    public static function make(Exception $e)
+    public static function make(Throwable $e)
     {
         return new JsonResponse([
             'status' => 'error',

@@ -72,7 +72,7 @@ class RegisterUserTest extends ApiTestCase
         $response->assertStatus(405);
 
         $this->assertResponseContainKeyValue([
-            'errors' => 'Method Not Allowed!',
+            'message' => 'The GET method is not supported for this route. Supported methods: POST.',
         ]);
     }
 

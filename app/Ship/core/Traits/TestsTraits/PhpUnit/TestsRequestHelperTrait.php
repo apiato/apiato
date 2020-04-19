@@ -3,12 +3,12 @@
 namespace Apiato\Core\Traits\TestsTraits\PhpUnit;
 
 use Illuminate\Support\Arr;
-use App;
 use App\Ship\Exceptions\MissingTestEndpointException;
 use App\Ship\Exceptions\UndefinedMethodException;
 use App\Ship\Exceptions\WrongEndpointFormatException;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Log;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
@@ -76,7 +76,7 @@ trait TestsRequestHelperTrait
      * @param array $headers
      *
      * @throws \App\Ship\Exceptions\UndefinedMethodException
-     * 
+     *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     public function makeCall(array $data = [], array $headers = [])
@@ -105,6 +105,8 @@ trait TestsRequestHelperTrait
         }
 
         $httpResponse = $this->json($verb, $url, $data, $headers);
+
+        $this->logResponseData($httpResponse);
 
         return $this->setResponseObjectAndContent($httpResponse);
     }
@@ -371,6 +373,18 @@ trait TestsRequestHelperTrait
 
             return [$this->formatServerHeaderKey($name) => $value];
         })->all();
+    }
+
+    /**
+     * @param  \Illuminate\Testing\TestResponse $httpResponse
+     */
+    private function logResponseData($httpResponse)
+    {
+        $responseLoggerEnabled = Config::get('debugger.tests.response_logger');
+
+        if($responseLoggerEnabled){
+            Log::notice(get_object_vars($httpResponse->getData()));
+        }
     }
 
 }

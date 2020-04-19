@@ -21,11 +21,6 @@ return [
             'charge_task' => App\Containers\Stripe\Tasks\ChargeWithStripeTask::class,
         ],
 
-        'wepay'  => [
-            'container'   => 'Wepay',
-            'charge_task' => App\Containers\Wepay\Tasks\ChargeWithWepayTask::class,
-        ],
-
         'paypal' => [
             // ...
         ],

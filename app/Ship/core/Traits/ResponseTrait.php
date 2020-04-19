@@ -217,7 +217,7 @@ trait ResponseTrait
 
         return $responseArray;
     }
-    
+
     /**
      * @return array
      */

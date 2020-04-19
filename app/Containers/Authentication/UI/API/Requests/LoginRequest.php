@@ -2,8 +2,8 @@
 
 namespace App\Containers\Authentication\UI\API\Requests;
 
-use Illuminate\Support\Arr;
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Support\Arr;
 
 /**
  * Class LoginRequest.

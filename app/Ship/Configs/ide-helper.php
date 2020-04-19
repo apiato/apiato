@@ -68,7 +68,6 @@ return [
         'app/Containers/Settings',
         'app/Containers/Stripe',
         'app/Containers/User',
-        'app/Containers/Wepay',
     ],
 
 

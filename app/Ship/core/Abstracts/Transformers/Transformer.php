@@ -72,8 +72,7 @@ abstract class Transformer extends FractalTransformer
     {
         // set a default resource key if none is set
         if (!$resourceKey && $data->isNotEmpty()) {
-            $obj = $data->first();
-            $resourceKey = $obj->getResourceKey();
+            $resourceKey = (string) $data->modelKeys()[0];
         }
 
         return parent::collection($data, $transformer, $resourceKey);
@@ -95,11 +94,11 @@ abstract class Transformer extends FractalTransformer
         }
         catch (ErrorException $exception) {
             if (Config::get('apiato.requests.force-valid-includes', true)) {
-                throw new UnsupportedFractalIncludeException();
+                throw new UnsupportedFractalIncludeException($exception->getMessage());
             }
         }
         catch (Exception $exception) {
-            throw new CoreInternalErrorException();
+            throw new CoreInternalErrorException($exception->getMessage());
         }
     }
 
