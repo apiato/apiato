@@ -2,7 +2,7 @@
 
 # Apiato
 
-<h3 align="center">Build great API's faster | With PHP 7.4 and laravel 6</h3>
+<h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 7</h3>
 
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
