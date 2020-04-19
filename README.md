@@ -225,9 +225,11 @@ Help us sustain the project.
 
 <b>Option 1:</b> Donate via [Paypal](https://paypal.me/mzmmzz).
 <br>
-<b>Option 2:</b> Become a Sponsor via [Github Sponsors](https://github.com/sponsors/Mahmoudz).
+<b>Option 2:</b> Become a [Github Sponsors](https://github.com/sponsors/Mahmoudz).
 <br>
 <b>Option 3:</b> Become a Sponsor/Backer via [Open Collective](https://opencollective.com/apiato/contribute).
+<br>
+<b>Option 4:</b> Become a [Patreon](https://www.patreon.com/zalt).
 
 <a name="Sponsors"></a>
 ## Sponsors
