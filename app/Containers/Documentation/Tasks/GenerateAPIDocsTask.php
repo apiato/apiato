@@ -29,10 +29,16 @@ class GenerateAPIDocsTask extends Task
     {
         $path = $this->getDocumentationPath($type);
 
-        $exe = $this->getExecutable();
-
-        // the actual command that needs to be executed:
-        $command = $exe . ' ' . "-c {$this->getJsonFilePath($type)} {$this->getEndpointFiles($type)}-i app -o {$path}";
+        $command = [
+            $this->getExecutable(),
+            # executable parameters
+            "-c",
+            $this->getJsonFilePath($type) . ' ' . $this->getEndpointFiles($type),
+            "-i",
+            "app",
+            "-o",
+            $path
+        ];
 
         $process = new Process($command);
 
@@ -44,7 +50,7 @@ class GenerateAPIDocsTask extends Task
         }
 
         // echo the output
-        $console->info('[' . $type . '] ' . $command);
+        $console->info('[' . $type . '] ' . implode (' ', $command));
         $console->info('Result: ' . $process->getOutput());
 
         // return the past to that generated documentation
