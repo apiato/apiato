@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\Srtipe\Tests\Unit;
+namespace App\Containers\Stripe\Tests\Unit;
 
 use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
 use App\Containers\Payment\Traits\MockablePaymentsTrait;
