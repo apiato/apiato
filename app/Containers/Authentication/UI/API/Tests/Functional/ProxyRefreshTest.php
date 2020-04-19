@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\User\UI\API\Tests\Functional;
+namespace App\Containers\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\Authentication\Tests\ApiTestCase;
