@@ -19,11 +19,13 @@ class ProxyApiLoginAction extends Action
      */
     public function run(ProxyApiLoginTransporter $data): array
     {
-        $requestData = [
+      $extractedData = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
+
+      $requestData = [
             'grant_type'    => $data->grant_type ?? 'password',
             'client_id'     => $data->client_id,
             'client_secret' => $data->client_password,
-            'username'      => $data->email,
+            'username'      => $extractedData['username'],
             'password'      => $data->password,
             'scope'         => $data->scope ?? '',
         ];
@@ -32,7 +34,7 @@ class ProxyApiLoginAction extends Action
 
         // check if user email is confirmed only if that feature is enabled.
         Apiato::call('Authentication@CheckIfUserIsConfirmedTask', [],
-            [['loginWithCredentials' => [$requestData['username'], $requestData['password']]]]);
+            [['loginWithCredentials' => [$requestData['username'], $requestData['password'], $extractedData['loginAttribute']]]]);
 
         $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
