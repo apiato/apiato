@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\DB;
  */
 class ProxyLoginTest extends ApiTestCase
 {
-
-    protected $endpoint; // testing multiple endpoints form the tests
+    protected $endpoint = 'post@v1/clients/web/admin/login';
 
     protected $access = [
         'permissions' => '',
@@ -31,8 +30,6 @@ class ProxyLoginTest extends ApiTestCase
      */
     public function testClientWebAdminProxyLogin_()
     {
-        $endpoint = 'post@v1/clients/web/admin/login';
-
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
             'email'    => 'testing@mail.com',
@@ -66,7 +63,7 @@ class ProxyLoginTest extends ApiTestCase
         $publicFilePath = $this->createTestingKey('oauth-public.key');
         $privateFilePath = $this->createTestingKey('oauth-private.key');
 
-        $response = $this->endpoint($endpoint)->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertStatus(200);
 
@@ -90,8 +87,6 @@ class ProxyLoginTest extends ApiTestCase
      */
     public function testClientWebAdminProxyUnconfirmedLogin_()
     {
-        $endpoint = 'post@v1/clients/web/admin/login';
-
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
             'email'     => 'testing2@mail.com',
@@ -126,7 +121,7 @@ class ProxyLoginTest extends ApiTestCase
         $publicFilePath = $this->createTestingKey('oauth-public.key');
         $privateFilePath = $this->createTestingKey('oauth-private.key');
 
-        $response = $this->endpoint($endpoint)->makeCall($data);
+        $response = $this->makeCall($data);
 
         if (Config::get('authentication-container.require_email_confirmation')) {
             $response->assertStatus(409);
@@ -138,6 +133,72 @@ class ProxyLoginTest extends ApiTestCase
         if ($this->testingFilesCreated) {
             unlink($publicFilePath);
             unlink($privateFilePath);
+        }
+    }
+
+    public function testLoginWithNameAttribute()
+    {
+        // create data to be used for creating the testing user and to be sent with the post request
+        $data = [
+            'email'    => 'testing@mail.com',
+            'password' => 'testingpass',
+            'name'     => 'username',
+        ];
+
+        $user = $this->getTestingUser($data);
+        $this->actingAs($user, 'web');
+
+        $clientId = '100';
+        $clientSecret = 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX';
+
+        // create client
+        DB::table('oauth_clients')->insert([
+            [
+              'id'                     => $clientId,
+              'secret'                 => $clientSecret,
+              'name'                   => 'Testing',
+              'redirect'               => 'http://localhost',
+              'password_client'        => '1',
+              'personal_access_client' => '0',
+              'revoked'                => '0',
+            ],
+        ]);
+
+        // make the clients credentials available as env variables
+        Config::set('authentication-container.clients.web.admin.id', $clientId);
+        Config::set('authentication-container.clients.web.admin.secret', $clientSecret);
+
+        // specifically allow to login with "name" attribute
+        Config::set('authentication-container.login.attributes',
+            [
+              'email' => ['email'],
+              'name' => [],
+            ]
+        );
+
+        // create testing oauth keys files
+        $publicFilePath = $this->createTestingKey('oauth-public.key');
+        $privateFilePath = $this->createTestingKey('oauth-private.key');
+
+        $request = [
+            'password' => 'testingpass',
+            'name'     => 'username',
+        ];
+
+        $response = $this->makeCall($request);
+
+        $response->assertStatus(200);
+
+        $this->assertResponseContainKeyValue([
+            'token_type' => 'Bearer',
+        ]);
+
+        $this->assertResponseContainKeys(['expires_in', 'access_token', 'refresh_token']);
+
+        // delete testing keys files if they were created for this test
+        if ($this->testingFilesCreated) {
+          unlink($publicFilePath);
+          unlink($privateFilePath);
         }
     }
 

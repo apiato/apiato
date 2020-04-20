@@ -21,7 +21,7 @@ class WebAdminLoginAction extends Action
      *
      * @return  \Illuminate\Contracts\Auth\Authenticatable
      */
-    public function run(DataTransporter $data) : Authenticatable
+    public function run(DataTransporter $data): Authenticatable
     {
         $user = Apiato::call('Authentication@WebLoginTask',
             [$data->email, $data->password, $data->remember_me ?? false]);
