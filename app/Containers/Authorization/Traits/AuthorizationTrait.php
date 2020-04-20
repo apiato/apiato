@@ -2,39 +2,30 @@
 
 namespace App\Containers\Authorization\Traits;
 
-use Illuminate\Support\Facades\Auth;
-
 /**
- * Class AuthorizationTrait
+ * Class AuthenticationTrait
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-trait AuthorizationTrait
+trait AuthenticationTrait
 {
-    /**
-     * @return  \App\Containers\User\Models\User|null
-     */
-    public function getUser()
-    {
-        return Auth::user();
-    }
 
-    /**
-     * @return  mixed
-     */
-    public function hasAdminRole()
+  /**
+   * Allows Passport to authenticate users with custom fields.
+   *
+   * @param $identifier
+   *
+   * @return AuthenticationTrait
+   */
+    public function findForPassport($identifier)
     {
-        return $this->hasRole('admin');
-    }
+        $allowedLoginAttributes = config('authentication-container.login.attributes', ['email' => []]);
 
-    /**
-     * Return the "highest" role of a user (0 if the user does not have any role)
-     *
-     * @return int
-     */
-    public function getRoleLevel()
-    {
-        return ($role = $this->roles()->orderBy('level', 'DESC')->first()) ? $role->level : 0;
-    }
+        foreach (array_keys($allowedLoginAttributes) as $field)
+        {
+            $builder = $this->orWhere($field, $identifier);
+        }
 
+        return $builder->first();
+    }
 }
