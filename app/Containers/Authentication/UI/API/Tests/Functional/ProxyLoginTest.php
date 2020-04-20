@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\DB;
  */
 class ProxyLoginTest extends ApiTestCase
 {
-
-    protected $endpoint; // testing multiple endpoints form the tests
+    protected $endpoint = 'post@v1/clients/web/admin/login';
 
     protected $access = [
         'permissions' => '',
@@ -31,8 +30,6 @@ class ProxyLoginTest extends ApiTestCase
      */
     public function testClientWebAdminProxyLogin_()
     {
-        $endpoint = 'post@v1/clients/web/admin/login';
-
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
             'email'    => 'testing@mail.com',
@@ -66,7 +63,7 @@ class ProxyLoginTest extends ApiTestCase
         $publicFilePath = $this->createTestingKey('oauth-public.key');
         $privateFilePath = $this->createTestingKey('oauth-private.key');
 
-        $response = $this->endpoint($endpoint)->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertStatus(200);
 
@@ -90,8 +87,6 @@ class ProxyLoginTest extends ApiTestCase
      */
     public function testClientWebAdminProxyUnconfirmedLogin_()
     {
-        $endpoint = 'post@v1/clients/web/admin/login';
-
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
             'email'     => 'testing2@mail.com',
@@ -126,7 +121,7 @@ class ProxyLoginTest extends ApiTestCase
         $publicFilePath = $this->createTestingKey('oauth-public.key');
         $privateFilePath = $this->createTestingKey('oauth-private.key');
 
-        $response = $this->endpoint($endpoint)->makeCall($data);
+        $response = $this->makeCall($data);
 
         if (Config::get('authentication-container.require_email_confirmation')) {
             $response->assertStatus(409);
@@ -143,8 +138,6 @@ class ProxyLoginTest extends ApiTestCase
 
     public function testLoginWithNameAttribute(): void
     {
-        $endpoint = 'post@v1/clients/web/admin/login';
-
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
             'email'    => 'testing@mail.com',
@@ -192,7 +185,7 @@ class ProxyLoginTest extends ApiTestCase
             'name'     => 'username',
         ];
 
-        $response = $this->endpoint($endpoint)->makeCall($request);
+        $response = $this->makeCall($request);
 
         $response->assertStatus(200);
 
