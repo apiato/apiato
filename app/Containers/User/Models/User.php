@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Models;
 
+use App\Containers\Authorization\Traits\AuthenticationTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
 use App\Containers\Payment\Contracts\ChargeableInterface;
 use App\Containers\Payment\Models\PaymentAccount;
@@ -19,6 +20,7 @@ class User extends UserModel implements ChargeableInterface
 
     use ChargeableTrait;
     use AuthorizationTrait;
+    use AuthenticationTrait;
     use Notifiable;
 
     /**
@@ -80,25 +82,12 @@ class User extends UserModel implements ChargeableInterface
         'remember_token',
     ];
 
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
     public function paymentAccounts()
     {
         return $this->hasMany(PaymentAccount::class);
     }
 
-  public function findForPassport($identifier)
-  {
-      $allowedLoginAttributes = config('authentication-container.login.allowed_login_attributes', ['email' => []]);
-      $fields = array_keys($allowedLoginAttributes);
-
-      $builder = $this;
-
-      foreach ($fields as $field)
-      {
-          $builder = $builder->orWhere($field, $identifier);
-      }
-
-      $builder = $builder->first();
-
-      return $builder;
-    }
 }

@@ -136,7 +136,7 @@ class ProxyLoginTest extends ApiTestCase
         }
     }
 
-    public function testLoginWithNameAttribute(): void
+    public function testLoginWithNameAttribute()
     {
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
@@ -169,7 +169,7 @@ class ProxyLoginTest extends ApiTestCase
         Config::set('authentication-container.clients.web.admin.secret', $clientSecret);
 
         // specifically allow to login with "name" attribute
-        Config::set('authentication-container.login.allowed_login_attributes',
+        Config::set('authentication-container.login.attributes',
             [
               'email' => ['email'],
               'name' => [],
