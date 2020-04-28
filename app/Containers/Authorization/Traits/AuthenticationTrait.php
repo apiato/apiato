@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-trait AuthorizationTrait
+trait AuthenticationTrait
 {
     /**
      * @return  \App\Containers\User\Models\User|null

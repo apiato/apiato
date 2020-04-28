@@ -7,7 +7,7 @@ namespace App\Containers\Authorization\Traits;
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-trait AuthenticationTrait
+trait AuthorizationTrait
 {
 
   /**
