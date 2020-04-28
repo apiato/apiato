@@ -3,7 +3,7 @@
     "illuminate/support": "~7.5",
     "apiato/containers-installer": "^1.0",
     "prettus/l5-repository": "^2.6",
-    "barryvdh/laravel-cors": "^1.0.5",
+    "fruitcake/laravel-cors": "^1.0.5",
     "spatie/laravel-fractal": "^5.7",
     "vinkla/hashids": "^8.0",
     "dto/dto": "^3.2"

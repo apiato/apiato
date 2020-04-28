@@ -23,7 +23,7 @@ class ApiLogoutAction extends Action
      */
     public function run(DataTransporter $data): bool
     {
-        $id = App::make(Parser::class)->parse($data->bearerToken)->getHeader('jti');
+        $id = App::make(Parser::class)->parse($data->bearerToken)->getClaim('jti');
 
         DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => true]);
 
