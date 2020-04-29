@@ -56,7 +56,7 @@ class AuthProvider extends ParentAuthProvider
      */
     private function registerPassport()
     {
-        $routeGroupArray = $this->getRouteGroup('/v1');
+        $routeGroupArray = $this->getRouteGroup('/'.Config::get('apiato.api.prefix').'v1');
 
         Route::group($routeGroupArray, function () {
             Passport::routes();
