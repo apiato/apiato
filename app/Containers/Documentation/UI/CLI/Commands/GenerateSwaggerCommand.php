@@ -7,7 +7,7 @@ use App\Ship\Parents\Commands\ConsoleCommand;
 use App\Ship\Transporters\DataTransporter;
 
 /**
- * Class GenerateApiDocsCommand
+ * Class GenerateSwaggerCommand
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
@@ -26,7 +26,7 @@ class GenerateSwaggerCommand extends ConsoleCommand
      *
      * @var string
      */
-    protected $description = "Generate Swagger/OpenAPI JSON schema from apiDoc";
+    protected $description = "Generate API Documentations with (Swagger from API-Doc-JS)";
 
     /**
      * Create a new command instance.

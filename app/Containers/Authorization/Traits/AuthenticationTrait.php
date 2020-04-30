@@ -21,8 +21,10 @@ trait AuthenticationTrait
     {
         $allowedLoginAttributes = config('authentication-container.login.attributes', ['email' => []]);
 
-        foreach (array_keys($allowedLoginAttributes) as $field) {
-            $builder = $this->orWhere($field, $identifier);
+        $builder = $this;
+        foreach (array_keys($allowedLoginAttributes) as $field)
+        {
+            $builder = $builder->orWhere($field, $identifier);
         }
 
         return $builder->first();

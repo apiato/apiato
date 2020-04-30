@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'swagger-converter' => '$(npm bin)/apidoc-swagger',
+    'swagger-converter' => 'node_modules/.bin/apidoc-swagger',
 
     /*
     |--------------------------------------------------------------------------
