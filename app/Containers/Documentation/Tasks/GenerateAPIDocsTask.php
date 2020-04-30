@@ -31,7 +31,7 @@ class GenerateAPIDocsTask extends Task
 
         $command = [
             $this->getExecutable(),
-            # executable parameters
+            // executable parameters
             "-c",
             $this->getJsonFilePath($type) . ' ' . $this->getEndpointFiles($type),
             "-i",
@@ -46,12 +46,13 @@ class GenerateAPIDocsTask extends Task
         $process->run();
 
         if (!$process->isSuccessful()) {
+            $console->error('Error Output: ' . $process->getOutput());
             throw new ProcessFailedException($process);
         }
 
         // echo the output
         $console->info('[' . $type . '] ' . implode (' ', $command));
-        $console->info('Result: ' . $process->getOutput());
+        $console->info('Output: ' . $process->getOutput());
 
         // return the past to that generated documentation
         return $this->getFullApiUrl($type);

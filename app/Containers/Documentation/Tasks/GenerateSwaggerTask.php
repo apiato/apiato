@@ -27,30 +27,41 @@ class GenerateSwaggerTask extends Task
      */
     public function run($type, $console)
     {
-        $path = $this->getDocumentationPath($type);
-
-        $exe = $this->getSwaggerConverter();
-
-        $app_path = './app';
+        // little hack to move the apidoc.json file to the /app directory in order to be seen by apidoc-swagger
+        // since the command doesn't support passing custom path.
+        $app_path = 'app';
         $apidoc_json = '/apidoc.json';
-        copy($this->getJsonFilePath($type).$apidoc_json, $app_path.$apidoc_json);
+        copy($this->getJsonFilePath($type) . $apidoc_json, $app_path . $apidoc_json);
 
-        $command = $exe . ' ' . "-v -f '.*\.php$' -i {$app_path} -o {$path}/swagger";
+        $command = [
+            $this->getSwaggerConverter(),
+            // executable parameters
+            "-v",
+            "",
+            "-f",
+            "'.*\.php$'",
+            "-i",
+            $app_path,
+            "-o",
+            "{$this->getDocumentationPath($type)}/swagger"
+        ];
 
         $process = new Process($command);
 
         // execute the command
         $process->run();
 
-        unlink($app_path.$apidoc_json);
+        // delete the apidoc.json file after executing the command since it's no longer needed.
+        unlink($app_path . $apidoc_json);
 
         if (!$process->isSuccessful()) {
+            $console->error('Error Output: ' . $process->getOutput());
             throw new ProcessFailedException($process);
         }
 
         // echo the output
-        $console->info('[' . $type . '] ' . $command);
-        $console->info('Result: ' . $process->getOutput());
+        $console->info('[' . $type . '] ' . implode (' ', $command));
+        $console->info('Output: ' . $process->getOutput());
 
         // return the past to that generated documentation
         return $this->getFullApiUrl($type).'/swagger/swagger.json';
