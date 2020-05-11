@@ -27,7 +27,7 @@ class Controller extends ApiController
         $dataTransporter = new DataTransporter($request);
         $dataTransporter->provider = $providerUrlInput;
 
-        $data = Apiato::call('Socialauth@SocialLoginAction', [$dataTransporter]);
+        $data = Apiato::call('SocialAuth@SocialLoginAction', [$dataTransporter]);
 
         return $this->transform($data['user'], UserTransformer::class, [], [
             'token_type'   => 'personal',
