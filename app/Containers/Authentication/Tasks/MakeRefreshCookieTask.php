@@ -27,7 +27,7 @@ class MakeRefreshCookieTask extends Task
             Config::get('apiato.api.refresh-expires-in'),
             null,
             null,
-            false,
+            Config::get('session.secure'),
             true // HttpOnly
         );
 
