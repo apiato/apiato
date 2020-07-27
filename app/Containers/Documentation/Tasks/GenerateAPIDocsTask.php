@@ -33,7 +33,8 @@ class GenerateAPIDocsTask extends Task
             $this->getExecutable(),
             // executable parameters
             "-c",
-            $this->getJsonFilePath($type) . ' ' . $this->getEndpointFiles($type),
+            $this->getJsonFilePath($type),
+            ...$this->getEndpointFiles($type),
             "-i",
             "app",
             "-o",
