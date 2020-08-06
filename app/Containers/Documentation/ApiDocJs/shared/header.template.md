@@ -238,7 +238,9 @@ Example Response, including only id and status:
           "id": "r6lbekg8rv5ozyad"
         }
       }
-    }...
+    }
+  ]
+}
 ```
 
 
