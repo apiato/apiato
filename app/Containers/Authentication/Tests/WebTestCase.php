@@ -16,7 +16,7 @@ class WebTestCase extends BaseTestCase
     // overrides the default subDomain in the base URL
     protected $subDomain = 'admin';
 
-    public function setUp()
+    public function setUp(): void
     {
         // change the API_PREFIX for web tests
         putenv("API_PREFIX=api");
@@ -24,7 +24,7 @@ class WebTestCase extends BaseTestCase
         parent::setUp();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // revert the API_PREFIX variable to null to avoid effects on other test
         putenv("API_PREFIX=");
