@@ -1,8 +1,6 @@
 language: php
 
 php:
-  - '7.2'
-  - '7.3'
   - '7.4'
 
 dist: trusty
@@ -17,8 +15,8 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --prefer-stable --no-interaction --no-suggest; fi
-  - if [[ $setup = 'normal' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
+  - if [[ $setup = 'stable' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --prefer-stable --no-interaction --no-suggest; fi
+  - if [[ $setup = 'normal' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
 
 before_script:
   - cp .env.travis .env
