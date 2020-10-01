@@ -78,7 +78,7 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/getting-st
 <p align="center">Join our Slack chatting room, by clicking on the icon below.</p>
 
 <p align="center">
-	<a href="https://slackin-mezlsumyvc.now.sh/">
+	<a href="https://join.slack.com/t/apiato/shared_invite/zt-i1dkzaxt-SdBJKtgbjBSivEP9Z~XN7g">
 	   <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 	</a>
 </p>
