@@ -246,10 +246,8 @@ trait CallableTrait
             $request = $runMethodArguments[$requestPosition];
             $transporterClass = $request->getTransporter();
             /** @var Transporter $transporter */
-            $transporter = new $transporterClass;
-
-            // "copy" everything from the request to the transporter
-            $transporter->hydrate($request->all());
+            // instantiate transporter and hydrate it with request
+            $transporter = new $transporterClass($request->all());
 
             // and now "replace" the request with this transporter
             $runMethodArguments[$requestPosition] = $transporter;
