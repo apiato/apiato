@@ -28,7 +28,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^7.4",
+    "php": "^7.2.5",
     "ext-mbstring": "*",
     "ext-openssl": "*",
     "ext-pdo": "*",
@@ -62,7 +62,9 @@
   },
   "extra": {
     "laravel": {
-      "dont-discover": ["*"]
+      "dont-discover": [
+        "*"
+      ]
     },
     "merge-plugin": {
       "include": [
