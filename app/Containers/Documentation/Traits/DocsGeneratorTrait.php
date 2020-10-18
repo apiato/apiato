@@ -108,7 +108,7 @@ trait DocsGeneratorTrait
     /**
      * @param $type
      *
-     * @return  string
+     * @return  array
      */
     private function getEndpointFiles($type)
     {
