@@ -36,7 +36,7 @@ class ShipProvider extends MainProvider
         }
 
         if (class_exists('Barryvdh\Debugbar\Facade')) {
-            $this->aliases[] = \Barryvdh\Debugbar\Facade::class;
+            $this->aliases['Debugbar'] = \Barryvdh\Debugbar\Facade::class;
         }
     }
     /**
