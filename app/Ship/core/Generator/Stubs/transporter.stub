@@ -16,8 +16,8 @@ class {{class-name}} extends Transporter
             // enter all properties here
 
             // allow for undefined properties
-            // 'additionalProperties' => true,
         ],
+        'additionalProperties' => true,
         'required'   => [
             // define the properties that MUST be set
         ],
