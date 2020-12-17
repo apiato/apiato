@@ -44,6 +44,10 @@ abstract class Transporter extends Dto
             $content = $input->toArray();
             $headers = ['_headers' => $input->headers->all()];
 
+            // if transporter additionalProperties is false
+            // we need to add _headers key to DTO schema properties to get validated
+            $this->schema['properties']['_headers'] = ['type' => 'array'];
+
             $input = array_merge($headers, $content);
         }
 
