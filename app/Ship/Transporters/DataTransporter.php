@@ -24,8 +24,9 @@ class DataTransporter extends Transporter
     protected $schema = [
         'type' => 'object',
         'properties' => [
-            'additionalProperties' => true,
+            //
         ],
+        'additionalProperties' => true,
         'required' => [  // defined Transporter required fields ['first_name', 'last_name'],
 
         ],
