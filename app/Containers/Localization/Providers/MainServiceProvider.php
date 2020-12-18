@@ -3,6 +3,7 @@
 namespace App\Containers\Localization\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
+use Carbon\Laravel\ServiceProvider as LaravelCarbonServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -21,6 +22,7 @@ class MainServiceProvider extends MainProvider
      */
     public $serviceProviders = [
         MiddlewareServiceProvider::class,
+        LaravelCarbonServiceProvider::class,
     ];
 
     /**
