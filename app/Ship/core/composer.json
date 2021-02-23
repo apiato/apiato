@@ -2,11 +2,11 @@
   "require": {
     "illuminate/support": "^8.28.1",
     "apiato/containers-installer": "^1.0",
-    "prettus/l5-repository": "^2.6",
+    "prettus/l5-repository": "^2.6.46",
     "fruitcake/laravel-cors": "^1.0.5",
-    "spatie/laravel-fractal": "^5.7",
+    "spatie/laravel-fractal": "^5.8.1",
     "vinkla/hashids": "^9.1.0",
-    "dto/dto": "^3.2"
+    "dto/dto": "^3.2.7"
   },
   "autoload": {
     "psr-4": {
