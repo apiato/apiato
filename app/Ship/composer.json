@@ -2,6 +2,6 @@
   "require": {
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "2.6.*"
+    "barryvdh/laravel-ide-helper": "^2.9.0"
   }
 }
