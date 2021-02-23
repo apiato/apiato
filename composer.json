@@ -42,6 +42,7 @@
     "wikimedia/composer-merge-plugin": "^1.5"
   },
   "require-dev": {
+    "roave/security-advisories": "dev-master",
     "facade/ignition": "^2.5.13",
     "fzaninotto/faker": "^1.9.2",
     "mockery/mockery": "^1.4.2",

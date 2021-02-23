@@ -4,5 +4,8 @@
   "type": "apiato-container",
   "require": {
     "laravel/socialite": "^5.1.1"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
   }
 }

@@ -8,6 +8,9 @@
     "vinkla/hashids": "^9.1.0",
     "dto/dto": "^3.2.7"
   },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
+  },
   "autoload": {
     "psr-4": {
       "Apiato\\Core\\": ""
