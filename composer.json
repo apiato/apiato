@@ -28,7 +28,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^7.2.5",
+    "php": "^7.3|^8.0",
     "ext-mbstring": "*",
     "ext-openssl": "*",
     "ext-pdo": "*",
