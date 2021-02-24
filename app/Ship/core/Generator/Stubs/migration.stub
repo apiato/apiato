@@ -13,7 +13,7 @@ class {{class-name}} extends Migration
     {
         Schema::create('{{table-name}}', function (Blueprint $table) {
 
-            $table->increments('id');
+            $table->id('id');
 
             $table->timestamps();
             //$table->softDeletes();
