@@ -18,13 +18,12 @@ class CreatePaymentAccountsTable extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
 
-            $table->increments('id');
+            $table->id('id');
             $table->string('name')->nullable();
 
             $table->morphs('accountable');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
 
             $table->timestamps();
             $table->softDeletes();

@@ -19,7 +19,7 @@ class CreateStripeAccountsTable extends Migration
     public function up()
     {
         Schema::create('stripe_accounts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id('id');
 
             $table->string('customer_id');
             $table->string('card_id')->nullable();

@@ -22,7 +22,7 @@ class CreateJobsTable extends Migration
     {
         if(Config::get('queue.default') == 'database'){
             Schema::create('jobs', function (Blueprint $table) {
-                $table->bigIncrements('id');
+                $table->id('id');
                 $table->string('queue');
                 $table->longText('payload');
                 $table->tinyInteger('attempts')->unsigned();
