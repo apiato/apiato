@@ -3,9 +3,7 @@
 namespace Apiato\Core\Traits\TestsTraits\PhpUnit;
 
 use App;
-use App\Containers\Authentication\Tasks\ApiLoginThisUserObjectTask;
 use App\Containers\User\Models\User;
-use Artisan;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -17,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
  */
 trait TestsAuthHelperTrait
 {
-
     /**
      * Logged in user object.
      *
@@ -47,9 +44,9 @@ trait TestsAuthHelperTrait
      * @param null $access      roles and permissions you'd like to provide this user with
      * @param null $userDetails what to be attached on the User object
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  User
      */
-    public function getTestingUser($userDetails = null, $access = null)
+    public function getTestingUser($userDetails = null, $access = null): User
     {
         return is_null($userDetails) ? $this->findOrCreateTestingUser($userDetails, $access)
             : $this->createTestingUser($userDetails, $access);
@@ -62,9 +59,9 @@ trait TestsAuthHelperTrait
      *
      * @param null $userDetails
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  User
      */
-    public function getTestingUserWithoutAccess($userDetails = null)
+    public function getTestingUserWithoutAccess($userDetails = null): User
     {
         return $this->getTestingUser($userDetails, $this->getNullAccess());
     }
@@ -73,9 +70,9 @@ trait TestsAuthHelperTrait
      * @param $userDetails
      * @param $access
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  User
      */
-    private function findOrCreateTestingUser($userDetails, $access)
+    private function findOrCreateTestingUser($userDetails, $access): User
     {
         return $this->testingUser ? : $this->createTestingUser($userDetails, $access);
     }
@@ -86,9 +83,9 @@ trait TestsAuthHelperTrait
      *
      * @return  User
      */
-    private function createTestingUser($userDetails = null, $access = null)
+    private function createTestingUser($userDetails = null, $access = null): User
     {
-        // "inject" the confirmed status, if userdetails are submitted
+        // "inject" the confirmed status, if user details are submitted
         if(is_array($userDetails)) {
             $defaults = [
                 'confirmed' => true,
@@ -115,9 +112,9 @@ trait TestsAuthHelperTrait
      *
      * @return  User
      */
-    private function factoryCreateUser($userDetails = null)
+    private function factoryCreateUser($userDetails = null): User
     {
-        return factory(User::class)->create($this->prepareUserDetails($userDetails));
+        return User::factory()->create($this->prepareUserDetails($userDetails));
     }
 
     /**
@@ -125,7 +122,7 @@ trait TestsAuthHelperTrait
      *
      * @return  array
      */
-    private function prepareUserDetails($userDetails = null)
+    private function prepareUserDetails($userDetails = null): array
     {
         $defaultUserDetails = [
             'name'     => $this->faker->name,
@@ -134,7 +131,7 @@ trait TestsAuthHelperTrait
         ];
 
         // if no user detail provided, use the default details, to find the password or generate one before encoding it
-        return $this->prepareUserPassword($userDetails ? : $defaultUserDetails);;
+        return $this->prepareUserPassword($userDetails ? : $defaultUserDetails);
     }
 
     /**
@@ -145,7 +142,7 @@ trait TestsAuthHelperTrait
     private function prepareUserPassword($userDetails)
     {
         // get password from the user details or generate one
-        $password = isset($userDetails['password']) ? $userDetails['password'] : $this->faker->password;
+        $password = $userDetails['password'] ?? $this->faker->password;
 
         // hash the password and set it back at the user details
         $userDetails['password'] = Hash::make($password);
@@ -157,9 +154,9 @@ trait TestsAuthHelperTrait
     /**
      * @return  array|null
      */
-    private function getAccess()
+    private function getAccess(): ?array
     {
-        return isset($this->access) ? $this->access : null;
+        return $this->access ?? null;
     }
 
     /**
@@ -186,11 +183,9 @@ trait TestsAuthHelperTrait
      */
     private function setupTestingUserRoles($user, $access)
     {
-        if (isset($access['roles']) && !empty($access['roles'])) {
-            if (!$user->hasRole($access['roles'])) {
-                $user->assignRole($access['roles']);
-                $user = $user->fresh();
-            }
+        if (isset($access['roles']) && !empty($access['roles']) && !$user->hasRole($access['roles'])) {
+            $user->assignRole($access['roles']);
+            $user = $user->fresh();
         }
 
         return $user;
@@ -216,7 +211,7 @@ trait TestsAuthHelperTrait
     /**
      * @return  array
      */
-    private function getNullAccess()
+    private function getNullAccess(): array
     {
         return [
             'permissions' => null,

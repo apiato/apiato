@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\File;
  */
 class Apiato
 {
-
     use CallableTrait;
 
     /**
@@ -26,14 +25,14 @@ class Apiato
      *
      * @var string
      */
-    const VERSION = '9.0.0';
+    public const VERSION = '10.0.0';
 
     /**
      * Get the containers namespace value from the containers config file
      *
      * @return  string
      */
-    public function getContainersNamespace()
+    public function getContainersNamespace(): string
     {
         return Config::get('apiato.containers.namespace');
     }
@@ -43,7 +42,7 @@ class Apiato
      *
      * @return  array
      */
-    public function getContainersNames()
+    public function getContainersNames(): array
     {
         $containersNames = [];
 
@@ -55,11 +54,21 @@ class Apiato
     }
 
     /**
+     * get containers directories paths
+     *
+     * @return  mixed
+     */
+    public function getContainersPaths()
+    {
+        return File::directories(app_path('Containers'));
+    }
+
+    /**
      * Get the port folders names
      *
      * @return  array
      */
-    public function getShipFoldersNames()
+    public function getShipFoldersNames(): array
     {
         $portFoldersNames = [];
 
@@ -68,16 +77,6 @@ class Apiato
         }
 
         return $portFoldersNames;
-    }
-
-    /**
-     * get containers directories paths
-     *
-     * @return  mixed
-     */
-    public function getContainersPaths()
-    {
-        return File::directories(app_path('Containers'));
     }
 
     /**
@@ -99,9 +98,7 @@ class Apiato
     {
         $classString = $this->getClassFullNameFromFile($filePathName);
 
-        $object = new $classString;
-
-        return $object;
+        return new $classString;
     }
 
     /**
@@ -112,7 +109,7 @@ class Apiato
      *
      * @return  string
      */
-    public function getClassFullNameFromFile($filePathName)
+    public function getClassFullNameFromFile($filePathName): string
     {
         return $this->getClassNamespaceFromFile($filePathName) . '\\' . $this->getClassNameFromFile($filePathName);
     }
@@ -124,7 +121,7 @@ class Apiato
      *
      * @return  null|string
      */
-    protected function getClassNamespaceFromFile($filePathName)
+    protected function getClassNamespaceFromFile($filePathName): ?string
     {
         $src = file_get_contents($filePathName);
 
@@ -151,13 +148,13 @@ class Apiato
         }
         if (!$namespace_ok) {
             return null;
-        } else {
-            return $namespace;
         }
+
+        return $namespace;
     }
 
     /**
-     * get the class name form file path using token
+     * get the class name from file path using token
      *
      * @param $filePathName
      *
@@ -192,7 +189,7 @@ class Apiato
      *
      * @return  bool
      */
-    public function stringStartsWith($word, $startsWith)
+    public function stringStartsWith($word, $startsWith): bool
     {
         return (substr($word, 0, strlen($startsWith)) === $startsWith);
     }
@@ -200,7 +197,7 @@ class Apiato
     /**
      * @param        $word
      * @param string $splitter
-     * @param bool   $uppercase
+     * @param bool $uppercase
      *
      * @return  mixed|string
      */
@@ -236,7 +233,7 @@ class Apiato
      *
      * @return  string
      */
-    public function buildClassFullName($containerName, $className)
+    public function buildClassFullName($containerName, $className): string
     {
         return 'App\Containers\\' . $containerName . '\\' . $this->getClassType($className) . 's\\' . $className;
     }
@@ -261,7 +258,7 @@ class Apiato
      *
      * @throws MissingContainerException
      */
-    public function verifyContainerExist($containerName)
+    public function verifyContainerExist($containerName): void
     {
         if (!is_dir(app_path('Containers/' . $containerName))) {
             throw new MissingContainerException("Container ($containerName) is not installed.");
@@ -273,7 +270,7 @@ class Apiato
      *
      * @throws ClassDoesNotExistException
      */
-    public function verifyClassExist($className)
+    public function verifyClassExist($className): void
     {
         if (!class_exists($className)) {
             throw new ClassDoesNotExistException("Class ($className) is not installed.");

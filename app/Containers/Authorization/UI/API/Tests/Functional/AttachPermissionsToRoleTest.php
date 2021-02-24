@@ -16,24 +16,20 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class AttachPermissionsToRoleTest extends ApiTestCase
 {
-
     protected $endpoint = 'post@v1/permissions/attach';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    /**
-     * @test
-     */
-    public function testAttachSinglePermissionToRole_()
+    public function testAttachSinglePermissionToRole_(): void
     {
-        $roleA = factory(Role::class)->create();
-        $permissionA = factory(Permission::class)->create();
+        $roleA = Role::factory()->create();
+        $permissionA = Permission::factory()->create();
 
         $data = [
-            'role_id'         => $roleA->getHashedKey(),
+            'role_id' => $roleA->getHashedKey(),
             'permissions_ids' => $permissionA->getHashedKey(),
         ];
 
@@ -49,19 +45,19 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $this->assertDatabaseHas('role_has_permissions', [
             'permission_id' => $permissionA->id,
-            'role_id'       => $roleA->id
+            'role_id' => $roleA->id
         ]);
     }
 
-    public function testAttachMultiplePermissionToRole_()
+    public function testAttachMultiplePermissionToRole_(): void
     {
-        $roleA = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
 
-        $permissionA = factory(Permission::class)->create();
-        $permissionB = factory(Permission::class)->create();
+        $permissionA = Permission::factory()->create();
+        $permissionB = Permission::factory()->create();
 
         $data = [
-            'role_id'         => $roleA->getHashedKey(),
+            'role_id' => $roleA->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
         ];
 
@@ -74,7 +70,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $this->assertDatabaseHas('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
-            'role_id'       => $roleA->id
+            'role_id' => $roleA->id
         ]);
 
     }

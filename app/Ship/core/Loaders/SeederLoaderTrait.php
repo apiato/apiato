@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
  * Class SeederLoaderTrait.
  *
  * This Class has inverted dependency :( you must extend this class from the default
- * seeder class provided by the framework (database/seeds/DatabaseSeeder.php)
+ * seeder class provided by the framework (database/seeders/DatabaseSeeder.php)
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
@@ -27,7 +27,7 @@ trait SeederLoaderTrait
     /**
      * runLoadingSeeders
      */
-    public function runLoadingSeeders()
+    public function runLoadingSeeders(): void
     {
         $this->loadSeedersFromContainers();
         $this->loadSeedersFromShip();
@@ -36,7 +36,7 @@ trait SeederLoaderTrait
     /**
      * loadSeedersFromContainers
      */
-    private function loadSeedersFromContainers()
+    private function loadSeedersFromContainers(): void
     {
         $seedersClasses = new Collection();
 
@@ -52,26 +52,6 @@ trait SeederLoaderTrait
         $orderedSeederClasses = $this->sortSeeders($seedersClasses);
 
         $this->loadSeeders($orderedSeederClasses);
-    }
-
-    /**
-     * loadSeedersFromShip
-     */
-    private function loadSeedersFromShip()
-    {
-//        $seedersClasses = new Collection();
-//
-//        // it has to do it's own loop for now
-//        foreach (Apiato::getShipFoldersNames() as $portFolderName) {
-//
-//            // Need to Loop over that Directory and load the any Seeder file there.
-//            $containersDirectories[] = base_path('app/Ship/Seeders/Tests');
-//        }
-//
-//        $seedersClasses = $this->findSeedersClasses($containersDirectories, $seedersClasses);
-//        $orderedSeederClasses = $this->sortSeeders($seedersClasses);
-//
-//        $this->loadSeeders($orderedSeederClasses);
     }
 
     /**
@@ -108,9 +88,9 @@ trait SeederLoaderTrait
     /**
      * @param $seedersClasses
      *
-     * @return  \Illuminate\Support\Collection
+     * @return  Collection
      */
-    private function sortSeeders($seedersClasses)
+    private function sortSeeders($seedersClasses): Collection
     {
         $orderedSeederClasses = new Collection();
 
@@ -147,12 +127,32 @@ trait SeederLoaderTrait
     /**
      * @param $seedersClasses
      */
-    private function loadSeeders($seedersClasses)
+    private function loadSeeders($seedersClasses): void
     {
         foreach ($seedersClasses as $seeder) {
             // seed it with call
             $this->call($seeder);
         }
+    }
+
+    /**
+     * loadSeedersFromShip
+     */
+    private function loadSeedersFromShip(): void
+    {
+//        $seedersClasses = new Collection();
+//
+//        // it has to do it's own loop for now
+//        foreach (Apiato::getShipFoldersNames() as $portFolderName) {
+//
+//            // Need to Loop over that Directory and load the any Seeder file there.
+//            $containersDirectories[] = base_path('app/Ship/Seeders/Tests');
+//        }
+//
+//        $seedersClasses = $this->findSeedersClasses($containersDirectories, $seedersClasses);
+//        $orderedSeederClasses = $this->sortSeeders($seedersClasses);
+//
+//        $this->loadSeeders($orderedSeederClasses);
     }
 
 }

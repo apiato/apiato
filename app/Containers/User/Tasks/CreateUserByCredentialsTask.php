@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class CreateUserByCredentialsTask extends Task
 {
-
     protected $repository;
 
     public function __construct(UserRepository $repository)
@@ -25,9 +24,9 @@ class CreateUserByCredentialsTask extends Task
     }
 
     /**
-     * @param bool        $isClient
-     * @param string      $email
-     * @param string      $password
+     * @param bool $isClient
+     * @param string $email
+     * @param string $password
      * @param string|null $name
      * @param string|null $gender
      * @param string|null $birth
@@ -36,23 +35,24 @@ class CreateUserByCredentialsTask extends Task
      * @throws  CreateResourceFailedException
      */
     public function run(
-        bool $isClient = true,
+        bool $isClient,
         string $email,
         string $password,
         string $name = null,
         string $gender = null,
         string $birth = null
-    ): User {
+    ): User
+    {
 
         try {
             // create new user
             $user = $this->repository->create([
-                'password'  => Hash::make($password),
-                'email'     => $email,
-                'name'      => $name,
-                'gender'    => $gender,
-                'birth'     => $birth,
-                'is_client' => $isClient,
+                'password' => Hash::make($password),
+                'email' => $email,
+                'name' => $name,
+                'gender' => $gender,
+                'birth' => $birth,
+                'is_client' => $isClient ?? true,
             ]);
 
         } catch (Exception $e) {

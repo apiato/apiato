@@ -1,13 +1,18 @@
 <?php
 
-// User
+namespace App\Containers\Authorization\Data\Factories;
+
 use App\Containers\Authorization\Models\Role;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Role::class, function (Faker\Generator $faker) {
+class RoleFactory extends Factory
+{
+    protected $model = Role::class;
 
-    return [
-        'name' => $faker->slug,
-    ];
-});
-
-// ...
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->slug,
+        ];
+    }
+}

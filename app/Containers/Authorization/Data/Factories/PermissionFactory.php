@@ -1,13 +1,18 @@
 <?php
 
-// User
+namespace App\Containers\Authorization\Data\Factories;
+
 use App\Containers\Authorization\Models\Permission;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Permission::class, function (Faker\Generator $faker) {
+class PermissionFactory extends Factory
+{
+    protected $model = Permission::class;
 
-    return [
-        'name' => $faker->slug,
-    ];
-});
-
-// ...
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->slug,
+        ];
+    }
+}

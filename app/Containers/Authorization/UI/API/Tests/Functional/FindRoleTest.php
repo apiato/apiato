@@ -15,20 +15,16 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class FindRoleTest extends ApiTestCase
 {
-
     protected $endpoint = 'get@v1/roles/{id}';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    /**
-     * @test
-     */
-    public function testFindRoleById_()
+    public function testFindRoleById_(): void
     {
-        $roleA = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
 
         // send the HTTP request
         $response = $this->injectId($roleA->id)->makeCall();
@@ -40,5 +36,4 @@ class FindRoleTest extends ApiTestCase
 
         $this->assertEquals($roleA->name, $responseContent->data->name);
     }
-
 }

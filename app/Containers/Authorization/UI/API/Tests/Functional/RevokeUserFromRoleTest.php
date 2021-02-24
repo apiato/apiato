@@ -17,27 +17,23 @@ use Illuminate\Support\Facades\Config;
  */
 class RevokeUserFromRoleTest extends ApiTestCase
 {
-
     protected $endpoint = 'post@v1/roles/revoke';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-admins-access',
     ];
 
-    /**
-     * @test
-     */
-    public function testRevokeUserFromRole_()
+    public function testRevokeUserFromRole_(): void
     {
-        $roleA = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
 
-        $randomUser = factory(User::class)->create();
+        $randomUser = User::factory()->create();
         $randomUser->assignRole($roleA);
 
         $data = [
             'roles_ids' => [$roleA->getHashedKey()],
-            'user_id'   => $randomUser->getHashedKey(),
+            'user_id' => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -56,53 +52,46 @@ class RevokeUserFromRoleTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRevokeUserFromRoleWithRealId_()
+    public function testRevokeUserFromRoleWithRealId_(): void
     {
-        $roleA = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
 
-        $randomUser = factory(User::class)->create();
+        $randomUser = User::factory()->create();
         $randomUser->assignRole($roleA);
 
         $data = [
             'roles_ids' => [$roleA->id],
-            'user_id'   => $randomUser->id,
+            'user_id' => $randomUser->id,
         ];
 
         // send the HTTP request
         $response = $this->makeCall($data);
 
-
         // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        if (Config::get('apiato.hash-id')){
+        if (Config::get('apiato.hash-id')) {
             $response->assertStatus(400);
 
             $this->assertResponseContainKeyValue([
                 'message' => 'Only Hashed ID\'s allowed.',
             ]);
-        }else{
+        } else {
             $response->assertStatus(200);
         }
 
     }
 
-    /**
-     * @test
-     */
-    public function testRevokeUserFromManyRoles_()
+    public function testRevokeUserFromManyRoles_(): void
     {
-        $roleA = factory(Role::class)->create();
-        $roleB = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
+        $roleB = Role::factory()->create();
 
-        $randomUser = factory(User::class)->create();
+        $randomUser = User::factory()->create();
         $randomUser->assignRole($roleA);
         $randomUser->assignRole($roleB);
 
         $data = [
             'roles_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
-            'user_id'   => $randomUser->getHashedKey(),
+            'user_id' => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -121,5 +110,4 @@ class RevokeUserFromRoleTest extends ApiTestCase
             'role_id' => $roleB->id,
         ]);
     }
-
 }

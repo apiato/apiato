@@ -11,7 +11,6 @@ use Apiato\Core\Foundation\Facades\Apiato;
  */
 trait AutoLoaderTrait
 {
-
     // using each component loader trait
     use ConfigsLoaderTrait;
     use LocalizationLoaderTrait;
@@ -41,8 +40,5 @@ trait AutoLoaderTrait
             $this->loadConsolesFromContainers($containerName);
             $this->loadViewsFromContainers($containerName);
         }
-
-        $this->loadFactoriesFromContainers();
     }
-
 }

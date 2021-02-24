@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class StripeAccount extends AbstractPaymentAccount
 {
-
     use SoftDeletes;
 
     /**

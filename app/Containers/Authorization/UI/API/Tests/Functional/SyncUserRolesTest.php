@@ -2,10 +2,10 @@
 
 namespace App\Containers\Authorization\UI\API\Tests\Functional;
 
-use Illuminate\Support\Arr;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tests\ApiTestCase;
 use App\Containers\User\Models\User;
+use Illuminate\Support\Arr;
 
 /**
  * Class SyncUserRolesTest.
@@ -17,23 +17,19 @@ use App\Containers\User\Models\User;
  */
 class SyncUserRolesTest extends ApiTestCase
 {
-
     protected $endpoint = 'post@v1/roles/sync?include=roles';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-admins-access',
     ];
 
-    /**
-     * @test
-     */
-    public function testSyncMultipleRolesOnUser()
+    public function testSyncMultipleRolesOnUser(): void
     {
-        $role1 = factory(Role::class)->create(['display_name' => '111']);
-        $role2 = factory(Role::class)->create(['display_name' => '222']);
+        $role1 = Role::factory()->create(['display_name' => '111']);
+        $role2 = Role::factory()->create(['display_name' => '222']);
 
-        $randomUser = factory(User::class)->create();
+        $randomUser = User::factory()->create();
         $randomUser->assignRole($role1);
 
 
@@ -42,7 +38,7 @@ class SyncUserRolesTest extends ApiTestCase
                 $role1->getHashedKey(),
                 $role2->getHashedKey(),
             ],
-            'user_id'   => $randomUser->getHashedKey(),
+            'user_id' => $randomUser->getHashedKey(),
         ];
 
         // send the HTTP request
@@ -60,5 +56,4 @@ class SyncUserRolesTest extends ApiTestCase
 
         $this->assertContains($data['roles_ids'][1], $roleIds);
     }
-
 }

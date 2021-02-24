@@ -4,6 +4,7 @@ namespace App\Containers\User\UI\API\Tests\Functional;
 
 use App\Containers\User\Models\User;
 use App\Containers\User\Tests\ApiTestCase;
+use Faker\Factory;
 
 /**
  * Class GetAllUsersTest.
@@ -29,7 +30,7 @@ class GetAllUsersTest extends ApiTestCase
     public function testGetAllUsersByAdmin_()
     {
         // create some non-admin users who are clients
-        factory(User::class, 2)->create();
+        User::factory()->count(2)->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -52,7 +53,7 @@ class GetAllUsersTest extends ApiTestCase
         $this->getTestingUserWithoutAccess();
 
         // create some fake users
-        factory(User::class, 2)->create();
+        User::factory()->count(2)->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -75,7 +76,7 @@ class GetAllUsersTest extends ApiTestCase
         ]);
 
         // 3 random users
-        factory(User::class, 3)->create();
+        User::factory()->count(3)->create();
 
         // send the HTTP request
         $response = $this->endpoint($this->endpoint. '?search=name:mahmoudzzz')->makeCall();

@@ -25,10 +25,7 @@ class ProxyLoginTest extends ApiTestCase
 
     private $testingFilesCreated = false;
 
-    /**
-     * @test
-     */
-    public function testClientWebAdminProxyLogin_()
+    public function testClientWebAdminProxyLogin_(): void
     {
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
@@ -37,6 +34,7 @@ class ProxyLoginTest extends ApiTestCase
         ];
 
         $user = $this->getTestingUser($data);
+
         $this->actingAs($user, 'web');
 
         $clientId = '100';
@@ -82,10 +80,7 @@ class ProxyLoginTest extends ApiTestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function testClientWebAdminProxyUnconfirmedLogin_()
+    public function testClientWebAdminProxyUnconfirmedLogin_(): void
     {
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
@@ -136,7 +131,7 @@ class ProxyLoginTest extends ApiTestCase
         }
     }
 
-    public function testLoginWithNameAttribute()
+    public function testLoginWithNameAttribute(): void
     {
         // create data to be used for creating the testing user and to be sent with the post request
         $data = [
@@ -207,7 +202,7 @@ class ProxyLoginTest extends ApiTestCase
      *
      * @return  string
      */
-    private function createTestingKey($fileName)
+    private function createTestingKey($fileName): string
     {
         $filePath = storage_path($fileName);
 

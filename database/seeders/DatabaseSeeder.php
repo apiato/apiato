@@ -1,14 +1,16 @@
 <?php
 
+namespace Database\Seeders;
+
 use Apiato\Core\Loaders\SeederLoaderTrait;
-use Illuminate\Database\Seeder as LaravelSeeder;
+use Illuminate\Database\Seeder;
 
 /**
  * Class DatabaseSeeder
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class DatabaseSeeder extends LaravelSeeder
+class DatabaseSeeder extends Seeder
 {
     use SeederLoaderTrait;
 
@@ -17,7 +19,7 @@ class DatabaseSeeder extends LaravelSeeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->runLoadingSeeders();
     }

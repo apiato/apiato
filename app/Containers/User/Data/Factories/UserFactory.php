@@ -1,22 +1,35 @@
 <?php
 
-use Illuminate\Support\Str;
+namespace App\Containers\User\Data\Factories;
+
+use App\Containers\User\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
-$factory->define(App\Containers\User\Models\User::class, function (Faker\Generator $faker) {
-    static $password;
+class UserFactory extends Factory
+{
+    protected $model = User::class;
 
-    return [
-        'name'           => $faker->name,
-        'email'          => $faker->unique()->safeEmail,
-        'password'       => $password ? : $password = Hash::make('testing-password'),
-        'remember_token' => Str::random(10),
-        'is_client'      => false,
-    ];
-});
+    public function definition(): array
+    {
+        static $password;
 
-$factory->state(App\Containers\User\Models\User::class, 'client', function (Faker\Generator $faker) {
-    return [
-        'is_client' => true,
-    ];
-});
+        return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'password' => $password ?: $password = Hash::make('testing-password'),
+            'remember_token' => Str::random(10),
+            'is_client' => false,
+        ];
+    }
+
+    public function client(): UserFactory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_client' => true,
+            ];
+        });
+    }
+}

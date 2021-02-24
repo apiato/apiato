@@ -32,7 +32,7 @@ class ChargeUserWithStripeTest extends TestCase
         // create testing user
         $user = $this->getTestingUser();
 
-        $stripeAccount = factory(StripeAccount::class)->create([
+        $stripeAccount = StripeAccount::factory()->create([
             'customer_id' => 'cus_8mBD5S1SoyD4zL',
         ]);
 

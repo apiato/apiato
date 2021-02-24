@@ -14,18 +14,14 @@ use App\Containers\Authentication\Tests\ApiTestCase;
  */
 class ApiLogoutTest extends ApiTestCase
 {
-
     protected $endpoint = 'delete@v1/logout';
 
     protected $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
-    /**
-     * @test
-     */
-    public function testLogout()
+    public function testLogout(): void
     {
         $response = $this->makeCall([], [
             'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImUxODk3NjU3YTVlZWQxMDkyMThlZjVmOThl
@@ -46,7 +42,5 @@ class ApiLogoutTest extends ApiTestCase
         $this->assertResponseContainKeyValue([
             'message' => 'Token revoked successfully.',
         ]);
-
     }
-
 }

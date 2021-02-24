@@ -2,7 +2,8 @@
 
 namespace Apiato\Core\Traits;
 
-use Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ValidationTrait
@@ -11,11 +12,10 @@ use Validator;
  */
 trait ValidationTrait
 {
-
     /**
      * Extend the default Laravel validation rules.
      */
-    public function extendValidationRules()
+    public function extendValidationRules(): void
     {
         // Validate String contains no space.
         Validator::extend('no_spaces', function ($attribute, $value, $parameters, $validator) {
@@ -28,7 +28,7 @@ trait ValidationTrait
         //             'item_variant_name_id' => 'required',
         Validator::extend('unique_composite', function ($attribute, $value, $parameters, $validator) {
 
-            $queryBuilder = \DB::table($parameters[0]);
+            $queryBuilder = DB::table($parameters[0]);
 
             $queryBuilder = is_array($value) ? $queryBuilder->whereIn($parameters[1],
                 $value) : $queryBuilder->where($parameters[1], $value);
@@ -40,5 +40,4 @@ trait ValidationTrait
             return $queryResult->isEmpty();
         }, ["Duplicated record. This record has composite ID and it must be unique."]);
     }
-
 }

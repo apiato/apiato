@@ -7,7 +7,6 @@ use Apiato\Core\Abstracts\Providers\MainProvider as AbstractMainProvider;
 use Apiato\Core\Foundation\Apiato;
 use Apiato\Core\Generator\GeneratorsServiceProvider;
 use Apiato\Core\Loaders\AutoLoaderTrait;
-use Apiato\Core\Loaders\FactoriesLoaderTrait;
 use Apiato\Core\Traits\ValidationTrait;
 use App\Ship\Parents\Providers\RoutesProvider;
 use App\Ship\Providers\ShipProvider;
@@ -31,8 +30,6 @@ use Vinkla\Hashids\HashidsServiceProvider;
  */
 class ApiatoProvider extends AbstractMainProvider
 {
-
-    use FactoriesLoaderTrait;
     use AutoLoaderTrait;
     use ValidationTrait;
 
@@ -106,12 +103,11 @@ class ApiatoProvider extends AbstractMainProvider
     /**
      * Register Overided Base providers
      *
-     * @see \Illuminate\Foundation\Application::registerBaseServiceProviders
      * @return void
+     * @see \Illuminate\Foundation\Application::registerBaseServiceProviders
      */
     private function overrideLaravelBaseProviders()
     {
         App::register(EventServiceProvider::class); //The custom apiato eventserviceprovider
     }
-
 }

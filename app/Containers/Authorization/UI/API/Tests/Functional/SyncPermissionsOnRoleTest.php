@@ -16,27 +16,23 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class SyncPermissionsOnRoleTest extends ApiTestCase
 {
-
     protected $endpoint = 'post@v1/permissions/sync';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    /**
-     * @test
-     */
-    public function testSyncDuplicatedPermissionsToRole_()
+    public function testSyncDuplicatedPermissionsToRole_(): void
     {
-        $permissionA = factory(Permission::class)->create(['display_name' => 'AAA']);
-        $permissionB = factory(Permission::class)->create(['display_name' => 'BBB']);
+        $permissionA = Permission::factory()->create(['display_name' => 'AAA']);
+        $permissionB = Permission::factory()->create(['display_name' => 'BBB']);
 
-        $roleA = factory(Role::class)->create();
+        $roleA = Role::factory()->create();
         $roleA->givePermissionTo($permissionA);
 
         $data = [
-            'role_id'         => $roleA->getHashedKey(),
+            'role_id' => $roleA->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
         ];
 
@@ -49,9 +45,7 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
         $this->assertDatabaseHas('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
-            'role_id'       => $roleA->id
+            'role_id' => $roleA->id
         ]);
-
     }
-
 }

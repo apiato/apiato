@@ -2,8 +2,8 @@
 
 namespace App\Containers\User\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
+use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
@@ -23,7 +23,7 @@ class CreateAdminAction extends Action
     public function run(DataTransporter $data): User
     {
         $admin = Apiato::call('User@CreateUserByCredentialsTask', [
-            $isClient = false,
+            false,
             $data->email,
             $data->password,
             $data->name
