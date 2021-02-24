@@ -1,7 +1,7 @@
 {
-  "name": "apiato/payment",
-  "description": "Payment Container for apiato.",
-  "type": "apiato-container",
-  "require": {
-  }
+    "name": "apiato/payment",
+    "description": "Payment Container for apiato.",
+    "type": "apiato-container",
+    "require": {
+    }
 }

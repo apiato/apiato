@@ -1,10 +1,10 @@
 {
-  "name": "apiato/stripe",
-  "description": "apiato Container for apiato.",
-  "require": {
-    "cartalyst/stripe-laravel": "^13.1.0"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-master"
-  }
+    "name": "apiato/stripe",
+    "description": "apiato Container for apiato.",
+    "require": {
+        "cartalyst/stripe-laravel": "^13.1.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    }
 }

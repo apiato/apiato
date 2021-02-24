@@ -1,11 +1,12 @@
 {
-  "name": "apiato/debugger",
-  "description": "apiato Container.",
-  "type": "apiato-container",
-  "require": {
-    "jenssegers/agent": "^2.6.3"
-  },
-  "require-dev": {
-    "barryvdh/laravel-debugbar": "^3.2.8"
-  }
+    "name": "apiato/debugger",
+    "description": "apiato Container.",
+    "type": "apiato-container",
+    "require": {
+        "jenssegers/agent": "^2.6.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "barryvdh/laravel-debugbar": "^3.5.2"
+    }
 }

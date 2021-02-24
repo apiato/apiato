@@ -1,105 +1,103 @@
 {
-  "name": "apiato/apiato",
-  "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
-  "homepage": "http://apiato.io/",
-  "support": {
-    "issues": "https://github.com/apiato/apiato/issues",
-    "source": "https://github.com/apiato/apiato"
-  },
-  "authors": [
-    {
-      "name": "Mahmoud Zalt",
-      "email": "mahmoud@zalt.me"
-    }
-  ],
-  "keywords": [
-    "Apiato",
-    "API",
-    "Framework",
-    "API framework",
-    "API Starter",
-    "PHP API Starter",
-    "Laravel API",
-    "PHP",
-    "Hello API",
-    "Porto",
-    "Porto SAP"
-  ],
-  "license": "MIT",
-  "type": "project",
-  "require": {
-    "php": "^7.3|^8.0",
-    "ext-mbstring": "*",
-    "ext-openssl": "*",
-    "ext-pdo": "*",
-    "ext-tokenizer": "*",
-    "laravel/framework": "^8.28.1",
-    "doctrine/dbal": "^3.0.0",
-    "fideloper/proxy": "^4.4.1",
-    "guzzlehttp/guzzle": "^7.2.0",
-    "laravel/tinker": "^2.6.0",
-    "fruitcake/laravel-cors": "^1.0.6",
-    "wikimedia/composer-merge-plugin": "^1.5"
-  },
-  "require-dev": {
-    "facade/ignition": "^2.5.13",
-    "fakerphp/faker": "^1.13.0",
-    "laravel/homestead": "^12.0",
-    "mockery/mockery": "^1.4.2",
-    "nunomaduro/collision": "^5.3.0",
-    "phpunit/phpunit": "^9.5.2",
-    "roave/security-advisories": "dev-master"
-  },
-  "autoload": {
-    "classmap": [
-      "database/seeds",
-      "database/factories"
-    ],
-    "psr-4": {
-      "App\\": "app/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {}
-  },
-  "extra": {
-    "laravel": {
-      "dont-discover": [
-        "*"
-      ]
+    "name": "apiato/apiato",
+    "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
+    "homepage": "http://apiato.io/",
+    "support": {
+        "issues": "https://github.com/apiato/apiato/issues",
+        "source": "https://github.com/apiato/apiato"
     },
-    "merge-plugin": {
-      "include": [
-        "app/Ship/composer.json",
-        "app/Ship/core/composer.json",
-        "app/Containers/*/composer.json",
-        "app/Containers/composer.json"
-      ],
-      "recurse": true,
-      "replace": false,
-      "merge-dev": true,
-      "merge-extra": false,
-      "merge-extra-deep": false,
-      "merge-scripts": true
-    }
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+    "authors": [
+        {
+            "name": "Mahmoud Zalt",
+            "email": "mahmoud@zalt.me"
+        }
     ],
-    "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    "keywords": [
+        "Apiato",
+        "API",
+        "Framework",
+        "API framework",
+        "API Starter",
+        "PHP API Starter",
+        "Laravel API",
+        "PHP",
+        "Hello API",
+        "Porto",
+        "Porto SAP"
     ],
-    "post-create-project-cmd": [
-      "@php artisan key:generate --ansi"
-    ]
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.3|^8.0",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-pdo": "*",
+        "ext-tokenizer": "*",
+        "laravel/framework": "^8.28.1",
+        "doctrine/dbal": "^3.0.0",
+        "fideloper/proxy": "^4.4.1",
+        "guzzlehttp/guzzle": "^7.2.0",
+        "laravel/tinker": "^2.6.0",
+        "fruitcake/laravel-cors": "^1.0.6",
+        "wikimedia/composer-merge-plugin": "^2.0.1"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.5.13",
+        "fakerphp/faker": "^1.13.0",
+        "laravel/homestead": "^12.0",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.3.0",
+        "phpunit/phpunit": "^9.5.2",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {}
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "*"
+            ]
+        },
+        "merge-plugin": {
+            "include": [
+                "app/Ship/composer.json",
+                "app/Ship/core/composer.json",
+                "app/Containers/*/composer.json",
+                "app/Containers/composer.json"
+            ],
+            "recurse": true,
+            "replace": false,
+            "merge-dev": true,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-scripts": true
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
