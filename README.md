@@ -2,7 +2,7 @@
 
 # Apiato
 
-<h3 align="center">Build scalable API's faster | With PHP 7.2.5 and Laravel 7.0</h3>
+<h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 8.0</h3>
 
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
@@ -108,6 +108,13 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/Mahmoudz">@mahmoudz</a>
         </td>
+         <td align="center" valign="top">
+            <img width="125" height="125" src="https://github.com/mohammad-alavi.png?s=150">
+            <br>
+            <strong>Mohammad Alavi</strong>
+            <br>
+            <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
+        </td>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/johannesschobel.png?s=150">
             <br>
@@ -195,13 +202,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <strong>Martin Kiesel</strong>
             <br>
             <a href="https://github.com/Kyslik">@Kyslik</a>
-        </td>
-         <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/shalawani.png?s=150">
-            <br>
-            <strong>Samer Halawani</strong>
-            <br>
-            <a href="https://github.com/shalawani">@shalawani</a>
         </td>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/apiato/documentation/blob/master/images/join-us.png">
