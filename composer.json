@@ -48,14 +48,18 @@
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.3.0",
         "phpunit/phpunit": "^9.5.2",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files" : [
+            "app/Containers/Authentication/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {}
