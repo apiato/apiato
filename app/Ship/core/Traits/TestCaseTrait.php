@@ -2,7 +2,7 @@
 
 namespace Apiato\Core\Traits;
 
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\ClientRepository;
 use Laravel\Passport\PersonalAccessClient;
 
@@ -17,7 +17,7 @@ trait TestCaseTrait
     /**
      * Migrate the database.
      */
-    public function migrateDatabase()
+    public function migrateDatabase(): void
     {
         Artisan::call('migrate');
     }
@@ -36,7 +36,7 @@ trait TestCaseTrait
             return;
         }
 
-        $url = ($url) ? : $this->baseUrl;
+        $url = ($url) ?: $this->baseUrl;
 
         $info = parse_url($url);
 
@@ -53,7 +53,7 @@ trait TestCaseTrait
     /**
      * Equivalent to passport:install but enough to run the tests
      */
-    public function setupPassportOAuth2()
+    public function setupPassportOAuth2(): void
     {
         $client = (new ClientRepository())->createPersonalAccessClient(
             null,
