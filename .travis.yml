@@ -1,7 +1,8 @@
 language: php
 
 php:
-  - '7.4'
+  - '7.3'
+  - '8.0'
 
 dist: trusty
 
