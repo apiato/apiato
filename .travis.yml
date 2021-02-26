@@ -16,8 +16,8 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - if [[ $setup = 'stable' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --prefer-stable --no-interaction --no-suggest; fi
-  - if [[ $setup = 'normal' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
+  - if [[ $setup = 'stable' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --prefer-stable --no-interaction; fi
+  - if [[ $setup = 'normal' ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
 
 before_script:
   - cp .env.travis .env
