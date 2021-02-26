@@ -2,7 +2,7 @@
   "require": {
     "illuminate/support": "^8.28.1",
     "apiato/containers-installer": "^1.0",
-    "prettus/l5-repository": "^2.6.46",
+    "prettus/l5-repository": "^2.7.4",
     "fruitcake/laravel-cors": "^1.0.5",
     "spatie/laravel-fractal": "^5.8.1",
     "vinkla/hashids": "^9.1.0",
