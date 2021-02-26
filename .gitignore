@@ -20,3 +20,7 @@ _ide_helper*.php
 /.vagrant
 /.idea
 /.vscode
+html-coverage
+Vagrantfile
+after.sh
+aliases
