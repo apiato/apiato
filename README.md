@@ -136,6 +136,8 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/zmaren">@zmaren</a>
         </td>
+     </tr>
+     <tr>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/rdehnhardt.png?s=150">
             <br>
@@ -143,8 +145,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/rdehnhardt">@rdehnhardt</a>
         </td>
-     </tr>
-     <tr>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/JulianBustamante.png?s=150">
             <br>
@@ -173,6 +173,8 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/lloricode">@lloricode</a>
         </td>
+     </tr>
+	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/jlorente.png?s=150">
             <br>
@@ -180,8 +182,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/jlorente">@jlorente</a>
         </td>
-     </tr>
-	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/deviouspk.png?s=150">
             <br>
