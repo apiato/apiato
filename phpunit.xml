@@ -13,9 +13,6 @@
             <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
             <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
         </exclude>
-        <report>
-            <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
-        </report>
     </coverage>
     <testsuites>
         <testsuite name="Containers Tests">
