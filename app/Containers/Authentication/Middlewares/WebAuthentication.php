@@ -27,21 +27,13 @@ class WebAuthentication extends Middleware
     /**
      * WebAuthentication constructor.
      *
-     * @param \Illuminate\Contracts\Auth\Guard $auth
+     * @param Guard $auth
      */
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     *
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         if ($this->auth->guest()) {

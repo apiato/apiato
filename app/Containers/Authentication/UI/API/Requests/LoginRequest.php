@@ -3,7 +3,6 @@
 namespace App\Containers\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Arr;
 
 /**
  * Class LoginRequest.
@@ -47,33 +46,13 @@ class LoginRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        $prefix = config('authentication-container.login.prefix', '');
-
-        $allowedLoginFields = config('authentication-container.login.attributes', ['email' => []]);
-
         $rules = [
             'password' => 'required|min:3|max:30',
         ];
 
-        foreach ($allowedLoginFields as $key => $optionalValidators)
-        {
-            // build all other login fields together
-            $allOtherLoginFields = Arr::except($allowedLoginFields, $key);
-            $allOtherLoginFields = array_keys($allOtherLoginFields);
-            $allOtherLoginFields = preg_filter('/^/', $prefix, $allOtherLoginFields);
-            $allOtherLoginFields = implode(',', $allOtherLoginFields);
-
-            $validators = implode('|', $optionalValidators);
-
-            $keyname = $prefix . $key;
-
-            $rules = array_merge($rules,
-                [
-                    $keyname => "required_without_all:{$allOtherLoginFields}|exists:users,{$key}|{$validators}",
-                ]);
-        }
+        $rules = loginAttributeValidationRulesMerger($rules);
 
         return $rules;
     }
@@ -83,7 +62,7 @@ class LoginRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

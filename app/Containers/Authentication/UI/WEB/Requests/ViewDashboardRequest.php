@@ -18,7 +18,7 @@ class ViewDashboardRequest extends Request
      * @var  array
      */
     protected $access = [
-        'roles'       => 'admin',
+        'roles' => 'admin',
         'permissions' => '',
     ];
 
@@ -46,7 +46,7 @@ class ViewDashboardRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [];
     }
@@ -56,7 +56,7 @@ class ViewDashboardRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

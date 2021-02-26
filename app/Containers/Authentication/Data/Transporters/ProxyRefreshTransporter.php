@@ -11,10 +11,6 @@ use App\Ship\Parents\Transporters\Transporter;
  */
 class ProxyRefreshTransporter extends Transporter
 {
-
-    /**
-     * @var array
-     */
     protected $schema = [
         'type' => 'object',
         'properties' => [
@@ -24,12 +20,12 @@ class ProxyRefreshTransporter extends Transporter
             'grant_type',
             'scope',
         ],
-        'required'   => [
+        'required' => [
             'refresh_token',
             'client_id',
             'client_password',
         ],
-        'default'    => [
+        'default' => [
             'scope' => '',
         ]
     ];

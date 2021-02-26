@@ -4,6 +4,7 @@ namespace App\Containers\Authentication\Tasks;
 
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
+use Laravel\Passport\PersonalAccessTokenResult;
 
 /**
  * Class ApiLoginFromUserTask.
@@ -12,16 +13,8 @@ use App\Ship\Parents\Tasks\Task;
  */
 class ApiLoginFromUserTask extends Task
 {
-    /**
-     * @param \App\Containers\User\Models\User $user
-     *
-     * @return  \Laravel\Passport\PersonalAccessTokenResult
-     */
-    public function run(User $user)
+    public function run(User $user): PersonalAccessTokenResult
     {
-        $personalAccessTokenResult = $user->createToken('social');
-
-        return $personalAccessTokenResult;
+        return $user->createToken('social');
     }
-
 }

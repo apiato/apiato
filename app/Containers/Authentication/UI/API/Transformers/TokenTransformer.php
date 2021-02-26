@@ -12,19 +12,13 @@ use Illuminate\Support\Facades\Config;
  */
 class TokenTransformer extends Transformer
 {
-
-    /**
-     * @param $token
-     *
-     * @return  array
-     */
-    public function transform($token)
+    public function transform($token): array
     {
         $response = [
-            'object'       => 'Token',
+            'object' => 'Token',
             'access_token' => $token,
-            'token_type'   => 'Bearer',
-            'expires_in'   => Config::get('apiato.api.expires-in'),
+            'token_type' => 'Bearer',
+            'expires_in' => Config::get('apiato.api.expires-in'),
         ];
 
         return $response;

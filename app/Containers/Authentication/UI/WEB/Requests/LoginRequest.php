@@ -45,12 +45,15 @@ class LoginRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            'email'    => 'required|email|max:40',
-            'password' => 'required|max:30',
+        $rules = [
+            'password' => 'required|min:3|max:30',
         ];
+
+        $rules = loginAttributeValidationRulesMerger($rules);
+
+        return $rules;
     }
 
     /**
@@ -58,7 +61,7 @@ class LoginRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

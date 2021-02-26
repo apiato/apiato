@@ -4,31 +4,30 @@ namespace App\Containers\Authentication\Data\Transporters;
 
 use App\Ship\Parents\Transporters\Transporter;
 
-/**
- * Class ProxyApiLoginTransporter
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
-class ProxyApiLoginTransporter extends Transporter
+class LoginTransporter extends Transporter
 {
+
+    /**
+     * @var array
+     */
     protected $schema = [
         'type' => 'object',
         'properties' => [
+            // enter all properties here
             'password',
-            'client_id',
-            'client_password',
-            'grant_type',
-            'scope',
+            'remember_me' => [
+                'type' => 'boolean'
+            ],
             // allow for undefined properties
             'additionalProperties' => true,
         ],
         'required' => [
-            'password',
-            'client_id',
-            'client_password',
+            // define the properties that MUST be set
+            'password'
         ],
         'default' => [
-            'scope' => '',
+            // provide default values for specific properties here
+            'remember_me' => false
         ]
     ];
 }
