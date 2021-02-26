@@ -23,7 +23,7 @@ class UpdatePaymentAccountTask extends Task
     }
 
     /**
-     * @param \App\Containers\Payment\Models\PaymentAccount $account
+     * @param PaymentAccount $account
      * @param array                                         $data
      *
      * @return mixed

@@ -21,7 +21,7 @@ abstract class Exception extends SymfonyHttpException
     /**
      * MessageBag errors.
      *
-     * @var \Illuminate\Support\MessageBag
+     * @var MessageBag
      */
     protected $errors;
 
@@ -49,7 +49,7 @@ abstract class Exception extends SymfonyHttpException
      * @param null            $errors
      * @param null            $statusCode
      * @param int             $code
-     * @param \Exception|null $previous
+     * @param BaseException|null $previous
      * @param array           $headers
      */
     public function __construct(
@@ -102,7 +102,7 @@ abstract class Exception extends SymfonyHttpException
     /**
      * Get the errors message bag.
      *
-     * @return \Illuminate\Support\MessageBag
+     * @return MessageBag
      */
     public function getErrors()
     {
@@ -140,7 +140,7 @@ abstract class Exception extends SymfonyHttpException
     /**
      * @param null $errors
      *
-     * @return  \Illuminate\Support\MessageBag|null
+     * @return  MessageBag|null
      */
     private function prepareError($errors = null)
     {
@@ -150,7 +150,7 @@ abstract class Exception extends SymfonyHttpException
     /**
      * @param array $errors
      *
-     * @return  array|\Illuminate\Support\MessageBag
+     * @return  array|MessageBag
      */
     private function prepareArrayError(array $errors = [])
     {

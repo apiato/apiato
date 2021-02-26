@@ -30,7 +30,7 @@ class RoleCriteria extends Criteria
 
     /**
      * @param                                                   $model
-     * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
+     * @param PrettusRepositoryInterface $repository
      *
      * @return mixed
      */

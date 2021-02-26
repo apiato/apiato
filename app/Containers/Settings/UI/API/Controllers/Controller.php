@@ -10,6 +10,7 @@ use App\Containers\Settings\UI\API\Requests\UpdateSettingRequest;
 use App\Containers\Settings\UI\API\Transformers\SettingTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class Controller
@@ -66,7 +67,7 @@ class Controller extends ApiController
      *
      * @param DeleteSettingRequest $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function deleteSetting(DeleteSettingRequest $request)
     {

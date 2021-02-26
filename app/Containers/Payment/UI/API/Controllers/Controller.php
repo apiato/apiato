@@ -10,6 +10,7 @@ use App\Containers\Payment\UI\API\Requests\UpdatePaymentAccountRequest;
 use App\Containers\Payment\UI\API\Transformers\PaymentAccountTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class Controller
@@ -59,7 +60,7 @@ class Controller extends ApiController
     /**
      * @param DeletePaymentAccountRequest $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function deletePaymentAccount(DeletePaymentAccountRequest $request)
     {

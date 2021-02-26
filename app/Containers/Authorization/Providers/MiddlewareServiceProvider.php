@@ -3,6 +3,8 @@
 namespace App\Containers\Authorization\Providers;
 
 use App\Ship\Parents\Providers\MiddlewareProvider;
+use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 
 /**
  * Class MiddlewareServiceProvider
@@ -36,8 +38,8 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 
     protected $routeMiddleware = [
         // Laravel default route middleware's:
-        'can'      => \Illuminate\Auth\Middleware\Authorize::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'      => Authorize::class,
+        'bindings' => SubstituteBindings::class,
     ];
 
 }

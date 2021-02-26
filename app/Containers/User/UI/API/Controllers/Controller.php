@@ -16,6 +16,7 @@ use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class Controller.
@@ -26,7 +27,7 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
+     * @param RegisterUserRequest $request
      *
      * @return  mixed
      */
@@ -38,7 +39,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\CreateAdminRequest $request
+     * @param CreateAdminRequest $request
      *
      * @return  mixed
      */
@@ -50,7 +51,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\UpdateUserRequest $request
+     * @param UpdateUserRequest $request
      *
      * @return  mixed
      */
@@ -62,9 +63,9 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
+     * @param DeleteUserRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function deleteUser(DeleteUserRequest $request)
     {
@@ -74,7 +75,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
+     * @param GetAllUsersRequest $request
      *
      * @return  mixed
      */
@@ -86,7 +87,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
+     * @param GetAllUsersRequest $request
      *
      * @return  mixed
      */
@@ -98,7 +99,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\GetAllUsersRequest $request
+     * @param GetAllUsersRequest $request
      *
      * @return  mixed
      */
@@ -110,7 +111,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\FindUserByIdRequest $request
+     * @param FindUserByIdRequest $request
      *
      * @return  mixed
      */
@@ -134,9 +135,9 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ResetPasswordRequest $request
+     * @param ResetPasswordRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function resetPassword(ResetPasswordRequest $request)
     {
@@ -146,9 +147,9 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\ForgotPasswordRequest $request
+     * @param ForgotPasswordRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function forgotPassword(ForgotPasswordRequest $request)
     {

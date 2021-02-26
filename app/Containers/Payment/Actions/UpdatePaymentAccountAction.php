@@ -17,9 +17,9 @@ class UpdatePaymentAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
-     * @return  \App\Containers\Payment\Models\PaymentAccount
+     * @return  PaymentAccount
      */
     public function run(DataTransporter $data): PaymentAccount
     {

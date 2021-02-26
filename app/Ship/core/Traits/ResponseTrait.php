@@ -119,7 +119,7 @@ trait ResponseTrait
      * @param array $headers
      * @param int   $options
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function json($message, $status = 200, array $headers = [], $options = 0)
     {
@@ -145,7 +145,7 @@ trait ResponseTrait
      * @param array $headers
      * @param int   $options
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function accepted($message = null, $status = 202, array $headers = [], $options = 0)
     {
@@ -155,7 +155,7 @@ trait ResponseTrait
     /**
      * @param $responseArray
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function deleted($responseArray = null)
     {
@@ -174,7 +174,7 @@ trait ResponseTrait
     /**
      * @param int $status
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function noContent($status = 204)
     {

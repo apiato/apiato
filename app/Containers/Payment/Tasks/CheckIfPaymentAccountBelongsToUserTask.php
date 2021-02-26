@@ -16,8 +16,8 @@ class CheckIfPaymentAccountBelongsToUserTask extends Task
 {
 
     /**
-     * @param \App\Containers\User\Models\User              $user
-     * @param \App\Containers\Payment\Models\PaymentAccount $account
+     * @param User $user
+     * @param PaymentAccount $account
      *
      * @return bool
      * @throws PaymentAccountDoesNotBelongToUserException

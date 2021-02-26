@@ -15,7 +15,7 @@ class DeletePaymentAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      */
     public function run(DataTransporter $data): void
     {

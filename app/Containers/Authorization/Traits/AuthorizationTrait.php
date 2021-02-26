@@ -2,6 +2,7 @@
 
 namespace App\Containers\Authorization\Traits;
 
+use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 trait AuthorizationTrait
 {
     /**
-     * @return  \App\Containers\User\Models\User|null
+     * @return  User|null
      */
     public function getUser()
     {

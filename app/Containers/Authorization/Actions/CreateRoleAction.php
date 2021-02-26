@@ -17,9 +17,9 @@ class CreateRoleAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
-     * @return  \App\Containers\Authorization\Models\Role
+     * @return  Role
      */
     public function run(DataTransporter $data): Role
     {

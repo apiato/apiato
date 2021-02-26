@@ -17,14 +17,14 @@ class CreateRoleTask extends Task
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Repositories\RoleRepository
+     * @var  RoleRepository
      */
     protected $repository;
 
     /**
      * CreateRoleTask constructor.
      *
-     * @param \App\Containers\Authorization\Data\Repositories\RoleRepository $repository
+     * @param RoleRepository $repository
      */
     public function __construct(RoleRepository $repository)
     {

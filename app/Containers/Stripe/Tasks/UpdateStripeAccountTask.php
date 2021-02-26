@@ -19,7 +19,7 @@ class UpdateStripeAccountTask extends Task
     }
 
     /**
-     * @param \App\Containers\Stripe\Models\StripeAccount $account
+     * @param StripeAccount $account
      * @param array                                       $data
      *
      * @return mixed

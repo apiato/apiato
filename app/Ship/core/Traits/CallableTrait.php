@@ -5,10 +5,12 @@ namespace Apiato\Core\Traits;
 use Apiato\Core\Abstracts\Requests\Request;
 use Apiato\Core\Abstracts\Transporters\Transporter;
 use Apiato\Core\Foundation\Facades\Apiato;
+use Dto\Exceptions\UnstorableValueException;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use ReflectionMethod;
 
 /**
  * Class CallableTrait.
@@ -27,7 +29,7 @@ trait CallableTrait
      * @param array $extraMethodsToCall
      *
      * @return  mixed
-     * @throws \Dto\Exceptions\UnstorableValueException
+     * @throws UnstorableValueException
      */
     public function call($class, $runMethodArguments = [], $extraMethodsToCall = [])
     {
@@ -193,7 +195,7 @@ trait CallableTrait
      * @param array $runMethodArguments
      *
      * @return  array
-     * @throws \Dto\Exceptions\UnstorableValueException
+     * @throws UnstorableValueException
      */
     private function convertRequestsToTransporters($class, array $runMethodArguments = [])
     {
@@ -218,7 +220,7 @@ trait CallableTrait
         // this is a bit more tricky than the stuff above - but we will manage this
 
         // get a reflector for the run() method
-        $reflector = new \ReflectionMethod($class, 'run');
+        $reflector = new ReflectionMethod($class, 'run');
         $calleeParameters = $reflector->getParameters();
 
         // now specifically check only the positions we have found a REQUEST in the call() method

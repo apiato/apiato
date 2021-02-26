@@ -18,14 +18,14 @@ class GetAllUsersTask extends Task
 {
 
     /**
-     * @var  \App\Containers\User\Data\Repositories\UserRepository
+     * @var  UserRepository
      */
     protected $repository;
 
     /**
      * GetAllUsersTask constructor.
      *
-     * @param \App\Containers\User\Data\Repositories\UserRepository $repository
+     * @param UserRepository $repository
      */
     public function __construct(UserRepository $repository)
     {

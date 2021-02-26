@@ -20,6 +20,7 @@ use App\Containers\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class Controller.
@@ -30,7 +31,7 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetAllPermissionsRequest $request
+     * @param GetAllPermissionsRequest $request
      *
      * @return  mixed
      */
@@ -42,7 +43,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\FindPermissionRequest $request
+     * @param FindPermissionRequest $request
      *
      * @return  mixed
      */
@@ -54,7 +55,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\GetAllRolesRequest $request
+     * @param GetAllRolesRequest $request
      *
      * @return  mixed
      */
@@ -66,7 +67,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\FindRoleRequest $request
+     * @param FindRoleRequest $request
      *
      * @return  mixed
      */
@@ -78,7 +79,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest $request
+     * @param AssignUserToRoleRequest $request
      *
      * @return  mixed
      */
@@ -90,7 +91,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\SyncUserRolesRequest $request
+     * @param SyncUserRolesRequest $request
      *
      * @return  mixed
      */
@@ -102,9 +103,9 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest $request
+     * @param DeleteRoleRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function deleteRole(DeleteRoleRequest $request)
     {
@@ -114,7 +115,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\RevokeUserFromRoleRequest $request
+     * @param RevokeUserFromRoleRequest $request
      *
      * @return  mixed
      */
@@ -126,7 +127,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\AttachPermissionToRoleRequest $request
+     * @param AttachPermissionToRoleRequest $request
      *
      * @return  mixed
      */
@@ -138,7 +139,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest $request
+     * @param SyncPermissionsOnRoleRequest $request
      *
      * @return  mixed
      */
@@ -150,7 +151,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\DetachPermissionToRoleRequest $request
+     * @param DetachPermissionToRoleRequest $request
      *
      * @return  mixed
      */
@@ -162,7 +163,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Authorization\UI\API\Requests\CreateRoleRequest $request
+     * @param CreateRoleRequest $request
      *
      * @return  mixed
      */

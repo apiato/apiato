@@ -85,7 +85,7 @@ abstract class GeneratorCommand extends Command
     protected $renderedStubContent;
 
     /**
-     * @var  \Illuminate\Filesystem\Filesystem
+     * @var  IlluminateFilesystem
      */
     private $fileSystem;
 
@@ -97,7 +97,7 @@ abstract class GeneratorCommand extends Command
     /**
      * GeneratorCommand constructor.
      *
-     * @param \Illuminate\Filesystem\Filesystem $fileSystem
+     * @param IlluminateFilesystem $fileSystem
      */
     public function __construct(IlluminateFilesystem $fileSystem)
     {
@@ -109,7 +109,7 @@ abstract class GeneratorCommand extends Command
     /**
      * @void
      *
-     * @throws \Apiato\Core\Generator\Exceptions\GeneratorErrorException
+     * @throws GeneratorErrorException
      */
     public function handle()
     {
@@ -156,7 +156,7 @@ abstract class GeneratorCommand extends Command
     /**
      * @param $generator
      *
-     * @throws \Apiato\Core\Generator\Exceptions\GeneratorErrorException
+     * @throws GeneratorErrorException
      */
     private function validateGenerator($generator)
     {

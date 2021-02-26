@@ -22,7 +22,7 @@ class PermissionTransformer extends Transformer
     ];
 
     /**
-     * @param \App\Containers\Authorization\Models\Permission $permission
+     * @param Permission $permission
      *
      * @return array
      */

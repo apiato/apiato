@@ -17,9 +17,9 @@ class UpdateUserAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  User
      */
     public function run(DataTransporter $data): User
     {

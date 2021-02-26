@@ -6,6 +6,7 @@ use Apiato\Core\Transformers\ComposerTransformer;
 use App\Ship\Parents\Commands\ConsoleCommand;
 use Dotenv\Exception\InvalidPathException;
 use Exception;
+use InvalidArgumentException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Spatie\Fractal\Fractal;
@@ -72,7 +73,7 @@ class ListContainerDependenciesCommand extends ConsoleCommand
      * @param int $indentModifier
      *
      * @return string
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     private function prettyPrintArray($arr, $indent = 0, $indentModifier = 4)
     {
@@ -91,7 +92,7 @@ class ListContainerDependenciesCommand extends ConsoleCommand
                 $string .= $value . PHP_EOL;
             }
             else {
-                throw new \InvalidArgumentException('Current value cannot be converted to string: value=' . $value);
+                throw new InvalidArgumentException('Current value cannot be converted to string: value=' . $value);
             }
         }
         return $string;

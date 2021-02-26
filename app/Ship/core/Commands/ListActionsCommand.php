@@ -32,7 +32,7 @@ class ListActionsCommand extends ConsoleCommand
     /**
      * ListActionsCommand constructor.
      *
-     * @param \Symfony\Component\Console\Output\ConsoleOutput $console
+     * @param ConsoleOutput $console
      */
     public function __construct(ConsoleOutput $console)
     {

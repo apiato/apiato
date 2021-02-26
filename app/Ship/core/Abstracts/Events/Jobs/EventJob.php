@@ -24,7 +24,7 @@ class EventJob extends Job implements ShouldQueue
     /**
      * EventJob constructor.
      *
-     * @param \Apiato\Core\Abstracts\Events\Interfaces\ShouldHandle $handler
+     * @param ShouldHandle $handler
      */
 
     public function __construct(ShouldHandle $handler)

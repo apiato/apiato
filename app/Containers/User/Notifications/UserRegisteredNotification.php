@@ -13,14 +13,14 @@ class UserRegisteredNotification extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * @var  \App\Containers\User\Models\User
+     * @var  User
      */
     protected $user;
 
     /**
      * UserRegisteredNotification constructor.
      *
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      */
     public function __construct(User $user)
     {

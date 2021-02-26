@@ -17,7 +17,7 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\SocialAuth\UI\API\Requests\ApiAuthenticateRequest $request
+     * @param ApiAuthenticateRequest $request
      * @param                                                                   $providerUrlInput
      *
      * @return  array

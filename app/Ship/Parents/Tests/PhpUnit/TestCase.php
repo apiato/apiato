@@ -5,6 +5,7 @@ namespace App\Ship\Parents\Tests\PhpUnit;
 use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
+use Illuminate\Foundation\Application;
 
 /**
  * Class TestCase
@@ -35,7 +36,7 @@ abstract class TestCase extends AbstractTestCase
     /**
      * Creates the application.
      *
-     * @return \Illuminate\Foundation\Application
+     * @return Application
      */
     public function createApplication()
     {

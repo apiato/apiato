@@ -3,6 +3,8 @@
 namespace App\Containers\User\UI\WEB\Controllers;
 
 use App\Ship\Parents\Controllers\WebController;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 /**
  * Class Controller
@@ -13,7 +15,7 @@ class Controller extends WebController
 {
 
     /**
-     * @return  \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return  Factory|View
      */
     public function sayWelcome()
     {   // user say welcome

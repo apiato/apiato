@@ -15,16 +15,16 @@ class DetachPermissionsFromRoleTask extends Task
 {
 
     /**
-     * @param \App\Containers\Authorization\Models\Role $role
+     * @param Role $role
      * @param                                           $singleOrMultiplePermissionIds
      *
-     * @return  \App\Containers\Authorization\Models\Role
+     * @return  Role
      */
     public function run(Role $role, $singleOrMultiplePermissionIds): Role
     {
         if (!is_array($singleOrMultiplePermissionIds)) {
             $singleOrMultiplePermissionIds = [$singleOrMultiplePermissionIds];
-        };
+        }
 
         // remove each permission ID found in the array from that role.
         array_map(function ($permissionId) use ($role) {

@@ -21,7 +21,7 @@ class CreateStripeCustomerTask extends Task
     /**
      * StripeApi constructor.
      *
-     * @param \Cartalyst\Stripe\Stripe $stripe
+     * @param Stripe $stripe
      */
     public function __construct(Stripe $stripe)
     {

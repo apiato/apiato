@@ -17,14 +17,14 @@ class CreatePermissionTask extends Task
 {
 
     /**
-     * @var  \App\Containers\Authorization\Data\Repositories\PermissionRepository
+     * @var  PermissionRepository
      */
     protected $repository;
 
     /**
      * CreatePermissionTask constructor.
      *
-     * @param \App\Containers\Authorization\Data\Repositories\PermissionRepository $repository
+     * @param PermissionRepository $repository
      */
     public function __construct(PermissionRepository $repository)
     {

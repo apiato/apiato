@@ -5,6 +5,8 @@ namespace Apiato\Core\Abstracts\Events\Dispatcher;
 use Apiato\Core\Abstracts\Events\Interfaces\ShouldHandle;
 use Apiato\Core\Abstracts\Events\Interfaces\ShouldHandleNow;
 use Apiato\Core\Abstracts\Events\Jobs\EventJob;
+use DateInterval;
+use DateTimeInterface;
 use Illuminate\Events\Dispatcher as EventDispatcher;
 use Illuminate\Foundation\Bus\PendingDispatch as JobDispatcher;
 
@@ -30,8 +32,8 @@ class Dispatcher extends EventDispatcher
             /* Check if the delay is set and if it has the correct type */
             if (isset($delay)
                 && (is_numeric($delay)
-                    || $delay instanceof \DateTimeInterface
-                    || $delay instanceof \DateInterval
+                    || $delay instanceof DateTimeInterface
+                    || $delay instanceof DateInterval
                 )
             ) {
                 $dispatcher->delay($delay);

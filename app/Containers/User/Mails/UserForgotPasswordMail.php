@@ -18,7 +18,7 @@ class UserForgotPasswordMail extends Mail implements ShouldQueue
     use Queueable;
 
     /**
-     * @var  \App\Containers\User\Models\User
+     * @var  User
      */
     protected $recipient;
 
@@ -35,7 +35,7 @@ class UserForgotPasswordMail extends Mail implements ShouldQueue
     /**
      * UserForgotPasswordMail constructor.
      *
-     * @param \App\Containers\User\Models\User $recipient
+     * @param User $recipient
      * @param                                  $token
      * @param                                  $reseturl
      */

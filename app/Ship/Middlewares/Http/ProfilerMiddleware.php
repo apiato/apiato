@@ -17,7 +17,7 @@ class ProfilerMiddleware extends Middleware
 
     /**
      * @param          $request
-     * @param \Closure $next
+     * @param Closure $next
      *
      * @return  mixed
      */

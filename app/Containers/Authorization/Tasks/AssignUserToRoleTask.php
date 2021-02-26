@@ -15,10 +15,10 @@ class AssignUserToRoleTask extends Task
 {
 
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      * @param array                            $roles
      *
-     * @return  \Illuminate\Contracts\Auth\Authenticatable
+     * @return  Authenticatable
      */
     public function run(User $user, array $roles) : Authenticatable
     {

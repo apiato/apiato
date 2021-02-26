@@ -18,7 +18,7 @@ trait ChargeableTrait
 {
 
     /**
-     * @param \App\Containers\Payment\Models\PaymentAccount $account
+     * @param PaymentAccount $account
      * @param int|float                                     $amount
      * @param string|null                                   $currency
      *
@@ -32,8 +32,8 @@ trait ChargeableTrait
     }
 
     /**
-     * @param \App\Containers\Payment\Models\PaymentAccount     $account
-     * @param \JohannesSchobel\ShoppingCart\Models\ShoppingCart $cart
+     * @param PaymentAccount $account
+     * @param ShoppingCart $cart
      *
      * @return  PaymentTransaction
      */

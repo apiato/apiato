@@ -34,7 +34,7 @@ abstract class Transporter extends Dto
      *
      * @param null                         $input
      * @param null                         $schema
-     * @param \Dto\RegulatorInterface|null $regulator
+     * @param RegulatorInterface|null $regulator
      */
     public function __construct($input = null, $schema = null, RegulatorInterface $regulator = null)
     {

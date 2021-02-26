@@ -4,6 +4,7 @@ namespace App\Containers\Authorization\UI\API\Transformers;
 
 use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Transformers\Transformer;
+use League\Fractal\Resource\Collection;
 
 /**
  * Class RoleTransformer.
@@ -22,7 +23,7 @@ class RoleTransformer extends Transformer
     ];
 
     /**
-     * @param \App\Containers\Authorization\Models\Role $role
+     * @param Role $role
      *
      * @return array
      */
@@ -39,9 +40,9 @@ class RoleTransformer extends Transformer
     }
 
     /**
-     * @param \App\Containers\Authorization\Models\Role $role
+     * @param Role $role
      *
-     * @return  \League\Fractal\Resource\Collection
+     * @return  Collection
      */
     public function includePermissions(Role $role)
     {

@@ -21,7 +21,7 @@ class GetAllPaymentAccountsTask extends Task
     /**
      * GetAllPaymentAccountsTask constructor.
      *
-     * @param \App\Containers\Payment\Data\Repositories\PaymentAccountRepository $repository
+     * @param PaymentAccountRepository $repository
      */
     public function __construct(PaymentAccountRepository $repository)
     {
@@ -45,7 +45,7 @@ class GetAllPaymentAccountsTask extends Task
     }
 
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      *
      * @return  mixed
      */

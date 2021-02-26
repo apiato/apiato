@@ -4,7 +4,9 @@ namespace App\Containers\Documentation\Tasks;
 
 use App\Containers\Documentation\Traits\DocsGeneratorTrait;
 use App\Ship\Parents\Tasks\Task;
+use Symfony\Component\Process\Exception\LogicException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
 /**
@@ -21,9 +23,9 @@ class GenerateSwaggerTask extends Task
      * @param $console
      *
      * @return  mixed
-     * @throws \Symfony\Component\Process\Exception\RuntimeException
-     * @throws \Symfony\Component\Process\Exception\LogicException
-     * @throws \Symfony\Component\Process\Exception\ProcessFailedException
+     * @throws RuntimeException
+     * @throws LogicException
+     * @throws ProcessFailedException
      */
     public function run($type, $console)
     {

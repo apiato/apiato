@@ -2,6 +2,9 @@
 
 namespace Apiato\Core\Abstracts\Events\Traits;
 
+use DateInterval;
+use DateTimeInterface;
+
 /**
  * Created by PhpStorm.
  * User: Arthur Devious
@@ -13,7 +16,7 @@ trait JobProperties
      * If ShouldHandle interface is implemented this variable
      * sets the time to wait before a job is executed
      *
-     * @var \DateTimeInterface|\DateInterval|int|null $jobDelay
+     * @var DateTimeInterface|DateInterval|int|null $jobDelay
      */
 
     public $jobDelay;

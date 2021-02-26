@@ -29,7 +29,7 @@ class UserTransformer extends Transformer
     ];
 
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      *
      * @return array
      */

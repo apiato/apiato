@@ -16,7 +16,7 @@ class GetAllDocsTypesTask extends Task
 
     /**
      * @return  array
-     * @throws \App\Containers\Documentation\Exceptions\NoDocTypesFoundException
+     * @throws NoDocTypesFoundException
      */
     public function run()
     {

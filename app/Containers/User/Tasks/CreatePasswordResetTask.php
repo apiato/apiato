@@ -16,7 +16,7 @@ class CreatePasswordResetTask extends Task
 {
 
     /**
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      *
      * @return mixed
      * @throws InternalErrorException

@@ -17,8 +17,8 @@ class RequestsMonitorMiddleware extends Middleware
 {
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param Request $request
+     * @param Closure $next
      *
      * @return  mixed
      */

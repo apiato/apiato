@@ -15,7 +15,7 @@ class UpdateSettingAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
      * @return  mixed
      */

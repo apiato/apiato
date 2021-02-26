@@ -4,6 +4,7 @@ namespace App\Containers\User\Events;
 
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Events\Event;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
@@ -12,14 +13,14 @@ class UserRegisteredEvent extends Event implements ShouldQueue
 {
 
     /**
-     * @var  \App\Containers\User\Models\User
+     * @var  User
      */
     protected $user;
 
     /**
      * UserRegisteredNotification constructor.
      *
-     * @param \App\Containers\User\Models\User $user
+     * @param User $user
      */
     public function __construct(User $user)
     {
@@ -39,7 +40,7 @@ class UserRegisteredEvent extends Event implements ShouldQueue
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
     public function broadcastOn()
     {

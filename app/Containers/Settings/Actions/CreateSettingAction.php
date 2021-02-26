@@ -16,9 +16,9 @@ class CreateSettingAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
-     * @return  \App\Containers\Settings\Models\Setting
+     * @return  Setting
      */
     public function run(DataTransporter $data): Setting
     {

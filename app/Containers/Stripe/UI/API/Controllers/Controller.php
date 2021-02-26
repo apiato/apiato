@@ -7,6 +7,7 @@ use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class Controller.
@@ -17,9 +18,9 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest $request
+     * @param CreateStripeAccountRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function createStripeAccount(CreateStripeAccountRequest $request)
     {
@@ -32,9 +33,9 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest $request
+     * @param UpdateStripeAccountRequest $request
      *
-     * @return  \Illuminate\Http\JsonResponse
+     * @return  JsonResponse
      */
     public function updateStripeAccount(UpdateStripeAccountRequest $request)
     {

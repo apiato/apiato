@@ -49,7 +49,7 @@ class ThisLikeThatCriteria extends Criteria
      * Applies the criteria - if more than one value is separated by the configured separator we will "OR" all the params.
      *
      * @param  Builder $model
-     * @param \Prettus\Repository\Contracts\RepositoryInterface $repository
+     * @param PrettusRepositoryInterface $repository
      *
      * @return  mixed
      */

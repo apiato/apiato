@@ -35,7 +35,7 @@ class UpdateUserTask extends Task
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  User
      */
     public function run($userData, $userId): User
     {

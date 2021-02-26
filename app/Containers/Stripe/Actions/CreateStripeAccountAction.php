@@ -15,7 +15,7 @@ class CreateStripeAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
      * @return  mixed
      */

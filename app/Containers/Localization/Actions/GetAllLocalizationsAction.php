@@ -15,7 +15,7 @@ class GetAllLocalizationsAction extends Action
 {
 
     /**
-     * @return  \Illuminate\Support\Collection
+     * @return  Collection
      */
     public function run(): Collection
     {

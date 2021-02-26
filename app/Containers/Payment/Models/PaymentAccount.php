@@ -3,6 +3,7 @@
 namespace App\Containers\Payment\Models;
 
 use App\Ship\Parents\Models\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -34,7 +35,7 @@ class PaymentAccount extends Model
 
 
     /**
-     * @return  \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return  MorphTo
      */
     public function accountable()
     {

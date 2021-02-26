@@ -3,6 +3,7 @@
 namespace Apiato\Core\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;
+use App\Ship\Seeders\SeedTestingData;
 
 /**
  * Class SeedTestingDataCommand
@@ -40,7 +41,7 @@ class SeedTestingDataCommand extends ConsoleCommand
     public function handle()
     {
         $this->call('db:seed', [
-            '--class' => \App\Ship\Seeders\SeedTestingData::class
+            '--class' => SeedTestingData::class
         ]);
 
         $this->info('Testing Data Seeded Successfully.');

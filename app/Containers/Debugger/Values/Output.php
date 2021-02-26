@@ -44,8 +44,8 @@ class Output extends Value
     /**
      * Output constructor.
      *
-     * @param \Symfony\Component\HttpFoundation\Request  $request
-     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @param Request $request
+     * @param Response $response
      */
     public function __construct(Request $request, Response $response)
     {

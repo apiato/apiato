@@ -26,7 +26,7 @@ class ChargeWithStripeTask extends Task implements PaymentChargerInterface
     /**
      * ChargeWithStripeTask constructor.
      *
-     * @param \Cartalyst\Stripe\Stripe $stripe
+     * @param Stripe $stripe
      */
     public function __construct(Stripe $stripe)
     {
@@ -34,8 +34,8 @@ class ChargeWithStripeTask extends Task implements PaymentChargerInterface
     }
 
     /**
-     * @param \App\Containers\Payment\Contracts\ChargeableInterface $user
-     * @param \App\Containers\Payment\Models\AbstractPaymentAccount $account
+     * @param ChargeableInterface $user
+     * @param AbstractPaymentAccount $account
      * @param float                                                 $amount
      * @param string                                                $currency
      *
@@ -51,10 +51,10 @@ class ChargeWithStripeTask extends Task implements PaymentChargerInterface
         $valid = $account->checkIfPaymentDataIsSet(['customer_id', 'card_id', 'card_funding', 'card_last_digits', 'card_fingerprint']);
 
         if ($valid == false) {
-            throw new StripeAccountNotFoundException('We could not find your credit card information. 
-            For security reasons, we do not store your credit card information on our server. 
-            So please login to our Web App and enter your credit card information directly into Stripe, 
-            then try to purchase the credits again. 
+            throw new StripeAccountNotFoundException('We could not find your credit card information.
+            For security reasons, we do not store your credit card information on our server.
+            So please login to our Web App and enter your credit card information directly into Stripe,
+            then try to purchase the credits again.
             Thanks.');
         }
 

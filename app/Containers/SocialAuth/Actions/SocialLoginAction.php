@@ -5,6 +5,7 @@ namespace App\Containers\SocialAuth\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
+use Dto\Exceptions\InvalidDataTypeException;
 
 /**
  * Class SocialLoginAction.
@@ -20,10 +21,10 @@ class SocialLoginAction extends Action
      * ----- if has no social profile
      * --------- [C] create new record
      *
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
      * @return  mixed
-     * @throws \Dto\Exceptions\InvalidDataTypeException
+     * @throws InvalidDataTypeException
      */
     public function run(DataTransporter $data)
     {

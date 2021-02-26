@@ -20,7 +20,7 @@ trait TestsUploadHelperTrait
      * @param string $mimeType
      * @param null   $size
      *
-     * @return  \Illuminate\Http\UploadedFile
+     * @return  UploadedFile
      */
     public function getTestingFile($fileName, $stubDirPath, $mimeType = 'text/plain', $size = null)
     {
@@ -35,7 +35,7 @@ trait TestsUploadHelperTrait
      * @param string $mimeType
      * @param null   $size
      *
-     * @return  \Illuminate\Http\UploadedFile
+     * @return  UploadedFile
      */
     public function getTestingImage($imageName, $stubDirPath, $mimeType = 'image/jpeg', $size = null)
     {

@@ -16,9 +16,9 @@ class UpdateStripeAccountAction extends Action
 {
 
     /**
-     * @param \App\Ship\Transporters\DataTransporter $data
+     * @param DataTransporter $data
      *
-     * @return  \App\Containers\Stripe\Models\StripeAccount
+     * @return  StripeAccount
      */
     public function run(DataTransporter $data): StripeAccount
     {

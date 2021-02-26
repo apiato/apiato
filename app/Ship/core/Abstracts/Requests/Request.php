@@ -59,7 +59,7 @@ abstract class Request extends LaravelRequest
      * User can set multiple permissions (separated with "|") and if the user has
      * any of the permissions, he will be authorize to proceed with this action.
      *
-     * @param \App\Containers\User\Models\User|null $user
+     * @param User|null $user
      *
      * @return  bool
      */
@@ -104,7 +104,7 @@ abstract class Request extends LaravelRequest
      * To be used mainly from unit tests.
      *
      * @param array                                 $parameters
-     * @param \App\Containers\User\Models\User|null $user
+     * @param User|null $user
      * @param array                                 $cookies
      * @param array                                 $files
      * @param array                                 $server

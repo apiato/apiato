@@ -8,6 +8,9 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use ErrorException;
 use Exception;
 use Illuminate\Support\Facades\Config;
+use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
+use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Scope;
 use League\Fractal\TransformerAbstract as FractalTransformer;
 
@@ -49,7 +52,7 @@ abstract class Transformer extends FractalTransformer
      * @param callable|FractalTransformer $transformer
      * @param null                        $resourceKey
      *
-     * @return \League\Fractal\Resource\Item
+     * @return Item
      */
     public function item($data, $transformer, $resourceKey = null)
     {
@@ -66,7 +69,7 @@ abstract class Transformer extends FractalTransformer
      * @param callable|FractalTransformer $transformer
      * @param null                        $resourceKey
      *
-     * @return \League\Fractal\Resource\Collection
+     * @return Collection
      */
     public function collection($data, $transformer, $resourceKey = null)
     {
@@ -83,7 +86,7 @@ abstract class Transformer extends FractalTransformer
      * @param string $includeName
      * @param mixed  $data
      *
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      * @throws CoreInternalErrorException
      * @throws UnsupportedFractalIncludeException
      */
