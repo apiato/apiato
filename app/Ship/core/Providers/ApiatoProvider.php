@@ -35,10 +35,8 @@ class ApiatoProvider extends AbstractMainProvider
 
     /**
      * Register any Service Providers on the Ship layer (including third party packages).
-     *
-     * @var array
      */
-    public $serviceProviders = [
+    public array $serviceProviders = [
         // Third Party Packages Providers:
         HashidsServiceProvider::class,
         RepositoryServiceProvider::class,
@@ -56,26 +54,22 @@ class ApiatoProvider extends AbstractMainProvider
 
     /**
      * Register any Alias on the Ship layer (including third party packages).
-     *
-     * @var  array
      */
-    protected $aliases = [
+    protected array $aliases = [
         'Hashids' => Hashids::class,
-        'Fractal' => FractalFacade::class,
+        'Fractal' => FractalFacade::class
     ];
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        // Autoload most of the Containers and Ship Components
-        $this->runLoadersBoot();
-
         // load all service providers defined in this class
         parent::boot();
+
+        // Autoload most of the Containers and Ship Components
+        $this->runLoadersBoot();
 
         // Solves the "specified key was too long" error, introduced in L5.4
         Schema::defaultStringLength(191);
@@ -86,27 +80,21 @@ class ApiatoProvider extends AbstractMainProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 
         $this->overrideLaravelBaseProviders();
 
-        // Register Core Facade Classes, should not be registered in the alias property above, since they are used
-        // by the auto-loading scripts, before the $aliases property is executed.
-        $this->app->alias(Apiato::class, 'Apiato');
+        $this->app->singleton('Apiato', Apiato::class);
     }
 
     /**
      * Register Overided Base providers
-     *
-     * @return void
      * @see \Illuminate\Foundation\Application::registerBaseServiceProviders
      */
-    private function overrideLaravelBaseProviders()
+    private function overrideLaravelBaseProviders(): void
     {
         App::register(EventServiceProvider::class); //The custom apiato eventserviceprovider
     }

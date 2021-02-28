@@ -2,53 +2,39 @@
 
 namespace Apiato\Core\Loaders;
 
-use File;
-
-/**
- * Class ConfigsLoaderTrait.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 trait ConfigsLoaderTrait
 {
-
-    /**
-     * @param $containerName
-     */
-    public function loadConfigsFromContainers($containerName)
-    {
-        $containerConfigsDirectory = base_path('app/Containers/' . $containerName . '/Configs');
-
-        $this->loadConfigs($containerConfigsDirectory);
-    }
-
-    /**
-     *
-     */
-    public function loadConfigsFromShip()
+    public function loadConfigsFromShip(): void
     {
         $portConfigsDirectory = base_path('app/Ship/Configs');
 
         $this->loadConfigs($portConfigsDirectory);
     }
 
-    /**
-     * @param $directory
-     */
-    private function loadConfigs($directory)
+    private function loadConfigs($configFolder, $namespace = null): void
     {
-        if (File::isDirectory($directory)) {
+        $files = $this->app['files']->files($configFolder);
+        $namespace = $namespace ? $namespace . '::' : '';
 
-            $files = File::allFiles($directory);
+        foreach ($files as $file) {
+            $config = $this->app['files']->getRequire($file);
+            $name = $this->app['files']->name($file);
 
-            foreach ($files as $file) {
-                // build the key from the file name (just remove the .php extension from the file name)
-                $fileNameOnly = str_replace('.php', '', $file->getFilename());
-
-                // merge the config file
-                $this->mergeConfigFrom($file->getPathname(), $fileNameOnly);
+            // special case for files named config.php (config keyword is omitted)
+            if ($name === 'config') {
+                foreach ($config as $key => $value) {
+                    $this->app['config']->set($namespace . $key, $value);
+                }
             }
+
+            $this->app['config']->set($namespace . $name, $config);
         }
     }
 
+    public function loadConfigsFromContainers($containerName): void
+    {
+        $containerConfigsDirectory = base_path('app/Containers/' . $containerName . '/Configs');
+
+        $this->loadConfigs($containerConfigsDirectory);
+    }
 }
