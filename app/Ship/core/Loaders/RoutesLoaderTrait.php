@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Finder\SplFileInfo;
 
-/**
- * Class RoutesLoaderTrait.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 trait RoutesLoaderTrait
 {
 
@@ -33,11 +28,10 @@ trait RoutesLoaderTrait
 
     /**
      * Register the Containers API routes files
-     *
-     * @param $containerPath
-     * @param $containersNamespace
+     * @param string $containerPath
+     * @param string $containersNamespace
      */
-    private function loadApiContainerRoutes($containerPath, $containersNamespace): void
+    private function loadApiContainerRoutes(string $containerPath, string $containersNamespace): void
     {
         // build the container api routes path
         $apiRoutesPath = $containerPath . '/UI/API/Routes';

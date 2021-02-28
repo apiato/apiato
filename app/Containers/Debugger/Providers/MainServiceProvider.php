@@ -16,30 +16,25 @@ use Jenssegers\Agent\Facades\Agent;
  */
 class MainServiceProvider extends MainProvider
 {
-
     /**
      * Container Service Providers.
-     *
-     * @var array
      */
-    public $serviceProviders = [
+    public array $serviceProviders = [
         AgentServiceProvider::class,
         MiddlewareServiceProvider::class,
     ];
 
     /**
      * Container Aliases
-     *
-     * @var  array
      */
-    public $aliases = [
+    public array $aliases = [
         'Agent' => Agent::class,
     ];
 
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 

@@ -2,13 +2,9 @@
 
 namespace Apiato\Core\Loaders;
 
+
 use Apiato\Core\Foundation\Facades\Apiato;
 
-/**
- * Class AutoLoaderTrait.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 trait AutoLoaderTrait
 {
     // using each component loader trait
@@ -21,9 +17,9 @@ trait AutoLoaderTrait
     use AliasesLoaderTrait;
 
     /**
-     * * to be used from the `boot` function of the main service provider
+     * to be used from the `boot` function of the main service provider
      */
-    public function runLoadersBoot()
+    public function runLoadersBoot(): void
     {
         // the config files should be loaded first from all the directories in their own loop
         $this->loadConfigsFromShip();

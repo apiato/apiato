@@ -2,41 +2,18 @@
 
 namespace Apiato\Core\Loaders;
 
-use App;
-use File;
+use Illuminate\Support\Facades\File;
 
-/**
- * Class MigrationsLoaderTrait.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 trait MigrationsLoaderTrait
 {
-
-    /**
-     * @param $containerName
-     */
-    public function loadMigrationsFromContainers($containerName)
+    public function loadMigrationsFromContainers($containerName): void
     {
         $containerMigrationDirectory = base_path('app/Containers/' . $containerName . '/Data/Migrations');
 
         $this->loadMigrations($containerMigrationDirectory);
     }
 
-    /**
-     * @void
-     */
-    public function loadMigrationsFromShip()
-    {
-        $portMigrationDirectory = base_path('app/Ship/Migrations');
-
-        $this->loadMigrations($portMigrationDirectory);
-    }
-
-    /**
-     * @param $directory
-     */
-    private function loadMigrations($directory)
+    private function loadMigrations($directory): void
     {
         if (File::isDirectory($directory)) {
 
@@ -45,4 +22,10 @@ trait MigrationsLoaderTrait
         }
     }
 
+    public function loadMigrationsFromShip(): void
+    {
+        $portMigrationDirectory = base_path('app/Ship/Migrations');
+
+        $this->loadMigrations($portMigrationDirectory);
+    }
 }

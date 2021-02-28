@@ -3,31 +3,21 @@
 namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
-use Barryvdh\Debugbar\Facade;
-use Barryvdh\Debugbar\ServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\ServiceProvider;
 
-/**
- * Class ShipProvider
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class ShipProvider extends MainProvider
 {
-
     /**
      * Register any Service Providers on the Ship layer (including third party packages).
-     *
-     * @var array
      */
-    public $serviceProviders = [];
+    public array $serviceProviders = [];
 
     /**
      * Register any Alias on the Ship layer (including third party packages).
-     *
-     * @var  array
      */
-    protected $aliases = [];
+    protected array $aliases = [];
 
 
     public function __construct()
@@ -42,12 +32,11 @@ class ShipProvider extends MainProvider
             $this->aliases['Debugbar'] = Facade::class;
         }
     }
+
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // ...
         parent::boot();
@@ -56,10 +45,8 @@ class ShipProvider extends MainProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         /**
          * Load the ide-helper service provider only in non production environments.
@@ -70,5 +57,4 @@ class ShipProvider extends MainProvider
 
         parent::register();
     }
-
 }

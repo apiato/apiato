@@ -11,28 +11,18 @@ use Apiato\Core\Loaders\MiddlewaresLoaderTrait;
  */
 abstract class MiddlewareProvider extends MainProvider
 {
-
     use MiddlewaresLoaderTrait;
 
-    /**
-     * @var  array
-     */
-    protected $middlewares = [];
+    protected array $middlewares = [];
 
-    /**
-     * @var  array
-     */
-    protected $middlewareGroups = [];
+    protected array $middlewareGroups = [];
 
-    /**
-     * @var  array
-     */
-    protected $routeMiddleware = [];
+    protected array $routeMiddleware = [];
 
     /**
      * Perform post-registration booting of services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadMiddlewares();
     }
@@ -40,9 +30,8 @@ abstract class MiddlewareProvider extends MainProvider
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
 
     }
-
 }

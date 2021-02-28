@@ -5,14 +5,8 @@ namespace Apiato\Core\Abstracts\Providers;
 use Apiato\Core\Loaders\RoutesLoaderTrait;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as LaravelRouteServiceProvider;
 
-/**
- * Class RoutesProvider
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class RoutesProvider extends LaravelRouteServiceProvider
 {
-
     use RoutesLoaderTrait;
 
     /**
@@ -27,19 +21,16 @@ class RoutesProvider extends LaravelRouteServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
     }
 
     /**
      * Define the routes for the application.
-     *
-     * @return void
      */
-    public function map()
+    public function map(): void
     {
         $this->runRoutesAutoLoader();
     }
-
 }

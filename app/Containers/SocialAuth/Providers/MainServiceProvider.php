@@ -18,26 +18,22 @@ class MainServiceProvider extends MainProvider
 
     /**
      * Container Service Providers.
-     *
-     * @var array
      */
-    public $serviceProviders = [
+    public array $serviceProviders = [
         SocialiteServiceProvider::class
     ];
 
     /**
      * Container Aliases
-     *
-     * @var  array
      */
-    public $aliases = [
+    public array $aliases = [
         'Socialite' => Socialite::class,
     ];
 
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 

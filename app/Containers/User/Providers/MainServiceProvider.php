@@ -16,27 +16,23 @@ class MainServiceProvider extends MainProvider
 
     /**
      * Container Service Providers.
-     *
-     * @var array
      */
-    public $serviceProviders = [
+    public array $serviceProviders = [
         // InternalServiceProviderExample::class,
         // ...
     ];
 
     /**
      * Container Aliases
-     *
-     * @var  array
      */
-    public $aliases = [
+    public array $aliases = [
 
     ];
 
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 

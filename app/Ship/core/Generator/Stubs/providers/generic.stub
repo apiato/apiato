@@ -15,7 +15,7 @@ class {{class-name}} extends ServiceProvider
     /**
      * Register anything in the container.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 

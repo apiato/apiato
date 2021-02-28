@@ -18,7 +18,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      *
      * @var  array
      */
-    protected $middlewares = [
+    protected array $middlewares = [
         RequestsMonitorMiddleware::class,
     ];
 
@@ -27,7 +27,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      *
      * @var  array
      */
-    protected $middlewareGroups = [
+    protected array $middlewareGroups = [
         'web' => [
 
         ],
@@ -41,7 +41,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      *
      * @var  array
      */
-    protected $routeMiddleware = [
+    protected array $routeMiddleware = [
         // ..
     ];
 

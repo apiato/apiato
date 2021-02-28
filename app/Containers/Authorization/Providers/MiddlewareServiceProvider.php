@@ -18,7 +18,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      *
      * @var  array
      */
-    protected $middlewares = [
+    protected array $middlewares = [
         // ..
     ];
 
@@ -27,7 +27,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
      *
      * @var  array
      */
-    protected $middlewareGroups = [
+    protected array $middlewareGroups = [
         'web' => [
 
         ],
@@ -36,7 +36,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         ],
     ];
 
-    protected $routeMiddleware = [
+    protected array $routeMiddleware = [
         // Laravel default route middleware's:
         'can'      => Authorize::class,
         'bindings' => SubstituteBindings::class,
