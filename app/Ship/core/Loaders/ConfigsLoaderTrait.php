@@ -2,53 +2,47 @@
 
 namespace Apiato\Core\Loaders;
 
-use File;
 
-/**
- * Class ConfigsLoaderTrait.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
+
 trait ConfigsLoaderTrait
 {
-
-    /**
-     * @param $containerName
-     */
-    public function loadConfigsFromContainers($containerName)
-    {
-        $containerConfigsDirectory = base_path('app/Containers/' . $containerName . '/Configs');
-
-        $this->loadConfigs($containerConfigsDirectory);
-    }
-
-    /**
-     *
-     */
-    public function loadConfigsFromShip()
+    public function loadConfigsFromShip(): void
     {
         $portConfigsDirectory = base_path('app/Ship/Configs');
 
         $this->loadConfigs($portConfigsDirectory);
     }
 
-    /**
-     * @param $directory
-     */
-    private function loadConfigs($directory)
+    private function loadConfigs($configFolder, $namespace = null): void
     {
-        if (File::isDirectory($directory)) {
+        $files = File::files($configFolder);
+        $namespace = $namespace ? $namespace . '::' : '';
 
-            $files = File::allFiles($directory);
+        foreach ($files as $file) {
+            try {
+                $config = File::getRequire($file);
+                $name = File::name($file);
 
-            foreach ($files as $file) {
-                // build the key from the file name (just remove the .php extension from the file name)
-                $fileNameOnly = str_replace('.php', '', $file->getFilename());
+                // special case for files named config.php (config keyword is omitted)
+                if ($name === 'config') {
+                    foreach ($config as $key => $value) {
+                        Config::set($namespace . $key, $value);
+                    }
+                }
 
-                // merge the config file
-                $this->mergeConfigFrom($file->getPathname(), $fileNameOnly);
+                Config::set($namespace . $name, $config);
+            } catch (FileNotFoundException $e) {
             }
         }
     }
 
+    public function loadConfigsFromContainers($containerName): void
+    {
+        $containerConfigsDirectory = base_path('app/Containers/' . $containerName . '/Configs');
+
+        $this->loadConfigs($containerConfigsDirectory);
+    }
 }
