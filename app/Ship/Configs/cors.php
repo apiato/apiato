@@ -45,4 +45,8 @@ return [
      * Sets the Access-Control-Expose-Headers response header.
      */
     'exposed_headers' => [],
+
+    'max_age' => 0,
+
+    'supports_credentials' => false,
 ];
