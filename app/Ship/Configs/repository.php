@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Prettus Repository Config
@@ -7,18 +6,17 @@
 |
 |
 */
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Repository Pagination
+    | Repository Pagination Limit Default
     |--------------------------------------------------------------------------
     |
     */
     'pagination' => [
 
-        'limit' => env('PAGINATION_LIMIT_DEFAULT', 15),
+        'limit' => env('PAGINATION_LIMIT_DEFAULT', 10),
 
          // if enabled it allows users to skip pagination by passing `?limit=0`.
         'skip' => env('PAGINATION_SKIP', false),
@@ -29,11 +27,12 @@ return [
     | Fractal Presenter Config
     |--------------------------------------------------------------------------
     |
-    | Available serializers:
-    |    * ArraySerializer
-    |    * DataArraySerializer
-    |    * JsonApiSerializer
-    |
+
+    Available serializers:
+    ArraySerializer
+    DataArraySerializer
+    JsonApiSerializer
+
     */
     'fractal'    => [
         'params'     => [
@@ -115,7 +114,6 @@ return [
         ],
 
         'params'  => [
-
             /*
             |--------------------------------------------------------------------------
             | Skip Cache Params
@@ -176,6 +174,7 @@ return [
         'acceptedConditions' => [
             '=',
             'like',
+            'in'
         ],
         /*
         |--------------------------------------------------------------------------
@@ -208,6 +207,12 @@ return [
         |   http://prettus.local/?search=lorem&orderBy=id&sortedBy=asc
         |   http://prettus.local/?search=lorem&orderBy=id&sortedBy=desc
         |
+        | - searchJoin: Specifies the search method (AND / OR), by default the
+        |               application searches each parameter with OR
+        |   EX:
+        |   http://prettus.local/?search=lorem&searchJoin=and
+        |   http://prettus.local/?search=lorem&searchJoin=or
+        |
         */
         'params'             => [
             'search'       => 'search',
@@ -217,6 +222,7 @@ return [
             'sortedBy'     => 'sortedBy',
             'with'         => 'l5_with', // use `include` instead
             'searchJoin'   => 'searchJoin',
+            'withCount'    => 'withCount'
         ],
     ],
     /*
@@ -226,8 +232,9 @@ return [
     |
     */
     'generator'  => [
-        'basePath'      => env('SRC_PATH'),
-        'rootNamespace' => env('ROOT_NAMESPACE').'\\',
+        'basePath'      => env('SRC_PATH', app()->path()),
+        'rootNamespace' => env('ROOT_NAMESPACE', 'App').'\\',
+        'stubsOverridePath' => app()->path(),
         'paths'         => [
             'models'       => 'Entities',
             'repositories' => 'Repositories',
