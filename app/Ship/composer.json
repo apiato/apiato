@@ -1,7 +1,14 @@
 {
-  "require": {
-  },
-  "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.9.0"
-  }
+    "require": {
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.9.0"
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ]
+    }
 }
