@@ -24,10 +24,6 @@ class ShipProvider extends MainProvider
     {
         parent::__construct(app());
 
-        if (class_exists('Barryvdh\Debugbar\ServiceProvider')) {
-            $this->serviceProviders[] = ServiceProvider::class;
-        }
-
         if (class_exists('Barryvdh\Debugbar\Facade')) {
             $this->aliases['Debugbar'] = Facade::class;
         }
@@ -38,9 +34,7 @@ class ShipProvider extends MainProvider
      */
     public function boot(): void
     {
-        // ...
         parent::boot();
-        // ...
     }
 
     /**
@@ -51,8 +45,8 @@ class ShipProvider extends MainProvider
         /**
          * Load the ide-helper service provider only in non production environments.
          */
-        if ($this->app->environment() !== 'production' && class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
-            $this->app->register(IdeHelperServiceProvider::class);
+        if ($this->app->isLocal()) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
 
         parent::register();
