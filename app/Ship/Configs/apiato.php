@@ -8,7 +8,7 @@ return [
         | Default Namespace
         |--------------------------------------------------------------------------
         */
-        'namespace'      => 'App',
+        'namespace' => 'App',
 
         /*
         |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ return [
     | Enable / Disable Hashed ID
     |--------------------------------------------------------------------------
     */
-    'hash-id'    => env('HASH_ID', true),
+    'hash-id' => env('HASH_ID', true),
 
     'api' => [
 
@@ -32,21 +32,21 @@ return [
         | API URL
         |--------------------------------------------------------------------------
         */
-        'url'                     => env('API_URL', 'http://localhost'),
+        'url' => env('API_URL', 'http://localhost'),
 
         /*
         |--------------------------------------------------------------------------
         | API Prefix
         |--------------------------------------------------------------------------
         */
-        'prefix'                  => env('API_PREFIX', '/'),
+        'prefix' => env('API_PREFIX', '/'),
 
         /*
         |--------------------------------------------------------------------------
         | API Prefix
         |--------------------------------------------------------------------------
         */
-        'enable_version_prefix'   => true,
+        'enable_version_prefix' => true,
 
 
         /*
@@ -57,7 +57,7 @@ return [
         | In Minutes. Default to 1,440 minutes = 1 day
         |
         */
-        'expires-in'             => env('API_TOKEN_EXPIRES', 1440),
+        'expires-in' => env('API_TOKEN_EXPIRES', 1440),
 
         /*
         |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
         | In Minutes. Default to 43,200 minutes = 30 days
         |
         */
-        'refresh-expires-in'     => env('API_REFRESH_TOKEN_EXPIRES', 43200),
+        'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 43200),
 
         /*
         |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
         | response, and it will be logged in the default Log file.
         |
         */
-        'debug'                  => env('API_DEBUG', true),
+        'debug' => env('API_DEBUG', true),
 
         /*
         |--------------------------------------------------------------------------
@@ -97,9 +97,9 @@ return [
         |
         */
         'throttle' => [
-            'enabled'  => env('API_RATE_LIMIT_ENABLED', true),
+            'enabled' => env('API_RATE_LIMIT_ENABLED', true),
             'attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
-            'expires'  => env('API_RATE_LIMIT_EXPIRES', '1'),
+            'expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
         ]
 
     ],
