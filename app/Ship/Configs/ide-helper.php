@@ -38,6 +38,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Factory Builders
+    |--------------------------------------------------------------------------
+    |
+    | Set to true to generate factory generators for better factory()
+    | method auto-completion.
+    |
+    | Deprecated for Laravel 8 or latest.
+    |
+    */
+
+    'include_factory_builders' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Write Model Magic methods
     |--------------------------------------------------------------------------
     |
