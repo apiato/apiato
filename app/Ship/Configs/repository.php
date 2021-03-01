@@ -217,10 +217,10 @@ return [
         'params'             => [
             'search'       => 'search',
             'searchFields' => 'searchFields',
-            'filter'       => 'l5_filter', // we will override the filter in apiato
+            'filter'       => 'l5_filter', // we will override the filter in apiato (using fractal)
             'orderBy'      => 'orderBy',
             'sortedBy'     => 'sortedBy',
-            'with'         => 'l5_with', // use `include` instead
+            'with'         => 'l5_with', // use `include` instead (provided by fractal)
             'searchJoin'   => 'searchJoin',
             'withCount'    => 'withCount'
         ],
