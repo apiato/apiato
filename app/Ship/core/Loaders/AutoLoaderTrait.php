@@ -15,6 +15,7 @@ trait AutoLoaderTrait
     use ProvidersLoaderTrait;
     use ConsolesLoaderTrait;
     use AliasesLoaderTrait;
+    use HelpersLoaderTrait;
 
     /**
      * to be used from the `boot` function of the main service provider
@@ -26,6 +27,7 @@ trait AutoLoaderTrait
         $this->loadMigrationsFromShip();
         $this->loadViewsFromShip();
         $this->loadConsolesFromShip();
+        $this->loadHelpersFromShip();
 
         // > iterate over all the containers folders and autoload most of the components
         foreach (Apiato::getContainersNames() as $containerName) {
@@ -35,6 +37,7 @@ trait AutoLoaderTrait
             $this->loadMigrationsFromContainers($containerName);
             $this->loadConsolesFromContainers($containerName);
             $this->loadViewsFromContainers($containerName);
+            $this->loadHelpersFromContainers($containerName);
         }
     }
 }
