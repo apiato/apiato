@@ -1,15 +1,13 @@
 <?php
 
-/*
- * This file is part of Laravel Hashids.
- *
- * (c) Vincent Klaiber <hello@vinkla.com>
+/**
+ * Copyright (c) Vincent Klaiber.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * @see https://github.com/vinkla/laravel-hashids
  */
-
-declare(strict_types=1);
 
 return [
 
@@ -40,15 +38,15 @@ return [
     'connections' => [
 
         'main' => [
-            'salt'     => env('HASH_ID_KEY', env('APP_KEY')),
-            'length'   => env('HASH_ID_LENGTH', 32),
-            'alphabet' => '1234567890abcdefghijklmnopqrstuvwxyz',
+            'salt' => env('HASH_ID_KEY', env('APP_KEY')),
+            'length' => env('HASH_ID_LENGTH', 32),
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         ],
 
         'alternative' => [
-            'salt'     => 'your-salt-string',
-            'length'   => 'your-length-integer',
-            'alphabet' => 'your-alphabet-string',
+            'salt' => 'your-salt-string',
+            'length' => 'your-length-integer',
+            // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],
 
     ],
