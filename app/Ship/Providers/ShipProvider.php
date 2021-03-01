@@ -18,16 +18,6 @@ class ShipProvider extends MainProvider
      */
     protected array $aliases = [];
 
-
-    public function __construct()
-    {
-        parent::__construct(app());
-
-        if (class_exists('Barryvdh\Debugbar\Facade')) {
-            $this->aliases['Debugbar'] = Facade::class;
-        }
-    }
-
     /**
      * Bootstrap any application services.
      */
