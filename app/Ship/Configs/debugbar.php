@@ -9,14 +9,15 @@ return [
      |
      | Debugbar is enabled by default, when debug is set to true in app.php.
      | You can override the value by setting enable to true or false instead of null.
-     | 
+     |
      | You can provide an array of URI's that must be ignored (eg. 'api/*')
      |
      */
 
     'enabled' => env('DEBUGBAR_ENABLED', null),
     'except' => [
-        //
+        'telescope*',
+        'horizon*',
     ],
 
     /*
@@ -33,10 +34,12 @@ return [
      */
     'storage' => [
         'enabled'    => true,
-        'driver'     => 'file', // redis, file, pdo, custom
+        'driver'     => 'file', // redis, file, pdo, socket, custom
         'path'       => storage_path('debugbar'), // For file driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
-        'provider'   => '' // Instance of StorageInterface for custom driver
+        'provider'   => '', // Instance of StorageInterface for custom driver
+        'hostname'   => '127.0.0.1', // Hostname to use with the "socket" driver
+        'port'       => 2304, // Port to use with the "socket" driver
     ],
 
     /*
@@ -79,7 +82,7 @@ return [
      |
      */
     'error_handler' => false,
-    
+
     /*
      |--------------------------------------------------------------------------
      | Clockwork integration
@@ -122,6 +125,8 @@ return [
         'files'           => false, // Show the included files
         'config'          => false, // Display config settings
         'cache'           => false, // Display cache events
+        'models'          => true,  // Display models
+        'livewire'        => true,  // Display Livewire (when available)
     ],
 
     /*
@@ -139,28 +144,30 @@ return [
         ],
         'db' => [
             'with_params'       => true,   // Render SQL with the parameters substituted
-            'backtrace'         => false,   // Use a backtrace to find the origin of the query in your files.
+            'backtrace'         => true,   // Use a backtrace to find the origin of the query in your files.
+            'backtrace_exclude_paths' => [],   // Paths to exclude from backtrace. (in addition to defaults)
             'timeline'          => false,  // Add the queries to the timeline
             'explain' => [                 // Show EXPLAIN output on queries
                 'enabled' => false,
-                'types' => ['SELECT'],     // ['SELECT', 'INSERT', 'UPDATE', 'DELETE']; for MySQL 5.6.3+
+                'types' => ['SELECT'],     // Deprecated setting, is always only SELECT
             ],
             'hints'             => false,    // Show hints for common mistakes
+            'show_copy'         => false,    // Show copy button next to the query
         ],
         'mail' => [
-            'full_log' => false
+            'full_log' => false,
         ],
         'views' => [
             'data' => false,    //Note: Can slow down the application, because the data can be quite large..
         ],
         'route' => [
-            'label' => true  // show complete route on bar
+            'label' => true,  // show complete route on bar
         ],
         'logs' => [
-            'file' => null
+            'file' => null,
         ],
         'cache' => [
-            'values' => true // collect cache values
+            'values' => true, // collect cache values
         ],
     ],
 
@@ -198,4 +205,14 @@ return [
      | To override default domain, specify it as a non-empty value.
      */
     'route_domain' => null,
+
+    /*
+     |--------------------------------------------------------------------------
+     | DebugBar theme
+     |--------------------------------------------------------------------------
+     |
+     | Switches between light and dark theme. If set to auto it will respect system preferences
+     | Possible values: auto, light, dark
+     */
+    'theme' => 'auto',
 ];
