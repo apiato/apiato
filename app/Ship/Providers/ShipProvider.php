@@ -5,7 +5,6 @@ namespace App\Ship\Providers;
 use App\Ship\Parents\Providers\MainProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\Facades\Facade;
-use Illuminate\Support\ServiceProvider;
 
 class ShipProvider extends MainProvider
 {
@@ -46,7 +45,7 @@ class ShipProvider extends MainProvider
          * Load the ide-helper service provider only in non production environments.
          */
         if ($this->app->isLocal()) {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(IdeHelperServiceProvider::class);
         }
 
         parent::register();
