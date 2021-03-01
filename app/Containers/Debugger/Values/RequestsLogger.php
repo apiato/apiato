@@ -9,62 +9,41 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-/**
- * Class RequestsLogger
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class RequestsLogger extends Value
 {
-
-    CONST TESTING_ENV = 'testing';
+    private const TESTING_ENV = 'testing';
 
     protected $debuggingEnabled;
-
     protected $environment;
-
     protected $logger;
-
     protected $logFile;
 
-    /**
-     * RequestsLogger constructor.
-     */
     public function __construct()
     {
         $this->prepareConfigs();
         $this->prepareLogger();
     }
 
-    /**
-     * @param \App\Containers\Debugger\Value\Output $output
-     */
-    public function releaseOutput(Output $output)
-    {
-        if ($this->environment != self::TESTING_ENV && $this->debuggingEnabled === true) {
-            $this->logger->info($output->get());
-        }
-    }
-
-    /**
-     * @void
-     */
-    private function prepareConfigs()
+    private function prepareConfigs(): void
     {
         $this->environment = App::environment();
         $this->debuggingEnabled = Config::get("debugger.requests.debug");
         $this->logFile = Config::get("debugger.requests.log_file");
     }
 
-    /**
-     * @void
-     */
-    private function prepareLogger()
+    private function prepareLogger(): void
     {
         $handler = new StreamHandler(storage_path('logs/' . $this->logFile));
         $handler->setFormatter(new LineFormatter(null, null, true, true));
 
         $this->logger = new Logger("REQUESTS DEBUGGER");
         $this->logger->pushHandler($handler);
+    }
+
+    public function releaseOutput(Output $output): void
+    {
+        if ($this->environment !== self::TESTING_ENV && $this->debuggingEnabled === true) {
+            $this->logger->info($output->get());
+        }
     }
 }

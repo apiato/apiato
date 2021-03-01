@@ -8,45 +8,14 @@ use Jenssegers\Agent\Facades\Agent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class Output
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Output extends Value
 {
-
-    /**
-     * @var  string
-     */
-    public $output = '';
-
-    /**
-     * @var
-     */
-    private $request;
-
-    /**
-     * @var
-     */
-    private $response;
-
-    /**
-     * @var
-     */
+    public string $output = '';
     protected $responseDataCut;
-
-    /**
-     * @var
-     */
     protected $tokenDataCut;
+    private Request $request;
+    private Response $response;
 
-    /**
-     * Output constructor.
-     *
-     * @param Request $request
-     * @param Response $response
-     */
     public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
@@ -56,101 +25,65 @@ class Output extends Value
         $this->tokenDataCut = Config::get("debugger.requests.token_show_first");
     }
 
-    /**
-     * @param $text
-     *
-     * @return  string
-     */
-    protected function set($text)
-    {
-        return $this->output = $text;
-    }
-
-    /**
-     * @return  string
-     */
-    public function get()
+    public function get(): string
     {
         return $this->output;
     }
 
-    /**
-     * @void
-     */
-    public function clear()
+    public function clear(): void
     {
         $this->set('');
     }
 
-    /**
-     * Add header
-     *
-     * @param $name
-     */
-    public function header($name)
+    protected function set($text): string
+    {
+        return $this->output = $text;
+    }
+
+    public function addHeader(string $name): void
     {
         $this->append("$name: \n");
     }
 
-    /**
-     * Add line to indicate new request
-     *
-     * @void
-     */
-    public function newRequest()
+    private function append($output): string
+    {
+        return $this->output .= $output;
+    }
+
+    public function newRequest(): void
     {
         $this->append("----------------- NEW REQUEST -----------------");
     }
 
-    /**
-     * Add empty line
-     *
-     * @void
-     */
-    public function spaceLine()
+    public function spaceLine(): void
     {
         $this->append("\n \n");
     }
 
-    /**
-     * @void
-     */
-    public function endpoint()
+    public function endpoint(): void
     {
         $this->append(" * Endpoint: " . $this->request->fullUrl() . "\n");
         $this->append(" * Method: " . $this->request->getMethod() . "\n");
     }
 
-    /**
-     * @void
-     */
-    public function version()
+    public function version(): void
     {
         if (method_exists($this->request, 'version')) {
             $this->append(" * Version: " . $this->request->version() . "\n");
         }
     }
 
-    /**
-     * @void
-     */
-    public function ip()
+    public function ip(): void
     {
         $this->append(" * IP: " . $this->request->ip() . " (Port: " . $this->request->getPort() . ") \n");
     }
 
-    /**
-     * @void
-     */
-    public function format()
+    public function format(): void
     {
         $this->append(" * Format: " . $this->request->format() . "\n");
     }
 
-    /**
-     * @void
-     */
-    public function userInfo()
+    public function userInfo(): void
     {
         // Auth Header
         $authHeader = $this->request->header("Authorization");
@@ -167,10 +100,7 @@ class Output extends Value
         $this->append(" * Languages: " . implode(", ", Agent::languages()) . "\n");
     }
 
-    /**
-     * @void
-     */
-    public function requestData()
+    public function requestData(): void
     {
         // Request Data
         $requestData = $this->request->all() ? http_build_query($this->request->all(), "", " + ") : "N/A";
@@ -178,10 +108,7 @@ class Output extends Value
         $this->append(" * " . $requestData . "\n");
     }
 
-    /**
-     * @void
-     */
-    public function responseData()
+    public function responseData(): void
     {
         // Response Data
         $responseContent = ($this->response && method_exists($this->response,
@@ -189,15 +116,4 @@ class Output extends Value
 
         $this->append(" * " . substr($responseContent, 0, $this->responseDataCut) . "..." . "\n");
     }
-
-    /**
-     * @param $output
-     *
-     * @return  string
-     */
-    private function append($output)
-    {
-        return $this->output .= $output;
-    }
-
 }
