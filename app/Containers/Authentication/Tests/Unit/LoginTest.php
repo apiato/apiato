@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Config;
  */
 class LoginTest extends TestCase
 {
-    private $userDetails;
-    private $transporter;
+    private array $userDetails;
+    private LoginTransporter $transporter;
     private $action;
 
     public function setUp(): void

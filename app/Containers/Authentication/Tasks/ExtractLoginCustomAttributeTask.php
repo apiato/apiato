@@ -2,18 +2,22 @@
 
 namespace App\Containers\Authentication\Tasks;
 
+use App\Containers\Authentication\Exceptions\NoValidLoginUsernameFieldProvidedException;
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Transporters\Transporter;
+use Illuminate\Support\Facades\Config;
 
 class ExtractLoginCustomAttributeTask extends Task
 {
     public function run(Transporter $data): array
     {
-        $prefix = config('authentication-container.login.prefix', '');
-        $allowedLoginFields = config('authentication-container.login.attributes', ['email' => []]);
+        $prefix = Config::get('authentication-container.login.prefix', '');
+        $allowedLoginFields = Config::get('authentication-container.login.attributes');
+        if (!$allowedLoginFields) {
+            $allowedLoginFields = ['email' => []];
+        }
 
         $fields = array_keys($allowedLoginFields);
-
         $loginUsername = null;
         // The original attribute that which the user tried to log in witch
         // eg 'email', 'name', 'phone'
@@ -33,6 +37,10 @@ class ExtractLoginCustomAttributeTask extends Task
             if ($loginUsername !== null) {
                 break;
             }
+        }
+
+        if ($loginUsername === null) {
+            throw new NoValidLoginUsernameFieldProvidedException();
         }
 
         return [
