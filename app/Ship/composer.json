@@ -1,9 +1,17 @@
 {
     "require": {
+        "apiato/core": "dev-next"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.9.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Mohammad-Alavi/core.git"
+        }
+    ],
     "scripts": {
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ffdfa4110b64352f8f96e7a7f93715c",
+    "content-hash": "6bf7f00754f2ebbdb3770ccfeb4b340b",
     "packages": [
         {
             "name": "apiato/containers-installer",
@@ -38,6 +38,86 @@
                 "source": "https://github.com/apiato/containers-installer/tree/v1.0.2"
             },
             "time": "2021-02-23T10:25:38+00:00"
+        },
+        {
+            "name": "apiato/core",
+            "version": "dev-next",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/core.git",
+                "reference": "c9227e596388eb90b0c07ac1863c51549436bed6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/c9227e596388eb90b0c07ac1863c51549436bed6",
+                "reference": "c9227e596388eb90b0c07ac1863c51549436bed6",
+                "shasum": ""
+            },
+            "require": {
+                "apiato/containers-installer": "^1.0",
+                "dto/dto": "^3.2.7",
+                "fruitcake/laravel-cors": "^1.0.5",
+                "illuminate/support": "^8.28.1",
+                "laravel/tinker": "^2.6.0",
+                "php": "^7.4|^8.0",
+                "prettus/l5-repository": "^2.7.4",
+                "spatie/laravel-fractal": "^5.8.1",
+                "vinkla/hashids": "^9.1.0"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Apiato\\Core\\Providers\\ApiatoProvider",
+                        "Vinkla\\Hashids\\HashidsServiceProvider",
+                        "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
+                        "Fruitcake\\Cors\\CorsServiceProvider",
+                        "Spatie\\Fractal\\FractalServiceProvider",
+                        "Laravel\\Tinker\\TinkerServiceProvider",
+                        "App\\Ship\\Parents\\Providers\\RoutesProvider",
+                        "App\\Ship\\Providers\\ShipProvider",
+                        "Apiato\\Core\\Generator\\GeneratorsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Hashids": "Vinkla\\Hashids\\Facades\\Hashids",
+                        "Fractal": "Spatie\\Fractal\\FractalFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Apiato\\Core\\": ""
+                }
+            },
+            "autoload-dev": {
+                "psr-4": []
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahmoud Zalt",
+                    "email": "mahmoud@zalt.me"
+                }
+            ],
+            "description": "Core package for Apiato.",
+            "homepage": "http://apiato.io/",
+            "keywords": [
+                "Porto",
+                "Porto SAP",
+                "apiato",
+                "apiato core",
+                "core"
+            ],
+            "support": {
+                "issues": "https://github.com/apiato/core/issues",
+                "source": "https://github.com/apiato/core"
+            },
+            "time": "2021-03-02T18:23:01+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -1864,16 +1944,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.29.0",
+            "version": "v8.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e"
+                "reference": "81ef9850cc388f2f92b868fb35ffb76f0c9a0f46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d2eba352b3b3a3c515b18c5726b373fe5026733e",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/81ef9850cc388f2f92b868fb35ffb76f0c9a0f46",
+                "reference": "81ef9850cc388f2f92b868fb35ffb76f0c9a0f46",
                 "shasum": ""
             },
             "require": {
@@ -2028,20 +2108,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-23T14:27:41+00:00"
+            "time": "2021-03-02T14:28:44+00:00"
         },
         {
             "name": "laravel/passport",
-            "version": "v10.1.1",
+            "version": "v10.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "2ed01909228b049f6ea0aa2d4b0ae78d3b27bee3"
+                "reference": "9f1a5d56eb609250104afc38cf407f7c2520cda3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/2ed01909228b049f6ea0aa2d4b0ae78d3b27bee3",
-                "reference": "2ed01909228b049f6ea0aa2d4b0ae78d3b27bee3",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/9f1a5d56eb609250104afc38cf407f7c2520cda3",
+                "reference": "9f1a5d56eb609250104afc38cf407f7c2520cda3",
                 "shasum": ""
             },
             "require": {
@@ -2060,7 +2140,7 @@
                 "league/oauth2-server": "^8.2",
                 "nyholm/psr7": "^1.3",
                 "php": "^7.3|^8.0",
-                "phpseclib/phpseclib": "^3.0",
+                "phpseclib/phpseclib": "^2.0|^3.0",
                 "symfony/psr-http-message-bridge": "^2.0"
             },
             "require-dev": {
@@ -2105,20 +2185,20 @@
                 "issues": "https://github.com/laravel/passport/issues",
                 "source": "https://github.com/laravel/passport"
             },
-            "time": "2021-02-23T20:45:29+00:00"
+            "time": "2021-03-02T16:40:00+00:00"
         },
         {
             "name": "laravel/socialite",
-            "version": "v5.2.1",
+            "version": "v5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "8aa705d771f127317f60887515cfb2f777653ce5"
+                "reference": "8d25d574b4f2005411c0b9cb527ef5e745c1b07d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/8aa705d771f127317f60887515cfb2f777653ce5",
-                "reference": "8aa705d771f127317f60887515cfb2f777653ce5",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/8d25d574b4f2005411c0b9cb527ef5e745c1b07d",
+                "reference": "8d25d574b4f2005411c0b9cb527ef5e745c1b07d",
                 "shasum": ""
             },
             "require": {
@@ -2174,20 +2254,20 @@
                 "issues": "https://github.com/laravel/socialite/issues",
                 "source": "https://github.com/laravel/socialite"
             },
-            "time": "2021-02-22T14:22:51+00:00"
+            "time": "2021-03-02T16:50:47+00:00"
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88"
+                "reference": "04ad32c1a3328081097a181875733fa51f402083"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/daae1c43f1300fe88c05d83db6f3d8f76677ad88",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/04ad32c1a3328081097a181875733fa51f402083",
+                "reference": "04ad32c1a3328081097a181875733fa51f402083",
                 "shasum": ""
             },
             "require": {
@@ -2240,9 +2320,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
-                "source": "https://github.com/laravel/tinker/tree/v2.6.0"
+                "source": "https://github.com/laravel/tinker/tree/v2.6.1"
             },
-            "time": "2021-01-26T20:35:18+00:00"
+            "time": "2021-03-02T16:53:12+00:00"
         },
         {
             "name": "lcobucci/clock",
@@ -11405,7 +11485,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "apiato/core": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
