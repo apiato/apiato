@@ -39,7 +39,8 @@
         "guzzlehttp/guzzle": "^7.2.0",
         "laravel/tinker": "^2.6.0",
         "fruitcake/laravel-cors": "^1.0.6",
-        "wikimedia/composer-merge-plugin": "^2.0.1"
+        "wikimedia/composer-merge-plugin": "^2.0.1",
+        "apiato/core": "dev-next"
     },
     "require-dev": {
         "facade/ignition": "^2.5.13",
@@ -68,8 +69,7 @@
         "merge-plugin": {
             "include": [
                 "app/Ship/composer.json",
-                "app/Containers/*/composer.json",
-                "app/Containers/composer.json"
+                "app/Containers/*/composer.json"
             ],
             "recurse": true,
             "replace": false,
@@ -91,6 +91,12 @@
             "@php artisan key:generate --ansi"
         ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Mohammad-Alavi/core.git"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
