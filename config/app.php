@@ -169,7 +169,6 @@ return [
          *
          * NOTE: all packages service providers must be registered inside their container's main service providers.
          */
-        Apiato\Core\Providers\ApiatoProvider::class,
     ],
 
     /*
@@ -222,7 +221,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Apiato' => \Apiato\Core\Foundation\Apiato::class
         // NOTE: all packages aliases must be registered inside their containers service providers
     ],
 ];
