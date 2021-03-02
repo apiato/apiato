@@ -4,7 +4,6 @@ namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use Illuminate\Support\Facades\Facade;
 
 class ShipProvider extends MainProvider
 {
