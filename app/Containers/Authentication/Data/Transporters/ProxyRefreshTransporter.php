@@ -21,11 +21,9 @@ class ProxyRefreshTransporter extends Transporter
             'scope',
         ],
         'required' => [
-            'refresh_token',
-            'client_id',
-            'client_password',
         ],
         'default' => [
+            'grant_type' => 'refresh_token',
             'scope' => '',
         ]
     ];

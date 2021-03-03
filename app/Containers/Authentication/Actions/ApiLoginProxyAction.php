@@ -3,24 +3,23 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\Config;
 
 class ApiLoginProxyAction extends Action
 {
     public function run(ProxyApiLoginTransporter $data): array
     {
-        Apiato::call('Authentication@LoginSubAction', [new LoginTransporter($data->getArrayCopy())]);
         $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
 
         $requestData = [
             'username' => $loginCustomAttribute['username'],
             'password' => $data->password,
-            'grant_type' => $data->grant_type ?? 'password',
-            'client_id' => $data->client_id,
-            'client_secret' => $data->client_password,
-            'scope' => $data->scope ?? '',
+            'grant_type' => $data->grant_type,
+            'client_id' => Config::get('authentication-container.clients.web.admin.id'),
+            'client_secret' => Config::get('authentication-container.clients.web.admin.secret'),
+            'scope' => $data->scope,
         ];
 
         $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);

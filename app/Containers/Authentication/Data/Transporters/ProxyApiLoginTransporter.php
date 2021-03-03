@@ -24,10 +24,9 @@ class ProxyApiLoginTransporter extends Transporter
         ],
         'required' => [
             'password',
-            'client_id',
-            'client_password',
         ],
         'default' => [
+            'grant_type' => 'password',
             'scope' => '',
         ]
     ];
