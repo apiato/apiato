@@ -38,7 +38,6 @@ class ApiLogoutTest extends ApiTestCase
         ]);
 
         $response->assertStatus(202);
-
         $this->assertResponseContainKeyValue([
             'message' => 'Token revoked successfully.',
         ]);
