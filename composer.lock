@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "c9227e596388eb90b0c07ac1863c51549436bed6"
+                "reference": "47d895d59d8680892cc9cf7365bdd8179f941ba9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/c9227e596388eb90b0c07ac1863c51549436bed6",
-                "reference": "c9227e596388eb90b0c07ac1863c51549436bed6",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/47d895d59d8680892cc9cf7365bdd8179f941ba9",
+                "reference": "47d895d59d8680892cc9cf7365bdd8179f941ba9",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-02T18:23:01+00:00"
+            "time": "2021-03-03T20:29:34+00:00"
         },
         {
             "name": "asm89/stack-cors",
