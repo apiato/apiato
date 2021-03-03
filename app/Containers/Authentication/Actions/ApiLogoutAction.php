@@ -10,7 +10,7 @@ use Lcobucci\JWT\Parser;
 
 class ApiLogoutAction extends Action
 {
-    public function run(DataTransporter $data): bool
+    public function run(DataTransporter $data): void
     {
         $id = app(Parser::class)->parse($data->bearerToken)->claims()->get('jti');
 
