@@ -8,11 +8,6 @@ use Laravel\Passport\RefreshTokenRepository;
 use Laravel\Passport\TokenRepository;
 use Lcobucci\JWT\Parser;
 
-/**
- * Class ApiLogoutAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class ApiLogoutAction extends Action
 {
     public function run(DataTransporter $data): bool

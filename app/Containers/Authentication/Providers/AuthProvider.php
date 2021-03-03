@@ -11,14 +11,10 @@ use Laravel\Passport\Passport;
 use Laravel\Passport\RouteRegistrar;
 
 /**
- * Class ShipAuthServiceProvider
- *
  * This class is provided by Laravel as default provider,
  * to register authorization policies.
  *
  * A.K.A App\Providers\AuthServiceProvider.php
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class AuthProvider extends ParentAuthProvider
 {
