@@ -5,7 +5,7 @@ namespace App\Containers\Authentication\UI\WEB\Requests;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class LoginRequest.
+ * Class ProxyLoginPasswordGrantRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */

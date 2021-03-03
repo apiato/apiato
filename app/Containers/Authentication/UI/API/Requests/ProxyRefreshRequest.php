@@ -2,15 +2,22 @@
 
 namespace App\Containers\Authentication\UI\API\Requests;
 
+use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class RefreshRequest.
+ * Class ProxyRefreshRequest.
  *
  * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
-class RefreshRequest extends Request
+class ProxyRefreshRequest extends Request
 {
+    /**
+     * The assigned Transporter for this Request
+     *
+     * @var string
+     */
+    protected $transporter = ProxyRefreshTransporter::class;
 
     /**
      * Define which Roles and/or Permissions has access to this request.

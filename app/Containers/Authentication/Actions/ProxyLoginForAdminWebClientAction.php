@@ -3,13 +3,13 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Config;
 
-class ApiLoginProxyAction extends Action
+class ProxyLoginForAdminWebClientAction extends Action
 {
-    public function run(ProxyApiLoginTransporter $data): array
+    public function run(ProxyLoginPasswordGrantTransporter $data): array
     {
         $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
 

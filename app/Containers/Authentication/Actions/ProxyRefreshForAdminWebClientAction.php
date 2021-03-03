@@ -9,7 +9,7 @@ use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 
-class ApiRefreshProxyAction extends Action
+class ProxyRefreshForAdminWebClientAction extends Action
 {
     public function run(ProxyRefreshTransporter $data): array
     {

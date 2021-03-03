@@ -5,11 +5,11 @@ namespace App\Containers\Authentication\Data\Transporters;
 use App\Ship\Parents\Transporters\Transporter;
 
 /**
- * Class ProxyApiLoginTransporter
+ * Class ProxyLoginPasswordGrantTransporter
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
-class ProxyApiLoginTransporter extends Transporter
+class ProxyLoginPasswordGrantTransporter extends Transporter
 {
     protected $schema = [
         'type' => 'object',

@@ -3,11 +3,11 @@
 namespace App\Containers\Authentication\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\ProxyApiLoginTransporter;
+use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
 use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
-use App\Containers\Authentication\UI\API\Requests\LoginRequest;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
-use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
+use App\Containers\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
+use App\Containers\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
@@ -40,13 +40,13 @@ class Controller extends ApiController
      * This is only to help the Web Apps (JavaScript clients) hide
      * their ID's and Secrets when contacting the OAuth server and obtain Tokens.
      *
-     * @param LoginRequest $request
+     * @param ProxyLoginPasswordGrantRequest $request
      *
      * @return JsonResponse
      */
-    public function proxyLoginForAdminWebClient(LoginRequest $request): JsonResponse
+    public function proxyLoginForAdminWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ApiLoginProxyAction', [new ProxyApiLoginTransporter($request)]);
+        $result = Apiato::call('Authentication@ProxyLoginForAdminWebClientAction', [new ProxyLoginPasswordGrantTransporter($request)]);
 
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
@@ -54,13 +54,13 @@ class Controller extends ApiController
     /**
      * Read the comment in the function `proxyLoginForAdminWebClient`
      *
-     * @param RefreshRequest $request
+     * @param ProxyRefreshRequest $request
      *
      * @return JsonResponse
      */
-    public function proxyRefreshForAdminWebClient(RefreshRequest $request): JsonResponse
+    public function proxyRefreshForAdminWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ApiRefreshProxyAction', [new ProxyRefreshTransporter($request)]);
+        $result = Apiato::call('Authentication@ProxyRefreshForAdminWebClientAction', [new ProxyRefreshTransporter($request)]);
 
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
