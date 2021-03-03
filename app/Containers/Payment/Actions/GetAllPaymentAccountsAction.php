@@ -23,7 +23,6 @@ class GetAllPaymentAccountsAction extends Action
         $paymentAccounts = Apiato::call('Payment@GetAllPaymentAccountsTask',
             [],
             [
-                'addRequestCriteria',
                 'ordered',
                 ['filterByUser' => [$user]]
             ]

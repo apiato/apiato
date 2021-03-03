@@ -18,7 +18,7 @@ class GetAllPermissionsAction extends Action
      */
     public function run()
     {
-        $permissions = Apiato::call('Authorization@GetAllPermissionsTask', [], ['addRequestCriteria']);
+        $permissions = Apiato::call('Authorization@GetAllPermissionsTask');
 
         return $permissions;
     }

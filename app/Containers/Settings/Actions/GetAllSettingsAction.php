@@ -18,7 +18,7 @@ class GetAllSettingsAction extends Action
      */
     public function run()
     {
-        $settings = Apiato::call('Settings@GetAllSettingsTask', [], ['addRequestCriteria', 'ordered']);
+        $settings = Apiato::call('Settings@GetAllSettingsTask', [], ['ordered']);
 
         return $settings;
     }
