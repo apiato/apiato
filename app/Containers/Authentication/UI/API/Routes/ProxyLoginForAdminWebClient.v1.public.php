@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            ClientAdminWebAppLoginProxy
+ * @apiName            ProxyLoginForAdminWebClient
  * @api                {post} /v1/clients/web/admin/login Login (Password Grant with proxy)
  * @apiDescription     Login Users using their email and password, without client_id and client_secret.
  *
@@ -21,6 +21,6 @@
  * }
  */
 $router->post('clients/web/admin/login', [
-    'as' => 'api_authentication_client_admin_web_app_login_proxy',
+    'as' => 'api_authentication_client_admin_web_login_proxy',
     'uses' => 'Controller@proxyLoginForAdminWebClient',
 ]);

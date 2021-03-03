@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            ClientAdminWebAppRefreshProxy
+ * @apiName            ProxyRefreshForAdminWebClient
  * @api                {post} /v1/clients/web/admin/refresh Refresh
  * @apiDescription     If `refresh_token` is not provided the w'll try to get it from the http cookie.
  *
@@ -20,6 +20,6 @@
  * }
  */
 $router->post('clients/web/admin/refresh', [
-    'as' => 'api_authentication_client_admin_web_app_refresh_proxy',
+    'as' => 'api_authentication_client_admin_web_refresh_proxy',
     'uses' => 'Controller@proxyRefreshForAdminWebClient',
 ]);
