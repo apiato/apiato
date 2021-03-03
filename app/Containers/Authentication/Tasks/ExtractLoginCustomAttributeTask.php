@@ -2,7 +2,6 @@
 
 namespace App\Containers\Authentication\Tasks;
 
-use App\Containers\Authentication\Exceptions\NoValidLoginUsernameFieldProvidedException;
 use App\Ship\Parents\Tasks\Task;
 use App\Ship\Parents\Transporters\Transporter;
 use Illuminate\Support\Facades\Config;
@@ -37,10 +36,6 @@ class ExtractLoginCustomAttributeTask extends Task
             if ($loginUsername !== null) {
                 break;
             }
-        }
-
-        if ($loginUsername === null) {
-            throw new NoValidLoginUsernameFieldProvidedException();
         }
 
         return [

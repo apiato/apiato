@@ -41,18 +41,6 @@ class ExtractLoginCustomAttributeTest extends TestCase
         self::assertSame($result['username'], $userDetails['email']);
     }
 
-    public function testGivenNoLoginUsernameCanBeExtractedThrowAnException(): void
-    {
-        $userDetails = [
-            'password' => 'so-secret',
-        ];
-        $transporter = new LoginTransporter($userDetails);
-        $task = App::make(ExtractLoginCustomAttributeTask::class);
-
-        $this->expectException(NoValidLoginUsernameFieldProvidedException::class);
-        $task->run($transporter);
-    }
-
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void
     {
         Config::offsetUnset('authentication-container.login.attributes');

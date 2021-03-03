@@ -66,13 +66,10 @@ class ApiLoginProxyTest extends ApiTestCase
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
 
-        // specifically allow to login with "name" attribute
-        Config::set('authentication-container.login.attributes',
-            [
-                'email' => ['email'],
-                'name' => [],
-            ]
-        );
+        $this->setLoginAttributes([
+            'email' => [],
+            'name' => []
+        ]);
 
         $request = [
             'password' => 'testingpass',
@@ -88,5 +85,46 @@ class ApiLoginProxyTest extends ApiTestCase
         ]);
 
         $this->assertResponseContainKeys(['expires_in', 'access_token', 'refresh_token']);
+    }
+
+    private function setLoginAttributes(array $attributes): void
+    {
+        Config::set('authentication-container.login.attributes', $attributes);
+    }
+
+    public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
+    {
+        $this->setLoginAttributes([
+            'email' => []
+        ]);
+
+        $data = [
+            'password' => 'so-secret',
+        ];
+
+        $this->makeCall($data);
+
+        $this->assertValidationErrorContain([
+            'email' => 'The email field is required.',
+        ]);
+    }
+
+    public function testGivenMultipleLoginAttributeIsSetThenAtLeastOneShouldBeRequired(): void
+    {
+        $this->setLoginAttributes([
+            'email' => [],
+            'name' => []
+        ]);
+
+        $data = [
+            'password' => 'so-secret',
+        ];
+
+        $this->makeCall($data);
+
+        $this->assertValidationErrorContain([
+            'email' => 'The email field is required when none of name are present.',
+            'name' => 'The name field is required when none of email are present.',
+        ]);
     }
 }

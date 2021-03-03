@@ -8,6 +8,18 @@ if (!function_exists('loginAttributeValidationRulesMerger')) {
         $prefix = config('authentication-container.login.prefix', '');
         $allowedLoginAttributes = config('authentication-container.login.attributes', ['email' => []]);
 
+        if (count($allowedLoginAttributes) === 1) {
+            $key = array_key_first($allowedLoginAttributes);
+            $optionalValidators = $allowedLoginAttributes[$key];
+            $validators = implode('|', $optionalValidators);
+
+            $fieldName = $prefix . $key;
+
+            $rules[$fieldName] = "required:{$fieldName}|exists:users,{$key}|{$validators}";
+
+            return $rules;
+        }
+
         foreach ($allowedLoginAttributes as $key => $optionalValidators) {
             // build all other login fields together
             $otherLoginFields = Arr::except($allowedLoginAttributes, $key);
