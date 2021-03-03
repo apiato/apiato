@@ -4,8 +4,8 @@ namespace App\Containers\Authentication\Actions;
 
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
+use Laravel\Passport\RefreshTokenRepository;
+use Laravel\Passport\TokenRepository;
 use Lcobucci\JWT\Parser;
 
 /**
@@ -17,10 +17,12 @@ class ApiLogoutAction extends Action
 {
     public function run(DataTransporter $data): bool
     {
-        $id = App::make(Parser::class)->parse($data->bearerToken)->claims()->get('jti');
+        $id = app(Parser::class)->parse($data->bearerToken)->claims()->get('jti');
 
-        DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => true]);
+        $tokenRepository = app(TokenRepository::class);
+        $refreshTokenRepository = app(RefreshTokenRepository::class);
 
-        return true;
+        $tokenRepository->revokeAccessToken($id);
+        $refreshTokenRepository->revokeRefreshTokensByAccessTokenId($id);
     }
 }
