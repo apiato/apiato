@@ -18,19 +18,16 @@ class CallOAuthServerTask extends Task
 {
     private const AUTH_ROUTE = '/v1/oauth/token';
 
-    public function run($data): array
+    public function run(array $data): array
     {
-        // Full url to the oauth token endpoint
         $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
 
         $headers = ['HTTP_ACCEPT' => 'application/json'];
 
-        // Create and handle the oauth request
         $request = Request::create($authFullApiUrl, 'POST', $data, [], [], $headers);
 
         $response = App::handle($request);
 
-        // response content as Array
         $content = Utils::jsonDecode($response->getContent(), true);
 
         // If the internal request to the oauth token endpoint was not successful we throw an exception

@@ -13,19 +13,15 @@ class ProxyRefreshForAdminWebClientAction extends Action
 {
     public function run(ProxyRefreshTransporter $data): array
     {
-        $requestData = [
-            'grant_type' => $data->grant_type,
-            'refresh_token' => $data->refresh_token ?: Request::cookie('refreshToken'),
-            'client_id' => Config::get('authentication-container.clients.web.admin.id'),
-            'client_secret' => Config::get('authentication-container.clients.web.admin.secret'),
-            'scope' => $data->scope,
-        ];
+        $data->set('refresh_token', $data->refresh_token ?: Request::cookie('refreshToken'));
+        $data->set('client_id', Config::get('authentication-container.clients.web.admin.id'));
+        $data->set('client_secret', Config::get('authentication-container.clients.web.admin.secret'));
 
-        if (!$requestData['refresh_token']) {
+        if (!$data->refresh_token) {
             throw new RefreshTokenMissedException();
         }
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$data->toArray()]);
         $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [

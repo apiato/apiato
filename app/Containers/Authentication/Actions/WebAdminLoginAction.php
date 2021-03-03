@@ -17,7 +17,7 @@ class WebAdminLoginAction extends Action
 {
     public function run(LoginTransporter $data): Authenticatable
     {
-        $user = Apiato::call('Authentication@LoginSubAction', [$data]);
+        $user = Apiato::call('Authentication@WebLoginSubAction', [$data]);
 
         if (!$user->hasAdminRole()) {
             throw new UserNotAdminException();

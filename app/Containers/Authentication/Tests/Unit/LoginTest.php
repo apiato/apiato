@@ -2,7 +2,7 @@
 
 namespace App\Containers\Authentication\Tests\Unit;
 
-use App\Containers\Authentication\Actions\LoginSubAction;
+use App\Containers\Authentication\Actions\WebLoginSubAction;
 use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Containers\Authentication\Exceptions\UserNotConfirmedException;
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
         $this->getTestingUser($this->userDetails);
         $this->actingAs($this->testingUser, 'web');
         $this->transporter = new LoginTransporter($this->userDetails);
-        $this->action = App::make(LoginSubAction::class);
+        $this->action = App::make(WebLoginSubAction::class);
     }
 
     public function testLogin(): void

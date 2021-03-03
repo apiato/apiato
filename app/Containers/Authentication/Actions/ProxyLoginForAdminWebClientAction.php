@@ -13,16 +13,11 @@ class ProxyLoginForAdminWebClientAction extends Action
     {
         $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
 
-        $requestData = [
-            'username' => $loginCustomAttribute['username'],
-            'password' => $data->password,
-            'grant_type' => $data->grant_type,
-            'client_id' => Config::get('authentication-container.clients.web.admin.id'),
-            'client_secret' => Config::get('authentication-container.clients.web.admin.secret'),
-            'scope' => $data->scope,
-        ];
+        $data->set('username', $loginCustomAttribute['username']);
+        $data->set('client_id', Config::get('authentication-container.clients.web.admin.id'));
+        $data->set('client_secret', Config::get('authentication-container.clients.web.admin.secret'));
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$requestData]);
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$data->toArray()]);
         $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [

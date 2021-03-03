@@ -8,7 +8,7 @@ use App\Containers\Authentication\Exceptions\UserNotConfirmedException;
 use App\Ship\Parents\Actions\SubAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class LoginSubAction extends SubAction
+class WebLoginSubAction extends SubAction
 {
     public function run(LoginTransporter $data): Authenticatable
     {

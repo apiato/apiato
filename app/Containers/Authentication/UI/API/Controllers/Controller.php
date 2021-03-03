@@ -13,11 +13,6 @@ use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cookie;
 
-/**
- * Class Controller
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
     public function logout(LogoutRequest $request): JsonResponse
@@ -47,7 +42,6 @@ class Controller extends ApiController
     public function proxyLoginForAdminWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
         $result = Apiato::call('Authentication@ProxyLoginForAdminWebClientAction', [new ProxyLoginPasswordGrantTransporter($request)]);
-
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
@@ -61,7 +55,6 @@ class Controller extends ApiController
     public function proxyRefreshForAdminWebClient(ProxyRefreshRequest $request): JsonResponse
     {
         $result = Apiato::call('Authentication@ProxyRefreshForAdminWebClientAction', [new ProxyRefreshTransporter($request)]);
-
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 }

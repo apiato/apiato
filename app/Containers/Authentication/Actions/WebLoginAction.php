@@ -16,6 +16,6 @@ class WebLoginAction extends Action
 {
     public function run(LoginTransporter $data): Authenticatable
     {
-        return Apiato::call('Authentication@LoginSubAction', [$data]);
+        return Apiato::call('Authentication@WebLoginSubAction', [$data]);
     }
 }
