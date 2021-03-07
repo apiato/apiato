@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "fbd9bfe89a2090a44f66069f5ac74b4281a498b9"
+                "reference": "2c288ea93d55920d1e5751cfb356f4b775c76ba1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/fbd9bfe89a2090a44f66069f5ac74b4281a498b9",
-                "reference": "fbd9bfe89a2090a44f66069f5ac74b4281a498b9",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/2c288ea93d55920d1e5751cfb356f4b775c76ba1",
+                "reference": "2c288ea93d55920d1e5751cfb356f4b775c76ba1",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-04T12:10:59+00:00"
+            "time": "2021-03-07T13:30:39+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -1609,16 +1609,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631"
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/60d379c243457e073cff02bc323a2a86cb355631",
-                "reference": "60d379c243457e073cff02bc323a2a86cb355631",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/8e7d04f1f6450fef59366c399cfad4b9383aa30d",
+                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d",
                 "shasum": ""
             },
             "require": {
@@ -1658,9 +1658,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/1.4.0"
+                "source": "https://github.com/guzzle/promises/tree/1.4.1"
             },
-            "time": "2020-09-30T07:37:28+00:00"
+            "time": "2021-03-07T09:25:29+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3852,16 +3852,16 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.7.4",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "d4cd5afc91e5918d6dd1f2441be4a2b23d8f1507"
+                "reference": "ad55bf207d96abe23fcdb5cc7156d06b1984cf10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/d4cd5afc91e5918d6dd1f2441be4a2b23d8f1507",
-                "reference": "d4cd5afc91e5918d6dd1f2441be4a2b23d8f1507",
+                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/ad55bf207d96abe23fcdb5cc7156d06b1984cf10",
+                "reference": "ad55bf207d96abe23fcdb5cc7156d06b1984cf10",
                 "shasum": ""
             },
             "require": {
@@ -3921,7 +3921,7 @@
                 "source": "https://github.com/andersao/l5-repository",
                 "wiki": "https://github.com/andersao/l5-repository"
             },
-            "time": "2021-01-08T01:01:35+00:00"
+            "time": "2021-03-06T21:06:43+00:00"
         },
         {
             "name": "prettus/laravel-validation",
