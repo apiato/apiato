@@ -4,6 +4,7 @@ namespace App\Ship\Kernels;
 
 use App\Ship\Middlewares\Http\Authenticate;
 use App\Ship\Middlewares\Http\EncryptCookies;
+use App\Ship\Middlewares\Http\PreventRequestsDuringMaintenance;
 use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
 use App\Ship\Middlewares\Http\ProfilerMiddleware;
 use App\Ship\Middlewares\Http\TrimStrings;
@@ -16,7 +17,6 @@ use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Middleware\SetCacheHeaders;
@@ -27,16 +27,8 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-/**
- * Class HttpKernel
- *
- * A.K.A (app/Http/Kernel.php)
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class HttpKernel extends LaravelHttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
@@ -46,14 +38,13 @@ class HttpKernel extends LaravelHttpKernel
      */
     protected $middleware = [
         // Laravel middleware's
-        TrimStrings::class,
-        CheckForMaintenanceMode::class,
-        ValidatePostSize::class,
+        // \App\Http\Middleware\TrustHosts::class,
         TrustProxies::class,
-        ConvertEmptyStringsToNull::class,
-
-      // CORS package middleware
         HandleCors::class,
+        PreventRequestsDuringMaintenance::class,
+        ValidatePostSize::class,
+        TrimStrings::class,
+        ConvertEmptyStringsToNull::class,
     ];
 
     /**
@@ -73,11 +64,11 @@ class HttpKernel extends LaravelHttpKernel
         ],
 
         'api' => [
-          // Note: The throttle Middleware is registered by the RoutesLoaderTrait in the Core
-          ValidateJsonContent::class,
-          'bindings',
-          ProcessETagHeadersMiddleware::class,
-          ProfilerMiddleware::class,
+            // Note: The "throttle" Middleware is registered by the RoutesLoaderTrait in the Core
+            SubstituteBindings::class,
+            ValidateJsonContent::class,
+            ProcessETagHeadersMiddleware::class,
+            ProfilerMiddleware::class,
         ],
     ];
 
@@ -89,32 +80,33 @@ class HttpKernel extends LaravelHttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'bindings' => SubstituteBindings::class,
-        'throttle' => ThrottleRequests::class,
-        'can'      => Authorize::class,
-        'auth'     => Authenticate::class,
-        'signed'   => ValidateSignature::class,
-        'cache.headers' => SetCacheHeaders::class,
-        'password.confirm' => RequirePassword::class,
-        'verified' => EnsureEmailIsVerified::class,
+        'auth' => Authenticate::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'cache.headers' => SetCacheHeaders::class,
+        // Note: The "can" Middleware is registered by MiddlewareServiceProvider in Authorization Container
+        // 'can' => \Illuminate\Auth\Middleware\Authorize::class,
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password.confirm' => RequirePassword::class,
+        'signed' => ValidateSignature::class,
+        'throttle' => ThrottleRequests::class,
+        'verified' => EnsureEmailIsVerified::class,
     ];
 
     /**
      * The priority-sorted list of middleware.
      *
-     * This forces non-global middleware to always be in the given order.
+     * Forces non-global middleware to always be in the given order.
      *
-     * @var array
+     * @var string[]
      */
     protected $middlewarePriority = [
-      StartSession::class,
-      ShareErrorsFromSession::class,
-      Authenticate::class,
-      ThrottleRequests::class,
-      AuthenticateSession::class,
-      SubstituteBindings::class,
-      Authorize::class,
+        EncryptCookies::class,
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        Authenticate::class,
+        ThrottleRequests::class,
+        AuthenticateSession::class,
+        SubstituteBindings::class,
+        Authorize::class,
     ];
 }
