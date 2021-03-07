@@ -7,21 +7,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 
-/**
- * Class ProcessETagHeadersMiddleware
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class ProcessETagHeadersMiddleware extends Middleware
 {
-
-    /**
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return mixed
-     * @throws PreconditionFailedHttpException
-     */
     public function handle(Request $request, Closure $next)
     {
         /*
@@ -64,5 +51,4 @@ class ProcessETagHeadersMiddleware extends Middleware
 
         return $response;
     }
-
 }
