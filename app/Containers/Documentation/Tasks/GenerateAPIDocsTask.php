@@ -31,20 +31,17 @@ class GenerateAPIDocsTask extends Task
     {
         $path = $this->getDocumentationPath($type);
 
-        $command = array_merge(
-          [
+        $command = [
             $this->getExecutable(),
+            // executable parameters
             "-c",
-            $this->getJsonFilePath($type)
-          ],
-          $this->getEndpointFiles($type),
-          [
+            $this->getJsonFilePath($type),
+            ...$this->getEndpointFiles($type),
             "-i",
             "app",
             "-o",
             $path
-          ]
-        );
+        ];
 
         $process = new Process($command);
 
