@@ -18,10 +18,9 @@ class CreatePaymentTransactionsTable extends Migration
     {
         Schema::create('payment_transactions', function (Blueprint $table) {
 
-            $table->increments('id');
+            $table->id('id');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
 
             $table->string('gateway');
             $table->string('transaction_id');
