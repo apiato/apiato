@@ -56,7 +56,6 @@ class SocialLoginAction extends Action
                 $socialUserProfile->avatar,
                 $avatar_original
             ]);
-
         } else {
             // THIS IS: A NEW USER
             // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
@@ -84,5 +83,4 @@ class SocialLoginAction extends Action
             'token' => $personalAccessTokenResult,
         ];
     }
-
 }

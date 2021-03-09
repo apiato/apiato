@@ -33,5 +33,4 @@ class EventsProvider extends AbstractEventsProvider
     {
         parent::boot();
     }
-
 }
