@@ -33,14 +33,14 @@
         "ext-openssl": "*",
         "ext-pdo": "*",
         "ext-tokenizer": "*",
-        "laravel/framework": "^8.28.1",
+        "apiato/core": "dev-next",
         "doctrine/dbal": "^3.0.0",
         "fideloper/proxy": "^4.4.1",
-        "guzzlehttp/guzzle": "^7.2.0",
-        "laravel/tinker": "^2.6.0",
         "fruitcake/laravel-cors": "^1.0.6",
-        "wikimedia/composer-merge-plugin": "^2.0.1",
-        "apiato/core": "dev-next"
+        "guzzlehttp/guzzle": "^7.2.0",
+        "laravel/framework": "^8.28.1",
+        "laravel/tinker": "^2.6.0",
+        "wikimedia/composer-merge-plugin": "^2.0.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5.13",
@@ -69,7 +69,8 @@
         "merge-plugin": {
             "include": [
                 "app/Ship/composer.json",
-                "app/Containers/*/composer.json"
+                "app/Containers/*/composer.json",
+                "app/Containers/composer.json"
             ],
             "recurse": true,
             "replace": false,
