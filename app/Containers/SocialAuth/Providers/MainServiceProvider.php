@@ -3,8 +3,6 @@
 namespace App\Containers\SocialAuth\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
-use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\SocialiteServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -15,19 +13,16 @@ use Laravel\Socialite\SocialiteServiceProvider;
  */
 class MainServiceProvider extends MainProvider
 {
-
     /**
      * Container Service Providers.
      */
     public array $serviceProviders = [
-        SocialiteServiceProvider::class
     ];
 
     /**
      * Container Aliases
      */
     public array $aliases = [
-        'Socialite' => Socialite::class,
     ];
 
     /**
@@ -36,7 +31,6 @@ class MainServiceProvider extends MainProvider
     public function register(): void
     {
         parent::register();
-
         // do your binding here..
     }
 }
