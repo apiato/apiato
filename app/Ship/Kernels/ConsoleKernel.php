@@ -5,16 +5,8 @@ namespace App\Ship\Kernels;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
-/**
- * Class ConsoleKernel
- *
- * A.K.A (app/Console/Kernel.php)
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class ConsoleKernel extends LaravelConsoleKernel
 {
-
     /**
      * The Artisan commands provided by your application.
      *
@@ -38,7 +30,7 @@ class ConsoleKernel extends LaravelConsoleKernel
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the commands for the application.
      *
      * @return void
      */
@@ -51,5 +43,4 @@ class ConsoleKernel extends LaravelConsoleKernel
 
         require app_path('Ship/Commands/Routes.php');
     }
-
 }

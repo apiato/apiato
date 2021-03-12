@@ -2,28 +2,14 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use App;
 use App\Ship\Exceptions\MissingJSONHeaderException;
 use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class ValidateJsonContent
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class ValidateJsonContent extends Middleware
 {
-
-    /**
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return mixed
-     * @throws MissingJSONHeaderException
-     */
     public function handle(Request $request, Closure $next)
     {
         $acceptHeader = $request->header('accept');
@@ -55,5 +41,4 @@ class ValidateJsonContent extends Middleware
         // return the response
         return $response;
     }
-
 }
