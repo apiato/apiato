@@ -6,27 +6,20 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 use Dto\Exceptions\InvalidDataTypeException;
+use Illuminate\Support\Facades\Config;
 
-/**
- * Class SocialLoginAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class SocialLoginAction extends Action
 {
-
     /**
      * ----- if has social profile
      * --------- [A] update his social profile info
      * ----- if has no social profile
      * --------- [C] create new record
-     *
      * @param DataTransporter $data
-     *
-     * @return  mixed
+     * @return array
      * @throws InvalidDataTypeException
      */
-    public function run(DataTransporter $data)
+    public function run(DataTransporter $data): array
     {
         // fetch the user data from the support platforms
         $socialUserProfile = Apiato::call('SocialAuth@FindUserSocialProfileTask', [$data->provider, $data->toArray()]);
@@ -58,8 +51,10 @@ class SocialLoginAction extends Action
             ]);
         } else {
             // THIS IS: A NEW USER
-            // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
 
+            $isAdmin = Config::get('socialAuth-container.create_new_user_as_admin');
+
+            // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
             $user = Apiato::call('SocialAuth@CreateUserBySocialProfileTask', [
                 $data->provider,
                 $socialUserProfile->token,
@@ -71,7 +66,8 @@ class SocialLoginAction extends Action
                 $tokenSecret,
                 $expiresIn,
                 $refreshToken,
-                $avatar_original
+                $avatar_original,
+                $isAdmin
             ]);
         }
 
@@ -79,7 +75,7 @@ class SocialLoginAction extends Action
         $personalAccessTokenResult = Apiato::call('Authentication@ApiLoginFromUserTask', [$user]);
 
         return [
-            'user'  => $user,
+            'user' => $user,
             'token' => $personalAccessTokenResult,
         ];
     }

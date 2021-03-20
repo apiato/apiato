@@ -1,8 +1,7 @@
 <?php
 
-// provider callback handler
-$router->any('auth/{provider}/callback', [
-    'as' => 'web_socialauth_callback',
-    'uses' => 'Controller@handleCallbackAll',
-]);
+use App\Containers\SocialAuth\UI\WEB\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
+// provider callback handler
+Route::post('auth/{provider}/callback', [Controller::class, 'handleCallbackAll'])->name('web_socialAuth_callback');

@@ -6,38 +6,15 @@ use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 
-/**
- * Class UpdateUserSocialProfileTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class UpdateUserSocialProfileTask extends Task
 {
-
-    protected $repository;
+    protected UserRepository $repository;
 
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param      $userId
-     * @param null $token
-     * @param null $expiresIn
-     * @param null $refreshToken
-     * @param null $tokenSecret
-     * @param null $provider
-     * @param null $avatar
-     * @param null $avatar_original
-     * @param null $socialId
-     * @param null $nickname
-     * @param null $name
-     * @param null $email
-     *
-     * @return  mixed
-     * @throws  UpdateResourceFailedException
-     */
     public function run(
         $userId,
         $token = null,
@@ -51,7 +28,8 @@ class UpdateUserSocialProfileTask extends Task
         $nickname = null,
         $name = null,
         $email = null
-    ) {
+    )
+    {
         $attributes = [];
 
         if ($token) {
@@ -98,16 +76,10 @@ class UpdateUserSocialProfileTask extends Task
             $attributes['email'] = $email;
         }
 
-        // check if data is empty
         if (empty($attributes)) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 
-        // updating the attributes
-        $user = $this->repository->update($attributes, $userId);
-
-        return $user;
+        return $this->repository->update($attributes, $userId);
     }
-
-
 }

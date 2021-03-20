@@ -114,7 +114,8 @@ HTTP/1.1 200 OK
     }
 }
  */
-$router->post('auth/{provider}', [
-    'as' => 'api_socialauth_social_auth',
-    'uses' => 'Controller@authenticateAll',
-]);
+
+use App\Containers\SocialAuth\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('auth/{provider}', [Controller::class, 'authenticateAll'])->name('api_socialAuth_social_auth');

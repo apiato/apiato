@@ -4,15 +4,8 @@ namespace App\Containers\SocialAuth\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class ApiAuthenticateRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class ApiAuthenticateRequest extends Request
 {
-
-
     /**
      * Define which Roles and/or Permissions has access to this request.
      *
@@ -36,7 +29,7 @@ class ApiAuthenticateRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 
@@ -48,7 +41,7 @@ class ApiAuthenticateRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

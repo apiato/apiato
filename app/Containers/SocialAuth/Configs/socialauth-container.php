@@ -11,4 +11,5 @@ return [
     |
     */
 
+    'create_new_user_as_admin' => false
 ];

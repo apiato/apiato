@@ -8,31 +8,18 @@ use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class Controller.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
-
-    /**
-     * @param ApiAuthenticateRequest $request
-     * @param                                                                   $providerUrlInput
-     *
-     * @return  array
-     */
-    public function authenticateAll(ApiAuthenticateRequest $request, $providerUrlInput)
+    public function authenticateAll(ApiAuthenticateRequest $request, $provider): array
     {
         $dataTransporter = new DataTransporter($request);
-        $dataTransporter->provider = $providerUrlInput;
+        $dataTransporter->provider = $provider;
 
         $data = Apiato::call('SocialAuth@SocialLoginAction', [$dataTransporter]);
 
         return $this->transform($data['user'], UserTransformer::class, [], [
-            'token_type'   => 'personal',
+            'token_type' => 'personal',
             'access_token' => $data['token']->accessToken,
         ]);
     }
-
 }
