@@ -20,17 +20,14 @@ class CreateAdminTest extends ApiTestCase
 
     protected $access = [
         'permissions' => 'create-admins',
-        'roles'       => '',
+        'roles' => '',
     ];
 
-    /**
-     * @test
-     */
-    public function testCreateAdmin_()
+    public function testCreateAdmin_(): void
     {
         $data = [
-            'email'    => 'apiato@admin.test',
-            'name'     => 'admin',
+            'email' => 'apiato@admin.test',
+            'name' => 'admin',
             'password' => 'secret',
         ];
 
@@ -42,7 +39,7 @@ class CreateAdminTest extends ApiTestCase
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
-            'name'  => $data['name'],
+            'name' => $data['name'],
         ]);
 
         // assert response contain the token
@@ -53,7 +50,6 @@ class CreateAdminTest extends ApiTestCase
 
         $user = User::where(['email' => $data['email']])->first();
 
-        $this->assertEquals($user->is_client, false);
+        self::assertEquals(true, $user->is_admin);
     }
-
 }

@@ -20,15 +20,15 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => $password ?: $password = Hash::make('testing-password'),
             'remember_token' => Str::random(10),
-            'is_client' => false,
+            'is_admin' => false,
         ];
     }
 
-    public function client(): UserFactory
+    public function admin(): UserFactory
     {
         return $this->state(function (array $attributes) {
             return [
-                'is_client' => true,
+                'is_admin' => true,
             ];
         });
     }

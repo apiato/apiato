@@ -15,7 +15,6 @@ use App\Containers\User\Tests\ApiTestCase;
  */
 class GetAllAdminsTest extends ApiTestCase
 {
-
     protected $endpoint = 'get@v1/admins';
 
     protected $access = [
@@ -23,16 +22,10 @@ class GetAllAdminsTest extends ApiTestCase
         'permissions' => 'list-users',
     ];
 
-    /**
-     * @test
-     */
-    public function testGetAllAdmins_()
+    public function testGetAllAdmins_(): void
     {
-        // create some non-admin users
-        $users = User::factory()->count(2)->create();
-
-        // should not be returned
-        User::factory()->client()->create();
+        User::factory()->count(1)->create();
+        User::factory()->count(1)->admin()->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -44,14 +37,10 @@ class GetAllAdminsTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(4,
-            $responseContent->data); // 2 (fake in this test) + 1 (that is logged in) + 1 (seeded super admin)
+        self::assertCount(3, $responseContent->data); // 2 (fake in this test) + 1 (seeded super admin)
     }
 
-    /**
-     * @test
-     */
-    public function testGetAllAdminsByNonAdmin_()
+    public function testGetAllAdminsByNonAdmin_(): void
     {
         $this->getTestingUserWithoutAccess();
 
@@ -67,5 +56,4 @@ class GetAllAdminsTest extends ApiTestCase
             'message' => 'This action is unauthorized.',
         ]);
     }
-
 }

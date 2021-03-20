@@ -15,23 +15,17 @@ use App\Containers\User\Tests\ApiTestCase;
  */
 class GetAllClientsTest extends ApiTestCase
 {
-
     protected $endpoint = 'get@v1/clients';
 
     protected $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'list-users',
     ];
 
-    /**
-     * @test
-     */
-    public function testGetAllClientsByAdmin_()
+    public function testGetAllClientsByAdmin_(): void
     {
-        // should be returned
-        User::factory()->count(3)->client()->create();
-        // should not be returned
-        User::factory()->create();
+        User::factory()->count(1)->create();
+        User::factory()->admin()->create();
 
         // send the HTTP request
         $response = $this->makeCall();
@@ -43,13 +37,10 @@ class GetAllClientsTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(3, $responseContent->data);
+        self::assertCount(1, $responseContent->data);
     }
 
-    /**
-     * @test
-     */
-    public function testGetAllClientsByNonAdmin_()
+    public function testGetAllClientsByNonAdmin_(): void
     {
         // prepare a user without any roles or permissions
         $this->getTestingUserWithoutAccess();
@@ -64,5 +55,4 @@ class GetAllClientsTest extends ApiTestCase
             'message' => 'This action is unauthorized.',
         ]);
     }
-
 }

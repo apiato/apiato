@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
 
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('birth')->nullable();
             $table->string('device')->nullable();
             $table->string('platform')->nullable();
-            $table->boolean('is_client')->default(false);
+            $table->boolean('is_admin')->default(true);
 
             $table->rememberToken();
             $table->timestamps();

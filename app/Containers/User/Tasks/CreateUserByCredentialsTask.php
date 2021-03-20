@@ -9,11 +9,6 @@ use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * Class CreateUserByCredentialsTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class CreateUserByCredentialsTask extends Task
 {
     protected $repository;
@@ -23,19 +18,8 @@ class CreateUserByCredentialsTask extends Task
         $this->repository = $repository;
     }
 
-    /**
-     * @param bool $isClient
-     * @param string $email
-     * @param string $password
-     * @param string|null $name
-     * @param string|null $gender
-     * @param string|null $birth
-     *
-     * @return  mixed
-     * @throws  CreateResourceFailedException
-     */
     public function run(
-        bool $isClient,
+        bool $isAdmin,
         string $email,
         string $password,
         string $name = null,
@@ -43,7 +27,6 @@ class CreateUserByCredentialsTask extends Task
         string $birth = null
     ): User
     {
-
         try {
             // create new user
             $user = $this->repository->create([
@@ -52,7 +35,7 @@ class CreateUserByCredentialsTask extends Task
                 'name' => $name,
                 'gender' => $gender,
                 'birth' => $birth,
-                'is_client' => $isClient ?? true,
+                'is_admin' => $isAdmin,
             ]);
 
         } catch (Exception $e) {
@@ -61,5 +44,4 @@ class CreateUserByCredentialsTask extends Task
 
         return $user;
     }
-
 }

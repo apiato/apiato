@@ -53,11 +53,11 @@ class User extends UserModel implements ChargeableInterface
         'social_avatar_original',
         'social_nickname',
         'confirmed',
-        'is_client',
+        'is_admin',
     ];
 
     protected $casts = [
-        'is_client' => 'boolean',
+        'is_admin' => 'boolean',
         'confirmed' => 'boolean',
     ];
 
