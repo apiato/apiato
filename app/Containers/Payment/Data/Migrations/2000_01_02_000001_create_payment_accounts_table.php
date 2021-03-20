@@ -18,7 +18,7 @@ class CreatePaymentAccountsTable extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
 
-            $table->id('id');
+            $table->id();
             $table->string('name')->nullable();
 
             $table->morphs('accountable');

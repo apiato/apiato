@@ -64,20 +64,24 @@ class AuthProvider extends ParentAuthProvider
         $prefix = Config::get('apiato.api.prefix');
         $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
 
-        Route::group($routeGroupArray, function () {
-            Passport::routes(function (RouteRegistrar $router) {
-                $router->forAccessTokens();
-                $router->forTransientTokens();
-                $router->forClients();
-                $router->forPersonalAccessTokens();
+        if (!$this->app->routesAreCached()) {
+            Route::group($routeGroupArray, function () {
+                Passport::routes(function (RouteRegistrar $router) {
+                    $router->forAccessTokens();
+                    $router->forTransientTokens();
+                    $router->forClients();
+                    $router->forPersonalAccessTokens();
+                });
             });
-        });
+        }
     }
 
     private function registerPassportWebRoutes(): void
     {
-        Passport::routes(function (RouteRegistrar $router) {
-            $router->forAuthorization();
-        });
+        if (!$this->app->routesAreCached()) {
+            Passport::routes(function (RouteRegistrar $router) {
+                $router->forAuthorization();
+            });
+        }
     }
 }

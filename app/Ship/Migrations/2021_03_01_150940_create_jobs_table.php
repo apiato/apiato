@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
     {
         if (Config::get('queue.default') === 'database') {
             Schema::create('jobs', function (Blueprint $table) {
-                $table->id('id');
+                $table->id();
                 $table->string('queue')->index();
                 $table->longText('payload');
                 $table->unsignedTinyInteger('attempts');
