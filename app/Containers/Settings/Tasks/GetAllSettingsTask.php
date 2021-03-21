@@ -8,34 +8,19 @@ use App\Ship\Parents\Tasks\Task;
 
 class GetAllSettingsTask extends Task
 {
+    protected SettingRepository $repository;
 
-    /**
-     * @var SettingRepository
-     */
-    protected $repository;
-
-    /**
-     * GetAllSettingsTask constructor.
-     *
-     * @param SettingRepository $repository
-     */
     public function __construct(SettingRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @return mixed
-     */
     public function run()
     {
         return $this->repository->paginate();
     }
 
-    /**
-     * @return SettingRepository
-     */
-    public function ordered()
+    public function ordered(): SettingRepository
     {
         return $this->repository->pushCriteria(new OrderByKeyAscendingCriteria());
     }

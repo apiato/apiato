@@ -14,14 +14,13 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 204 OK
-{
-}
+ * {
+ * }
  */
 
-$router->delete('settings/{id}', [
-    'as' => 'api_settings_delete_setting',
-    'uses'  => 'Controller@deleteSetting',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\Settings\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::delete('settings/{id}', [Controller::class, 'deleteSetting'])
+    ->name('api_settings_delete_setting')
+    ->middleware(['auth:api']);

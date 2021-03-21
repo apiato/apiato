@@ -7,19 +7,8 @@ use App\Containers\Settings\Models\Setting;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class CreateSettingAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class CreateSettingAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  Setting
-     */
     public function run(DataTransporter $data): Setting
     {
         $data = $data->sanitizeInput([

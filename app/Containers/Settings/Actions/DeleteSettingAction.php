@@ -6,17 +6,8 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class DeleteSettingAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class DeleteSettingAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     */
     public function run(DataTransporter $data): void
     {
         $setting = Apiato::call('Settings@FindSettingByIdTask', [$data->id]);

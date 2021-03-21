@@ -8,29 +8,15 @@ use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-/**
- * Class UpdateSettingsByKeyTask
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class UpdateSettingsByKeyTask extends Task
 {
-
-    protected $repository;
+    protected SettingRepository $repository;
 
     public function __construct(SettingRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     *
-     * @return mixed
-     * @throws NotFoundException
-     * @throws UpdateResourceFailedException
-     */
     public function run($key, $value)
     {
         $setting = $this->repository->findWhere(['key' => $key])->first();
@@ -43,10 +29,8 @@ class UpdateSettingsByKeyTask extends Task
             return $this->repository->update([
                 'value' => $value
             ], $setting->id);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             throw new UpdateResourceFailedException();
         }
     }
-
 }

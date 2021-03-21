@@ -6,19 +6,8 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class UpdateSettingAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class UpdateSettingAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  mixed
-     */
     public function run(DataTransporter $data)
     {
         $sanitizedData = $data->sanitizeInput([

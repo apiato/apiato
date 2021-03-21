@@ -12,67 +12,29 @@ use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 
-/**
- * Class Controller
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
-
-    /**
-     * Get All application settings
-     *
-     * @param GetAllSettingsRequest $request
-     *
-     * @return mixed
-     */
-    public function getAllSettings(GetAllSettingsRequest $request)
+    public function getAllSettings(GetAllSettingsRequest $request): array
     {
         $settings = Apiato::call('Settings@GetAllSettingsAction');
-
         return $this->transform($settings, SettingTransformer::class);
     }
 
-    /**
-     * create a new setting
-     *
-     * @param CreateSettingRequest $request
-     *
-     * @return mixed
-     */
-    public function createSetting(CreateSettingRequest $request)
+    public function createSetting(CreateSettingRequest $request): array
     {
         $setting = Apiato::call('Settings@CreateSettingAction', [new DataTransporter($request)]);
-
         return $this->transform($setting, SettingTransformer::class);
     }
 
-    /**
-     * Updates an existing setting
-     *
-     * @param UpdateSettingRequest $request
-     *
-     * @return mixed
-     */
-    public function updateSetting(UpdateSettingRequest $request)
+    public function updateSetting(UpdateSettingRequest $request): array
     {
         $setting = Apiato::call('Settings@UpdateSettingAction', [new DataTransporter($request)]);
-
         return $this->transform($setting, SettingTransformer::class);
     }
 
-    /**
-     * Removes a setting
-     *
-     * @param DeleteSettingRequest $request
-     *
-     * @return JsonResponse
-     */
-    public function deleteSetting(DeleteSettingRequest $request)
+    public function deleteSetting(DeleteSettingRequest $request): JsonResponse
     {
         Apiato::call('Settings@DeleteSettingAction', [new DataTransporter($request)]);
-
         return $this->noContent();
     }
 }
