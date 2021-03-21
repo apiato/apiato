@@ -5,7 +5,8 @@ namespace App\Containers\Authentication\UI\WEB\Requests;
 use App\Ship\Parents\Requests\Request;
 
 class LoginRequest extends Request
-{    /**
+{
+    /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
