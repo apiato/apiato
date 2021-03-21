@@ -4,18 +4,9 @@ namespace App\Containers\Welcome\Actions;
 
 use App\Ship\Parents\Actions\Action;
 
-/**
- * Class WelcomeApiRootVisitorAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class FindMessageForApiV1VisitorAction extends Action
 {
-
-    /**
-     * @return  array
-     */
-    public function run()
+    public function run(): array
     {
         return [trans('localization::messages.welcome') . ' (API V1)'];
     }

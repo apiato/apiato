@@ -6,32 +6,18 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-/**
- * Class Controller.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
 
-    /**
-     * @return  JsonResponse
-     */
-    public function apiRoot()
+    public function apiRoot(): JsonResponse
     {
         $message = Apiato::call('Welcome@FindMessageForApiRootVisitorAction');
-
         return response()->json($message);
     }
 
-    /**
-     * @return  JsonResponse
-     */
-    public function v1ApiLandingPage()
+    public function v1ApiLandingPage(): JsonResponse
     {
         $message = Apiato::call('Welcome@FindMessageForApiV1VisitorAction');
-
         return response()->json($message);
     }
-
 }

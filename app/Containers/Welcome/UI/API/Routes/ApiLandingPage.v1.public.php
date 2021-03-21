@@ -1,7 +1,7 @@
 <?php
 
-// API Version root route (starts with /v{number}/)
-$router->get('/', [
-    'as'   => 'v1_api_landing_route',
-    'uses' => 'Controller@v1ApiLandingPage',
-]);
+use App\Containers\Welcome\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [Controller::class, 'v1ApiLandingPage'])
+    ->name('v1_api_landing_route');

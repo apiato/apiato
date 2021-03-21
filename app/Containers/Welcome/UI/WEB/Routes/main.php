@@ -1,6 +1,7 @@
 <?php
 
-$router->get('/', [
-    'as'   => 'get_main_home_page',
-    'uses' => 'Controller@sayWelcome',
-]);
+use App\Containers\Welcome\UI\WEB\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [Controller::class, 'sayWelcome'])
+    ->name('get_main_home_page');
