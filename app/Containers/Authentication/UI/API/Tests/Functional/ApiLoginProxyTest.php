@@ -5,6 +5,12 @@ namespace App\Containers\Authentication\UI\API\Tests\Functional;
 use App\Containers\Authentication\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
 
+/**
+ * Class ApiLoginProxyTest
+ *
+ * @group authentication
+ * @group api
+ */
 class ApiLoginProxyTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/admin/login';
@@ -14,7 +20,7 @@ class ApiLoginProxyTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function test_client_web_admin_proxy_login(): void
+    public function testClientWebAdminProxyLogin(): void
     {
         $data = [
             'email' => 'testing@mail.com',
@@ -35,7 +41,7 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 
-    public function test_client_web_admin_proxy_unconfirmed_login(): void
+    public function testClientWebAdminProxyUnconfirmedLogin(): void
     {
         $data = [
             'email' => 'testing2@mail.com',
@@ -55,7 +61,7 @@ class ApiLoginProxyTest extends ApiTestCase
         }
     }
 
-    public function test_login_with_name_attribute(): void
+    public function testLoginWithNameAttribute(): void
     {
         $data = [
             'email' => 'testing@mail.com',
@@ -92,7 +98,7 @@ class ApiLoginProxyTest extends ApiTestCase
         Config::set('authentication-container.login.attributes', $attributes);
     }
 
-    public function test_given_only_one_login_attribute_is_set_then_it_should_be_required(): void
+    public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
     {
         $this->setLoginAttributes([
             'email' => []
@@ -109,7 +115,7 @@ class ApiLoginProxyTest extends ApiTestCase
         ]);
     }
 
-    public function test_given_multiple_login_attribute_is_set_then_at_least_one_should_be_required(): void
+    public function testGivenMultipleLoginAttributeIsSetThenAtLeastOneShouldBeRequired(): void
     {
         $this->setLoginAttributes([
             'email' => [],

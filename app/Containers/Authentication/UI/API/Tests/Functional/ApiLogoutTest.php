@@ -7,10 +7,8 @@ use App\Containers\Authentication\Tests\ApiTestCase;
 /**
  * Class ApiLogoutTest
  *
- * @group authorization
+ * @group authentication
  * @group api
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class ApiLogoutTest extends ApiTestCase
 {
@@ -21,7 +19,7 @@ class ApiLogoutTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function test_logout(): void
+    public function testLogout(): void
     {
         $response = $this->makeCall([], [
             'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImUxODk3NjU3YTVlZWQxMDkyMThlZjVmOThl

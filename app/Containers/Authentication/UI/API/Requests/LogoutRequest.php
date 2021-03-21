@@ -5,8 +5,7 @@ namespace App\Containers\Authentication\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 class LogoutRequest extends Request
-{
-    /**
+{    /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [

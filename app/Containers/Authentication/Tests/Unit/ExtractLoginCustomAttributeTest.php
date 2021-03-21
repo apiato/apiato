@@ -3,7 +3,6 @@
 namespace App\Containers\Authentication\Tests\Unit;
 
 use App\Containers\Authentication\Data\Transporters\LoginTransporter;
-use App\Containers\Authentication\Exceptions\NoValidLoginUsernameFieldProvidedException;
 use App\Containers\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\User\Tests\TestCase;
 use Illuminate\Support\Facades\App;

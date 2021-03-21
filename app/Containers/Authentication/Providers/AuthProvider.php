@@ -22,10 +22,8 @@ class AuthProvider extends ParentAuthProvider
 
     /**
      * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
      */
-    protected $defer = true;
+    protected bool $defer = true;
 
     /**
      * The policy mappings for the application.

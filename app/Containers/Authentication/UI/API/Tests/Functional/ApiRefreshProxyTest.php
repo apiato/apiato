@@ -5,6 +5,12 @@ namespace App\Containers\Authentication\UI\API\Tests\Functional;
 use App\Containers\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\Authentication\Tests\ApiTestCase;
 
+/**
+ * Class ApiRefreshProxyTest
+ *
+ * @group authentication
+ * @group api
+ */
 class ApiRefreshProxyTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/admin/refresh';
@@ -29,7 +35,7 @@ class ApiRefreshProxyTest extends ApiTestCase
         $this->actingAs($this->testingUser, 'web');
     }
 
-    public function test_requesting_refresh_token_without_passing_a_refresh_token_should_throw_an_exception(): void
+    public function testRequestingRefreshTokenWithoutPassingARefreshTokenShouldThrowAnException(): void
     {
         $data = [
             'refresh_token' => null
@@ -42,7 +48,7 @@ class ApiRefreshProxyTest extends ApiTestCase
         $this->assertResponseContainKeyValue(['message' => $message]);
     }
 
-    public function test_on_successful_refresh_token_request_ensure_values_are_set_properly(): void
+    public function testOnSuccessfulRefreshTokenRequestEnsureValuesAreSetProperly(): void
     {
         $loginResponse = $this->endpoint('post@v1/clients/web/admin/login')->makeCall($this->data);
         $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];
