@@ -5,14 +5,8 @@ namespace App\Containers\Authorization\UI\API\Transformers;
 use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Transformers\Transformer;
 
-/**
- * Class PermissionTransformer.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class PermissionTransformer extends Transformer
 {
-
     protected $availableIncludes = [
 
     ];
@@ -21,20 +15,14 @@ class PermissionTransformer extends Transformer
 
     ];
 
-    /**
-     * @param Permission $permission
-     *
-     * @return array
-     */
-    public function transform(Permission $permission)
+    public function transform(Permission $permission): array
     {
         return [
-            'object'       => 'Permission',
-            'id'           => $permission->getHashedKey(), // << Unique Identifier
-            'name'         => $permission->name, // << Unique Identifier
-            'description'  => $permission->description,
+            'object' => 'Permission',
+            'id' => $permission->getHashedKey(), // << Unique Identifier
+            'name' => $permission->name, // << Unique Identifier
+            'description' => $permission->description,
             'display_name' => $permission->display_name,
         ];
     }
-
 }

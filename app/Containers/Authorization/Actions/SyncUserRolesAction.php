@@ -7,19 +7,8 @@ use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class SyncUserRolesAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class SyncUserRolesAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  User
-     */
     public function run(DataTransporter $data): User
     {
         $user = Apiato::call('User@FindUserByIdTask', [$data->user_id]);

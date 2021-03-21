@@ -16,14 +16,14 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class AttachPermissionsToRoleTest extends ApiTestCase
 {
-    protected $endpoint = 'post@v1/permissions/attach';
+    protected string $endpoint = 'post@v1/permissions/attach';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    public function testAttachSinglePermissionToRole_(): void
+    public function testAttachSinglePermissionToRole(): void
     {
         $roleA = Role::factory()->create();
         $permissionA = Permission::factory()->create();
@@ -49,7 +49,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         ]);
     }
 
-    public function testAttachMultiplePermissionToRole_(): void
+    public function testAttachMultiplePermissionToRole(): void
     {
         $roleA = Role::factory()->create();
 
@@ -72,7 +72,5 @@ class AttachPermissionsToRoleTest extends ApiTestCase
             'permission_id' => $permissionB->id,
             'role_id' => $roleA->id
         ]);
-
     }
-
 }

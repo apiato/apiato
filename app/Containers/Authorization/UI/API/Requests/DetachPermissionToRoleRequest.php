@@ -4,30 +4,20 @@ namespace App\Containers\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class DetachPermissionToRoleRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class DetachPermissionToRoleRequest extends Request
 {
-
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
         'role_id',
         'permissions_ids.*',
     ];
@@ -35,29 +25,21 @@ class DetachPermissionToRoleRequest extends Request
     /**
      * Defining the URL parameters (`/stores/999/items`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'role_id'           => 'required|exists:roles,id',
-            'permissions_ids'   => 'required',
+            'role_id' => 'required|exists:roles,id',
+            'permissions_ids' => 'required',
             'permissions_ids.*' => 'exists:permissions,id',
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

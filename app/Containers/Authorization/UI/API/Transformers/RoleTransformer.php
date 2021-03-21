@@ -6,14 +6,8 @@ use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Transformers\Transformer;
 use League\Fractal\Resource\Collection;
 
-/**
- * Class RoleTransformer.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class RoleTransformer extends Transformer
 {
-
     protected $availableIncludes = [
 
     ];
@@ -22,31 +16,20 @@ class RoleTransformer extends Transformer
         'permissions'
     ];
 
-    /**
-     * @param Role $role
-     *
-     * @return array
-     */
-    public function transform(Role $role)
+    public function transform(Role $role): array
     {
         return [
-            'object'       => 'Role',
-            'id'           => $role->getHashedKey(), // << Unique Identifier
-            'name'         => $role->name, // << Unique Identifier
-            'description'  => $role->description,
+            'object' => 'Role',
+            'id' => $role->getHashedKey(), // << Unique Identifier
+            'name' => $role->name, // << Unique Identifier
+            'description' => $role->description,
             'display_name' => $role->display_name,
-            'level'        => $role->level,
+            'level' => $role->level,
         ];
     }
 
-    /**
-     * @param Role $role
-     *
-     * @return  Collection
-     */
-    public function includePermissions(Role $role)
+    public function includePermissions(Role $role): Collection
     {
         return $this->collection($role->permissions, new PermissionTransformer());
     }
-
 }

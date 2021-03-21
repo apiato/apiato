@@ -15,14 +15,14 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class FindPermissionTest extends ApiTestCase
 {
-    protected $endpoint = 'get@v1/permissions/{id}';
+    protected string $endpoint = 'get@v1/permissions/{id}';
 
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    public function testFindPermissionById_(): void
+    public function testFindPermissionById(): void
     {
         $permissionA = Permission::factory()->create();
 
@@ -34,6 +34,6 @@ class FindPermissionTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($permissionA->name, $responseContent->data->name);
+        self::assertEquals($permissionA->name, $responseContent->data->name);
     }
 }

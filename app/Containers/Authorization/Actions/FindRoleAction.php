@@ -8,20 +8,8 @@ use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class FindRoleAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class FindRoleAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  Role
-     * @throws  RoleNotFoundException
-     */
     public function run(DataTransporter $data): Role
     {
         $role = Apiato::call('Authorization@FindRoleTask', [$data->id]);
@@ -32,5 +20,4 @@ class FindRoleAction extends Action
 
         return $role;
     }
-
 }

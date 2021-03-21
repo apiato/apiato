@@ -17,10 +17,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-$router->post('roles/sync', [
-    'as' => 'api_authorization_sync_user_roles',
-    'uses'       => 'Controller@syncUserRoles',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Authorization\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('roles/sync', [Controller::class, 'syncUserRoles'])
+    ->name('api_authorization_sync_user_roles')
+    ->middleware(['auth:api']);

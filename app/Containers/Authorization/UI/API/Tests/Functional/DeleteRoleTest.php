@@ -15,14 +15,14 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class DeleteRoleTest extends ApiTestCase
 {
-    protected $endpoint = 'delete@v1/roles/{id}';
+    protected string $endpoint = 'delete@v1/roles/{id}';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    public function testDeleteExistingRole_(): void
+    public function testDeleteExistingRole(): void
     {
         $role = Role::factory()->create();
 
@@ -32,5 +32,4 @@ class DeleteRoleTest extends ApiTestCase
         // assert response status is correct
         $response->assertStatus(204);
     }
-
 }

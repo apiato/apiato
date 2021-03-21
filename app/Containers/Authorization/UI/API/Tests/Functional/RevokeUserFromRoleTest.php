@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Config;
  */
 class RevokeUserFromRoleTest extends ApiTestCase
 {
-    protected $endpoint = 'post@v1/roles/revoke';
+    protected string $endpoint = 'post@v1/roles/revoke';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'manage-admins-access',
     ];
 
-    public function testRevokeUserFromRole_(): void
+    public function testRevokeUserFromRole(): void
     {
         $roleA = Role::factory()->create();
 
@@ -44,7 +44,7 @@ class RevokeUserFromRoleTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($data['user_id'], $responseContent->data->id);
+        self::assertEquals($data['user_id'], $responseContent->data->id);
 
         $this->assertDatabaseMissing('model_has_roles', [
             'model_id' => $randomUser->id,
@@ -52,7 +52,7 @@ class RevokeUserFromRoleTest extends ApiTestCase
         ]);
     }
 
-    public function testRevokeUserFromRoleWithRealId_(): void
+    public function testRevokeUserFromRoleWithRealId(): void
     {
         $roleA = Role::factory()->create();
 
@@ -80,7 +80,7 @@ class RevokeUserFromRoleTest extends ApiTestCase
 
     }
 
-    public function testRevokeUserFromManyRoles_(): void
+    public function testRevokeUserFromManyRoles(): void
     {
         $roleA = Role::factory()->create();
         $roleB = Role::factory()->create();

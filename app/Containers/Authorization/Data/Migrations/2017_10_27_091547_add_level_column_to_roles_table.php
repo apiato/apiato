@@ -8,10 +8,8 @@ class AddLevelColumnToRolesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table(Config::get('permission.table_names.roles'), function (Blueprint $table) {
 
@@ -22,10 +20,8 @@ class AddLevelColumnToRolesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table(Config::get('permission.table_names.roles'), function (Blueprint $table) {
 

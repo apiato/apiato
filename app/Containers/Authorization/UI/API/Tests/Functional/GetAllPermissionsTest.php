@@ -14,18 +14,14 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class GetAllPermissionsTest extends ApiTestCase
 {
+    protected string $endpoint = 'get@v1/permissions';
 
-    protected $endpoint = 'get@v1/permissions';
-
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    /**
-     * @test
-     */
-    public function testGetAllPermissions_()
+    public function testGetAllPermissions(): void
     {
         // send the HTTP request
         $response = $this->makeCall();
@@ -36,7 +32,6 @@ class GetAllPermissionsTest extends ApiTestCase
         // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertTrue(count($responseContent->data) > 0);
+        self::assertTrue(count($responseContent->data) > 0);
     }
-
 }

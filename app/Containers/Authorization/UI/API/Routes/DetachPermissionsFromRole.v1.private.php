@@ -19,10 +19,9 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-$router->post('permissions/detach', [
-    'as' => 'api_authorization_detach_permission_from_role',
-    'uses'       => 'Controller@detachPermissionFromRole',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Authorization\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('permissions/detach', [Controller::class, 'detachPermissionFromRole'])
+    ->name('api_authorization_detach_permission_from_role')
+    ->middleware(['auth:api']);

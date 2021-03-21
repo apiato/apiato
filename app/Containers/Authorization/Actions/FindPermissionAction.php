@@ -8,20 +8,8 @@ use App\Containers\Authorization\Models\Permission;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class FindPermissionAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class FindPermissionAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  Permission
-     * @throws  PermissionNotFoundException
-     */
     public function run(DataTransporter $data): Permission
     {
         $permission = Apiato::call('Authorization@FindPermissionTask', [$data->id]);
@@ -32,5 +20,4 @@ class FindPermissionAction extends Action
 
         return $permission;
     }
-
 }

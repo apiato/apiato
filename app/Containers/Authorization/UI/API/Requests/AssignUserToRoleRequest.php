@@ -4,30 +4,20 @@ namespace App\Containers\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class AssignUserToRoleRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class AssignUserToRoleRequest extends Request
 {
-
-    /**
-     * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
-     */
-    protected $access = [
-        'roles'       => '',
+    /*
+    * Define which Roles and/or Permissions has access to this request.
+    */
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'manage-admins-access',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
         'user_id',
         'roles_ids.*',
     ];
@@ -35,29 +25,21 @@ class AssignUserToRoleRequest extends Request
     /**
      * Defining the URL parameters (`/stores/999/items`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'roles_ids'   => 'array|required',
+            'roles_ids' => 'array|required',
             'roles_ids.*' => 'exists:roles,id',
-            'user_id'     => 'required|exists:users,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

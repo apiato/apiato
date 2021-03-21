@@ -11,10 +11,9 @@
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
-$router->get('permissions', [
-    'as' => 'api_authorization_get_all_permissions',
-    'uses'       => 'Controller@getAllPermissions',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Authorization\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('permissions', [Controller::class, 'getAllPermissions'])
+    ->name('api_authorization_get_all_permissions')
+    ->middleware(['auth:api']);

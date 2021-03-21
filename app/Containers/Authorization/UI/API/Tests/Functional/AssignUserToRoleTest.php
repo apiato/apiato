@@ -18,15 +18,14 @@ use Illuminate\Support\Facades\Config;
  */
 class AssignUserToRoleTest extends ApiTestCase
 {
+    protected string $endpoint = 'post@v1/roles/assign?include=roles';
 
-    protected $endpoint = 'post@v1/roles/assign?include=roles';
-
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'manage-admins-access',
     ];
 
-    public function testAssignUserToRole_(): void
+    public function testAssignUserToRole(): void
     {
         $randomUser = User::factory()->create();
 
@@ -45,12 +44,12 @@ class AssignUserToRoleTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($data['user_id'], $responseContent->data->id);
+        self::assertEquals($data['user_id'], $responseContent->data->id);
 
-        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
+        self::assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
     }
 
-    public function testAssignUserToRoleWithRealId_(): void
+    public function testAssignUserToRoleWithRealId(): void
     {
         $randomUser = User::factory()->create();
 
@@ -77,7 +76,7 @@ class AssignUserToRoleTest extends ApiTestCase
 
     }
 
-    public function testAssignUserToManyRoles_(): void
+    public function testAssignUserToManyRoles(): void
     {
         $randomUser = User::factory()->create();
 
@@ -100,11 +99,11 @@ class AssignUserToRoleTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertTrue(count($responseContent->data->roles->data) > 1);
+        self::assertTrue(count($responseContent->data->roles->data) > 1);
 
         $roleIds = Arr::pluck($responseContent->data->roles->data, 'id');
-        $this->assertContains($data['roles_ids'][0], $roleIds);
+        self::assertContains($data['roles_ids'][0], $roleIds);
 
-        $this->assertContains($data['roles_ids'][1], $roleIds);
+        self::assertContains($data['roles_ids'][1], $roleIds);
     }
 }

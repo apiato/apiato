@@ -7,20 +7,10 @@ use Illuminate\Auth\Middleware\Authorize;
 
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-    /**
-     * Register Middleware's
-     *
-     * @var  array
-     */
     protected array $middlewares = [
         // ..
     ];
 
-    /**
-     * Register Container Middleware Groups
-     *
-     * @var  array
-     */
     protected array $middlewareGroups = [
         'web' => [
 

@@ -8,19 +8,8 @@ use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Database\Eloquent\Collection;
 
-/**
- * Class RevokeUserFromRoleAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class RevokeUserFromRoleAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  User
-     */
     public function run(DataTransporter $data): User
     {
         // if user ID is passed then convert it to instance of User (could be user Id Or Model)
@@ -44,5 +33,4 @@ class RevokeUserFromRoleAction extends Action
 
         return $user;
     }
-
 }

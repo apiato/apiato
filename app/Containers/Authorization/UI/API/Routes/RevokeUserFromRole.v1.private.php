@@ -19,10 +19,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-$router->post('roles/revoke', [
-    'as' => 'api_authorization_revoke_role_from_user',
-    'uses'       => 'Controller@revokeRoleFromUser',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Authorization\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('roles/revoke', [Controller::class, 'revokeRoleFromUser'])
+    ->name('api_authorization_revoke_role_from_user')
+    ->middleware(['auth:api']);

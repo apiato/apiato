@@ -16,14 +16,14 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class SyncPermissionsOnRoleTest extends ApiTestCase
 {
-    protected $endpoint = 'post@v1/permissions/sync';
+    protected string $endpoint = 'post@v1/permissions/sync';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    public function testSyncDuplicatedPermissionsToRole_(): void
+    public function testSyncDuplicatedPermissionsToRole(): void
     {
         $permissionA = Permission::factory()->create(['display_name' => 'AAA']);
         $permissionB = Permission::factory()->create(['display_name' => 'BBB']);

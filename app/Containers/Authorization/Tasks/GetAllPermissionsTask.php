@@ -5,37 +5,17 @@ namespace App\Containers\Authorization\Tasks;
 use App\Containers\Authorization\Data\Repositories\PermissionRepository;
 use App\Ship\Parents\Tasks\Task;
 
-/**
- * Class GetAllPermissionsTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class GetAllPermissionsTask extends Task
 {
+    protected PermissionRepository $repository;
 
-    /**
-     * @var PermissionRepository
-     */
-    protected $repository;
-
-    /**
-     * GetAllPermissionsTask constructor.
-     *
-     * @param PermissionRepository $repository
-     */
     public function __construct(PermissionRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param bool $skipPagination
-     *
-     * @return  mixed
-     */
-    public function run($skipPagination = false)
+    public function run(bool $skipPagination = false)
     {
         return $skipPagination ? $this->repository->all() : $this->repository->paginate();
     }
-
 }

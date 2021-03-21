@@ -6,22 +6,13 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Exceptions\RoleNotFoundException;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
-/**
- * Class GiveAllPermissionsToRoleCommand
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class GiveAllPermissionsToRoleCommand extends ConsoleCommand
 {
-
     protected $signature = 'apiato:permissions:toRole {role}';
 
     protected $description = 'Give all system Permissions to a specific Role.';
 
-    /**
-     * @void
-     */
-    public function handle()
+    public function handle(): void
     {
         $roleName = $this->argument('role');
 

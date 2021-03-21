@@ -8,11 +8,6 @@ use Apiato\Core\Traits\HasResourceKeyTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Role as SpatieRole;
 
-/**
- * Class Role
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Role extends SpatieRole
 {
     use HashIdTrait;
@@ -23,11 +18,6 @@ class Role extends SpatieRole
 
     protected $guard_name = 'web';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'guard_name',

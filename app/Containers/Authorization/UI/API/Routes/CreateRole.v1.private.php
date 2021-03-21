@@ -15,10 +15,9 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-$router->post('roles', [
-    'as' => 'api_authorization_create_role',
-    'uses'       => 'Controller@createRole',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Authorization\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('roles', [Controller::class, 'createRole'])
+    ->name('api_authorization_create_role')
+    ->middleware(['auth:api']);

@@ -8,15 +8,9 @@ use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-/**
- * Class DeleteRoleTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class DeleteRoleTask extends Task
 {
-
-    protected $repository;
+    protected RoleRepository $repository;
 
     public function __construct(RoleRepository $repository)
     {

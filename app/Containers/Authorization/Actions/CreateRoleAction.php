@@ -8,22 +8,11 @@ use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 use function is_null;
 
-/**
- * Class CreateRoleAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class CreateRoleAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  Role
-     */
     public function run(DataTransporter $data): Role
     {
-        $level = is_null($data->level) ? 0 : $data->level ;
+        $level = is_null($data->level) ? 0 : $data->level;
 
         $role = Apiato::call('Authorization@CreateRoleTask',
             [$data->name, $data->description, $data->display_name, $level]

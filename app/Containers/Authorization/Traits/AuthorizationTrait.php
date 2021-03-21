@@ -5,24 +5,13 @@ namespace App\Containers\Authorization\Traits;
 use App\Containers\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * Class AuthorizationTrait
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 trait AuthorizationTrait
 {
-    /**
-     * @return  User|null
-     */
-    public function getUser()
+    public function getUser(): ?User
     {
         return Auth::user();
     }
 
-    /**
-     * @return  mixed
-     */
     public function hasAdminRole()
     {
         return $this->hasRole('admin');
@@ -30,10 +19,8 @@ trait AuthorizationTrait
 
     /**
      * Return the "highest" role of a user (0 if the user does not have any role)
-     *
-     * @return int
      */
-    public function getRoleLevel()
+    public function getRoleLevel(): int
     {
         return ($role = $this->roles()->orderBy('level', 'DESC')->first()) ? $role->level : 0;
     }

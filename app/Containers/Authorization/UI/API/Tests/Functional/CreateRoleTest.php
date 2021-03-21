@@ -14,23 +14,22 @@ use App\Containers\Authorization\Tests\ApiTestCase;
  */
 class CreateRoleTest extends ApiTestCase
 {
+    protected string $endpoint = 'post@v1/roles';
 
-    protected $endpoint = 'post@v1/roles';
+    protected bool $auth = true;
 
-    protected $auth = true;
-
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
-    public function testCreateRole_()
+    public function testCreateRole(): void
     {
         $data = [
-            'name'         => 'manager',
+            'name' => 'manager',
             'display_name' => 'manager',
-            'description'  => 'he manages things',
-            'level'        => 7,
+            'description' => 'he manages things',
+            'level' => 7,
         ];
 
         // send the HTTP request
@@ -41,16 +40,16 @@ class CreateRoleTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($data['name'], $responseContent->data->name);
-        $this->assertEquals($data['level'], $responseContent->data->level);
+        self::assertEquals($data['name'], $responseContent->data->name);
+        self::assertEquals($data['level'], $responseContent->data->level);
     }
 
-    public function testCreateRoleWithoutLevel_()
+    public function testCreateRoleWithoutLevel(): void
     {
         $data = [
-            'name'         => 'manager',
+            'name' => 'manager',
             'display_name' => 'manager',
-            'description'  => 'he manages things',
+            'description' => 'he manages things',
         ];
 
         // send the HTTP request
@@ -61,15 +60,15 @@ class CreateRoleTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals(0, $responseContent->data->level);
+        self::assertEquals(0, $responseContent->data->level);
     }
 
-    public function testCreateRoleWithWrongName_()
+    public function testCreateRoleWithWrongName(): void
     {
         $data = [
-            'name'         => 'include Space',
+            'name' => 'include Space',
             'display_name' => 'manager',
-            'description'  => 'he manages things',
+            'description' => 'he manages things',
         ];
 
         // send the HTTP request
@@ -78,5 +77,4 @@ class CreateRoleTest extends ApiTestCase
         // assert response status is correct
         $response->assertStatus(422);
     }
-
 }

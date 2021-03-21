@@ -7,19 +7,8 @@ use App\Containers\Authorization\Models\Role;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class SyncPermissionsOnRoleAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class SyncPermissionsOnRoleAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  Role
-     */
     public function run(DataTransporter $data): Role
     {
         $role = Apiato::call('Authorization@FindRoleTask', [$data->role_id]);
