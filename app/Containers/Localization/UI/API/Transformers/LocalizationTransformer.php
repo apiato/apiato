@@ -5,43 +5,26 @@ namespace App\Containers\Localization\UI\API\Transformers;
 use App\Containers\Localization\Values\Localization;
 use App\Ship\Parents\Transformers\Transformer;
 
-/**
- * Class LocalizationTransformer
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class LocalizationTransformer extends Transformer
 {
-
-    /**
-     * @var  array
-     */
     protected $defaultIncludes = [
 
     ];
 
-    /**
-     * @var  array
-     */
     protected $availableIncludes = [
 
     ];
 
-    /**
-     * @param Localization $entity
-     *
-     * @return array
-     */
-    public function transform(Localization $entity)
+    public function transform(Localization $entity): array
     {
         $response = [
             'object' => 'Localization',
-            'id'     => $entity->getLanguage(),
+            'id' => $entity->getLanguage(),
 
             'language' => [
-                'code'         => $entity->getLanguage(),
+                'code' => $entity->getLanguage(),
                 'default_name' => $entity->getDefaultName(),
-                'locale_name'  => $entity->getLocaleName(),
+                'locale_name' => $entity->getLocaleName(),
             ],
         ];
 
@@ -51,9 +34,9 @@ class LocalizationTransformer extends Transformer
 
         foreach ($entity_regions as $region) {
             $regions[] = [
-                'code'         => $region->getRegion(),
+                'code' => $region->getRegion(),
                 'default_name' => $region->getDefaultName(),
-                'locale_name'  => $region->getLocaleName(),
+                'locale_name' => $region->getLocaleName(),
             ];
         }
 

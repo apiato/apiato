@@ -7,17 +7,8 @@ use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class GetAllLocalizationsTask
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class GetAllLocalizationsTask extends Task
 {
-
-    /**
-     * @return  Collection
-     */
     public function run(): Collection
     {
         $supported_localizations = Config::get('localization-container.supported_languages');

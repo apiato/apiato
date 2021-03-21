@@ -6,53 +6,29 @@ use App\Ship\Parents\Values\Value;
 use Illuminate\Support\Facades\Config;
 use Locale;
 
-/**
- * Class Region
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Region extends Value
 {
-
-    /**
-     * @var  null
-     */
-    private $region = null;
-
     /**
      * A resource key to be used by the the JSON API Serializer responses.
      */
     protected $resourceKey = 'regions';
+    private $region = null;
 
-    /**
-     * Region constructor.
-     *
-     * @param $region
-     */
     public function __construct($region)
     {
         $this->region = $region;
     }
 
-    /**
-     * @return  string
-     */
-    public function getDefaultName()
+    public function getDefaultName(): string
     {
         return Locale::getDisplayRegion($this->region, Config::get('app.locale'));
     }
 
-    /**
-     * @return  string
-     */
-    public function getLocaleName()
+    public function getLocaleName(): string
     {
         return Locale::getDisplayRegion($this->region, $this->region);
     }
 
-    /**
-     * @return  null
-     */
     public function getRegion()
     {
         return $this->region;

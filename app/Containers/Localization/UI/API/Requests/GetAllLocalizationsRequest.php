@@ -4,29 +4,20 @@ namespace App\Containers\Localization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class GetAllLocalizationsRequest
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class GetAllLocalizationsRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
 
     ];
 
@@ -36,24 +27,18 @@ class GetAllLocalizationsRequest extends Request
      *
      * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
 
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

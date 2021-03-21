@@ -11,20 +11,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 
-/**
- * Class LocalizationMiddleware
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class LocalizationMiddleware extends Middleware
 {
-
-    /**
-     * @param Request $request
-     * @param Closure $next
-     *
-     * @return  mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         // find and validate the lang on that request
@@ -43,12 +31,6 @@ class LocalizationMiddleware extends Middleware
         return $response;
     }
 
-    /**
-     * @param $request_languages
-     *
-     * @return string
-     * @throws UnsupportedLanguageException
-     */
     private function validateLanguage($request_languages)
     {
         /*
@@ -91,30 +73,7 @@ class LocalizationMiddleware extends Middleware
         throw new UnsupportedLanguageException();
     }
 
-    /**
-     * @param $request
-     *
-     * @return  string
-     */
-    private function findLanguage($request)
-    {
-        /*
-         * read the accept-language from the request
-         * if the header is missing, use the default local language
-         */
-        $language = Config::get('app.locale');
-
-        if ($request->hasHeader('Accept-Language')) {
-            $language = $request->header('Accept-Language');
-        }
-
-        return $language;
-    }
-
-    /**
-     * @return array
-     */
-    private function getSupportedLanguages()
+    private function getSupportedLanguages(): array
     {
         $supported_locales = [];
 
@@ -138,4 +97,18 @@ class LocalizationMiddleware extends Middleware
         return $supported_locales;
     }
 
+    private function findLanguage($request)
+    {
+        /*
+         * read the accept-language from the request
+         * if the header is missing, use the default local language
+         */
+        $language = Config::get('app.locale');
+
+        if ($request->hasHeader('Accept-Language')) {
+            $language = $request->header('Accept-Language');
+        }
+
+        return $language;
+    }
 }

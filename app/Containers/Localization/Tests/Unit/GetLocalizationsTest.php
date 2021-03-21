@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Config;
  */
 class GetLocalizationsTest extends TestCase
 {
-
-    /**
-     * @test
-     */
-    public function test_if_all_supported_languages_are_returned()
+    public function testIfAllSupportedLanguagesAreReturned(): void
     {
         $class = App::make(GetAllLocalizationsTask::class);
         $localizations = $class->run();
@@ -28,38 +24,38 @@ class GetLocalizationsTest extends TestCase
         $configuredLocalizations = Config::get('localization-container.supported_languages', []);
 
         // assert that they have the same amount of fields
-        $this->assertEquals(count($configuredLocalizations), $localizations->count());
+        self::assertEquals(count($configuredLocalizations), $localizations->count());
 
         // now we check all localizations in particular
     }
 
-    public function test_if_specific_locale_is_returned()
+    public function testIfSpecificLocaleIsReturned(): void
     {
         $class = App::make(GetAllLocalizationsTask::class);
         $localizations = $class->run();
 
         $unsupportedLocale = new Localization('fr');
 
-        $this->assertContainsEquals($unsupportedLocale, $localizations);
+        self::assertContainsEquals($unsupportedLocale, $localizations);
     }
 
-    public function test_if_specific_locale_with_regions_is_returned()
+    public function testIfSpecificLocaleWithRegionsIsReturned(): void
     {
         $class = App::make(GetAllLocalizationsTask::class);
         $localizations = $class->run();
 
         $unsupportedLocale = new Localization('en', ['en-GB', 'en-US']);
 
-        $this->assertContainsEquals($unsupportedLocale, $localizations);
+        self::assertContainsEquals($unsupportedLocale, $localizations);
     }
 
-    public function test_if_wrong_locale_is_not_returned()
+    public function testIfWrongLocaleIsNotReturned(): void
     {
         $class = App::make(GetAllLocalizationsTask::class);
         $localizations = $class->run();
 
         $unsupportedLocale = new Localization('xxx');
 
-        $this->assertNotContainsEquals($unsupportedLocale, $localizations);
+        self::assertNotContainsEquals($unsupportedLocale, $localizations);
     }
 }

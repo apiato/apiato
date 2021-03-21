@@ -14,7 +14,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 {
 
     /**
-     * Register Middleware's
+     * Register Middlewares
      *
      * @var  array
      */
@@ -37,7 +37,7 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     ];
 
     /**
-     * Register Route Middleware's
+     * Register Route Middlewares
      *
      * @var  array
      */
