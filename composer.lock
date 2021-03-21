@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa7984f6d572633f56ae2b817d208bd4",
+    "content-hash": "e0776509c7a0a83449167c9b9dc66941",
     "packages": [
         {
             "name": "apiato/containers-installer",
@@ -3058,6 +3058,43 @@
                 }
             ],
             "time": "2021-02-19T21:22:57+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-social-auth",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
+                "reference": "615048d5f2b9ef3c1cab6fc62010322775dc5144"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/615048d5f2b9ef3c1cab6fc62010322775dc5144",
+                "reference": "615048d5f2b9ef3c1cab6fc62010322775dc5144",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/socialite": "^5.2.2"
+            },
+            "default-branch": true,
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "SocialAuth"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/master"
+            },
+            "time": "2021-03-21T08:31:09+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -9830,7 +9867,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master",
+            "version": "dev-latest",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
@@ -10126,6 +10163,7 @@
                 "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
                 "zfr/zfr-oauth2-server-module": "<0.1.2"
             },
+            "default-branch": true,
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -11496,7 +11534,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "apiato/core": 20,
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "mohammad-alavi/apiato-social-auth": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -5,6 +5,6 @@
         "cartalyst/stripe-laravel": "^13.1.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-latest"
     }
 }

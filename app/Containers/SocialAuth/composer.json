@@ -1,11 +1,16 @@
 {
-    "name": "apiato/social-auth",
-    "description": "apiato Container.",
+    "name": "mohammad-alavi/apiato-social-auth",
+    "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
     "type": "apiato-container",
     "require": {
         "laravel/socialite": "^5.2.2"
     },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
+    "license": "MIT",
+    "extra": {
+        "apiato": {
+            "container": {
+                "name": "SocialAuth"
+            }
+        }
     }
 }
