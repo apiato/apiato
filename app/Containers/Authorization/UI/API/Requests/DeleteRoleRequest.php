@@ -29,7 +29,6 @@ class DeleteRoleRequest extends Request
         'id',
     ];
 
-
     public function rules(): array
     {
         return [

@@ -29,7 +29,6 @@ class SyncPermissionsOnRoleRequest extends Request
     protected array $urlParameters = [
 
     ];
-
     public function rules(): array
     {
         return [

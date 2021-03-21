@@ -5,7 +5,8 @@ namespace App\Containers\Authorization\UI\API\Requests;
 use App\Ship\Parents\Requests\Request;
 
 class AttachPermissionToRoleRequest extends Request
-{    /**
+{
+    /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
@@ -28,7 +29,6 @@ class AttachPermissionToRoleRequest extends Request
     protected array $urlParameters = [
 
     ];
-
     public function rules(): array
     {
         return [

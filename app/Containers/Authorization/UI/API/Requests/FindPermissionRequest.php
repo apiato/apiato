@@ -29,7 +29,6 @@ class FindPermissionRequest extends Request
         'id',
     ];
 
-
     public function rules(): array
     {
         return [

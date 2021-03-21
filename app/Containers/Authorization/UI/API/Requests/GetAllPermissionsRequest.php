@@ -29,7 +29,6 @@ class GetAllPermissionsRequest extends Request
 
     ];
 
-
     public function rules(): array
     {
         return [
