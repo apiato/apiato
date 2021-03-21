@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Config;
 
 class ApiLoginProxyTest extends ApiTestCase
 {
-    protected $endpoint = 'post@v1/clients/web/admin/login';
+    protected string $endpoint = 'post@v1/clients/web/admin/login';
 
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
         'roles' => '',
     ];
 
-    public function testClientWebAdminProxyLogin(): void
+    public function test_client_web_admin_proxy_login(): void
     {
         $data = [
             'email' => 'testing@mail.com',
@@ -35,7 +35,7 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 
-    public function testClientWebAdminProxyUnconfirmedLogin(): void
+    public function test_client_web_admin_proxy_unconfirmed_login(): void
     {
         $data = [
             'email' => 'testing2@mail.com',
@@ -55,7 +55,7 @@ class ApiLoginProxyTest extends ApiTestCase
         }
     }
 
-    public function testLoginWithNameAttribute(): void
+    public function test_login_with_name_attribute(): void
     {
         $data = [
             'email' => 'testing@mail.com',
@@ -92,7 +92,7 @@ class ApiLoginProxyTest extends ApiTestCase
         Config::set('authentication-container.login.attributes', $attributes);
     }
 
-    public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
+    public function test_given_only_one_login_attribute_is_set_then_it_should_be_required(): void
     {
         $this->setLoginAttributes([
             'email' => []
@@ -109,7 +109,7 @@ class ApiLoginProxyTest extends ApiTestCase
         ]);
     }
 
-    public function testGivenMultipleLoginAttributeIsSetThenAtLeastOneShouldBeRequired(): void
+    public function test_given_multiple_login_attribute_is_set_then_at_least_one_should_be_required(): void
     {
         $this->setLoginAttributes([
             'email' => [],

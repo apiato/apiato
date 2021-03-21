@@ -14,11 +14,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
-/**
- * Class Controller
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Controller extends WebController
 {
     /**
@@ -66,5 +61,4 @@ class Controller extends WebController
     {
         return view('authentication::dashboard');
     }
-
 }

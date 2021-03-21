@@ -14,11 +14,11 @@
  * "message": "Token revoked successfully."
  * }
  */
-$router->delete('logout', [
-    'as' => 'api_authentication_logout',
-    'uses' => 'Controller@logout',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+
+use App\Containers\Authentication\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::delete('logout', [Controller::class, 'logout'])
+    ->name('api_authentication_logout')
+    ->middleware(['auth:api']);
 

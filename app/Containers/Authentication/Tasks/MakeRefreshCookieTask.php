@@ -5,11 +5,6 @@ namespace App\Containers\Authentication\Tasks;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class MakeRefreshCookieTask
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class MakeRefreshCookieTask extends Task
 {
     public function run($refreshToken)

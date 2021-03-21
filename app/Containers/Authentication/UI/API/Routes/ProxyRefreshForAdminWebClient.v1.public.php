@@ -19,7 +19,9 @@
  * "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
  * }
  */
-$router->post('clients/web/admin/refresh', [
-    'as' => 'api_authentication_client_admin_web_refresh_proxy',
-    'uses' => 'Controller@proxyRefreshForAdminWebClient',
-]);
+
+use App\Containers\Authentication\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('clients/web/admin/refresh', [Controller::class, 'proxyRefreshForAdminWebClient'])
+    ->name('api_authentication_client_admin_web_refresh_proxy');

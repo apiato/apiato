@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class CallOAuthServerTask
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class CallOAuthServerTask extends Task
 {
     private const AUTH_ROUTE = '/v1/oauth/token';

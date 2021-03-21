@@ -7,14 +7,14 @@ use App\Containers\Authentication\Tests\ApiTestCase;
 
 class ApiRefreshProxyTest extends ApiTestCase
 {
-    protected $endpoint = 'post@v1/clients/web/admin/refresh';
+    protected string $endpoint = 'post@v1/clients/web/admin/refresh';
 
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
         'roles' => '',
     ];
 
-    private $data;
+    private array $data;
 
     public function setUp(): void
     {
@@ -29,7 +29,7 @@ class ApiRefreshProxyTest extends ApiTestCase
         $this->actingAs($this->testingUser, 'web');
     }
 
-    public function testRequestingRefreshTokenWithoutPassingARefreshTokenShouldThrowAnException(): void
+    public function test_requesting_refresh_token_without_passing_a_refresh_token_should_throw_an_exception(): void
     {
         $data = [
             'refresh_token' => null
@@ -42,7 +42,7 @@ class ApiRefreshProxyTest extends ApiTestCase
         $this->assertResponseContainKeyValue(['message' => $message]);
     }
 
-    public function testOnSuccessfulRefreshTokenRequestEnsureValuesAreSetProperly(): void
+    public function test_on_successful_refresh_token_request_ensure_values_are_set_properly(): void
     {
         $loginResponse = $this->endpoint('post@v1/clients/web/admin/login')->makeCall($this->data);
         $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];

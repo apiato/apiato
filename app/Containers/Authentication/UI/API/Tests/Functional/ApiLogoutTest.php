@@ -14,14 +14,14 @@ use App\Containers\Authentication\Tests\ApiTestCase;
  */
 class ApiLogoutTest extends ApiTestCase
 {
-    protected $endpoint = 'delete@v1/logout';
+    protected string $endpoint = 'delete@v1/logout';
 
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
         'roles' => '',
     ];
 
-    public function testLogout(): void
+    public function test_logout(): void
     {
         $response = $this->makeCall([], [
             'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImUxODk3NjU3YTVlZWQxMDkyMThlZjVmOThl

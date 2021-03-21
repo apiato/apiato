@@ -8,11 +8,6 @@ use App\Containers\Authorization\Exceptions\UserNotAdminException;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-/**
- * Class WebAdminLoginAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class WebAdminLoginAction extends Action
 {
     public function run(LoginTransporter $data): Authenticatable

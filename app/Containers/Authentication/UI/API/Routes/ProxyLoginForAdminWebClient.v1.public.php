@@ -20,7 +20,9 @@
  * "refresh_token": "ZFDPA1S7H8Wydjkjl+xt+hPGWTagX..."
  * }
  */
-$router->post('clients/web/admin/login', [
-    'as' => 'api_authentication_client_admin_web_login_proxy',
-    'uses' => 'Controller@proxyLoginForAdminWebClient',
-]);
+
+use App\Containers\Authentication\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('clients/web/admin/login', [Controller::class, 'proxyLoginForAdminWebClient'])
+    ->name('api_authentication_client_admin_web_login_proxy');
