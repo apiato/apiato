@@ -23,8 +23,6 @@ class GetAllSettingsRequest extends Request
     /**
      * Defining the URL parameters (e.g, `/user/{id}`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
     protected array $urlParameters = [
     ];
