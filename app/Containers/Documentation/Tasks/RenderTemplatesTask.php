@@ -6,25 +6,18 @@ use App\Containers\Documentation\Traits\DocsGeneratorTrait;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class RenderTemplatesTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class RenderTemplatesTask extends Task
 {
-
     use DocsGeneratorTrait;
 
+    private const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/';
+    private const OUTPUT_PATH = 'api-rendered-markdowns/';
     protected $headerMarkdownContent;
-
-    const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/';
-    const OUTPUT_PATH = 'api-rendered-markdowns/';
 
     /**
      * Read the markdown header template and fill it with some real data from the .env file.
      */
-    public function run()
+    public function run(): string
     {
         // read the template file
         $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
@@ -47,5 +40,4 @@ class RenderTemplatesTask extends Task
 
         return $path;
     }
-
 }

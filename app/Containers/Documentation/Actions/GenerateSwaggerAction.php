@@ -8,9 +8,6 @@ use App\Ship\Transporters\DataTransporter;
 
 class GenerateSwaggerAction extends Action
 {
-    /**
-     * @param DataTransporter $data
-     */
     public function run(DataTransporter $data): void
     {
         $console = $data->command_instance;

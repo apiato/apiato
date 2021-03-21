@@ -5,99 +5,18 @@ namespace App\Containers\Documentation\Traits;
 use DateTime;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class DocsGeneratorTrait
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 trait DocsGeneratorTrait
 {
-
-    /**
-     * @param $type
-     *
-     * @return mixed
-     */
-    private function getFullApiUrl($type)
+    private function getFullApiUrl($type): string
     {
         return '> ' . $this->getAppUrl() . '/' . $this->getUrl($type);
     }
 
-    /**
-     * @return  mixed
-     */
     private function getAppUrl()
     {
         return Config::get('app.url');
     }
 
-    /**
-     * @return  mixed
-     */
-    private function getHtmlPath()
-    {
-        return Config::get("{$this->getConfigFile()}.html_files");
-    }
-
-    /**
-     * Where to generate the new documentation.
-     *
-     * @param $type
-     *
-     * @return string
-     */
-    private function getDocumentationPath($type)
-    {
-        return $this->getHtmlPath() . $this->getUrl($type);
-    }
-
-    /**
-     * @param $type
-     *
-     * @return string
-     */
-    private function getJsonFilePath($type)
-    {
-        return "app/Containers/Documentation/ApiDocJs/{$type}";
-    }
-
-    /**
-     * @return  string
-     */
-    private function getConfigFile()
-    {
-        return 'documentation-container';
-    }
-
-    /**
-     * @return  mixed
-     */
-    private function getTypeConfig()
-    {
-        return Config::get($this->getConfigFile() . '.types');
-    }
-
-    /**
-     * @return  mixed
-     */
-    private function getExecutable()
-    {
-        return Config::get($this->getConfigFile() . '.executable');
-    }
-
-    /**
-     * @return  mixed
-     */
-    private function getSwaggerConverter()
-    {
-        return Config::get($this->getConfigFile() . '.swagger-converter');
-    }
-
-    /**
-     * @param $type
-     *
-     * @return  mixed
-     */
     private function getUrl($type)
     {
         $configs = $this->getTypeConfig();
@@ -105,12 +24,42 @@ trait DocsGeneratorTrait
         return $configs[$type]['url'];
     }
 
-    /**
-     * @param $type
-     *
-     * @return  array
-     */
-    private function getEndpointFiles($type)
+    private function getTypeConfig()
+    {
+        return Config::get($this->getConfigFile() . '.types');
+    }
+
+    private function getConfigFile(): string
+    {
+        return 'documentation-container';
+    }
+
+    private function getDocumentationPath($type): string
+    {
+        return $this->getHtmlPath() . $this->getUrl($type);
+    }
+
+    private function getHtmlPath()
+    {
+        return Config::get("{$this->getConfigFile()}.html_files");
+    }
+
+    private function getJsonFilePath($type): string
+    {
+        return "app/Containers/Documentation/ApiDocJs/{$type}";
+    }
+
+    private function getExecutable()
+    {
+        return Config::get($this->getConfigFile() . '.executable');
+    }
+
+    private function getSwaggerConverter()
+    {
+        return Config::get($this->getConfigFile() . '.swagger-converter');
+    }
+
+    private function getEndpointFiles($type): array
     {
         $configs = $this->getTypeConfig();
 
@@ -119,29 +68,19 @@ trait DocsGeneratorTrait
         $routes = $configs[$type]['routes'];
 
         foreach ($routes as $route) {
-          $routeFilesCommand[] = '-f';
-          $routeFilesCommand[] = $route . '.php';
+            $routeFilesCommand[] = '-f';
+            $routeFilesCommand[] = $route . '.php';
         }
 
         return $routeFilesCommand;
     }
 
-
-    /**
-     * @param $templateKey
-     * @param $value
-     */
-    private function replace($templateKey, $value)
+    private function replace($templateKey, $value): void
     {
         $this->headerMarkdownContent = str_replace($templateKey, $value, $this->headerMarkdownContent);
     }
 
-    /**
-     * @param $minutes
-     *
-     * @return  string
-     */
-    private function minutesToTimeDisplay($minutes)
+    private function minutesToTimeDisplay($minutes): string
     {
         $seconds = $minutes * 60;
 
@@ -150,5 +89,4 @@ trait DocsGeneratorTrait
 
         return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
     }
-
 }

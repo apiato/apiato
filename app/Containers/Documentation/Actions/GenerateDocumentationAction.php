@@ -6,17 +6,8 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class GenerateDocumentationAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class GenerateDocumentationAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     */
     public function run(DataTransporter $data): void
     {
         $console = $data->command_instance;
@@ -36,5 +27,4 @@ class GenerateDocumentationAction extends Action
 
         $console->info("Done! You can access your API Docs at: \n" . implode("\n", $documentationUrls));
     }
-
 }

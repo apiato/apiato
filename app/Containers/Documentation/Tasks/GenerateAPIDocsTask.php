@@ -9,25 +9,11 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
-/**
- * Class GenerateAPIDocsTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class GenerateAPIDocsTask extends Task
 {
     use DocsGeneratorTrait;
 
-    /**
-     * @param $type
-     * @param $console
-     *
-     * @return  mixed
-     * @throws RuntimeException
-     * @throws LogicException
-     * @throws ProcessFailedException
-     */
-    public function run($type, $console)
+    public function run($type, $console): string
     {
         $path = $this->getDocumentationPath($type);
 
@@ -60,8 +46,7 @@ class GenerateAPIDocsTask extends Task
         $console->info('[' . $type . '] ' . implode (' ', $command));
         $console->info('Output: ' . $process->getOutput());
 
-        // return the past to that generated documentation
+        // return the path to the generated documentation
         return $this->getFullApiUrl($type);
     }
-
 }
