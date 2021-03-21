@@ -5,16 +5,10 @@ namespace App\Containers\Debugger\Providers;
 use App\Containers\Debugger\Middlewares\RequestsMonitorMiddleware;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
-/**
- * Class MiddlewareServiceProvider.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-
     /**
-     * Register Middleware's
+     * Register Middlewares
      *
      * @var  array
      */
@@ -37,12 +31,11 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     ];
 
     /**
-     * Register Route Middleware's
+     * Register Route Middlewares
      *
      * @var  array
      */
     protected array $routeMiddleware = [
         // ..
     ];
-
 }
