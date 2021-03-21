@@ -9,23 +9,17 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class FindUserTest extends ApiTestCase
 {
+    protected string $endpoint = 'get@v1/users/{id}';
 
-    protected $endpoint = 'get@v1/users/{id}';
-
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'search-users',
     ];
 
-    /**
-     * @test
-     */
-    public function testFindUser_()
+    public function testFindUser(): void
     {
         $admin = $this->getTestingUser();
 
@@ -37,13 +31,10 @@ class FindUserTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($admin->name, $responseContent->data->name);
+        self::assertEquals($admin->name, $responseContent->data->name);
     }
 
-    /**
-     * @test
-     */
-    public function testFindFilteredUserResponse_()
+    public function testFindFilteredUserResponse(): void
     {
         $admin = $this->getTestingUser();
 
@@ -59,13 +50,10 @@ class FindUserTest extends ApiTestCase
 //        $this->assertEquals($admin->name, $responseContent->data->name);
 //        $this->assertEquals($admin->email, $responseContent->data->email);
 
-        $this->assertNotContains('id', json_decode($response->getContent(), true));
+        self::assertNotContains('id', json_decode($response->getContent(), true));
     }
 
-    /**
-     * @test
-     */
-    public function testFindUserWithRelation_()
+    public function testFindUserWithRelation(): void
     {
         $admin = $this->getTestingUser();
 
@@ -77,9 +65,8 @@ class FindUserTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($admin->email, $responseContent->data->email);
+        self::assertEquals($admin->email, $responseContent->data->email);
 
-        $this->assertNotNull($responseContent->data->roles);
+        self::assertNotNull($responseContent->data->roles);
     }
-
 }

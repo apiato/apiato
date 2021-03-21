@@ -13,10 +13,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-$router->get('user/profile', [
-    'as' => 'api_user_get_authenticated_user',
-    'uses'  => 'Controller@getAuthenticatedUser',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\User\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('user/profile', [Controller::class, 'getAuthenticatedUser'])
+    ->name('api_user_get_authenticated_user')
+    ->middleware(['auth:api']);

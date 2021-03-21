@@ -6,22 +6,13 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class CreateAdminCommand
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class CreateAdminCommand extends ConsoleCommand
 {
-
     protected $signature = 'apiato:create:admin';
 
     protected $description = 'Create a new User with the ADMIN role';
 
-    /**
-     * @void
-     */
-    public function handle()
+    public function handle(): void
     {
         $username = $this->ask('Enter the username for this user');
         $email = $this->ask('Enter the email address of this user');

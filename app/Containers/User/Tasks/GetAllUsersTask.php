@@ -9,24 +9,10 @@ use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
 
-/**
- * Class GetAllUsersTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class GetAllUsersTask extends Task
 {
+    protected UserRepository $repository;
 
-    /**
-     * @var  UserRepository
-     */
-    protected $repository;
-
-    /**
-     * GetAllUsersTask constructor.
-     *
-     * @param UserRepository $repository
-     */
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
@@ -37,24 +23,23 @@ class GetAllUsersTask extends Task
         return $this->repository->paginate();
     }
 
-    public function clients()
+    public function clients(): void
     {
         $this->repository->pushCriteria(new ClientsCriteria());
     }
 
-    public function admins()
+    public function admins(): void
     {
         $this->repository->pushCriteria(new AdminsCriteria());
     }
 
-    public function ordered()
+    public function ordered(): void
     {
         $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
     }
 
-    public function withRole($roles)
+    public function withRole($roles): void
     {
         $this->repository->pushCriteria(new RoleCriteria($roles));
     }
-
 }

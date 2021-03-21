@@ -7,18 +7,8 @@ use App\Containers\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 
-/**
- * Class GetAuthenticatedUserAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class GetAuthenticatedUserAction extends Action
 {
-
-    /**
-     * @return  User
-     * @throws  NotFoundException
-     */
     public function run(): User
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');

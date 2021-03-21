@@ -4,57 +4,39 @@ namespace App\Containers\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class GetAllUsersRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class GetAllUsersRequest extends Request
 {
-
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
+    protected array $access = [
         'permissions' => 'list-users',
-        'roles'       => 'admin',
+        'roles' => 'admin',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
 
     ];
 
     /**
      * Defining the URL parameters (`/stores/999/items`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
 
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

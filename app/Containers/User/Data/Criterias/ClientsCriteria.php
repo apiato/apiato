@@ -5,20 +5,8 @@ namespace App\Containers\User\Data\Criterias;
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-/**
- * Class AdminsCriteria.
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 class ClientsCriteria extends Criteria
 {
-
-    /**
-     * @param                                                   $model
-     * @param PrettusRepositoryInterface $repository
-     *
-     * @return mixed
-     */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->where('is_admin', false);

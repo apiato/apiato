@@ -9,34 +9,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserRegisteredNotification extends Notification implements ShouldQueue
 {
-
     use Queueable;
 
-    /**
-     * @var  User
-     */
-    protected $user;
+    protected User $user;
 
-    /**
-     * UserRegisteredNotification constructor.
-     *
-     * @param User $user
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
     }
 
-    /**
-     * @param  mixed $notifiable
-     *
-     * @return array
-     */
-    public function toArray($notifiable)
+    public function toArray($notifiable): array
     {
         return [
             // ... do you own customization
         ];
     }
-
 }

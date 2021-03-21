@@ -10,19 +10,17 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class GetAllAdminsTest extends ApiTestCase
 {
-    protected $endpoint = 'get@v1/admins';
+    protected string $endpoint = 'get@v1/admins';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'list-users',
     ];
 
-    public function testGetAllAdmins_(): void
+    public function testGetAllAdmins(): void
     {
         User::factory()->count(1)->create();
         User::factory()->count(1)->admin()->create();
@@ -40,7 +38,7 @@ class GetAllAdminsTest extends ApiTestCase
         self::assertCount(3, $responseContent->data); // 2 (fake in this test) + 1 (seeded super admin)
     }
 
-    public function testGetAllAdminsByNonAdmin_(): void
+    public function testGetAllAdminsByNonAdmin(): void
     {
         $this->getTestingUserWithoutAccess();
 

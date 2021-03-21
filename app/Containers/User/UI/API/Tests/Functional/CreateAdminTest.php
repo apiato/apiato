@@ -10,20 +10,17 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class CreateAdminTest extends ApiTestCase
 {
+    protected string $endpoint = 'post@v1/admins';
 
-    protected $endpoint = 'post@v1/admins';
-
-    protected $access = [
+    protected array $access = [
         'permissions' => 'create-admins',
         'roles' => '',
     ];
 
-    public function testCreateAdmin_(): void
+    public function testCreateAdmin(): void
     {
         $data = [
             'email' => 'apiato@admin.test',

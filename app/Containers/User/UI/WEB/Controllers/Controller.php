@@ -6,14 +6,8 @@ use App\Ship\Parents\Controllers\WebController;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 
-/**
- * Class Controller
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class Controller extends WebController
 {
-
     /**
      * @return  Factory|View
      */

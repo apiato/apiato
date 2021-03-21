@@ -11,11 +11,6 @@ use App\Ship\Parents\Models\UserModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-/**
- * Class User.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class User extends UserModel implements ChargeableInterface
 {
     use ChargeableTrait;
@@ -23,18 +18,8 @@ class User extends UserModel implements ChargeableInterface
     use AuthenticationTrait;
     use Notifiable;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -61,31 +46,18 @@ class User extends UserModel implements ChargeableInterface
         'confirmed' => 'boolean',
     ];
 
-    /**
-     * The dates attributes.
-     *
-     * @var array
-     */
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * @return HasMany
-     */
-    public function paymentAccounts()
+    public function paymentAccounts(): HasMany
     {
         return $this->hasMany(PaymentAccount::class);
     }

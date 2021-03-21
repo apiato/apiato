@@ -16,10 +16,9 @@
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
-$router->get('clients', [
-    'as' => 'api_user_get_all_clients',
-    'uses'       => 'Controller@getAllClients',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\User\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('clients', [Controller::class, 'getAllClients'])
+    ->name('api_user_get_all_clients')
+    ->middleware(['auth:api']);

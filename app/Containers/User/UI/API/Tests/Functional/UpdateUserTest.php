@@ -9,28 +9,22 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class UpdateUserTest extends ApiTestCase
 {
+    protected string $endpoint = 'put@v1/users/{id}';
 
-    protected $endpoint = 'put@v1/users/{id}';
-
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => 'update-users',
     ];
 
-    /**
-     * @test
-     */
-    public function testUpdateExistingUser_()
+    public function testUpdateExistingUser(): void
     {
         $user = $this->getTestingUser();
 
         $data = [
-            'name'     => 'Updated Name',
+            'name' => 'Updated Name',
             'password' => 'updated#Password',
         ];
 
@@ -43,18 +37,15 @@ class UpdateUserTest extends ApiTestCase
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'object' => 'User',
-            'email'  => $user->email,
-            'name'   => $data['name'],
+            'email' => $user->email,
+            'name' => $data['name'],
         ]);
 
         // assert data was updated in the database
         $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
 
-    /**
-     * @test
-     */
-    public function testUpdateNonExistingUser_()
+    public function testUpdateNonExistingUser(): void
     {
         $data = [
             'name' => 'Updated Name',
@@ -73,10 +64,7 @@ class UpdateUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testUpdateExistingUserWithoutData_()
+    public function testUpdateExistingUserWithoutData(): void
     {
         // send the HTTP request
         $response = $this->makeCall();
@@ -89,13 +77,10 @@ class UpdateUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testUpdateExistingUserWithEmptyValues()
+    public function testUpdateExistingUserWithEmptyValues(): void
     {
         $data = [
-            'name'     => '',
+            'name' => '',
             'password' => '',
         ];
 
@@ -108,8 +93,7 @@ class UpdateUserTest extends ApiTestCase
         $this->assertValidationErrorContain([
             // messages should be updated after modifying the validation rules, to pass this test
             'password' => 'The password must be at least 6 characters.',
-            'name'     => 'The name must be at least 2 characters.',
+            'name' => 'The name must be at least 2 characters.',
         ]);
-
     }
 }

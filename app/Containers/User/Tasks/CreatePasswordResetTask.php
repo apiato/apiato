@@ -7,21 +7,9 @@ use App\Ship\Exceptions\InternalErrorException;
 use App\Ship\Parents\Exceptions\Exception;
 use App\Ship\Parents\Tasks\Task;
 
-/**
- * Class CreatePasswordResetTask
- *
- * @author  Sebastian Weckend
- */
 class CreatePasswordResetTask extends Task
 {
-
-    /**
-     * @param User $user
-     *
-     * @return mixed
-     * @throws InternalErrorException
-     */
-    public function run(User $user)
+    public function run(User $user): string
     {
         try {
             return app('auth.password.broker')->createToken($user);

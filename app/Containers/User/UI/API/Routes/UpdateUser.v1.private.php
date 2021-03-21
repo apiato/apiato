@@ -14,10 +14,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-$router->put('users/{id}', [
-    'as' => 'api_user_update_user',
-    'uses'       => 'Controller@updateUser',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\User\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('users/{id}', [Controller::class, 'updateUser'])
+    ->name('api_user_update_user')
+    ->middleware(['auth:api']);

@@ -16,10 +16,9 @@
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
-$router->get('admins', [
-    'as' => 'api_user_get_all_admins',
-    'uses'       => 'Controller@getAllAdmins',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\User\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('admins', [Controller::class, 'getAllAdmins'])
+    ->name('api_user_get_all_admins')
+    ->middleware(['auth:api']);

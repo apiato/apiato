@@ -8,19 +8,8 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class FindUserByIdAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class FindUserByIdAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  User
-     */
     public function run(DataTransporter $data): User
     {
         $user = Apiato::call('User@FindUserByIdTask', [$data->id]);
@@ -31,5 +20,4 @@ class FindUserByIdAction extends Action
 
         return $user;
     }
-
 }

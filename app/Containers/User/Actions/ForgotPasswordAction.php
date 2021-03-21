@@ -9,18 +9,8 @@ use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\Mail;
 
-/**
- * Class ForgotPasswordAction
- *
- * @author  Sebastian Weckend
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class ForgotPasswordAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     */
     public function run(DataTransporter $data): void
     {
         $user = Apiato::call('User@FindUserByEmailTask', [$data->email]);

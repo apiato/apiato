@@ -14,19 +14,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
-/**
- * Class RegisterUserAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class RegisterUserAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  User
-     */
     public function run(DataTransporter $data): User
     {
         // create user record in the database and return it.
@@ -43,7 +32,7 @@ class RegisterUserAction extends Action
 
         Notification::send($user, new UserRegisteredNotification($user));
 
-        App::make(Dispatcher::class)->dispatch(New UserRegisteredEvent($user));
+        App::make(Dispatcher::class)->dispatch(new UserRegisteredEvent($user));
 
         return $user;
     }

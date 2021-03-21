@@ -10,19 +10,17 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class GetAllClientsTest extends ApiTestCase
 {
-    protected $endpoint = 'get@v1/clients';
+    protected string $endpoint = 'get@v1/clients';
 
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'list-users',
     ];
 
-    public function testGetAllClientsByAdmin_(): void
+    public function testGetAllClientsByAdmin(): void
     {
         User::factory()->count(1)->create();
         User::factory()->admin()->create();
@@ -40,7 +38,7 @@ class GetAllClientsTest extends ApiTestCase
         self::assertCount(1, $responseContent->data);
     }
 
-    public function testGetAllClientsByNonAdmin_(): void
+    public function testGetAllClientsByNonAdmin(): void
     {
         // prepare a user without any roles or permissions
         $this->getTestingUserWithoutAccess();

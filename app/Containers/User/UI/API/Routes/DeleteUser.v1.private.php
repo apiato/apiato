@@ -11,15 +11,14 @@
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK
-{
-    "message": "User (4) Deleted Successfully."
-}
+ * {
+ * "message": "User (4) Deleted Successfully."
+ * }
  */
 
-$router->delete('users/{id}', [
-    'as' => 'api_user_delete_user',
-    'uses'       => 'Controller@deleteUser',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\User\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::delete('users/{id}', [Controller::class, 'deleteUser'])
+    ->name('api_user_delete_user')
+    ->middleware(['auth:api']);

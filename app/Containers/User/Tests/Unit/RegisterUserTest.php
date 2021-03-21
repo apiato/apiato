@@ -13,21 +13,15 @@ use Illuminate\Support\Facades\App;
  *
  * @group user
  * @group unit
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterUserTest extends TestCase
 {
-
-    /**
-     * @test
-     */
-    public function testCreateUser_()
+    public function testCreateUser(): void
     {
         $data = [
-            'email'    => 'Mahmoud@test.test',
+            'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
-            'name'     => 'Mahmoud',
+            'name' => 'Mahmoud',
         ];
 
         $transporter = new DataTransporter($data);
@@ -35,8 +29,8 @@ class RegisterUserTest extends TestCase
         $user = $action->run($transporter);
 
         // asset the returned object is an instance of the User
-        $this->assertInstanceOf(User::class, $user);
+        self::assertInstanceOf(User::class, $user);
 
-        $this->assertEquals($user->name, $data['name']);
+        self::assertEquals($user->name, $data['name']);
     }
 }

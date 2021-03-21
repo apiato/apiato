@@ -11,27 +11,14 @@ class UserRegisteredMail extends Mail implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * @var  User
-     */
-    protected $user;
+    protected User $user;
 
-    /**
-     * UserRegisteredNotification constructor.
-     *
-     * @param User $user
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
+    public function build(): self
     {
         return $this->view('user::user-registered')
             ->to($this->user->email, $this->user->name)

@@ -11,17 +11,8 @@ use Illuminate\Support\Facades\Log;
 
 class UserRegisteredEvent extends Event implements ShouldQueue
 {
+    protected User $user;
 
-    /**
-     * @var  User
-     */
-    protected $user;
-
-    /**
-     * UserRegisteredNotification constructor.
-     *
-     * @param User $user
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -30,11 +21,9 @@ class UserRegisteredEvent extends Event implements ShouldQueue
     /**
      * Handle the Event. (Single Listener Implementation)
      */
-    public function handle()
+    public function handle(): void
     {
         Log::info('New User registration. ID = ' . $this->user->getHashedKey() . ' | Email = ' . $this->user->email . '.');
-
-        // ...
     }
 
     /**

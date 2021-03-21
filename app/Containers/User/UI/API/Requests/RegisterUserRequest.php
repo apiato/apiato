@@ -4,59 +4,41 @@ namespace App\Containers\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class RegisterUserRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class RegisterUserRequest extends Request
 {
-
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
 
     ];
 
     /**
      * Defining the URL parameters (`/stores/999/items`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'email'    => 'required|email|max:40|unique:users,email',
+            'email' => 'required|email|max:40|unique:users,email',
             'password' => 'required|min:6|max:30',
-            'name'     => 'required|min:2|max:50',
+            'name' => 'required|min:2|max:50',
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

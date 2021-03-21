@@ -10,23 +10,17 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class DeleteUserTest extends ApiTestCase
 {
+    protected string $endpoint = 'delete@v1/users/{id}';
 
-    protected $endpoint = 'delete@v1/users/{id}';
-
-    protected $access = [
+    protected array $access = [
         'roles' => '',
         'permissions' => 'delete-users',
     ];
 
-    /**
-     * @test
-     */
-    public function testDeleteExistingUser_()
+    public function testDeleteExistingUser(): void
     {
         $user = $this->getTestingUser();
 
@@ -37,10 +31,7 @@ class DeleteUserTest extends ApiTestCase
         $response->assertStatus(204);
     }
 
-    /**
-     * @test
-     */
-    public function testDeleteAnotherExistingUser_()
+    public function testDeleteAnotherExistingUser(): void
     {
         // make the call form the user token who has no access
         $this->getTestingUserWithoutAccess();

@@ -9,29 +9,23 @@ use App\Containers\User\Tests\ApiTestCase;
  *
  * @group user
  * @group api
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RegisterUserTest extends ApiTestCase
 {
+    protected string $endpoint = 'post@v1/register';
 
-    protected $endpoint = 'post@v1/register';
+    protected bool $auth = false;
 
-    protected $auth = false;
-
-    protected $access = [
-        'roles'       => '',
+    protected array $access = [
+        'roles' => '',
         'permissions' => '',
     ];
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserWithCredentials_()
+    public function testRegisterNewUserWithCredentials(): void
     {
         $data = [
-            'email'    => 'apiato@mail.test',
-            'name'     => 'Apiato',
+            'email' => 'apiato@mail.test',
+            'name' => 'Apiato',
             'password' => 'secretpass',
         ];
 
@@ -43,25 +37,22 @@ class RegisterUserTest extends ApiTestCase
 
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
-            'name'  => $data['name'],
+            'name' => $data['name'],
         ]);
 
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertNotEmpty($responseContent->data);
+        self::assertNotEmpty($responseContent->data);
 
-         // assert the data is stored in the database
+        // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserUsingGetVerb()
+    public function testRegisterNewUserUsingGetVerb(): void
     {
         $data = [
-            'email'    => 'apiato@mail.test',
-            'name'     => 'Apiato',
+            'email' => 'apiato@mail.test',
+            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -76,14 +67,11 @@ class RegisterUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterExistingUser()
+    public function testRegisterExistingUser(): void
     {
         $userDetails = [
-            'email'    => 'apiato@mail.test',
-            'name'     => 'Apiato',
+            'email' => 'apiato@mail.test',
+            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -91,8 +79,8 @@ class RegisterUserTest extends ApiTestCase
         $this->getTestingUser($userDetails);
 
         $data = [
-            'email'    => $userDetails['email'],
-            'name'     => $userDetails['name'],
+            'email' => $userDetails['email'],
+            'name' => $userDetails['name'],
             'password' => $userDetails['password'],
         ];
 
@@ -107,13 +95,10 @@ class RegisterUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserWithoutEmail()
+    public function testRegisterNewUserWithoutEmail(): void
     {
         $data = [
-            'name'     => 'Apiato',
+            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -129,13 +114,10 @@ class RegisterUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserWithoutName()
+    public function testRegisterNewUserWithoutName(): void
     {
         $data = [
-            'email'    => 'apiato@mail.test',
+            'email' => 'apiato@mail.test',
             'password' => 'secret',
         ];
 
@@ -151,14 +133,11 @@ class RegisterUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserWithoutPassword()
+    public function testRegisterNewUserWithoutPassword(): void
     {
         $data = [
             'email' => 'apiato@mail.test',
-            'name'  => 'Apiato',
+            'name' => 'Apiato',
         ];
 
         $response = $this->makeCall($data);
@@ -172,14 +151,11 @@ class RegisterUserTest extends ApiTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function testRegisterNewUserWithInvalidEmail()
+    public function testRegisterNewUserWithInvalidEmail(): void
     {
         $data = [
-            'email'    => 'missing-at.test',
-            'name'     => 'Apiato',
+            'email' => 'missing-at.test',
+            'name' => 'Apiato',
             'password' => 'secret',
         ];
 

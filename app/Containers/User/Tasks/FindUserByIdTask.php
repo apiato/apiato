@@ -8,27 +8,15 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-/**
- * Class FindUserByIdTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class FindUserByIdTask extends Task
 {
-
-    protected $repository;
+    protected UserRepository $repository;
 
     public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param $userId
-     *
-     * @return User
-     * @throws NotFoundException
-     */
     public function run($userId): User
     {
         // find the user by its id
@@ -40,5 +28,4 @@ class FindUserByIdTask extends Task
 
         return $user;
     }
-
 }

@@ -10,23 +10,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
-/**
- * Class ResetPasswordAction
- *
- * * @author  Sebastian Weckend
- */
 class ResetPasswordAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     */
     public function run(DataTransporter $data): void
     {
         $data = [
-            'email'                 => $data->email,
-            'token'                 => $data->token,
-            'password'              => $data->password,
+            'email' => $data->email,
+            'token' => $data->token,
+            'password' => $data->password,
             'password_confirmation' => $data->password,
         ];
 
@@ -35,7 +26,7 @@ class ResetPasswordAction extends Action
                 $data,
                 function ($user, $password) {
                     $user->forceFill([
-                        'password'       => Hash::make($password),
+                        'password' => Hash::make($password),
                         'remember_token' => Str::random(60),
                     ])->save();
                 }

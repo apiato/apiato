@@ -7,38 +7,16 @@ use App\Ship\Parents\Mails\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-/**
- * Class UserForgotPasswordMail
- *
- * @author  Sebastian Weckend
- */
 class UserForgotPasswordMail extends Mail implements ShouldQueue
 {
-
     use Queueable;
 
-    /**
-     * @var  User
-     */
-    protected $recipient;
+    protected User $recipient;
 
-    /**
-     * @var string
-     */
-    protected $token;
+    protected string $token;
 
-    /**
-     * @var string
-     */
-    protected $reseturl;
+    protected string $reseturl;
 
-    /**
-     * UserForgotPasswordMail constructor.
-     *
-     * @param User $recipient
-     * @param                                  $token
-     * @param                                  $reseturl
-     */
     public function __construct(User $recipient, $token, $reseturl)
     {
         $this->recipient = $recipient;
@@ -46,17 +24,14 @@ class UserForgotPasswordMail extends Mail implements ShouldQueue
         $this->reseturl = $reseturl;
     }
 
-    /**
-     * @return  $this
-     */
-    public function build()
+    public function build(): self
     {
         return $this->view('user::user-forgotPassword')
             ->to($this->recipient->email, $this->recipient->name)
             ->with([
-                'token'    => $this->token,
+                'token' => $this->token,
                 'reseturl' => $this->reseturl,
-                'email'    => $this->recipient->email,
+                'email' => $this->recipient->email,
             ]);
     }
 }

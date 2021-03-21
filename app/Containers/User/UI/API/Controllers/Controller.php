@@ -18,143 +18,72 @@ use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 
-/**
- * Class Controller.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
-
-    /**
-     * @param RegisterUserRequest $request
-     *
-     * @return  mixed
-     */
-    public function registerUser(RegisterUserRequest $request)
+    public function registerUser(RegisterUserRequest $request): array
     {
         $user = Apiato::call('User@RegisterUserAction', [new DataTransporter($request)]);
-
         return $this->transform($user, UserTransformer::class);
     }
 
-    /**
-     * @param CreateAdminRequest $request
-     *
-     * @return  mixed
-     */
-    public function createAdmin(CreateAdminRequest $request)
+    public function createAdmin(CreateAdminRequest $request): array
     {
         $admin = Apiato::call('User@CreateAdminAction', [new DataTransporter($request)]);
-
         return $this->transform($admin, UserTransformer::class);
     }
 
-    /**
-     * @param UpdateUserRequest $request
-     *
-     * @return  mixed
-     */
-    public function updateUser(UpdateUserRequest $request)
+    public function updateUser(UpdateUserRequest $request): array
     {
         $user = Apiato::call('User@UpdateUserAction', [new DataTransporter($request)]);
-
         return $this->transform($user, UserTransformer::class);
     }
 
-    /**
-     * @param DeleteUserRequest $request
-     *
-     * @return  JsonResponse
-     */
-    public function deleteUser(DeleteUserRequest $request)
+    public function deleteUser(DeleteUserRequest $request): JsonResponse
     {
         Apiato::call('User@DeleteUserAction', [new DataTransporter($request)]);
-
         return $this->noContent();
     }
 
-    /**
-     * @param GetAllUsersRequest $request
-     *
-     * @return  mixed
-     */
-    public function getAllUsers(GetAllUsersRequest $request)
+    public function getAllUsers(GetAllUsersRequest $request): array
     {
         $users = Apiato::call('User@GetAllUsersAction');
-
         return $this->transform($users, UserTransformer::class);
     }
 
-    /**
-     * @param GetAllUsersRequest $request
-     *
-     * @return  mixed
-     */
-    public function getAllClients(GetAllUsersRequest $request)
+    public function getAllClients(GetAllUsersRequest $request): array
     {
         $users = Apiato::call('User@GetAllClientsAction');
 
         return $this->transform($users, UserTransformer::class);
     }
 
-    /**
-     * @param GetAllUsersRequest $request
-     *
-     * @return  mixed
-     */
-    public function getAllAdmins(GetAllUsersRequest $request)
+    public function getAllAdmins(GetAllUsersRequest $request): array
     {
         $users = Apiato::call('User@GetAllAdminsAction');
-
         return $this->transform($users, UserTransformer::class);
     }
 
-    /**
-     * @param FindUserByIdRequest $request
-     *
-     * @return  mixed
-     */
-    public function findUserById(FindUserByIdRequest $request)
+    public function findUserById(FindUserByIdRequest $request): array
     {
         $user = Apiato::call('User@FindUserByIdAction', [new DataTransporter($request)]);
-
         return $this->transform($user, UserTransformer::class);
     }
 
-    /**
-     * @param GetAuthenticatedUserRequest $request
-     *
-     * @return mixed
-     */
-    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request)
+    public function getAuthenticatedUser(GetAuthenticatedUserRequest $request): array
     {
         $user = Apiato::call('User@GetAuthenticatedUserAction');
-
         return $this->transform($user, UserPrivateProfileTransformer::class);
     }
 
-    /**
-     * @param ResetPasswordRequest $request
-     *
-     * @return  JsonResponse
-     */
-    public function resetPassword(ResetPasswordRequest $request)
+    public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
         Apiato::call('User@ResetPasswordAction', [new DataTransporter($request)]);
-
         return $this->noContent(204);
     }
 
-    /**
-     * @param ForgotPasswordRequest $request
-     *
-     * @return  JsonResponse
-     */
-    public function forgotPassword(ForgotPasswordRequest $request)
+    public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
         Apiato::call('User@ForgotPasswordAction', [new DataTransporter($request)]);
-
         return $this->noContent(202);
     }
 
