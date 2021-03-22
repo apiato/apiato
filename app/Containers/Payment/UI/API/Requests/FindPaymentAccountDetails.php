@@ -11,37 +11,28 @@ class FindPaymentAccountDetails extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
      */
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
         'roles'       => '',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
-     *
-     * @var  array
      */
-    protected $decode = [
+    protected array $decode = [
         'id',
     ];
 
     /**
      * Defining the URL parameters (e.g, `/user/{id}`) allows applying
      * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
      */
-    protected $urlParameters = [
+    protected array $urlParameters = [
         'id',
     ];
 
-    /**
-     * @return  array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             // put your rules here
@@ -49,10 +40,7 @@ class FindPaymentAccountDetails extends Request
         ];
     }
 
-    /**
-     * @return  bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

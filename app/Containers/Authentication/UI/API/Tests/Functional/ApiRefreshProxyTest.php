@@ -52,7 +52,6 @@ class ApiRefreshProxyTest extends ApiTestCase
     {
         $loginResponse = $this->endpoint('post@v1/clients/web/admin/login')->makeCall($this->data);
         $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];
-
         $data = [
             'refresh_token' => $refreshToken
         ];

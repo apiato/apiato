@@ -15,9 +15,9 @@ use App\Containers\Stripe\Tests\ApiTestCase;
 class CreateStripeAccountTest extends ApiTestCase
 {
 
-    protected $endpoint = 'post@v1/user/payments/accounts/stripe';
+    protected string $endpoint = 'post@v1/user/payments/accounts/stripe';
 
-    protected $access = [
+    protected array $access = [
         'permissions' => '',
         'roles'       => '',
     ];
@@ -25,7 +25,7 @@ class CreateStripeAccountTest extends ApiTestCase
     /**
      * @test
      */
-    public function testCreateStripeAccount_()
+    public function testCreateStripeAccount()
     {
         $userDetails = [
             'name'     => 'Mahmoud Zalt',
