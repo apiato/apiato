@@ -3,12 +3,12 @@
 namespace App\Containers\Authentication\Tasks;
 
 use App\Ship\Parents\Tasks\Task;
-use App\Ship\Parents\Transporters\Transporter;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 
 class ExtractLoginCustomAttributeTask extends Task
 {
-    public function run(Transporter $data): array
+    public function run(array $data): array
     {
         $prefix = Config::get('authentication-container.login.prefix', '');
         $allowedLoginFields = Config::get('authentication-container.login.attributes');
@@ -28,9 +28,7 @@ class ExtractLoginCustomAttributeTask extends Task
         // and put the first one found in 'username' field witch its value as 'username' value
         foreach ($fields as $field) {
             $fieldName = $prefix . $field;
-            // We don't use $data->getInputByKey($fieldName) method so this task can be compatible with both Request and
-            // Transporter inputs. (Request doesn't have "getInputByKey()" method.
-            $loginUsername = $data->$fieldName;
+            $loginUsername = Arr::get($data, $fieldName);
             $loginAttribute = $field;
 
             if ($loginUsername !== null) {

@@ -2,17 +2,17 @@
 
 namespace App\Containers\Authentication\Actions;
 
+use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 use Laravel\Passport\RefreshTokenRepository;
 use Laravel\Passport\TokenRepository;
 use Lcobucci\JWT\Parser;
 
 class ApiLogoutAction extends Action
 {
-    public function run(DataTransporter $data): void
+    public function run(LogoutRequest $data): void
     {
-        $id = app(Parser::class)->parse($data->bearerToken)->claims()->get('jti');
+        $id = app(Parser::class)->parse($data->bearerToken())->claims()->get('jti');
 
         $tokenRepository = app(TokenRepository::class);
         $refreshTokenRepository = app(RefreshTokenRepository::class);

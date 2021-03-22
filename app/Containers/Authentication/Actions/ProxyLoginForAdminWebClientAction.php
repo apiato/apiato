@@ -3,21 +3,29 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
+use App\Containers\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Config;
 
 class ProxyLoginForAdminWebClientAction extends Action
 {
-    public function run(ProxyLoginPasswordGrantTransporter $data): array
+    public function run(ProxyLoginPasswordGrantRequest $data): array
     {
-        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
+        $sanitizedData = $data->sanitizeInput([
+            'email',
+            'name',
+            'password',
+        ]);
 
-        $data->set('username', $loginCustomAttribute['username']);
-        $data->set('client_id', Config::get('authentication-container.clients.web.admin.id'));
-        $data->set('client_secret', Config::get('authentication-container.clients.web.admin.secret'));
+        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$sanitizedData]);
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$data->toArray()]);
+        $sanitizedData['username'] = $loginCustomAttribute['username'];
+        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.admin.id');
+        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.admin.secret');
+        $sanitizedData['grant_type'] = 'password';
+        $sanitizedData['scope'] = '';
+
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData]);
         $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
         return [

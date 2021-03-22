@@ -2,18 +2,10 @@
 
 namespace App\Containers\Authentication\UI\API\Requests;
 
-use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
 use App\Ship\Parents\Requests\Request;
 
 class ProxyLoginPasswordGrantRequest extends Request
 {
-    /**
-     * The assigned Transporter for this Request
-     *
-     * @var string
-     */
-    protected $transporter = ProxyLoginPasswordGrantTransporter::class;
-
     /**
      * Define which Roles and/or Permissions has access to this request.
      */

@@ -85,7 +85,6 @@ class ApiLoginProxyTest extends ApiTestCase
         $response = $this->makeCall($request);
 
         $response->assertStatus(200);
-
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);

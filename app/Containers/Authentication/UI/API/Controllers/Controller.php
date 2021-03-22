@@ -4,12 +4,10 @@ namespace App\Containers\Authentication\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
-use App\Containers\Authentication\Data\Transporters\ProxyRefreshTransporter;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Controllers\ApiController;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cookie;
 
@@ -17,10 +15,7 @@ class Controller extends ApiController
 {
     public function logout(LogoutRequest $request): JsonResponse
     {
-        $dataTransporter = new DataTransporter($request);
-        $dataTransporter->bearerToken = $request->bearerToken();
-
-        Apiato::call('Authentication@ApiLogoutAction', [$dataTransporter]);
+        Apiato::call('Authentication@ApiLogoutAction', [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -41,7 +36,7 @@ class Controller extends ApiController
      */
     public function proxyLoginForAdminWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyLoginForAdminWebClientAction', [new ProxyLoginPasswordGrantTransporter($request)]);
+        $result = Apiato::call('Authentication@ProxyLoginForAdminWebClientAction', [$request]);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
@@ -54,7 +49,7 @@ class Controller extends ApiController
      */
     public function proxyRefreshForAdminWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyRefreshForAdminWebClientAction', [new ProxyRefreshTransporter($request)]);
+        $result = Apiato::call('Authentication@ProxyRefreshForAdminWebClientAction', [$request]);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 }

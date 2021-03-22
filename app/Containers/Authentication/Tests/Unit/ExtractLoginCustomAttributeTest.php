@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Config;
  * @group authentication
  * @group unit
  *
- * @author Mohammad Alavi <mohammad.alavi1990@gmail.com>
  */
 class ExtractLoginCustomAttributeTest extends TestCase
 {
@@ -24,10 +23,10 @@ class ExtractLoginCustomAttributeTest extends TestCase
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
         ];
-        $transporter = new LoginTransporter($userDetails);
+
         $task = App::make(ExtractLoginCustomAttributeTask::class);
 
-        $result = $task->run($transporter);
+        $result = $task->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
@@ -48,10 +47,9 @@ class ExtractLoginCustomAttributeTest extends TestCase
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
         ];
-        $transporter = new LoginTransporter($userDetails);
         $task = App::make(ExtractLoginCustomAttributeTask::class);
 
-        $result = $task->run($transporter);
+        $result = $task->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }

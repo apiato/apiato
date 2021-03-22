@@ -12,7 +12,7 @@ class WebLoginSubAction extends SubAction
 {
     public function run(LoginTransporter $data): Authenticatable
     {
-        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data]);
+        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data->toArray()]);
 
         $requestData = [
             'username' => $loginCustomAttribute['username'],
