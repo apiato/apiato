@@ -17,6 +17,6 @@
 use App\Containers\User\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('users/{id}', [Controller::class, 'updateUser'])
+Route::put('users/{id}', [Controller::class, 'updateUser'])
     ->name('api_user_update_user')
     ->middleware(['auth:api']);
