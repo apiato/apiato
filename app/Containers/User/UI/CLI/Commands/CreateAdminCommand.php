@@ -3,6 +3,7 @@
 namespace App\Containers\User\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Commands\ConsoleCommand;
 use App\Ship\Transporters\DataTransporter;
 
@@ -19,21 +20,18 @@ class CreateAdminCommand extends ConsoleCommand
         $password = $this->secret('Enter the password for this user');
         $password_confirmation = $this->secret('Please confirm the password');
 
-        if ($password != $password_confirmation) {
+        if ($password !== $password_confirmation) {
             $this->error('Passwords do not match - exiting!');
             return;
         }
 
-        // ok, we have everything - lets create the user
-        // we therefore simply create a Transporter
-        $dataTransporter = new DataTransporter([
+        $request = new CreateAdminRequest([
             'name' => $username,
             'email' => $email,
             'password' => $password,
         ]);
 
-        // and then call respective Action
-        $user = Apiato::call('User@CreateAdminAction', [$dataTransporter]);
+        Apiato::call('User@CreateAdminAction', [$request]);
 
         $this->info('Admin ' . $email . ' was successfully created');
     }

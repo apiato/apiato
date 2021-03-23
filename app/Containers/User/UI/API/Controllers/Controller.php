@@ -22,25 +22,25 @@ class Controller extends ApiController
 {
     public function registerUser(RegisterUserRequest $request): array
     {
-        $user = Apiato::call('User@RegisterUserAction', [new DataTransporter($request)]);
+        $user = Apiato::call('User@RegisterUserAction', [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function createAdmin(CreateAdminRequest $request): array
     {
-        $admin = Apiato::call('User@CreateAdminAction', [new DataTransporter($request)]);
+        $admin = Apiato::call('User@CreateAdminAction', [$request]);
         return $this->transform($admin, UserTransformer::class);
     }
 
     public function updateUser(UpdateUserRequest $request): array
     {
-        $user = Apiato::call('User@UpdateUserAction', [new DataTransporter($request)]);
+        $user = Apiato::call('User@UpdateUserAction', [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function deleteUser(DeleteUserRequest $request): JsonResponse
     {
-        Apiato::call('User@DeleteUserAction', [new DataTransporter($request)]);
+        Apiato::call('User@DeleteUserAction', [$request]);
         return $this->noContent();
     }
 
@@ -65,7 +65,7 @@ class Controller extends ApiController
 
     public function findUserById(FindUserByIdRequest $request): array
     {
-        $user = Apiato::call('User@FindUserByIdAction', [new DataTransporter($request)]);
+        $user = Apiato::call('User@FindUserByIdAction', [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
@@ -77,13 +77,13 @@ class Controller extends ApiController
 
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
-        Apiato::call('User@ResetPasswordAction', [new DataTransporter($request)]);
+        Apiato::call('User@ResetPasswordAction', [$request]);
         return $this->noContent(204);
     }
 
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
-        Apiato::call('User@ForgotPasswordAction', [new DataTransporter($request)]);
+        Apiato::call('User@ForgotPasswordAction', [$request]);
         return $this->noContent(202);
     }
 

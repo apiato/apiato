@@ -4,6 +4,7 @@ namespace App\Containers\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Mails\UserForgotPasswordMail;
+use App\Containers\User\UI\API\Requests\ForgotPasswordRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordAction extends Action
 {
-    public function run(DataTransporter $data): void
+    public function run(ForgotPasswordRequest $data): void
     {
         $user = Apiato::call('User@FindUserByEmailTask', [$data->email]);
 

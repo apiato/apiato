@@ -4,12 +4,13 @@ namespace App\Containers\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
+use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
 class CreateAdminAction extends Action
 {
-    public function run(DataTransporter $data): User
+    public function run(CreateAdminRequest $data): User
     {
         $admin = Apiato::call('User@CreateUserByCredentialsTask', [
             true,

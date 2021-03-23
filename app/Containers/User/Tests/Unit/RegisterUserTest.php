@@ -5,6 +5,7 @@ namespace App\Containers\User\Tests\Unit;
 use App\Containers\User\Actions\RegisterUserAction;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
+use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\App;
 
@@ -24,9 +25,9 @@ class RegisterUserTest extends TestCase
             'name' => 'Mahmoud',
         ];
 
-        $transporter = new DataTransporter($data);
+        $request = new RegisterUserRequest($data);
         $action = App::make(RegisterUserAction::class);
-        $user = $action->run($transporter);
+        $user = $action->run($request);
 
         // asset the returned object is an instance of the User
         self::assertInstanceOf(User::class, $user);

@@ -2,6 +2,7 @@
 
 namespace App\Containers\User\Actions;
 
+use App\Containers\User\UI\API\Requests\ResetPasswordRequest;
 use App\Ship\Exceptions\InternalErrorException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Exceptions\Exception;
@@ -12,18 +13,19 @@ use Illuminate\Support\Str;
 
 class ResetPasswordAction extends Action
 {
-    public function run(DataTransporter $data): void
+    public function run(ResetPasswordRequest $data): void
     {
-        $data = [
-            'email' => $data->email,
-            'token' => $data->token,
-            'password' => $data->password,
-            'password_confirmation' => $data->password,
-        ];
+        $sanitizedData = $data->sanitizeInput([
+            'email',
+            'token',
+            'password'
+        ]);
+
+        $sanitizedData['password_confirmation'] = $data->password;
 
         try {
             Password::broker()->reset(
-                $data,
+                $sanitizedData,
                 function ($user, $password) {
                     $user->forceFill([
                         'password' => Hash::make($password),
