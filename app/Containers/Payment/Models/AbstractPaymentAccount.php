@@ -4,6 +4,7 @@ namespace App\Containers\Payment\Models;
 
 use App\Containers\Payment\Contracts\PaymentGatewayAccountInterface;
 use App\Ship\Parents\Models\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class AbstractPaymentAccount
@@ -15,13 +16,7 @@ use App\Ship\Parents\Models\Model;
  */
 abstract class AbstractPaymentAccount extends Model implements PaymentGatewayAccountInterface
 {
-
-    /**
-     * @param array $fields
-     *
-     * @return  bool
-     */
-    public function checkIfPaymentDataIsSet(array $fields)
+    public function checkIfPaymentDataIsSet(array $fields): bool
     {
         foreach ($fields as $field) {
             if ($this->getAttributeValue($field) === null) {
@@ -32,22 +27,16 @@ abstract class AbstractPaymentAccount extends Model implements PaymentGatewayAcc
         return true;
     }
 
-    /**
-     * @return  array
-     */
-    public function getDetailAttributes()
+    public function getDetailAttributes(): array
     {
         $attributes = $this->toArray();
 
-        unset($attributes['id']);
-        unset($attributes['created_at']);
-        unset($attributes['updated_at']);
-        unset($attributes['deleted_at']);
+        unset($attributes['id'], $attributes['created_at'], $attributes['updated_at'], $attributes['deleted_at']);
 
         return $attributes;
     }
 
-    public function paymentAccount()
+    public function paymentAccount(): MorphOne
     {
         return $this->morphOne(PaymentAccount::class, 'accountable');
     }

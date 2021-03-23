@@ -4,23 +4,12 @@ namespace App\Containers\Payment\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Payment\Models\PaymentAccount;
+use App\Containers\Payment\UI\API\Requests\FindPaymentAccountRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class FindPaymentAccountDetailsAction
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class FindPaymentAccountDetailsAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  PaymentAccount
-     */
-    public function run(DataTransporter $data): PaymentAccount
+    public function run(FindPaymentAccountRequest $data): PaymentAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

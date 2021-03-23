@@ -6,38 +6,11 @@ use App\Containers\Payment\Gateway\PaymentsGateway;
 use App\Containers\Payment\Models\PaymentAccount;
 use App\Containers\Payment\Models\PaymentTransaction;
 use Illuminate\Support\Facades\App;
-use JohannesSchobel\ShoppingCart\Models\ShoppingCart;
+use MohammadAlavi\ShoppingCart\Models\ShoppingCart;
 
-/**
- * Class ChargeableTrait.
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
- */
 trait ChargeableTrait
 {
-
-    /**
-     * @param PaymentAccount $account
-     * @param int|float                                     $amount
-     * @param string|null                                   $currency
-     *
-     * @return  PaymentTransaction
-     */
-    public function charge(PaymentAccount $account, $amount, $currency = null) : PaymentTransaction
-    {
-        $transaction = App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
-
-        return $transaction;
-    }
-
-    /**
-     * @param PaymentAccount $account
-     * @param ShoppingCart $cart
-     *
-     * @return  PaymentTransaction
-     */
-    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart) : PaymentTransaction
+    public function purchaseShoppingCart(PaymentAccount $account, ShoppingCart $cart): PaymentTransaction
     {
         /**
          * get the "value" of the shopping cart
@@ -47,13 +20,13 @@ trait ChargeableTrait
          * In order to handle this "automatically", we simply use the formatXXX() functions from the shopping cart!
          */
         $amount = $cart->formatMoney($cart->getTotal());
-        $amount = floatval($amount);
+        $amount = (float)$amount;
 
         $currency = $cart->getTotal()->getCurrency();
 
         $transaction = $this->charge($account, $amount, $currency);
 
-        $custom = $transaction->custom ? $transaction->custom : [];
+        $custom = $transaction->custom ?: [];
         $transaction->custom = array_merge(
             $custom,
             ['cart' => $cart]
@@ -63,4 +36,10 @@ trait ChargeableTrait
         return $transaction;
     }
 
+    public function charge(PaymentAccount $account, $amount, $currency = null): PaymentTransaction
+    {
+        $transaction = App::make(PaymentsGateway::class)->charge($this, $account, $amount, $currency);
+
+        return $transaction;
+    }
 }

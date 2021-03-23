@@ -8,27 +8,15 @@ use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-/**
- * Class UpdatePaymentAccountTask
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class UpdatePaymentAccountTask extends Task
 {
-    protected $repository;
+    protected PaymentAccountRepository $repository;
 
     public function __construct(PaymentAccountRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param PaymentAccount $account
-     * @param array                                         $data
-     *
-     * @return mixed
-     * @throws UpdateResourceFailedException
-     */
     public function run(PaymentAccount $account, array $data)
     {
         try {

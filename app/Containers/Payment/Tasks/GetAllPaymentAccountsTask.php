@@ -8,48 +8,26 @@ use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Criterias\Eloquent\ThisUserCriteria;
 use App\Ship\Parents\Tasks\Task;
 
-/**
- * Class GetAllPaymentAccountsTask
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class GetAllPaymentAccountsTask extends Task
 {
+    protected PaymentAccountRepository $repository;
 
-    protected $repository;
-
-    /**
-     * GetAllPaymentAccountsTask constructor.
-     *
-     * @param PaymentAccountRepository $repository
-     */
     public function __construct(PaymentAccountRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @return  mixed
-     */
     public function run()
     {
         return $this->repository->paginate();
     }
 
-    /**
-     * @return  mixed
-     */
-    public function ordered()
+    public function ordered(): PaymentAccountRepository
     {
         return $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
     }
 
-    /**
-     * @param User $user
-     *
-     * @return  mixed
-     */
-    public function filterByUser(User $user)
+    public function filterByUser(User $user): PaymentAccountRepository
     {
         return $this->repository->pushCriteria(new ThisUserCriteria($user->id));
     }

@@ -5,11 +5,6 @@ namespace App\Containers\Payment\Models;
 use App\Ship\Parents\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class PaymentTransaction
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class PaymentTransaction extends Model
 {
     use SoftDeletes;
@@ -51,5 +46,5 @@ class PaymentTransaction extends Model
     /**
      * A resource key to be used by the the JSON API Serializer responses.
      */
-    protected $resourceKey = 'paymenttransactions';
+    protected string $resourceKey = 'paymenttransactions';
 }

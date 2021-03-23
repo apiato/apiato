@@ -4,12 +4,6 @@ namespace App\Containers\Payment\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class FindPaymentAccountRequest
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class FindPaymentAccountRequest extends Request
 {
     /**
@@ -17,7 +11,7 @@ class FindPaymentAccountRequest extends Request
      */
     protected array $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
     /**

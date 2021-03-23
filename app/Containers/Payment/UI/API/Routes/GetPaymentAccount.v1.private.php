@@ -15,15 +15,14 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
-{
-  // ...
-}
+ * {
+ * // ...
+ * }
  */
 
-$router->get('user/paymentaccounts/{id}', [
-    'as' => 'api_payment_get_payment_account',
-    'uses'  => 'Controller@getPaymentAccount',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\Payment\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::get('user/paymentaccounts/{id}', [Controller::class, 'getPaymentAccount'])
+    ->name('api_payment_get_payment_account')
+    ->middleware(['auth:api']);

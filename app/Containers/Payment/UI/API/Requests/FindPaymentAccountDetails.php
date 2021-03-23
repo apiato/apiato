@@ -4,9 +4,6 @@ namespace App\Containers\Payment\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class FindPaymentAccountDetails.
- */
 class FindPaymentAccountDetails extends Request
 {
     /**
@@ -14,7 +11,7 @@ class FindPaymentAccountDetails extends Request
      */
     protected array $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
     /**

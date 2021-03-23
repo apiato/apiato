@@ -7,38 +7,26 @@ use App\Ship\Parents\Transformers\Transformer;
 
 class PaymentAccountTransformer extends Transformer
 {
-
-    /**
-     * @var  array
-     */
     protected $defaultIncludes = [
 
     ];
 
-    /**
-     * @var  array
-     */
     protected $availableIncludes = [
 
     ];
 
-    /**
-     * @param PaymentAccount $entity
-     *
-     * @return array
-     */
-    public function transform(PaymentAccount $entity)
+    public function transform(PaymentAccount $entity): array
     {
         $response = [
 
             'object' => 'PaymentAccount',
-            'id'     => $entity->getHashedKey(),
+            'id' => $entity->getHashedKey(),
 
             'name' => $entity->name,
 
             'account' => [
                 'type' => $entity->accountable->getPaymentGatewayReadableName(),
-                'id'   => $entity->accountable->getHashedKey(),
+                'id' => $entity->accountable->getHashedKey(),
                 'slug' => $entity->accountable->getPaymentGatewaySlug(),
             ],
 
@@ -49,7 +37,7 @@ class PaymentAccountTransformer extends Transformer
         ];
 
         $response = $this->ifAdmin([
-            'real_id'    => $entity->id,
+            'real_id' => $entity->id,
             'deleted_at' => $entity->deleted_at,
         ], $response);
 

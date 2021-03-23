@@ -8,22 +8,16 @@ use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
-/**
- * Class DeletePaymentAccountTask
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class DeletePaymentAccountTask extends Task
 {
-
-    protected $repository;
+    protected PaymentAccountRepository $repository;
 
     public function __construct(PaymentAccountRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function run(PaymentAccount $account)
+    public function run(PaymentAccount $account): ?int
     {
         try {
             // first, get the associated account and remove this one!

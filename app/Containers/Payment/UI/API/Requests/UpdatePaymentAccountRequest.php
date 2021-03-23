@@ -4,12 +4,6 @@ namespace App\Containers\Payment\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class UpdatePaymentAccountRequest
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class UpdatePaymentAccountRequest extends Request
 {
     /**
@@ -17,7 +11,7 @@ class UpdatePaymentAccountRequest extends Request
      */
     protected array $access = [
         'permissions' => '',
-        'roles'       => '',
+        'roles' => '',
     ];
 
     /**
@@ -38,9 +32,7 @@ class UpdatePaymentAccountRequest extends Request
     public function rules(): array
     {
         return [
-            // put your rules here
             'id' => 'required|exists:payment_accounts,id',
-
             'name' => 'sometimes|string|max:190',
         ];
     }

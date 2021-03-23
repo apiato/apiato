@@ -15,15 +15,14 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
-{
-    // ...
-}
+ * {
+ * // ...
+ * }
  */
 
-$router->patch('user/paymentaccounts/{id}', [
-    'as' => 'api_payment_update_payment_account',
-    'uses'  => 'Controller@updatePaymentAccount',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\Payment\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::patch('user/paymentaccounts/{id}', [Controller::class, 'updatePaymentAccount'])
+    ->name('api_payment_update_payment_account')
+    ->middleware(['auth:api']);

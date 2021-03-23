@@ -3,21 +3,12 @@
 namespace App\Containers\Payment\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Payment\UI\API\Requests\DeletePaymentAccountRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class DeletePaymentAccountAction
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class DeletePaymentAccountAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     */
-    public function run(DataTransporter $data): void
+    public function run(DeletePaymentAccountRequest $data): void
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

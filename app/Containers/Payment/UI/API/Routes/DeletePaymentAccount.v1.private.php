@@ -15,15 +15,15 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
-{
-    // ...
-}
+ * {
+ * // ...
+ * }
  */
 
-$router->delete('user/paymentaccounts/{id}', [
-    'as' => 'api_payment_delete_payment_account',
-    'uses'  => 'Controller@deletePaymentAccount',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\Payment\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::delete('user/paymentaccounts/{id}', [Controller::class, 'deletePaymentAccount'])
+    ->name('api_payment_delete_payment_account')
+    ->middleware(['auth:api']);
+
