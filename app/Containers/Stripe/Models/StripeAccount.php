@@ -5,11 +5,6 @@ namespace App\Containers\Stripe\Models;
 use App\Containers\Payment\Models\AbstractPaymentAccount;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class StripeAccount.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class StripeAccount extends AbstractPaymentAccount
 {
     use SoftDeletes;
@@ -37,18 +32,12 @@ class StripeAccount extends AbstractPaymentAccount
         'updated_at',
     ];
 
-    /**
-     * @return string
-     */
-    public function getPaymentGatewayReadableName()
+    public function getPaymentGatewayReadableName(): string
     {
         return 'Stripe';
     }
 
-    /**
-     * @return string
-     */
-    public function getPaymentGatewaySlug()
+    public function getPaymentGatewaySlug(): string
     {
         return 'stripe';
     }
