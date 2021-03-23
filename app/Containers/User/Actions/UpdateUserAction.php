@@ -6,7 +6,6 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateUserAction extends Action

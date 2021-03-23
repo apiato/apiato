@@ -6,7 +6,6 @@ use App\Containers\User\UI\API\Requests\ResetPasswordRequest;
 use App\Ship\Exceptions\InternalErrorException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Exceptions\Exception;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;

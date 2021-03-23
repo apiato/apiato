@@ -9,7 +9,6 @@ use App\Containers\User\Models\User;
 use App\Containers\User\Notifications\UserRegisteredNotification;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;

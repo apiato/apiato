@@ -5,7 +5,6 @@ namespace App\Containers\User\Actions;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\UI\API\Requests\DeleteUserRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class DeleteUserAction extends Action
 {

@@ -7,7 +7,6 @@ use App\Containers\User\Mails\UserForgotPasswordMail;
 use App\Containers\User\UI\API\Requests\ForgotPasswordRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordAction extends Action

@@ -6,7 +6,6 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest;
 use App\Ship\Parents\Controllers\ApiController;
-use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 
 class Controller extends ApiController

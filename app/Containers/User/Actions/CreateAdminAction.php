@@ -6,7 +6,6 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class CreateAdminAction extends Action
 {

@@ -7,7 +7,6 @@ use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class FindUserByIdAction extends Action
 {

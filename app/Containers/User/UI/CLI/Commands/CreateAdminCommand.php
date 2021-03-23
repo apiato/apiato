@@ -5,7 +5,6 @@ namespace App\Containers\User\UI\CLI\Commands;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use App\Ship\Transporters\DataTransporter;
 
 class CreateAdminCommand extends ConsoleCommand
 {
