@@ -45,17 +45,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "8854e187d1100570782535117ebde8c2286cf6d6"
+                "reference": "3e5689f247e57c29ec764cb409fc29a7c35f7ff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/8854e187d1100570782535117ebde8c2286cf6d6",
-                "reference": "8854e187d1100570782535117ebde8c2286cf6d6",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/3e5689f247e57c29ec764cb409fc29a7c35f7ff9",
+                "reference": "3e5689f247e57c29ec764cb409fc29a7c35f7ff9",
                 "shasum": ""
             },
             "require": {
                 "apiato/containers-installer": "^1.0",
                 "dto/dto": "^3.2.7",
+                "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
                 "illuminate/support": "^8.28.1",
                 "laravel/tinker": "^2.6.0",
@@ -65,7 +66,7 @@
                 "vinkla/hashids": "^9.1.0"
             },
             "require-dev": {
-                "roave/security-advisories": "dev-master"
+                "roave/security-advisories": "dev-latest"
             },
             "type": "library",
             "extra": {
@@ -117,7 +118,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-20T10:23:14+00:00"
+            "time": "2021-03-23T15:16:45+00:00"
         },
         {
             "name": "asm89/stack-cors",
