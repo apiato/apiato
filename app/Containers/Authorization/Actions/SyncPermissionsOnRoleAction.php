@@ -4,12 +4,12 @@ namespace App\Containers\Authorization\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Authorization\Models\Role;
+use App\Containers\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class SyncPermissionsOnRoleAction extends Action
 {
-    public function run(DataTransporter $data): Role
+    public function run(SyncPermissionsOnRoleRequest $data): Role
     {
         $role = Apiato::call('Authorization@FindRoleTask', [$data->role_id]);
 

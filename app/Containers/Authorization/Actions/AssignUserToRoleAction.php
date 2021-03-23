@@ -3,13 +3,13 @@
 namespace App\Containers\Authorization\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class AssignUserToRoleAction extends Action
 {
-    public function run(DataTransporter $data): User
+    public function run(AssignUserToRoleRequest $data): User
     {
         $user = Apiato::call('User@FindUserByIdTask', [$data->user_id]);
 

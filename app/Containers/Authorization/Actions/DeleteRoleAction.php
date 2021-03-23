@@ -3,13 +3,13 @@
 namespace App\Containers\Authorization\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 use Spatie\Permission\Contracts\Role;
 
 class DeleteRoleAction extends Action
 {
-    public function run(DataTransporter $data): Role
+    public function run(DeleteRoleRequest $data): Role
     {
         $role = Apiato::call('Authorization@FindRoleTask', [$data->id]);
 
