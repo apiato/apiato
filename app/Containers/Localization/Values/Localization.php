@@ -11,7 +11,7 @@ class Localization extends Value
     /**
      * A resource key to be used by the the JSON API Serializer responses.
      */
-    protected $resourceKey = 'localizations';
+    protected string $resourceKey = 'localizations';
     private $language = null;
     private array $regions = [];
 

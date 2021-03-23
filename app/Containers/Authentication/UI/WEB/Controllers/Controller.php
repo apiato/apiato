@@ -3,7 +3,6 @@
 namespace App\Containers\Authentication\UI\WEB\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\WEB\Requests\ViewDashboardRequest;

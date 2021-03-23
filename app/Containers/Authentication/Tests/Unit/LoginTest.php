@@ -3,7 +3,6 @@
 namespace App\Containers\Authentication\Tests\Unit;
 
 use App\Containers\Authentication\Actions\WebLoginSubAction;
-use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Containers\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;

@@ -3,7 +3,6 @@
 namespace App\Containers\Authentication\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\ProxyLoginPasswordGrantTransporter;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\Authentication\UI\API\Requests\ProxyRefreshRequest;
