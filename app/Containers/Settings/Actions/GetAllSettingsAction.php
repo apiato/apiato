@@ -9,6 +9,9 @@ class GetAllSettingsAction extends Action
 {
     public function run()
     {
-        return Apiato::call('Settings@GetAllSettingsTask', [], ['ordered']);
+        return Apiato::call('Settings@GetAllSettingsTask', [], [
+            'addRequestCriteria',
+            'ordered'
+        ]);
     }
 }

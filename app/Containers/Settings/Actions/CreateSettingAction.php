@@ -4,20 +4,18 @@ namespace App\Containers\Settings\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Settings\Models\Setting;
+use App\Containers\Settings\UI\API\Requests\CreateSettingRequest;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class CreateSettingAction extends Action
 {
-    public function run(DataTransporter $data): Setting
+    public function run(CreateSettingRequest $data): Setting
     {
-        $data = $data->sanitizeInput([
+        $sanitizedData = $data->sanitizeInput([
             'key',
             'value'
         ]);
 
-        $setting = Apiato::call('Settings@CreateSettingTask', [$data]);
-
-        return $setting;
+        return Apiato::call('Settings@CreateSettingTask', [$sanitizedData]);
     }
 }
