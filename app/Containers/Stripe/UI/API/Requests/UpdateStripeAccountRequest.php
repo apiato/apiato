@@ -4,18 +4,13 @@ namespace App\Containers\Stripe\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class UpdateStripeAccountRequest
- *
- * @author  Johannes Schobel <johannes.schobel@googlemail.com>
- */
 class UpdateStripeAccountRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => '',
     ];
 
@@ -37,23 +32,23 @@ class UpdateStripeAccountRequest extends Request
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'id'                => 'required|exists:stripe_accounts,id',
+            'id' => 'required|exists:stripe_accounts,id',
 
-            'customer_id'       => 'sometimes|min:3',
-            'card_id'           => 'sometimes|min:3',
-            'card_funding'      => 'sometimes',
-            'card_last_digits'  => 'sometimes|integer|min:0|max:9999',
-            'card_fingerprint'  => 'sometimes|string',
+            'customer_id' => 'sometimes|min:3',
+            'card_id' => 'sometimes|min:3',
+            'card_funding' => 'sometimes',
+            'card_last_digits' => 'sometimes|integer|min:0|max:9999',
+            'card_fingerprint' => 'sometimes|string',
         ];
     }
 
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

@@ -9,20 +9,13 @@ use Exception;
 
 class CreateStripeAccountTask extends Task
 {
-
-    protected $repository;
+    protected StripeAccountRepository $repository;
 
     public function __construct(StripeAccountRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return mixed
-     * @throws CreateResourceFailedException
-     */
     public function run(array $data)
     {
         try {

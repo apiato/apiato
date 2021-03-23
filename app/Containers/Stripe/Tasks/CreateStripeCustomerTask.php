@@ -8,39 +8,21 @@ use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class CreateStripeCustomerTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class CreateStripeCustomerTask extends Task
 {
+    private Stripe $stripe;
 
-    private $stripe;
-
-    /**
-     * StripeApi constructor.
-     *
-     * @param Stripe $stripe
-     */
     public function __construct(Stripe $stripe)
     {
         $this->stripe = $stripe->make(Config::get('settings.stripe.secret'), Config::get('settings.stripe.version'));
     }
 
-    /**
-     * @param string $email
-     * @param string $description
-     *
-     * @return array stripe customer object
-     * @throws StripeApiErrorException
-     */
-    public function run($email, $description = '')
+    public function run(string $email, string $description = '')
     {
         try {
 
             $response = $this->stripe->customers()->create([
-                'email'       => $email,
+                'email' => $email,
                 'description' => $description,
             ]);
 
@@ -50,5 +32,4 @@ class CreateStripeCustomerTask extends Task
 
         return $response;
     }
-
 }

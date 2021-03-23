@@ -3,23 +3,13 @@
 namespace App\Containers\Stripe\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Stripe\UI\API\Requests\CreateStripeAccountRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class CreateStripeAccountAction.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class CreateStripeAccountAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  mixed
-     */
-    public function run(DataTransporter $data)
+    public function run(CreateStripeAccountRequest $data)
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 
@@ -38,5 +28,4 @@ class CreateStripeAccountAction extends Action
 
         return $result;
     }
-
 }

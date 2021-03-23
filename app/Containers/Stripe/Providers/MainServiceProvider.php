@@ -15,7 +15,6 @@ use Cartalyst\Stripe\Laravel\StripeServiceProvider;
  */
 class MainServiceProvider extends MainProvider
 {
-
     /**
      * Container Service Providers.
      */
@@ -29,5 +28,4 @@ class MainServiceProvider extends MainProvider
     public array $aliases = [
         'Stripe' => Stripe::class,
     ];
-
 }

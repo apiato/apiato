@@ -4,18 +4,13 @@ namespace App\Containers\Stripe\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-/**
- * Class CreateStripeAccountRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class CreateStripeAccountRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => '',
     ];
 
@@ -37,22 +32,22 @@ class CreateStripeAccountRequest extends Request
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'customer_id'       => 'required|min:3',
-            'card_id'           => 'required|min:3',
-            'card_funding'      => 'sometimes',
-            'card_last_digits'  => 'sometimes|integer|min:0|max:9999',
-            'card_fingerprint'  => 'sometimes|string',
-            'nickname'          => 'required|string|max:190',
+            'customer_id' => 'required|min:3',
+            'card_id' => 'required|min:3',
+            'card_funding' => 'sometimes',
+            'card_last_digits' => 'sometimes|integer|min:0|max:9999',
+            'card_fingerprint' => 'sometimes|string',
+            'nickname' => 'required|string|max:190',
         ];
     }
 
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess',

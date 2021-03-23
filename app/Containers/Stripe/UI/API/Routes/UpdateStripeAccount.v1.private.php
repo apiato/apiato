@@ -14,15 +14,14 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
-{
-  // Insert the response of the request here...
-}
+ * {
+ * // Insert the response of the request here...
+ * }
  */
 
-$router->patch('user/payments/accounts/stripe/{id}', [
-    'as' => 'api_stripe_update_stripe_account',
-    'uses'  => 'Controller@updateStripeAccount',
-    'middleware' => [
-      'auth:api',
-    ],
-]);
+use App\Containers\Stripe\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::patch('user/payments/accounts/stripe/{id}', [Controller::class, 'updateStripeAccount'])
+    ->name('api_stripe_update_stripe_account')
+    ->middleware(['auth:api']);

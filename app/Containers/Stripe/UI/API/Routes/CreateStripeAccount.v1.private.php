@@ -20,16 +20,15 @@
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK
-{
-   "message":"Stripe account created successfully.",
-   "stripe_account_id":1
-}
+ * {
+ * "message":"Stripe account created successfully.",
+ * "stripe_account_id":1
+ * }
  */
 
-$router->post('/user/payments/accounts/stripe', [
-    'as' => 'api_stripe_create_stripe_account',
-    'uses' => 'Controller@createStripeAccount',
-    'middleware' => [
-        'auth:api',
-    ],
-]);
+use App\Containers\Stripe\UI\API\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/user/payments/accounts/stripe', [Controller::class, 'createStripeAccount'])
+    ->name('api_stripe_create_stripe_account')
+    ->middleware(['auth:api']);

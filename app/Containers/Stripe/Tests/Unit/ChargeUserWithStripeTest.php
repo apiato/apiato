@@ -18,13 +18,9 @@ use Illuminate\Support\Facades\App;
  */
 class ChargeUserWithStripeTest extends TestCase
 {
-
     use MockablePaymentsTrait;
 
-    /**
-     * @test
-     */
-    public function testChargeUserWithStripe()
+    public function testChargeUserWithStripe(): void
     {
         // Mock the payments
         $this->mockPayments();
@@ -45,6 +41,6 @@ class ChargeUserWithStripeTest extends TestCase
 
         $transaction = $user->charge($account, $amount);
 
-        $this->assertEquals($transaction->gateway, 'Stripe');
+        self::assertEquals($transaction->gateway, 'Stripe');
     }
 }

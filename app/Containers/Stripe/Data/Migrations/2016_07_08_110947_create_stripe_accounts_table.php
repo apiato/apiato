@@ -3,20 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-/**
- * Class CreateStripeAccountsTable
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class CreateStripeAccountsTable extends Migration
 {
-
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('stripe_accounts', function (Blueprint $table) {
             $table->id();
@@ -32,12 +21,7 @@ class CreateStripeAccountsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::drop('stripe_accounts');
     }

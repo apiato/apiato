@@ -4,23 +4,13 @@ namespace App\Containers\Stripe\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Stripe\Models\StripeAccount;
+use App\Containers\Stripe\UI\API\Requests\UpdateStripeAccountRequest;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Transporters\DataTransporter;
 
-/**
- * Class UpdateStripeAccountAction
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class UpdateStripeAccountAction extends Action
 {
-
-    /**
-     * @param DataTransporter $data
-     *
-     * @return  StripeAccount
-     */
-    public function run(DataTransporter $data): StripeAccount
+    public function run(UpdateStripeAccountRequest $data): StripeAccount
     {
         $user = Apiato::call('Authentication@GetAuthenticatedUserTask');
 

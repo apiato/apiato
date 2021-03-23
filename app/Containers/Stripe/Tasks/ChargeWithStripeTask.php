@@ -13,37 +13,16 @@ use Cartalyst\Stripe\Stripe;
 use Exception;
 use Illuminate\Support\Facades\Config;
 
-/**
- * Class ChargeWithStripeTask.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class ChargeWithStripeTask extends Task implements PaymentChargerInterface
 {
+    private Stripe $stripe;
 
-    private $stripe;
-
-    /**
-     * ChargeWithStripeTask constructor.
-     *
-     * @param Stripe $stripe
-     */
     public function __construct(Stripe $stripe)
     {
         $this->stripe = $stripe->make(Config::get('settings.stripe.secret'), Config::get('settings.stripe.version'));
     }
 
-    /**
-     * @param ChargeableInterface $user
-     * @param AbstractPaymentAccount $account
-     * @param float                                                 $amount
-     * @param string                                                $currency
-     *
-     * @return PaymentTransaction
-     * @throws StripeAccountNotFoundException
-     * @throws StripeApiErrorException
-     */
-    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD') : PaymentTransaction
+    public function charge(ChargeableInterface $user, AbstractPaymentAccount $account, $amount, $currency = 'USD'): PaymentTransaction
     {
         // NOTE: you should not call this function directly. Instead use the Payment Gateway in the Payment container.
         // Or even better to use the charge function in the ChargeableTrait.
@@ -62,7 +41,7 @@ class ChargeWithStripeTask extends Task implements PaymentChargerInterface
             $response = $this->stripe->charges()->create([
                 'customer' => $account->customer_id,
                 'currency' => $currency,
-                'amount'   => $amount,
+                'amount' => $amount,
             ]);
 
         } catch (Exception $e) {
@@ -87,5 +66,4 @@ class ChargeWithStripeTask extends Task implements PaymentChargerInterface
 
         return $transaction;
     }
-
 }

@@ -9,22 +9,11 @@ use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
 use Illuminate\Http\JsonResponse;
 
-/**
- * Class Controller.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class Controller extends ApiController
 {
-
-    /**
-     * @param CreateStripeAccountRequest $request
-     *
-     * @return  JsonResponse
-     */
-    public function createStripeAccount(CreateStripeAccountRequest $request)
+    public function createStripeAccount(CreateStripeAccountRequest $request): JsonResponse
     {
-        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [new DataTransporter($request)]);
+        $stripeAccount = Apiato::call('Stripe@CreateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account created successfully.',
@@ -32,19 +21,13 @@ class Controller extends ApiController
         ]);
     }
 
-    /**
-     * @param UpdateStripeAccountRequest $request
-     *
-     * @return  JsonResponse
-     */
-    public function updateStripeAccount(UpdateStripeAccountRequest $request)
+    public function updateStripeAccount(UpdateStripeAccountRequest $request): JsonResponse
     {
-        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [new DataTransporter($request)]);
+        $stripeAccount = Apiato::call('Stripe@UpdateStripeAccountAction', [$request]);
 
         return $this->accepted([
             'message'           => 'Stripe account updated successfully.',
             'stripe_account_id' => $stripeAccount->id,
         ]);
     }
-
 }

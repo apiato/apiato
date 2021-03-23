@@ -5,16 +5,8 @@ namespace App\Containers\Stripe\Data\Repositories;
 use App\Containers\Stripe\Models\StripeAccount;
 use App\Ship\Parents\Repositories\Repository;
 
-/**
- * Class StripeAccountRepository.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
- */
 class StripeAccountRepository extends Repository
 {
-    /**
-     * Specify Model class name.
-     */
     public function model(): string
     {
         return StripeAccount::class;

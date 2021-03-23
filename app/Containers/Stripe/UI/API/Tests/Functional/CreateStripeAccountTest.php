@@ -14,7 +14,6 @@ use App\Containers\Stripe\Tests\ApiTestCase;
  */
 class CreateStripeAccountTest extends ApiTestCase
 {
-
     protected string $endpoint = 'post@v1/user/payments/accounts/stripe';
 
     protected array $access = [
@@ -22,10 +21,7 @@ class CreateStripeAccountTest extends ApiTestCase
         'roles'       => '',
     ];
 
-    /**
-     * @test
-     */
-    public function testCreateStripeAccount()
+    public function testCreateStripeAccount(): void
     {
         $userDetails = [
             'name'     => 'Mahmoud Zalt',
@@ -53,8 +49,6 @@ class CreateStripeAccountTest extends ApiTestCase
         // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
 
-        $this->assertEquals($responseContent->message, 'Stripe account created successfully.');
-
+        self::assertEquals('Stripe account created successfully.', $responseContent->message);
     }
-
 }
