@@ -11,11 +11,12 @@ class ProxyLoginForAdminWebClientAction extends Action
 {
     public function run(ProxyLoginPasswordGrantRequest $data): array
     {
-        $sanitizedData = $data->sanitizeInput([
-            'email',
-            'name',
-            'password',
-        ]);
+        $sanitizedData = $data->sanitizeInput(
+            array_merge(
+                array_keys(Config::get('authentication-container.login.attributes')),
+                ['password']
+            )
+        );
 
         $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$sanitizedData]);
 
