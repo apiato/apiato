@@ -6,6 +6,7 @@ use App\Containers\Authentication\Actions\WebLoginSubAction;
 use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\Exceptions\LoginFailedException;
 use App\Containers\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
 use Illuminate\Support\Facades\App;
@@ -16,13 +17,11 @@ use Illuminate\Support\Facades\Config;
  *
  * @group authentication
  * @group unit
- *
- * @author Mohammad Alavi <mohammad.alavi1990@gmail.com>
  */
 class LoginTest extends TestCase
 {
     private array $userDetails;
-    private LoginTransporter $transporter;
+    private LoginRequest $request;
     private $action;
 
     public function setUp(): void
@@ -35,13 +34,13 @@ class LoginTest extends TestCase
         ];
         $this->getTestingUser($this->userDetails);
         $this->actingAs($this->testingUser, 'web');
-        $this->transporter = new LoginTransporter($this->userDetails);
+        $this->request = new LoginRequest($this->userDetails);
         $this->action = App::make(WebLoginSubAction::class);
     }
 
     public function testLogin(): void
     {
-        $user = $this->action->run($this->transporter);
+        $user = $this->action->run($this->request);
 
         self::assertInstanceOf(User::class, $user);
         self::assertSame($user->name, $this->userDetails['name']);
@@ -51,8 +50,8 @@ class LoginTest extends TestCase
     {
         $this->expectException(LoginFailedException::class);
 
-        $this->transporter = new LoginTransporter(['email' => 'wrong@email.com', 'password' => 'wrong_password']);
-        $this->action->run($this->transporter);
+        $this->request = new LoginRequest(['email' => 'wrong@email.com', 'password' => 'wrong_password']);
+        $this->action->run($this->request);
     }
 
     public function testGivenEmailConfirmationIsRequiredAndUserIsNotConfirmedThrowsAnException(): void
@@ -65,7 +64,7 @@ class LoginTest extends TestCase
         $this->testingUser->confirmed = false;
         $this->testingUser->save();
 
-        $this->action->run($this->transporter);
+        $this->action->run($this->request);
 
         Config::set('authentication-container.require_email_confirmation', $configInitialValue);
     }

@@ -3,25 +3,30 @@
 namespace App\Containers\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\Authentication\Data\Transporters\LoginTransporter;
 use App\Containers\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Actions\SubAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 class WebLoginSubAction extends SubAction
 {
-    public function run(LoginTransporter $data): Authenticatable
+    public function run(LoginRequest $data): Authenticatable
     {
-        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$data->toArray()]);
+        $sanitizedData = $data->sanitizeInput([
+            'email',
+            'password',
+            'remember_me' => false
+        ]);
 
-        $requestData = [
-            'username' => $loginCustomAttribute['username'],
-            'password' => $data->password,
-            'remember_me' => $data->remember_me,
-            'loginCustomAttribute' => $loginCustomAttribute['loginAttribute']
-        ];
+        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$sanitizedData]);
 
-        $user = Apiato::call('Authentication@LoginTask', [$requestData['username'], $requestData['password'], $requestData['loginCustomAttribute'], $requestData['remember_me']]);
+        $user = Apiato::call('Authentication@LoginTask', [
+            $loginCustomAttribute['username'],
+            $sanitizedData['password'],
+            $loginCustomAttribute['loginAttribute'],
+            $sanitizedData['remember_me']
+        ]);
+
         $isUserConfirmed = Apiato::call('Authentication@CheckIfUserEmailIsConfirmedTask', [$user]);
 
         if (!$isUserConfirmed) {

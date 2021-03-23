@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Tests\Unit;
 
 use App\Containers\Authentication\Actions\WebAdminLoginAction;
-use App\Containers\Authentication\Data\Transporters\LoginTransporter;
+use App\Containers\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\Authorization\Exceptions\UserNotAdminException;
 use App\Containers\User\Models\User;
 use App\Containers\User\Tests\TestCase;
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\App;
 class WebAdminLoginTest extends TestCase
 {
     private $userDetails;
-    private $transporter;
+    private $request;
     private $action;
 
     public function setUp(): void
@@ -31,7 +31,7 @@ class WebAdminLoginTest extends TestCase
             'password' => 'so-secret',
             'name' => 'Mahmoud',
         ];
-        $this->transporter = new LoginTransporter($this->userDetails);
+        $this->request = new LoginRequest($this->userDetails);
         $this->action = App::make(WebAdminLoginAction::class);
 
     }
@@ -41,7 +41,7 @@ class WebAdminLoginTest extends TestCase
         $this->getTestingUser($this->userDetails, ['roles' => 'admin']);
         $this->actingAs($this->testingUser, 'web');
 
-        $user = $this->action->run($this->transporter);
+        $user = $this->action->run($this->request);
         self::assertInstanceOf(User::class, $user);
     }
 
@@ -52,6 +52,6 @@ class WebAdminLoginTest extends TestCase
         $this->getTestingUser($this->userDetails);
         $this->actingAs($this->testingUser, 'web');
 
-        $this->action->run($this->transporter);
+        $this->action->run($this->request);
     }
 }
