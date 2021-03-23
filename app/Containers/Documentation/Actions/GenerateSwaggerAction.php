@@ -3,15 +3,13 @@
 namespace App\Containers\Documentation\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Documentation\UI\CLI\Commands\GenerateSwaggerCommand;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class GenerateSwaggerAction extends Action
 {
-    public function run(DataTransporter $data): void
+    public function run(GenerateSwaggerCommand $console): void
     {
-        $console = $data->command_instance;
-
         // parse the markdown file.
         Apiato::call('Documentation@RenderTemplatesTask');
 

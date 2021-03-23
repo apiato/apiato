@@ -3,15 +3,13 @@
 namespace App\Containers\Documentation\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\Documentation\UI\CLI\Commands\GenerateApiDocsCommand;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Transporters\DataTransporter;
 
 class GenerateDocumentationAction extends Action
 {
-    public function run(DataTransporter $data): void
+    public function run(GenerateApiDocsCommand $console): void
     {
-        $console = $data->command_instance;
-
         // parse the markdown file.
         Apiato::call('Documentation@RenderTemplatesTask');
 

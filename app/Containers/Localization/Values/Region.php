@@ -11,7 +11,7 @@ class Region extends Value
     /**
      * A resource key to be used by the the JSON API Serializer responses.
      */
-    protected $resourceKey = 'regions';
+    protected string $resourceKey = 'regions';
     private $region = null;
 
     public function __construct($region)

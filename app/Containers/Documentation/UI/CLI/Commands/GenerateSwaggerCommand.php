@@ -4,7 +4,6 @@ namespace App\Containers\Documentation\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Ship\Parents\Commands\ConsoleCommand;
-use App\Ship\Transporters\DataTransporter;
 
 class GenerateSwaggerCommand extends ConsoleCommand
 {
@@ -14,9 +13,6 @@ class GenerateSwaggerCommand extends ConsoleCommand
 
     public function handle(): void
     {
-        $transporter = new DataTransporter();
-        $transporter->setInstance("command_instance", $this);
-
-        Apiato::call('Documentation@GenerateSwaggerAction', [$transporter]);
+        Apiato::call('Documentation@GenerateSwaggerAction', [$this]);
     }
 }
