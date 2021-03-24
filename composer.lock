@@ -45,17 +45,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "a34381c3c408ff1745949da11b17350eef77c96e"
+                "reference": "12844e8ab024ee959605fdbf34d31853556a208d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/a34381c3c408ff1745949da11b17350eef77c96e",
-                "reference": "a34381c3c408ff1745949da11b17350eef77c96e",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/12844e8ab024ee959605fdbf34d31853556a208d",
+                "reference": "12844e8ab024ee959605fdbf34d31853556a208d",
                 "shasum": ""
             },
             "require": {
                 "apiato/containers-installer": "^1.0",
-                "dto/dto": "^3.2.7",
                 "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
                 "illuminate/support": "^8.28.1",
@@ -118,7 +117,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-23T15:48:56+00:00"
+            "time": "2021-03-24T12:01:55+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -1073,45 +1072,6 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
-        },
-        {
-            "name": "dto/dto",
-            "version": "3.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fireproofsocks/dto.git",
-                "reference": "715e9cc7701836b1aacd6b2fc5f130e92ddbedd5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fireproofsocks/dto/zipball/715e9cc7701836b1aacd6b2fc5f130e92ddbedd5",
-                "reference": "715e9cc7701836b1aacd6b2fc5f130e92ddbedd5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "pimple/pimple": "^3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.7",
-                "phpunit/phpunit": "5.7.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dto\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Use the JSON Schema spec to define Data Transfer Objects (DTOs)",
-            "support": {
-                "issues": "https://github.com/fireproofsocks/dto/issues",
-                "source": "https://github.com/fireproofsocks/dto/tree/master"
-            },
-            "time": "2018-04-18T22:40:01+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2389,16 +2349,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "cefaeb37709c719a2e788dff0bf1ad4064c71ba2"
+                "reference": "ae4165a76848e070fdac691e773243d10cd06ce1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/cefaeb37709c719a2e788dff0bf1ad4064c71ba2",
-                "reference": "cefaeb37709c719a2e788dff0bf1ad4064c71ba2",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/ae4165a76848e070fdac691e773243d10cd06ce1",
+                "reference": "ae4165a76848e070fdac691e773243d10cd06ce1",
                 "shasum": ""
             },
             "require": {
@@ -2449,7 +2409,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/4.0.2"
+                "source": "https://github.com/lcobucci/jwt/tree/4.0.3"
             },
             "funding": [
                 {
@@ -2461,7 +2421,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-03-19T20:51:49+00:00"
+            "time": "2021-03-23T23:47:22+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3060,6 +3020,39 @@
                 }
             ],
             "time": "2021-02-19T21:22:57+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-settings",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-settings.git",
+                "reference": "fa155bbc36a4b3e73691d13211b7a66bc1388ba4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/fa155bbc36a4b3e73691d13211b7a66bc1388ba4",
+                "reference": "fa155bbc36a4b3e73691d13211b7a66bc1388ba4",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Settings"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which helps store and retrieving key values",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-settings/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v0.1.0"
+            },
+            "time": "2021-03-24T14:33:59+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
@@ -3983,59 +3976,6 @@
                 }
             ],
             "time": "2021-03-10T13:58:31+00:00"
-        },
-        {
-            "name": "pimple/pimple",
-            "version": "v3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "86406047271859ffc13424a048541f4531f53601"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/86406047271859ffc13424a048541f4531f53601",
-                "reference": "86406047271859ffc13424a048541f4531f53601",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "psr/container": "^1.1"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple, a simple Dependency Injection Container",
-            "homepage": "https://pimple.symfony.com",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "support": {
-                "source": "https://github.com/silexphp/Pimple/tree/v3.4.0"
-            },
-            "time": "2021-03-06T08:28:00+00:00"
         },
         {
             "name": "prettus/l5-repository",
