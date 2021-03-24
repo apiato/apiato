@@ -14,9 +14,45 @@
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
- * {
- * // TODO..
- * }
+{
+    "data": [
+    {
+        "object": "Localization",
+      "id": "ar",
+      "language": {
+        "code": "ar",
+        "default_name": "Arabic",
+        "locale_name": "العربية"
+      },
+      "regions": []
+    },
+    {
+        "object": "Localization",
+      "id": "en",
+      "language": {
+        "code": "en",
+        "default_name": "English",
+        "locale_name": "English"
+      },
+      "regions": [
+        {
+            "code": "en-GB",
+          "default_name": "United Kingdom",
+          "locale_name": "United Kingdom"
+        },
+        {
+            "code": "en-US",
+          "default_name": "United States",
+          "locale_name": "United States"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "include": [],
+    "custom": []
+  }
+}
  */
 
 use App\Containers\Localization\UI\API\Controllers\Controller;
