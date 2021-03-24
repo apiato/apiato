@@ -10,6 +10,7 @@ use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
 
 class UpdateUserTask extends Task
 {
@@ -27,6 +28,11 @@ class UpdateUserTask extends Task
         }
 
         try {
+            // hash password if exist (before updating user)
+            if (array_key_exists('password', $userData)) {
+                $userData['password'] = Hash::make($userData['password']);
+            }
+
             $user = $this->repository->update($userData, $userId);
         } catch (ModelNotFoundException $exception) {
             throw new NotFoundException('User Not Found.');

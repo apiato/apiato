@@ -12,7 +12,7 @@ use App\Containers\User\Tests\ApiTestCase;
  */
 class UpdateUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'put@v1/users/{id}';
+    protected string $endpoint = 'patch@v1/users/{id}';
 
     protected array $access = [
         'roles' => '',
@@ -26,6 +26,8 @@ class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => 'Updated Name',
             'password' => 'updated#Password',
+            'gender' => 'male',
+            'birth' => '20151015'
         ];
 
         // send the HTTP request
@@ -39,6 +41,8 @@ class UpdateUserTest extends ApiTestCase
             'object' => 'User',
             'email' => $user->email,
             'name' => $data['name'],
+            'gender' => $data['gender'],
+            'birth' => $data['birth']
         ]);
 
         // assert data was updated in the database
@@ -82,6 +86,8 @@ class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => '',
             'password' => '',
+            'gender' => '',
+            'birth' => ''
         ];
 
         // send the HTTP request
@@ -94,6 +100,8 @@ class UpdateUserTest extends ApiTestCase
             // messages should be updated after modifying the validation rules, to pass this test
             'password' => 'The password must be at least 6 characters.',
             'name' => 'The name must be at least 2 characters.',
+            'gender' => 'The selected gender is invalid.',
+            'birth' => 'The birth does not match the format Ymd.'
         ]);
     }
 }

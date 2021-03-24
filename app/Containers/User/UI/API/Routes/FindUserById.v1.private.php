@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            findUserById
  * @api                {get} /v1/users/:id Find User
  * @apiDescription     Find a user by its ID

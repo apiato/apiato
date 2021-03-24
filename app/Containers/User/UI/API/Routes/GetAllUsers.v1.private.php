@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            getAllUsers
  * @api                {get} /v1/users Get All Users
  * @apiDescription     Get All Application Users (clients and admins). For all registered users "Clients" only you

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            createAdmin
  * @api                {post} /v1/admins Create Admin type Users
  * @apiDescription     Create non client users for the Dashboard.

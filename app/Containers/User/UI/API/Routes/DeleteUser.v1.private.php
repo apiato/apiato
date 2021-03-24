@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            deleteUser
  * @api                {delete} /v1/users/:id Delete User
  * @apiDescription     Delete users of any type (Admin, Client...)

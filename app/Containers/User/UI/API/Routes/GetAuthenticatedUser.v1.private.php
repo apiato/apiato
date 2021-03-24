@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            getAuthenticatedUser
  *
  * @api                {GET} /v1/user/profile Find Logged in User data (Profile Information)

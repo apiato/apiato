@@ -6,29 +6,22 @@ use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\User\Models\User;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\Hash;
 
 class UpdateUserAction extends Action
 {
-    public function run(UpdateUserRequest $data): User
+    public function run(UpdateUserRequest $request): User
     {
-        $userData = [
-            'password' => $data->password ? Hash::make($data->password) : null,
-            'name' => $data->name,
-            'email' => $data->email,
-            'gender' => $data->gender,
-            'birth' => $data->birth,
-            'social_token' => $data->token,
-            'social_expires_in' => $data->expiresIn,
-            'social_refresh_token' => $data->refreshToken,
-            'social_token_secret' => $data->tokenSecret,
-        ];
+        $sanitizedData = $request->sanitizeInput([
+            'password',
+            'name',
+            'gender',
+            'birth',
+            'social_token',
+            'social_expires_in',
+            'social_refresh_token',
+            'social_token_secret'
+        ]);
 
-        // remove null values and their keys
-        $userData = array_filter($userData);
-
-        $user = Apiato::call('User@UpdateUserTask', [$userData, $data->id]);
-
-        return $user;
+        return Apiato::call('User@UpdateUserTask', [$sanitizedData, $request->id]);
     }
 }

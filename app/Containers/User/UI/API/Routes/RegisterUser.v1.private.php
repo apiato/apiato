@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           Users
+ * @apiGroup           User
  * @apiName            registerUser
  * @api                {post} /v1/register Register User (create client)
  * @apiDescription     Register users as (client).
@@ -9,11 +9,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           {String}  email (required)
- * @apiParam           {String}  password (required)
- * @apiParam           {String}  name (optional)
- * @apiParam           {String}  gender (optional)
- * @apiParam           {String}  birth (optional)
+ * @apiParam           {String}  email
+ * @apiParam           {String}  password
+ * @apiParam           {String}  [name]
+ * @apiParam           {String}  [gender]
+ * @apiParam           {String}  [birth]
  *
  * @apiUse             UserSuccessSingleResponse
  */
