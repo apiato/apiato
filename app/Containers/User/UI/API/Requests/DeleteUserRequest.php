@@ -2,10 +2,13 @@
 
 namespace App\Containers\User\UI\API\Requests;
 
+use App\Containers\User\Traits\IsOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
 class DeleteUserRequest extends Request
 {
+    use IsOwnerTrait;
+
     /**
      * Define which Roles and/or Permissions has access to this request.
      */

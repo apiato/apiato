@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "12844e8ab024ee959605fdbf34d31853556a208d"
+                "reference": "1bdf6721d256ffb5f775b9912e1f23179d8b127a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/12844e8ab024ee959605fdbf34d31853556a208d",
-                "reference": "12844e8ab024ee959605fdbf34d31853556a208d",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/1bdf6721d256ffb5f775b9912e1f23179d8b127a",
+                "reference": "1bdf6721d256ffb5f775b9912e1f23179d8b127a",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-24T12:01:55+00:00"
+            "time": "2021-03-24T15:05:42+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3056,20 +3056,23 @@
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "bac330e951757b2b0f51b64c99760129dd9e3ee9"
+                "reference": "92d0b4bea464940741dc608949837707a5443148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/bac330e951757b2b0f51b64c99760129dd9e3ee9",
-                "reference": "bac330e951757b2b0f51b64c99760129dd9e3ee9",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/92d0b4bea464940741dc608949837707a5443148",
+                "reference": "92d0b4bea464940741dc608949837707a5443148",
                 "shasum": ""
             },
             "require": {
                 "laravel/socialite": "^5.2.2"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-latest"
             },
             "type": "apiato-container",
             "extra": {
@@ -3086,9 +3089,9 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.0"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.1"
             },
-            "time": "2021-03-23T15:17:52+00:00"
+            "time": "2021-03-24T14:49:46+00:00"
         },
         {
             "name": "mohammad-alavi/laravel-shoppingcart",
