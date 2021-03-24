@@ -32,7 +32,6 @@ class FindPaymentAccountDetails extends Request
     public function rules(): array
     {
         return [
-            // put your rules here
             'id' => 'required|exists:payment_accounts,id',
         ];
     }

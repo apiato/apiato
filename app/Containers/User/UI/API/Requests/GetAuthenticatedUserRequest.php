@@ -32,7 +32,6 @@ class GetAuthenticatedUserRequest extends Request
     public function rules(): array
     {
         return [
-            // put your rules here
             // 'name' => 'required|max:255'
         ];
     }
