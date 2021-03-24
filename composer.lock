@@ -3056,7 +3056,7 @@
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
@@ -3071,7 +3071,6 @@
             "require": {
                 "laravel/socialite": "^5.2.2"
             },
-            "default-branch": true,
             "type": "apiato-container",
             "extra": {
                 "apiato": {
@@ -3087,7 +3086,7 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/master"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.0"
             },
             "time": "2021-03-23T15:17:52+00:00"
         },
@@ -11626,8 +11625,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "apiato/core": 20,
-        "roave/security-advisories": 20,
-        "mohammad-alavi/apiato-social-auth": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
