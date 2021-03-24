@@ -46,10 +46,8 @@ class FindUserTest extends ApiTestCase
 
         $responseContent = $this->getResponseContentObject();
 
-        # todo: to fix
-//        $this->assertEquals($admin->name, $responseContent->data->name);
-//        $this->assertEquals($admin->email, $responseContent->data->email);
-
+        self::assertEquals($admin->name, $responseContent->data->name);
+        self::assertEquals($admin->email, $responseContent->data->email);
         self::assertNotContains('id', json_decode($response->getContent(), true));
     }
 
