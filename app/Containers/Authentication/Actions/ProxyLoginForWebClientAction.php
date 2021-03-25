@@ -31,7 +31,7 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $response = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData]);
+        $response = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
         $this->processEmailConfirmationIfNeeded($response);
 
         return $response;

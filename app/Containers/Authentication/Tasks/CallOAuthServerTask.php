@@ -13,11 +13,14 @@ class CallOAuthServerTask extends Task
 {
     private const AUTH_ROUTE = '/v1/oauth/token';
 
-    public function run(array $data): array
+    public function run(array $data, string $languageHeader = null): array
     {
         $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
 
-        $headers = ['HTTP_ACCEPT' => 'application/json'];
+        $headers = [
+            'HTTP_ACCEPT' => 'application/json',
+            'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? Config::get('app.locale'),
+        ];
 
         $request = Request::create($authFullApiUrl, 'POST', $data, [], [], $headers);
 

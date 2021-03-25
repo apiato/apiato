@@ -27,6 +27,6 @@ class ProxyRefreshForWebClientAction extends Action
             throw new RefreshTokenMissedException();
         }
 
-        return Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData]);
+        return Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
     }
 }
