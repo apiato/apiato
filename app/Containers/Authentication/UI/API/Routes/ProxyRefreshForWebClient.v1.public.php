@@ -2,9 +2,9 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            ProxyRefreshForAdminWebClient
- * @api                {post} /v1/clients/web/admin/refresh Refresh
- * @apiDescription     If `refresh_token` is not provided the w'll try to get it from the http cookie.
+ * @apiName            ProxyRefreshForWebClient
+ * @api                {post} /v1/clients/web/refresh Refresh
+ * @apiDescription     Get new tokens given a valid refresh token is provided.
  *
  * @apiVersion         1.0.0
  *
@@ -23,5 +23,5 @@
 use App\Containers\Authentication\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::post('clients/web/admin/refresh', [Controller::class, 'proxyRefreshForAdminWebClient'])
-    ->name('api_authentication_client_admin_web_refresh_proxy');
+Route::post('clients/web/refresh', [Controller::class, 'proxyRefreshForWebClient'])
+    ->name('api_authentication_client_web_refresh_proxy');

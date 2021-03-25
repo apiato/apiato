@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
 
-class ProxyLoginForAdminWebClientAction extends Action
+class ProxyLoginForWebClientAction extends Action
 {
     public function run(ProxyLoginPasswordGrantRequest $data): array
     {

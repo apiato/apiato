@@ -13,7 +13,7 @@ use App\Containers\Authentication\Tests\ApiTestCase;
  */
 class ApiRefreshProxyTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/clients/web/admin/refresh';
+    protected string $endpoint = 'post@v1/clients/web/refresh';
 
     protected array $access = [
         'permissions' => '',
@@ -50,7 +50,7 @@ class ApiRefreshProxyTest extends ApiTestCase
 
     public function testOnSuccessfulRefreshTokenRequestEnsureValuesAreSetProperly(): void
     {
-        $loginResponse = $this->endpoint('post@v1/clients/web/admin/login')->makeCall($this->data);
+        $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);
         $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];
         $data = [
             'refresh_token' => $refreshToken

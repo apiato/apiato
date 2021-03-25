@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Config;
  */
 class ApiLoginProxyTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/clients/web/admin/login';
+    protected string $endpoint = 'post@v1/clients/web/login';
 
     protected array $access = [
         'permissions' => '',

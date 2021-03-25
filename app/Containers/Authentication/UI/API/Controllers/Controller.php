@@ -21,7 +21,7 @@ class Controller extends ApiController
     }
 
     /**
-     * This `proxyLoginForAdminWebClient` exist only because we have `AdminWebClient`
+     * This `proxyLoginForWebClient` exist only because we have `WebClient`
      * The more clients (Web Apps). Each client you add in the future, must have
      * similar functions here, with custom route for dedicated for each client
      * to be used as proxy when contacting the OAuth server.
@@ -32,22 +32,22 @@ class Controller extends ApiController
      *
      * @return JsonResponse
      */
-    public function proxyLoginForAdminWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
+    public function proxyLoginForWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyLoginForAdminWebClientAction', [$request]);
+        $result = Apiato::call('Authentication@ProxyLoginForWebClientAction', [$request]);
         return $this->json($result);
     }
 
     /**
-     * Read the comment in the function `proxyLoginForAdminWebClient`
+     * Read the comment in the function `proxyLoginForWebClient`
      *
      * @param ProxyRefreshRequest $request
      *
      * @return JsonResponse
      */
-    public function proxyRefreshForAdminWebClient(ProxyRefreshRequest $request): JsonResponse
+    public function proxyRefreshForWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyRefreshForAdminWebClientAction', [$request]);
+        $result = Apiato::call('Authentication@ProxyRefreshForWebClientAction', [$request]);
         return $this->json($result);
     }
 }
