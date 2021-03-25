@@ -31,10 +31,14 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $response = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
-        $this->processEmailConfirmationIfNeeded($response);
+        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
+        $this->processEmailConfirmationIfNeeded($responseContent);
+        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
 
-        return $response;
+        return [
+            'response_content' => $responseContent,
+            'refresh_cookie' => $refreshCookie,
+        ];
     }
 
     private function processEmailConfirmationIfNeeded($response): void

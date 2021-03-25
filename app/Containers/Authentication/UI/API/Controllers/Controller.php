@@ -8,6 +8,7 @@ use App\Containers\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest
 use App\Containers\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cookie;
 
 class Controller extends ApiController
 {
@@ -17,7 +18,7 @@ class Controller extends ApiController
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
-        ]);
+        ])->withCookie(Cookie::forget('refreshToken'));
     }
 
     /**
@@ -35,7 +36,7 @@ class Controller extends ApiController
     public function proxyLoginForWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
         $result = Apiato::call('Authentication@ProxyLoginForWebClientAction', [$request]);
-        return $this->json($result);
+        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
     /**
@@ -48,6 +49,6 @@ class Controller extends ApiController
     public function proxyRefreshForWebClient(ProxyRefreshRequest $request): JsonResponse
     {
         $result = Apiato::call('Authentication@ProxyRefreshForWebClientAction', [$request]);
-        return $this->json($result);
+        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 }
