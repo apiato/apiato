@@ -17,7 +17,7 @@ return [
     'after'                => ':attribute باید تاریخی بعد از :date باشد.',
     'after_or_equal'       => ':attribute باید تاریخی بعد از :date، یا مطابق با آن باشد.',
     'alpha'                => ':attribute باید فقط حروف الفبا باشد.',
-    'alpha_dash'           => ':attribute باید فقط حروف الفبا، اعداد، خط تیره و زیرخط باشد.',
+    'alpha_dash'           => ':attribute باید فقط حروف الفبا، اعداد، خط تیره یا زیرخط باشد.',
     'alpha_num'            => ':attribute باید فقط حروف الفبا و اعداد باشد.',
     'array'                => ':attribute باید آرایه باشد.',
     'before'               => ':attribute باید تاریخی قبل از :date باشد.',
