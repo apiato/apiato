@@ -8,6 +8,6 @@ class FindMessageForApiRootVisitorAction extends Action
 {
     public function run(): array
     {
-        return [trans('localization::messages.welcome')];
+        return [trans('welcome::messages.welcome')];
     }
 }
