@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class Controller extends ApiController
 {
-
     public function apiRoot(): JsonResponse
     {
         $message = Apiato::call('Welcome@FindMessageForApiRootVisitorAction');
