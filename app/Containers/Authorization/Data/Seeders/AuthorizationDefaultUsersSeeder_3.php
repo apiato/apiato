@@ -10,11 +10,13 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
     public function run(): void
     {
         // Default Users (with their roles) ---------------------------------------------
-        Apiato::call('User@CreateUserByCredentialsTask', [
+        $admin = Apiato::call('User@CreateUserByCredentialsTask', [
             true,
             'admin@admin.com',
             'admin',
             'Super Admin',
         ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
+        $admin->confirmed = true;
+        $admin->save();
     }
 }

@@ -27,12 +27,6 @@ class ProxyRefreshForAdminWebClientAction extends Action
             throw new RefreshTokenMissedException();
         }
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData]);
-        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
-
-        return [
-            'response_content' => $responseContent,
-            'refresh_cookie' => $refreshCookie,
-        ];
+        return Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData]);
     }
 }
