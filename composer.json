@@ -50,7 +50,8 @@
         "nunomaduro/collision": "^5.3.0",
         "phpunit/phpunit": "^9.5.2",
         "roave/security-advisories": "dev-latest",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-intl": "*"
     },
     "autoload": {
         "psr-4": {

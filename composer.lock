@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0776509c7a0a83449167c9b9dc66941",
+    "content-hash": "18d760653580ee2c2d378ab9c30ad9ea",
     "packages": [
         {
             "name": "apiato/containers-installer",
@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "1bdf6721d256ffb5f775b9912e1f23179d8b127a"
+                "reference": "4d62e8816ffedd2381c500cd04a56734acfec4b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/1bdf6721d256ffb5f775b9912e1f23179d8b127a",
-                "reference": "1bdf6721d256ffb5f775b9912e1f23179d8b127a",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/4d62e8816ffedd2381c500cd04a56734acfec4b8",
+                "reference": "4d62e8816ffedd2381c500cd04a56734acfec4b8",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-24T15:05:42+00:00"
+            "time": "2021-03-24T15:13:26+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3056,16 +3056,16 @@
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "92d0b4bea464940741dc608949837707a5443148"
+                "reference": "d928fe72103e1734c7159456292227dc99f817b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/92d0b4bea464940741dc608949837707a5443148",
-                "reference": "92d0b4bea464940741dc608949837707a5443148",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/d928fe72103e1734c7159456292227dc99f817b8",
+                "reference": "d928fe72103e1734c7159456292227dc99f817b8",
                 "shasum": ""
             },
             "require": {
@@ -3089,9 +3089,9 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.1"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.2"
             },
-            "time": "2021-03-24T14:49:46+00:00"
+            "time": "2021-03-25T08:35:30+00:00"
         },
         {
             "name": "mohammad-alavi/laravel-shoppingcart",
@@ -8445,16 +8445,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.14",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47"
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/17097f7a83e200d90d1cf9f4d1b35c1001513a47",
-                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/4be10a998815f77952b9eb983fb0b64c8a4defbb",
+                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb",
                 "shasum": ""
             },
             "require": {
@@ -8518,7 +8518,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-03-04T08:48:01+00:00"
+            "time": "2021-03-24T18:58:31+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -11641,7 +11641,8 @@
         "ext-intl": "*"
     },
     "platform-dev": {
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-intl": "*"
     },
     "plugin-api-version": "2.0.0"
 }
