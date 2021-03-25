@@ -24,16 +24,12 @@ return [
 
     'clients' => [
         'web' => [
-            'admin' => [
-                'id' => env('CLIENT_WEB_ADMIN_ID'),
-                'secret' => env('CLIENT_WEB_ADMIN_SECRET'),
-            ],
+            'id' => env('CLIENT_WEB_ID'),
+            'secret' => env('CLIENT_WEB_SECRET'),
         ],
         'mobile' => [
-            'admin' => [
-                'id' => env('CLIENT_MOBILE_ADMIN_ID'),
-                'secret' => env('CLIENT_MOBILE_ADMIN_SECRET'),
-            ],
+            'id' => env('CLIENT_MOBILE_ID'),
+            'secret' => env('CLIENT_MOBILE_SECRET'),
         ],
 
         // add your other clients here

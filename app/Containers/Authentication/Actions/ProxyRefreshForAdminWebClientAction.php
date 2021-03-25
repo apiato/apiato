@@ -18,8 +18,8 @@ class ProxyRefreshForAdminWebClientAction extends Action
         ]);
 
         $sanitizedData['refresh_token'] = $sanitizedData['refresh_token'] ?: Request::cookie('refreshToken');
-        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.admin.id');
-        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.admin.secret');
+        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
+        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.secret');
         $sanitizedData['grant_type'] = 'refresh_token';
         $sanitizedData['scope'] = '';
 

@@ -26,8 +26,8 @@ class ProxyLoginForAdminWebClientAction extends Action
         $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$sanitizedData]);
 
         $sanitizedData['username'] = $loginCustomAttribute['username'];
-        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.admin.id');
-        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.admin.secret');
+        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
+        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.secret');
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 

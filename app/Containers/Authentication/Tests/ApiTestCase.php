@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\DB;
  */
 class ApiTestCase extends BaseTestCase
 {
-    private $testingFilesCreated = false;
-    private $publicFilePath;
-    private $privateFilePath;
+    private bool $testingFilesCreated = false;
+    private string $publicFilePath;
+    private string $privateFilePath;
 
     public function setUp(): void
     {
@@ -38,8 +38,8 @@ class ApiTestCase extends BaseTestCase
         ]);
 
         // make the clients credentials available as env variables
-        Config::set('authentication-container.clients.web.admin.id', $clientId);
-        Config::set('authentication-container.clients.web.admin.secret', $clientSecret);
+        Config::set('authentication-container.clients.web.id', $clientId);
+        Config::set('authentication-container.clients.web.secret', $clientSecret);
 
         // create testing oauth keys files
         $this->publicFilePath = $this->createTestingKey('oauth-public.key');
