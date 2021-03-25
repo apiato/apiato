@@ -32,7 +32,10 @@ class CallOAuthServerTask extends Task
         // Full url to the oauth token endpoint
         $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
 
-        $headers = ['HTTP_ACCEPT' => 'application/json'];
+        $headers = [
+          'HTTP_ACCEPT' => 'application/json',
+          'HTTP_ACCEPT_LANGUAGE' => Config::get('app.locale'),
+      ];
 
         // Create and handle the oauth request
         $request = Request::create($authFullApiUrl, 'POST', $data, [], [], $headers);
