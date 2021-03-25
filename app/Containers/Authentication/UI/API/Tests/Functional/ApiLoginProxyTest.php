@@ -33,7 +33,6 @@ class ApiLoginProxyTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-        $response->assertCookie('refreshToken');
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);

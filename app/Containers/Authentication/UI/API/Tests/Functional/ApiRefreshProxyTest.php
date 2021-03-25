@@ -59,7 +59,6 @@ class ApiRefreshProxyTest extends ApiTestCase
         $response = $this->endpoint($this->endpoint)->makeCall($data);
 
         $response->assertStatus(200);
-        $response->assertCookie('refreshToken');
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
