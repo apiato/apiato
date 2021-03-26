@@ -26,12 +26,9 @@ class AuthProvider extends AbstractAuthProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
     }
-
 }
