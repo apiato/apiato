@@ -4,9 +4,7 @@ namespace App\Containers\Documentation\Tasks;
 
 use App\Containers\Documentation\Traits\DocsGeneratorTrait;
 use App\Ship\Parents\Tasks\Task;
-use Symfony\Component\Process\Exception\LogicException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 
 class GenerateAPIDocsTask extends Task
@@ -17,20 +15,16 @@ class GenerateAPIDocsTask extends Task
     {
         $path = $this->getDocumentationPath($type);
 
-        $command = array_merge(
-          [
+        $command = [
             $this->getExecutable(),
             "-c",
-            $this->getJsonFilePath($type)
-          ],
-          $this->getEndpointFiles($type),
-          [
+            $this->getJsonFilePath($type),
+            ...$this->getEndpointFiles($type),
             "-i",
             "app",
             "-o",
             $path
-          ]
-        );
+        ];
 
         $process = new Process($command);
 
@@ -43,7 +37,7 @@ class GenerateAPIDocsTask extends Task
         }
 
         // echo the output
-        $console->info('[' . $type . '] ' . implode (' ', $command));
+        $console->info('[' . $type . '] ' . implode(' ', $command));
         $console->info('Output: ' . $process->getOutput());
 
         // return the path to the generated documentation
