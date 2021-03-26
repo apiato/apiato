@@ -124,7 +124,7 @@ trait HashIdTrait
 
         } else {
             // check if the key we are looking for does, in fact, really exist
-            if (!array_key_exists($field, $data)) {
+            if (!is_array($data) || !array_key_exists($field, $data)) {
                 return $data;
             }
 
