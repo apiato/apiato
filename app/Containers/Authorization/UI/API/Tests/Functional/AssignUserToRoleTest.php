@@ -49,33 +49,6 @@ class AssignUserToRoleTest extends ApiTestCase
         self::assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
     }
 
-    public function testAssignUserToRoleWithRealId(): void
-    {
-        $randomUser = User::factory()->create();
-
-        $role = Role::factory()->create();
-
-        $data = [
-            'roles_ids' => [$role->id], // testing against real ID's
-            'user_id' => $randomUser->id, // testing against real ID's
-        ];
-
-        // send the HTTP request
-        $response = $this->makeCall($data);
-
-        // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        if (Config::get('apiato.hash-id')) {
-            $response->assertStatus(400);
-
-            $this->assertResponseContainKeyValue([
-                'message' => 'Only Hashed ID\'s allowed.',
-            ]);
-        } else {
-            $response->assertStatus(200);
-        }
-
-    }
-
     public function testAssignUserToManyRoles(): void
     {
         $randomUser = User::factory()->create();

@@ -52,34 +52,6 @@ class RevokeUserFromRoleTest extends ApiTestCase
         ]);
     }
 
-    public function testRevokeUserFromRoleWithRealId(): void
-    {
-        $roleA = Role::factory()->create();
-
-        $randomUser = User::factory()->create();
-        $randomUser->assignRole($roleA);
-
-        $data = [
-            'roles_ids' => [$roleA->id],
-            'user_id' => $randomUser->id,
-        ];
-
-        // send the HTTP request
-        $response = $this->makeCall($data);
-
-        // assert response status is correct. Note: this will return 200 if `HASH_ID=false` in the .env
-        if (Config::get('apiato.hash-id')) {
-            $response->assertStatus(400);
-
-            $this->assertResponseContainKeyValue([
-                'message' => 'Only Hashed ID\'s allowed.',
-            ]);
-        } else {
-            $response->assertStatus(200);
-        }
-
-    }
-
     public function testRevokeUserFromManyRoles(): void
     {
         $roleA = Role::factory()->create();
