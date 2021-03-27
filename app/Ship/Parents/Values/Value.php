@@ -14,5 +14,4 @@ abstract class Value extends AbstractValue
 {
 
     use HasResourceKeyTrait;
-
 }

@@ -16,5 +16,4 @@ class PaymentTransactionRepository extends Repository
     protected $fieldSearchable = [
         'id' => '=',
     ];
-
 }

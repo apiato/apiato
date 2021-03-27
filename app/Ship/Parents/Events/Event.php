@@ -16,5 +16,4 @@ abstract class Event extends AbstractEvent
 {
 
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
 }

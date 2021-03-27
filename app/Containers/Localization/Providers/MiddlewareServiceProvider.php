@@ -44,5 +44,4 @@ class MiddlewareServiceProvider extends MiddlewareProvider
     protected array $routeMiddleware = [
         // ..
     ];
-
 }

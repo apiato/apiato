@@ -5,8 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Class CreatePaymentTransactionsTable
- *
- * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
 class CreatePaymentTransactionsTable extends Migration
 {

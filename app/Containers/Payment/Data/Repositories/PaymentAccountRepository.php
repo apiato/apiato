@@ -17,5 +17,4 @@ class PaymentAccountRepository extends Repository
         'id'    => '=',
         'name'  => 'like',
     ];
-
 }
