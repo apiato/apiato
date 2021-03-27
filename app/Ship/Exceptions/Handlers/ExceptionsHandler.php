@@ -51,13 +51,17 @@ class ExceptionsHandler extends CoreExceptionsHandler
                 if (env('APP_DEBUG')) {
                     $response = [
                         'message' => $e->getMessage(),
+                        'errors' => $e->getErrors(),
                         'exception' => static::class,
                         'file' => $e->getFile(),
                         'line' => $e->getLine(),
                         'trace' => $e->gettrace()
                     ];
                 } else {
-                    $response['message'] = $e->getMessage();
+                    $response = [
+                        'message' => $e->getMessage(),
+                        'errors' => $e->getErrors()
+                    ];
                 }
 
                 return response()->json($response, $e->getCode());

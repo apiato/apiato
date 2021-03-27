@@ -19,11 +19,10 @@ class FindUserByIdTask extends Task
 
     public function run($userId): User
     {
-        // find the user by its id
         try {
             $user = $this->repository->find($userId);
         } catch (Exception $e) {
-            throw new NotFoundException();
+            throw (new NotFoundException())->withErrors(['404' => 'user::exceptions.userNotFoundException']);
         }
 
         return $user;
