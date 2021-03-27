@@ -1,5 +1,7 @@
 <?php
 
+use App\Ship\Providers\ShipProvider;
+
 return [
 
     /*
@@ -163,12 +165,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Application Service Providers...
-         *
-         * The Ship Provider (The only exposed Service Provider by the App).
-         *
          * NOTE: all packages service providers must be registered inside their container's main service providers.
+         * The Ship Provider (The only exposed Service Provider by the App).
          */
+        ShipProvider::class,
     ],
 
     /*

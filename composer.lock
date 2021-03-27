@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "70dddb8edeea8f0b97feada167ff48fc8eb5f63e"
+                "reference": "345681905eadaf860ae7d563b2bf7a301f5ad972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/70dddb8edeea8f0b97feada167ff48fc8eb5f63e",
-                "reference": "70dddb8edeea8f0b97feada167ff48fc8eb5f63e",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/345681905eadaf860ae7d563b2bf7a301f5ad972",
+                "reference": "345681905eadaf860ae7d563b2bf7a301f5ad972",
                 "shasum": ""
             },
             "require": {
@@ -77,8 +77,6 @@
                         "Fruitcake\\Cors\\CorsServiceProvider",
                         "Spatie\\Fractal\\FractalServiceProvider",
                         "Laravel\\Tinker\\TinkerServiceProvider",
-                        "App\\Ship\\Parents\\Providers\\RoutesProvider",
-                        "App\\Ship\\Providers\\ShipProvider",
                         "Apiato\\Core\\Generator\\GeneratorsServiceProvider"
                     ],
                     "aliases": {
@@ -117,7 +115,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-27T08:09:57+00:00"
+            "time": "2021-03-27T14:17:07+00:00"
         },
         {
             "name": "asm89/stack-cors",
