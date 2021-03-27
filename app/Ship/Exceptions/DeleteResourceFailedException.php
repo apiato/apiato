@@ -7,14 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class DeleteResourceFailedException.
- *
- * @author Johannes Schobel <johannes.schobel@googlemail.com>
  */
 class DeleteResourceFailedException extends Exception
 {
-
-    public $httpStatusCode = Response::HTTP_EXPECTATION_FAILED;
-
-    public $message = 'Failed to delete Resource.';
-
+    protected $code = Response::HTTP_EXPECTATION_FAILED;
+    protected $message = 'Failed to delete Resource.';
 }

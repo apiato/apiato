@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class NoChargeTaskForPaymentGatewayDefinedException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
-    public $message = 'No Charge Task for this Payment Gateway defined!';
+    protected $code = Response::HTTP_INTERNAL_SERVER_ERROR;
+    protected $message = 'No Charge Task for this Payment Gateway defined!';
 }

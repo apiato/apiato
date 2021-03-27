@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WrongDocTypeException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_MISDIRECTED_REQUEST;
-    public $message = 'Unsupported Documentation Type.';
+    protected $code = Response::HTTP_MISDIRECTED_REQUEST;
+    protected $message = 'Unsupported Documentation Type.';
 }

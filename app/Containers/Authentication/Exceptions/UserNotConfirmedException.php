@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserNotConfirmedException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_CONFLICT;
-    public $message = 'The user is not confirmed yet. Please verify your user before trying to login.';
+    protected $code = Response::HTTP_CONFLICT;
+    protected $message = 'The user is not confirmed yet. Please verify your user before trying to login.';
 }

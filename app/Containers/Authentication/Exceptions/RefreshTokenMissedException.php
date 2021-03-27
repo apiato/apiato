@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RefreshTokenMissedException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_BAD_REQUEST;
-    public $message = 'We could not find the Refresh Token. Maybe none is provided?';
+    protected $code = Response::HTTP_BAD_REQUEST;
+    protected $message = 'We could not find the Refresh Token. Maybe none is provided?';
 }

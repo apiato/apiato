@@ -12,9 +12,6 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
  */
 class MissingTestEndpointException extends Exception
 {
-
-    public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
-
-    public $message = 'Property ($this->endpoint) is missed in your test.';
-
+    protected $code = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
+    protected $message = 'Property ($this->endpoint) is missed in your test.';
 }

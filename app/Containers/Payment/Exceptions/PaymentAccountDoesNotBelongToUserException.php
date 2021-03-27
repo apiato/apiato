@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PaymentAccountDoesNotBelongToUserException extends Exception
 {
-    public $httpStatusCode = Response::HTTP_CONFLICT;
-    public $message = 'The selected Payment Account does not belong to the current User.';
+    protected $code = Response::HTTP_CONFLICT;
+    protected $message = 'The selected Payment Account does not belong to the current User.';
 }
