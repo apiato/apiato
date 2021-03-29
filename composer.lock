@@ -45,27 +45,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "cb478d556cb3dd3b06a593bcd6d0432d44abeee9"
+                "reference": "6feb477249028e2bff44ff35189434924b6324e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/cb478d556cb3dd3b06a593bcd6d0432d44abeee9",
-                "reference": "cb478d556cb3dd3b06a593bcd6d0432d44abeee9",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/6feb477249028e2bff44ff35189434924b6324e5",
+                "reference": "6feb477249028e2bff44ff35189434924b6324e5",
                 "shasum": ""
             },
             "require": {
                 "apiato/containers-installer": "^1.0",
                 "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
-                "illuminate/support": "^8.28.1",
+                "guzzlehttp/guzzle": "^7.2.0",
+                "laravel/framework": "^8.0.0",
+                "laravel/passport": "^10.0.0",
                 "laravel/tinker": "^2.6.0",
                 "php": "^7.4|^8.0",
                 "prettus/l5-repository": "^2.7.4",
                 "spatie/laravel-fractal": "^5.8.1",
+                "spatie/laravel-permission": "^4.0.0",
                 "vinkla/hashids": "^9.1.0"
             },
             "require-dev": {
-                "laravel/framework": "^8.28.1",
+                "mockery/mockery": "^1.4.2",
                 "roave/security-advisories": "dev-latest"
             },
             "type": "library",
@@ -89,7 +92,10 @@
             "autoload": {
                 "psr-4": {
                     "Apiato\\Core\\": ""
-                }
+                },
+                "files": [
+                    "Helpers/helpers.php"
+                ]
             },
             "autoload-dev": {
                 "psr-4": []
@@ -116,7 +122,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-29T06:07:49+00:00"
+            "time": "2021-03-29T15:37:34+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -8575,20 +8581,22 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.13.0",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913"
+                "reference": "cd46398f42c2ab191ffb0b57c07e911c7c28eb25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ab3f5364d01f2c2c16113442fb987d26e4004913",
-                "reference": "ab3f5364d01f2c2c16113442fb987d26e4004913",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/cd46398f42c2ab191ffb0b57c07e911c7c28eb25",
+                "reference": "cd46398f42c2ab191ffb0b57c07e911c7c28eb25",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^7.1 || ^8.0",
+                "psr/container": "^1.0",
+                "symfony/deprecation-contracts": "^2.2"
             },
             "conflict": {
                 "fzaninotto/faker": "*"
@@ -8596,7 +8604,13 @@
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-intl": "*",
-                "phpunit/phpunit": "^7.5.20 || ^8.5.8 || ^9.4.2"
+                "symfony/phpunit-bridge": "^4.4 || ^5.2"
+            },
+            "suggest": {
+                "ext-curl": "Required by Faker\\Provider\\Image to download images.",
+                "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
+                "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
+                "ext-mbstring": "Required for multibyte Unicode string functionality."
             },
             "type": "library",
             "autoload": {
@@ -8621,9 +8635,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.13.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.14.0"
             },
-            "time": "2020-12-18T16:50:48+00:00"
+            "time": "2021-03-29T08:56:34+00:00"
         },
         {
             "name": "filp/whoops",
