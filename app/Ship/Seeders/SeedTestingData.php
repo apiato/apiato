@@ -4,11 +4,6 @@ namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 
-/**
- * Class SeedTestingData
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class SeedTestingData extends Seeder
 {
     /**
