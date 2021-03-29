@@ -122,14 +122,14 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/johannesschobel">@johannesschobel</a>
         </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/llstarscreamll.png?s=150">
+       <td align="center" valign="top">
+            <img width="125" height="125" src="https://github.com/moslem-deris.png?s=150">
             <br>
-            <strong>Johan Alvarez</strong>
+            <strong>Moslem Deris</strong>
             <br>
-            <a href="https://github.com/llstarscreamll">@llstarscreamll</a>
+            <a href="https://github.com/moslem-deris">@moslem-deris</a>
         </td>
-               <td align="center" valign="top">
+        <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/zmaren.png?s=150">
             <br>
             <strong>Zeljko Marenovic</strong>
@@ -152,12 +152,12 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/JulianBustamante">@JulianBustamante</a>
         </td>
-       <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/Te7a-Houdini.png?s=150">
+        <td align="center" valign="top">
+            <img width="125" height="125" src="https://github.com/llstarscreamll.png?s=150">
             <br>
-            <strong>Ahmed Abd El-Ftah</strong>
+            <strong>Johan Alvarez</strong>
             <br>
-            <a href="https://github.com/Te7a-Houdini">@Te7a-Houdini</a>
+            <a href="https://github.com/llstarscreamll">@llstarscreamll</a>
         </td>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/fwidm.png?s=150">
