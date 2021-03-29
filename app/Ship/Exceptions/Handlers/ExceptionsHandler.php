@@ -43,29 +43,28 @@ class ExceptionsHandler extends CoreExceptionsHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-
         });
 
         $this->renderable(function (ParentException $e) {
-            if ($e instanceof ParentException) {
-                if (env('APP_DEBUG')) {
-                    $response = [
-                        'message' => $e->getMessage(),
-                        'errors' => $e->getErrors(),
-                        'exception' => static::class,
-                        'file' => $e->getFile(),
-                        'line' => $e->getLine(),
-                        'trace' => $e->gettrace()
-                    ];
-                } else {
-                    $response = [
-                        'message' => $e->getMessage(),
-                        'errors' => $e->getErrors()
-                    ];
-                }
-
-                return response()->json($response, $e->getCode());
+            $response = null;
+            
+            if (env('APP_DEBUG')) {
+                $response = [
+                    'message' => $e->getMessage(),
+                    'errors' => $e->getErrors(),
+                    'exception' => static::class,
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                    'trace' => $e->gettrace()
+                ];
+            } else {
+                $response = [
+                    'message' => $e->getMessage(),
+                    'errors' => $e->getErrors()
+                ];
             }
+
+            return response()->json($response, $e->getCode());
         });
     }
 }
