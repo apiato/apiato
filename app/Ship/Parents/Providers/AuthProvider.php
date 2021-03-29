@@ -16,7 +16,6 @@ use Apiato\Core\Abstracts\Providers\AuthProvider as AbstractAuthProvider;
  */
 class AuthProvider extends AbstractAuthProvider
 {
-
     /**
      * The policy mappings for the application.
      *

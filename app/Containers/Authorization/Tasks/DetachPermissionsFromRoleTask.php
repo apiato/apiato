@@ -8,7 +8,6 @@ use App\Ship\Parents\Tasks\Task;
 
 class DetachPermissionsFromRoleTask extends Task
 {
-
     public function run(Role $role, $singleOrMultiplePermissionIds): Role
     {
         if (!is_array($singleOrMultiplePermissionIds)) {

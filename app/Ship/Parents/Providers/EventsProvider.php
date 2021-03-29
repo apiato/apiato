@@ -13,7 +13,6 @@ use Apiato\Core\Abstracts\Providers\EventsProvider as AbstractEventsProvider;
  */
 class EventsProvider extends AbstractEventsProvider
 {
-
     /**
      * The event listener mappings for the application.
      *

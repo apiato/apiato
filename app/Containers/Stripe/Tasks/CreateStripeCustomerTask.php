@@ -20,7 +20,6 @@ class CreateStripeCustomerTask extends Task
     public function run(string $email, string $description = '')
     {
         try {
-
             $response = $this->stripe->customers()->create([
                 'email' => $email,
                 'description' => $description,

@@ -20,7 +20,6 @@ class QueryDebuggerTask extends Task
         $debuggerEnabled = Config::get('debugger.queries.debug');
 
         if ($debuggerEnabled) {
-
             $consoleOutputEnabled = Config::get('debugger.queries.output.console');
             $logOutputEnabled = Config::get('debugger.queries.output.log');
 

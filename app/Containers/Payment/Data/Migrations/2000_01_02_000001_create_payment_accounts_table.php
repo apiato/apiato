@@ -10,14 +10,12 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class CreatePaymentAccountsTable extends Migration
 {
-
     /**
      * Run the migrations.
      */
     public function up()
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
-
             $table->id();
             $table->string('name')->nullable();
 

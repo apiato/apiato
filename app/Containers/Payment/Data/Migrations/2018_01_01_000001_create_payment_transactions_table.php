@@ -8,14 +8,12 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class CreatePaymentTransactionsTable extends Migration
 {
-
     /**
      * Run the migrations.
      */
     public function up()
     {
         Schema::create('payment_transactions', function (Blueprint $table) {
-
             $table->id();
 
             $table->foreignId('user_id')->constrained();

@@ -11,7 +11,6 @@ use App\Ship\Parents\Seeders\Seeder;
  */
 class SeedTestingData extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -21,5 +20,4 @@ class SeedTestingData extends Seeder
     {
         // Create Testing data for live tests
     }
-
 }

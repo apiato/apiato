@@ -5,45 +5,20 @@ namespace App\Ship\Criterias\Eloquent;
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-/**
- * Class ThisEqualThatCriteria
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class ThisEqualThatCriteria extends Criteria
 {
+    private string $field;
 
-    /**
-     * @var
-     */
-    private $field;
+    private string $value;
 
-    /**
-     * @var
-     */
-    private $value;
-
-    /**
-     * ThisEqualThatCriteria constructor.
-     *
-     * @param $field
-     * @param $value
-     */
-    public function __construct($field, $value)
+    public function __construct(string $field, string $value)
     {
         $this->field = $field;
         $this->value = $value;
     }
 
-    /**
-     * @param                                                   $model
-     * @param PrettusRepositoryInterface $repository
-     *
-     * @return  mixed
-     */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->where($this->field, $this->value);
     }
-
 }

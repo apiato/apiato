@@ -9,7 +9,6 @@ use App\Ship\Parents\Repositories\Repository;
  */
 class PaymentTransactionRepository extends Repository
 {
-
     /**
      * @var array
      */

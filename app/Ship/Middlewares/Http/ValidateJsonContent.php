@@ -31,7 +31,6 @@ class ValidateJsonContent extends Middleware
 
         // if request doesn't contain in header accept = application/json. Return a warning in the response
         if (strpos($acceptHeader, $contentType) === false) {
-
             $warnCode = '199'; // https://www.iana.org/assignments/http-warn-codes/http-warn-codes.xhtml
             $warnMessage = 'Missing request header [ accept = ' . $contentType . ' ] when calling a JSON API.';
             $response->headers->set('Warning', $warnCode . ' ' . $warnMessage);

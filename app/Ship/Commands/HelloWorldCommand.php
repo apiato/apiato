@@ -4,14 +4,8 @@ namespace App\Ship\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;
 
-/**
- * Class HelloWorldCommand
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class HelloWorldCommand extends ConsoleCommand
 {
-
     /**
      * The name and signature of the console command.
      *

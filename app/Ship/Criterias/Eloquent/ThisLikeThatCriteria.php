@@ -15,7 +15,6 @@ use Illuminate\Database\Query\Builder;
  */
 class ThisLikeThatCriteria extends Criteria
 {
-
     /**
      * @var string name of the column
      */
@@ -62,5 +61,4 @@ class ThisLikeThatCriteria extends Criteria
                 $query->orWhere($this->field, 'LIKE', str_replace($this->wildcard, '%', $value));
         });
     }
-
 }

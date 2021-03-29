@@ -7,14 +7,8 @@ use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 use Illuminate\Foundation\Application;
 
-/**
- * Class TestCase
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 abstract class TestCase extends AbstractTestCase
 {
-
     /**
      * Setup the test environment, before each test.
      *
@@ -54,5 +48,4 @@ abstract class TestCase extends AbstractTestCase
 
         return $app;
     }
-
 }

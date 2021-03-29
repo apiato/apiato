@@ -85,5 +85,4 @@ class Controller extends ApiController
         Apiato::call('User@ForgotPasswordAction', [$request]);
         return $this->noContent(202);
     }
-
 }
