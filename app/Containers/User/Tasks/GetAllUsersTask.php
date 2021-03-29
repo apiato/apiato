@@ -6,7 +6,7 @@ use App\Containers\User\Data\Criterias\AdminsCriteria;
 use App\Containers\User\Data\Criterias\ClientsCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
+use App\Ship\Criterias\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
 
 class GetAllUsersTask extends Task

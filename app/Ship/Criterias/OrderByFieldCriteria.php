@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Criterias\Eloquent;
+namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
 use Illuminate\Support\Str;

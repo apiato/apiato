@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Ship\Criterias\Eloquent;
+namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class NotNullCriteria extends Criteria
+class IsNullCriteria extends Criteria
 {
     private string $field;
 
@@ -16,6 +16,6 @@ class NotNullCriteria extends Criteria
 
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->whereNotNull($this->field);
+        return $model->whereNull($this->field);
     }
 }

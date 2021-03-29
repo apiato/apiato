@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Ship\Criterias\Eloquent;
+namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class ThisEqualThatCriteria extends Criteria
+class GroupByCriteria extends Criteria
 {
     private string $field;
 
-    private string $value;
-
-    public function __construct(string $field, string $value)
+    public function __construct(string $field)
     {
         $this->field = $field;
-        $this->value = $value;
     }
 
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->where($this->field, $this->value);
+        return $model->groupBy($this->field);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Repositories\UserRepository;
-use App\Ship\Criterias\Eloquent\NotNullCriteria;
+use App\Ship\Criterias\NotNullCriteria;
 use App\Ship\Parents\Tasks\Task;
 
 class CountRegisteredUsersTask extends Task
