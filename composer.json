@@ -69,9 +69,9 @@
         },
         "merge-plugin": {
             "include": [
+                "app/composer.json",
                 "app/Ship/composer.json",
-                "app/Containers/*/composer.json",
-                "app/Containers/composer.json"
+                "app/*/*/composer.json"
             ],
             "recurse": true,
             "replace": false,

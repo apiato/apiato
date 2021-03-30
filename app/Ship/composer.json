@@ -1,4 +1,6 @@
 {
+    "name": "apiato/ship",
+    "description": "Apiato Ship folder where are shared functionality resides",
     "require": {
     },
     "require-dev": {
