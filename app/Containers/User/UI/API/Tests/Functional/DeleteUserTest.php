@@ -24,10 +24,8 @@ class DeleteUserTest extends ApiTestCase
     {
         $user = $this->getTestingUser();
 
-        // send the HTTP request
         $response = $this->injectId($user->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(204);
     }
 
@@ -38,10 +36,8 @@ class DeleteUserTest extends ApiTestCase
 
         $anotherUser = User::factory()->create();
 
-        // send the HTTP request
         $response = $this->injectId($anotherUser->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(403);
     }
 }

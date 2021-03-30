@@ -35,7 +35,6 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey()],
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
@@ -64,7 +63,6 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);

@@ -23,10 +23,8 @@ class FindUserTest extends ApiTestCase
     {
         $admin = $this->getTestingUser();
 
-        // send the HTTP request
         $response = $this->injectId($admin->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -38,10 +36,8 @@ class FindUserTest extends ApiTestCase
     {
         $admin = $this->getTestingUser();
 
-        // send the HTTP request
         $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -55,10 +51,8 @@ class FindUserTest extends ApiTestCase
     {
         $admin = $this->getTestingUser();
 
-        // send the HTTP request
         $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();

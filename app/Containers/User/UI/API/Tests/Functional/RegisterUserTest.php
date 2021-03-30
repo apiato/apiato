@@ -29,10 +29,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secretpass',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $this->assertResponseContainKeyValue([
@@ -56,10 +54,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // send the HTTP request
         $response = $this->endpoint('get@v1/register')->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(405);
 
         $this->assertResponseContainKeyValue([
@@ -84,10 +80,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => $userDetails['password'],
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         $this->assertValidationErrorContain([
@@ -102,10 +96,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         // assert response contain the correct message
@@ -121,10 +113,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         // assert response contain the correct message
@@ -142,7 +132,6 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         // assert response contain the correct message
@@ -159,10 +148,8 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         // assert response contain the correct message

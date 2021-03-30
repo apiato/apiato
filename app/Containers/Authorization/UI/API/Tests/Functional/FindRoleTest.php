@@ -26,10 +26,8 @@ class FindRoleTest extends ApiTestCase
     {
         $roleA = Role::factory()->create();
 
-        // send the HTTP request
         $response = $this->injectId($roleA->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();

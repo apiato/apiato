@@ -25,10 +25,8 @@ class GetAllRolesTest extends ApiTestCase
     {
         $this->getTestingUser();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         // convert JSON response string to Object

@@ -30,10 +30,8 @@ class UpdateUserTest extends ApiTestCase
             'birth' => '20151015'
         ];
 
-        // send the HTTP request
         $response = $this->injectId($user->id)->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         // assert returned user is the updated one
@@ -57,10 +55,8 @@ class UpdateUserTest extends ApiTestCase
 
         $fakeUserId = 7777;
 
-        // send the HTTP request
         $response = $this->injectId($fakeUserId)->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         $this->assertResponseContainKeyValue([
@@ -70,10 +66,8 @@ class UpdateUserTest extends ApiTestCase
 
     public function testUpdateExistingUserWithoutData(): void
     {
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         $this->assertResponseContainKeyValue([
@@ -90,10 +84,8 @@ class UpdateUserTest extends ApiTestCase
             'birth' => ''
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
 
         $this->assertValidationErrorContain([

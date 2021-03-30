@@ -25,10 +25,8 @@ class GetAllAdminsTest extends ApiTestCase
         User::factory()->count(1)->create();
         User::factory()->count(1)->admin()->create();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         // convert JSON response string to Object
@@ -46,9 +44,8 @@ class GetAllAdminsTest extends ApiTestCase
         // create some fake users
         User::factory()->count(2)->create();
 
-        // send the HTTP request
         $response = $this->makeCall();
-        // assert response status is correct
+
         $response->assertStatus(403);
 
         $this->assertResponseContainKeyValue([

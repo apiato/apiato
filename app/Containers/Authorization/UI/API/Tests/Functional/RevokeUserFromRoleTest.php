@@ -36,10 +36,8 @@ class RevokeUserFromRoleTest extends ApiTestCase
             'user_id' => $randomUser->getHashedKey(),
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -66,10 +64,8 @@ class RevokeUserFromRoleTest extends ApiTestCase
             'user_id' => $randomUser->getHashedKey(),
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $this->assertDatabaseMissing('model_has_roles', [

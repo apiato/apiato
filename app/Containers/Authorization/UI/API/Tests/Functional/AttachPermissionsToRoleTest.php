@@ -33,10 +33,8 @@ class AttachPermissionsToRoleTest extends ApiTestCase
             'permissions_ids' => $permissionA->getHashedKey(),
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -61,10 +59,8 @@ class AttachPermissionsToRoleTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('role_has_permissions', [

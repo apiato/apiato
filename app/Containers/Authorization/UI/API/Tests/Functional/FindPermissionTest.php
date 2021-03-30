@@ -26,10 +26,8 @@ class FindPermissionTest extends ApiTestCase
     {
         $permissionA = Permission::factory()->create();
 
-        // send the HTTP request
         $response = $this->injectId($permissionA->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();

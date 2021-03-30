@@ -26,10 +26,8 @@ class DeleteRoleTest extends ApiTestCase
     {
         $role = Role::factory()->create();
 
-        // send the HTTP request
         $response = $this->injectId($role->id)->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(204);
     }
 }

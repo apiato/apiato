@@ -40,10 +40,8 @@ class CreateStripeAccountTest extends ApiTestCase
             'nickname'         => 'test account for stripe',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(202);
 
         // convert JSON response string to Object

@@ -27,7 +27,6 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
         $data = [];
         $requestHeaders = [];
 
-        // send the HTTP request
         $response = $this->makeCall($data, $requestHeaders);
 
         // assert the response status
@@ -48,7 +47,6 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
             'accept-language' => $language,
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data, $requestHeaders);
 
         // assert the response status
@@ -67,7 +65,6 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
             'accept-language' => $language,
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data, $requestHeaders);
 
         // assert the response status

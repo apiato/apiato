@@ -28,10 +28,8 @@ class CreateAdminTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $this->assertResponseContainKeyValue([

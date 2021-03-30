@@ -25,10 +25,8 @@ class GetAllClientsTest extends ApiTestCase
         User::factory()->count(1)->create();
         User::factory()->admin()->create();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         // convert JSON response string to Object
@@ -44,10 +42,8 @@ class GetAllClientsTest extends ApiTestCase
         // prepare a user without any roles or permissions
         $this->getTestingUserWithoutAccess();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(403);
 
         $this->assertResponseContainKeyValue([

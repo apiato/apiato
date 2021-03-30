@@ -32,10 +32,8 @@ class CreateRoleTest extends ApiTestCase
             'level' => 7,
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -52,10 +50,8 @@ class CreateRoleTest extends ApiTestCase
             'description' => 'he manages things',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseContent = $this->getResponseContentObject();
@@ -71,10 +67,8 @@ class CreateRoleTest extends ApiTestCase
             'description' => 'he manages things',
         ];
 
-        // send the HTTP request
         $response = $this->makeCall($data);
 
-        // assert response status is correct
         $response->assertStatus(422);
     }
 }

@@ -25,10 +25,8 @@ class GetAllUsersTest extends ApiTestCase
         // create some non-admin users who are clients
         User::factory()->count(2)->create();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         // convert JSON response string to Object
@@ -45,10 +43,8 @@ class GetAllUsersTest extends ApiTestCase
         // create some fake users
         User::factory()->count(2)->create();
 
-        // send the HTTP request
         $response = $this->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(403);
 
         $this->assertResponseContainKeyValue([
@@ -65,10 +61,8 @@ class GetAllUsersTest extends ApiTestCase
         // 3 random users
         User::factory()->count(3)->create();
 
-        // send the HTTP request
         $response = $this->endpoint($this->endpoint . '?search=name:mahmoudzzz')->makeCall();
 
-        // assert response status is correct
         $response->assertStatus(200);
 
         $responseArray = $response->decodeResponseJson();
