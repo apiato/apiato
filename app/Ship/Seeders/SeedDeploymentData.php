@@ -7,11 +7,11 @@ use App\Ship\Parents\Seeders\Seeder;
 class SeedDeploymentData extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Note: This seeder is not loaded automatically by Apiato
+     * This is a special seeder which can be called by "apiato:seed-deploy" command
+     * It is useful for seeding data for initial deployment.
      */
-    public function run()
+    public function run(): void
     {
         // Create data for live deployment here
     }
