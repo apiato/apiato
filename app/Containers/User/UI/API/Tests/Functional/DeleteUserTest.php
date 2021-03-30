@@ -31,9 +31,7 @@ class DeleteUserTest extends ApiTestCase
 
     public function testDeleteAnotherExistingUser(): void
     {
-        // make the call form the user token who has no access
         $this->getTestingUserWithoutAccess();
-
         $anotherUser = User::factory()->create();
 
         $response = $this->injectId($anotherUser->id)->makeCall();

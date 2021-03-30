@@ -26,10 +26,8 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
     public function testDetachSinglePermissionFromRole(): void
     {
         $permissionA = Permission::factory()->create();
-
         $roleA = Role::factory()->create();
         $roleA->givePermissionTo($permissionA);
-
         $data = [
             'role_id' => $roleA->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey()],
@@ -39,9 +37,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertEquals($roleA->name, $responseContent->data->name);
-
         $this->assertDatabaseMissing('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'role_id' => $roleA->id
@@ -52,11 +48,9 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
     {
         $permissionA = Permission::factory()->create();
         $permissionB = Permission::factory()->create();
-
         $roleA = Role::factory()->create();
         $roleA->givePermissionTo($permissionA);
         $roleA->givePermissionTo($permissionB);
-
         $data = [
             'role_id' => $roleA->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
@@ -66,9 +60,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertEquals($roleA->name, $responseContent->data->name);
-
         $this->assertDatabaseMissing('role_has_permissions', [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,

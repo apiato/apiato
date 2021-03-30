@@ -28,10 +28,7 @@ class GetAllAdminsTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(200);
-        // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
-
-        // assert the returned data size is correct
         // 1 + 1 (seeded super admin)
         self::assertCount(2, $responseContent->data);
     }
@@ -39,14 +36,11 @@ class GetAllAdminsTest extends ApiTestCase
     public function testGetAllAdminsByNonAdmin(): void
     {
         $this->getTestingUserWithoutAccess();
-
-        // create some fake users
         User::factory()->count(2)->create();
 
         $response = $this->makeCall();
 
         $response->assertStatus(403);
-
         $this->assertResponseContainKeyValue([
             'message' => 'This action is unauthorized.',
         ]);

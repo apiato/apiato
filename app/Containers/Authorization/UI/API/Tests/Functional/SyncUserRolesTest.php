@@ -28,11 +28,8 @@ class SyncUserRolesTest extends ApiTestCase
     {
         $role1 = Role::factory()->create(['display_name' => '111']);
         $role2 = Role::factory()->create(['display_name' => '222']);
-
         $randomUser = User::factory()->create();
         $randomUser->assignRole($role1);
-
-
         $data = [
             'roles_ids' => [
                 $role1->getHashedKey(),
@@ -45,12 +42,9 @@ class SyncUserRolesTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertTrue(count($responseContent->data->roles->data) > 1);
-
         $roleIds = Arr::pluck($responseContent->data->roles->data, 'id');
         self::assertContains($data['roles_ids'][0], $roleIds);
-
         self::assertContains($data['roles_ids'][1], $roleIds);
     }
 }

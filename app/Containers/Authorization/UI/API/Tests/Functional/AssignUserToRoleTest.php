@@ -28,9 +28,7 @@ class AssignUserToRoleTest extends ApiTestCase
     public function testAssignUserToRole(): void
     {
         $randomUser = User::factory()->create();
-
         $role = Role::factory()->create();
-
         $data = [
             'roles_ids' => [$role->getHashedKey()],
             'user_id' => $randomUser->getHashedKey(),
@@ -49,7 +47,6 @@ class AssignUserToRoleTest extends ApiTestCase
         $randomUser = User::factory()->create();
         $role1 = Role::factory()->create();
         $role2 = Role::factory()->create();
-
         $data = [
             'roles_ids' => [
                 $role1->getHashedKey(),

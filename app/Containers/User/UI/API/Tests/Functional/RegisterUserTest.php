@@ -36,12 +36,8 @@ class RegisterUserTest extends ApiTestCase
             'email' => $data['email'],
             'name' => $data['name'],
         ]);
-
         $responseContent = $this->getResponseContentObject();
-
         self::assertNotEmpty($responseContent->data);
-
-        // assert the data is stored in the database
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
 
@@ -56,7 +52,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->endpoint('get@v1/register')->makeCall($data);
 
         $response->assertStatus(405);
-
         $this->assertResponseContainKeyValue([
             'message' => 'The GET method is not supported for this route. Supported methods: POST.',
         ]);
@@ -70,7 +65,6 @@ class RegisterUserTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        // get the logged in user (create one if no one is logged in)
         $this->getTestingUser($userDetails);
 
         $data = [
@@ -82,7 +76,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
         $this->assertValidationErrorContain([
             'email' => 'The email has already been taken.',
         ]);
@@ -98,7 +91,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
         // assert response contain the correct message
         $this->assertValidationErrorContain([
             'email' => 'The email field is required.',
@@ -115,8 +107,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
-        // assert response contain the correct message
         $this->assertValidationErrorContain([
             'name' => 'The name field is required.',
         ]);
@@ -132,8 +122,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
-        // assert response contain the correct message
         $this->assertValidationErrorContain([
             'password' => 'The password field is required.',
         ]);
@@ -150,8 +138,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
-        // assert response contain the correct message
         $this->assertValidationErrorContain([
             'email' => 'The email must be a valid email address.',
         ]);

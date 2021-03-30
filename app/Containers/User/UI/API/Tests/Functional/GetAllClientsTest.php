@@ -28,23 +28,18 @@ class GetAllClientsTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(200);
-        // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
-
-        // assert the returned data size is correct
         // 1 + 1 user created though makeCall() method
         self::assertCount(2, $responseContent->data);
     }
 
     public function testGetAllClientsByNonAdmin(): void
     {
-        // prepare a user without any roles or permissions
         $this->getTestingUserWithoutAccess();
 
         $response = $this->makeCall();
 
         $response->assertStatus(403);
-
         $this->assertResponseContainKeyValue([
             'message' => 'This action is unauthorized.',
         ]);

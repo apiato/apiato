@@ -22,23 +22,15 @@ class ChargeUserWithStripeTest extends TestCase
 
     public function testChargeUserWithStripe(): void
     {
-        // Mock the payments
         $this->mockPayments();
-
-        // create testing user
         $user = $this->getTestingUser();
-
         $stripeAccount = StripeAccount::factory()->create([
             'customer_id' => 'cus_8mBD5S1SoyD4zL',
         ]);
-
+        $amount = 100;
         App::make(AssignPaymentAccountToUserTask::class)->run($stripeAccount, $user, 'nickname');
 
-        $amount = 100;
-
-        // Start the test:
         $account = $user->paymentAccounts->first();
-
         $transaction = $user->charge($account, $amount);
 
         self::assertEquals($transaction->gateway, 'Stripe');

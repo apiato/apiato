@@ -16,8 +16,6 @@ class CreateRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/roles';
 
-    protected bool $auth = true;
-
     protected array $access = [
         'roles' => '',
         'permissions' => 'manage-roles',
@@ -36,7 +34,6 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertEquals($data['name'], $responseContent->data->name);
         self::assertEquals($data['level'], $responseContent->data->level);
     }
@@ -53,7 +50,6 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertEquals(0, $responseContent->data->level);
     }
 

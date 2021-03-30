@@ -28,9 +28,7 @@ class GetAllRolesTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(200);
-        // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
-
         self::assertTrue(count($responseContent->data) > 0);
     }
 }

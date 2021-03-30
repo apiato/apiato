@@ -23,9 +23,7 @@ class ExtractLoginCustomAttributeTest extends TestCase
             'password' => 'so-secret',
         ];
 
-        $task = App::make(ExtractLoginCustomAttributeTask::class);
-
-        $result = $task->run($userDetails);
+        $result = App::make(ExtractLoginCustomAttributeTask::class)->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
@@ -41,14 +39,12 @@ class ExtractLoginCustomAttributeTest extends TestCase
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void
     {
         Config::offsetUnset('authentication-container.login.attributes');
-
         $userDetails = [
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
         ];
-        $task = App::make(ExtractLoginCustomAttributeTask::class);
 
-        $result = $task->run($userDetails);
+        $result = App::make(ExtractLoginCustomAttributeTask::class)->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }

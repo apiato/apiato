@@ -23,39 +23,30 @@ class GetLocalizationsTest extends TestCase
 
         $configuredLocalizations = Config::get('localization-container.supported_languages', []);
 
-        // assert that they have the same amount of fields
         self::assertEquals(count($configuredLocalizations), $localizations->count());
-
-        // now we check all localizations in particular
     }
 
     public function testIfSpecificLocaleIsReturned(): void
     {
-        $class = App::make(GetAllLocalizationsTask::class);
-        $localizations = $class->run();
+        $localizations = App::make(GetAllLocalizationsTask::class)->run();
 
         $unsupportedLocale = new Localization('fr');
-
         self::assertContainsEquals($unsupportedLocale, $localizations);
     }
 
     public function testIfSpecificLocaleWithRegionsIsReturned(): void
     {
-        $class = App::make(GetAllLocalizationsTask::class);
-        $localizations = $class->run();
+        $localizations = App::make(GetAllLocalizationsTask::class)->run();
 
         $unsupportedLocale = new Localization('en', ['en-GB', 'en-US']);
-
         self::assertContainsEquals($unsupportedLocale, $localizations);
     }
 
     public function testIfWrongLocaleIsNotReturned(): void
     {
-        $class = App::make(GetAllLocalizationsTask::class);
-        $localizations = $class->run();
+        $localizations = App::make(GetAllLocalizationsTask::class)->run();
 
         $unsupportedLocale = new Localization('xxx');
-
         self::assertNotContainsEquals($unsupportedLocale, $localizations);
     }
 }

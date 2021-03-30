@@ -25,12 +25,9 @@ class RegisterUserTest extends TestCase
         ];
 
         $request = new RegisterUserRequest($data);
-        $action = App::make(RegisterUserAction::class);
-        $user = $action->run($request);
+        $user = App::make(RegisterUserAction::class)->run($request);
 
-        // asset the returned object is an instance of the User
         self::assertInstanceOf(User::class, $user);
-
         self::assertEquals($user->name, $data['name']);
     }
 }

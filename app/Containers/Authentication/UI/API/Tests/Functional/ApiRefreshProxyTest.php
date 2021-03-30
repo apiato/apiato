@@ -62,7 +62,6 @@ class ApiRefreshProxyTest extends ApiTestCase
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
-
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 }

@@ -21,41 +21,38 @@ class FindUserTest extends ApiTestCase
 
     public function testFindUser(): void
     {
-        $admin = $this->getTestingUser();
+        $user = $this->getTestingUser();
 
-        $response = $this->injectId($admin->id)->makeCall();
+        $response = $this->injectId($user->id)->makeCall();
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
-        self::assertEquals($admin->name, $responseContent->data->name);
+        self::assertEquals($user->name, $responseContent->data->name);
     }
 
     public function testFindFilteredUserResponse(): void
     {
-        $admin = $this->getTestingUser();
+        $user = $this->getTestingUser();
 
-        $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
+        $response = $this->injectId($user->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
 
-        self::assertEquals($admin->name, $responseContent->data->name);
-        self::assertEquals($admin->email, $responseContent->data->email);
+        self::assertEquals($user->name, $responseContent->data->name);
+        self::assertEquals($user->email, $responseContent->data->email);
         self::assertNotContains('id', json_decode($response->getContent(), true));
     }
 
     public function testFindUserWithRelation(): void
     {
-        $admin = $this->getTestingUser();
+        $user = $this->getTestingUser();
 
-        $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
+        $response = $this->injectId($user->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
-        self::assertEquals($admin->email, $responseContent->data->email);
-
+        self::assertEquals($user->email, $responseContent->data->email);
         self::assertNotNull($responseContent->data->roles);
     }
 }

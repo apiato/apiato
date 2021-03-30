@@ -18,7 +18,6 @@ class RegisterUserAction extends Action
 {
     public function run(RegisterUserRequest $data): User
     {
-        // create user record in the database and return it.
         $user = Apiato::call('User@CreateUserByCredentialsTask', [
             false,
             $data->email,

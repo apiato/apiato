@@ -22,7 +22,6 @@ class UpdateUserTest extends ApiTestCase
     public function testUpdateExistingUser(): void
     {
         $user = $this->getTestingUser();
-
         $data = [
             'name' => 'Updated Name',
             'password' => 'updated#Password',
@@ -33,7 +32,6 @@ class UpdateUserTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall($data);
 
         $response->assertStatus(200);
-        // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'object' => 'User',
             'email' => $user->email,
@@ -41,8 +39,6 @@ class UpdateUserTest extends ApiTestCase
             'gender' => $data['gender'],
             'birth' => $data['birth']
         ]);
-
-        // assert data was updated in the database
         $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
 
@@ -51,13 +47,11 @@ class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => 'Updated Name',
         ];
-
         $fakeUserId = 7777;
 
         $response = $this->injectId($fakeUserId)->makeCall($data);
 
         $response->assertStatus(422);
-
         $this->assertResponseContainKeyValue([
             'message' => 'The given data was invalid.'
         ]);
@@ -68,7 +62,6 @@ class UpdateUserTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(422);
-
         $this->assertResponseContainKeyValue([
             'message' => 'The given data was invalid.'
         ]);
@@ -86,7 +79,6 @@ class UpdateUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-
         $this->assertValidationErrorContain([
             // messages should be updated after modifying the validation rules, to pass this test
             'password' => 'The password must be at least 6 characters.',

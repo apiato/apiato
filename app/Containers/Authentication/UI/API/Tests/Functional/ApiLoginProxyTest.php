@@ -26,7 +26,6 @@ class ApiLoginProxyTest extends ApiTestCase
             'email' => 'testing@mail.com',
             'password' => 'testingpass'
         ];
-
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
 
@@ -36,7 +35,6 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
-
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 
@@ -47,7 +45,6 @@ class ApiLoginProxyTest extends ApiTestCase
             'password' => 'testingpass',
             'confirmed' => false,
         ];
-
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
 
@@ -67,15 +64,12 @@ class ApiLoginProxyTest extends ApiTestCase
             'password' => 'testingpass',
             'name' => 'username',
         ];
-
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
-
         $this->setLoginAttributes([
             'email' => [],
             'name' => []
         ]);
-
         $request = [
             'password' => 'testingpass',
             'name' => 'username',
@@ -87,7 +81,6 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
-
         $this->assertResponseContainKeys(['expires_in', 'access_token', 'refresh_token']);
     }
 
@@ -101,7 +94,6 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->setLoginAttributes([
             'email' => []
         ]);
-
         $data = [
             'password' => 'so-secret',
         ];
@@ -119,7 +111,6 @@ class ApiLoginProxyTest extends ApiTestCase
             'email' => [],
             'name' => []
         ]);
-
         $data = [
             'password' => 'so-secret',
         ];

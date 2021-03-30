@@ -5,7 +5,6 @@ namespace App\Containers\Authorization\UI\API\Tests\Functional;
 use App\Containers\Authorization\Models\Role;
 use App\Containers\Authorization\Tests\ApiTestCase;
 use App\Containers\User\Models\User;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class RevokeUserFromRoleTest.
@@ -27,10 +26,8 @@ class RevokeUserFromRoleTest extends ApiTestCase
     public function testRevokeUserFromRole(): void
     {
         $roleA = Role::factory()->create();
-
         $randomUser = User::factory()->create();
         $randomUser->assignRole($roleA);
-
         $data = [
             'roles_ids' => [$roleA->getHashedKey()],
             'user_id' => $randomUser->getHashedKey(),
@@ -40,9 +37,7 @@ class RevokeUserFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-
         self::assertEquals($data['user_id'], $responseContent->data->id);
-
         $this->assertDatabaseMissing('model_has_roles', [
             'model_id' => $randomUser->id,
             'role_id' => $roleA->id,
@@ -53,7 +48,6 @@ class RevokeUserFromRoleTest extends ApiTestCase
     {
         $roleA = Role::factory()->create();
         $roleB = Role::factory()->create();
-
         $randomUser = User::factory()->create();
         $randomUser->assignRole($roleA);
         $randomUser->assignRole($roleB);
@@ -70,7 +64,6 @@ class RevokeUserFromRoleTest extends ApiTestCase
             'model_id' => $randomUser->id,
             'role_id' => $roleA->id,
         ]);
-
         $this->assertDatabaseMissing('model_has_roles', [
             'model_id' => $randomUser->id,
             'role_id' => $roleB->id,
