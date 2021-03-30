@@ -163,7 +163,6 @@ return [
         |
         */
         'log-wrong-apiato-caller-style' => true,
-
     ],
 
     'seeders' => [
@@ -173,9 +172,30 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-
         'deployment' => App\Ship\Seeders\SeedDeploymentData::class,
         'testing' => App\Ship\Seeders\SeedTestingData::class
-    ]
+    ],
 
+    'tests' => [
+        /*
+        |--------------------------------------------------------------------------
+        | In order to be able to create testing user in your tests using test helpers, tests needs to know
+        | the name of the user model.This is working by default but if you are using another
+        | user model you should update this config.
+        | This user model MUST have a factory defined.
+        |--------------------------------------------------------------------------
+        |
+        */
+        'user-class' => App\Containers\User\Models\User::class,
+
+        /*
+        |--------------------------------------------------------------------------
+        | In order to be able to create admin testing user in your tests using test helpers, tests needs to know
+        | the name of the admin state in user factory. This is working by default but if you are using another
+        | user model or you have changed the default admin state name you should update this config.
+        |--------------------------------------------------------------------------
+        |
+        */
+        'user-admin-state' => 'admin'
+    ]
 ];
