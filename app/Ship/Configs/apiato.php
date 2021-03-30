@@ -164,6 +164,18 @@ return [
         */
         'log-wrong-apiato-caller-style' => true,
 
+    ],
+
+    'seeders' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Special seeders for apiato:seed-deploy & apiato:seed-test commands
+        |--------------------------------------------------------------------------
+        |
+        */
+
+        'deployment' => App\Ship\Seeders\SeedDeploymentData::class,
+        'testing' => App\Ship\Seeders\SeedTestingData::class
     ]
 
 ];
