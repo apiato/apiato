@@ -44,7 +44,6 @@ class SyncUserRolesTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertTrue(count($responseContent->data->roles->data) > 1);

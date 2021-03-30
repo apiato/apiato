@@ -38,7 +38,6 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($roleA->name, $responseContent->data->name);
@@ -66,7 +65,6 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($roleA->name, $responseContent->data->name);

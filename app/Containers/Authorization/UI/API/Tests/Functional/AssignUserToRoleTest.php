@@ -39,7 +39,6 @@ class AssignUserToRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
         self::assertEquals($data['user_id'], $responseContent->data->id);
         self::assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
@@ -62,7 +61,6 @@ class AssignUserToRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
         self::assertTrue(count($responseContent->data->roles->data) > 1);
         $roleIds = Arr::pluck($responseContent->data->roles->data, 'id');

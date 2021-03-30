@@ -29,7 +29,6 @@ class FindPermissionTest extends ApiTestCase
         $response = $this->injectId($permissionA->id)->makeCall();
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($permissionA->name, $responseContent->data->name);

@@ -33,7 +33,6 @@ class UpdateUserTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall($data);
 
         $response->assertStatus(200);
-
         // assert returned user is the updated one
         $this->assertResponseContainKeyValue([
             'object' => 'User',

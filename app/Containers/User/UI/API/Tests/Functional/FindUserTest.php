@@ -26,7 +26,6 @@ class FindUserTest extends ApiTestCase
         $response = $this->injectId($admin->id)->makeCall();
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($admin->name, $responseContent->data->name);
@@ -39,7 +38,6 @@ class FindUserTest extends ApiTestCase
         $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($admin->name, $responseContent->data->name);
@@ -54,7 +52,6 @@ class FindUserTest extends ApiTestCase
         $response = $this->injectId($admin->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
         $response->assertStatus(200);
-
         $responseContent = $this->getResponseContentObject();
 
         self::assertEquals($admin->email, $responseContent->data->email);

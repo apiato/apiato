@@ -31,7 +31,6 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
 
         // assert the response status
         $response->assertStatus(200);
-
         $defaultLanguage = Config::get('app.locale');
 
         // check if the header is properly set
@@ -51,7 +50,6 @@ class CheckLocalizationMiddlewareTest extends ApiTestCase
 
         // assert the response status
         $response->assertStatus(200);
-
         // check if the header is properly set
         $response->assertHeader('content-language', $language);
     }

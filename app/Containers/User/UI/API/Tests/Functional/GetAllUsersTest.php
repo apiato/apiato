@@ -28,7 +28,6 @@ class GetAllUsersTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(200);
-
         // convert JSON response string to Object
         $responseContent = $this->getResponseContentObject();
 
@@ -64,7 +63,6 @@ class GetAllUsersTest extends ApiTestCase
         $response = $this->endpoint($this->endpoint . '?search=name:mahmoudzzz')->makeCall();
 
         $response->assertStatus(200);
-
         $responseArray = $response->decodeResponseJson();
 
         self::assertEquals($user->name, $responseArray['data'][0]['name']);

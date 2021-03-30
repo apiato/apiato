@@ -32,7 +32,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-
         $this->assertResponseContainKeyValue([
             'email' => $data['email'],
             'name' => $data['name'],
