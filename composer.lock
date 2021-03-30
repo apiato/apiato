@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "apiato/containers-installer",
-            "version": "v1.0.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/containers-installer.git",
-                "reference": "9c552ea4b9032dd1aa2e6d2e904569cad00fa07c"
+                "reference": "13735d1d40a02ea450af2eeb6241583be93326cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/containers-installer/zipball/9c552ea4b9032dd1aa2e6d2e904569cad00fa07c",
-                "reference": "9c552ea4b9032dd1aa2e6d2e904569cad00fa07c",
+                "url": "https://api.github.com/repos/apiato/containers-installer/zipball/13735d1d40a02ea450af2eeb6241583be93326cb",
+                "reference": "13735d1d40a02ea450af2eeb6241583be93326cb",
                 "shasum": ""
             },
             "require": {
@@ -33,11 +33,12 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "description": "A Composer plugin for installing Apiato Containers (of type apiato-container).",
             "support": {
                 "issues": "https://github.com/apiato/containers-installer/issues",
-                "source": "https://github.com/apiato/containers-installer/tree/v1.0.2"
+                "source": "https://github.com/apiato/containers-installer/tree/v2.0.0"
             },
-            "time": "2021-02-23T10:25:38+00:00"
+            "time": "2021-03-30T05:29:36+00:00"
         },
         {
             "name": "apiato/core",
@@ -45,16 +46,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "6feb477249028e2bff44ff35189434924b6324e5"
+                "reference": "140f6399b85c26b33ced1bfc52440d9a000052bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/6feb477249028e2bff44ff35189434924b6324e5",
-                "reference": "6feb477249028e2bff44ff35189434924b6324e5",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/140f6399b85c26b33ced1bfc52440d9a000052bc",
+                "reference": "140f6399b85c26b33ced1bfc52440d9a000052bc",
                 "shasum": ""
             },
             "require": {
-                "apiato/containers-installer": "^1.0",
+                "apiato/containers-installer": "^2.0",
                 "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
                 "guzzlehttp/guzzle": "^7.2.0",
@@ -122,7 +123,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-29T15:37:34+00:00"
+            "time": "2021-03-30T05:36:50+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3028,16 +3029,16 @@
         },
         {
             "name": "mohammad-alavi/apiato-settings",
-            "version": "v0.1.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-settings.git",
-                "reference": "fa155bbc36a4b3e73691d13211b7a66bc1388ba4"
+                "reference": "12c08c772d590fc81e93464150d80c84a89bc27a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/fa155bbc36a4b3e73691d13211b7a66bc1388ba4",
-                "reference": "fa155bbc36a4b3e73691d13211b7a66bc1388ba4",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/12c08c772d590fc81e93464150d80c84a89bc27a",
+                "reference": "12c08c772d590fc81e93464150d80c84a89bc27a",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -3055,22 +3056,22 @@
             "description": "An Apiato container which helps store and retrieving key values",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-settings/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v0.1.0"
+                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v2.0.0"
             },
-            "time": "2021-03-24T14:33:59+00:00"
+            "time": "2021-03-30T05:46:42+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v0.1.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "d928fe72103e1734c7159456292227dc99f817b8"
+                "reference": "9980dad61fac51ca66e8b6a682e5dd9c096226d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/d928fe72103e1734c7159456292227dc99f817b8",
-                "reference": "d928fe72103e1734c7159456292227dc99f817b8",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/9980dad61fac51ca66e8b6a682e5dd9c096226d3",
+                "reference": "9980dad61fac51ca66e8b6a682e5dd9c096226d3",
                 "shasum": ""
             },
             "require": {
@@ -3094,9 +3095,9 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v0.1.2"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.0"
             },
-            "time": "2021-03-25T08:35:30+00:00"
+            "time": "2021-03-30T05:43:05+00:00"
         },
         {
             "name": "mohammad-alavi/laravel-shoppingcart",
