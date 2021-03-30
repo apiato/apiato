@@ -35,7 +35,8 @@ class GetAllAdminsTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        self::assertCount(3, $responseContent->data); // 2 (fake in this test) + 1 (seeded super admin)
+        // 1 + 1 (seeded super admin)
+        self::assertCount(2, $responseContent->data);
     }
 
     public function testGetAllAdminsByNonAdmin(): void

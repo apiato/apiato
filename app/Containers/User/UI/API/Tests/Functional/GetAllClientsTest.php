@@ -35,7 +35,8 @@ class GetAllClientsTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        self::assertCount(1, $responseContent->data);
+        // 1 + 1 user created though makeCall() method
+        self::assertCount(2, $responseContent->data);
     }
 
     public function testGetAllClientsByNonAdmin(): void
