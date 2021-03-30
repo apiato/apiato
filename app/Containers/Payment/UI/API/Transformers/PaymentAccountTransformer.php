@@ -34,6 +34,8 @@ class PaymentAccountTransformer extends Transformer
 
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
+            'readable_created_at' => $entity->created_at->diffForHumans(),
+            'readable_updated_at' => $entity->updated_at->diffForHumans(),
         ];
 
         $response = $this->ifAdmin([
