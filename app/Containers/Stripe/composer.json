@@ -1,6 +1,6 @@
 {
     "name": "apiato/stripe",
-    "description": "apiato Container for apiato.",
+    "description": "stripe Container for apiato.",
     "require": {
         "cartalyst/stripe-laravel": "^13.1.0"
     },
