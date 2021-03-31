@@ -18,6 +18,9 @@
         <testsuite name="Containers Tests">
             <directory suffix="Test.php">./app/Containers</directory>
         </testsuite>
+        <testsuite name="Modules Tests">
+            <directory suffix="Test.php">./app/Modules</directory>
+        </testsuite>
     </testsuites>
     <php>
         <env name="API_FULL_URL" value="http://api.apiato.test"/>
