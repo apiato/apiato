@@ -4,16 +4,11 @@ namespace App\Containers\User\Models;
 
 use App\Containers\Authorization\Traits\AuthenticationTrait;
 use App\Containers\Authorization\Traits\AuthorizationTrait;
-use App\Containers\Payment\Contracts\ChargeableInterface;
-use App\Containers\Payment\Models\PaymentAccount;
-use App\Containers\Payment\Traits\ChargeableTrait;
 use App\Ship\Parents\Models\UserModel;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-class User extends UserModel implements ChargeableInterface
+class User extends UserModel
 {
-    use ChargeableTrait;
     use AuthorizationTrait;
     use AuthenticationTrait;
     use Notifiable;
@@ -56,9 +51,4 @@ class User extends UserModel implements ChargeableInterface
         'password',
         'remember_token',
     ];
-
-    public function paymentAccounts(): HasMany
-    {
-        return $this->hasMany(PaymentAccount::class);
-    }
 }
