@@ -3,7 +3,7 @@
 namespace App\Containers\Authentication\Tests\Unit;
 
 use App\Containers\Authentication\Tasks\ExtractLoginCustomAttributeTask;
-use App\Containers\User\Tests\TestCase;
+use App\Containers\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
