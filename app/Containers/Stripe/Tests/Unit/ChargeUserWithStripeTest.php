@@ -5,7 +5,7 @@ namespace App\Containers\Stripe\Tests\Unit;
 use App\Containers\Payment\Tasks\AssignPaymentAccountToUserTask;
 use App\Containers\Payment\Traits\MockablePaymentsTrait;
 use App\Containers\Stripe\Models\StripeAccount;
-use App\Containers\User\Tests\TestCase;
+use App\Containers\Stripe\Tests\TestCase;
 use Illuminate\Support\Facades\App;
 
 /**
