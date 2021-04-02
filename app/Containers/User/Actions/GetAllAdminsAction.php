@@ -12,6 +12,7 @@ class GetAllAdminsAction extends Action
         return Apiato::call('User@GetAllUsersTask',
             [],
             [
+                'addRequestCriteria',
                 'admins',
                 'ordered',
             ]

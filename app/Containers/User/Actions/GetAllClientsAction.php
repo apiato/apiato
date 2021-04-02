@@ -12,6 +12,7 @@ class GetAllClientsAction extends Action
         return Apiato::call('User@GetAllUsersTask',
             [],
             [
+                'addRequestCriteria',
                 'clients',
                 'ordered',
             ]
