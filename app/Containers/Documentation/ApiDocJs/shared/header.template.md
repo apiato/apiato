@@ -50,7 +50,7 @@ The `?limit=` parameter can be applied to define, how many record should be retu
 **Usage:**
 
 ```
-api.domain.test/endpoint?limit=100
+api.domain.test/v1/endpoint?limit=100
 ```
 
 The above example returns 100 resources. 
@@ -58,7 +58,7 @@ The above example returns 100 resources.
 The `limit` and `page` query parameters can be combined in order to get the next 100 resources:
 
 ```
-api.domain.test/endpoint?limit=100&page=2
+api.domain.test/v1/endpoint?limit=100&page=2
 ```
 
 You can skip the pagination limit to get all the data, by adding `?limit=0`, this will only work if 'skip pagination' is enabled on the server.
@@ -70,7 +70,7 @@ Unless otherwise specified, all of API endpoints will return the information tha
 
 #### Standard Response Format
 
-```shell
+```json
 {
   "data": {
     "object": "Role",
@@ -126,7 +126,7 @@ The `?orderBy=` parameter can be applied to any **`GET`** HTTP request responsib
 **Usage:**
 
 ```
-api.domain.test/endpoint?orderBy=created_at
+api.domain.test/v1/endpoint?orderBy=created_at
 ```
 
 ### Sorting
@@ -138,7 +138,7 @@ By default the `orderBy` sorts the data in **ascending** order, if you want the 
 **Usage:**
 
 ```
-api.domain.test/endpoint?orderBy=name&sortedBy=desc
+api.domain.test/v1/endpoint?orderBy=name&sortedBy=desc
 ```
 
 Order By Accepts:
@@ -155,7 +155,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 #### Search any field:
 
 ```
-api.domain.test/endpoint?search=keyword here
+api.domain.test/v1/endpoint?search=keyword here
 ```
 
 > Space should be replaced with `%20` (search=keyword%20here).
@@ -163,23 +163,23 @@ api.domain.test/endpoint?search=keyword here
 #### Search any field for multiple keywords:
 
 ```
-api.domain.test/endpoint?search=first keyword;second keyword
+api.domain.test/v1/endpoint?search=first keyword;second keyword
 ```
 
 #### Search in specific field:
 ```
-api.domain.test/endpoint?search=field:keyword here
+api.domain.test/v1/endpoint?search=field:keyword here
 ```
 
 #### Search in specific fields for multiple keywords: 
 ```
-api.domain.test/endpoint?search=field1:first field keyword;field2:second field keyword
+api.domain.test/v1/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 #### Define query condition:
 
 ```
-api.domain.test/endpoint?search=field:keyword&searchFields=name:like
+api.domain.test/v1/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Available Conditions: 
@@ -191,7 +191,25 @@ Available Conditions:
 #### Define query condition for multiple fields:
 
 ```
-api.domain.test/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+api.domain.test/v1/endpoint?search=field1:first keyword;field2:second keyword&searchFields=field1:like;field2:=;
+```
+
+#### Search Join:
+By default, search makes its queries using the OR comparison operator for each query parameter.
+
+```
+api.domain.test/v1/endpoint?search=age:17;email:john@gmail.com
+```
+
+The above example will execute the following query:
+
+```sql
+SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
+```
+In order for it to query using the AND, pass the searchJoin parameter as shown below:
+
+```
+api.domain.test/v1/endpoint?search=age:17;email:john@gmail.com&searchJoin=and
 ```
 
 ### Filtering
@@ -200,10 +218,10 @@ The `?filter=` parameter can be applied to any HTTP request. And is used to cont
 
 **Usage:**
 
-Return only ID and Name from that Model, (everything else will be returned as `null`).
+Return only ID and Status from the Model.
 
 ```
-api.domain.test/endpoint?filter=id;status
+api.domain.test/v1/endpoint?filter=id;status
 ```
 
 Example Response, including only id and status:
@@ -251,12 +269,12 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.domain.test/endpoint?page=200
+api.domain.test/v1/endpoint?page=200
 ```
 
 *The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
 
-```shell
+```json
   "data": [...],
   "meta": {
     "pagination": {
@@ -266,7 +284,7 @@ api.domain.test/endpoint?page=200
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.domain.test/endpoint?page=21"
+        "previous": "http://api.domain.test/v1/endpoint?page=21"
       }
     }
   }
@@ -285,7 +303,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 **Usage:**
 
 ```
-api.domain.test/endpoint?include=relationship
+api.domain.test/v1/endpoint?include=relationship
 ```
 
 Every response contain an `include` in its `meta`  as follow:
@@ -307,27 +325,8 @@ The `?skipCache=` parameter can be used to force skip loading the response data 
 **Usage:**
 
 ```
-api.domain.test/endpoint?skipCache=true
+api.domain.test/v1/endpoint?skipCache=true
 ```
-
-
-## **Errors** (Outdated)
-
-
-General Errors:
-
-| Error Code | Message                                                                               | Reason                                              |
-|------------|---------------------------------------------------------------------------------------|-----------------------------------------------------|
-| 401        | Wrong number of segments.                                                             | Wrong Token.                                        |
-| 401        | Failed to authenticate because of bad credentials or an invalid authorization header. | Missing parts of the Token.                         |
-| 401        | Could not decode token: The token ... is an invalid JWS.                              | Missing Token.                                      |
-| 405        | Method Not Allowed.                                                                   | Wrong Endpoint URL.                                 |
-| 422        | Invalid Input.                                                                        | Validation Error.                                   |
-| 500        | Internal Server Error.                                                                | {Report this error as soon as you get it.}          |
-| 500        | This action is unauthorized.                                                          | Using wrong HTTP Verb. OR using unauthorized token. |
-
-TO BE CONTINUE...
-
 
 ## **Requests**
 
