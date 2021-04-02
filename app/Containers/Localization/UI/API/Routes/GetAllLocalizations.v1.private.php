@@ -8,7 +8,7 @@
  * @apiDescription     Return all available localizations that are "configured" in the application
  *
  * @apiVersion         1.0.0
- * @apiPermission      none
+ * @apiPermission      Authenticated User
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 200 OK
