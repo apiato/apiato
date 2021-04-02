@@ -166,7 +166,7 @@ api.domain.test/v1/endpoint?search=keyword here
 api.domain.test/v1/endpoint?search=first keyword;second keyword
 ```
 
-#### Search in specific field:
+#### Search in a specific field:
 ```
 api.domain.test/v1/endpoint?search=field:keyword here
 ```
@@ -206,7 +206,7 @@ The above example will execute the following query:
 ```sql
 SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
 ```
-In order for it to query using the AND, pass the searchJoin parameter as shown below:
+In order for it to query using the AND, pass the `searchJoin` parameter as shown below:
 
 ```
 api.domain.test/v1/endpoint?search=age:17;email:john@gmail.com&searchJoin=and
@@ -306,7 +306,7 @@ accepts `driver` as relationship (in the **Available Relationships** section).
 api.domain.test/v1/endpoint?include=relationship
 ```
 
-Every response contain an `include` in its `meta`  as follow:
+Every response contains an `include` in its `meta`  as follow:
 
 ```
    "meta":{
@@ -319,7 +319,7 @@ Every response contain an `include` in its `meta`  as follow:
 
 ### Caching
 
-Some endpoints stores their response data in memory (caching) after querying them for the first time, to speed up the response time.
+Some endpoints store their response data in memory (caching) after querying them for the first time, to speed up the response time.
 The `?skipCache=` parameter can be used to force skip loading the response data from the server cache and instead get a fresh data from the database upon the request.
 
 **Usage:**
