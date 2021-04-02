@@ -38,7 +38,7 @@
         "fideloper/proxy": "^4.4.1",
         "fruitcake/laravel-cors": "^1.0.6",
         "guzzlehttp/guzzle": "^7.2.0",
-        "laravel/framework": "^8.28.1",
+        "laravel/framework": "^8.34.1",
         "laravel/tinker": "^2.6.0",
         "wikimedia/composer-merge-plugin": "^2.0.1"
     },

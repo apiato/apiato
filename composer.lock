@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30c38da4464892ff9a59997614d4a9e5",
+    "content-hash": "b36fbf8112eca6b63ebc91d11bb88b71",
     "packages": [
         {
             "name": "apiato/containers-installer",
@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "140f6399b85c26b33ced1bfc52440d9a000052bc"
+                "reference": "42130d01bb090bb52f4337f697de7477573613bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/140f6399b85c26b33ced1bfc52440d9a000052bc",
-                "reference": "140f6399b85c26b33ced1bfc52440d9a000052bc",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/42130d01bb090bb52f4337f697de7477573613bc",
+                "reference": "42130d01bb090bb52f4337f697de7477573613bc",
                 "shasum": ""
             },
             "require": {
@@ -123,7 +123,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-03-30T05:36:50+00:00"
+            "time": "2021-03-31T06:28:15+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -1912,16 +1912,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.34.0",
+            "version": "v8.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "81892ca110795a9c46c7e198cba7763bfd2af0bf"
+                "reference": "d118c0df39e7524131176aaf76493eae63a8a602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/81892ca110795a9c46c7e198cba7763bfd2af0bf",
-                "reference": "81892ca110795a9c46c7e198cba7763bfd2af0bf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d118c0df39e7524131176aaf76493eae63a8a602",
+                "reference": "d118c0df39e7524131176aaf76493eae63a8a602",
                 "shasum": ""
             },
             "require": {
@@ -2076,7 +2076,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-23T15:12:51+00:00"
+            "time": "2021-03-30T21:34:17+00:00"
         },
         {
             "name": "laravel/passport",
@@ -3028,17 +3028,54 @@
             "time": "2021-02-19T21:22:57+00:00"
         },
         {
-            "name": "mohammad-alavi/apiato-settings",
-            "version": "v2.0.0",
+            "name": "mohammad-alavi/apiato-payment",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-settings.git",
-                "reference": "12c08c772d590fc81e93464150d80c84a89bc27a"
+                "url": "https://github.com/Mohammad-Alavi/apiato-payment.git",
+                "reference": "728b558789e973d77b048b8ab2b8707a2667c1de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/12c08c772d590fc81e93464150d80c84a89bc27a",
-                "reference": "12c08c772d590fc81e93464150d80c84a89bc27a",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-payment/zipball/728b558789e973d77b048b8ab2b8707a2667c1de",
+                "reference": "728b558789e973d77b048b8ab2b8707a2667c1de",
+                "shasum": ""
+            },
+            "require": {
+                "mohammad-alavi/apiato-stripe-payment-gateway": "^0.1.0",
+                "mohammad-alavi/laravel-shoppingcart": "^0.1.2"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Payment"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which acts as a generic foundation to \"plug in\" different containers that interacts with specificpayment gateways (e.g., PayPal, Stripe, ...)",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-payment/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-payment/tree/v0.1.3"
+            },
+            "time": "2021-03-31T14:39:59+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-settings",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-settings.git",
+                "reference": "16e95ac3487eb9c96cd041fe329c0719b40be15b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/16e95ac3487eb9c96cd041fe329c0719b40be15b",
+                "reference": "16e95ac3487eb9c96cd041fe329c0719b40be15b",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -3056,22 +3093,22 @@
             "description": "An Apiato container which helps store and retrieving key values",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-settings/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v2.0.0"
+                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v2.0.1"
             },
-            "time": "2021-03-30T05:46:42+00:00"
+            "time": "2021-03-31T14:36:28+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v2.0.0",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "9980dad61fac51ca66e8b6a682e5dd9c096226d3"
+                "reference": "4af98e65615f01bde70e12c476fe410f66e0f569"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/9980dad61fac51ca66e8b6a682e5dd9c096226d3",
-                "reference": "9980dad61fac51ca66e8b6a682e5dd9c096226d3",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/4af98e65615f01bde70e12c476fe410f66e0f569",
+                "reference": "4af98e65615f01bde70e12c476fe410f66e0f569",
                 "shasum": ""
             },
             "require": {
@@ -3095,9 +3132,48 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.0"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.2"
             },
-            "time": "2021-03-30T05:43:05+00:00"
+            "time": "2021-03-31T14:36:02+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-stripe-payment-gateway",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway.git",
+                "reference": "e35367c886bdaa9afec26960d269c0a701797e7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-stripe-payment-gateway/zipball/e35367c886bdaa9afec26960d269c0a701797e7f",
+                "reference": "e35367c886bdaa9afec26960d269c0a701797e7f",
+                "shasum": ""
+            },
+            "require": {
+                "cartalyst/stripe-laravel": "^13.1.0"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Stripe"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Implementation of Stripe gateway for Apiato Payment Container",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway/tree/v0.1.3"
+            },
+            "time": "2021-03-31T14:38:28+00:00"
         },
         {
             "name": "mohammad-alavi/laravel-shoppingcart",
@@ -8387,16 +8463,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "ef0f5bce23b30b32d98fd9bb49c6fa37b40eb546"
+                "reference": "9dd6f2b56486d939c4467b3f35475d44af57cf17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/ef0f5bce23b30b32d98fd9bb49c6fa37b40eb546",
-                "reference": "ef0f5bce23b30b32d98fd9bb49c6fa37b40eb546",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/9dd6f2b56486d939c4467b3f35475d44af57cf17",
+                "reference": "9dd6f2b56486d939c4467b3f35475d44af57cf17",
                 "shasum": ""
             },
             "require": {
@@ -8440,7 +8516,7 @@
             ],
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
-                "source": "https://github.com/facade/flare-client-php/tree/1.4.0"
+                "source": "https://github.com/facade/flare-client-php/tree/1.5.0"
             },
             "funding": [
                 {
@@ -8448,20 +8524,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-16T12:42:06+00:00"
+            "time": "2021-03-31T07:32:54+00:00"
         },
         {
             "name": "facade/ignition",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb"
+                "reference": "bdc8b0b32c888f6edc838ca641358322b3d9506d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/4be10a998815f77952b9eb983fb0b64c8a4defbb",
-                "reference": "4be10a998815f77952b9eb983fb0b64c8a4defbb",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/bdc8b0b32c888f6edc838ca641358322b3d9506d",
+                "reference": "bdc8b0b32c888f6edc838ca641358322b3d9506d",
                 "shasum": ""
             },
             "require": {
@@ -8525,7 +8601,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-03-24T18:58:31+00:00"
+            "time": "2021-03-30T15:55:38+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -8582,16 +8658,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.14.0",
+            "version": "v1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "cd46398f42c2ab191ffb0b57c07e911c7c28eb25"
+                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/cd46398f42c2ab191ffb0b57c07e911c7c28eb25",
-                "reference": "cd46398f42c2ab191ffb0b57c07e911c7c28eb25",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
+                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
                 "shasum": ""
             },
             "require": {
@@ -8614,6 +8690,11 @@
                 "ext-mbstring": "Required for multibyte Unicode string functionality."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "v1.15-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Faker\\": "src/Faker/"
@@ -8636,22 +8717,22 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.14.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v.1.14.1"
             },
-            "time": "2021-03-29T08:56:34+00:00"
+            "time": "2021-03-30T06:27:33+00:00"
         },
         {
             "name": "filp/whoops",
-            "version": "2.11.0",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "f6e14679f948d8a5cfb866fa7065a30c66bd64d3"
+                "reference": "d501fd2658d55491a2295ff600ae5978eaad7403"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/f6e14679f948d8a5cfb866fa7065a30c66bd64d3",
-                "reference": "f6e14679f948d8a5cfb866fa7065a30c66bd64d3",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/d501fd2658d55491a2295ff600ae5978eaad7403",
+                "reference": "d501fd2658d55491a2295ff600ae5978eaad7403",
                 "shasum": ""
             },
             "require": {
@@ -8701,7 +8782,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.11.0"
+                "source": "https://github.com/filp/whoops/tree/2.12.0"
             },
             "funding": [
                 {
@@ -8709,7 +8790,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-19T12:00:00+00:00"
+            "time": "2021-03-30T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
