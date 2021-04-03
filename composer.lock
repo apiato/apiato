@@ -3099,16 +3099,16 @@
         },
         {
             "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "4af98e65615f01bde70e12c476fe410f66e0f569"
+                "reference": "063e9f4ab84a90327d5d9192d8ef35d87c8a8c64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/4af98e65615f01bde70e12c476fe410f66e0f569",
-                "reference": "4af98e65615f01bde70e12c476fe410f66e0f569",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/063e9f4ab84a90327d5d9192d8ef35d87c8a8c64",
+                "reference": "063e9f4ab84a90327d5d9192d8ef35d87c8a8c64",
                 "shasum": ""
             },
             "require": {
@@ -3132,9 +3132,9 @@
             "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.2"
+                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.3"
             },
-            "time": "2021-03-31T14:36:02+00:00"
+            "time": "2021-04-03T06:15:54+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-stripe-payment-gateway",
@@ -3174,6 +3174,39 @@
                 "source": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway/tree/v0.1.3"
             },
             "time": "2021-03-31T14:38:28+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-welcome",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-welcome.git",
+                "reference": "0889e50751f4eb6cead8b3302a6dfd0d3bcaa140"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-welcome/zipball/0889e50751f4eb6cead8b3302a6dfd0d3bcaa140",
+                "reference": "0889e50751f4eb6cead8b3302a6dfd0d3bcaa140",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Welcome"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-welcome/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-welcome/tree/v0.1.1"
+            },
+            "time": "2021-04-03T06:38:11+00:00"
         },
         {
             "name": "mohammad-alavi/laravel-shoppingcart",
@@ -7855,16 +7888,16 @@
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.9.1",
+            "version": "v2.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "8d8302ff6adb55f8b844c798b8b1ffdee142f7e5"
+                "reference": "2f61602e7a7f88ad29b0f71355b4bb71396e923b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/8d8302ff6adb55f8b844c798b8b1ffdee142f7e5",
-                "reference": "8d8302ff6adb55f8b844c798b8b1ffdee142f7e5",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/2f61602e7a7f88ad29b0f71355b4bb71396e923b",
+                "reference": "2f61602e7a7f88ad29b0f71355b4bb71396e923b",
                 "shasum": ""
             },
             "require": {
@@ -7933,7 +7966,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-ide-helper/issues",
-                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/v2.9.1"
+                "source": "https://github.com/barryvdh/laravel-ide-helper/tree/v2.9.3"
             },
             "funding": [
                 {
@@ -7941,7 +7974,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-15T19:22:08+00:00"
+            "time": "2021-04-02T14:32:13+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -8073,16 +8106,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9"
+                "reference": "6c12ce263da71641903e399c3ce8ecb08fd375fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9",
-                "reference": "a5a5632da0b1c2d6fa9a3b65f1f4e90d1f04abb9",
+                "url": "https://api.github.com/repos/composer/composer/zipball/6c12ce263da71641903e399c3ce8ecb08fd375fb",
+                "reference": "6c12ce263da71641903e399c3ce8ecb08fd375fb",
                 "shasum": ""
             },
             "require": {
@@ -8150,7 +8183,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.0.11"
+                "source": "https://github.com/composer/composer/tree/2.0.12"
             },
             "funding": [
                 {
@@ -8166,7 +8199,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-24T13:57:23+00:00"
+            "time": "2021-04-01T08:14:59+00:00"
         },
         {
             "name": "composer/semver",
