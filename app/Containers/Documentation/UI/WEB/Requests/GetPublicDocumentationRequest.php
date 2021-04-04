@@ -1,33 +1,32 @@
 <?php
 
-namespace App\Containers\Authentication\UI\API\Requests;
+namespace App\Containers\Documentation\UI\WEB\Requests;
 
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Arr;
 
-class ProxyLoginPasswordGrantRequest extends Request
+class GetPublicDocumentationRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        'permissions' => null,
-        'roles' => null,
+        'permissions' => '',
+        'roles'       => '',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-
+        // 'id',
     ];
 
     /**
-     * Defining the URL parameters (`/stores/999/items`) allows applying
+     * Defining the URL parameters (e.g, `/user/{id}`) allows applying
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-
+        // 'id',
     ];
 
     /**
@@ -35,13 +34,9 @@ class ProxyLoginPasswordGrantRequest extends Request
      */
     public function rules(): array
     {
-        $rules = [
-            'password' => 'required|min:3|max:30',
+        return [
+            // 'id' => 'required'
         ];
-
-        $rules = loginAttributeValidationRulesMerger($rules);
-
-        return $rules;
     }
 
     /**

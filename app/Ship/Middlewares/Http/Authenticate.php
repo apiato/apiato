@@ -5,6 +5,7 @@ namespace App\Ship\Middlewares\Http;
 use App\Containers\Authentication\Exceptions\AuthenticationException;
 use Exception;
 use Illuminate\Auth\Middleware\Authenticate as LaravelAuthenticate;
+use Illuminate\Support\Facades\Config;
 
 class Authenticate extends LaravelAuthenticate
 {
@@ -13,7 +14,16 @@ class Authenticate extends LaravelAuthenticate
         try {
             parent::authenticate($request, $guards);
         } catch (Exception $exception) {
-            throw new AuthenticationException();
+            if ($request->expectsJson()) {
+                throw new AuthenticationException();
+            } else {
+                $this->unauthenticated($request, $guards);
+            }
         }
+    }
+
+    protected function redirectTo($request): ?string
+    {
+        return route(Config::get('authentication-container.login-page-url'));
     }
 }

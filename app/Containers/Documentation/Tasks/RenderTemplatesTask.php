@@ -10,8 +10,8 @@ class RenderTemplatesTask extends Task
 {
     use DocsGeneratorTrait;
 
-    private const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/';
-    private const OUTPUT_PATH = 'api-rendered-markdowns/';
+    private const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/header.template.md';
+    private const OUTPUT_PATH = 'Containers/Documentation/UI/WEB/Views/documentation/header.md';
     protected $headerMarkdownContent;
 
     /**
@@ -20,7 +20,7 @@ class RenderTemplatesTask extends Task
     public function run(): string
     {
         // read the template file
-        $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
+        $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH));
 
         $this->replace('api.domain.test', Config::get('apiato.api.url'));
         $this->replace('{{rate-limit-expires}}', Config::get('apiato.api.throttle.expires'));
@@ -32,10 +32,8 @@ class RenderTemplatesTask extends Task
         $this->replace('{{pagination-limit}}', Config::get('repository.pagination.limit'));
 
         // this is what the apidoc.json file will point to to load the header.md
-        // example: "filename": "../public/api-rendered-markdowns/header.md"
-        $path = public_path(self::OUTPUT_PATH . 'header.md');
-
         // write the actual file
+        $path = app_path(self::OUTPUT_PATH);
         file_put_contents($path, $this->headerMarkdownContent);
 
         return $path;

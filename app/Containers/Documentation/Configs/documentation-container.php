@@ -31,9 +31,9 @@ return [
     */
 
     'types' => [
-
         'public' => [
             'url' => 'api/documentation',
+            'folder-name' => 'documentation/public', // doc folder name
             'routes' => [
                 'public',
             ],
@@ -41,6 +41,7 @@ return [
 
         'private' => [
             'url' => 'api/private/documentation',
+            'folder-name' => 'documentation/private', // doc folder name
             'routes' => [
                 'private',
                 'public',
@@ -57,5 +58,16 @@ return [
     |
     */
 
-    'html_files' => 'public/'
+    'html_files' => env('SRC_PATH', app()->path()) . '/Containers/Documentation/UI/WEB/Views/',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Protect private docs by auth:web middleware
+    |--------------------------------------------------------------------------
+    |
+    | If enabled, users need to login and have proper roles/permissions to access private docs
+    |
+    */
+
+    'protect-private-docs' => App::isProduction() // Private docs are protected while in production
 ];

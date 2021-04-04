@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Containers\Authentication\UI\API\Requests;
+namespace App\Containers\Authentication\UI\WEB\Requests;
 
 use App\Ship\Parents\Requests\Request;
-use Illuminate\Support\Arr;
 
-class ProxyLoginPasswordGrantRequest extends Request
+class LoginRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

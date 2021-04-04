@@ -23,7 +23,8 @@ class GenerateAPIDocsTask extends Task
             "-i",
             "app",
             "-o",
-            $path
+            $path,
+            "--single"
         ];
 
         $process = new Process($command);
@@ -41,6 +42,6 @@ class GenerateAPIDocsTask extends Task
         $console->info('Output: ' . $process->getOutput());
 
         // return the path to the generated documentation
-        return $this->getFullApiUrl($type);
+        return $this->getFullDocsUrl($type);
     }
 }

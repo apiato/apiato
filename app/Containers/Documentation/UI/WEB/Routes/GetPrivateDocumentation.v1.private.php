@@ -1,0 +1,11 @@
+<?php
+
+use App\Containers\Documentation\UI\WEB\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+
+if (config('documentation-container.protect-private-docs')) {
+    Route::get('docs/private', [Controller::class, 'showPrivateDocs'])
+        ->middleware('auth:web');
+} else {
+    Route::get('docs/private', [Controller::class, 'showPrivateDocs']);
+}

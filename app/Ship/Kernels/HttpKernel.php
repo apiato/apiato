@@ -57,7 +57,7 @@ class HttpKernel extends LaravelHttpKernel
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+//             \Illuminate\Session\Middleware\AuthenticateSession::class,
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
@@ -85,6 +85,7 @@ class HttpKernel extends LaravelHttpKernel
         'cache.headers' => SetCacheHeaders::class,
         // Note: The "can" Middleware is registered by MiddlewareServiceProvider in Authorization Container
         // 'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        // Note: The "guest" Middleware is registered by MiddlewareServiceProvider in Authentication Container
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Config;
 
 trait DocsGeneratorTrait
 {
-    private function getFullApiUrl($type): string
+    private function getFullDocsUrl($type): string
     {
         return '> ' . $this->getAppUrl() . '/' . $this->getUrl($type);
     }
@@ -36,12 +36,19 @@ trait DocsGeneratorTrait
 
     private function getDocumentationPath($type): string
     {
-        return $this->getHtmlPath() . $this->getUrl($type);
+        return $this->getHtmlPath() . $this->getFolderName($type);
     }
 
     private function getHtmlPath()
     {
         return Config::get("{$this->getConfigFile()}.html_files");
+    }
+
+    private function getFolderName($type)
+    {
+        $configs = $this->getTypeConfig();
+
+        return $configs[$type]['folder-name'];
     }
 
     private function getJsonFilePath($type): string
@@ -52,11 +59,6 @@ trait DocsGeneratorTrait
     private function getExecutable()
     {
         return Config::get($this->getConfigFile() . '.executable');
-    }
-
-    private function getSwaggerConverter()
-    {
-        return Config::get($this->getConfigFile() . '.swagger-converter');
     }
 
     private function getEndpointFiles($type): array

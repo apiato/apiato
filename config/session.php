@@ -168,7 +168,7 @@ return [
     |
     */
 
-    'secure' => env('APP_ENV' === 'local') ? false : env('SESSION_SECURE_COOKIE', true),
+    'secure' => env('SESSION_SECURE_COOKIE', true),
 
     /*
     |--------------------------------------------------------------------------
