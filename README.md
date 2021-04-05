@@ -1,3 +1,5 @@
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
+
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
 </p>
@@ -88,7 +90,7 @@ Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/v
 
 ## Awesome People
 
-Apiato is an MIT-licensed open source project with its ongoing development made possible entirely by the support of all these smart and generous people, from code contributors to financial contributors. 💜
+Apiato is an MIT-licensed open source project with its ongoing development made possible entirely by the support of all the smart and generous code and financial contributors. 💜
 
 ### Project Maintainers
 
@@ -109,13 +111,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
         </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/johannesschobel.png?s=150">
-            <br>
-            <strong> Johannes Schobel </strong>
-            <br>
-            <a href="https://github.com/johannesschobel">@johannesschobel</a>
-        </td>
        <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/moslem-deris.png?s=150">
             <br>
@@ -123,94 +118,9 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/moslem-deris">@moslem-deris</a>
         </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/zmaren.png?s=150">
-            <br>
-            <strong>Zeljko Marenovic</strong>
-            <br>
-            <a href="https://github.com/zmaren">@zmaren</a>
-        </td>
      </tr>
-     <tr>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/rdehnhardt.png?s=150">
-            <br>
-            <strong>Renato Dehnhardt</strong>
-            <br>
-            <a href="https://github.com/rdehnhardt">@rdehnhardt</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/JulianBustamante.png?s=150">
-            <br>
-            <strong>Julián Bustamante</strong>
-            <br>
-            <a href="https://github.com/JulianBustamante">@JulianBustamante</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/llstarscreamll.png?s=150">
-            <br>
-            <strong>Johan Alvarez</strong>
-            <br>
-            <a href="https://github.com/llstarscreamll">@llstarscreamll</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/fwidm.png?s=150">
-            <br>
-            <strong>FWidm</strong>
-            <br>
-            <a href="https://github.com/FWidm">@FWidm</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/lloricode.png?s=150">
-            <br>
-            <strong>Lloric Mayuga Garcia</strong>
-            <br>
-            <a href="https://github.com/lloricode">@lloricode</a>
-        </td>
-     </tr>
-	  <tr>    
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/jlorente.png?s=150">
-            <br>
-            <strong>Pepe</strong>
-            <br>
-            <a href="https://github.com/jlorente">@jlorente</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/deviouspk.png?s=150">
-            <br>
-            <strong>Arthur Vandenberghe</strong>
-            <br>
-            <a href="https://github.com/deviouspk">@deviouspk</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/hz61p1.png?s=150">
-            <br>
-            <strong>Null HZ61 P1</strong>
-            <br>
-            <a href="https://github.com/hz61p1">@hz61p1</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/Kyslik.png?s=150">
-            <br>
-            <strong>Martin Kiesel</strong>
-            <br>
-            <a href="https://github.com/Kyslik">@Kyslik</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/apiato/documentation/blob/master/images/join-us.png">
-            <br>
-            <strong>< Join Us ></strong>
-            <br>
-            <a href="https://github.com/apiato">@apiato</a>
-        </td>
-	  </tr>
   </tbody>
 </table>
-
-### Code Contributors
-
-[![Apiato Contributors][contributors-src]][contributors-href]
 
 ### Financial Contributors
 
@@ -301,8 +211,6 @@ You can sponsor us using any of the methods below:
 
 [comment]: # (Open Collective Tiers)
 
-[contributors-src]: https://opencollective.com/apiato/contributors.svg?width=890&button=false&isActive=true
-[contributors-href]: https://github.com/apiato/apiato/graphs/contributors
 [backers-src]: https://opencollective.com/apiato/tiers/awesome-backers.svg?width=890&button=false&isActive=true
 [backers-href]: https://opencollective.com/apiato#contributors
 
