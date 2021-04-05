@@ -1,22 +1,16 @@
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://apiato.io)
-
-# Apiato
-
-<h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 8.0</h3>
-
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
 </p>
 
-[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce8fed7f8fcd492ebbe5ef0fb36c0a9a)](https://www.codacy.com/app/mahmoudz/apiato?utm_source=github.com&utm_medium=referral&utm_content=apiato/apiato&utm_campaign=badger)
-[![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
-[![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
-[![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
-[![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers) 
-[![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors)
-[![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
+<h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 8.0</h3>
+
+<p align="center">
+<a href="https://travis-ci.org/apiato/apiato"><img src="https://travis-ci.org/apiato/apiato.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
+<a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
+<a href="https://scrutinizer-ci.com/g/apiato/apiato/"><img alt="Scrutinizer code quality (GitHub/Bitbucket)" src="https://img.shields.io/scrutinizer/quality/g/apiato/apiato"></a>
+</p>
 
 <a name="Introduction"></a>
 
