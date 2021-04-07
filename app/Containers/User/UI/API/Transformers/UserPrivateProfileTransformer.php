@@ -25,17 +25,8 @@ class UserPrivateProfileTransformer extends Transformer
             'name' => $user->name,
             'email' => $user->email,
             'email_verified_at' => $user->email_verified_at,
-            'nickname' => $user->nickname,
             'gender' => $user->gender,
             'birth' => $user->birth,
-
-            'social_auth_provider' => $user->social_provider,
-            'social_id' => $user->social_id,
-            'social_avatar' => [
-                'avatar' => $user->social_avatar,
-                'original' => $user->social_avatar_original,
-            ],
-
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
             'readable_created_at' => $user->created_at->diffForHumans(),
