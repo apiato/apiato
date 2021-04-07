@@ -35,7 +35,6 @@ class UserPrivateProfileTransformer extends Transformer
 
         $response = $this->ifAdmin([
             'real_id' => $user->id,
-            'deleted_at' => $user->deleted_at,
         ], $response);
 
         return $response;
