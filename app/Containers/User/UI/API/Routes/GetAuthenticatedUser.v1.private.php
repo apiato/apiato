@@ -8,7 +8,7 @@
  * @apiDescription     Find the user details of the logged in user from its Token. (without specifying his ID)
  *
  * @apiVersion         1.0.0
- * @apiPermission      none
+ * @apiPermission      Authenticated User
  *
  * @apiUse             UserSuccessSingleResponse
  */
