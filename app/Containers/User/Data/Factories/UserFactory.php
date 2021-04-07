@@ -19,6 +19,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'password' => $password ?: $password = Hash::make('testing-password'),
+            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'is_admin' => false,
         ];
@@ -29,6 +30,15 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'is_admin' => true,
+            ];
+        });
+    }
+
+    public function unverified(): UserFactory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email_verified_at' => null,
             ];
         });
     }

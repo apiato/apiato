@@ -32,23 +32,17 @@ class User extends UserModel
         'social_avatar',
         'social_avatar_original',
         'social_nickname',
-        'confirmed',
+        'email_verified_at',
         'is_admin',
-    ];
-
-    protected $casts = [
-        'is_admin' => 'boolean',
-        'confirmed' => 'boolean',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    protected $casts = [
+        'is_admin' => 'boolean',
+        'email_verified_at' => 'datetime',
     ];
 }

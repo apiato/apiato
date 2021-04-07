@@ -60,7 +60,7 @@ class LoginTest extends TestCase
 
         $configInitialValue = Config::get('authentication-container.require_email_confirmation');
         Config::set('authentication-container.require_email_confirmation', true);
-        $this->testingUser->confirmed = false;
+        $this->testingUser->email_verified_at = null;
         $this->testingUser->save();
 
         $this->action->run($this->request);

@@ -11,7 +11,7 @@ class CheckIfUserEmailIsConfirmedTask extends Task
     public function run(User $user): bool
     {
         if ($this->emailConfirmationIsRequired()) {
-            return (bool)$user->confirmed;
+            return !is_null($user->email_verified_at);
         }
 
         return true;

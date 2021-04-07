@@ -10,7 +10,7 @@ HTTP/1.1 200 OK
     "id": "XbPW7awNkzl83LD6",
     "name": "Mohammad Alavi",
     "email": "mohammad.alavi1990@gmail.com",
-    "confirmed": false,
+    "email_verified_at": "2021-04-07T07:59:47.000000Z",
     "nickname": null,
     "gender": "male",
     "birth": "20010310",

@@ -43,7 +43,7 @@ class ApiLoginProxyTest extends ApiTestCase
         $data = [
             'email' => 'testing2@mail.com',
             'password' => 'testingpass',
-            'confirmed' => false,
+            'email_verified_at' => null,
         ];
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');

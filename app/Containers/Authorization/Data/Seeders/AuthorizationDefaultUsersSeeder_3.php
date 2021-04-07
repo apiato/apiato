@@ -16,7 +16,7 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
             'admin',
             'Super Admin',
         ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['admin']));
-        $admin->confirmed = true;
+        $admin->email_verified_at = now();
         $admin->save();
     }
 }

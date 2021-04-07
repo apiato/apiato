@@ -24,7 +24,7 @@ class UserPrivateProfileTransformer extends Transformer
             'id' => $user->getHashedKey(),
             'name' => $user->name,
             'email' => $user->email,
-            'confirmed' => $user->confirmed,
+            'email_verified_at' => $user->email_verified_at,
             'nickname' => $user->nickname,
             'gender' => $user->gender,
             'birth' => $user->birth,
