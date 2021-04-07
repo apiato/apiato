@@ -31,6 +31,11 @@ class LocalizationMiddleware extends Middleware
         return $response;
     }
 
+    /**
+     * @param $request_languages
+     * @return mixed
+     * @throws UnsupportedLanguageException
+     */
     private function validateLanguage($request_languages)
     {
         /*
@@ -57,7 +62,7 @@ class LocalizationMiddleware extends Middleware
             $current_locale = $locale[0];
 
             // now check, if this locale is "supported"
-            if (array_search($current_locale, $supported_languages) !== false) {
+            if (in_array($current_locale, $supported_languages, true)) {
                 return $current_locale;
             }
 
