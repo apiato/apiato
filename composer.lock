@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "82990c9a7248e1d3b65dac8df6661490fc26cae2"
+                "reference": "634f3c6bc817396dc9b91a99958b6d44dbf40a80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/82990c9a7248e1d3b65dac8df6661490fc26cae2",
-                "reference": "82990c9a7248e1d3b65dac8df6661490fc26cae2",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/634f3c6bc817396dc9b91a99958b6d44dbf40a80",
+                "reference": "634f3c6bc817396dc9b91a99958b6d44dbf40a80",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
                 "laravel/framework": "^8.0.0",
                 "laravel/passport": "^10.0.0",
                 "laravel/tinker": "^2.6.0",
-                "mohammad-alavi/container-installer": "^2.0.2",
+                "mohammad-alavi/container-installer": "^2.0.3",
                 "php": "^7.4|^8.0",
                 "prettus/l5-repository": "^2.7.4",
                 "spatie/laravel-fractal": "^5.8.1",
@@ -89,7 +89,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-09T13:48:52+00:00"
+            "time": "2021-04-09T16:15:22+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -202,130 +202,6 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
-        },
-        {
-            "name": "cartalyst/stripe",
-            "version": "v2.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/stripe.git",
-                "reference": "f07e9f35effa5fe7aa27e0f7a87dce52e37b8fdf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/stripe/zipball/f07e9f35effa5fe7aa27e0f7a87dce52e37b8fdf",
-                "reference": "f07e9f35effa5fe7aa27e0f7a87dce52e37b8fdf",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0|~7.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "branch-alias": {
-                    "dev-master": "2.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Stripe\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com",
-                    "homepage": "https://cartalyst.com"
-                }
-            ],
-            "description": "A comprehensive Stripe API package.",
-            "keywords": [
-                "cartalyst",
-                "php",
-                "stripe"
-            ],
-            "support": {
-                "issues": "https://github.com/cartalyst/stripe/issues",
-                "source": "https://github.com/cartalyst/stripe/tree/v2.4.4"
-            },
-            "time": "2021-02-18T12:04:45+00:00"
-        },
-        {
-            "name": "cartalyst/stripe-laravel",
-            "version": "v13.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/stripe-laravel.git",
-                "reference": "2f2b2b4e0de0fc0bce61a95134031ec2c732f999"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/stripe-laravel/zipball/2f2b2b4e0de0fc0bce61a95134031ec2c732f999",
-                "reference": "2f2b2b4e0de0fc0bce61a95134031ec2c732f999",
-                "shasum": ""
-            },
-            "require": {
-                "cartalyst/stripe": "^2.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.3 || ^8.0"
-            },
-            "require-dev": {
-                "cartalyst/php-cs-fixer-config": "^1.0",
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "component": "implementation",
-                "branch-alias": {
-                    "dev-master": "13.0.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Cartalyst\\Stripe\\Laravel\\StripeServiceProvider"
-                    ],
-                    "aliases": {
-                        "Stripe": "Cartalyst\\Stripe\\Laravel\\Facades\\Stripe"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Stripe\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com",
-                    "homepage": "https://cartalyst.com"
-                }
-            ],
-            "description": "Laravel 8 integration for the Cartalyst Stripe package.",
-            "keywords": [
-                "cartalyst",
-                "laravel",
-                "php",
-                "stripe"
-            ],
-            "support": {
-                "issues": "https://github.com/cartalyst/stripe-laravel/issues",
-                "source": "https://github.com/cartalyst/stripe-laravel/tree/v13.1.0"
-            },
-            "time": "2020-12-23T13:33:41+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -2122,75 +1998,6 @@
             "time": "2021-04-06T14:30:45+00:00"
         },
         {
-            "name": "laravel/socialite",
-            "version": "v5.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/socialite.git",
-                "reference": "1960802068f81e44b2ae9793932181cf1cb91b5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/1960802068f81e44b2ae9793932181cf1cb91b5c",
-                "reference": "1960802068f81e44b2ae9793932181cf1cb91b5c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "guzzlehttp/guzzle": "^6.0|^7.0",
-                "illuminate/http": "^6.0|^7.0|^8.0",
-                "illuminate/support": "^6.0|^7.0|^8.0",
-                "league/oauth1-client": "^1.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "illuminate/contracts": "^6.0|^7.0",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Socialite\\SocialiteServiceProvider"
-                    ],
-                    "aliases": {
-                        "Socialite": "Laravel\\Socialite\\Facades\\Socialite"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Socialite\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
-            "homepage": "https://laravel.com",
-            "keywords": [
-                "laravel",
-                "oauth"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/socialite/issues",
-                "source": "https://github.com/laravel/socialite"
-            },
-            "time": "2021-04-06T14:38:16+00:00"
-        },
-        {
             "name": "laravel/tinker",
             "version": "v2.6.1",
             "source": {
@@ -2770,81 +2577,6 @@
             "time": "2021-01-18T20:58:21+00:00"
         },
         {
-            "name": "league/oauth1-client",
-            "version": "v1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "1e7e6be2dc543bf466236fb171e5b20e1b06aee6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/1e7e6be2dc543bf466236fb171e5b20e1b06aee6",
-                "reference": "1e7e6be2dc543bf466236fb171e5b20e1b06aee6",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-openssl": "*",
-                "guzzlehttp/guzzle": "^6.0|^7.0",
-                "php": ">=7.1||>=8.0"
-            },
-            "require-dev": {
-                "ext-simplexml": "*",
-                "friendsofphp/php-cs-fixer": "^2.17",
-                "mockery/mockery": "^1.3.3",
-                "phpstan/phpstan": "^0.12.42",
-                "phpunit/phpunit": "^7.5||9.5"
-            },
-            "suggest": {
-                "ext-simplexml": "For decoding XML-based responses."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev",
-                    "dev-develop": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\OAuth1\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Corlett",
-                    "email": "bencorlett@me.com",
-                    "homepage": "http://www.webcomm.com.au",
-                    "role": "Developer"
-                }
-            ],
-            "description": "OAuth 1.0 Client Library",
-            "keywords": [
-                "Authentication",
-                "SSO",
-                "authorization",
-                "bitbucket",
-                "identity",
-                "idp",
-                "oauth",
-                "oauth1",
-                "single sign on",
-                "trello",
-                "tumblr",
-                "twitter"
-            ],
-            "support": {
-                "issues": "https://github.com/thephpleague/oauth1-client/issues",
-                "source": "https://github.com/thephpleague/oauth1-client/tree/v1.9.0"
-            },
-            "time": "2021-01-20T01:40:53+00:00"
-        },
-        {
             "name": "league/oauth2-server",
             "version": "8.2.4",
             "source": {
@@ -2994,100 +2726,31 @@
             "time": "2021-02-19T21:22:57+00:00"
         },
         {
-            "name": "mohammad-alavi/apiato-payment",
-            "version": "v0.1.4",
+            "name": "mohammad-alavi/apiato-debugger",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-payment.git",
-                "reference": "6d432e567adcb989d6607d70b28e3b97cb842ea2"
+                "url": "https://github.com/Mohammad-Alavi/apiato-debugger.git",
+                "reference": "5baa81d2d3f306865bc0f235bc608c4dda600771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-payment/zipball/6d432e567adcb989d6607d70b28e3b97cb842ea2",
-                "reference": "6d432e567adcb989d6607d70b28e3b97cb842ea2",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-debugger/zipball/5baa81d2d3f306865bc0f235bc608c4dda600771",
+                "reference": "5baa81d2d3f306865bc0f235bc608c4dda600771",
                 "shasum": ""
             },
             "require": {
-                "mohammad-alavi/apiato-stripe-payment-gateway": "^0.1.0",
-                "mohammad-alavi/laravel-shoppingcart": "^0.1.2"
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Payment"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which acts as a generic foundation to \"plug in\" different containers that interacts with specificpayment gateways (e.g., PayPal, Stripe, ...)",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-payment/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-payment/tree/v0.1.4"
-            },
-            "time": "2021-04-09T14:23:22+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-settings",
-            "version": "v2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-settings.git",
-                "reference": "2a6645d3ca1b2863bafb8600d455194b3fa8149c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-settings/zipball/2a6645d3ca1b2863bafb8600d455194b3fa8149c",
-                "reference": "2a6645d3ca1b2863bafb8600d455194b3fa8149c",
-                "shasum": ""
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Settings"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which helps store and retrieving key values",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-settings/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-settings/tree/v2.0.2"
-            },
-            "time": "2021-04-09T14:19:06+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-social-auth",
-            "version": "v2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-social-auth.git",
-                "reference": "f29bab7bfae8fec271d8a8dd052e81f14d70aec2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-social-auth/zipball/f29bab7bfae8fec271d8a8dd052e81f14d70aec2",
-                "reference": "f29bab7bfae8fec271d8a8dd052e81f14d70aec2",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/socialite": "^5.2.2"
+                "jenssegers/agent": "^2.6.4"
             },
             "require-dev": {
+                "barryvdh/laravel-debugbar": "^3.5.2",
                 "roave/security-advisories": "dev-latest"
             },
             "type": "apiato-container",
             "extra": {
                 "apiato": {
                     "container": {
-                        "name": "SocialAuth"
+                        "name": "Debugger"
                     }
                 }
             },
@@ -3095,51 +2758,12 @@
             "license": [
                 "MIT"
             ],
-            "description": "An Apiato container which adds social authentication functionality using Laravel Socialite",
+            "description": "An Apiato container which helps to debug requests and queries",
             "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-social-auth/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-social-auth/tree/v2.0.5"
+                "issues": "https://github.com/Mohammad-Alavi/apiato-debugger/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-debugger/tree/v0.1.0"
             },
-            "time": "2021-04-09T14:38:19+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-stripe-payment-gateway",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway.git",
-                "reference": "07833c18a5120d3063514523bc3b853576084ac8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-stripe-payment-gateway/zipball/07833c18a5120d3063514523bc3b853576084ac8",
-                "reference": "07833c18a5120d3063514523bc3b853576084ac8",
-                "shasum": ""
-            },
-            "require": {
-                "cartalyst/stripe-laravel": "^13.1.0"
-            },
-            "require-dev": {
-                "roave/security-advisories": "dev-latest"
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Stripe"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Implementation of Stripe gateway for Apiato Payment Container",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-stripe-payment-gateway/tree/v0.1.4"
-            },
-            "time": "2021-04-09T14:21:27+00:00"
+            "time": "2021-04-09T15:04:05+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-welcome",
@@ -3176,16 +2800,16 @@
         },
         {
             "name": "mohammad-alavi/container-installer",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/container-installer.git",
-                "reference": "370f49b66827f9fb62fdbfbfeeb2ecdcc283ecd1"
+                "reference": "5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/container-installer/zipball/370f49b66827f9fb62fdbfbfeeb2ecdcc283ecd1",
-                "reference": "370f49b66827f9fb62fdbfbfeeb2ecdcc283ecd1",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/container-installer/zipball/5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a",
+                "reference": "5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a",
                 "shasum": ""
             },
             "require": {
@@ -3201,160 +2825,15 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "description": "A Composer plugin for installing Apiato Containers (of type apiato-container).",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/container-installer/issues",
-                "source": "https://github.com/Mohammad-Alavi/container-installer/tree/v2.0.2"
+                "source": "https://github.com/Mohammad-Alavi/container-installer/tree/v2.0.3"
             },
-            "time": "2021-04-09T13:42:08+00:00"
-        },
-        {
-            "name": "mohammad-alavi/laravel-shoppingcart",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/laravel-shoppingcart.git",
-                "reference": "520033629c16e8462b36b11238fbc07ae81ddac5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/laravel-shoppingcart/zipball/520033629c16e8462b36b11238fbc07ae81ddac5",
-                "reference": "520033629c16e8462b36b11238fbc07ae81ddac5",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^8.28.1",
-                "moneyphp/money": "^3.3.1",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "roave/security-advisories": "dev-latest"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "MohammadAlavi\\ShoppingCart\\ShoppingCartServiceProvider"
-                    ],
-                    "aliases": {
-                        "ShoppingCart": "MohammadAlavi\\ShoppingCart\\Facades\\ShoppingCart"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "MohammadAlavi\\ShoppingCart\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohammad Alavi",
-                    "email": "mohammad.alavi@gmail.com"
-                }
-            ],
-            "description": "A Shopping Cart Implementation for Laravel",
-            "keywords": [
-                "cart",
-                "e-commerce",
-                "laravel",
-                "shop",
-                "shopping cart"
-            ],
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/laravel-shoppingcart/issues",
-                "source": "https://github.com/Mohammad-Alavi/laravel-shoppingcart/tree/v0.1.2"
-            },
-            "time": "2021-03-23T12:01:42+00:00"
-        },
-        {
-            "name": "moneyphp/money",
-            "version": "v3.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/moneyphp/money.git",
-                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/122664c2621a95180a13c1ac81fea1d2ef20781e",
-                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "cache/taggable-cache": "^0.4.0",
-                "doctrine/instantiator": "^1.0.5",
-                "ext-bcmath": "*",
-                "ext-gmp": "*",
-                "ext-intl": "*",
-                "florianv/exchanger": "^1.0",
-                "florianv/swap": "^3.0",
-                "friends-of-phpspec/phpspec-code-coverage": "^3.1.1 || ^4.3",
-                "moneyphp/iso-currencies": "^3.2.1",
-                "php-http/message": "^1.4",
-                "php-http/mock-client": "^1.0.0",
-                "phpspec/phpspec": "^3.4.3",
-                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.18 || ^8.5",
-                "psr/cache": "^1.0",
-                "symfony/phpunit-bridge": "^4"
-            },
-            "suggest": {
-                "ext-bcmath": "Calculate without integer limits",
-                "ext-gmp": "Calculate without integer limits",
-                "ext-intl": "Format Money objects with intl",
-                "florianv/exchanger": "Exchange rates library for PHP",
-                "florianv/swap": "Exchange rates library for PHP",
-                "psr/cache-implementation": "Used for Currency caching"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Money\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mathias Verraes",
-                    "email": "mathias@verraes.net",
-                    "homepage": "http://verraes.net"
-                },
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com"
-                },
-                {
-                    "name": "Frederik Bosch",
-                    "email": "f.bosch@genkgo.nl"
-                }
-            ],
-            "description": "PHP implementation of Fowler's Money pattern",
-            "homepage": "http://moneyphp.org",
-            "keywords": [
-                "Value Object",
-                "money",
-                "vo"
-            ],
-            "support": {
-                "issues": "https://github.com/moneyphp/money/issues",
-                "source": "https://github.com/moneyphp/money/tree/master"
-            },
-            "time": "2020-03-18T17:49:59+00:00"
+            "time": "2021-04-09T15:07:59+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7806,87 +7285,6 @@
     ],
     "packages-dev": [
         {
-            "name": "barryvdh/laravel-debugbar",
-            "version": "v3.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "6420113d90bb746423fa70b9940e9e7c26ebc121"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/6420113d90bb746423fa70b9940e9e7c26ebc121",
-                "reference": "6420113d90bb746423fa70b9940e9e7c26ebc121",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/routing": "^6|^7|^8",
-                "illuminate/session": "^6|^7|^8",
-                "illuminate/support": "^6|^7|^8",
-                "maximebf/debugbar": "^1.16.3",
-                "php": ">=7.2",
-                "symfony/debug": "^4.3|^5",
-                "symfony/finder": "^4.3|^5"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.3.3",
-                "orchestra/testbench-dusk": "^4|^5|^6",
-                "phpunit/phpunit": "^8.5|^9.0",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.5-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Barryvdh\\Debugbar\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Barryvdh\\Debugbar\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "PHP Debugbar integration for Laravel",
-            "keywords": [
-                "debug",
-                "debugbar",
-                "laravel",
-                "profiler",
-                "webprofiler"
-            ],
-            "support": {
-                "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.5.5"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/barryvdh",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-04-07T11:19:20+00:00"
-        },
-        {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.10.0",
             "source": {
@@ -8995,71 +8393,6 @@
                 "source": "https://github.com/laravel/homestead/tree/v12.2.0"
             },
             "time": "2021-04-07T20:15:58+00:00"
-        },
-        {
-            "name": "maximebf/debugbar",
-            "version": "v1.16.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "6d51ee9e94cff14412783785e79a4e7ef97b9d62"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/6d51ee9e94cff14412783785e79a4e7ef97b9d62",
-                "reference": "6d51ee9e94cff14412783785e79a4e7ef97b9d62",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1|^8",
-                "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3|^4|^5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.5.20 || ^9.4.2"
-            },
-            "suggest": {
-                "kriswallsmith/assetic": "The best way to manage assets",
-                "monolog/monolog": "Log using Monolog",
-                "predis/predis": "Redis storage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.16-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "DebugBar\\": "src/DebugBar/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxime Bouroumeau-Fuseau",
-                    "email": "maxime.bouroumeau@gmail.com",
-                    "homepage": "http://maximebf.com"
-                },
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "Debug bar in the browser for php application",
-            "homepage": "https://github.com/maximebf/php-debugbar",
-            "keywords": [
-                "debug",
-                "debugbar"
-            ],
-            "support": {
-                "issues": "https://github.com/maximebf/php-debugbar/issues",
-                "source": "https://github.com/maximebf/php-debugbar/tree/v1.16.5"
-            },
-            "time": "2020-12-07T11:07:24+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -11503,75 +10836,6 @@
             "time": "2020-07-07T18:42:57+00:00"
         },
         {
-            "name": "symfony/debug",
-            "version": "v4.4.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/debug.git",
-                "reference": "157bbec4fd773bae53c5483c50951a5530a2cc16"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/157bbec4fd773bae53c5483c50951a5530a2cc16",
-                "reference": "157bbec4fd773bae53c5483c50951a5530a2cc16",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.3",
-                "psr/log": "~1.0",
-                "symfony/polyfill-php80": "^1.15"
-            },
-            "conflict": {
-                "symfony/http-kernel": "<3.4"
-            },
-            "require-dev": {
-                "symfony/http-kernel": "^3.4|^4.0|^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Debug\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides tools to ease debugging PHP code",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/debug/tree/v4.4.20"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2021-01-28T16:54:48+00:00"
-        },
-        {
             "name": "symfony/filesystem",
             "version": "v5.2.6",
             "source": {
@@ -11772,8 +11036,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
-        "ext-tokenizer": "*",
-        "ext-intl": "*"
+        "ext-tokenizer": "*"
     },
     "platform-dev": {
         "ext-json": "*",
