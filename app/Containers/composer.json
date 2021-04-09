@@ -2,10 +2,7 @@
     "name": "apiato/app",
     "description": "Composer file to include 3rd party containers.",
     "require": {
-        "mohammad-alavi/apiato-welcome": "^0.1.4",
-        "mohammad-alavi/apiato-social-auth": "^2.0.5",
-        "mohammad-alavi/apiato-settings": "^2.0.2",
-        "mohammad-alavi/apiato-payment": "^0.1.4"
+        "mohammad-alavi/apiato-welcome": "^0.1.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
