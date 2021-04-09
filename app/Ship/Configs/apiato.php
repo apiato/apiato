@@ -186,7 +186,7 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'user-class' => App\Containers\User\Models\User::class,
+        'user-class' => App\Containers\AppSection\User\Models\User::class,
 
         /*
         |--------------------------------------------------------------------------

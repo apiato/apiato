@@ -2,7 +2,7 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use App\Containers\Authentication\Exceptions\AuthenticationException;
+use App\Ship\Exceptions\AuthenticationException;
 use Exception;
 use Illuminate\Auth\Middleware\Authenticate as LaravelAuthenticate;
 use Illuminate\Support\Facades\Config;
