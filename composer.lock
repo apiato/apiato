@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "55732ccae1da786868baf21d4b2c0e4c39db43da"
+                "reference": "7c89aa1e9d07dee2d667612ac9749e651bc257dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/55732ccae1da786868baf21d4b2c0e4c39db43da",
-                "reference": "55732ccae1da786868baf21d4b2c0e4c39db43da",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/7c89aa1e9d07dee2d667612ac9749e651bc257dd",
+                "reference": "7c89aa1e9d07dee2d667612ac9749e651bc257dd",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-09T16:34:38+00:00"
+            "time": "2021-04-10T08:11:08+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2526,6 +2526,39 @@
                 }
             ],
             "time": "2020-12-10T11:35:44+00:00"
+        },
+        {
+            "name": "mohammad-alavi/apiato-documentation-generator",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-documentation-generator.git",
+                "reference": "0af6b998ccb7bc56679982eb3a42e0d45a4852d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-documentation-generator/zipball/0af6b998ccb7bc56679982eb3a42e0d45a4852d2",
+                "reference": "0af6b998ccb7bc56679982eb3a42e0d45a4852d2",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Documentation"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/tree/v0.1.0"
+            },
+            "time": "2021-04-10T10:21:36+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-welcome",
