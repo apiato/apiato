@@ -2529,16 +2529,16 @@
         },
         {
             "name": "mohammad-alavi/apiato-documentation-generator",
-            "version": "v0.1.0",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mohammad-Alavi/apiato-documentation-generator.git",
-                "reference": "0af6b998ccb7bc56679982eb3a42e0d45a4852d2"
+                "reference": "d40288f711ee1c7b19e8491b0bddef8820998b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-documentation-generator/zipball/0af6b998ccb7bc56679982eb3a42e0d45a4852d2",
-                "reference": "0af6b998ccb7bc56679982eb3a42e0d45a4852d2",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-documentation-generator/zipball/d40288f711ee1c7b19e8491b0bddef8820998b2f",
+                "reference": "d40288f711ee1c7b19e8491b0bddef8820998b2f",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -2556,9 +2556,9 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/tree/v0.1.0"
+                "source": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/tree/v0.1.4"
             },
-            "time": "2021-04-10T10:21:36+00:00"
+            "time": "2021-04-10T11:13:22+00:00"
         },
         {
             "name": "mohammad-alavi/apiato-welcome",
