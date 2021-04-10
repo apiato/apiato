@@ -4,30 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b76af5fd4eacfb1ebf7ec823a7a4cae",
+    "content-hash": "66bdb5769f266782ea9d4fade666c070",
     "packages": [
         {
-            "name": "apiato/core",
-            "version": "v6.0-rc.1",
+            "name": "apiato/container-installer",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/apiato/core.git",
-                "reference": "4866d8c68d7571399f7d97e03f3a8dfeb4f85c90"
+                "url": "https://github.com/apiato/container-installer.git",
+                "reference": "45aff102ee297224ac5bf731465578614ea3376a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/4866d8c68d7571399f7d97e03f3a8dfeb4f85c90",
-                "reference": "4866d8c68d7571399f7d97e03f3a8dfeb4f85c90",
+                "url": "https://api.github.com/repos/apiato/container-installer/zipball/45aff102ee297224ac5bf731465578614ea3376a",
+                "reference": "45aff102ee297224ac5bf731465578614ea3376a",
                 "shasum": ""
             },
             "require": {
+                "composer-plugin-api": "^2.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "apiato\\installer\\ContainerInstallerPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "apiato\\installer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Composer plugin for installing Apiato Containers (of type apiato-container).",
+            "support": {
+                "issues": "https://github.com/apiato/container-installer/issues",
+                "source": "https://github.com/apiato/container-installer/tree/v2.0.4"
+            },
+            "time": "2021-04-10T15:27:43+00:00"
+        },
+        {
+            "name": "apiato/core",
+            "version": "v6.0.2-rc.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/core.git",
+                "reference": "b9444f2d05791c404715a0eb7591bbd779014c23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/core/zipball/b9444f2d05791c404715a0eb7591bbd779014c23",
+                "reference": "b9444f2d05791c404715a0eb7591bbd779014c23",
+                "shasum": ""
+            },
+            "require": {
+                "apiato/container-installer": "^2.0.4",
                 "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
                 "guzzlehttp/guzzle": "^7.2.0",
                 "laravel/framework": "^8.0.0",
                 "laravel/passport": "^10.0.0",
                 "laravel/tinker": "^2.6.0",
-                "mohammad-alavi/container-installer": "^2.0.3",
                 "php": "^7.4|^8.0",
                 "prettus/l5-repository": "^2.7.4",
                 "spatie/laravel-fractal": "^5.8.1",
@@ -87,7 +124,109 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-10T12:38:34+00:00"
+            "time": "2021-04-10T15:33:18+00:00"
+        },
+        {
+            "name": "apiato/documentation-generator-container",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/documentation-generator-container.git",
+                "reference": "8c1942e3a1cfdd64f4a110dfa6760e5adb21730e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/8c1942e3a1cfdd64f4a110dfa6760e5adb21730e",
+                "reference": "8c1942e3a1cfdd64f4a110dfa6760e5adb21730e",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Documentation"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
+            "support": {
+                "issues": "https://github.com/apiato/documentation-generator-container/issues",
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.5"
+            },
+            "time": "2021-04-10T14:29:06+00:00"
+        },
+        {
+            "name": "apiato/localization-container",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/localization-container.git",
+                "reference": "b4c49a2f8ced4c6a113f3f5985eba0b68472421b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/localization-container/zipball/b4c49a2f8ced4c6a113f3f5985eba0b68472421b",
+                "reference": "b4c49a2f8ced4c6a113f3f5985eba0b68472421b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Localization"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which adds localization functionality.",
+            "support": {
+                "issues": "https://github.com/apiato/localization-container/issues",
+                "source": "https://github.com/apiato/localization-container/tree/v0.1.3"
+            },
+            "time": "2021-04-10T14:48:48+00:00"
+        },
+        {
+            "name": "apiato/welcome-container",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/welcome-container.git",
+                "reference": "c6eb62da78c9baf9654cffce96954d0d72d43235"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/c6eb62da78c9baf9654cffce96954d0d72d43235",
+                "reference": "c6eb62da78c9baf9654cffce96954d0d72d43235",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Welcome"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
+            "support": {
+                "issues": "https://github.com/apiato/welcome-container/issues",
+                "source": "https://github.com/apiato/welcome-container/tree/v0.1.5"
+            },
+            "time": "2021-04-10T14:59:10+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -339,43 +478,6 @@
                 "source": "https://github.com/defuse/php-encryption/tree/v2.3.1"
             },
             "time": "2021-04-09T23:57:26+00:00"
-        },
-        {
-            "name": "dnoegel/php-xdg-base-dir",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7.0|~6.0|~5.0|~4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "XdgBaseDir\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "implementation of xdg base directory specification for php",
-            "support": {
-                "issues": "https://github.com/dnoegel/php-xdg-base-dir/issues",
-                "source": "https://github.com/dnoegel/php-xdg-base-dir/tree/v0.1.1"
-            },
-            "time": "2019-12-04T15:06:13+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -2526,145 +2628,6 @@
             "time": "2020-12-10T11:35:44+00:00"
         },
         {
-            "name": "mohammad-alavi/apiato-documentation-generator",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-documentation-generator.git",
-                "reference": "d40288f711ee1c7b19e8491b0bddef8820998b2f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-documentation-generator/zipball/d40288f711ee1c7b19e8491b0bddef8820998b2f",
-                "reference": "d40288f711ee1c7b19e8491b0bddef8820998b2f",
-                "shasum": ""
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Documentation"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-documentation-generator/tree/v0.1.4"
-            },
-            "time": "2021-04-10T11:13:22+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-localization",
-            "version": "v0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-localization.git",
-                "reference": "89ebeb0377e26650568d3d13762ba6c1b72cd9da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-localization/zipball/89ebeb0377e26650568d3d13762ba6c1b72cd9da",
-                "reference": "89ebeb0377e26650568d3d13762ba6c1b72cd9da",
-                "shasum": ""
-            },
-            "require": {
-                "ext-intl": "*"
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Localization"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which adds localization functionality.",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-localization/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-localization/tree/v0.1.2"
-            },
-            "time": "2021-04-10T11:42:22+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-welcome",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-welcome.git",
-                "reference": "af46d01aafb78f52f5301071fabb705a5a3bd937"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-welcome/zipball/af46d01aafb78f52f5301071fabb705a5a3bd937",
-                "reference": "af46d01aafb78f52f5301071fabb705a5a3bd937",
-                "shasum": ""
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Welcome"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-welcome/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-welcome/tree/v0.1.4"
-            },
-            "time": "2021-04-09T14:32:02+00:00"
-        },
-        {
-            "name": "mohammad-alavi/container-installer",
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/container-installer.git",
-                "reference": "5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/container-installer/zipball/5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a",
-                "reference": "5f55d7882a8d3ac8ef9127fe4d6630a41be51c2a",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "apiato\\installer\\ContainerInstallerPlugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "apiato\\installer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Composer plugin for installing Apiato Containers (of type apiato-container).",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/container-installer/issues",
-                "source": "https://github.com/Mohammad-Alavi/container-installer/tree/v2.0.3"
-            },
-            "time": "2021-04-09T15:07:59+00:00"
-        },
-        {
             "name": "monolog/monolog",
             "version": "2.2.0",
             "source": {
@@ -3886,20 +3849,19 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.7",
+            "version": "v0.10.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "a395af46999a12006213c0c8346c9445eb31640c"
+                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a395af46999a12006213c0c8346c9445eb31640c",
-                "reference": "a395af46999a12006213c0c8346c9445eb31640c",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e4573f47750dd6c92dca5aee543fa77513cbd8d3",
+                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3",
                 "shasum": ""
             },
             "require": {
-                "dnoegel/php-xdg-base-dir": "0.1.*",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "nikic/php-parser": "~4.0|~3.0|~2.0|~1.3",
@@ -3956,9 +3918,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.10.7"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.8"
             },
-            "time": "2021-03-14T02:14:56+00:00"
+            "time": "2021-04-10T16:23:39+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -7114,6 +7076,46 @@
     ],
     "packages-dev": [
         {
+            "name": "apiato/debugger-container",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/debugger-container.git",
+                "reference": "e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/debugger-container/zipball/e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e",
+                "reference": "e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e",
+                "shasum": ""
+            },
+            "require": {
+                "jenssegers/agent": "^2.6.4"
+            },
+            "require-dev": {
+                "barryvdh/laravel-debugbar": "^3.5.2",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Debugger"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which helps to debug requests and queries",
+            "support": {
+                "issues": "https://github.com/apiato/debugger-container/issues",
+                "source": "https://github.com/apiato/debugger-container/tree/v0.1.1"
+            },
+            "time": "2021-04-10T15:04:19+00:00"
+        },
+        {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.10.0",
             "source": {
@@ -8491,46 +8493,6 @@
                 "source": "https://github.com/mockery/mockery/tree/1.4.3"
             },
             "time": "2021-02-24T09:51:49+00:00"
-        },
-        {
-            "name": "mohammad-alavi/apiato-debugger",
-            "version": "v0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-debugger.git",
-                "reference": "5baa81d2d3f306865bc0f235bc608c4dda600771"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-debugger/zipball/5baa81d2d3f306865bc0f235bc608c4dda600771",
-                "reference": "5baa81d2d3f306865bc0f235bc608c4dda600771",
-                "shasum": ""
-            },
-            "require": {
-                "jenssegers/agent": "^2.6.4"
-            },
-            "require-dev": {
-                "barryvdh/laravel-debugbar": "^3.5.2",
-                "roave/security-advisories": "dev-latest"
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Debugger"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which helps to debug requests and queries",
-            "support": {
-                "issues": "https://github.com/Mohammad-Alavi/apiato-debugger/issues",
-                "source": "https://github.com/Mohammad-Alavi/apiato-debugger/tree/v0.1.0"
-            },
-            "time": "2021-04-09T15:04:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",

@@ -2,12 +2,12 @@
     "name": "apiato/app",
     "description": "Composer file to include 3rd party containers.",
     "require": {
-        "mohammad-alavi/apiato-welcome": "^0.1.4",
-        "mohammad-alavi/apiato-documentation-generator": "^0.1.4",
-        "mohammad-alavi/apiato-localization": "^0.1.2"
+        "apiato/welcome-container": "^0.1.5",
+        "apiato/documentation-generator-container": "^0.1.5",
+        "apiato/localization-container": "^0.1.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "mohammad-alavi/apiato-debugger": "^0.1.0"
+        "apiato/debugger-container": "^0.1.1"
     }
 }
