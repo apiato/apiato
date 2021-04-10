@@ -24,3 +24,4 @@ Vagrantfile
 after.sh
 aliases
 .php_cs.cache
+/VendorSection
