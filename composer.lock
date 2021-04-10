@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66bdb5769f266782ea9d4fade666c070",
+    "content-hash": "be3543a23ed0d536b0253e2f352a112b",
     "packages": [
         {
             "name": "apiato/container-installer",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/container-installer.git",
-                "reference": "45aff102ee297224ac5bf731465578614ea3376a"
+                "reference": "3a4a5f2508778f4b9d41205a280f68203a67a4dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/container-installer/zipball/45aff102ee297224ac5bf731465578614ea3376a",
-                "reference": "45aff102ee297224ac5bf731465578614ea3376a",
+                "url": "https://api.github.com/repos/apiato/container-installer/zipball/3a4a5f2508778f4b9d41205a280f68203a67a4dc",
+                "reference": "3a4a5f2508778f4b9d41205a280f68203a67a4dc",
                 "shasum": ""
             },
             "require": {
@@ -39,26 +39,26 @@
             "description": "A Composer plugin for installing Apiato Containers (of type apiato-container).",
             "support": {
                 "issues": "https://github.com/apiato/container-installer/issues",
-                "source": "https://github.com/apiato/container-installer/tree/v2.0.4"
+                "source": "https://github.com/apiato/container-installer/tree/v2.0.5"
             },
-            "time": "2021-04-10T15:27:43+00:00"
+            "time": "2021-04-10T17:22:05+00:00"
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.2-rc.1",
+            "version": "v6.0.3-rc.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "b9444f2d05791c404715a0eb7591bbd779014c23"
+                "reference": "333f808a9f9d8ddbcdf20f447a379623223ff09d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/b9444f2d05791c404715a0eb7591bbd779014c23",
-                "reference": "b9444f2d05791c404715a0eb7591bbd779014c23",
+                "url": "https://api.github.com/repos/apiato/core/zipball/333f808a9f9d8ddbcdf20f447a379623223ff09d",
+                "reference": "333f808a9f9d8ddbcdf20f447a379623223ff09d",
                 "shasum": ""
             },
             "require": {
-                "apiato/container-installer": "^2.0.4",
+                "apiato/container-installer": "^2.0.5",
                 "ext-json": "*",
                 "fruitcake/laravel-cors": "^1.0.5",
                 "guzzlehttp/guzzle": "^7.2.0",
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-10T15:33:18+00:00"
+            "time": "2021-04-10T17:24:12+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
