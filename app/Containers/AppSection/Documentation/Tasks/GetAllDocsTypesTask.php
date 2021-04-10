@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Config;
 
 class GetAllDocsTypesTask extends Task
 {
+    /**
+     * @throws NoDocTypesFoundException
+     */
     public function run(): array
     {
         if (!$configTypes = Config::get('documentation-container.types')) {

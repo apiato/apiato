@@ -32,7 +32,7 @@ return [
 
     'types' => [
         'public' => [
-            'url' => 'docs/documentation',
+            'url' => 'docs',
             'folder-name' => 'documentation/public', // doc folder name
             'routes' => [
                 'public',
@@ -59,6 +59,16 @@ return [
     */
 
     'html_files' => env('SRC_PATH', app()->path()) . '/Containers/AppSection/Documentation/UI/WEB/Views/',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Documentation container, section name
+    |--------------------------------------------------------------------------
+    |
+    | Specify the Section name where the Documentation Container is located.
+    |
+    */
+    'section_name' => 'AppSection',
 
     /*
     |--------------------------------------------------------------------------

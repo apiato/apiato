@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Documentation\Traits;
 
-use DateTime;
 use Illuminate\Support\Facades\Config;
 
 trait DocsGeneratorTrait
@@ -53,7 +52,7 @@ trait DocsGeneratorTrait
 
     private function getJsonFilePath($type): string
     {
-        return "app/Containers/AppSection/Documentation/ApiDocJs/{$type}";
+        return 'app/Containers/' . config('documentation-container.section_name') . '/Documentation/ApiDocJs/' . $type;
     }
 
     private function getExecutable()
@@ -75,20 +74,5 @@ trait DocsGeneratorTrait
         }
 
         return $routeFilesCommand;
-    }
-
-    private function replace($templateKey, $value): void
-    {
-        $this->headerMarkdownContent = str_replace($templateKey, $value, $this->headerMarkdownContent);
-    }
-
-    private function minutesToTimeDisplay($minutes): string
-    {
-        $seconds = $minutes * 60;
-
-        $dtF = new DateTime('@0');
-        $dtT = new DateTime("@$seconds");
-
-        return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
     }
 }
