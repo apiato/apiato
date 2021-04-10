@@ -2561,6 +2561,42 @@
             "time": "2021-04-10T11:13:22+00:00"
         },
         {
+            "name": "mohammad-alavi/apiato-localization",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mohammad-Alavi/apiato-localization.git",
+                "reference": "89ebeb0377e26650568d3d13762ba6c1b72cd9da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-localization/zipball/89ebeb0377e26650568d3d13762ba6c1b72cd9da",
+                "reference": "89ebeb0377e26650568d3d13762ba6c1b72cd9da",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Localization"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which adds localization functionality.",
+            "support": {
+                "issues": "https://github.com/Mohammad-Alavi/apiato-localization/issues",
+                "source": "https://github.com/Mohammad-Alavi/apiato-localization/tree/v0.1.2"
+            },
+            "time": "2021-04-10T11:42:22+00:00"
+        },
+        {
             "name": "mohammad-alavi/apiato-welcome",
             "version": "v0.1.4",
             "source": {

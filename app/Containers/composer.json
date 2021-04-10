@@ -3,7 +3,8 @@
     "description": "Composer file to include 3rd party containers.",
     "require": {
         "mohammad-alavi/apiato-welcome": "^0.1.4",
-        "mohammad-alavi/apiato-documentation-generator": "^0.1.4"
+        "mohammad-alavi/apiato-documentation-generator": "^0.1.4",
+        "mohammad-alavi/apiato-localization": "^0.1.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
