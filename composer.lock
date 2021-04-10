@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a60f466c3241a76861fe7230e4c3ff4e",
+    "content-hash": "9b76af5fd4eacfb1ebf7ec823a7a4cae",
     "packages": [
         {
             "name": "apiato/core",
-            "version": "dev-next",
+            "version": "v6.0-rc.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/core.git",
-                "reference": "7c89aa1e9d07dee2d667612ac9749e651bc257dd"
+                "url": "https://github.com/apiato/core.git",
+                "reference": "4866d8c68d7571399f7d97e03f3a8dfeb4f85c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/core/zipball/7c89aa1e9d07dee2d667612ac9749e651bc257dd",
-                "reference": "7c89aa1e9d07dee2d667612ac9749e651bc257dd",
+                "url": "https://api.github.com/repos/apiato/core/zipball/4866d8c68d7571399f7d97e03f3a8dfeb4f85c90",
+                "reference": "4866d8c68d7571399f7d97e03f3a8dfeb4f85c90",
                 "shasum": ""
             },
             "require": {
@@ -64,9 +64,7 @@
                     "Helpers/helpers.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": []
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -89,7 +87,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-10T08:11:08+00:00"
+            "time": "2021-04-10T12:38:34+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -11094,7 +11092,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "apiato/core": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
