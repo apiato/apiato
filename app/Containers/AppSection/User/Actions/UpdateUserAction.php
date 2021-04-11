@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Parents\Actions\Action;
 
@@ -22,6 +23,6 @@ class UpdateUserAction extends Action
             'social_token_secret'
         ]);
 
-        return Apiato::call('User@UpdateUserTask', [$sanitizedData, $request->id]);
+        return Apiato::call(UpdateUserTask::class, [$sanitizedData, $request->id]);
     }
 }

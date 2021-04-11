@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9458977c5be31b8d37cd8623c0ecd100",
+    "content-hash": "577ca69475f1d9fbd897231da1f28ffd",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.3-rc.1",
+            "version": "v6.0.4-rc.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "333f808a9f9d8ddbcdf20f447a379623223ff09d"
+                "reference": "38b5b7009a8c7f633b325e1b528f8d5f153bb4b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/333f808a9f9d8ddbcdf20f447a379623223ff09d",
-                "reference": "333f808a9f9d8ddbcdf20f447a379623223ff09d",
+                "url": "https://api.github.com/repos/apiato/core/zipball/38b5b7009a8c7f633b325e1b528f8d5f153bb4b7",
+                "reference": "38b5b7009a8c7f633b325e1b528f8d5f153bb4b7",
                 "shasum": ""
             },
             "require": {
@@ -124,20 +124,20 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-10T17:24:12+00:00"
+            "time": "2021-04-11T11:40:24+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
-            "version": "v0.1.6",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/documentation-generator-container.git",
-                "reference": "e8c14aa03d7d2e48a3432c3e36680687bc645dd2"
+                "reference": "3cab55896d0681aca96249d6cb01ae562d0770e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/e8c14aa03d7d2e48a3432c3e36680687bc645dd2",
-                "reference": "e8c14aa03d7d2e48a3432c3e36680687bc645dd2",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/3cab55896d0681aca96249d6cb01ae562d0770e2",
+                "reference": "3cab55896d0681aca96249d6cb01ae562d0770e2",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -155,22 +155,22 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/apiato/documentation-generator-container/issues",
-                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.6"
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.7"
             },
-            "time": "2021-04-10T18:21:37+00:00"
+            "time": "2021-04-11T10:50:42+00:00"
         },
         {
             "name": "apiato/localization-container",
-            "version": "v0.1.3",
+            "version": "v0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/localization-container.git",
-                "reference": "b4c49a2f8ced4c6a113f3f5985eba0b68472421b"
+                "reference": "fdf256322cf46f9f4608e17eb0ea6eebe447a8db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/localization-container/zipball/b4c49a2f8ced4c6a113f3f5985eba0b68472421b",
-                "reference": "b4c49a2f8ced4c6a113f3f5985eba0b68472421b",
+                "url": "https://api.github.com/repos/apiato/localization-container/zipball/fdf256322cf46f9f4608e17eb0ea6eebe447a8db",
+                "reference": "fdf256322cf46f9f4608e17eb0ea6eebe447a8db",
                 "shasum": ""
             },
             "require": {
@@ -191,22 +191,22 @@
             "description": "An Apiato container which adds localization functionality.",
             "support": {
                 "issues": "https://github.com/apiato/localization-container/issues",
-                "source": "https://github.com/apiato/localization-container/tree/v0.1.3"
+                "source": "https://github.com/apiato/localization-container/tree/v0.1.4"
             },
-            "time": "2021-04-10T14:48:48+00:00"
+            "time": "2021-04-11T10:52:49+00:00"
         },
         {
             "name": "apiato/welcome-container",
-            "version": "v0.1.5",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/welcome-container.git",
-                "reference": "c6eb62da78c9baf9654cffce96954d0d72d43235"
+                "reference": "61d59446a3cf42d7b283c2cbde329677de7c8835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/c6eb62da78c9baf9654cffce96954d0d72d43235",
-                "reference": "c6eb62da78c9baf9654cffce96954d0d72d43235",
+                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/61d59446a3cf42d7b283c2cbde329677de7c8835",
+                "reference": "61d59446a3cf42d7b283c2cbde329677de7c8835",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -224,9 +224,9 @@
             "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
             "support": {
                 "issues": "https://github.com/apiato/welcome-container/issues",
-                "source": "https://github.com/apiato/welcome-container/tree/v0.1.5"
+                "source": "https://github.com/apiato/welcome-container/tree/v0.1.6"
             },
-            "time": "2021-04-10T14:59:10+00:00"
+            "time": "2021-04-11T10:56:28+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -11278,8 +11278,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
-        "ext-tokenizer": "*",
-        "ext-intl": "*"
+        "ext-tokenizer": "*"
     },
     "platform-dev": {
         "ext-json": "*",

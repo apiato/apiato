@@ -3,6 +3,8 @@
 namespace App\Containers\AppSection\Authentication\UI\WEB\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
+use App\Containers\AppSection\Authentication\Actions\WebLogoutAction;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\WebController;
@@ -18,14 +20,14 @@ class Controller extends WebController
 
     public function logout(LogoutRequest $request)
     {
-        Apiato::call('Authentication@WebLogoutAction');
+        Apiato::call(WebLogoutAction::class);
         return redirect('/');
     }
 
     public function login(LoginRequest $request): RedirectResponse
     {
         try {
-            $result = Apiato::call('Authentication@WebLoginAction', [$request]);
+            $result = Apiato::call(WebLoginAction::class, [$request]);
         } catch (Exception $e) {
             return redirect()->route(config('authentication-container.login-page-url'))->with('status', $e->getMessage());
         }

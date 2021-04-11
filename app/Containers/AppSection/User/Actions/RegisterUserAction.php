@@ -7,6 +7,7 @@ use App\Containers\AppSection\User\Events\UserRegisteredEvent;
 use App\Containers\AppSection\User\Mails\UserRegisteredMail;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Notifications\UserRegisteredNotification;
+use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Contracts\Bus\Dispatcher;
@@ -18,7 +19,7 @@ class RegisterUserAction extends Action
 {
     public function run(RegisterUserRequest $data): User
     {
-        $user = Apiato::call('User@CreateUserByCredentialsTask', [
+        $user = Apiato::call(CreateUserByCredentialsTask::class, [
             false,
             $data->email,
             $data->password,

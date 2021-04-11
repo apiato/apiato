@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\User\UI\CLI\Commands;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
@@ -30,7 +31,7 @@ class CreateAdminCommand extends ConsoleCommand
             'password' => $password,
         ]);
 
-        Apiato::call('User@CreateAdminAction', [$request]);
+        Apiato::call(CreateAdminAction::class, [$request]);
 
         $this->info('Admin ' . $email . ' was successfully created');
     }

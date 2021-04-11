@@ -3,6 +3,17 @@
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\AppSection\User\Actions\CreateAdminAction;
+use App\Containers\AppSection\User\Actions\DeleteUserAction;
+use App\Containers\AppSection\User\Actions\FindUserByIdAction;
+use App\Containers\AppSection\User\Actions\ForgotPasswordAction;
+use App\Containers\AppSection\User\Actions\GetAllAdminsAction;
+use App\Containers\AppSection\User\Actions\GetAllClientsAction;
+use App\Containers\AppSection\User\Actions\GetAllUsersAction;
+use App\Containers\AppSection\User\Actions\GetAuthenticatedUserAction;
+use App\Containers\AppSection\User\Actions\RegisterUserAction;
+use App\Containers\AppSection\User\Actions\ResetPasswordAction;
+use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
@@ -21,68 +32,68 @@ class Controller extends ApiController
 {
     public function registerUser(RegisterUserRequest $request): array
     {
-        $user = Apiato::call('User@RegisterUserAction', [$request]);
+        $user = Apiato::call(RegisterUserAction::class, [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function createAdmin(CreateAdminRequest $request): array
     {
-        $admin = Apiato::call('User@CreateAdminAction', [$request]);
+        $admin = Apiato::call(CreateAdminAction::class, [$request]);
         return $this->transform($admin, UserTransformer::class);
     }
 
     public function updateUser(UpdateUserRequest $request): array
     {
-        $user = Apiato::call('User@UpdateUserAction', [$request]);
+        $user = Apiato::call(UpdateUserAction::class, [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function deleteUser(DeleteUserRequest $request): JsonResponse
     {
-        Apiato::call('User@DeleteUserAction', [$request]);
+        Apiato::call(DeleteUserAction::class, [$request]);
         return $this->noContent();
     }
 
     public function getAllUsers(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call('User@GetAllUsersAction');
+        $users = Apiato::call(GetAllUsersAction::class);
         return $this->transform($users, UserTransformer::class);
     }
 
     public function getAllClients(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call('User@GetAllClientsAction');
+        $users = Apiato::call(GetAllClientsAction::class);
 
         return $this->transform($users, UserTransformer::class);
     }
 
     public function getAllAdmins(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call('User@GetAllAdminsAction');
+        $users = Apiato::call(GetAllAdminsAction::class);
         return $this->transform($users, UserTransformer::class);
     }
 
     public function findUserById(FindUserByIdRequest $request): array
     {
-        $user = Apiato::call('User@FindUserByIdAction', [$request]);
+        $user = Apiato::call(FindUserByIdAction::class, [$request]);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function getAuthenticatedUser(GetAuthenticatedUserRequest $request): array
     {
-        $user = Apiato::call('User@GetAuthenticatedUserAction');
+        $user = Apiato::call(GetAuthenticatedUserAction::class);
         return $this->transform($user, UserPrivateProfileTransformer::class);
     }
 
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
-        Apiato::call('User@ResetPasswordAction', [$request]);
+        Apiato::call(ResetPasswordAction::class, [$request]);
         return $this->noContent(204);
     }
 
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
-        Apiato::call('User@ForgotPasswordAction', [$request]);
+        Apiato::call(ForgotPasswordAction::class, [$request]);
         return $this->noContent(202);
     }
 }

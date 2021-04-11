@@ -3,6 +3,9 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
+use App\Containers\AppSection\Authentication\Actions\ProxyLoginForWebClientAction;
+use App\Containers\AppSection\Authentication\Actions\ProxyRefreshForWebClientAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
@@ -14,7 +17,7 @@ class Controller extends ApiController
 {
     public function logout(LogoutRequest $request): JsonResponse
     {
-        Apiato::call('Authentication@ApiLogoutAction', [$request]);
+        Apiato::call(ApiLogoutAction::class, [$request]);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -35,7 +38,7 @@ class Controller extends ApiController
      */
     public function proxyLoginForWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyLoginForWebClientAction', [$request]);
+        $result = Apiato::call(ProxyLoginForWebClientAction::class, [$request]);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
@@ -48,7 +51,7 @@ class Controller extends ApiController
      */
     public function proxyRefreshForWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = Apiato::call('Authentication@ProxyRefreshForWebClientAction', [$request]);
+        $result = Apiato::call(ProxyRefreshForWebClientAction::class, [$request]);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 }

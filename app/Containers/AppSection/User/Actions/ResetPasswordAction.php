@@ -12,6 +12,9 @@ use Illuminate\Support\Str;
 
 class ResetPasswordAction extends Action
 {
+    /**
+     * @throws InternalErrorException
+     */
     public function run(ResetPasswordRequest $data): void
     {
         $sanitizedData = $data->sanitizeInput([

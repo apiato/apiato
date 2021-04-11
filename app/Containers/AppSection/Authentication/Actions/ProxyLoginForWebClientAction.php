@@ -4,6 +4,10 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
+use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
+use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
+use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
@@ -23,7 +27,7 @@ class ProxyLoginForWebClientAction extends Action
             )
         );
 
-        $loginCustomAttribute = Apiato::call('Authentication@ExtractLoginCustomAttributeTask', [$sanitizedData]);
+        $loginCustomAttribute = Apiato::call(ExtractLoginCustomAttributeTask::class, [$sanitizedData]);
 
         $sanitizedData['username'] = $loginCustomAttribute['username'];
         $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
@@ -31,9 +35,9 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
+        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $data->headers->get('accept-language')]);
         $this->processEmailConfirmationIfNeeded($responseContent);
-        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
+        $refreshCookie = Apiato::call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
 
         return [
             'response_content' => $responseContent,
@@ -44,7 +48,7 @@ class ProxyLoginForWebClientAction extends Action
     private function processEmailConfirmationIfNeeded($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);
-        $isUserConfirmed = Apiato::call('Authentication@CheckIfUserEmailIsConfirmedTask', [$user]);
+        $isUserConfirmed = Apiato::call(CheckIfUserEmailIsConfirmedTask::class, [$user]);
 
         if (!$isUserConfirmed) {
             throw new UserNotConfirmedException();

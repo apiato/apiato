@@ -148,23 +148,6 @@ return [
         'use-etag' => true,
     ],
 
-    'logging' => [
-
-        /*
-        |--------------------------------------------------------------------------
-        | Log Apiato Wrong Caller Style
-        |--------------------------------------------------------------------------
-        |
-        | This option describes, if a "wrong" Apiato Call Style should be logged.
-        | The preferred style is Apiato::call('Container@Action/Task'), however,
-        | one may use Apiato::call(Your\Full\Classname::class) as well.
-        |
-        | Default Value: true ("Violations" will be logged)
-        |
-        */
-        'log-wrong-apiato-caller-style' => true,
-    ],
-
     'seeders' => [
         /*
         |--------------------------------------------------------------------------

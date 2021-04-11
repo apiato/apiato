@@ -4,6 +4,8 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
+use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Config;
@@ -27,8 +29,8 @@ class ProxyRefreshForWebClientAction extends Action
             throw new RefreshTokenMissedException();
         }
 
-        $responseContent = Apiato::call('Authentication@CallOAuthServerTask', [$sanitizedData, $data->headers->get('accept-language')]);
-        $refreshCookie = Apiato::call('Authentication@MakeRefreshCookieTask', [$responseContent['refresh_token']]);
+        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $data->headers->get('accept-language')]);
+        $refreshCookie = Apiato::call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
 
         return [
             'response_content' => $responseContent,
