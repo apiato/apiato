@@ -41,8 +41,8 @@
         "laravel/framework": "^8.34.1",
         "laravel/tinker": "^2.6.0",
         "wikimedia/composer-merge-plugin": "^2.0.1",
-        "apiato/welcome-container": "^0.1.6",
-        "apiato/documentation-generator-container": "^0.1.7"
+        "apiato/welcome-container": "^0.1.8",
+        "apiato/documentation-generator-container": "^0.1.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5.13",
@@ -54,7 +54,7 @@
         "roave/security-advisories": "dev-latest",
         "ext-json": "*",
         "ext-intl": "*",
-        "apiato/debugger-container": "^0.1.1"
+        "apiato/debugger-container": "^0.1.2"
     },
     "autoload": {
         "psr-4": {

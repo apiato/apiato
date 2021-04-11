@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "457636e2b99bbb83e57e96c64619eb63",
+    "content-hash": "e0993eaa0a5d4d5f543f553a6f40cbc1",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -128,16 +128,16 @@
         },
         {
             "name": "apiato/documentation-generator-container",
-            "version": "v0.1.7",
+            "version": "v0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/documentation-generator-container.git",
-                "reference": "3cab55896d0681aca96249d6cb01ae562d0770e2"
+                "reference": "c99d90906bb30d82e7636b4d25ce82667a689a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/3cab55896d0681aca96249d6cb01ae562d0770e2",
-                "reference": "3cab55896d0681aca96249d6cb01ae562d0770e2",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/c99d90906bb30d82e7636b4d25ce82667a689a19",
+                "reference": "c99d90906bb30d82e7636b4d25ce82667a689a19",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -155,22 +155,22 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/apiato/documentation-generator-container/issues",
-                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.7"
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.8"
             },
-            "time": "2021-04-11T10:50:42+00:00"
+            "time": "2021-04-11T17:08:27+00:00"
         },
         {
             "name": "apiato/welcome-container",
-            "version": "v0.1.6",
+            "version": "v0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/welcome-container.git",
-                "reference": "61d59446a3cf42d7b283c2cbde329677de7c8835"
+                "reference": "43c5bfc2e0c69d271ec8a7c71af1e6b839d05deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/61d59446a3cf42d7b283c2cbde329677de7c8835",
-                "reference": "61d59446a3cf42d7b283c2cbde329677de7c8835",
+                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/43c5bfc2e0c69d271ec8a7c71af1e6b839d05deb",
+                "reference": "43c5bfc2e0c69d271ec8a7c71af1e6b839d05deb",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -188,9 +188,9 @@
             "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
             "support": {
                 "issues": "https://github.com/apiato/welcome-container/issues",
-                "source": "https://github.com/apiato/welcome-container/tree/v0.1.6"
+                "source": "https://github.com/apiato/welcome-container/tree/v0.1.8"
             },
-            "time": "2021-04-11T10:56:28+00:00"
+            "time": "2021-04-11T16:59:03+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -7238,16 +7238,16 @@
     "packages-dev": [
         {
             "name": "apiato/debugger-container",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/debugger-container.git",
-                "reference": "e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e"
+                "reference": "c9b18e029c1ad6f459370d0f0d102164fa455f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/debugger-container/zipball/e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e",
-                "reference": "e4896dd33a4f7fb9b9a9ee2115cdd960f409bd4e",
+                "url": "https://api.github.com/repos/apiato/debugger-container/zipball/c9b18e029c1ad6f459370d0f0d102164fa455f82",
+                "reference": "c9b18e029c1ad6f459370d0f0d102164fa455f82",
                 "shasum": ""
             },
             "require": {
@@ -7272,9 +7272,9 @@
             "description": "An Apiato container which helps to debug requests and queries",
             "support": {
                 "issues": "https://github.com/apiato/debugger-container/issues",
-                "source": "https://github.com/apiato/debugger-container/tree/v0.1.1"
+                "source": "https://github.com/apiato/debugger-container/tree/v0.1.2"
             },
-            "time": "2021-04-10T15:04:19+00:00"
+            "time": "2021-04-11T17:13:37+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
