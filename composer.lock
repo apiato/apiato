@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "577ca69475f1d9fbd897231da1f28ffd",
+    "content-hash": "457636e2b99bbb83e57e96c64619eb63",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -158,42 +158,6 @@
                 "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.7"
             },
             "time": "2021-04-11T10:50:42+00:00"
-        },
-        {
-            "name": "apiato/localization-container",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/apiato/localization-container.git",
-                "reference": "fdf256322cf46f9f4608e17eb0ea6eebe447a8db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/apiato/localization-container/zipball/fdf256322cf46f9f4608e17eb0ea6eebe447a8db",
-                "reference": "fdf256322cf46f9f4608e17eb0ea6eebe447a8db",
-                "shasum": ""
-            },
-            "require": {
-                "ext-intl": "*"
-            },
-            "type": "apiato-container",
-            "extra": {
-                "apiato": {
-                    "container": {
-                        "name": "Localization"
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An Apiato container which adds localization functionality.",
-            "support": {
-                "issues": "https://github.com/apiato/localization-container/issues",
-                "source": "https://github.com/apiato/localization-container/tree/v0.1.4"
-            },
-            "time": "2021-04-11T10:52:49+00:00"
         },
         {
             "name": "apiato/welcome-container",
