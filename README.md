@@ -1,19 +1,16 @@
-[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://docs.apiato.io)
-
-# Apiato
-
-<h3 align="center">Build scalable API's faster | With PHP and Laravel</h3>
-
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
 </p>
 
-[![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce8fed7f8fcd492ebbe5ef0fb36c0a9a)](https://www.codacy.com/app/mahmoudz/apiato?utm_source=github.com&utm_medium=referral&utm_content=apiato/apiato&utm_campaign=badger)
-[![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
-[![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
-[![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
+<h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 8.0</h3>
+
+<p align="center">
+<a href="https://travis-ci.org/apiato/apiato"><img src="https://travis-ci.org/apiato/apiato.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
+<a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
+<a href="https://scrutinizer-ci.com/g/apiato/apiato/"><img alt="Scrutinizer code quality (GitHub/Bitbucket)" src="https://img.shields.io/scrutinizer/quality/g/apiato/apiato"></a>
+</p>
 
 <a name="Introduction"></a>
 
@@ -50,7 +47,7 @@ Apiato gives you the core features of robust API's fully documented, for free; s
 
 > Apiato comes with an amazing list of features.
 
-[See Featuers List Here](http://docs.apiato.io/)
+[See Feature List Here](http://apiato.io/)
 
 <a name="Documentation"></a>
 ## Documentation
@@ -71,7 +68,7 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/docs/getti
 
 ---
 
-<p align="center">Join our new Discord chatting room, by clicking on the icon below.</p>
+<p align="center">Join our Discord server, by clicking on the icon below.</p>
 
 
 <p align="center">
@@ -218,7 +215,7 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <a href="https://github.com/moslem-deris">@moslem-deris</a>
           </td>
           <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/apiato/documentation/blob/master/images/join-us.png">
+            <img width="125" height="125" src="https://db3pap005files.storage.live.com/y4m3Tr6C7B5leWSUZMBwhJwcn8ud1r2jO3FqR9w-vTJaQG6IgHcQbV3EGDkJzPemebgdP2O1Us_WtPLcPrDKvobm6b8QlvwihwWXp9wVdMAHYmOeEg0jF1pkbKNlMR2H6D8DHYpybDyu9TtvkpFHr6fy3tYl521UtIdI_P04-z59-IfIrHimnLNYoAp7T0Y1R6O?width=374&height=356&cropmode=none">
             <br>
             <strong>< Join Us ></strong>
             <br>
