@@ -11,10 +11,10 @@ use App\Ship\Parents\Actions\Action;
 
 class DeleteUserAction extends Action
 {
-    public function run(DeleteUserRequest $data): void
+    public function run(DeleteUserRequest $request): void
     {
-        $user = $data->id
-            ? Apiato::call(FindUserByIdTask::class, [$data->id])
+        $user = $request->id
+            ? Apiato::call(FindUserByIdTask::class, [$request->id])
             : Apiato::call(GetAuthenticatedUserTask::class);
 
         Apiato::call(DeleteUserTask::class, [$user]);

@@ -11,9 +11,9 @@ use Spatie\Permission\Contracts\Role;
 
 class DeleteRoleAction extends Action
 {
-    public function run(DeleteRoleRequest $data): Role
+    public function run(DeleteRoleRequest $request): Role
     {
-        $role = Apiato::call(FindRoleTask::class, [$data->id]);
+        $role = Apiato::call(FindRoleTask::class, [$request->id]);
         Apiato::call(DeleteRoleTask::class, [$role]);
 
         return $role;

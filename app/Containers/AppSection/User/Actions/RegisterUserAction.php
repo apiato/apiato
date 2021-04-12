@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Notification;
 
 class RegisterUserAction extends Action
 {
-    public function run(RegisterUserRequest $data): User
+    public function run(RegisterUserRequest $request): User
     {
         $user = Apiato::call(CreateUserByCredentialsTask::class, [
             false,
-            $data->email,
-            $data->password,
-            $data->name,
-            $data->gender,
-            $data->birth
+            $request->email,
+            $request->password,
+            $request->name,
+            $request->gender,
+            $request->birth
         ]);
 
         Mail::send(new UserRegisteredMail($user));

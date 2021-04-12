@@ -11,14 +11,14 @@ use App\Ship\Parents\Actions\Action;
 
 class SyncUserRolesAction extends Action
 {
-    public function run(SyncUserRolesRequest $data): User
+    public function run(SyncUserRolesRequest $request): User
     {
-        $user = Apiato::call(FindUserByIdTask::class, [$data->user_id]);
+        $user = Apiato::call(FindUserByIdTask::class, [$request->user_id]);
 
         // convert roles IDs to array (in case single id passed)
-        $rolesIds = (array)$data->roles_ids;
+        $rolesIds = (array)$request->roles_ids;
 
-        $roles = array_map(function ($roleId) {
+        $roles = array_map(static function ($roleId) {
             return Apiato::call(FindRoleTask::class, [$roleId]);
         }, $rolesIds);
 

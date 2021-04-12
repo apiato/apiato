@@ -10,8 +10,8 @@ use App\Ship\Parents\Actions\Action;
 
 class FindUserByIdAction extends Action
 {
-    public function run(FindUserByIdRequest $data): User
+    public function run(FindUserByIdRequest $request): User
     {
-        return Apiato::call(FindUserByIdTask::class, [$data->id]);
+        return Apiato::call(FindUserByIdTask::class, [$request->id]);
     }
 }

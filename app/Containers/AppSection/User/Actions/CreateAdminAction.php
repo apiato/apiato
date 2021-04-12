@@ -11,13 +11,13 @@ use App\Ship\Parents\Actions\Action;
 
 class CreateAdminAction extends Action
 {
-    public function run(CreateAdminRequest $data): User
+    public function run(CreateAdminRequest $request): User
     {
         $admin = Apiato::call(CreateUserByCredentialsTask::class, [
             true,
-            $data->email,
-            $data->password,
-            $data->name
+            $request->email,
+            $request->password,
+            $request->name
         ]);
 
         // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles

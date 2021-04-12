@@ -12,12 +12,12 @@ use App\Ship\Parents\Actions\Action;
 
 class AssignUserToRoleAction extends Action
 {
-    public function run(AssignUserToRoleRequest $data): User
+    public function run(AssignUserToRoleRequest $request): User
     {
-        $user = Apiato::call(FindUserByIdTask::class, [$data->user_id]);
+        $user = Apiato::call(FindUserByIdTask::class, [$request->user_id]);
 
         // convert to array in case single ID was passed
-        $rolesIds = (array)$data->roles_ids;
+        $rolesIds = (array)$request->roles_ids;
 
         $roles = array_map(static function ($roleId) {
             return Apiato::call(FindRoleTask::class, [$roleId]);

@@ -11,9 +11,9 @@ use App\Ship\Parents\Actions\Action;
 
 class DetachPermissionsFromRoleAction extends Action
 {
-    public function run(DetachPermissionToRoleRequest $data): Role
+    public function run(DetachPermissionToRoleRequest $request): Role
     {
-        $role = Apiato::call(FindRoleTask::class, [$data->role_id]);
-        return Apiato::call(DetachPermissionsFromRoleTask::class, [$role, $data->permissions_ids]);
+        $role = Apiato::call(FindRoleTask::class, [$request->role_id]);
+        return Apiato::call(DetachPermissionsFromRoleTask::class, [$role, $request->permissions_ids]);
     }
 }

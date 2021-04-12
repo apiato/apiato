@@ -11,12 +11,12 @@ use App\Ship\Parents\Actions\Action;
 
 class AttachPermissionsToRoleAction extends Action
 {
-    public function run(AttachPermissionToRoleRequest $data): Role
+    public function run(AttachPermissionToRoleRequest $request): Role
     {
-        $role = Apiato::call(FindRoleTask::class, [$data->role_id]);
+        $role = Apiato::call(FindRoleTask::class, [$request->role_id]);
 
         // convert to array in case single ID was passed
-        $permissionIds = (array)$data->permissions_ids;
+        $permissionIds = (array)$request->permissions_ids;
 
         $permissions = array_map(static function ($permissionId) {
             return Apiato::call(FindPermissionTask::class, [$permissionId]);

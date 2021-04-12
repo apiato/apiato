@@ -15,15 +15,15 @@ class ResetPasswordAction extends Action
     /**
      * @throws InternalErrorException
      */
-    public function run(ResetPasswordRequest $data): void
+    public function run(ResetPasswordRequest $request): void
     {
-        $sanitizedData = $data->sanitizeInput([
+        $sanitizedData = $request->sanitizeInput([
             'email',
             'token',
             'password'
         ]);
 
-        $sanitizedData['password_confirmation'] = $data->password;
+        $sanitizedData['password_confirmation'] = $request->password;
 
         try {
             Password::broker()->reset(

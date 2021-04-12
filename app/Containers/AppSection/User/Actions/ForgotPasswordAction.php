@@ -16,15 +16,15 @@ class ForgotPasswordAction extends Action
     /**
      * @throws NotFoundException
      */
-    public function run(ForgotPasswordRequest $data): void
+    public function run(ForgotPasswordRequest $request): void
     {
-        $user = Apiato::call(FindUserByEmailTask::class, [$data->email]);
+        $user = Apiato::call(FindUserByEmailTask::class, [$request->email]);
 
         // generate token
         $token = Apiato::call(CreatePasswordResetTask::class, [$user]);
 
         // get last segment of the URL
-        $resetUrl = $data->reseturl;
+        $resetUrl = $request->reseturl;
         $url = explode('/', $resetUrl);
         $lastSegment = $url[count($url) - 1];
 

@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Request;
 
 class ProxyRefreshForWebClientAction extends Action
 {
-    public function run(ProxyRefreshRequest $data): array
+    /**
+     * @throws RefreshTokenMissedException
+     */
+    public function run(ProxyRefreshRequest $request): array
     {
-        $sanitizedData = $data->sanitizeInput([
+        $sanitizedData = $request->sanitizeInput([
             'refresh_token',
         ]);
 
@@ -29,7 +32,7 @@ class ProxyRefreshForWebClientAction extends Action
             throw new RefreshTokenMissedException();
         }
 
-        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $data->headers->get('accept-language')]);
+        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $request->headers->get('accept-language')]);
         $refreshCookie = Apiato::call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
 
         return [

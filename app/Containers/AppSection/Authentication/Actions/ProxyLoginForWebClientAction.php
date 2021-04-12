@@ -18,9 +18,12 @@ use Lcobucci\JWT\Parser;
 
 class ProxyLoginForWebClientAction extends Action
 {
-    public function run(ProxyLoginPasswordGrantRequest $data): array
+    /**
+     * @throws UserNotConfirmedException
+     */
+    public function run(ProxyLoginPasswordGrantRequest $request): array
     {
-        $sanitizedData = $data->sanitizeInput(
+        $sanitizedData = $request->sanitizeInput(
             array_merge(
                 array_keys(Config::get('authentication-container.login.attributes')),
                 ['password']
@@ -35,7 +38,7 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $data->headers->get('accept-language')]);
+        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $request->headers->get('accept-language')]);
         $this->processEmailConfirmationIfNeeded($responseContent);
         $refreshCookie = Apiato::call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
 
@@ -45,6 +48,9 @@ class ProxyLoginForWebClientAction extends Action
         ];
     }
 
+    /**
+     * @throws UserNotConfirmedException
+     */
     private function processEmailConfirmationIfNeeded($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);

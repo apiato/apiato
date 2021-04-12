@@ -11,12 +11,12 @@ use function is_null;
 
 class CreateRoleAction extends Action
 {
-    public function run(CreateRoleRequest $data): Role
+    public function run(CreateRoleRequest $request): Role
     {
-        $level = is_null($data->level) ? 0 : $data->level;
+        $level = is_null($request->level) ? 0 : $request->level;
 
         return Apiato::call(CreateRoleTask::class,
-            [$data->name, $data->description, $data->display_name, $level]
+            [$request->name, $request->description, $request->display_name, $level]
         );
     }
 }

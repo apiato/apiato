@@ -10,10 +10,10 @@ use App\Ship\Parents\Requests\Request;
 
 class CreatePermissionAction extends Action
 {
-    public function run(Request $data): Permission
+    public function run(Request $request): Permission
     {
         return Apiato::call(CreatePermissionTask::class,
-            [$data->name, $data->description, $data->display_name]
+            [$request->name, $request->description, $request->display_name]
         );
     }
 }

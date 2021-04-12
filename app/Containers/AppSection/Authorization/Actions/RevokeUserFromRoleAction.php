@@ -12,17 +12,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 class RevokeUserFromRoleAction extends Action
 {
-    public function run(RevokeUserFromRoleRequest $data): User
+    public function run(RevokeUserFromRoleRequest $request): User
     {
         $user = null;
 
         // if user ID is passed then convert it to instance of User (could be user Id Or Model)
-        if (!$data->user_id instanceof User) {
-            $user = Apiato::call(FindUserByIdTask::class, [$data->user_id]);
+        if (!$request->user_id instanceof User) {
+            $user = Apiato::call(FindUserByIdTask::class, [$request->user_id]);
         }
 
         // convert to array in case single ID was passed (could be Single Or Multiple Role Ids)
-        $rolesIds = (array)$data->roles_ids;
+        $rolesIds = (array)$request->roles_ids;
 
         $roles = new Collection();
 

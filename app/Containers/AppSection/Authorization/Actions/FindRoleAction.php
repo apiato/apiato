@@ -14,9 +14,9 @@ class FindRoleAction extends Action
     /**
      * @throws RoleNotFoundException
      */
-    public function run(FindRoleRequest $data): Role
+    public function run(FindRoleRequest $request): Role
     {
-        $role = Apiato::call(FindRoleTask::class, [$data->id]);
+        $role = Apiato::call(FindRoleTask::class, [$request->id]);
 
         if (!$role) {
             throw new RoleNotFoundException();
