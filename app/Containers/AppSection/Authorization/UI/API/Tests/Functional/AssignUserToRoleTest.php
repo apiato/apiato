@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class AssignUserToRoleTest.

@@ -19,8 +19,6 @@ class FindPermissionTask extends Task
     {
         $query = is_numeric($permissionNameOrId) ? ['id' => $permissionNameOrId] : ['name' => $permissionNameOrId];
 
-        $permission = $this->repository->findWhere($query)->first();
-
-        return $permission;
+        return $this->repository->findWhere($query)->first();
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
 use App\Containers\AppSection\User\Models\User;
@@ -18,7 +17,7 @@ class RevokeUserFromRoleAction extends Action
 
         // if user ID is passed then convert it to instance of User (could be user Id Or Model)
         if (!$request->user_id instanceof User) {
-            $user = Apiato::call(FindUserByIdTask::class, [$request->user_id]);
+            $user = app(FindUserByIdTask::class)->run($request->user_id);
         }
 
         // convert to array in case single ID was passed (could be Single Or Multiple Role Ids)
@@ -27,7 +26,7 @@ class RevokeUserFromRoleAction extends Action
         $roles = new Collection();
 
         foreach ($rolesIds as $roleId) {
-            $role = Apiato::call(FindRoleTask::class, [$roleId]);
+            $role = app(FindRoleTask::class)->run($roleId);
             $roles->add($role);
         }
 

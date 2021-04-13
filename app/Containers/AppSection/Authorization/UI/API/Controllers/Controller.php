@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authorization\Actions\AssignUserToRoleAction;
 use App\Containers\AppSection\Authorization\Actions\AttachPermissionsToRoleAction;
 use App\Containers\AppSection\Authorization\Actions\CreateRoleAction;
@@ -37,73 +36,73 @@ class Controller extends ApiController
 {
     public function getAllPermissions(GetAllPermissionsRequest $request): array
     {
-        $permissions = Apiato::call(GetAllPermissionsAction::class);
+        $permissions = app(GetAllPermissionsAction::class)->run();
         return $this->transform($permissions, PermissionTransformer::class);
     }
 
     public function findPermission(FindPermissionRequest $request): array
     {
-        $permission = Apiato::call(FindPermissionAction::class, [$request]);
+        $permission = app(FindPermissionAction::class)->run($request);
         return $this->transform($permission, PermissionTransformer::class);
     }
 
     public function getAllRoles(GetAllRolesRequest $request): array
     {
-        $roles = Apiato::call(GetAllRolesAction::class);
+        $roles = app(GetAllRolesAction::class)->run();
         return $this->transform($roles, RoleTransformer::class);
     }
 
     public function findRole(FindRoleRequest $request): array
     {
-        $role = Apiato::call(FindRoleAction::class, [$request]);
+        $role = app(FindRoleAction::class)->run($request);
         return $this->transform($role, RoleTransformer::class);
     }
 
     public function assignUserToRole(AssignUserToRoleRequest $request): array
     {
-        $user = Apiato::call(AssignUserToRoleAction::class, [$request]);
+        $user = app(AssignUserToRoleAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function syncUserRoles(SyncUserRolesRequest $request): array
     {
-        $user = Apiato::call(SyncUserRolesAction::class, [$request]);
+        $user = app(SyncUserRolesAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function deleteRole(DeleteRoleRequest $request): JsonResponse
     {
-        Apiato::call(DeleteRoleAction::class, [$request]);
+        app(DeleteRoleAction::class)->run($request);
         return $this->noContent();
     }
 
     public function revokeRoleFromUser(RevokeUserFromRoleRequest $request): array
     {
-        $user = Apiato::call(RevokeUserFromRoleAction::class, [$request]);
+        $user = app(RevokeUserFromRoleAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function attachPermissionToRole(AttachPermissionToRoleRequest $request): array
     {
-        $role = Apiato::call(AttachPermissionsToRoleAction::class, [$request]);
+        $role = app(AttachPermissionsToRoleAction::class)->run($request);
         return $this->transform($role, RoleTransformer::class);
     }
 
     public function syncPermissionOnRole(SyncPermissionsOnRoleRequest $request): array
     {
-        $role = Apiato::call(SyncPermissionsOnRoleAction::class, [$request]);
+        $role = app(SyncPermissionsOnRoleAction::class)->run($request);
         return $this->transform($role, RoleTransformer::class);
     }
 
     public function detachPermissionFromRole(DetachPermissionToRoleRequest $request): array
     {
-        $role = Apiato::call(DetachPermissionsFromRoleAction::class, [$request]);
+        $role = app(DetachPermissionsFromRoleAction::class)->run($request);
         return $this->transform($role, RoleTransformer::class);
     }
 
     public function createRole(CreateRoleRequest $request): array
     {
-        $role = Apiato::call(CreateRoleAction::class, [$request]);
+        $role = app(CreateRoleAction::class)->run($request);
         return $this->transform($role, RoleTransformer::class);
     }
 }

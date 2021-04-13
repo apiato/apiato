@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
@@ -13,13 +12,13 @@ class SyncPermissionsOnRoleAction extends Action
 {
     public function run(SyncPermissionsOnRoleRequest $request): Role
     {
-        $role = Apiato::call(FindRoleTask::class, [$request->role_id]);
+        $role = app(FindRoleTask::class)->run($request->role_id);
 
         // convert to array in case single ID was passed
         $permissionsIds = (array)$request->permissions_ids;
 
         $permissions = array_map(static function ($permissionId) {
-            return Apiato::call(FindPermissionTask::class, [$permissionId]);
+            return app(FindPermissionTask::class)->run($permissionId);
         }, $permissionsIds);
 
         $role->syncPermissions($permissions);

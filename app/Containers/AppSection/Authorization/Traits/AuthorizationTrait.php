@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Traits;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 use Illuminate\Contracts\Auth\Authenticatable;
 
@@ -10,7 +9,7 @@ trait AuthorizationTrait
 {
     public function getUser(): ?Authenticatable
     {
-        return Apiato::call(GetAuthenticatedUserTask::class);
+        return app(GetAuthenticatedUserTask::class)->run();
     }
 
     public function hasAdminRole(): bool
