@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\AppSection\User\Tasks\DeleteUserTask;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
@@ -14,9 +13,9 @@ class DeleteUserAction extends Action
     public function run(DeleteUserRequest $request): void
     {
         $user = $request->id
-            ? Apiato::call(FindUserByIdTask::class, [$request->id])
-            : Apiato::call(GetAuthenticatedUserTask::class);
+            ? app(FindUserByIdTask::class)->run($request->id)
+            : app(GetAuthenticatedUserTask::class)->run();
 
-        Apiato::call(DeleteUserTask::class, [$user]);
+        app(DeleteUserTask::class)->run($user);
     }
 }

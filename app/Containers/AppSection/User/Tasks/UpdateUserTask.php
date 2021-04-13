@@ -21,7 +21,7 @@ class UpdateUserTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($userData, $userId): User
+    public function run(array $userData, $userId): User
     {
         if (empty($userData)) {
             throw new UpdateResourceFailedException('Inputs are empty.');

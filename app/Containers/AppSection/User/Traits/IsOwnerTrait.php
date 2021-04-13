@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Traits;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 
 trait IsOwnerTrait
@@ -13,7 +12,7 @@ trait IsOwnerTrait
      */
     public function isOwner(): bool
     {
-        $user = Apiato::call(GetAuthenticatedUserTask::class);
+        $user = app(GetAuthenticatedUserTask::class)->run();
         return $user->id === $this->id;
     }
 }

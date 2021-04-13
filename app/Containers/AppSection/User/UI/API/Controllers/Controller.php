@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Actions\DeleteUserAction;
 use App\Containers\AppSection\User\Actions\FindUserByIdAction;
@@ -32,68 +31,67 @@ class Controller extends ApiController
 {
     public function registerUser(RegisterUserRequest $request): array
     {
-        $user = Apiato::call(RegisterUserAction::class, [$request]);
+        $user = app(RegisterUserAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function createAdmin(CreateAdminRequest $request): array
     {
-        $admin = Apiato::call(CreateAdminAction::class, [$request]);
+        $admin = app(CreateAdminAction::class)->run($request);
         return $this->transform($admin, UserTransformer::class);
     }
 
     public function updateUser(UpdateUserRequest $request): array
     {
-        $user = Apiato::call(UpdateUserAction::class, [$request]);
+        $user = app(UpdateUserAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function deleteUser(DeleteUserRequest $request): JsonResponse
     {
-        Apiato::call(DeleteUserAction::class, [$request]);
+        app(DeleteUserAction::class)->run($request);
         return $this->noContent();
     }
 
     public function getAllUsers(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call(GetAllUsersAction::class);
+        $users = app(GetAllUsersAction::class)->run();
         return $this->transform($users, UserTransformer::class);
     }
 
     public function getAllClients(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call(GetAllClientsAction::class);
-
+        $users = app(GetAllClientsAction::class)->run();
         return $this->transform($users, UserTransformer::class);
     }
 
     public function getAllAdmins(GetAllUsersRequest $request): array
     {
-        $users = Apiato::call(GetAllAdminsAction::class);
+        $users = app(GetAllAdminsAction::class)->run();
         return $this->transform($users, UserTransformer::class);
     }
 
     public function findUserById(FindUserByIdRequest $request): array
     {
-        $user = Apiato::call(FindUserByIdAction::class, [$request]);
+        $user = app(FindUserByIdAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 
     public function getAuthenticatedUser(GetAuthenticatedUserRequest $request): array
     {
-        $user = Apiato::call(GetAuthenticatedUserAction::class);
+        $user = app(GetAuthenticatedUserAction::class)->run();
         return $this->transform($user, UserPrivateProfileTransformer::class);
     }
 
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
-        Apiato::call(ResetPasswordAction::class, [$request]);
+        app(ResetPasswordAction::class)->run($request);
         return $this->noContent(204);
     }
 
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
-        Apiato::call(ForgotPasswordAction::class, [$request]);
+        app(ForgotPasswordAction::class)->run($request);
         return $this->noContent(202);
     }
 }

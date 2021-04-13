@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
@@ -12,6 +11,6 @@ class FindUserByIdAction extends Action
 {
     public function run(FindUserByIdRequest $request): User
     {
-        return Apiato::call(FindUserByIdTask::class, [$request->id]);
+        return app(FindUserByIdTask::class)->run($request->id);
     }
 }

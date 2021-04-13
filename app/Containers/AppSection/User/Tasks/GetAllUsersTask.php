@@ -23,23 +23,27 @@ class GetAllUsersTask extends Task
         return $this->repository->paginate();
     }
 
-    public function clients(): void
+    public function clients(): self
     {
         $this->repository->pushCriteria(new ClientsCriteria());
+        return $this;
     }
 
-    public function admins(): void
+    public function admins(): self
     {
         $this->repository->pushCriteria(new AdminsCriteria());
+        return $this;
     }
 
-    public function ordered(): void
+    public function ordered(): self
     {
         $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
+        return $this;
     }
 
-    public function withRole($roles): void
+    public function withRole($roles): self
     {
         $this->repository->pushCriteria(new RoleCriteria($roles));
+        return $this;
     }
 }
