@@ -13,11 +13,7 @@ class ApiLogoutAction extends Action
     public function run(LogoutRequest $request): void
     {
         $id = app(Parser::class)->parse($request->bearerToken())->claims()->get('jti');
-
-        $tokenRepository = app(TokenRepository::class);
-        $refreshTokenRepository = app(RefreshTokenRepository::class);
-
-        $tokenRepository->revokeAccessToken($id);
-        $refreshTokenRepository->revokeRefreshTokensByAccessTokenId($id);
+        app(TokenRepository::class)->revokeAccessToken($id);
+        app(RefreshTokenRepository::class)->revokeRefreshTokensByAccessTokenId($id);
     }
 }

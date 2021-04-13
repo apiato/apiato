@@ -2,10 +2,11 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
 use App\Containers\AppSection\Authentication\Actions\ProxyLoginForWebClientAction;
 use App\Containers\AppSection\Authentication\Actions\ProxyRefreshForWebClientAction;
+use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
+use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
@@ -17,7 +18,7 @@ class Controller extends ApiController
 {
     public function logout(LogoutRequest $request): JsonResponse
     {
-        Apiato::call(ApiLogoutAction::class, [$request]);
+        app(ApiLogoutAction::class)->run($request);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',
@@ -35,10 +36,11 @@ class Controller extends ApiController
      * @param ProxyLoginPasswordGrantRequest $request
      *
      * @return JsonResponse
+     * @throws UserNotConfirmedException
      */
     public function proxyLoginForWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = Apiato::call(ProxyLoginForWebClientAction::class, [$request]);
+        $result = app(ProxyLoginForWebClientAction::class)->run($request);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
@@ -48,10 +50,11 @@ class Controller extends ApiController
      * @param ProxyRefreshRequest $request
      *
      * @return JsonResponse
+     * @throws RefreshTokenMissedException
      */
     public function proxyRefreshForWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = Apiato::call(ProxyRefreshForWebClientAction::class, [$request]);
+        $result = app(ProxyRefreshForWebClientAction::class)->run($request);
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 }

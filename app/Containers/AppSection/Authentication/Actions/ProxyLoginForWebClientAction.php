@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
@@ -11,16 +10,12 @@ use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
 
 class ProxyLoginForWebClientAction extends Action
 {
-    /**
-     * @throws UserNotConfirmedException
-     */
     public function run(ProxyLoginPasswordGrantRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput(
@@ -30,7 +25,7 @@ class ProxyLoginForWebClientAction extends Action
             )
         );
 
-        $loginCustomAttribute = Apiato::call(ExtractLoginCustomAttributeTask::class, [$sanitizedData]);
+        $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
 
         $sanitizedData['username'] = $loginCustomAttribute['username'];
         $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
@@ -38,9 +33,9 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $responseContent = Apiato::call(CallOAuthServerTask::class, [$sanitizedData, $request->headers->get('accept-language')]);
+        $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
         $this->processEmailConfirmationIfNeeded($responseContent);
-        $refreshCookie = Apiato::call(MakeRefreshCookieTask::class, [$responseContent['refresh_token']]);
+        $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
 
         return [
             'response_content' => $responseContent,
@@ -48,13 +43,10 @@ class ProxyLoginForWebClientAction extends Action
         ];
     }
 
-    /**
-     * @throws UserNotConfirmedException
-     */
     private function processEmailConfirmationIfNeeded($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);
-        $isUserConfirmed = Apiato::call(CheckIfUserEmailIsConfirmedTask::class, [$user]);
+        $isUserConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);
 
         if (!$isUserConfirmed) {
             throw new UserNotConfirmedException();
@@ -63,7 +55,7 @@ class ProxyLoginForWebClientAction extends Action
 
     private function extractUserFromAuthServerResponse($response)
     {
-        $tokenId = App::make(Parser::class)->parse($response['access_token'])->claims()->get('jti');
+        $tokenId = app(Parser::class)->parse($response['access_token'])->claims()->get('jti');
         $userAccessRecord = DB::table('oauth_access_tokens')->find($tokenId);
         return User::find($userAccessRecord->user_id);
     }

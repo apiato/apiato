@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
@@ -22,14 +21,14 @@ class WebLoginAction extends Action
             'remember_me' => true
         ]);
 
-        $loginCustomAttribute = Apiato::call(ExtractLoginCustomAttributeTask::class, [$sanitizedData]);
+        $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
 
-        $isSuccessful = Apiato::call(LoginTask::class, [
+        $isSuccessful = app(LoginTask::class)->run(
             $loginCustomAttribute['username'],
             $sanitizedData['password'],
             $loginCustomAttribute['loginAttribute'],
             $sanitizedData['remember_me']
-        ]);
+        );
 
         $user = null;
         if ($isSuccessful) {
@@ -38,7 +37,7 @@ class WebLoginAction extends Action
             throw new LoginFailedException();
         }
 
-        $isUserConfirmed = Apiato::call(CheckIfUserEmailIsConfirmedTask::class, [$user]);
+        $isUserConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);
 
         if (!$isUserConfirmed) {
             throw new UserNotConfirmedException();
