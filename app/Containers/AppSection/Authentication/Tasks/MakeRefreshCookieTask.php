@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\Config;
 
 class MakeRefreshCookieTask extends Task
 {
@@ -13,10 +12,10 @@ class MakeRefreshCookieTask extends Task
         return cookie(
             'refreshToken',
             $refreshToken,
-            Config::get('apiato.api.refresh-expires-in'),
+            config('apiato.api.refresh-expires-in'),
             null,
             null,
-            Config::get('session.secure'),
+            config('session.secure'),
             true // HttpOnly
         );
     }

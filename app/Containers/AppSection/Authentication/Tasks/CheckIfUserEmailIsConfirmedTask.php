@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
-use Illuminate\Support\Facades\Config;
 
 class CheckIfUserEmailIsConfirmedTask extends Task
 {
@@ -19,6 +18,6 @@ class CheckIfUserEmailIsConfirmedTask extends Task
 
     private function emailConfirmationIsRequired()
     {
-        return Config::get('authentication-container.require_email_confirmation');
+        return config('authentication-container.require_email_confirmation');
     }
 }

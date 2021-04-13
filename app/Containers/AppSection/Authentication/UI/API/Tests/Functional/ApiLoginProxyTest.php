@@ -50,7 +50,7 @@ class ApiLoginProxyTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        if (Config::get('authentication-container.require_email_confirmation')) {
+        if (config('authentication-container.require_email_confirmation')) {
             $response->assertStatus(409);
         } else {
             $response->assertStatus(200);

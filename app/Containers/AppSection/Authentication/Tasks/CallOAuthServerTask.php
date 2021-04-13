@@ -7,7 +7,6 @@ use App\Ship\Parents\Tasks\Task;
 use GuzzleHttp\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
 
 class CallOAuthServerTask extends Task
 {
@@ -15,11 +14,11 @@ class CallOAuthServerTask extends Task
 
     public function run(array $data, string $languageHeader = null): array
     {
-        $authFullApiUrl = Config::get('apiato.api.url') . self::AUTH_ROUTE;
+        $authFullApiUrl = config('apiato.api.url') . self::AUTH_ROUTE;
 
         $headers = [
             'HTTP_ACCEPT' => 'application/json',
-            'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? Config::get('app.locale'),
+            'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? config('app.locale'),
         ];
 
         $request = Request::create($authFullApiUrl, 'POST', $data, [], [], $headers);

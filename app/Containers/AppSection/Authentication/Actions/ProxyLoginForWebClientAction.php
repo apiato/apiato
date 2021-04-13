@@ -10,7 +10,6 @@ use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
 
@@ -20,7 +19,7 @@ class ProxyLoginForWebClientAction extends Action
     {
         $sanitizedData = $request->sanitizeInput(
             array_merge(
-                array_keys(Config::get('authentication-container.login.attributes')),
+                array_keys(config('authentication-container.login.attributes')),
                 ['password']
             )
         );
@@ -28,8 +27,8 @@ class ProxyLoginForWebClientAction extends Action
         $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
 
         $sanitizedData['username'] = $loginCustomAttribute['username'];
-        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
-        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.secret');
+        $sanitizedData['client_id'] = config('authentication-container.clients.web.id');
+        $sanitizedData['client_secret'] = config('authentication-container.clients.web.secret');
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 

@@ -7,7 +7,6 @@ use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 
 class ProxyRefreshForWebClientAction extends Action
@@ -19,8 +18,8 @@ class ProxyRefreshForWebClientAction extends Action
         ]);
 
         $sanitizedData['refresh_token'] = $sanitizedData['refresh_token'] ?: Request::cookie('refreshToken');
-        $sanitizedData['client_id'] = Config::get('authentication-container.clients.web.id');
-        $sanitizedData['client_secret'] = Config::get('authentication-container.clients.web.secret');
+        $sanitizedData['client_id'] = config('authentication-container.clients.web.id');
+        $sanitizedData['client_secret'] = config('authentication-container.clients.web.secret');
         $sanitizedData['grant_type'] = 'refresh_token';
         $sanitizedData['scope'] = '';
 

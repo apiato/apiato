@@ -4,14 +4,13 @@ namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
 
 class ExtractLoginCustomAttributeTask extends Task
 {
     public function run(array $data): array
     {
-        $prefix = Config::get('authentication-container.login.prefix', '');
-        $allowedLoginFields = Config::get('authentication-container.login.attributes');
+        $prefix = config('authentication-container.login.prefix', '');
+        $allowedLoginFields = config('authentication-container.login.attributes');
         if (!$allowedLoginFields) {
             $allowedLoginFields = ['email' => []];
         }

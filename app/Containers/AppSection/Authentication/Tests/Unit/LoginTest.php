@@ -58,7 +58,7 @@ class LoginTest extends TestCase
     {
         $this->expectException(UserNotConfirmedException::class);
 
-        $configInitialValue = Config::get('authentication-container.require_email_confirmation');
+        $configInitialValue = config('authentication-container.require_email_confirmation');
         Config::set('authentication-container.require_email_confirmation', true);
         $this->testingUser->email_verified_at = null;
         $this->testingUser->save();

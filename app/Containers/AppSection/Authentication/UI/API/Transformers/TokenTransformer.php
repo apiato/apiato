@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Transformers;
 
 use App\Ship\Parents\Transformers\Transformer;
-use Illuminate\Support\Facades\Config;
 
 class TokenTransformer extends Transformer
 {
@@ -13,7 +12,7 @@ class TokenTransformer extends Transformer
             'object' => 'Token',
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => Config::get('apiato.api.expires-in'),
+            'expires_in' => config('apiato.api.expires-in'),
         ];
 
         return $response;

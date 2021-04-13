@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\Providers;
 use Apiato\Core\Loaders\RoutesLoaderTrait;
 use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use Laravel\Passport\RouteRegistrar;
@@ -48,18 +47,18 @@ class AuthProvider extends ParentAuthProvider
 
     private function registerPassport(): void
     {
-        if (Config::get('apiato.api.enabled-implicit-grant')) {
+        if (config('apiato.api.enabled-implicit-grant')) {
             Passport::enableImplicitGrant();
         }
 
-        Passport::tokensExpireIn(Carbon::now()->addMinutes(Config::get('apiato.api.expires-in')));
+        Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
 
-        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(Config::get('apiato.api.refresh-expires-in')));
+        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
     }
 
     private function registerPassportApiRoutes(): void
     {
-        $prefix = Config::get('apiato.api.prefix');
+        $prefix = config('apiato.api.prefix');
         $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
 
         if (!$this->app->routesAreCached()) {
