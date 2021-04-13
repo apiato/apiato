@@ -29,6 +29,7 @@ class AssignUserToRoleRequest extends Request
     protected array $urlParameters = [
 
     ];
+
     public function rules(): array
     {
         return [

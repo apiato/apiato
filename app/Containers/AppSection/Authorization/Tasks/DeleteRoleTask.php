@@ -32,8 +32,7 @@ class DeleteRoleTask extends Task
         // delete the record from the roles table.
         try {
             return $this->repository->delete($role);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             throw new DeleteResourceFailedException();
         }
     }

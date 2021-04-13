@@ -10,7 +10,7 @@ class CreateRoleRequest extends Request
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        'roles'       => '',
+        'roles' => '',
         'permissions' => 'manage-roles',
     ];
 
@@ -28,11 +28,12 @@ class CreateRoleRequest extends Request
     protected array $urlParameters = [
 
     ];
+
     public function rules(): array
     {
         return [
-            'name'         => 'required|unique:roles,name|min:2|max:20|no_spaces',
-            'description'  => 'max:255',
+            'name' => 'required|unique:roles,name|min:2|max:20|no_spaces',
+            'description' => 'max:255',
             'display_name' => 'max:100',
         ];
     }
