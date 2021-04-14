@@ -310,7 +310,7 @@ You can sponsor us using any of the methods below:
 
 [comment]: # (Open Collective Tiers)
 
-[contributors-src]: https://opencollective.com/apiato/contributors.svg?width=890&button=false&isActive=true
+[contributors-src]: https://contrib.rocks/image?repo=apiato/apiato
 [contributors-href]: https://github.com/apiato/apiato/graphs/contributors
 [backers-src]: https://opencollective.com/apiato/tiers/awesome-backers.svg?width=890&button=false&isActive=true
 [backers-href]: https://opencollective.com/apiato#contributors
