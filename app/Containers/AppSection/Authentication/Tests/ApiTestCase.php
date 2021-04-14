@@ -38,8 +38,8 @@ class ApiTestCase extends BaseTestCase
         ]);
 
         // make the clients credentials available as env variables
-        Config::set('authentication-container.clients.web.id', $clientId);
-        Config::set('authentication-container.clients.web.secret', $clientSecret);
+        Config::set('appSection-authentication.clients.web.id', $clientId);
+        Config::set('appSection-authentication.clients.web.secret', $clientSecret);
 
         // create testing oauth keys files
         $this->publicFilePath = $this->createTestingKey('oauth-public.key');

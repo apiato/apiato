@@ -28,11 +28,12 @@ class Controller extends WebController
         try {
             $result = app(WebLoginAction::class)->run($request);
         } catch (Exception $e) {
-            return redirect()->route(config('authentication-container.login-page-url'))->with('status', $e->getMessage());
+//            return redirect()->route(config('appSection-authentication.login-page-url'))->with('status', $e->getMessage());
+            return redirect()->route(config('appSection-authentication.login-page-url'))->with('status', $e->getMessage());
         }
 
         return is_array($result)
-            ? redirect()->route(config('authentication-container.login-page-url'))->with($result)
+            ? redirect()->route(config('appSection-authentication.login-page-url'))->with($result)
             : redirect()->intended();
     }
 }

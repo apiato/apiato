@@ -9,8 +9,8 @@ class ExtractLoginCustomAttributeTask extends Task
 {
     public function run(array $data): array
     {
-        $prefix = config('authentication-container.login.prefix', '');
-        $allowedLoginFields = config('authentication-container.login.attributes');
+        $prefix = config('appSection-authentication.login.prefix', '');
+        $allowedLoginFields = config('appSection-authentication.login.attributes');
         if (!$allowedLoginFields) {
             $allowedLoginFields = ['email' => []];
         }

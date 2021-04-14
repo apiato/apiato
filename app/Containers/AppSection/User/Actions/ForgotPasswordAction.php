@@ -25,7 +25,7 @@ class ForgotPasswordAction extends Action
         $lastSegment = $url[count($url) - 1];
 
         // validate the allowed endpoint is being used
-        if (!in_array($lastSegment, config('user-container.allowed-reset-password-urls'), true)) {
+        if (!in_array($lastSegment, config('appSection-user.allowed-reset-password-urls'), true)) {
             throw new NotFoundException("The URL is not allowed ($resetUrl)");
         }
 

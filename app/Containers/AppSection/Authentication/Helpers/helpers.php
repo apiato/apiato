@@ -5,8 +5,8 @@ use Illuminate\Support\Arr;
 if (!function_exists('loginAttributeValidationRulesMerger')) {
     function loginAttributeValidationRulesMerger(array $rules): array
     {
-        $prefix = config('authentication-container.login.prefix', '');
-        $allowedLoginAttributes = config('authentication-container.login.attributes', ['email' => []]);
+        $prefix = config('appSection-authentication.login.prefix', '');
+        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
 
         if (count($allowedLoginAttributes) === 1) {
             $key = array_key_first($allowedLoginAttributes);

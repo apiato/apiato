@@ -18,8 +18,8 @@ class ProxyRefreshForWebClientAction extends Action
         ]);
 
         $sanitizedData['refresh_token'] = $sanitizedData['refresh_token'] ?: Request::cookie('refreshToken');
-        $sanitizedData['client_id'] = config('authentication-container.clients.web.id');
-        $sanitizedData['client_secret'] = config('authentication-container.clients.web.secret');
+        $sanitizedData['client_id'] = config('appSection-authentication.clients.web.id');
+        $sanitizedData['client_secret'] = config('appSection-authentication.clients.web.secret');
         $sanitizedData['grant_type'] = 'refresh_token';
         $sanitizedData['scope'] = '';
 

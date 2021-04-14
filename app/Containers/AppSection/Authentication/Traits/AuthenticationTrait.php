@@ -13,7 +13,7 @@ trait AuthenticationTrait
      */
     public function findForPassport($identifier): ?User
     {
-        $allowedLoginAttributes = config('authentication-container.login.attributes', ['email' => []]);
+        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
 
         $builder = $this;
         foreach (array_keys($allowedLoginAttributes) as $field) {

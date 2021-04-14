@@ -18,6 +18,6 @@ class CheckIfUserEmailIsConfirmedTask extends Task
 
     private function emailConfirmationIsRequired()
     {
-        return config('authentication-container.require_email_confirmation');
+        return config('appSection-authentication.require_email_confirmation');
     }
 }

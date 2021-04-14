@@ -19,7 +19,7 @@ class ProxyLoginForWebClientAction extends Action
     {
         $sanitizedData = $request->sanitizeInput(
             array_merge(
-                array_keys(config('authentication-container.login.attributes')),
+                array_keys(config('appSection-authentication.login.attributes')),
                 ['password']
             )
         );
@@ -27,8 +27,8 @@ class ProxyLoginForWebClientAction extends Action
         $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
 
         $sanitizedData['username'] = $loginCustomAttribute['username'];
-        $sanitizedData['client_id'] = config('authentication-container.clients.web.id');
-        $sanitizedData['client_secret'] = config('authentication-container.clients.web.secret');
+        $sanitizedData['client_id'] = config('appSection-authentication.clients.web.id');
+        $sanitizedData['client_secret'] = config('appSection-authentication.clients.web.secret');
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 

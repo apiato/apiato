@@ -50,7 +50,7 @@ class ApiLoginProxyTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        if (config('authentication-container.require_email_confirmation')) {
+        if (config('appSection-authentication.require_email_confirmation')) {
             $response->assertStatus(409);
         } else {
             $response->assertStatus(200);
@@ -86,7 +86,7 @@ class ApiLoginProxyTest extends ApiTestCase
 
     private function setLoginAttributes(array $attributes): void
     {
-        Config::set('authentication-container.login.attributes', $attributes);
+        Config::set('appSection-authentication.login.attributes', $attributes);
     }
 
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void

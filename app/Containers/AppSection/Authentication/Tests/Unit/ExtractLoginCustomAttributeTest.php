@@ -38,7 +38,7 @@ class ExtractLoginCustomAttributeTest extends TestCase
 
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void
     {
-        Config::offsetUnset('authentication-container.login.attributes');
+        Config::offsetUnset('appSection-authentication.login.attributes');
         $userDetails = [
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
