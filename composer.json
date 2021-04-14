@@ -34,15 +34,15 @@
         "ext-pdo": "*",
         "ext-tokenizer": "*",
         "apiato/core": "^6.0.4",
+        "apiato/documentation-generator-container": "^0.1.8",
+        "apiato/welcome-container": "^0.1.8",
         "doctrine/dbal": "^3.0.0",
         "fideloper/proxy": "^4.4.1",
         "fruitcake/laravel-cors": "^1.0.6",
         "guzzlehttp/guzzle": "^7.2.0",
         "laravel/framework": "^8.34.1",
         "laravel/tinker": "^2.6.0",
-        "wikimedia/composer-merge-plugin": "^2.0.1",
-        "apiato/welcome-container": "^0.1.8",
-        "apiato/documentation-generator-container": "^0.1.8"
+        "wikimedia/composer-merge-plugin": "^2.0.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5.13",

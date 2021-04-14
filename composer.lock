@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0993eaa0a5d4d5f543f553a6f40cbc1",
+    "content-hash": "acf49365b1b652fad437f7502fac8b82",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -1817,16 +1817,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.36.2",
+            "version": "v8.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0debd8ad6b5aa1f61ccc73910adf049af4ca0444"
+                "reference": "cf4082973abc796ec285190f0603380021f6d26f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0debd8ad6b5aa1f61ccc73910adf049af4ca0444",
-                "reference": "0debd8ad6b5aa1f61ccc73910adf049af4ca0444",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cf4082973abc796ec285190f0603380021f6d26f",
+                "reference": "cf4082973abc796ec285190f0603380021f6d26f",
                 "shasum": ""
             },
             "require": {
@@ -1981,7 +1981,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-04-07T12:37:22+00:00"
+            "time": "2021-04-13T13:49:49+00:00"
         },
         {
             "name": "laravel/passport",
@@ -7967,16 +7967,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "f2b0969f2d9594704be74dbeb25b201570a98098"
+                "reference": "6bf380035890cb0a09b9628c491ae3866b858522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/f2b0969f2d9594704be74dbeb25b201570a98098",
-                "reference": "f2b0969f2d9594704be74dbeb25b201570a98098",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/6bf380035890cb0a09b9628c491ae3866b858522",
+                "reference": "6bf380035890cb0a09b9628c491ae3866b858522",
                 "shasum": ""
             },
             "require": {
@@ -8020,7 +8020,7 @@
             ],
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
-                "source": "https://github.com/facade/flare-client-php/tree/1.6.1"
+                "source": "https://github.com/facade/flare-client-php/tree/1.7.0"
             },
             "funding": [
                 {
@@ -8028,7 +8028,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-08T08:50:01+00:00"
+            "time": "2021-04-12T09:30:36+00:00"
         },
         {
             "name": "facade/ignition",
@@ -9563,12 +9563,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "aa48fe959b0236eede9c51a38f47df2bb81ef137"
+                "reference": "7cc7126a8a1c71197c85c04b147b24257393cd11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/aa48fe959b0236eede9c51a38f47df2bb81ef137",
-                "reference": "aa48fe959b0236eede9c51a38f47df2bb81ef137",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7cc7126a8a1c71197c85c04b147b24257393cd11",
+                "reference": "7cc7126a8a1c71197c85c04b147b24257393cd11",
                 "shasum": ""
             },
             "conflict": {
@@ -9731,6 +9731,7 @@
                 "propel/propel1": ">=1,<=1.7.1",
                 "pterodactyl/panel": "<0.7.19|>=1-rc.0,<=1-rc.6",
                 "pusher/pusher-php-server": "<2.2.1",
+                "pwweb/laravel-core": "<=0.3.6-beta",
                 "rainlab/debugbar-plugin": "<3.1",
                 "robrichards/xmlseclibs": "<3.0.4",
                 "sabberworm/php-css-parser": ">=1,<1.0.1|>=2,<2.0.1|>=3,<3.0.1|>=4,<4.0.1|>=5,<5.0.9|>=5.1,<5.1.3|>=5.2,<5.2.1|>=6,<6.0.2|>=7,<7.0.4|>=8,<8.0.1|>=8.1,<8.1.1|>=8.2,<8.2.1|>=8.3,<8.3.1",
@@ -9738,8 +9739,9 @@
                 "scheb/two-factor-bundle": ">=0,<3.26|>=4,<4.11",
                 "sensiolabs/connect": "<4.2.3",
                 "serluck/phpwhois": "<=4.2.6",
-                "shopware/core": "<=6.3.4",
-                "shopware/platform": "<=6.3.5.1",
+                "shopware/core": "<=6.3.5.2",
+                "shopware/platform": "<=6.3.5.2",
+                "shopware/production": "<=6.3.5.2",
                 "shopware/shopware": "<5.6.9",
                 "silverstripe/admin": ">=1.0.3,<1.0.4|>=1.1,<1.1.1",
                 "silverstripe/assets": ">=1,<1.4.7|>=1.5,<1.5.2",
@@ -9896,7 +9898,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-09T08:01:23+00:00"
+            "time": "2021-04-13T16:02:59+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -11242,7 +11244,8 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
-        "ext-tokenizer": "*"
+        "ext-tokenizer": "*",
+        "ext-intl": "*"
     },
     "platform-dev": {
         "ext-json": "*",
