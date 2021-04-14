@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69caa2ef711f09ab0275b0655f801e67",
+    "content-hash": "72040c9c8092e687c9cbdbcdaba5777a",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.0-rc.5",
+            "version": "v6.0.0-rc.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "fe87a23beb52e34737ab35b95db3ab7dd1991e1e"
+                "reference": "11111b575be162b1984e85b1a7d50b21f3a50f58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/fe87a23beb52e34737ab35b95db3ab7dd1991e1e",
-                "reference": "fe87a23beb52e34737ab35b95db3ab7dd1991e1e",
+                "url": "https://api.github.com/repos/apiato/core/zipball/11111b575be162b1984e85b1a7d50b21f3a50f58",
+                "reference": "11111b575be162b1984e85b1a7d50b21f3a50f58",
                 "shasum": ""
             },
             "require": {
@@ -124,20 +124,20 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-14T12:15:29+00:00"
+            "time": "2021-04-14T14:11:28+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
-            "version": "v0.1.9",
+            "version": "v0.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/documentation-generator-container.git",
-                "reference": "7d66ef4caf9a4c0122235525e38b868690c5ce95"
+                "reference": "581f3587c07695698363cb145bdb24b6f38be3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/7d66ef4caf9a4c0122235525e38b868690c5ce95",
-                "reference": "7d66ef4caf9a4c0122235525e38b868690c5ce95",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/581f3587c07695698363cb145bdb24b6f38be3b4",
+                "reference": "581f3587c07695698363cb145bdb24b6f38be3b4",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -155,9 +155,9 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/apiato/documentation-generator-container/issues",
-                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.9"
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.10"
             },
-            "time": "2021-04-14T11:52:12+00:00"
+            "time": "2021-04-14T16:22:05+00:00"
         },
         {
             "name": "apiato/welcome-container",
