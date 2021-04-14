@@ -56,12 +56,12 @@ Apiato gives you the core features of robust API's fully documented, for free; s
 > **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 It's completely **optional** to build your application using the Porto architecture.
-Alternatively, you can build it using the [MVC](http://docs.apiato.io/docs/getting-started/software-architectural-patterns#mvc-introduction) architecture, and still benefit from all the features of Apiato.
+Alternatively, you can build it using the [MVC](http://apiato.io/docs/getting-started/software-architectural-patterns#mvc-introduction) architecture, and still benefit from all the features of Apiato.
 
 <br>
 
 <p align="center">
-	<a href="http://docs.apiato.io/docs/">
+	<a href="http://apiato.io/docs/">
 	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=350px" alt="Apiato Docs"/>
 	</a>
 </p>
@@ -83,7 +83,7 @@ Alternatively, you can build it using the [MVC](http://docs.apiato.io/docs/getti
 
 Feel free to dive in! Fix open [Issues](https://github.com/apiato/apiato/issues/) and submit new [features](https://github.com/apiato/apiato/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc).
 <br>
-Make sure you check our [contribution guide](http://docs.apiato.io/docs/general/contribution-guide/) before getting started.
+Make sure you check our [contribution guide](http://apiato.io/docs/general/contribution-guide/) before getting started.
 <br>
 Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
 
@@ -299,7 +299,7 @@ You can sponsor us using any of the methods below:
 <br>
 <b>2:</b> Email us at <a href = "mailto: support@apiato.io">support@apiato.io</a>.
 
-*Sponsors logos are displayed on the [github repository](https://github.com/apiato/apiato/) page and the [documentation website](http://docs.apiato.io/) home page.*
+*Sponsors logos are displayed on the [github repository](https://github.com/apiato/apiato/) page and the [documentation website](http://apiato.io/docs/) home page.*
 
 
 <a name="License"></a>
