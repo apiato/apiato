@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acf49365b1b652fad437f7502fac8b82",
+    "content-hash": "15ae850fffe2da5dee362a355143de07",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.4-rc.1",
+            "version": "v6.0.0-rc.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "38b5b7009a8c7f633b325e1b528f8d5f153bb4b7"
+                "reference": "a96f15bf5ca12250154faf3102448d1dbd0b5438"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/38b5b7009a8c7f633b325e1b528f8d5f153bb4b7",
-                "reference": "38b5b7009a8c7f633b325e1b528f8d5f153bb4b7",
+                "url": "https://api.github.com/repos/apiato/core/zipball/a96f15bf5ca12250154faf3102448d1dbd0b5438",
+                "reference": "a96f15bf5ca12250154faf3102448d1dbd0b5438",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-11T11:40:24+00:00"
+            "time": "2021-04-14T10:56:13+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
@@ -11244,8 +11244,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
-        "ext-tokenizer": "*",
-        "ext-intl": "*"
+        "ext-tokenizer": "*"
     },
     "platform-dev": {
         "ext-json": "*",
