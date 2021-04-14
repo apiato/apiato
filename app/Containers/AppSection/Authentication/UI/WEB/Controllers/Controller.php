@@ -14,7 +14,7 @@ class Controller extends WebController
 {
     public function showLoginPage()
     {
-        return view('authentication::login');
+        return view('appSection@authentication::login');
     }
 
     public function logout(LogoutRequest $request)
