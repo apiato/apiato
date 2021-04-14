@@ -34,8 +34,8 @@
         "ext-pdo": "*",
         "ext-tokenizer": "*",
         "apiato/core": "^6.0.0-rc.4",
-        "apiato/documentation-generator-container": "^0.1.8",
-        "apiato/welcome-container": "^0.1.8",
+        "apiato/documentation-generator-container": "^0.1.9",
+        "apiato/welcome-container": "^0.1.9",
         "doctrine/dbal": "^3.0.0",
         "fideloper/proxy": "^4.4.1",
         "fruitcake/laravel-cors": "^1.0.6",
@@ -54,7 +54,7 @@
         "roave/security-advisories": "dev-latest",
         "ext-json": "*",
         "ext-intl": "*",
-        "apiato/debugger-container": "^0.1.2"
+        "apiato/debugger-container": "^0.1.3"
     },
     "autoload": {
         "psr-4": {
