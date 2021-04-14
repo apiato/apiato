@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
+   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
 <h3 align="center">Build scalable API's faster | With PHP 7.4 and Laravel 8.0</h3>
