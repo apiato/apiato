@@ -20,7 +20,7 @@ class UserPrivateProfileTransformer extends Transformer
     public function transform(User $user): array
     {
         $response = [
-            'object' => 'User',
+            'object' => $user->getResourceKey(),
             'id' => $user->getHashedKey(),
             'name' => $user->name,
             'email' => $user->email,

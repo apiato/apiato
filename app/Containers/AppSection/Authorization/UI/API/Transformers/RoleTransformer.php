@@ -19,7 +19,7 @@ class RoleTransformer extends Transformer
     public function transform(Role $role): array
     {
         return [
-            'object' => 'Role',
+            'object' => $role->getResourceKey(),
             'id' => $role->getHashedKey(), // << Unique Identifier
             'name' => $role->name, // << Unique Identifier
             'description' => $role->description,
