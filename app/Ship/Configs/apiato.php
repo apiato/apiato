@@ -145,7 +145,7 @@ return [
         | an empty BODY with HTTP STATUS 304 (not modified) is returned!
         |
         */
-        'use-etag' => true,
+        'use-etag' => false,
     ],
 
     'seeders' => [
