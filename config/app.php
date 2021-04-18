@@ -1,7 +1,5 @@
 <?php
 
-use App\Ship\Providers\ShipProvider;
-
 return [
 
     /*
@@ -166,9 +164,7 @@ return [
 
         /*
          * NOTE: all packages service providers must be registered inside their container's main service providers.
-         * The Ship Provider (The only exposed Service Provider by the App).
          */
-        ShipProvider::class,
     ],
 
     /*
