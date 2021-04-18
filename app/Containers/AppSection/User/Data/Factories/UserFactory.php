@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\User\Data\Factories;
 
 use App\Containers\AppSection\User\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Ship\Parents\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
