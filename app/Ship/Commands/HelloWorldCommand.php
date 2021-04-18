@@ -21,14 +21,6 @@ class HelloWorldCommand extends ConsoleCommand
     protected $description = 'Hello World!';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return void
