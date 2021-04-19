@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b5850e9ca123379591a6de33301f40a",
+    "content-hash": "51a5407f440f2512784c0a79b24dba2a",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -128,16 +128,16 @@
         },
         {
             "name": "apiato/documentation-generator-container",
-            "version": "v0.1.11",
+            "version": "v0.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/documentation-generator-container.git",
-                "reference": "ccb495b4dc858d073260f909833f1c2d433d27da"
+                "reference": "39a6b5570343d6d743dd0bcc7860695dee7e518a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/ccb495b4dc858d073260f909833f1c2d433d27da",
-                "reference": "ccb495b4dc858d073260f909833f1c2d433d27da",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/39a6b5570343d6d743dd0bcc7860695dee7e518a",
+                "reference": "39a6b5570343d6d743dd0bcc7860695dee7e518a",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -155,9 +155,9 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/apiato/documentation-generator-container/issues",
-                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.11"
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v0.1.12"
             },
-            "time": "2021-04-19T09:02:01+00:00"
+            "time": "2021-04-19T11:43:07+00:00"
         },
         {
             "name": "apiato/welcome-container",
