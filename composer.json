@@ -47,7 +47,7 @@
     "require-dev": {
         "ext-intl": "*",
         "ext-json": "*",
-        "apiato/debugger-container": "^0.1.5",
+        "apiato/debugger-container": "^0.1.6",
         "facade/ignition": "^2.5.13",
         "fakerphp/faker": "^1.13.0",
         "laravel/homestead": "^12.0",
