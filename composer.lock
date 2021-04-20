@@ -45,7 +45,7 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.0-rc.11",
+            "version": "v6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
