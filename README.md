@@ -74,11 +74,12 @@ Alternatively, you can build it using the [MVC](http://apiato.io/getting-started
 
 ---
 
-<p align="center">Join our Slack chatting room, by clicking on the icon below.</p>
+<p align="center">Join our Discord server, by clicking on the icon below.</p>
+
 
 <p align="center">
-	<a href="https://join.slack.com/t/apiato/shared_invite/zt-mtriung2-1__8zBAaJO_xXa_kMFsHgQ">
-	   <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
+	<a href="https://discord.gg/ryPcV4KM5k">
+        <img src="https://github.com/apiato/documentation/blob/master/images/discord-apiato-icon.png" width=100px" alt="Apiato Discord"/>
 	</a>
 </p>
 
