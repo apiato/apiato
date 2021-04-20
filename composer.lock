@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.0.0-rc.9",
+            "version": "v6.0.0-rc.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "2d1ee41d0bb6e88434ff1863a56eabcc48bf181a"
+                "reference": "56367b8270b2d8bec64f10b828e3687aed670a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/2d1ee41d0bb6e88434ff1863a56eabcc48bf181a",
-                "reference": "2d1ee41d0bb6e88434ff1863a56eabcc48bf181a",
+                "url": "https://api.github.com/repos/apiato/core/zipball/56367b8270b2d8bec64f10b828e3687aed670a59",
+                "reference": "56367b8270b2d8bec64f10b828e3687aed670a59",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-04-19T14:01:32+00:00"
+            "time": "2021-04-20T06:52:02+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
@@ -545,33 +545,35 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "ee6d1260d5cc20ec506455a585945d7bdb98662c"
+                "reference": "5ba62e7e40df119424866064faf2cef66cb5232a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/ee6d1260d5cc20ec506455a585945d7bdb98662c",
-                "reference": "ee6d1260d5cc20ec506455a585945d7bdb98662c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5ba62e7e40df119424866064faf2cef66cb5232a",
+                "reference": "5ba62e7e40df119424866064faf2cef66cb5232a",
                 "shasum": ""
             },
             "require": {
                 "composer/package-versions-deprecated": "^1.11.99",
                 "doctrine/cache": "^1.0",
+                "doctrine/deprecations": "^0.5.3",
                 "doctrine/event-manager": "^1.0",
                 "php": "^7.3 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^8.1",
-                "jetbrains/phpstorm-stubs": "^2019.1",
-                "phpstan/phpstan": "^0.12.40",
+                "doctrine/coding-standard": "8.2.0",
+                "jetbrains/phpstorm-stubs": "2020.2",
+                "phpstan/phpstan": "0.12.81",
                 "phpstan/phpstan-strict-rules": "^0.12.2",
-                "phpunit/phpunit": "^9.4",
-                "psalm/plugin-phpunit": "^0.10.0",
+                "phpunit/phpunit": "9.5.0",
+                "psalm/plugin-phpunit": "0.13.0",
+                "squizlabs/php_codesniffer": "3.6.0",
                 "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
-                "vimeo/psalm": "^3.17.2"
+                "vimeo/psalm": "4.6.4"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -580,11 +582,6 @@
                 "bin/doctrine-dbal"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\DBAL\\": "src"
@@ -636,7 +633,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.0.0"
+                "source": "https://github.com/doctrine/dbal/tree/3.1.0"
             },
             "funding": [
                 {
@@ -652,7 +649,50 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-15T18:20:41+00:00"
+            "time": "2021-04-19T17:51:23+00:00"
+        },
+        {
+            "name": "doctrine/deprecations",
+            "version": "v0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/deprecations.git",
+                "reference": "9504165960a1f83cc1480e2be1dd0a0478561314"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/9504165960a1f83cc1480e2be1dd0a0478561314",
+                "reference": "9504165960a1f83cc1480e2be1dd0a0478561314",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Deprecations\\": "lib/Doctrine/Deprecations"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A small layer on top of trigger_error(E_USER_DEPRECATED) or PSR-3 logging with options to disable all deprecations or selectively for packages.",
+            "homepage": "https://www.doctrine-project.org/",
+            "support": {
+                "issues": "https://github.com/doctrine/deprecations/issues",
+                "source": "https://github.com/doctrine/deprecations/tree/v0.5.3"
+            },
+            "time": "2021-03-21T12:59:47+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -3417,16 +3457,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "d369510df0ebd5e1a5d0fe3d4d23c55fa87a403d"
+                "reference": "d9615a6fb970d9933866ca8b4036ec3407b020b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d369510df0ebd5e1a5d0fe3d4d23c55fa87a403d",
-                "reference": "d369510df0ebd5e1a5d0fe3d4d23c55fa87a403d",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d9615a6fb970d9933866ca8b4036ec3407b020b6",
+                "reference": "d9615a6fb970d9933866ca8b4036ec3407b020b6",
                 "shasum": ""
             },
             "require": {
@@ -3508,7 +3548,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.7"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.8"
             },
             "funding": [
                 {
@@ -3524,7 +3564,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-06T14:00:11+00:00"
+            "time": "2021-04-19T03:20:48+00:00"
         },
         {
             "name": "prettus/l5-repository",
