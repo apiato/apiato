@@ -209,6 +209,7 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
   </tbody>
 </table>
 
+
 ### Code Contributors
 
 [![Apiato Contributors][contributors-src]][contributors-href]
