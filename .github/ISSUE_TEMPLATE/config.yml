@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Support question
-    url: http://docs.apiato.io/
+    url: http://apiato.io/
     about: 'This repository is only for reporting bugs. If you need help, get in touch with us via Slack.'
   - name: Documentation issue
     url: https://github.com/apiato/documentation

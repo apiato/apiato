@@ -1,4 +1,4 @@
-<!--- If you are unsure which branch your pull request should be sent to, please read: http://docs.apiato.io/miscellaneous/contribution/#Git-Branches -->
+<!--- If you are unsure which branch your pull request should be sent to, please read: http://apiato.io/docs/general/contribution-guide#git-branches -->
 
 ## Description
 <!--- Describe your changes in detail -->
