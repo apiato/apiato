@@ -140,13 +140,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/JulianBustamante">@JulianBustamante</a>
         </td>
-       <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/Te7a-Houdini.png?s=150">
-            <br>
-            <strong>Ahmed Abd El-Ftah</strong>
-            <br>
-            <a href="https://github.com/Te7a-Houdini">@Te7a-Houdini</a>
-        </td>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/fwidm.png?s=150">
             <br>
@@ -168,8 +161,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/jlorente">@jlorente</a>
         </td>
-     </tr>
-	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/deviouspk.png?s=150">
             <br>
@@ -177,6 +168,8 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/deviouspk">@deviouspk</a>
         </td>
+     </tr>
+	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/hz61p1.png?s=150">
             <br>
@@ -205,21 +198,12 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
         </td>
-        </tr>
-        <tr>
           <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/moslem-deris.png?s=150">
             <br>
             <strong>Moslem Deris</strong>
             <br>
             <a href="https://github.com/moslem-deris">@moslem-deris</a>
-          </td>
-          <td align="center" valign="top">
-            <img width="125" height="125" src="https://db3pap005files.storage.live.com/y4m3Tr6C7B5leWSUZMBwhJwcn8ud1r2jO3FqR9w-vTJaQG6IgHcQbV3EGDkJzPemebgdP2O1Us_WtPLcPrDKvobm6b8QlvwihwWXp9wVdMAHYmOeEg0jF1pkbKNlMR2H6D8DHYpybDyu9TtvkpFHr6fy3tYl521UtIdI_P04-z59-IfIrHimnLNYoAp7T0Y1R6O?width=374&height=356&cropmode=none">
-            <br>
-            <strong>< Join Us ></strong>
-            <br>
-            <a href="https://github.com/apiato">@apiato</a>
           </td>
         </tr>
   </tbody>
