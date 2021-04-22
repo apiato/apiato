@@ -9,6 +9,6 @@ class ClientsCriteria extends Criteria
 {
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->where('is_admin', false);
+        return $model->where('is_client', false);
     }
 }
