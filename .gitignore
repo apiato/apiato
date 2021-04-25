@@ -24,4 +24,4 @@ Vagrantfile
 after.sh
 aliases
 .php_cs.cache
-/app/Containers/VendorSection
+/app/Containers/Vendor
