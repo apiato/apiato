@@ -16,7 +16,6 @@
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
 <a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
-<a href="https://scrutinizer-ci.com/g/apiato/apiato/"><img alt="Scrutinizer code quality (GitHub/Bitbucket)" src="https://img.shields.io/scrutinizer/quality/g/apiato/apiato"></a>
 </p>
 
 <a name="Introduction"></a>
