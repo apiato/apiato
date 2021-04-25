@@ -1,4 +1,11 @@
 <p align="center">
+	<a href="http://apiato.io">
+		<img alt="Welcome to Apiato"
+			 src="https://readme-typing-svg.herokuapp.com/?lines=Welcome+to+Apiato&center=true&width=550&height=70">
+	</a>
+</p>
+
+<p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
