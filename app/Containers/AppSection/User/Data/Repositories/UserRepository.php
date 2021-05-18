@@ -13,4 +13,9 @@ class UserRepository extends Repository
         'email_verified_at' => '=',
         'created_at' => 'like',
     ];
+    
+    public function model(): string
+    {
+        return config('auth.providers.users.model');
+    }
 }
