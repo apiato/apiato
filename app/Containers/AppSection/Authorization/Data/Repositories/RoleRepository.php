@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
-use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Repositories\Repository;
 
 class RoleRepository extends Repository
@@ -15,6 +14,6 @@ class RoleRepository extends Repository
 
     public function model(): string
     {
-        return Role::class;
+        return config('permission.models.role');
     }
 }

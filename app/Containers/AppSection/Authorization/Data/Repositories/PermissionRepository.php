@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Parents\Repositories\Repository;
 
 class PermissionRepository extends Repository
@@ -15,6 +14,6 @@ class PermissionRepository extends Repository
 
     public function model(): string
     {
-        return Permission::class;
+        return config('permission.models.permission');
     }
 }
