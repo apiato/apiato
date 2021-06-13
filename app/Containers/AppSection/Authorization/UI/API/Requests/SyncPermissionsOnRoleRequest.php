@@ -34,8 +34,8 @@ class SyncPermissionsOnRoleRequest extends Request
     {
         return [
             'permissions_ids' => 'required',
-            'permissions_ids.*' => 'exists:permissions,id',
-            'role_id' => 'required|exists:roles,id',
+            'permissions_ids.*' => 'exists:' . config('permission.table_names.permissions') . ',id',
+            'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
         ];
     }
 

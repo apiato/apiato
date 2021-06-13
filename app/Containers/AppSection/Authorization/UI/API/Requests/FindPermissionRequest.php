@@ -32,7 +32,7 @@ class FindPermissionRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:permissions,id'
+            'id' => 'required|exists:' . config('permission.table_names.permissions') . ',id'
         ];
     }
 
