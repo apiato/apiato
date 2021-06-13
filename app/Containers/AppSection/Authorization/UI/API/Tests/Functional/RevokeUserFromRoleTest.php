@@ -38,7 +38,7 @@ class RevokeUserFromRoleTest extends ApiTestCase
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
         self::assertEquals($data['user_id'], $responseContent->data->id);
-        $this->assertDatabaseMissing('model_has_roles', [
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), [
             'model_id' => $randomUser->id,
             'role_id' => $roleA->id,
         ]);
@@ -60,11 +60,11 @@ class RevokeUserFromRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-        $this->assertDatabaseMissing('model_has_roles', [
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), [
             'model_id' => $randomUser->id,
             'role_id' => $roleA->id,
         ]);
-        $this->assertDatabaseMissing('model_has_roles', [
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), [
             'model_id' => $randomUser->id,
             'role_id' => $roleB->id,
         ]);

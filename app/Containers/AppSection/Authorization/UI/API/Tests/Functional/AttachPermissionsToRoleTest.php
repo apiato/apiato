@@ -37,7 +37,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
         self::assertEquals($roleA['name'], $responseContent->data->name);
-        $this->assertDatabaseHas('role_has_permissions', [
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
             'role_id' => $roleA->id
         ]);
@@ -56,7 +56,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-        $this->assertDatabaseHas('role_has_permissions', [
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
             'permission_id' => $permissionB->id,
             'role_id' => $roleA->id
