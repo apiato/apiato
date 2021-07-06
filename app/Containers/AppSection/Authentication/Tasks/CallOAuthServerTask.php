@@ -10,11 +10,9 @@ use Illuminate\Support\Facades\App;
 
 class CallOAuthServerTask extends Task
 {
-    private const AUTH_ROUTE = '/v1/oauth/token';
-
     public function run(array $data, string $languageHeader = null): array
     {
-        $authFullApiUrl = config('apiato.api.url') . self::AUTH_ROUTE;
+        $authFullApiUrl = route('passport.token');
 
         $headers = [
             'HTTP_ACCEPT' => 'application/json',
