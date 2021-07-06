@@ -32,7 +32,7 @@ class CreateRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:roles,name|min:2|max:20|no_spaces',
+            'name' => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|no_spaces',
             'description' => 'max:255',
             'display_name' => 'max:100',
         ];

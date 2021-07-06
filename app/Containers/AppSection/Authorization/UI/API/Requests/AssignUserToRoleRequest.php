@@ -34,7 +34,7 @@ class AssignUserToRoleRequest extends Request
     {
         return [
             'roles_ids' => 'array|required',
-            'roles_ids.*' => 'exists:roles,id',
+            'roles_ids.*' => 'exists:' . config('permission.table_names.roles') . ',id',
             'user_id' => 'required|exists:users,id',
         ];
     }
