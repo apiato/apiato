@@ -13,11 +13,11 @@
         "apidoc": "^0.27.1",
         "axios": "^0.21.1",
         "cross-env": "^5.1",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.29",
         "lodash": "^4.17.19",
+        "postcss": "^8.3.6",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "postcss": "^8.1.14"
+        "sass-loader": "^7.1.0"
     }
 }
