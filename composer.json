@@ -50,11 +50,13 @@
         "apiato/debugger-container": "^1.1.0",
         "facade/ignition": "^2.5.13",
         "fakerphp/faker": "^1.13.0",
+        "friendsofphp/php-cs-fixer": "^3.0.x-dev",
         "laravel/homestead": "^12.0",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.3.0",
         "phpunit/phpunit": "^9.5.2",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^4.9"
     },
     "autoload": {
         "psr-4": {

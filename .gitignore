@@ -24,6 +24,8 @@ Vagrantfile
 after.sh
 aliases
 .php_cs.cache
+.php-cs-fixer.cache
+/psalm-cache/
 /app/Containers/Vendor
 /public/vendor
 
