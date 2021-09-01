@@ -49,7 +49,7 @@ class GetAllUsersTest extends ApiTestCase
     {
         User::factory()->count(3)->create();
         $user = $this->getTestingUser([
-            'name' => 'mahmoudzzz'
+            'name' => 'mahmoudzzz',
         ]);
 
         $response = $this->endpoint($this->endpoint . '?search=name:mahmoudzzz')->makeCall();

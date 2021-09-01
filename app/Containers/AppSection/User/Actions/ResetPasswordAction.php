@@ -12,12 +12,15 @@ use Illuminate\Support\Str;
 
 class ResetPasswordAction extends Action
 {
+    /**
+     * @throws InternalErrorException
+     */
     public function run(ResetPasswordRequest $request): void
     {
         $sanitizedData = $request->sanitizeInput([
             'email',
             'token',
-            'password'
+            'password',
         ]);
 
         $sanitizedData['password_confirmation'] = $request->password;

@@ -17,6 +17,9 @@ class FindUserByEmailTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws NotFoundException
+     */
     public function run(string $email): User
     {
         try {

@@ -30,7 +30,9 @@ class GiveAllPermissionsToRoleCommand extends ConsoleCommand
 
         $role->syncPermissions($allPermissionsNames = $allPermissions->pluck('name')->toArray());
 
-        $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . implode(' - ',
-                $allPermissionsNames) . '.');
+        $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . implode(
+            ' - ',
+            $allPermissionsNames
+        ) . '.');
     }
 }

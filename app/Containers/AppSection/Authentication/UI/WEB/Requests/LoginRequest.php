@@ -38,9 +38,7 @@ class LoginRequest extends Request
             'password' => 'required|min:3|max:30',
         ];
 
-        $rules = loginAttributeValidationRulesMerger($rules);
-
-        return $rules;
+        return loginAttributeValidationRulesMerger($rules);
     }
 
     /**

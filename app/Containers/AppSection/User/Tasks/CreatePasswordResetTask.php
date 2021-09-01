@@ -11,10 +11,6 @@ class CreatePasswordResetTask extends Task
 {
     public function run(User $user): string
     {
-        try {
-            return app('auth.password.broker')->createToken($user);
-        } catch (Exception $e) {
-            throw new InternalErrorException();
-        }
+        return app('auth.password.broker')->createToken($user);
     }
 }

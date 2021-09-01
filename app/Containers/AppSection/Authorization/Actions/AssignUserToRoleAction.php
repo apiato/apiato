@@ -7,10 +7,14 @@ use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\AssignUserToRoleRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 
 class AssignUserToRoleAction extends Action
 {
+    /**
+     * @throws NotFoundException
+     */
     public function run(AssignUserToRoleRequest $request): User
     {
         $user = app(FindUserByIdTask::class)->run($request->user_id);

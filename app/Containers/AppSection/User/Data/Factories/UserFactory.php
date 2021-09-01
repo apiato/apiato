@@ -27,7 +27,7 @@ class UserFactory extends Factory
 
     public function admin(): UserFactory
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'is_admin' => true,
             ];
@@ -36,7 +36,7 @@ class UserFactory extends Factory
 
     public function unverified(): UserFactory
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'email_verified_at' => null,
             ];

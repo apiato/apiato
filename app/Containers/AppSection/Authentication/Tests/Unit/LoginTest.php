@@ -21,7 +21,7 @@ class LoginTest extends TestCase
 {
     private array $userDetails;
     private LoginRequest $request;
-    private $action;
+    private mixed $action;
 
     public function setUp(): void
     {

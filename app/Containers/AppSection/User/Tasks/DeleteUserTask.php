@@ -17,6 +17,9 @@ class DeleteUserTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws DeleteResourceFailedException
+     */
     public function run(User $user): ?int
     {
         try {

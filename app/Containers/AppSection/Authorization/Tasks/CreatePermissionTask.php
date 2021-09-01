@@ -17,6 +17,9 @@ class CreatePermissionTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(string $name, string $description = null, string $displayName = null): Permission
     {
         app()['cache']->forget('spatie.permission.cache');

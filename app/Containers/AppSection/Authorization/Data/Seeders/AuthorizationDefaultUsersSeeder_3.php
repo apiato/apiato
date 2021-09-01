@@ -4,10 +4,14 @@ namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Seeders\Seeder;
 
 class AuthorizationDefaultUsersSeeder_3 extends Seeder
 {
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(): void
     {
         // Default Users (with their roles) ---------------------------------------------

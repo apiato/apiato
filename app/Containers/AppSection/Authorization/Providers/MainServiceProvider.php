@@ -19,7 +19,7 @@ class MainServiceProvider extends MainProvider
      */
     public array $serviceProviders = [
         PermissionServiceProvider::class,
-        MiddlewareServiceProvider::class
+        MiddlewareServiceProvider::class,
     ];
 
     /**

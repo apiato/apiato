@@ -13,7 +13,7 @@ class RoleTransformer extends Transformer
     ];
 
     protected $defaultIncludes = [
-        'permissions'
+        'permissions',
     ];
 
     public function transform(Role $role): array

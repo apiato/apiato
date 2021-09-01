@@ -16,7 +16,7 @@ class FindRoleTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($roleNameOrId): Role
+    public function run($roleNameOrId): Role|null
     {
         $query = (is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId)) ? ['id' => $roleNameOrId] : ['name' => $roleNameOrId];
 

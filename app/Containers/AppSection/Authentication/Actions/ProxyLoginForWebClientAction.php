@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
@@ -15,6 +16,10 @@ use Lcobucci\JWT\Parser;
 
 class ProxyLoginForWebClientAction extends Action
 {
+    /**
+     * @throws UserNotConfirmedException
+     * @throws LoginFailedException
+     */
     public function run(ProxyLoginPasswordGrantRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput(
@@ -42,6 +47,9 @@ class ProxyLoginForWebClientAction extends Action
         ];
     }
 
+    /**
+     * @throws UserNotConfirmedException
+     */
     private function processEmailConfirmationIfNeeded($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);

@@ -18,12 +18,12 @@ class DeleteRoleTask extends Task
     }
 
     /**
-     * @param Integer|Role $role
      *
+     * @param int|Role $role
      * @return bool
      * @throws DeleteResourceFailedException
      */
-    public function run($role): bool
+    public function run(int|Role $role): bool
     {
         if ($role instanceof Role) {
             $role = $role->id;

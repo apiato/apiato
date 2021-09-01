@@ -39,7 +39,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         self::assertEquals($roleA['name'], $responseContent->data->name);
         $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
-            'role_id' => $roleA->id
+            'role_id' => $roleA->id,
         ]);
     }
 
@@ -50,7 +50,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $permissionB = Permission::factory()->create();
         $data = [
             'role_id' => $roleA->getHashedKey(),
-            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
+            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         $response = $this->makeCall($data);
@@ -58,8 +58,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
-            'permission_id' => $permissionB->id,
-            'role_id' => $roleA->id
+            'role_id' => $roleA->id,
         ]);
     }
 }

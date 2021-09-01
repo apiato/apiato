@@ -18,6 +18,9 @@ class CreateUserByCredentialsTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(
         bool $isAdmin,
         string $email,
@@ -25,8 +28,7 @@ class CreateUserByCredentialsTask extends Task
         string $name = null,
         string $gender = null,
         string $birth = null
-    ): User
-    {
+    ): User {
         try {
             // create new user
             $user = $this->repository->create([
@@ -37,7 +39,6 @@ class CreateUserByCredentialsTask extends Task
                 'birth' => $birth,
                 'is_admin' => $isAdmin,
             ]);
-
         } catch (Exception $e) {
             throw new CreateResourceFailedException();
         }

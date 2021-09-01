@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
@@ -11,6 +12,10 @@ use Illuminate\Support\Facades\Request;
 
 class ProxyRefreshForWebClientAction extends Action
 {
+    /**
+     * @throws RefreshTokenMissedException
+     * @throws LoginFailedException
+     */
     public function run(ProxyRefreshRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput([

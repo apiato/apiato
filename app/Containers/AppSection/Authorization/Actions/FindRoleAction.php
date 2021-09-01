@@ -10,6 +10,9 @@ use App\Ship\Parents\Actions\Action;
 
 class FindRoleAction extends Action
 {
+    /**
+     * @throws RoleNotFoundException
+     */
     public function run(FindRoleRequest $request): Role
     {
         $role = app(FindRoleTask::class)->run($request->id);

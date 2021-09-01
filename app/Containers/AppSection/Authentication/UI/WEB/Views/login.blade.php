@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Apiato</title>
     <style>
@@ -44,8 +44,8 @@
             padding: 15px;
             color: #FFFFFF;
             font-size: 14px;
-            -webkit-transition: all 0.3 ease;
-            transition: all 0.3 ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease ;
             cursor: pointer;
         }
 
@@ -123,6 +123,10 @@
             color: red;
             margin-bottom: 10px;
         }
+
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -135,8 +139,10 @@
             @if(session('status'))
                 <div class="text-red">{{ session('status') }}</div>
             @endif
-            <input type="text" placeholder="email" id="email" name="email"/>
+            <label class="hide" for="email">Email</label>
+            <input type="text"  placeholder="email" id="email" name="email"/>
             <span class="text-red">{{ $errors->first('email') }}</span>
+            <label class="hide" for="password">Password</label>
             <input type="password" placeholder="password" id="password" name="password"/>
             <span class="text-red">{{ $errors->first('password') }}</span>
 

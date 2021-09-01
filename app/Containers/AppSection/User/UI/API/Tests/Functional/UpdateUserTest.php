@@ -26,7 +26,7 @@ class UpdateUserTest extends ApiTestCase
             'name' => 'Updated Name',
             'password' => 'updated#Password',
             'gender' => 'male',
-            'birth' => '20151015'
+            'birth' => '20151015',
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -37,7 +37,7 @@ class UpdateUserTest extends ApiTestCase
             'email' => $user->email,
             'name' => $data['name'],
             'gender' => $data['gender'],
-            'birth' => $data['birth']
+            'birth' => $data['birth'],
         ]);
         $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
@@ -53,7 +53,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $this->assertResponseContainKeyValue([
-            'message' => 'The given data was invalid.'
+            'message' => 'The given data was invalid.',
         ]);
     }
 
@@ -63,7 +63,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $this->assertResponseContainKeyValue([
-            'message' => 'The given data was invalid.'
+            'message' => 'The given data was invalid.',
         ]);
     }
 
@@ -73,7 +73,7 @@ class UpdateUserTest extends ApiTestCase
             'name' => '',
             'password' => '',
             'gender' => '',
-            'birth' => ''
+            'birth' => '',
         ];
 
         $response = $this->makeCall($data);
@@ -84,7 +84,7 @@ class UpdateUserTest extends ApiTestCase
             'password' => 'The password must be at least 6 characters.',
             'name' => 'The name must be at least 2 characters.',
             'gender' => 'The selected gender is invalid.',
-            'birth' => 'The birth does not match the format Ymd.'
+            'birth' => 'The birth does not match the format Ymd.',
         ]);
     }
 }

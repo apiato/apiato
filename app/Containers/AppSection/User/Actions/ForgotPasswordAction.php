@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordAction extends Action
 {
+    /**
+     * @throws NotFoundException
+     */
     public function run(ForgotPasswordRequest $request): void
     {
         $user = app(FindUserByEmailTask::class)->run($request->email);

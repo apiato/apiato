@@ -41,7 +41,7 @@ class FindUserTest extends ApiTestCase
 
         self::assertEquals($user->name, $responseContent->data->name);
         self::assertEquals($user->email, $responseContent->data->email);
-        self::assertNotContains('id', json_decode($response->getContent(), true));
+        self::assertNotContains('id', json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR));
     }
 
     public function testFindUserWithRelation(): void

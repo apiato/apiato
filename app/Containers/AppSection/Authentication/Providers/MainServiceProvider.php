@@ -20,7 +20,7 @@ class MainServiceProvider extends MainProvider
     public array $serviceProviders = [
         PassportServiceProvider::class,
         AuthProvider::class,
-        MiddlewareServiceProvider::class
+        MiddlewareServiceProvider::class,
     ];
 
     /**

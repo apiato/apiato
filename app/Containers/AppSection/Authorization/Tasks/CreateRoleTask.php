@@ -17,6 +17,9 @@ class CreateRoleTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(string $name, string $description = null, string $displayName = null, int $level = 0): Role
     {
         app()['cache']->forget('spatie.permission.cache');

@@ -8,16 +8,20 @@ use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\WebController;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 
 class Controller extends WebController
 {
-    public function showLoginPage()
+    public function showLoginPage(): Factory|View|Application
     {
         return view('appSection@authentication::login');
     }
 
-    public function logout(LogoutRequest $request)
+    public function logout(LogoutRequest $request): Redirector|Application|RedirectResponse
     {
         app(WebLogoutAction::class)->run();
         return redirect('/');

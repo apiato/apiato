@@ -8,6 +8,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Notifications\UserRegisteredNotification;
 use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Mail;
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Notification;
 
 class RegisterUserAction extends Action
 {
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(RegisterUserRequest $request): User
     {
         $user = app(CreateUserByCredentialsTask::class)->run(

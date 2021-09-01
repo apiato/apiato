@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\App;
 
 class CallOAuthServerTask extends Task
 {
-    public function run(array $data, string $languageHeader = null): array
+    /**
+     * @throws LoginFailedException
+     */
+    public function run(array $data, string $languageHeader = null): float|object|int|bool|array|string|null
     {
         $authFullApiUrl = route('passport.token');
 

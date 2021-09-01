@@ -29,9 +29,9 @@ class UserRegisteredEvent extends Event implements ShouldQueue
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return Channel|array
+     * @return PrivateChannel
      */
-    public function broadcastOn()
+    public function broadcastOn(): PrivateChannel
     {
         return new PrivateChannel('channel-name');
     }

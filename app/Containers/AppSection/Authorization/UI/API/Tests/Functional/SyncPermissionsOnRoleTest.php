@@ -31,7 +31,7 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
         $roleA->givePermissionTo($permissionA);
         $data = [
             'role_id' => $roleA->getHashedKey(),
-            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()]
+            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         $response = $this->makeCall($data);
@@ -39,8 +39,7 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
-            'permission_id' => $permissionB->id,
-            'role_id' => $roleA->id
+            'role_id' => $roleA->id,
         ]);
     }
 }

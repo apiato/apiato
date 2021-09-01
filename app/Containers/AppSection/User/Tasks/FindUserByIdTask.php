@@ -17,6 +17,9 @@ class FindUserByIdTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws NotFoundException
+     */
     public function run($userId): User
     {
         try {

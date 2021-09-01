@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\App;
 
 class FindPermissionAction extends Action
 {
+    /**
+     * @throws PermissionNotFoundException
+     */
     public function run(FindPermissionRequest $request): Permission
     {
         $permission = App::make(FindPermissionTask::class)->run($request->id);

@@ -15,11 +15,6 @@ class ApiRefreshProxyTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/refresh';
 
-    protected array $access = [
-        'permissions' => '',
-        'roles' => '',
-    ];
-
     private array $data;
 
     public function setUp(): void
@@ -28,7 +23,7 @@ class ApiRefreshProxyTest extends ApiTestCase
 
         $this->data = [
             'email' => 'testing@mail.com',
-            'password' => 'testing_pass'
+            'password' => 'testing_pass',
         ];
 
         $this->getTestingUser($this->data);
@@ -38,7 +33,7 @@ class ApiRefreshProxyTest extends ApiTestCase
     public function testRequestingRefreshTokenWithoutPassingARefreshTokenShouldThrowAnException(): void
     {
         $data = [
-            'refresh_token' => null
+            'refresh_token' => null,
         ];
 
         $response = $this->makeCall($data);
@@ -53,7 +48,7 @@ class ApiRefreshProxyTest extends ApiTestCase
         $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);
         $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];
         $data = [
-            'refresh_token' => $refreshToken
+            'refresh_token' => $refreshToken,
         ];
 
         $response = $this->endpoint($this->endpoint)->makeCall($data);

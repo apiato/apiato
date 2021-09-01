@@ -8,13 +8,11 @@ class TokenTransformer extends Transformer
 {
     public function transform($token): array
     {
-        $response = [
+        return [
             'object' => 'Token',
             'access_token' => $token,
             'token_type' => 'Bearer',
             'expires_in' => config('apiato.api.expires-in'),
         ];
-
-        return $response;
     }
 }

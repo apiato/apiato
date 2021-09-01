@@ -8,17 +8,23 @@ use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTa
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends Action
 {
-    public function run(LoginRequest $request)
+    /**
+     * @throws UserNotConfirmedException
+     * @throws LoginFailedException
+     */
+    public function run(LoginRequest $request): User|Authenticatable|null
     {
         $sanitizedData = $request->sanitizeInput([
             'email',
             'password',
-            'remember_me' => true
+            'remember_me' => true,
         ]);
 
         $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);

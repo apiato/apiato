@@ -8,6 +8,7 @@ use App\Containers\AppSection\User\Data\Criterias\RoleCriteria;
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Criterias\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class GetAllUsersTask extends Task
 {
@@ -23,25 +24,37 @@ class GetAllUsersTask extends Task
         return $this->repository->paginate();
     }
 
-    public function clients(): self
+    /**
+     * @throws RepositoryException
+     */
+    public function clients(): static
     {
         $this->repository->pushCriteria(new ClientsCriteria());
         return $this;
     }
 
-    public function admins(): self
+    /**
+     * @throws RepositoryException
+     */
+    public function admins(): static
     {
         $this->repository->pushCriteria(new AdminsCriteria());
         return $this;
     }
 
-    public function ordered(): self
+    /**
+     * @throws RepositoryException
+     */
+    public function ordered(): static
     {
         $this->repository->pushCriteria(new OrderByCreationDateDescendingCriteria());
         return $this;
     }
 
-    public function withRole($roles): self
+    /**
+     * @throws RepositoryException
+     */
+    public function withRole($roles): static
     {
         $this->repository->pushCriteria(new RoleCriteria($roles));
         return $this;

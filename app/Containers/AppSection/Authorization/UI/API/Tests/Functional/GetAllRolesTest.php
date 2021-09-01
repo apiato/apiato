@@ -29,6 +29,6 @@ class GetAllRolesTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertTrue(count($responseContent->data) > 0);
+        self::assertNotEmpty($responseContent->data);
     }
 }

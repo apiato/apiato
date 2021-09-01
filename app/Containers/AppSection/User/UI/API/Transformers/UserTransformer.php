@@ -33,11 +33,9 @@ class UserTransformer extends Transformer
             'readable_updated_at' => $user->updated_at->diffForHumans(),
         ];
 
-        $response = $this->ifAdmin([
+        return $this->ifAdmin([
             'real_id' => $user->id,
         ], $response);
-
-        return $response;
     }
 
     public function includeRoles(User $user): Collection

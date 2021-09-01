@@ -3,10 +3,14 @@
 namespace App\Containers\AppSection\User\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Seeders\Seeder;
 
 class UserPermissionsSeeder_1 extends Seeder
 {
+    /**
+     * @throws CreateResourceFailedException
+     */
     public function run(): void
     {
         // Default Permissions ----------------------------------------------------------

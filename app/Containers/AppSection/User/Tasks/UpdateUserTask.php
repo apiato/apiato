@@ -21,6 +21,11 @@ class UpdateUserTask extends Task
         $this->repository = $repository;
     }
 
+    /**
+     * @throws InternalErrorException
+     * @throws NotFoundException
+     * @throws UpdateResourceFailedException
+     */
     public function run(array $userData, $userId): User
     {
         if (empty($userData)) {

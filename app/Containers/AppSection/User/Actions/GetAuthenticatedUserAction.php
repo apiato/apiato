@@ -9,6 +9,9 @@ use App\Ship\Parents\Actions\Action;
 
 class GetAuthenticatedUserAction extends Action
 {
+    /**
+     * @throws NotFoundException
+     */
     public function run(): User
     {
         $user = app(GetAuthenticatedUserTask::class)->run();

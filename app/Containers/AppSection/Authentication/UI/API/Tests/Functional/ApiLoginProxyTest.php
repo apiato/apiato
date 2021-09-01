@@ -15,16 +15,11 @@ class ApiLoginProxyTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/login';
 
-    protected array $access = [
-        'permissions' => '',
-        'roles' => '',
-    ];
-
     public function testClientWebAdminProxyLogin(): void
     {
         $data = [
             'email' => 'testing@mail.com',
-            'password' => 'testingpass'
+            'password' => 'testingpass',
         ];
         $user = $this->getTestingUser($data);
         $this->actingAs($user, 'web');
@@ -68,7 +63,7 @@ class ApiLoginProxyTest extends ApiTestCase
         $this->actingAs($user, 'web');
         $this->setLoginAttributes([
             'email' => [],
-            'name' => []
+            'name' => [],
         ]);
         $request = [
             'password' => 'testingpass',
@@ -92,7 +87,7 @@ class ApiLoginProxyTest extends ApiTestCase
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
     {
         $this->setLoginAttributes([
-            'email' => []
+            'email' => [],
         ]);
         $data = [
             'password' => 'so-secret',
@@ -109,7 +104,7 @@ class ApiLoginProxyTest extends ApiTestCase
     {
         $this->setLoginAttributes([
             'email' => [],
-            'name' => []
+            'name' => [],
         ]);
         $data = [
             'password' => 'so-secret',
