@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" backupGlobals="false"
-         backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true" convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false"
-         stopOnFailure="false">
-    <coverage includeUncoveredFiles="true" processUncoveredFiles="false">
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd">
+    <coverage>
         <include>
             <directory suffix=".php">./app</directory>
         </include>
@@ -16,7 +13,7 @@
     </coverage>
     <testsuites>
         <testsuite name="Containers Tests">
-            <directory suffix="Test.php">./app/Containers</directory>
+            <directory>./app/Containers</directory>
         </testsuite>
     </testsuites>
     <php>
