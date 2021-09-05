@@ -19,13 +19,13 @@ _ide_helper*.php
 /.vagrant
 /.idea
 /.vscode
-html-coverage
+html_coverage
 Vagrantfile
 after.sh
 aliases
 .php_cs.cache
 .php-cs-fixer.cache
-/psalm-cache/
+/psalm_cache/
 /app/Containers/Vendor
 /public/vendor
 
