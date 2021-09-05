@@ -6,6 +6,7 @@
             <directory suffix=".php">./app</directory>
         </include>
         <exclude>
+            <directory suffix=".php">./app/Containers/Vendor</directory>
             <!-- NOTE: Exclude the following directories because they fail when directly included with code-coverage-->
             <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
             <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
