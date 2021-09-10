@@ -9,11 +9,9 @@ use Prettus\Repository\Exceptions\RepositoryException;
 
 class CountRegisteredUsersTask extends Task
 {
-    protected UserRepository $repository;
-
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected UserRepository $repository
+    ) {
     }
 
     /**

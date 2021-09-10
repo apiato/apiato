@@ -7,15 +7,13 @@ use App\Ship\Parents\Tasks\Task;
 
 class GetAllRolesTask extends Task
 {
-    protected RoleRepository $repository;
-
-    public function __construct(RoleRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected RoleRepository $repository
+    ) {
     }
 
-    public function run(bool $skipPagination = false)
+    public function run()
     {
-        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
+        return $this->repository->paginate();
     }
 }

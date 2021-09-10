@@ -10,11 +10,9 @@ use Exception;
 
 class CreatePermissionTask extends Task
 {
-    protected PermissionRepository $repository;
-
-    public function __construct(PermissionRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected PermissionRepository $repository
+    ) {
     }
 
     /**
@@ -31,7 +29,7 @@ class CreatePermissionTask extends Task
                 'display_name' => $displayName,
                 'guard_name' => 'web',
             ]);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             throw new CreateResourceFailedException();
         }
 

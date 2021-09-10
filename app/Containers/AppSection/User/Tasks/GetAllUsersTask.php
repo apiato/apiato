@@ -7,11 +7,9 @@ use App\Ship\Parents\Tasks\Task;
 
 class GetAllUsersTask extends Task
 {
-    protected UserRepository $repository;
-
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected UserRepository $repository
+    ) {
     }
 
     public function run()

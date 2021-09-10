@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Config;
 
 class Authenticate extends LaravelAuthenticate
 {
-    public function authenticate($request, array $guards): void
+    /**
+     * @throws \Illuminate\Auth\AuthenticationException
+     * @throws AuthenticationException
+     */
+    protected function authenticate($request, array $guards): void
     {
         try {
             parent::authenticate($request, $guards);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             if ($request->expectsJson()) {
                 throw new AuthenticationException();
             } else {

@@ -3,36 +3,25 @@
 namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
 class DeleteRoleTask extends Task
 {
-    protected RoleRepository $repository;
-
-    public function __construct(RoleRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected RoleRepository $repository
+    ) {
     }
 
     /**
-     *
-     * @param int|Role $role
-     * @return bool
      * @throws DeleteResourceFailedException
      */
-    public function run(int|Role $role): bool
+    public function run($id): int
     {
-        if ($role instanceof Role) {
-            $role = $role->id;
-        }
-
-        // delete the record from the roles table.
         try {
-            return $this->repository->delete($role);
-        } catch (Exception $exception) {
+            return $this->repository->delete($id);
+        } catch (Exception) {
             throw new DeleteResourceFailedException();
         }
     }

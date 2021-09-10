@@ -10,11 +10,9 @@ use Exception;
 
 class FindUserByIdTask extends Task
 {
-    protected UserRepository $repository;
-
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected UserRepository $repository
+    ) {
     }
 
     /**
@@ -24,7 +22,7 @@ class FindUserByIdTask extends Task
     {
         try {
             $user = $this->repository->find($userId);
-        } catch (Exception $e) {
+        } catch (Exception) {
             throw new NotFoundException();
         }
 

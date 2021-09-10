@@ -9,6 +9,6 @@ class GetAllPermissionsAction extends Action
 {
     public function run()
     {
-        return app(GetAllPermissionsTask::class)->run();
+        return app(GetAllPermissionsTask::class)->addRequestCriteria()->run();
     }
 }

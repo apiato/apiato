@@ -35,7 +35,7 @@ class ResetPasswordAction extends Action
                     ])->save();
                 }
             );
-        } catch (Exception $e) {
+        } catch (Exception) {
             throw new InternalErrorException();
         }
     }

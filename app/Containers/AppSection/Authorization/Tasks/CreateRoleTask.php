@@ -10,11 +10,9 @@ use Exception;
 
 class CreateRoleTask extends Task
 {
-    protected RoleRepository $repository;
-
-    public function __construct(RoleRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected RoleRepository $repository
+    ) {
     }
 
     /**
@@ -32,7 +30,7 @@ class CreateRoleTask extends Task
                 'guard_name' => 'web',
                 'level' => $level,
             ]);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             throw new CreateResourceFailedException();
         }
 

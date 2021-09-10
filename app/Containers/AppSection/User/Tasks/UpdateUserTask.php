@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Hash;
 
 class UpdateUserTask extends Task
 {
-    protected UserRepository $repository;
-
-    public function __construct(UserRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        protected UserRepository $repository
+    ) {
     }
 
     /**
@@ -39,9 +37,9 @@ class UpdateUserTask extends Task
             }
 
             $user = $this->repository->update($userData, $userId);
-        } catch (ModelNotFoundException $exception) {
+        } catch (ModelNotFoundException) {
             throw new NotFoundException('User Not Found.');
-        } catch (Exception $exception) {
+        } catch (Exception) {
             throw new InternalErrorException();
         }
 

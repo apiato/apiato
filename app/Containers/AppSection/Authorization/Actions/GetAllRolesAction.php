@@ -9,6 +9,6 @@ class GetAllRolesAction extends Action
 {
     public function run()
     {
-        return app(GetAllRolesTask::class)->run();
+        return app(GetAllRolesTask::class)->addRequestCriteria()->run();
     }
 }
