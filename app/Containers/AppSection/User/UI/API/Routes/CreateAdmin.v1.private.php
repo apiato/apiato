@@ -16,9 +16,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\Controller;
+use App\Containers\AppSection\User\UI\API\Controllers\CreateAdminController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('admins', [Controller::class, 'createAdmin'])
+Route::post('admins', [CreateAdminController::class, 'createAdmin'])
     ->name('api_user_create_admin')
     ->middleware(['auth:api']);

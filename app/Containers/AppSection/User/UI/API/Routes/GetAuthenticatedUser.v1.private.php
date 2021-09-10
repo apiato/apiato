@@ -13,9 +13,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\Controller;
+use App\Containers\AppSection\User\UI\API\Controllers\GetAuthenticatedUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('user/profile', [Controller::class, 'getAuthenticatedUser'])
+Route::get('user/profile', [GetAuthenticatedUserController::class, 'getAuthenticatedUser'])
     ->name('api_user_get_authenticated_user')
     ->middleware(['auth:api']);

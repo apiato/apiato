@@ -13,9 +13,9 @@
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\Controller;
+use App\Containers\AppSection\User\UI\API\Controllers\GetAllUsersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users', [Controller::class, 'getAllUsers'])
+Route::get('users', [GetAllUsersController::class, 'getAllUsers'])
     ->name('api_user_get_all_users')
     ->middleware(['auth:api']);

@@ -11,6 +11,7 @@ class UserRepository extends Repository
         'id' => '=',
         'email' => '=',
         'email_verified_at' => '=',
+        'is_admin' => '=',
         'created_at' => 'like',
     ];
 

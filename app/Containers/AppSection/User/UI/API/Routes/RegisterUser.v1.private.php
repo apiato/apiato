@@ -18,8 +18,8 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\Controller;
+use App\Containers\AppSection\User\UI\API\Controllers\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/register', [Controller::class, 'registerUser'])
+Route::post('/register', [RegisterUserController::class, 'registerUser'])
     ->name('api_user_register_user');

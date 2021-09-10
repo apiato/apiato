@@ -12,9 +12,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\Controller;
+use App\Containers\AppSection\User\UI\API\Controllers\FindUserByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}', [Controller::class, 'findUserById'])
+Route::get('users/{id}', [FindUserByIdController::class, 'findUserById'])
     ->name('api_user_find_user')
     ->middleware(['auth:api']);
