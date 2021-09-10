@@ -19,9 +19,9 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\AttachPermissionToRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/attach', [Controller::class, 'attachPermissionToRole'])
+Route::post('permissions/attach', [AttachPermissionToRoleController::class, 'attachPermissionToRole'])
     ->name('api_authorization_attach_permission_to_role')
     ->middleware(['auth:api']);

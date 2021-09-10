@@ -19,9 +19,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\AssignUserToRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('roles/assign', [Controller::class, 'assignUserToRole'])
+Route::post('roles/assign', [AssignUserToRoleController::class, 'assignUserToRole'])
     ->name('api_authorization_assign_user_to_role')
     ->middleware(['auth:api']);

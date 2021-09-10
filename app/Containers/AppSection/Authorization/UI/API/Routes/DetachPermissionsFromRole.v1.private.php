@@ -19,9 +19,9 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\DetachPermissionsFromRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/detach', [Controller::class, 'detachPermissionFromRole'])
+Route::post('permissions/detach', [DetachPermissionsFromRoleController::class, 'detachPermissionFromRole'])
     ->name('api_authorization_detach_permission_from_role')
     ->middleware(['auth:api']);

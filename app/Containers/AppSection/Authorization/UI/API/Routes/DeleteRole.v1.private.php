@@ -16,9 +16,9 @@
  * }
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\DeleteRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('roles/{id}', [Controller::class, 'deleteRole'])
+Route::delete('roles/{id}', [DeleteRoleController::class, 'deleteRole'])
     ->name('api_authorization_delete_role')
     ->middleware(['auth:api']);

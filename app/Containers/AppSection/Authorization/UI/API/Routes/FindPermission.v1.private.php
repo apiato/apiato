@@ -11,9 +11,9 @@
  * @apiUse             PermissionSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\FindPermissionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('permissions/{id}', [Controller::class, 'findPermission'])
+Route::get('permissions/{id}', [FindPermissionController::class, 'findPermission'])
     ->name('api_authorization_get_permission')
     ->middleware(['auth:api']);

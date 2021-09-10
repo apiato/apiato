@@ -16,9 +16,9 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncPermissionOnRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/sync', [Controller::class, 'syncPermissionOnRole'])
+Route::post('permissions/sync', [SyncPermissionOnRoleController::class, 'syncPermissionOnRole'])
     ->name('api_authorization_sync_permission_on_role')
     ->middleware(['auth:api']);
