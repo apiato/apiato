@@ -23,10 +23,10 @@ class ProxyLoginForWebClientAction extends Action
     public function run(ProxyLoginPasswordGrantRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput(
-            array_merge(
-                array_keys(config('appSection-authentication.login.attributes')),
-                ['password']
-            )
+            [
+                ...array_keys(config('appSection-authentication.login.attributes')),
+                ...['password'],
+            ]
         );
 
         $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
