@@ -5,12 +5,14 @@ namespace App\Containers\AppSection\Authorization\Data\Seeders;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Ship\Exceptions\CreateResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Seeders\Seeder;
 
 class AuthorizationDefaultUsersSeeder_3 extends Seeder
 {
     /**
      * @throws CreateResourceFailedException
+     * @throws NotFoundException
      */
     public function run(): void
     {

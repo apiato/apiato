@@ -8,6 +8,11 @@ use App\Ship\Parents\Tasks\Task;
 
 class DetachPermissionsFromRoleTask extends Task
 {
+    /**
+     * @param Role $role
+     * @param Permission[] $permissions
+     * @return Role
+     */
     public function run(Role $role, array $permissions): Role
     {
         array_map(static function ($permission) use ($role) {

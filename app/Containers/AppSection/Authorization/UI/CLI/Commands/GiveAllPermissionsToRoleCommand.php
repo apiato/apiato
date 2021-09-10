@@ -2,9 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\CLI\Commands;
 
-use App\Containers\AppSection\Authorization\Exceptions\RoleNotFoundException;
+use App\Containers\AppSection\Authorization\Actions\GetAllPermissionsAction;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
+use App\Containers\AppSection\Authorization\UI\API\Requests\GetAllPermissionsRequest;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Commands\ConsoleCommand;
 
 class GiveAllPermissionsToRoleCommand extends ConsoleCommand
@@ -14,19 +15,15 @@ class GiveAllPermissionsToRoleCommand extends ConsoleCommand
     protected $description = 'Give all system Permissions to a specific Role.';
 
     /**
-     * @throws RoleNotFoundException
+     * @throws NotFoundException
      */
     public function handle(): void
     {
         $roleName = $this->argument('role');
-
-        $allPermissions = app(GetAllPermissionsTask::class)->run(true);
-
         $role = app(FindRoleTask::class)->run($roleName);
 
-        if (!$role) {
-            throw new RoleNotFoundException("Role $roleName is not found!");
-        }
+        config(['repository.pagination.skip' => true]);
+        $allPermissions = app(GetAllPermissionsAction::class)->run(new GetAllPermissionsRequest(['limit' => 0]));
 
         $role->syncPermissions($allPermissionsNames = $allPermissions->pluck('name')->toArray());
 

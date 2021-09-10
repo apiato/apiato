@@ -4,22 +4,22 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class DetachPermissionToRoleRequest extends Request
+class AssignRolesToUserRequest extends Request
 {
-    /**
-     * Define which Roles and/or Permissions has access to this request.
-     */
+    /*
+    * Define which Roles and/or Permissions has access to this request.
+    */
     protected array $access = [
         'roles' => '',
-        'permissions' => 'manage-roles',
+        'permissions' => 'manage-admins-access',
     ];
 
     /**
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        'role_id',
-        'permissions_ids.*',
+        'user_id',
+        'roles_ids.*',
     ];
 
     /**
@@ -33,9 +33,9 @@ class DetachPermissionToRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
-            'permissions_ids' => 'required',
-            'permissions_ids.*' => 'exists:' . config('permission.table_names.permissions') . ',id',
+            'roles_ids' => 'array|required',
+            'roles_ids.*' => 'exists:' . config('permission.table_names.roles') . ',id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

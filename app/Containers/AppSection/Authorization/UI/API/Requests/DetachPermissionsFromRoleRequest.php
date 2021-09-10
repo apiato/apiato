@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class AttachPermissionToRoleRequest extends Request
+class DetachPermissionsFromRoleRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -18,8 +18,8 @@ class AttachPermissionToRoleRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        'permissions_ids.*',
         'role_id',
+        'permissions_ids.*',
     ];
 
     /**
@@ -33,9 +33,9 @@ class AttachPermissionToRoleRequest extends Request
     public function rules(): array
     {
         return [
+            'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
             'permissions_ids' => 'required',
             'permissions_ids.*' => 'exists:' . config('permission.table_names.permissions') . ',id',
-            'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
         ];
     }
 

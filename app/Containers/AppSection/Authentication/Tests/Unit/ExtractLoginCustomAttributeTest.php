@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -23,7 +22,7 @@ class ExtractLoginCustomAttributeTest extends TestCase
             'password' => 'so-secret',
         ];
 
-        $result = App::make(ExtractLoginCustomAttributeTask::class)->run($userDetails);
+        $result = app(ExtractLoginCustomAttributeTask::class)->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
@@ -44,7 +43,7 @@ class ExtractLoginCustomAttributeTest extends TestCase
             'password' => 'so-secret',
         ];
 
-        $result = App::make(ExtractLoginCustomAttributeTask::class)->run($userDetails);
+        $result = app(ExtractLoginCustomAttributeTask::class)->run($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }

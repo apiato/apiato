@@ -4,16 +4,17 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use Apiato\Core\Exceptions\InvalidTransformerException;
 use App\Containers\AppSection\Authorization\Actions\AttachPermissionsToRoleAction;
-use App\Containers\AppSection\Authorization\UI\API\Requests\AttachPermissionToRoleRequest;
+use App\Containers\AppSection\Authorization\UI\API\Requests\AttachPermissionsToRoleRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Controllers\ApiController;
 
-class AttachPermissionToRoleController extends ApiController
+class AttachPermissionsToRoleController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException
+     * @throws InvalidTransformerException|NotFoundException
      */
-    public function attachPermissionToRole(AttachPermissionToRoleRequest $request): array
+    public function attachPermissionsToRole(AttachPermissionsToRoleRequest $request): array
     {
         $role = app(AttachPermissionsToRoleAction::class)->run($request);
 

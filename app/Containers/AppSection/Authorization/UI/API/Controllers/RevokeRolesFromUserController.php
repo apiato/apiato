@@ -3,21 +3,22 @@
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use Apiato\Core\Exceptions\InvalidTransformerException;
-use App\Containers\AppSection\Authorization\Actions\RevokeUserFromRoleAction;
-use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
+use App\Containers\AppSection\Authorization\Actions\RevokeRolesFromUserAction;
+use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolesFromUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Controllers\ApiController;
 
-class RevokeRoleFromUserController extends ApiController
+class RevokeRolesFromUserController extends ApiController
 {
     /**
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */
-    public function revokeRoleFromUser(RevokeUserFromRoleRequest $request): array
+    public function revokeRolesFromUser(RevokeRolesFromUserRequest $request): array
     {
-        $user = app(RevokeUserFromRoleAction::class)->run($request);
+        $user = app(RevokeRolesFromUserAction::class)->run($request);
+
         return $this->transform($user, UserTransformer::class);
     }
 }

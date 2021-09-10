@@ -2,19 +2,20 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
+use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\UI\API\Requests\SyncUserRolesRequest;
+use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 
-class SyncUserRolesAction extends Action
+class AssignRolesToUserAction extends Action
 {
     /**
      * @throws NotFoundException
      */
-    public function run(SyncUserRolesRequest $request): User
+    public function run(AssignRolesToUserRequest $request): User
     {
         $user = app(FindUserByIdTask::class)->run($request->user_id);
 
@@ -24,8 +25,6 @@ class SyncUserRolesAction extends Action
             return app(FindRoleTask::class)->run($roleId);
         }, $rolesIds);
 
-        $user->syncRoles($roles);
-
-        return $user;
+        return app(AssignRolesToUserTask::class)->run($user, $roles);
     }
 }

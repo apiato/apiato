@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class RevokeUserFromRoleRequest extends Request
+class RevokeRolesFromUserRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

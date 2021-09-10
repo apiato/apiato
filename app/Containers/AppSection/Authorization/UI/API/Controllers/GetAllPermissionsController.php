@@ -15,7 +15,8 @@ class GetAllPermissionsController extends ApiController
      */
     public function getAllPermissions(GetAllPermissionsRequest $request): array
     {
-        $permissions = app(GetAllPermissionsAction::class)->run();
+        $permissions = app(GetAllPermissionsAction::class)->run($request);
+        
         return $this->transform($permissions, PermissionTransformer::class);
     }
 }

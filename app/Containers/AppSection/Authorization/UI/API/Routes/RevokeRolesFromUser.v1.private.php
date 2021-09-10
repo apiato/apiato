@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            revokeRoleFromUser
+ * @apiName            revokeRolesFromUser
  * @api                {post} /v1/roles/revoke Revoke/Remove Roles from User
  * @apiDescription     Revoke existing roles from user. This endpoint does not sync the user
  *                     It just revokes the passed role from the user. So make sure
@@ -19,9 +19,9 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRoleFromUserController;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRolesFromUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('roles/revoke', [RevokeRoleFromUserController::class, 'revokeRoleFromUser'])
+Route::post('roles/revoke', [RevokeRolesFromUserController::class, 'revokeRolesFromUser'])
     ->name('api_authorization_revoke_role_from_user')
     ->middleware(['auth:api']);

@@ -8,7 +8,6 @@ use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedExceptio
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\TestCase;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -34,7 +33,7 @@ class LoginTest extends TestCase
         $this->getTestingUser($this->userDetails);
         $this->actingAs($this->testingUser, 'web');
         $this->request = new LoginRequest($this->userDetails);
-        $this->action = App::make(WebLoginAction::class);
+        $this->action = app(WebLoginAction::class);
     }
 
     public function testLogin(): void

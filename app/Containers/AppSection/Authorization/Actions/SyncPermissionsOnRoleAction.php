@@ -6,15 +6,18 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 
 class SyncPermissionsOnRoleAction extends Action
 {
+    /**
+     * @throws NotFoundException
+     */
     public function run(SyncPermissionsOnRoleRequest $request): Role
     {
         $role = app(FindRoleTask::class)->run($request->role_id);
 
-        // convert to array in case single ID was passed
         $permissionsIds = (array)$request->permissions_ids;
 
         $permissions = array_map(static function ($permissionId) {

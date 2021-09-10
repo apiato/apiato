@@ -6,7 +6,6 @@ use App\Containers\AppSection\User\Actions\RegisterUserAction;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\TestCase;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class CreateUserTest.
@@ -25,9 +24,8 @@ class RegisterUserTest extends TestCase
         ];
 
         $request = new RegisterUserRequest($data);
-        $user = App::make(RegisterUserAction::class)->run($request);
+        $user = app(RegisterUserAction::class)->run($request);
 
-        self::assertInstanceOf(User::class, $user);
         self::assertEquals($user->name, $data['name']);
     }
 }
