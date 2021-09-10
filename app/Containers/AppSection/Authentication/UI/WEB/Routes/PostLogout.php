@@ -1,7 +1,7 @@
 <?php
 
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\Controller;
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/logout', [Controller::class, 'logout'])
+Route::post('/logout', [LogoutController::class, 'logout'])
     ->name('post_logout');
