@@ -33,7 +33,7 @@
         "ext-openssl": "*",
         "ext-pdo": "*",
         "ext-tokenizer": "*",
-        "apiato/core": "^6.0.4",
+        "apiato/core": "dev-master",
         "apiato/documentation-generator-container": "^1.0.0",
         "apiato/welcome-container": "^1.0.0",
         "doctrine/dbal": "^3.0.0",
