@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\UI\API\Controllers;
 use Apiato\Core\Exceptions\InvalidTransformerException;
 use App\Containers\AppSection\User\Actions\GetAuthenticatedUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\GetAuthenticatedUserRequest;
-use App\Containers\AppSection\User\UI\API\Transformers\UserPrivateProfileTransformer;
+use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Controllers\ApiController;
 
@@ -19,6 +19,6 @@ class GetAuthenticatedUserController extends ApiController
     {
         $user = app(GetAuthenticatedUserAction::class)->run();
 
-        return $this->transform($user, UserPrivateProfileTransformer::class);
+        return $this->transform($user, UserTransformer::class);
     }
 }
