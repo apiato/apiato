@@ -26,8 +26,6 @@ class RegisterUserAction extends Action
             $request->email,
             $request->password,
             $request->name,
-            $request->gender,
-            $request->birth
         );
 
         Mail::send(new UserRegisteredMail($user));
