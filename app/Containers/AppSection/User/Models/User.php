@@ -20,8 +20,6 @@ class User extends UserModel
         'name',
         'email',
         'password',
-        'device',
-        'platform',
         'gender',
         'birth',
         'email_verified_at',
