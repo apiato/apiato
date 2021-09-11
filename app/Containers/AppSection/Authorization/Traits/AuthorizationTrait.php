@@ -3,10 +3,14 @@
 namespace App\Containers\AppSection\Authorization\Traits;
 
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
+use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 trait AuthorizationTrait
 {
+    /**
+     * @throws NotFoundException
+     */
     public function getUser(): ?Authenticatable
     {
         return app(GetAuthenticatedUserTask::class)->run();
