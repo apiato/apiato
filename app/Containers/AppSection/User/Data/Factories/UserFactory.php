@@ -22,6 +22,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'is_admin' => false,
+            'gender' => $this->faker->randomElement(['male', 'female', 'unspecified']),
+            'birth' => $this->faker->date(),
         ];
     }
 

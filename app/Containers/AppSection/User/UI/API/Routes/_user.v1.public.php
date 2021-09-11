@@ -13,7 +13,7 @@ HTTP/1.1 200 OK
     "email_verified_at": "2021-04-07T07:59:47.000000Z",
     "nickname": null,
     "gender": "male",
-    "birth": "20010310",
+    "birth": "1990-01-06T00:00:00.000000Z",
     "social_auth_provider": null,
     "social_id": null,
     "social_avatar": {

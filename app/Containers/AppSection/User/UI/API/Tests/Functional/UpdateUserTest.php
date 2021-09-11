@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\Tests\ApiTestCase;
+use Illuminate\Support\Carbon;
 
 /**
  * Class UpdateUserTest.
@@ -26,18 +27,19 @@ class UpdateUserTest extends ApiTestCase
             'name' => 'Updated Name',
             'password' => 'updated#Password',
             'gender' => 'male',
-            'birth' => '20151015',
+            'birth' => '2015-10-15',
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
 
         $response->assertStatus(200);
+
         $this->assertResponseContainKeyValue([
             'object' => 'User',
             'email' => $user->email,
             'name' => $data['name'],
             'gender' => $data['gender'],
-            'birth' => $data['birth'],
+            'birth' => Carbon::parse($data['birth']),
         ]);
         $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
@@ -84,7 +86,7 @@ class UpdateUserTest extends ApiTestCase
             'password' => 'The password must be at least 6 characters.',
             'name' => 'The name must be at least 2 characters.',
             'gender' => 'The selected gender is invalid.',
-            'birth' => 'The birth does not match the format Ymd.',
+            'birth' => 'The birth is not a valid date.',
         ]);
     }
 }
