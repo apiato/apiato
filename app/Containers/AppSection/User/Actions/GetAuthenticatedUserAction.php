@@ -14,12 +14,6 @@ class GetAuthenticatedUserAction extends Action
      */
     public function run(): User
     {
-        $user = app(GetAuthenticatedUserTask::class)->run();
-
-        if (!$user) {
-            throw new NotFoundException();
-        }
-
-        return $user;
+        return app(GetAuthenticatedUserTask::class)->run();
     }
 }
