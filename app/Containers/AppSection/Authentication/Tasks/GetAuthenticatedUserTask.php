@@ -14,12 +14,6 @@ class GetAuthenticatedUserTask extends Task
      */
     public function run(): Authenticatable
     {
-        $user = Auth::user();
-
-        if (is_null($user)) {
-            throw new NotFoundException();
-        }
-
-        return $user;
+        return Auth::user() ?? throw new NotFoundException();
     }
 }

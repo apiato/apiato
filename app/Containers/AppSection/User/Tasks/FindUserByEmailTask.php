@@ -6,7 +6,6 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
-use Exception;
 
 class FindUserByEmailTask extends Task
 {
@@ -20,10 +19,8 @@ class FindUserByEmailTask extends Task
      */
     public function run(string $email): User
     {
-        try {
-            return $this->repository->findByField('email', $email)->first();
-        } catch (Exception) {
-            throw new NotFoundException();
-        }
+        $user = $this->repository->findByField('email', $email)->first();
+
+        return $user ?? throw new NotFoundException();
     }
 }
