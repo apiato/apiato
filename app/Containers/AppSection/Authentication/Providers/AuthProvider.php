@@ -38,7 +38,7 @@ class AuthProvider extends ParentAuthProvider
      */
     public function boot(): void
     {
-        $this->registerPolicies();
+        parent::boot();
 
         $this->registerPassport();
         $this->registerPassportApiRoutes();

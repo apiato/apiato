@@ -10,17 +10,18 @@ use Illuminate\Support\Facades\Config;
 
 class ValidateJsonContent extends Middleware
 {
+    /**
+     * @throws MissingJSONHeaderException
+     */
     public function handle(Request $request, Closure $next)
     {
         $acceptHeader = $request->header('accept');
         $contentType = 'application/json';
 
         // check if the accept header is set to application/json
-        if (strpos($acceptHeader, $contentType) === false) {
-            // if forcing users to have the accept header is enabled, then throw an exception
-            if (Config::get('apiato.requests.force-accept-header')) {
-                throw new MissingJSONHeaderException();
-            }
+        // if forcing users to have the accept header is enabled, then throw an exception
+        if (!str_contains($acceptHeader, $contentType) && Config::get('apiato.requests.force-accept-header')) {
+            throw new MissingJSONHeaderException();
         }
 
         // the request has to be processed, so get the response after the request is done
@@ -30,7 +31,7 @@ class ValidateJsonContent extends Middleware
         $response->headers->set('Content-Type', $contentType);
 
         // if request doesn't contain in header accept = application/json. Return a warning in the response
-        if (strpos($acceptHeader, $contentType) === false) {
+        if (!str_contains($acceptHeader, $contentType)) {
             $warnCode = '199'; // https://www.iana.org/assignments/http-warn-codes/http-warn-codes.xhtml
             $warnMessage = 'Missing request header [ accept = ' . $contentType . ' ] when calling a JSON API.';
             $response->headers->set('Warning', $warnCode . ' ' . $warnMessage);

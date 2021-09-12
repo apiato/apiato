@@ -6,7 +6,6 @@ use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 
 class ProfilerMiddleware extends Middleware
 {
@@ -14,7 +13,7 @@ class ProfilerMiddleware extends Middleware
     {
         $response = $next($request);
 
-        if (!Config::get('debugbar.enabled')) {
+        if (!config('debugbar.enabled')) {
             return $response;
         }
 
