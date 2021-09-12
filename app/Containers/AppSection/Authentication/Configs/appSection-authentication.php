@@ -77,4 +77,16 @@ return [
 
         'prefix' => '',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Reset Password URLs
+    |--------------------------------------------------------------------------
+    |
+    | Insert your allowed reset password urls to inject into the email.
+    |
+    */
+    'allowed-reset-password-urls' => [
+        'password-reset',
+    ],
 ];

@@ -30,7 +30,7 @@ class ForgotPasswordAction extends Action
 
     private function endpointIsAllowed(mixed $resetUrl): bool
     {
-        return in_array($this->getLastSegmentOfTheURL($resetUrl), config('appSection-user.allowed-reset-password-urls'), true);
+        return in_array($this->getLastSegmentOfTheURL($resetUrl), config('appSection-authentication.allowed-reset-password-urls'), true);
     }
 
     private function getLastSegmentOfTheURL(string $resetUrl): string
