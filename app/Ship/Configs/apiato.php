@@ -9,7 +9,6 @@ return [
     'hash-id' => env('HASH_ID', true),
 
     'api' => [
-
         /*
         |--------------------------------------------------------------------------
         | API URL
@@ -88,12 +87,25 @@ return [
     ],
 
     'web' => [
-        /**
-         * The path to the "home" route for your application.
-         *
-         * This is used by Laravel authentication to redirect users after login.
-         */
-        'home' => '/',
+        /*
+        |--------------------------------------------------------------------------
+        | Home Page URL
+        |--------------------------------------------------------------------------
+        |
+        | This is used by Laravel authentication to redirect users after login.
+        |
+        */
+        'home-page-url' => '/',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Login Page Url
+        |--------------------------------------------------------------------------
+        |
+        | unauthorized access on protected web pages will be redirected to this url
+        |
+        */
+        'login-page-url' => 'login',
     ],
 
     'requests' => [
