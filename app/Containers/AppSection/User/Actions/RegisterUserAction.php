@@ -21,12 +21,15 @@ class RegisterUserAction extends Action
      */
     public function run(RegisterUserRequest $request): User
     {
-        $user = app(CreateUserByCredentialsTask::class)->run(
-            false,
-            $request->email,
-            $request->password,
-            $request->name,
-        );
+        $sanitizedData = $request->sanitizeInput([
+            'email',
+            'password',
+            'name',
+            'gender',
+            'birth',
+        ]);
+
+        $user = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
 
         Mail::send(new UserRegisteredMail($user));
         Notification::send($user, new UserRegisteredNotification($user));

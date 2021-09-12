@@ -16,12 +16,15 @@ class CreateAdminAction extends Action
      */
     public function run(CreateAdminRequest $request): User
     {
-        $admin = app(CreateUserByCredentialsTask::class)->run(
-            true,
-            $request->email,
-            $request->password,
-            $request->name
-        );
+        $sanitizedData = $request->sanitizeInput([
+            'email',
+            'password',
+            'name',
+            'gender',
+            'birth',
+        ]);
+
+        $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData, isAdmin: true);
 
         // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles
         // to your users manually. (To list admins in your dashboard look for users with `is_admin=true`).

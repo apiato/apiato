@@ -19,25 +19,21 @@ class CreateUserByCredentialsTask extends Task
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(
-        bool   $isAdmin,
-        string $email,
-        string $password,
-        string $name = null,
-        string $gender = null,
-        string $birth = null
-    ): User
+    public function run(array $data, bool $isAdmin = false): User
     {
+        if (!array_key_exists('email', $data)) {
+            throw new CreateResourceFailedException('email field is required');
+        }
+
+        if (!array_key_exists('password', $data)) {
+            throw new CreateResourceFailedException('password field is required');
+        }
+
+        $data['password'] = Hash::make($data['password']);
+        $data['is_admin'] = $isAdmin;
+
         try {
-            // create new user
-            $user = $this->repository->create([
-                'password' => Hash::make($password),
-                'email' => $email,
-                'name' => $name,
-                'gender' => $gender,
-                'birth' => $birth,
-                'is_admin' => $isAdmin,
-            ]);
+            $user = $this->repository->create($data);
         } catch (Exception) {
             throw new CreateResourceFailedException();
         }

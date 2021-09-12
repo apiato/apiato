@@ -35,6 +35,8 @@ class RegisterUserRequest extends Request
             'email' => 'required|email|max:40|unique:users,email',
             'password' => 'required|min:6|max:30',
             'name' => 'required|min:2|max:50',
+            'gender' => 'in:male,female,unspecified',
+            'birth' => 'date',
         ];
     }
 

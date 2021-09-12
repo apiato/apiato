@@ -18,21 +18,24 @@ class ForgotPasswordAction extends Action
     public function run(ForgotPasswordRequest $request): void
     {
         $user = app(FindUserByEmailTask::class)->run($request->email);
-
-        // generate token
         $token = app(CreatePasswordResetTask::class)->run($user);
-
-        // get last segment of the URL
         $resetUrl = $request->reseturl;
-        $url = explode('/', $resetUrl);
-        $lastSegment = $url[count($url) - 1];
 
-        // validate the allowed endpoint is being used
-        if (!in_array($lastSegment, config('appSection-user.allowed-reset-password-urls'), true)) {
+        if (!$this->endpointIsAllowed($resetUrl)) {
             throw new NotFoundException("The URL is not allowed ($resetUrl)");
         }
 
-        // send email
         Mail::send(new UserForgotPasswordMail($user, $token, $resetUrl));
+    }
+
+    private function endpointIsAllowed(mixed $resetUrl): bool
+    {
+        return in_array($this->getLastSegmentOfTheURL($resetUrl), config('appSection-user.allowed-reset-password-urls'), true);
+    }
+
+    private function getLastSegmentOfTheURL(string $resetUrl): string
+    {
+        $url = explode('/', $resetUrl);
+        return $url[count($url) - 1];
     }
 }

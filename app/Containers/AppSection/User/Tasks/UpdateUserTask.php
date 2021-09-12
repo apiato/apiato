@@ -31,7 +31,6 @@ class UpdateUserTask extends Task
         }
 
         try {
-            // hash password if exist (before updating user)
             if (array_key_exists('password', $userData)) {
                 $userData['password'] = Hash::make($userData['password']);
             }

@@ -9,15 +9,20 @@ class CheckIfUserEmailIsConfirmedTask extends Task
 {
     public function run(User $user): bool
     {
-        if ($this->emailConfirmationIsRequired()) {
-            return !is_null($user->email_verified_at);
+        if ($this->emailConfirmationRequired()) {
+            return $this->isEmailConfirmed($user);
         }
 
         return true;
     }
 
-    private function emailConfirmationIsRequired()
+    private function emailConfirmationRequired()
     {
         return config('appSection-authentication.require_email_confirmation');
+    }
+
+    private function isEmailConfirmed(User $user): bool
+    {
+        return !is_null($user->email_verified_at);
     }
 }

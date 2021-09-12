@@ -8,8 +8,8 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated User
  *
- * @apiParam           {String}  [password]
- * @apiParam           {String}  [name]
+ * @apiParam           {String}  [password] min:6|max:40
+ * @apiParam           {String}  [name] min:2|max:50
  * @apiParam           {String="male,female,unspecified"}  [gender]
  * @apiParam           {Date}  [birth] format: Y-m-d / e.g. 2015-10-15
  *
