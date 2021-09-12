@@ -17,6 +17,6 @@ class ForgotPasswordController extends ApiController
     {
         app(ForgotPasswordAction::class)->run($request);
 
-        return $this->noContent(202);
+        return $this->noContent();
     }
 }

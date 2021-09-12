@@ -15,7 +15,7 @@
  * @apiParam           {String}  password the new password
  *
  * @apiSuccessExample  {json}  Success-Response:
- * HTTP/1.1 204 OK
+ * HTTP/1.1 204 No Content
  * {}
  */
 
