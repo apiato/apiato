@@ -2,14 +2,14 @@
 
 namespace App\Ship\Kernels;
 
-use App\Ship\Middlewares\Http\Authenticate;
+use Apiato\Core\Middlewares\Http\Authenticate;
+use Apiato\Core\Middlewares\Http\ProcessETagHeadersMiddleware;
+use Apiato\Core\Middlewares\Http\ProfilerMiddleware;
+use Apiato\Core\Middlewares\Http\ValidateJsonContent;
 use App\Ship\Middlewares\Http\EncryptCookies;
 use App\Ship\Middlewares\Http\PreventRequestsDuringMaintenance;
-use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
-use App\Ship\Middlewares\Http\ProfilerMiddleware;
 use App\Ship\Middlewares\Http\TrimStrings;
 use App\Ship\Middlewares\Http\TrustProxies;
-use App\Ship\Middlewares\Http\ValidateJsonContent;
 use App\Ship\Middlewares\Http\VerifyCsrfToken;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\Authorize;

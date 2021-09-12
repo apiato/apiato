@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use App\Ship\Middlewares\Http\RedirectIfAuthenticated;
+use Apiato\Core\Middlewares\Http\RedirectIfAuthenticated;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
 class MiddlewareServiceProvider extends MiddlewareProvider

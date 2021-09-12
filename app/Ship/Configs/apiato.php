@@ -83,8 +83,17 @@ return [
             'enabled' => env('API_RATE_LIMIT_ENABLED', true),
             'attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
             'expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
-        ]
+        ],
 
+    ],
+
+    'web' => [
+        /**
+         * The path to the "home" route for your application.
+         *
+         * This is used by Laravel authentication to redirect users after login.
+         */
+        'home' => '/',
     ],
 
     'requests' => [
@@ -156,7 +165,7 @@ return [
         |
         */
         'deployment' => App\Ship\Seeders\SeedDeploymentData::class,
-        'testing' => App\Ship\Seeders\SeedTestingData::class
+        'testing' => App\Ship\Seeders\SeedTestingData::class,
     ],
 
     'tests' => [
@@ -179,6 +188,6 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'user-admin-state' => 'admin'
-    ]
+        'user-admin-state' => 'admin',
+    ],
 ];
