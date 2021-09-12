@@ -83,7 +83,7 @@ return [
     | Reset Password URLs
     |--------------------------------------------------------------------------
     |
-    | Insert your allowed reset password urls to inject into the email.
+    | Insert your allowed reset password urls which user can request to be injected into the email.
     |
     */
     'allowed-reset-password-urls' => [
