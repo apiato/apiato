@@ -9,7 +9,7 @@ use function app_path;
 /**
  * Class BroadcastsProvider
  *
- * A.K.A app/Providers/BroadcastServiceProvider.php
+ * A.K.A. app/Providers/BroadcastServiceProvider.php
  *
  * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */

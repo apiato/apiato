@@ -12,7 +12,7 @@ class ShipProvider extends MainProvider
      * Register any Service Providers on the Ship layer (including third party packages).
      */
     public array $serviceProviders = [
-        RoutesProvider::class
+        RoutesProvider::class,
     ];
 
     /**

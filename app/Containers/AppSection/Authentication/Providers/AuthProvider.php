@@ -13,7 +13,7 @@ use Laravel\Passport\RouteRegistrar;
  * This class is provided by Laravel as default provider,
  * to register authorization policies.
  *
- * A.K.A App\Providers\AuthServiceProvider.php
+ * A.K.A. App\Providers\AuthServiceProvider.php
  */
 class AuthProvider extends ParentAuthProvider
 {
