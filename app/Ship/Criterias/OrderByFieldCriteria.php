@@ -4,29 +4,30 @@ namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 class OrderByFieldCriteria extends Criteria
 {
-    private string $field;
-    private string $sortOrder;
+    public function __construct(
+        private string $field,
+        private string $sortOrder
+    ) {
 
-    public function __construct(string $field, string $sortOrder)
+        if (!$this->isValidSortOrder($sortOrder)) {
+            throw new InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");
+        }
+    }
+
+    private function isValidSortOrder(string $sortOrder): bool
     {
-        $this->field = $field;
-
         $sortOrder = Str::lower($sortOrder);
         $availableDirections = [
             'asc',
             'desc',
         ];
 
-        // check if the value is available, otherwise set "default" sort order to ascending!
-        if (!in_array($sortOrder, $availableDirections)) {
-            $sortOrder = 'asc';
-        }
-
-        $this->sortOrder = $sortOrder;
+        return in_array($sortOrder, $availableDirections, true);
     }
 
     public function apply($model, PrettusRepositoryInterface $repository)

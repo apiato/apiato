@@ -7,18 +7,11 @@ use Carbon\Carbon;
 
 class ThisBetweenDatesCriteria extends Criteria
 {
-    private Carbon $start;
-
-    private Carbon $end;
-
-    private string $field;
-
-
-    public function __construct(string $field, Carbon $start, Carbon $end)
-    {
-        $this->start = $start;
-        $this->end = $end;
-        $this->field = $field;
+    public function __construct(
+        private string $field,
+        private Carbon $start,
+        private Carbon $end,
+    ) {
     }
 
     public function apply($model, $repository)

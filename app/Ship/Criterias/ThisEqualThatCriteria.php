@@ -7,14 +7,10 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
 
 class ThisEqualThatCriteria extends Criteria
 {
-    private string $field;
-
-    private string $value;
-
-    public function __construct(string $field, string $value)
-    {
-        $this->field = $field;
-        $this->value = $value;
+    public function __construct(
+        private string $field,
+        private string $value,
+    ) {
     }
 
     public function apply($model, PrettusRepositoryInterface $repository)
