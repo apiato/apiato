@@ -3,20 +3,22 @@
 namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Actions\RegisterUserAction;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Notifications\UserRegisteredNotification;
 use App\Containers\AppSection\User\Tests\TestCase;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
+use Illuminate\Support\Facades\Notification;
 
 /**
- * Class CreateUserTest.
+ * Class RegisterUserActionTest.
  *
  * @group user
  * @group unit
  */
-class RegisterUserTest extends TestCase
+class RegisterUserActionTest extends TestCase
 {
     public function testCreateUser(): void
     {
+        Notification::fake();
         $data = [
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
@@ -27,5 +29,6 @@ class RegisterUserTest extends TestCase
         $user = app(RegisterUserAction::class)->run($request);
 
         self::assertEquals($user->name, $data['name']);
+        Notification::assertSentTo($user, UserRegisteredNotification::class);
     }
 }

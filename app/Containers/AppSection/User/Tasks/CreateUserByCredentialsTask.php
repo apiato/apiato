@@ -22,11 +22,11 @@ class CreateUserByCredentialsTask extends Task
     public function run(array $data, bool $isAdmin = false): User
     {
         if (!array_key_exists('email', $data)) {
-            throw new CreateResourceFailedException('email field is required');
+            throw new CreateResourceFailedException('Email field is required');
         }
 
         if (!array_key_exists('password', $data)) {
-            throw new CreateResourceFailedException('password field is required');
+            throw new CreateResourceFailedException('Password field is required');
         }
 
         $data['password'] = Hash::make($data['password']);
