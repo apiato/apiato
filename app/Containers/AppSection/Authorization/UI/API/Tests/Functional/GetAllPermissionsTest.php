@@ -27,6 +27,6 @@ class GetAllPermissionsTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertNotEmpty($responseContent->data);
+        $this->assertNotEmpty($responseContent->data);
     }
 }

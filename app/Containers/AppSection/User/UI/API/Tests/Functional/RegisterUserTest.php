@@ -37,7 +37,7 @@ class RegisterUserTest extends ApiTestCase
             'name' => $data['name'],
         ]);
         $responseContent = $this->getResponseContentObject();
-        self::assertNotEmpty($responseContent->data);
+        $this->assertNotEmpty($responseContent->data);
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
     }
 

@@ -34,8 +34,8 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($data['name'], $responseContent->data->name);
-        self::assertEquals($data['level'], $responseContent->data->level);
+        $this->assertEquals($data['name'], $responseContent->data->name);
+        $this->assertEquals($data['level'], $responseContent->data->level);
     }
 
     public function testCreateRoleWithoutLevel(): void
@@ -50,7 +50,7 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals(0, $responseContent->data->level);
+        $this->assertEquals(0, $responseContent->data->level);
     }
 
     public function testCreateRoleWithWrongName(): void

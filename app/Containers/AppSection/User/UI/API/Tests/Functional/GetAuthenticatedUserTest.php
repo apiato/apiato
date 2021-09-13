@@ -40,6 +40,6 @@ class GetAuthenticatedUserTest extends ApiTestCase
             'readable_created_at' => $user->created_at->diffForHumans(),
             'readable_updated_at' => $user->updated_at->diffForHumans(),
         ]);
-        self::assertEquals($user->name, $responseContent->data->name);
+        $this->assertEquals($user->name, $responseContent->data->name);
     }
 }

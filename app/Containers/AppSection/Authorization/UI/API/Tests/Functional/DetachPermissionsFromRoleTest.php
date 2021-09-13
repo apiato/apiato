@@ -37,7 +37,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($roleA->name, $responseContent->data->name);
+        $this->assertEquals($roleA->name, $responseContent->data->name);
         $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
             'role_id' => $roleA->id,
@@ -60,7 +60,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($roleA->name, $responseContent->data->name);
+        $this->assertEquals($roleA->name, $responseContent->data->name);
         $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), [
             'permission_id' => $permissionA->id,
             'role_id' => $roleA->id,

@@ -37,8 +37,8 @@ class AssignUserToRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($data['user_id'], $responseContent->data->id);
-        self::assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
+        $this->assertEquals($data['user_id'], $responseContent->data->id);
+        $this->assertEquals($data['roles_ids'][0], $responseContent->data->roles->data[0]->id);
     }
 
     public function testAssignUserToManyRoles(): void
@@ -58,9 +58,9 @@ class AssignUserToRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertTrue(count($responseContent->data->roles->data) > 1);
+        $this->assertTrue(count($responseContent->data->roles->data) > 1);
         $roleIds = Arr::pluck($responseContent->data->roles->data, 'id');
-        self::assertContains($data['roles_ids'][0], $roleIds);
-        self::assertContains($data['roles_ids'][1], $roleIds);
+        $this->assertContains($data['roles_ids'][0], $roleIds);
+        $this->assertContains($data['roles_ids'][1], $roleIds);
     }
 }

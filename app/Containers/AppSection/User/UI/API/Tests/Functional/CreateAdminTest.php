@@ -39,6 +39,6 @@ class CreateAdminTest extends ApiTestCase
         $this->assertResponseContainKeys(['id']);
         $this->assertDatabaseHas('users', ['email' => $data['email']]);
         $user = User::where(['email' => $data['email']])->first();
-        self::assertEquals(true, $user->is_admin);
+        $this->assertEquals(true, $user->is_admin);
     }
 }

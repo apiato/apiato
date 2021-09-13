@@ -30,6 +30,6 @@ class FindRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($roleA->name, $responseContent->data->name);
+        $this->assertEquals($roleA->name, $responseContent->data->name);
     }
 }

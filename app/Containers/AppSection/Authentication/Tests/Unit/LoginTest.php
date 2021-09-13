@@ -40,8 +40,8 @@ class LoginTest extends TestCase
     {
         $user = $this->action->run($this->request);
 
-        self::assertInstanceOf(User::class, $user);
-        self::assertSame($user->name, $this->userDetails['name']);
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertSame($user->name, $this->userDetails['name']);
     }
 
     public function testLoginWithInvalidCredentialsThrowsAnException(): void

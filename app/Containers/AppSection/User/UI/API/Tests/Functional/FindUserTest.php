@@ -27,7 +27,7 @@ class FindUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($user->name, $responseContent->data->name);
+        $this->assertEquals($user->name, $responseContent->data->name);
     }
 
     public function testFindFilteredUserResponse(): void
@@ -39,9 +39,9 @@ class FindUserTest extends ApiTestCase
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
 
-        self::assertEquals($user->name, $responseContent->data->name);
-        self::assertEquals($user->email, $responseContent->data->email);
-        self::assertNotContains('id', json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR));
+        $this->assertEquals($user->name, $responseContent->data->name);
+        $this->assertEquals($user->email, $responseContent->data->email);
+        $this->assertNotContains('id', json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR));
     }
 
     public function testFindUserWithRelation(): void
@@ -52,7 +52,7 @@ class FindUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($user->email, $responseContent->data->email);
-        self::assertNotNull($responseContent->data->roles);
+        $this->assertEquals($user->email, $responseContent->data->email);
+        $this->assertNotNull($responseContent->data->roles);
     }
 }

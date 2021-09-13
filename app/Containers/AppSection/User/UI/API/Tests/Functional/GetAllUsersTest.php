@@ -29,7 +29,7 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
 
-        self::assertCount(4, $responseContent->data);
+        $this->assertCount(4, $responseContent->data);
     }
 
     public function testGetAllUsersByNonAdmin(): void
@@ -56,7 +56,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        self::assertEquals($user->name, $responseContent->data[0]->name);
-        self::assertCount(1, $responseContent->data);
+        $this->assertEquals($user->name, $responseContent->data[0]->name);
+        $this->assertCount(1, $responseContent->data);
     }
 }
