@@ -17,7 +17,7 @@ class ApiTestCase extends BaseTestCase
     private string $publicFilePath;
     private string $privateFilePath;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -61,7 +61,7 @@ class ApiTestCase extends BaseTestCase
         return $filePath;
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         parent::tearDown();
 

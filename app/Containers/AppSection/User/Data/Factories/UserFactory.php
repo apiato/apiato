@@ -16,8 +16,8 @@ class UserFactory extends Factory
         static $password;
 
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
             'password' => $password ?: $password = Hash::make('testing-password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

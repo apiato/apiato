@@ -14,7 +14,7 @@ abstract class TestCase extends AbstractTestCase
      *
      * @return void
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }
@@ -22,7 +22,7 @@ abstract class TestCase extends AbstractTestCase
     /**
      * Reset the test environment, after each test.
      */
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
