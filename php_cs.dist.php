@@ -7,6 +7,7 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->name('*.php')
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)
+    ->notPath('/app/Containers/Vendor')
     ->ignoreVCS(true);
 
 return (new PhpCsFixer\Config())
