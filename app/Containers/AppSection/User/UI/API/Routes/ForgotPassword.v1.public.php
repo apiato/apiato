@@ -11,7 +11,7 @@
  * @apiPermission      none
  *
  * @apiParam           {String}  email
- * @apiParam           {String}  reseturl the reset password url
+ * @apiParam           {String="reset-password"}  reseturl the reset password url
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 204 No Content

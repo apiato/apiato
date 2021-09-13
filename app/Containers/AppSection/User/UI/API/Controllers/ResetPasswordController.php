@@ -3,15 +3,19 @@
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\ResetPasswordAction;
+use App\Containers\AppSection\User\Exceptions\InvalidResetPasswordTokenException;
 use App\Containers\AppSection\User\UI\API\Requests\ResetPasswordRequest;
-use App\Ship\Exceptions\InternalErrorException;
+use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
 class ResetPasswordController extends ApiController
 {
     /**
-     * @throws InternalErrorException
+     * @throws InvalidResetPasswordTokenException
+     * @throws NotFoundException
+     * @throws UpdateResourceFailedException
      */
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {

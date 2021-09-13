@@ -22,7 +22,7 @@ class LoginTest extends TestCase
     private LoginRequest $request;
     private mixed $action;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->userDetails = [

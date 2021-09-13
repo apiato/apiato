@@ -2,10 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\ApiTestCase;
-use App\Ship\Exceptions\NotFoundException;
-use Illuminate\Support\Facades\Mail;
 
 /**
  * Class ForgotPasswordTest.
@@ -24,7 +21,7 @@ class ForgotPasswordTest extends ApiTestCase
         'permissions' => '',
     ];
 
-    public function testForgotPasswordMailIsSent_IfUserExists(): void
+    public function testForgotPassword(): void
     {
         $data = [
             'email' => 'admin@admin.com',
@@ -33,16 +30,5 @@ class ForgotPasswordTest extends ApiTestCase
 
         $response = $this->makeCall($data);
         $response->assertStatus(204);
-    }
-
-    public function testIfUserNotExists_ShouldReturn404(): void
-    {
-        $data = [
-            'email' => 'wrong@mail.test',
-            'reseturl' => config('appSection-authentication.allowed-reset-password-urls')[0],
-        ];
-
-        $response = $this->makeCall($data);
-        $response->assertStatus(404);
     }
 }

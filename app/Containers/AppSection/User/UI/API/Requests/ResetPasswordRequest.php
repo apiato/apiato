@@ -26,9 +26,7 @@ class ResetPasswordRequest extends Request
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        'token',
-        'email',
-        'password',
+        // 'id',
     ];
 
     public function rules(): array

@@ -2,10 +2,11 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
+use App\Containers\AppSection\User\Exceptions\InvalidResetPasswordTokenException;
 use App\Containers\AppSection\User\UI\API\Requests\ResetPasswordRequest;
-use App\Ship\Exceptions\InternalErrorException;
+use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -13,30 +14,35 @@ use Illuminate\Support\Str;
 class ResetPasswordAction extends Action
 {
     /**
-     * @throws InternalErrorException
+     * @throws NotFoundException
+     * @throws InvalidResetPasswordTokenException
+     * @throws UpdateResourceFailedException
      */
-    public function run(ResetPasswordRequest $request): void
+    public function run(ResetPasswordRequest $request)
     {
         $sanitizedData = $request->sanitizeInput([
             'email',
             'token',
             'password',
+            'password_confirmation' => $request->password,
         ]);
 
-        $sanitizedData['password_confirmation'] = $request->password;
+        $status = Password::broker()->reset(
+            $sanitizedData,
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password),
+                ])->setRememberToken(Str::random(60));
 
-        try {
-            Password::broker()->reset(
-                $sanitizedData,
-                function ($user, $password) {
-                    $user->forceFill([
-                        'password' => Hash::make($password),
-                        'remember_token' => Str::random(60),
-                    ])->save();
-                }
-            );
-        } catch (Exception) {
-            throw new InternalErrorException();
-        }
+                $user->save();
+            }
+        );
+
+        return match ($status) {
+            Password::INVALID_TOKEN => throw new InvalidResetPasswordTokenException(),
+            Password::INVALID_USER => throw new NotFoundException('User Not Found.'),
+            Password::PASSWORD_RESET => $status,
+            default => throw new UpdateResourceFailedException()
+        };
     }
 }

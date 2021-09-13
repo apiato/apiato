@@ -87,6 +87,6 @@ return [
     |
     */
     'allowed-reset-password-urls' => [
-        'password-reset',
+        'http://api.apiato.test/v1/password/reset',
     ],
 ];
