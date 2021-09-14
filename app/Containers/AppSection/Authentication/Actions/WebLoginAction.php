@@ -38,18 +38,25 @@ class WebLoginAction extends Action
             $sanitizedData['remember_me']
         );
 
-        if ($loggedIn) {
-            $user = app(GetAuthenticatedUserTask::class)->run();
-        } else {
-            throw new LoginFailedException();
+        if (!$loggedIn) {
+            throw new LoginFailedException('Invalid Login Credentials.');
         }
 
+        $user = app(GetAuthenticatedUserTask::class)->run();
+        $this->processEmailConfirmation($user);
+
+        return $user;
+    }
+
+    /**
+     * @throws UserNotConfirmedException
+     */
+    private function processEmailConfirmation(User $user): void
+    {
         $userConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);
 
         if (!$userConfirmed) {
             throw new UserNotConfirmedException();
         }
-
-        return $user;
     }
 }
