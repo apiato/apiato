@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            ProxyLoginForWebClient
+ * @apiName            LoginProxyForWebClient
  * @api                {post} /v1/clients/web/login Login (Password Grant with proxy)
  * @apiDescription     Login Users using their email and password, without client_id and client_secret.
  *
@@ -21,8 +21,8 @@
  * }
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ProxyLoginForWebClientController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWebClientController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('clients/web/login', [ProxyLoginForWebClientController::class, 'proxyLoginForWebClient'])
+Route::post('clients/web/login', [LoginProxyForWebClientController::class, 'loginProxyForWebClient'])
     ->name('api_authentication_client_web_login_proxy');

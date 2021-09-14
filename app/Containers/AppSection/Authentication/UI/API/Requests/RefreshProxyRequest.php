@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
-class ProxyRefreshRequest extends Request
+class RefreshProxyRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

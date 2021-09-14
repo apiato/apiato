@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
+use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +20,7 @@ class ApiLoginProxyForWebClientAction extends Action
      * @throws UserNotConfirmedException
      * @throws LoginFailedException
      */
-    public function run(ProxyLoginPasswordGrantRequest $request): array
+    public function run(LoginProxyPasswordGrantRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput(
             [
@@ -38,7 +38,7 @@ class ApiLoginProxyForWebClientAction extends Action
         $sanitizedData['scope'] = '';
 
         $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
-        $this->processEmailConfirmationIfNeeded($responseContent);
+        $this->processEmailConfirmation($responseContent);
         $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
 
         return [
@@ -50,7 +50,7 @@ class ApiLoginProxyForWebClientAction extends Action
     /**
      * @throws UserNotConfirmedException
      */
-    private function processEmailConfirmationIfNeeded($response): void
+    private function processEmailConfirmation($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);
         $isUserConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);

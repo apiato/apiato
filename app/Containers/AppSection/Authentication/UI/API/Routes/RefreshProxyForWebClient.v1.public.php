@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           OAuth2
- * @apiName            ProxyRefreshForWebClient
+ * @apiName            RefreshProxyForWebClient
  * @api                {post} /v1/clients/web/refresh Refresh
  * @apiDescription     Get new tokens given a valid refresh token is provided.
  *
@@ -20,8 +20,8 @@
  * }
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ProxyRefreshForWebClientController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForWebClientController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('clients/web/refresh', [ProxyRefreshForWebClientController::class, 'proxyRefreshForWebClient'])
+Route::post('clients/web/refresh', [RefreshProxyForWebClientController::class, 'refreshProxyForWebClient'])
     ->name('api_authentication_client_web_refresh_proxy');
