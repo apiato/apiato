@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Data\Repositories\PermissionReposito
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
-use Exception;
 use Illuminate\Support\Str;
 
 class FindPermissionTask extends Task
@@ -21,13 +20,9 @@ class FindPermissionTask extends Task
      */
     public function run($permissionNameOrId): Permission
     {
-        try {
-            $query = (is_numeric($permissionNameOrId) || Str::isUuid($permissionNameOrId)) ? ['id' => $permissionNameOrId] : ['name' => $permissionNameOrId];
-            $permission = $this->repository->findWhere($query)->first();
-        } catch (Exception) {
-            throw new NotFoundException();
-        }
+        $query = (is_numeric($permissionNameOrId) || Str::isUuid($permissionNameOrId)) ? ['id' => $permissionNameOrId] : ['name' => $permissionNameOrId];
+        $permission = $this->repository->findWhere($query)->first();
 
-        return $permission;
+        return $permission ?? throw new NotFoundException();
     }
 }

@@ -35,9 +35,10 @@ class ForgotPasswordActionTest extends TestCase
             'email' => $user->email,
             'reseturl' => 'some_illegal_url',
         ];
-
+        
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage("The URL is not allowed ({$data['reseturl']})");
+
 
         $request = new ForgotPasswordRequest($data);
         app(ForgotPasswordAction::class)->run($request);
