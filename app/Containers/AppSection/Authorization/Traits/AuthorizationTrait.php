@@ -11,7 +11,7 @@ trait AuthorizationTrait
     /**
      * @throws NotFoundException
      */
-    public function getUser(): ?Authenticatable
+    public function getUser(): Authenticatable
     {
         return app(GetAuthenticatedUserTask::class)->run();
     }

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use App\Containers\AppSection\Authentication\Actions\ProxyRefreshForWebClientAction;
+use App\Containers\AppSection\Authentication\Actions\ApiRefreshProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
@@ -23,7 +23,7 @@ class ProxyRefreshForWebClientController extends ApiController
      */
     public function proxyRefreshForWebClient(ProxyRefreshRequest $request): JsonResponse
     {
-        $result = app(ProxyRefreshForWebClientAction::class)->run($request);
+        $result = app(ApiRefreshProxyForWebClientAction::class)->run($request);
 
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }

@@ -11,12 +11,12 @@ use App\Containers\AppSection\User\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class LoginTest.
+ * Class WebLoginActionTest.
  *
  * @group authentication
  * @group unit
  */
-class LoginTest extends TestCase
+class WebLoginActionTest extends TestCase
 {
     private array $userDetails;
     private LoginRequest $request;

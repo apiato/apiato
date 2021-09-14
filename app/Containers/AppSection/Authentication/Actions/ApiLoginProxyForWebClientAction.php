@@ -14,7 +14,7 @@ use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\DB;
 use Lcobucci\JWT\Parser;
 
-class ProxyLoginForWebClientAction extends Action
+class ApiLoginProxyForWebClientAction extends Action
 {
     /**
      * @throws UserNotConfirmedException

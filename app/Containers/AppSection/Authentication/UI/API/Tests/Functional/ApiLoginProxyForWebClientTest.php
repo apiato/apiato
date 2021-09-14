@@ -6,12 +6,12 @@ use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ApiLoginProxyTest
+ * Class ApiLoginProxyForWebClientTest
  *
  * @group authentication
  * @group api
  */
-class ApiLoginProxyTest extends ApiTestCase
+class ApiLoginProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/login';
 

@@ -7,13 +7,13 @@ use App\Containers\AppSection\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ExtractLoginCustomAttributeTest.
+ * Class ExtractLoginCustomAttributeTaskTest.
  *
  * @group authentication
  * @group unit
  *
  */
-class ExtractLoginCustomAttributeTest extends TestCase
+class ExtractLoginCustomAttributeTaskTest extends TestCase
 {
     public function testGivenValidLoginAttributeThenExtractUsername(): void
     {

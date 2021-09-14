@@ -10,7 +10,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Request;
 
-class ProxyRefreshForWebClientAction extends Action
+class ApiRefreshProxyForWebClientAction extends Action
 {
     /**
      * @throws RefreshTokenMissedException

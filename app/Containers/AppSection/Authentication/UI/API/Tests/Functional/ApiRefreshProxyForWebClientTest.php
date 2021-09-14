@@ -6,12 +6,12 @@ use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedExcept
 use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
 
 /**
- * Class ApiRefreshProxyTest
+ * Class ApiRefreshProxyForWebClientTest
  *
  * @group authentication
  * @group api
  */
-class ApiRefreshProxyTest extends ApiTestCase
+class ApiRefreshProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/refresh';
 

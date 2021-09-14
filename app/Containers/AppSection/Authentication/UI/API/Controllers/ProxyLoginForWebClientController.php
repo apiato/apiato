@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use App\Containers\AppSection\Authentication\Actions\ProxyLoginForWebClientAction;
+use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
@@ -24,7 +24,7 @@ class ProxyLoginForWebClientController extends ApiController
      */
     public function proxyLoginForWebClient(ProxyLoginPasswordGrantRequest $request): JsonResponse
     {
-        $result = app(ProxyLoginForWebClientAction::class)->run($request);
+        $result = app(ApiLoginProxyForWebClientAction::class)->run($request);
 
         return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
