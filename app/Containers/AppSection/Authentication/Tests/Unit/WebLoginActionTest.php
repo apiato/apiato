@@ -47,6 +47,7 @@ class WebLoginActionTest extends TestCase
     public function testLoginWithInvalidCredentialsThrowsAnException(): void
     {
         $this->expectException(LoginFailedException::class);
+        $this->expectExceptionMessage('Invalid Login Credentials.');
 
         $this->request = new LoginRequest(['email' => 'wrong@email.com', 'password' => 'wrong_password']);
 
