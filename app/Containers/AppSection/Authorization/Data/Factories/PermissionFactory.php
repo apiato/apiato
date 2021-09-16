@@ -12,7 +12,7 @@ class PermissionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->slug,
+            'name' => $this->faker->firstName(),
         ];
     }
 }
