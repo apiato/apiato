@@ -27,7 +27,6 @@ class CreateRoleTest extends ApiTestCase
             'name' => 'manager',
             'display_name' => 'manager',
             'description' => 'he manages things',
-            'level' => 7,
         ];
 
         $response = $this->makeCall($data);
@@ -35,7 +34,6 @@ class CreateRoleTest extends ApiTestCase
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($data['name'], $responseContent->data->name);
-        $this->assertEquals($data['level'], $responseContent->data->level);
     }
 
     public function testCreateRoleWithoutLevel(): void
@@ -50,7 +48,6 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals(0, $responseContent->data->level);
     }
 
     public function testCreateRoleWithWrongName(): void

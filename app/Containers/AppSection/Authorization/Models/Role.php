@@ -23,6 +23,5 @@ class Role extends SpatieRole
         'guard_name',
         'display_name',
         'description',
-        'level',
     ];
 }

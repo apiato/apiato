@@ -15,8 +15,6 @@ class CreateRoleAction extends Action
      */
     public function run(CreateRoleRequest $request): Role
     {
-        $level = is_null($request->level) ? 0 : $request->level;
-
-        return app(CreateRoleTask::class)->run($request->name, $request->description, $request->display_name, $level);
+        return app(CreateRoleTask::class)->run($request->name, $request->description, $request->display_name);
     }
 }
