@@ -12,8 +12,8 @@ class GetAllPermissionsTask extends Task
     ) {
     }
 
-    public function run()
+    public function run(bool $skipPagination = false): mixed
     {
-        return $this->repository->paginate();
+        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
     }
 }
