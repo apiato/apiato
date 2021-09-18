@@ -19,5 +19,6 @@ class AuthorizationPermissionsSeeder_1 extends Seeder
         $createPermissionTask->run('create-admins', 'Create new Users (Admins) from the dashboard.');
         $createPermissionTask->run('manage-admins-access', 'Assign users to Roles.');
         $createPermissionTask->run('access-dashboard', 'Access the admins dashboard.');
+        $createPermissionTask->run('access-private-docs', 'Access the private docs.');
     }
 }
