@@ -35,7 +35,6 @@
         "ext-tokenizer": "*",
         "apiato/core": "dev-master",
         "apiato/documentation-generator-container": "^2.0.3",
-        "apiato/social-auth-container": "dev-master",
         "apiato/welcome-container": "^1.0.0",
         "doctrine/dbal": "^3.0.0",
         "fideloper/proxy": "^4.4.1",
