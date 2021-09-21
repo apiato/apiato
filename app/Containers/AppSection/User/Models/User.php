@@ -14,8 +14,6 @@ class User extends UserModel
     use AuthenticationTrait;
     use Notifiable;
 
-    protected $table = 'users';
-
     protected $fillable = [
         'name',
         'email',
