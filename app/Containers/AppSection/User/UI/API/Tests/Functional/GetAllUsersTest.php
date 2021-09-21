@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tests\ApiTestCase;
+use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 
 /**
  * Class GetAllUsersTest.
