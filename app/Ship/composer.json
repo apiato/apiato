@@ -2,11 +2,14 @@
     "name": "apiato/ship",
     "description": "Apiato Ship folder where shared functionality resides",
     "require": {
+        "apiato/core": "dev-master",
+        "apiato/documentation-generator-container": "^2.0.3",
+        "apiato/welcome-container": "^1.0.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-ide-helper": "^2.9.0",
-        "barryvdh/laravel-debugbar": "^3.5.5"
+        "barryvdh/laravel-debugbar": "^3.6.2"
     },
     "scripts": {
         "post-update-cmd": [

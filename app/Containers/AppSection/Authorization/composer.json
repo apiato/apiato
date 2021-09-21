@@ -3,7 +3,7 @@
     "description": "apiato Container.",
     "type": "apiato-container",
     "require": {
-        "spatie/laravel-permission": "^4.0.0"
+        "spatie/laravel-permission": "^4.4.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
