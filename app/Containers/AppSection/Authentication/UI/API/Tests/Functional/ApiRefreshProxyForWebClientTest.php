@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
-use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 
 /**
  * Class ApiRefreshProxyForWebClientTest
