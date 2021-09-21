@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\CLI\Tests\Functional;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
-use App\Containers\AppSection\Authorization\Tests\CliTestCase;
+use App\Containers\AppSection\Authorization\UI\CLI\Tests\CliTestCase;
 
 /**
  * Class GiveAllPermissionsToRoleTest.
@@ -21,9 +21,9 @@ class GiveAllPermissionsToRoleTest extends CliTestCase
 
         $this->artisan("apiato:permissions:toRole ${roleName}")
             ->expectsOutput("Gave the Role (${roleName}) the following Permissions: " . implode(
-                ' - ',
-                $allPermissionsNames
-            ) . '.')
+                    ' - ',
+                    $allPermissionsNames
+                ) . '.')
             ->assertExitCode(0);
     }
 }

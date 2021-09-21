@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Containers\AppSection\Authorization\Tests;
+namespace App\Containers\AppSection\Authorization\UI\CLI\Tests;
 
-use App\Containers\AppSection\Authorization\Tests\TestCase as BaseTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
 
 /**
  * Class CliTestCase.
  *
  * This is the container CLI TestCase class. Use this class to add your container specific CLI related helper functions.
  */
-class CliTestCase extends BaseTestCase
+class CliTestCase extends ShipTestCase
 {
     // ..
 }

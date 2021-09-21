@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
  * Class FindPermissionTest.
