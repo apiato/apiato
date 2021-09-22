@@ -28,7 +28,7 @@ class RegisterUserActionTest extends TestCase
         $request = new RegisterUserRequest($data);
         $user = app(RegisterUserAction::class)->run($request);
 
-        $this->assertEquals($user->name, $data['name']);
+        $this->assertModelExists($user);
         Notification::assertSentTo($user, UserRegisteredNotification::class);
     }
 }
