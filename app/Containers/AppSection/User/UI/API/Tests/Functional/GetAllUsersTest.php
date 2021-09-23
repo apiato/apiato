@@ -52,11 +52,22 @@ class GetAllUsersTest extends ApiTestCase
             'name' => 'mahmoudzzz',
         ]);
 
-        $response = $this->endpoint($this->endpoint . '?search=name:mahmoudzzz')->makeCall();
-
+        $response = $this->endpoint($this->endpoint . '?search=name:' . $user->name)->makeCall();
         $response->assertStatus(200);
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($user->name, $responseContent->data[0]->name);
         $this->assertCount(1, $responseContent->data);
+        $this->assertEquals($user->name, $responseContent->data[0]->name);
+    }
+
+    public function testSearchUsersByHashID(): void
+    {
+        User::factory()->count(3)->create();
+        $user = $this->getTestingUser();
+
+        $response = $this->endpoint($this->endpoint . '?search=id:' . $user->getHashedKey())->makeCall();
+        $response->assertStatus(200);
+        $responseContent = $this->getResponseContentObject();
+        $this->assertCount(1, $responseContent->data);
+        $this->assertEquals($user->getHashedKey(), $responseContent->data[0]->id);
     }
 }
