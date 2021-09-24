@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use Laravel\Passport\PassportServiceProvider;
 
 /**
@@ -12,14 +12,14 @@ use Laravel\Passport\PassportServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends MainProvider
+class MainServiceProvider extends ParentMainServiceProvider
 {
     /**
      * Container Service Providers.
      */
     public array $serviceProviders = [
         PassportServiceProvider::class,
-        AuthProvider::class,
+        AuthServiceProvider::class,
         MiddlewareServiceProvider::class,
     ];
 

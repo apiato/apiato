@@ -2,17 +2,16 @@
 
 namespace App\Ship\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
-use App\Ship\Parents\Providers\RoutesProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
-class ShipProvider extends MainProvider
+class ShipProvider extends ParentMainServiceProvider
 {
     /**
      * Register any Service Providers on the Ship layer (including third party packages).
      */
     public array $serviceProviders = [
-        RoutesProvider::class,
+        RouteServiceProvider::class,
     ];
 
     /**

@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
 class CreateRoleController extends ApiController
 {
@@ -15,10 +16,10 @@ class CreateRoleController extends ApiController
      * @throws InvalidTransformerException
      * @throws CreateResourceFailedException
      */
-    public function createRole(CreateRoleRequest $request): array
+    public function createRole(CreateRoleRequest $request): JsonResponse
     {
         $role = app(CreateRoleAction::class)->run($request);
 
-        return $this->transform($role, RoleTransformer::class);
+        return $this->created($this->transform($role, RoleTransformer::class));
     }
 }

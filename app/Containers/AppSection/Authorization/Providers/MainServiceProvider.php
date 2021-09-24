@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 
 /**
@@ -12,7 +12,7 @@ use Spatie\Permission\PermissionServiceProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends MainProvider
+class MainServiceProvider extends ParentMainServiceProvider
 {
     /**
      * Container Service Providers.

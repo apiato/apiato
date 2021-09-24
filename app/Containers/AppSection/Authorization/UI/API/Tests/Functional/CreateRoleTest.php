@@ -31,7 +31,7 @@ class CreateRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($data['name'], $responseContent->data->name);
     }

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Providers;
 
-use App\Ship\Parents\Providers\MainProvider;
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
 /**
  * Class MainServiceProvider.
@@ -11,7 +11,7 @@ use App\Ship\Parents\Providers\MainProvider;
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends MainProvider
+class MainServiceProvider extends ParentMainServiceProvider
 {
     /**
      * Container Service Providers.

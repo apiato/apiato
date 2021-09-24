@@ -3,19 +3,13 @@
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use Apiato\Core\Loaders\RoutesLoaderTrait;
-use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
+use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthProvider;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use Laravel\Passport\RouteRegistrar;
 
-/**
- * This class is provided by Laravel as default provider,
- * to register authorization policies.
- *
- * A.K.A. App\Providers\AuthServiceProvider.php
- */
-class AuthProvider extends ParentAuthProvider
+class AuthServiceProvider extends ParentAuthProvider
 {
     use RoutesLoaderTrait;
 
@@ -29,9 +23,7 @@ class AuthProvider extends ParentAuthProvider
      *
      * @var array
      */
-    protected $policies = [
-
-    ];
+    protected $policies = [];
 
     /**
      * Register any authentication / authorization services.
