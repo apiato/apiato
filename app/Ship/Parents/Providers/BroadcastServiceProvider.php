@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Apiato\Core\Abstracts\Providers\BroadcastsProvider as AbstractBroadcastsProvider;
+use Apiato\Core\Abstracts\Providers\BroadcastServiceProvider as AbstractBroadcastServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 use function app_path;
 
@@ -11,7 +11,7 @@ use function app_path;
  *
  * A.K.A. app/Providers/BroadcastServiceProvider.php
  */
-abstract class BroadcastServiceProvider extends AbstractBroadcastsProvider
+abstract class BroadcastServiceProvider extends AbstractBroadcastServiceProvider
 {
     /**
      * Bootstrap any application services.

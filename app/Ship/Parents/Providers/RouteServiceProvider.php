@@ -2,9 +2,9 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Apiato\Core\Abstracts\Providers\RoutesProvider as AbstractRoutesProvider;
+use Apiato\Core\Abstracts\Providers\RouteServiceProvider as AbstractRouteServiceProvider;
 
-abstract class RouteServiceProvider extends AbstractRoutesProvider
+abstract class RouteServiceProvider extends AbstractRouteServiceProvider
 {
 
 }

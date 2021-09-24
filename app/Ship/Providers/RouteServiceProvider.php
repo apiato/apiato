@@ -2,9 +2,9 @@
 
 namespace App\Ship\Providers;
 
-use App\Ship\Parents\Providers\RouteServiceProvider as ParentMRouteServiceProvider;
+use App\Ship\Parents\Providers\RouteServiceProvider as ParentRouteServiceProvider;
 
-class RouteServiceProvider extends ParentMRouteServiceProvider
+class RouteServiceProvider extends ParentRouteServiceProvider
 {
     public const HOME = '/';
 }

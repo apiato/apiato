@@ -2,9 +2,9 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Apiato\Core\Abstracts\Providers\MiddlewareProvider as AbstractMiddlewareProvider;
+use Apiato\Core\Abstracts\Providers\MiddlewareServiceProvider as AbstractMiddlewareServiceProvider;
 
-abstract class MiddlewareServiceProvider extends AbstractMiddlewareProvider
+abstract class MiddlewareServiceProvider extends AbstractMiddlewareServiceProvider
 {
     protected array $middlewares = [];
 

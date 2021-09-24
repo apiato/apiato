@@ -2,9 +2,9 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Apiato\Core\Abstracts\Providers\MainProvider as AbstractMainProvider;
+use Apiato\Core\Abstracts\Providers\MainServiceProvider as AbstractMainServiceProvider;
 
-abstract class MainServiceProvider extends AbstractMainProvider
+abstract class MainServiceProvider extends AbstractMainServiceProvider
 {
     /**
      * Perform post-registration booting of services.
