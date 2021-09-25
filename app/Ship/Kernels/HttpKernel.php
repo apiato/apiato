@@ -83,7 +83,7 @@ class HttpKernel extends LaravelHttpKernel
         'auth' => Authenticate::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => SetCacheHeaders::class,
-        // Note: The "can" Middleware is registered by MiddlewareServiceProvider in Authorization Container
+        // Note: This middleware is disabled because Authorization functionality is provided by the Authorization container.
         // 'can' => \Illuminate\Auth\Middleware\Authorize::class,
         // Note: The "guest" Middleware is registered by MiddlewareServiceProvider in Authentication Container
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,

@@ -18,8 +18,7 @@ class MainServiceProvider extends ParentMainServiceProvider
      * Container Service Providers.
      */
     public array $serviceProviders = [
-        PermissionServiceProvider::class,
-        MiddlewareServiceProvider::class,
+
     ];
 
     /**
