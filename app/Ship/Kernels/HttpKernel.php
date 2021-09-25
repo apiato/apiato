@@ -2,10 +2,10 @@
 
 namespace App\Ship\Kernels;
 
-use Apiato\Core\Middlewares\Http\Authenticate;
 use Apiato\Core\Middlewares\Http\ProcessETagHeadersMiddleware;
 use Apiato\Core\Middlewares\Http\ProfilerMiddleware;
 use Apiato\Core\Middlewares\Http\ValidateJsonContent;
+use App\Ship\Middlewares\Http\Authenticate;
 use App\Ship\Middlewares\Http\EncryptCookies;
 use App\Ship\Middlewares\Http\PreventRequestsDuringMaintenance;
 use App\Ship\Middlewares\Http\TrimStrings;
