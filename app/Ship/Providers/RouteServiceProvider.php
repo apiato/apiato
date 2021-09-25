@@ -6,5 +6,7 @@ use App\Ship\Parents\Providers\RouteServiceProvider as ParentRouteServiceProvide
 
 class RouteServiceProvider extends ParentRouteServiceProvider
 {
-    public const HOME = '/';
+    // Route names
+    public const HOME = 'web_welcome_say_welcome';
+    public const LOGIN = 'login';
 }
