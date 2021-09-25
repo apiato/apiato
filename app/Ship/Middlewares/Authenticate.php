@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Middlewares\Http;
+namespace App\Ship\Middlewares;
 
 use Apiato\Core\Middlewares\Http\Authenticate as CoreMiddleware;
 use App\Ship\Providers\RouteServiceProvider;
