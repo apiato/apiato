@@ -10,8 +10,6 @@ use Throwable;
  * Class ExceptionsHandler
  *
  * A.K.A. (app/Exceptions/Handler.php)
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class ExceptionsHandler extends CoreExceptionsHandler
 {
@@ -40,14 +38,12 @@ class ExceptionsHandler extends CoreExceptionsHandler
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(static function (Throwable $e) {
         });
 
         $this->renderable(function (ParentException $e) {
-            $response = null;
-
             if (env('APP_DEBUG')) {
                 $response = [
                     'message' => $e->getMessage(),
@@ -55,12 +51,12 @@ class ExceptionsHandler extends CoreExceptionsHandler
                     'exception' => static::class,
                     'file' => $e->getFile(),
                     'line' => $e->getLine(),
-                    'trace' => $e->gettrace()
+                    'trace' => $e->getTrace(),
                 ];
             } else {
                 $response = [
                     'message' => $e->getMessage(),
-                    'errors' => $e->getErrors()
+                    'errors' => $e->getErrors(),
                 ];
             }
 
