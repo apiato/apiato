@@ -32,7 +32,7 @@ class FindRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
+            'id' => 'exists:' . config('permission.table_names.roles') . ',id',
         ];
     }
 

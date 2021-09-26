@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 use Illuminate\Support\Carbon;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class UpdateUserTest.
@@ -61,12 +62,19 @@ class UpdateUserTest extends ApiTestCase
 
     public function testUpdateExistingUserWithoutData(): void
     {
-        $response = $this->makeCall();
+        $user = $this->getTestingUser();
 
-        $response->assertStatus(422);
-        $this->assertResponseContainKeyValue([
-            'message' => 'The given data was invalid.',
-        ]);
+        $response = $this->injectId($user->id)->makeCall();
+
+        $response->assertStatus(417);
+
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('message')
+                    ->has('errors')
+                    ->where('message', 'Inputs are empty.')
+                    ->etc()
+        );
     }
 
     public function testUpdateExistingUserWithEmptyValues(): void
