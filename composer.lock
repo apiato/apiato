@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed0214d716cb0e426fd9d93377151428",
+    "content-hash": "4b812b86a570a9da40479acc9a9e6467",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v6.2.2",
+            "version": "v6.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "f718a3e38c5f314d2a3663ed0a00fbe361c7ebe4"
+                "reference": "0f75c9faddee03b13e3be8ca0df79e764dc86f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/f718a3e38c5f314d2a3663ed0a00fbe361c7ebe4",
-                "reference": "f718a3e38c5f314d2a3663ed0a00fbe361c7ebe4",
+                "url": "https://api.github.com/repos/apiato/core/zipball/0f75c9faddee03b13e3be8ca0df79e764dc86f7e",
+                "reference": "0f75c9faddee03b13e3be8ca0df79e764dc86f7e",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-09-27T06:56:14+00:00"
+            "time": "2021-09-27T08:08:54+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
