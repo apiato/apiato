@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
-use Spatie\Permission\PermissionServiceProvider;
 
 /**
  * Class MainServiceProvider.
