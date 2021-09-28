@@ -44,7 +44,7 @@ class FindUserTest extends ApiTestCase
 
         $response->assertStatus(404);
     }
-    
+
     public function testFindFilteredUserResponse(): void
     {
         $user = $this->getTestingUser();
@@ -72,6 +72,7 @@ class FindUserTest extends ApiTestCase
             fn (AssertableJson $json) =>
             $json->has('data')
                 ->where('data.email', $user->email)
+                ->count('data.roles.data', 1)
                 ->where('data.roles.data.0.name', 'admin')
                 ->etc()
         );
