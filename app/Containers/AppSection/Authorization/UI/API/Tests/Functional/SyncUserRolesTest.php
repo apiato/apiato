@@ -12,8 +12,6 @@ use Illuminate\Support\Arr;
  *
  * @group authorization
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class SyncUserRolesTest extends ApiTestCase
 {

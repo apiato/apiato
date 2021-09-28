@@ -10,7 +10,7 @@ use Laravel\Passport\PassportServiceProvider;
  *
  * The Main Service Provider of this container, it will be automatically registered in the framework.
  *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+
  */
 class MainServiceProvider extends ParentMainServiceProvider
 {

@@ -9,8 +9,6 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
  *
  * @group authorization
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class GetAllPermissionsTest extends ApiTestCase
 {

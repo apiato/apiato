@@ -11,8 +11,6 @@ use App\Containers\AppSection\User\Models\User;
  *
  * @group authorization
  * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
 class RevokeUserFromRoleTest extends ApiTestCase
 {
