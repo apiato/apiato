@@ -8,7 +8,7 @@ use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Seeders\Seeder;
 
-class AuthorizationDefaultUsersSeeder_3 extends Seeder
+class AuthorizationDefaultUsersSeeder_4 extends Seeder
 {
     /**
      * @throws CreateResourceFailedException
