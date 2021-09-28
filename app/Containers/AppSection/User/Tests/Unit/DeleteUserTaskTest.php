@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 use App\Containers\AppSection\User\Tasks\DeleteUserTask;
 use App\Containers\AppSection\User\Tests\TestCase;
 use App\Ship\Exceptions\DeleteResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 
 /**
  * Class DeleteUserTaskTest.
@@ -14,11 +15,12 @@ use App\Ship\Exceptions\DeleteResourceFailedException;
  */
 class DeleteUserTaskTest extends TestCase
 {
-    public function testDeleteUserWithInvalidData(): void
+    public function testDeleteUserWithInvalidId(): void
     {
-        $this->expectException(DeleteResourceFailedException::class);
-        $this->expectExceptionMessage('Failed to delete Resource.');
+        $this->expectException(NotFoundException::class);
 
-        app(DeleteUserTask::class)->run('wrong-format-id');
+        $noneExistingId = 777777;
+
+        app(DeleteUserTask::class)->run($noneExistingId);
     }
 }

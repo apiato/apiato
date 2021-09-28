@@ -35,7 +35,7 @@ class DeleteUserRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'exists:users,id',
+            // 'id' => 'required',
         ];
     }
 
