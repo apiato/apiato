@@ -2,10 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\Tasks;
 
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Tasks\Task;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Spatie\Permission\Contracts\Role;
 
 class AssignRolesToUserTask extends Task
 {
