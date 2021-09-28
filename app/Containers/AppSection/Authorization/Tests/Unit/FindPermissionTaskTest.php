@@ -33,11 +33,11 @@ class FindPermissionTaskTest extends TestCase
         $this->assertEquals($permission->id, $result->id);
     }
 
-    public function testGivenPermissionNotFound_ThrowException(): void
+    public function testFindPermissionWithInvalidId_Throws404(): void
     {
         $this->expectException(NotFoundException::class);
 
-        $invalidId = 78941;
+        $invalidId = 7777;
 
         app(FindPermissionTask::class)->run($invalidId);
     }

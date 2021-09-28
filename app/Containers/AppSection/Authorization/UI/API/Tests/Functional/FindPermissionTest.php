@@ -30,4 +30,13 @@ class FindPermissionTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($permissionA->name, $responseContent->data->name);
     }
+
+    public function testFindNonExistingPermission(): void
+    {
+        $invalidId = 7777;
+
+        $response = $this->injectId($invalidId)->makeCall([]);
+
+        $response->assertStatus(404);
+    }
 }

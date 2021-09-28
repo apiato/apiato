@@ -36,6 +36,15 @@ class FindUserTest extends ApiTestCase
         );
     }
 
+    public function testFindNonExistingUser(): void
+    {
+        $invalidId = 7777;
+
+        $response = $this->injectId($invalidId)->makeCall([]);
+
+        $response->assertStatus(404);
+    }
+    
     public function testFindFilteredUserResponse(): void
     {
         $user = $this->getTestingUser();

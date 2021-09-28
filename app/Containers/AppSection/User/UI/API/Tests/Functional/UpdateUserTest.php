@@ -50,17 +50,11 @@ class UpdateUserTest extends ApiTestCase
 
     public function testUpdateNonExistingUser(): void
     {
-        $fakeUserId = 7777;
+        $invalidId = 7777;
 
-        $response = $this->injectId($fakeUserId)->makeCall([]);
+        $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(422);
-        $response->assertJson(
-            fn (AssertableJson $json) =>
-            $json->has('errors')
-                ->where('errors.id.0', 'The selected id is invalid.')
-                ->etc()
-        );
+        $response->assertStatus(404);
     }
 
     public function testUpdateExistingUserWithEmptyValues(): void

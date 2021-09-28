@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\Tests\TestCase;
-use App\Ship\Exceptions\UpdateResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -18,9 +18,11 @@ class UpdateUserTaskTest extends TestCase
 {
     public function testUpdateUserWithInvalidID(): void
     {
-        $this->expectException(UpdateResourceFailedException::class);
+        $this->expectException(NotFoundException::class);
 
-        app(UpdateUserTask::class)->run([], 'none-existing-id');
+        $noneExistingId = 777777;
+
+        app(UpdateUserTask::class)->run([], $noneExistingId);
     }
 
     public function testUpdatedPasswordShouldBeHashed(): void

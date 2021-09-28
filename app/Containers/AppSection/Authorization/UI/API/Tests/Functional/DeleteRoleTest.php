@@ -30,4 +30,13 @@ class DeleteRoleTest extends ApiTestCase
 
         $response->assertStatus(204);
     }
+
+    public function testDeleteNonExistingRole(): void
+    {
+        $invalidId = 7777;
+
+        $response = $this->injectId($invalidId)->makeCall([]);
+
+        $response->assertStatus(404);
+    }
 }

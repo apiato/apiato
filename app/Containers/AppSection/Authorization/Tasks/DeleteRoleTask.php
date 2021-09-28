@@ -4,8 +4,10 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Exceptions\DeleteResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DeleteRoleTask extends Task
 {
@@ -15,12 +17,14 @@ class DeleteRoleTask extends Task
     }
 
     /**
-     * @throws DeleteResourceFailedException
+     * @throws DeleteResourceFailedException|NotFoundException
      */
     public function run($id): int
     {
         try {
             return $this->repository->delete($id);
+        } catch (ModelNotFoundException) {
+            throw new NotFoundException();
         } catch (Exception) {
             throw new DeleteResourceFailedException();
         }

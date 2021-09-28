@@ -30,4 +30,13 @@ class FindRoleTest extends ApiTestCase
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($roleA->name, $responseContent->data->name);
     }
+
+    public function testFindNonExistingRole(): void
+    {
+        $invalidId = 7777;
+
+        $response = $this->injectId($invalidId)->makeCall([]);
+
+        $response->assertStatus(404);
+    }
 }

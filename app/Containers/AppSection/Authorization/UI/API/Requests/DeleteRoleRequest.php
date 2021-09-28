@@ -32,7 +32,7 @@ class DeleteRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'exists:' . config('permission.table_names.roles') . ',id',
+            // 'id' => 'required',
         ];
     }
 

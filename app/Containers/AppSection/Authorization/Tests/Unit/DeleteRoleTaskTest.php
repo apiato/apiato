@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\DeleteRoleTask;
 use App\Containers\AppSection\Authorization\Tests\TestCase;
-use App\Ship\Exceptions\DeleteResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 
 /**
  * Class DeleteRoleTaskTest.
@@ -25,11 +25,11 @@ class DeleteRoleTaskTest extends TestCase
         $this->assertDatabaseMissing(config('permission.table_names.roles'), $role->toArray());
     }
 
-    public function testDeleteRoleWithoutNoneExistingID_ShouldThrowException(): void
+    public function testDeleteRoleWitInvalidId_Throws404(): void
     {
-        $this->expectException(DeleteResourceFailedException::class);
+        $this->expectException(NotFoundException::class);
 
-        $invalidId = 78941;
+        $invalidId = 7777;
 
         app(DeleteRoleTask::class)->run($invalidId);
     }

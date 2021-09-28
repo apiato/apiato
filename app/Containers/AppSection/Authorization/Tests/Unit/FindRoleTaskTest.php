@@ -33,11 +33,11 @@ class FindRoleTaskTest extends TestCase
         $this->assertEquals($role->id, $result->id);
     }
 
-    public function testGivenRoleNotFound_ThrowException(): void
+    public function testFindRoleWithInvalidId_Throws404(): void
     {
         $this->expectException(NotFoundException::class);
 
-        $invalidId = 78941;
+        $invalidId = 7777;
 
         app(FindRoleTask::class)->run($invalidId);
     }
