@@ -3,6 +3,8 @@
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use Hashids;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class FindUsersTest.
@@ -26,8 +28,12 @@ class FindUserTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall();
 
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($user->name, $responseContent->data->name);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.id', Hashids::encode($user->id))
+                    ->etc()
+        );
     }
 
     public function testFindFilteredUserResponse(): void
@@ -37,22 +43,28 @@ class FindUserTest extends ApiTestCase
         $response = $this->injectId($user->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
 
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-
-        $this->assertEquals($user->name, $responseContent->data->name);
-        $this->assertEquals($user->email, $responseContent->data->email);
-        $this->assertNotContains('id', json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR));
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.name', $user->name)
+                    ->where('data.email', $user->email)
+        );
     }
 
     public function testFindUserWithRelation(): void
     {
         $user = $this->getTestingUser();
+        $user->assignRole('admin');
 
         $response = $this->injectId($user->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($user->email, $responseContent->data->email);
-        $this->assertNotNull($responseContent->data->roles);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+            $json->has('data')
+                ->where('data.email', $user->email)
+                ->where('data.roles.data.0.name', 'admin')
+                ->etc()
+        );
     }
 }

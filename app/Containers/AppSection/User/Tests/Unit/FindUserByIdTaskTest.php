@@ -14,11 +14,13 @@ use App\Ship\Exceptions\NotFoundException;
  */
 class FindUserByIdTaskTest extends TestCase
 {
-    public function testDeleteUserWithInvalidData(): void
+    public function testFindUserWithInvalidId(): void
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage('The requested Resource was not found.');
 
-        app(FindUserByIdTask::class)->run('wrong-format-id');
+        $noneExistingId = 777777;
+
+        app(FindUserByIdTask::class)->run($noneExistingId);
     }
 }
