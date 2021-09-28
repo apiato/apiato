@@ -65,6 +65,7 @@ class UpdateUserTest extends ApiTestCase
 
     public function testUpdateExistingUserWithEmptyValues(): void
     {
+        $user = $this->getTestingUser();
         $data = [
             'name' => '',
             'password' => '',
@@ -72,7 +73,7 @@ class UpdateUserTest extends ApiTestCase
             'birth' => '',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->injectId($user->id)->makeCall($data);
 
         $response->assertStatus(422);
         $response->assertJson(
