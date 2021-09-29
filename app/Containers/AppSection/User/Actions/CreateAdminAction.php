@@ -8,11 +8,15 @@ use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Exceptions\Exception;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CreateAdminAction extends Action
 {
     /**
      * @throws CreateResourceFailedException
+     * @throws Throwable
      */
     public function run(CreateAdminRequest $request): User
     {
@@ -24,10 +28,18 @@ class CreateAdminAction extends Action
             'birth',
         ]);
 
-        $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
+        DB::beginTransaction();
 
-        app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
+        try {
+            $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
+            app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
 
-        return $admin;
+            DB::commit();
+
+            return $admin;
+        } catch (Exception $exception) {
+            DB::rollBack();
+            throw $exception;
+        }
     }
 }
