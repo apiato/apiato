@@ -66,11 +66,11 @@ class RevokeRolesFromUserTest extends ApiTestCase
         $response->assertStatus(200);
         $response->assertJson(
             fn (AssertableJson $json) =>
-            $json->has('data')
-                ->where('data.object', 'User')
-                ->where('data.id', $data['user_id'])
-                ->has('data.roles.data', 0)
-                ->etc()
+                $json->has('data')
+                    ->where('data.object', 'User')
+                    ->where('data.id', $data['user_id'])
+                    ->has('data.roles.data', 0)
+                    ->etc()
         );
     }
 
