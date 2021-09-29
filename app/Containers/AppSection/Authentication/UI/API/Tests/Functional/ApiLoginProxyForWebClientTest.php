@@ -21,8 +21,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'email' => 'testing@mail.com',
             'password' => 'testingpass',
         ];
-        $user = $this->getTestingUser($data);
-        $this->actingAs($user, 'web');
+        $this->getTestingUser($data);
 
         $response = $this->makeCall($data);
 
@@ -40,8 +39,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'password' => 'testingpass',
             'email_verified_at' => null,
         ];
-        $user = $this->getTestingUser($data);
-        $this->actingAs($user, 'web');
+        $this->getTestingUser($data);
 
         $response = $this->makeCall($data);
 
@@ -59,8 +57,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'password' => 'testingpass',
             'name' => 'username',
         ];
-        $user = $this->getTestingUser($data);
-        $this->actingAs($user, 'web');
+        $this->getTestingUser($data);
         $this->setLoginAttributes([
             'email' => [],
             'name' => [],
@@ -116,5 +113,17 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'email' => 'The email field is required when none of name are present.',
             'name' => 'The name field is required when none of email are present.',
         ]);
+    }
+
+    public function testGivenWrongCredential_Throw422(): void
+    {
+        $data = [
+            'email' => 'none@existing.mail',
+            'password' => 'some-unbelievable-password',
+        ];
+
+        $response = $this->makeCall($data);
+
+        $response->assertStatus(422);
     }
 }

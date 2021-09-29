@@ -30,7 +30,7 @@ class CallOAuthServerTask extends Task
 
         // If the internal request to the oauth token endpoint was not successful we throw an exception
         if (!$response->isSuccessful()) {
-            throw new LoginFailedException($content['message'], $response->getStatusCode());
+            throw new LoginFailedException($content['message']);
         }
 
         return $content;

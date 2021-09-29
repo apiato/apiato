@@ -7,6 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LoginFailedException extends Exception
 {
-    protected $code = Response::HTTP_BAD_REQUEST;
+    protected $code = Response::HTTP_UNPROCESSABLE_ENTITY;
     protected $message = 'An Exception happened during the Login Process.';
 }
