@@ -61,7 +61,6 @@ class SyncUserRolesTest extends ApiTestCase
             'user_id' => Hashids::encode($invalidId),
         ];
 
-
         $response = $this->makeCall($data);
 
         $response->assertStatus(404);
@@ -77,7 +76,6 @@ class SyncUserRolesTest extends ApiTestCase
             ],
             'user_id' => $user->getHashedKey(),
         ];
-
 
         $response = $this->makeCall($data);
 
