@@ -44,8 +44,6 @@ class UpdateUserTest extends ApiTestCase
                     ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
                     ->etc()
         );
-
-        $this->assertDatabaseHas('users', ['name' => $data['name']]);
     }
 
     public function testUpdateNonExistingUser(): void
