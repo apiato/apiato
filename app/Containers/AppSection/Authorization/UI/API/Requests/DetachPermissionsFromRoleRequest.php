@@ -33,9 +33,8 @@ class DetachPermissionsFromRoleRequest extends Request
     public function rules(): array
     {
         return [
-            'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
+            'role_id' => 'required',
             'permissions_ids' => 'required',
-            'permissions_ids.*' => 'exists:' . config('permission.table_names.permissions') . ',id',
         ];
     }
 
