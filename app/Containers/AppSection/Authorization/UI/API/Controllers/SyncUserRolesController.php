@@ -19,6 +19,6 @@ class SyncUserRolesController extends ApiController
     {
         $user = app(SyncUserRolesAction::class)->run($request);
 
-        return $this->transform($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class, ['roles']);
     }
 }

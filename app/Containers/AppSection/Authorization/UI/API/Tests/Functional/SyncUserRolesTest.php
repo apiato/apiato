@@ -16,7 +16,7 @@ use Vinkla\Hashids\Facades\Hashids;
  */
 class SyncUserRolesTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/roles/sync?include=roles';
+    protected string $endpoint = 'post@v1/roles/sync';
 
     protected array $access = [
         'roles' => '',
@@ -55,9 +55,7 @@ class SyncUserRolesTest extends ApiTestCase
         $role = Role::factory()->create();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [
-                $role->getHashedKey(),
-            ],
+            'roles_ids' => [$role->getHashedKey()],
             'user_id' => Hashids::encode($invalidId),
         ];
 
@@ -71,9 +69,7 @@ class SyncUserRolesTest extends ApiTestCase
         $user = User::factory()->create();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [
-                Hashids::encode($invalidId),
-            ],
+            'roles_ids' => [Hashids::encode($invalidId)],
             'user_id' => $user->getHashedKey(),
         ];
 
