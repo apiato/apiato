@@ -100,7 +100,9 @@ return [
         | Default: []
         |
         */
-        'allow-roles-to-access-all-routes' => [],
+        'allow-roles-to-access-all-routes' => [
+            // config('appSection-authorization.admin_role'),
+        ],
 
         /*
         |--------------------------------------------------------------------------

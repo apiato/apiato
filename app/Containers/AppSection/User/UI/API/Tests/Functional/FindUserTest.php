@@ -63,7 +63,7 @@ class FindUserTest extends ApiTestCase
     public function testFindUserWithRelation(): void
     {
         $user = $this->getTestingUser();
-        $user->assignRole('admin');
+        $user->assignRole(config('appSection-authorization.admin_role'));
 
         $response = $this->injectId($user->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
@@ -73,7 +73,7 @@ class FindUserTest extends ApiTestCase
             $json->has('data')
                 ->where('data.email', $user->email)
                 ->count('data.roles.data', 1)
-                ->where('data.roles.data.0.name', 'admin')
+                ->where('data.roles.data.0.name', config('appSection-authorization.admin_role'))
                 ->etc()
         );
     }

@@ -24,7 +24,7 @@ class AuthorizationDefaultUsersSeeder_4 extends Seeder
 
         // Default Users (with their roles) ---------------------------------------------
         $admin = app(CreateUserByCredentialsTask::class)->run($userData, isAdmin: true);
-        $admin->assignRole(app(FindRoleTask::class)->run('admin'));
+        $admin->assignRole(app(FindRoleTask::class)->run(config('appSection-authorization.admin_role')));
         $admin->email_verified_at = now();
         $admin->save();
     }

@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class CreateAdminTest.
@@ -28,17 +29,18 @@ class CreateAdminTest extends ApiTestCase
             'password' => 'secret',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=roles')->makeCall($data);
 
         $response->assertStatus(200);
-        $this->assertResponseContainKeyValue([
-            'email' => $data['email'],
-            'name' => $data['name'],
-        ]);
-
-        $this->assertResponseContainKeys(['id']);
-        $this->assertDatabaseHas('users', ['email' => $data['email']]);
-        $user = User::where(['email' => $data['email']])->first();
-        $this->assertEquals(true, $user->is_admin);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.object', 'User')
+                    ->where('data.email', $data['email'])
+                    ->where('data.name', $data['name'])
+                    ->count('data.roles.data', 1)
+                    ->where('data.roles.data.0.name', config('appSection-authorization.admin_role'))
+                    ->etc()
+        );
     }
 }

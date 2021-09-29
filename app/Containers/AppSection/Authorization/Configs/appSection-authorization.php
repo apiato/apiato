@@ -11,4 +11,14 @@ return [
     |
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Role
+    |--------------------------------------------------------------------------
+    |
+    | This role is used across the app as the main authority e.g. super admin role
+    |
+    */
+
+    'admin_role' => 'admin',
 ];

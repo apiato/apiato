@@ -6,6 +6,6 @@ trait AuthorizationTrait
 {
     public function hasAdminRole(): bool
     {
-        return $this->hasRole('admin');
+        return $this->hasRole(config('appSection-authorization.admin_role'));
     }
 }
