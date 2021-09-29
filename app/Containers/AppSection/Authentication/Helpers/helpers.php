@@ -15,7 +15,7 @@ if (!function_exists('loginAttributeValidationRulesMerger')) {
 
             $fieldName = $prefix . $key;
 
-            $rules[$fieldName] = "required:$fieldName|exists:users,$key|$validators";
+            $rules[$fieldName] = "required:$fieldName|$validators";
 
             return $rules;
         }
@@ -31,7 +31,7 @@ if (!function_exists('loginAttributeValidationRulesMerger')) {
 
             $fieldName = $prefix . $key;
 
-            $rules[$fieldName] = "required_without_all:$otherLoginFields|exists:users,$key|$validators";
+            $rules[$fieldName] = "required_without_all:$otherLoginFields|$validators";
         }
 
         return $rules;
