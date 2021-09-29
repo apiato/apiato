@@ -21,7 +21,6 @@ class UserFactory extends Factory
             'password' => $password ?: $password = Hash::make('testing-password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'is_admin' => false,
             'gender' => $this->faker->randomElement(['male', 'female', 'unspecified']),
             'birth' => $this->faker->date(),
         ];
@@ -29,10 +28,8 @@ class UserFactory extends Factory
 
     public function admin(): UserFactory
     {
-        return $this->state(function () {
-            return [
-                'is_admin' => true,
-            ];
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole(config('appSection-authorization.admin_role'));
         });
     }
 

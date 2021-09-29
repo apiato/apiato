@@ -21,7 +21,6 @@ class User extends UserModel
         'gender',
         'birth',
         'email_verified_at',
-        'is_admin',
     ];
 
     protected $hidden = [
@@ -30,7 +29,6 @@ class User extends UserModel
     ];
 
     protected $casts = [
-        'is_admin' => 'boolean',
         'email_verified_at' => 'datetime',
         'birth' => 'date',
     ];

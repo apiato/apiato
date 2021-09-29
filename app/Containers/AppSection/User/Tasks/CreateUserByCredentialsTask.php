@@ -19,7 +19,7 @@ class CreateUserByCredentialsTask extends Task
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(array $data, bool $isAdmin = false): User
+    public function run(array $data): User
     {
         if (!array_key_exists('email', $data)) {
             throw new CreateResourceFailedException('Email field is required');
@@ -30,7 +30,6 @@ class CreateUserByCredentialsTask extends Task
         }
 
         $data['password'] = Hash::make($data['password']);
-        $data['is_admin'] = $isAdmin;
 
         try {
             $user = $this->repository->create($data);

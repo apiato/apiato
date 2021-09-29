@@ -15,4 +15,13 @@ class RoleFactory extends Factory
             'name' => $this->faker->firstName(),
         ];
     }
+
+    public function admin(): RoleFactory
+    {
+        return $this->state(function () {
+            return [
+                'name' => config('appSection-authorization.admin_role'),
+            ];
+        });
+    }
 }

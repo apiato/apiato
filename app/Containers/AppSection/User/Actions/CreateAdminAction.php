@@ -24,10 +24,8 @@ class CreateAdminAction extends Action
             'birth',
         ]);
 
-        $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData, isAdmin: true);
+        $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
 
-        // NOTE: if not using a single general role for all Admins, comment out that line below. And assign Roles
-        // to your users manually. (To list admins in your dashboard look for users with `is_admin=true`).
         app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
 
         return $admin;
