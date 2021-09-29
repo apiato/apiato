@@ -19,6 +19,6 @@ class RevokeRolesFromUserController extends ApiController
     {
         $user = app(RevokeRolesFromUserAction::class)->run($request);
 
-        return $this->transform($user, UserTransformer::class);
+        return $this->transform($user, UserTransformer::class, ['roles']);
     }
 }
