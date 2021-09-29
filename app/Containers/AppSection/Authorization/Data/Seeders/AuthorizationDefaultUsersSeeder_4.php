@@ -2,17 +2,15 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
-use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
+use App\Containers\AppSection\User\Actions\CreateAdminAction;
+use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Seeders\Seeder;
 
 class AuthorizationDefaultUsersSeeder_4 extends Seeder
 {
     /**
      * @throws CreateResourceFailedException
-     * @throws NotFoundException
      */
     public function run(): void
     {
@@ -23,8 +21,8 @@ class AuthorizationDefaultUsersSeeder_4 extends Seeder
         ];
 
         // Default Users (with their roles) ---------------------------------------------
-        $admin = app(CreateUserByCredentialsTask::class)->run($userData);
-        $admin->assignRole(app(FindRoleTask::class)->run(config('appSection-authorization.admin_role')));
+        $request = new CreateAdminRequest($userData);
+        $admin = app(CreateAdminAction::class)->run($request);
         $admin->email_verified_at = now();
         $admin->save();
     }
