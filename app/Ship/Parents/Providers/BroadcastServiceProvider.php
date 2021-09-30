@@ -4,7 +4,6 @@ namespace App\Ship\Parents\Providers;
 
 use Apiato\Core\Abstracts\Providers\BroadcastServiceProvider as AbstractBroadcastServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
-use function app_path;
 
 /**
  * Class BroadcastServiceProvider
