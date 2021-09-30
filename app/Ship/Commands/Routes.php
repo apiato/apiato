@@ -13,4 +13,4 @@
 
 //Artisan::command('inspire', function () {
 //    $this->comment(Inspiring::quote());
-//})->describe('Display an inspiring quote');
+//})->purpose('Display an inspiring quote');
