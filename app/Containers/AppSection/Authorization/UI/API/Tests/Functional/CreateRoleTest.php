@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class CreateRoleTest.
@@ -45,5 +46,20 @@ class CreateRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('message')
+                    ->has('errors')
+                    ->where('errors.name.0.0', 'String should not contain space.')
+        );
+    }
+
+    public function testGivenHaveNoAccess_CannotCreateRole(): void
+    {
+        $this->getTestingUserWithoutAccess();
+
+        $response = $this->makeCall([]);
+
+        $response->assertStatus(403);
     }
 }
