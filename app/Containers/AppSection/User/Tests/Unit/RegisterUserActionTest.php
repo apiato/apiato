@@ -16,19 +16,17 @@ use Illuminate\Support\Facades\Notification;
  */
 class RegisterUserActionTest extends TestCase
 {
-    public function testCreateUser(): void
+    public function testSendNotification_AfterUserRegistration(): void
     {
         Notification::fake();
         $data = [
             'email' => 'Mahmoud@test.test',
             'password' => 'so-secret',
-            'name' => 'Mahmoud',
         ];
 
         $request = new RegisterUserRequest($data);
         $user = app(RegisterUserAction::class)->run($request);
 
-        $this->assertModelExists($user);
         Notification::assertSentTo($user, UserRegisteredNotification::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Actions\RegisterUserAction;
+use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\User\Tests\TestCase;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
@@ -15,6 +16,17 @@ use App\Ship\Exceptions\CreateResourceFailedException;
  */
 class CreateUserByCredentialsTaskTest extends TestCase
 {
+    public function testCreateUserByCredentials(): void
+    {
+        $data = [
+            'email' => 'Mahmoud@test.test',
+            'password' => 'so-secret',
+        ];
+
+        $user = app(CreateUserByCredentialsTask::class)->run($data);
+
+        $this->assertModelExists($user);
+    }
 
     public function testCreateUserWithoutEmail(): void
     {
@@ -26,8 +38,7 @@ class CreateUserByCredentialsTaskTest extends TestCase
             'name' => 'Mahmoud',
         ];
 
-        $request = new RegisterUserRequest($data);
-        app(RegisterUserAction::class)->run($request);
+        app(CreateUserByCredentialsTask::class)->run($data);
     }
 
     public function testCreateUserWithoutPassword(): void
@@ -40,8 +51,7 @@ class CreateUserByCredentialsTaskTest extends TestCase
             'name' => 'Mahmoud',
         ];
 
-        $request = new RegisterUserRequest($data);
-        app(RegisterUserAction::class)->run($request);
+        app(CreateUserByCredentialsTask::class)->run($data);
     }
 
     public function testCreateUserWithInvalidData(): void
@@ -55,7 +65,6 @@ class CreateUserByCredentialsTaskTest extends TestCase
             'birth' => 'wrong-format',
         ];
 
-        $request = new RegisterUserRequest($data);
-        app(RegisterUserAction::class)->run($request);
+        app(CreateUserByCredentialsTask::class)->run($data);
     }
 }
