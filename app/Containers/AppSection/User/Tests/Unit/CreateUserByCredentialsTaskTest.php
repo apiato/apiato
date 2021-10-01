@@ -2,10 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit;
 
-use App\Containers\AppSection\User\Actions\RegisterUserAction;
 use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\User\Tests\TestCase;
-use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
 
 /**
