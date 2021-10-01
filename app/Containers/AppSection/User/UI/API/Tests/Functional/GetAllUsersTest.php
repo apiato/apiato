@@ -23,6 +23,7 @@ class GetAllUsersTest extends ApiTestCase
     public function testGetAllUsersByAdmin(): void
     {
         User::factory()->count(2)->create();
+        $this->getTestingUserWithoutAccess(createUserAsAdmin: true);
 
         $response = $this->makeCall();
 
