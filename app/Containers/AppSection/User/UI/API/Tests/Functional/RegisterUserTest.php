@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class RegisterUserTest.
@@ -25,42 +26,42 @@ class RegisterUserTest extends ApiTestCase
     {
         $data = [
             'email' => 'apiato@mail.test',
-            'name' => 'Apiato',
             'password' => 'secretpass',
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
-        $this->assertResponseContainKeyValue([
-            'email' => $data['email'],
-            'name' => $data['name'],
-        ]);
-        $responseContent = $this->getResponseContentObject();
-        $this->assertNotEmpty($responseContent->data);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.email', $data['email'])
+                    ->etc()
+        );
     }
 
     public function testRegisterNewUserUsingGetVerb(): void
     {
         $data = [
             'email' => 'apiato@mail.test',
-            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
         $response = $this->endpoint('get@v1/register')->makeCall($data);
 
         $response->assertStatus(405);
-        $this->assertResponseContainKeyValue([
-            'message' => 'The GET method is not supported for this route. Supported methods: POST.',
-        ]);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+            $json->has('message')
+                ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
+                ->etc()
+        );
     }
 
     public function testRegisterExistingUser(): void
     {
         $userDetails = [
             'email' => 'apiato@mail.test',
-            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
@@ -68,77 +69,51 @@ class RegisterUserTest extends ApiTestCase
 
         $data = [
             'email' => $userDetails['email'],
-            'name' => $userDetails['name'],
             'password' => $userDetails['password'],
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-        $this->assertValidationErrorContain([
-            'email' => 'The email has already been taken.',
-        ]);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+            $json->has('errors')
+                ->where('errors.email.0', 'The email has already been taken.')
+                ->etc()
+        );
     }
 
-    public function testRegisterNewUserWithoutEmail(): void
+    public function testRegisterNewUserWithoutData(): void
     {
-        $data = [
-            'name' => 'Apiato',
-            'password' => 'secret',
-        ];
+        $data = [];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-        // assert response contain the correct message
-        $this->assertValidationErrorContain([
-            'email' => 'The email field is required.',
-        ]);
-    }
-
-    public function testRegisterNewUserWithoutName(): void
-    {
-        $data = [
-            'email' => 'apiato@mail.test',
-            'password' => 'secret',
-        ];
-
-        $response = $this->makeCall($data);
-
-        $response->assertStatus(422);
-        $this->assertValidationErrorContain([
-            'name' => 'The name field is required.',
-        ]);
-    }
-
-    public function testRegisterNewUserWithoutPassword(): void
-    {
-        $data = [
-            'email' => 'apiato@mail.test',
-            'name' => 'Apiato',
-        ];
-
-        $response = $this->makeCall($data);
-
-        $response->assertStatus(422);
-        $this->assertValidationErrorContain([
-            'password' => 'The password field is required.',
-        ]);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+            $json->has('errors')
+                ->where('errors.email.0', 'The email field is required.')
+                ->where('errors.password.0', 'The password field is required.')
+                ->etc()
+        );
     }
 
     public function testRegisterNewUserWithInvalidEmail(): void
     {
         $data = [
             'email' => 'missing-at.test',
-            'name' => 'Apiato',
             'password' => 'secret',
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
-        $this->assertValidationErrorContain([
-            'email' => 'The email must be a valid email address.',
-        ]);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+            $json->has('errors')
+                ->where('errors.email.0', 'The email must be a valid email address.')
+                ->etc()
+        );
     }
 }
