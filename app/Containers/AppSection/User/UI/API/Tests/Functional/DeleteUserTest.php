@@ -37,8 +37,8 @@ class DeleteUserTest extends ApiTestCase
 
         $response->assertStatus(404);
     }
-    
-    public function testDeleteAnotherExistingUser(): void
+
+    public function testGivenHaveNoAccess_CannotDeleteAnotherUser(): void
     {
         $this->getTestingUserWithoutAccess();
         $anotherUser = User::factory()->create();
