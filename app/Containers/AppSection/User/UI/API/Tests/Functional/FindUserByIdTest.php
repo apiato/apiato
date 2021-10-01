@@ -7,12 +7,12 @@ use Hashids;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class FindUsersTest.
+ * Class FindUserByIdTest.
  *
  * @group user
  * @group api
  */
-class FindUserTest extends ApiTestCase
+class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{id}';
 

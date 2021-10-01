@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 
 /**
- * Class FindUsersTest.
+ * Class GetAuthenticatedUserTest.
  *
  * @group user
  * @group api
