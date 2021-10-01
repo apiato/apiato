@@ -8,12 +8,12 @@ use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
 
 /**
- * Class RegisterUserTaskTest.
+ * Class CreateUserByCredentialsTaskTest.
  *
  * @group user
  * @group unit
  */
-class RegisterUserTaskTest extends TestCase
+class CreateUserByCredentialsTaskTest extends TestCase
 {
 
     public function testCreateUserWithoutEmail(): void
