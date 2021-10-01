@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * Class GetAllUsersTest.
@@ -28,9 +29,11 @@ class GetAllUsersTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-
-        $this->assertCount(4, $responseContent->data);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data', 4)
+                    ->etc()
+        );
     }
 
     public function testGetAllUsersByNonAdmin(): void
@@ -41,9 +44,12 @@ class GetAllUsersTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertStatus(403);
-        $this->assertResponseContainKeyValue([
-            'message' => 'This action is unauthorized.',
-        ]);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('message')
+                    ->where('message', 'This action is unauthorized.')
+                    ->etc()
+        );
     }
 
     public function testSearchUsersByName(): void
@@ -54,10 +60,14 @@ class GetAllUsersTest extends ApiTestCase
         ]);
 
         $response = $this->endpoint($this->endpoint . '?search=name:' . $user->name)->makeCall();
+
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-        $this->assertCount(1, $responseContent->data);
-        $this->assertEquals($user->name, $responseContent->data[0]->name);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.0.name', $user->name)
+                    ->etc()
+        );
     }
 
     public function testSearchUsersByHashID(): void
@@ -66,9 +76,13 @@ class GetAllUsersTest extends ApiTestCase
         $user = $this->getTestingUser();
 
         $response = $this->endpoint($this->endpoint . '?search=id:' . $user->getHashedKey())->makeCall();
+
         $response->assertStatus(200);
-        $responseContent = $this->getResponseContentObject();
-        $this->assertCount(1, $responseContent->data);
-        $this->assertEquals($user->getHashedKey(), $responseContent->data[0]->id);
+        $response->assertJson(
+            fn (AssertableJson $json) =>
+                $json->has('data')
+                    ->where('data.0.id', $user->getHashedKey())
+                    ->etc()
+        );
     }
 }
