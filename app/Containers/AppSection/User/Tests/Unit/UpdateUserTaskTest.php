@@ -16,6 +16,19 @@ use Illuminate\Support\Facades\Hash;
  */
 class UpdateUserTaskTest extends TestCase
 {
+    public function testUpdateUser(): void
+    {
+        $user = User::factory()->create();
+        $data = [
+            'name' => 'new name',
+        ];
+
+        $updatedUser = app(UpdateUserTask::class)->run($data, $user->id);
+
+        $this->assertEquals($user->id, $updatedUser->id);
+        $this->assertEquals($data['name'], $updatedUser->name);
+    }
+
     public function testUpdateUserWithInvalidID(): void
     {
         $this->expectException(NotFoundException::class);
