@@ -2,8 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\Tasks;
 
+use Apiato\Core\Exceptions\CoreInternalErrorException;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Ship\Parents\Tasks\Task;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class GetAllPermissionsTask extends Task
 {
@@ -12,8 +14,14 @@ class GetAllPermissionsTask extends Task
     ) {
     }
 
+    /**
+     * @throws CoreInternalErrorException
+     * @throws RepositoryException
+     */
     public function run(bool $skipPagination = false): mixed
     {
-        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
+        $repository = $this->addRequestCriteria()->repository;
+
+        return $skipPagination ? $repository->all() : $repository->paginate();
     }
 }

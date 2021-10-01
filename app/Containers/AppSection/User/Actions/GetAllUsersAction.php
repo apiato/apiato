@@ -15,6 +15,6 @@ class GetAllUsersAction extends Action
      */
     public function run()
     {
-        return app(GetAllUsersTask::class)->addRequestCriteria()->run();
+        return app(GetAllUsersTask::class)->run();
     }
 }
