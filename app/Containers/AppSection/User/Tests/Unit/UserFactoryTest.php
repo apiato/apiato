@@ -13,6 +13,13 @@ use App\Containers\AppSection\User\Tests\TestCase;
  */
 class UserFactoryTest extends TestCase
 {
+    public function testCreateUser(): void
+    {
+        $user = User::factory()->create();
+
+        $this->assertInstanceOf(User::class, $user);
+    }
+
     public function testCreateAdminUser(): void
     {
         $user = User::factory()->admin()->create();
