@@ -24,7 +24,7 @@ class CreatePermissionTask extends Task
 
         try {
             $permission = $this->repository->create([
-                'name' => $name,
+                'name' => strtolower($name),
                 'description' => $description,
                 'display_name' => $displayName,
                 'guard_name' => 'web',
