@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -21,20 +21,6 @@ class WebLoginActionTest extends TestCase
     private array $userDetails;
     private LoginRequest $request;
     private mixed $action;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->userDetails = [
-            'email' => 'Mahmoud@test.test',
-            'password' => 'so-secret',
-            'name' => 'Mahmoud',
-        ];
-        $this->getTestingUser($this->userDetails);
-        $this->actingAs($this->testingUser, 'web');
-        $this->request = new LoginRequest($this->userDetails);
-        $this->action = app(WebLoginAction::class);
-    }
 
     public function testLogin(): void
     {
@@ -66,5 +52,19 @@ class WebLoginActionTest extends TestCase
         $this->action->run($this->request);
 
         Config::set('appSection-authentication.require_email_confirmation', $configInitialValue);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->userDetails = [
+            'email' => 'Mahmoud@test.test',
+            'password' => 'so-secret',
+            'name' => 'Mahmoud',
+        ];
+        $this->getTestingUser($this->userDetails);
+        $this->actingAs($this->testingUser, 'web');
+        $this->request = new LoginRequest($this->userDetails);
+        $this->action = app(WebLoginAction::class);
     }
 }
