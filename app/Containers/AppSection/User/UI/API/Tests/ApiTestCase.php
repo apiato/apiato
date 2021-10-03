@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 
 /**
  * Class ApiTestCase.
  *
  * This is the container API TestCase class. Use this class to add your container specific API related helper functions.
  */
-class ApiTestCase extends ShipTestCase
+class ApiTestCase extends ParentTestCase
 {
     // ..
 }

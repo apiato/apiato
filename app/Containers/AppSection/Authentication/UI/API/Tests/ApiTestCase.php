@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Tests;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
  *
  * This is the container API TestCase class. Use this class to add your container specific API related helper functions.
  */
-class ApiTestCase extends ShipTestCase
+class ApiTestCase extends ParentTestCase
 {
     private bool $testingFilesCreated = false;
     private string $publicFilePath;
