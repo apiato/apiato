@@ -24,7 +24,7 @@ class LoginController extends WebController
         try {
             app(WebLoginAction::class)->run($request);
         } catch (Exception $e) {
-            return redirect()->route(RouteServiceProvider::LOGIN)->with('status', $e->getMessage());
+            return redirect()->route(RouteServiceProvider::LOGIN)->with('login', $e->getMessage());
         }
 
         return redirect()->intended();

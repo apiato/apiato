@@ -45,7 +45,7 @@
             color: #FFFFFF;
             font-size: 14px;
             -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease ;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
@@ -133,22 +133,20 @@
 
 <div class="login-page">
     <h1 class="center">Login</h1>
-    <div class="form">
-        <form class="login-form" action="{{route('login_post_form')}}" method="post">
-            @csrf
-            @if(session('status'))
-                <div class="text-red">{{ session('status') }}</div>
-            @endif
-            <label class="hide" for="email">Email</label>
-            <input type="text"  placeholder="email" id="email" name="email"/>
-            <span class="text-red">{{ $errors->first('email') }}</span>
-            <label class="hide" for="password">Password</label>
-            <input type="password" placeholder="password" id="password" name="password"/>
-            <span class="text-red">{{ $errors->first('password') }}</span>
+    <form class="form" action="{{route('login_post_form')}}" method="post">
+        @csrf
+        @if(session('login'))
+            <div class="text-red">{{ session('login') }}</div>
+        @endif
+        <label class="hide" for="email">Email</label>
+        <input type="text" placeholder="email" id="email" name="email"/>
+        <span class="text-red">{{ $errors->first('email') }}</span>
+        <label class="hide" for="password">Password</label>
+        <input type="password" placeholder="password" id="password" name="password"/>
+        <span class="text-red">{{ $errors->first('password') }}</span>
 
-            <button>login</button>
-        </form>
-    </div>
+        <button>login</button>
+    </form>
 </div>
 
 </body>
