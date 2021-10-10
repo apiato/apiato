@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authentication\Middlewares;
 
-use Apiato\Core\Abstracts\Middlewares\Middleware;
+use App\Ship\Parents\Middlewares\Middleware as ParentMiddleware;
 use App\Ship\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated extends Middleware
+class RedirectIfAuthenticated extends ParentMiddleware
 {
     /**
      * Handle an incoming request.
