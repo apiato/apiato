@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\AppSection\Authentication\Exceptions\EmailNotVerifiedException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
@@ -19,8 +19,9 @@ class LoginProxyForWebClientController extends ApiController
      * This is only to help the Web Apps (JavaScript clients) hide
      * their ID's and Secrets when contacting the OAuth server and obtain Tokens.
      *
+     * @param LoginProxyPasswordGrantRequest $request
+     * @return JsonResponse
      * @throws LoginFailedException
-     * @throws UserNotConfirmedException
      */
     public function loginProxyForWebClient(LoginProxyPasswordGrantRequest $request): JsonResponse
     {

@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
+use App\Containers\AppSection\Authentication\Exceptions\EmailNotVerifiedException;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
@@ -38,20 +38,6 @@ class WebLoginActionTest extends TestCase
         $this->request = new LoginRequest(['email' => 'wrong@email.com', 'password' => 'wrong_password']);
 
         $this->action->run($this->request);
-    }
-
-    public function testGivenEmailConfirmationIsRequiredAndUserIsNotConfirmedThrowsAnException(): void
-    {
-        $this->expectException(UserNotConfirmedException::class);
-
-        $configInitialValue = config('appSection-authentication.require_email_confirmation');
-        Config::set('appSection-authentication.require_email_confirmation', true);
-        $this->testingUser->email_verified_at = null;
-        $this->testingUser->save();
-
-        $this->action->run($this->request);
-
-        Config::set('appSection-authentication.require_email_confirmation', $configInitialValue);
     }
 
     protected function setUp(): void

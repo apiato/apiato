@@ -3,8 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
-use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
@@ -17,7 +15,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 class WebLoginAction extends Action
 {
     /**
-     * @throws UserNotConfirmedException
      * @throws LoginFailedException
      * @throws NotFoundException
      */
@@ -42,21 +39,6 @@ class WebLoginAction extends Action
             throw new LoginFailedException('Invalid Login Credentials.');
         }
 
-        $user = app(GetAuthenticatedUserTask::class)->run();
-        $this->processEmailConfirmation($user);
-
-        return $user;
-    }
-
-    /**
-     * @throws UserNotConfirmedException
-     */
-    private function processEmailConfirmation(User $user): void
-    {
-        $userConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);
-
-        if (!$userConfirmed) {
-            throw new UserNotConfirmedException();
-        }
+        return app(GetAuthenticatedUserTask::class)->run();
     }
 }

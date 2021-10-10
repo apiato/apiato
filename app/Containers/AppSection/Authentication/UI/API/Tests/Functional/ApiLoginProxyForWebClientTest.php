@@ -32,24 +32,6 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 
-    public function testClientWebAdminProxyUnconfirmedLogin(): void
-    {
-        $data = [
-            'email' => 'testing2@mail.com',
-            'password' => 'testingpass',
-            'email_verified_at' => null,
-        ];
-        $this->getTestingUser($data);
-
-        $response = $this->makeCall($data);
-
-        if (config('appSection-authentication.require_email_confirmation')) {
-            $response->assertStatus(409);
-        } else {
-            $response->assertStatus(200);
-        }
-    }
-
     public function testLoginWithNameAttribute(): void
     {
         $data = [

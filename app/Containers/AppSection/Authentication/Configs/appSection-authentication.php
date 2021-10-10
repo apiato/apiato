@@ -6,12 +6,12 @@ return [
     | Email Confirmation
     |--------------------------------------------------------------------------
     |
-    | When set to true, the user must confirm his email before being able to
+    | When set to true, the user must verify his email before being able to
     | Login, after his registration.
     |
     */
 
-    'require_email_confirmation' => false,
+    'require_email_verification' => false,
 
     /*
     |--------------------------------------------------------------------------

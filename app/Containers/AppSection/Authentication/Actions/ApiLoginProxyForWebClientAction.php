@@ -3,21 +3,15 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
-use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\DB;
-use Lcobucci\JWT\Parser;
 
 class ApiLoginProxyForWebClientAction extends Action
 {
     /**
-     * @throws UserNotConfirmedException
      * @throws LoginFailedException
      */
     public function run(LoginProxyPasswordGrantRequest $request): array
@@ -38,32 +32,11 @@ class ApiLoginProxyForWebClientAction extends Action
         $sanitizedData['scope'] = '';
 
         $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
-        $this->processEmailConfirmation($responseContent);
         $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
 
         return [
             'response_content' => $responseContent,
             'refresh_cookie' => $refreshCookie,
         ];
-    }
-
-    /**
-     * @throws UserNotConfirmedException
-     */
-    private function processEmailConfirmation($response): void
-    {
-        $user = $this->extractUserFromAuthServerResponse($response);
-        $isUserConfirmed = app(CheckIfUserEmailIsConfirmedTask::class)->run($user);
-
-        if (!$isUserConfirmed) {
-            throw new UserNotConfirmedException();
-        }
-    }
-
-    private function extractUserFromAuthServerResponse($response)
-    {
-        $tokenId = app(Parser::class)->parse($response['access_token'])->claims()->get('jti');
-        $userAccessRecord = DB::table('oauth_access_tokens')->find($tokenId);
-        return User::find($userAccessRecord->user_id);
     }
 }

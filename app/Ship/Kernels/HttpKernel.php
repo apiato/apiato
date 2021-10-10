@@ -85,12 +85,14 @@ class HttpKernel extends LaravelHttpKernel
         'cache.headers' => SetCacheHeaders::class,
         // Note: This middleware is disabled because Authorization functionality is provided by the Authorization container.
         // 'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        // Note: The "guest" Middleware is registered by MiddlewareServiceProvider in Authentication Container
+        // Note: The "guest" middleware is registered by MiddlewareServiceProvider in Authentication Container
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
-        'verified' => EnsureEmailIsVerified::class,
+        // Note: The "verified" middleware is custom implemented in Authentication Container (Middlewares/EnsureEmailIsVerified)
+        // and registered by its MiddlewareServiceProvider
+        // 'verified' => EnsureEmailIsVerified::class,
     ];
 
     /**

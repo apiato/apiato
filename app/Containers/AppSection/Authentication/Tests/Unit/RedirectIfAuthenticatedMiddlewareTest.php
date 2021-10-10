@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 /**
  * Class RedirectIfAuthenticatedMiddlewareTest.
@@ -25,10 +25,20 @@ class RedirectIfAuthenticatedMiddlewareTest extends TestCase
 
         $middleware = new RedirectIfAuthenticated();
 
-        $response = $middleware->handle($request, function ($req) {
-            $this->assertInstanceOf(Request::class, $req);
+        $response = $middleware->handle($request, static function () {
         });
 
-        $this->assertEquals($response->getStatusCode(), 302);
+        $this->assertEquals(302, $response->getStatusCode());
+    }
+
+    public function testSkipIfUnAuthenticated(): void
+    {
+        $request = Request::create(RouteServiceProvider::LOGIN);
+
+        $middleware = new RedirectIfAuthenticated();
+
+        $middleware->handle($request, function ($req) {
+            $this->assertInstanceOf(Request::class, $req);
+        });
     }
 }
