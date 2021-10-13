@@ -12,9 +12,7 @@ class UserForgotPasswordMail extends Mail implements ShouldQueue
     use Queueable;
 
     protected User $recipient;
-
     protected string $token;
-
     protected string $reseturl;
 
     public function __construct(User $recipient, $token, $reseturl)
