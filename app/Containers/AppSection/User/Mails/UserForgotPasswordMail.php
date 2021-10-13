@@ -22,7 +22,7 @@ class UserForgotPasswordMail extends Mail implements ShouldQueue
         $this->reseturl = $reseturl;
     }
 
-    public function build(): self
+    public function build(): static
     {
         return $this->view('appSection@user::user-forgotPassword')
             ->to($this->recipient->email, $this->recipient->name)

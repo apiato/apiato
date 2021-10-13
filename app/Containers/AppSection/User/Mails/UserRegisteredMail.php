@@ -18,7 +18,7 @@ class UserRegisteredMail extends Mail implements ShouldQueue
         $this->user = $user;
     }
 
-    public function build(): self
+    public function build(): static
     {
         return $this->view('appSection@user::user-registered')
             ->to($this->user->email, $this->user->name)
