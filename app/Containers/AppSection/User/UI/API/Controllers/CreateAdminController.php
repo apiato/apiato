@@ -8,12 +8,14 @@ use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Controllers\ApiController;
+use Throwable;
 
 class CreateAdminController extends ApiController
 {
     /**
      * @throws InvalidTransformerException
      * @throws CreateResourceFailedException
+     * @throws Throwable
      */
     public function createAdmin(CreateAdminRequest $request): array
     {

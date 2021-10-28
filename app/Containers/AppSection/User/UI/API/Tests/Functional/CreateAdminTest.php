@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 

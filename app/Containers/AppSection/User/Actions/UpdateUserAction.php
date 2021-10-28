@@ -5,13 +5,14 @@ namespace App\Containers\AppSection\User\Actions;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
 
 class UpdateUserAction extends Action
 {
     /**
-     * @throws UpdateResourceFailedException
+     * @throws UpdateResourceFailedException|NotFoundException
      */
     public function run(UpdateUserRequest $request): User
     {
