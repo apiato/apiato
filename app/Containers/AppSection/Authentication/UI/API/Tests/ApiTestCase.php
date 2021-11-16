@@ -51,7 +51,7 @@ class ApiTestCase extends ParentTestCase
         $filePath = storage_path($fileName);
 
         if (!file_exists($filePath)) {
-            $keysStubDirectory = __DIR__ . '/Stubs/';
+            $keysStubDirectory = __DIR__ . '/Functional/Stubs/';
 
             copy($keysStubDirectory . $fileName, $filePath);
 
