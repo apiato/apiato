@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "apidoc": "^0.27.1",
-        "axios": "^0.21.1",
+        "axios": "^0.21.2",
         "cross-env": "^5.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
