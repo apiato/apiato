@@ -2,7 +2,7 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            deleteRole
+ * @apiName            DeleteRole
  * @api                {delete} /v1/roles/:id Delete a Role
  * @apiDescription     Delete Role by ID
  *
@@ -20,5 +20,4 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\DeleteRoleControl
 use Illuminate\Support\Facades\Route;
 
 Route::delete('roles/{id}', [DeleteRoleController::class, 'deleteRole'])
-    ->name('api_authorization_delete_role')
     ->middleware(['auth:api']);

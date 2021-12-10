@@ -2,11 +2,11 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            getAllPermissions
+ * @apiName            GetAllPermissions
  * @api                {get} /v1/permissions Get All Permission
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
+ * @apiPermission      Authenticated
  *
  * @apiUse             GeneralSuccessMultipleResponse
  */
@@ -15,5 +15,4 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\GetAllPermissions
 use Illuminate\Support\Facades\Route;
 
 Route::get('permissions', [GetAllPermissionsController::class, 'getAllPermissions'])
-    ->name('api_authorization_get_all_permissions')
     ->middleware(['auth:api']);

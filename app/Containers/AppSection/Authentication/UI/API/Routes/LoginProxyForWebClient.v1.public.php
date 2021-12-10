@@ -24,5 +24,4 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWebClientController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('clients/web/login', [LoginProxyForWebClientController::class, 'loginProxyForWebClient'])
-    ->name('api_authentication_client_web_login_proxy');
+Route::post('clients/web/login', [LoginProxyForWebClientController::class, 'loginProxyForWebClient']);

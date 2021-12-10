@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'require_email_verification' => false,
+    'require_email_verification' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
     | Login With Custom Field
     |--------------------------------------------------------------------------
     |
-    | This allows you to chose which field you want to use for passport auth.
+    | This allows you to choose which field you want to use for passport auth.
     |
     */
 
@@ -51,10 +51,10 @@ return [
         | Allowed Login Attributes
         |--------------------------------------------------------------------------
         |
-        | A list of fields the user can login with.
+        | A list of fields the user can log in with.
         | The key is the field name. The value contains validation rules of the key.
         |
-        | The order determines the order the fields are tested to login (in case multiple fields are submitted!
+        | The order determines the order the fields are tested to log in (in case multiple fields are submitted!)
         |
         | Example: 'phone' => ['string', 'min:6', 'max:25'],
         |
@@ -88,5 +88,17 @@ return [
     */
     'allowed-reset-password-urls' => [
         'http://api.apiato.test/v1/password/reset',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Verify Email URLs
+    |--------------------------------------------------------------------------
+    |
+    | Insert your allowed verify email urls which user can request to be injected into the email.
+    |
+*/
+    'allowed-verify-email-urls' => [
+        'http://api.apiato.test/v1/email/verify',
     ],
 ];

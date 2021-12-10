@@ -2,11 +2,11 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            getPermission
+ * @apiName            GetPermission
  * @api                {get} /v1/permissions/:id Find a Permission by ID
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
+ * @apiPermission      Authenticated
  *
  * @apiUse             PermissionSuccessSingleResponse
  */
@@ -15,5 +15,4 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\FindPermissionCon
 use Illuminate\Support\Facades\Route;
 
 Route::get('permissions/{id}', [FindPermissionController::class, 'findPermission'])
-    ->name('api_authorization_get_permission')
     ->middleware(['auth:api']);

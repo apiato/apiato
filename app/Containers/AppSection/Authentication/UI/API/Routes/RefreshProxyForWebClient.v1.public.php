@@ -23,5 +23,4 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForWebClientController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('clients/web/refresh', [RefreshProxyForWebClientController::class, 'refreshProxyForWebClient'])
-    ->name('api_authentication_client_web_refresh_proxy');
+Route::post('clients/web/refresh', [RefreshProxyForWebClientController::class, 'refreshProxyForWebClient']);

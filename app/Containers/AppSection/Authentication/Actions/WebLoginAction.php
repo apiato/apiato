@@ -4,19 +4,17 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
-use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends Action
 {
     /**
      * @throws LoginFailedException
-     * @throws NotFoundException
      */
     public function run(LoginRequest $request): User|Authenticatable|null
     {
@@ -39,6 +37,6 @@ class WebLoginAction extends Action
             throw new LoginFailedException('Invalid Login Credentials.');
         }
 
-        return app(GetAuthenticatedUserTask::class)->run();
+        return Auth::user();
     }
 }

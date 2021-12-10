@@ -5,10 +5,11 @@ namespace App\Containers\AppSection\User\Models;
 use App\Containers\AppSection\Authentication\Traits\AuthenticationTrait;
 use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Parents\Models\UserModel;
-use Carbon\Carbon;
+use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 
-class User extends UserModel
+class User extends UserModel implements MustVerifyEmail
 {
     use AuthorizationTrait;
     use AuthenticationTrait;
@@ -20,7 +21,6 @@ class User extends UserModel
         'password',
         'gender',
         'birth',
-        'email_verified_at',
     ];
 
     protected $hidden = [
@@ -32,4 +32,9 @@ class User extends UserModel
         'email_verified_at' => 'datetime',
         'birth' => 'date',
     ];
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
+    }
 }

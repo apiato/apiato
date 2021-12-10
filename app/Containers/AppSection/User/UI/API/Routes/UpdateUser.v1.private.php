@@ -2,11 +2,11 @@
 
 /**
  * @apiGroup           User
- * @apiName            updateUser
+ * @apiName            UpdateUser
  * @api                {patch} /v1/users/:id Update User
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
+ * @apiPermission      Authenticated
  *
  * @apiParam           {String}  [password] min:6|max:40
  * @apiParam           {String}  [name] min:2|max:50
@@ -20,5 +20,4 @@ use App\Containers\AppSection\User\UI\API\Controllers\UpdateUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::patch('users/{id}', [UpdateUserController::class, 'updateUser'])
-    ->name('api_user_update_user')
     ->middleware(['auth:api']);

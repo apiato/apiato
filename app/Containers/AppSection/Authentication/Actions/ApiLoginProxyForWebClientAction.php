@@ -35,7 +35,7 @@ class ApiLoginProxyForWebClientAction extends Action
         ];
     }
 
-    private function enrichSanitizedData($username, array $sanitizedData): array
+    private function enrichSanitizedData(string $username, array $sanitizedData): array
     {
         $sanitizedData['username'] = $username;
         $sanitizedData['client_id'] = config('appSection-authentication.clients.web.id');

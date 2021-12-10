@@ -2,11 +2,11 @@
 
 /**
  * @apiGroup           RolePermission
- * @apiName            createRole
+ * @apiName            CreateRole
  * @api                {post} /v1/roles Create a Role
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
+ * @apiPermission      Authenticated
  *
  * @apiParam           {String} name Unique Role Name
  * @apiParam           {String} [description]
@@ -19,5 +19,4 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\CreateRoleControl
 use Illuminate\Support\Facades\Route;
 
 Route::post('roles', [CreateRoleController::class, 'createRole'])
-    ->name('api_authorization_create_role')
     ->middleware(['auth:api']);
