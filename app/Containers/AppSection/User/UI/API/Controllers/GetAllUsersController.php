@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\CoreInternalErrorException;
 use Apiato\Core\Exceptions\InvalidTransformerException;
 use App\Containers\AppSection\User\Actions\GetAllUsersAction;
 use App\Containers\AppSection\User\UI\API\Requests\GetAllUsersRequest;
@@ -14,6 +15,7 @@ class GetAllUsersController extends ApiController
     /**
      * @throws InvalidTransformerException
      * @throws RepositoryException
+     * @throws CoreInternalErrorException
      */
     public function getAllUsers(GetAllUsersRequest $request): array
     {

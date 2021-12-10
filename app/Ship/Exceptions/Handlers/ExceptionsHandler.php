@@ -44,7 +44,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
         });
 
         $this->renderable(function (ParentException $e) {
-            if (env('APP_DEBUG')) {
+            if (config('app.debug')) {
                 $response = [
                     'message' => $e->getMessage(),
                     'errors' => $e->getErrors(),

@@ -2,10 +2,9 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
+use App\Containers\AppSection\Authentication\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
-use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
 use App\Ship\Parents\Exceptions\Exception;
@@ -18,27 +17,22 @@ class CreateAdminAction extends Action
      * @throws CreateResourceFailedException
      * @throws Throwable
      */
-    public function run(CreateAdminRequest $request): User
+    public function run(array $data): User
     {
-        $sanitizedData = $request->sanitizeInput([
-            'email',
-            'password',
-            'name',
-            'gender',
-            'birth',
-        ]);
-
         DB::beginTransaction();
 
         try {
-            $admin = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
+            $admin = app(CreateUserByCredentialsTask::class)->run($data);
             app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
+            $admin->email_verified_at = now();
+            $admin->save();
 
             DB::commit();
 
             return $admin;
         } catch (Exception $exception) {
             DB::rollBack();
+
             throw $exception;
         }
     }

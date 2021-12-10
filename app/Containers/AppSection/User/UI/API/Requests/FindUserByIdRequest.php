@@ -2,12 +2,12 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
 
 class FindUserByIdRequest extends Request
 {
-    use IsOwnerTrait;
+    use IsResourceOwnerTrait;
 
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -42,7 +42,7 @@ class FindUserByIdRequest extends Request
     public function authorize(): bool
     {
         return $this->check([
-            'hasAccess|isOwner',
+            'hasAccess|isResourceOwner',
         ]);
     }
 }

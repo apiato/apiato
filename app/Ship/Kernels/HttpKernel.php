@@ -13,6 +13,7 @@ use App\Ship\Middlewares\TrustProxies;
 use App\Ship\Middlewares\VerifyCsrfToken;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\Authorize;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
@@ -89,9 +90,7 @@ class HttpKernel extends LaravelHttpKernel
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
-        // Note: The "verified" middleware is custom implemented in Authentication Container (Middlewares/EnsureEmailIsVerified)
-        // and registered by its MiddlewareServiceProvider
-        // 'verified' => EnsureEmailIsVerified::class,
+        'verified' => EnsureEmailIsVerified::class,
     ];
 
     /**

@@ -2,12 +2,12 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
 
 class UpdateUserRequest extends Request
 {
-    use IsOwnerTrait;
+    use IsResourceOwnerTrait;
 
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -48,7 +48,7 @@ class UpdateUserRequest extends Request
         // or the user is updating his own object (is the owner).
 
         return $this->check([
-            'hasAccess|isOwner',
+            'hasAccess|isResourceOwner',
         ]);
     }
 }

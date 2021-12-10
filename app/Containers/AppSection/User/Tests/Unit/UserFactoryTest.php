@@ -24,7 +24,7 @@ class UserFactoryTest extends TestCase
     {
         $user = User::factory()->admin()->create();
 
-        $this->assertTrue($user->hasAdminRole());
+        $this->assertTrue($user->hasRole(config('appSection-authorization.admin_role')));
     }
 
     public function testCreateUnverifiedUser(): void

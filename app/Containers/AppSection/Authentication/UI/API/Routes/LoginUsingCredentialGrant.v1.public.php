@@ -8,7 +8,7 @@
  *                     You must have client ID and secret first. You can generate them by creating new Client in our Web App.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated User
+ * @apiPermission      Authenticated
  *
  * @apiParam           {String}  client_id
  * @apiParam           {String}  client_secret
