@@ -26,6 +26,7 @@ class ForgotPassword extends Mail implements ShouldQueue
                 'token' => $this->token,
                 'reseturl' => $this->reseturl,
                 'email' => $this->recipient->email,
+                'app_url' => config('app.url'),
             ]);
     }
 }
