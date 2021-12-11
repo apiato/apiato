@@ -7,6 +7,7 @@
  * @apiDescription     Login Users using their email and password, without client_id and client_secret.
  *
  * @apiVersion         1.0.0
+ * @apiPermission      none
  *
  * @apiParam           {String}  email user email
  * @apiParam           {String}  password user password

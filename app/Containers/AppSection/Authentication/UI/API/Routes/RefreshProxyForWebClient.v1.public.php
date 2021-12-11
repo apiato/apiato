@@ -7,6 +7,7 @@
  * @apiDescription     Get new tokens given a valid refresh token is provided.
  *
  * @apiVersion         1.0.0
+ * @apiPermission      none
  *
  * @apiParam           {String}  [refresh_token] The refresh Token
  *

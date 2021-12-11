@@ -5,7 +5,7 @@
  * @apiName            ResetPassword
  *
  * @api                {GET/POST} /v1/password/reset Reset Password
- * @apiDescription     Resets a password for an user.
+ * @apiDescription     Resets password of a user.
  *
  * @apiVersion         1.0.0
  * @apiPermission      none

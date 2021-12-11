@@ -6,7 +6,7 @@
  * @api                {get} /v1/roles/:id Find a Role by ID
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiUse             RoleSuccessSingleResponse
  */

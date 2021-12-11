@@ -9,7 +9,7 @@
  *                     one sent to this endpoint.
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => 'manage-admins-access', 'roles' => '']
  *
  * @apiParam           {Number} user_id User ID
  * @apiParam           {Array} roles_ids Role ID or Array of Roles ID's

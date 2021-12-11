@@ -7,7 +7,7 @@
  * @apiDescription     Find a user by its ID
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => 'delete-users', 'roles' => ''] | Resource Owner
  *
  * @apiUse             UserSuccessSingleResponse
  */

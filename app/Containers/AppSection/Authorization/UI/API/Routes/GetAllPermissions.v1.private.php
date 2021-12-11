@@ -6,7 +6,7 @@
  * @api                {get} /v1/permissions Get All Permission
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiUse             GeneralSuccessMultipleResponse
  */

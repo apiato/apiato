@@ -2,8 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
-use App\Containers\AppSection\Authentication\Tasks\CreateUserByCredentialsTask;
-use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Seeders\Seeder;
@@ -13,6 +11,7 @@ class AuthorizationDefaultUsersSeeder_4 extends Seeder
 {
     /**
      * @throws CreateResourceFailedException
+     * @throws Throwable
      */
     public function run(): void
     {

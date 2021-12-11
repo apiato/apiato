@@ -7,7 +7,7 @@
  * @apiDescription     Delete Role by ID
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated Role
+ * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 OK
