@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Tests\TestCase;
+use Exception;
 
 /**
  * Class CreateAdminActionTest.
@@ -26,5 +27,24 @@ class CreateAdminActionTest extends TestCase
         $this->assertEquals($data['email'], $admin->email);
         $this->assertTrue($admin->hasRole(config('appSection-authorization.admin_role')));
         $this->assertNotNull($admin->email_verified_at);
+    }
+
+    public function testGivenInvalidData_ThrowExceptionAndRollbackAllCommits(): void
+    {
+        $this->expectException(Exception::class);
+
+        // update Admin role name to a not existing role (different from what is seeded for admin role),
+        // so we can get an error
+        config(['appSection-authorization.admin_role' => 'not_existing_role']);
+
+        $data = [
+            'email' => 'a@new.email',
+            'password' => 'admin',
+            'name' => 'Super Admin',
+        ];
+
+        $admin = app(CreateAdminAction::class)->run($data);
+
+        $this->assertModelMissing($admin);
     }
 }
