@@ -9,8 +9,8 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           {String}  email user email
- * @apiParam           {String}  password user password
+ * @apiParam           {String} email
+ * @apiParam           {String} password
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
