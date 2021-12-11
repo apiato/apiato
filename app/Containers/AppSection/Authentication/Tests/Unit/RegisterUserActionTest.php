@@ -7,7 +7,6 @@ use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 /**
@@ -21,7 +20,6 @@ class RegisterUserActionTest extends TestCase
     public function testSendNotification_AfterUserRegistration(): void
     {
         Notification::fake();
-        Mail::fake();
 
         $data = [
             'email' => 'Mahmoud@test.test',
