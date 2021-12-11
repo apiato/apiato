@@ -35,7 +35,10 @@ class LoginProxyPasswordGrantRequest extends Request
     public function rules(): array
     {
         $rules = [
-            'password' => 'required|min:3|max:30',
+            // we don't need to require email here. The proper login attribute (with proper validations)
+            // will be added automatically by "loginAttributeValidationRulesMerger" method below
+            // 'email' => 'required',
+            'password' => 'required',
         ];
 
         return loginAttributeValidationRulesMerger($rules);
