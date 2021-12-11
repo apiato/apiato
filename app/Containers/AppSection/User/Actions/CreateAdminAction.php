@@ -19,9 +19,9 @@ class CreateAdminAction extends Action
      */
     public function run(array $data): User
     {
-        DB::beginTransaction();
-
         try {
+            DB::beginTransaction();
+
             $admin = app(CreateUserByCredentialsTask::class)->run($data);
             app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
             $admin->email_verified_at = now();
