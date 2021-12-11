@@ -7,7 +7,7 @@ use App\Ship\Parents\Models\UserModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserForgotPasswordMail extends Mail implements ShouldQueue
+class ForgotPassword extends Mail implements ShouldQueue
 {
     use Queueable;
 

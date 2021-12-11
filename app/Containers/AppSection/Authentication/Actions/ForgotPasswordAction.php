@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\Mails\UserForgotPasswordMail;
+use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
 use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
@@ -30,7 +30,7 @@ class ForgotPasswordAction extends Action
 
         $token = app(CreatePasswordResetTokenTask::class)->run($user);
 
-        Mail::send(new UserForgotPasswordMail($user, $token, $sanitizedData['reseturl']));
+        Mail::send(new ForgotPassword($user, $token, $sanitizedData['reseturl']));
 
         return true;
     }
