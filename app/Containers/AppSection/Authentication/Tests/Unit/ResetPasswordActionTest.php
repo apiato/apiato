@@ -4,11 +4,13 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException;
+use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * Class ResetPasswordActionTest.
@@ -19,6 +21,23 @@ use App\Ship\Exceptions\NotFoundException;
 class ResetPasswordActionTest extends TestCase
 {
     private User $user;
+
+    public function testResetPassword(): void
+    {
+        Notification::fake();
+        $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
+        $data = [
+            'email' => $this->user->email,
+            'token' => $token,
+            'password' => 'new pass',
+            'password_confirmation' => 'new pass',
+        ];
+        $request = new ResetPasswordRequest($data);
+
+        app(ResetPasswordAction::class)->run($request);
+
+        Notification::assertSentTo($this->user, PasswordReset::class);
+    }
 
     public function testResetPasswordWithInvalidToken_ThrowsException(): void
     {
