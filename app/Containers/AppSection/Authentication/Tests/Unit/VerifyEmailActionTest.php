@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Notification;
  */
 class VerifyEmailActionTest extends TestCase
 {
-    public function testSendVerificationEmailAction(): void
+    public function testVerifyEmailAction(): void
     {
         Notification::fake();
         $unverifiedUser = User::factory()->unverified()->create();
