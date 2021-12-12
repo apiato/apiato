@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 class ResetPasswordController extends ApiController
 {
     /**
-     * @throws \App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException
+     * @throws InvalidResetPasswordTokenException
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
