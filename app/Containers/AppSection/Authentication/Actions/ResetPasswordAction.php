@@ -3,7 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException;
+use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
+use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
@@ -38,11 +40,18 @@ class ResetPasswordAction extends Action
             }
         );
 
-        return match ($status) {
-            Password::INVALID_TOKEN => throw new InvalidResetPasswordTokenException(),
-            Password::INVALID_USER => throw new NotFoundException('User Not Found.'),
-            Password::PASSWORD_RESET => $status,
-            default => throw new UpdateResourceFailedException()
-        };
+        switch ($status) {
+            case Password::INVALID_TOKEN:
+                throw new InvalidResetPasswordTokenException();
+            case Password::INVALID_USER:
+                throw new NotFoundException('User Not Found.');
+            case Password::PASSWORD_RESET:
+                $user = app(FindUserByEmailTask::class)->run($sanitizedData['email']);
+                $user->notify(new PasswordReset());
+
+                return $status;
+            default:
+                throw new UpdateResourceFailedException();
+        }
     }
 }
