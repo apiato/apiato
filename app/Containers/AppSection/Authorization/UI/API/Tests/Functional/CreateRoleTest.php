@@ -50,7 +50,7 @@ class CreateRoleTest extends ApiTestCase
             fn (AssertableJson $json) =>
                 $json->has('message')
                     ->has('errors')
-                    ->where('errors.name.0.0', 'String should not contain space.')
+                    ->where('errors.name.0', 'String should not contain space.')
         );
     }
 
