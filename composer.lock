@@ -49,16 +49,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "89389d4e58a70c84e1ca7f649e452c0e289642f9"
+                "reference": "790da7320c41ae4c61abf84592dde135b3e3e61a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/89389d4e58a70c84e1ca7f649e452c0e289642f9",
-                "reference": "89389d4e58a70c84e1ca7f649e452c0e289642f9",
+                "url": "https://api.github.com/repos/apiato/core/zipball/790da7320c41ae4c61abf84592dde135b3e3e61a",
+                "reference": "790da7320c41ae4c61abf84592dde135b3e3e61a",
                 "shasum": ""
             },
             "require": {
                 "apiato/container-installer": "^2.0.8",
+                "ext-gettext": "*",
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^7.2.0",
                 "laravel/framework": "^8.73.0",
@@ -69,10 +70,10 @@
                 "vinkla/hashids": "^9.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.0.x-dev",
+                "friendsofphp/php-cs-fixer": "^3.4.0",
                 "mockery/mockery": "^1.4.2",
                 "roave/security-advisories": "dev-latest",
-                "vimeo/psalm": "^4.9"
+                "vimeo/psalm": "^4.15"
             },
             "type": "library",
             "extra": {
@@ -121,7 +122,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2021-12-12T07:26:07+00:00"
+            "time": "2021-12-13T07:43:42+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
@@ -6827,16 +6828,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "d4394d044ed69a8f244f3445bcedf8a0d7fe2403"
+                "reference": "264dce589e7ce37a7ba99cb901eed8249fbec92f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/d4394d044ed69a8f244f3445bcedf8a0d7fe2403",
-                "reference": "d4394d044ed69a8f244f3445bcedf8a0d7fe2403",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/264dce589e7ce37a7ba99cb901eed8249fbec92f",
+                "reference": "264dce589e7ce37a7ba99cb901eed8249fbec92f",
                 "shasum": ""
             },
             "require": {
@@ -6874,11 +6875,13 @@
             "authors": [
                 {
                     "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk"
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
                 },
                 {
                     "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com"
+                    "email": "vance@vancelucas.com",
+                    "homepage": "https://github.com/vlucas"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -6889,7 +6892,7 @@
             ],
             "support": {
                 "issues": "https://github.com/vlucas/phpdotenv/issues",
-                "source": "https://github.com/vlucas/phpdotenv/tree/v5.4.0"
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.4.1"
             },
             "funding": [
                 {
@@ -6901,7 +6904,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-10T01:08:39+00:00"
+            "time": "2021-12-12T23:22:04+00:00"
         },
         {
             "name": "voku/portable-ascii",
