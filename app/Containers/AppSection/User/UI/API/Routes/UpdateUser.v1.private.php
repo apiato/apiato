@@ -6,7 +6,7 @@
  * @api                {patch} /v1/users/:id Update User
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated ['permissions' => 'list-users', 'roles' => ''] | Resource Owner
+ * @apiPermission      Authenticated ['permissions' => 'update-users', 'roles' => ''] | Resource Owner
  *
  * @apiParam           {String} [password] min:6|max:40
  * @apiParam           {String} [name] min:2|max:50
