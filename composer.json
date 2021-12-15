@@ -29,10 +29,13 @@
     "type": "project",
     "require": {
         "php": "^8.0",
+        "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
+        "ext-sodium": "*",
         "ext-tokenizer": "*",
+        "ext-gettext": "*",
         "fruitcake/laravel-cors": "^2.0.4",
         "guzzlehttp/guzzle": "^7.3.0",
         "laravel/framework": "^8.61.0",
