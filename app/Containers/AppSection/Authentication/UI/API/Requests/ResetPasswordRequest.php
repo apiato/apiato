@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Validation\Rules\Password;
 
 class ResetPasswordRequest extends Request
 {
@@ -32,9 +33,16 @@ class ResetPasswordRequest extends Request
     public function rules(): array
     {
         return [
-            'token' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'password' => 'required|min:6|max:255',
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => [
+                'required',
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols(),
+            ],
         ];
     }
 

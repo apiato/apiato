@@ -10,7 +10,18 @@
  * @apiPermission      none
  *
  * @apiParam           {String} email
- * @apiParam           {String} password min:6|max:40
+ * @apiParam           {String} password min: 8
+ *
+ * at least one character of the following:
+ *
+ * upper case letter
+ *
+ * lower case letter
+ *
+ * number
+ *
+ * special character
+ *
  * @apiParam           {String} [name] min:2|max:50
  * @apiParam           {String="male,female,unspecified"}  [gender]
  * @apiParam           {Date} [birth] format: Y-m-d / e.g. 2015-10-15

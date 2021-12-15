@@ -29,7 +29,7 @@ class RegisterUserTest extends ApiTestCase
 
         $data = [
             'email' => 'apiato@mail.test',
-            'password' => 'secretpass',
+            'password' => 's3cr3tPa$$',
             'verification_url' => 'http://some.test/known/url',
         ];
 
@@ -37,7 +37,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            fn(AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc()
         );
@@ -48,14 +48,14 @@ class RegisterUserTest extends ApiTestCase
         config(['appSection-authentication.require_email_verification' => false]);
         $data = [
             'email' => 'apiato@mail.test',
-            'password' => 'secretpass',
+            'password' => 's3cr3tPa$$',
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            fn(AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc()
         );
@@ -72,7 +72,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(405);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('message')
+            fn(AssertableJson $json) => $json->has('message')
                 ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
                 ->etc()
         );
@@ -96,7 +96,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            fn(AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
                 ->etc()
         );
@@ -112,23 +112,21 @@ class RegisterUserTest extends ApiTestCase
 
         if (config('appSection-authentication.require_email_verification')) {
             $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
+                fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
                     ->has(
                         'errors',
-                        fn (AssertableJson $json) =>
-                            $json->where('email.0', 'The email field is required.')
-                                ->where('password.0', 'The password field is required.')
-                                ->where('verification_url.0', 'The verification url field is required.')
+                        fn(AssertableJson $json) => $json->where('email.0', 'The email field is required.')
+                            ->where('password.0', 'The password field is required.')
+                            ->where('verification_url.0', 'The verification url field is required.')
                     )
             );
         } else {
             $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
+                fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
                     ->has(
                         'errors',
-                        fn (AssertableJson $json) =>
-                            $json->where('email.0', 'The email field is required.')
-                                ->where('password.0', 'The password field is required.')
+                        fn(AssertableJson $json) => $json->where('email.0', 'The email field is required.')
+                            ->where('password.0', 'The password field is required.')
                     )
             );
         }
@@ -138,15 +136,36 @@ class RegisterUserTest extends ApiTestCase
     {
         $data = [
             'email' => 'missing-at.test',
-            'password' => 'secret',
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            fn(AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email must be a valid email address.')
+                ->etc()
+        );
+    }
+
+    public function testRegisterNewUserWithInvalidPassword(): void
+    {
+        $data = [
+            'password' => '((((()))))',
+        ];
+
+        $response = $this->makeCall($data);
+
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn(AssertableJson $json) => $json->has('errors')
+                ->has(
+                    'errors.password',
+                    fn(AssertableJson $json) => $json
+                        ->where('0', 'The password must contain at least one uppercase and one lowercase letter.')
+                        ->where('1', 'The password must contain at least one letter.')
+                        ->where('2', 'The password must contain at least one number.')
+                )
                 ->etc()
         );
     }
@@ -161,7 +180,7 @@ class RegisterUserTest extends ApiTestCase
 
         $data = [
             'email' => 'test@test.test',
-            'password' => 'secret',
+            'password' => 's3cr3tPa$$',
             'verification_url' => 'http://notallowed.test/wrong',
         ];
 
@@ -169,7 +188,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
+            fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
                 ->where('errors.verification_url.0', 'The selected verification url is invalid.')
         );
     }
