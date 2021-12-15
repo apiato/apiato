@@ -33,8 +33,11 @@ class ForgotPasswordRequest extends Request
     public function rules(): array
     {
         return [
-            'email' => 'required|email|max:255',
-            'reseturl' => 'required|max:255|' . Rule::in(config('appSection-authentication.allowed-reset-password-urls')),
+            'email' => 'required|email',
+            'reseturl' => [
+                'required',
+                Rule::in(config('appSection-authentication.allowed-reset-password-urls')),
+            ],
         ];
     }
 

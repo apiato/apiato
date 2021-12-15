@@ -36,7 +36,11 @@ class SendVerificationEmailRequest extends Request
     public function rules(): array
     {
         return [
-            'verification_url' => 'required|url|' . Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
+            'verification_url' => [
+                'required',
+                'url',
+                Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
+            ],
         ];
     }
 
