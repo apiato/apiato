@@ -2,13 +2,10 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
 use App\Ship\Parents\Requests\Request;
 
 class VerifyEmailRequest extends Request
 {
-    use IsResourceOwnerTrait;
-
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
@@ -38,7 +35,7 @@ class VerifyEmailRequest extends Request
     public function rules(): array
     {
         return [
-            'id' => 'required',
+            // 'id' => 'required',
         ];
     }
 
@@ -49,13 +46,6 @@ class VerifyEmailRequest extends Request
     {
         return $this->check([
             'hasAccess',
-            'isResourceOwner',
-            'isHashEqualsUserEmail',
         ]);
-    }
-
-    protected function isHashEqualsUserEmail(): bool
-    {
-        return hash_equals((string)$this->hash, sha1($this->user()->getEmailForVerification()));
     }
 }
