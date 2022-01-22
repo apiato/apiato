@@ -10,6 +10,10 @@ trait IsResourceOwnerTrait
      */
     public function isResourceOwner(): bool
     {
+        if ($this->user()->hasAnyRole(config('apiato.requests.allow-roles-to-access-all-routes'))) {
+            return true;
+        }
+
         return hash_equals((string)$this->user()->getKey(), (string)$this->id);
     }
 }
