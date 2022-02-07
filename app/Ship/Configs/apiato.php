@@ -101,7 +101,7 @@ return [
         |
         */
         'allow-roles-to-access-all-routes' => [
-            // config('appSection-authorization.admin_role'),
+            env('ADMIN_ROLE', 'admin'),
         ],
 
         /*
