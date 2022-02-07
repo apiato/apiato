@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 
 /**
  * Class GetAuthenticatedUserTest.
@@ -41,5 +42,14 @@ class GetAuthenticatedUserTest extends ApiTestCase
             'readable_updated_at' => $user->updated_at->diffForHumans(),
         ]);
         $this->assertEquals($user->name, $responseContent->data->name);
+    }
+
+    public function testGetAuthenticatedUser_ByUnauthenticatedUser(): void
+    {
+        $this->testingUser = User::factory()->create();
+
+        $response = $this->auth(false)->makeCall();
+
+        $response->assertStatus(401);
     }
 }
