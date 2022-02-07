@@ -2,8 +2,8 @@
 
 namespace App\Ship\Exceptions\Handlers;
 
+use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
-use App\Ship\Parents\Exceptions\Exception as ParentException;
 use Throwable;
 
 /**
@@ -43,7 +43,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
         $this->reportable(static function (Throwable $e) {
         });
 
-        $this->renderable(function (ParentException $e) {
+        $this->renderable(function (CoreException $e) {
             if (config('app.debug')) {
                 $response = [
                     'message' => $e->getMessage(),

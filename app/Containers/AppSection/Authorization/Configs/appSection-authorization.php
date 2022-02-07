@@ -20,5 +20,5 @@ return [
     |
     */
 
-    'admin_role' => 'admin',
+    'admin_role' => env('ADMIN_ROLE', 'admin'),
 ];
