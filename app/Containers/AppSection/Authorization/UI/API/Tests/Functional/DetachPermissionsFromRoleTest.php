@@ -19,8 +19,8 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
     protected string $endpoint = 'post@v1/permissions/detach';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testDetachSinglePermissionFromRole(): void

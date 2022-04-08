@@ -19,8 +19,8 @@ class SyncUserRolesTest extends ApiTestCase
     protected string $endpoint = 'post@v1/roles/sync';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-admins-access',
+        'roles' => '',
     ];
 
     public function testSyncMultipleRolesOnUser(): void

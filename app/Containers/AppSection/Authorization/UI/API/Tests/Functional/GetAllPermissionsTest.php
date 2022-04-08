@@ -15,8 +15,8 @@ class GetAllPermissionsTest extends ApiTestCase
     protected string $endpoint = 'get@v1/permissions';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testGetAllPermissions(): void

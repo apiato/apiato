@@ -19,8 +19,8 @@ class AttachPermissionsToRoleTest extends ApiTestCase
     protected string $endpoint = 'post@v1/permissions/attach';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testAttachSinglePermissionToRole(): void

@@ -17,8 +17,8 @@ class UpdateUserTest extends ApiTestCase
     protected string $endpoint = 'patch@v1/users/{id}';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'update-users',
+        'roles' => '',
     ];
 
     public function testUpdateExistingUser(): void

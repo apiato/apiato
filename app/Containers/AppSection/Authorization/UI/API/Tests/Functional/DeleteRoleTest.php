@@ -18,8 +18,8 @@ class DeleteRoleTest extends ApiTestCase
     protected string $endpoint = 'delete@v1/roles/{id}';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testDeleteExistingRole(): void

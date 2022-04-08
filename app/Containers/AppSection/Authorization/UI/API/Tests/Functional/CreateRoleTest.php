@@ -16,8 +16,8 @@ class CreateRoleTest extends ApiTestCase
     protected string $endpoint = 'post@v1/roles';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testCreateRole(): void

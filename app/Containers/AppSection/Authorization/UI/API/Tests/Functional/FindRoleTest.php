@@ -16,8 +16,8 @@ class FindRoleTest extends ApiTestCase
     protected string $endpoint = 'get@v1/roles/{id}';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-roles',
+        'roles' => '',
     ];
 
     public function testFindRoleById(): void

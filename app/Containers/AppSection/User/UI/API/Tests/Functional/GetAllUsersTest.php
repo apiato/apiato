@@ -17,8 +17,8 @@ class GetAllUsersTest extends ApiTestCase
     protected string $endpoint = 'get@v1/users';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'list-users',
+        'roles' => '',
     ];
 
     public function testGetAllUsersByAdmin(): void

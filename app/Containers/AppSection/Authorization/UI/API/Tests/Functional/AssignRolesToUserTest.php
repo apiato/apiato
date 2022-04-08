@@ -19,8 +19,8 @@ class AssignRolesToUserTest extends ApiTestCase
     protected string $endpoint = 'post@v1/roles/assign?include=roles';
 
     protected array $access = [
-        'roles' => '',
         'permissions' => 'manage-admins-access',
+        'roles' => '',
     ];
 
     public function testAssignRoleToUser(): void
