@@ -36,6 +36,27 @@ class GetAuthenticatedUserTest extends ApiTestCase
             'name' => $user->name,
             'gender' => $user->gender,
             'birth' => $user->birth,
+        ]);
+        $this->assertEquals($user->name, $responseContent->data->name);
+    }
+
+    public function testGetAuthenticatedUserAsAdmin(): void
+    {
+        $user = $this->getTestingUser(createUserAsAdmin: true);
+
+        $response = $this->makeCall();
+
+        $response->assertStatus(200);
+        $responseContent = $this->getResponseContentObject();
+        $this->assertResponseContainKeyValue([
+            'object' => 'User',
+            'id' => $user->getHashedKey(),
+            'email' => $user->email,
+            'email_verified_at' => $user->email_verified_at,
+            'name' => $user->name,
+            'gender' => $user->gender,
+            'birth' => $user->birth,
+            'real_id' => $user->id,
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
             'readable_created_at' => $user->created_at->diffForHumans(),
