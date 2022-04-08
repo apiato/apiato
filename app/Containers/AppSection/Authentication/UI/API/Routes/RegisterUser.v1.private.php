@@ -23,7 +23,7 @@
  * special character
  *
  * @apiParam           {String} [name] min:2|max:50
- * @apiParam           {String="male,female,unspecified"}  [gender]
+ * @apiParam           {String="male","female","unspecified"} [gender]
  * @apiParam           {Date} [birth] format: Y-m-d / e.g. 2015-10-15
  * @apiParam           {String} [verification_url] requireIf:email_verification_required|url|in:allowed-verify-email-urls
  *
