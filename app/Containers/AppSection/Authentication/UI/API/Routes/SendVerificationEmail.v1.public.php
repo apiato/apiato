@@ -8,7 +8,7 @@
  * @apiDescription     Send verification email to the currently authenticated user
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
  * @apiParam           {String} verification_url required|url
  *

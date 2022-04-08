@@ -6,7 +6,7 @@
  * @apiDescription     User Logout. (Revoking Access Token)
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated
+ * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 Accepted
