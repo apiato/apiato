@@ -23,7 +23,11 @@ class UpdateUserTest extends ApiTestCase
 
     public function testUpdateExistingUser(): void
     {
-        $user = $this->getTestingUser();
+        $user = $this->getTestingUser([
+            'name' => 'He who should not be named',
+            'password' => 'Av@dakedavra!',
+            'gender' => 'female',
+        ]);
         $data = [
             'name' => 'Updated Name',
             'password' => 'updated#Password',
@@ -42,6 +46,7 @@ class UpdateUserTest extends ApiTestCase
                     ->where('data.name', $data['name'])
                     ->where('data.gender', $data['gender'])
                     ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
+                    ->missing('data.password')
                     ->etc()
         );
     }
