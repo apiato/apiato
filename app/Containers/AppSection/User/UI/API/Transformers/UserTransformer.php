@@ -9,11 +9,11 @@ use League\Fractal\Resource\Collection;
 
 class UserTransformer extends Transformer
 {
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         'roles',
     ];
 
-    protected $defaultIncludes = [
+    protected array $defaultIncludes = [
 
     ];
 
