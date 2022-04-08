@@ -59,7 +59,7 @@ class GetAllUsersTest extends ApiTestCase
             'name' => 'mahmoudzzz',
         ]);
 
-        $response = $this->endpoint($this->endpoint . "?search=name:$user->name")->makeCall();
+        $response = $this->endpoint($this->endpoint . "?search=name:" . urlencode($user->name))->makeCall();
 
         $response->assertStatus(200);
         $response->assertJson(
