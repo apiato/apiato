@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use Apiato\Core\Exceptions\InvalidTransformerException;
 use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
@@ -13,9 +14,12 @@ use App\Ship\Parents\Controllers\ApiController;
 class UpdateUserController extends ApiController
 {
     /**
-     * @throws UpdateResourceFailedException
+     * @param UpdateUserRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
+     * @throws UpdateResourceFailedException
+     * @throws IncorrectIdException
      */
     public function updateUser(UpdateUserRequest $request): array
     {

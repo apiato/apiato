@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Auth;
 class WebLoginAction extends Action
 {
     /**
+     * @param LoginRequest $request
+     * @return User|Authenticatable|null
      * @throws LoginFailedException
+     * @throws IncorrectIdException
      */
     public function run(LoginRequest $request): User|Authenticatable|null
     {

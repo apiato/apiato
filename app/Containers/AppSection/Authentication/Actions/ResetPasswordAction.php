@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException;
 use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
@@ -16,9 +17,12 @@ use Illuminate\Support\Str;
 class ResetPasswordAction extends Action
 {
     /**
-     * @throws NotFoundException
+     * @param ResetPasswordRequest $request
+     * @return mixed
      * @throws InvalidResetPasswordTokenException
+     * @throws NotFoundException
      * @throws UpdateResourceFailedException
+     * @throws IncorrectIdException
      */
     public function run(ResetPasswordRequest $request): mixed
     {

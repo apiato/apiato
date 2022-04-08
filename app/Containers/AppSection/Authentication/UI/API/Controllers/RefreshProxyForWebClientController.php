@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Actions\ApiRefreshProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
@@ -19,7 +20,11 @@ class RefreshProxyForWebClientController extends ApiController
      * This is only to help the Web Apps (JavaScript clients) hide
      * their ID's and Secrets when contacting the OAuth server and obtain Tokens.
      *
-     * @throws RefreshTokenMissedException|LoginFailedException
+     * @param RefreshProxyRequest $request
+     * @return JsonResponse
+     * @throws LoginFailedException
+     * @throws RefreshTokenMissedException
+     * @throws IncorrectIdException
      */
     public function refreshProxyForWebClient(RefreshProxyRequest $request): JsonResponse
     {

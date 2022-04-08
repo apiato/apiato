@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
@@ -12,7 +13,10 @@ use App\Ship\Parents\Actions\Action;
 class ApiLoginProxyForWebClientAction extends Action
 {
     /**
+     * @param LoginProxyPasswordGrantRequest $request
+     * @return array
      * @throws LoginFailedException
+     * @throws IncorrectIdException
      */
     public function run(LoginProxyPasswordGrantRequest $request): array
     {

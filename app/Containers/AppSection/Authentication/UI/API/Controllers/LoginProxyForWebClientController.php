@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\EmailNotVerifiedException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
@@ -22,6 +22,7 @@ class LoginProxyForWebClientController extends ApiController
      * @param LoginProxyPasswordGrantRequest $request
      * @return JsonResponse
      * @throws LoginFailedException
+     * @throws IncorrectIdException
      */
     public function loginProxyForWebClient(LoginProxyPasswordGrantRequest $request): JsonResponse
     {

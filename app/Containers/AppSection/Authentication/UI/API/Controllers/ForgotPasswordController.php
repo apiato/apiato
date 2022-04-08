@@ -2,16 +2,18 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
 class ForgotPasswordController extends ApiController
 {
     /**
-     * @throws NotFoundException
+     * @param ForgotPasswordRequest $request
+     * @return JsonResponse
+     * @throws IncorrectIdException
      */
     public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {

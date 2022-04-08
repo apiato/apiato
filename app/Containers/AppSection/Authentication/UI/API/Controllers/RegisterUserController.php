@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use Apiato\Core\Exceptions\InvalidTransformerException;
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
@@ -12,8 +13,11 @@ use App\Ship\Parents\Controllers\ApiController;
 class RegisterUserController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException
+     * @param RegisterUserRequest $request
+     * @return array
      * @throws CreateResourceFailedException
+     * @throws InvalidTransformerException
+     * @throws IncorrectIdException
      */
     public function registerUser(RegisterUserRequest $request): array
     {

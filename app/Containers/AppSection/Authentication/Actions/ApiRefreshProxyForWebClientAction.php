@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
@@ -13,8 +14,11 @@ use Illuminate\Support\Facades\Request;
 class ApiRefreshProxyForWebClientAction extends Action
 {
     /**
-     * @throws RefreshTokenMissedException
+     * @param RefreshProxyRequest $request
+     * @return array
      * @throws LoginFailedException
+     * @throws RefreshTokenMissedException
+     * @throws IncorrectIdException
      */
     public function run(RefreshProxyRequest $request): array
     {
