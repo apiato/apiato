@@ -3,7 +3,12 @@
 namespace App\Ship\Exceptions\Handlers;
 
 use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
+use Apiato\Core\Exceptions\AuthenticationException;
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
+use App\Ship\Exceptions\NotFoundException;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 /**
@@ -44,23 +49,36 @@ class ExceptionsHandler extends CoreExceptionsHandler
         });
 
         $this->renderable(function (CoreException $e) {
-            if (config('app.debug')) {
-                $response = [
-                    'message' => $e->getMessage(),
-                    'errors' => $e->getErrors(),
-                    'exception' => static::class,
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                    'trace' => $e->getTrace(),
-                ];
-            } else {
-                $response = [
-                    'message' => $e->getMessage(),
-                    'errors' => $e->getErrors(),
-                ];
-            }
-
-            return response()->json($response, $e->getCode());
+            return $this->buildResponse($e);
         });
+
+        $this->renderable(function (NotFoundHttpException $e) {
+            return $this->buildResponse(new NotFoundException());
+        });
+
+        $this->renderable(function (AccessDeniedHttpException $e) {
+            return $this->buildResponse(new AuthenticationException());
+        });
+    }
+
+    private function buildResponse(CoreException $e): JsonResponse
+    {
+        if (config('app.debug')) {
+            $response = [
+                'message' => $e->getMessage(),
+                'errors' => $e->getErrors(),
+                'exception' => get_class($e),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTrace(),
+            ];
+        } else {
+            $response = [
+                'message' => $e->getMessage(),
+                'errors' => $e->getErrors(),
+            ];
+        }
+
+        return response()->json($response, (int)$e->getCode());
     }
 }
