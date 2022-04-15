@@ -66,6 +66,18 @@ return [
 
         /*
         |--------------------------------------------------------------------------
+        | Case Sensitive
+        |--------------------------------------------------------------------------
+        |
+        | This field represents if login attribute should be case-sensitive.
+        | If false, then user can log in with both `admin@admin.com` and `Admin@Admin.Com`
+        |
+        */
+
+        'case_sensitive' => false,
+
+        /*
+        |--------------------------------------------------------------------------
         | Prefix
         |--------------------------------------------------------------------------
         |
@@ -87,7 +99,7 @@ return [
     |
     */
     'allowed-reset-password-urls' => [
-        'http://api.apiato.test/v1/password/reset',
+        env('APP_URL', 'http://api.apiato.test/v1') . '/password/reset',
     ],
 
     /*
@@ -99,6 +111,6 @@ return [
     |
 */
     'allowed-verify-email-urls' => [
-        'http://api.apiato.test/v1/email/verify',
+        env('APP_URL', 'http://api.apiato.test/v1') . '/email/verify',
     ],
 ];

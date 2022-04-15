@@ -7,11 +7,14 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
+use App\Containers\AppSection\Authentication\Traits\LoginAttributeCaseSensitivityTrait;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Ship\Parents\Actions\Action;
 
 class ApiLoginProxyForWebClientAction extends Action
 {
+    use LoginAttributeCaseSensitivityTrait;
+    
     /**
      * @param LoginProxyPasswordGrantRequest $request
      * @return array
@@ -27,8 +30,8 @@ class ApiLoginProxyForWebClientAction extends Action
             ]
         );
 
-        $loginCustomAttribute = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
-        $sanitizedData = $this->enrichSanitizedData($loginCustomAttribute['username'], $sanitizedData);
+        list($username) = app(ExtractLoginCustomAttributeTask::class)->run($sanitizedData);
+        $sanitizedData = $this->enrichSanitizedData($this->processLoginAttributeCaseSensitivity($username), $sanitizedData);
 
         $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
         $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);

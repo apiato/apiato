@@ -32,6 +32,24 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $this->assertResponseContainKeys(['expires_in', 'access_token']);
     }
 
+    public function testClientWebAdminProxyLoginWithUppercaseEmail(): void
+    {
+        $data = [
+            'email' => 'Testing@Mail.Com',
+            'password' => 'testiness',
+        ];
+        $this->getTestingUser(['email' => 'testing@mail.com', 'password' => $data['password'],]);
+        Config::set('appSection-authentication.login.case_sensitive', false);
+
+        $response = $this->makeCall($data);
+
+        $response->assertStatus(200);
+        $this->assertResponseContainKeyValue([
+            'token_type' => 'Bearer',
+        ]);
+        $this->assertResponseContainKeys(['expires_in', 'access_token']);
+    }
+
     public function testLoginWithNameAttribute(): void
     {
         $data = [

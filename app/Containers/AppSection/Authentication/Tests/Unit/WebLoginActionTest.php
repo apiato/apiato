@@ -7,6 +7,7 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class WebLoginActionTest.
@@ -28,14 +29,34 @@ class WebLoginActionTest extends TestCase
         $this->assertSame($user->name, $this->userDetails['name']);
     }
 
-    public function testLoginWithInvalidCredentialsThrowsAnException(): void
+    public function testLoginWithInvalidEmailThrowsAnException(): void
     {
         $this->expectException(LoginFailedException::class);
         $this->expectExceptionMessage('Invalid Login Credentials.');
 
-        $this->request = new LoginRequest(['email' => 'wrong@email.com', 'password' => 'wrong_password']);
+        $this->request = new LoginRequest(['email' => 'wrong@email.com', 'password' => $this->userDetails['password']]);
 
         $this->action->run($this->request);
+    }
+
+    public function testLoginWithInvalidPasswordThrowsAnException(): void
+    {
+        $this->expectException(LoginFailedException::class);
+        $this->expectExceptionMessage('Invalid Login Credentials.');
+
+        $this->request = new LoginRequest(['email' => $this->userDetails['email'], 'password' => 'wrong-password']);
+
+        $this->action->run($this->request);
+    }
+
+    public function testLoginWithUppercaseEmail(): void
+    {
+        Config::set('appSection-authentication.login.case_sensitive', false);
+
+        $user = $this->action->run($this->request);
+
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertSame($user->name, $this->userDetails['name']);
     }
 
     protected function setUp(): void
