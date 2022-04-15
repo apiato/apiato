@@ -44,9 +44,6 @@ class UpdateUserRequest extends Request
 
     public function authorize(): bool
     {
-        // is this an admin who has access to permission `update-users`
-        // or the user is updating his own object (is the owner).
-
         return $this->check([
             'hasAccess|isResourceOwner',
         ]);
