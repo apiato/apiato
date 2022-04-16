@@ -47,7 +47,7 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('message')
-                    ->where('message', 'This action is unauthorized.')
+                    ->where('message', 'You are not authorized to request this resource.')
                     ->etc()
         );
     }

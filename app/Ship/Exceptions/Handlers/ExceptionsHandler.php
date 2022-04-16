@@ -3,10 +3,13 @@
 namespace App\Ship\Exceptions\Handlers;
 
 use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
-use Apiato\Core\Exceptions\AuthenticationException;
+use Apiato\Core\Exceptions\AuthenticationException as CoreAuthenticationException;
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
+use App\Ship\Exceptions\NotAuthorizedResourceException;
 use App\Ship\Exceptions\NotFoundException;
+use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -57,7 +60,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
         });
 
         $this->renderable(function (AccessDeniedHttpException $e) {
-            return $this->buildResponse(new AuthenticationException());
+            return $this->buildResponse(new NotAuthorizedResourceException());
         });
     }
 
@@ -80,5 +83,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
         }
 
         return response()->json($response, (int)$e->getCode());
+    }
+
+    protected function unauthenticated($request, LaravelAuthenticationException $exception): JsonResponse|Response
+    {
+        return $this->buildResponse(new CoreAuthenticationException());
     }
 }
