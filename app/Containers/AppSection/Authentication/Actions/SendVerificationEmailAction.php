@@ -10,6 +10,6 @@ class SendVerificationEmailAction extends Action
 {
     public function run(SendVerificationEmailRequest $request): void
     {
-        app(SendVerificationEmailTask::class)->run($request->user());
+        app(SendVerificationEmailTask::class)->run($request->user(), $request->verification_url);
     }
 }

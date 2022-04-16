@@ -32,7 +32,7 @@ class RegisterUserAction extends Action
         $user = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
 
         $user->notify(new Welcome());
-        app(SendVerificationEmailTask::class)->run($user);
+        app(SendVerificationEmailTask::class)->run($user, $request->verification_url);
 
         return $user;
     }

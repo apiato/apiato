@@ -14,7 +14,7 @@ use App\Ship\Parents\Actions\Action;
 class ApiLoginProxyForWebClientAction extends Action
 {
     use LoginAttributeCaseSensitivityTrait;
-    
+
     /**
      * @param LoginProxyPasswordGrantRequest $request
      * @return array
@@ -49,6 +49,7 @@ class ApiLoginProxyForWebClientAction extends Action
         $sanitizedData['client_secret'] = config('appSection-authentication.clients.web.secret');
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
+
         return $sanitizedData;
     }
 }

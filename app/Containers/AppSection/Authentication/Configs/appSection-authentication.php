@@ -12,6 +12,7 @@ return [
     */
 
     'require_email_verification' => true,
+    'verification_link_expiration_time' => 30, // in minute
 
     /*
     |--------------------------------------------------------------------------

@@ -2,7 +2,11 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
+use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
+use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -37,7 +41,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc()
         );
@@ -55,7 +59,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc()
         );
@@ -63,16 +67,11 @@ class RegisterUserTest extends ApiTestCase
 
     public function testRegisterNewUserUsingGetVerb(): void
     {
-        $data = [
-            'email' => 'apiato@mail.test',
-            'password' => 'secret',
-        ];
-
-        $response = $this->endpoint('get@v1/register')->makeCall($data);
+        $response = $this->endpoint('get@v1/register')->makeCall();
 
         $response->assertStatus(405);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('message')
+            fn (AssertableJson $json) => $json->has('message')
                 ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
                 ->etc()
         );
@@ -96,7 +95,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('errors')
+            fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
                 ->etc()
         );
@@ -112,20 +111,20 @@ class RegisterUserTest extends ApiTestCase
 
         if (config('appSection-authentication.require_email_verification')) {
             $response->assertJson(
-                fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
+                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
                     ->has(
                         'errors',
-                        fn(AssertableJson $json) => $json->where('email.0', 'The email field is required.')
+                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
                             ->where('password.0', 'The password field is required.')
                             ->where('verification_url.0', 'The verification url field is required.')
                     )
             );
         } else {
             $response->assertJson(
-                fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
+                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
                     ->has(
                         'errors',
-                        fn(AssertableJson $json) => $json->where('email.0', 'The email field is required.')
+                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
                             ->where('password.0', 'The password field is required.')
                     )
             );
@@ -142,7 +141,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('errors')
+            fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email must be a valid email address.')
                 ->etc()
         );
@@ -158,10 +157,10 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('errors')
+            fn (AssertableJson $json) => $json->has('errors')
                 ->has(
                     'errors.password',
-                    fn(AssertableJson $json) => $json
+                    fn (AssertableJson $json) => $json
                         ->where('0', 'The password must contain at least one uppercase and one lowercase letter.')
                         ->where('1', 'The password must contain at least one letter.')
                         ->where('2', 'The password must contain at least one number.')
@@ -172,24 +171,38 @@ class RegisterUserTest extends ApiTestCase
 
     public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
     {
-        if (!config('appSection-authentication.require_email_verification')) {
-            $this->markTestSkipped();
-        }
-
-        config(['appSection-authentication.require_email_verification' => []]);
+        config(['appSection-authentication.require_email_verification' => true]);
 
         $data = [
             'email' => 'test@test.test',
             'password' => 's3cr3tPa$$',
-            'verification_url' => 'http://notallowed.test/wrong',
+            'verification_url' => 'http://notallowed.test/wrong/hopyfuly/noone/make/a/route/like/this',
         ];
 
         $response = $this->makeCall($data);
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
+            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
                 ->where('errors.verification_url.0', 'The selected verification url is invalid.')
         );
+    }
+
+    public function testGivenEmailVerificationDisabled_ShouldNotSendVerificationEmail(): void
+    {
+        config(['appSection-authentication.require_email_verification' => false]);
+
+        Notification::fake();
+        $data = [
+            'email' => 'test@test.test',
+            'password' => 's3cr3tPa$$',
+            'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
+        ];
+
+        $response = $this->makeCall($data);
+        $registeredUser = User::find($this->decode($response->json()['data']['id']));
+        $response->assertStatus(200);
+        Notification::assertSentTo($registeredUser, Welcome::class);
+        Notification::assertNotSentTo($registeredUser, VerifyEmail::class);
     }
 }

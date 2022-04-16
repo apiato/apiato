@@ -7,10 +7,16 @@ use App\Ship\Parents\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public function __construct(
+        private string $verification_url,
+    ) {
+    }
 
     public function via($notifiable): array
     {
@@ -21,7 +27,7 @@ class VerifyEmail extends Notification implements ShouldQueue
     {
         return (new MailMessage())
             ->subject('Verify Email Address')
-            ->line('Please click the button below to verify your email address.')
+            ->line('Please click the below button to verify your email address.')
             ->action('Verify Email Address', $this->createUrl($notifiable))
             ->line('If you did not create an account, no further action is required.');
     }
@@ -31,6 +37,13 @@ class VerifyEmail extends Notification implements ShouldQueue
         $id = config('apiato.hash-id') ? $notifiable->getHashedKey() : $notifiable->getKey();
         $hash = sha1($notifiable->getEmailForVerification());
 
-        return request('verification_url') . "/$id/$hash";
+        return $this->verification_url . '?url=' . URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(config('appSection-authentication.verification_link_expiration_time')),
+            [
+                'id' => $id,
+                'hash' => $hash,
+            ]
+        );
     }
 }
