@@ -27,12 +27,11 @@ class ExtractLoginCustomAttributeTaskTest extends TestCase
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
 
-    private function assertAttributeIsExtracted($result, $userDetails): void
+    private function assertAttributeIsExtracted(array $result, array $userDetails): void
     {
-        $this->assertIsArray($result);
-        $this->assertArrayHasKey('username', $result);
-        $this->assertArrayHasKey('loginAttribute', $result);
-        $this->assertSame($result['username'], $userDetails['email']);
+        list($username, $loginAttribute) = $result;
+        $this->assertSame($username, $userDetails['email']);
+        $this->assertSame($loginAttribute, 'email');
     }
 
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void

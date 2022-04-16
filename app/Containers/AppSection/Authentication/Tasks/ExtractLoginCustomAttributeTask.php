@@ -33,8 +33,8 @@ class ExtractLoginCustomAttributeTask extends Task
         }
 
         return [
-            'username' => $loginUsername,
-            'loginAttribute' => $loginAttribute,
+            $loginUsername,
+            $loginAttribute,
         ];
     }
 
