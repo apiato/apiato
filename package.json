@@ -10,14 +10,14 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "apidoc": "^0.51.0",
+        "apidoc": "^0.51.1",
         "axios": "^0.21.4",
         "cross-env": "^5.1",
         "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
-        "postcss": "^8.4.4",
+        "postcss": "^8.4.12",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.43.5",
+        "sass": "^1.50.1",
         "sass-loader": "^7.1.0"
     }
 }
