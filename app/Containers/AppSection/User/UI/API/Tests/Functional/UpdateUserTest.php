@@ -25,12 +25,10 @@ class UpdateUserTest extends ApiTestCase
     {
         $user = $this->getTestingUser([
             'name' => 'He who should not be named',
-            'password' => 'Av@dakedavra!',
             'gender' => 'female',
         ]);
         $data = [
             'name' => 'Updated Name',
-            'password' => 'updated#Password',
             'gender' => 'male',
             'birth' => '2015-10-15',
         ];
@@ -39,15 +37,14 @@ class UpdateUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.object', 'User')
-                    ->where('data.email', $user->email)
-                    ->where('data.name', $data['name'])
-                    ->where('data.gender', $data['gender'])
-                    ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
-                    ->missing('data.password')
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->where('data.object', 'User')
+                ->where('data.email', $user->email)
+                ->where('data.name', $data['name'])
+                ->where('data.gender', $data['gender'])
+                ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
+                ->missing('data.password')
+                ->etc()
         );
     }
 
@@ -65,7 +62,6 @@ class UpdateUserTest extends ApiTestCase
         $user = $this->getTestingUser();
         $data = [
             'name' => '',
-            'password' => '',
             'gender' => '',
             'birth' => '',
         ];
@@ -74,9 +70,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response->assertStatus(422);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-            $json->has('errors')
-                ->where('errors.password.0', 'The password must be at least 6 characters.')
+            fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.name.0', 'The name must be at least 2 characters.')
                 ->where('errors.gender.0', 'The selected gender is invalid.')
                 ->where('errors.birth.0', 'The birth is not a valid date.')

@@ -9,6 +9,7 @@ use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Validation\Rules\Password;
 
 class User extends UserModel implements MustVerifyEmail
 {
@@ -33,6 +34,15 @@ class User extends UserModel implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'birth' => 'date',
     ];
+
+    public static function getPasswordValidationRules(): Password
+    {
+        return Password::min(8)
+            ->letters()
+            ->mixedCase()
+            ->numbers()
+            ->symbols();
+    }
 
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl)
     {

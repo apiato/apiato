@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
 use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
+use App\Ship\Parents\Requests\Request;
 
 class UpdateUserRequest extends Request
 {
@@ -35,7 +35,6 @@ class UpdateUserRequest extends Request
     public function rules(): array
     {
         return [
-            'password' => 'min:6|max:40',
             'name' => 'min:2|max:50',
             'gender' => 'in:male,female,unspecified',
             'birth' => 'date',

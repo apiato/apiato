@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
+use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request;
 use Illuminate\Validation\Rule;
 
-class RegisterUserRequest extends Request
+class UpdateUserPasswordRequest extends Request
 {
+    use IsResourceOwnerTrait;
+
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
@@ -20,7 +23,7 @@ class RegisterUserRequest extends Request
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-
+        'id',
     ];
 
     /**
@@ -28,26 +31,18 @@ class RegisterUserRequest extends Request
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-
+        'id',
     ];
 
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:users,email',
-            'password' => [
+            'current_password' => [Rule::requiredIf(
+                fn (): bool => !is_null($this->user()->password)
+            ), 'current_password:api'],
+            'new_password' => [
                 'required',
                 User::getPasswordValidationRules(),
-            ],
-            'name' => 'min:2|max:50',
-            'gender' => 'in:male,female,unspecified',
-            'birth' => 'date',
-            'verification_url' => [
-                'url',
-                Rule::requiredIf(function () {
-                    return config('appSection-authentication.require_email_verification');
-                }),
-                Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
             ],
         ];
     }
@@ -55,7 +50,7 @@ class RegisterUserRequest extends Request
     public function authorize(): bool
     {
         return $this->check([
-            'hasAccess',
+            'hasAccess|isResourceOwner',
         ]);
     }
 }
