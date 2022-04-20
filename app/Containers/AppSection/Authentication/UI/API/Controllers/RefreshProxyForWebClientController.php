@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Actions\ApiRefreshProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
+use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingException;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
@@ -23,7 +23,7 @@ class RefreshProxyForWebClientController extends ApiController
      * @param RefreshProxyRequest $request
      * @return JsonResponse
      * @throws LoginFailedException
-     * @throws RefreshTokenMissedException
+     * @throws RefreshTokenMissingException
      * @throws IncorrectIdException
      */
     public function refreshProxyForWebClient(RefreshProxyRequest $request): JsonResponse

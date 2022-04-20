@@ -35,7 +35,7 @@ class RefreshProxyRequest extends Request
     public function rules(): array
     {
         return [
-
+            'refresh_token' => 'string',
         ];
     }
 
