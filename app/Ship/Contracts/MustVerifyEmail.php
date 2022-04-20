@@ -7,7 +7,8 @@ interface MustVerifyEmail extends \Illuminate\Contracts\Auth\MustVerifyEmail
     /**
      * Send the email verification notification with frontend verification url.
      *
+     * @param string $verificationUrl
      * @return void
      */
-    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl);
+    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void;
 }

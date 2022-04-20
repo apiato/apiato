@@ -44,7 +44,7 @@ class User extends UserModel implements MustVerifyEmail
             ->symbols();
     }
 
-    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl)
+    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
     {
         $this->notify(new VerifyEmail($verificationUrl));
     }
@@ -52,7 +52,7 @@ class User extends UserModel implements MustVerifyEmail
     protected function email(): Attribute
     {
         return new Attribute(
-            get: fn ($value): string => strtolower($value),
+            get: fn (string $value): string => strtolower($value),
         );
     }
 }
