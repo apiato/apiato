@@ -8,6 +8,9 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 202 Accepted
  * {

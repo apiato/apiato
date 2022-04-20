@@ -8,6 +8,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiParam           {String} id role id
+ *
  * @apiUse             RoleSuccessSingleResponse
  */
 

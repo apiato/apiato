@@ -8,9 +8,14 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'update-users', 'roles' => ''] | Resource Owner
  *
- * @apiParam           {String} [name] min:2|max:50
- * @apiParam           {String="male","female","unspecified"} [gender]
- * @apiParam           {Date} [birth] format: Y-m-d / e.g. 2015-10-15
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiParam           {String} id user id
+ *
+ * @apiBody           {String} [name] min:2|max:50
+ * @apiBody           {String="male","female","unspecified"} [gender]
+ * @apiBody           {Date} [birth] format: Y-m-d / e.g. 2015-10-15
  *
  * @apiUse             UserSuccessSingleResponse
  */

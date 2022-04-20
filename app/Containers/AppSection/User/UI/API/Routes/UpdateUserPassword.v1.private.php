@@ -8,8 +8,13 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'update-users', 'roles' => ''] | Resource Owner
  *
- * @apiParam           {String} current_password
- * @apiParam           {String} new_password min: 8
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiParam           {String} id user id
+ *
+ * @apiBody           {String} current_password
+ * @apiBody           {String} new_password min: 8
  *
  * at least one character of the following:
  *

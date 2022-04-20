@@ -15,7 +15,7 @@
  *
  * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
- * @apiParam           {String} verification_url required|url
+ * @apiBody           {String} verification_url required|url
  *
  * @apiSuccessExample  {json} Success-Response:
  * HTTP/1.1 202 Accepted

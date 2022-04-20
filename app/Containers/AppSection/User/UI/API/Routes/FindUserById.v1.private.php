@@ -9,6 +9,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'search-users', 'roles' => '']
  *
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiParam           {String} id user id
+ *
  * @apiUse             UserSuccessSingleResponse
  */
 

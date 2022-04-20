@@ -9,8 +9,10 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           {String} email
- * @apiParam           {String} password
+ * @apiHeader          {String} accept=application/json
+ *
+ * @apiBody           {String} email
+ * @apiBody           {String} password
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

@@ -13,8 +13,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'manage-admins-access', 'roles' => '']
  *
- * @apiParam           {Number} user_id User ID
- * @apiParam           {Array} roles_ids Role ID or Array of Roles ID's
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiBody           {Number} user_id User ID
+ * @apiBody           {Array} roles_ids Role ID or Array of Roles ID's
  *
  * @apiUse             UserSuccessSingleResponse
  */

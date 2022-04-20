@@ -9,7 +9,9 @@
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
- * @apiParam           {String}  [refresh_token] The refresh Token
+ * @apiHeader          {String} accept=application/json
+ *
+ * @apiBody           {String}  [refresh_token] The refresh Token
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

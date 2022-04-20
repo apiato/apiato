@@ -9,6 +9,11 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'delete-users', 'roles' => ''] | Resource Owner
  *
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
+ * @apiParam           {String} id user id
+ *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 204 No Content
  * {}

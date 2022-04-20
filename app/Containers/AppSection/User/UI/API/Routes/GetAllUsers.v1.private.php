@@ -10,6 +10,9 @@
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'list-users', 'roles' => ''] | Resource Owner
  *
+ * @apiHeader          {String} accept=application/json
+ * @apiHeader          {String} authorization=Bearer
+ *
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
