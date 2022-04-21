@@ -2,7 +2,9 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
+use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -22,6 +24,8 @@ class UpdateUserPasswordTest extends ApiTestCase
 
     public function testGivenUserAlreadyHaveAPassword_UpdateUserPassword(): void
     {
+        Notification::fake();
+
         $user = $this->getTestingUser([
             'password' => 'Av@dakedavra!',
         ]);
@@ -40,6 +44,8 @@ class UpdateUserPasswordTest extends ApiTestCase
                 ->missing('data.password')
                 ->etc()
         );
+
+        Notification::assertSentTo($user, PasswordUpdatedNotification::class);
     }
 
     public function testNewPasswordFieldShouldBeRequired(): void
