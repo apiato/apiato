@@ -1,17 +1,7 @@
 {
     "name": "apiato/apiato",
+    "type": "project",
     "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
-    "homepage": "http://apiato.io/",
-    "support": {
-        "issues": "https://github.com/apiato/apiato/issues",
-        "source": "https://github.com/apiato/apiato"
-    },
-    "authors": [
-        {
-            "name": "Mahmoud Zalt",
-            "email": "mahmoud@zalt.me"
-        }
-    ],
     "keywords": [
         "Apiato",
         "API",
@@ -26,9 +16,19 @@
         "Porto SAP"
     ],
     "license": "MIT",
-    "type": "project",
+    "homepage": "http://apiato.io/",
+    "support": {
+        "issues": "https://github.com/apiato/apiato/issues",
+        "source": "https://github.com/apiato/apiato"
+    },
+    "authors": [
+        {
+            "name": "Mahmoud Zalt",
+            "email": "mahmoud@zalt.me"
+        }
+    ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.0.2",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
@@ -37,21 +37,24 @@
         "ext-tokenizer": "*",
         "ext-gettext": "*",
         "fruitcake/laravel-cors": "^2.0.4",
-        "guzzlehttp/guzzle": "^7.3.0",
-        "laravel/framework": "^8.61.0",
-        "laravel/tinker": "^2.6.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.2",
+        "laravel/sanctum": "^2.14.1",
+        "laravel/tinker": "^2.7",
         "wikimedia/composer-merge-plugin": "^2.0.1"
     },
     "require-dev": {
         "ext-intl": "*",
         "ext-json": "*",
         "facade/ignition": "^2.13.1",
-        "fakerphp/faker": "^1.16.0",
         "friendsofphp/php-cs-fixer": "^3.1.0",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.9.0",
-        "phpunit/phpunit": "^9.5.9",
         "roave/security-advisories": "dev-latest",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
         "vimeo/psalm": "^4.10"
     },
     "autoload": {
@@ -63,6 +66,21 @@
     },
     "autoload-dev": {
         "psr-4": {}
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
     },
     "extra": {
         "laravel": {
@@ -80,18 +98,6 @@
             "merge-extra-deep": false,
             "merge-scripts": true
         }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
     },
     "config": {
         "optimize-autoloader": true,
