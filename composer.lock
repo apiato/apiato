@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "56ed9cccd575581b6ec433028948b0d15a431863"
+                "reference": "8a4d59339b18f738e2b7e7dd2d6e76c1cbc93a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/56ed9cccd575581b6ec433028948b0d15a431863",
-                "reference": "56ed9cccd575581b6ec433028948b0d15a431863",
+                "url": "https://api.github.com/repos/apiato/core/zipball/8a4d59339b18f738e2b7e7dd2d6e76c1cbc93a6c",
+                "reference": "8a4d59339b18f738e2b7e7dd2d6e76c1cbc93a6c",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2022-04-20T12:24:51+00:00"
+            "time": "2022-04-21T11:59:19+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
@@ -4312,16 +4312,16 @@
         },
         {
             "name": "spatie/fractalistic",
-            "version": "2.9.4",
+            "version": "2.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/fractalistic.git",
-                "reference": "15cf14220cf3f84096154242a1bc1416b99e4e1a"
+                "reference": "6f12686a03d035f4558d166989c62aa93bde2151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/fractalistic/zipball/15cf14220cf3f84096154242a1bc1416b99e4e1a",
-                "reference": "15cf14220cf3f84096154242a1bc1416b99e4e1a",
+                "url": "https://api.github.com/repos/spatie/fractalistic/zipball/6f12686a03d035f4558d166989c62aa93bde2151",
+                "reference": "6f12686a03d035f4558d166989c62aa93bde2151",
                 "shasum": ""
             },
             "require": {
@@ -4361,7 +4361,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/fractalistic/issues",
-                "source": "https://github.com/spatie/fractalistic/tree/2.9.4"
+                "source": "https://github.com/spatie/fractalistic/tree/2.9.5"
             },
             "funding": [
                 {
@@ -4369,7 +4369,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-12T08:42:59+00:00"
+            "time": "2022-04-21T12:26:22+00:00"
         },
         {
             "name": "spatie/laravel-fractal",
