@@ -3,11 +3,11 @@
 namespace App\Containers\AppSection\User\Data\Factories;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Factories\Factory;
+use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class UserFactory extends ParentFactory
 {
     protected $model = User::class;
 
@@ -26,16 +26,16 @@ class UserFactory extends Factory
         ];
     }
 
-    public function admin(): UserFactory
+    public function admin(): static
     {
         return $this->afterCreating(function (User $user) {
             $user->assignRole(config('appSection-authorization.admin_role'));
         });
     }
 
-    public function unverified(): UserFactory
+    public function unverified(): static
     {
-        return $this->state(function () {
+        return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
             ];

@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\Authorization\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Ship\Parents\Factories\Factory as ParentFactory;
 
-class PermissionFactory extends Factory
+class PermissionFactory extends ParentFactory
 {
     protected $model = Permission::class;
 
