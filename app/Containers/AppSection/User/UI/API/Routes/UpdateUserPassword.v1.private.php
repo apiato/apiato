@@ -6,7 +6,7 @@
  * @api                {patch} /v1/users/:id/password Update User's Password
  *
  * @apiVersion         1.0.0
- * @apiPermission      Authenticated ['permissions' => 'update-users', 'roles' => ''] | Resource Owner
+ * @apiPermission      Authenticated ['permissions' => '', 'roles' => ''] | Resource Owner
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
