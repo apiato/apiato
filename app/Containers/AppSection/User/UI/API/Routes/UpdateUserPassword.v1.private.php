@@ -3,7 +3,7 @@
 /**
  * @apiGroup           User
  * @apiName            UpdateUserPassword
- * @api                {patch} /v1/users/:id Update User's Password
+ * @api                {patch} /v1/users/:id/password Update User's Password
  *
  * @apiVersion         1.0.0
  * @apiPermission      Authenticated ['permissions' => 'update-users', 'roles' => ''] | Resource Owner
