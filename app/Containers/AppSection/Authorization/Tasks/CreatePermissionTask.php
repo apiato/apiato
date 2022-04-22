@@ -27,10 +27,10 @@ class CreatePermissionTask extends Task
                 'name' => strtolower($name),
                 'description' => $description,
                 'display_name' => $displayName,
-                'guard_name' => 'web',
+                'guard_name' => 'api',
             ]);
-        } catch (Exception) {
-            throw new CreateResourceFailedException();
+        } catch (Exception $exception) {
+            throw new CreateResourceFailedException($exception->getMessage());
         }
 
         return $permission;

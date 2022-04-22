@@ -16,7 +16,7 @@ class Permission extends SpatiePermission
         FactoryLocatorTrait::newFactory insteadof HasFactory;
     }
 
-    protected string $guard_name = 'web';
+    protected string $guard_name = 'api';
 
     protected $fillable = [
         'name',

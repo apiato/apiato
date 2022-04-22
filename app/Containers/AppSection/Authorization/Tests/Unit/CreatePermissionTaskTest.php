@@ -24,6 +24,6 @@ class CreatePermissionTaskTest extends TestCase
         $this->assertEquals(strtolower($name), $permission->name);
         $this->assertEquals($description, $permission->description);
         $this->assertEquals($display_name, $permission->display_name);
-        $this->assertEquals('web', $permission->guard_name);
+        $this->assertEquals('api', $permission->guard_name);
     }
 }

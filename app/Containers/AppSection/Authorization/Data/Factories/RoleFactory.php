@@ -13,6 +13,7 @@ class RoleFactory extends ParentFactory
     {
         return [
             'name' => $this->faker->firstName(),
+            'guard_name' => 'api',
         ];
     }
 
