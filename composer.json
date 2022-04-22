@@ -30,32 +30,31 @@
     "require": {
         "php": "^8.0.2",
         "ext-curl": "*",
+        "ext-gettext": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
         "ext-sodium": "*",
         "ext-tokenizer": "*",
-        "ext-gettext": "*",
-        "fruitcake/laravel-cors": "^2.0.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "lcobucci/clock": "2.1.0",
         "wikimedia/composer-merge-plugin": "^2.0.1"
     },
     "require-dev": {
         "ext-intl": "*",
         "ext-json": "*",
-        "facade/ignition": "^2.13.1",
-        "friendsofphp/php-cs-fixer": "^3.1.0",
+        "friendsofphp/php-cs-fixer": "^3.8.0",
         "roave/security-advisories": "dev-latest",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "fakerphp/faker": "^1.19.1",
+        "laravel/sail": "^1.13.10",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
-        "vimeo/psalm": "^4.10"
+        "vimeo/psalm": "^4.22.0"
     },
     "autoload": {
         "psr-4": {
