@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "6ab9ce13523b54ab3b040fdff282373d2e8741f3"
+                "reference": "d227d80b539fc8a734d4e0e4833e86f1023592da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/6ab9ce13523b54ab3b040fdff282373d2e8741f3",
-                "reference": "6ab9ce13523b54ab3b040fdff282373d2e8741f3",
+                "url": "https://api.github.com/repos/apiato/core/zipball/d227d80b539fc8a734d4e0e4833e86f1023592da",
+                "reference": "d227d80b539fc8a734d4e0e4833e86f1023592da",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2022-04-22T10:32:23+00:00"
+            "time": "2022-04-23T15:18:31+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
