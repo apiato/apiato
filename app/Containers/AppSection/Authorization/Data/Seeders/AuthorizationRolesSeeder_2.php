@@ -13,7 +13,9 @@ class AuthorizationRolesSeeder_2 extends Seeder
      */
     public function run(): void
     {
-        // Default Roles ----------------------------------------------------------------
-        app(CreateRoleTask::class)->run(config('appSection-authorization.admin_role'), 'Administrator', 'Administrator Role');
+        // Default Roles for every Guard ----------------------------------------------------------------
+        foreach (array_keys(config('auth.guards')) as $guardName) {
+            app(CreateRoleTask::class)->run(config('appSection-authorization.admin_role'), 'Administrator', 'Administrator Role', $guardName);
+        }
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "754848062faf78ccde9fd36c22a1cdf0",
+    "content-hash": "a884f92c34a4f344c7d5bb9e2fee1347",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -126,16 +126,16 @@
         },
         {
             "name": "apiato/documentation-generator-container",
-            "version": "v2.4.0",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/documentation-generator-container.git",
-                "reference": "6afdd3b412e526a79823746b19b98fa2e64ca814"
+                "reference": "b68d55ad7f8113859c43faf743f566d05ea56268"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/6afdd3b412e526a79823746b19b98fa2e64ca814",
-                "reference": "6afdd3b412e526a79823746b19b98fa2e64ca814",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/b68d55ad7f8113859c43faf743f566d05ea56268",
+                "reference": "b68d55ad7f8113859c43faf743f566d05ea56268",
                 "shasum": ""
             },
             "require-dev": {
@@ -161,22 +161,22 @@
             "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
             "support": {
                 "issues": "https://github.com/apiato/documentation-generator-container/issues",
-                "source": "https://github.com/apiato/documentation-generator-container/tree/v2.4.0"
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v2.4.2"
             },
-            "time": "2022-04-21T18:49:11+00:00"
+            "time": "2022-04-23T08:56:53+00:00"
         },
         {
             "name": "apiato/welcome-container",
-            "version": "v1.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/welcome-container.git",
-                "reference": "ca7b1d265f137700840b75a18020093cee5d2ff1"
+                "reference": "68a73c7a8603db49ee81856233fb8d12f8ebb86d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/ca7b1d265f137700840b75a18020093cee5d2ff1",
-                "reference": "ca7b1d265f137700840b75a18020093cee5d2ff1",
+                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/68a73c7a8603db49ee81856233fb8d12f8ebb86d",
+                "reference": "68a73c7a8603db49ee81856233fb8d12f8ebb86d",
                 "shasum": ""
             },
             "type": "apiato-container",
@@ -194,9 +194,9 @@
             "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
             "support": {
                 "issues": "https://github.com/apiato/welcome-container/issues",
-                "source": "https://github.com/apiato/welcome-container/tree/v1.0.0"
+                "source": "https://github.com/apiato/welcome-container/tree/v2.0.1"
             },
-            "time": "2021-04-25T14:28:36+00:00"
+            "time": "2022-04-22T17:14:03+00:00"
         },
         {
             "name": "brick/math",
@@ -1603,71 +1603,6 @@
                 "source": "https://github.com/laravel/passport"
             },
             "time": "2022-04-16T13:38:08+00:00"
-        },
-        {
-            "name": "laravel/sanctum",
-            "version": "v2.15.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/sanctum.git",
-                "reference": "31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
-                "reference": "31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/console": "^6.9|^7.0|^8.0|^9.0",
-                "illuminate/contracts": "^6.9|^7.0|^8.0|^9.0",
-                "illuminate/database": "^6.9|^7.0|^8.0|^9.0",
-                "illuminate/support": "^6.9|^7.0|^8.0|^9.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
-                "phpunit/phpunit": "^8.0|^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Sanctum\\SanctumServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Sanctum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
-            "keywords": [
-                "auth",
-                "laravel",
-                "sanctum"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/sanctum/issues",
-                "source": "https://github.com/laravel/sanctum"
-            },
-            "time": "2022-04-08T13:39:49+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -10058,12 +9993,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "dad1e44d86f958c5be9c5f355c9554ce22f1b1a7"
+                "reference": "e5e096c731d21614b952983804581389eb2a484f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/dad1e44d86f958c5be9c5f355c9554ce22f1b1a7",
-                "reference": "dad1e44d86f958c5be9c5f355c9554ce22f1b1a7",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e5e096c731d21614b952983804581389eb2a484f",
+                "reference": "e5e096c731d21614b952983804581389eb2a484f",
                 "shasum": ""
             },
             "conflict": {
@@ -10093,7 +10028,7 @@
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
                 "bmarshall511/wordpress_zero_spam": "<5.2.13",
                 "bolt/bolt": "<3.7.2",
-                "bolt/core": "<4.1.13",
+                "bolt/core": "<=4.2",
                 "bottelet/flarepoint": "<2.2.1",
                 "brightlocal/phpwhois": "<=4.2.5",
                 "buddypress/buddypress": "<7.2.1",
@@ -10111,7 +10046,7 @@
                 "codeigniter/framework": "<=3.0.6",
                 "codeigniter4/framework": "<4.1.9",
                 "codiad/codiad": "<=2.8.4",
-                "composer/composer": "<1.10.23|>=2-alpha.1,<2.1.9",
+                "composer/composer": "<1.10.26|>=2-alpha.1,<2.2.12|>=2.3,<2.3.5",
                 "concrete5/concrete5": "<9",
                 "concrete5/core": "<8.5.7",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
@@ -10181,6 +10116,7 @@
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "froala/wysiwyg-editor": "<3.2.7",
+                "froxlor/froxlor": "<=0.10.22",
                 "fuel/core": "<1.8.1",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
@@ -10312,7 +10248,7 @@
                 "pimcore/data-hub": "<1.2.4",
                 "pimcore/pimcore": "<10.4",
                 "pocketmine/bedrock-protocol": "<8.0.2",
-                "pocketmine/pocketmine-mp": "<4.2.4",
+                "pocketmine/pocketmine-mp": "<4.2.9",
                 "pressbooks/pressbooks": "<5.18",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
                 "prestashop/contactform": ">1.0.1,<4.3",
@@ -10340,8 +10276,8 @@
                 "scheb/two-factor-bundle": ">=0,<3.26|>=4,<4.11",
                 "sensiolabs/connect": "<4.2.3",
                 "serluck/phpwhois": "<=4.2.6",
-                "shopware/core": "<=6.4.8.1",
-                "shopware/platform": "<=6.4.8.1",
+                "shopware/core": "<=6.4.9",
+                "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
                 "shopware/shopware": "<5.7.7",
                 "shopware/storefront": "<=6.4.8.1",
@@ -10532,7 +10468,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-14T16:08:49+00:00"
+            "time": "2022-04-22T22:04:12+00:00"
         },
         {
             "name": "sebastian/cli-parser",

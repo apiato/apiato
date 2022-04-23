@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\Authentication\Tasks\CreateUserByCredentialsTask;
 use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
+use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Actions\Action;
@@ -22,14 +23,18 @@ class CreateAdminAction extends Action
         try {
             DB::beginTransaction();
 
-            $admin = app(CreateUserByCredentialsTask::class)->run($data);
-            app(AssignRolesToUserTask::class)->run($admin, [config('appSection-authorization.admin_role')]);
-            $admin->email_verified_at = now();
-            $admin->save();
+            $user = app(CreateUserByCredentialsTask::class)->run($data);
+            $adminRoleName = config('appSection-authorization.admin_role');
+            foreach (array_keys(config('auth.guards')) as $guardName) {
+                $adminRole = app(FindRoleTask::class)->run($adminRoleName, $guardName);
+                app(AssignRolesToUserTask::class)->run($user, $adminRole);
+            }
+            $user->email_verified_at = now();
+            $user->save();
 
             DB::commit();
 
-            return $admin;
+            return $user;
         } catch (Exception $exception) {
             DB::rollBack();
 

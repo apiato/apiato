@@ -18,11 +18,29 @@ class FindRoleTask extends Task
     /**
      * @throws NotFoundException
      */
-    public function run($roleNameOrId): Role
+    public function run(string|int $roleNameOrId, string $guardName = 'api'): Role
     {
-        $query = (is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId)) ? ['id' => $roleNameOrId] : ['name' => $roleNameOrId];
+        $query = [
+            'guard_name' => $guardName,
+        ];
+
+        if ($this->isID($roleNameOrId)) {
+            $query['id'] = $roleNameOrId;
+        } else {
+            $query['name'] = $roleNameOrId;
+        }
+
         $role = $this->repository->findWhere($query)->first();
 
         return $role ?? throw new NotFoundException();
+    }
+
+    /**
+     * @param int|string $roleNameOrId
+     * @return bool
+     */
+    private function isID(int|string $roleNameOrId): bool
+    {
+        return (is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId));
     }
 }

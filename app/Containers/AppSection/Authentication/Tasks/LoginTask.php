@@ -9,6 +9,6 @@ class LoginTask extends Task
 {
     public function run(string $username, string $password, string $field = 'email', bool $remember = false): bool
     {
-        return Auth::attempt([$field => $username, 'password' => $password], $remember);
+        return Auth::guard('web')->attempt([$field => $username, 'password' => $password], $remember);
     }
 }

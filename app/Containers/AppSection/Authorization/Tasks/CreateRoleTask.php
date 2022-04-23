@@ -18,7 +18,7 @@ class CreateRoleTask extends Task
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(string $name, string $description = null, string $displayName = null): Role
+    public function run(string $name, string $description = null, string $displayName = null, string $guardName = 'api'): Role
     {
         app()['cache']->forget('spatie.permission.cache');
 
@@ -27,7 +27,7 @@ class CreateRoleTask extends Task
                 'name' => strtolower($name),
                 'description' => $description,
                 'display_name' => $displayName,
-                'guard_name' => 'api',
+                'guard_name' => $guardName,
             ]);
         } catch (Exception) {
             throw new CreateResourceFailedException();

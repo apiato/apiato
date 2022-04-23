@@ -7,6 +7,7 @@ use Apiato\Core\Exceptions\AuthenticationException as CoreAuthenticationExceptio
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
 use App\Ship\Exceptions\NotAuthorizedResourceException;
 use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Psr\Log\LogLevel;
@@ -69,8 +70,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->buildResponse(new NotFoundException());
         });
 
-        $this->renderable(function (AccessDeniedHttpException $e) {
-            return $this->buildResponse(new NotAuthorizedResourceException());
+        $this->renderable(function (AccessDeniedHttpException $e, $request) {
+            return $this->shouldReturnJson($request, $e)
+                ? $this->buildResponse(new NotAuthorizedResourceException())
+                : redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
         });
     }
 
@@ -95,8 +98,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
         return response()->json($response, (int)$e->getCode());
     }
 
-    protected function unauthenticated($request, LaravelAuthenticationException $exception): JsonResponse|Response
+    protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|Response
     {
-        return $this->buildResponse(new CoreAuthenticationException());
+        return $this->shouldReturnJson($request, $e)
+            ? $this->buildResponse(new CoreAuthenticationException())
+            : redirect()->guest(route(RouteServiceProvider::LOGIN));
     }
 }

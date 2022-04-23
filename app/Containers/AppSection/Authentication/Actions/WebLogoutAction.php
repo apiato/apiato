@@ -9,6 +9,6 @@ class WebLogoutAction extends Action
 {
     public function run(): void
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
     }
 }

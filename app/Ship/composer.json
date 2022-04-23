@@ -3,8 +3,8 @@
     "description": "Apiato Ship folder where shared functionality resides",
     "require": {
         "apiato/core": "dev-master",
-        "apiato/documentation-generator-container": "^2.4",
-        "apiato/welcome-container": "^1.0.0"
+        "apiato/documentation-generator-container": "^2.4.1",
+        "apiato/welcome-container": "^2.0.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
