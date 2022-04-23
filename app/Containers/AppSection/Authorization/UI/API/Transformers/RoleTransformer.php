@@ -3,10 +3,10 @@
 namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Role;
-use App\Ship\Parents\Transformers\Transformer;
+use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 use League\Fractal\Resource\Collection;
 
-class RoleTransformer extends Transformer
+class RoleTransformer extends ParentTransformer
 {
     protected array $availableIncludes = [
 

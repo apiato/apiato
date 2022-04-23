@@ -8,11 +8,13 @@ use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DetachPermissionsFromRoleRequest;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class DetachPermissionsFromRoleAction extends Action
+class DetachPermissionsFromRoleAction extends ParentAction
 {
     /**
+     * @param DetachPermissionsFromRoleRequest $request
+     * @return Role
      * @throws NotFoundException
      */
     public function run(DetachPermissionsFromRoleRequest $request): Role

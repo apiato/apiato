@@ -5,11 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tasks;
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
-class CreateUserByCredentialsTask extends Task
+class CreateUserByCredentialsTask extends ParentTask
 {
     public function __construct(
         protected UserRepository $repository

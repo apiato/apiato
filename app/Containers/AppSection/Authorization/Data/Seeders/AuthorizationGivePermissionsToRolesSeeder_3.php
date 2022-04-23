@@ -3,10 +3,10 @@
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
-use App\Ship\Parents\Seeders\Seeder;
+use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 use Spatie\Permission\Models\Role;
 
-class AuthorizationGivePermissionsToRolesSeeder_3 extends Seeder
+class AuthorizationGivePermissionsToRolesSeeder_3 extends ParentSeeder
 {
     public function run(): void
     {

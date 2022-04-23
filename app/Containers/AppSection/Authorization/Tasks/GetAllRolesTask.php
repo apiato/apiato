@@ -5,10 +5,10 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 use Apiato\Core\Exceptions\CoreInternalErrorException;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Criterias\ThisLikeThatCriteria;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class GetAllRolesTask extends Task
+class GetAllRolesTask extends ParentTask
 {
     public function __construct(
         protected RoleRepository $repository
@@ -16,6 +16,8 @@ class GetAllRolesTask extends Task
     }
 
     /**
+     * @param bool $skipPagination
+     * @return mixed
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */

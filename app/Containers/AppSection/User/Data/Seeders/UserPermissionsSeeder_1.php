@@ -4,9 +4,9 @@ namespace App\Containers\AppSection\User\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Parents\Seeders\Seeder;
+use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
-class UserPermissionsSeeder_1 extends Seeder
+class UserPermissionsSeeder_1 extends ParentSeeder
 {
     /**
      * @throws CreateResourceFailedException

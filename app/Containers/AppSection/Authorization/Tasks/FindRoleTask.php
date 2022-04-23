@@ -5,10 +5,10 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Support\Str;
 
-class FindRoleTask extends Task
+class FindRoleTask extends ParentTask
 {
     public function __construct(
         protected RoleRepository $repository
@@ -16,6 +16,9 @@ class FindRoleTask extends Task
     }
 
     /**
+     * @param string|int $roleNameOrId
+     * @param string $guardName
+     * @return Role
      * @throws NotFoundException
      */
     public function run(string|int $roleNameOrId, string $guardName = 'api'): Role

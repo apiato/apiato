@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class GetAllRolesRequest extends Request
+class GetAllRolesRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

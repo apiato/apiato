@@ -3,12 +3,12 @@
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 use GuzzleHttp\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
-class CallOAuthServerTask extends Task
+class CallOAuthServerTask extends ParentTask
 {
     /**
      * @throws LoginFailedException

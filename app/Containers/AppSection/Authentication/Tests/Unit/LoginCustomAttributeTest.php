@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Config;
  *
  * @group authentication
  * @group unit
- *
  */
 class LoginCustomAttributeTest extends TestCase
 {
@@ -30,7 +29,7 @@ class LoginCustomAttributeTest extends TestCase
     private function assertAttributeIsExtracted(array $result, array $userDetails): void
     {
         list($username, $loginAttribute) = $result;
-        $this->assertSame($username, $userDetails['email']);
+        $this->assertSame($username, strtolower($userDetails['email']));
         $this->assertSame($loginAttribute, 'email');
     }
 

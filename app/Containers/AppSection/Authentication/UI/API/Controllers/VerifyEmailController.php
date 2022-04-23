@@ -12,6 +12,8 @@ use Throwable;
 class VerifyEmailController extends ApiController
 {
     /**
+     * @param VerifyEmailRequest $request
+     * @return JsonResponse
      * @throws NotFoundException
      * @throws Throwable
      */

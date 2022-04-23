@@ -3,13 +3,13 @@
 namespace App\Containers\AppSection\Authentication\Notifications;
 
 use App\Ship\Parents\Models\UserModel;
-use App\Ship\Parents\Notifications\Notification;
+use App\Ship\Parents\Notifications\Notification as ParentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\URL;
 
-class VerifyEmail extends Notification implements ShouldQueue
+class VerifyEmail extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 
@@ -38,12 +38,12 @@ class VerifyEmail extends Notification implements ShouldQueue
         $hash = sha1($notifiable->getEmailForVerification());
 
         return $this->verification_url . '?url=' . URL::temporarySignedRoute(
-            'verification.verify',
-            now()->addMinutes(config('appSection-authentication.verification_link_expiration_time')),
-            [
-                'id' => $id,
-                'hash' => $hash,
-            ]
-        );
+                'verification.verify',
+                now()->addMinutes(config('appSection-authentication.verification_link_expiration_time')),
+                [
+                    'id' => $id,
+                    'hash' => $hash,
+                ]
+            );
     }
 }

@@ -5,10 +5,10 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Support\Str;
 
-class FindPermissionTask extends Task
+class FindPermissionTask extends ParentTask
 {
     public function __construct(
         protected PermissionRepository $repository

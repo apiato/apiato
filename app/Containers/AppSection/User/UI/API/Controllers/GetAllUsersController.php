@@ -13,9 +13,11 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class GetAllUsersController extends ApiController
 {
     /**
+     * @param GetAllUsersRequest $request
+     * @return array
+     * @throws CoreInternalErrorException
      * @throws InvalidTransformerException
      * @throws RepositoryException
-     * @throws CoreInternalErrorException
      */
     public function getAllUsers(GetAllUsersRequest $request): array
     {

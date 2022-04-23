@@ -8,10 +8,10 @@ use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingExcep
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Request;
 
-class ApiRefreshProxyForWebClientAction extends Action
+class ApiRefreshProxyForWebClientAction extends ParentAction
 {
     /**
      * @param RefreshProxyRequest $request

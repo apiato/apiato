@@ -11,6 +11,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class GetAuthenticatedUserController extends ApiController
 {
     /**
+     * @param GetAuthenticatedUserRequest $request
+     * @return array
      * @throws InvalidTransformerException
      */
     public function getAuthenticatedUser(GetAuthenticatedUserRequest $request): array

@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class UpdateUserRequest extends Request
+class UpdateUserRequest extends ParentRequest
 {
     use IsResourceOwnerTrait;
 

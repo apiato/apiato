@@ -8,11 +8,13 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolesFromUserR
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class RevokeRolesFromUserAction extends Action
+class RevokeRolesFromUserAction extends ParentAction
 {
     /**
+     * @param RevokeRolesFromUserRequest $request
+     * @return User
      * @throws NotFoundException
      */
     public function run(RevokeRolesFromUserRequest $request): User

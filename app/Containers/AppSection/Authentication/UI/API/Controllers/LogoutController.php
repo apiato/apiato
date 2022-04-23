@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Cookie;
 
 class LogoutController extends ApiController
 {
+    /**
+     * @param LogoutRequest $request
+     * @return JsonResponse
+     */
     public function logout(LogoutRequest $request): JsonResponse
     {
         app(ApiLogoutAction::class)->run($request);

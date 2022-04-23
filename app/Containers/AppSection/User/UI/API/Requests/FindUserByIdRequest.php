@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class FindUserByIdRequest extends Request
+class FindUserByIdRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\WEB\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class UnauthorizedRequest extends Request
+class UnauthorizedRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

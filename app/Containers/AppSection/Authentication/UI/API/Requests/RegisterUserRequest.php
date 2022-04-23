@@ -3,10 +3,10 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 
-class RegisterUserRequest extends Request
+class RegisterUserRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

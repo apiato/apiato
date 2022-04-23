@@ -12,8 +12,10 @@ use App\Ship\Parents\Controllers\ApiController;
 class SyncUserRolesController extends ApiController
 {
     /**
-     * @throws NotFoundException
+     * @param SyncUserRolesRequest $request
+     * @return array
      * @throws InvalidTransformerException
+     * @throws NotFoundException
      */
     public function syncUserRoles(SyncUserRolesRequest $request): array
     {

@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Tasks\CreateUserByCredentialsTask;
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Ship\Exceptions\CreateResourceFailedException;
 
 /**

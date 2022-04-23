@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
 use App\Containers\AppSection\Authentication\Tests\TestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Exceptions\NotFoundException;
 
 /**
  * Class ForgotPasswordActionTest.

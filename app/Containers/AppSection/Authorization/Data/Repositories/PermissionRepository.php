@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
-use App\Ship\Parents\Repositories\Repository;
+use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
-class PermissionRepository extends Repository
+class PermissionRepository extends ParentRepository
 {
     protected $fieldSearchable = [
         'name' => '=',

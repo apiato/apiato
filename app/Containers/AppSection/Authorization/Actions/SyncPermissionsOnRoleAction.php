@@ -7,11 +7,13 @@ use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class SyncPermissionsOnRoleAction extends Action
+class SyncPermissionsOnRoleAction extends ParentAction
 {
     /**
+     * @param SyncPermissionsOnRoleRequest $request
+     * @return Role
      * @throws NotFoundException
      */
     public function run(SyncPermissionsOnRoleRequest $request): Role

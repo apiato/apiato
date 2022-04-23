@@ -12,6 +12,8 @@ use Illuminate\Http\JsonResponse;
 class DeleteUserController extends ApiController
 {
     /**
+     * @param DeleteUserRequest $request
+     * @return JsonResponse
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */

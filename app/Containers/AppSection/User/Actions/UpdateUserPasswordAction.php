@@ -9,9 +9,9 @@ use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserPasswordRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class UpdateUserPasswordAction extends Action
+class UpdateUserPasswordAction extends ParentAction
 {
     /**
      * @param UpdateUserPasswordRequest $request

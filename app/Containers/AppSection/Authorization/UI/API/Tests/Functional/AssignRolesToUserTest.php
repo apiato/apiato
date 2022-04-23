@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
-use Illuminate\Support\Arr;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -36,12 +35,11 @@ class AssignRolesToUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->has('data.roles.data', 1)
-                    ->where('data.id', $data['user_id'])
-                    ->where('data.roles.data.0.id', $data['roles_ids'][0])
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->has('data.roles.data', 1)
+                ->where('data.id', $data['user_id'])
+                ->where('data.roles.data.0.id', $data['roles_ids'][0])
+                ->etc()
         );
     }
 
@@ -62,13 +60,12 @@ class AssignRolesToUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->has('data.roles.data', 2)
-                    ->where('data.id', $data['user_id'])
-                    ->where('data.roles.data.0.id', $data['roles_ids'][0])
-                    ->where('data.roles.data.1.id', $data['roles_ids'][1])
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->has('data.roles.data', 2)
+                ->where('data.id', $data['user_id'])
+                ->where('data.roles.data.0.id', $data['roles_ids'][0])
+                ->where('data.roles.data.1.id', $data['roles_ids'][1])
+                ->etc()
         );
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\User\Data\Repositories;
 
-use App\Ship\Parents\Repositories\Repository;
+use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
-class UserRepository extends Repository
+class UserRepository extends ParentRepository
 {
     protected $fieldSearchable = [
         'name' => 'like',

@@ -7,11 +7,13 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\SyncUserRolesRequest
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class SyncUserRolesAction extends Action
+class SyncUserRolesAction extends ParentAction
 {
     /**
+     * @param SyncUserRolesRequest $request
+     * @return User
      * @throws NotFoundException
      */
     public function run(SyncUserRolesRequest $request): User

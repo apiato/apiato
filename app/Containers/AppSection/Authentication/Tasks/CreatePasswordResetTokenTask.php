@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Ship\Parents\Models\UserModel;
-use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Tasks\Task as ParentTask;
 
-class CreatePasswordResetTokenTask extends Task
+class CreatePasswordResetTokenTask extends ParentTask
 {
     public function run(UserModel $user): string
     {

@@ -7,22 +7,23 @@ use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Parents\Actions\Action;
-use Exception;
+use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class CreateAdminAction extends Action
+class CreateAdminAction extends ParentAction
 {
     /**
+     * @param array $data
+     * @return User
      * @throws CreateResourceFailedException
      * @throws Throwable
+     * @throws NotFoundException
      */
     public function run(array $data): User
     {
-        try {
-            DB::beginTransaction();
-
+        return DB::transaction(function () use ($data) {
             $user = app(CreateUserByCredentialsTask::class)->run($data);
             $adminRoleName = config('appSection-authorization.admin_role');
             foreach (array_keys(config('auth.guards')) as $guardName) {
@@ -32,13 +33,7 @@ class CreateAdminAction extends Action
             $user->email_verified_at = now();
             $user->save();
 
-            DB::commit();
-
             return $user;
-        } catch (Exception $exception) {
-            DB::rollBack();
-
-            throw $exception;
-        }
+        });
     }
 }
