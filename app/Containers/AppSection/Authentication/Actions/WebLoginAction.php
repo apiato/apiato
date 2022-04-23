@@ -6,7 +6,6 @@ use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
-use App\Containers\AppSection\Authentication\Traits\LoginAttributeCaseSensitivityTrait;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -15,8 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends ParentAction
 {
-    use LoginAttributeCaseSensitivityTrait;
-
     /**
      * @param LoginRequest $request
      * @return User|Authenticatable|null
@@ -34,7 +31,7 @@ class WebLoginAction extends ParentAction
         list($username, $loginAttribute) = LoginCustomAttribute::extract($sanitizedData);
 
         $loggedIn = app(LoginTask::class)->run(
-            $this->processLoginAttributeCaseSensitivity($username),
+            $username,
             $sanitizedData['password'],
             $loginAttribute,
             $sanitizedData['remember_me']

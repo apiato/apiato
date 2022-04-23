@@ -37,7 +37,7 @@ class LoginCustomAttribute
         }
 
         return [
-            $loginUsername,
+            static::processLoginAttributeCaseSensitivity($loginUsername),
             $loginAttribute,
         ];
     }
@@ -50,6 +50,15 @@ class LoginCustomAttribute
         }
 
         return $allowedLoginFields;
+    }
+
+    /**
+     * @param string $username
+     * @return string
+     */
+    private static function processLoginAttributeCaseSensitivity(string $username): string
+    {
+        return config('appSection-authentication.login.case_sensitive') ? $username : strtolower($username);
     }
 
     public static function mergeValidationRules(array $rules): array
