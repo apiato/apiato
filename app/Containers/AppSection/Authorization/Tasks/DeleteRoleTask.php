@@ -17,7 +17,10 @@ class DeleteRoleTask extends Task
     }
 
     /**
-     * @throws DeleteResourceFailedException|NotFoundException
+     * @param $id
+     * @return int
+     * @throws DeleteResourceFailedException
+     * @throws NotFoundException
      */
     public function run($id): int
     {
