@@ -22,15 +22,13 @@ class CallOAuthServerTask extends ParentTask
             'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? config('app.locale'),
         ];
 
-        $request = Request::create($authFullApiUrl, 'POST', $data, [], [], $headers);
-
+        $request = Request::create($authFullApiUrl, 'POST', $data, server: $headers);
         $response = App::handle($request);
-
         $content = Utils::jsonDecode($response->getContent(), true);
 
         // If the internal request to the oauth token endpoint was not successful we throw an exception
-        if (!$response->isSuccessful()) {
-            throw new LoginFailedException($content['message']);
+        if (!$response->isOk()) {
+            throw new LoginFailedException($content['message'] ?? null);
         }
 
         return $content;
