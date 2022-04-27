@@ -14,11 +14,18 @@ use Illuminate\Http\RedirectResponse;
 
 class LoginController extends WebController
 {
+    /**
+     * @return Factory|View|Application
+     */
     public function showLoginPage(): Factory|View|Application
     {
         return view('appSection@authentication::login');
     }
 
+    /**
+     * @param LoginRequest $request
+     * @return RedirectResponse
+     */
     public function login(LoginRequest $request): RedirectResponse
     {
         try {

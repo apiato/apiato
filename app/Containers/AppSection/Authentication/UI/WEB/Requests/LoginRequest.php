@@ -2,9 +2,10 @@
 
 namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class LoginRequest extends Request
+class LoginRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -38,7 +39,7 @@ class LoginRequest extends Request
             'password' => 'required|min:3|max:30',
         ];
 
-        return loginAttributeValidationRulesMerger($rules);
+        return LoginCustomAttribute::mergeValidationRules($rules);
     }
 
     /**

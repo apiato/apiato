@@ -8,9 +8,9 @@ use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class UpdateUserAction extends Action
+class UpdateUserAction extends ParentAction
 {
     /**
      * @param UpdateUserRequest $request

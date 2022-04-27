@@ -7,11 +7,13 @@ use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\AttachPermissionsToRoleRequest;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class AttachPermissionsToRoleAction extends Action
+class AttachPermissionsToRoleAction extends ParentAction
 {
     /**
+     * @param AttachPermissionsToRoleRequest $request
+     * @return Role
      * @throws NotFoundException
      */
     public function run(AttachPermissionsToRoleRequest $request): Role

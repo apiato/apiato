@@ -8,10 +8,10 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\VerifyEmailRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 use Throwable;
 
-class VerifyEmailAction extends Action
+class VerifyEmailAction extends ParentAction
 {
     /**
      * @param VerifyEmailRequest $request

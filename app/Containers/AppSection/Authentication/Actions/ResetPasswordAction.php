@@ -9,12 +9,12 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordReques
 use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
-class ResetPasswordAction extends Action
+class ResetPasswordAction extends ParentAction
 {
     /**
      * @param ResetPasswordRequest $request

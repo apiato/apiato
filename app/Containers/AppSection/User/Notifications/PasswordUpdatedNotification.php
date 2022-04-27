@@ -3,12 +3,12 @@
 namespace App\Containers\AppSection\User\Notifications;
 
 use App\Ship\Parents\Models\UserModel;
-use App\Ship\Parents\Notifications\Notification;
+use App\Ship\Parents\Notifications\Notification as ParentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordUpdatedNotification extends Notification implements ShouldQueue
+class PasswordUpdatedNotification extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 

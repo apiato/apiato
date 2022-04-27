@@ -12,6 +12,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class FindRoleController extends ApiController
 {
     /**
+     * @param FindRoleRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */

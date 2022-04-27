@@ -12,6 +12,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class FindUserByIdController extends ApiController
 {
     /**
+     * @param FindUserByIdRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */

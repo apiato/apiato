@@ -7,11 +7,11 @@ use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
 use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Mail;
 
-class ForgotPasswordAction extends Action
+class ForgotPasswordAction extends ParentAction
 {
     /**
      * @param ForgotPasswordRequest $request

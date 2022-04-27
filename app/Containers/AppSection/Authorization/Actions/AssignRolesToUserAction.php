@@ -8,11 +8,13 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserReq
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class AssignRolesToUserAction extends Action
+class AssignRolesToUserAction extends ParentAction
 {
     /**
+     * @param AssignRolesToUserRequest $request
+     * @return User
      * @throws NotFoundException
      */
     public function run(AssignRolesToUserRequest $request): User

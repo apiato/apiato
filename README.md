@@ -9,7 +9,7 @@
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
-<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 8.0</h3>
+<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 9.0</h3>
 
 <p align="center">
 <a href="https://travis-ci.org/apiato/apiato"><img src="https://travis-ci.org/apiato/apiato.svg" alt="Build Status"></a>

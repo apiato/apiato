@@ -12,7 +12,10 @@ use App\Ship\Parents\Controllers\ApiController;
 class DetachPermissionsFromRoleController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException|NotFoundException
+     * @param DetachPermissionsFromRoleRequest $request
+     * @return array
+     * @throws InvalidTransformerException
+     * @throws NotFoundException
      */
     public function detachPermissionFromRole(DetachPermissionsFromRoleRequest $request): array
     {

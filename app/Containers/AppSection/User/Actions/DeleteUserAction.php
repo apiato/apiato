@@ -6,9 +6,9 @@ use App\Containers\AppSection\User\Tasks\DeleteUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Parents\Actions\Action;
+use App\Ship\Parents\Actions\Action as ParentAction;
 
-class DeleteUserAction extends Action
+class DeleteUserAction extends ParentAction
 {
     /**
      * @param DeleteUserRequest $request

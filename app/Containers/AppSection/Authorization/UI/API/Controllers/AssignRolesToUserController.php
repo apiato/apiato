@@ -12,7 +12,10 @@ use App\Ship\Parents\Controllers\ApiController;
 class AssignRolesToUserController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException|NotFoundException
+     * @param AssignRolesToUserRequest $request
+     * @return array
+     * @throws InvalidTransformerException
+     * @throws NotFoundException
      */
     public function assignRolesToUser(AssignRolesToUserRequest $request): array
     {

@@ -12,6 +12,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class RevokeRolesFromUserController extends ApiController
 {
     /**
+     * @param RevokeRolesFromUserRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */

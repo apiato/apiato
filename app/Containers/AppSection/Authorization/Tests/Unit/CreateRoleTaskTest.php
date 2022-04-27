@@ -24,6 +24,6 @@ class CreateRoleTaskTest extends TestCase
         $this->assertEquals(strtolower($name), $role->name);
         $this->assertEquals($description, $role->description);
         $this->assertEquals($display_name, $role->display_name);
-        $this->assertEquals('web', $role->guard_name);
+        $this->assertEquals('api', $role->guard_name);
     }
 }

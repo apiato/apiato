@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\Authorization\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Models\Role;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Ship\Parents\Factories\Factory as ParentFactory;
 
-class RoleFactory extends Factory
+class RoleFactory extends ParentFactory
 {
     protected $model = Role::class;
 
@@ -13,12 +13,13 @@ class RoleFactory extends Factory
     {
         return [
             'name' => $this->faker->firstName(),
+            'guard_name' => 'api',
         ];
     }
 
-    public function admin(): RoleFactory
+    public function admin(): static
     {
-        return $this->state(function () {
+        return $this->state(function (array $attributes) {
             return [
                 'name' => config('appSection-authorization.admin_role'),
             ];

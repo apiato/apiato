@@ -3,12 +3,12 @@
 namespace App\Containers\AppSection\Authentication\Notifications;
 
 use App\Ship\Parents\Models\UserModel;
-use App\Ship\Parents\Notifications\Notification;
+use App\Ship\Parents\Notifications\Notification as ParentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordReset extends Notification implements ShouldQueue
+class PasswordReset extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 

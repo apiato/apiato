@@ -13,13 +13,15 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class GetAllPermissionsController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException
+     * @param GetAllPermissionsRequest $request
+     * @return array
      * @throws CoreInternalErrorException
+     * @throws InvalidTransformerException
      * @throws RepositoryException
      */
     public function getAllPermissions(GetAllPermissionsRequest $request): array
     {
-        $permissions = app(GetAllPermissionsAction::class)->run($request);
+        $permissions = app(GetAllPermissionsAction::class)->run();
 
         return $this->transform($permissions, PermissionTransformer::class);
     }

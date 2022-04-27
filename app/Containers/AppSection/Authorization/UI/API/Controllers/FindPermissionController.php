@@ -12,6 +12,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class FindPermissionController extends ApiController
 {
     /**
+     * @param FindPermissionRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */

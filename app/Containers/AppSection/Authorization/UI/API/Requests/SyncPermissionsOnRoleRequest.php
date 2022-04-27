@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class SyncPermissionsOnRoleRequest extends Request
+class SyncPermissionsOnRoleRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

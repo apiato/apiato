@@ -2,10 +2,10 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rules\Password;
 
-class ResetPasswordRequest extends Request
+class ResetPasswordRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

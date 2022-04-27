@@ -7,8 +7,6 @@ use Illuminate\Database\Seeder;
 
 /**
  * Class DatabaseSeeder
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class DatabaseSeeder extends Seeder
 {

@@ -12,7 +12,10 @@ use App\Ship\Parents\Controllers\ApiController;
 class AttachPermissionsToRoleController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException|NotFoundException
+     * @param AttachPermissionsToRoleRequest $request
+     * @return array
+     * @throws InvalidTransformerException
+     * @throws NotFoundException
      */
     public function attachPermissionsToRole(AttachPermissionsToRoleRequest $request): array
     {

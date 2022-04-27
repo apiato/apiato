@@ -3,11 +3,11 @@
 namespace App\Containers\AppSection\Authentication\Mails;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Mails\Mail;
+use App\Ship\Parents\Mails\Mail as ParentMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ForgotPassword extends Mail implements ShouldQueue
+class ForgotPassword extends ParentMail implements ShouldQueue
 {
     use Queueable;
 
@@ -15,8 +15,7 @@ class ForgotPassword extends Mail implements ShouldQueue
         protected User   $recipient,
         protected string $token,
         protected string $reseturl
-    )
-    {
+    ) {
     }
 
     public function build(): static

@@ -12,6 +12,8 @@ use App\Ship\Parents\Controllers\ApiController;
 class SyncPermissionOnRoleController extends ApiController
 {
     /**
+     * @param SyncPermissionsOnRoleRequest $request
+     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */

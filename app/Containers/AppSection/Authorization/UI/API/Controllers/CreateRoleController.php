@@ -13,8 +13,10 @@ use Illuminate\Http\JsonResponse;
 class CreateRoleController extends ApiController
 {
     /**
-     * @throws InvalidTransformerException
+     * @param CreateRoleRequest $request
+     * @return JsonResponse
      * @throws CreateResourceFailedException
+     * @throws InvalidTransformerException
      */
     public function createRole(CreateRoleRequest $request): JsonResponse
     {

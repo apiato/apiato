@@ -2,9 +2,10 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class LoginProxyPasswordGrantRequest extends Request
+class LoginProxyPasswordGrantRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -36,12 +37,12 @@ class LoginProxyPasswordGrantRequest extends Request
     {
         $rules = [
             // we don't need to require email here. The proper login attribute (with proper validations)
-            // will be added automatically by "loginAttributeValidationRulesMerger" method below
+            // will be added automatically by "mergeValidationRules" method below
             // 'email' => 'required',
             'password' => 'required',
         ];
 
-        return loginAttributeValidationRulesMerger($rules);
+        return LoginCustomAttribute::mergeValidationRules($rules);
     }
 
     /**
