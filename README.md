@@ -210,7 +210,7 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <strong>Moslem Deris</strong>
             <br>
-            <a href="https://github.com/moslem-deris">@moslem-deris</a>
+            <a href="https://github.com/mderis">@mderis</a>
           </td>
         </tr>
   </tbody>
