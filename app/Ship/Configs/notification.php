@@ -1,18 +1,16 @@
 <?php
 
 return [
-
     /*
      |--------------------------------------------------------------------------
      | Default Namespace
      |--------------------------------------------------------------------------
      |
-     | Define what channels does all your notifications support.
+     | Define what channels do all your notifications support.
      |
      */
     'channels' => [
         'database',
 //        'mail',
-    ]
-
+    ],
 ];

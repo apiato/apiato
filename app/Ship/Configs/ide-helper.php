@@ -15,6 +15,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Models filename
+    |--------------------------------------------------------------------------
+    |
+    | The default filename for the models helper file
+    |
+    */
+
+    'models_filename' => '_ide_helper_models.php',
+
+    /*
+    |--------------------------------------------------------------------------
     | Where to write the PhpStorm specific meta file
     |--------------------------------------------------------------------------
     |
@@ -48,7 +59,7 @@ return [
     |
     */
 
-    'include_factory_builders' => false,
+    'include_factory_builders' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -128,7 +139,7 @@ return [
     */
 
     'model_locations' => [
-        'app/Containers/*/Models',
+        'app/Containers/*/*/Models',
     ],
 
     /*
@@ -146,6 +157,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Models hooks
+    |--------------------------------------------------------------------------
+    |
+    | Define which hook classes you want to run for models to add custom information
+    |
+    | Hooks should implement Barryvdh\LaravelIdeHelper\Contracts\ModelHookInterface.
+    |
+    */
+
+    'model_hooks' => [
+        // App\Support\IdeHelper\MyModelHook::class
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Extra classes
     |--------------------------------------------------------------------------
     |
@@ -158,18 +184,7 @@ return [
         'Session' => ['Illuminate\Session\Store'],
     ],
 
-    'magic' => [
-        'Log' => [
-            'debug' => 'Monolog\Logger::addDebug',
-            'info' => 'Monolog\Logger::addInfo',
-            'notice' => 'Monolog\Logger::addNotice',
-            'warning' => 'Monolog\Logger::addWarning',
-            'error' => 'Monolog\Logger::addError',
-            'critical' => 'Monolog\Logger::addCritical',
-            'alert' => 'Monolog\Logger::addAlert',
-            'emergency' => 'Monolog\Logger::addEmergency',
-        ],
-    ],
+    'magic' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -202,7 +217,7 @@ return [
     | The value of the array is an array of type mappings. Key is the name of the custom type,
     | (for example, "jsonb" from Postgres 9.4) and the value is the name of the corresponding Doctrine2 type (in
     | our case it is 'json_array'. Doctrine types are listed here:
-    | http://doctrine-dbal.readthedocs.org/en/latest/reference/types.html
+    | https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html#types
     |
     | So to support jsonb in your models when working with Postgres, just add the following entry to the array below:
     |
@@ -263,7 +278,7 @@ return [
     | magic methods and properties.
     |
     */
-    'include_class_docblocks' => false,
+    'include_class_docblocks' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -288,5 +303,17 @@ return [
     |
     */
     'additional_relation_types' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Run artisan commands after migrations to generate model helpers
+    |--------------------------------------------------------------------------
+    |
+    | The specified commands should run after migrations are finished running.
+    |
+    */
+    'post_migrate' => [
+        'ide-helper:models --nowrite',
+    ],
 
 ];

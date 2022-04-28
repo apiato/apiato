@@ -18,7 +18,7 @@ return [
 
         'limit' => env('PAGINATION_LIMIT_DEFAULT', 10),
 
-         // if enabled it allows users to skip pagination by passing `?limit=0`.
+        // if enabled it allows users to skip pagination by passing `?limit=0`.
         'skip' => env('PAGINATION_SKIP', false),
     ],
 
@@ -34,8 +34,8 @@ return [
     JsonApiSerializer
 
     */
-    'fractal'    => [
-        'params'     => [
+    'fractal' => [
+        'params' => [
             'include' => 'include',
         ],
         'serializer' => League\Fractal\Serializer\DataArraySerializer::class,
@@ -47,7 +47,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'cache'      => [
+    'cache' => [
         /*
          |--------------------------------------------------------------------------
          | Cache Status
@@ -56,7 +56,7 @@ return [
          | Enable or disable cache
          |
          */
-        'enabled'    => env('ELOQUENT_QUERY_CACHE', false),
+        'enabled' => env('ELOQUENT_QUERY_CACHE', false),
 
         /*
          |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
          | Time of expiration cache
          |
          */
-        'minutes'    => env('ELOQUENT_QUERY_CACHE_TIME', 30),
+        'minutes' => env('ELOQUENT_QUERY_CACHE_TIME', 30),
 
         /*
          |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
           |
           |
           */
-        'clean'      => [
+        'clean' => [
 
             /*
               |--------------------------------------------------------------------------
@@ -106,14 +106,14 @@ return [
               | delete : Clear Cache on delete Entry in repository
               |
               */
-            'on'      => [
+            'on' => [
                 'create' => true,
                 'update' => true,
                 'delete' => true,
             ],
         ],
 
-        'params'  => [
+        'params' => [
             /*
             |--------------------------------------------------------------------------
             | Skip Cache Params
@@ -142,7 +142,7 @@ return [
         | 'except'  =>['find'],
         */
         'allowed' => [
-            'only'   => null,
+            'only' => null,
             'except' => null,
         ],
     ],
@@ -155,7 +155,7 @@ return [
     | Settings of request parameters names that will be used by Criteria
     |
     */
-    'criteria'   => [
+    'criteria' => [
         /*
         |--------------------------------------------------------------------------
         | Accepted Conditions
@@ -174,7 +174,7 @@ return [
         'acceptedConditions' => [
             '=',
             'like',
-            'in'
+            'in',
         ],
         /*
         |--------------------------------------------------------------------------
@@ -214,15 +214,15 @@ return [
         |   http://prettus.local/?search=lorem&searchJoin=or
         |
         */
-        'params'             => [
-            'search'       => 'search',
+        'params' => [
+            'search' => 'search',
             'searchFields' => 'searchFields',
-            'filter'       => 'l5_filter', // we will override the filter in apiato (using fractal)
-            'orderBy'      => 'orderBy',
-            'sortedBy'     => 'sortedBy',
-            'with'         => 'l5_with', // use `include` instead (provided by fractal)
-            'searchJoin'   => 'searchJoin',
-            'withCount'    => 'withCount'
+            'filter' => 'l5_filter', // we will override the filter in apiato (using fractal)
+            'orderBy' => 'orderBy',
+            'sortedBy' => 'sortedBy',
+            'with' => 'l5_with', // use `include` instead (provided by fractal)
+            'searchJoin' => 'searchJoin',
+            'withCount' => 'withCount',
         ],
     ],
     /*
@@ -231,20 +231,20 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'generator'  => [
-        'basePath'      => env('SRC_PATH', app()->path()),
+    'generator' => [
+        'basePath' => env('SRC_PATH', app()->path()),
         'rootNamespace' => env('ROOT_NAMESPACE', 'App').'\\',
         'stubsOverridePath' => app()->path(),
-        'paths'         => [
-            'models'       => 'Entities',
+        'paths' => [
+            'models' => 'Entities',
             'repositories' => 'Repositories',
-            'interfaces'   => 'Repositories',
+            'interfaces' => 'Repositories',
             'transformers' => 'Transformers',
-            'presenters'   => 'Presenters',
-            'validators'   => 'Validators',
-            'controllers'  => 'Http/Controllers',
-            'provider'     => 'RepositoryServiceProvider',
-            'criteria'     => 'Criteria'
+            'presenters' => 'Presenters',
+            'validators' => 'Validators',
+            'controllers' => 'Http/Controllers',
+            'provider' => 'RepositoryServiceProvider',
+            'criteria' => 'Criteria',
         ],
     ],
 ];
