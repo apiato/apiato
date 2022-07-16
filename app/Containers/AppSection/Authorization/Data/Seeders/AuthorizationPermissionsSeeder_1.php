@@ -17,6 +17,7 @@ class AuthorizationPermissionsSeeder_1 extends ParentSeeder
         $createPermissionTask = app(CreatePermissionTask::class);
         foreach (array_keys(config('auth.guards')) as $guardName) {
             $createPermissionTask->run('manage-roles', 'Create, Update, Delete, Get All, Attach/detach permissions to Roles and Get All Permissions.', guardName: $guardName);
+            $createPermissionTask->run('manage-permissions', 'Create, Update, Delete, Get All, Attach/detach permissions to User.', guardName: $guardName);
             $createPermissionTask->run('create-admins', 'Create new Users (Admins) from the dashboard.', guardName: $guardName);
             $createPermissionTask->run('manage-admins-access', 'Assign users to Roles.', guardName: $guardName);
             $createPermissionTask->run('access-dashboard', 'Access the admins dashboard.', guardName: $guardName);
