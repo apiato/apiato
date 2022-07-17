@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class AssignPermissionsToUserTask extends ParentTask
+class AttachPermissionsToUserTask extends ParentTask
 {
     /**
      * @param User $user
