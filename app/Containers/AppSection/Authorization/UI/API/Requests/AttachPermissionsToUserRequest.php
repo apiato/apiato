@@ -18,7 +18,7 @@ class AttachPermissionsToUserRequest extends ParentRequest
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        // 'id',
+        'id',
     ];
 
     /**
@@ -26,7 +26,7 @@ class AttachPermissionsToUserRequest extends ParentRequest
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        // 'id',
+        'id',
     ];
 
     /**
@@ -35,8 +35,7 @@ class AttachPermissionsToUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'permissions_ids' => 'required',
-            'user_id' => 'required',
+            'permissions_ids' => 'required'
         ];
     }
 

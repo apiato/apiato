@@ -18,7 +18,7 @@ class DetachPermissionsFromUserRequest extends ParentRequest
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-        // 'id',
+        'id',
     ];
 
     /**
@@ -26,7 +26,7 @@ class DetachPermissionsFromUserRequest extends ParentRequest
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-        // 'id',
+        'id',
     ];
 
     /**
@@ -35,7 +35,6 @@ class DetachPermissionsFromUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'permissions_ids' => 'required',
         ];
     }

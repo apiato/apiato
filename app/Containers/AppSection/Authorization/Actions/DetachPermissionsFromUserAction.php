@@ -17,7 +17,7 @@ class DetachPermissionsFromUserAction extends ParentAction
      */
     public function run(DetachPermissionsFromUserRequest $request)
     {
-        $role = app(FindUserByIdTask::class)->run($request->user_id);
+        $role = app(FindUserByIdTask::class)->run($request->id);
 
         $permissions = array_map(static function ($permissionId) {
             return app(FindPermissionTask::class)->run($permissionId);

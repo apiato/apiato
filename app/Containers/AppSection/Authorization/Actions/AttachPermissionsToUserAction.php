@@ -17,7 +17,7 @@ class AttachPermissionsToUserAction extends ParentAction
      */
     public function run(AttachPermissionsToUserRequest $request): User
     {
-        $user = app(FindUserByIdTask::class)->run($request->user_id);
+        $user = app(FindUserByIdTask::class)->run($request->id);
 
         $permissionIds = (array)$request->permissions_ids;
 
