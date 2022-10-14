@@ -35,7 +35,7 @@ class GetRolePermissionsRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'id' => 'required',
+
         ];
     }
 

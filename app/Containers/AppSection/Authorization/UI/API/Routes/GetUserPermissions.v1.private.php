@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @apiGroup           UserPermission
+ * @apiGroup           RolePermission
  * @apiName            GetUserPermissions
  *
  * @api                {GET} /v1/users/:id/permissions Get User Permissions

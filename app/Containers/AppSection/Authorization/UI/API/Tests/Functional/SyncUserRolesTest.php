@@ -41,12 +41,11 @@ class SyncUserRolesTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->count('data.roles.data', 2)
-                    ->where('data.roles.data.0.id', $data['roles_ids'][0])
-                    ->where('data.roles.data.1.id', $data['roles_ids'][1])
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->count('data.roles.data', 2)
+                ->where('data.roles.data.0.id', $data['roles_ids'][0])
+                ->where('data.roles.data.1.id', $data['roles_ids'][1])
+                ->etc()
         );
     }
 
@@ -61,7 +60,12 @@ class SyncUserRolesTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has('errors')
+                ->where('errors.user_id.0', 'The selected user id is invalid.')
+                ->etc()
+        );
     }
 
     public function testSyncNonExistingRoleOnUser(): void
@@ -75,6 +79,15 @@ class SyncUserRolesTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'roles_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 }

@@ -12,7 +12,7 @@ class UserTransformer extends ParentTransformer
 {
     protected array $availableIncludes = [
         'roles',
-        'permissions'
+        'permissions',
     ];
 
     protected array $defaultIncludes = [

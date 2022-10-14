@@ -33,8 +33,9 @@ class SyncPermissionsOnRoleRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'permissions_ids' => 'required',
-            'role_id' => 'required',
+            'permissions_ids' => 'array|required',
+            'permissions_ids.*' => 'required|exists:permissions,id',
+            'role_id' => 'required|exists:roles,id',
         ];
     }
 

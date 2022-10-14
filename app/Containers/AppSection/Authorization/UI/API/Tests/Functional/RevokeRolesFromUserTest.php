@@ -38,8 +38,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-            $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $data['user_id'])
                 ->has('data.roles.data', 1)
@@ -65,12 +64,11 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.object', 'User')
-                    ->where('data.id', $data['user_id'])
-                    ->has('data.roles.data', 0)
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->where('data.object', 'User')
+                ->where('data.id', $data['user_id'])
+                ->has('data.roles.data', 0)
+                ->etc()
         );
     }
 
@@ -85,7 +83,12 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has('errors')
+                ->where('errors.user_id.0', 'The selected user id is invalid.')
+                ->etc()
+        );
     }
 
     public function testRevokeNonExistingRoleFromUser(): void
@@ -99,6 +102,14 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'roles_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 }

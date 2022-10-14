@@ -2,11 +2,11 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\AttachPermissionsToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
-use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\Authorization\UI\API\Requests\AttachPermissionsToUserRequest;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class AttachPermissionsToUserAction extends ParentAction
@@ -14,6 +14,7 @@ class AttachPermissionsToUserAction extends ParentAction
     /**
      * @param AttachPermissionsToUserRequest $request
      * @return User
+     * @throws NotFoundException
      */
     public function run(AttachPermissionsToUserRequest $request): User
     {
@@ -25,6 +26,6 @@ class AttachPermissionsToUserAction extends ParentAction
             return app(FindPermissionTask::class)->run($permissionId);
         }, $permissionIds);
 
-        return app(AttachPermissionsToUserTask::class)->run($user, $permissions);
+        return $user->givePermissionTo($permissions);
     }
 }

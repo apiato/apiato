@@ -38,13 +38,12 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.object', 'Role')
-                    ->where('data.id', $role->getHashedKey())
-                    ->count('data.permissions.data', 1)
-                    ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->where('data.object', 'Role')
+                ->where('data.id', $role->getHashedKey())
+                ->count('data.permissions.data', 1)
+                ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
+                ->etc()
         );
     }
 
@@ -64,13 +63,12 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.object', 'Role')
-                    ->where('data.id', $role->getHashedKey())
-                    ->count('data.permissions.data', 1)
-                    ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->where('data.object', 'Role')
+                ->where('data.id', $role->getHashedKey())
+                ->count('data.permissions.data', 1)
+                ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
+                ->etc()
         );
     }
 
@@ -85,7 +83,12 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has('errors')
+                ->where('errors.role_id.0', 'The selected role id is invalid.')
+                ->etc()
+        );
     }
 
     public function testDetachNonExistingPermissionFromRole(): void
@@ -99,6 +102,14 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'permissions_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 }

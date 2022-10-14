@@ -34,7 +34,8 @@ class AssignRolesToUserRequest extends ParentRequest
     {
         return [
             'roles_ids' => 'array|required',
-            'user_id' => 'required',
+            'roles_ids.*' => 'exists:roles,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

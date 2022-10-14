@@ -36,14 +36,13 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.object', 'Role')
-                    ->where('data.id', $role->getHashedKey())
-                    ->has('data.permissions.data', 1)
-                    ->where('data.permissions.data.0.object', 'Permission')
-                    ->where('data.permissions.data.0.id', $permission->getHashedKey())
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                ->where('data.object', 'Role')
+                ->where('data.id', $role->getHashedKey())
+                ->has('data.permissions.data', 1)
+                ->where('data.permissions.data.0.object', 'Permission')
+                ->where('data.permissions.data.0.id', $permission->getHashedKey())
+                ->etc()
         );
     }
 
@@ -61,8 +60,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response->assertStatus(200);
         $response->assertJson(
-            fn (AssertableJson $json) =>
-            $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->has('data.permissions.data', 2)
@@ -79,12 +77,21 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => Hashids::encode($invalidId),
+            'permissions_ids' => [Hashids::encode($invalidId)],
         ];
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'permissions_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 
     public function testAttachPermissionToNonExistingRole(): void
@@ -93,11 +100,16 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'role_id' => Hashids::encode($invalidId),
-            'permissions_ids' => $permission->getHashedKey(),
+            'permissions_ids' => [$permission->getHashedKey()],
         ];
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has('errors')
+                ->where('errors.role_id.0', 'The selected role id is invalid.')
+                ->etc()
+        );
     }
 }

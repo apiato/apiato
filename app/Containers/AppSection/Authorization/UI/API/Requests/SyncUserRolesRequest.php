@@ -33,8 +33,9 @@ class SyncUserRolesRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'roles_ids' => 'required',
-            'user_id' => 'required',
+            'roles_ids' => 'array|required',
+            'roles_ids.*' => 'required|exists:roles,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

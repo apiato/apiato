@@ -16,15 +16,12 @@ use Vinkla\Hashids\Facades\Hashids;
  */
 class DetachPermissionFromUserTest extends ApiTestCase
 {
-    // the endpoint to be called within this test (e.g., get@v1/users)
-    protected string $endpoint = 'post@v1/users/{id}/permissions/detach';
+    protected string $endpoint = 'delete@v1/users/{id}/permissions';
 
-    // fake some access rights
     protected array $access = [
         'permissions' => 'manage-permissions',
         'roles' => '',
     ];
-
 
     public function testDetachSinglePermissionFromUser(): void
     {
@@ -34,18 +31,17 @@ class DetachPermissionFromUserTest extends ApiTestCase
         $user->givePermissionTo([$permissionA, $permissionB]);
 
         $data = [
-            'permissions_ids' => [$permissionA->id]
+            'permissions_ids' => [$permissionA->id],
         ];
 
-        // send the HTTP request
         $response = $this->injectId($user->id)->makeCall($data);
-        // assert the response status
+
         $response->assertStatus(200);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
-                ->has('data.permissions.data',1)
+                ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
                 ->etc()
@@ -62,16 +58,14 @@ class DetachPermissionFromUserTest extends ApiTestCase
         $user->givePermissionTo([$permissionA, $permissionB, $permissionC]);
 
         $data = [
-            'permissions_ids' => [$permissionA->id, $permissionB->id]
+            'permissions_ids' => [$permissionA->id, $permissionB->id],
         ];
 
-        // send the HTTP request
         $response = $this->injectId($user->id)->makeCall($data);
 
-        // assert the response status
         $response->assertStatus(200);
         $response->assertJson(
-            fn(AssertableJson $json) => $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->count('data.permissions.data', 1)
@@ -85,12 +79,21 @@ class DetachPermissionFromUserTest extends ApiTestCase
         $invalidId = 3333;
         $user = User::factory()->create();
         $data = [
-            'permissions_ids' => [Hashids::encode($invalidId)]
+            'permissions_ids' => [Hashids::encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'permissions_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 
     public function testDetachPermissionFromNonExistingUser()
@@ -99,11 +102,19 @@ class DetachPermissionFromUserTest extends ApiTestCase
         $permission = Permission::factory()->create();
         $data = [
             //'user_id' => Hashids::encode($invalidId),
-            'permissions_ids' => [$permission->getHashedKey()]
+            'permissions_ids' => [$permission->getHashedKey()],
         ];
 
         $response = $this->injectId($invalidId)->makeCall($data);
 
-        $response->assertStatus(404);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $errors) => $errors->has(
+                    'permissions_ids.0',
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
+                )->etc()
+            )->etc()
+        );
     }
 }
