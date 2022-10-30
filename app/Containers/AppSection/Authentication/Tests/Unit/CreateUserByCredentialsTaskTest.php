@@ -17,7 +17,7 @@ class CreateUserByCredentialsTaskTest extends TestCase
     public function testCreateUserByCredentials(): void
     {
         $data = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
         ];
 
@@ -32,7 +32,7 @@ class CreateUserByCredentialsTaskTest extends TestCase
         $this->expectExceptionMessage('Failed to create Resource.');
 
         $data = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
             'birth' => 'wrong-format',
         ];

@@ -25,7 +25,7 @@ class RegisterUserActionTest extends TestCase
         Notification::fake();
         config(['appSection-authentication.require_email_verification', false]);
         $data = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
@@ -47,7 +47,7 @@ class RegisterUserActionTest extends TestCase
         }
         Notification::fake();
         $data = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];

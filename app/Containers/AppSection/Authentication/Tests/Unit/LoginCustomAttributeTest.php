@@ -17,7 +17,7 @@ class LoginCustomAttributeTest extends TestCase
     public function testGivenValidLoginAttributeThenExtractUsername(): void
     {
         $userDetails = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
         ];
 
@@ -37,7 +37,7 @@ class LoginCustomAttributeTest extends TestCase
     {
         Config::offsetUnset('appSection-authentication.login.attributes');
         $userDetails = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
         ];
 

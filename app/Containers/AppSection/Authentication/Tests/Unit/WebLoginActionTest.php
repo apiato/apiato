@@ -63,7 +63,7 @@ class WebLoginActionTest extends TestCase
     {
         parent::setUp();
         $this->userDetails = [
-            'email' => 'Mahmoud@test.test',
+            'email' => 'mahmoud@test.test',
             'password' => 'so-secret',
             'name' => 'Mahmoud',
         ];
