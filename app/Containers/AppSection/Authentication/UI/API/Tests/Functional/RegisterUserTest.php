@@ -72,7 +72,7 @@ class RegisterUserTest extends ApiTestCase
         $response->assertStatus(405);
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('message')
-                ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
+                ->where('message', 'The GET method is not supported for route v1/register. Supported methods: POST.')
                 ->etc()
         );
     }
