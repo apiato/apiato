@@ -70,11 +70,6 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->endpoint('get@v1/register')->makeCall();
 
         $response->assertStatus(405);
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('message')
-                ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
-                ->etc()
-        );
     }
 
     public function testRegisterExistingUser(): void

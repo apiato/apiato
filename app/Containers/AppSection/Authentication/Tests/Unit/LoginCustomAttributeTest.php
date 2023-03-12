@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Config;
  * @group authentication
  * @group unit
  */
-class LoginCustomAttributeTest extends TestCase
+class LoginCustomAttributeTest extends UnitTestCase
 {
     public function testGivenValidLoginAttributeThenExtractUsername(): void
     {

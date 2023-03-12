@@ -22,7 +22,7 @@ class VerifyEmailAction extends ParentAction
     {
         $user = app(FindUserByIdTask::class)->run($request->id);
 
-        throw_unless($this->validateData($request, $user), InvalidEmailVerificationDataException::class);
+        throw_unless($this->emailIsValid($request, $user), InvalidEmailVerificationDataException::class);
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
@@ -36,7 +36,7 @@ class VerifyEmailAction extends ParentAction
      * @param User $user
      * @return bool
      */
-    private function validateData(VerifyEmailRequest $request, User $user): bool
+    private function emailIsValid(VerifyEmailRequest $request, User $user): bool
     {
         return hash_equals((string)$request->hash, sha1($user->getEmailForVerification()));
     }

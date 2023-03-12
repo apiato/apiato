@@ -10,11 +10,6 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class RegisterUserController extends ApiController
 {
-    /**
-     * @param RegisterUserRequest $request
-     * @return array
-     * @throws InvalidTransformerException
-     */
     public function registerUser(RegisterUserRequest $request): array
     {
         $user = app(RegisterUserAction::class)->transactionalRun($request);

@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Notification;
  * @group authentication
  * @group unit
  */
-class SendVerificationEmailTaskTest extends TestCase
+class SendVerificationEmailTaskTest extends UnitTestCase
 {
     public function testGivenEmailVerificationEnabled_SendVerificationEmail(): void
     {
