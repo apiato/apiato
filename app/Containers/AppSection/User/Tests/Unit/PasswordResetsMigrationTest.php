@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit;
 
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
  * @group user
  * @group unit
  */
-class PasswordResetsMigrationTest extends TestCase
+class PasswordResetsMigrationTest extends UnitTestCase
 {
     public function test_password_resets_table_has_expected_columns(): void
     {

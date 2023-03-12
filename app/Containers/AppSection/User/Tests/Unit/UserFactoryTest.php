@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 
 /**
  * Class UserFactoryTest.
@@ -11,7 +11,7 @@ use App\Containers\AppSection\User\Tests\TestCase;
  * @group user
  * @group unit
  */
-class UserFactoryTest extends TestCase
+class UserFactoryTest extends UnitTestCase
 {
     public function testCreateUser(): void
     {

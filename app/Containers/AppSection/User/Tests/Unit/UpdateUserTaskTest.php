@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
  * @group user
  * @group unit
  */
-class UpdateUserTaskTest extends TestCase
+class UpdateUserTaskTest extends UnitTestCase
 {
     public function testUpdateUser(): void
     {

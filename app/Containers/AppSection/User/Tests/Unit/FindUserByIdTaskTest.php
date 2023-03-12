@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 
 /**
@@ -13,7 +13,7 @@ use App\Ship\Exceptions\NotFoundException;
  * @group user
  * @group unit
  */
-class FindUserByIdTaskTest extends TestCase
+class FindUserByIdTaskTest extends UnitTestCase
 {
     public function testFindUserById(): void
     {
