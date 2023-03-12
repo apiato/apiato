@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
  * Class CreateRoleTaskTest.
@@ -11,7 +11,7 @@ use App\Containers\AppSection\Authorization\Tests\TestCase;
  * @group authorization
  * @group unit
  */
-class CreateRoleTaskTest extends TestCase
+class CreateRoleTaskTest extends UnitTestCase
 {
     public function testCreateRole(): void
     {

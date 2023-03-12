@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
  * Class PermissionFactoryTest.
@@ -11,7 +11,7 @@ use App\Containers\AppSection\Authorization\Tests\TestCase;
  * @group authorization
  * @group unit
  */
-class PermissionFactoryTest extends TestCase
+class PermissionFactoryTest extends UnitTestCase
 {
     public function testCreatePermission(): void
     {
