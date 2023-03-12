@@ -13,8 +13,6 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
- *
  * @apiBody           {String} verification_url required|url
  *
  * @apiSuccessExample  {json} Success-Response:
