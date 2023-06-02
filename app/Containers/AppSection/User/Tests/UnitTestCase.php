@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\User\Tests;
 
-use App\Containers\AppSection\User\Tests\ContainerTestCase as ContainerTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 
 /**
  * Class UnitTestCase
  *
  * Use this class to add your container specific unit test helper functions.
  */
-class UnitTestCase extends ContainerTestCase
+class UnitTestCase extends ParentTestCase
 {
     // ..
 }

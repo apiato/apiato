@@ -7,10 +7,9 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
- * Class CreateUserByCredentialsTaskTest.
- *
  * @group authentication
  * @group unit
  */
@@ -27,7 +26,7 @@ class CreateUserByCredentialsTaskTest extends UnitTestCase
 
         $this->assertModelExists($user);
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals($data['email'], $user->email);
+        $this->assertEquals(Str::lower($data['email']), $user->email);
         $this->assertTrue(Hash::check($data['password'], $user->password));
     }
 

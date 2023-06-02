@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests;
 
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
-use App\Containers\AppSection\Authentication\Tests\ContainerTestCase as ContainerTestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
  *
  * Use this class to add your container specific unit test helper functions.
  */
-class UnitTestCase extends ContainerTestCase
+class UnitTestCase extends ParentTestCase
 {
     protected string $clientId;
     protected string $clientSecret;
