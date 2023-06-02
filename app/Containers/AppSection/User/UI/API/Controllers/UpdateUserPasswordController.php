@@ -14,7 +14,7 @@ class UpdateUserPasswordController extends ApiController
     ) {
     }
 
-    public function updateUserPassword(UpdateUserPasswordRequest $request): array
+    public function __invoke(UpdateUserPasswordRequest $request): array
     {
         $user = $this->updateUserPasswordAction->run($request);
 

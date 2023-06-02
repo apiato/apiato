@@ -14,7 +14,7 @@ class UpdateUserController extends ApiController
     ) {
     }
 
-    public function updateUser(UpdateUserRequest $request): array
+    public function __invoke(UpdateUserRequest $request): array
     {
         $user = $this->updateUserAction->run($request);
 

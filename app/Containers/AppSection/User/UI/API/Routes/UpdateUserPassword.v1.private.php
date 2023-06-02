@@ -32,5 +32,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\UpdateUserPasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users/{id}/password', [UpdateUserPasswordController::class, 'updateUserPassword'])
+Route::patch('users/{id}/password', UpdateUserPasswordController::class)
     ->middleware(['auth:api']);

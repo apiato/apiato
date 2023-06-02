@@ -19,5 +19,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\GetAllUsersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users', [GetAllUsersController::class, 'getAllUsers'])
+Route::get('users', GetAllUsersController::class)
     ->middleware(['auth:api']);

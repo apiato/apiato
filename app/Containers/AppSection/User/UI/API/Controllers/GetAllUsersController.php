@@ -14,7 +14,7 @@ class GetAllUsersController extends ApiController
     ) {
     }
 
-    public function getAllUsers(GetAllUsersRequest $request): array
+    public function __invoke(GetAllUsersRequest $request): array
     {
         $users = $this->getAllUsersAction->run();
 
