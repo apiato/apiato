@@ -8,8 +8,6 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 
 /**
- * Class FindUserByIdTaskTest.
- *
  * @group user
  * @group unit
  */

@@ -7,8 +7,6 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Exception;
 
 /**
- * Class CreateAdminActionTest.
- *
  * @group user
  * @group unit
  */

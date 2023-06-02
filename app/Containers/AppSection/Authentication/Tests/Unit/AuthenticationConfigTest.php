@@ -5,11 +5,8 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 
 /**
- * Class AuthenticationConfigTest.
- *
  * @group authentication
  * @group unit
- *
  */
 class AuthenticationConfigTest extends UnitTestCase
 {

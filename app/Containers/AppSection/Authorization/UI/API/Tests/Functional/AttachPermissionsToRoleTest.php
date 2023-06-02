@@ -9,8 +9,6 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
- * Class AttachPermissionsToRoleTest.
- *
  * @group authorization
  * @group api
  */

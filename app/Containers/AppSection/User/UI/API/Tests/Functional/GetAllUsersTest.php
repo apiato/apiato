@@ -7,8 +7,6 @@ use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class GetAllUsersTest.
- *
  * @group user
  * @group api
  */

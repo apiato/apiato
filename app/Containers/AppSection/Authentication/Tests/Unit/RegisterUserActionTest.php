@@ -10,8 +10,6 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Class RegisterUserActionTest.
- *
  * @group authentication
  * @group unit
  */

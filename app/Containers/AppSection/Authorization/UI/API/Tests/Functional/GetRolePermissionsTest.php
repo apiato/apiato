@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class GetRolePermissionsTest.
- *
  * @group authorization
  * @group api
  */

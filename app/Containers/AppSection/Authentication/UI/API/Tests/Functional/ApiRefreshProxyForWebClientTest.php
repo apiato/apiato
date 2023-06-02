@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class ApiRefreshProxyForWebClientTest
- *
  * @group authentication
  * @group api
  */

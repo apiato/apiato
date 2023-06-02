@@ -8,8 +8,6 @@ use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 
 /**
- * Class FindPermissionTaskTest.
- *
  * @group authorization
  * @group unit
  */

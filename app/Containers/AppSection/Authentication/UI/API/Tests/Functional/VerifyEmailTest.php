@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class VerifyEmailTest.
- *
  * @group authentication
  * @group api
  */

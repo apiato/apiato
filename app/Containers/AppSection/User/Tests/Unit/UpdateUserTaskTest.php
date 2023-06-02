@@ -9,8 +9,6 @@ use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class UpdateUserTaskTest.
- *
  * @group user
  * @group unit
  */

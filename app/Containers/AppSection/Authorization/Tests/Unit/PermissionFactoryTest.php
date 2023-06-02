@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
- * Class PermissionFactoryTest.
- *
  * @group authorization
  * @group unit
  */

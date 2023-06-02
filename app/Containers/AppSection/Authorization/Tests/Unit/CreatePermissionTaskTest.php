@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
- * Class CreatePermissionTaskTest.
- *
  * @group authorization
  * @group unit
  */

@@ -6,8 +6,6 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 
 /**
- * Class DeleteUserTest.
- *
  * @group user
  * @group api
  */

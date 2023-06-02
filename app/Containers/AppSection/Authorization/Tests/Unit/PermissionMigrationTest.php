@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class PermissionMigrationTest.
- *
  * @group authorization
  * @group unit
  */

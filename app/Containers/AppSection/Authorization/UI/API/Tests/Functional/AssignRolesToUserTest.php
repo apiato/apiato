@@ -8,8 +8,6 @@ use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class AssignRolesToUserTest.
- *
  * @group authorization
  * @group api
  */

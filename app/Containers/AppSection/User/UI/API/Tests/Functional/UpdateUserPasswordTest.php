@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class UpdateUserPasswordTest.
- *
  * @group user
  * @group api
  */

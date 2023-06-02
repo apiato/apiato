@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class FindPermissionTest.
- *
  * @group authorization
  * @group api
  */

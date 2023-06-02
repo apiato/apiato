@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ApiLoginProxyForWebClientTest
- *
  * @group authentication
  * @group api
  */

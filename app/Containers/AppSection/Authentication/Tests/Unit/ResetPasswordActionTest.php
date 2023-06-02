@@ -13,8 +13,6 @@ use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Class ResetPasswordActionTest.
- *
  * @group authentication
  * @group unit
  */

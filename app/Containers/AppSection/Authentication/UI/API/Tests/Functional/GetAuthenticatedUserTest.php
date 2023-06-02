@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 
 /**
- * Class GetAuthenticatedUserTest.
- *
  * @group authentication
  * @group api
  */

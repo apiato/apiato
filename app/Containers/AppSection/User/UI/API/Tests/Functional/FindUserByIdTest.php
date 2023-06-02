@@ -7,8 +7,6 @@ use Hashids;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class FindUserByIdTest.
- *
  * @group user
  * @group api
  */

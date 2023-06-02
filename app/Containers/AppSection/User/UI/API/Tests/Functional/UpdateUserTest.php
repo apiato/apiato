@@ -7,8 +7,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class UpdateUserTest.
- *
  * @group user
  * @group api
  */

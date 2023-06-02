@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
- * Class CreateRoleTaskTest.
- *
  * @group authorization
  * @group unit
  */

@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 
 /**
- * Class GetUserPermissionsTest.
- *
  * @group authorization
  * @group api
  */

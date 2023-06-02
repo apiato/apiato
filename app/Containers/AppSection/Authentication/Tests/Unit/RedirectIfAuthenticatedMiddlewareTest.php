@@ -9,8 +9,6 @@ use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 /**
- * Class RedirectIfAuthenticatedMiddlewareTest.
- *
  * @group authentication
  * @group unit
  */

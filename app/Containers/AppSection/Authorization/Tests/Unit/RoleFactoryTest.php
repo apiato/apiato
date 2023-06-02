@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
- * Class RoleFactoryTest.
- *
  * @group authorization
  * @group unit
  */

@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class GetAllRolesTest.
- *
  * @group authorization
  * @group api
  */

@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class SendVerificationEmailTest.
- *
  * @group authentication
  * @group api
  */

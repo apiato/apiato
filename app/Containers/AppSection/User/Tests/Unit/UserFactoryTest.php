@@ -6,8 +6,6 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 
 /**
- * Class UserFactoryTest.
- *
  * @group user
  * @group unit
  */

@@ -6,8 +6,6 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class PasswordResetsMigrationTest.
- *
  * @group user
  * @group unit
  */

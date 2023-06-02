@@ -13,14 +13,6 @@ use Illuminate\Http\JsonResponse;
 
 class ResetPasswordController extends ApiController
 {
-    /**
-     * @param ResetPasswordRequest $request
-     * @return JsonResponse
-     * @throws InvalidResetPasswordTokenException
-     * @throws NotFoundException
-     * @throws UpdateResourceFailedException
-     * @throws IncorrectIdException
-     */
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
         app(ResetPasswordAction::class)->run($request);

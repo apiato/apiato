@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class LoginCustomAttributeTest.
- *
  * @group authentication
  * @group unit
  */

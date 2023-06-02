@@ -9,8 +9,6 @@ use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Class SendVerificationEmailTaskTest.
- *
  * @group authentication
  * @group unit
  */

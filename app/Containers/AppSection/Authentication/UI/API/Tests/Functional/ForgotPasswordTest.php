@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class ForgotPasswordTest.
- *
  * @group authentication
  * @group api
  */
