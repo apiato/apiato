@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class DeleteRoleTask extends ParentTask
 {
     public function __construct(
-        protected RoleRepository $repository
+        protected readonly RoleRepository $repository
     ) {
     }
 

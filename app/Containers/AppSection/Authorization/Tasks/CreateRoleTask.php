@@ -11,7 +11,7 @@ use Exception;
 class CreateRoleTask extends ParentTask
 {
     public function __construct(
-        protected RoleRepository $repository
+        protected readonly RoleRepository $repository
     ) {
     }
 

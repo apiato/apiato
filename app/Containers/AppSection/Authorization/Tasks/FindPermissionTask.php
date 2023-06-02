@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class FindPermissionTask extends ParentTask
 {
     public function __construct(
-        protected PermissionRepository $repository
+        protected readonly PermissionRepository $repository
     ) {
     }
 

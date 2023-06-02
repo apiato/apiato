@@ -11,7 +11,7 @@ use Exception;
 class CreatePermissionTask extends ParentTask
 {
     public function __construct(
-        protected PermissionRepository $repository
+        protected readonly PermissionRepository $repository
     ) {
     }
 

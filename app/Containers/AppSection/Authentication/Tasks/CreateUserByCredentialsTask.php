@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class CreateUserByCredentialsTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
