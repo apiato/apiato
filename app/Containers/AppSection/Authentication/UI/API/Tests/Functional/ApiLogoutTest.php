@@ -3,16 +3,15 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 
 /**
- * Class ApiLogoutTest
- *
  * @group authentication
  * @group api
  */
 class ApiLogoutTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/logout';
+    protected string $endpoint = 'post@v1/api/logout';
 
     public function testLogout(): void
     {
@@ -24,5 +23,14 @@ class ApiLogoutTest extends ApiTestCase
         $this->assertResponseContainKeyValue([
             'message' => 'Token revoked successfully.',
         ]);
+    }
+
+    public function testLogoutWhileUnauthenticated(): void
+    {
+        $this->testingUser = User::factory()->create();
+
+        $response = $this->auth(false)->makeCall();
+
+        $response->assertUnauthorized();
     }
 }
