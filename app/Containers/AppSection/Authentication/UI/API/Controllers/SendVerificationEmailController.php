@@ -9,13 +9,14 @@ use Illuminate\Http\JsonResponse;
 
 class SendVerificationEmailController extends ApiController
 {
-    /**
-     * @param SendVerificationEmailRequest $request
-     * @return JsonResponse
-     */
+    public function __construct(
+        protected readonly SendVerificationEmailAction $sendVerificationEmailAction
+    ) {
+    }
+
     public function sendVerificationEmail(SendVerificationEmailRequest $request): JsonResponse
     {
-        app(SendVerificationEmailAction::class)->run($request);
+        $this->sendVerificationEmailAction->run($request);
 
         return $this->accepted();
     }

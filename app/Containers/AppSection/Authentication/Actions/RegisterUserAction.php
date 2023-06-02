@@ -13,9 +13,13 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class RegisterUserAction extends ParentAction
 {
+    public function __construct(
+        protected readonly CreateUserByCredentialsTask $createUserByCredentialsTask,
+        protected readonly SendVerificationEmailTask   $sendVerificationEmailTask,
+    ) {
+    }
+
     /**
-     * @param RegisterUserRequest $request
-     * @return User
      * @throws CreateResourceFailedException
      * @throws IncorrectIdException
      */
@@ -29,10 +33,10 @@ class RegisterUserAction extends ParentAction
             'birth',
         ]);
 
-        $user = app(CreateUserByCredentialsTask::class)->run($sanitizedData);
+        $user = $this->createUserByCredentialsTask->run($sanitizedData);
 
         $user->notify(new Welcome());
-        app(SendVerificationEmailTask::class)->run($user, $request->verification_url);
+        $this->sendVerificationEmailTask->run($user, $request->verification_url);
 
         return $user;
     }

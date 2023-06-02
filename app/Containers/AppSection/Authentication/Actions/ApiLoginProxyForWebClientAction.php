@@ -12,9 +12,13 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class ApiLoginProxyForWebClientAction extends ParentAction
 {
+    public function __construct(
+        protected readonly CallOAuthServerTask   $callOAuthServerTask,
+        protected readonly MakeRefreshCookieTask $makeRefreshCookieTask,
+    ) {
+    }
+
     /**
-     * @param LoginProxyPasswordGrantRequest $request
-     * @return array
      * @throws LoginFailedException
      * @throws IncorrectIdException
      */
@@ -30,8 +34,8 @@ class ApiLoginProxyForWebClientAction extends ParentAction
         list($username) = LoginCustomAttribute::extract($sanitizedData);
         $sanitizedData = $this->enrichSanitizedData($username, $sanitizedData);
 
-        $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
-        $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
+        $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
+        $refreshCookie = $this->makeRefreshCookieTask->run($responseContent['refresh_token']);
 
         return [
             'response_content' => $responseContent,

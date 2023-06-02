@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Request;
 
 class ApiRefreshProxyForWebClientAction extends ParentAction
 {
+    public function __construct(
+        protected readonly CallOAuthServerTask   $callOAuthServerTask,
+        protected readonly MakeRefreshCookieTask $makeRefreshCookieTask,
+    ) {
+    }
+
     /**
-     * @param RefreshProxyRequest $request
-     * @return array
      * @throws LoginFailedException
      * @throws RefreshTokenMissingException
      * @throws IncorrectIdException
@@ -36,8 +40,8 @@ class ApiRefreshProxyForWebClientAction extends ParentAction
         $sanitizedData['grant_type'] = 'refresh_token';
         $sanitizedData['scope'] = '';
 
-        $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
-        $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
+        $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
+        $refreshCookie = $this->makeRefreshCookieTask->run($responseContent['refresh_token']);
 
         return [
             'response_content' => $responseContent,

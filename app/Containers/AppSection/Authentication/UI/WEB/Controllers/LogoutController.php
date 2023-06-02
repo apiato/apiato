@@ -12,13 +12,14 @@ use Illuminate\Routing\Redirector;
 
 class LogoutController extends WebController
 {
-    /**
-     * @param LogoutRequest $request
-     * @return Redirector|Application|RedirectResponse
-     */
+    public function __construct(
+        protected readonly WebLogoutAction $webLogoutAction
+    ) {
+    }
+
     public function logout(LogoutRequest $request): Redirector|Application|RedirectResponse
     {
-        app(WebLogoutAction::class)->run();
+        $this->webLogoutAction->run();
 
         return redirect()->route(RouteServiceProvider::HOME);
     }

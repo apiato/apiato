@@ -14,22 +14,20 @@ use Illuminate\Http\RedirectResponse;
 
 class LoginController extends WebController
 {
-    /**
-     * @return Factory|View|Application
-     */
+    public function __construct(
+        protected readonly WebLoginAction $webLoginAction
+    ) {
+    }
+
     public function showLoginPage(): Factory|View|Application
     {
         return view('appSection@authentication::login');
     }
 
-    /**
-     * @param LoginRequest $request
-     * @return RedirectResponse
-     */
     public function login(LoginRequest $request): RedirectResponse
     {
         try {
-            app(WebLoginAction::class)->run($request);
+            $this->webLoginAction->run($request);
         } catch (Exception $e) {
             return redirect()->route(RouteServiceProvider::LOGIN)->with('login', $e->getMessage());
         }

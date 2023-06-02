@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends ParentAction
 {
+    public function __construct(
+        protected readonly LoginTask $loginTask
+    ) {
+    }
+
     /**
-     * @param LoginRequest $request
-     * @return User|Authenticatable|null
      * @throws LoginFailedException
      * @throws IncorrectIdException
      */
@@ -30,7 +33,7 @@ class WebLoginAction extends ParentAction
 
         list($username, $loginAttribute) = LoginCustomAttribute::extract($sanitizedData);
 
-        $loggedIn = app(LoginTask::class)->run(
+        $loggedIn = $this->loginTask->run(
             $username,
             $sanitizedData['password'],
             $loginAttribute,

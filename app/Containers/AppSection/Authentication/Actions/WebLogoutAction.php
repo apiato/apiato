@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class WebLogoutAction extends ParentAction
 {
-    /**
-     * @return void
-     */
     public function run(): void
     {
         Auth::guard('web')->logout();

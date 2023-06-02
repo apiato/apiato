@@ -10,14 +10,17 @@ use Lcobucci\JWT\Parser;
 
 class ApiLogoutAction extends ParentAction
 {
-    /**
-     * @param LogoutRequest $request
-     * @return void
-     */
+    public function __construct(
+        protected readonly Parser                 $parser,
+        protected readonly TokenRepository        $tokenRepository,
+        protected readonly RefreshTokenRepository $refreshTokenRepository,
+    ) {
+    }
+
     public function run(LogoutRequest $request): void
     {
-        $id = app(Parser::class)->parse($request->bearerToken())->claims()->get('jti');
-        app(TokenRepository::class)->revokeAccessToken($id);
-        app(RefreshTokenRepository::class)->revokeRefreshTokensByAccessTokenId($id);
+        $id = $this->parser->parse($request->bearerToken())->claims()->get('jti');
+        $this->tokenRepository->revokeAccessToken($id);
+        $this->refreshTokenRepository->revokeRefreshTokensByAccessTokenId($id);
     }
 }

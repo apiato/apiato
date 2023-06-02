@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordAction extends ParentAction
 {
+    public function __construct(
+        protected readonly FindUserByEmailTask          $findUserByEmailTask,
+        protected readonly CreatePasswordResetTokenTask $createPasswordResetTokenTask,
+    ) {
+    }
+
     /**
-     * @param ForgotPasswordRequest $request
-     * @return bool
      * @throws IncorrectIdException
      */
     public function run(ForgotPasswordRequest $request): bool
@@ -25,18 +29,14 @@ class ForgotPasswordAction extends ParentAction
             'reseturl',
         ]);
 
-        // Note: It's a good idea to DON'T say if the user email is valid or not
+        // It's a good idea to DON'T say if the user email is valid or not
         // (to avoid brute force checking of user email existing).
-        // so we return 'false' if an exception is thrown
         try {
-            $user = app(FindUserByEmailTask::class)->run($sanitizedData['email']);
+            $user = $this->findUserByEmailTask->run($sanitizedData['email']);
+            $token = $this->createPasswordResetTokenTask->run($user);
+            Mail::send(new ForgotPassword($user, $token, $sanitizedData['reseturl']));
         } catch (Exception) {
-            return false;
         }
-
-        $token = app(CreatePasswordResetTokenTask::class)->run($user);
-
-        Mail::send(new ForgotPassword($user, $token, $sanitizedData['reseturl']));
 
         return true;
     }
