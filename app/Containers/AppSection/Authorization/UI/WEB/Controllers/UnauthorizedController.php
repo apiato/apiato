@@ -9,9 +9,6 @@ use Illuminate\Contracts\View\View;
 
 class UnauthorizedController extends WebController
 {
-    /**
-     * @return Factory|View|Application
-     */
     public function showUnauthorizedPage(): Factory|View|Application
     {
         return view('appSection@authorization::unauthorized');

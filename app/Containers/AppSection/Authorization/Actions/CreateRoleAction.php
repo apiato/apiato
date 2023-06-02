@@ -10,13 +10,16 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class CreateRoleAction extends ParentAction
 {
+    public function __construct(
+        private readonly CreateRoleTask $createRoleTask
+    ) {
+    }
+
     /**
-     * @param CreateRoleRequest $request
-     * @return Role
      * @throws CreateResourceFailedException
      */
     public function run(CreateRoleRequest $request): Role
     {
-        return app(CreateRoleTask::class)->run($request->name, $request->description, $request->display_name);
+        return $this->createRoleTask->run($request->name, $request->description, $request->display_name);
     }
 }

@@ -10,13 +10,17 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DeleteRoleAction extends ParentAction
 {
+    public function __construct(
+        private readonly DeleteRoleTask $deleteRoleTask
+    ) {
+    }
+
     /**
-     * @param DeleteRoleRequest $request
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
     public function run(DeleteRoleRequest $request): void
     {
-        app(DeleteRoleTask::class)->run($request->id);
+        $this->deleteRoleTask->run($request->id);
     }
 }

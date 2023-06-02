@@ -17,8 +17,6 @@ class DeleteRoleTask extends ParentTask
     }
 
     /**
-     * @param $id
-     * @return int
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */

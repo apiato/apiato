@@ -16,9 +16,6 @@ class FindRoleTask extends ParentTask
     }
 
     /**
-     * @param string|int $roleNameOrId
-     * @param string $guardName
-     * @return Role
      * @throws NotFoundException
      */
     public function run(string|int $roleNameOrId, string $guardName = 'api'): Role

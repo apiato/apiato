@@ -16,11 +16,6 @@ class CreateRoleTask extends ParentTask
     }
 
     /**
-     * @param string $name
-     * @param string|null $description
-     * @param string|null $displayName
-     * @param string $guardName
-     * @return Role
      * @throws CreateResourceFailedException
      */
     public function run(string $name, string $description = null, string $displayName = null, string $guardName = 'api'): Role

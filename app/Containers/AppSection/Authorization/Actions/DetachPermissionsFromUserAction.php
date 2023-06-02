@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\DetachPermissionsFromRoleTask;
 use App\Containers\AppSection\Authorization\Tasks\DetachPermissionsFromUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DetachPermissionsFromUserRequest;
@@ -13,19 +12,24 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DetachPermissionsFromUserAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask              $findUserByIdTask,
+        private readonly FindPermissionTask            $findPermissionTask,
+        private readonly DetachPermissionsFromUserTask $detachPermissionsFromUserTask
+    ) {
+    }
+
     /**
-     * @param DetachPermissionsFromUserRequest $request
-     * @return User
      * @throws NotFoundException
      */
     public function run(DetachPermissionsFromUserRequest $request): User
     {
-        $user = app(FindUserByIdTask::class)->run($request->id);
+        $user = $this->findUserByIdTask->run($request->id);
 
-        $permissions = array_map(static function ($permissionId) {
-            return app(FindPermissionTask::class)->run($permissionId);
+        $permissions = array_map(function ($permissionId) {
+            return $this->findPermissionTask->run($permissionId);
         }, $request->permissions_ids);
 
-        return app(DetachPermissionsFromUserTask::class)->run($user, $permissions);
+        return $this->detachPermissionsFromUserTask->run($user, $permissions);
     }
 }

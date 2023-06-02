@@ -11,15 +11,18 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class AttachPermissionsToRoleController extends ApiController
 {
+    public function __construct(
+        private readonly AttachPermissionsToRoleAction $attachPermissionsToRoleAction
+    ) {
+    }
+
     /**
-     * @param AttachPermissionsToRoleRequest $request
-     * @return array
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */
     public function attachPermissionsToRole(AttachPermissionsToRoleRequest $request): array
     {
-        $role = app(AttachPermissionsToRoleAction::class)->run($request);
+        $role = $this->attachPermissionsToRoleAction->run($request);
 
         return $this->transform($role, RoleTransformer::class);
     }

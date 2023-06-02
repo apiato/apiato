@@ -9,11 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class RevokeRoleFromUserTask extends ParentTask
 {
-    /**
-     * @param User $user
-     * @param string|int|Role $role
-     * @return Authenticatable
-     */
     public function run(User $user, string|int|Role $role): Authenticatable
     {
         return $user->removeRole($role);

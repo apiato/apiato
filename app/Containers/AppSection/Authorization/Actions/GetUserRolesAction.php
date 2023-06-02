@@ -9,14 +9,17 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class GetUserRolesAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask $findUserByIdTask
+    ) {
+    }
+
     /**
-     * @param GetUserRolesRequest $request
-     * @return mixed
      * @throws NotFoundException
      */
     public function run(GetUserRolesRequest $request): mixed
     {
-        $user = app(FindUserByIdTask::class)->run($request->id);
+        $user = $this->findUserByIdTask->run($request->id);
 
         return $user->roles;
     }

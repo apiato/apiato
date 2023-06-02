@@ -12,19 +12,24 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DetachPermissionsFromRoleAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindRoleTask                  $findRoleTask,
+        private readonly FindPermissionTask            $findPermissionTask,
+        private readonly DetachPermissionsFromRoleTask $detachPermissionsFromRoleTask,
+    ) {
+    }
+
     /**
-     * @param DetachPermissionsFromRoleRequest $request
-     * @return Role
      * @throws NotFoundException
      */
     public function run(DetachPermissionsFromRoleRequest $request): Role
     {
-        $role = app(FindRoleTask::class)->run($request->role_id);
+        $role = $this->findRoleTask->run($request->role_id);
 
-        $permissions = array_map(static function ($permissionId) {
-            return app(FindPermissionTask::class)->run($permissionId);
+        $permissions = array_map(function ($permissionId) {
+            return $this->findPermissionTask->run($permissionId);
         }, $request->permissions_ids);
 
-        return app(DetachPermissionsFromRoleTask::class)->run($role, $permissions);
+        return $this->detachPermissionsFromRoleTask->run($role, $permissions);
     }
 }

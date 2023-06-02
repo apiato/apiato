@@ -10,13 +10,16 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class FindRoleAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindRoleTask $findRoleTask
+    ) {
+    }
+
     /**
-     * @param FindRoleRequest $request
-     * @return Role
      * @throws NotFoundException
      */
     public function run(FindRoleRequest $request): Role
     {
-        return app(FindRoleTask::class)->run($request->id);
+        return $this->findRoleTask->run($request->id);
     }
 }

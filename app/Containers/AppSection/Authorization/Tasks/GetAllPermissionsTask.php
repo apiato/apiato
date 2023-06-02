@@ -16,8 +16,6 @@ class GetAllPermissionsTask extends ParentTask
     }
 
     /**
-     * @param bool $skipPagination
-     * @return mixed
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */
