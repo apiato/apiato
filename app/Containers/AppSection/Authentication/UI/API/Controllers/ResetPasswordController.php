@@ -14,7 +14,7 @@ class ResetPasswordController extends ApiController
     ) {
     }
 
-    public function resetPassword(ResetPasswordRequest $request): JsonResponse
+    public function __invoke(ResetPasswordRequest $request): JsonResponse
     {
         $this->resetPasswordAction->run($request);
 

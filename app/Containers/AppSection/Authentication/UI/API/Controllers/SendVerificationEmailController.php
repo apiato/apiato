@@ -14,7 +14,7 @@ class SendVerificationEmailController extends ApiController
     ) {
     }
 
-    public function sendVerificationEmail(SendVerificationEmailRequest $request): JsonResponse
+    public function __invoke(SendVerificationEmailRequest $request): JsonResponse
     {
         $this->sendVerificationEmailAction->run($request);
 

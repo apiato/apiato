@@ -14,7 +14,7 @@ class RegisterUserController extends ApiController
     ) {
     }
 
-    public function registerUser(RegisterUserRequest $request): array
+    public function __invoke(RegisterUserRequest $request): array
     {
         $user = $this->registerUserAction->transactionalRun($request);
 

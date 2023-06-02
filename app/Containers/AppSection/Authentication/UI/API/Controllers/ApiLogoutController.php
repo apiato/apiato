@@ -15,7 +15,7 @@ class ApiLogoutController extends ApiController
     ) {
     }
 
-    public function logout(LogoutRequest $request): JsonResponse
+    public function __invoke(LogoutRequest $request): JsonResponse
     {
         $this->logoutAction->run($request);
 

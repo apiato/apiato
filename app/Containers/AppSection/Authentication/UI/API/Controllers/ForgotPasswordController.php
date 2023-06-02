@@ -14,7 +14,7 @@ class ForgotPasswordController extends ApiController
     ) {
     }
 
-    public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
+    public function __invoke(ForgotPasswordRequest $request): JsonResponse
     {
         $this->forgotPasswordAction->run($request);
 

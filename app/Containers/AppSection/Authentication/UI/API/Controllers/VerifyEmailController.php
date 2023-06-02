@@ -14,7 +14,7 @@ class VerifyEmailController extends ApiController
     ) {
     }
 
-    public function verifyEmail(VerifyEmailRequest $request): JsonResponse
+    public function __invoke(VerifyEmailRequest $request): JsonResponse
     {
         $this->verifyEmailAction->run($request);
 
