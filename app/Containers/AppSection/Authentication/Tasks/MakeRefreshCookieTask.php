@@ -9,9 +9,8 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 class MakeRefreshCookieTask extends ParentTask
 {
-    public function run($refreshToken): CookieJar|Cookie|Application
+    public function run(string $refreshToken): CookieJar|Cookie|Application
     {
-        // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
         return cookie(
             'refreshToken',
             $refreshToken,
@@ -19,7 +18,7 @@ class MakeRefreshCookieTask extends ParentTask
             null,
             null,
             config('session.secure'),
-            true // HttpOnly
+            true // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
         );
     }
 }
