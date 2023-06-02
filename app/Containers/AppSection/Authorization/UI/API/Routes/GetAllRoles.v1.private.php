@@ -11,7 +11,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             RoleSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetAllRolesController;

@@ -14,7 +14,7 @@
  *
  * @apiParam           {String} id user id
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             RoleSuccessSingleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetUserRolesController;

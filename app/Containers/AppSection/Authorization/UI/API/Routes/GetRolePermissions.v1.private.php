@@ -14,7 +14,7 @@
  *
  * @apiParam           {String} id id of role
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             PermissionSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetRolePermissionsController;

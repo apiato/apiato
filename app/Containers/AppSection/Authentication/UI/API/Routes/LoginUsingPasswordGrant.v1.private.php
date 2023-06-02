@@ -28,4 +28,4 @@
  * }
  */
 
-// Implementation in the Laravel Passport package
+// Implementation in the Laravel Passport package and overridden in Passport.v1.private.php
