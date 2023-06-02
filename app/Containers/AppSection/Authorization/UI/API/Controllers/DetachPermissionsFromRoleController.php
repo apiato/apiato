@@ -14,7 +14,7 @@ class DetachPermissionsFromRoleController extends ApiController
     ) {
     }
 
-    public function detachPermissionFromRole(DetachPermissionsFromRoleRequest $request): array
+    public function __invoke(DetachPermissionsFromRoleRequest $request): array
     {
         $role = $this->detachPermissionsFromRoleAction->run($request);
 

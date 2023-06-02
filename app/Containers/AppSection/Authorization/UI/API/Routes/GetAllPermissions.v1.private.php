@@ -17,5 +17,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetAllPermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('permissions', [GetAllPermissionsController::class, 'getAllPermissions'])
+Route::get('permissions', GetAllPermissionsController::class)
     ->middleware(['auth:api']);

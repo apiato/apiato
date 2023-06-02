@@ -14,7 +14,7 @@ class GetAllRolesController extends ApiController
     ) {
     }
 
-    public function getAllRoles(GetAllRolesRequest $request): array
+    public function __invoke(GetAllRolesRequest $request): array
     {
         $roles = $this->getAllRolesAction->run();
 

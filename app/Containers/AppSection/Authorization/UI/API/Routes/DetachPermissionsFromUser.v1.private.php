@@ -22,6 +22,6 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\DetachPermissionsFromUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('users/{id}/permissions', [DetachPermissionsFromUserController::class, 'detachPermissionFromUser'])
+Route::delete('users/{id}/permissions', DetachPermissionsFromUserController::class)
     ->middleware(['auth:api']);
 

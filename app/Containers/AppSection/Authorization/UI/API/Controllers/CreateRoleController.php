@@ -15,7 +15,7 @@ class CreateRoleController extends ApiController
     ) {
     }
 
-    public function createRole(CreateRoleRequest $request): JsonResponse
+    public function __invoke(CreateRoleRequest $request): JsonResponse
     {
         $role = $this->createRoleAction->run($request);
 

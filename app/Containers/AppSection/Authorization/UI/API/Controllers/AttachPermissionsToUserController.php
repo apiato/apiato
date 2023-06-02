@@ -15,7 +15,7 @@ class AttachPermissionsToUserController extends ApiController
     ) {
     }
 
-    public function attachPermissionsToUser(AttachPermissionsToUserRequest $request): array
+    public function __invoke(AttachPermissionsToUserRequest $request): array
     {
         $user = $this->attachPermissionsToUserAction->run($request);
 

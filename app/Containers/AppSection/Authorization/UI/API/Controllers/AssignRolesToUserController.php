@@ -14,7 +14,7 @@ class AssignRolesToUserController extends ApiController
     ) {
     }
 
-    public function assignRolesToUser(AssignRolesToUserRequest $request): array
+    public function __invoke(AssignRolesToUserRequest $request): array
     {
         $user = $this->assignRolesToUserAction->run($request);
 

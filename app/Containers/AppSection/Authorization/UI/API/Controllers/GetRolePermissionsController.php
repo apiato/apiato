@@ -14,7 +14,7 @@ class GetRolePermissionsController extends ApiController
     ) {
     }
 
-    public function getRolePermissions(GetRolePermissionsRequest $request): array
+    public function __invoke(GetRolePermissionsRequest $request): array
     {
         $permission = $this->getRolePermissionsAction->run($request);
 

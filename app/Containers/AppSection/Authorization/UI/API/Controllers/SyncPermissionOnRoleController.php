@@ -14,7 +14,7 @@ class SyncPermissionOnRoleController extends ApiController
     ) {
     }
 
-    public function syncPermissionOnRole(SyncPermissionsOnRoleRequest $request): array
+    public function __invoke(SyncPermissionsOnRoleRequest $request): array
     {
         $role = $this->syncPermissionsOnRoleAction->run($request);
 

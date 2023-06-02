@@ -20,6 +20,6 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetUserRolesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}/roles', [GetUserRolesController::class, 'getUserRoles'])
+Route::get('users/{id}/roles', GetUserRolesController::class)
     ->middleware(['auth:api']);
 

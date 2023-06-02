@@ -14,7 +14,7 @@ class FindRoleController extends ApiController
     ) {
     }
 
-    public function findRole(FindRoleRequest $request): array
+    public function __invoke(FindRoleRequest $request): array
     {
         $role = $this->findRoleAction->run($request);
 

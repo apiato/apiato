@@ -14,7 +14,7 @@ class GetAllPermissionsController extends ApiController
     ) {
     }
 
-    public function getAllPermissions(GetAllPermissionsRequest $request): array
+    public function __invoke(GetAllPermissionsRequest $request): array
     {
         $permissions = $this->getAllPermissionsAction->run();
 

@@ -14,7 +14,7 @@ class FindPermissionController extends ApiController
     ) {
     }
 
-    public function findPermission(FindPermissionRequest $request): array
+    public function __invoke(FindPermissionRequest $request): array
     {
         $permission = $this->findPermissionAction->run($request);
 

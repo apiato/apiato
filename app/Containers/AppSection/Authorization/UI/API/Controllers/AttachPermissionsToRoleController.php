@@ -20,7 +20,7 @@ class AttachPermissionsToRoleController extends ApiController
      * @throws InvalidTransformerException
      * @throws NotFoundException
      */
-    public function attachPermissionsToRole(AttachPermissionsToRoleRequest $request): array
+    public function __invoke(AttachPermissionsToRoleRequest $request): array
     {
         $role = $this->attachPermissionsToRoleAction->run($request);
 

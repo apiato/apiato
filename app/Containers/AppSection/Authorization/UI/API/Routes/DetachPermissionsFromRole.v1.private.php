@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\DetachPermissionsFromRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/detach', [DetachPermissionsFromRoleController::class, 'detachPermissionFromRole'])
+Route::post('permissions/detach', DetachPermissionsFromRoleController::class)
     ->middleware(['auth:api']);

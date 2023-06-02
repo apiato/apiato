@@ -14,7 +14,7 @@ class RevokeRolesFromUserController extends ApiController
     ) {
     }
 
-    public function revokeRolesFromUser(RevokeRolesFromUserRequest $request): array
+    public function __invoke(RevokeRolesFromUserRequest $request): array
     {
         $user = $this->revokeRolesFromUserAction->run($request);
 

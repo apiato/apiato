@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRolesFromUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('roles/revoke', [RevokeRolesFromUserController::class, 'revokeRolesFromUser'])
+Route::post('roles/revoke', RevokeRolesFromUserController::class)
     ->middleware(['auth:api']);

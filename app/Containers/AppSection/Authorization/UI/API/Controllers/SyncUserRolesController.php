@@ -14,7 +14,7 @@ class SyncUserRolesController extends ApiController
     ) {
     }
 
-    public function syncUserRoles(SyncUserRolesRequest $request): array
+    public function __invoke(SyncUserRolesRequest $request): array
     {
         $user = $this->syncUserRolesAction->run($request);
 
