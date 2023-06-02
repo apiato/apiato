@@ -10,13 +10,17 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DeleteUserAction extends ParentAction
 {
+    public function __construct(
+        private readonly DeleteUserTask $deleteUserTask
+    ) {
+    }
+
     /**
-     * @param DeleteUserRequest $request
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
     public function run(DeleteUserRequest $request): void
     {
-        app(DeleteUserTask::class)->run($request->id);
+        $this->deleteUserTask->run($request->id);
     }
 }

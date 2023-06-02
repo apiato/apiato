@@ -12,9 +12,12 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class UpdateUserAction extends ParentAction
 {
+    public function __construct(
+        private readonly UpdateUserTask $updateUserTask
+    ) {
+    }
+
     /**
-     * @param UpdateUserRequest $request
-     * @return User
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      * @throws IncorrectIdException
@@ -28,6 +31,6 @@ class UpdateUserAction extends ParentAction
             'birth',
         ]);
 
-        return app(UpdateUserTask::class)->run($sanitizedData, $request->id);
+        return $this->updateUserTask->run($sanitizedData, $request->id);
     }
 }

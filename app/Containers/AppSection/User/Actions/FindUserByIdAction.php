@@ -10,13 +10,16 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class FindUserByIdAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask $findUserByIdTask
+    ) {
+    }
+
     /**
-     * @param FindUserByIdRequest $request
-     * @return User
      * @throws NotFoundException
      */
     public function run(FindUserByIdRequest $request): User
     {
-        return app(FindUserByIdTask::class)->run($request->id);
+        return $this->findUserByIdTask->run($request->id);
     }
 }

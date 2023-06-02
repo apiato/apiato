@@ -10,12 +10,11 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class GetAllUsersTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
     /**
-     * @return mixed
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */

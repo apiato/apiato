@@ -14,9 +14,14 @@ use Throwable;
 
 class CreateAdminAction extends ParentAction
 {
+    public function __construct(
+        private readonly CreateUserByCredentialsTask $createUserByCredentialsTask,
+        private readonly FindRoleTask                $findRoleTask,
+        private readonly AssignRolesToUserTask       $assignRolesToUserTask
+    ) {
+    }
+
     /**
-     * @param array $data
-     * @return User
      * @throws CreateResourceFailedException
      * @throws Throwable
      * @throws NotFoundException
@@ -24,11 +29,11 @@ class CreateAdminAction extends ParentAction
     public function run(array $data): User
     {
         return DB::transaction(function () use ($data) {
-            $user = app(CreateUserByCredentialsTask::class)->run($data);
+            $user = $this->createUserByCredentialsTask->run($data);
             $adminRoleName = config('appSection-authorization.admin_role');
             foreach (array_keys(config('auth.guards')) as $guardName) {
-                $adminRole = app(FindRoleTask::class)->run($adminRoleName, $guardName);
-                app(AssignRolesToUserTask::class)->run($user, $adminRole);
+                $adminRole = $this->findRoleTask->run($adminRoleName, $guardName);
+                $this->assignRolesToUserTask->run($user, $adminRole);
             }
             $user->email_verified_at = now();
             $user->save();
