@@ -8,6 +8,11 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
 class AuthorizationRolesSeeder_2 extends ParentSeeder
 {
+    public function __construct(
+        private readonly CreateRoleTask $createRoleTask
+    ) {
+    }
+
     /**
      * @throws CreateResourceFailedException
      */
@@ -15,7 +20,7 @@ class AuthorizationRolesSeeder_2 extends ParentSeeder
     {
         // Default Roles for every Guard ----------------------------------------------------------------
         foreach (array_keys(config('auth.guards')) as $guardName) {
-            app(CreateRoleTask::class)->run(config('appSection-authorization.admin_role'), 'Administrator', 'Administrator Role', $guardName);
+            $this->createRoleTask->run(config('appSection-authorization.admin_role'), 'Administrator', 'Administrator Role', $guardName);
         }
     }
 }
