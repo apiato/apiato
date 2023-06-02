@@ -2,17 +2,12 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use Apiato\Core\Loaders\RoutesLoaderTrait;
 use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthProvider;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
-use Laravel\Passport\RouteRegistrar;
 
 class AuthServiceProvider extends ParentAuthProvider
 {
-    use RoutesLoaderTrait;
-
     /**
      * Indicates if loading of the provider is deferred.
      */
@@ -20,8 +15,6 @@ class AuthServiceProvider extends ParentAuthProvider
 
     /**
      * The policy mappings for the application.
-     *
-     * @var array
      */
     protected $policies = [];
 
@@ -33,8 +26,6 @@ class AuthServiceProvider extends ParentAuthProvider
         parent::boot();
 
         $this->registerPassport();
-        $this->registerPassportApiRoutes();
-        $this->registerPassportWebRoutes();
     }
 
     private function registerPassport(): void
@@ -48,29 +39,10 @@ class AuthServiceProvider extends ParentAuthProvider
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
     }
 
-    private function registerPassportApiRoutes(): void
+    public function register(): void
     {
-        $prefix = config('apiato.api.prefix');
-        $routeGroupArray = $this->getRouteGroup("/{$prefix}v1");
+        parent::register();
 
-        if (!$this->app->routesAreCached()) {
-            Route::group($routeGroupArray, function () {
-                Passport::routes(function (RouteRegistrar $router) {
-                    $router->forAccessTokens();
-                    $router->forTransientTokens();
-                    $router->forClients();
-                    $router->forPersonalAccessTokens();
-                });
-            });
-        }
-    }
-
-    private function registerPassportWebRoutes(): void
-    {
-        if (!$this->app->routesAreCached()) {
-            Passport::routes(function (RouteRegistrar $router) {
-                $router->forAuthorization();
-            });
-        }
+        Passport::ignoreRoutes();
     }
 }
