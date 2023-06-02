@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Mail;
 class ForgotPasswordAction extends ParentAction
 {
     public function __construct(
-        protected readonly FindUserByEmailTask          $findUserByEmailTask,
-        protected readonly CreatePasswordResetTokenTask $createPasswordResetTokenTask,
+        private readonly FindUserByEmailTask          $findUserByEmailTask,
+        private readonly CreatePasswordResetTokenTask $createPasswordResetTokenTask,
     ) {
     }
 

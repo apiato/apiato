@@ -13,8 +13,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class ApiLoginProxyForWebClientAction extends ParentAction
 {
     public function __construct(
-        protected readonly CallOAuthServerTask   $callOAuthServerTask,
-        protected readonly MakeRefreshCookieTask $makeRefreshCookieTask,
+        private readonly CallOAuthServerTask   $callOAuthServerTask,
+        private readonly MakeRefreshCookieTask $makeRefreshCookieTask,
     ) {
     }
 

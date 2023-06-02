@@ -9,7 +9,7 @@ use Illuminate\Auth\Passwords\PasswordBroker;
 class CreatePasswordResetTokenTask extends ParentTask
 {
     public function __construct(
-        protected readonly PasswordBroker $passwordBroker,
+        private readonly PasswordBroker $passwordBroker,
     ) {
     }
 

@@ -9,7 +9,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class GetAuthenticatedUserController extends ApiController
 {
     public function __construct(
-        protected readonly GetAuthenticatedUserAction $getAuthenticatedUserAction
+        private readonly GetAuthenticatedUserAction $getAuthenticatedUserAction
     ) {
     }
 

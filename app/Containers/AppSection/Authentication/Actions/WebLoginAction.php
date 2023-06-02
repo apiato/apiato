@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class WebLoginAction extends ParentAction
 {
     public function __construct(
-        protected readonly LoginTask $loginTask
+        private readonly LoginTask $loginTask
     ) {
     }
 

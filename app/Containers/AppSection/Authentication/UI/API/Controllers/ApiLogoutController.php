@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Cookie;
 class ApiLogoutController extends ApiController
 {
     public function __construct(
-        protected readonly ApiLogoutAction $logoutAction
+        private readonly ApiLogoutAction $logoutAction
     ) {
     }
 

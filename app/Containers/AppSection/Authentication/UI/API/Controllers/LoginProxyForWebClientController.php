@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class LoginProxyForWebClientController extends ApiController
 {
     public function __construct(
-        protected readonly ApiLoginProxyForWebClientAction $apiLoginProxyForWebClientAction,
+        private readonly ApiLoginProxyForWebClientAction $apiLoginProxyForWebClientAction,
     ) {
     }
 

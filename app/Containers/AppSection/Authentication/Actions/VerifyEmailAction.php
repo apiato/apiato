@@ -15,7 +15,7 @@ use Throwable;
 class VerifyEmailAction extends ParentAction
 {
     public function __construct(
-        protected readonly FindUserByIdTask $findUserByIdTask,
+        private readonly FindUserByIdTask $findUserByIdTask,
     ) {
     }
 

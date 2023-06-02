@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class RefreshProxyForWebClientController extends ApiController
 {
     public function __construct(
-        protected readonly ApiRefreshProxyForWebClientAction $apiRefreshProxyForWebClientAction,
+        private readonly ApiRefreshProxyForWebClientAction $apiRefreshProxyForWebClientAction,
     ) {
     }
 

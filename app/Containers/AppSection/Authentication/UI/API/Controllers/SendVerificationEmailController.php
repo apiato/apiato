@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class SendVerificationEmailController extends ApiController
 {
     public function __construct(
-        protected readonly SendVerificationEmailAction $sendVerificationEmailAction
+        private readonly SendVerificationEmailAction $sendVerificationEmailAction
     ) {
     }
 

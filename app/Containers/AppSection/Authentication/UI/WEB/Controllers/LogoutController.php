@@ -13,7 +13,7 @@ use Illuminate\Routing\Redirector;
 class LogoutController extends WebController
 {
     public function __construct(
-        protected readonly WebLogoutAction $webLogoutAction
+        private readonly WebLogoutAction $webLogoutAction
     ) {
     }
 

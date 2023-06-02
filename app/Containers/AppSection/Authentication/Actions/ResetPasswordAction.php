@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 class ResetPasswordAction extends ParentAction
 {
     public function __construct(
-        protected readonly FindUserByEmailTask $findUserByEmailTask
+        private readonly FindUserByEmailTask $findUserByEmailTask
     ) {
     }
 
