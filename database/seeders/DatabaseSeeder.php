@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Apiato\Core\Loaders\SeederLoaderTrait;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 /**
