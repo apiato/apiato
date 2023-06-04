@@ -14,7 +14,7 @@ abstract class EventServiceProvider extends AbstractEventServiceProvider
     /**
      * The event listener mappings for the application.
      *
-     * @var array<class-string, array<int, class-string>>
+     * @var array<string, array<int, string>>
      */
     protected $listen = [];
 
@@ -33,7 +33,7 @@ abstract class EventServiceProvider extends AbstractEventServiceProvider
      *
      * @return bool
      */
-    public function shouldDiscoverEvents()
+    public function shouldDiscoverEvents(): bool
     {
         return false;
     }
