@@ -24,7 +24,7 @@ class GetAuthenticatedUserTest extends ApiTestCase
 
         $response = $this->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertResponseContainKeyValue([
             'object' => 'User',
@@ -44,7 +44,7 @@ class GetAuthenticatedUserTest extends ApiTestCase
 
         $response = $this->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertResponseContainKeyValue([
             'object' => 'User',
@@ -69,6 +69,6 @@ class GetAuthenticatedUserTest extends ApiTestCase
 
         $response = $this->auth(false)->makeCall();
 
-        $response->assertStatus(401);
+        $response->assertUnauthorized();
     }
 }

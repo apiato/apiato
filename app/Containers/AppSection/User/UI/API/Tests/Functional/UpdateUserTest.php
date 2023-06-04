@@ -33,7 +33,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -52,7 +52,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 
     public function testUpdateExistingUserWithEmptyValues(): void
@@ -66,7 +66,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.name.0', 'The name field must be at least 2 characters.')

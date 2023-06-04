@@ -30,7 +30,7 @@ class ForgotPasswordTest extends ApiTestCase
         ];
 
         $response = $this->makeCall($data);
-        $response->assertStatus(204);
+        $response->assertNoContent();
     }
 
     public function testForgotPasswordWithNotAllowedVerificationUrl(): void
@@ -45,7 +45,7 @@ class ForgotPasswordTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
                 ->where('errors.reseturl.0', 'The selected reseturl is invalid.')

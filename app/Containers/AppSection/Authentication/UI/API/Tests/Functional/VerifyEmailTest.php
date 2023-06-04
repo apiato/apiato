@@ -46,7 +46,7 @@ class VerifyEmailTest extends ApiTestCase
             ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
             ->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $unverifiedUser->refresh();
         $this->assertTrue($unverifiedUser->hasVerifiedEmail());
         Notification::assertSentTo($unverifiedUser, EmailVerified::class);
@@ -77,6 +77,6 @@ class VerifyEmailTest extends ApiTestCase
             ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
             ->makeCall();
 
-        $response->assertStatus(403);
+        $response->assertForbidden();
     }
 }

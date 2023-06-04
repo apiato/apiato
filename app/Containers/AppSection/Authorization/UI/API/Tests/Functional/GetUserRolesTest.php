@@ -30,7 +30,7 @@ class GetUserRolesTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall();
 
         // assert the response status
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($role->name, $responseContent->data[0]->name);
 

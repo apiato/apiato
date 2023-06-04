@@ -34,7 +34,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -61,7 +61,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -82,7 +82,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has(
                 'errors',

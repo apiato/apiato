@@ -39,7 +39,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
@@ -57,7 +57,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
 
         $response = $this->endpoint($this->endpoint)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);

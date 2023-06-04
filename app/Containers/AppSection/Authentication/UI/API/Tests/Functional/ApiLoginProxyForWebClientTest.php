@@ -23,7 +23,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
@@ -41,7 +41,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
@@ -67,7 +67,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($request);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $this->assertResponseContainKeyValue([
             'token_type' => 'Bearer',
         ]);
@@ -122,6 +122,6 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
     }
 }

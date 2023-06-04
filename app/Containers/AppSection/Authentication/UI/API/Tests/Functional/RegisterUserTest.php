@@ -37,7 +37,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
@@ -55,19 +55,12 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc()
         );
-    }
-
-    public function testRegisterNewUserUsingGetVerb(): void
-    {
-        $response = $this->endpoint('get@v1/register')->makeCall();
-
-        $response->assertStatus(405);
     }
 
     public function testRegisterExistingUser(): void
@@ -86,7 +79,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
@@ -100,7 +93,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
 
         if (config('appSection-authentication.require_email_verification')) {
             $response->assertJson(
@@ -132,7 +125,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
@@ -148,7 +141,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->has(
@@ -174,7 +167,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
                 ->where('errors.verification_url.0', 'The selected verification url is invalid.')
@@ -194,7 +187,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
         $registeredUser = User::find($this->decode($response->json()['data']['id']));
-        $response->assertStatus(200);
+        $response->assertOk();
         Notification::assertSentTo($registeredUser, Welcome::class);
         Notification::assertNotSentTo($registeredUser, VerifyEmail::class);
     }

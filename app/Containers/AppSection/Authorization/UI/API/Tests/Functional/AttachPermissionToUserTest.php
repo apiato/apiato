@@ -35,7 +35,7 @@ class AttachPermissionToUserTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall($data);
 
         // assert the response status
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -58,7 +58,7 @@ class AttachPermissionToUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -102,7 +102,7 @@ class AttachPermissionToUserTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.id.0', 'The selected id is invalid.')

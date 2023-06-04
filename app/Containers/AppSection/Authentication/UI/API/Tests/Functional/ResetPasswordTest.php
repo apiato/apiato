@@ -34,7 +34,7 @@ class ResetPasswordTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(204);
+        $response->assertNoContent();
     }
 
     public function testResetPasswordWithInvalidEmail(): void
@@ -45,7 +45,7 @@ class ResetPasswordTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
@@ -61,7 +61,7 @@ class ResetPasswordTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->has(

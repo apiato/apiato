@@ -24,7 +24,7 @@ class DeleteUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall();
 
-        $response->assertStatus(204);
+        $response->assertNoContent();
     }
 
     public function testDeleteNonExistingUser(): void
@@ -33,7 +33,7 @@ class DeleteUserTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 
     public function testGivenHaveNoAccess_CannotDeleteAnotherUser(): void
@@ -43,6 +43,6 @@ class DeleteUserTest extends ApiTestCase
 
         $response = $this->injectId($anotherUser->id)->makeCall();
 
-        $response->assertStatus(403);
+        $response->assertForbidden();
     }
 }

@@ -23,7 +23,7 @@ class GetAllRolesTest extends ApiTestCase
 
         $response = $this->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertNotEmpty($responseContent->data);
     }

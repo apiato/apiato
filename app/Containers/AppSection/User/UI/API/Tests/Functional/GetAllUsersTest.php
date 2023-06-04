@@ -26,7 +26,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response = $this->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('data', 4)
@@ -41,7 +41,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response = $this->makeCall();
 
-        $response->assertStatus(403);
+        $response->assertForbidden();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('message')
@@ -59,7 +59,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response = $this->endpoint($this->endpoint . "?search=name:" . urlencode($user->name))->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('data')
@@ -75,7 +75,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response = $this->endpoint($this->endpoint . '?search=id:' . $user->getHashedKey())->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('data')
