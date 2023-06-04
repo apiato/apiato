@@ -20,7 +20,7 @@ class PasswordResetsMigrationTest extends UnitTestCase
         ];
 
         foreach ($columns as $column) {
-            $this->assertTrue(Schema::hasColumn('password_resets', $column));
+            $this->assertTrue(Schema::hasColumn('password_reset_tokens', $column));
         }
     }
 }

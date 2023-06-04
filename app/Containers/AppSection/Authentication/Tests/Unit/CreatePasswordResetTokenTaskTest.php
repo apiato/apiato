@@ -22,6 +22,6 @@ class CreatePasswordResetTokenTaskTest extends UnitTestCase
         $token = $task->run($user);
 
         $this->assertIsString($token);
-        $this->assertTrue(Hash::check($token, DB::table('password_resets')->where('email', $user->email)->first()->token));
+        $this->assertTrue(Hash::check($token, DB::table('password_reset_tokens')->where('email', $user->email)->first()->token));
     }
 }
