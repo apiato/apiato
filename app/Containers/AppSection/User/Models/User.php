@@ -30,6 +30,7 @@ class User extends ParentUserModel implements MustVerifyEmail
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
         'birth' => 'date',
     ];
 
