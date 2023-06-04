@@ -1,15 +1,8 @@
 <p align="center">
-	<a href="http://apiato.io">
-		<img alt="Welcome to Apiato"
-			 src="https://readme-typing-svg.herokuapp.com/?lines=Welcome+to+Apiato&center=true&width=550&height=70">
-	</a>
-</p>
-
-<p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
 
-<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 9.0</h3>
+<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
 <p align="center">
 <a href="https://travis-ci.org/apiato/apiato"><img src="https://travis-ci.org/apiato/apiato.svg" alt="Build Status"></a>
@@ -110,6 +103,13 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/Mahmoudz">@mahmoudz</a>
         </td>
+         <td align="center" valign="top">
+            <img width="125" height="125" src="https://github.com/mohammad-alavi.png?s=150">
+            <br>
+            <strong>Mohammad Alavi</strong>
+            <br>
+            <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
+        </td>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/johannesschobel.png?s=150">
             <br>
@@ -131,6 +131,8 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/zmaren">@zmaren</a>
         </td>
+     <tr>
+     </tr>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/rdehnhardt.png?s=150">
             <br>
@@ -138,8 +140,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/rdehnhardt">@rdehnhardt</a>
         </td>
-     </tr>
-     <tr>
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/JulianBustamante.png?s=150">
             <br>
@@ -168,6 +168,8 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/jlorente">@jlorente</a>
         </td>
+     </tr>
+	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/anthonyvancauwenberghe.png?s=150">
             <br>
@@ -175,8 +177,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/anthonyvancauwenberghe">@anthonyvancauwenberghe</a>
         </td>
-     </tr>
-	  <tr>    
         <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/hz61p1.png?s=150">
             <br>
@@ -197,13 +197,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <strong>Samer Halawani</strong>
             <br>
             <a href="https://github.com/shalawani">@shalawani</a>
-        </td>
-         <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mohammad-alavi.png?s=150">
-            <br>
-            <strong>Mohammad Alavi</strong>
-            <br>
-            <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
         </td>
           <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/mderis.png?s=150">
