@@ -9,8 +9,6 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
- * Class AttachPermissionsToRoleTest.
- *
  * @group authorization
  * @group api
  */
@@ -34,7 +32,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'Role')
@@ -58,7 +56,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'Role')
@@ -82,7 +80,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has(
                 'errors',
@@ -105,7 +103,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')

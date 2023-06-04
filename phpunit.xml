@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php" colors="true">
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd" bootstrap="vendor/autoload.php"
+         colors="true">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix=".php">./app/Containers/*/*/Tests/Unit</directory>
@@ -13,7 +13,7 @@
             <directory suffix=".php">./app/Ship/Tests</directory>
         </testsuite>
     </testsuites>
-    <coverage processUncoveredFiles="true">
+    <source>
         <include>
             <directory suffix=".php">./app</directory>
         </include>
@@ -23,16 +23,23 @@
             <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
             <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
         </exclude>
+    </source>
+    <coverage includeUncoveredFiles="true" ignoreDeprecatedCodeUnits="true"
+              pathCoverage="true" disableCodeCoverageIgnore="false">
+        <report>
+            <html outputDirectory="html_coverage" lowUpperBound="50" highLowerBound="90"/>
+        </report>
     </coverage>
     <php>
         <env name="API_FULL_URL" value="http://api.apiato.test"/>
-        <server name="APP_ENV" value="testing"/>
-        <server name="BCRYPT_ROUNDS" value="4"/>
-        <server name="CACHE_DRIVER" value="array"/>
+        <env name="APP_ENV" value="testing"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="array"/>
         <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
-        <server name="MAIL_MAILER" value="array"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="SESSION_DRIVER" value="array"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
     </php>
 </phpunit>

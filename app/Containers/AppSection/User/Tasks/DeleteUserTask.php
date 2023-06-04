@@ -12,13 +12,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class DeleteUserTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
     /**
-     * @param $id
-     * @return int
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */

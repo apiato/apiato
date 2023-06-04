@@ -13,8 +13,6 @@ abstract class AuthServiceProvider extends AbstractAuthServiceProvider
 {
     /**
      * The policy mappings for the application.
-     *
-     * @var array
      */
     protected $policies = [];
 }

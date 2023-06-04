@@ -19,5 +19,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\FindRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('roles/{id}', [FindRoleController::class, 'findRole'])
+Route::get('roles/{id}', FindRoleController::class)
     ->middleware(['auth:api']);

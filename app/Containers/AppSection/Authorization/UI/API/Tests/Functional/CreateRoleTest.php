@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class CreateRoleTest.
- *
  * @group authorization
  * @group api
  */
@@ -30,7 +28,7 @@ class CreateRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(201);
+        $response->assertCreated();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($data['name'], $responseContent->data->name);
     }
@@ -45,7 +43,7 @@ class CreateRoleTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('message')
@@ -60,6 +58,6 @@ class CreateRoleTest extends ApiTestCase
 
         $response = $this->makeCall([]);
 
-        $response->assertStatus(403);
+        $response->assertForbidden();
     }
 }

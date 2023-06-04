@@ -10,13 +10,16 @@ use App\Ship\Parents\Requests\Request;
 
 class CreatePermissionAction extends ParentAction
 {
+    public function __construct(
+        private readonly CreatePermissionTask $createPermissionTask
+    ) {
+    }
+
     /**
-     * @param Request $request
-     * @return Permission
      * @throws CreateResourceFailedException
      */
     public function run(Request $request): Permission
     {
-        return app(CreatePermissionTask::class)->run($request->name, $request->description, $request->display_name);
+        return $this->createPermissionTask->run($request->name, $request->description, $request->display_name);
     }
 }

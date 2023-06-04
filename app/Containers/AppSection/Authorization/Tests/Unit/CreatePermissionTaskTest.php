@@ -3,15 +3,13 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
 /**
- * Class CreatePermissionTaskTest.
- *
  * @group authorization
  * @group unit
  */
-class CreatePermissionTaskTest extends TestCase
+class CreatePermissionTaskTest extends UnitTestCase
 {
     public function testCreatePermission(): void
     {

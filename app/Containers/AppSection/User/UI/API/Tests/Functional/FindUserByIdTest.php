@@ -7,8 +7,6 @@ use Hashids;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class FindUserByIdTest.
- *
  * @group user
  * @group api
  */
@@ -27,7 +25,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('data')
@@ -42,7 +40,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 
     public function testFindFilteredUserResponse(): void
@@ -51,7 +49,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
                 $json->has('data')
@@ -67,7 +65,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) =>
             $json->has('data')

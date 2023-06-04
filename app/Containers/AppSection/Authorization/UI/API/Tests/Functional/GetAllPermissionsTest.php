@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class GetAllPermissionsTest.
- *
  * @group authorization
  * @group api
  */
@@ -23,7 +21,7 @@ class GetAllPermissionsTest extends ApiTestCase
     {
         $response = $this->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertNotEmpty($responseContent->data);
     }

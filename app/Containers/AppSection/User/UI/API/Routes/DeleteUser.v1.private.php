@@ -22,5 +22,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\DeleteUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('users/{id}', [DeleteUserController::class, 'deleteUser'])
+Route::delete('users/{id}', DeleteUserController::class)
     ->middleware(['auth:api']);

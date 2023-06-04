@@ -2,16 +2,14 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class PermissionMigrationTest.
- *
  * @group authorization
  * @group unit
  */
-class PermissionMigrationTest extends TestCase
+class PermissionMigrationTest extends UnitTestCase
 {
     private array $tableNames;
     private array $columnNames;

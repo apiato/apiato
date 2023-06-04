@@ -8,12 +8,13 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class SendVerificationEmailAction extends ParentAction
 {
-    /**
-     * @param SendVerificationEmailRequest $request
-     * @return void
-     */
+    public function __construct(
+        private readonly SendVerificationEmailTask $sendVerificationEmailTask
+    ) {
+    }
+
     public function run(SendVerificationEmailRequest $request): void
     {
-        app(SendVerificationEmailTask::class)->run($request->user(), $request->verification_url);
+        $this->sendVerificationEmailTask->run($request->user(), $request->verification_url);
     }
 }

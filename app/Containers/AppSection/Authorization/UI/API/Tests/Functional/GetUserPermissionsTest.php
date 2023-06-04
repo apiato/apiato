@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 
 /**
- * Class GetUserPermissionsTest.
- *
  * @group authorization
  * @group api
  */
@@ -32,7 +30,7 @@ class GetUserPermissionsTest extends ApiTestCase
         $response = $this->injectId($user->id)->makeCall();
 
         // assert the response status
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($permission->name, $responseContent->data[0]->name);
 

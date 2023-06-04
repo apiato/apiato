@@ -5,17 +5,15 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Class RegisterUserActionTest.
- *
  * @group authentication
  * @group unit
  */
-class RegisterUserActionTest extends TestCase
+class RegisterUserActionTest extends UnitTestCase
 {
     public function testAfterUserRegistration_GivenEmailVerificationEnabled_SendNotification(): void
     {

@@ -9,13 +9,17 @@ use Prettus\Repository\Exceptions\RepositoryException;
 
 class GetAllPermissionsAction extends ParentAction
 {
+    public function __construct(
+        private readonly GetAllPermissionsTask $getAllPermissionsTask
+    ) {
+    }
+
     /**
-     * @return mixed
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */
     public function run(): mixed
     {
-        return app(GetAllPermissionsTask::class)->run();
+        return $this->getAllPermissionsTask->run();
     }
 }

@@ -38,14 +38,14 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => env('HASH_ID_KEY', env('APP_KEY')),
-            'length' => env('HASH_ID_LENGTH', 32),
+            'salt' => (string)env('HASH_ID_KEY', env('APP_KEY')),
+            'length' => (int)env('HASH_ID_LENGTH', 32),
             'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         ],
 
         'alternative' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
+            'salt' => (string)'your-salt-string',
+            'length' => (int)'your-length-integer',
             // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],
 

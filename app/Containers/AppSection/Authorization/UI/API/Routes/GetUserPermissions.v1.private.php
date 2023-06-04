@@ -14,12 +14,12 @@
  *
  * @apiParam           {String} id id of user
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             PermissionSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetUserPermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}/permissions', [GetUserPermissionsController::class, 'getUserPermissions'])
+Route::get('users/{id}/permissions', GetUserPermissionsController::class)
     ->middleware(['auth:api']);
 

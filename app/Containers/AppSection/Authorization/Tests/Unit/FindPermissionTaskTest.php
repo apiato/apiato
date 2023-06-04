@@ -4,16 +4,14 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 
 /**
- * Class FindPermissionTaskTest.
- *
  * @group authorization
  * @group unit
  */
-class FindPermissionTaskTest extends TestCase
+class FindPermissionTaskTest extends UnitTestCase
 {
     public function testFindPermissionById(): void
     {

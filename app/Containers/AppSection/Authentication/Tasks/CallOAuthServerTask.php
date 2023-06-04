@@ -26,7 +26,6 @@ class CallOAuthServerTask extends ParentTask
         $response = App::handle($request);
         $content = Utils::jsonDecode($response->getContent(), true);
 
-        // If the internal request to the oauth token endpoint was not successful we throw an exception
         if (!$response->isOk()) {
             throw new LoginFailedException($content['message'] ?? null);
         }

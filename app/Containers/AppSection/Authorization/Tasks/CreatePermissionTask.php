@@ -11,16 +11,11 @@ use Exception;
 class CreatePermissionTask extends ParentTask
 {
     public function __construct(
-        protected PermissionRepository $repository
+        protected readonly PermissionRepository $repository
     ) {
     }
 
     /**
-     * @param string $name
-     * @param string|null $description
-     * @param string|null $displayName
-     * @param string $guardName
-     * @return Permission
      * @throws CreateResourceFailedException
      */
     public function run(string $name, string $description = null, string $displayName = null, string $guardName = 'api'): Permission

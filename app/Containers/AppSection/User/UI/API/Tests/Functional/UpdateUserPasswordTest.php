@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class UpdateUserPasswordTest.
- *
  * @group user
  * @group api
  */
@@ -36,7 +34,7 @@ class UpdateUserPasswordTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -57,7 +55,7 @@ class UpdateUserPasswordTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.new_password.0', 'The new password field is required.')
@@ -76,7 +74,7 @@ class UpdateUserPasswordTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The current password field is required.')
@@ -96,7 +94,7 @@ class UpdateUserPasswordTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The password is incorrect.')
@@ -116,7 +114,7 @@ class UpdateUserPasswordTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The password is incorrect.')

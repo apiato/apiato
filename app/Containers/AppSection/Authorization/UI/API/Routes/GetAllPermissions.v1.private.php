@@ -11,11 +11,11 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             PermissionSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetAllPermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('permissions', [GetAllPermissionsController::class, 'getAllPermissions'])
+Route::get('permissions', GetAllPermissionsController::class)
     ->middleware(['auth:api']);

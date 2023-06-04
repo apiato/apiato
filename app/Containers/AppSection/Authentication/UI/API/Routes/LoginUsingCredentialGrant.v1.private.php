@@ -14,8 +14,8 @@
  *
  * @apiBody           {String}  client_id
  * @apiBody           {String}  client_secret
- * @apiBody           {String}  grant_type must be `client_credentials`
- * @apiBody           {String}  [scope] you can leave it empty
+ * @apiBody           {String="client_credentials"}  grant_type
+ * @apiBody           {String}  [scope]
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK
@@ -26,4 +26,4 @@
  * }
  */
 
-// Implementation in the Laravel Passport package
+// Implementation in the Laravel Passport package and overridden in Passport.v1.private.php

@@ -22,6 +22,6 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\AttachPermissionsToUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users/{id}/permissions', [AttachPermissionsToUserController::class, 'attachPermissionsToUser'])
+Route::patch('users/{id}/permissions', AttachPermissionsToUserController::class)
     ->middleware(['auth:api']);
 

@@ -13,11 +13,11 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiUse             GeneralSuccessMultipleResponse
+ * @apiUse             UserSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\User\UI\API\Controllers\GetAllUsersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users', [GetAllUsersController::class, 'getAllUsers'])
+Route::get('users', GetAllUsersController::class)
     ->middleware(['auth:api']);

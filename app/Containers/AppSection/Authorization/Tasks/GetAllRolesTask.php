@@ -11,13 +11,11 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class GetAllRolesTask extends ParentTask
 {
     public function __construct(
-        protected RoleRepository $repository
+        protected readonly RoleRepository $repository
     ) {
     }
 
     /**
-     * @param bool $skipPagination
-     * @return mixed
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */

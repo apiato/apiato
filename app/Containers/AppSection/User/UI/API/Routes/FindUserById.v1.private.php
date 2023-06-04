@@ -20,5 +20,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\FindUserByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}', [FindUserByIdController::class, 'findUserById'])
+Route::get('users/{id}', FindUserByIdController::class)
     ->middleware(['auth:api']);

@@ -11,13 +11,11 @@ use Exception;
 class FindUserByIdTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
     /**
-     * @param $userId
-     * @return User
      * @throws NotFoundException
      */
     public function run($userId): User

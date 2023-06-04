@@ -11,6 +11,12 @@ class CreateAdminCommand extends ParentConsoleCommand
 
     protected $description = 'Create a new User with the ADMIN role';
 
+    public function __construct(
+        private readonly CreateAdminAction $createAdminAction
+    ) {
+        parent::__construct();
+    }
+
     public function handle(): void
     {
         $username = $this->ask('Enter the username for this user');
@@ -30,7 +36,7 @@ class CreateAdminCommand extends ParentConsoleCommand
             'password' => $password,
         ];
 
-        app(CreateAdminAction::class)->run($data);
+        $this->createAdminAction->run($data);
 
         $this->info('Admin ' . $email . ' was successfully created');
     }

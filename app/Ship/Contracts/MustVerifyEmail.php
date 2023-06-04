@@ -2,7 +2,9 @@
 
 namespace App\Ship\Contracts;
 
-interface MustVerifyEmail extends \Illuminate\Contracts\Auth\MustVerifyEmail
+use Illuminate\Contracts\Auth\MustVerifyEmail as LaravelMustVerifyEmail;
+
+interface MustVerifyEmail extends LaravelMustVerifyEmail
 {
     /**
      * Send the email verification notification with frontend verification url.

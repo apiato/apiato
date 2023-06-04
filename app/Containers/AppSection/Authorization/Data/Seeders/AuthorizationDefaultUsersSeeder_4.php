@@ -9,6 +9,11 @@ use Throwable;
 
 class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 {
+    public function __construct(
+        private readonly CreateAdminAction $createAdminAction
+    ) {
+    }
+
     /**
      * @throws CreateResourceFailedException
      * @throws Throwable
@@ -31,6 +36,6 @@ class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
             'name' => 'Super Admin',
         ];
 
-        app(CreateAdminAction::class)->run($userData);
+        $this->createAdminAction->run($userData);
     }
 }

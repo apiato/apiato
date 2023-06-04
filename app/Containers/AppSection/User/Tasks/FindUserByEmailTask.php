@@ -10,13 +10,11 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class FindUserByEmailTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
     /**
-     * @param string $email
-     * @return User
      * @throws NotFoundException
      */
     public function run(string $email): User

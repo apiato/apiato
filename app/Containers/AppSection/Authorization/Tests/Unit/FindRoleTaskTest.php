@@ -4,16 +4,14 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\Tests\TestCase;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 
 /**
- * Class FindRoleTaskTest.
- *
  * @group authorization
  * @group unit
  */
-class FindRoleTaskTest extends TestCase
+class FindRoleTaskTest extends UnitTestCase
 {
     public function testFindRoleById(): void
     {

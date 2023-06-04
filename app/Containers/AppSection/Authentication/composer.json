@@ -3,7 +3,7 @@
     "description": "apiato Container.",
     "type": "apiato-container",
     "require": {
-        "laravel/passport": "^10.3.0"
+        "laravel/passport": "^11.0.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

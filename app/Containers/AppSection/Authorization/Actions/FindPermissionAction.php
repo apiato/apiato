@@ -10,13 +10,16 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class FindPermissionAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindPermissionTask $findPermissionTask
+    ) {
+    }
+
     /**
-     * @param FindPermissionRequest $request
-     * @return Permission
      * @throws NotFoundException
      */
     public function run(FindPermissionRequest $request): Permission
     {
-        return app(FindPermissionTask::class)->run($request->id);
+        return $this->findPermissionTask->run($request->id);
     }
 }

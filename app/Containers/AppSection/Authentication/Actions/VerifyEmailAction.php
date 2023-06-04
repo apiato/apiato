@@ -9,20 +9,25 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use App\Ship\Parents\Requests\Request;
 use Throwable;
 
 class VerifyEmailAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask $findUserByIdTask,
+    ) {
+    }
+
     /**
-     * @param VerifyEmailRequest $request
      * @throws NotFoundException
      * @throws Throwable
      */
     public function run(VerifyEmailRequest $request): void
     {
-        $user = app(FindUserByIdTask::class)->run($request->id);
+        $user = $this->findUserByIdTask->run($request->id);
 
-        throw_unless($this->validateData($request, $user), InvalidEmailVerificationDataException::class);
+        throw_unless($this->emailIsValid($request, $user), InvalidEmailVerificationDataException::class);
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
@@ -31,12 +36,7 @@ class VerifyEmailAction extends ParentAction
         }
     }
 
-    /**
-     * @param VerifyEmailRequest $request
-     * @param User $user
-     * @return bool
-     */
-    private function validateData(VerifyEmailRequest $request, User $user): bool
+    private function emailIsValid(Request $request, User $user): bool
     {
         return hash_equals((string)$request->hash, sha1($user->getEmailForVerification()));
     }

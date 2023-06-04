@@ -7,8 +7,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class UpdateUserTest.
- *
  * @group user
  * @group api
  */
@@ -35,7 +33,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.object', 'User')
@@ -54,7 +52,7 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 
     public function testUpdateExistingUserWithEmptyValues(): void
@@ -68,12 +66,12 @@ class UpdateUserTest extends ApiTestCase
 
         $response = $this->injectId($user->id)->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.name.0', 'The name must be at least 2 characters.')
+                ->where('errors.name.0', 'The name field must be at least 2 characters.')
                 ->where('errors.gender.0', 'The selected gender is invalid.')
-                ->where('errors.birth.0', 'The birth is not a valid date.')
+                ->where('errors.birth.0', 'The birth field must be a valid date.')
                 ->etc()
         );
     }

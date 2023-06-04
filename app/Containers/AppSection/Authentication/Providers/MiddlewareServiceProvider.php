@@ -13,7 +13,7 @@ class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 
     protected array $middlewarePriority = [];
 
-    protected array $routeMiddleware = [
+    protected array $middlewareAliases = [
         'guest' => RedirectIfAuthenticated::class,
     ];
 }

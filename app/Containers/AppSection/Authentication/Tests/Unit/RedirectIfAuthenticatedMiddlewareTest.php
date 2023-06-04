@@ -3,18 +3,16 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 /**
- * Class RedirectIfAuthenticatedMiddlewareTest.
- *
  * @group authentication
  * @group unit
  */
-class RedirectIfAuthenticatedMiddlewareTest extends TestCase
+class RedirectIfAuthenticatedMiddlewareTest extends UnitTestCase
 {
     public function testRedirectIfAuthenticated(): void
     {

@@ -3,16 +3,14 @@
 namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
-use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Exception;
 
 /**
- * Class CreateAdminActionTest.
- *
  * @group user
  * @group unit
  */
-class CreateAdminActionTest extends TestCase
+class CreateAdminActionTest extends UnitTestCase
 {
     public function testCreateAdmin(): void
     {

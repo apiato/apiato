@@ -11,19 +11,23 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class SyncUserRolesAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask $findUserByIdTask,
+        private readonly FindRoleTask     $findRoleTask,
+    ) {
+    }
+
     /**
-     * @param SyncUserRolesRequest $request
-     * @return User
      * @throws NotFoundException
      */
     public function run(SyncUserRolesRequest $request): User
     {
-        $user = app(FindUserByIdTask::class)->run($request->user_id);
+        $user = $this->findUserByIdTask->run($request->user_id);
 
         $rolesIds = (array)$request->roles_ids;
 
-        $roles = array_map(static function ($roleId) {
-            return app(FindRoleTask::class)->run($roleId);
+        $roles = array_map(function ($roleId) {
+            return $this->findRoleTask->run($roleId);
         }, $rolesIds);
 
         $user->syncRoles($roles);

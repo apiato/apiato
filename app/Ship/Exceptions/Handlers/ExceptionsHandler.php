@@ -10,7 +10,6 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
 use Illuminate\Http\JsonResponse;
-use Psr\Log\LogLevel;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -24,25 +23,7 @@ use Throwable;
 class ExceptionsHandler extends CoreExceptionsHandler
 {
     /**
-     * A list of exception types with their corresponding custom log levels.
-     *
-     * @var array<class-string<Throwable>, LogLevel::*>
-     */
-    protected $levels = [
-        //
-    ];
-
-    /**
-     * A list of the exception types that are not reported.
-     *
-     * @var array<int, class-string<Throwable>>
-     */
-    protected $dontReport = [
-        //
-    ];
-
-    /**
-     * A list of the inputs that are never flashed for validation exceptions.
+     * The list of the inputs that are never flashed to the session on validation exceptions.
      *
      * @var array<int, string>
      */

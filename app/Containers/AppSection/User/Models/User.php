@@ -8,14 +8,12 @@ use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Validation\Rules\Password;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
     use AuthorizationTrait;
     use AuthenticationTrait;
-    use Notifiable;
 
     protected $fillable = [
         'name',
@@ -32,6 +30,7 @@ class User extends ParentUserModel implements MustVerifyEmail
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
         'birth' => 'date',
     ];
 
@@ -52,7 +51,7 @@ class User extends ParentUserModel implements MustVerifyEmail
     protected function email(): Attribute
     {
         return new Attribute(
-            get: fn (string $value): string => strtolower($value),
+            get: fn (?string $value): ?string => is_null($value) ? null : strtolower($value),
         );
     }
 }

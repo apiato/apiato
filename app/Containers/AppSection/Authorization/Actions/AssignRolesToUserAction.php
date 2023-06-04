@@ -12,21 +12,26 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class AssignRolesToUserAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask      $findUserByIdTask,
+        private readonly FindRoleTask          $findRoleTask,
+        private readonly AssignRolesToUserTask $assignRolesToUserTask,
+    ) {
+    }
+
     /**
-     * @param AssignRolesToUserRequest $request
-     * @return User
      * @throws NotFoundException
      */
     public function run(AssignRolesToUserRequest $request): User
     {
-        $user = app(FindUserByIdTask::class)->run($request->user_id);
+        $user = $this->findUserByIdTask->run($request->user_id);
 
         $rolesIds = (array)$request->roles_ids;
 
-        $roles = array_map(static function ($roleId) {
-            return app(FindRoleTask::class)->run($roleId);
+        $roles = array_map(function ($roleId) {
+            return $this->findRoleTask->run($roleId);
         }, $rolesIds);
 
-        return app(AssignRolesToUserTask::class)->run($user, $roles);
+        return $this->assignRolesToUserTask->run($user, $roles);
     }
 }

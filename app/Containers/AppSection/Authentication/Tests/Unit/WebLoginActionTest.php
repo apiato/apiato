@@ -4,18 +4,16 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class WebLoginActionTest.
- *
  * @group authentication
  * @group unit
  */
-class WebLoginActionTest extends TestCase
+class WebLoginActionTest extends UnitTestCase
 {
     private array $userDetails;
     private LoginRequest $request;

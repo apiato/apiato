@@ -8,8 +8,6 @@ use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class AssignRolesToUserTest.
- *
  * @group authorization
  * @group api
  */
@@ -33,7 +31,7 @@ class AssignRolesToUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->has('data.roles.data', 1)
@@ -58,7 +56,7 @@ class AssignRolesToUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->has('data.roles.data', 2)

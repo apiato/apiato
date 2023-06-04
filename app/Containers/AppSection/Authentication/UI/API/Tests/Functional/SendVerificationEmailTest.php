@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class SendVerificationEmailTest.
- *
  * @group authentication
  * @group api
  */
@@ -37,7 +35,7 @@ class SendVerificationEmailTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(202);
+        $response->assertAccepted();
         Notification::assertSentTo($this->testingUser, VerifyEmail::class);
     }
 
@@ -50,10 +48,10 @@ class SendVerificationEmailTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
 
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
+            fn (AssertableJson $json) => $json->has('errors')
                 ->has(
                     'errors',
                     fn (AssertableJson $json) => $json->where('verification_url.0', 'The verification url field is required.')
@@ -75,9 +73,9 @@ class SendVerificationEmailTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
+            fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.verification_url.0', 'The selected verification url is invalid.')
         );
     }
@@ -89,7 +87,7 @@ class SendVerificationEmailTest extends ApiTestCase
         }
         $response = $this->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
 
     }
 }

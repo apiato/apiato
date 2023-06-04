@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class DeleteRoleTest.
- *
  * @group authorization
  * @group api
  */
@@ -26,7 +24,7 @@ class DeleteRoleTest extends ApiTestCase
 
         $response = $this->injectId($role->id)->makeCall();
 
-        $response->assertStatus(204);
+        $response->assertNoContent();
     }
 
     public function testDeleteNonExistingRole(): void
@@ -35,6 +33,6 @@ class DeleteRoleTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 }

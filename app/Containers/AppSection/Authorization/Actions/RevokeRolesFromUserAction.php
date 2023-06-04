@@ -12,18 +12,23 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class RevokeRolesFromUserAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask       $findUserByIdTask,
+        private readonly FindRoleTask           $findRoleTask,
+        private readonly RevokeRoleFromUserTask $revokeRoleFromUserTask,
+    ) {
+    }
+
     /**
-     * @param RevokeRolesFromUserRequest $request
-     * @return User
      * @throws NotFoundException
      */
     public function run(RevokeRolesFromUserRequest $request): User
     {
-        $user = app(FindUserByIdTask::class)->run($request->user_id);
+        $user = $this->findUserByIdTask->run($request->user_id);
         $rolesIds = (array)$request->roles_ids;
 
-        $roles = array_map(static function ($roleId) {
-            return app(FindRoleTask::class)->run($roleId);
+        $roles = array_map(function ($roleId) {
+            return $this->findRoleTask->run($roleId);
         }, $rolesIds);
 
         $this->revokeRoles($user, $roles);
@@ -33,8 +38,8 @@ class RevokeRolesFromUserAction extends ParentAction
 
     private function revokeRoles($user, $roles): void
     {
-        array_map(static function ($role) use ($user) {
-            app(RevokeRoleFromUserTask::class)->run($user, $role);
+        array_map(function ($role) use ($user) {
+            $this->revokeRoleFromUserTask->run($user, $role);
         }, $roles);
     }
 }

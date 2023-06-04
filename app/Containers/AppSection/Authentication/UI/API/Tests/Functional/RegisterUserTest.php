@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class RegisterUserTest.
- *
  * @group authentication
  * @group api
  */
@@ -39,7 +37,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
@@ -57,22 +55,10 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $data['email'])
-                ->etc()
-        );
-    }
-
-    public function testRegisterNewUserUsingGetVerb(): void
-    {
-        $response = $this->endpoint('get@v1/register')->makeCall();
-
-        $response->assertStatus(405);
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('message')
-                ->where('message', 'The GET method is not supported for this route. Supported methods: POST.')
                 ->etc()
         );
     }
@@ -93,7 +79,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
@@ -107,27 +93,22 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
-
+        $response->assertUnprocessable();
         if (config('appSection-authentication.require_email_verification')) {
-            $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
-                    ->has(
-                        'errors',
-                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
-                            ->where('password.0', 'The password field is required.')
-                            ->where('verification_url.0', 'The verification url field is required.')
-                    )
-            );
+            $response->assertJson(fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json
+                    ->where('email.0', 'The email field is required.')
+                    ->where('password.0', 'The password field is required.')
+                    ->where('verification_url.0', 'The verification url field is required.')
+            )->etc());
         } else {
-            $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
-                    ->has(
-                        'errors',
-                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
-                            ->where('password.0', 'The password field is required.')
-                    )
-            );
+            $response->assertJson(fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json
+                    ->where('email.0', 'The email field is required.')
+                    ->where('password.0', 'The password field is required.')
+            )->etc());
         }
     }
 
@@ -139,10 +120,10 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.email.0', 'The email must be a valid email address.')
+                ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc()
         );
     }
@@ -155,15 +136,15 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->has(
                     'errors.password',
                     fn (AssertableJson $json) => $json
-                        ->where('0', 'The password must contain at least one uppercase and one lowercase letter.')
-                        ->where('1', 'The password must contain at least one letter.')
-                        ->where('2', 'The password must contain at least one number.')
+                        ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
+                        ->where('1', 'The password field must contain at least one letter.')
+                        ->where('2', 'The password field must contain at least one number.')
                 )
                 ->etc()
         );
@@ -181,10 +162,12 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
-                ->where('errors.verification_url.0', 'The selected verification url is invalid.')
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json->where('verification_url.0', 'The selected verification url is invalid.')
+            )->etc()
         );
     }
 
@@ -201,7 +184,7 @@ class RegisterUserTest extends ApiTestCase
 
         $response = $this->makeCall($data);
         $registeredUser = User::find($this->decode($response->json()['data']['id']));
-        $response->assertStatus(200);
+        $response->assertOk();
         Notification::assertSentTo($registeredUser, Welcome::class);
         Notification::assertNotSentTo($registeredUser, VerifyEmail::class);
     }

@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class FindPermissionTest.
- *
  * @group authorization
  * @group api
  */
@@ -26,7 +24,7 @@ class FindPermissionTest extends ApiTestCase
 
         $response = $this->injectId($permissionA->id)->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($permissionA->name, $responseContent->data->name);
     }
@@ -37,6 +35,6 @@ class FindPermissionTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 }

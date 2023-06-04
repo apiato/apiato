@@ -11,19 +11,23 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class AttachPermissionsToRoleAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindRoleTask       $findRoleTask,
+        private readonly FindPermissionTask $findPermissionTask,
+    ) {
+    }
+
     /**
-     * @param AttachPermissionsToRoleRequest $request
-     * @return Role
      * @throws NotFoundException
      */
     public function run(AttachPermissionsToRoleRequest $request): Role
     {
-        $role = app(FindRoleTask::class)->run($request->role_id);
+        $role = $this->findRoleTask->run($request->role_id);
 
         $permissionIds = (array)$request->permissions_ids;
 
-        $permissions = array_map(static function ($permissionId) {
-            return app(FindPermissionTask::class)->run($permissionId);
+        $permissions = array_map(function ($permissionId) {
+            return $this->findPermissionTask->run($permissionId);
         }, $permissionIds);
 
         return $role->givePermissionTo($permissions);

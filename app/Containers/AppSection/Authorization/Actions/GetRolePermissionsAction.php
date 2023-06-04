@@ -9,14 +9,17 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class GetRolePermissionsAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindRoleTask $findRoleTask
+    ) {
+    }
+
     /**
-     * @param GetRolePermissionsRequest $request
-     * @return mixed
      * @throws NotFoundException
      */
     public function run(GetRolePermissionsRequest $request): mixed
     {
-        $role = app(FindRoleTask::class)->run($request->id);
+        $role = $this->findRoleTask->run($request->id);
 
         return $role->permissions;
     }

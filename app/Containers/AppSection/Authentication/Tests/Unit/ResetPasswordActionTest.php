@@ -6,19 +6,17 @@ use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException;
 use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Class ResetPasswordActionTest.
- *
  * @group authentication
  * @group unit
  */
-class ResetPasswordActionTest extends TestCase
+class ResetPasswordActionTest extends UnitTestCase
 {
     private User $user;
 

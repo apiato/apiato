@@ -6,8 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
- * Class FindRoleTest.
- *
  * @group authorization
  * @group api
  */
@@ -26,7 +24,7 @@ class FindRoleTest extends ApiTestCase
 
         $response = $this->injectId($roleA->id)->makeCall();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($roleA->name, $responseContent->data->name);
     }
@@ -37,6 +35,6 @@ class FindRoleTest extends ApiTestCase
 
         $response = $this->injectId($invalidId)->makeCall([]);
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 }

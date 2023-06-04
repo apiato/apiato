@@ -22,5 +22,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncPermissionOnRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/sync', [SyncPermissionOnRoleController::class, 'syncPermissionOnRole'])
+Route::post('permissions/sync', SyncPermissionOnRoleController::class)
     ->middleware(['auth:api']);

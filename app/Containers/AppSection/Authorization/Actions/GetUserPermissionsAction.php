@@ -9,14 +9,17 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class GetUserPermissionsAction extends ParentAction
 {
+    public function __construct(
+        private readonly FindUserByIdTask $findUserByIdTask
+    ) {
+    }
+
     /**
-     * @param GetUserPermissionsRequest $request
-     * @return mixed
      * @throws NotFoundException
      */
     public function run(GetUserPermissionsRequest $request): mixed
     {
-        $user = app(FindUserByIdTask::class)->run($request->id);
+        $user = $this->findUserByIdTask->run($request->id);
 
         return $user->permissions;
     }

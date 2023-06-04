@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\AttachPermissionsToRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/attach', [AttachPermissionsToRoleController::class, 'attachPermissionsToRole'])
+Route::post('permissions/attach', AttachPermissionsToRoleController::class)
     ->middleware(['auth:api']);

@@ -2,7 +2,7 @@
 /**
  * @apiGroup           OAuth2
  * @apiName            Logout
- * @api                {DELETE} /v1/logout Logout
+ * @api                {post} /v1/api/logout Logout
  * @apiDescription     User Logout. (Revoking Access Token)
  *
  * @apiVersion         1.0.0
@@ -18,9 +18,9 @@
  * }
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\ApiLogoutController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('logout', [LogoutController::class, 'logout'])
+Route::post('api/logout', ApiLogoutController::class)
     ->middleware(['auth:api']);
 

@@ -14,12 +14,12 @@
  *
  * @apiParam           {String} id id of role
  *
- *  @apiUse            GeneralSuccessMultipleResponse
+ * @apiUse             PermissionSuccessMultipleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GetRolePermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('roles/{id}/permissions', [GetRolePermissionsController::class, 'getRolePermissions'])
+Route::get('roles/{id}/permissions', GetRolePermissionsController::class)
     ->middleware(['auth:api']);
 

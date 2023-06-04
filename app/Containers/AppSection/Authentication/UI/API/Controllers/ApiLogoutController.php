@@ -8,15 +8,16 @@ use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cookie;
 
-class LogoutController extends ApiController
+class ApiLogoutController extends ApiController
 {
-    /**
-     * @param LogoutRequest $request
-     * @return JsonResponse
-     */
-    public function logout(LogoutRequest $request): JsonResponse
+    public function __construct(
+        private readonly ApiLogoutAction $logoutAction
+    ) {
+    }
+
+    public function __invoke(LogoutRequest $request): JsonResponse
     {
-        app(ApiLogoutAction::class)->run($request);
+        $this->logoutAction->run($request);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',

@@ -7,8 +7,6 @@ use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
- * Class ApiRefreshProxyForWebClientTest
- *
  * @group authentication
  * @group api
  */
@@ -41,13 +39,11 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
-                ->has(
-                    'errors',
-                    fn (AssertableJson $json) => $json->where('refresh_token.0', 'The refresh token must be a string.')
-                )
+            fn (AssertableJson $json) => $json->has('errors')
+                ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
+                ->etc()
         );
     }
 
@@ -61,12 +57,14 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
 
         $response = $this->endpoint($this->endpoint)->makeCall($data);
 
-        $response->assertStatus(200);
-        $this->assertResponseContainKeyValue([
-            'token_type' => 'Bearer',
-        ]);
+        $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['expires_in', 'access_token'])
+            fn (AssertableJson $json) => $json->hasAll([
+                'token_type',
+                'expires_in',
+                'access_token',
+                'refresh_token',
+            ])->where('token_type', 'Bearer')
                 ->etc()
         );
     }

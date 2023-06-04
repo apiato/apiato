@@ -13,9 +13,12 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class UpdateUserPasswordAction extends ParentAction
 {
+    public function __construct(
+        private readonly UpdateUserTask $updateUserTask
+    ) {
+    }
+
     /**
-     * @param UpdateUserPasswordRequest $request
-     * @return User
      * @throws IncorrectIdException
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
@@ -26,7 +29,7 @@ class UpdateUserPasswordAction extends ParentAction
             'new_password',
         ]);
 
-        $user = app(UpdateUserTask::class)->run(['password' => $sanitizedData['new_password']], $request->id);
+        $user = $this->updateUserTask->run(['password' => $sanitizedData['new_password']], $request->id);
 
         $user->notify(new PasswordUpdatedNotification());
 

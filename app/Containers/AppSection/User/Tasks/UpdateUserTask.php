@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Hash;
 class UpdateUserTask extends ParentTask
 {
     public function __construct(
-        protected UserRepository $repository
+        protected readonly UserRepository $repository
     ) {
     }
 
     /**
-     * @param array $userData
-     * @param $userId
-     * @return User
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
