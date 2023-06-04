@@ -8,14 +8,12 @@ use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Validation\Rules\Password;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
     use AuthorizationTrait;
     use AuthenticationTrait;
-    use Notifiable;
 
     protected $fillable = [
         'name',
