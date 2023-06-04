@@ -69,9 +69,9 @@ class UpdateUserTest extends ApiTestCase
         $response->assertStatus(422);
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.name.0', 'The name must be at least 2 characters.')
+                ->where('errors.name.0', 'The name field must be at least 2 characters.')
                 ->where('errors.gender.0', 'The selected gender is invalid.')
-                ->where('errors.birth.0', 'The birth is not a valid date.')
+                ->where('errors.birth.0', 'The birth field must be a valid date.')
                 ->etc()
         );
     }

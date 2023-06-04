@@ -135,7 +135,7 @@ class RegisterUserTest extends ApiTestCase
         $response->assertStatus(422);
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.email.0', 'The email must be a valid email address.')
+                ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc()
         );
     }
@@ -154,9 +154,9 @@ class RegisterUserTest extends ApiTestCase
                 ->has(
                     'errors.password',
                     fn (AssertableJson $json) => $json
-                        ->where('0', 'The password must contain at least one uppercase and one lowercase letter.')
-                        ->where('1', 'The password must contain at least one letter.')
-                        ->where('2', 'The password must contain at least one number.')
+                        ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
+                        ->where('1', 'The password field must contain at least one letter.')
+                        ->where('2', 'The password field must contain at least one number.')
                 )
                 ->etc()
         );
