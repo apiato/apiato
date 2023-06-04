@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
  * @group authentication
@@ -24,10 +25,14 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertOk();
-        $this->assertResponseContainKeyValue([
-            'token_type' => 'Bearer',
-        ]);
-        $this->assertResponseContainKeys(['expires_in', 'access_token']);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->hasAll([
+                'token_type',
+                'expires_in',
+                'access_token',
+            ])->where('token_type', 'Bearer')
+                ->etc()
+        );
     }
 
     public function testClientWebAdminProxyLoginWithUppercaseEmail(): void
@@ -42,10 +47,14 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertOk();
-        $this->assertResponseContainKeyValue([
-            'token_type' => 'Bearer',
-        ]);
-        $this->assertResponseContainKeys(['expires_in', 'access_token']);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->hasAll([
+                'token_type',
+                'expires_in',
+                'access_token',
+            ])->where('token_type', 'Bearer')
+                ->etc()
+        );
     }
 
     public function testLoginWithNameAttribute(): void
@@ -68,10 +77,15 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($request);
 
         $response->assertOk();
-        $this->assertResponseContainKeyValue([
-            'token_type' => 'Bearer',
-        ]);
-        $this->assertResponseContainKeys(['expires_in', 'access_token', 'refresh_token']);
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->hasAll([
+                'token_type',
+                'expires_in',
+                'access_token',
+                'refresh_token',
+            ])->where('token_type', 'Bearer')
+                ->etc()
+        );
     }
 
     private function setLoginAttributes(array $attributes): void
@@ -88,11 +102,14 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'password' => 'so-secret',
         ];
 
-        $this->makeCall($data);
+        $response = $this->makeCall($data);
 
-        $this->assertValidationErrorContain([
-            'email' => 'The email field is required.',
-        ]);
+        $response->assertUnprocessable();
+        $response->assertJson(fn (AssertableJson $json) => $json->has(
+            'errors',
+            fn (AssertableJson $json) => $json
+                ->where('email.0', 'The email field is required.')
+        )->etc());
     }
 
     public function testGivenMultipleLoginAttributeIsSetThenAtLeastOneShouldBeRequired(): void
@@ -105,12 +122,15 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'password' => 'so-secret',
         ];
 
-        $this->makeCall($data);
+        $response = $this->makeCall($data);
 
-        $this->assertValidationErrorContain([
-            'email' => 'The email field is required when none of name are present.',
-            'name' => 'The name field is required when none of email are present.',
-        ]);
+        $response->assertUnprocessable();
+        $response->assertJson(fn (AssertableJson $json) => $json->has(
+            'errors',
+            fn (AssertableJson $json) => $json
+                ->where('email.0', 'The email field is required when none of name are present.')
+                ->where('name.0', 'The name field is required when none of email are present.')
+        )->etc());
     }
 
     public function testGivenWrongCredential_Throw422(): void

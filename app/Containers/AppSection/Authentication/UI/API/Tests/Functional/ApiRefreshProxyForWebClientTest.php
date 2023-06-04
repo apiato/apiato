@@ -58,11 +58,13 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
         $response = $this->endpoint($this->endpoint)->makeCall($data);
 
         $response->assertOk();
-        $this->assertResponseContainKeyValue([
-            'token_type' => 'Bearer',
-        ]);
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['expires_in', 'access_token'])
+            fn (AssertableJson $json) => $json->hasAll([
+                'token_type',
+                'expires_in',
+                'access_token',
+                'refresh_token',
+            ])->where('token_type', 'Bearer')
                 ->etc()
         );
     }

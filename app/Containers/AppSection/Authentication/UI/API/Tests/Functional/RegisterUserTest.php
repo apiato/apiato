@@ -94,26 +94,21 @@ class RegisterUserTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
-
         if (config('appSection-authentication.require_email_verification')) {
-            $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 3])
-                    ->has(
-                        'errors',
-                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
-                            ->where('password.0', 'The password field is required.')
-                            ->where('verification_url.0', 'The verification url field is required.')
-                    )
-            );
+            $response->assertJson(fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json
+                    ->where('email.0', 'The email field is required.')
+                    ->where('password.0', 'The password field is required.')
+                    ->where('verification_url.0', 'The verification url field is required.')
+            )->etc());
         } else {
-            $response->assertJson(
-                fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 2])
-                    ->has(
-                        'errors',
-                        fn (AssertableJson $json) => $json->where('email.0', 'The email field is required.')
-                            ->where('password.0', 'The password field is required.')
-                    )
-            );
+            $response->assertJson(fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json
+                    ->where('email.0', 'The email field is required.')
+                    ->where('password.0', 'The password field is required.')
+            )->etc());
         }
     }
 
@@ -169,8 +164,10 @@ class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
-                ->where('errors.verification_url.0', 'The selected verification url is invalid.')
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json->where('verification_url.0', 'The selected verification url is invalid.')
+            )->etc()
         );
     }
 

@@ -47,8 +47,11 @@ class ForgotPasswordTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll(['message', 'errors' => 1])
-                ->where('errors.reseturl.0', 'The selected reseturl is invalid.')
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json
+                    ->where('reseturl.0', 'The selected reseturl is invalid.')
+            )->etc()
         );
     }
 }
