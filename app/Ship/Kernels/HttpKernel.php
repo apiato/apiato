@@ -10,6 +10,7 @@ use App\Ship\Middlewares\EncryptCookies;
 use App\Ship\Middlewares\PreventRequestsDuringMaintenance;
 use App\Ship\Middlewares\TrimStrings;
 use App\Ship\Middlewares\TrustProxies;
+use App\Ship\Middlewares\ValidateSignature;
 use App\Ship\Middlewares\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
@@ -22,7 +23,6 @@ use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Http\Middleware\SetCacheHeaders;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -38,7 +38,7 @@ class HttpKernel extends LaravelHttpKernel
      */
     protected $middleware = [
         // Laravel middlewares
-        // \App\Http\Middleware\TrustHosts::class,
+        // \App\Ship\Middlewares\TrustHosts::class,
         TrustProxies::class,
         HandleCors::class,
         PreventRequestsDuringMaintenance::class,
@@ -73,13 +73,13 @@ class HttpKernel extends LaravelHttpKernel
     ];
 
     /**
-     * The application's route middleware.
+     * The application's middleware aliases.
      *
-     * These middleware may be assigned to groups or used individually.
+     * Aliases may be used instead of class names to conveniently assign middleware to routes and groups.
      *
      * @var array<string, class-string|string>
      */
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'auth' => Authenticate::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => AuthenticateSession::class,
