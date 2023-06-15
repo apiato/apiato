@@ -28,7 +28,6 @@
         }
     ],
     "require": {
-        "php": "^8.1",
         "ext-curl": "*",
         "ext-gettext": "*",
         "ext-mbstring": "*",
@@ -39,6 +38,8 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
+        "lcobucci/clock": "3.0.0",
+        "php": "^8.1",
         "wikimedia/composer-merge-plugin": "^2.0.1"
     },
     "require-dev": {
@@ -99,7 +100,9 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
-        "github-protocols": ["https"],
+        "github-protocols": [
+            "https"
+        ],
         "allow-plugins": {
             "apiato/container-installer": true,
             "composer/package-versions-deprecated": true,
