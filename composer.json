@@ -45,12 +45,12 @@
     "require-dev": {
         "ext-intl": "*",
         "ext-json": "*",
-        "friendsofphp/php-cs-fixer": "^3.8.0",
-        "roave/security-advisories": "dev-latest",
         "fakerphp/faker": "^1.19.1",
+        "friendsofphp/php-cs-fixer": "^3.8.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
+        "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
         "vimeo/psalm": "^5.8.0"
     },
