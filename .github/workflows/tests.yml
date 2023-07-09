@@ -30,7 +30,7 @@ jobs:
 
       - name: Install composer dependencies
         run: |
-          composer install --no-scripts
+          composer install --no-ansi --no-interaction --no-progress --no-scripts
 
       - name: Prepare Apiato Application
         run: |
