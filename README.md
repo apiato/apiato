@@ -5,7 +5,7 @@
 <h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
 <p align="center">
-<a href="https://travis-ci.org/apiato/apiato"><img src="https://travis-ci.org/apiato/apiato.svg" alt="Build Status"></a>
+[![Actions Status](https://github.com/apiato/apiato/workflows/Tests/badge.svg)](https://github.com/apiato/apiato/actions)
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
 <a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
@@ -16,12 +16,16 @@
 
 **Apiato** is a framework for building scalable and testable API-Centric Applications with PHP, build on top of Laravel.
 
-It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
+It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitate the
+development of any API-Centric App.
 
-Apiato uses the best frameworks, tools and conventions in a very creative way, to deliver a rich set of features for a modern PHP Application.
+Apiato uses the best frameworks, tools and conventions in a very creative way, to deliver a rich set of features for a
+modern PHP Application.
 
-**Why!?** Because setting up a solid API from scratch is time consuming (and of course, time is money!).
-Apiato gives you the core features of robust API's fully documented, for free; so you can focus on writing your business logic, thus deliver faster to your clients.
+**Why!?
+Because setting up a solid API from scratch is time-consuming (and of course, time is money!).
+Apiato gives you the core features of robust API's fully documented, for free; so you can focus on writing your business
+logic, thus deliver faster to your clients.
 
 <details>
     <summary>Why API-Centric Apps?</summary>
@@ -43,6 +47,7 @@ Apiato gives you the core features of robust API's fully documented, for free; s
 </details>
 
 <a name="Features"></a>
+
 ## Features
 
 > Apiato comes with an amazing list of features.
@@ -50,13 +55,17 @@ Apiato gives you the core features of robust API's fully documented, for free; s
 [See Feature List Here](http://apiato.io/)
 
 <a name="Documentation"></a>
+
 ## Documentation
 
 **Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
-> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
+> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super
+> maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 It's completely **optional** to build your application using the Porto architecture.
-Alternatively, you can build it using the [MVC](http://apiato.io/docs/getting-started/software-architectural-patterns#mvc-introduction) architecture, and still benefit from all the features of Apiato.
+Alternatively, you can build it using
+the [MVC](http://apiato.io/docs/getting-started/software-architectural-patterns#mvc-introduction) architecture, and
+still benefit from all the features of Apiato.
 
 <br>
 
@@ -80,19 +89,17 @@ Alternatively, you can build it using the [MVC](http://apiato.io/docs/getting-st
 <a name="Contributors"></a>
 
 ## Contributing
+Thank you for considering contributing to the Apiato framework! The contribution guide can be found in the [Apiato documentation](https://apiato.io/docs/contribution-guide).
 
-Feel free to dive in! Fix open [Issues](https://github.com/apiato/apiato/issues/) and submit new [features](https://github.com/apiato/apiato/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc).
-<br>
-Make sure you check our [contribution guide](http://apiato.io/docs/general/contribution-guide/) before getting started.
-<br>
-Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
+## Contributing
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct).
 
-## Awesome People
-
-Apiato is an MIT-licensed open source project with its ongoing development made possible entirely by the support of all these smart and generous people, from code contributors to financial contributors. 💜
+## Security Vulnerabilities
+If you discover a security vulnerability within Apiato,
+please send an e-mail to Mohammad Alavi via [mohammad.alavi1990@gmail.com](mailto:mohammad.alavi1990@gmail.com).
+All security vulnerabilities will be promptly addressed.
 
 ### Project Maintainers
-
 <table>
   <tbody>
      <tr>
@@ -110,94 +117,6 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
         </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/johannesschobel.png?s=150">
-            <br>
-            <strong> Johannes Schobel </strong>
-            <br>
-            <a href="https://github.com/johannesschobel">@johannesschobel</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/llstarscreamll.png?s=150">
-            <br>
-            <strong>Johan Alvarez</strong>
-            <br>
-            <a href="https://github.com/llstarscreamll">@llstarscreamll</a>
-        </td>
-               <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/zmaren.png?s=150">
-            <br>
-            <strong>Zeljko Marenovic</strong>
-            <br>
-            <a href="https://github.com/zmaren">@zmaren</a>
-        </td>
-     <tr>
-     </tr>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/rdehnhardt.png?s=150">
-            <br>
-            <strong>Renato Dehnhardt</strong>
-            <br>
-            <a href="https://github.com/rdehnhardt">@rdehnhardt</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/JulianBustamante.png?s=150">
-            <br>
-            <strong>Julián Bustamante</strong>
-            <br>
-            <a href="https://github.com/JulianBustamante">@JulianBustamante</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/fwidm.png?s=150">
-            <br>
-            <strong>FWidm</strong>
-            <br>
-            <a href="https://github.com/FWidm">@FWidm</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/lloricode.png?s=150">
-            <br>
-            <strong>Lloric Mayuga Garcia</strong>
-            <br>
-            <a href="https://github.com/lloricode">@lloricode</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/jlorente.png?s=150">
-            <br>
-            <strong>Pepe</strong>
-            <br>
-            <a href="https://github.com/jlorente">@jlorente</a>
-        </td>
-     </tr>
-	  <tr>    
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/anthonyvancauwenberghe.png?s=150">
-            <br>
-            <strong>Anthony Vancauwenberghe</strong>
-            <br>
-            <a href="https://github.com/anthonyvancauwenberghe">@anthonyvancauwenberghe</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/hz61p1.png?s=150">
-            <br>
-            <strong>Null HZ61 P1</strong>
-            <br>
-            <a href="https://github.com/hz61p1">@hz61p1</a>
-        </td>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/Kyslik.png?s=150">
-            <br>
-            <strong>Martin Kiesel</strong>
-            <br>
-            <a href="https://github.com/Kyslik">@Kyslik</a>
-        </td>
-         <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/shalawani.png?s=150">
-            <br>
-            <strong>Samer Halawani</strong>
-            <br>
-            <a href="https://github.com/shalawani">@shalawani</a>
-        </td>
           <td align="center" valign="top">
             <img width="125" height="125" src="https://github.com/mderis.png?s=150">
             <br>
@@ -205,13 +124,9 @@ Apiato is an MIT-licensed open source project with its ongoing development made 
             <br>
             <a href="https://github.com/mderis">@mderis</a>
           </td>
-        </tr>
+     </tr>
   </tbody>
 </table>
-
-### Code Contributors
-
-[![Apiato Contributors][contributors-src]][contributors-href]
 
 ### Financial Contributors
 
@@ -228,7 +143,6 @@ You can support us using any of the methods below:
 <b>4:</b> [Patreon](https://www.patreon.com/zalt)
 
 ---
-
 
 ## Sponsors
 
@@ -283,10 +197,8 @@ You can sponsor us using any of the methods below:
 <br>
 <b>2:</b> Email us at <a href = "mailto: support@apiato.io">support@apiato.io</a>.
 
-*Sponsors logos are displayed on the [github repository](https://github.com/apiato/apiato/) page and the [documentation website](http://apiato.io/docs/) home page.*
-
-
 <a name="License"></a>
+
 ## License
 
 [MIT](https://github.com/apiato/apiato/blob/master/LICENSE) © Mahmoud Zalt
@@ -295,13 +207,21 @@ You can sponsor us using any of the methods below:
 [comment]: # (Open Collective Tiers)
 
 [contributors-src]: https://contrib.rocks/image?repo=apiato/apiato
+
 [contributors-href]: https://github.com/apiato/apiato/graphs/contributors
+
 [backers-src]: https://opencollective.com/apiato/tiers/awesome-backers.svg?width=890&button=false&isActive=true
+
 [backers-href]: https://opencollective.com/apiato#contributors
 
 [gold-sponsors-src]: https://opencollective.com/apiato/tiers/gold-sponsors.svg?avatarHeight=80&width=890&button=false&isActive=true
+
 [gold-sponsors-href]: https://opencollective.com/apiato#contributors
+
 [silver-sponsors-src]: https://opencollective.com/apiato/tiers/silver-sponsors.svg?avatarHeight=64&width=890&button=false&isActive=true
+
 [silver-sponsors-href]: https://opencollective.com/apiato#contributors
+
 [bronze-sponsors-src]: https://opencollective.com/apiato/tiers/bronze-sponsors.svg?avatarHeight=48&width=890&button=false&isActive=true
+
 [bronze-sponsors-href]: https://opencollective.com/apiato#contributors
