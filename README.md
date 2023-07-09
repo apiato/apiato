@@ -5,7 +5,8 @@
 <h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
 <p align="center">
-<a href="https://github.com/apiato/apiato/actions"><img src="https://github.com/apiato/apiato/workflows/Tests/badge.svg" alt="Build Status"></a>
+
+[//]: # (<a href="https://github.com/apiato/apiato/actions"><img src="https://github.com/apiato/apiato/workflows/Tests/badge.svg" alt="Build Status"></a>)
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
 <a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
@@ -34,7 +35,7 @@ a new architectural pattern and comes with an amazing list of [features](http://
 
 
 ## Learning Apiato
-Apiato has an extensive and thorough [documentation](https://laravel.com/docs).
+Apiato has an extensive and thorough [documentation](https://apiato.io/docs).
 
 ## Support and Community
 For free community support, join our [Discord server](https://discord.gg/ryPcV4KM5k).
@@ -43,7 +44,7 @@ For free community support, join our [Discord server](https://discord.gg/ryPcV4K
 Thank you for considering contributing to the Apiato framework! The contribution guide can be found in the [Apiato documentation](https://apiato.io/docs/contribution-guide).
 
 ## Code of Conduct
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct).
+In order to ensure that the Apiato community is welcoming to all, please review and abide by the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct).
 
 ## Security Vulnerabilities
 If you discover a security vulnerability within Apiato,
