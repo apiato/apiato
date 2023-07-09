@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Controllers\WebController;
 use App\Ship\Providers\RouteServiceProvider;
-use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -28,7 +27,7 @@ class LoginController extends WebController
     {
         try {
             $this->webLoginAction->run($request);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->route(RouteServiceProvider::LOGIN)->with('login', $e->getMessage());
         }
 

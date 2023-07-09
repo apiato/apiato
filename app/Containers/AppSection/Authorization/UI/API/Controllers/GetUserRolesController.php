@@ -20,5 +20,4 @@ class GetUserRolesController extends ApiController
 
         return $this->transform($roles, RoleTransformer::class);
     }
-
 }

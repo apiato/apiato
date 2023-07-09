@@ -2,11 +2,15 @@
 
 /**
  * @apiGroup           RolePermission
+ *
  * @apiName            DeleteRole
+ *
  * @api                {delete} /v1/roles/:id Delete a Role
+ *
  * @apiDescription     Delete Role by ID
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json

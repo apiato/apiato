@@ -13,7 +13,7 @@ use App\Ship\Exceptions\NotFoundException;
  */
 class DeleteRoleTaskTest extends UnitTestCase
 {
-    public function testSuccessfulDeleteRole_ShouldReturn1(): void
+    public function testSuccessfulDeleteRoleShouldReturn1(): void
     {
         $role = Role::factory()->create(['name' => 'testRole']);
 
@@ -23,7 +23,7 @@ class DeleteRoleTaskTest extends UnitTestCase
         $this->assertDatabaseMissing(config('permission.table_names.roles'), $role->toArray());
     }
 
-    public function testDeleteRoleWitInvalidId_Throws404(): void
+    public function testDeleteRoleWitInvalidIdThrows404(): void
     {
         $this->expectException(NotFoundException::class);
 

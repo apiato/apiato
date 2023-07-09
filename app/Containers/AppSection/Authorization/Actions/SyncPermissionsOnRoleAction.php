@@ -12,7 +12,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class SyncPermissionsOnRoleAction extends ParentAction
 {
     public function __construct(
-        private readonly FindRoleTask       $findRoleTask,
+        private readonly FindRoleTask $findRoleTask,
         private readonly FindPermissionTask $findPermissionTask,
     ) {
     }
@@ -24,7 +24,7 @@ class SyncPermissionsOnRoleAction extends ParentAction
     {
         $role = $this->findRoleTask->run($request->role_id);
 
-        $permissionsIds = (array)$request->permissions_ids;
+        $permissionsIds = (array) $request->permissions_ids;
 
         $permissions = array_map(function ($permissionId) {
             return $this->findPermissionTask->run($permissionId);

@@ -16,7 +16,6 @@ class UserTransformer extends ParentTransformer
     ];
 
     protected array $defaultIncludes = [
-
     ];
 
     public function transform(User $user): array

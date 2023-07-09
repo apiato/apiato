@@ -30,7 +30,6 @@ return [
         */
         'enable_version_prefix' => true,
 
-
         /*
         |--------------------------------------------------------------------------
         | Access Token Expiration
@@ -83,7 +82,6 @@ return [
             'attempts' => env('GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN', '30'),
             'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
         ],
-
     ],
 
     'requests' => [

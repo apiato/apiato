@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\Tests;
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 
 /**
- * Class UnitTestCase
+ * Class UnitTestCase.
  *
  * Use this class to add your container specific unit test helper functions.
  */

@@ -35,7 +35,6 @@ class GetUserPermissionsRequest extends ParentRequest
     public function rules(): array
     {
         return [
-
         ];
     }
 

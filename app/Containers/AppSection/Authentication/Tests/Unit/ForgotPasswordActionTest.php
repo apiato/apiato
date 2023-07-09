@@ -9,13 +9,12 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordReque
 use Illuminate\Support\Facades\Mail;
 
 /**
- *
  * @group authentication
  * @group unit
  */
 class ForgotPasswordActionTest extends UnitTestCase
 {
-    public function testIfUserExists_ShouldReturnTrue(): void
+    public function testIfUserExistsShouldReturnTrue(): void
     {
         Mail::fake();
         $user = $this->getTestingUser();
@@ -31,7 +30,7 @@ class ForgotPasswordActionTest extends UnitTestCase
         Mail::assertQueued(ForgotPassword::class);
     }
 
-    public function testIfUserNotExists_ShouldTrue(): void
+    public function testIfUserNotExistsShouldTrue(): void
     {
         Mail::fake();
         $data = [

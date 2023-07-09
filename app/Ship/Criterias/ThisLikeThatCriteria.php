@@ -3,7 +3,6 @@
 namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
-use Illuminate\Database\Query\Builder;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**

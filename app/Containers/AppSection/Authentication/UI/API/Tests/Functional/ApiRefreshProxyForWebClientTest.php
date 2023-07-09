@@ -31,7 +31,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
         );
     }
 
-    public function testGivenRefreshTokenPassedAsParameter_ItShouldBeString(): void
+    public function testGivenRefreshTokenPassedAsParameterItShouldBeString(): void
     {
         $data = [
             'refresh_token' => '', // empty equals `not string`

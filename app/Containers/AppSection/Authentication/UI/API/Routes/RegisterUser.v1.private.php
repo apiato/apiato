@@ -2,11 +2,15 @@
 
 /**
  * @apiGroup           Authentication
+ *
  * @apiName            RegisterUser
+ *
  * @api                {post} /v1/register Register User (create client)
+ *
  * @apiDescription     Register users as (client).
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json

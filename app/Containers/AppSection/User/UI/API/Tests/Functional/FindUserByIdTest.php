@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
-use Hashids;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -27,9 +26,8 @@ class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
-                    ->where('data.id', Hashids::encode($user->id))
+            fn (AssertableJson $json) => $json->has('data')
+                    ->where('data.id', \Hashids::encode($user->id))
                     ->etc()
         );
     }
@@ -51,8 +49,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                     ->where('data.name', $user->name)
                     ->where('data.email', $user->email)
         );
@@ -67,8 +64,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-            $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                 ->where('data.email', $user->email)
                 ->count('data.roles.data', 1)
                 ->where('data.roles.data.0.name', config('appSection-authorization.admin_role'))

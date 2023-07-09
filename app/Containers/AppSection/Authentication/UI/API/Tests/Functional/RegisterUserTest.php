@@ -24,7 +24,7 @@ class RegisterUserTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGivenEmailVerificationEnabled_RegisterNewUserWithCredentials(): void
+    public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void
     {
         config(['appSection-authentication.require_email_verification' => true]);
         config(['appSection-authentication.allowed-verify-email-urls' => 'http://some.test/known/url']);
@@ -45,7 +45,7 @@ class RegisterUserTest extends ApiTestCase
         );
     }
 
-    public function testGivenEmailVerificationDisabled_RegisterNewUserWithCredentials(): void
+    public function testGivenEmailVerificationDisabledRegisterNewUserWithCredentials(): void
     {
         config(['appSection-authentication.require_email_verification' => false]);
         $data = [
@@ -171,7 +171,7 @@ class RegisterUserTest extends ApiTestCase
         );
     }
 
-    public function testGivenEmailVerificationDisabled_ShouldNotSendVerificationEmail(): void
+    public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
     {
         config(['appSection-authentication.require_email_verification' => false]);
 

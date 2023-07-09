@@ -7,7 +7,6 @@
 |
 */
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Repository Pagination Limit Default
@@ -15,7 +14,6 @@ return [
     |
     */
     'pagination' => [
-
         'limit' => env('PAGINATION_LIMIT_DEFAULT', 10),
 
         // if enabled it allows users to skip pagination by passing `?limit=0`.
@@ -87,7 +85,6 @@ return [
           |
           */
         'clean' => [
-
             /*
               |--------------------------------------------------------------------------
               | Enable clear cache on repository changes
@@ -233,7 +230,7 @@ return [
     */
     'generator' => [
         'basePath' => env('SRC_PATH', app()->path()),
-        'rootNamespace' => env('ROOT_NAMESPACE', 'App').'\\',
+        'rootNamespace' => env('ROOT_NAMESPACE', 'App') . '\\',
         'stubsOverridePath' => app()->path(),
         'paths' => [
             'models' => 'Entities',

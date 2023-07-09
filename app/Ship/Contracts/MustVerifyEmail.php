@@ -8,9 +8,6 @@ interface MustVerifyEmail extends LaravelMustVerifyEmail
 {
     /**
      * Send the email verification notification with frontend verification url.
-     *
-     * @param string $verificationUrl
-     * @return void
      */
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void;
 }

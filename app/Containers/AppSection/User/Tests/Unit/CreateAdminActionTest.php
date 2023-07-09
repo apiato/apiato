@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\User\Tests\Unit;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use Exception;
 
 /**
  * @group user
@@ -27,9 +26,9 @@ class CreateAdminActionTest extends UnitTestCase
         $this->assertNotNull($admin->email_verified_at);
     }
 
-    public function testGivenInvalidData_ThrowExceptionAndRollbackAllCommits(): void
+    public function testGivenInvalidDataThrowExceptionAndRollbackAllCommits(): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(\Exception::class);
 
         // update Admin role name to a not existing role (different from what is seeded for admin role),
         // so we can get an error

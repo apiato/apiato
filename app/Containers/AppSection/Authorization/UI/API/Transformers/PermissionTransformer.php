@@ -8,11 +8,9 @@ use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 class PermissionTransformer extends ParentTransformer
 {
     protected array $availableIncludes = [
-
     ];
 
     protected array $defaultIncludes = [
-
     ];
 
     public function transform(Permission $permission): array

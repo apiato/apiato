@@ -28,7 +28,6 @@ return [
     'fractal_class' => Spatie\Fractal\Fractal::class,
 
     'auto_includes' => [
-
         /*
          * If enabled Fractal will automatically add the includes who's
          * names are present in the `include` request parameter.

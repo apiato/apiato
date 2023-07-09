@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Data\Repositories\PermissionReposito
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Exception;
 
 class CreatePermissionTask extends ParentTask
 {
@@ -27,7 +26,7 @@ class CreatePermissionTask extends ParentTask
                 'display_name' => $displayName,
                 'guard_name' => $guardName,
             ]);
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             throw new CreateResourceFailedException($exception->getMessage());
         }
 

@@ -13,8 +13,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class DetachPermissionsFromUserAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByIdTask              $findUserByIdTask,
-        private readonly FindPermissionTask            $findPermissionTask,
+        private readonly FindUserByIdTask $findUserByIdTask,
+        private readonly FindPermissionTask $findPermissionTask,
         private readonly DetachPermissionsFromUserTask $detachPermissionsFromUserTask
     ) {
     }

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
  */
 class PasswordResetsMigrationTest extends UnitTestCase
 {
-    public function test_password_resets_table_has_expected_columns(): void
+    public function testPasswordResetsTableHasExpectedColumns(): void
     {
         $columns = [
             'email',

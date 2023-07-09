@@ -32,6 +32,5 @@ class GetRolePermissionsTest extends ApiTestCase
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($permission->name, $responseContent->data[0]->name);
-
     }
 }

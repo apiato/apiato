@@ -4,7 +4,6 @@ namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 class OrderByFieldCriteria extends Criteria
@@ -13,9 +12,8 @@ class OrderByFieldCriteria extends Criteria
         private string $field,
         private string $sortOrder
     ) {
-
         if (!$this->isValidSortOrder($sortOrder)) {
-            throw new InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");
+            throw new \InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");
         }
     }
 

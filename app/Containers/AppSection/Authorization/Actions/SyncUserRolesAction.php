@@ -13,7 +13,7 @@ class SyncUserRolesAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,
-        private readonly FindRoleTask     $findRoleTask,
+        private readonly FindRoleTask $findRoleTask,
     ) {
     }
 
@@ -24,7 +24,7 @@ class SyncUserRolesAction extends ParentAction
     {
         $user = $this->findUserByIdTask->run($request->user_id);
 
-        $rolesIds = (array)$request->roles_ids;
+        $rolesIds = (array) $request->roles_ids;
 
         $roles = array_map(function ($roleId) {
             return $this->findRoleTask->run($roleId);

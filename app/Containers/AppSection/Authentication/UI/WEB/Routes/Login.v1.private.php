@@ -5,4 +5,3 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [LoginController::class, 'login'])
     ->name('login_post_form');
-

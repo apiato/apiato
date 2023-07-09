@@ -8,8 +8,6 @@ trait AuthenticationTrait
 {
     /**
      * Allows Passport to authenticate users with custom fields.
-     * @param $identifier
-     * @return User|null
      */
     public function findForPassport($identifier): ?User
     {

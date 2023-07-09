@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Providers\BroadcastServiceProvider as AbstractBroadcas
 use Illuminate\Support\Facades\Broadcast;
 
 /**
- * Class BroadcastServiceProvider
+ * Class BroadcastServiceProvider.
  *
  * A.K.A. app/Providers/BroadcastServiceProvider.php
  */

@@ -70,7 +70,7 @@ class GetAuthenticatedUserTest extends ApiTestCase
         );
     }
 
-    public function testGetAuthenticatedUser_ByUnauthenticatedUser(): void
+    public function testGetAuthenticatedUserByUnauthenticatedUser(): void
     {
         $this->testingUser = User::factory()->create();
 

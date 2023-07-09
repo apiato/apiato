@@ -37,6 +37,6 @@ class FindPermissionTask extends ParentTask
 
     private function isID(int|string $permissionNameOrId): bool
     {
-        return (is_numeric($permissionNameOrId) || Str::isUuid($permissionNameOrId));
+        return is_numeric($permissionNameOrId) || Str::isUuid($permissionNameOrId);
     }
 }

@@ -33,6 +33,5 @@ class GetUserRolesTest extends ApiTestCase
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
         $this->assertEquals($role->name, $responseContent->data[0]->name);
-
     }
 }

@@ -41,7 +41,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'email' => 'Testing@Mail.Com',
             'password' => 'testiness',
         ];
-        $this->getTestingUser(['email' => 'testing@mail.com', 'password' => $data['password'],]);
+        $this->getTestingUser(['email' => 'testing@mail.com', 'password' => $data['password']]);
         Config::set('appSection-authentication.login.case_sensitive', false);
 
         $response = $this->makeCall($data);
@@ -133,7 +133,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         )->etc());
     }
 
-    public function testGivenWrongCredential_Throw422(): void
+    public function testGivenWrongCredentialThrow422(): void
     {
         $data = [
             'email' => 'none@existing.mail',

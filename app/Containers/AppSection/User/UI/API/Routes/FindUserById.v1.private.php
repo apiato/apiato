@@ -2,11 +2,15 @@
 
 /**
  * @apiGroup           User
+ *
  * @apiName            FindUserById
+ *
  * @api                {get} /v1/users/:id Find User
+ *
  * @apiDescription     Find a user by its ID
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => 'search-users', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json

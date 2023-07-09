@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Jobs\Job as AbstractJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Class Job
+ * Class Job.
  *
  * A.K.A. (app/Jobs/Job.php)
  */

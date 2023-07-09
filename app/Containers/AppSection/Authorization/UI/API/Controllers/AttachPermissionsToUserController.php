@@ -9,7 +9,6 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class AttachPermissionsToUserController extends ApiController
 {
-
     public function __construct(
         private readonly AttachPermissionsToUserAction $attachPermissionsToUserAction
     ) {
@@ -21,5 +20,4 @@ class AttachPermissionsToUserController extends ApiController
 
         return $this->transform($user, UserTransformer::class, ['permissions']);
     }
-
 }

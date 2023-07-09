@@ -11,8 +11,8 @@ use Lcobucci\JWT\Parser;
 class ApiLogoutAction extends ParentAction
 {
     public function __construct(
-        private readonly Parser                 $parser,
-        private readonly TokenRepository        $tokenRepository,
+        private readonly Parser $parser,
+        private readonly TokenRepository $tokenRepository,
         private readonly RefreshTokenRepository $refreshTokenRepository,
     ) {
     }

@@ -8,8 +8,6 @@ class LoginCustomAttribute
 {
     /**
      * Extract the login custom attributes.
-     * @param array $data
-     * @return array
      */
     public static function extract(array $data): array
     {
@@ -31,7 +29,7 @@ class LoginCustomAttribute
             $loginUsername = Arr::get($data, $fieldName);
             $loginAttribute = $field;
 
-            if ($loginUsername !== null) {
+            if (null !== $loginUsername) {
                 break;
             }
         }
@@ -52,10 +50,6 @@ class LoginCustomAttribute
         return $allowedLoginFields;
     }
 
-    /**
-     * @param string $username
-     * @return string
-     */
     private static function processLoginAttributeCaseSensitivity(string $username): string
     {
         return config('appSection-authentication.login.case_sensitive') ? $username : strtolower($username);
@@ -66,7 +60,7 @@ class LoginCustomAttribute
         $prefix = config('appSection-authentication.login.prefix', '');
         $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
 
-        if (count($allowedLoginAttributes) === 1) {
+        if (1 === count($allowedLoginAttributes)) {
             $key = array_key_first($allowedLoginAttributes);
             $optionalValidators = $allowedLoginAttributes[$key];
             $validators = implode('|', $optionalValidators);

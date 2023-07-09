@@ -2,10 +2,13 @@
 
 /**
  * @apiGroup           RolePermission
+ *
  * @apiName            CreateRole
+ *
  * @api                {post} /v1/roles Create a Role
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json

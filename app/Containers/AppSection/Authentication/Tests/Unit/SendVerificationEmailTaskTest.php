@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Notification;
  */
 class SendVerificationEmailTaskTest extends UnitTestCase
 {
-    public function testGivenEmailVerificationEnabled_SendVerificationEmail(): void
+    public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         Notification::fake();
         $unverifiedUser = User::factory()->unverified()->create();
@@ -25,7 +25,7 @@ class SendVerificationEmailTaskTest extends UnitTestCase
         Notification::assertSentTo($unverifiedUser, VerifyEmail::class);
     }
 
-    public function testGivenEmailVerificationDisabled_ShouldNotSendVerificationEmail(): void
+    public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
     {
         Notification::fake();
         $unverifiedUser = User::factory()->unverified()->create();

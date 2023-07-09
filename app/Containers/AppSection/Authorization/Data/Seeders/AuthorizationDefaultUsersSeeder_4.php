@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\Data\Seeders;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
-use Throwable;
 
 class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 {
@@ -16,7 +15,7 @@ class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 
     /**
      * @throws CreateResourceFailedException
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function run(): void
     {
@@ -26,7 +25,7 @@ class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 
     /**
      * @throws CreateResourceFailedException
-     * @throws Throwable
+     * @throws \Throwable
      */
     private function createSuperAdmin(): void
     {

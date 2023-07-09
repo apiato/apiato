@@ -14,6 +14,6 @@ trait IsResourceOwnerTrait
             return true;
         }
 
-        return hash_equals((string)$this->user()->getKey(), (string)$this->id);
+        return hash_equals((string) $this->user()->getKey(), (string) $this->id);
     }
 }

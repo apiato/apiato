@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * @apiGroup           OAuth2
  * @apiName            LoginPasswordGrant
  * @api                {post} /v1/oauth/token Login (Password Grant)

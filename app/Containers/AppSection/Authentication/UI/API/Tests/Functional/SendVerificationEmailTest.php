@@ -21,7 +21,7 @@ class SendVerificationEmailTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGivenEmailVerificationEnabled_SendVerificationEmail(): void
+    public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         if (!config('appSection-authentication.require_email_verification')) {
             $this->markTestSkipped();
@@ -39,7 +39,7 @@ class SendVerificationEmailTest extends ApiTestCase
         Notification::assertSentTo($this->testingUser, VerifyEmail::class);
     }
 
-    public function testSendingWithoutRequiredData_ShouldThrowError(): void
+    public function testSendingWithoutRequiredDataShouldThrowError(): void
     {
         if (!config('appSection-authentication.require_email_verification')) {
             $this->markTestSkipped();
@@ -80,7 +80,7 @@ class SendVerificationEmailTest extends ApiTestCase
         );
     }
 
-    public function testGivenEmailVerificationIsDisabled_ShouldThrow404(): void
+    public function testGivenEmailVerificationIsDisabledShouldThrow404(): void
     {
         if (config('appSection-authentication.require_email_verification')) {
             $this->markTestSkipped();
@@ -88,6 +88,5 @@ class SendVerificationEmailTest extends ApiTestCase
         $response = $this->makeCall([]);
 
         $response->assertNotFound();
-
     }
 }

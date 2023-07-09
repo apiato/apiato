@@ -10,7 +10,6 @@ use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use App\Ship\Parents\Requests\Request;
-use Throwable;
 
 class VerifyEmailAction extends ParentAction
 {
@@ -21,7 +20,7 @@ class VerifyEmailAction extends ParentAction
 
     /**
      * @throws NotFoundException
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function run(VerifyEmailRequest $request): void
     {
@@ -38,6 +37,6 @@ class VerifyEmailAction extends ParentAction
 
     private function emailIsValid(Request $request, User $user): bool
     {
-        return hash_equals((string)$request->hash, sha1($user->getEmailForVerification()));
+        return hash_equals((string) $request->hash, sha1($user->getEmailForVerification()));
     }
 }

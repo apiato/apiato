@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Schema;
  */
 class UsersMigrationTest extends UnitTestCase
 {
-    public function test_users_table_has_expected_columns(): void
+    public function testUsersTableHasExpectedColumns(): void
     {
         $columns = [
             'id',

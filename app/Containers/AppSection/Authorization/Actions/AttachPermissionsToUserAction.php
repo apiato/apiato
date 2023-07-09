@@ -12,7 +12,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class AttachPermissionsToUserAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByIdTask   $findUserByIdTask,
+        private readonly FindUserByIdTask $findUserByIdTask,
         private readonly FindPermissionTask $findPermissionTask,
     ) {
     }
@@ -24,7 +24,7 @@ class AttachPermissionsToUserAction extends ParentAction
     {
         $user = $this->findUserByIdTask->run($request->id);
 
-        $permissionIds = (array)$request->permissions_ids;
+        $permissionIds = (array) $request->permissions_ids;
 
         $permissions = array_map(function ($permissionId) {
             return $this->findPermissionTask->run($permissionId);

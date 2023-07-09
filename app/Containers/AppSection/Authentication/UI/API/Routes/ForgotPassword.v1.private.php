@@ -2,12 +2,15 @@
 
 /**
  * @apiGroup           Authentication
+ *
  * @apiName            ForgotPassword
  *
  * @api                {POST} /v1/password/forgot Forgot password
+ *
  * @apiDescription     Forgot password endpoint.
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json

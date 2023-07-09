@@ -32,7 +32,7 @@ class ShipProvider extends ParentMainServiceProvider
      */
     public function register(): void
     {
-        /**
+        /*
          * Load the ide-helper service provider only in non production environments.
          */
         if ($this->app->isLocal()) {

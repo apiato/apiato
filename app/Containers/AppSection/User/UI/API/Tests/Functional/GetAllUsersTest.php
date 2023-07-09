@@ -28,8 +28,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data', 4)
+            fn (AssertableJson $json) => $json->has('data', 4)
                     ->etc()
         );
     }
@@ -43,8 +42,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response->assertForbidden();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('message')
+            fn (AssertableJson $json) => $json->has('message')
                     ->where('message', 'You are not authorized to request this resource.')
                     ->etc()
         );
@@ -57,12 +55,11 @@ class GetAllUsersTest extends ApiTestCase
             'name' => 'mahmoudzzz',
         ]);
 
-        $response = $this->endpoint($this->endpoint . "?search=name:" . urlencode($user->name))->makeCall();
+        $response = $this->endpoint($this->endpoint . '?search=name:' . urlencode($user->name))->makeCall();
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.name', $user->name)
                     ->etc()
         );
@@ -77,8 +74,7 @@ class GetAllUsersTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('data')
+            fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.id', $user->getHashedKey())
                     ->etc()
         );

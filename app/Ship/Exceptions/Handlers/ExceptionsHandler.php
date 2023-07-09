@@ -13,10 +13,9 @@ use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Throwable;
 
 /**
- * Class ExceptionsHandler
+ * Class ExceptionsHandler.
  *
  * A.K.A. (app/Exceptions/Handler.php)
  */
@@ -35,12 +34,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
 
     /**
      * Register the exception handling callbacks for the application.
-     *
-     * @return void
      */
     public function register(): void
     {
-        $this->reportable(static function (Throwable $e) {
+        $this->reportable(static function (\Throwable $e) {
         });
 
         $this->renderable(function (CoreException $e) {
@@ -76,7 +73,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             ];
         }
 
-        return response()->json($response, (int)$e->getCode());
+        return response()->json($response, (int) $e->getCode());
     }
 
     protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|Response

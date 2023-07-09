@@ -21,7 +21,7 @@ class PermissionMigrationTest extends UnitTestCase
         $this->columnNames = config('permission.column_names');
     }
 
-    public function test_permissions_table_has_expected_columns(): void
+    public function testPermissionsTableHasExpectedColumns(): void
     {
         $columns = [
             'id',
@@ -36,7 +36,7 @@ class PermissionMigrationTest extends UnitTestCase
         }
     }
 
-    public function test_roles_table_has_expected_columns(): void
+    public function testRolesTableHasExpectedColumns(): void
     {
         $columns = [
             'id',
@@ -53,7 +53,7 @@ class PermissionMigrationTest extends UnitTestCase
         }
     }
 
-    public function test_model_has_permissions_table_has_expected_columns(): void
+    public function testModelHasPermissionsTableHasExpectedColumns(): void
     {
         $columns = [
             'permission_id',
@@ -66,7 +66,7 @@ class PermissionMigrationTest extends UnitTestCase
         }
     }
 
-    public function test_model_has_roles_table_has_expected_columns(): void
+    public function testModelHasRolesTableHasExpectedColumns(): void
     {
         $columns = [
             'role_id',
@@ -79,7 +79,7 @@ class PermissionMigrationTest extends UnitTestCase
         }
     }
 
-    public function test_role_has_permissions_table_has_expected_columns(): void
+    public function testRoleHasPermissionsTableHasExpectedColumns(): void
     {
         $columns = [
             'permission_id',

@@ -31,7 +31,7 @@ class FindRoleTaskTest extends UnitTestCase
         $this->assertEquals($role->id, $result->id);
     }
 
-    public function testFindRoleWithInvalidId_Throws404(): void
+    public function testFindRoleWithInvalidIdThrows404(): void
     {
         $this->expectException(NotFoundException::class);
 

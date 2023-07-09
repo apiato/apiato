@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 abstract class Transformer extends AbstractTransformer
 {
-    /**
-     * @param array $adminResponse
-     * @param array $clientResponse
-     * @return array
-     */
     public function ifAdmin(array $adminResponse, array $clientResponse): array
     {
         $user = Auth::user();

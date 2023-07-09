@@ -2,11 +2,13 @@
 
 /**
  * @apiGroup           RolePermission
+ *
  * @apiName            GetUserPermissions
  *
  * @api                {GET} /v1/users/:id/permissions Get User Permissions
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json
@@ -22,4 +24,3 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('users/{id}/permissions', GetUserPermissionsController::class)
     ->middleware(['auth:api']);
-

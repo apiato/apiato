@@ -10,20 +10,19 @@ use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\DB;
-use Throwable;
 
 class CreateAdminAction extends ParentAction
 {
     public function __construct(
-        private readonly CreateUserTask        $createUserTask,
-        private readonly FindRoleTask          $findRoleTask,
+        private readonly CreateUserTask $createUserTask,
+        private readonly FindRoleTask $findRoleTask,
         private readonly AssignRolesToUserTask $assignRolesToUserTask
     ) {
     }
 
     /**
      * @throws CreateResourceFailedException
-     * @throws Throwable
+     * @throws \Throwable
      * @throws NotFoundException
      */
     public function run(array $data): User

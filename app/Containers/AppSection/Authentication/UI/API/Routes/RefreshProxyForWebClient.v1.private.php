@@ -2,11 +2,15 @@
 
 /**
  * @apiGroup           OAuth2
+ *
  * @apiName            RefreshProxyForWebClient
+ *
  * @api                {post} /v1/clients/web/refresh Refresh
+ *
  * @apiDescription     Get new tokens given a valid refresh token is provided.
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json

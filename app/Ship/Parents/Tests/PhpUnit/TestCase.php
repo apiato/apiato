@@ -11,8 +11,6 @@ abstract class TestCase extends AbstractTestCase
 {
     /**
      * Setup the test environment, before each test.
-     *
-     * @return void
      */
     protected function setUp(): void
     {

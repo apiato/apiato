@@ -2,11 +2,15 @@
 
 /**
  * @apiGroup           User
+ *
  * @apiName            DeleteUser
+ *
  * @api                {delete} /v1/users/:id Delete User
+ *
  * @apiDescription     Delete users of any type (Admin, Client...)
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => 'delete-users', 'roles' => ''] | Resource Owner
  *
  * @apiHeader          {String} accept=application/json

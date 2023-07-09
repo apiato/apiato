@@ -15,13 +15,11 @@ class MainServiceProvider extends ParentMainServiceProvider
      * Container Service Providers.
      */
     public array $serviceProviders = [
-
     ];
 
     /**
-     * Container Aliases
+     * Container Aliases.
      */
     public array $aliases = [
-
     ];
 }

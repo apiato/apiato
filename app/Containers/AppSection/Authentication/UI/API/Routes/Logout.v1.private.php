@@ -1,11 +1,15 @@
 <?php
 /**
  * @apiGroup           OAuth2
+ *
  * @apiName            Logout
+ *
  * @api                {post} /v1/api/logout Logout
+ *
  * @apiDescription     User Logout. (Revoking Access Token)
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json
@@ -23,4 +27,3 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('api/logout', ApiLogoutController::class)
     ->middleware(['auth:api']);
-

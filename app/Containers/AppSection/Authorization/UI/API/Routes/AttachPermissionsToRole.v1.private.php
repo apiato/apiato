@@ -2,8 +2,11 @@
 
 /**
  * @apiGroup           RolePermission
+ *
  * @apiName            AttachPermissionsToRole
+ *
  * @api                {post} /v1/permissions/attach Attach Permissions to Role
+ *
  * @apiDescription     Attach new permissions to role. This endpoint does not sync the role with the
  *                     new permissions. It simply attaches new permission to the role. So make sure
  *                     to never send an already attached permission since it will cause an error.
@@ -11,6 +14,7 @@
  *                     `/permissions/sync` endpoint instead.
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
  *
  * @apiHeader          {String} accept=application/json

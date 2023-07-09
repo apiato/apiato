@@ -37,7 +37,7 @@ class ResetPasswordActionTest extends UnitTestCase
         Notification::assertSentTo($this->user, PasswordReset::class);
     }
 
-    public function testResetPasswordWithInvalidToken_ThrowsException(): void
+    public function testResetPasswordWithInvalidTokenThrowsException(): void
     {
         $this->expectException(InvalidResetPasswordTokenException::class);
         $this->expectExceptionMessage('Invalid Reset Password Token Provided.');
@@ -52,7 +52,7 @@ class ResetPasswordActionTest extends UnitTestCase
         app(ResetPasswordAction::class)->run($request);
     }
 
-    public function testResetPasswordWithInvalidEmail_ThrowsException(): void
+    public function testResetPasswordWithInvalidEmailThrowsException(): void
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage('User Not Found.');

@@ -19,7 +19,6 @@ class LoginProxyPasswordGrantRequest extends ParentRequest
      * Id's that needs decoding before applying the validation rules.
      */
     protected array $decode = [
-
     ];
 
     /**
@@ -27,7 +26,6 @@ class LoginProxyPasswordGrantRequest extends ParentRequest
      * validation rules on them and allows accessing them like request data.
      */
     protected array $urlParameters = [
-
     ];
 
     /**

@@ -35,12 +35,8 @@ class FindRoleTask extends ParentTask
         return $role ?? throw new NotFoundException();
     }
 
-    /**
-     * @param int|string $roleNameOrId
-     * @return bool
-     */
     private function isID(int|string $roleNameOrId): bool
     {
-        return (is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId));
+        return is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId);
     }
 }

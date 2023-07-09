@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Request;
 class ApiRefreshProxyForWebClientAction extends ParentAction
 {
     public function __construct(
-        private readonly CallOAuthServerTask   $callOAuthServerTask,
+        private readonly CallOAuthServerTask $callOAuthServerTask,
         private readonly MakeRefreshCookieTask $makeRefreshCookieTask,
     ) {
     }

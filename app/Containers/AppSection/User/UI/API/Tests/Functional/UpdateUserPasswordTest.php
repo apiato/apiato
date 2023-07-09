@@ -20,7 +20,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGivenUserAlreadyHaveAPassword_UpdateUserPassword(): void
+    public function testGivenUserAlreadyHaveAPasswordUpdateUserPassword(): void
     {
         Notification::fake();
 
@@ -63,7 +63,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         );
     }
 
-    public function testGivenUserAlreadyHaveAPassword_CurrentPasswordFieldShouldBeRequired(): void
+    public function testGivenUserAlreadyHaveAPasswordCurrentPasswordFieldShouldBeRequired(): void
     {
         $user = $this->getTestingUser([
             'password' => 'Av@dakedavra!',
@@ -82,7 +82,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         );
     }
 
-    public function testGivenUserAlreadyHaveAPassword_CurrentPasswordFieldMustMatchUserCurrentPassword(): void
+    public function testGivenUserAlreadyHaveAPasswordCurrentPasswordFieldMustMatchUserCurrentPassword(): void
     {
         $user = $this->getTestingUser([
             'password' => 'Av@dakedavra!',
@@ -102,7 +102,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         );
     }
 
-    public function testGivenUserDoesntHaveAPassword_CurrentPasswordFieldShouldBeProhibited(): void
+    public function testGivenUserDoesntHaveAPasswordCurrentPasswordFieldShouldBeProhibited(): void
     {
         $user = $this->getTestingUser([
             'password' => null,

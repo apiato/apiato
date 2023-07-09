@@ -45,14 +45,13 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) =>
-                $json->has('message')
+            fn (AssertableJson $json) => $json->has('message')
                     ->has('errors')
                     ->where('errors.name.0', 'String should not contain space.')
         );
     }
 
-    public function testGivenHaveNoAccess_CannotCreateRole(): void
+    public function testGivenHaveNoAccessCannotCreateRole(): void
     {
         $this->getTestingUserWithoutAccess();
 

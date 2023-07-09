@@ -5,7 +5,7 @@ namespace App\Ship\Parents\Providers;
 use Apiato\Core\Abstracts\Providers\AuthServiceProvider as AbstractAuthServiceProvider;
 
 /**
- * Class ShipAuthServiceProvider
+ * Class ShipAuthServiceProvider.
  *
  * A.K.A. App\Providers\AuthServiceProvider.php
  */

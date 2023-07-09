@@ -2,12 +2,15 @@
 
 /**
  * @apiGroup           Authentication
+ *
  * @apiName            ResetPassword
  *
  * @api                {GET/POST} /v1/password/reset Reset Password
+ *
  * @apiDescription     Resets password of a user.
  *
  * @apiVersion         1.0.0
+ *
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json
