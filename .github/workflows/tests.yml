@@ -1,47 +1,41 @@
-name: Tests
-
 on:
   push:
     branches:
       - master
       - '*.x'
-  pull_request:
-  schedule:
-    - cron: '0 0 * * *'
-
+name: Tests
 permissions:
   contents: read
 
 jobs:
-  tests:
+  phpunit:
     runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.1
 
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.1, 8.2]
-
-    name: PHP ${{ matrix.php }}
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@v3
         with:
-          php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
-          coverage: none
+          fetch-depth: 1
 
-      - name: Install Composer dependencies
-        run: composer install --no-scripts --prefer-dist --no-interaction --no-progress
+      - name: Install composer dependencies
+        run: |
+          composer install --no-scripts
 
-      - name: Copy environment file
-        run: cp .env.example .env
+      - name: Prepare Apiato Application
+        run: |
+          cp .env.ci .env
+          php artisan key:generate
 
-      - name: Generate app key
-        run: php artisan key:generate
-
-      - name: Execute tests
+      - name: Run Testsuite
         run: vendor/bin/phpunit
