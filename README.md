@@ -12,40 +12,37 @@
 <a href="https://discord.gg/ryPcV4KM5k"><img src="https://img.shields.io/discord/800815227839053834?label=discord" alt="support"></a>
 </p>
 
-<a name="Introduction"></a>
+## About Apiato
 
 Apiato is a framework for building scalable and testable API-Centric Applications with PHP, build on top of Laravel.
 
 It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitate the
 development of any API-Centric App.
 
-Apiato is built using [Porto](https://github.com/Mahmoudz/Porto), a new architectural pattern and comes with an amazing list of [features](http://apiato.io/).
+Apiato is built using [Porto](https://github.com/Mahmoudz/Porto),
+a new architectural pattern and comes with an amazing list of [features](http://apiato.io/):
 
-<a name="Documentation"></a>
-
-<p align="center">
-	<a href="http://apiato.io/docs/">
-	   <img src="https://github.com/apiato/documentation/blob/master/images/documentation-button.png" width=350px" alt="Apiato Docs"/>
-	</a>
-</p>
-
----
-
-<p align="center">Join our Discord server, by clicking on the icon below.</p>
+- [Role-Based Access Control](https://apiato.io/docs/core-features/authorization).
+- [API Documentations generator](https://apiato.io/docs/additional-features/documentation).
+- [Auto ID hashing](https://apiato.io/docs/core-features/hash-id).
+- [API versioning](https://apiato.io/docs/core-features/api-versioning).
+- [Localization](https://apiato.io/docs/additional-features/localization).
+- [Code generator](https://apiato.io/docs/core-features/code-generator).
+- [Shallow ETag](https://apiato.io/docs/core-features/etag).
+- [Social Authentication](https://apiato.io/docs/additional-features/social-authentication).
+- [Query Parameters support](https://apiato.io/docs/core-features/query-parameters).
 
 
-<p align="center">
-	<a href="https://discord.gg/ryPcV4KM5k">
-        <img src="https://github.com/apiato/documentation/blob/master/images/discord-apiato-icon.png" width=100px" alt="Apiato Discord"/>
-	</a>
-</p>
+## Learning Apiato
+Apiato has an extensive and thorough [documentation](https://laravel.com/docs).
 
-<a name="Contributors"></a>
+## Support and Community
+For free community support, join our [Discord server](https://discord.gg/ryPcV4KM5k).
 
 ## Contributing
 Thank you for considering contributing to the Apiato framework! The contribution guide can be found in the [Apiato documentation](https://apiato.io/docs/contribution-guide).
 
-## Contributing
+## Code of Conduct
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct).
 
 ## Security Vulnerabilities
@@ -53,7 +50,7 @@ If you discover a security vulnerability within Apiato,
 please send an e-mail to Mohammad Alavi via [mohammad.alavi1990@gmail.com](mailto:mohammad.alavi1990@gmail.com).
 All security vulnerabilities will be promptly addressed.
 
-### Project Maintainers
+## Project Maintainers
 <table>
   <tbody>
      <tr>
@@ -81,22 +78,6 @@ All security vulnerabilities will be promptly addressed.
      </tr>
   </tbody>
 </table>
-
-You can support us using any of the methods below:
-
-<b>1:</b> [Open Collective](https://opencollective.com/apiato/contribute)
-<br>
-<b>2:</b> [Paypal](https://paypal.me/mzmmzz)
-<br>
-<b>3:</b> [Github Sponsors](https://github.com/sponsors/Mahmoudz)
-<br>
-<b>4:</b> [Patreon](https://www.patreon.com/zalt)
-
-You can sponsor us using any of the methods below:
-
-<b>1:</b> Sponsor via [Open Collective](https://opencollective.com/apiato/contribute/).
-<br>
-<b>2:</b> Email us at <a href = "mailto: support@apiato.io">support@apiato.io</a>.
 
 <a name="License"></a>
 
