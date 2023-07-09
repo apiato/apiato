@@ -39,7 +39,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
 
         return [
             'response_content' => $responseContent,
-            'refresh_cookie' => $refreshCookie
+            'refresh_cookie' => $refreshCookie,
         ];
     }
 
