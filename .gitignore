@@ -23,7 +23,6 @@ html_coverage
 Vagrantfile
 after.sh
 aliases
-.php_cs.cache
 .php-cs-fixer.cache
 /psalm_cache/
 /app/Containers/Vendor
