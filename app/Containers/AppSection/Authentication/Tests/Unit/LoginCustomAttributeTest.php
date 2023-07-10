@@ -26,9 +26,9 @@ class LoginCustomAttributeTest extends UnitTestCase
 
     private function assertAttributeIsExtracted(array $result, array $userDetails): void
     {
-        list($username, $loginAttribute) = $result;
-        $this->assertSame($username, strtolower($userDetails['email']));
-        $this->assertSame($loginAttribute, 'email');
+        [$loginFieldValue, $loginFieldName] = $result;
+        $this->assertSame($loginFieldValue, strtolower($userDetails['email']));
+        $this->assertSame($loginFieldName, 'email');
     }
 
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void

@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\LoginTask;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class WebLoginAction extends ParentAction
     /**
      * @throws LoginFailedException
      * @throws IncorrectIdException
+     * @throws NotFoundException
      */
     public function run(LoginRequest $request): User|Authenticatable|null
     {
@@ -31,12 +33,12 @@ class WebLoginAction extends ParentAction
             'remember_me' => false,
         ]);
 
-        list($username, $loginAttribute) = LoginCustomAttribute::extract($sanitizedData);
+        [$loginFieldValue, $loginFieldName] = LoginCustomAttribute::extract($sanitizedData);
 
         $loggedIn = $this->loginTask->run(
-            $username,
+            $loginFieldValue,
             $sanitizedData['password'],
-            $loginAttribute,
+            $loginFieldName,
             $sanitizedData['remember_me']
         );
 
