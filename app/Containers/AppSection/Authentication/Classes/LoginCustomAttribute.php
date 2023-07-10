@@ -11,7 +11,9 @@ class LoginCustomAttribute
      * Extract the login custom attributes.
      *
      * @param array<string, mixed> $data
+     *
      * @return string[] [loginFieldValue, loginFieldName]
+     *
      * @throws NotFoundException
      */
     public static function extract(array $data): array
