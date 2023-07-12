@@ -10,7 +10,8 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -40,24 +41,31 @@ class ExceptionsHandler extends CoreExceptionsHandler
         $this->reportable(static function (\Throwable $e) {
         });
 
-        $this->renderable(function (CoreException $e) {
-            return $this->buildResponse($e);
+        $this->renderable(function (CoreException $e, $request) {
+            if ($this->shouldReturnJson($request, $e)) {
+                return $this->buildJsonResponse($e);
+            }
+            return $this->renderExceptionResponse($request, $e);
         });
 
-        $this->renderable(function (NotFoundHttpException $e) {
-            return $this->buildResponse(new NotFoundException());
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            if ($this->shouldReturnJson($request, $e)) {
+                return $this->buildJsonResponse(new NotFoundException());
+            }
+            return $this->renderExceptionResponse($request, $e);
         });
 
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
-            return $this->shouldReturnJson($request, $e)
-                ? $this->buildResponse(new NotAuthorizedResourceException())
-                : redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
+            if ($this->shouldReturnJson($request, $e)) {
+                return $this->buildJsonResponse(new NotAuthorizedResourceException());
+            }
+            return redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
         });
     }
 
-    private function buildResponse(CoreException $e): JsonResponse
+    private function buildJsonResponse(CoreException $e): JsonResponse
     {
-        if (config('app.debug')) {
+        if (!App::isProduction()) {
             $response = [
                 'message' => $e->getMessage(),
                 'errors' => $e->getErrors(),
@@ -73,13 +81,14 @@ class ExceptionsHandler extends CoreExceptionsHandler
             ];
         }
 
-        return response()->json($response, (int) $e->getCode());
+        return response()->json($response, (int)$e->getCode());
     }
 
-    protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|Response
+    protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|RedirectResponse
     {
-        return $this->shouldReturnJson($request, $e)
-            ? $this->buildResponse(new CoreAuthenticationException())
-            : redirect()->guest(route(RouteServiceProvider::LOGIN));
+        if ($this->shouldReturnJson($request, $e)) {
+            return $this->buildJsonResponse(new CoreAuthenticationException());
+        }
+        return redirect()->guest(route(RouteServiceProvider::LOGIN));
     }
 }
