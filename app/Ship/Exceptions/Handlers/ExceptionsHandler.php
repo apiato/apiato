@@ -45,6 +45,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             if ($this->shouldReturnJson($request, $e)) {
                 return $this->buildJsonResponse($e);
             }
+
             return $this->renderExceptionResponse($request, $e);
         });
 
@@ -52,6 +53,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             if ($this->shouldReturnJson($request, $e)) {
                 return $this->buildJsonResponse(new NotFoundException());
             }
+
             return $this->renderExceptionResponse($request, $e);
         });
 
@@ -59,6 +61,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             if ($this->shouldReturnJson($request, $e)) {
                 return $this->buildJsonResponse(new NotAuthorizedResourceException());
             }
+
             return redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
         });
     }
@@ -81,7 +84,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             ];
         }
 
-        return response()->json($response, (int)$e->getCode());
+        return response()->json($response, (int) $e->getCode());
     }
 
     protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|RedirectResponse
@@ -89,6 +92,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
         if ($this->shouldReturnJson($request, $e)) {
             return $this->buildJsonResponse(new CoreAuthenticationException());
         }
+
         return redirect()->guest(route(RouteServiceProvider::LOGIN));
     }
 }
