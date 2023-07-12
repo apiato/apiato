@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v8.4.1",
+            "version": "v8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "b54c05ba9ab1ab98ccf25a771e98e5686215a947"
+                "reference": "3880aa27fec3e3bb4c24d9c526fcd56c4153f557"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/b54c05ba9ab1ab98ccf25a771e98e5686215a947",
-                "reference": "b54c05ba9ab1ab98ccf25a771e98e5686215a947",
+                "url": "https://api.github.com/repos/apiato/core/zipball/3880aa27fec3e3bb4c24d9c526fcd56c4153f557",
+                "reference": "3880aa27fec3e3bb4c24d9c526fcd56c4153f557",
                 "shasum": ""
             },
             "require": {
@@ -70,8 +70,10 @@
                 "vinkla/hashids": "^11.0"
             },
             "require-dev": {
+                "fakerphp/faker": "^1.19.1",
                 "friendsofphp/php-cs-fixer": "^3.8.0",
                 "mockery/mockery": "^1.4.4",
+                "phpunit/phpunit": "^10.0",
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^5.8.0"
             },
@@ -122,7 +124,7 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "time": "2023-07-12T17:04:51+00:00"
+            "time": "2023-07-12T17:39:26+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
