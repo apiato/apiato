@@ -19,5 +19,6 @@ return (new PhpCsFixer\Config())
         'phpdoc_align' => [
             'align' => 'left',
         ],
+        'ignored_tags' => false
     ])
     ->setFinder($finder);

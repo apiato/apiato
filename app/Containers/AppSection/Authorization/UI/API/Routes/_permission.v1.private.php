@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * @apiDefine PermissionSuccessSingleResponse
  *
  * @apiSuccess {Object[]}   data
@@ -32,7 +32,7 @@
  * }
  */
 
-/*
+/**
  * @apiDefine PermissionSuccessMultipleResponse
  *
  * @apiQuery {String} [include]
