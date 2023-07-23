@@ -2,19 +2,12 @@
 
 namespace App\Containers\AppSection\Authorization\Models;
 
-use Apiato\Core\Traits\FactoryLocatorTrait;
-use Apiato\Core\Traits\HashIdTrait;
-use Apiato\Core\Traits\HasResourceKeyTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Apiato\Core\Traits\ModelTrait;
 use Spatie\Permission\Models\Permission as SpatiePermission;
 
 class Permission extends SpatiePermission
 {
-    use HashIdTrait;
-    use HasResourceKeyTrait;
-    use HasFactory, FactoryLocatorTrait {
-        FactoryLocatorTrait::newFactory insteadof HasFactory;
-    }
+    use ModelTrait;
 
     protected string $guard_name = 'api';
 

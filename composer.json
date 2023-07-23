@@ -47,6 +47,7 @@
         "ext-json": "*",
         "fakerphp/faker": "^1.19.1",
         "friendsofphp/php-cs-fixer": "^3.8.0",
+        "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
