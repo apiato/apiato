@@ -10,3 +10,21 @@
 | All files under app/{section_name}/{container_name}/Helpers/ folder will be autoloaded by Apiato.
 |
 */
+
+if (!function_exists('activeGuard')) {
+    /**
+     * Get the current logged-in user guard.
+     *
+     * @return string|null
+     */
+    function activeGuard(): ?string
+    {
+        foreach (array_keys(config('auth.guards')) as $guard) {
+            if (auth()->guard($guard)->check()) {
+                return $guard;
+            }
+        }
+
+        return null;
+    }
+}
