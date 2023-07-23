@@ -19,6 +19,6 @@ return (new PhpCsFixer\Config())
         'phpdoc_align' => [
             'align' => 'left',
         ],
-        'phpdoc_to_comment' => false
+        'phpdoc_to_comment' => false,
     ])
     ->setFinder($finder);
