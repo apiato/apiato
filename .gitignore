@@ -27,4 +27,4 @@ aliases
 /psalm_cache/
 /app/Containers/Vendor
 /public/vendor
-
+.bash_aliases
