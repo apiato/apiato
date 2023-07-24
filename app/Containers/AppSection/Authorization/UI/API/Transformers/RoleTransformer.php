@@ -17,13 +17,17 @@ class RoleTransformer extends ParentTransformer
 
     public function transform(Role $role): array
     {
-        return [
+        $response = [
             'object' => $role->getResourceKey(),
             'id' => $role->getHashedKey(), // << Unique Identifier
             'name' => $role->name, // << Unique Identifier
             'description' => $role->description,
             'display_name' => $role->display_name,
         ];
+
+        return $this->ifAdmin([
+            'guard_name' => $role->guard_name,
+        ], $response);
     }
 
     public function includePermissions(Role $role): Collection
