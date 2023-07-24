@@ -21,17 +21,19 @@ class GetAllPermissionsTask extends ParentTask
      */
     public function run(bool $skipPagination = false): mixed
     {
-        $repository = $this->addRequestCriteria()->repository;
+        $this->addRequestCriteria($this->repository);
 
-        return $skipPagination ? $repository->all() : $repository->paginate();
+        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
     }
 
     /**
      * @throws RepositoryException
      */
-    public function whereGuard(string $guardName): static
+    public function whereGuard(string|null $guardName): static
     {
-        $this->repository->pushCriteria(new ThisLikeThatCriteria('guard_name', $guardName));
+        if ($guardName) {
+            $this->repository->pushCriteria(new ThisLikeThatCriteria('guard_name', $guardName));
+        }
 
         return $this;
     }

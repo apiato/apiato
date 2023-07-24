@@ -20,6 +20,6 @@ class GetAllRolesAction extends ParentAction
      */
     public function run(): mixed
     {
-        return $this->getAllRolesTask->run();
+        return $this->getAllRolesTask->whereGuard(activeGuard())->run();
     }
 }

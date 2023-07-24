@@ -20,6 +20,6 @@ class GetAllPermissionsAction extends ParentAction
      */
     public function run(): mixed
     {
-        return $this->getAllPermissionsTask->run();
+        return $this->getAllPermissionsTask->whereGuard(activeGuard())->run();
     }
 }
