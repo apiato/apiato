@@ -9,6 +9,7 @@
  * @apiSuccess {String}     data.name
  * @apiSuccess {String}     data.description
  * @apiSuccess {String}     data.display_name
+ * @apiSuccess {String}     data.guard_name (only for admin)
  * @apiSuccess {Object}     meta
  * @apiSuccess {String[]}   meta.include
  * @apiSuccess {Object[]}   meta.custom

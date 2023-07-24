@@ -9,7 +9,7 @@
  * @apiSuccess {String}     data.name
  * @apiSuccess {String}     data.description
  * @apiSuccess {String}     data.display_name
- * @apiSuccess {Integer}    data.level
+ * @apiSuccess {String}     data.guard_name (only for admin)
  * @apiSuccess {Object}     data.permissions
  * @apiSuccess {Object[]}   data.permissions.data
  * @apiSuccess {Object}     meta
