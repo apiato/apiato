@@ -19,6 +19,7 @@ class DetachPermissionsFromUserRequest extends ParentRequest
      */
     protected array $decode = [
         'id',
+        'permissions_ids.*',
     ];
 
     /**
