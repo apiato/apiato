@@ -26,7 +26,7 @@ class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json) => $json->has('data')
                     ->where('data.id', \Hashids::encode($user->id))
                     ->etc()
         );
