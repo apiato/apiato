@@ -79,13 +79,6 @@ All security vulnerabilities will be promptly addressed.
   </tbody>
 </table>
 
-<a name="License"></a>
-
-## License
-
-[MIT](https://github.com/apiato/apiato/blob/master/LICENSE) © Mahmoud Zalt
-
-
 [comment]: # (Open Collective Tiers)
 
 [contributors-src]: https://contrib.rocks/image?repo=apiato/apiato
