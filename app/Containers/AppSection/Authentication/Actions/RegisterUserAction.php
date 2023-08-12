@@ -14,7 +14,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class RegisterUserAction extends ParentAction
 {
     public function __construct(
-        private readonly CreateUserTask            $createUserTask,
+        private readonly CreateUserTask $createUserTask,
         private readonly SendVerificationEmailTask $sendVerificationEmailTask,
     ) {
     }
