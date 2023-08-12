@@ -11,6 +11,7 @@ class ShipProvider extends ParentMainServiceProvider
      * Register any Service Providers on the Ship layer (including third party packages).
      */
     public array $serviceProviders = [
+        EventServiceProvider::class,
         RouteServiceProvider::class,
     ];
 
