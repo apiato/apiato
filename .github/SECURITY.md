@@ -8,4 +8,5 @@ Please see [our support policy](https://apiato.io/docs/prologue/release-notes#su
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within Apiato, please send an email to Mohammad Alavi at mohammad.alavi1990@gmail.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Apiato, please email Mohammad Alavi at mohammad.alavi1990@gmail.com.
+All security vulnerabilities will be promptly addressed.
