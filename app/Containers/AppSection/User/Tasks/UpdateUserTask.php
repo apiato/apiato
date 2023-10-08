@@ -7,7 +7,6 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +31,7 @@ class UpdateUserTask extends ParentTask
             return $this->repository->update($userData, $userId);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
-        } catch (Exception) {
+        } catch (\Exception) {
             throw new UpdateResourceFailedException();
         }
     }
