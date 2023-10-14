@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Exception;
 
 class CreateRoleTask extends ParentTask
 {
@@ -27,7 +26,7 @@ class CreateRoleTask extends ParentTask
                 'display_name' => $displayName,
                 'guard_name' => $guardName,
             ]);
-        } catch (Exception) {
+        } catch (\Exception) {
             throw new CreateResourceFailedException();
         }
 

@@ -6,7 +6,6 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DeleteUserTask extends ParentTask
@@ -26,7 +25,7 @@ class DeleteUserTask extends ParentTask
             return $this->repository->delete($id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
-        } catch (Exception) {
+        } catch (\Exception) {
             throw new DeleteResourceFailedException();
         }
     }
