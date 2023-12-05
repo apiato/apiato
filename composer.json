@@ -50,7 +50,12 @@
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
+        "php-standard-library/psalm-plugin": "^2.3",
+        "phpmd/phpmd": "@stable",
         "phpunit/phpunit": "^10.0",
+        "psalm/plugin-laravel": "^2.8",
+        "psalm/plugin-mockery": "^1.1",
+        "psalm/plugin-phpunit": "^0.18.4",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
         "vimeo/psalm": "^5.8.0"
