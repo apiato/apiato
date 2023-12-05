@@ -21,9 +21,13 @@ class ListRolesTask extends ParentTask
      */
     public function run(bool $skipPagination = false): mixed
     {
-        $this->addRequestCriteria($this->repository);
+        $this->repository->addRequestCriteria();
 
-        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
+        if ($skipPagination) {
+            return $this->repository->all();
+        }
+
+        return $this->repository->paginate();
     }
 
     /**
