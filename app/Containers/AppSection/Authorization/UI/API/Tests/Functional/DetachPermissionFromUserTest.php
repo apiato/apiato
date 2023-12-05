@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -77,7 +76,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
         $invalidId = 3333;
         $user = User::factory()->create();
         $data = [
-            'permissions_ids' => [Hashids::encode($invalidId)],
+            'permissions_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);

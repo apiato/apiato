@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -53,7 +52,7 @@ class SyncUserRolesTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'roles_ids' => [$role->getHashedKey()],
-            'user_id' => Hashids::encode($invalidId),
+            'user_id' => $this->encode($invalidId),
         ];
 
         $response = $this->makeCall($data);
@@ -71,7 +70,7 @@ class SyncUserRolesTest extends ApiTestCase
         $user = User::factory()->create();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [Hashids::encode($invalidId)],
+            'roles_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),
         ];
 

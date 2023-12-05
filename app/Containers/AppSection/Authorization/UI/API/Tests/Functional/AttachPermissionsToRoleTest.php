@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -75,7 +74,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => [Hashids::encode($invalidId)],
+            'permissions_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->makeCall($data);
@@ -97,7 +96,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $permission = Permission::factory()->create();
         $invalidId = 7777;
         $data = [
-            'role_id' => Hashids::encode($invalidId),
+            'role_id' => $this->encode($invalidId),
             'permissions_ids' => [$permission->getHashedKey()],
         ];
 
