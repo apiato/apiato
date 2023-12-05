@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
-use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
+use App\Containers\AppSection\Authorization\Tasks\ListPermissionsTask;
 use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
 class AuthorizationGivePermissionsToRolesSeeder_3 extends ParentSeeder
 {
     public function __construct(
-        private readonly GetAllPermissionsTask $getAllPermissionsTask
+        private readonly ListPermissionsTask $listPermissionsTask
     ) {
     }
 
@@ -18,7 +18,7 @@ class AuthorizationGivePermissionsToRolesSeeder_3 extends ParentSeeder
         $adminRoleName = config('appSection-authorization.admin_role');
         $roleModel = config('permission.models.role');
         foreach (array_keys(config('auth.guards')) as $guardName) {
-            $allPermissions = $this->getAllPermissionsTask->whereGuard($guardName)->run(true);
+            $allPermissions = $this->listPermissionsTask->whereGuard($guardName)->run(true);
             $adminRole = $roleModel::findByName($adminRoleName, $guardName);
             $adminRole->givePermissionTo($allPermissions);
         }

@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
  * @group authorization
  * @group api
  */
-class GetAllRolesTest extends ApiTestCase
+class ListRolesTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/roles';
 
@@ -17,7 +17,7 @@ class GetAllRolesTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGetAllRoles(): void
+    public function testListRoles(): void
     {
         $this->getTestingUser();
 

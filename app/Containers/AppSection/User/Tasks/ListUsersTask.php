@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class GetAllUsersTask extends ParentTask
+class ListUsersTask extends ParentTask
 {
     public function __construct(
         protected readonly UserRepository $repository

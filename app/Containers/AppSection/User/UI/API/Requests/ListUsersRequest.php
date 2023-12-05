@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\AppSection\Authorization\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class GetAllRolesRequest extends ParentRequest
+class ListUsersRequest extends ParentRequest
 {
     /**
      * Define which Roles and/or Permissions has access to this request.
      */
     protected array $access = [
-        'permissions' => 'manage-roles',
+        'permissions' => 'list-users',
         'roles' => '',
     ];
 

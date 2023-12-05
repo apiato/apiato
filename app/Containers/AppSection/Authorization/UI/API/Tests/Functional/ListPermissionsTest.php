@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
  * @group authorization
  * @group api
  */
-class GetAllPermissionsTest extends ApiTestCase
+class ListPermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/permissions';
 
@@ -17,7 +17,7 @@ class GetAllPermissionsTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGetAllPermissions(): void
+    public function testListPermissions(): void
     {
         $response = $this->makeCall();
 

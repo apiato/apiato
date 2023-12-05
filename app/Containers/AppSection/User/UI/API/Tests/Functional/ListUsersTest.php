@@ -10,7 +10,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
  * @group user
  * @group api
  */
-class GetAllUsersTest extends ApiTestCase
+class ListUsersTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users';
 
@@ -19,7 +19,7 @@ class GetAllUsersTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGetAllUsersByAdmin(): void
+    public function testListUsersByAdmin(): void
     {
         User::factory()->count(2)->create();
         $this->getTestingUserWithoutAccess(createUserAsAdmin: true);
@@ -33,7 +33,7 @@ class GetAllUsersTest extends ApiTestCase
         );
     }
 
-    public function testGetAllUsersByNonAdmin(): void
+    public function testListUsersByNonAdmin(): void
     {
         $this->getTestingUserWithoutAccess();
         User::factory()->count(2)->create();

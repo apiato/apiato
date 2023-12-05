@@ -3,14 +3,14 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
-use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
+use App\Containers\AppSection\Authorization\Tasks\ListPermissionsTask;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class GetAllPermissionsAction extends ParentAction
+class ListPermissionsAction extends ParentAction
 {
     public function __construct(
-        private readonly GetAllPermissionsTask $getAllPermissionsTask
+        private readonly ListPermissionsTask $listPermissionsTask
     ) {
     }
 
@@ -20,6 +20,6 @@ class GetAllPermissionsAction extends ParentAction
      */
     public function run(): mixed
     {
-        return $this->getAllPermissionsTask->whereGuard(activeGuard())->run();
+        return $this->listPermissionsTask->whereGuard(activeGuard())->run();
     }
 }
