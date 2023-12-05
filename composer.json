@@ -78,6 +78,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "ide-helper": [
+            "@php artisan ide-helper:models --nowrite --reset",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:eloquent"
         ]
     },
     "extra": {
