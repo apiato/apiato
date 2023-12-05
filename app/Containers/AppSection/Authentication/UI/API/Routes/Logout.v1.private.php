@@ -22,8 +22,8 @@
  * }
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ApiLogoutController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('api/logout', ApiLogoutController::class)
+Route::post('api/logout', LogoutController::class)
     ->middleware(['auth:api']);
