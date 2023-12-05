@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -22,8 +22,8 @@ class AssignRolesToUserTest extends ApiTestCase
 
     public function testAssignRoleToUser(): void
     {
-        $user = User::factory()->create();
-        $role = Role::factory()->create();
+        $user = UserFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
         $data = [
             'roles_ids' => [$role->getHashedKey()],
             'user_id' => $user->getHashedKey(),
@@ -43,9 +43,9 @@ class AssignRolesToUserTest extends ApiTestCase
 
     public function testAssignManyRolesToUser(): void
     {
-        $user = User::factory()->create();
-        $role1 = Role::factory()->create();
-        $role2 = Role::factory()->create();
+        $user = UserFactory::new()->createOne();
+        $role1 = RoleFactory::new()->createOne();
+        $role2 = RoleFactory::new()->createOne();
         $data = [
             'roles_ids' => [
                 $role1->getHashedKey(),

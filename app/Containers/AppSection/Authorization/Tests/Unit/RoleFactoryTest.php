@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
@@ -13,7 +14,7 @@ class RoleFactoryTest extends UnitTestCase
 {
     public function testCreateRole(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
 
         $this->assertInstanceOf(Role::class, $role);
     }
@@ -24,7 +25,7 @@ class RoleFactoryTest extends UnitTestCase
         // using factory
         Role::findByName(config('appSection-authorization.admin_role'))->delete();
 
-        $role = Role::factory()->admin()->create();
+        $role = RoleFactory::new()->admin()->createOne();
 
         $this->assertEquals(config('appSection-authorization.admin_role'), $role->name);
     }

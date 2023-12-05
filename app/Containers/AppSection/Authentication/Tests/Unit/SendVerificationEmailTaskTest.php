@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
 
 /**
@@ -17,7 +17,7 @@ class SendVerificationEmailTaskTest extends UnitTestCase
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         Notification::fake();
-        $unverifiedUser = User::factory()->unverified()->create();
+        $unverifiedUser = UserFactory::new()->unverified()->createOne();
         config(['appSection-authentication.require_email_verification' => true]);
 
         app(SendVerificationEmailTask::class)->run($unverifiedUser, 'this_doesnt_matter_for_the_test');
@@ -28,7 +28,7 @@ class SendVerificationEmailTaskTest extends UnitTestCase
     public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
     {
         Notification::fake();
-        $unverifiedUser = User::factory()->unverified()->create();
+        $unverifiedUser = UserFactory::new()->unverified()->createOne();
         config(['appSection-authentication.require_email_verification' => false]);
 
         app(SendVerificationEmailTask::class)->run($unverifiedUser);

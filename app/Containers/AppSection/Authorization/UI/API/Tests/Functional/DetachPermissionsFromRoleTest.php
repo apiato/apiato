@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -22,9 +22,9 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
     public function testDetachSinglePermissionFromRole(): void
     {
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
-        $role = Role::factory()->create();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB]);
         $data = [
             'role_id' => $role->getHashedKey(),
@@ -46,10 +46,10 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
     public function testDetachMultiplePermissionFromRole(): void
     {
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
-        $permissionC = Permission::factory()->create();
-        $role = Role::factory()->create();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
+        $permissionC = PermissionFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB, $permissionC]);
         $data = [
             'role_id' => $role->getHashedKey(),
@@ -71,7 +71,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
     public function testDetachPermissionFromNonExistingRole(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $this->encode($invalidId),
@@ -90,7 +90,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
 
     public function testDetachNonExistingPermissionFromRole(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),

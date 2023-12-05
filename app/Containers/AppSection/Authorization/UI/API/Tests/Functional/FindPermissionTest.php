@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
@@ -20,7 +20,7 @@ class FindPermissionTest extends ApiTestCase
 
     public function testFindPermissionById(): void
     {
-        $permissionA = Permission::factory()->create();
+        $permissionA = PermissionFactory::new()->createOne();
 
         $response = $this->injectId($permissionA->id)->makeCall();
 

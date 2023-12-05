@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -27,7 +27,7 @@ class SendVerificationEmailTest extends ApiTestCase
             $this->markTestSkipped();
         }
         Notification::fake();
-        $this->testingUser = User::factory()->unverified()->create();
+        $this->testingUser = UserFactory::new()->unverified()->createOne();
 
         $data = [
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],

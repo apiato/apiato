@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
 use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class RedirectIfAuthenticatedMiddlewareTest extends UnitTestCase
 {
     public function testRedirectIfAuthenticated(): void
     {
-        $user = User::factory()->make();
+        $user = UserFactory::new()->makeOne();
         $this->actingAs($user, 'web');
 
         $request = Request::create(RouteServiceProvider::LOGIN);

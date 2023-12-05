@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -22,9 +22,9 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
     public function testRevokeRolesFromUser(): void
     {
-        $roleA = Role::factory()->create();
-        $roleB = Role::factory()->create();
-        $user = User::factory()->create();
+        $roleA = RoleFactory::new()->createOne();
+        $roleB = RoleFactory::new()->createOne();
+        $user = UserFactory::new()->createOne();
         $user->assignRole($roleA, $roleB);
         $data = [
             'roles_ids' => [$roleA->getHashedKey()],
@@ -46,9 +46,9 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
     public function testRevokeManyRolesFromUser(): void
     {
-        $roleA = Role::factory()->create();
-        $roleB = Role::factory()->create();
-        $user = User::factory()->create();
+        $roleA = RoleFactory::new()->createOne();
+        $roleB = RoleFactory::new()->createOne();
+        $user = UserFactory::new()->createOne();
         $user->assignRole($roleA);
         $user->assignRole($roleB);
 
@@ -71,7 +71,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
     public function testRevokeRolesFromNonExistingUser(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'roles_ids' => [$role->getHashedKey()],
@@ -90,7 +90,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
 
     public function testRevokeNonExistingRoleFromUser(): void
     {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'roles_ids' => [$this->encode($invalidId)],

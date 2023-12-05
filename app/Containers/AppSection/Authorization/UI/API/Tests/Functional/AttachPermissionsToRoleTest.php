@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -22,8 +22,8 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     public function testAttachSinglePermissionToRole(): void
     {
-        $role = Role::factory()->create();
-        $permission = Permission::factory()->create();
+        $role = RoleFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne();
         $data = [
             'role_id' => $role->getHashedKey(),
             'permissions_ids' => $permission->getHashedKey(),
@@ -45,9 +45,9 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     public function testAttachMultiplePermissionsToRole(): void
     {
-        $role = Role::factory()->create();
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
+        $role = RoleFactory::new()->createOne();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
         $data = [
             'role_id' => $role->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
@@ -70,7 +70,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     public function testAttachNonExistingPermissionToRole(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
@@ -93,7 +93,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     public function testAttachPermissionToNonExistingRole(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $this->encode($invalidId),

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -21,7 +21,7 @@ class ListUsersTest extends ApiTestCase
 
     public function testListUsersByAdmin(): void
     {
-        User::factory()->count(2)->create();
+        UserFactory::new()->count(2)->create();
         $this->getTestingUserWithoutAccess(createUserAsAdmin: true);
 
         $response = $this->makeCall();
@@ -36,7 +36,7 @@ class ListUsersTest extends ApiTestCase
     public function testListUsersByNonAdmin(): void
     {
         $this->getTestingUserWithoutAccess();
-        User::factory()->count(2)->create();
+        UserFactory::new()->count(2)->create();
 
         $response = $this->makeCall();
 
@@ -50,7 +50,7 @@ class ListUsersTest extends ApiTestCase
 
     public function testSearchUsersByName(): void
     {
-        User::factory()->count(3)->create();
+        UserFactory::new()->count(3)->create();
         $user = $this->getTestingUser([
             'name' => 'mahmoudzzz',
         ]);
@@ -67,7 +67,7 @@ class ListUsersTest extends ApiTestCase
 
     public function testSearchUsersByHashID(): void
     {
-        User::factory()->count(3)->create();
+        UserFactory::new()->count(3)->create();
         $user = $this->getTestingUser();
 
         $response = $this->endpoint($this->endpoint . '?search=id:' . $user->getHashedKey())->makeCall();
