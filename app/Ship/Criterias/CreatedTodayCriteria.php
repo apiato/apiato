@@ -2,11 +2,11 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Carbon\Carbon;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class CreatedTodayCriteria extends Criteria
+class CreatedTodayCriteria extends ParentCriteria
 {
     public function apply($model, PrettusRepositoryInterface $repository)
     {

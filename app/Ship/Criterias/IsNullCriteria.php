@@ -2,16 +2,14 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class IsNullCriteria extends Criteria
+class IsNullCriteria extends ParentCriteria
 {
-    private string $field;
-
-    public function __construct(string $field)
-    {
-        $this->field = $field;
+    public function __construct(
+        private readonly string $field
+    ) {
     }
 
     public function apply($model, PrettusRepositoryInterface $repository)
