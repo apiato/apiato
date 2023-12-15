@@ -24,7 +24,14 @@
     "authors": [
         {
             "name": "Mahmoud Zalt",
-            "email": "mahmoud@zalt.me"
+            "email": "mahmoud@zalt.me",
+            "role": "Developer"
+        },
+        {
+            "name": "Mohammad Alavi",
+            "email": "mohammad.alavi1990@gmail.com",
+            "homepage": "https://mohammadalavi.com/",
+            "role": "Developer"
         }
     ],
     "require": {
