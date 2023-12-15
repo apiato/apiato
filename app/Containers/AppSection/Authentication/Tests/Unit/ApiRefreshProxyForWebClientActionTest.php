@@ -12,7 +12,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest
  */
 class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
 {
-    public function testProxyApiRefresh()
+    public function testProxyApiRefresh(): void
     {
         $data = [
             'email' => 'gandalf@the.grey',

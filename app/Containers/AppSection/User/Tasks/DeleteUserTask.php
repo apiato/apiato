@@ -19,7 +19,7 @@ class DeleteUserTask extends ParentTask
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
-    public function run($id): int
+    public function run(int $id): int
     {
         try {
             return $this->repository->delete($id);

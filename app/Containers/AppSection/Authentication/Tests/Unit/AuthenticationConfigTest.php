@@ -10,7 +10,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
  */
 class AuthenticationConfigTest extends UnitTestCase
 {
-    public function testConfigHasCorrectValues()
+    public function testConfigHasCorrectValues(): void
     {
         $this->assertIsArray(config('appSection-authentication'));
         $this->assertArrayHasKey('require_email_verification', config('appSection-authentication'));

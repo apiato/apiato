@@ -19,7 +19,7 @@ class DeleteRoleTask extends ParentTask
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
-    public function run($id): int
+    public function run(mixed $id): int
     {
         try {
             return $this->repository->delete($id);

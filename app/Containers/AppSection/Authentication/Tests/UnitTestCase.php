@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class UnitTestCase extends ParentTestCase
 {
+    private const OAUTH_PUBLIC_KEY = 'oauth-public.key';
+    private const OAUTH_PRIVATE_KEY = 'oauth-private.key';
     protected string $clientId;
     protected string $clientSecret;
     private bool $testingFilesCreated = false;
@@ -38,11 +40,11 @@ class UnitTestCase extends ParentTestCase
         Config::set('appSection-authentication.clients.web.secret', $this->clientSecret);
 
         // create testing oauth keys files
-        $this->createTestingKey('oauth-public.key');
-        $this->createTestingKey('oauth-private.key');
+        $this->createTestingKey(self::OAUTH_PUBLIC_KEY);
+        $this->createTestingKey(self::OAUTH_PRIVATE_KEY);
     }
 
-    private function createTestingKey($fileName): void
+    private function createTestingKey(string $fileName): void
     {
         $filePath = storage_path($fileName);
 
@@ -55,12 +57,12 @@ class UnitTestCase extends ParentTestCase
         }
     }
 
-    protected function createRefreshToken($email, $password)
+    protected function createRefreshToken(string $email, string $password): string
     {
         return app(CallOAuthServerTask::class)->run($this->createRequestData($email, $password))['refresh_token'];
     }
 
-    protected function createRequestData($email, $password): array
+    protected function createRequestData(string $email, string $password): array
     {
         return [
             'grant_type' => 'password',
@@ -72,7 +74,7 @@ class UnitTestCase extends ParentTestCase
         ];
     }
 
-    protected function createAccessToken($email, $password)
+    protected function createAccessToken(string $email, string $password): string
     {
         return app(CallOAuthServerTask::class)->run($this->createRequestData($email, $password))['access_token'];
     }

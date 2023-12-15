@@ -21,7 +21,7 @@ class UpdateUserTask extends ParentTask
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
-    public function run(array $userData, $userId): User
+    public function run(array $userData, mixed $userId): User
     {
         try {
             if (array_key_exists('password', $userData)) {

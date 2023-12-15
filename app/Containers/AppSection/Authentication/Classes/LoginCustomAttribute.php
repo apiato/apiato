@@ -89,12 +89,12 @@ class LoginCustomAttribute
         return static::getPrefix() . $attribute;
     }
 
-    private static function loginFieldHasValue(mixed $loginFieldValue): bool
+    private static function loginFieldHasValue(string|null $loginFieldValue): bool
     {
         return null !== $loginFieldValue;
     }
 
-    private static function noMatchingLoginFieldFound(mixed $loginFieldValue): bool
+    private static function noMatchingLoginFieldFound(string $loginFieldValue): bool
     {
         return empty($loginFieldValue);
     }

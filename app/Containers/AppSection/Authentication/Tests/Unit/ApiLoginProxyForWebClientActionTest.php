@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Cookie;
  */
 class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
-    public function testProxyApiLoginAction()
+    public function testProxyApiLoginAction(): void
     {
         $this->getTestingUser([
             'email' => 'ganldalf@the.grey',

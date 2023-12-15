@@ -17,7 +17,7 @@ class FindUserByIdTask extends ParentTask
     /**
      * @throws NotFoundException
      */
-    public function run($userId): User
+    public function run(mixed $userId): User
     {
         try {
             return $this->repository->find($userId);
