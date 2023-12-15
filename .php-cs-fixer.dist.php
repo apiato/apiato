@@ -6,8 +6,11 @@ $finder = Finder::create()
     ->in([
         __DIR__ . '/app',
     ])
+    ->name('*.php')
     ->notName('*.blade.php')
-    ->exclude('Containers/Vendor');
+    ->ignoreDotFiles(true)
+    ->exclude('Containers/Vendor')
+    ->ignoreVCS(true);
 
 return (new PhpCsFixer\Config())
     ->setRules([
@@ -19,6 +22,13 @@ return (new PhpCsFixer\Config())
         'phpdoc_align' => [
             'align' => 'left',
         ],
-        'phpdoc_to_comment' => false,
+        'trailing_comma_in_multiline' => [
+            'elements' => ['arguments', 'arrays', 'match', 'parameters'],
+        ],
+        'blank_line_before_statement' => [
+            'statements' => ['return', 'throw', 'try'],
+        ],
+        'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
+        'nullable_type_declaration' => ['syntax' => 'union'],
     ])
     ->setFinder($finder);
