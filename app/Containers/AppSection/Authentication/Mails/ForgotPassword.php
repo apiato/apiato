@@ -14,7 +14,7 @@ class ForgotPassword extends ParentMail implements ShouldQueue
     public function __construct(
         protected User $recipient,
         protected string $token,
-        protected string $reseturl
+        protected string $reseturl,
     ) {
     }
 

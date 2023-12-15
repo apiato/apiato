@@ -11,7 +11,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class FindPermissionAction extends ParentAction
 {
     public function __construct(
-        private readonly FindPermissionTask $findPermissionTask
+        private readonly FindPermissionTask $findPermissionTask,
     ) {
     }
 

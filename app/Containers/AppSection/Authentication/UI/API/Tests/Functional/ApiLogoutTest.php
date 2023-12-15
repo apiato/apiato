@@ -24,7 +24,7 @@ class ApiLogoutTest extends ApiTestCase
 
         $response->assertJson(
             fn (AssertableJson $json) => $json
-                ->where('message', 'Token revoked successfully.')
+                ->where('message', 'Token revoked successfully.'),
         );
     }
 

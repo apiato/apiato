@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class UpdateUserPasswordController extends ApiController
 {
     public function __construct(
-        private readonly UpdateUserPasswordAction $updateUserPasswordAction
+        private readonly UpdateUserPasswordAction $updateUserPasswordAction,
     ) {
     }
 

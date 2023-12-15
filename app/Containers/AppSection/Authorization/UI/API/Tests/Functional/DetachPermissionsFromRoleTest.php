@@ -40,7 +40,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
                 ->where('data.id', $role->getHashedKey())
                 ->count('data.permissions.data', 1)
                 ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -65,7 +65,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
                 ->where('data.id', $role->getHashedKey())
                 ->count('data.permissions.data', 1)
                 ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -84,7 +84,7 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -104,9 +104,9 @@ class DetachPermissionsFromRoleTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 }

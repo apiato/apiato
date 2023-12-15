@@ -28,7 +28,7 @@ class UpdateUserPasswordRequest extends ParentRequest
     {
         return [
             'current_password' => [Rule::requiredIf(
-                fn (): bool => !is_null($this->user()->password)
+                fn (): bool => !is_null($this->user()->password),
             ), 'current_password:api'],
             'new_password' => [
                 'required',

@@ -10,7 +10,7 @@ class OrderByFieldCriteria extends Criteria
 {
     public function __construct(
         private string $field,
-        private string $sortOrder
+        private string $sortOrder,
     ) {
         if (!$this->isValidSortOrder($sortOrder)) {
             throw new \InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");

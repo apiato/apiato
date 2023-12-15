@@ -12,7 +12,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class AttachPermissionsToRoleController extends ApiController
 {
     public function __construct(
-        private readonly AttachPermissionsToRoleAction $attachPermissionsToRoleAction
+        private readonly AttachPermissionsToRoleAction $attachPermissionsToRoleAction,
     ) {
     }
 

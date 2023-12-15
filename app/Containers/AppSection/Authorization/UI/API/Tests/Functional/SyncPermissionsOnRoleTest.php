@@ -41,7 +41,7 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
                 ->count('data.permissions.data', 2)
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -60,7 +60,7 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -81,9 +81,9 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 }

@@ -43,7 +43,7 @@ class VerifyEmail extends ParentNotification implements ShouldQueue
             [
                     'id' => $id,
                     'hash' => $hash,
-                ]
+                ],
         );
     }
 }

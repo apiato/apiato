@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class ListUsersController extends ApiController
 {
     public function __construct(
-        private readonly ListUsersAction $listUsersAction
+        private readonly ListUsersAction $listUsersAction,
     ) {
     }
 

@@ -13,7 +13,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class UpdateUserAction extends ParentAction
 {
     public function __construct(
-        private readonly UpdateUserTask $updateUserTask
+        private readonly UpdateUserTask $updateUserTask,
     ) {
     }
 

@@ -15,7 +15,7 @@ class DetachPermissionsFromUserAction extends ParentAction
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,
         private readonly FindPermissionTask $findPermissionTask,
-        private readonly DetachPermissionsFromUserTask $detachPermissionsFromUserTask
+        private readonly DetachPermissionsFromUserTask $detachPermissionsFromUserTask,
     ) {
     }
 

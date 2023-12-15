@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class GetUserPermissionsController extends ApiController
 {
     public function __construct(
-        private readonly GetUserPermissionsAction $getUserPermissionsAction
+        private readonly GetUserPermissionsAction $getUserPermissionsAction,
     ) {
     }
 

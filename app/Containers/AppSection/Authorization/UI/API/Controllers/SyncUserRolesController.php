@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class SyncUserRolesController extends ApiController
 {
     public function __construct(
-        private readonly SyncUserRolesAction $syncUserRolesAction
+        private readonly SyncUserRolesAction $syncUserRolesAction,
     ) {
     }
 

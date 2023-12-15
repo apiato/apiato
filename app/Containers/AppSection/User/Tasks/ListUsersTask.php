@@ -10,7 +10,7 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class ListUsersTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository
+        protected readonly UserRepository $repository,
     ) {
     }
 

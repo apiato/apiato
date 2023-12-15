@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class WebLoginAction extends ParentAction
 {
     public function __construct(
-        private readonly LoginTask $loginTask
+        private readonly LoginTask $loginTask,
     ) {
     }
 
@@ -39,7 +39,7 @@ class WebLoginAction extends ParentAction
             $loginFieldValue,
             $sanitizedData['password'],
             $loginFieldName,
-            $sanitizedData['remember_me']
+            $sanitizedData['remember_me'],
         );
 
         if (!$loggedIn) {

@@ -41,7 +41,7 @@ class AttachPermissionToUserTest extends ApiTestCase
                 ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permission->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -65,7 +65,7 @@ class AttachPermissionToUserTest extends ApiTestCase
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -84,9 +84,9 @@ class AttachPermissionToUserTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 
@@ -104,7 +104,7 @@ class AttachPermissionToUserTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.id.0', 'The selected id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 }

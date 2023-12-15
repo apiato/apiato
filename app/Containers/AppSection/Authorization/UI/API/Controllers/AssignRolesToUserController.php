@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class AssignRolesToUserController extends ApiController
 {
     public function __construct(
-        private readonly AssignRolesToUserAction $assignRolesToUserAction
+        private readonly AssignRolesToUserAction $assignRolesToUserAction,
     ) {
     }
 

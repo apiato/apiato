@@ -37,7 +37,7 @@ class AssignRolesToUserTest extends ApiTestCase
                 ->has('data.roles.data', 1)
                 ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['roles_ids'][0])
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -63,7 +63,7 @@ class AssignRolesToUserTest extends ApiTestCase
                 ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['roles_ids'][0])
                 ->where('data.roles.data.1.id', $data['roles_ids'][1])
-                ->etc()
+                ->etc(),
         );
     }
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 class ResetPasswordAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByEmailTask $findUserByEmailTask
+        private readonly FindUserByEmailTask $findUserByEmailTask,
     ) {
     }
 
@@ -44,7 +44,7 @@ class ResetPasswordAction extends ParentAction
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();
-            }
+            },
         );
 
         switch ($status) {

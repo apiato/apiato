@@ -8,7 +8,7 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 class AuthorizationGivePermissionsToRolesSeeder_3 extends ParentSeeder
 {
     public function __construct(
-        private readonly ListPermissionsTask $listPermissionsTask
+        private readonly ListPermissionsTask $listPermissionsTask,
     ) {
     }
 

@@ -10,7 +10,7 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class CreateUserTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository
+        protected readonly UserRepository $repository,
     ) {
     }
 

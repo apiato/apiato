@@ -40,7 +40,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
                 ->where('data.id', $data['user_id'])
                 ->has('data.roles.data', 1)
                 ->where('data.roles.data.0.id', $roleB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -65,7 +65,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
                 ->where('data.object', 'User')
                 ->where('data.id', $data['user_id'])
                 ->has('data.roles.data', 0)
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -84,7 +84,7 @@ class RevokeRolesFromUserTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -104,9 +104,9 @@ class RevokeRolesFromUserTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'roles_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 }

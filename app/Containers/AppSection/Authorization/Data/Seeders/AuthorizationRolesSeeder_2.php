@@ -9,7 +9,7 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 class AuthorizationRolesSeeder_2 extends ParentSeeder
 {
     public function __construct(
-        private readonly CreateRoleTask $createRoleTask
+        private readonly CreateRoleTask $createRoleTask,
     ) {
     }
 

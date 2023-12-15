@@ -41,7 +41,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -67,7 +67,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 ->where('data.id', $user->getHashedKey())
                 ->count('data.permissions.data', 1)
                 ->where('data.permissions.data.0.id', $permissionC->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -87,9 +87,9 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    static fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    static fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 
@@ -107,8 +107,8 @@ class DetachPermissionFromUserTest extends ApiTestCase
             static fn (AssertableJson $json) => $json->has(
                 'errors',
                 static fn (AssertableJson $errors) => $errors->where('id.0', 'The selected id is invalid.')
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 }

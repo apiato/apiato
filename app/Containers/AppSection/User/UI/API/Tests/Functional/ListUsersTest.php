@@ -29,7 +29,7 @@ class ListUsersTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data', 4)
-                    ->etc()
+                    ->etc(),
         );
     }
 
@@ -44,7 +44,7 @@ class ListUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('message')
                     ->where('message', 'You are not authorized to request this resource.')
-                    ->etc()
+                    ->etc(),
         );
     }
 
@@ -61,7 +61,7 @@ class ListUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.name', $user->name)
-                    ->etc()
+                    ->etc(),
         );
     }
 
@@ -76,7 +76,7 @@ class ListUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.id', $user->getHashedKey())
-                    ->etc()
+                    ->etc(),
         );
     }
 }

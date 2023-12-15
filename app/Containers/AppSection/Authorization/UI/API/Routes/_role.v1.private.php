@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * @apiDefine RoleSuccessSingleResponse
  *
  * @apiSuccess {Object[]}   data
@@ -40,7 +40,7 @@
  * }
  */
 
-/**
+/*
  * @apiDefine RoleSuccessMultipleResponse
  *
  * @apiQuery {String} [include]

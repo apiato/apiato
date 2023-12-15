@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
 class IsNullCriteria extends ParentCriteria
 {
     public function __construct(
-        private readonly string $field
+        private readonly string $field,
     ) {
     }
 

@@ -11,7 +11,7 @@ use App\Ship\Parents\Requests\Request;
 class CreatePermissionAction extends ParentAction
 {
     public function __construct(
-        private readonly CreatePermissionTask $createPermissionTask
+        private readonly CreatePermissionTask $createPermissionTask,
     ) {
     }
 

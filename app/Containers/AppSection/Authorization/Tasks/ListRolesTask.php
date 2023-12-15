@@ -11,7 +11,7 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class ListRolesTask extends ParentTask
 {
     public function __construct(
-        protected readonly RoleRepository $repository
+        protected readonly RoleRepository $repository,
     ) {
     }
 

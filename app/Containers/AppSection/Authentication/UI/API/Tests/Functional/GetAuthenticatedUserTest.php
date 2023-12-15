@@ -37,8 +37,8 @@ class GetAuthenticatedUserTest extends ApiTestCase
                     ->where('name', $user->name)
                     ->where('gender', $user->gender)
                     ->whereType('birth', 'string')
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 
@@ -65,8 +65,8 @@ class GetAuthenticatedUserTest extends ApiTestCase
                     ->whereType('updated_at', 'string')
                     ->where('readable_created_at', $user->created_at->diffForHumans())
                     ->where('readable_updated_at', $user->updated_at->diffForHumans())
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class FindRoleTask extends ParentTask
 {
     public function __construct(
-        protected readonly RoleRepository $repository
+        protected readonly RoleRepository $repository,
     ) {
     }
 

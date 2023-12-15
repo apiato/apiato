@@ -11,7 +11,7 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class ListPermissionsTask extends ParentTask
 {
     public function __construct(
-        protected readonly PermissionRepository $repository
+        protected readonly PermissionRepository $repository,
     ) {
     }
 

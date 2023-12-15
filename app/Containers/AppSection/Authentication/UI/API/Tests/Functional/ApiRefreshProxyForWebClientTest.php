@@ -27,7 +27,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('message')
                 ->where('message', $message)
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -43,7 +43,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -65,7 +65,7 @@ class ApiRefreshProxyForWebClientTest extends ApiTestCase
                 'access_token',
                 'refresh_token',
             ])->where('token_type', 'Bearer')
-                ->etc()
+                ->etc(),
         );
     }
 

@@ -14,7 +14,7 @@ class ThisLikeThatCriteria extends Criteria
         private string $field,
         private string $valueString,
         private string $separator = ',',
-        private string $wildcard = '*'
+        private string $wildcard = '*',
     ) {
     }
 

@@ -40,7 +40,7 @@ class UpdateUserPasswordTest extends ApiTestCase
                 ->where('data.object', 'User')
                 ->where('data.email', $user->email)
                 ->missing('data.password')
-                ->etc()
+                ->etc(),
         );
 
         Notification::assertSentTo($user, PasswordUpdatedNotification::class);
@@ -59,7 +59,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.new_password.0', 'The new password field is required.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -78,7 +78,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The current password field is required.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -98,7 +98,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The password is incorrect.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -118,7 +118,7 @@ class UpdateUserPasswordTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.current_password.0', 'The password is incorrect.')
-                ->etc()
+                ->etc(),
         );
     }
 }

@@ -34,7 +34,7 @@ class VerifyEmailTest extends ApiTestCase
             [
                 'id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
-            ]
+            ],
         );
 
         $match = [];
@@ -65,7 +65,7 @@ class VerifyEmailTest extends ApiTestCase
             [
                 'id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
-            ]
+            ],
         );
 
         $match = [];
