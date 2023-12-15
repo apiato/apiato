@@ -7,15 +7,7 @@
         "apiato/welcome-container": "^2.0.1"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-ide-helper": "^2.13.0",
         "barryvdh/laravel-debugbar": "^3.8.1"
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
-        ]
     }
 }
