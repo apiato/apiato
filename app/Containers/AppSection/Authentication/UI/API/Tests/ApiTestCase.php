@@ -6,11 +6,6 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Class ApiTestCase.
- *
- * Use this class to add your container specific API related test helper functions.
- */
 class ApiTestCase extends ParentTestCase
 {
     private bool $testingFilesCreated = false;

@@ -17,8 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ExceptionsHandler.
- *
- * A.K.A. (app/Exceptions/Handler.php)
+ * A.K.A. app/Exceptions/Handler.php.
  */
 class ExceptionsHandler extends CoreExceptionsHandler
 {

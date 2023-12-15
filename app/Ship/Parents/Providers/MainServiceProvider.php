@@ -6,8 +6,7 @@ use Apiato\Core\Abstracts\Providers\MainServiceProvider as AbstractMainServicePr
 
 /**
  * Class MainServiceProvider.
- *
- * A.K.A. app/Providers/AppServiceProvider.php
+ * A.K.A. app/Providers/AppServiceProvider.php.
  */
 abstract class MainServiceProvider extends AbstractMainServiceProvider
 {

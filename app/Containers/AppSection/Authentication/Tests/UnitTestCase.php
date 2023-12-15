@@ -7,11 +7,6 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Class UnitTestCase.
- *
- * Use this class to add your container specific unit test helper functions.
- */
 class UnitTestCase extends ParentTestCase
 {
     protected string $clientId;
