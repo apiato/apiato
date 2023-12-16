@@ -10,6 +10,7 @@ $finder = Finder::create()
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)
     ->exclude('Containers/Vendor')
+    ->notName('_*')
     ->ignoreVCS(true);
 
 return (new PhpCsFixer\Config())
@@ -30,5 +31,6 @@ return (new PhpCsFixer\Config())
         ],
         'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
         'nullable_type_declaration' => ['syntax' => 'union'],
+
     ])
     ->setFinder($finder);
