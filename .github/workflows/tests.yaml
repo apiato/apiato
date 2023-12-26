@@ -33,7 +33,11 @@ jobs:
 
       - name: Install Composer dependencies
         #          composer install --no-ansi --no-interaction --no-progress --no-scripts
-        run: composer install --prefer-dist --no-interaction --no-progress
+#        run: composer install --prefer-dist --no-interaction --no-progress
+        # explorer
+        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
+        # Laravel & Core
+#        run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
