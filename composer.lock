@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "e059f3ce92c45c62a0a51f4e8b7438f5fa26983b"
+                "reference": "6ed736b484943dc383cc2056e0c5d29e56625486"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/e059f3ce92c45c62a0a51f4e8b7438f5fa26983b",
-                "reference": "e059f3ce92c45c62a0a51f4e8b7438f5fa26983b",
+                "url": "https://api.github.com/repos/apiato/core/zipball/6ed736b484943dc383cc2056e0c5d29e56625486",
+                "reference": "6ed736b484943dc383cc2056e0c5d29e56625486",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +165,7 @@
                     "url": "https://www.patreon.com/zalt"
                 }
             ],
-            "time": "2023-12-25T16:07:31+00:00"
+            "time": "2023-12-26T19:15:02+00:00"
         },
         {
             "name": "brick/math",
