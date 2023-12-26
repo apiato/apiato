@@ -36,9 +36,9 @@ jobs:
 
       - name: Install Composer dependencies
         # Laravel & Core
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts
         # explorer
-      # run: composer install --no-ansi --no-interaction --no-progress --no-scripts
+#       run: composer install --no-ansi --no-interaction --no-progress --no-scripts
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
