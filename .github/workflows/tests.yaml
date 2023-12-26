@@ -31,6 +31,9 @@ jobs:
           coverage: xdebug
           tools: phpunit:10.*
 
+      - name: Setup Composer token
+        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install Composer dependencies
         #          composer install --no-ansi --no-interaction --no-progress --no-scripts
 #        run: composer install --prefer-dist --no-interaction --no-progress
