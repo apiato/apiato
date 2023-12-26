@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce7df102043732e6ca7568891841fdf3",
+    "content-hash": "c2f9364af6728eb7c75a599dcf4e154f",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -49,12 +49,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "6ed736b484943dc383cc2056e0c5d29e56625486"
+                "reference": "5dbcc1a7601a14b8e32293fb1fa155c0155bd090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/6ed736b484943dc383cc2056e0c5d29e56625486",
-                "reference": "6ed736b484943dc383cc2056e0c5d29e56625486",
+                "url": "https://api.github.com/repos/apiato/core/zipball/5dbcc1a7601a14b8e32293fb1fa155c0155bd090",
+                "reference": "5dbcc1a7601a14b8e32293fb1fa155c0155bd090",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                     ],
                     "aliases": {
                         "Hashids": "Vinkla\\Hashids\\Facades\\Hashids",
-                        "Fractal": "Spatie\\Fractal\\FractalFacade"
+                        "Fractal": "Spatie\\Fractal\\Facades\\Fractal"
                     }
                 }
             },
@@ -165,7 +165,7 @@
                     "url": "https://www.patreon.com/zalt"
                 }
             ],
-            "time": "2023-12-26T19:15:02+00:00"
+            "time": "2023-12-26T20:04:55+00:00"
         },
         {
             "name": "brick/math",
