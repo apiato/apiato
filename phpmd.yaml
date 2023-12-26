@@ -1,0 +1,21 @@
+name: PHPMD
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  phpmd:
+    name: PHPMD
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup PHP environment
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          tools: phpmd
+      - name: Run PHPMD
+        run: phpmd . github ruleset.xml --exclude 'tests/*,vendor/*'
