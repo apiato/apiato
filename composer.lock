@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcaa6d648e83f072336ec89485df59cc",
+    "content-hash": "bd4b14693de6ec4253c65d9a9455a6a2",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -14420,7 +14420,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "phpmd/phpmd": 0,
         "roave/security-advisories": 20,
