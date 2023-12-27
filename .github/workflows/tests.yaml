@@ -16,7 +16,7 @@ jobs:
   run-testsuite:
     if: github.event.pull_request.draft == false
     runs-on:
-      labels: ubuntu-latest-32-cores
+      labels: ubuntu-latest
     container:
       image: ghcr.io/openforests-git/laravel-test-runner
       credentials:
