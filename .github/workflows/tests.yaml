@@ -36,9 +36,9 @@ jobs:
 
       - name: Install Composer dependencies
         # Laravel & Core
-        # run: composer install --prefer-dist --no-interaction --no-progress --no-scripts
+        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts
         # explorer
-        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
+#        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
         # https://github.com/wikimedia/composer-merge-plugin/issues/252
 #        run: composer install --prefer-dist --no-interaction --no-progress --no-plugins --no-scripts ; composer install
       - name: Execute tests
