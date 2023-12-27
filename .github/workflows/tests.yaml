@@ -29,7 +29,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
           coverage: xdebug
-          tools: phpunit:10.*
+          tools: phpunit:10.x
 
       - name: Setup Composer token
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
         # explorer
 #        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
         # https://github.com/wikimedia/composer-merge-plugin/issues/252
-        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins ; composer update
+        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
