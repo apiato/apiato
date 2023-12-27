@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 10
     services:
       postgres:
-        image: postgis/postgis:14-master
+        image: postgres:latest
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
