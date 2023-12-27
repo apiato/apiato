@@ -40,7 +40,8 @@ jobs:
         # explorer
 #        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
         # https://github.com/wikimedia/composer-merge-plugin/issues/252
-        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins
+#        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins ; composer install
+        run: composer install --prefer-dist --no-interaction --no-scripts --no-plugins
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
