@@ -78,7 +78,6 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan apiato:package:discover"
         ],
         "post-update-cmd": [
