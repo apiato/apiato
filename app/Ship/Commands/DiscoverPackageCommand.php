@@ -23,8 +23,6 @@ class DiscoverPackageCommand extends ConsoleCommand
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle(): void
     {
