@@ -58,7 +58,7 @@
         "nunomaduro/collision": "^7.0",
         "php-standard-library/psalm-plugin": "^2.3",
         "phpmd/phpmd": "@stable",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "10.5.3",
         "psalm/plugin-laravel": "^2.8",
         "psalm/plugin-mockery": "^1.1",
         "psalm/plugin-phpunit": "^0.18.4",
