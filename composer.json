@@ -78,7 +78,8 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php artisan apiato:package:discover"
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
