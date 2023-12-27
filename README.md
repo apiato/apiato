@@ -4,9 +4,13 @@
 
 <h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
-[//]: # (<a href="https://github.com/apiato/apiato/actions"><img src="https://github.com/apiato/apiato/workflows/Tests/badge.svg" alt="Build Status"></a>)
 <p align="center">
+<a href="https://github.com/apiato/apiato/actions"><img src="https://github.com/apiato/apiato/workflows/Tests/badge.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/apiato/apiato" > 
+ <img src="https://codecov.io/gh/apiato/apiato/graph/badge.svg?token=TQqxTZAhUk" alt="code coverage"/> 
+</a>
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
+<br>
 <a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
 <a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
 <a href="https://discord.gg/ryPcV4KM5k"><img src="https://img.shields.io/discord/800815227839053834?label=discord" alt="support"></a>
