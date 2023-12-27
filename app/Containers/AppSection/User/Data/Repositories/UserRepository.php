@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Data\Repositories;
 
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
 class UserRepository extends ParentRepository
@@ -16,6 +17,6 @@ class UserRepository extends ParentRepository
 
     public function model(): string
     {
-        return config('auth.providers.users.model');
+        return User::class;
     }
 }
