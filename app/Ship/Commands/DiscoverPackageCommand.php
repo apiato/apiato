@@ -26,54 +26,50 @@ class DiscoverPackageCommand extends ConsoleCommand
      */
     public function handle(): void
     {
-        try {
-            $this->components->info('Discovering vendor packages');
-            $manifestPackages = $this->laravel->getCachedPackagesPath();
-            //    //base_path() . '/bootstrap/cache/packages.php';
-            //    $modulesPath = base_path() . DIRECTORY_SEPARATOR . 'modules';
-            //    $discoverPackages = array();
-            //    $currentDir = opendir($modulesPath);
-            //    while (($filename = readdir($currentDir)) !== false) {
-            //        $subDir = $modulesPath . DIRECTORY_SEPARATOR . $filename;
-            //        if ($filename == '.' || $filename == '..') {
-            //            continue;
-            //        } else if (is_dir($subDir)) {
-            //            $composerFile = $subDir . DIRECTORY_SEPARATOR . 'composer.json';
-            //            $composer = json_decode(file_get_contents($composerFile), true);
-            //            if (isset($composer['extra']['laravel'])) {
-            //                $this->line("<info>Custom Discovered Package:</info> {$composer['name']}");
-            //                $discoverPackages[$composer['name']] = $composer['extra']['laravel'];
-            //            }
-            //        }
-            //    }
-            //
-            //    $manifest = include "{$manifestPackages}";
-            //    $manifest = array_merge($manifest, $discoverPackages);
-            //    file_put_contents($manifestPackages, '<?php return ' . var_export($manifest, true) . ';');
+        $this->components->info('Discovering vendor packages');
+        $manifestPackages = $this->laravel->getCachedPackagesPath();
+        //    //base_path() . '/bootstrap/cache/packages.php';
+        //    $modulesPath = base_path() . DIRECTORY_SEPARATOR . 'modules';
+        //    $discoverPackages = array();
+        //    $currentDir = opendir($modulesPath);
+        //    while (($filename = readdir($currentDir)) !== false) {
+        //        $subDir = $modulesPath . DIRECTORY_SEPARATOR . $filename;
+        //        if ($filename == '.' || $filename == '..') {
+        //            continue;
+        //        } else if (is_dir($subDir)) {
+        //            $composerFile = $subDir . DIRECTORY_SEPARATOR . 'composer.json';
+        //            $composer = json_decode(file_get_contents($composerFile), true);
+        //            if (isset($composer['extra']['laravel'])) {
+        //                $this->line("<info>Custom Discovered Package:</info> {$composer['name']}");
+        //                $discoverPackages[$composer['name']] = $composer['extra']['laravel'];
+        //            }
+        //        }
+        //    }
+        //
+        //    $manifest = include "{$manifestPackages}";
+        //    $manifest = array_merge($manifest, $discoverPackages);
+        //    file_put_contents($manifestPackages, '<?php return ' . var_export($manifest, true) . ';');
 
-            $discoverPackages = [];
-            foreach (Apiato::getAllContainerPaths() as $containerPath) {
-                $composerFile = $containerPath . DIRECTORY_SEPARATOR . 'composer.json';
-                $composer = json_decode(file_get_contents($composerFile), true);
-                if (isset($composer['extra']['laravel'])) {
-                    $this->line("<info>Custom Discovered Package:</info> {$composer['name']}");
-                    $discoverPackages[$composer['name']] = $composer['extra']['laravel'];
-                }
+        $discoverPackages = [];
+        foreach (Apiato::getAllContainerPaths() as $containerPath) {
+            $composerFile = $containerPath . DIRECTORY_SEPARATOR . 'composer.json';
+            $composer = json_decode(file_get_contents($composerFile), true);
+            if (isset($composer['extra']['laravel'])) {
+                $this->line("<info>Custom Discovered Package:</info> {$composer['name']}");
+                $discoverPackages[$composer['name']] = $composer['extra']['laravel'];
             }
-            //    dump($discoverPackages);
-            //    dump($manifestPackages);
-            $manifest = include "{$manifestPackages}";
-            //    dump($manifest);
-            $manifest = array_merge($manifest, $discoverPackages);
-            collect($manifest)
-                ->keys()
-                ->each(fn ($description) => $this->components->task($description))
-                ->whenNotEmpty(fn () => $this->newLine());
-            //    dump($manifest);
-            file_put_contents($manifestPackages, '<?php return ' . var_export($manifest, true) . ';');
-            //    dump($manifestPackages);
-        } catch (\Exception $exception) {
-            $this->components->error($exception->getMessage());
         }
+        //    dump($discoverPackages);
+        //    dump($manifestPackages);
+        $manifest = include "{$manifestPackages}";
+        //    dump($manifest);
+        $manifest = array_merge($manifest, $discoverPackages);
+        collect($manifest)
+            ->keys()
+            ->each(fn ($description) => $this->components->task($description))
+            ->whenNotEmpty(fn () => $this->newLine());
+        //    dump($manifest);
+        file_put_contents($manifestPackages, '<?php return ' . var_export($manifest, true) . ';');
+        //    dump($manifestPackages);
     }
 }
