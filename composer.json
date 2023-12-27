@@ -99,18 +99,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [],
-            "providers": [
-                "Apiato\\Core\\Providers\\ApiatoServiceProvider",
-                "Vinkla\\Hashids\\HashidsServiceProvider",
-                "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
-                "Spatie\\Fractal\\FractalServiceProvider",
-                "Apiato\\Core\\Generator\\GeneratorsServiceProvider"
-            ],
-            "aliases": {
-                "Hashids": "Vinkla\\Hashids\\Facades\\Hashids",
-                "Fractal": "Spatie\\Fractal\\Facades\\Fractal"
-            }
+            "dont-discover": []
         },
         "merge-plugin": {
             "include": [
