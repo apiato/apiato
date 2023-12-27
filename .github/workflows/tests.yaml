@@ -1,64 +1,114 @@
-name: Tests
-
 on:
-  push:
-    branches:
-      - master
-      - '*.x'
   pull_request:
-
-permissions:
-  contents: read
-
+    types: [opened, synchronize, reopened, ready_for_review]
+name: Testing
 jobs:
-  tests:
+
+  # this job is only here to fail the workflow if the pull request is still a draft
+  # this is necessary to prevent skipping the testsuite if the pull request is marked as ready for review
+  fail_if_pull_request_is_draft:
+    if: github.event.pull_request.draft == true
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [ 8.1, 8.2 ]
-    name: PHP ${{ matrix.php }}
-    timeout-minutes: 10
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      -   name: Fails in order to indicate that pull request needs to be marked as ready to review and unit tests workflow needs to pass.
+          run: exit 1
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
-          coverage: xdebug
-          tools: phpunit:10.x
+  run-testsuite:
+    if: github.event.pull_request.draft == false
+    runs-on:
+      labels: ubuntu-latest-32-cores
+    container:
+      image: ghcr.io/openforests-git/laravel-test-runner
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    timeout-minutes: 10
 
-      - name: Setup Composer token
+    # Docs: https://docs.github.com/en/actions/using-containerized-services
+    services:
+      postgres:
+        image: postgis/postgis:14-master # we use the postgres version of the production system here
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      -   name: Checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 1
+
+      -  run: npm install
+
+      - name: setup composer token
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install Composer dependencies
-        # Laravel & Core
-#        run: composer install --prefer-dist --no-interaction --no-progress
-        # explorer
-#        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
-        # https://github.com/wikimedia/composer-merge-plugin/issues/252
-#        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins ; composer install
-        run: composer install --no-interaction --no-progress --no-scripts
-      - name: Execute tests
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      -   name: Get composer cache directory
+          id: composer-cache
+          run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          verbose: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      -   name: Get composer cache key
+          id: composer-cache-key
+          run: echo "key=${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}" >> $GITHUB_OUTPUT
 
-      - name: Copy environment file
-        #          cp .env.ci .env
-        run: cp .env.example .env
+      -   name: Get composer vendor cache key
+          id: composer-vendor-cache-key
+          run: echo "key=${{ runner.os }}-vendor-${{ hashFiles('**/composer.lock') }}" >> $GITHUB_OUTPUT
 
-      - name: Generate app key
-        run: php artisan key:generate
+      -   name: Cache composer dependencies
+          uses: actions/cache@v3
+          with:
+            path: ${{ steps.composer-cache.outputs.dir }}
+            key: ${{ steps.composer-cache-key.outputs.key }}
+            restore-keys: ${{ runner.os }}-composer-
 
-      - name: Run Testsuite
-        run: vendor/bin/phpunit
+      -   name: Cache vendor folder
+          uses: actions/cache@v3
+          id: vendor-cache
+          with:
+            path: |
+              vendor
+              app/Containers/Vendor
+            key: ${{ steps.composer-vendor-cache-key.outputs.key }}
+
+      -   name: Validate composer.json and composer.lock
+          run: composer validate
+
+      -   name: Install Composer dependencies
+          if: steps.vendor-cache.outputs.cache-hit != 'true'
+          run: composer install --no-ansi --no-interaction --no-progress --no-scripts
+
+      -   name: Prepare Application
+          run: |
+            cp .env.ci .env
+            php artisan key:generate
+
+      -   name: Run Testsuite
+          env:
+            PASSPORT_PRIVATE_KEY: ${{ secrets.PASSPORT_PRIVATE_KEY }}
+            PASSPORT_PUBLIC_KEY: ${{ secrets.PASSPORT_PUBLIC_KEY }}
+          run: php artisan test --parallel --coverage-clover=coverage.xml --log-junit=test-results.xml
+
+      -   name: store coverage report as artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: coverage
+            path: ./coverage.xml
+
+      -   name: store test report as artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: test-results
+            path: ./test-results.xml
+
+      -   name: Upload coverage reports to Codecov
+          uses: codecov/codecov-action@v3
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            files: ./coverage.xml
+            fail_ci_if_error: true
+            verbose: true
