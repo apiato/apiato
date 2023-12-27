@@ -3,5 +3,20 @@
     "description": "apiato Container for apiato.",
     "type": "apiato-container",
     "require": {
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Apiato\\Core\\Providers\\ApiatoServiceProvider",
+                "Vinkla\\Hashids\\HashidsServiceProvider",
+                "Prettus\\Repository\\Providers\\RepositoryServiceProvider",
+                "Spatie\\Fractal\\FractalServiceProvider",
+                "Apiato\\Core\\Generator\\GeneratorsServiceProvider"
+            ],
+            "aliases": {
+                "Hashids": "Vinkla\\Hashids\\Facades\\Hashids",
+                "Fractal": "Spatie\\Fractal\\Facades\\Fractal"
+            }
+        }
     }
 }
