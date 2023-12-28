@@ -11,7 +11,6 @@
         "PHP API Starter",
         "Laravel API",
         "PHP",
-        "Hello API",
         "Porto",
         "Porto SAP"
     ],
@@ -35,6 +34,7 @@
         }
     ],
     "require": {
+        "php": "^8.1",
         "ext-curl": "*",
         "ext-gettext": "*",
         "ext-mbstring": "*",
@@ -46,8 +46,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
         "lcobucci/clock": "3.0.0",
-        "php": "^8.1",
-        "wikimedia/composer-merge-plugin": "^2.0.1"
+        "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
         "ext-intl": "*",
@@ -80,8 +79,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@ide-helper"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -111,7 +109,7 @@
             "recurse": true,
             "replace": false,
             "merge-dev": true,
-            "merge-extra": false,
+            "merge-extra": true,
             "merge-extra-deep": false,
             "merge-scripts": true
         }
@@ -126,9 +124,9 @@
         "allow-plugins": {
             "apiato/container-installer": true,
             "composer/package-versions-deprecated": true,
-            "wikimedia/composer-merge-plugin": true,
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",

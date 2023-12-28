@@ -1,10 +1,14 @@
 {
     "name": "apiato/ship",
     "description": "Apiato Ship folder where shared functionality resides",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/apiato/core"
+        }
+    ],
     "require": {
-        "apiato/core": "^8.7.0",
-        "apiato/documentation-generator-container": "^3.0.0",
-        "apiato/welcome-container": "^2.0.1"
+        "apiato/core": "8.*-dev"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13.0",

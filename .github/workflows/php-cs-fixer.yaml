@@ -1,11 +1,16 @@
-on: [push, pull_request]
 name: Check & fix styling
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
 jobs:
   php-cs-fixer:
     name: PHP-CS-Fixer
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
