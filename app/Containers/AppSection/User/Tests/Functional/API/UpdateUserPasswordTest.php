@@ -6,9 +6,11 @@ use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
+#[CoversNothing]
 class UpdateUserPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{id}/password';

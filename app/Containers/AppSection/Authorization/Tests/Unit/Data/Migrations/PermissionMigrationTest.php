@@ -4,9 +4,11 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
+#[CoversNothing]
 class PermissionMigrationTest extends UnitTestCase
 {
     private array $tableNames;

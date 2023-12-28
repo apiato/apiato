@@ -5,9 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversNothing]
 class GetAuthenticatedUserTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/profile';

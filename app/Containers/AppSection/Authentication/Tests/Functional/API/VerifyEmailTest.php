@@ -7,9 +7,11 @@ use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversNothing]
 class VerifyEmailTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/email/verify/{id}/{hash}';

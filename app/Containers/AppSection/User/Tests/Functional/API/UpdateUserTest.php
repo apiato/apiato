@@ -5,9 +5,11 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
+#[CoversNothing]
 class UpdateUserTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{id}';

@@ -4,9 +4,11 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
+#[CoversNothing]
 class DeleteUserTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{id}';
