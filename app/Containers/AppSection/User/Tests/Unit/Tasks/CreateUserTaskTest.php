@@ -8,9 +8,11 @@ use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversClass(CreateUserTask::class)]
 class CreateUserTaskTest extends UnitTestCase
 {
     public function testCreateUser(): void

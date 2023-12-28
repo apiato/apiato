@@ -5,9 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Config;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversClass(LoginCustomAttribute::class)]
 class LoginCustomAttributeTest extends UnitTestCase
 {
     public function testGivenValidLoginAttributeThenExtractUsername(): void

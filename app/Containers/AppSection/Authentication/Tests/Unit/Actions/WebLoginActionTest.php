@@ -8,9 +8,11 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Config;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversClass(WebLoginAction::class)]
 class WebLoginActionTest extends UnitTestCase
 {
     private array $userDetails;

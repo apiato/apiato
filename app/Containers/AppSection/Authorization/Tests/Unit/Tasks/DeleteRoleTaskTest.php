@@ -6,9 +6,11 @@ use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tasks\DeleteRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
+#[CoversClass(DeleteRoleTask::class)]
 class DeleteRoleTaskTest extends UnitTestCase
 {
     public function testSuccessfulDeleteRoleShouldReturn1(): void

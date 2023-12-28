@@ -4,9 +4,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Exceptions;
 
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingException;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
+#[CoversClass(RefreshTokenMissingException::class)]
 class RefreshTokenMissingExceptionTest extends UnitTestCase
 {
     public function testRefreshTokenMissedException(): void

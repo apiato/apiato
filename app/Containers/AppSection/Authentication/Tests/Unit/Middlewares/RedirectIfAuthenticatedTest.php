@@ -7,10 +7,12 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
-class RedirectIfAuthenticatedMiddlewareTest extends UnitTestCase
+#[CoversClass(RedirectIfAuthenticated::class)]
+class RedirectIfAuthenticatedTest extends UnitTestCase
 {
     public function testRedirectIfAuthenticated(): void
     {

@@ -7,9 +7,11 @@ use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Hash;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
+#[CoversClass(UpdateUserTask::class)]
 class UpdateUserTaskTest extends UnitTestCase
 {
     public function testUpdateUser(): void
