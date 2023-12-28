@@ -21,10 +21,13 @@
             <directory>./app/Containers/Vendor</directory>
             <!-- NOTE: Exclude the following directories because they fail when directly included with code-coverage-->
             <directory>./app/Containers/*/*/UI/*/Routes</directory>
-            <directory>./app/Containers/*/*/Data/Factories</directory>
+            <directory>./app/Containers/*/*/Configs</directory>
+            <directory>./app/Containers/*/*/Data/Migrations</directory>
+            <directory>./app/Ship/Configs</directory>
+            <directory>./app/Ship/Migrations</directory>
             <!-- NOTE: Exclude tests from coverage-->
             <directory>./app/Containers/*/*/Tests</directory>
-            <directory>./app/Containers/*/*/UI/*/Tests</directory>
+            <directory>./app/Ship/Tests</directory>
             <!-- NOTE: Exclude blade files from coverage-->
             <directory suffix=".blade.php">./app</directory>
         </exclude>
