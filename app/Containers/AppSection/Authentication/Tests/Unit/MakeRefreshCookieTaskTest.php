@@ -11,7 +11,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
  */
 class MakeRefreshCookieTaskTest extends UnitTestCase
 {
-    public function testMakeRefreshCookie()
+    public function testMakeRefreshCookie(): void
     {
         $refreshToken = 'some-random-refresh-token';
         $task = app(MakeRefreshCookieTask::class);

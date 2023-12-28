@@ -8,10 +8,10 @@ use App\Ship\Criterias\ThisLikeThatCriteria;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class GetAllRolesTask extends ParentTask
+class ListRolesTask extends ParentTask
 {
     public function __construct(
-        protected readonly RoleRepository $repository
+        protected readonly RoleRepository $repository,
     ) {
     }
 
@@ -21,9 +21,13 @@ class GetAllRolesTask extends ParentTask
      */
     public function run(bool $skipPagination = false): mixed
     {
-        $this->addRequestCriteria($this->repository);
+        $this->repository->addRequestCriteria();
 
-        return $skipPagination ? $this->repository->all() : $this->repository->paginate();
+        if ($skipPagination) {
+            return $this->repository->all();
+        }
+
+        return $this->repository->paginate();
     }
 
     /**

@@ -7,10 +7,10 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class GetAllUsersTask extends ParentTask
+class ListUsersTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository
+        protected readonly UserRepository $repository,
     ) {
     }
 
@@ -20,6 +20,6 @@ class GetAllUsersTask extends ParentTask
      */
     public function run(): mixed
     {
-        return $this->addRequestCriteria()->repository->paginate();
+        return $this->repository->addRequestCriteria()->paginate();
     }
 }

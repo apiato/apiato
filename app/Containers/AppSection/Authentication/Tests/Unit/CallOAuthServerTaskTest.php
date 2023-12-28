@@ -12,7 +12,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
  */
 class CallOAuthServerTaskTest extends UnitTestCase
 {
-    public function testCallOAuthServer()
+    public function testCallOAuthServer(): void
     {
         $data = [
             'grant_type' => 'password',
@@ -36,7 +36,7 @@ class CallOAuthServerTaskTest extends UnitTestCase
         $this->assertArrayHasKey('refresh_token', $result);
     }
 
-    public function testCallOAuthServerWithInvalidCredentials()
+    public function testCallOAuthServerWithInvalidCredentials(): void
     {
         $this->expectException(LoginFailedException::class);
         $this->expectExceptionMessage('The user credentials were incorrect.');

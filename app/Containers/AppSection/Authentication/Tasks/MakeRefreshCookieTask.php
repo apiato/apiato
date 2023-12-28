@@ -18,7 +18,7 @@ class MakeRefreshCookieTask extends ParentTask
             null,
             null,
             config('session.secure'),
-            true // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
+            true, // Save the refresh token in a HttpOnly cookie to minimize the risk of XSS attacks
         );
     }
 }

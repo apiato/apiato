@@ -6,24 +6,19 @@ use Apiato\Core\Abstracts\Providers\EventServiceProvider as AbstractEventService
 
 /**
  * Class EventServiceProvider.
- *
- * A.K.A. app/Providers/EventServiceProvider.php
+ * A.K.A. app/Providers/EventServiceProvider.php.
  */
 abstract class EventServiceProvider extends AbstractEventServiceProvider
 {
     /**
      * The event listener mappings for the application.
-     *
-     * @var array<string, array<int, string>>
      */
     protected $listen = [];
 
     /**
-     * Register any events for your application.
-     *
-     * @return void
+     * Register any other events for your application.
      */
-    public function boot()
+    public function boot(): void
     {
     }
 

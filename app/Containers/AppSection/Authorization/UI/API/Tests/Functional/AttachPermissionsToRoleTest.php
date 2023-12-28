@@ -2,11 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -23,8 +22,8 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     public function testAttachSinglePermissionToRole(): void
     {
-        $role = Role::factory()->create();
-        $permission = Permission::factory()->create();
+        $role = RoleFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne();
         $data = [
             'role_id' => $role->getHashedKey(),
             'permissions_ids' => $permission->getHashedKey(),
@@ -40,15 +39,15 @@ class AttachPermissionsToRoleTest extends ApiTestCase
                 ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permission->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testAttachMultiplePermissionsToRole(): void
     {
-        $role = Role::factory()->create();
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
+        $role = RoleFactory::new()->createOne();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
         $data = [
             'role_id' => $role->getHashedKey(),
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
@@ -65,17 +64,17 @@ class AttachPermissionsToRoleTest extends ApiTestCase
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testAttachNonExistingPermissionToRole(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => [Hashids::encode($invalidId)],
+            'permissions_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->makeCall($data);
@@ -86,18 +85,18 @@ class AttachPermissionsToRoleTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 
     public function testAttachPermissionToNonExistingRole(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'role_id' => Hashids::encode($invalidId),
+            'role_id' => $this->encode($invalidId),
             'permissions_ids' => [$permission->getHashedKey()],
         ];
 
@@ -107,7 +106,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 }

@@ -10,7 +10,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class GetUserRolesAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByIdTask $findUserByIdTask
+        private readonly FindUserByIdTask $findUserByIdTask,
     ) {
     }
 

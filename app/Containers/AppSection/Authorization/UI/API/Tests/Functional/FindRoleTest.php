@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 
 /**
@@ -20,7 +20,7 @@ class FindRoleTest extends ApiTestCase
 
     public function testFindRoleById(): void
     {
-        $roleA = Role::factory()->create();
+        $roleA = RoleFactory::new()->createOne();
 
         $response = $this->injectId($roleA->id)->makeCall();
 

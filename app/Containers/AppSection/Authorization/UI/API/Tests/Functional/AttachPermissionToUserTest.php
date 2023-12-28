@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -13,10 +13,8 @@ use Illuminate\Testing\Fluent\AssertableJson;
  */
 class AttachPermissionToUserTest extends ApiTestCase
 {
-    // the endpoint to be called within this test (e.g., get@v1/users)
     protected string $endpoint = 'patch@v1/users/{id}/permissions';
 
-    // fake some access rights
     protected array $access = [
         'permissions' => 'manage-permissions',
         'roles' => '',
@@ -24,9 +22,9 @@ class AttachPermissionToUserTest extends ApiTestCase
 
     public function testAttachSinglePermissionToUser(): void
     {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
 
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $data = [
             'permissions_ids' => [$permission->id],
         ];
@@ -43,15 +41,15 @@ class AttachPermissionToUserTest extends ApiTestCase
                 ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permission->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testAttachMultiplePermissionsToUser(): void
     {
-        $user = User::factory()->create();
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
+        $user = UserFactory::new()->createOne();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
         $data = [
             'permissions_ids' => [$permissionA->id, $permissionB->id],
         ];
@@ -67,13 +65,13 @@ class AttachPermissionToUserTest extends ApiTestCase
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testAttachNonExistingPermissionToUser(): void
     {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
         $invalidId = 3333;
         $data = [
             'permissions_ids' => [$invalidId],
@@ -86,15 +84,15 @@ class AttachPermissionToUserTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 
     public function testAttachPermissionToNonExistingUser(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'permissions_ids' => [$permission->id],
@@ -106,7 +104,7 @@ class AttachPermissionToUserTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.id.0', 'The selected id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 }

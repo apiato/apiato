@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Notification;
@@ -73,7 +74,7 @@ class ResetPasswordActionTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create([
+        $this->user = UserFactory::new()->create([
             'email' => 'someone@something.test',
             'password' => 'old pass',
         ]);

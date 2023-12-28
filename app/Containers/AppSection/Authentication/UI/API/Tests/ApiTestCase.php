@@ -6,13 +6,10 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
-/**
- * Class ApiTestCase.
- *
- * Use this class to add your container specific API related test helper functions.
- */
 class ApiTestCase extends ParentTestCase
 {
+    private const OAUTH_PUBLIC_KEY = 'oauth-public.key';
+    private const OAUTH_PRIVATE_KEY = 'oauth-private.key';
     private bool $testingFilesCreated = false;
     private string $publicFilePath;
     private string $privateFilePath;
@@ -24,7 +21,7 @@ class ApiTestCase extends ParentTestCase
         $clientId = '100';
         $clientSecret = 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX';
 
-        // create password grand client
+        // create a password grand client
         DB::table('oauth_clients')->insert([
             [
                 'id' => $clientId,
@@ -42,11 +39,11 @@ class ApiTestCase extends ParentTestCase
         Config::set('appSection-authentication.clients.web.secret', $clientSecret);
 
         // create testing oauth keys files
-        $this->publicFilePath = $this->createTestingKey('oauth-public.key');
-        $this->privateFilePath = $this->createTestingKey('oauth-private.key');
+        $this->publicFilePath = $this->createTestingKey(self::OAUTH_PUBLIC_KEY);
+        $this->privateFilePath = $this->createTestingKey(self::OAUTH_PRIVATE_KEY);
     }
 
-    private function createTestingKey($fileName): string
+    private function createTestingKey(string $fileName): string
     {
         $filePath = storage_path($fileName);
 

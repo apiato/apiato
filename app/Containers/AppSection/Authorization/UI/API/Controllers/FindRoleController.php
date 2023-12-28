@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class FindRoleController extends ApiController
 {
     public function __construct(
-        private readonly FindRoleAction $findRoleAction
+        private readonly FindRoleAction $findRoleAction,
     ) {
     }
 

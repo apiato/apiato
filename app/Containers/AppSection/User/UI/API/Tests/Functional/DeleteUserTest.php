@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 
 /**
@@ -39,7 +39,7 @@ class DeleteUserTest extends ApiTestCase
     public function testGivenHaveNoAccessCannotDeleteAnotherUser(): void
     {
         $this->getTestingUserWithoutAccess();
-        $anotherUser = User::factory()->create();
+        $anotherUser = UserFactory::new()->createOne();
 
         $response = $this->injectId($anotherUser->id)->makeCall();
 

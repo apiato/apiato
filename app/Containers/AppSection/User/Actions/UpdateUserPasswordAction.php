@@ -14,7 +14,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class UpdateUserPasswordAction extends ParentAction
 {
     public function __construct(
-        private readonly UpdateUserTask $updateUserTask
+        private readonly UpdateUserTask $updateUserTask,
     ) {
     }
 

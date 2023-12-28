@@ -7,7 +7,7 @@ use App\Ship\Providers\RouteServiceProvider;
 
 class Authenticate extends CoreMiddleware
 {
-    protected function redirectTo($request): ?string
+    protected function redirectTo($request): null|string
     {
         return $request->expectsJson() ? null : route(RouteServiceProvider::LOGIN);
     }

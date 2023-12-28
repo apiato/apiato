@@ -12,7 +12,7 @@ class CreateAdminCommand extends ParentConsoleCommand
     protected $description = 'Create a new User with the ADMIN role';
 
     public function __construct(
-        private readonly CreateAdminAction $createAdminAction
+        private readonly CreateAdminAction $createAdminAction,
     ) {
         parent::__construct();
     }

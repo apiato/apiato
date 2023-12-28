@@ -11,7 +11,6 @@
         "PHP API Starter",
         "Laravel API",
         "PHP",
-        "Hello API",
         "Porto",
         "Porto SAP"
     ],
@@ -24,10 +23,18 @@
     "authors": [
         {
             "name": "Mahmoud Zalt",
-            "email": "mahmoud@zalt.me"
+            "email": "mahmoud@zalt.me",
+            "role": "Developer"
+        },
+        {
+            "name": "Mohammad Alavi",
+            "email": "mohammad.alavi1990@gmail.com",
+            "homepage": "https://mohammadalavi.com/",
+            "role": "Developer"
         }
     ],
     "require": {
+        "php": "^8.1",
         "ext-curl": "*",
         "ext-gettext": "*",
         "ext-mbstring": "*",
@@ -39,8 +46,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
         "lcobucci/clock": "3.0.0",
-        "php": "^8.1",
-        "wikimedia/composer-merge-plugin": "^2.0.1"
+        "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
         "ext-intl": "*",
@@ -50,7 +56,12 @@
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
+        "php-standard-library/psalm-plugin": "^2.3",
+        "phpmd/phpmd": "@stable",
         "phpunit/phpunit": "^10.0",
+        "psalm/plugin-laravel": "^2.8",
+        "psalm/plugin-mockery": "^1.1",
+        "psalm/plugin-phpunit": "^0.18.4",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
         "vimeo/psalm": "^5.8.0"
@@ -78,6 +89,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "ide-helper": [
+            "@php artisan ide-helper:models --nowrite --reset",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:eloquent"
         ]
     },
     "extra": {
@@ -92,7 +109,7 @@
             "recurse": true,
             "replace": false,
             "merge-dev": true,
-            "merge-extra": false,
+            "merge-extra": true,
             "merge-extra-deep": false,
             "merge-scripts": true
         }
@@ -107,9 +124,9 @@
         "allow-plugins": {
             "apiato/container-installer": true,
             "composer/package-versions-deprecated": true,
-            "wikimedia/composer-merge-plugin": true,
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",

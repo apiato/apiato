@@ -6,23 +6,22 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Exception;
 
 class FindUserByIdTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository
+        protected readonly UserRepository $repository,
     ) {
     }
 
     /**
      * @throws NotFoundException
      */
-    public function run($userId): User
+    public function run(mixed $userId): User
     {
         try {
             return $this->repository->find($userId);
-        } catch (Exception) {
+        } catch (\Exception) {
             throw new NotFoundException();
         }
     }

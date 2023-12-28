@@ -14,18 +14,11 @@ class AssignRolesToUserRequest extends ParentRequest
         'roles' => '',
     ];
 
-    /**
-     * Id's that needs decoding before applying the validation rules.
-     */
     protected array $decode = [
         'user_id',
         'roles_ids.*',
     ];
 
-    /**
-     * Defining the URL parameters (`/stores/999/items`) allows applying
-     * validation rules on them and allows accessing them like request data.
-     */
     protected array $urlParameters = [
     ];
 

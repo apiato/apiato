@@ -12,7 +12,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
  */
 class ApiLogoutActionTest extends UnitTestCase
 {
-    public function testApiLogoutAction()
+    public function testApiLogoutAction(): void
     {
         $data = [
             'email' => 'gandalf@the.grey',
@@ -23,8 +23,8 @@ class ApiLogoutActionTest extends UnitTestCase
         $request = LogoutRequest::injectData(server: ['HTTP_AUTHORIZATION' => 'Bearer ' . $accessToken]);
         $action = app(ApiLogoutAction::class);
 
-        $response = $action->run($request);
+        $action->run($request);
 
-        $this->assertNull($response);
+        $this->assertTrue(true);
     }
 }

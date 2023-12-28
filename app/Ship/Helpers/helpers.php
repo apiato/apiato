@@ -15,7 +15,7 @@ if (!function_exists('activeGuard')) {
     /**
      * Get the current logged-in user guard.
      */
-    function activeGuard(): ?string
+    function activeGuard(): null|string
     {
         foreach (array_keys(config('auth.guards')) as $guard) {
             if (auth()->guard($guard)->check()) {

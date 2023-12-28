@@ -30,7 +30,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
             [
                 ...array_keys(config('appSection-authentication.login.attributes')),
                 'password',
-            ]
+            ],
         );
 
         [$loginFieldValue] = LoginCustomAttribute::extract($sanitizedData);

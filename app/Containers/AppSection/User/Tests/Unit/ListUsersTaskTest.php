@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit;
 
-use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tasks\GetAllUsersTask;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Tasks\ListUsersTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
@@ -11,12 +11,12 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
  * @group user
  * @group unit
  */
-class GetAllUsersTaskTest extends UnitTestCase
+class ListUsersTaskTest extends UnitTestCase
 {
-    public function testGetAllUsers(): void
+    public function testListUsers(): void
     {
-        User::factory(2)->create();
-        $task = app(GetAllUsersTask::class);
+        UserFactory::new()->count(2)->create();
+        $task = app(ListUsersTask::class);
 
         $foundUsers = $task->run();
 

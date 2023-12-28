@@ -49,7 +49,7 @@ class ResetPasswordTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -69,9 +69,9 @@ class ResetPasswordTest extends ApiTestCase
                     fn (AssertableJson $json) => $json
                         ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
                         ->where('1', 'The password field must contain at least one letter.')
-                        ->where('2', 'The password field must contain at least one number.')
+                        ->where('2', 'The password field must contain at least one number.'),
                 )
-                ->etc()
+                ->etc(),
         );
     }
 }

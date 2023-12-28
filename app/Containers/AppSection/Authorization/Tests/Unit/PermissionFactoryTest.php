@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 
@@ -13,7 +14,7 @@ class PermissionFactoryTest extends UnitTestCase
 {
     public function testCreatePermission(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
 
         $this->assertInstanceOf(Permission::class, $permission);
     }

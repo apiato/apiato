@@ -16,7 +16,7 @@ class CreateAdminAction extends ParentAction
     public function __construct(
         private readonly CreateUserTask $createUserTask,
         private readonly FindRoleTask $findRoleTask,
-        private readonly AssignRolesToUserTask $assignRolesToUserTask
+        private readonly AssignRolesToUserTask $assignRolesToUserTask,
     ) {
     }
 

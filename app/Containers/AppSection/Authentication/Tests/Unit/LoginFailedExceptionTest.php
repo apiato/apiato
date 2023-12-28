@@ -11,7 +11,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
  */
 class LoginFailedExceptionTest extends UnitTestCase
 {
-    public function testLoginFailedException()
+    public function testLoginFailedException(): void
     {
         $this->expectExceptionCode(422);
         $this->expectExceptionMessage('An Exception happened during the Login Process.');

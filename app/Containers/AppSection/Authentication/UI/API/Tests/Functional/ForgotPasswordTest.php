@@ -50,8 +50,8 @@ class ForgotPasswordTest extends ApiTestCase
             fn (AssertableJson $json) => $json->has(
                 'errors',
                 fn (AssertableJson $json) => $json
-                    ->where('reseturl.0', 'The selected reseturl is invalid.')
-            )->etc()
+                    ->where('reseturl.0', 'The selected reseturl is invalid.'),
+            )->etc(),
         );
     }
 }

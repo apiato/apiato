@@ -14,7 +14,7 @@ use Illuminate\Http\RedirectResponse;
 class LoginController extends WebController
 {
     public function __construct(
-        private readonly WebLoginAction $webLoginAction
+        private readonly WebLoginAction $webLoginAction,
     ) {
     }
 

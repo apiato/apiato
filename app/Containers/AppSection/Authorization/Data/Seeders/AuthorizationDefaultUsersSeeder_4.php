@@ -9,7 +9,7 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 {
     public function __construct(
-        private readonly CreateAdminAction $createAdminAction
+        private readonly CreateAdminAction $createAdminAction,
     ) {
     }
 

@@ -31,7 +31,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
                 'expires_in',
                 'access_token',
             ])->where('token_type', 'Bearer')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -53,7 +53,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
                 'expires_in',
                 'access_token',
             ])->where('token_type', 'Bearer')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -84,7 +84,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
                 'access_token',
                 'refresh_token',
             ])->where('token_type', 'Bearer')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -108,7 +108,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response->assertJson(fn (AssertableJson $json) => $json->has(
             'errors',
             fn (AssertableJson $json) => $json
-                ->where('email.0', 'The email field is required.')
+                ->where('email.0', 'The email field is required.'),
         )->etc());
     }
 
@@ -129,7 +129,7 @@ class ApiLoginProxyForWebClientTest extends ApiTestCase
             'errors',
             fn (AssertableJson $json) => $json
                 ->where('email.0', 'The email field is required when none of name are present.')
-                ->where('name.0', 'The name field is required when none of email are present.')
+                ->where('name.0', 'The name field is required when none of email are present.'),
         )->etc());
     }
 

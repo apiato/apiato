@@ -5,7 +5,7 @@
  *
  * @apiName            ResetPassword
  *
- * @api                {GET/POST} /v1/password/reset Reset Password
+ * @api                {post} /v1/password/reset Reset Password
  *
  * @apiDescription     Resets password of a user.
  *
@@ -37,4 +37,4 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::any('password/reset', ResetPasswordController::class);
+Route::post('password/reset', ResetPasswordController::class);

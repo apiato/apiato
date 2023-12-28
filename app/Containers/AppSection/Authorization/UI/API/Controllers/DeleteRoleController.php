@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class DeleteRoleController extends ApiController
 {
     public function __construct(
-        private readonly DeleteRoleAction $deleteRoleAction
+        private readonly DeleteRoleAction $deleteRoleAction,
     ) {
     }
 

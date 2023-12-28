@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class AttachPermissionsToUserController extends ApiController
 {
     public function __construct(
-        private readonly AttachPermissionsToUserAction $attachPermissionsToUserAction
+        private readonly AttachPermissionsToUserAction $attachPermissionsToUserAction,
     ) {
     }
 

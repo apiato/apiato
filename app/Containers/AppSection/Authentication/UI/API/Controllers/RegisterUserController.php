@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class RegisterUserController extends ApiController
 {
     public function __construct(
-        private readonly RegisterUserAction $registerUserAction
+        private readonly RegisterUserAction $registerUserAction,
     ) {
     }
 

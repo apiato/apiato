@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class FindUserByIdController extends ApiController
 {
     public function __construct(
-        private readonly FindUserByIdAction $findUserByIdAction
+        private readonly FindUserByIdAction $findUserByIdAction,
     ) {
     }
 

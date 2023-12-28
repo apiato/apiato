@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class DetachPermissionsFromRoleController extends ApiController
 {
     public function __construct(
-        private readonly DetachPermissionsFromRoleAction $detachPermissionsFromRoleAction
+        private readonly DetachPermissionsFromRoleAction $detachPermissionsFromRoleAction,
     ) {
     }
 

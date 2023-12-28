@@ -5,8 +5,14 @@ namespace App\Containers\AppSection\Authorization\Data\Factories;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 
+/**
+ * @template TModel of Role
+ *
+ * @extends ParentFactory<TModel>
+ */
 class RoleFactory extends ParentFactory
 {
+    /** @var class-string<TModel> */
     protected $model = Role::class;
 
     public function definition(): array

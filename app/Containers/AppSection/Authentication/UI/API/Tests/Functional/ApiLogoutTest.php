@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -24,13 +24,13 @@ class ApiLogoutTest extends ApiTestCase
 
         $response->assertJson(
             fn (AssertableJson $json) => $json
-                ->where('message', 'Token revoked successfully.')
+                ->where('message', 'Token revoked successfully.'),
         );
     }
 
     public function testLogoutWhileUnauthenticated(): void
     {
-        $this->testingUser = User::factory()->create();
+        $this->testingUser = UserFactory::new()->createOne();
 
         $response = $this->auth(false)->makeCall();
 

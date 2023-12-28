@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 
@@ -10,7 +10,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
  * @group user
  * @group api
  */
-class GetAllUsersTest extends ApiTestCase
+class ListUsersTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users';
 
@@ -19,9 +19,9 @@ class GetAllUsersTest extends ApiTestCase
         'roles' => '',
     ];
 
-    public function testGetAllUsersByAdmin(): void
+    public function testListUsersByAdmin(): void
     {
-        User::factory()->count(2)->create();
+        UserFactory::new()->count(2)->create();
         $this->getTestingUserWithoutAccess(createUserAsAdmin: true);
 
         $response = $this->makeCall();
@@ -29,14 +29,14 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data', 4)
-                    ->etc()
+                    ->etc(),
         );
     }
 
-    public function testGetAllUsersByNonAdmin(): void
+    public function testListUsersByNonAdmin(): void
     {
         $this->getTestingUserWithoutAccess();
-        User::factory()->count(2)->create();
+        UserFactory::new()->count(2)->create();
 
         $response = $this->makeCall();
 
@@ -44,13 +44,13 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('message')
                     ->where('message', 'You are not authorized to request this resource.')
-                    ->etc()
+                    ->etc(),
         );
     }
 
     public function testSearchUsersByName(): void
     {
-        User::factory()->count(3)->create();
+        UserFactory::new()->count(3)->create();
         $user = $this->getTestingUser([
             'name' => 'mahmoudzzz',
         ]);
@@ -61,13 +61,13 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.name', $user->name)
-                    ->etc()
+                    ->etc(),
         );
     }
 
     public function testSearchUsersByHashID(): void
     {
-        User::factory()->count(3)->create();
+        UserFactory::new()->count(3)->create();
         $user = $this->getTestingUser();
 
         $response = $this->endpoint($this->endpoint . '?search=id:' . $user->getHashedKey())->makeCall();
@@ -76,7 +76,7 @@ class GetAllUsersTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                     ->where('data.0.id', $user->getHashedKey())
-                    ->etc()
+                    ->etc(),
         );
     }
 }

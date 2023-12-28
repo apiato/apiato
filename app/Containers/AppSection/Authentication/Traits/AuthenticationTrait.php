@@ -9,7 +9,7 @@ trait AuthenticationTrait
     /**
      * Allows Passport to authenticate users with custom fields.
      */
-    public function findForPassport($identifier): ?User
+    public function findForPassport($identifier): null|User
     {
         $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
 

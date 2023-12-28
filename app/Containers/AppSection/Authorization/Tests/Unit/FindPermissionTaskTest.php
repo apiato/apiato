@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
@@ -15,7 +15,7 @@ class FindPermissionTaskTest extends UnitTestCase
 {
     public function testFindPermissionById(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
 
         $result = app(FindPermissionTask::class)->run($permission->id);
 
@@ -24,7 +24,7 @@ class FindPermissionTaskTest extends UnitTestCase
 
     public function testFindPermissionByName(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
 
         $result = app(FindPermissionTask::class)->run($permission->name);
 

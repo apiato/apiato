@@ -8,10 +8,10 @@ use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cookie;
 
-class ApiLogoutController extends ApiController
+class LogoutController extends ApiController
 {
     public function __construct(
-        private readonly ApiLogoutAction $logoutAction
+        private readonly ApiLogoutAction $logoutAction,
     ) {
     }
 

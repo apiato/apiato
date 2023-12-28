@@ -4,37 +4,31 @@
          colors="true">
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix=".php">./app/Containers/*/*/Tests/Unit</directory>
+            <directory>./app/Containers/*/*/Tests/Unit</directory>
         </testsuite>
         <testsuite name="Functional">
-            <directory suffix=".php">./app/Containers/*/*/UI/*/Tests/Functional</directory>
+            <directory>./app/Containers/*/*/UI/*/Tests/Functional</directory>
         </testsuite>
         <testsuite name="Ship-Unit">
-            <directory suffix=".php">./app/Ship/Tests</directory>
+            <directory>./app/Ship/Tests</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
-            <directory suffix=".php">./app</directory>
+            <directory>./app</directory>
         </include>
         <exclude>
-            <directory suffix=".php">./app/Containers/Vendor</directory>
+            <directory>./app/Containers/Vendor</directory>
             <!-- NOTE: Exclude the following directories because they fail when directly included with code-coverage-->
-            <directory suffix=".php">./app/Containers/*/*/UI/*/Routes</directory>
-            <directory suffix=".php">./app/Containers/*/*/Data/Factories</directory>
+            <directory>./app/Containers/*/*/UI/*/Routes</directory>
+            <directory>./app/Containers/*/*/Data/Factories</directory>
             <!-- NOTE: Exclude tests from coverage-->
-            <directory suffix=".php">./app/Containers/*/*/Tests</directory>
-            <directory suffix=".php">./app/Containers/*/*/UI/*/Tests</directory>
+            <directory>./app/Containers/*/*/Tests</directory>
+            <directory>./app/Containers/*/*/UI/*/Tests</directory>
             <!-- NOTE: Exclude blade files from coverage-->
             <directory suffix=".blade.php">./app</directory>
         </exclude>
     </source>
-    <coverage includeUncoveredFiles="true" ignoreDeprecatedCodeUnits="true"
-              pathCoverage="true" disableCodeCoverageIgnore="false">
-        <report>
-            <html outputDirectory="html_coverage" lowUpperBound="50" highLowerBound="90"/>
-        </report>
-    </coverage>
     <php>
         <env name="API_FULL_URL" value="http://api.apiato.test"/>
         <env name="APP_ENV" value="testing"/>

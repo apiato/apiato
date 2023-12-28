@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 class ResetPasswordController extends ApiController
 {
     public function __construct(
-        private readonly ResetPasswordAction $resetPasswordAction
+        private readonly ResetPasswordAction $resetPasswordAction,
     ) {
     }
 

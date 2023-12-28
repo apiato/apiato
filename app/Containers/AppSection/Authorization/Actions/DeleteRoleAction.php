@@ -11,7 +11,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class DeleteRoleAction extends ParentAction
 {
     public function __construct(
-        private readonly DeleteRoleTask $deleteRoleTask
+        private readonly DeleteRoleTask $deleteRoleTask,
     ) {
     }
 

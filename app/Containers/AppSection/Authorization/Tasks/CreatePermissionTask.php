@@ -10,14 +10,14 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class CreatePermissionTask extends ParentTask
 {
     public function __construct(
-        protected readonly PermissionRepository $repository
+        protected readonly PermissionRepository $repository,
     ) {
     }
 
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(string $name, string $description = null, string $displayName = null, string $guardName = 'api'): Permission
+    public function run(string $name, null|string $description = null, null|string $displayName = null, string $guardName = 'api'): Permission
     {
         try {
             $permission = $this->repository->create([

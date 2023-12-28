@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\Tasks\RevokeRoleFromUserTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolesFromUserRequest;
@@ -36,7 +37,10 @@ class RevokeRolesFromUserAction extends ParentAction
         return $user;
     }
 
-    private function revokeRoles($user, $roles): void
+    /**
+     * @param Role[] $roles
+     */
+    private function revokeRoles(User $user, array $roles): void
     {
         array_map(function ($role) use ($user) {
             $this->revokeRoleFromUserTask->run($user, $role);

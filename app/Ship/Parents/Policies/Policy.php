@@ -10,7 +10,7 @@ abstract class Policy extends AbstractPolicy
     /**
      * Perform pre-authorization checks.
      */
-    public function before(UserModel $user, string $ability): ?bool
+    public function before(UserModel $user, string $ability): null|bool
     {
         // grant access for admins
         if (method_exists($user, 'hasAdminRole') && $user->hasAdminRole()) {

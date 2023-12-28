@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\Authentication\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 /**
@@ -37,8 +37,8 @@ class GetAuthenticatedUserTest extends ApiTestCase
                     ->where('name', $user->name)
                     ->where('gender', $user->gender)
                     ->whereType('birth', 'string')
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 
@@ -65,14 +65,14 @@ class GetAuthenticatedUserTest extends ApiTestCase
                     ->whereType('updated_at', 'string')
                     ->where('readable_created_at', $user->created_at->diffForHumans())
                     ->where('readable_updated_at', $user->updated_at->diffForHumans())
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 
     public function testGetAuthenticatedUserByUnauthenticatedUser(): void
     {
-        $this->testingUser = User::factory()->create();
+        $this->testingUser = UserFactory::new()->createOne();
 
         $response = $this->auth(false)->makeCall();
 

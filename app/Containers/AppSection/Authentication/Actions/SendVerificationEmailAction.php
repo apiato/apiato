@@ -9,7 +9,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class SendVerificationEmailAction extends ParentAction
 {
     public function __construct(
-        private readonly SendVerificationEmailTask $sendVerificationEmailTask
+        private readonly SendVerificationEmailTask $sendVerificationEmailTask,
     ) {
     }
 

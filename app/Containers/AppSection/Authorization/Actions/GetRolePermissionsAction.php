@@ -10,7 +10,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class GetRolePermissionsAction extends ParentAction
 {
     public function __construct(
-        private readonly FindRoleTask $findRoleTask
+        private readonly FindRoleTask $findRoleTask,
     ) {
     }
 

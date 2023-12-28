@@ -2,11 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -23,9 +22,9 @@ class DetachPermissionFromUserTest extends ApiTestCase
 
     public function testDetachSinglePermissionFromUser(): void
     {
-        $user = User::factory()->create();
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
+        $user = UserFactory::new()->createOne();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
         $user->givePermissionTo([$permissionA, $permissionB]);
 
         $data = [
@@ -42,16 +41,16 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 ->has('data.permissions.data', 1)
                 ->where('data.permissions.data.0.object', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testDetachMultiplePermissionFromUser(): void
     {
-        $user = User::factory()->create();
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
-        $permissionC = Permission::factory()->create();
+        $user = UserFactory::new()->createOne();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
+        $permissionC = PermissionFactory::new()->createOne();
 
         $user->givePermissionTo([$permissionA, $permissionB, $permissionC]);
 
@@ -68,16 +67,16 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 ->where('data.id', $user->getHashedKey())
                 ->count('data.permissions.data', 1)
                 ->where('data.permissions.data.0.id', $permissionC->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testDetachNonExistingPermissionFromUser(): void
     {
         $invalidId = 3333;
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
         $data = [
-            'permissions_ids' => [Hashids::encode($invalidId)],
+            'permissions_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -88,16 +87,16 @@ class DetachPermissionFromUserTest extends ApiTestCase
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    static fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    static fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 
     public function testDetachPermissionFromNonExistingUser(): void
     {
         $invalidId = 3333;
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $data = [
             'permissions_ids' => [$permission->getHashedKey()],
         ];
@@ -108,8 +107,8 @@ class DetachPermissionFromUserTest extends ApiTestCase
             static fn (AssertableJson $json) => $json->has(
                 'errors',
                 static fn (AssertableJson $errors) => $errors->where('id.0', 'The selected id is invalid.')
-                    ->etc()
-            )->etc()
+                    ->etc(),
+            )->etc(),
         );
     }
 }

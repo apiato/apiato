@@ -1,5 +1,6 @@
 # Support Questions
 
-For free community support, join our [Discord Server](http://apiato.io/docs/).
+The Apiato support guide can be found in the [Apiato documentation](http://apiato.io/docs/prologue/contribution-guide#support-questions).
 
-For paid professional support, you can pick one of our [support packages](http://apiato.io/support.html).
+For paid professional support or consulting,
+you can pick one of our [support packages](http://apiato.io/docs/consulting).

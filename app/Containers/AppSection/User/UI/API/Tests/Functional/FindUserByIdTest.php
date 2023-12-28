@@ -26,9 +26,9 @@ class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has('data')
-                    ->where('data.id', \Hashids::encode($user->id))
-                    ->etc()
+            fn (AssertableJson $json) => $json->has('data')
+                    ->where('data.id', $this->encode($user->id))
+                    ->etc(),
         );
     }
 
@@ -51,7 +51,7 @@ class FindUserByIdTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                     ->where('data.name', $user->name)
-                    ->where('data.email', $user->email)
+                    ->where('data.email', $user->email),
         );
     }
 
@@ -68,7 +68,7 @@ class FindUserByIdTest extends ApiTestCase
                 ->where('data.email', $user->email)
                 ->count('data.roles.data', 1)
                 ->where('data.roles.data.0.name', config('appSection-authorization.admin_role'))
-                ->etc()
+                ->etc(),
         );
     }
 }

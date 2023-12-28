@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit;
 
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tasks\DeleteRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
@@ -15,7 +15,7 @@ class DeleteRoleTaskTest extends UnitTestCase
 {
     public function testSuccessfulDeleteRoleShouldReturn1(): void
     {
-        $role = Role::factory()->create(['name' => 'testRole']);
+        $role = RoleFactory::new()->create(['name' => 'testRole']);
 
         $result = app(DeleteRoleTask::class)->run($role->id);
 

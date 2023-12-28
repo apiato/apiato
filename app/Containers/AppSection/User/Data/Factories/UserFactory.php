@@ -7,8 +7,14 @@ use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+/**
+ * @template TModel of User
+ *
+ * @extends ParentFactory<TModel>
+ */
 class UserFactory extends ParentFactory
 {
+    /** @var class-string<TModel> */
     protected $model = User::class;
 
     public function definition(): array

@@ -2,11 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -23,9 +22,9 @@ class SyncUserRolesTest extends ApiTestCase
 
     public function testSyncMultipleRolesOnUser(): void
     {
-        $role1 = Role::factory()->create();
-        $role2 = Role::factory()->create();
-        $user = User::factory()->create();
+        $role1 = RoleFactory::new()->createOne();
+        $role2 = RoleFactory::new()->createOne();
+        $user = UserFactory::new()->createOne();
         $user->assignRole($role1);
         $data = [
             'roles_ids' => [
@@ -43,17 +42,17 @@ class SyncUserRolesTest extends ApiTestCase
                 ->count('data.roles.data', 2)
                 ->where('data.roles.data.0.id', $data['roles_ids'][0])
                 ->where('data.roles.data.1.id', $data['roles_ids'][1])
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testSyncRoleOnNonExistingUser(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'roles_ids' => [$role->getHashedKey()],
-            'user_id' => Hashids::encode($invalidId),
+            'user_id' => $this->encode($invalidId),
         ];
 
         $response = $this->makeCall($data);
@@ -62,16 +61,16 @@ class SyncUserRolesTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testSyncNonExistingRoleOnUser(): void
     {
-        $user = User::factory()->create();
+        $user = UserFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [Hashids::encode($invalidId)],
+            'roles_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),
         ];
 
@@ -83,9 +82,9 @@ class SyncUserRolesTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'roles_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 }

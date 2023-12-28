@@ -11,7 +11,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
  */
 class RefreshTokenMissingExceptionTest extends UnitTestCase
 {
-    public function testRefreshTokenMissedException()
+    public function testRefreshTokenMissedException(): void
     {
         $this->expectExceptionCode(400);
         $this->expectExceptionMessage('We could not find the Refresh Token. Maybe none is provided?');

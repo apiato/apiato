@@ -2,11 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\UI\API\Tests\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @group authorization
@@ -23,9 +22,9 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
 
     public function testSyncDuplicatedPermissionsToRole(): void
     {
-        $permissionA = Permission::factory()->create();
-        $permissionB = Permission::factory()->create();
-        $role = Role::factory()->create();
+        $permissionA = PermissionFactory::new()->createOne();
+        $permissionB = PermissionFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
         $role->givePermissionTo($permissionA);
         $data = [
             'role_id' => $role->getHashedKey(),
@@ -42,16 +41,16 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
                 ->count('data.permissions.data', 2)
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testSyncPermissionsOnNonExistingRole(): void
     {
-        $permission = Permission::factory()->create();
+        $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'role_id' => Hashids::encode($invalidId),
+            'role_id' => $this->encode($invalidId),
             'permissions_ids' => [$permission->getHashedKey()],
         ];
 
@@ -61,17 +60,17 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
-                ->etc()
+                ->etc(),
         );
     }
 
     public function testSyncNonExistingPermissionOnRole(): void
     {
-        $role = Role::factory()->create();
+        $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => [Hashids::encode($invalidId)],
+            'permissions_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->makeCall($data);
@@ -82,9 +81,9 @@ class SyncPermissionsOnRoleTest extends ApiTestCase
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
                     'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.')
-                )->etc()
-            )->etc()
+                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                )->etc(),
+            )->etc(),
         );
     }
 }

@@ -42,7 +42,7 @@ class UpdateUserTest extends ApiTestCase
                 ->where('data.gender', $data['gender'])
                 ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
                 ->missing('data.password')
-                ->etc()
+                ->etc(),
         );
     }
 
@@ -72,7 +72,7 @@ class UpdateUserTest extends ApiTestCase
                 ->where('errors.name.0', 'The name field must be at least 2 characters.')
                 ->where('errors.gender.0', 'The selected gender is invalid.')
                 ->where('errors.birth.0', 'The birth field must be a valid date.')
-                ->etc()
+                ->etc(),
         );
     }
 }

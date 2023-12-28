@@ -10,7 +10,7 @@ use App\Ship\Parents\Controllers\ApiController;
 class RevokeRolesFromUserController extends ApiController
 {
     public function __construct(
-        private readonly RevokeRolesFromUserAction $revokeRolesFromUserAction
+        private readonly RevokeRolesFromUserAction $revokeRolesFromUserAction,
     ) {
     }
 

@@ -9,7 +9,7 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 class UserPermissionsSeeder_1 extends ParentSeeder
 {
     public function __construct(
-        private readonly CreatePermissionTask $createPermissionTask
+        private readonly CreatePermissionTask $createPermissionTask,
     ) {
     }
 
