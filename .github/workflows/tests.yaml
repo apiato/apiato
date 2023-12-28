@@ -54,10 +54,6 @@ jobs:
         run: php artisan key:generate
 
       - name: Execute tests
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: Upload coverage reports to Codecov
