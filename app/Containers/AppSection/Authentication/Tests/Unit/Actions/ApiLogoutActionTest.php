@@ -3,11 +3,14 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\UsesClass;
 
+#[UsesClass(CallOAuthServerTask::class)]
 #[Group('authentication')]
 #[CoversClass(ApiLogoutAction::class)]
 class ApiLogoutActionTest extends UnitTestCase
@@ -26,5 +29,10 @@ class ApiLogoutActionTest extends UnitTestCase
         $action->run($request);
 
         $this->assertTrue(true);
+    }
+
+    private function createAccessTokenFor(string $email, string $password): string
+    {
+        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))['access_token'];
     }
 }
