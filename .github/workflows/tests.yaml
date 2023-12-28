@@ -57,6 +57,9 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Install Passport
+        run: php artisan passport:install
+
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
