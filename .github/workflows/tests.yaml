@@ -44,6 +44,10 @@ jobs:
       - name: Setup Composer token
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
+      # If you encounter an error during Laravel package discovery, remember this:
+      # Composer doesn't have access to env variables at this stage,
+      # Therefore, it uses the default value for all env variables.
+      # To fix this, we need to copy the .env.ci file to .env before running composer install.
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
