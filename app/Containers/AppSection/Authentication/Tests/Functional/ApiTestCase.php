@@ -10,7 +10,6 @@ class ApiTestCase extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->createPasswordGrantClient('200', 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX');
-        $this->createOAuthTestingKeys();
+        $this->createPasswordGrantClient('clientId', 'clientSecret');
     }
 }
