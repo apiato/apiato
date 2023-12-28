@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UpdateUserPasswordRequest extends ParentRequest
 {
@@ -32,7 +32,7 @@ class UpdateUserPasswordRequest extends ParentRequest
             ), 'current_password:api'],
             'new_password' => [
                 'required',
-                User::getPasswordValidationRules(),
+                Password::default(),
             ],
         ];
     }

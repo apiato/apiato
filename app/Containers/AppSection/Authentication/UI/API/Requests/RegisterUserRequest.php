@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterUserRequest extends ParentRequest
 {
@@ -25,7 +25,7 @@ class RegisterUserRequest extends ParentRequest
             'email' => 'required|email|unique:users,email',
             'password' => [
                 'required',
-                User::getPasswordValidationRules(),
+                Password::default(),
             ],
             'name' => 'min:2|max:50',
             'gender' => 'in:male,female,unspecified',
