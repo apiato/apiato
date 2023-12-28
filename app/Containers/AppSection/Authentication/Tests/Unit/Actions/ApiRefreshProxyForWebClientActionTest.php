@@ -3,11 +3,14 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiRefreshProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\UsesClass;
 
+#[UsesClass(CallOAuthServerTask::class)]
 #[Group('authentication')]
 #[CoversClass(ApiRefreshProxyForWebClientAction::class)]
 class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
@@ -20,7 +23,7 @@ class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
         ];
         $this->getTestingUser($data);
         $request = RefreshProxyRequest::injectData([
-            'refresh_token' => $this->createRefreshToken($data['email'], $data['password']),
+            'refresh_token' => $this->createRefreshTokenFor($data['email'], $data['password']),
         ]);
         $action = app(ApiRefreshProxyForWebClientAction::class);
 
@@ -33,5 +36,10 @@ class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
         $this->assertArrayHasKey('expires_in', $response['response_content']);
         $this->assertArrayHasKey('token_type', $response['response_content']);
         $this->assertEquals('Bearer', $response['response_content']['token_type']);
+    }
+
+    private function createRefreshTokenFor(string $email, string $password): string
+    {
+        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))['refresh_token'];
     }
 }

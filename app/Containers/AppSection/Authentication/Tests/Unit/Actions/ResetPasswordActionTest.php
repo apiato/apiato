@@ -74,7 +74,7 @@ class ResetPasswordActionTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->user = UserFactory::new()->create([
+        $this->user = UserFactory::new()->createOne([
             'email' => 'someone@something.test',
             'password' => 'old pass',
         ]);

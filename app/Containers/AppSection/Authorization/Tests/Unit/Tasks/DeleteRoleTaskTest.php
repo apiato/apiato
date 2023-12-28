@@ -15,7 +15,7 @@ class DeleteRoleTaskTest extends UnitTestCase
 {
     public function testSuccessfulDeleteRoleShouldReturn1(): void
     {
-        $role = RoleFactory::new()->create(['name' => 'testRole']);
+        $role = RoleFactory::new()->createOne(['name' => 'testRole']);
 
         $result = app(DeleteRoleTask::class)->run($role->id);
 

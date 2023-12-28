@@ -15,18 +15,14 @@ class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
     public function testProxyApiLoginAction(): void
     {
-        $this->getTestingUser([
-            'email' => 'ganldalf@the.grey',
-            'password' => 'secret',
-        ]);
-        $this->actingAs($this->testingUser, 'web');
-        $data = [
-            'client_id' => $this->clientId,
-            'client_password' => $this->clientSecret,
+        $credentials = [
             'email' => 'ganldalf@the.grey',
             'password' => 'secret',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($data);
+        $this->getTestingUser($credentials);
+        $this->actingAs($this->testingUser, 'web');
+
+        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
         $result = $action->run($request);
