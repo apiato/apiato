@@ -45,13 +45,7 @@ jobs:
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Composer dependencies
-        # Laravel & Core
-        #        run: composer install --prefer-dist --no-interaction --no-progress
-        # explorer
-        #        run: composer install --no-ansi --no-interaction --no-progress --no-scripts
-        # https://github.com/wikimedia/composer-merge-plugin/issues/252
-        #        run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --no-plugins ; composer install
-        run: composer install --no-interaction --no-progress --no-scripts
+        run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Copy environment file
         run: cp .env.ci .env
