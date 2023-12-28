@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests;
 
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -48,23 +49,14 @@ class ContainerTestCase extends ParentTestCase
 
     final public function createPasswordGrantClient(string $clientId, string $clientSecret): void
     {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+        Artisan::call('passport:install', ['--force' => true]);
 
-        DB::table('oauth_clients')->insert([
-            [
-                'id' => $clientId,
-                'secret' => $clientSecret,
-                'name' => 'Testing',
-                'redirect' => 'http://localhost',
-                'password_client' => '1',
-                'personal_access_client' => '0',
-                'revoked' => '0',
-            ],
-        ]);
+        $client = DB::table('oauth_clients')->where('password_client', 1)->first();
+        $this->clientId = $client->id;
+        $this->clientSecret = $client->secret;
 
-        Config::set('appSection-authentication.clients.web.id', $clientId);
-        Config::set('appSection-authentication.clients.web.secret', $clientSecret);
+        Config::set('appSection-authentication.clients.web.id', $this->clientId);
+        Config::set('appSection-authentication.clients.web.secret', $this->clientSecret);
     }
 
     final public function createRefreshTokenFor(string $email, string $password): mixed
