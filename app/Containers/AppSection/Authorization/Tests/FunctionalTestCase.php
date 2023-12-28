@@ -2,6 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Tests;
 
-class UnitTestCase extends ContainerTestCase
+class FunctionalTestCase extends ContainerTestCase
 {
 }
