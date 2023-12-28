@@ -1,10 +1,4 @@
 <p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
-</p>
-
-<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
-
-<p align="center">
 <a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
 <img src="https://github.com/apiato/apiato/actions/workflows/tests.yaml/badge.svg" alt="Build Status">
 </a>
@@ -25,6 +19,12 @@
 <img src="https://img.shields.io/discord/800815227839053834?label=discord" alt="support">
 </a>
 </p>
+
+<p align="center">
+   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
+</p>
+
+<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
 ## About Apiato
 
