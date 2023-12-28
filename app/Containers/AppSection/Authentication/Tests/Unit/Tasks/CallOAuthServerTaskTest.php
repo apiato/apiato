@@ -14,18 +14,12 @@ class CallOAuthServerTaskTest extends UnitTestCase
 {
     public function testCallOAuthServer(): void
     {
-        $data = [
-            'grant_type' => 'password',
-            'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret,
-            'username' => 'gandalf@the.grey',
+        $credentials = [
+            'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
-            'scope' => '',
         ];
-        $this->getTestingUser([
-            'email' => $data['username'],
-            'password' => $data['password'],
-        ]);
+        $this->getTestingUser($credentials);
+        $data = $this->enrichWithPasswordGrantFields($credentials['email'], $credentials['password']);
         $task = app(CallOAuthServerTask::class);
 
         $result = $task->run($data);
@@ -41,18 +35,9 @@ class CallOAuthServerTaskTest extends UnitTestCase
         $this->expectException(LoginFailedException::class);
         $this->expectExceptionMessage('The user credentials were incorrect.');
         $this->expectExceptionCode(422);
-        $data = [
-            'grant_type' => 'password',
-            'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret,
-            'username' => 'nonexisting@email.void',
-            'password' => 'invalidPassword',
-            'scope' => '',
-        ];
-        $this->getTestingUser([
-            'email' => 'gandalf@the.grey',
-            'password' => 'youShallNotPass',
-        ]);
+
+        $this->getTestingUser(['email' => 'gandalf@the.grey', 'password' => 'youShallNotPass']);
+        $data = $this->enrichWithPasswordGrantFields('nonexisting@email.void', 'invalidPassword');
         $task = app(CallOAuthServerTask::class);
 
         $task->run($data);

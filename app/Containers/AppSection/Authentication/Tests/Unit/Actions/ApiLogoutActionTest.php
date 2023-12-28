@@ -19,7 +19,7 @@ class ApiLogoutActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($data);
-        $accessToken = $this->createAccessToken($data['email'], $data['password']);
+        $accessToken = $this->createAccessTokenFor($data['email'], $data['password']);
         $request = LogoutRequest::injectData(server: ['HTTP_AUTHORIZATION' => 'Bearer ' . $accessToken]);
         $action = app(ApiLogoutAction::class);
 

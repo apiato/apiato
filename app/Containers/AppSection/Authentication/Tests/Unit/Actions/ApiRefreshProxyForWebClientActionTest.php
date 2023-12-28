@@ -20,7 +20,7 @@ class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
         ];
         $this->getTestingUser($data);
         $request = RefreshProxyRequest::injectData([
-            'refresh_token' => $this->createRefreshToken($data['email'], $data['password']),
+            'refresh_token' => $this->createRefreshTokenFor($data['email'], $data['password']),
         ]);
         $action = app(ApiRefreshProxyForWebClientAction::class);
 
