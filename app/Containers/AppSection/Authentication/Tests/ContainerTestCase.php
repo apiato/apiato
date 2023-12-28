@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Tests;
 
-use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
