@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group api
- */
+#[Group('authorization')]
 class FindRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/roles/{id}';

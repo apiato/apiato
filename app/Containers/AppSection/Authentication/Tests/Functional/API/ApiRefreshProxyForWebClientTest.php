@@ -5,11 +5,9 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingException;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group api
- */
+#[Group('authentication')]
 class ApiRefreshProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/refresh';

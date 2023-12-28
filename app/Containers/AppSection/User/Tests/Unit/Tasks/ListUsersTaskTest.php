@@ -6,11 +6,9 @@ use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tasks\ListUsersTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group unit
- */
+#[Group('user')]
 class ListUsersTaskTest extends UnitTestCase
 {
     public function testListUsers(): void

@@ -3,11 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Configs;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
 class AuthenticationConfigTest extends UnitTestCase
 {
     public function testConfigHasCorrectValues(): void

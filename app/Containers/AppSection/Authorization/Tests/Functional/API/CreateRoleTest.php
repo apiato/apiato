@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group api
- */
+#[Group('authorization')]
 class CreateRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/roles';

@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
 class MakeRefreshCookieTaskTest extends UnitTestCase
 {
     public function testMakeRefreshCookie(): void

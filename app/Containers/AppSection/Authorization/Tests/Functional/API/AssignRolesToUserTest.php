@@ -6,11 +6,9 @@ use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group api
- */
+#[Group('authorization')]
 class AssignRolesToUserTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/roles/assign?include=roles';

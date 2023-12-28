@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Exceptions;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
 class LoginFailedExceptionTest extends UnitTestCase
 {
     public function testLoginFailedException(): void

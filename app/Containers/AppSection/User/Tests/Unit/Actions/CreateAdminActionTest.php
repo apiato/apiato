@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group unit
- */
+#[Group('user')]
 class CreateAdminActionTest extends UnitTestCase
 {
     public function testCreateAdmin(): void

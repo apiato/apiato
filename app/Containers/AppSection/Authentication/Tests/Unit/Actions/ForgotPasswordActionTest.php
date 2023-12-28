@@ -7,11 +7,9 @@ use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
 class ForgotPasswordActionTest extends UnitTestCase
 {
     public function testIfUserExistsShouldReturnTrue(): void

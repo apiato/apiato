@@ -6,11 +6,9 @@ use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tasks\DeleteUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group unit
- */
+#[Group('user')]
 class DeleteUserTaskTest extends UnitTestCase
 {
     public function testDeleteUser(): void

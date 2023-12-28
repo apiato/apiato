@@ -6,11 +6,9 @@ use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Tasks\FindPermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group unit
- */
+#[Group('authorization')]
 class FindPermissionTaskTest extends UnitTestCase
 {
     public function testFindPermissionById(): void

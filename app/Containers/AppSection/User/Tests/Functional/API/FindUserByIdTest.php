@@ -4,11 +4,9 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group api
- */
+#[Group('user')]
 class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{id}';
