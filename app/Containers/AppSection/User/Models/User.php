@@ -8,7 +8,6 @@ use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Validation\Rules\Password;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
@@ -33,15 +32,6 @@ class User extends ParentUserModel implements MustVerifyEmail
         'password' => 'hashed',
         'birth' => 'date',
     ];
-
-    public static function getPasswordValidationRules(): Password
-    {
-        return Password::min(8)
-            ->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols();
-    }
 
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
     {
