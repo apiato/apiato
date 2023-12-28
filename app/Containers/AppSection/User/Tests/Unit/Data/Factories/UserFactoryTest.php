@@ -5,11 +5,11 @@ namespace App\Containers\AppSection\User\Tests\Unit\Data\Factories;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group unit
- */
+#[Group('user')]
+#[CoversClass(UserFactory::class)]
 class UserFactoryTest extends UnitTestCase
 {
     public function testCreateUser(): void

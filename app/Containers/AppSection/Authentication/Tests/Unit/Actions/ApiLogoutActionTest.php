@@ -5,11 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
+#[CoversClass(ApiLogoutAction::class)]
 class ApiLogoutActionTest extends UnitTestCase
 {
     public function testApiLogoutAction(): void

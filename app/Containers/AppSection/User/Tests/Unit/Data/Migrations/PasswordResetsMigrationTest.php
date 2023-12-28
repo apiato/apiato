@@ -4,11 +4,11 @@ namespace App\Containers\AppSection\User\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Schema;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group unit
- */
+#[Group('user')]
+#[CoversNothing]
 class PasswordResetsMigrationTest extends UnitTestCase
 {
     public function testPasswordResetsTableHasExpectedColumns(): void

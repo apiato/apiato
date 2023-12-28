@@ -4,11 +4,11 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group unit
- */
+#[Group('authorization')]
+#[CoversClass(CreatePermissionTask::class)]
 class CreatePermissionTaskTest extends UnitTestCase
 {
     public function testCreatePermission(): void

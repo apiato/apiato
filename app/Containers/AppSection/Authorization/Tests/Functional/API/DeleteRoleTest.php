@@ -4,11 +4,11 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group api
- */
+#[Group('authorization')]
+#[CoversNothing]
 class DeleteRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/roles/{id}';

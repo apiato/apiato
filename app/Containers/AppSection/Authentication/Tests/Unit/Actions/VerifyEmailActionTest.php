@@ -9,11 +9,11 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\VerifyEmailRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
+#[CoversClass(VerifyEmailAction::class)]
 class VerifyEmailActionTest extends UnitTestCase
 {
     public function testVerifyEmail(): void

@@ -6,11 +6,11 @@ use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group api
- */
+#[Group('authorization')]
+#[CoversNothing]
 class DetachPermissionsFromRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/permissions/detach';

@@ -4,11 +4,11 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group unit
- */
+#[Group('authorization')]
+#[CoversClass(CreateRoleTask::class)]
 class CreateRoleTaskTest extends UnitTestCase
 {
     public function testCreateRole(): void

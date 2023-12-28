@@ -10,11 +10,11 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
+#[CoversClass(RegisterUserAction::class)]
 class RegisterUserActionTest extends UnitTestCase
 {
     public function testRegisterUser(): void

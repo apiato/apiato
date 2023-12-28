@@ -5,12 +5,12 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\Cookie;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
+#[CoversClass(ApiLoginProxyForWebClientAction::class)]
 class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
     public function testProxyApiLoginAction(): void

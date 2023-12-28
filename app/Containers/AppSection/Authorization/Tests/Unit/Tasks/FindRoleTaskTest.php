@@ -6,11 +6,11 @@ use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authorization
- * @group unit
- */
+#[Group('authorization')]
+#[CoversClass(FindRoleTask::class)]
 class FindRoleTaskTest extends UnitTestCase
 {
     public function testFindRoleById(): void

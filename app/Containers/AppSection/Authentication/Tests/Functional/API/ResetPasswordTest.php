@@ -5,11 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group api
- */
+#[Group('authentication')]
+#[CoversNothing]
 class ResetPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/password/reset';

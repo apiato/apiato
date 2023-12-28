@@ -4,11 +4,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group api
- */
+#[Group('authentication')]
+#[CoversNothing]
 class ForgotPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/password/forgot';

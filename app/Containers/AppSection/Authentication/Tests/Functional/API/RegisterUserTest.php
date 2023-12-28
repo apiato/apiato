@@ -8,11 +8,11 @@ use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group api
- */
+#[Group('authentication')]
+#[CoversNothing]
 class RegisterUserTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/register';

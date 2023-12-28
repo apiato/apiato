@@ -5,11 +5,11 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 use App\Containers\AppSection\Authentication\Actions\ApiRefreshProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group authentication
- * @group unit
- */
+#[Group('authentication')]
+#[CoversClass(ApiRefreshProxyForWebClientAction::class)]
 class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
 {
     public function testProxyApiRefresh(): void
