@@ -7,10 +7,10 @@
             <directory>./app/Containers/*/*/Tests/Unit</directory>
         </testsuite>
         <testsuite name="Functional">
-            <directory>./app/Containers/*/*/UI/*/Tests/Functional</directory>
+            <directory>./app/Containers/*/*/Tests/Functional</directory>
         </testsuite>
         <testsuite name="Ship-Unit">
-            <directory>./app/Ship/Tests</directory>
+            <directory>./app/Ship/Tests/Unit</directory>
         </testsuite>
     </testsuites>
     <source>
