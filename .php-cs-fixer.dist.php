@@ -8,10 +8,8 @@ $finder = Finder::create()
     ])
     ->name('*.php')
     ->notName('*.blade.php')
-    ->ignoreDotFiles(true)
     ->exclude('Containers/Vendor')
-    ->notName('_*')
-    ->ignoreVCS(true);
+    ->notName('_*');
 
 return (new PhpCsFixer\Config())
     ->setRules([
