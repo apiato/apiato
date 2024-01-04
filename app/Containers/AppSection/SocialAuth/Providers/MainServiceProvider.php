@@ -20,7 +20,7 @@ class MainServiceProvider extends ParentServiceProvider
     ];
 
     /**
-     * Container Aliases
+     * Container Aliases.
      */
     public array $aliases = [
     ];

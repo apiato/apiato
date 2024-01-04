@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class UpdateUserTableWithSocialauthColumns extends Migration
 {
-
     /**
      * Run the migrations.
      */

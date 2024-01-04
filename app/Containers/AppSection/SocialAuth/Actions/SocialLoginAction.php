@@ -16,9 +16,7 @@ class SocialLoginAction extends Action
      * ----- if has social profile
      * --------- [A] update his social profile info
      * ----- if has no social profile
-     * --------- [C] create new record
-     * @param ApiAuthenticateRequest $request
-     * @return array
+     * --------- [C] create new record.
      */
     public function run(ApiAuthenticateRequest $request): array
     {
@@ -39,7 +37,6 @@ class SocialLoginAction extends Action
         $socialUser = app(FindSocialUserTask::class)->run($provider, $userSocialProfile->id);
 
         if ($socialUser) {
-
             // THIS IS: A USER AND ALREADY HAVE A SOCIAL PROFILE
             // DO: UPDATE THE EXISTING USER SOCIAL PROFILE.
 
@@ -51,7 +48,7 @@ class SocialLoginAction extends Action
                 $refreshToken,
                 $tokenSecret,
                 $userSocialProfile->avatar,
-                $avatar_original
+                $avatar_original,
             );
         } else {
             // THIS IS: A NEW USER

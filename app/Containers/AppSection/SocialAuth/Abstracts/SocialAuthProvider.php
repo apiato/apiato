@@ -9,7 +9,7 @@ use Laravel\Socialite\Facades\Socialite;
 abstract class SocialAuthProvider implements SocialAuthProviderContract
 {
     public function __construct(
-        protected ApiAuthenticateRequest $request
+        protected ApiAuthenticateRequest $request,
     ) {
     }
 

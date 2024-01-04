@@ -22,7 +22,8 @@ class SocialAuthServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../Configs/vendor-socialAuth.php', 'vendor-socialAuth'
+            __DIR__ . '/../Configs/vendor-socialAuth.php',
+            'vendor-socialAuth',
         );
     }
 }

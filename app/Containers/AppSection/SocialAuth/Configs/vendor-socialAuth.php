@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * This container already provides 3 provider. You can implement and add your SocialAuthProvider here.
      *

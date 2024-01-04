@@ -6,5 +6,4 @@ use App\Containers\AppSection\SocialAuth\Abstracts\SocialAuthProvider;
 
 class GoogleSocialAuthProvider extends SocialAuthProvider
 {
-
 }

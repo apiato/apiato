@@ -29,7 +29,7 @@ class UpdateUserSocialProfileTask extends Task
         $socialId = null,
         $nickname = null,
         $name = null,
-        $email = null
+        $email = null,
     ) {
         $attributes = [];
 

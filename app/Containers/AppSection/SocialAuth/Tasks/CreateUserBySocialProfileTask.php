@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\SocialAuth\Tasks;
 
 use Apiato\Core\Abstracts\Tasks\Task;
 use App\Containers\AppSection\SocialAuth\Exceptions\AccountFailedException;
-use Exception;
 
 class CreateUserBySocialProfileTask extends Task
 {
@@ -16,7 +15,7 @@ class CreateUserBySocialProfileTask extends Task
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      * @throws AccountFailedException
      */
     public function run(
@@ -31,7 +30,7 @@ class CreateUserBySocialProfileTask extends Task
         $expiresIn = null,
         $refreshToken = null,
         $avatar_original = null,
-        $isAdmin = false
+        $isAdmin = false,
     ) {
         $data = [
             'social_provider' => $provider,
@@ -60,8 +59,8 @@ class CreateUserBySocialProfileTask extends Task
             if (!$user->hasVerifiedEmail()) {
                 $user->markEmailAsVerified();
             }
-        } catch (Exception) {
-            throw (new AccountFailedException());
+        } catch (\Exception) {
+            throw new AccountFailedException();
         }
 
         return $user;
