@@ -6,9 +6,9 @@ use Apiato\Core\Abstracts\Controllers\ApiController;
 use App\Containers\AppSection\SocialAuth\Actions\SocialLoginAction;
 use App\Containers\AppSection\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 
-class Controller extends ApiController
+final class AuthenticateAllController extends ApiController
 {
-    public function authenticateAll(ApiAuthenticateRequest $request): array
+    public function __invoke(ApiAuthenticateRequest $request): array
     {
         $data = app(SocialLoginAction::class)->run($request);
 

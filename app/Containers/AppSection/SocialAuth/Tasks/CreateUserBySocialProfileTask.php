@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\SocialAuth\Tasks;
 use Apiato\Core\Abstracts\Tasks\Task;
 use App\Containers\AppSection\SocialAuth\Exceptions\AccountFailedException;
 
-class CreateUserBySocialProfileTask extends Task
+final class CreateUserBySocialProfileTask extends Task
 {
-    private mixed $repository;
+    private readonly mixed $repository;
 
     public function __construct()
     {
@@ -50,11 +50,7 @@ class CreateUserBySocialProfileTask extends Task
         try {
             $registeredUser = $this->repository->findByField('email', $data['email'])->first();
 
-            if ($registeredUser) {
-                $user = $this->repository->update($data, $registeredUser->id);
-            } else {
-                $user = $this->repository->create($data);
-            }
+            $user = $registeredUser ? $this->repository->update($data, $registeredUser->id) : $this->repository->create($data);
 
             if (!$user->hasVerifiedEmail()) {
                 $user->markEmailAsVerified();

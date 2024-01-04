@@ -3,14 +3,14 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class UpdateUserTableWithSocialauthColumns extends Migration
+final class UpdateUserTableWithSocialauthColumns extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table) {
+        Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table): void {
             $table->string('social_provider')->nullable();
             $table->string('social_nickname')->nullable();
             $table->string('social_id')->nullable();
@@ -26,9 +26,9 @@ class UpdateUserTableWithSocialauthColumns extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table) {
+        Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table): void {
             $table->dropColumn([
                 'social_provider',
                 'social_nickname',

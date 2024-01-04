@@ -10,7 +10,7 @@ use App\Containers\AppSection\SocialAuth\Tasks\FindUserSocialProfileTask;
 use App\Containers\AppSection\SocialAuth\Tasks\UpdateUserSocialProfileTask;
 use App\Containers\AppSection\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 
-class SocialLoginAction extends Action
+final class SocialLoginAction extends Action
 {
     /**
      * ----- if has social profile

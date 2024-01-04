@@ -7,7 +7,7 @@ use App\Containers\AppSection\SocialAuth\Abstracts\SocialAuthProvider;
 use App\Containers\AppSection\SocialAuth\Exceptions\UnsupportedSocialAuthProviderException;
 use App\Containers\AppSection\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
 
-class GetSocialAuthProviderInstanceSubAction extends SubAction
+final class GetSocialAuthProviderInstanceSubAction extends SubAction
 {
     /**
      * @throws UnsupportedSocialAuthProviderException

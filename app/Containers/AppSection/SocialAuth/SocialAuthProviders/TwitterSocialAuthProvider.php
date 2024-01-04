@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\SocialAuth\SocialAuthProviders;
 use App\Containers\AppSection\SocialAuth\Abstracts\SocialAuthProvider;
 use Laravel\Socialite\Facades\Socialite;
 
-class TwitterSocialAuthProvider extends SocialAuthProvider
+final class TwitterSocialAuthProvider extends SocialAuthProvider
 {
     public function getUser()
     {

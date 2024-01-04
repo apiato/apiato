@@ -11,7 +11,7 @@ use Apiato\Core\Abstracts\Providers\MainServiceProvider as ParentServiceProvider
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */
-class MainServiceProvider extends ParentServiceProvider
+final class MainServiceProvider extends ParentServiceProvider
 {
     /**
      * Container Service Providers.

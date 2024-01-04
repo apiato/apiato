@@ -17,5 +17,5 @@
 use App\Containers\AppSection\SocialAuth\UI\WEB\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('auth/{provider}/callback', [Controller::class, 'callback'])
+Route::get('auth/{provider}/callback', (new Controller())->callback(...))
     ->name('web_socialAuth_callback');

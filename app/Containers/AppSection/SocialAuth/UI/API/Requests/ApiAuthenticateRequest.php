@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\SocialAuth\UI\API\Requests;
 
 use Apiato\Core\Abstracts\Requests\Request;
 
-class ApiAuthenticateRequest extends Request
+final class ApiAuthenticateRequest extends Request
 {
     /**
      * Define which Roles and/or Permissions has access to this request.

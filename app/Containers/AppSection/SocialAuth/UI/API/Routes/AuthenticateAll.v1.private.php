@@ -38,8 +38,8 @@
  * }
  */
 
-use App\Containers\AppSection\SocialAuth\UI\API\Controllers\Controller;
+use App\Containers\AppSection\SocialAuth\UI\API\Controllers\AuthenticateAllController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('auth/{provider}', [Controller::class, 'authenticateAll'])
+Route::post('auth/{provider}', AuthenticateAllController::class)
     ->name('api_socialAuth_social_auth');

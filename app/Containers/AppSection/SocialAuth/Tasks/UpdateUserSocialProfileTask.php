@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\SocialAuth\Tasks;
 use Apiato\Core\Abstracts\Tasks\Task;
 use App\Containers\AppSection\SocialAuth\Exceptions\UpdateResourceFailedException;
 
-class UpdateUserSocialProfileTask extends Task
+final class UpdateUserSocialProfileTask extends Task
 {
-    private mixed $repository;
+    private readonly mixed $repository;
 
     public function __construct()
     {
@@ -77,7 +77,7 @@ class UpdateUserSocialProfileTask extends Task
             $attributes['email'] = $email;
         }
 
-        if (empty($attributes)) {
+        if ($attributes === []) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 

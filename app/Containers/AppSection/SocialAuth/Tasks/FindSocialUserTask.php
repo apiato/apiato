@@ -4,9 +4,9 @@ namespace App\Containers\AppSection\SocialAuth\Tasks;
 
 use Apiato\Core\Abstracts\Tasks\Task;
 
-class FindSocialUserTask extends Task
+final class FindSocialUserTask extends Task
 {
-    private mixed $repository;
+    private readonly mixed $repository;
 
     public function __construct()
     {

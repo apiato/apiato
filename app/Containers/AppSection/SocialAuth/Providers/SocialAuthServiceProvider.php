@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\SocialAuth\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class SocialAuthServiceProvider extends ServiceProvider
+final class SocialAuthServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

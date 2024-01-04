@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Controllers\WebController;
 use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class Controller extends WebController
+final class Controller extends WebController
 {
     public function redirect($provider): RedirectResponse
     {
