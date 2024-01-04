@@ -6,17 +6,10 @@ use Apiato\Core\Abstracts\Controllers\WebController;
 use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-final class Controller extends WebController
+final class AuthRedirectController extends WebController
 {
-    public function redirect($provider): RedirectResponse
+    public function __invoke($provider): RedirectResponse
     {
         return Socialite::driver($provider)->redirect();
-    }
-
-    public function callback($provider): string
-    {
-        $user = Socialite::driver($provider)->user();
-
-        return $user->getEmail();
     }
 }

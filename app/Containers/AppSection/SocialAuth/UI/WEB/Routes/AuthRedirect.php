@@ -14,8 +14,8 @@
  * @apiPermission      none
  */
 
-use App\Containers\AppSection\SocialAuth\UI\WEB\Controllers\Controller;
+use App\Containers\AppSection\SocialAuth\UI\WEB\Controllers\AuthRedirectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('auth/{provider}/redirect', (new Controller())->redirect(...))
+Route::get('auth/{provider}/redirect', AuthRedirectController::class)
     ->name('web_socialAuth_redirect');
