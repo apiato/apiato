@@ -6,9 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 final class SocialAuthServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     */
     public function boot(): void
     {
         $this->publishes([
@@ -16,9 +13,6 @@ final class SocialAuthServiceProvider extends ServiceProvider
         ]);
     }
 
-    /**
-     * Register the application services.
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(
