@@ -3,11 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-final class UpdateUserTableWithSocialauthColumns extends Migration
+return new class() extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table): void {
@@ -23,9 +20,6 @@ final class UpdateUserTableWithSocialauthColumns extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table(config('vendor-socialAuth.user.table_name'), function (Blueprint $table): void {
@@ -42,4 +36,4 @@ final class UpdateUserTableWithSocialauthColumns extends Migration
             ]);
         });
     }
-}
+};
