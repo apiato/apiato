@@ -77,7 +77,7 @@ final class UpdateUserSocialProfileTask extends Task
             $attributes['email'] = $email;
         }
 
-        if ($attributes === []) {
+        if ([] === $attributes) {
             throw new UpdateResourceFailedException('Inputs are empty.');
         }
 
