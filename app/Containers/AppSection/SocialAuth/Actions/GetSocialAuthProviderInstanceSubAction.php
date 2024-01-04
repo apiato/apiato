@@ -16,7 +16,7 @@ final class GetSocialAuthProviderInstanceSubAction extends SubAction
     {
         $providerInstance = $this->getProviderInstance($request);
 
-        if (is_null($providerInstance)) {
+        if (null === $providerInstance) {
             throw new UnsupportedSocialAuthProviderException("The Social Auth Provider $request->provider is unsupported.");
         }
 
