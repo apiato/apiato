@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\SocialAuth\UI\API\Requests;
 
 use Apiato\Core\Abstracts\Requests\Request;
 
-final class ApiAuthenticateRequest extends Request
+final class AccessTokenLoginRequest extends Request
 {
     protected array $access = [
         'permissions' => '',
@@ -21,7 +21,7 @@ final class ApiAuthenticateRequest extends Request
     public function rules(): array
     {
         return [
-            'oauth_token' => 'required',
+            'access_token' => 'required',
         ];
     }
 

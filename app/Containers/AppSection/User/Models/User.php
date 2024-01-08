@@ -4,12 +4,16 @@ namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\SocialAuth\Contracts\Socialable;
+use App\Containers\AppSection\SocialAuth\Traits\HasSocialAccount;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class User extends ParentUserModel implements MustVerifyEmail
+class User extends ParentUserModel implements MustVerifyEmail, Socialable
 {
+    use HasSocialAccount;
+
     protected $fillable = [
         'name',
         'email',

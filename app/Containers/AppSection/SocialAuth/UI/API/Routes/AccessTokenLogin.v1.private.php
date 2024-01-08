@@ -7,15 +7,15 @@
  *
  * @api                {post} /v1/auth/{provider} Auth for all Providers
  *
- * @apiDescription     After getting the User Access Token from the provider (e.g. Google), call this Endpoint like this
- * `/v1/auth/google` passing the access token to it in order to fetch his data and create the user in our
+ * @apiDescription     After getting the access token from the provider (e.g., Google), call this Endpoint like this
+ * `/v1/auth/google` passing the access token to it to fetch his data and create the user in our
  * database if not exist or return the existing one.
  *
  * @apiVersion         1.0.0
  *
  * @apiPermission      none
  *
- * @apiParam           oauth_token  token provided by the social provider
+ * @apiParam           access_token token provided by the social provider
  * @apiParam           [oauth_secret] some providers like Twitter provide this
  *
  * @apiSuccessExample  {json}    Success-Response:
@@ -38,8 +38,7 @@
  * }
  */
 
-use App\Containers\AppSection\SocialAuth\UI\API\Controllers\AuthenticateAllController;
+use App\Containers\AppSection\SocialAuth\UI\API\Controllers\AccessTokenLoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('auth/{provider}', AuthenticateAllController::class)
-    ->name('api_socialAuth_social_auth');
+Route::post('social-auth/login/{provider}', AccessTokenLoginController::class);

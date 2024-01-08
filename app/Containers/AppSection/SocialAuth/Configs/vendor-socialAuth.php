@@ -10,9 +10,9 @@ return [
      * `App\Containers\AppSection\SocialAuth\Contracts\SocialAuthProvider` contract.
      */
     'providers' => [
-        'google' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\GoogleSocialAuthProvider::class,
-        'facebook' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\FacebookSocialAuthProvider::class,
-        'twitter' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\TwitterSocialAuthProvider::class,
+//        'google' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\GoogleSocialAuthProvider::class,
+//        'facebook' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\FacebookSocialAuthProvider::class,
+//        'twitter' => App\Containers\AppSection\SocialAuth\SocialAuthProviders\TwitterSocialAuthProvider::class,
     ],
 
     /*
@@ -20,8 +20,9 @@ return [
      * if your user repository or transformer is different from Apiato's default, you can provide them here.
      */
     'user' => [
+        'user_model' => App\Containers\AppSection\User\Models\User::class,
         'repository' => App\Containers\AppSection\User\Data\Repositories\UserRepository::class,
         'transformer' => App\Containers\AppSection\User\UI\API\Transformers\UserTransformer::class,
-        'table_name' => 'users',
+        'table_name' => 'social_accounts',
     ],
 ];

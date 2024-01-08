@@ -3,77 +3,58 @@
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\Action;
-use App\Containers\AppSection\SocialAuth\Tasks\ApiLoginFromUserTask;
-use App\Containers\AppSection\SocialAuth\Tasks\CreateUserBySocialProfileTask;
-use App\Containers\AppSection\SocialAuth\Tasks\FindSocialUserTask;
-use App\Containers\AppSection\SocialAuth\Tasks\FindUserSocialProfileTask;
-use App\Containers\AppSection\SocialAuth\Tasks\UpdateUserSocialProfileTask;
-use App\Containers\AppSection\SocialAuth\UI\API\Requests\ApiAuthenticateRequest;
+use App\Containers\AppSection\SocialAuth\Data\Repositories\SocialAccountRepository;
+use App\Containers\AppSection\SocialAuth\Exceptions\NoLinkedSocialAccountFoundException;
+use App\Containers\AppSection\SocialAuth\Models\SocialAccount;
+use App\Containers\AppSection\SocialAuth\Values\SocialAuthResult;
+use Laravel\Socialite\Two\User;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 final class SocialLoginAction extends Action
 {
+    public function __construct(
+        private readonly SocialAccountRepository $socialAccountRepository,
+    ) {
+    }
+
     /**
-     * ----- if has social profile
-     * --------- [A] update his social profile info
-     * ----- if has no social profile
-     * --------- [C] create new record.
+     * @throws NoLinkedSocialAccountFoundException
+     * @throws ValidatorException
+     * @throws \JsonException
      */
-    public function run(ApiAuthenticateRequest $request): array
+    public function run(string $provider, User $oAuthUser): SocialAuthResult
     {
-        $provider = $request->provider;
-        $providerInstance = app(GetSocialAuthProviderInstanceSubAction::class)->run($request);
+        /* @var SocialAccount $socialAccount */
+        $socialAccount = $this->socialAccountRepository->findWhere([
+            'provider' => $provider,
+            'social_id' => $oAuthUser->id,
+        ])->first();
 
-        // fetch the user data from the supported platforms
-        $userSocialProfile = app(FindUserSocialProfileTask::class)->run($providerInstance);
-
-        // checking if some data are available in the response
-        // (these lines are written to make this function compatible with multiple providers)
-        $tokenSecret = $userSocialProfile->tokenSecret ?? null;
-        $expiresIn = $userSocialProfile->expiresIn ?? null;
-        $refreshToken = $userSocialProfile->refreshToken ?? null;
-        $avatar_original = $userSocialProfile->avatar_original ?? null;
-
-        // check if the social ID exist on any of our users, and get that user in case it was found
-        $socialUser = app(FindSocialUserTask::class)->run($provider, $userSocialProfile->id);
-
-        if ($socialUser) {
-            // THIS IS: A USER AND ALREADY HAVE A SOCIAL PROFILE
-            // DO: UPDATE THE EXISTING USER SOCIAL PROFILE.
-
-            // Only update tokens and updated information. Never override the user profile.
-            $user = app(UpdateUserSocialProfileTask::class)->run(
-                $socialUser->id,
-                $userSocialProfile->token,
-                $expiresIn,
-                $refreshToken,
-                $tokenSecret,
-                $userSocialProfile->avatar,
-                $avatar_original,
-            );
-        } else {
-            // THIS IS: A NEW USER
-            // DO: CREATE NEW USER FROM THE SOCIAL PROFILE INFORMATION.
-            $user = app(CreateUserBySocialProfileTask::class)->run(
-                $provider,
-                $userSocialProfile->token,
-                $userSocialProfile->id,
-                $userSocialProfile->nickname,
-                $userSocialProfile->name,
-                $userSocialProfile->email,
-                $userSocialProfile->avatar,
-                $tokenSecret,
-                $expiresIn,
-                $refreshToken,
-                $avatar_original,
-            );
+        if (!$socialAccount) {
+            throw new NoLinkedSocialAccountFoundException();
         }
 
-        // Authenticate the user from its object
-        $personalAccessTokenResult = app(ApiLoginFromUserTask::class)->run($user);
+        $this->socialAccountRepository->update([
+            'email' => $oAuthUser->email,
+            'nickname' => $oAuthUser->nickname,
+            'name' => $oAuthUser->name,
+            'avatar' => $oAuthUser->avatar,
+            'token' => $oAuthUser->token,
+            'refresh_token' => $oAuthUser->refreshToken,
+            'expires_in' => $oAuthUser->expiresIn,
+            'scopes' => json_encode($oAuthUser->approvedScopes, JSON_THROW_ON_ERROR),
+        ], $socialAccount->id);
 
-        return [
-            'user' => $user,
-            'token' => $personalAccessTokenResult,
-        ];
+        $user = $socialAccount->user;
+        if ($this->sameEmail($user, $oAuthUser) && !$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+        }
+
+        return new SocialAuthResult($user, $user->createToken('social'));
+    }
+
+    private function sameEmail(mixed $user, User $oAuthUser): bool
+    {
+        return $user->email === $oAuthUser->email;
     }
 }
