@@ -8,10 +8,6 @@ use Illuminate\Validation\Rule;
 
 final class AuthRedirectRequest extends Request
 {
-//    protected array $urlParameters = [
-//        'provider',
-//    ];
-
     public function rules(): array
     {
         return [

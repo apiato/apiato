@@ -9,7 +9,7 @@ use App\Containers\AppSection\SocialAuth\Enums\AuthAction;
 use App\Containers\AppSection\SocialAuth\UI\API\Requests\AuthCallbackRequest;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthResult;
 use Laravel\Socialite\SocialiteManager;
-use Laravel\Socialite\Two\User;
+use Laravel\Socialite\Two\AbstractProvider;
 
 final class AuthCallbackController extends ApiController
 {
@@ -20,10 +20,11 @@ final class AuthCallbackController extends ApiController
     ) {
     }
 
-    public function __invoke(AuthCallbackRequest $request, string $provider): array
+    public function __invoke(AuthCallbackRequest $request, string $provider)
     {
-        /* @var User $oAuthUser */
-        $oAuthUser = $this->socialiteManager->driver($provider)->stateless()->user();
+        /* @var AbstractProvider $providerInstance */
+        $providerInstance = $this->socialiteManager->driver($provider);
+        $oAuthUser = $providerInstance->stateless()->user();
 
         /* @var SocialAuthResult $result */
         if (AuthAction::Login->value === $request->state) {
@@ -34,10 +35,10 @@ final class AuthCallbackController extends ApiController
 
         return $this->withMeta(
             [
-            'token_type' => 'personal',
-            'access_token' => $result->token->accessToken,
-            'expires_in' => $result->token->token->expires_at->diffInSeconds(),
-        ],
+                'token_type' => 'personal',
+                'access_token' => $result->token->accessToken,
+                'expires_in' => $result->token->token->expires_at->diffInSeconds(),
+            ],
         )->transform($result->user, config('vendor-socialAuth.user.transformer'));
     }
 }

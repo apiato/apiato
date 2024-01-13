@@ -8,14 +8,12 @@ use Illuminate\Validation\Rule;
 
 final class AuthCallbackRequest extends Request
 {
-//    protected array $urlParameters = [
-//        'provider',
-//    ];
-
     public function rules(): array
     {
         return [
             'state' => ['required', Rule::enum(AuthAction::class)],
+            'code' => ['required', 'string'],
+            'scope' => ['required', 'string'],
         ];
     }
 }
