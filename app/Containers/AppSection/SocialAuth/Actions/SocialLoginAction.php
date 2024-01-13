@@ -46,14 +46,14 @@ final class SocialLoginAction extends Action
         ], $socialAccount->id);
 
         $user = $socialAccount->user;
-        if ($this->sameEmail($user, $oAuthUser) && !$user->hasVerifiedEmail()) {
+        if ($this->isEmailMatching($user, $oAuthUser) && !$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
 
         return new SocialAuthResult($user, $user->createToken('social'));
     }
 
-    private function sameEmail(mixed $user, User $oAuthUser): bool
+    private function isEmailMatching(mixed $user, User $oAuthUser): bool
     {
         return $user->email === $oAuthUser->email;
     }
