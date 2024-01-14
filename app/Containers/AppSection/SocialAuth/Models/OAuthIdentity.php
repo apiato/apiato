@@ -8,6 +8,8 @@ use Laravel\Socialite\Two\User;
 
 class OAuthIdentity extends Model
 {
+    protected $table = 'oauth_identities';
+
     protected $fillable = [
         'user_id',
         'provider',
