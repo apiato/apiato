@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Requests\Request;
 use App\Containers\AppSection\SocialAuth\Enums\AuthAction;
 use Illuminate\Validation\Rule;
 
-final class AuthRedirectRequest extends Request
+final class RedirectRequest extends Request
 {
     public function rules(): array
     {

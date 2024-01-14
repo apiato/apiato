@@ -3,16 +3,17 @@
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\Action;
-use App\Containers\AppSection\SocialAuth\Data\Repositories\SocialAccountRepository;
-use App\Containers\AppSection\SocialAuth\Models\SocialAccount;
-use App\Containers\AppSection\SocialAuth\Values\SocialAuthResult;
-use Laravel\Socialite\Two\User;
+use App\Containers\AppSection\SocialAuth\Data\Repositories\OAuthIdentityRepository;
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
+use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserTask;
+use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-final class SocialSignupAction extends Action
+final class SignupAction extends Action
 {
     public function __construct(
-        private readonly SocialAccountRepository $socialAccountRepository,
+        private readonly GetOAuthUserTask $getOAuthUserTask,
+        private readonly OAuthIdentityRepository $oAuthIdentityRepository,
     ) {
     }
 
@@ -20,10 +21,12 @@ final class SocialSignupAction extends Action
      * @throws ValidatorException
      * @throws \JsonException
      */
-    public function run(string $provider, User $oAuthUser): SocialAuthResult
+    public function run(string $provider): SocialAuthOutcome
     {
-        /* @var SocialAccount $socialAccount */
-        $socialAccount = $this->socialAccountRepository->updateOrCreate(
+        $oAuthUser = $this->getOAuthUserTask->run($provider);
+
+        /* @var OAuthIdentity $identity */
+        $identity = $this->oAuthIdentityRepository->updateOrCreate(
             [
                 'provider' => $provider,
                 'social_id' => $oAuthUser->id,
@@ -40,15 +43,15 @@ final class SocialSignupAction extends Action
             ],
         );
 
-        if ($socialAccount->user()->doesntExist()) {
-            $user = $socialAccount->user()->create([
+        if ($identity->user()->doesntExist()) {
+            $user = $identity->user()->create([
                 'email' => $oAuthUser->email,
             ]);
             $user->markEmailAsVerified();
-            $socialAccount->user()->associate($user);
-            $socialAccount->save();
+            $identity->user()->associate($user);
+            $identity->save();
         }
 
-        return new SocialAuthResult($socialAccount->user, $socialAccount->user->createToken('social'));
+        return new SocialAuthOutcome($identity->user, $identity->user->createToken('social'));
     }
 }

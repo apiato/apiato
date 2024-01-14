@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Models\UserModel;
 use Apiato\Core\Abstracts\Values\Value;
 use Laravel\Passport\PersonalAccessTokenResult;
 
-class SocialAuthResult extends Value
+class SocialAuthOutcome extends Value
 {
     public function __construct(
         public readonly UserModel $user,

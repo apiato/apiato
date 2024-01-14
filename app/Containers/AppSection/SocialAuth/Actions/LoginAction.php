@@ -3,38 +3,42 @@
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\Action;
-use App\Containers\AppSection\SocialAuth\Data\Repositories\SocialAccountRepository;
-use App\Containers\AppSection\SocialAuth\Exceptions\NoLinkedSocialAccountFoundException;
-use App\Containers\AppSection\SocialAuth\Models\SocialAccount;
-use App\Containers\AppSection\SocialAuth\Values\SocialAuthResult;
+use App\Containers\AppSection\SocialAuth\Data\Repositories\OAuthIdentityRepository;
+use App\Containers\AppSection\SocialAuth\Exceptions\NoLinkedOAuthIdentityFoundException;
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
+use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserTask;
+use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Laravel\Socialite\Two\User;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-final class SocialLoginAction extends Action
+final class LoginAction extends Action
 {
     public function __construct(
-        private readonly SocialAccountRepository $socialAccountRepository,
+        private readonly GetOAuthUserTask $getOAuthUserTask,
+        private readonly OAuthIdentityRepository $oAuthIdentityRepository,
     ) {
     }
 
     /**
-     * @throws NoLinkedSocialAccountFoundException
+     * @throws NoLinkedOAuthIdentityFoundException
      * @throws ValidatorException
      * @throws \JsonException
      */
-    public function run(string $provider, User $oAuthUser): SocialAuthResult
+    public function run(string $provider): SocialAuthOutcome
     {
-        /* @var SocialAccount $socialAccount */
-        $socialAccount = $this->socialAccountRepository->findWhere([
+        $oAuthUser = $this->getOAuthUserTask->run($provider);
+
+        /* @var OAuthIdentity $identity */
+        $identity = $this->oAuthIdentityRepository->findWhere([
             'provider' => $provider,
             'social_id' => $oAuthUser->id,
         ])->first();
 
-        if (!$socialAccount) {
-            throw new NoLinkedSocialAccountFoundException();
+        if (!$identity) {
+            throw new NoLinkedOAuthIdentityFoundException();
         }
 
-        $this->socialAccountRepository->update([
+        $this->oAuthIdentityRepository->update([
             'email' => $oAuthUser->email,
             'nickname' => $oAuthUser->nickname,
             'name' => $oAuthUser->name,
@@ -43,14 +47,14 @@ final class SocialLoginAction extends Action
             'refresh_token' => $oAuthUser->refreshToken,
             'expires_in' => $oAuthUser->expiresIn,
             'scopes' => json_encode($oAuthUser->approvedScopes, JSON_THROW_ON_ERROR),
-        ], $socialAccount->id);
+        ], $identity->id);
 
-        $user = $socialAccount->user;
+        $user = $identity->user;
         if ($this->isEmailMatching($user, $oAuthUser) && !$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
 
-        return new SocialAuthResult($user, $user->createToken('social'));
+        return new SocialAuthOutcome($user, $user->createToken('social'));
     }
 
     private function isEmailMatching(mixed $user, User $oAuthUser): bool

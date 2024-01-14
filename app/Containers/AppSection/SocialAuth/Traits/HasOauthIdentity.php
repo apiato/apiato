@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\SocialAuth\Traits;
 
-use App\Containers\AppSection\SocialAuth\Models\SocialAccount;
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-trait HasSocialAccount
+trait HasOauthIdentity
 {
-    public function socialAccounts(): HasMany
+    public function oAuthIdentities(): HasMany
     {
-        return $this->hasMany(SocialAccount::class);
+        return $this->hasMany(OAuthIdentity::class);
     }
 
     // override

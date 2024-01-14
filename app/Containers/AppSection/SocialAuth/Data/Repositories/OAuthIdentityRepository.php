@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\SocialAuth\Data\Repositories;
 
-use App\Containers\AppSection\SocialAuth\Models\SocialAccount;
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use Apiato\Core\Abstracts\Repositories\Repository as CoreRepository;
 
-class SocialAccountRepository extends CoreRepository
+class OAuthIdentityRepository extends CoreRepository
 {
     public function model(): string
     {
-        return SocialAccount::class;
+        return OAuthIdentity::class;
     }
 }

@@ -9,14 +9,14 @@ class MakeRefreshTokenCookieTask extends ParentTask
 {
     public function run(string $refreshToken): Cookie
     {
-        return cookie(
+        return Cookie::create(
             'refreshToken',
             $refreshToken,
             config('apiato.api.refresh-expires-in'),
             null,
             null,
             config('session.secure'),
-            true,
+            config('session.http_only'),
         );
     }
 }
