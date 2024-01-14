@@ -14,10 +14,10 @@ class GetOAuthUserTask extends Task
     ) {
     }
 
-    public function run(string $providerName): User
+    public function run(string $provider): User
     {
         /* @var AbstractProvider $driver */
-        $driver = $this->socialiteManager->with($providerName);
+        $driver = $this->socialiteManager->with($provider);
 
         return $driver->stateless()->user();
     }

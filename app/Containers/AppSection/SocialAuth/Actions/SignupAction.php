@@ -3,9 +3,12 @@
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\Action;
-use App\Containers\AppSection\SocialAuth\Data\Repositories\OAuthIdentityRepository;
+use Apiato\Core\Abstracts\Models\UserModel;
+use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
+use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserTask;
+use App\Containers\AppSection\SocialAuth\Tasks\StoreOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Prettus\Validator\Exceptions\ValidatorException;
 
@@ -13,7 +16,8 @@ final class SignupAction extends Action
 {
     public function __construct(
         private readonly GetOAuthUserTask $getOAuthUserTask,
-        private readonly OAuthIdentityRepository $oAuthIdentityRepository,
+        private readonly FindOAuthIdentityTask $findOAuthIdentityTask,
+        private readonly StoreOAuthIdentityTask $storeOAuthIdentityTask,
     ) {
     }
 
@@ -25,33 +29,28 @@ final class SignupAction extends Action
     {
         $oAuthUser = $this->getOAuthUserTask->run($provider);
 
-        /* @var OAuthIdentity $identity */
-        $identity = $this->oAuthIdentityRepository->updateOrCreate(
-            [
-                'provider' => $provider,
-                'social_id' => $oAuthUser->id,
-            ],
-            [
-                'email' => $oAuthUser->email,
-                'nickname' => $oAuthUser->nickname,
-                'name' => $oAuthUser->name,
-                'avatar' => $oAuthUser->avatar,
-                'token' => $oAuthUser->token,
-                'refresh_token' => $oAuthUser->refreshToken,
-                'expires_in' => $oAuthUser->expiresIn,
-                'scopes' => json_encode($oAuthUser->approvedScopes, JSON_THROW_ON_ERROR),
-            ],
-        );
-
-        if ($identity->user()->doesntExist()) {
-            $user = $identity->user()->create([
-                'email' => $oAuthUser->email,
-            ]);
-            $user->markEmailAsVerified();
-            $identity->user()->associate($user);
-            $identity->save();
+        try {
+            $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser);
+        } catch (OAuthIdentityNotFoundException) {
+            $identity = $this->storeOAuthIdentityTask->run($provider,$oAuthUser);
+            $user = $this->createVerifiedUser($identity, $oAuthUser->email);
+            $this->linkIdentityToUser($identity, $user);
         }
 
         return new SocialAuthOutcome($identity);
+    }
+
+    private function createVerifiedUser(OAuthIdentity $identity, string $email): UserModel
+    {
+        $user = $identity->user()->create(compact('email'));
+        $user->markEmailAsVerified();
+
+        return $user;
+    }
+
+    private function linkIdentityToUser(OAuthIdentity $identity, UserModel $user): void
+    {
+        $identity->user()->associate($user);
+        $identity->save();
     }
 }
