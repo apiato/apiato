@@ -13,7 +13,7 @@ use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 final class CallbackController extends ApiController
 {
     public function __construct(
-        private readonly LoginAction  $socialLoginAction,
+        private readonly LoginAction $socialLoginAction,
         private readonly SignupAction $socialSignupAction,
     ) {
     }

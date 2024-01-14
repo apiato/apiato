@@ -54,7 +54,7 @@ final class LoginAction extends Action
             $user->markEmailAsVerified();
         }
 
-        return new SocialAuthOutcome($user, $user->createToken('social'));
+        return new SocialAuthOutcome($identity);
     }
 
     private function isEmailMatching(mixed $user, User $oAuthUser): bool

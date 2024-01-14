@@ -35,7 +35,7 @@ return [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
 //        'redirect' => 'social-auth/login/google',
-        'redirect' => 'http://api.example.com/v1/social-auth/callback/google',
-        // 'redirect' => 'https://developers.google.com/oauthplayground',
+//        'redirect' => 'http://api.example.com/v1/social-auth/callback/google',
+         'redirect' => 'https://developers.google.com/oauthplayground',
     ],
 ];

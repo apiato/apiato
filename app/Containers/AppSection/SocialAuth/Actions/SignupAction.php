@@ -52,6 +52,6 @@ final class SignupAction extends Action
             $identity->save();
         }
 
-        return new SocialAuthOutcome($identity->user, $identity->user->createToken('social'));
+        return new SocialAuthOutcome($identity);
     }
 }
