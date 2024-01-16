@@ -19,6 +19,6 @@ final class RedirectController extends ApiController
     {
         /* @var AbstractProvider $providerInstance */
         $providerInstance = $this->socialiteManager->driver($provider);
-        return $providerInstance->with(['state' => $request->action])->stateless()->redirect();
+        return $providerInstance->enablePKCE()->redirect();
     }
 }

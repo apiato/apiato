@@ -6,7 +6,6 @@ use Apiato\Core\Abstracts\Tasks\Task;
 use App\Containers\AppSection\SocialAuth\Data\Repositories\OAuthIdentityRepository;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
-use Laravel\Socialite\Two\User;
 
 class FindOAuthIdentityTask extends Task
 {
@@ -18,11 +17,11 @@ class FindOAuthIdentityTask extends Task
     /**
      * @throws OAuthIdentityNotFoundException
      */
-    public function run(string $provider, User $oAuthUser): OAuthIdentity
+    public function run(string $provider, string $socialId): OAuthIdentity
     {
         $identity = $this->oAuthIdentityRepository->findWhere([
             'provider' => $provider,
-            'social_id' => $oAuthUser->id,
+            'social_id' => $socialId,
         ])->first();
 
         return $identity ?? throw new OAuthIdentityNotFoundException();

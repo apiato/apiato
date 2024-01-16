@@ -24,11 +24,11 @@ class StoreOAuthIdentityTask extends Task
         return $this->oAuthIdentityRepository->create(
             [
                 'provider' => $provider,
-                'social_id' => $oAuthUser->id,
-                'email' => $oAuthUser->email,
-                'nickname' => $oAuthUser->nickname,
-                'name' => $oAuthUser->name,
-                'avatar' => $oAuthUser->avatar,
+                'social_id' => $oAuthUser->getId(),
+                'email' => $oAuthUser->getEmail(),
+                'nickname' => $oAuthUser->getNickname(),
+                'name' => $oAuthUser->getName(),
+                'avatar' => $oAuthUser->getAvatar(),
                 'token' => $oAuthUser->token,
                 'refresh_token' => $oAuthUser->refreshToken,
                 'expires_in' => $oAuthUser->expiresIn,

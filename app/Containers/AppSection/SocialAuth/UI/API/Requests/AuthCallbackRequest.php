@@ -11,8 +11,8 @@ final class AuthCallbackRequest extends Request
     public function rules(): array
     {
         return [
-            'state' => ['required', Rule::enum(AuthAction::class)],
-            'code' => ['required', 'string'],
+//            'state' => ['required', Rule::enum(AuthAction::class)],
+//            'code' => ['required', 'string'],
         ];
     }
 }

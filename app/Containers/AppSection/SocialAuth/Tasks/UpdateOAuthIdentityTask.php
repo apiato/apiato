@@ -22,10 +22,10 @@ class UpdateOAuthIdentityTask extends Task
     public function run(int $id, User $oAuthUser): OAuthIdentity
     {
         return $this->oAuthIdentityRepository->update([
-            'email' => $oAuthUser->email,
-            'nickname' => $oAuthUser->nickname,
-            'name' => $oAuthUser->name,
-            'avatar' => $oAuthUser->avatar,
+            'email' => $oAuthUser->getEmail(),
+            'nickname' => $oAuthUser->getNickname(),
+            'name' => $oAuthUser->getName(),
+            'avatar' => $oAuthUser->getAvatar(),
             'token' => $oAuthUser->token,
             'refresh_token' => $oAuthUser->refreshToken,
             'expires_in' => $oAuthUser->expiresIn,

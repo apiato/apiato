@@ -26,6 +26,8 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
 
         Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
+
+        Passport::personalAccessTokensExpireIn(now()->addMonths(6));
     }
 
     public function register(): void

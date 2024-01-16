@@ -4,12 +4,12 @@ namespace App\Containers\AppSection\SocialAuth\UI\API\Requests;
 
 use Apiato\Core\Abstracts\Requests\Request;
 
-final class LoginRequest extends Request
+final class LoginByAccessTokenRequest extends Request
 {
     public function rules(): array
     {
         return [
-            'code' => ['required', 'string'],
+            'access_token' => ['required', 'string'],
         ];
     }
 }

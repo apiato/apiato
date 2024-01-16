@@ -2,49 +2,40 @@
 
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
-use Apiato\Core\Abstracts\Actions\Action;
+use Apiato\Core\Abstracts\Actions\SubAction;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
-use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserTask;
 use App\Containers\AppSection\SocialAuth\Tasks\UpdateOAuthIdentityTask;
+use App\Containers\AppSection\SocialAuth\Tasks\VerifyEmailTask;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Laravel\Socialite\Two\User;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-final class LoginAction extends Action
+class LoginSubAction extends SubAction
 {
     public function __construct(
-        private readonly GetOAuthUserTask $getOAuthUserTask,
         private readonly FindOAuthIdentityTask $findOAuthIdentityTask,
         private readonly UpdateOAuthIdentityTask $updateOAuthIdentityTask,
+        private readonly VerifyEmailTask $verifyEmailTask,
     ) {
     }
 
     /**
-     * @throws ValidatorException
      * @throws OAuthIdentityNotFoundException
+     * @throws ValidatorException
      * @throws \JsonException
      */
-    public function run(string $provider): SocialAuthOutcome
+    public function run(string $provider, User $oAuthUser): SocialAuthOutcome
     {
-        $oAuthUser = $this->getOAuthUserTask->run($provider);
-        $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser);
+        $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser->getId());
         $identity = $this->updateOAuthIdentityTask->run($identity->id, $oAuthUser);
 
-        if ($this->shouldVerifyEmail($identity->user, $oAuthUser)) {
-            $identity->user->markEmailAsVerified();
+        // TODO: What if the user email is not verified? (In provider).
+        // Can we assume that the user email is verified if the user is registered via a provider?
+        if ($oAuthUser->getEmail()) {
+            $this->verifyEmailTask->run($identity->user, $oAuthUser->email);
         }
 
         return new SocialAuthOutcome($identity);
-    }
-
-    private function shouldVerifyEmail(mixed $user, User $oAuthUser): bool
-    {
-        return $this->isEmailMatching($user, $oAuthUser) && !$user->hasVerifiedEmail();
-    }
-
-    private function isEmailMatching(mixed $user, User $oAuthUser): bool
-    {
-        return $user->email === $oAuthUser->email;
     }
 }

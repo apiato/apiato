@@ -7,7 +7,7 @@ use Laravel\Socialite\SocialiteManager;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\User;
 
-class GetOAuthUserTask extends Task
+class GetOAuthUserFromCodeTask extends Task
 {
     public function __construct(
         private readonly SocialiteManager $socialiteManager,
@@ -19,6 +19,6 @@ class GetOAuthUserTask extends Task
         /* @var AbstractProvider $driver */
         $driver = $this->socialiteManager->with($provider);
 
-        return $driver->stateless()->user();
+        return $driver->enablePKCE()->user();
     }
 }

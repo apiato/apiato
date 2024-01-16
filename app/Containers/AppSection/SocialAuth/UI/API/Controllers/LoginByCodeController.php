@@ -3,22 +3,22 @@
 namespace App\Containers\AppSection\SocialAuth\UI\API\Controllers;
 
 use Apiato\Core\Abstracts\Controllers\ApiController;
-use App\Containers\AppSection\SocialAuth\Actions\SignupAction;
-use App\Containers\AppSection\SocialAuth\UI\API\Requests\SignupRequest;
+use App\Containers\AppSection\SocialAuth\Actions\LoginByCodeAction;
+use App\Containers\AppSection\SocialAuth\UI\API\Requests\LoginByCodeRequest;
 use App\Containers\AppSection\SocialAuth\Values\PersonalAccessTokenResponse;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 
-final class SignupController extends ApiController
+final class LoginByCodeController extends ApiController
 {
     public function __construct(
-        private readonly SignupAction $signupAction,
+        private readonly LoginByCodeAction $loginByCodeAction,
     ) {
     }
 
-    public function __invoke(SignupRequest $request, string $provider)
+    public function __invoke(LoginByCodeRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
-        $result = $this->signupAction->transactionalRun($provider);
+        $result = $this->loginByCodeAction->transactionalRun($provider);
 
         return $this->withMeta(
             PersonalAccessTokenResponse::from($result->token)->toArray(),
