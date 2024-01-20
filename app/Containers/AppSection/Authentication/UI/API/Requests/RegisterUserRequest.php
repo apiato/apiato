@@ -30,9 +30,7 @@ class RegisterUserRequest extends ParentRequest
             'birth' => 'date',
             'verification_url' => [
                 'url',
-                Rule::requiredIf(function () {
-                    return config('appSection-authentication.require_email_verification');
-                }),
+                Rule::requiredIf(static fn (): bool => config('appSection-authentication.require_email_verification')),
                 Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
             ],
         ];
