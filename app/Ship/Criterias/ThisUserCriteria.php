@@ -2,10 +2,10 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class ThisUserCriteria extends Criteria
+class ThisUserCriteria extends ParentCriteria
 {
     public function __construct(
         private int $userId,

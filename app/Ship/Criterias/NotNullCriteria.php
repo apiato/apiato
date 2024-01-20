@@ -2,10 +2,10 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class NotNullCriteria extends Criteria
+class NotNullCriteria extends ParentCriteria
 {
     private string $field;
 

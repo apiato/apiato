@@ -2,10 +2,10 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Carbon\Carbon;
 
-class ThisBetweenDatesCriteria extends Criteria
+class ThisBetweenDatesCriteria extends ParentCriteria
 {
     public function __construct(
         private string $field,
