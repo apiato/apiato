@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(VerifyEmailAction::class)]
-class VerifyEmailActionTest extends UnitTestCase
+final class VerifyEmailActionTest extends UnitTestCase
 {
     public function testVerifyEmail(): void
     {

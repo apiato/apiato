@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class PasswordResetsMigrationTest extends UnitTestCase
+final class PasswordResetsMigrationTest extends UnitTestCase
 {
     public function testPasswordResetsTableHasExpectedColumns(): void
     {

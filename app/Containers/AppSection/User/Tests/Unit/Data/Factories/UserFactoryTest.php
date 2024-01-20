@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(UserFactory::class)]
-class UserFactoryTest extends UnitTestCase
+final class UserFactoryTest extends UnitTestCase
 {
     public function testCreateUser(): void
     {

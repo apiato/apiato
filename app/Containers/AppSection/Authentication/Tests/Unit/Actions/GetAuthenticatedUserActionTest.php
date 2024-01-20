@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(GetAuthenticatedUserAction::class)]
-class GetAuthenticatedUserActionTest extends UnitTestCase
+final class GetAuthenticatedUserActionTest extends UnitTestCase
 {
     public function testGetAuthenticatedUserAction(): void
     {

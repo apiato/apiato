@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class DetachPermissionFromUserTest extends ApiTestCase
+final class DetachPermissionFromUserTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{id}/permissions';
 

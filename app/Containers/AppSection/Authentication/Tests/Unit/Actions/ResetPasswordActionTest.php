@@ -17,7 +17,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(ResetPasswordAction::class)]
-class ResetPasswordActionTest extends UnitTestCase
+final class ResetPasswordActionTest extends UnitTestCase
 {
     private User $user;
 

@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(MakeRefreshCookieTask::class)]
-class MakeRefreshCookieTaskTest extends UnitTestCase
+final class MakeRefreshCookieTaskTest extends UnitTestCase
 {
     public function testMakeRefreshCookie(): void
     {

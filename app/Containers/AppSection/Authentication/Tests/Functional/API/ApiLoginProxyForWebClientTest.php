@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class ApiLoginProxyForWebClientTest extends ApiTestCase
+final class ApiLoginProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/login';
 

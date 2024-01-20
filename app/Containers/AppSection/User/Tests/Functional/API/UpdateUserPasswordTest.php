@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class UpdateUserPasswordTest extends ApiTestCase
+final class UpdateUserPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{id}/password';
 

@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(SendVerificationEmailTask::class)]
-class SendVerificationEmailTaskTest extends UnitTestCase
+final class SendVerificationEmailTaskTest extends UnitTestCase
 {
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {

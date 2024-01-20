@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(DeleteRoleTask::class)]
-class DeleteRoleTaskTest extends UnitTestCase
+final class DeleteRoleTaskTest extends UnitTestCase
 {
     public function testSuccessfulDeleteRoleShouldReturn1(): void
     {

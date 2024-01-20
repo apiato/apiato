@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(CreatePermissionTask::class)]
-class CreatePermissionTaskTest extends UnitTestCase
+final class CreatePermissionTaskTest extends UnitTestCase
 {
     public function testCreatePermission(): void
     {

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(CreateUserTask::class)]
-class CreateUserTaskTest extends UnitTestCase
+final class CreateUserTaskTest extends UnitTestCase
 {
     public function testCreateUser(): void
     {

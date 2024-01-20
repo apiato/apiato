@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class AttachPermissionsToRoleTest extends ApiTestCase
+final class AttachPermissionsToRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/permissions/attach';
 

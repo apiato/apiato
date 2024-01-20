@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(CallOAuthServerTask::class)]
-class CallOAuthServerTaskTest extends UnitTestCase
+final class CallOAuthServerTaskTest extends UnitTestCase
 {
     public function testCallOAuthServer(): void
     {

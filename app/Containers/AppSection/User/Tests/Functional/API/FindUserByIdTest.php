@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class FindUserByIdTest extends ApiTestCase
+final class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{id}';
 

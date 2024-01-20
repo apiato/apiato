@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(CreateAdminAction::class)]
-class CreateAdminActionTest extends UnitTestCase
+final class CreateAdminActionTest extends UnitTestCase
 {
     public function testCreateAdmin(): void
     {

@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(RegisterUserAction::class)]
-class RegisterUserActionTest extends UnitTestCase
+final class RegisterUserActionTest extends UnitTestCase
 {
     public function testRegisterUser(): void
     {

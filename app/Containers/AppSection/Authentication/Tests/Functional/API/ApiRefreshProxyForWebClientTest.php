@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class ApiRefreshProxyForWebClientTest extends ApiTestCase
+final class ApiRefreshProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/refresh';
 

@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class SyncPermissionsOnRoleTest extends ApiTestCase
+final class SyncPermissionsOnRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/permissions/sync';
 

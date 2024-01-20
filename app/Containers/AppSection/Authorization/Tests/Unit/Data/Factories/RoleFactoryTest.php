@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(RoleFactory::class)]
-class RoleFactoryTest extends UnitTestCase
+final class RoleFactoryTest extends UnitTestCase
 {
     public function testCreateRole(): void
     {

@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class UsersMigrationTest extends UnitTestCase
+final class UsersMigrationTest extends UnitTestCase
 {
     public function testUsersTableHasExpectedColumns(): void
     {

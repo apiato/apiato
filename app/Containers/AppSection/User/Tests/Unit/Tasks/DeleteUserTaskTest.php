@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(DeleteUserTask::class)]
-class DeleteUserTaskTest extends UnitTestCase
+final class DeleteUserTaskTest extends UnitTestCase
 {
     public function testDeleteUser(): void
     {

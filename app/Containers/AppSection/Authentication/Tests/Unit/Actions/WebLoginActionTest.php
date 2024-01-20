@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(WebLoginAction::class)]
-class WebLoginActionTest extends UnitTestCase
+final class WebLoginActionTest extends UnitTestCase
 {
     private array $userDetails;
     private LoginRequest $request;

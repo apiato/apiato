@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class DeleteUserTest extends ApiTestCase
+final class DeleteUserTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{id}';
 

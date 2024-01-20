@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversNothing]
-class ListUsersTest extends ApiTestCase
+final class ListUsersTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users';
 

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class ListRolesTest extends ApiTestCase
+final class ListRolesTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/roles';
 

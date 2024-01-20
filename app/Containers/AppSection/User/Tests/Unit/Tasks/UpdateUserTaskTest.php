@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(UpdateUserTask::class)]
-class UpdateUserTaskTest extends UnitTestCase
+final class UpdateUserTaskTest extends UnitTestCase
 {
     public function testUpdateUser(): void
     {

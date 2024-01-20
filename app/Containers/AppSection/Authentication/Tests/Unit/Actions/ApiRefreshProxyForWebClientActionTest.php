@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(CallOAuthServerTask::class)]
 #[Group('authentication')]
 #[CoversClass(ApiRefreshProxyForWebClientAction::class)]
-class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
+final class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
 {
     public function testProxyApiRefresh(): void
     {

@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class PermissionMigrationTest extends UnitTestCase
+final class PermissionMigrationTest extends UnitTestCase
 {
     private array $tableNames;
     private array $columnNames;

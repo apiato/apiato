@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(RefreshTokenMissingException::class)]
-class RefreshTokenMissingExceptionTest extends UnitTestCase
+final class RefreshTokenMissingExceptionTest extends UnitTestCase
 {
     public function testRefreshTokenMissedException(): void
     {

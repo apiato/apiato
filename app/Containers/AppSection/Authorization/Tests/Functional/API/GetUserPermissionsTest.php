@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class GetUserPermissionsTest extends ApiTestCase
+final class GetUserPermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{id}/permissions';
 

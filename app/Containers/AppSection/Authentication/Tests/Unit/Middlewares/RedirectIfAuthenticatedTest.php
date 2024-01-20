@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(RedirectIfAuthenticated::class)]
-class RedirectIfAuthenticatedTest extends UnitTestCase
+final class RedirectIfAuthenticatedTest extends UnitTestCase
 {
     public function testRedirectIfAuthenticated(): void
     {

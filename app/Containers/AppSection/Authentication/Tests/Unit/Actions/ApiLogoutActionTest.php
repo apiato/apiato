@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(CallOAuthServerTask::class)]
 #[Group('authentication')]
 #[CoversClass(ApiLogoutAction::class)]
-class ApiLogoutActionTest extends UnitTestCase
+final class ApiLogoutActionTest extends UnitTestCase
 {
     public function testApiLogoutAction(): void
     {

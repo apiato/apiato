@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(FindRoleTask::class)]
-class FindRoleTaskTest extends UnitTestCase
+final class FindRoleTaskTest extends UnitTestCase
 {
     public function testFindRoleById(): void
     {

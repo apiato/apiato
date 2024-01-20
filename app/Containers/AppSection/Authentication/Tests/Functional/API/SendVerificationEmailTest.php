@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class SendVerificationEmailTest extends ApiTestCase
+final class SendVerificationEmailTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/email/verification-notification';
 

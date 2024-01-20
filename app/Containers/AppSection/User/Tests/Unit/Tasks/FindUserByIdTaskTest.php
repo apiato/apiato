@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(FindUserByIdTask::class)]
-class FindUserByIdTaskTest extends UnitTestCase
+final class FindUserByIdTaskTest extends UnitTestCase
 {
     public function testFindUserById(): void
     {

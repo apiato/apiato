@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(FindPermissionTask::class)]
-class FindPermissionTaskTest extends UnitTestCase
+final class FindPermissionTaskTest extends UnitTestCase
 {
     public function testFindPermissionById(): void
     {

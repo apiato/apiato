@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(ForgotPasswordAction::class)]
-class ForgotPasswordActionTest extends UnitTestCase
+final class ForgotPasswordActionTest extends UnitTestCase
 {
     public function testIfUserExistsShouldReturnTrue(): void
     {

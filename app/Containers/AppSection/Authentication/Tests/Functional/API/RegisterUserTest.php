@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class RegisterUserTest extends ApiTestCase
+final class RegisterUserTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/register';
 

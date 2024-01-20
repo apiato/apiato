@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(LoginFailedException::class)]
-class LoginFailedExceptionTest extends UnitTestCase
+final class LoginFailedExceptionTest extends UnitTestCase
 {
     public function testLoginFailedException(): void
     {

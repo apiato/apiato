@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(PermissionFactory::class)]
-class PermissionFactoryTest extends UnitTestCase
+final class PermissionFactoryTest extends UnitTestCase
 {
     public function testCreatePermission(): void
     {

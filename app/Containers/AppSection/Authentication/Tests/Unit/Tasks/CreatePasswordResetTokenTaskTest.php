@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(CreatePasswordResetTokenTask::class)]
-class CreatePasswordResetTokenTaskTest extends UnitTestCase
+final class CreatePasswordResetTokenTaskTest extends UnitTestCase
 {
     public function testCreatePasswordResetTask(): void
     {

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 #[Group('authentication')]
 #[CoversClass(ApiLoginProxyForWebClientAction::class)]
-class ApiLoginProxyForWebClientActionTest extends UnitTestCase
+final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
     public function testProxyApiLoginAction(): void
     {

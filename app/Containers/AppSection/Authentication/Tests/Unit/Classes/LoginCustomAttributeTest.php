@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(LoginCustomAttribute::class)]
-class LoginCustomAttributeTest extends UnitTestCase
+final class LoginCustomAttributeTest extends UnitTestCase
 {
     public function testGivenValidLoginAttributeThenExtractUsername(): void
     {

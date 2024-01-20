@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-class RevokeRolesFromUserTest extends ApiTestCase
+final class RevokeRolesFromUserTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/roles/revoke';
 

@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(ListUsersTask::class)]
-class ListUsersTaskTest extends UnitTestCase
+final class ListUsersTaskTest extends UnitTestCase
 {
     public function testListUsers(): void
     {

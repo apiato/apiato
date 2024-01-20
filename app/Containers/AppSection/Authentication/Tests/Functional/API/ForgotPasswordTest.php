@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class ForgotPasswordTest extends ApiTestCase
+final class ForgotPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/password/forgot';
 

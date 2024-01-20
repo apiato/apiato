@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-class ResetPasswordTest extends ApiTestCase
+final class ResetPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/password/reset';
 
