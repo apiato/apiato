@@ -27,6 +27,6 @@ class RoleFactoryTest extends UnitTestCase
 
         $role = RoleFactory::new()->admin()->createOne();
 
-        $this->assertEquals(config('appSection-authorization.admin_role'), $role->name);
+        $this->assertSame(config('appSection-authorization.admin_role'), $role->name);
     }
 }

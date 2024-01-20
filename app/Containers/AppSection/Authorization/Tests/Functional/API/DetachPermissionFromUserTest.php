@@ -17,7 +17,7 @@ class DetachPermissionFromUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-permissions',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testDetachSinglePermissionFromUser(): void

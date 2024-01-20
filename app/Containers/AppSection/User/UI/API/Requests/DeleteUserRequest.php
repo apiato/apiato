@@ -11,7 +11,7 @@ class DeleteUserRequest extends ParentRequest
 
     protected array $access = [
         'permissions' => 'delete-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

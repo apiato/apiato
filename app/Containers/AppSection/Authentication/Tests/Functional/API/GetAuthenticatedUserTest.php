@@ -15,8 +15,8 @@ class GetAuthenticatedUserTest extends ApiTestCase
     protected string $endpoint = 'get@v1/profile';
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testGetAuthenticatedUser(): void

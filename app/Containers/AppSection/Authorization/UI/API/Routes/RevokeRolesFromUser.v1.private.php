@@ -15,7 +15,7 @@
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => 'manage-admins-access', 'roles' => '']
+ * @apiPermission      Authenticated ['permissions' => 'manage-admins-access', 'roles' => null]
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer

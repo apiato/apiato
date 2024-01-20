@@ -17,7 +17,7 @@ class SyncUserRolesTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testSyncMultipleRolesOnUser(): void

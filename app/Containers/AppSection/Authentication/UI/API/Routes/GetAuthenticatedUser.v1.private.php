@@ -14,7 +14,7 @@
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
+ * @apiPermission      Authenticated ['permissions' => null, 'roles' => null]
  *
  * @apiUse             UserSuccessSingleResponse
  */

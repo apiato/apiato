@@ -15,8 +15,8 @@ class GetRolePermissionsTest extends ApiTestCase
     protected string $endpoint = 'get@v1/roles/{id}/permissions';
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testGetRolePermissions(): void
@@ -29,6 +29,6 @@ class GetRolePermissionsTest extends ApiTestCase
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($permission->name, $responseContent->data[0]->name);
+        $this->assertSame($permission->name, $responseContent->data[0]->name);
     }
 }

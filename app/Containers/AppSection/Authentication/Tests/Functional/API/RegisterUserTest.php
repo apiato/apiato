@@ -20,8 +20,8 @@ class RegisterUserTest extends ApiTestCase
     protected bool $auth = false;
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void

@@ -19,7 +19,7 @@ class FindUserByIdTaskTest extends UnitTestCase
 
         $foundUser = app(FindUserByIdTask::class)->run($user->id);
 
-        $this->assertEquals($user->id, $foundUser->id);
+        $this->assertSame($user->id, $foundUser->id);
     }
 
     public function testFindUserWithInvalidId(): void

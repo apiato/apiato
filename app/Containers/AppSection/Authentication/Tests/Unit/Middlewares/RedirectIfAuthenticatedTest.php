@@ -26,7 +26,7 @@ class RedirectIfAuthenticatedTest extends UnitTestCase
         $response = $middleware->handle($request, static function () {
         });
 
-        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertSame(302, $response->getStatusCode());
     }
 
     public function testSkipIfUnAuthenticated(): void

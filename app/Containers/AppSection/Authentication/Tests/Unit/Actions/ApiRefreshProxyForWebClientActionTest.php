@@ -35,7 +35,7 @@ class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
         $this->assertArrayHasKey('refresh_token', $response['response_content']);
         $this->assertArrayHasKey('expires_in', $response['response_content']);
         $this->assertArrayHasKey('token_type', $response['response_content']);
-        $this->assertEquals('Bearer', $response['response_content']['token_type']);
+        $this->assertSame('Bearer', $response['response_content']['token_type']);
     }
 
     private function createRefreshTokenFor(string $email, string $password): string

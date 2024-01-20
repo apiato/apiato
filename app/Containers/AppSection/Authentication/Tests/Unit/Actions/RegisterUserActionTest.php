@@ -32,7 +32,7 @@ class RegisterUserActionTest extends UnitTestCase
 
         $this->assertModelExists($user);
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals(strtolower($data['email']), $user->email);
+        $this->assertSame(strtolower($data['email']), $user->email);
         $this->assertTrue(Hash::check($data['password'], $user->password));
         $this->assertNull($user->email_verified_at);
         Notification::assertSentTo($user, Welcome::class);

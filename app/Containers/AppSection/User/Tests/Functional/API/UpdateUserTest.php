@@ -16,7 +16,7 @@ class UpdateUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'update-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testUpdateExistingUser(): void

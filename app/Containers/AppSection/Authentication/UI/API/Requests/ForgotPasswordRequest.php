@@ -8,8 +8,8 @@ use Illuminate\Validation\Rule;
 class ForgotPasswordRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [

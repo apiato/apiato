@@ -16,8 +16,8 @@ class UpdateUserPasswordTest extends ApiTestCase
     protected string $endpoint = 'patch@v1/users/{id}/password';
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testGivenUserAlreadyHaveAPasswordUpdateUserPassword(): void

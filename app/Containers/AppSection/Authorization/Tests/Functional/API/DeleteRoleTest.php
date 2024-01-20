@@ -15,7 +15,7 @@ class DeleteRoleTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testDeleteExistingRole(): void

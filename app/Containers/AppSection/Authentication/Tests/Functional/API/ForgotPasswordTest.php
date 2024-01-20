@@ -16,8 +16,8 @@ class ForgotPasswordTest extends ApiTestCase
     protected bool $auth = false;
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testForgotPassword(): void

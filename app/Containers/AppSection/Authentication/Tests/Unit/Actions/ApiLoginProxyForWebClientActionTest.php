@@ -33,8 +33,8 @@ class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         $this->assertArrayHasKey('token_type', $result['response_content']);
         $this->assertArrayHasKey('expires_in', $result['response_content']);
         $this->assertArrayHasKey('token_type', $result['response_content']);
-        $this->assertEquals('Bearer', $result['response_content']['token_type']);
+        $this->assertSame('Bearer', $result['response_content']['token_type']);
         $this->assertInstanceOf(Cookie::class, $result['refresh_cookie']);
-        $this->assertEquals('refreshToken', $result['refresh_cookie']->getName());
+        $this->assertSame('refreshToken', $result['refresh_cookie']->getName());
     }
 }

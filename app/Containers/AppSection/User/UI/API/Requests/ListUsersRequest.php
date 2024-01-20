@@ -8,7 +8,7 @@ class ListUsersRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'list-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

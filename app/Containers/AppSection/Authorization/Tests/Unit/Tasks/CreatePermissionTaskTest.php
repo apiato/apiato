@@ -19,9 +19,9 @@ class CreatePermissionTaskTest extends UnitTestCase
 
         $permission = app(CreatePermissionTask::class)->run($name, $description, $display_name);
 
-        $this->assertEquals(strtolower($name), $permission->name);
-        $this->assertEquals($description, $permission->description);
-        $this->assertEquals($display_name, $permission->display_name);
-        $this->assertEquals('api', $permission->guard_name);
+        $this->assertSame(strtolower($name), $permission->name);
+        $this->assertSame($description, $permission->description);
+        $this->assertSame($display_name, $permission->display_name);
+        $this->assertSame('api', $permission->guard_name);
     }
 }

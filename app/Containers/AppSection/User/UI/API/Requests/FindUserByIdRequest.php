@@ -8,7 +8,7 @@ class FindUserByIdRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'search-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

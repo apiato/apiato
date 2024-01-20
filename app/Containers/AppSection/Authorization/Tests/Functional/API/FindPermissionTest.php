@@ -15,7 +15,7 @@ class FindPermissionTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testFindPermissionById(): void
@@ -26,7 +26,7 @@ class FindPermissionTest extends ApiTestCase
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($permissionA->name, $responseContent->data->name);
+        $this->assertSame($permissionA->name, $responseContent->data->name);
     }
 
     public function testFindNonExistingPermission(): void

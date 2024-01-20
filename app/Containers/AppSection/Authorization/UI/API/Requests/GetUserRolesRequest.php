@@ -7,8 +7,8 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 class GetUserRolesRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [

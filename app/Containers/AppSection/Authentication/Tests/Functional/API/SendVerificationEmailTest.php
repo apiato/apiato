@@ -17,8 +17,8 @@ class SendVerificationEmailTest extends ApiTestCase
     protected string $endpoint = 'post@v1/email/verification-notification';
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void

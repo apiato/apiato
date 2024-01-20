@@ -15,7 +15,7 @@ class FindRoleTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testFindRoleById(): void
@@ -26,7 +26,7 @@ class FindRoleTest extends ApiTestCase
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($roleA->name, $responseContent->data->name);
+        $this->assertSame($roleA->name, $responseContent->data->name);
     }
 
     public function testFindNonExistingRole(): void

@@ -12,8 +12,8 @@ class UpdateUserPasswordRequest extends ParentRequest
     use IsResourceOwnerTrait;
 
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [

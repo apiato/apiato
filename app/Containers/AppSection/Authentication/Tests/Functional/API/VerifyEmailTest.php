@@ -17,8 +17,8 @@ class VerifyEmailTest extends ApiTestCase
     protected string $endpoint = 'post@v1/email/verify/{id}/{hash}';
 
     protected array $access = [
-        'roles' => '',
-        'permissions' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     public function testVerifyEmail(): void

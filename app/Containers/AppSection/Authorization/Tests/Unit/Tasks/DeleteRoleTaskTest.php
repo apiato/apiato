@@ -19,7 +19,7 @@ class DeleteRoleTaskTest extends UnitTestCase
 
         $result = app(DeleteRoleTask::class)->run($role->id);
 
-        $this->assertEquals(1, $result);
+        $this->assertSame(1, $result);
         $this->assertDatabaseMissing(config('permission.table_names.roles'), $role->toArray());
     }
 

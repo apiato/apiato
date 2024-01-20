@@ -16,7 +16,7 @@ class ListUsersTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'list-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testListUsersByAdmin(): void

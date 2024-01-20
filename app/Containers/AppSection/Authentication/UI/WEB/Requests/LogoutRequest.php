@@ -8,6 +8,7 @@ class LogoutRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [

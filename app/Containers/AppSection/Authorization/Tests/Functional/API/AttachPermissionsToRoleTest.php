@@ -17,7 +17,7 @@ class AttachPermissionsToRoleTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testAttachSinglePermissionToRole(): void

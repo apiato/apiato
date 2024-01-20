@@ -8,7 +8,7 @@ class SyncPermissionsOnRoleRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

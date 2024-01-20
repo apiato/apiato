@@ -15,7 +15,7 @@ class DeleteUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'delete-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testDeleteExistingUser(): void

@@ -9,7 +9,7 @@
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => '', 'roles' => ''] | Resource Owner
+ * @apiPermission      Authenticated ['permissions' => null, 'roles' => null] | Resource Owner
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer

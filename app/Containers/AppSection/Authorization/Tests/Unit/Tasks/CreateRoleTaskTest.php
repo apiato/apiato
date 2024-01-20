@@ -19,9 +19,9 @@ class CreateRoleTaskTest extends UnitTestCase
 
         $role = app(CreateRoleTask::class)->run($name, $description, $display_name);
 
-        $this->assertEquals(strtolower($name), $role->name);
-        $this->assertEquals($description, $role->description);
-        $this->assertEquals($display_name, $role->display_name);
-        $this->assertEquals('api', $role->guard_name);
+        $this->assertSame(strtolower($name), $role->name);
+        $this->assertSame($description, $role->description);
+        $this->assertSame($display_name, $role->display_name);
+        $this->assertSame('api', $role->guard_name);
     }
 }

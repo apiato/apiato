@@ -19,7 +19,7 @@ class DeleteUserTaskTest extends UnitTestCase
 
         $result = app(DeleteUserTask::class)->run($user->id);
 
-        $this->assertEquals(1, $result);
+        $this->assertSame(1, $result);
     }
 
     public function testDeleteUserWithInvalidId(): void

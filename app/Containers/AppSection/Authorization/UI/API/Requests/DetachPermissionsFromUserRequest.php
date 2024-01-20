@@ -8,7 +8,7 @@ class DetachPermissionsFromUserRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-permissions',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

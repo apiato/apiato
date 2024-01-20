@@ -14,7 +14,7 @@ class ListPermissionsTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testListPermissions(): void

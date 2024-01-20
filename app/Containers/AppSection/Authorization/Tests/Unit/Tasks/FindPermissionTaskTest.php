@@ -19,7 +19,7 @@ class FindPermissionTaskTest extends UnitTestCase
 
         $result = app(FindPermissionTask::class)->run($permission->id);
 
-        $this->assertEquals($permission->id, $result->id);
+        $this->assertSame($permission->id, $result->id);
     }
 
     public function testFindPermissionByName(): void
@@ -28,7 +28,7 @@ class FindPermissionTaskTest extends UnitTestCase
 
         $result = app(FindPermissionTask::class)->run($permission->name);
 
-        $this->assertEquals($permission->id, $result->id);
+        $this->assertSame($permission->id, $result->id);
     }
 
     public function testFindPermissionWithInvalidIdThrows404(): void

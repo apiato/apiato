@@ -11,7 +11,7 @@ class UpdateUserRequest extends ParentRequest
 
     protected array $access = [
         'permissions' => 'update-users',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [

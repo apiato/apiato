@@ -23,8 +23,8 @@ class UpdateUserTaskTest extends UnitTestCase
 
         $updatedUser = app(UpdateUserTask::class)->run($data, $user->id);
 
-        $this->assertEquals($user->id, $updatedUser->id);
-        $this->assertEquals($data['name'], $updatedUser->name);
+        $this->assertSame($user->id, $updatedUser->id);
+        $this->assertSame($data['name'], $updatedUser->name);
     }
 
     public function testUpdateUserWithInvalidID(): void

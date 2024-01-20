@@ -23,6 +23,6 @@ class GetAuthenticatedUserActionTest extends UnitTestCase
         $foundUser = $action->run();
 
         $this->assertInstanceOf(User::class, $foundUser);
-        $this->assertEquals($user->id, $foundUser->id);
+        $this->assertSame($user->id, $foundUser->id);
     }
 }

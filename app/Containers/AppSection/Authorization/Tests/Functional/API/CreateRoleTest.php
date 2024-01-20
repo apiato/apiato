@@ -15,7 +15,7 @@ class CreateRoleTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     public function testCreateRole(): void
@@ -30,7 +30,7 @@ class CreateRoleTest extends ApiTestCase
 
         $response->assertCreated();
         $responseContent = $this->getResponseContentObject();
-        $this->assertEquals($data['name'], $responseContent->data->name);
+        $this->assertSame($data['name'], $responseContent->data->name);
     }
 
     public function testCreateRoleWithWrongName(): void

@@ -8,8 +8,8 @@ use Illuminate\Validation\Rules\Password;
 class ResetPasswordRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [
