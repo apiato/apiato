@@ -12,7 +12,7 @@ return [
     */
 
     'require_email_verification' => env('REQUIRE_EMAIL_VERIFICATION', true),
-    'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30), // in minute
+    'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30),
 
     /*
     |--------------------------------------------------------------------------
