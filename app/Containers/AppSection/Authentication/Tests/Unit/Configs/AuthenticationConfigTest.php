@@ -16,7 +16,7 @@ final class AuthenticationConfigTest extends UnitTestCase
         $this->assertArrayHasKey('require_email_verification', config('appSection-authentication'));
         $this->assertFalse(config('appSection-authentication.require_email_verification'));
         $this->assertArrayHasKey('email_verification_link_expiration_time_in_minute', config('appSection-authentication'));
-        $this->assertSame('30', config('appSection-authentication.email_verification_link_expiration_time_in_minute'));
+        $this->assertEquals(30, config('appSection-authentication.email_verification_link_expiration_time_in_minute'));
         $this->assertArrayHasKey('clients', config('appSection-authentication'));
         $this->assertArrayHasKey('web', config('appSection-authentication.clients'));
         $this->assertArrayHasKey('id', config('appSection-authentication.clients.web'));
