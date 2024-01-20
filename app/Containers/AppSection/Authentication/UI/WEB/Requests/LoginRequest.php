@@ -18,9 +18,6 @@ class LoginRequest extends ParentRequest
     protected array $urlParameters = [
     ];
 
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         $rules = [
@@ -30,9 +27,6 @@ class LoginRequest extends ParentRequest
         return LoginCustomAttribute::mergeValidationRules($rules);
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return $this->hasAccess();

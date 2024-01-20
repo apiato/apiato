@@ -17,9 +17,6 @@ class RefreshProxyRequest extends ParentRequest
     protected array $urlParameters = [
     ];
 
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         return [
@@ -27,9 +24,6 @@ class RefreshProxyRequest extends ParentRequest
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return $this->hasAccess();
