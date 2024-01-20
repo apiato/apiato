@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GetAuthenticatedUserAction extends ParentAction
 {
-    public function run(): null|Authenticatable
+    public function run(): Authenticatable|null
     {
         return Auth::user();
     }
