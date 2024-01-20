@@ -16,8 +16,7 @@ class RevokeRolesFromUserRequest extends ParentRequest
         'user_id',
     ];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

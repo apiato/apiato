@@ -8,8 +8,7 @@ use League\Fractal\Resource\Collection;
 
 class RoleTransformer extends ParentTransformer
 {
-    protected array $availableIncludes = [
-    ];
+    protected array $availableIncludes = [];
 
     protected array $defaultIncludes = [
         'permissions',

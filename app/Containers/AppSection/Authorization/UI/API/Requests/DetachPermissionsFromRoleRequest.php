@@ -16,8 +16,7 @@ class DetachPermissionsFromRoleRequest extends ParentRequest
         'permissions_ids.*',
     ];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

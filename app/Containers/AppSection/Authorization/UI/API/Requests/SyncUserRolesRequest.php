@@ -16,8 +16,7 @@ class SyncUserRolesRequest extends ParentRequest
         'roles_ids.*',
     ];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

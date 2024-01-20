@@ -15,8 +15,7 @@ class UserTransformer extends ParentTransformer
         'permissions',
     ];
 
-    protected array $defaultIncludes = [
-    ];
+    protected array $defaultIncludes = [];
 
     public function transform(User $user): array
     {

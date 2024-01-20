@@ -11,11 +11,9 @@ class UnauthorizedRequest extends ParentRequest
         'roles' => [],
     ];
 
-    protected array $decode = [
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

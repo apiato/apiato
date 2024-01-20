@@ -19,8 +19,7 @@ class AssignRolesToUserRequest extends ParentRequest
         'roles_ids.*',
     ];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

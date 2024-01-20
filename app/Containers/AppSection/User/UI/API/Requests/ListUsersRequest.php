@@ -11,11 +11,9 @@ class ListUsersRequest extends ParentRequest
         'roles' => null,
     ];
 
-    protected array $decode = [
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

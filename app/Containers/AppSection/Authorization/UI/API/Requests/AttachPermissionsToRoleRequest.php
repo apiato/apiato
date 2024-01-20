@@ -16,8 +16,7 @@ class AttachPermissionsToRoleRequest extends ParentRequest
         'role_id',
     ];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
