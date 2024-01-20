@@ -24,13 +24,13 @@
         {
             "name": "Mahmoud Zalt",
             "email": "mahmoud@zalt.me",
-            "role": "Developer"
+            "role": "Author"
         },
         {
             "name": "Mohammad Alavi",
             "email": "mohammad.alavi1990@gmail.com",
             "homepage": "https://mohammadalavi.com/",
-            "role": "Developer"
+            "role": "Maintainer"
         }
     ],
     "require": {
