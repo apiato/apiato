@@ -3,9 +3,9 @@
 /**
  * @apiGroup           RolePermission
  *
- * @apiName            GetUserPermissions
+ * @apiName            ListRolePermissions
  *
- * @api                {GET} /v1/users/:id/permissions Get User Permissions
+ * @api                {GET} /v1/roles/:id/permissions List Role Permissions
  *
  * @apiVersion         1.0.0
  *
@@ -14,13 +14,13 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} id id of user
+ * @apiParam           {String} id id of role
  *
  * @apiUse             PermissionSuccessMultipleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\GetUserPermissionsController;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\ListRolePermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}/permissions', GetUserPermissionsController::class)
+Route::get('roles/{id}/permissions', ListRolePermissionsController::class)
     ->middleware(['auth:api']);

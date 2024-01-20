@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class GetUserPermissionsRequest extends ParentRequest
+class ListRolePermissionsRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,

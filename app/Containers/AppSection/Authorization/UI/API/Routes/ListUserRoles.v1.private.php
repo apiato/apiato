@@ -3,9 +3,9 @@
 /**
  * @apiGroup           RolePermission
  *
- * @apiName            GetUserRoles
+ * @apiName            ListUserRoles
  *
- * @api                {GET} /v1/users/:id/roles Get User Roles
+ * @api                {GET} /v1/users/:id/roles List User Roles
  *
  * @apiVersion         1.0.0
  *
@@ -19,8 +19,8 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\GetUserRolesController;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\ListUserRolesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('users/{id}/roles', GetUserRolesController::class)
+Route::get('users/{id}/roles', ListUserRolesController::class)
     ->middleware(['auth:api']);
