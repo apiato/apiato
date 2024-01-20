@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class ListUsersController extends ApiController
 {
-    public function __construct(
-        private readonly ListUsersAction $listUsersAction,
-    ) {
-    }
-
-    public function __invoke(ListUsersRequest $request): array
+    public function __invoke(ListUsersRequest $request, ListUsersAction $action): array
     {
-        $users = $this->listUsersAction->run();
+        $users = $action->run();
 
         return $this->transform($users, UserTransformer::class);
     }

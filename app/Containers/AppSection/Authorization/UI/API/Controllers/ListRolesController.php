@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class ListRolesController extends ApiController
 {
-    public function __construct(
-        private readonly ListRolesAction $listRolesAction,
-    ) {
-    }
-
-    public function __invoke(ListRolesRequest $request): array
+    public function __invoke(ListRolesRequest $request, ListRolesAction $action): array
     {
-        $roles = $this->listRolesAction->run();
+        $roles = $action->run();
 
         return $this->transform($roles, RoleTransformer::class);
     }

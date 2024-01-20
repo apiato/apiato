@@ -10,14 +10,9 @@ use Illuminate\Http\JsonResponse;
 
 class LoginProxyForWebClientController extends ApiController
 {
-    public function __construct(
-        private readonly ApiLoginProxyForWebClientAction $apiLoginProxyForWebClientAction,
-    ) {
-    }
-
-    public function __invoke(LoginProxyPasswordGrantRequest $request): JsonResponse
+    public function __invoke(LoginProxyPasswordGrantRequest $request, ApiLoginProxyForWebClientAction $action): JsonResponse
     {
-        $result = $this->apiLoginProxyForWebClientAction->run($request);
+        $result = $action->run($request);
 
         return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
     }

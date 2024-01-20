@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class GetUserRolesController extends ApiController
 {
-    public function __construct(
-        private readonly GetUserRolesAction $getUserRolesAction,
-    ) {
-    }
-
-    public function __invoke(GetUserRolesRequest $request): array
+    public function __invoke(GetUserRolesRequest $request, GetUserRolesAction $action): array
     {
-        $roles = $this->getUserRolesAction->run($request);
+        $roles = $action->run($request);
 
         return $this->transform($roles, RoleTransformer::class);
     }

@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class GetRolePermissionsController extends ApiController
 {
-    public function __construct(
-        private readonly GetRolePermissionsAction $getRolePermissionsAction,
-    ) {
-    }
-
-    public function __invoke(GetRolePermissionsRequest $request): array
+    public function __invoke(GetRolePermissionsRequest $request, GetRolePermissionsAction $action): array
     {
-        $permission = $this->getRolePermissionsAction->run($request);
+        $permission = $action->run($request);
 
         return $this->transform($permission, PermissionTransformer::class);
     }

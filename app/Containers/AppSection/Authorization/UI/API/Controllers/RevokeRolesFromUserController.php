@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class RevokeRolesFromUserController extends ApiController
 {
-    public function __construct(
-        private readonly RevokeRolesFromUserAction $revokeRolesFromUserAction,
-    ) {
-    }
-
-    public function __invoke(RevokeRolesFromUserRequest $request): array
+    public function __invoke(RevokeRolesFromUserRequest $request, RevokeRolesFromUserAction $action): array
     {
-        $user = $this->revokeRolesFromUserAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class SyncUserRolesController extends ApiController
 {
-    public function __construct(
-        private readonly SyncUserRolesAction $syncUserRolesAction,
-    ) {
-    }
-
-    public function __invoke(SyncUserRolesRequest $request): array
+    public function __invoke(SyncUserRolesRequest $request, SyncUserRolesAction $action): array
     {
-        $user = $this->syncUserRolesAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class, ['roles']);
     }

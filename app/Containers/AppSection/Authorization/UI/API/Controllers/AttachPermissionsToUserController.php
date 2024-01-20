@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class AttachPermissionsToUserController extends ApiController
 {
-    public function __construct(
-        private readonly AttachPermissionsToUserAction $attachPermissionsToUserAction,
-    ) {
-    }
-
-    public function __invoke(AttachPermissionsToUserRequest $request): array
+    public function __invoke(AttachPermissionsToUserRequest $request, AttachPermissionsToUserAction $action): array
     {
-        $user = $this->attachPermissionsToUserAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class, ['permissions']);
     }

@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class UpdateUserController extends ApiController
 {
-    public function __construct(
-        private readonly UpdateUserAction $updateUserAction,
-    ) {
-    }
-
-    public function __invoke(UpdateUserRequest $request): array
+    public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): array
     {
-        $user = $this->updateUserAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class);
     }

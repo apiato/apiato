@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class DetachPermissionsFromRoleController extends ApiController
 {
-    public function __construct(
-        private readonly DetachPermissionsFromRoleAction $detachPermissionsFromRoleAction,
-    ) {
-    }
-
-    public function __invoke(DetachPermissionsFromRoleRequest $request): array
+    public function __invoke(DetachPermissionsFromRoleRequest $request, DetachPermissionsFromRoleAction $action): array
     {
-        $role = $this->detachPermissionsFromRoleAction->run($request);
+        $role = $action->run($request);
 
         return $this->transform($role, RoleTransformer::class);
     }

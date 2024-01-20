@@ -10,14 +10,9 @@ use Illuminate\Http\JsonResponse;
 
 class RefreshProxyForWebClientController extends ApiController
 {
-    public function __construct(
-        private readonly ApiRefreshProxyForWebClientAction $apiRefreshProxyForWebClientAction,
-    ) {
-    }
-
-    public function __invoke(RefreshProxyRequest $request): JsonResponse
+    public function __invoke(RefreshProxyRequest $request, ApiRefreshProxyForWebClientAction $action): JsonResponse
     {
-        $result = $this->apiRefreshProxyForWebClientAction->run($request);
+        $result = $action->run($request);
 
         return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
     }

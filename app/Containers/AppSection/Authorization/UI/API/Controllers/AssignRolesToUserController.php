@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class AssignRolesToUserController extends ApiController
 {
-    public function __construct(
-        private readonly AssignRolesToUserAction $assignRolesToUserAction,
-    ) {
-    }
-
-    public function __invoke(AssignRolesToUserRequest $request): array
+    public function __invoke(AssignRolesToUserRequest $request, AssignRolesToUserAction $action): array
     {
-        $user = $this->assignRolesToUserAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class);
     }

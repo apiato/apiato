@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class DetachPermissionsFromUserController extends ApiController
 {
-    public function __construct(
-        private readonly DetachPermissionsFromUserAction $detachPermissionsFromUserAction,
-    ) {
-    }
-
-    public function __invoke(DetachPermissionsFromUserRequest $request): array
+    public function __invoke(DetachPermissionsFromUserRequest $request, DetachPermissionsFromUserAction $action): array
     {
-        $user = $this->detachPermissionsFromUserAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class, ['permissions']);
     }

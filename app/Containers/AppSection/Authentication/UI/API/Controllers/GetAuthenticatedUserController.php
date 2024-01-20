@@ -8,14 +8,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class GetAuthenticatedUserController extends ApiController
 {
-    public function __construct(
-        private readonly GetAuthenticatedUserAction $getAuthenticatedUserAction,
-    ) {
-    }
-
-    public function __invoke(): array
+    public function __invoke(GetAuthenticatedUserAction $action): array
     {
-        $user = $this->getAuthenticatedUserAction->run();
+        $user = $action->run();
 
         return $this->transform($user, UserTransformer::class);
     }

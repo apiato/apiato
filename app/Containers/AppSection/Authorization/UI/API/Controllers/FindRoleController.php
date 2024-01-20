@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class FindRoleController extends ApiController
 {
-    public function __construct(
-        private readonly FindRoleAction $findRoleAction,
-    ) {
-    }
-
-    public function __invoke(FindRoleRequest $request): array
+    public function __invoke(FindRoleRequest $request, FindRoleAction $action): array
     {
-        $role = $this->findRoleAction->run($request);
+        $role = $action->run($request);
 
         return $this->transform($role, RoleTransformer::class);
     }

@@ -10,14 +10,9 @@ use Illuminate\Http\JsonResponse;
 
 class CreateRoleController extends ApiController
 {
-    public function __construct(
-        private readonly CreateRoleAction $createRoleAction,
-    ) {
-    }
-
-    public function __invoke(CreateRoleRequest $request): JsonResponse
+    public function __invoke(CreateRoleRequest $request, CreateRoleAction $action): JsonResponse
     {
-        $role = $this->createRoleAction->run($request);
+        $role = $action->run($request);
 
         return $this->created($this->transform($role, RoleTransformer::class));
     }

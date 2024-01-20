@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class ListPermissionsController extends ApiController
 {
-    public function __construct(
-        private readonly ListPermissionsAction $listPermissionsAction,
-    ) {
-    }
-
-    public function __invoke(ListPermissionsRequest $request): array
+    public function __invoke(ListPermissionsRequest $request, ListPermissionsAction $action): array
     {
-        $permissions = $this->listPermissionsAction->run();
+        $permissions = $action->run();
 
         return $this->transform($permissions, PermissionTransformer::class);
     }

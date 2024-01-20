@@ -9,14 +9,9 @@ use Illuminate\Http\JsonResponse;
 
 class DeleteUserController extends ApiController
 {
-    public function __construct(
-        private readonly DeleteUserAction $deleteUserAction,
-    ) {
-    }
-
-    public function __invoke(DeleteUserRequest $request): JsonResponse
+    public function __invoke(DeleteUserRequest $request, DeleteUserAction $action): JsonResponse
     {
-        $this->deleteUserAction->run($request);
+        $action->run($request);
 
         return $this->noContent();
     }

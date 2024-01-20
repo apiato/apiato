@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class UpdateUserPasswordController extends ApiController
 {
-    public function __construct(
-        private readonly UpdateUserPasswordAction $updateUserPasswordAction,
-    ) {
-    }
-
-    public function __invoke(UpdateUserPasswordRequest $request): array
+    public function __invoke(UpdateUserPasswordRequest $request, UpdateUserPasswordAction $action): array
     {
-        $user = $this->updateUserPasswordAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class);
     }

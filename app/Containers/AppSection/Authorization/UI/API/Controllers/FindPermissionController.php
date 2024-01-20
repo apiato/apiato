@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class FindPermissionController extends ApiController
 {
-    public function __construct(
-        private readonly FindPermissionAction $findPermissionAction,
-    ) {
-    }
-
-    public function __invoke(FindPermissionRequest $request): array
+    public function __invoke(FindPermissionRequest $request, FindPermissionAction $action): array
     {
-        $permission = $this->findPermissionAction->run($request);
+        $permission = $action->run($request);
 
         return $this->transform($permission, PermissionTransformer::class);
     }

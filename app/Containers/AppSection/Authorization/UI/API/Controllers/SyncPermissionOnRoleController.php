@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class SyncPermissionOnRoleController extends ApiController
 {
-    public function __construct(
-        private readonly SyncPermissionsOnRoleAction $syncPermissionsOnRoleAction,
-    ) {
-    }
-
-    public function __invoke(SyncPermissionsOnRoleRequest $request): array
+    public function __invoke(SyncPermissionsOnRoleRequest $request, SyncPermissionsOnRoleAction $action): array
     {
-        $role = $this->syncPermissionsOnRoleAction->run($request);
+        $role = $action->run($request);
 
         return $this->transform($role, RoleTransformer::class);
     }
