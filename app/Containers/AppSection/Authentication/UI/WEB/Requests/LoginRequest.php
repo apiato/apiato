@@ -19,7 +19,7 @@ class LoginRequest extends ParentRequest
     public function rules(): array
     {
         $rules = [
-            'password' => 'required|min:3|max:30',
+            'password' => 'required',
         ];
 
         return LoginCustomAttribute::mergeValidationRules($rules);

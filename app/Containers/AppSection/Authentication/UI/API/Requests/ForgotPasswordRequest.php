@@ -12,13 +12,9 @@ class ForgotPasswordRequest extends ParentRequest
         'roles' => null,
     ];
 
-    protected array $decode = [
-        // 'id',
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-        // 'id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {

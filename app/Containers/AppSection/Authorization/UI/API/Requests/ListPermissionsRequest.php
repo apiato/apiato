@@ -17,8 +17,7 @@ class ListPermissionsRequest extends ParentRequest
 
     public function rules(): array
     {
-        return [
-        ];
+        return [];
     }
 
     public function authorize(): bool
