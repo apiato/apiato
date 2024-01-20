@@ -1,8 +1,8 @@
 <?php
 
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('login', [LoginController::class, 'showLoginPage'])
+Route::get('login', LoginPageController::class)
     ->name('login')
     ->middleware(['guest']);
