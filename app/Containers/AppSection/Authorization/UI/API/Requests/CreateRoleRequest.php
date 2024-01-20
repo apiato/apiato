@@ -28,8 +28,6 @@ class CreateRoleRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

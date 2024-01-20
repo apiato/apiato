@@ -25,8 +25,6 @@ class ListUsersRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

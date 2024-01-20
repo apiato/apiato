@@ -34,8 +34,6 @@ class VerifyEmailRequest extends ParentRequest
      */
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }
