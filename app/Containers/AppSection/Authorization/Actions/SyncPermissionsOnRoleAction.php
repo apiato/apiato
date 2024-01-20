@@ -24,11 +24,11 @@ class SyncPermissionsOnRoleAction extends ParentAction
     {
         $role = $this->findRoleTask->run($request->role_id);
 
-        $permissionsIds = (array) $request->permissions_ids;
+        $permissionIds = (array) $request->permissions_ids;
 
         $permissions = array_map(function ($permissionId) {
             return $this->findPermissionTask->run($permissionId);
-        }, $permissionsIds);
+        }, $permissionIds);
 
         $role->syncPermissions($permissions);
 
