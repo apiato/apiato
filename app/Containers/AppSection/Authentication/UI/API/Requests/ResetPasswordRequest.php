@@ -12,13 +12,9 @@ class ResetPasswordRequest extends ParentRequest
         'roles' => null,
     ];
 
-    protected array $decode = [
-        // 'id',
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-        // 'id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
@@ -27,11 +23,7 @@ class ResetPasswordRequest extends ParentRequest
             'email' => 'required|email',
             'password' => [
                 'required',
-                Password::min(8)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols(),
+                Password::default(),
             ],
         ];
     }
