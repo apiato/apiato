@@ -15,10 +15,9 @@ final class SendVerificationEmailControllerTest extends UnitTestCase
 {
     public function testControllerCallsCorrectAction(): void
     {
-        $actionMock = $this->mock(SendVerificationEmailAction::class);
         $controller = app(SendVerificationEmailController::class);
         $request = SendVerificationEmailRequest::injectData();
-
+        $actionMock = $this->mock(SendVerificationEmailAction::class);
         $actionMock->expects()->run($request);
 
         $controller->__invoke($request, $actionMock);

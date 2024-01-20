@@ -15,10 +15,9 @@ final class LogoutControllerTest extends UnitTestCase
 {
     public function testControllerCallsCorrectAction(): void
     {
-        $actionMock = $this->mock(ApiLogoutAction::class);
         $controller = app(LogoutController::class);
         $request = LogoutRequest::injectData();
-
+        $actionMock = $this->mock(ApiLogoutAction::class);
         $actionMock->expects()->run($request);
 
         $controller->__invoke($request, $actionMock);

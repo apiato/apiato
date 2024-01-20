@@ -15,10 +15,9 @@ final class ResetPasswordControllerTest extends UnitTestCase
 {
     public function testControllerCallsCorrectAction(): void
     {
-        $actionMock = $this->mock(ResetPasswordAction::class);
         $controller = app(ResetPasswordController::class);
+        $actionMock = $this->mock(ResetPasswordAction::class);
         $request = ResetPasswordRequest::injectData();
-
         $actionMock->expects()->run($request);
 
         $controller->__invoke($request, $actionMock);

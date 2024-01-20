@@ -15,10 +15,9 @@ final class RegisterUserControllerTest extends UnitTestCase
 {
     public function testControllerCallsCorrectAction(): void
     {
-        $actionMock = $this->mock(RegisterUserAction::class);
         $controller = app(RegisterUserController::class);
         $request = RegisterUserRequest::injectData();
-
+        $actionMock = $this->mock(RegisterUserAction::class);
         $actionMock->expects()->transactionalRun($request);
 
         $controller->__invoke($request, $actionMock);
