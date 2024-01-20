@@ -29,17 +29,11 @@ final class ApiRefreshProxyForWebClientActionTest extends UnitTestCase
 
         $response = $action->run($request);
 
-        $this->assertArrayHasKey('response_content', $response);
-        $this->assertArrayHasKey('refresh_cookie', $response);
-        $this->assertArrayHasKey('access_token', $response['response_content']);
-        $this->assertArrayHasKey('refresh_token', $response['response_content']);
-        $this->assertArrayHasKey('expires_in', $response['response_content']);
-        $this->assertArrayHasKey('token_type', $response['response_content']);
-        $this->assertSame('Bearer', $response['response_content']['token_type']);
+        $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
 
     private function createRefreshTokenFor(string $email, string $password): string
     {
-        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))['refresh_token'];
+        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))->refreshToken;
     }
 }

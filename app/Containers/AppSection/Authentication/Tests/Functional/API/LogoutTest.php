@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-final class ApiLogoutTest extends ApiTestCase
+final class LogoutTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/api/logout';
 

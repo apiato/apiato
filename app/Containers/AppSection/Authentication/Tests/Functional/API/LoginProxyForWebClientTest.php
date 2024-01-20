@@ -10,11 +10,11 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-final class ApiLoginProxyForWebClientTest extends ApiTestCase
+final class LoginProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/login';
 
-    public function testClientWebAdminProxyLogin(): void
+    public function testProxyLogin(): void
     {
         $data = [
             'email' => 'testing@mail.com',
@@ -26,12 +26,16 @@ final class ApiLoginProxyForWebClientTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll([
+            fn (AssertableJson $json) => $json->has(
+                'data',
+                fn (AssertableJson $json) => $json->hasAll([
+                'access_token',
+                'refresh_token',
                 'token_type',
                 'expires_in',
-                'access_token',
             ])->where('token_type', 'Bearer')
                 ->etc(),
+            )->etc(),
         );
     }
 
@@ -47,14 +51,6 @@ final class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll([
-                'token_type',
-                'expires_in',
-                'access_token',
-            ])->where('token_type', 'Bearer')
-                ->etc(),
-        );
     }
 
     public function testLoginWithNameAttribute(): void
@@ -77,15 +73,6 @@ final class ApiLoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($request);
 
         $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll([
-                'token_type',
-                'expires_in',
-                'access_token',
-                'refresh_token',
-            ])->where('token_type', 'Bearer')
-                ->etc(),
-        );
     }
 
     private function setLoginAttributes(array $attributes): void

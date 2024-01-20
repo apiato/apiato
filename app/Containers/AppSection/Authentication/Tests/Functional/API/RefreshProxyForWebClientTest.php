@@ -10,11 +10,36 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversNothing]
-final class ApiRefreshProxyForWebClientTest extends ApiTestCase
+final class RefreshProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/refresh';
 
     private array $data;
+
+    public function testProxyRefresh(): void
+    {
+        $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);
+        $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['data']['refresh_token'];
+        $data = [
+            'refresh_token' => $refreshToken,
+        ];
+
+        $response = $this->endpoint($this->endpoint)->makeCall($data);
+
+        $response->assertOk();
+        $response->assertJson(
+            fn (AssertableJson $json) => $json->has(
+                'data',
+                fn (AssertableJson $json) => $json->hasAll([
+                    'access_token',
+                    'refresh_token',
+                    'token_type',
+                    'expires_in',
+                ])->where('token_type', 'Bearer')
+                    ->etc(),
+            )->etc(),
+        );
+    }
 
     public function testRequestingRefreshTokenWithoutPassingARefreshTokenShouldThrowAnException(): void
     {
@@ -43,28 +68,6 @@ final class ApiRefreshProxyForWebClientTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('errors')
                 ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
-                ->etc(),
-        );
-    }
-
-    public function testOnSuccessfulRefreshTokenRequestEnsureValuesAreSetProperly(): void
-    {
-        $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);
-        $refreshToken = json_decode($loginResponse->getContent(), true, 512, JSON_THROW_ON_ERROR)['refresh_token'];
-        $data = [
-            'refresh_token' => $refreshToken,
-        ];
-
-        $response = $this->endpoint($this->endpoint)->makeCall($data);
-
-        $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->hasAll([
-                'token_type',
-                'expires_in',
-                'access_token',
-                'refresh_token',
-            ])->where('token_type', 'Bearer')
                 ->etc(),
         );
     }

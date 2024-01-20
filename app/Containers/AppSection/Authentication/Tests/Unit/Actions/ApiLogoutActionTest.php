@@ -33,6 +33,6 @@ final class ApiLogoutActionTest extends UnitTestCase
 
     private function createAccessTokenFor(string $email, string $password): string
     {
-        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))['access_token'];
+        return app(CallOAuthServerTask::class)->run($this->enrichWithPasswordGrantFields($email, $password))->accessToken;
     }
 }

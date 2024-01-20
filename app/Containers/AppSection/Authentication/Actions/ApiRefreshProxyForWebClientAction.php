@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingExcep
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
+use App\Containers\AppSection\Authentication\Values\AuthResult;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Request;
 
@@ -24,13 +25,13 @@ class ApiRefreshProxyForWebClientAction extends ParentAction
      * @throws RefreshTokenMissingException
      * @throws IncorrectIdException
      */
-    public function run(RefreshProxyRequest $request): array
+    public function run(RefreshProxyRequest $request): AuthResult
     {
         $sanitizedData = $request->sanitizeInput([
             'refresh_token',
         ]);
 
-        if (!array_key_exists('refresh_token', $sanitizedData) && is_null(Request::cookie('refreshToken'))) {
+        if (!array_key_exists('refresh_token', $sanitizedData) && null === Request::cookie('refreshToken')) {
             throw new RefreshTokenMissingException();
         }
 
@@ -41,11 +42,8 @@ class ApiRefreshProxyForWebClientAction extends ParentAction
         $sanitizedData['scope'] = '';
 
         $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
-        $refreshCookie = $this->makeRefreshCookieTask->run($responseContent['refresh_token']);
+        $refreshCookie = $this->makeRefreshCookieTask->run($responseContent->refreshToken);
 
-        return [
-            'response_content' => $responseContent,
-            'refresh_cookie' => $refreshCookie,
-        ];
+        return new AuthResult($responseContent, $refreshCookie);
     }
 }
