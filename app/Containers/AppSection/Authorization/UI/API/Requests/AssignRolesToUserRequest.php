@@ -6,9 +6,6 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class AssignRolesToUserRequest extends ParentRequest
 {
-    /*
-    * Define which Roles and/or Permissions has access to this request.
-    */
     protected array $access = [
         'permissions' => 'manage-admins-access',
         'roles' => null,
