@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
+#[Group('user')]
 #[CoversClass(CreateUserTask::class)]
 final class CreateUserTaskTest extends UnitTestCase
 {
