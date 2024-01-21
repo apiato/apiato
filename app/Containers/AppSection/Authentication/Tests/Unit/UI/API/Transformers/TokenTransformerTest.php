@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformer
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Containers\AppSection\Authentication\Values\Token;
-use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -13,23 +12,37 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(TokenTransformer::class)]
 final class TokenTransformerTest extends UnitTestCase
 {
-    public function testTransformSingleToken(): void
+    private TokenTransformer $transformer;
+
+    public function testCanTransformSingleObject(): void
     {
         $token = new Token('test', 100, 'asdc1234', '1234asdc');
-        $transformer = new TokenTransformer();
-        $expectedTransformedArray = [
-            'object' => 'Token',
+        $expected = [
+            'object' => $token->getResourceKey(),
             'token_type' => $token->tokenType,
             'access_token' => $token->accessToken,
             'refresh_token' => $token->refreshToken,
             'expires_in' => $token->expiresIn,
         ];
 
-        $resource = $transformer->transform($token);
+        $transformedResource = $this->transformer->transform($token);
 
-        $this->assertIsArray($resource);
-        foreach ($expectedTransformedArray as $key => $value) {
-            $this->assertSame($value, $resource[$key]);
-        }
+        $this->assertEquals($expected, $transformedResource);
+    }
+
+    public function testAvailableIncludes(): void
+    {
+        $this->assertSame([], $this->transformer->getAvailableIncludes());
+    }
+
+    public function testDefaultIncludes(): void
+    {
+        $this->assertSame([], $this->transformer->getDefaultIncludes());
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->transformer = new TokenTransformer();
     }
 }
