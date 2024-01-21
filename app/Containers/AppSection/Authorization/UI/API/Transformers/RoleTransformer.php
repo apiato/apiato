@@ -4,33 +4,21 @@ namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
-use League\Fractal\Resource\Collection;
 
 class RoleTransformer extends ParentTransformer
 {
     protected array $availableIncludes = [];
 
-    protected array $defaultIncludes = [
-        'permissions',
-    ];
+    protected array $defaultIncludes = [];
 
     public function transform(Role $role): array
     {
-        $response = [
+        return [
             'object' => $role->getResourceKey(),
-            'id' => $role->getHashedKey(), // << Unique Identifier
-            'name' => $role->name, // << Unique Identifier
-            'description' => $role->description,
+            'id' => $role->getHashedKey(),
+            'name' => $role->name,
             'display_name' => $role->display_name,
+            'description' => $role->description,
         ];
-
-        return $this->ifAdmin([
-            'guard_name' => $role->guard_name,
-        ], $response);
-    }
-
-    public function includePermissions(Role $role): Collection
-    {
-        return $this->collection($role->permissions, new PermissionTransformer());
     }
 }

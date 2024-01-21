@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\FindRoleAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleRequest;
-use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
+use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
 class FindRoleController extends ApiController
@@ -13,6 +13,6 @@ class FindRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return $this->transform($role, RoleTransformer::class);
+        return $this->transform($role, RoleAdminTransformer::class);
     }
 }

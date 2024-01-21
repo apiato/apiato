@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\DetachPermissionsFromUserAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DetachPermissionsFromUserRequest;
-use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
+use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
 class DetachPermissionsFromUserController extends ApiController
@@ -13,6 +13,6 @@ class DetachPermissionsFromUserController extends ApiController
     {
         $user = $action->run($request);
 
-        return $this->transform($user, UserTransformer::class, ['permissions']);
+        return $this->transform($user, UserAdminTransformer::class);
     }
 }

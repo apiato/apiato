@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\SyncPermissionsOnRoleAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncPermissionsOnRoleRequest;
-use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
+use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
 class SyncPermissionOnRoleController extends ApiController
@@ -13,6 +13,6 @@ class SyncPermissionOnRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return $this->transform($role, RoleTransformer::class);
+        return $this->transform($role, RoleAdminTransformer::class);
     }
 }

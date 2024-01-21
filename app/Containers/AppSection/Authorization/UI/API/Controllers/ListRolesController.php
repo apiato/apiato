@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\ListRolesAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolesRequest;
-use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
+use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
 class ListRolesController extends ApiController
@@ -13,6 +13,6 @@ class ListRolesController extends ApiController
     {
         $roles = $action->run();
 
-        return $this->transform($roles, RoleTransformer::class);
+        return $this->transform($roles, RoleAdminTransformer::class);
     }
 }
