@@ -31,7 +31,7 @@ final class DetachPermissionFromUserTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -58,7 +58,7 @@ final class DetachPermissionFromUserTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(

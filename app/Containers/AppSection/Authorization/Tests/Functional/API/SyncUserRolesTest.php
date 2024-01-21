@@ -34,7 +34,7 @@ final class SyncUserRolesTest extends ApiTestCase
             'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=roles')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(

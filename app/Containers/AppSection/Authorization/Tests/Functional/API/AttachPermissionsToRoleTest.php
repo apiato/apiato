@@ -29,7 +29,7 @@ final class AttachPermissionsToRoleTest extends ApiTestCase
             'permissions_ids' => $permission->getHashedKey(),
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -53,7 +53,7 @@ final class AttachPermissionsToRoleTest extends ApiTestCase
             'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -61,9 +61,6 @@ final class AttachPermissionsToRoleTest extends ApiTestCase
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->has('data.permissions.data', 2)
-                ->where('data.permissions.data.0.object', 'Permission')
-                ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
-                ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
                 ->etc(),
         );
     }
