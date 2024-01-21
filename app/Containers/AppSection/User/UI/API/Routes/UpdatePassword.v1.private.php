@@ -3,7 +3,7 @@
 /**
  * @apiGroup           User
  *
- * @apiName            UpdateUserPassword
+ * @apiName            UpdatePassword
  *
  * @api                {patch} /v1/users/:id/password Update User's Password
  *
@@ -32,8 +32,8 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\User\UI\API\Controllers\UpdateUserPasswordController;
+use App\Containers\AppSection\User\UI\API\Controllers\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users/{id}/password', UpdateUserPasswordController::class)
+Route::patch('users/{id}/password', UpdatePasswordController::class)
     ->middleware(['auth:api']);

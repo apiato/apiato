@@ -6,12 +6,12 @@ use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
-use App\Containers\AppSection\User\UI\API\Requests\UpdateUserPasswordRequest;
+use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class UpdateUserPasswordAction extends ParentAction
+class UpdatePasswordAction extends ParentAction
 {
     public function __construct(
         private readonly UpdateUserTask $updateUserTask,
@@ -23,7 +23,7 @@ class UpdateUserPasswordAction extends ParentAction
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
-    public function run(UpdateUserPasswordRequest $request): User
+    public function run(UpdatePasswordRequest $request): User
     {
         $sanitizedData = $request->sanitizeInput([
             'new_password',

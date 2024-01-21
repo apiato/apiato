@@ -7,7 +7,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class UpdateUserPasswordRequest extends ParentRequest
+class UpdatePasswordRequest extends ParentRequest
 {
     use IsResourceOwnerTrait;
 
@@ -28,7 +28,7 @@ class UpdateUserPasswordRequest extends ParentRequest
     {
         return [
             'current_password' => [Rule::requiredIf(
-                fn (): bool => !is_null($this->user()->password),
+                fn (): bool => null !== $this->user()->password,
             ), 'current_password:api'],
             'new_password' => [
                 'required',
@@ -39,8 +39,6 @@ class UpdateUserPasswordRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess|isResourceOwner',
-        ]);
+        return $this->hasAccess() || $this->isResourceOwner();
     }
 }

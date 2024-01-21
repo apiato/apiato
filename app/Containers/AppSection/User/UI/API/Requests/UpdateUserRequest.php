@@ -33,8 +33,6 @@ class UpdateUserRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess|isResourceOwner',
-        ]);
+        return $this->hasAccess() || $this->isResourceOwner();
     }
 }
