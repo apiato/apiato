@@ -14,7 +14,7 @@ final class FindPermissionTest extends ApiTestCase
     protected string $endpoint = 'get@v1/permissions/{id}';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
+        'permissions' => 'manage-permissions',
         'roles' => null,
     ];
 

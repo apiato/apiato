@@ -13,7 +13,7 @@ final class ListPermissionsTest extends ApiTestCase
     protected string $endpoint = 'get@v1/permissions';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
+        'permissions' => 'manage-permissions',
         'roles' => null,
     ];
 

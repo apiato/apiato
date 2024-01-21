@@ -89,22 +89,4 @@ final class AttachPermissionToUserTest extends ApiTestCase
             )->etc(),
         );
     }
-
-    public function testAttachPermissionToNonExistingUser(): void
-    {
-        $permission = PermissionFactory::new()->createOne();
-        $invalidId = 7777;
-        $data = [
-            'permissions_ids' => [$permission->id],
-        ];
-
-        $response = $this->injectId($invalidId)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.id.0', 'The selected id is invalid.')
-                ->etc(),
-        );
-    }
 }

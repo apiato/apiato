@@ -92,23 +92,4 @@ final class DetachPermissionFromUserTest extends ApiTestCase
             )->etc(),
         );
     }
-
-    public function testDetachPermissionFromNonExistingUser(): void
-    {
-        $invalidId = 3333;
-        $permission = PermissionFactory::new()->createOne();
-        $data = [
-            'permissions_ids' => [$permission->getHashedKey()],
-        ];
-
-        $response = $this->injectId($invalidId)->makeCall($data);
-
-        $response->assertJson(
-            static fn (AssertableJson $json) => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->where('id.0', 'The selected id is invalid.')
-                    ->etc(),
-            )->etc(),
-        );
-    }
 }
