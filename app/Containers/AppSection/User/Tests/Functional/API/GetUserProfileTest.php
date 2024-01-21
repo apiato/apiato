@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
+namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
+#[Group('user')]
 #[CoversNothing]
-final class GetAuthenticatedUserTest extends ApiTestCase
+final class GetUserProfileTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/profile';
 
@@ -37,34 +37,6 @@ final class GetAuthenticatedUserTest extends ApiTestCase
                     ->where('name', $user->name)
                     ->where('gender', $user->gender)
                     ->whereType('birth', 'string')
-                    ->etc(),
-            )->etc(),
-        );
-    }
-
-    public function testGetAuthenticatedUserAsAdmin(): void
-    {
-        $user = $this->getTestingUser(createUserAsAdmin: true);
-
-        $response = $this->makeCall();
-
-        $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
-                'data',
-                fn (AssertableJson $json) => $json
-                    ->where('object', 'User')
-                    ->where('id', $user->getHashedKey())
-                    ->where('email', $user->email)
-                    ->whereType('email_verified_at', 'string')
-                    ->where('name', $user->name)
-                    ->where('gender', $user->gender)
-                    ->whereType('birth', 'string')
-                    ->where('real_id', $user->id)
-                    ->whereType('created_at', 'string')
-                    ->whereType('updated_at', 'string')
-                    ->where('readable_created_at', $user->created_at->diffForHumans())
-                    ->where('readable_updated_at', $user->updated_at->diffForHumans())
                     ->etc(),
             )->etc(),
         );

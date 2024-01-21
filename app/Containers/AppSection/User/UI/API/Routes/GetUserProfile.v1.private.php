@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @apiGroup           Authentication
+ * @apiGroup           User
  *
- * @apiName            GetAuthenticatedUser
+ * @apiName            GetUserProfile
  *
  * @api                {GET} /v1/profile Get Profile
  *
- * @apiDescription     Find the user details of the logged-in user from its Token. (without specifying his ID)
+ * @apiDescription     Get the authenticated user profile data.
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
@@ -19,8 +19,8 @@
  * @apiUse             UserSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\GetAuthenticatedUserController;
+use App\Containers\AppSection\User\UI\API\Controllers\GetUserProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('profile', GetAuthenticatedUserController::class)
+Route::get('profile', GetUserProfileController::class)
     ->middleware(['auth:api']);
