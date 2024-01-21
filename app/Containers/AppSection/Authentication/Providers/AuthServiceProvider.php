@@ -4,23 +4,13 @@ namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthServiceProvider;
 use Carbon\Carbon;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Laravel\Passport\Passport;
 
-class AuthServiceProvider extends ParentAuthServiceProvider
+class AuthServiceProvider extends ParentAuthServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     */
-    protected bool $defer = true;
-
-    /**
-     * The policy mappings for the application.
-     */
     protected $policies = [];
 
-    /**
-     * Register any authentication / authorization services.
-     */
     public function boot(): void
     {
         parent::boot();
