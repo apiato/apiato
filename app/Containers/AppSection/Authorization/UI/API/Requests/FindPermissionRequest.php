@@ -7,7 +7,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 class FindPermissionRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => 'manage-roles',
+        'permissions' => 'manage-permissions',
         'roles' => null,
     ];
 

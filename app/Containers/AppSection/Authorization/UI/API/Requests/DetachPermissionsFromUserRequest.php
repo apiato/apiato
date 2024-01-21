@@ -25,7 +25,6 @@ class DetachPermissionsFromUserRequest extends ParentRequest
         return [
             'permissions_ids' => 'array|required',
             'permissions_ids.*' => 'exists:permissions,id',
-            'id' => 'required|exists:users,id',
         ];
     }
 
