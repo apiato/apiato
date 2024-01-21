@@ -10,12 +10,12 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-final class GetRolePermissionsTest extends ApiTestCase
+final class ListRolePermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/roles/{id}/permissions';
 
     protected array $access = [
-        'permissions' => null,
+        'permissions' => 'manage-roles',
         'roles' => null,
     ];
 

@@ -7,9 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-class UnauthorizedController extends WebController
+class UnauthorizedPageController extends WebController
 {
-    public function showUnauthorizedPage(): Factory|View|Application
+    public function __invoke(): Factory|View|Application
     {
         return view('appSection@authorization::unauthorized');
     }
