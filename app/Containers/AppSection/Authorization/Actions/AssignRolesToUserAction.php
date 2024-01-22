@@ -2,8 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
-use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
@@ -14,8 +12,6 @@ class AssignRolesToUserAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,
-        private readonly FindRoleTask $findRoleTask,
-        private readonly AssignRolesToUserTask $assignRolesToUserTask,
     ) {
     }
 
@@ -24,14 +20,8 @@ class AssignRolesToUserAction extends ParentAction
      */
     public function run(AssignRolesToUserRequest $request): User
     {
-        $user = $this->findUserByIdTask->run($request->user_id);
-
-        $rolesIds = (array) $request->roles_ids;
-
-        $roles = array_map(function ($roleId) {
-            return $this->findRoleTask->run($roleId);
-        }, $rolesIds);
-
-        return $this->assignRolesToUserTask->run($user, $roles);
+        // TODO: change all blue/already modified files using this next line example!
+        // I think we can directly pass an array of ids to those methods instead of using a loop!
+        return $this->findUserByIdTask->run($request->user_id)->assignRole($request->roles_ids);
     }
 }
