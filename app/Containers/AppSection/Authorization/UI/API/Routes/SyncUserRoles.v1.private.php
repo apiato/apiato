@@ -19,7 +19,7 @@
  * @apiHeader          {String} authorization=Bearer
  *
  * @apiBody           {Number} user_id User ID
- * @apiBody           {Array} roles_ids Role ID or Array of Roles ID's
+ * @apiBody           {Array} role_ids Role ID or Array of Roles ID's
  *
  * @apiUse             UserSuccessSingleResponse
  */

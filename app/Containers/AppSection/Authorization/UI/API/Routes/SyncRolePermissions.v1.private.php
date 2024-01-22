@@ -19,7 +19,7 @@
  * @apiHeader          {String} authorization=Bearer
  *
  * @apiBody           {String} role_id Role ID
- * @apiBody           {Array} permissions_ids Permission ID or Array of Permissions ID's
+ * @apiBody           {Array} permission_ids Permission ID or Array of Permissions ID's
  *
  * @apiUse             RoleSuccessSingleResponse
  */

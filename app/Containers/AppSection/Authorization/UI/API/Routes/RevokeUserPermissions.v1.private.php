@@ -18,7 +18,7 @@
  *
  * @apiParam           {String} id user's id
  *
- * @apiBody            {String} permissions_ids Array of Permissions ID's
+ * @apiBody            {String} permission_ids Array of Permissions ID's
  *
  * @apiUse            UserSuccessSingleResponse
  */
