@@ -30,8 +30,6 @@ class CreateAdminAction extends ParentAction
             $adminRoleName = config('appSection-authorization.admin_role');
             foreach (array_keys(config('auth.guards')) as $guardName) {
                 $adminRole = $this->findRoleTask->run($adminRoleName, $guardName);
-                // TODO: can we remove the previous line and use the following line instead? also with guard?
-                // Should we use repository instead of directly calling spatie package methods? everywhere!
                 $user->assignRole($adminRole);
             }
             $user->email_verified_at = now();
