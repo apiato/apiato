@@ -17,6 +17,7 @@
  * @apiBody           {String} name Unique Role Name
  * @apiBody           {String} [description]
  * @apiBody           {String} [display_name]
+ * @apiBody           {String="api","web"} [guard_name] Default: api
  *
  * @apiUse             RoleSuccessSingleResponse
  */
