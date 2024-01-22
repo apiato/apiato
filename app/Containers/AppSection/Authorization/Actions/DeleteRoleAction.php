@@ -2,16 +2,17 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\DeleteRoleTask;
+use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DeleteRoleAction extends ParentAction
 {
     public function __construct(
-        private readonly DeleteRoleTask $deleteRoleTask,
+        private readonly RoleRepository $repository,
     ) {
     }
 
@@ -21,6 +22,12 @@ class DeleteRoleAction extends ParentAction
      */
     public function run(DeleteRoleRequest $request): void
     {
-        $this->deleteRoleTask->run($request->id);
+        try {
+            $this->repository->delete($request->id);
+        } catch (ModelNotFoundException) {
+            throw new NotFoundException();
+        } catch (\Exception) {
+            throw new DeleteResourceFailedException();
+        }
     }
 }
