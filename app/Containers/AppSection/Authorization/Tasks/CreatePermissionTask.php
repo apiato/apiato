@@ -26,8 +26,8 @@ class CreatePermissionTask extends ParentTask
                 'display_name' => $displayName,
                 'guard_name' => $guardName,
             ]);
-        } catch (\Exception $exception) {
-            throw new CreateResourceFailedException($exception->getMessage());
+        } catch (\Exception) {
+            throw new CreateResourceFailedException();
         }
 
         return $permission;
