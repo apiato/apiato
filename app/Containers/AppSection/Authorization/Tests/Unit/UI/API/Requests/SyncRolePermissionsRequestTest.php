@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(SyncRolePermissionsRequest::class)]
-class SyncRolePermissionsRequestTest extends UnitTestCase
+final class SyncRolePermissionsRequestTest extends UnitTestCase
 {
     private SyncRolePermissionsRequest $request;
 

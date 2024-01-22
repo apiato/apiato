@@ -26,14 +26,11 @@ final class CreateAdminActionTest extends UnitTestCase
         $this->assertNotNull($admin->email_verified_at);
     }
 
-    public function testGivenInvalidDataThrowExceptionAndRollbackAllCommits(): void
+    public function testGivenInvalidDataThrowExceptionAndRollbackDB(): void
     {
         $this->expectException(\Exception::class);
 
-        // update Admin role name to a not existing role (different from what is seeded for admin role),
-        // so we can get an error
         config(['appSection-authorization.admin_role' => 'not_existing_role']);
-
         $data = [
             'email' => 'a@new.email',
             'password' => 'admin',

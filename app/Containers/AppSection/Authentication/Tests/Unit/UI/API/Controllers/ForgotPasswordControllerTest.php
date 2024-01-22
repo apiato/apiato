@@ -22,6 +22,6 @@ final class ForgotPasswordControllerTest extends UnitTestCase
 
         $response = $controller->__invoke($request, $actionMock);
 
-        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertSame(204, $response->getStatusCode());
     }
 }

@@ -29,9 +29,7 @@ final class PermissionAdminTransformerTest extends UnitTestCase
 
         $transformedResource = $this->transformer->transform($permission);
 
-        foreach ($transformedResource as $key => $expectedValue) {
-            $this->assertEquals($expectedValue, $expected[$key], 'Failed asserting that ' . $key . ' are equals.');
-        }
+        $this->assertEquals($expected, $transformedResource);
     }
 
     public function testAvailableIncludes(): void

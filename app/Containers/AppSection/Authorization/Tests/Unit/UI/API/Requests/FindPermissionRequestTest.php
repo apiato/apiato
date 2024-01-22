@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(FindPermissionRequest::class)]
-class FindPermissionRequestTest extends UnitTestCase
+final class FindPermissionRequestTest extends UnitTestCase
 {
     private FindPermissionRequest $request;
 

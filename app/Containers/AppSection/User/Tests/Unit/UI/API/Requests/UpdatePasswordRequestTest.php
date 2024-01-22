@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(UpdatePasswordRequest::class)]
-class UpdatePasswordRequestTest extends UnitTestCase
+final class UpdatePasswordRequestTest extends UnitTestCase
 {
     private UpdatePasswordRequest $request;
 

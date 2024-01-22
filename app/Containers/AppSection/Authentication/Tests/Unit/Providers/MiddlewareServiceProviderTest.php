@@ -25,7 +25,7 @@ final class MiddlewareServiceProviderTest extends UnitTestCase
         ];
 
         foreach ($data as $key => $value) {
-            $this->assertEquals($value, $this->getInaccessiblePropertyValue($provider, $key));
+            $this->assertSame($value, $this->getInaccessiblePropertyValue($provider, $key));
         }
     }
 }

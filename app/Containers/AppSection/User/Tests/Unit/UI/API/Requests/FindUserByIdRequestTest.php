@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(FindUserByIdRequest::class)]
-class FindUserByIdRequestTest extends UnitTestCase
+final class FindUserByIdRequestTest extends UnitTestCase
 {
     private FindUserByIdRequest $request;
 

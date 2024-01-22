@@ -2,18 +2,14 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
-use App\Containers\AppSection\User\Data\Rules\UsernameRule;
-use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(UpdateUserRequest::class)]
-class UpdateUserRequestTest extends UnitTestCase
+final class UpdateUserRequestTest extends UnitTestCase
 {
     private UpdateUserRequest $request;
 
@@ -43,7 +39,7 @@ class UpdateUserRequestTest extends UnitTestCase
     {
         $rules = $this->request->rules();
 
-        $this->assertEquals([
+        $this->assertSame([
             'name' => 'min:2|max:50',
             'gender' => 'in:male,female,unspecified',
             'birth' => 'date',

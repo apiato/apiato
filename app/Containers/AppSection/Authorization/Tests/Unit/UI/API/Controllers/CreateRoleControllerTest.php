@@ -23,6 +23,6 @@ final class CreateRoleControllerTest extends UnitTestCase
 
         $response = $controller->__invoke($request, $actionMock);
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertSame(201, $response->getStatusCode());
     }
 }

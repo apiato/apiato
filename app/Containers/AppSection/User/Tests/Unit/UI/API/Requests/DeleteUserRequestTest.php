@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(DeleteUserRequest::class)]
-class DeleteUserRequestTest extends UnitTestCase
+final class DeleteUserRequestTest extends UnitTestCase
 {
     private DeleteUserRequest $request;
 

@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(RemoveUserRolesRequest::class)]
-class RemoveUserRolesRequestTest extends UnitTestCase
+final class RemoveUserRolesRequestTest extends UnitTestCase
 {
     private RemoveUserRolesRequest $request;
 

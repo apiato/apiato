@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(ListUserPermissionsRequest::class)]
-class ListUserPermissionsRequestTest extends UnitTestCase
+final class ListUserPermissionsRequestTest extends UnitTestCase
 {
     private ListUserPermissionsRequest $request;
 
