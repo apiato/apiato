@@ -20,8 +20,6 @@ class AssignRolesToUserAction extends ParentAction
      */
     public function run(AssignRolesToUserRequest $request): User
     {
-        // TODO: change all blue/already modified files using this next line example!
-        // I think we can directly pass an array of ids to those methods instead of using a loop!
         return $this->findUserByIdTask->run($request->user_id)->assignRole($request->roles_ids);
     }
 }
