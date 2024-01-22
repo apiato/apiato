@@ -20,6 +20,7 @@ class AssignRolesToUserAction extends ParentAction
      */
     public function run(AssignRolesToUserRequest $request): User
     {
-        return $this->findUserByIdTask->run($request->user_id)->assignRole($request->roles_ids);
+        return $this->findUserByIdTask->run($request->user_id)
+            ->assignRole($request->role_ids);
     }
 }
