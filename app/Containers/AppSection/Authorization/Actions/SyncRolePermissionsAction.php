@@ -20,6 +20,7 @@ class SyncRolePermissionsAction extends ParentAction
      */
     public function run(SyncRolePermissionsRequest $request): Role
     {
-        return $this->findRoleTask->run($request->role_id)->syncPermissions($request->permissions_ids);
+        return $this->findRoleTask->run($request->role_id)
+            ->syncPermissions($request->permission_ids);
     }
 }
