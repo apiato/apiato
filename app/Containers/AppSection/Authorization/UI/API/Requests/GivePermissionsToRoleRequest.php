@@ -12,7 +12,7 @@ class GivePermissionsToRoleRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'permissions_ids.*',
+        'permission_ids.*',
         'role_id',
     ];
 
@@ -21,8 +21,8 @@ class GivePermissionsToRoleRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'permissions_ids' => 'array|required',
-            'permissions_ids.*' => 'exists:permissions,id',
+            'permission_ids' => 'array|required',
+            'permission_ids.*' => 'exists:permissions,id',
             'role_id' => 'required|exists:roles,id',
         ];
     }

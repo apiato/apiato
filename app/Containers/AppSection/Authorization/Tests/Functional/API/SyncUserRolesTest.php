@@ -27,7 +27,7 @@ final class SyncUserRolesTest extends ApiTestCase
         $user = UserFactory::new()->createOne();
         $user->assignRole($role1);
         $data = [
-            'roles_ids' => [
+            'role_ids' => [
                 $role1->getHashedKey(),
                 $role2->getHashedKey(),
             ],
@@ -40,8 +40,8 @@ final class SyncUserRolesTest extends ApiTestCase
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
                 ->count('data.roles.data', 2)
-                ->where('data.roles.data.0.id', $data['roles_ids'][0])
-                ->where('data.roles.data.1.id', $data['roles_ids'][1])
+                ->where('data.roles.data.0.id', $data['role_ids'][0])
+                ->where('data.roles.data.1.id', $data['role_ids'][1])
                 ->etc(),
         );
     }
@@ -51,7 +51,7 @@ final class SyncUserRolesTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [$role->getHashedKey()],
+            'role_ids' => [$role->getHashedKey()],
             'user_id' => $this->encode($invalidId),
         ];
 
@@ -70,7 +70,7 @@ final class SyncUserRolesTest extends ApiTestCase
         $user = UserFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [$this->encode($invalidId)],
+            'role_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),
         ];
 
@@ -81,8 +81,8 @@ final class SyncUserRolesTest extends ApiTestCase
             fn (AssertableJson $json) => $json->has(
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
-                    'roles_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.'),
+                    'role_ids.0',
+                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

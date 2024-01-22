@@ -27,7 +27,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $user = UserFactory::new()->createOne();
         $user->assignRole($roleA, $roleB);
         $data = [
-            'roles_ids' => [$roleA->getHashedKey()],
+            'role_ids' => [$roleA->getHashedKey()],
             'user_id' => $user->getHashedKey(),
         ];
 
@@ -53,7 +53,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $user->assignRole($roleB);
 
         $data = [
-            'roles_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
+            'role_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
             'user_id' => $user->getHashedKey(),
         ];
 
@@ -74,7 +74,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [$role->getHashedKey()],
+            'role_ids' => [$role->getHashedKey()],
             'user_id' => $this->encode($invalidId),
         ];
 
@@ -93,7 +93,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $user = UserFactory::new()->createOne();
         $invalidId = 7777;
         $data = [
-            'roles_ids' => [$this->encode($invalidId)],
+            'role_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),
         ];
 
@@ -103,8 +103,8 @@ final class RemoveUserRolesTest extends ApiTestCase
             fn (AssertableJson $json) => $json->has(
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
-                    'roles_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected roles_ids.0 is invalid.'),
+                    'role_ids.0',
+                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

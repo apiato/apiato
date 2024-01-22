@@ -28,7 +28,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         $user->givePermissionTo([$permissionA, $permissionB]);
 
         $data = [
-            'permissions_ids' => [$permissionA->getHashedKey()],
+            'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
         $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
@@ -55,7 +55,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         $user->givePermissionTo([$permissionA, $permissionB, $permissionC]);
 
         $data = [
-            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
+            'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
@@ -76,7 +76,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         $invalidId = 3333;
         $user = UserFactory::new()->createOne();
         $data = [
-            'permissions_ids' => [$this->encode($invalidId)],
+            'permission_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -86,8 +86,8 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             static fn (AssertableJson $json) => $json->has(
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
-                    'permissions_ids.0',
-                    static fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                    'permission_ids.0',
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

@@ -4,15 +4,15 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleRequest;
+use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
-#[CoversClass(FindRoleRequest::class)]
-final class FindRoleRequestTest extends UnitTestCase
+#[CoversClass(FindRoleByIdRequest::class)]
+final class FindRoleByIdRequestTest extends UnitTestCase
 {
-    private FindRoleRequest $request;
+    private FindRoleByIdRequest $request;
 
     public function testAccess(): void
     {
@@ -46,7 +46,7 @@ final class FindRoleRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
-        $request = FindRoleRequest::injectData([], $user)->withUrlParameters(['id' => RoleFactory::new()->createOne()->id]);
+        $request = FindRoleByIdRequest::injectData([], $user)->withUrlParameters(['id' => RoleFactory::new()->createOne()->id]);
 
         $this->assertTrue($request->authorize());
     }
@@ -55,6 +55,6 @@ final class FindRoleRequestTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->request = new FindRoleRequest();
+        $this->request = new FindRoleByIdRequest();
     }
 }

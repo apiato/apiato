@@ -22,7 +22,7 @@ class RevokeUserPermissionsAction extends ParentAction
     {
         $user = $this->findUserByIdTask->run($request->id);
 
-        foreach ($request->permissions_ids as $permissionId) {
+        foreach ($request->permission_ids as $permissionId) {
             $user->revokePermissionTo($permissionId);
         }
 

@@ -4,15 +4,15 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionRequest;
+use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
-#[CoversClass(FindPermissionRequest::class)]
+#[CoversClass(FindPermissionByIdRequest::class)]
 final class FindPermissionRequestTest extends UnitTestCase
 {
-    private FindPermissionRequest $request;
+    private FindPermissionByIdRequest $request;
 
     public function testAccess(): void
     {
@@ -46,7 +46,7 @@ final class FindPermissionRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = FindPermissionRequest::injectData([], $user)->withUrlParameters(['id' => PermissionFactory::new()->createOne()->id]);
+        $request = FindPermissionByIdRequest::injectData([], $user)->withUrlParameters(['id' => PermissionFactory::new()->createOne()->id]);
 
         $this->assertTrue($request->authorize());
     }
@@ -55,6 +55,6 @@ final class FindPermissionRequestTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->request = new FindPermissionRequest();
+        $this->request = new FindPermissionByIdRequest();
     }
 }

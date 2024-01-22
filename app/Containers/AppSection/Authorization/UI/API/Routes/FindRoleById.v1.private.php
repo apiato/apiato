@@ -3,7 +3,7 @@
 /**
  * @apiGroup           RolePermission
  *
- * @apiName            GetRole
+ * @apiName            FindRoleById
  *
  * @api                {get} /v1/roles/:id Find a Role by ID
  *
@@ -19,8 +19,8 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\FindRoleController;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\FindRoleByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('roles/{id}', FindRoleController::class)
+Route::get('roles/{id}', FindRoleByIdController::class)
     ->middleware(['auth:api']);

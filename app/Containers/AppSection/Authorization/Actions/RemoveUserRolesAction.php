@@ -22,8 +22,8 @@ class RemoveUserRolesAction extends ParentAction
     {
         $user = $this->findUserByIdTask->run($request->user_id);
 
-        foreach ($request->roles_ids as $roleId) {
-            $user->removeRole($roleId);
+        foreach ($request->role_ids as $role_id) {
+            $user->removeRole($role_id);
         }
 
         return $user;

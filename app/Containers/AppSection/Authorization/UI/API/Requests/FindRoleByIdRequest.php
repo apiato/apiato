@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class FindRoleRequest extends ParentRequest
+class FindRoleByIdRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',

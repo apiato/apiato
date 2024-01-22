@@ -25,7 +25,7 @@ final class RevokeRolePermissionsRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'role_id',
-            'permissions_ids.*',
+            'permission_ids.*',
         ], $this->request->getDecodeArray());
     }
 
@@ -40,8 +40,8 @@ final class RevokeRolePermissionsRequestTest extends UnitTestCase
 
         $this->assertSame([
             'role_id' => 'required|exists:roles,id',
-            'permissions_ids' => 'array|required',
-            'permissions_ids.*' => 'exists:permissions,id',
+            'permission_ids' => 'array|required',
+            'permission_ids.*' => 'exists:permissions,id',
         ], $rules);
     }
 

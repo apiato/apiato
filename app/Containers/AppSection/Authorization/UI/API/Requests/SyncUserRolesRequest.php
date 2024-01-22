@@ -13,7 +13,7 @@ class SyncUserRolesRequest extends ParentRequest
 
     protected array $decode = [
         'user_id',
-        'roles_ids.*',
+        'role_ids.*',
     ];
 
     protected array $urlParameters = [];
@@ -21,8 +21,8 @@ class SyncUserRolesRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'roles_ids' => 'array|required',
-            'roles_ids.*' => 'required|exists:roles,id',
+            'role_ids' => 'array|required',
+            'role_ids.*' => 'required|exists:roles,id',
             'user_id' => 'required|exists:users,id',
         ];
     }

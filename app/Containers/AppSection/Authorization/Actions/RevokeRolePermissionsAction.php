@@ -22,7 +22,7 @@ class RevokeRolePermissionsAction extends ParentAction
     {
         $role = $this->findRoleTask->run($request->role_id);
 
-        foreach ($request->permissions_ids as $permissionId) {
+        foreach ($request->permission_ids as $permissionId) {
             $role->revokePermissionTo($permissionId);
         }
 

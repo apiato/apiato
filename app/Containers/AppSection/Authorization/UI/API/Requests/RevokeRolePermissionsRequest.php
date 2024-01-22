@@ -13,7 +13,7 @@ class RevokeRolePermissionsRequest extends ParentRequest
 
     protected array $decode = [
         'role_id',
-        'permissions_ids.*',
+        'permission_ids.*',
     ];
 
     protected array $urlParameters = [];
@@ -22,8 +22,8 @@ class RevokeRolePermissionsRequest extends ParentRequest
     {
         return [
             'role_id' => 'required|exists:roles,id',
-            'permissions_ids' => 'array|required',
-            'permissions_ids.*' => 'exists:permissions,id',
+            'permission_ids' => 'array|required',
+            'permission_ids.*' => 'exists:permissions,id',
         ];
     }
 

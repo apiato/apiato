@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversNothing]
-final class FindPermissionTest extends ApiTestCase
+final class FindPermissionByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/permissions/{id}';
 

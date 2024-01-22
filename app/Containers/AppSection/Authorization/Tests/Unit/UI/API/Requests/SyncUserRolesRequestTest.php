@@ -25,7 +25,7 @@ final class SyncUserRolesRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'user_id',
-            'roles_ids.*',
+            'role_ids.*',
         ], $this->request->getDecodeArray());
     }
 
@@ -39,8 +39,8 @@ final class SyncUserRolesRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'roles_ids' => 'array|required',
-            'roles_ids.*' => 'required|exists:roles,id',
+            'role_ids' => 'array|required',
+            'role_ids.*' => 'required|exists:roles,id',
             'user_id' => 'required|exists:users,id',
         ], $rules);
     }

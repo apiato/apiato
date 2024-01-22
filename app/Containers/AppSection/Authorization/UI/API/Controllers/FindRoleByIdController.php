@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use App\Containers\AppSection\Authorization\Actions\FindRoleAction;
-use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleRequest;
+use App\Containers\AppSection\Authorization\Actions\FindRoleByIdAction;
+use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleByIdRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class FindRoleController extends ApiController
+class FindRoleByIdController extends ApiController
 {
-    public function __invoke(FindRoleRequest $request, FindRoleAction $action): array
+    public function __invoke(FindRoleByIdRequest $request, FindRoleByIdAction $action): array
     {
         $role = $action->run($request);
 

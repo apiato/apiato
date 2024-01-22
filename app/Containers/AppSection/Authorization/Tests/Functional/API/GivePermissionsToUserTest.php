@@ -20,19 +20,16 @@ final class GivePermissionsToUserTest extends ApiTestCase
         'roles' => null,
     ];
 
-    public function testAttachSinglePermissionToUser(): void
+    public function testGiveSinglePermission(): void
     {
         $user = UserFactory::new()->createOne();
-
         $permission = PermissionFactory::new()->createOne();
         $data = [
-            'permissions_ids' => [$permission->id],
+            'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        // send the HTTP request
         $response = $this->injectId($user->id)->makeCall($data);
 
-        // assert the response status
         $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json) => $json->has('data')
@@ -45,13 +42,13 @@ final class GivePermissionsToUserTest extends ApiTestCase
         );
     }
 
-    public function testAttachMultiplePermissionsToUser(): void
+    public function testGiveMultiplePermissions(): void
     {
         $user = UserFactory::new()->createOne();
         $permissionA = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $data = [
-            'permissions_ids' => [$permissionA->id, $permissionB->id],
+            'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -69,12 +66,12 @@ final class GivePermissionsToUserTest extends ApiTestCase
         );
     }
 
-    public function testAttachNonExistingPermissionToUser(): void
+    public function testGiveNonExistingPermission(): void
     {
         $user = UserFactory::new()->createOne();
-        $invalidId = 3333;
+        $invalidId = $this->encode(3333);
         $data = [
-            'permissions_ids' => [$invalidId],
+            'permission_ids' => [$invalidId],
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -83,8 +80,8 @@ final class GivePermissionsToUserTest extends ApiTestCase
             fn (AssertableJson $json) => $json->has(
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
-                    'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                    'permission_ids.0',
+                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

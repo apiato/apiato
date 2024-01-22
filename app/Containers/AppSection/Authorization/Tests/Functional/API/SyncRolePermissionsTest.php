@@ -28,7 +28,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $role->givePermissionTo($permissionA);
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
+            'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
         $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
@@ -51,7 +51,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'role_id' => $this->encode($invalidId),
-            'permissions_ids' => [$permission->getHashedKey()],
+            'permission_ids' => [$permission->getHashedKey()],
         ];
 
         $response = $this->makeCall($data);
@@ -70,7 +70,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $invalidId = 7777;
         $data = [
             'role_id' => $role->getHashedKey(),
-            'permissions_ids' => [$this->encode($invalidId)],
+            'permission_ids' => [$this->encode($invalidId)],
         ];
 
         $response = $this->makeCall($data);
@@ -80,8 +80,8 @@ final class SyncRolePermissionsTest extends ApiTestCase
             fn (AssertableJson $json) => $json->has(
                 'errors',
                 fn (AssertableJson $errors) => $errors->has(
-                    'permissions_ids.0',
-                    fn (AssertableJson $permissionsIds) => $permissionsIds->where(0, 'The selected permissions_ids.0 is invalid.'),
+                    'permission_ids.0',
+                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

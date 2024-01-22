@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use App\Containers\AppSection\Authorization\Actions\FindPermissionAction;
-use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionRequest;
+use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
+use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class FindPermissionController extends ApiController
+class FindPermissionByIdController extends ApiController
 {
-    public function __invoke(FindPermissionRequest $request, FindPermissionAction $action): array
+    public function __invoke(FindPermissionByIdRequest $request, FindPermissionByIdAction $action): array
     {
         $permission = $action->run($request);
 
