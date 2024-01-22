@@ -20,12 +20,7 @@ class GivePermissionsToRoleAction extends ParentAction
      */
     public function run(GivePermissionsToRoleRequest $request): Role
     {
-        $role = $this->findRoleTask->run($request->role_id);
-
-        foreach ($request->permissions_ids as $permissionId) {
-            $role->givePermissionTo($permissionId);
-        }
-
-        return $role;
+        return $this->findRoleTask->run($request->role_id)
+            ->givePermissionTo($request->permission_ids);
     }
 }
