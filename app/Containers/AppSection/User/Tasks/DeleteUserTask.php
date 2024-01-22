@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class DeleteUserTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository,
+        private readonly UserRepository $repository,
     ) {
     }
 

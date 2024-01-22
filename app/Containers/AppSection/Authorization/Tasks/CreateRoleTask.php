@@ -10,7 +10,7 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class CreateRoleTask extends ParentTask
 {
     public function __construct(
-        protected readonly RoleRepository $repository,
+        private readonly RoleRepository $repository,
     ) {
     }
 

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class UpdateUserTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository,
+        private readonly UserRepository $repository,
     ) {
     }
 

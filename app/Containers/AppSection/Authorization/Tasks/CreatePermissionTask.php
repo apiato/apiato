@@ -10,7 +10,7 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class CreatePermissionTask extends ParentTask
 {
     public function __construct(
-        protected readonly PermissionRepository $repository,
+        private readonly PermissionRepository $repository,
     ) {
     }
 

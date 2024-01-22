@@ -12,7 +12,7 @@ use Prettus\Repository\Exceptions\RepositoryException;
 class ListRolesAction extends ParentAction
 {
     public function __construct(
-        protected readonly RoleRepository $repository,
+        private readonly RoleRepository $repository,
     ) {
     }
 
