@@ -21,7 +21,7 @@ final class UpdateUserTaskTest extends UnitTestCase
             'name' => 'new name',
         ];
 
-        $updatedUser = app(UpdateUserTask::class)->run($data, $user->id);
+        $updatedUser = app(UpdateUserTask::class)->run($user->id, $data);
 
         $this->assertSame($user->id, $updatedUser->id);
         $this->assertSame($data['name'], $updatedUser->name);
@@ -31,9 +31,9 @@ final class UpdateUserTaskTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $noneExistingId = 777777;
+        $noneExistingId = 7777777;
 
-        app(UpdateUserTask::class)->run([], $noneExistingId);
+        app(UpdateUserTask::class)->run($noneExistingId, []);
     }
 
     public function testUpdatedPasswordShouldBeHashed(): void
@@ -43,7 +43,7 @@ final class UpdateUserTaskTest extends UnitTestCase
             'password' => 'secret',
         ];
 
-        $result = app(UpdateUserTask::class)->run($data, $user->id);
+        $result = app(UpdateUserTask::class)->run($user->id, $data);
 
         $this->assertTrue(Hash::check($data['password'], $result->password));
     }
