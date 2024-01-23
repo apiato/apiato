@@ -39,14 +39,14 @@ final class DeleteRoleActionTest extends UnitTestCase
         app(DeleteRoleAction::class)->run($request);
     }
 
-    public function testDeleteRoleActionThrowsDeleteResourceFailedException(): void
+    public function testCatchesAllExceptionsAndThrowsDeleteResourceFailedException(): void
     {
         $this->expectException(DeleteResourceFailedException::class);
 
+        $request = DeleteRoleRequest::injectData();
         $mockRepository = $this->mock(RoleRepository::class);
         $mockRepository->allows()->delete()->andThrow(new \Exception());
         $action = new DeleteRoleAction($mockRepository);
-        $request = DeleteRoleRequest::injectData();
 
         $action->run($request);
     }
