@@ -37,6 +37,5 @@ final class CreatePermissionTaskTest extends UnitTestCase
 
         $this->mock(PermissionRepository::class);
         app(CreatePermissionTask::class)->run($name, $description, $display_name);
-
     }
 }
