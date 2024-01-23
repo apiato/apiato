@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
-use App\Containers\AppSection\Authentication\Traits\AuthenticationTrait;
 use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
@@ -13,7 +12,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class User extends ParentUserModel implements MustVerifyEmail
 {
     use AuthorizationTrait;
-    use AuthenticationTrait;
 
     protected $fillable = [
         'name',
@@ -45,5 +43,25 @@ class User extends ParentUserModel implements MustVerifyEmail
         return new Attribute(
             get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
         );
+    }
+
+    /**
+     * Allows Passport to authenticate users with custom fields.
+     */
+    public function findForPassport($identifier): self|null
+    {
+        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
+
+        $query = $this->newModelQuery();
+
+        foreach (array_keys($allowedLoginAttributes) as $field) {
+            if (config('appSection-authentication.login.case_sensitive')) {
+                $query->orWhere($field, $identifier);
+            } else {
+                $query->orWhereRaw("lower({$field}) = lower(?)", [$identifier]);
+            }
+        }
+
+        return $query->first();
     }
 }
