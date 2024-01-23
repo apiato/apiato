@@ -30,7 +30,7 @@ final class FindRoleByIdActionTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $nonExistingID = 777777;
+        $nonExistingID = 7777777;
         $request = FindRoleByIdRequest::injectData()->withUrlParameters(['id' => $nonExistingID]);
         $action = app(FindRoleByIdAction::class);
 

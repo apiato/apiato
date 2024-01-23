@@ -72,7 +72,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
     public function testDetachPermissionFromNonExistingRole(): void
     {
         $permission = PermissionFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],
@@ -91,7 +91,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
     public function testDetachNonExistingPermissionFromRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],

@@ -19,7 +19,7 @@ final class GetUserProfileTest extends ApiTestCase
         'roles' => null,
     ];
 
-    public function testGetAuthenticatedUser(): void
+    public function testCanGetProfile(): void
     {
         $user = $this->getTestingUser();
 
@@ -35,14 +35,14 @@ final class GetUserProfileTest extends ApiTestCase
                     ->where('email', $user->email)
                     ->whereType('email_verified_at', 'string')
                     ->where('name', $user->name)
-                    ->where('gender', $user->gender)
+                    ->where('gender', $user->gender->value)
                     ->whereType('birth', 'string')
                     ->etc(),
             )->etc(),
         );
     }
 
-    public function testGetAuthenticatedUserByUnauthenticatedUser(): void
+    public function testCannotGetProfileByUnauthenticatedUser(): void
     {
         $this->testingUser = UserFactory::new()->createOne();
 

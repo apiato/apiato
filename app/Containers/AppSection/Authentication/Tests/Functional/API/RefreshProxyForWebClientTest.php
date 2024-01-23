@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
-use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingException;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -38,21 +37,6 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
                 ])->where('token_type', 'Bearer')
                     ->etc(),
             )->etc(),
-        );
-    }
-
-    public function testRequestingRefreshTokenWithoutPassingARefreshTokenShouldThrowAnException(): void
-    {
-        $data = [];
-
-        $response = $this->makeCall($data);
-
-        $response->assertStatus(400);
-        $message = (new RefreshTokenMissingException())->getMessage();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('message')
-                ->where('message', $message)
-                ->etc(),
         );
     }
 

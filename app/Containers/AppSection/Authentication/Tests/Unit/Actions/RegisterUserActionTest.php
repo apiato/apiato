@@ -21,8 +21,8 @@ final class RegisterUserActionTest extends UnitTestCase
     {
         Notification::fake();
         $data = [
-            'email' => 'Mahmoud@test.test',
-            'password' => 'so-secret',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
         $request = RegisterUserRequest::injectData($data);

@@ -9,15 +9,9 @@ use Prettus\Repository\Exceptions\RepositoryException;
 
 abstract class Repository extends AbstractRepository
 {
-    public function delete($id): bool|null
+    public function delete($id): bool
     {
-        $result = parent::delete($id);
-
-        if (null === $result) {
-            return null;
-        }
-
-        return (bool) $result;
+        return (bool) parent::delete($id);
     }
 
     /**

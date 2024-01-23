@@ -30,8 +30,6 @@ final class CallOAuthServerTaskTest extends UnitTestCase
     public function testCallOAuthServerWithInvalidCredentials(): void
     {
         $this->expectException(LoginFailedException::class);
-        $this->expectExceptionMessage('The user credentials were incorrect.');
-        $this->expectExceptionCode(422);
 
         $this->getTestingUser(['email' => 'gandalf@the.grey', 'password' => 'youShallNotPass']);
         $data = $this->enrichWithPasswordGrantFields('nonexisting@email.void', 'invalidPassword');

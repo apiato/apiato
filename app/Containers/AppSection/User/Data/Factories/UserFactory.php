@@ -3,8 +3,8 @@
 namespace App\Containers\AppSection\User\Data\Factories;
 
 use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -19,12 +19,10 @@ class UserFactory extends ParentFactory
 
     public function definition(): array
     {
-        static $password;
-
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => $password ?: $password = Hash::make('testing-password'),
+            'password' => 'password',
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'gender' => $this->faker->randomElement(['male', 'female', 'unspecified']),
@@ -45,6 +43,13 @@ class UserFactory extends ParentFactory
             return [
                 'email_verified_at' => null,
             ];
+        });
+    }
+
+    public function gender(Gender $gender): static
+    {
+        return $this->state(function (array $attributes) use ($gender) {
+            return compact('gender');
         });
     }
 }

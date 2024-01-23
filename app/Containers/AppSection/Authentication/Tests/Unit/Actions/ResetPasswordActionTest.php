@@ -11,6 +11,8 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordReques
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Exceptions\UpdateResourceFailedException;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
@@ -21,7 +23,7 @@ final class ResetPasswordActionTest extends UnitTestCase
 {
     private User $user;
 
-    public function testResetPassword(): void
+    public function testCanResetPassword(): void
     {
         Notification::fake();
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
@@ -35,6 +37,7 @@ final class ResetPasswordActionTest extends UnitTestCase
 
         app(ResetPasswordAction::class)->run($request);
 
+        $this->assertTrue(Hash::check($data['password'], $this->user->fresh()->password));
         Notification::assertSentTo($this->user, PasswordReset::class);
     }
 
@@ -48,8 +51,8 @@ final class ResetPasswordActionTest extends UnitTestCase
             'password' => 'new pass',
             'token' => 'invalid token',
         ];
-
         $request = new ResetPasswordRequest($data);
+
         app(ResetPasswordAction::class)->run($request);
     }
 
@@ -59,14 +62,13 @@ final class ResetPasswordActionTest extends UnitTestCase
         $this->expectExceptionMessage('User Not Found.');
 
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
-
         $data = [
             'email' => 'someone@elses.mail',
             'password' => 'new pass',
             'token' => $token,
         ];
-
         $request = new ResetPasswordRequest($data);
+
         app(ResetPasswordAction::class)->run($request);
     }
 

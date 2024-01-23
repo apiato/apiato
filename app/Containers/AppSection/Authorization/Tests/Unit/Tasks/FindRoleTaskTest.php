@@ -35,7 +35,7 @@ final class FindRoleTaskTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $invalidId = 7777;
+        $invalidId = 7777777;
 
         app(FindRoleTask::class)->run($invalidId);
     }

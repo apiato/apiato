@@ -29,7 +29,7 @@ final class FindPermissionByIdActionTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $nonExistingID = 777777;
+        $nonExistingID = 7777777;
         $request = FindPermissionByIdRequest::injectData()->withUrlParameters(['id' => $nonExistingID]);
         $action = app(FindPermissionByIdAction::class);
 

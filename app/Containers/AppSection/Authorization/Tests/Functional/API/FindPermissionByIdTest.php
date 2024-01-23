@@ -31,9 +31,9 @@ final class FindPermissionByIdTest extends ApiTestCase
 
     public function testFindNonExistingPermission(): void
     {
-        $invalidId = 7777;
+        $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId)->makeCall([]);
+        $response = $this->injectId($invalidId)->makeCall();
 
         $response->assertNotFound();
     }
