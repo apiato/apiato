@@ -85,7 +85,7 @@ final class SendVerificationEmailTest extends ApiTestCase
         if (config('appSection-authentication.require_email_verification')) {
             $this->markTestSkipped();
         }
-        $response = $this->makeCall([]);
+        $response = $this->makeCall();
 
         $response->assertNotFound();
     }

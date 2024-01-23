@@ -48,7 +48,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
     public function testSyncPermissionsOnNonExistingRole(): void
     {
         $permission = PermissionFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],
@@ -67,7 +67,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
     public function testSyncNonExistingPermissionOnRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],

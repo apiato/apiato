@@ -26,7 +26,7 @@ final class FindUserByIdTaskTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $noneExistingId = 777777;
+        $noneExistingId = 7777777;
 
         app(FindUserByIdTask::class)->run($noneExistingId);
     }

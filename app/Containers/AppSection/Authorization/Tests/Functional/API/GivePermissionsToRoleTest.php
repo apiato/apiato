@@ -68,7 +68,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachNonExistingPermissionToRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],
@@ -91,7 +91,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachPermissionToNonExistingRole(): void
     {
         $permission = PermissionFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],

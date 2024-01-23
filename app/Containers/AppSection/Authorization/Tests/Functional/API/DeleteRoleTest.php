@@ -29,9 +29,9 @@ final class DeleteRoleTest extends ApiTestCase
 
     public function testDeleteNonExistingRole(): void
     {
-        $invalidId = 7777;
+        $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId)->makeCall([]);
+        $response = $this->injectId($invalidId)->makeCall();
 
         $response->assertNotFound();
     }
