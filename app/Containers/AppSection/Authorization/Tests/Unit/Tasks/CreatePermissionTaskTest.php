@@ -29,7 +29,7 @@ final class CreatePermissionTaskTest extends UnitTestCase
         $this->assertSame('api', $permission->guard_name);
     }
 
-    public function testUpdateUserWithCreateResourceFailedException(): void
+    public function testCreatePermissionWithCreateResourceFailedException(): void
     {
         $this->expectException(CreateResourceFailedException::class);
 
