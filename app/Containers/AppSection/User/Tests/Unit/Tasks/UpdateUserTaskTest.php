@@ -40,7 +40,7 @@ final class UpdateUserTaskTest extends UnitTestCase
 
         $this->mock(UserRepository::class);
 
-        app(UpdateUserTask::class)->run($data, $user->id);
+        app(UpdateUserTask::class)->run($user->id, $data);
     }
 
     public function testUpdateUserWithInvalidID(): void
