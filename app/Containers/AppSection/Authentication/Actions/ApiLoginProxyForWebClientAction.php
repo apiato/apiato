@@ -27,30 +27,21 @@ class ApiLoginProxyForWebClientAction extends ParentAction
      */
     public function run(LoginProxyPasswordGrantRequest $request): AuthResult
     {
-        $sanitizedData = $request->sanitizeInput(
-            [
-                ...array_keys(config('appSection-authentication.login.attributes')),
-                'password',
-            ],
-        );
+        $sanitizedData = $request->sanitizeInput([
+            ...array_keys(config('appSection-authentication.login.attributes')),
+            'password',
+            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_secret' => config('appSection-authentication.clients.web.secret'),
+            'grant_type' => 'password',
+            'scope' => '',
+        ]);
 
         [$loginFieldValue] = LoginCustomAttribute::extract($sanitizedData);
-        $sanitizedData = $this->enrichSanitizedData($loginFieldValue, $sanitizedData);
+        $sanitizedData['username'] = $loginFieldValue;
 
         $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
         $refreshCookie = $this->makeRefreshCookieTask->run($responseContent->refreshToken);
 
         return new AuthResult($responseContent, $refreshCookie);
-    }
-
-    private function enrichSanitizedData(string $username, array $sanitizedData): array
-    {
-        $sanitizedData['username'] = $username;
-        $sanitizedData['client_id'] = config('appSection-authentication.clients.web.id');
-        $sanitizedData['client_secret'] = config('appSection-authentication.clients.web.secret');
-        $sanitizedData['grant_type'] = 'password';
-        $sanitizedData['scope'] = '';
-
-        return $sanitizedData;
     }
 }
