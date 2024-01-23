@@ -3,9 +3,12 @@
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Exceptions\UpdateResourceFailedException;
+use App\Ship\Parents\Repositories\Repository;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
@@ -24,6 +27,19 @@ final class UpdateUserTaskTest extends UnitTestCase
         $updatedUser = app(UpdateUserTask::class)->run($data, $user->id);
 
         $this->assertSame($user->id, $updatedUser->id);
+        $this->assertSame($data['name'], $updatedUser->name);
+    }
+
+    public function testUpdateUserWithUpdateResourceFailedException(): void
+    {
+        $this->expectException(UpdateResourceFailedException::class);
+
+        $user = UserFactory::new()->createOne();
+        $data = [
+            'name' => 'new name',
+        ];
+        $this->mock(UserRepository::class);
+        $updatedUser = app(UpdateUserTask::class)->run($data, $user->id);
         $this->assertSame($data['name'], $updatedUser->name);
     }
 
