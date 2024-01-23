@@ -17,9 +17,9 @@ final class WebLoginActionTest extends UnitTestCase
 {
     private array $userDetails;
     private LoginRequest $request;
-    private mixed $action;
+    private WebLoginAction $action;
 
-    public function testLogin(): void
+    public function testCanLogin(): void
     {
         $this->markTestSkipped();
         $user = $this->action->run($this->request);
