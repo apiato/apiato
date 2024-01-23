@@ -26,7 +26,5 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\SendVerificationEmailController;
 use Illuminate\Support\Facades\Route;
 
-if (config('appSection-authentication.require_email_verification')) {
-    Route::post('/email/verification-notification', SendVerificationEmailController::class)
-        ->middleware(['auth:api']);
-}
+Route::post('/email/verification-notification', SendVerificationEmailController::class)
+    ->middleware(['auth:api']);
