@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Data\Factories;
 
+use App\Containers\AppSection\User\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Str;
@@ -42,6 +43,13 @@ class UserFactory extends ParentFactory
             return [
                 'email_verified_at' => null,
             ];
+        });
+    }
+
+    public function gender(Gender $gender): static
+    {
+        return $this->state(function (array $attributes) use ($gender) {
+            return compact('gender');
         });
     }
 }
