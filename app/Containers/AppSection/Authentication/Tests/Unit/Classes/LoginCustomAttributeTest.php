@@ -46,4 +46,26 @@ final class LoginCustomAttributeTest extends UnitTestCase
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
+
+    public function testCanLoginWithUppercaseEmail(): void
+    {
+        Config::set('appSection-authentication.login.case_sensitive', false);
+        $userDetails = [
+            'email' => 'gAndAlf@tHe.grEy',
+            'password' => 'youShallNotPass',
+            'name' => 'Mahmoud',
+        ];
+        $this->testingUser = UserFactory::new()->createOne($userDetails);
+        $request = LoginRequest::injectData($userDetails);
+//        $request = LoginRequest::injectData([
+//            'email' => 'gandalf@the.grey',
+//            'password' => 'youShallNotPass',
+//        ]);
+        $action = app(WebLoginAction::class);
+
+        $response = $action->run($request);
+
+        $this->assertTrue($response->isRedirect());
+        $this->assertAuthenticatedAs($this->testingUser, 'web');
+    }
 }

@@ -18,14 +18,14 @@ class LoginCustomAttribute
      */
     public static function extract(array $data): array
     {
-        [$loginFieldName, $loginFieldValue] = static::getLoginFields($data);
+        [$loginFieldName, $loginFieldValue] = static::getFirstMatchingLoginField($data);
 
         if (!is_string($loginFieldName) || !is_string($loginFieldValue) || static::noMatchingLoginFieldFound($loginFieldValue)) {
             throw new NotFoundException('No matching login field found');
         }
 
         return [
-            static::processLoginAttributeCaseSensitivity($loginFieldValue),
+            $loginFieldValue,
             $loginFieldName,
         ];
     }
@@ -33,14 +33,13 @@ class LoginCustomAttribute
     /**
      * @return array<array-key, mixed|null> [loginFieldName, loginFieldValue]
      */
-    private static function getLoginFields(array $data): array
+    private static function getFirstMatchingLoginField(array $data): array
     {
         $loginFieldName = null;
         $loginFieldValue = null;
         foreach (static::getAllowedLoginAttributes() as $allowedLoginAttribute) {
             $loginFieldValue = static::getMatchingLoginFieldValue($allowedLoginAttribute, $data);
 
-            // Exit the loop on the first matching login attribute found
             if (static::loginFieldHasValue($loginFieldValue)) {
                 $loginFieldName = $allowedLoginAttribute;
                 break;
@@ -97,15 +96,6 @@ class LoginCustomAttribute
     private static function noMatchingLoginFieldFound(string $loginFieldValue): bool
     {
         return empty($loginFieldValue);
-    }
-
-    private static function processLoginAttributeCaseSensitivity(string $username): string
-    {
-        if (config('appSection-authentication.login.case_sensitive')) {
-            return $username;
-        }
-
-        return strtolower($username);
     }
 
     public static function mergeValidationRules(array $rules): array
