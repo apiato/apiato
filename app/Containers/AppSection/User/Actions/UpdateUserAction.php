@@ -25,12 +25,11 @@ class UpdateUserAction extends ParentAction
     public function run(UpdateUserRequest $request): User
     {
         $sanitizedData = $request->sanitizeInput([
-            'password',
             'name',
             'gender',
             'birth',
         ]);
 
-        return $this->updateUserTask->run($sanitizedData, $request->id);
+        return $this->updateUserTask->run($request->id, $sanitizedData);
     }
 }

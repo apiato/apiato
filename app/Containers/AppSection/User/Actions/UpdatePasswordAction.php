@@ -29,7 +29,7 @@ class UpdatePasswordAction extends ParentAction
             'new_password',
         ]);
 
-        $user = $this->updateUserTask->run(['password' => $sanitizedData['new_password']], $request->id);
+        $user = $this->updateUserTask->run($request->id, ['password' => $sanitizedData['new_password']]);
 
         $user->notify(new PasswordUpdatedNotification());
 
