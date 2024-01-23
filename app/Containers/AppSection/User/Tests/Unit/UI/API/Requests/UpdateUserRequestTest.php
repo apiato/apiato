@@ -2,8 +2,10 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
+use App\Containers\AppSection\User\Gender;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
+use Illuminate\Validation\Rule;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -39,9 +41,9 @@ final class UpdateUserRequestTest extends UnitTestCase
     {
         $rules = $this->request->rules();
 
-        $this->assertSame([
+        $this->assertEquals([
             'name' => 'min:2|max:50',
-            'gender' => 'in:male,female,unspecified',
+            'gender' => Rule::enum(Gender::class),
             'birth' => 'date',
         ], $rules);
     }

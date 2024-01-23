@@ -3,7 +3,9 @@
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
+use App\Containers\AppSection\User\Gender;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends ParentRequest
 {
@@ -26,7 +28,7 @@ class UpdateUserRequest extends ParentRequest
     {
         return [
             'name' => 'min:2|max:50',
-            'gender' => 'in:male,female,unspecified',
+            'gender' => Rule::enum(Gender::class),
             'birth' => 'date',
         ];
     }

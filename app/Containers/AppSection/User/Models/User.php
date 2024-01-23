@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\User\Models;
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Traits\AuthenticationTrait;
 use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
+use App\Containers\AppSection\User\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -31,6 +32,7 @@ class User extends ParentUserModel implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'birth' => 'date',
+        'gender' => Gender::class,
     ];
 
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
