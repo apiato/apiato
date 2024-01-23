@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\User\Data\Repositories\UserRepository;
-use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;

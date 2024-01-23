@@ -8,7 +8,6 @@ use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
-use App\Ship\Parents\Repositories\Repository;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
