@@ -38,6 +38,7 @@ final class UpdateUserTaskTest extends UnitTestCase
             'name' => 'new name',
         ];
         $this->mock(UserRepository::class);
+
         app(UpdateUserTask::class)->run($data, $user->id);
     }
 

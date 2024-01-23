@@ -36,6 +36,7 @@ final class CreatePermissionTaskTest extends UnitTestCase
         $display_name = 'Controller of All';
 
         $this->mock(PermissionRepository::class);
+
         app(CreatePermissionTask::class)->run($name, $description, $display_name);
     }
 }
