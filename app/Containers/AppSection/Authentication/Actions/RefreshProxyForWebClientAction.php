@@ -4,15 +4,13 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissingException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Containers\AppSection\Authentication\Values\AuthResult;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Support\Facades\Request;
 
-class ApiRefreshProxyForWebClientAction extends ParentAction
+class RefreshProxyForWebClientAction extends ParentAction
 {
     public function __construct(
         private readonly CallOAuthServerTask $callOAuthServerTask,
@@ -22,24 +20,17 @@ class ApiRefreshProxyForWebClientAction extends ParentAction
 
     /**
      * @throws LoginFailedException
-     * @throws RefreshTokenMissingException
      * @throws IncorrectIdException
      */
     public function run(RefreshProxyRequest $request): AuthResult
     {
         $sanitizedData = $request->sanitizeInput([
-            'refresh_token',
+            'refresh_token' => $request->cookie('refreshToken'),
+            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_secret' => config('appSection-authentication.clients.web.secret'),
+            'grant_type' => 'refresh_token',
+            'scope' => '',
         ]);
-
-        if (!array_key_exists('refresh_token', $sanitizedData) && null === Request::cookie('refreshToken')) {
-            throw new RefreshTokenMissingException();
-        }
-
-        $sanitizedData['refresh_token'] = $sanitizedData['refresh_token'] ?: Request::cookie('refreshToken');
-        $sanitizedData['client_id'] = config('appSection-authentication.clients.web.id');
-        $sanitizedData['client_secret'] = config('appSection-authentication.clients.web.secret');
-        $sanitizedData['grant_type'] = 'refresh_token';
-        $sanitizedData['scope'] = '';
 
         $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
         $refreshCookie = $this->makeRefreshCookieTask->run($responseContent->refreshToken);
