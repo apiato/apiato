@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\Data\Factories;
 
-use App\Containers\AppSection\User\Gender;
 use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Str;
 

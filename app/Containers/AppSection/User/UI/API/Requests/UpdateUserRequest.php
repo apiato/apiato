@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
-use App\Containers\AppSection\User\Gender;
+use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 

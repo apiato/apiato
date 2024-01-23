@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\User\Gender;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Enums\Gender;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
