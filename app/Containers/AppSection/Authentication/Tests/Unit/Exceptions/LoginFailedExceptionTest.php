@@ -14,7 +14,7 @@ final class LoginFailedExceptionTest extends UnitTestCase
     public function testLoginFailedException(): void
     {
         $this->expectExceptionCode(422);
-        $this->expectExceptionMessage('An Exception happened during the Login Process.');
+        $this->expectExceptionMessage('Invalid credentials.');
 
         throw new LoginFailedException();
     }

@@ -49,7 +49,7 @@ final class SyncUserRolesTest extends ApiTestCase
     public function testSyncRoleOnNonExistingUser(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_ids' => [$role->getHashedKey()],
             'user_id' => $this->encode($invalidId),
@@ -68,7 +68,7 @@ final class SyncUserRolesTest extends ApiTestCase
     public function testSyncNonExistingRoleOnUser(): void
     {
         $user = UserFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),

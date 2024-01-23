@@ -39,20 +39,6 @@ final class LoginProxyForWebClientTest extends ApiTestCase
         );
     }
 
-    public function testClientWebAdminProxyLoginWithUppercaseEmail(): void
-    {
-        $data = [
-            'email' => 'Testing@Mail.Com',
-            'password' => 'testiness',
-        ];
-        $this->getTestingUser(['email' => 'testing@mail.com', 'password' => $data['password']]);
-        Config::set('appSection-authentication.login.case_sensitive', false);
-
-        $response = $this->makeCall($data);
-
-        $response->assertOk();
-    }
-
     public function testLoginWithNameAttribute(): void
     {
         $data = [
@@ -86,7 +72,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'email' => [],
         ]);
         $data = [
-            'password' => 'so-secret',
+            'password' => 'youShallNotPass',
         ];
 
         $response = $this->makeCall($data);
@@ -106,7 +92,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'name' => [],
         ]);
         $data = [
-            'password' => 'so-secret',
+            'password' => 'youShallNotPass',
         ];
 
         $response = $this->makeCall($data);

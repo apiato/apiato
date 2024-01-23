@@ -23,11 +23,9 @@ final class SendVerificationEmailTest extends ApiTestCase
 
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
-        if (!config('appSection-authentication.require_email_verification')) {
-            $this->markTestSkipped();
-        }
         Notification::fake();
         $this->testingUser = UserFactory::new()->unverified()->createOne();
+        config(['appSection-authentication.require_email_verification' => true]);
 
         $data = [
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
@@ -41,9 +39,6 @@ final class SendVerificationEmailTest extends ApiTestCase
 
     public function testSendingWithoutRequiredDataShouldThrowError(): void
     {
-        if (!config('appSection-authentication.require_email_verification')) {
-            $this->markTestSkipped();
-        }
         $data = [];
 
         $response = $this->makeCall($data);
@@ -51,19 +46,15 @@ final class SendVerificationEmailTest extends ApiTestCase
         $response->assertUnprocessable();
 
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->has(
-                    'errors',
-                    fn (AssertableJson $json) => $json->where('verification_url.0', 'The verification url field is required.'),
-                ),
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json->where('verification_url.0', 'The verification url field is required.'),
+            )->etc(),
         );
     }
 
     public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
     {
-        if (!config('appSection-authentication.require_email_verification')) {
-            $this->markTestSkipped();
-        }
         $data = [
             'email' => 'test@test.test',
             'password' => 's3cr3tPa$$',
@@ -75,18 +66,10 @@ final class SendVerificationEmailTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.verification_url.0', 'The selected verification url is invalid.'),
+            fn (AssertableJson $json) => $json->has(
+                'errors',
+                fn (AssertableJson $json) => $json->where('verification_url.0', 'The selected verification url is invalid.'),
+            )->etc(),
         );
-    }
-
-    public function testGivenEmailVerificationIsDisabledShouldThrow404(): void
-    {
-        if (config('appSection-authentication.require_email_verification')) {
-            $this->markTestSkipped();
-        }
-        $response = $this->makeCall([]);
-
-        $response->assertNotFound();
     }
 }

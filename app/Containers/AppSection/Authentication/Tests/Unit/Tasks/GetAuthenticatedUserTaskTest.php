@@ -17,11 +17,21 @@ final class GetAuthenticatedUserTaskTest extends UnitTestCase
     {
         $user = UserFactory::new()->createOne();
         auth()->setUser($user);
-        $action = app(GetAuthenticatedUserTask::class);
+        $task = app(GetAuthenticatedUserTask::class);
 
-        $foundUser = $action->run();
+        $foundUser = $task->run();
 
         $this->assertInstanceOf(User::class, $foundUser);
         $this->assertSame($user->id, $foundUser->id);
+    }
+
+    public function testGivenUserNotAuthenticatedThrowsException(): void
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('You are not authenticated.');
+
+        $task = app(GetAuthenticatedUserTask::class);
+
+        $task->run();
     }
 }

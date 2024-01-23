@@ -72,7 +72,7 @@ final class RemoveUserRolesTest extends ApiTestCase
     public function testRevokeRolesFromNonExistingUser(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_ids' => [$role->getHashedKey()],
             'user_id' => $this->encode($invalidId),
@@ -91,7 +91,7 @@ final class RemoveUserRolesTest extends ApiTestCase
     public function testRevokeNonExistingRoleFromUser(): void
     {
         $user = UserFactory::new()->createOne();
-        $invalidId = 7777;
+        $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
             'user_id' => $user->getHashedKey(),

@@ -4,28 +4,20 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
-use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
-use App\Containers\AppSection\Authentication\Tasks\LoginTask;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends ParentAction
 {
-    public function __construct(
-        private readonly LoginTask $loginTask,
-    ) {
-    }
-
     /**
-     * @throws LoginFailedException
      * @throws IncorrectIdException
      * @throws NotFoundException
      */
-    public function run(LoginRequest $request): User|Authenticatable|null
+    public function run(LoginRequest $request): RedirectResponse
     {
         $sanitizedData = $request->sanitizeInput([
             'email',
@@ -34,18 +26,27 @@ class WebLoginAction extends ParentAction
         ]);
 
         [$loginFieldValue, $loginFieldName] = LoginCustomAttribute::extract($sanitizedData);
-
-        $loggedIn = $this->loginTask->run(
-            $loginFieldValue,
-            $sanitizedData['password'],
-            $loginFieldName,
-            $sanitizedData['remember_me'],
-        );
-
-        if (!$loggedIn) {
-            throw new LoginFailedException('Invalid Login Credentials.');
+        if (config('appSection-authentication.login.case_sensitive')) {
+            $credentials = [
+                $loginFieldName => $loginFieldValue,
+                'password' => $sanitizedData['password'],
+            ];
+        } else {
+            $credentials = [
+                $loginFieldName => static fn (Builder $query) => $query->whereRaw("lower({$loginFieldName}) = lower(?)", [$loginFieldValue]),
+                'password' => $sanitizedData['password'],
+            ];
         }
 
-        return Auth::user();
+        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember_me']);
+
+        if ($loggedIn) {
+            session()->regenerate();
+            return redirect()->intended();
+        }
+
+        return back()->withErrors([
+            $loginFieldName => 'The provided credentials do not match our records.',
+        ])->onlyInput($loginFieldName);
     }
 }

@@ -55,7 +55,7 @@ final class CreateRoleTest extends ApiTestCase
     {
         $this->getTestingUserWithoutAccess();
 
-        $response = $this->makeCall([]);
+        $response = $this->makeCall();
 
         $response->assertForbidden();
     }
