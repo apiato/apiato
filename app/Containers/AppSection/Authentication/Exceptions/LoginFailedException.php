@@ -8,5 +8,5 @@ use Symfony\Component\HttpFoundation\Response;
 class LoginFailedException extends ParentException
 {
     protected $code = Response::HTTP_UNPROCESSABLE_ENTITY;
-    protected $message = 'An Exception happened during the Login Process.';
+    protected $message = 'Invalid credentials.';
 }
