@@ -22,7 +22,7 @@ final class FindUserByEmailTaskTest extends UnitTestCase
         $this->assertSame($user->email, $foundUser->email);
     }
 
-    public function testFindUserWithInvalidId(): void
+    public function testFindUserWithInvalidEmail(): void
     {
         $this->expectException(NotFoundException::class);
 
