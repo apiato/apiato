@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
+use App\Containers\AppSection\User\Gender;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -23,12 +24,12 @@ final class UpdateUserTest extends ApiTestCase
     {
         $user = $this->getTestingUser([
             'name' => 'He who should not be named',
-            'gender' => 'female',
+            'gender' => Gender::FEMALE,
         ]);
         $data = [
             'name' => 'Updated Name',
-            'gender' => 'male',
-            'birth' => '2015-10-15',
+            'gender' => Gender::MALE->value,
+            'birth' => Carbon::today(),
         ];
 
         $response = $this->injectId($user->id)->makeCall($data);
@@ -48,9 +49,9 @@ final class UpdateUserTest extends ApiTestCase
 
     public function testUpdateNonExistingUser(): void
     {
-        $invalidId = 7777;
+        $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId)->makeCall([]);
+        $response = $this->injectId($invalidId)->makeCall();
 
         $response->assertNotFound();
     }
