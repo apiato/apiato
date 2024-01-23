@@ -9,7 +9,7 @@ class SendVerificationEmailTask extends ParentTask
 {
     public function run(MustVerifyEmail $user, string|null $verificationUrl = null): void
     {
-        if (config('appSection-authentication.require_email_verification') && !$user->hasVerifiedEmail() && null !== $verificationUrl) {
+        if (null !== $verificationUrl && config('appSection-authentication.require_email_verification') && !$user->hasVerifiedEmail()) {
             $user->sendEmailVerificationNotificationWithVerificationUrl($verificationUrl);
         }
     }
