@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
@@ -63,7 +62,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 
     private function setLoginAttributes(array $fields): void
     {
-        Config::set('appSection-authentication.login.fields', $fields);
+        config()->set('appSection-authentication.login.fields', $fields);
     }
 
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
