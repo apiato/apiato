@@ -106,7 +106,7 @@ final class UserTest extends UnitTestCase
         $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
     }
 
-    public function testByDefaultCanAuthenticateUsingEmail(): void
+    public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
         $user = UserFactory::new()->createOne();
 
