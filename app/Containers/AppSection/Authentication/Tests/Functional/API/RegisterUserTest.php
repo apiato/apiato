@@ -26,8 +26,8 @@ final class RegisterUserTest extends ApiTestCase
 
     public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void
     {
-        config(['appSection-authentication.require_email_verification' => true]);
-        config(['appSection-authentication.allowed-verify-email-urls' => 'http://some.test/known/url']);
+        config()->set('appSection-authentication.require_email_verification', true);
+        config()->set('appSection-authentication.allowed-verify-email-urls', 'http://some.test/known/url');
 
         $data = [
             'email' => 'apiato@mail.test',
@@ -47,7 +47,7 @@ final class RegisterUserTest extends ApiTestCase
 
     public function testGivenEmailVerificationDisabledRegisterNewUserWithCredentials(): void
     {
-        config(['appSection-authentication.require_email_verification' => false]);
+        config()->set('appSection-authentication.require_email_verification', false);
         $data = [
             'email' => 'apiato@mail.test',
             'password' => 's3cr3tPa$$',
@@ -152,7 +152,7 @@ final class RegisterUserTest extends ApiTestCase
 
     public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
     {
-        config(['appSection-authentication.require_email_verification' => true]);
+        config()->set('appSection-authentication.require_email_verification', true);
 
         $data = [
             'email' => 'test@test.test',
@@ -173,7 +173,7 @@ final class RegisterUserTest extends ApiTestCase
 
     public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
     {
-        config(['appSection-authentication.require_email_verification' => false]);
+        config()->set('appSection-authentication.require_email_verification', false);
 
         Notification::fake();
         $data = [

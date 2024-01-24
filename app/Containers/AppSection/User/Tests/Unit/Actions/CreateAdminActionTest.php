@@ -32,7 +32,7 @@ final class CreateAdminActionTest extends UnitTestCase
     {
         $this->expectException(\Exception::class);
 
-        config(['appSection-authorization.admin_role' => 'not_existing_role']);
+        config()->set('appSection-authorization.admin_role', 'not_existing_role');
         $data = [
             'email' => 'a@new.email',
             'password' => 'admin',

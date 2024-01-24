@@ -35,7 +35,7 @@ final class WebLoginActionTest extends UnitTestCase
     #[DataProvider('caseInsensitiveEmailDataProvider')]
     public function testCaseInsensitiveLogin(string $originalCasing, string $loginCasing): void
     {
-        config(['appSection-authentication.login.case_sensitive' => false]);
+        config()->set('appSection-authentication.login.case_sensitive', false);
         $password = 'youShallNotPass';
         $userDetails = [
             'email' => $originalCasing,
@@ -79,7 +79,7 @@ final class WebLoginActionTest extends UnitTestCase
     #[DataProvider('caseSensitiveEmailDataProvider')]
     public function testCaseSensitiveLogin(string $originalCasing, string $loginCasing, bool $shouldLogin): void
     {
-        config(['appSection-authentication.login.case_sensitive' => true]);
+        config()->set('appSection-authentication.login.case_sensitive', true);
         $password = 'youShallNotPass';
         $userDetails = [
             'email' => $originalCasing,
