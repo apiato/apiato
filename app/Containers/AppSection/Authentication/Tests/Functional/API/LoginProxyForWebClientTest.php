@@ -16,8 +16,8 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testProxyLogin(): void
     {
         $data = [
-            'email' => 'testing@mail.com',
-            'password' => 'testingpass',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($data);
 
@@ -41,8 +41,8 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testLoginWithNameAttribute(): void
     {
         $data = [
-            'email' => 'testing@mail.com',
-            'password' => 'testingpass',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
             'name' => 'username',
         ];
         $this->getTestingUser($data);
@@ -51,7 +51,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'name' => [],
         ]);
         $request = [
-            'password' => 'testingpass',
+            'password' => 'youShallNotPass',
             'name' => 'username',
         ];
 
@@ -108,8 +108,8 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testGivenWrongCredentialThrow422(): void
     {
         $data = [
-            'email' => 'none@existing.mail',
-            'password' => 'some-unbelievable-password',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
         ];
 
         $response = $this->makeCall($data);

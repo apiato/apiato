@@ -18,7 +18,7 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
     {
         $credentials = [
             'email' => 'ganldalf@the.grey',
-            'password' => 'secret',
+            'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($credentials);
         $this->actingAs($this->testingUser, 'web');

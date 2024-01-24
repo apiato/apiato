@@ -38,8 +38,8 @@ final class ForgotPasswordTest extends ApiTestCase
         config()->set('appSection-authentication.allowed-reset-password-urls', []);
 
         $data = [
-            'email' => 'test@test.test',
-            'password' => 'secret',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
             'reseturl' => 'http://notallowed.test/wrong',
         ];
 

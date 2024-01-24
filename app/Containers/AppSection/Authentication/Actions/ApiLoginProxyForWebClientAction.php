@@ -9,7 +9,6 @@ use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Containers\AppSection\Authentication\Values\AuthResult;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class ApiLoginProxyForWebClientAction extends ParentAction
@@ -23,7 +22,6 @@ class ApiLoginProxyForWebClientAction extends ParentAction
     /**
      * @throws LoginFailedException
      * @throws IncorrectIdException
-     * @throws NotFoundException
      */
     public function run(LoginProxyPasswordGrantRequest $request): AuthResult
     {

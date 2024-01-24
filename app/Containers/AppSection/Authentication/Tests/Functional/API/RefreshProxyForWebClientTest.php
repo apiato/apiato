@@ -61,8 +61,8 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
         parent::setUp();
 
         $this->data = [
-            'email' => 'testing@mail.com',
-            'password' => 'testing_pass',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
         ];
 
         $this->getTestingUser($this->data);
