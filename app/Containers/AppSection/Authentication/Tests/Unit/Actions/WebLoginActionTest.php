@@ -14,36 +14,277 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(WebLoginAction::class)]
 final class WebLoginActionTest extends UnitTestCase
 {
-    public static function caseInsensitiveEmailDataProvider(): array
+    public static function caseInsensitiveDataProvider(): array
     {
+        $emailField = 'email';
+        $nameField = 'name';
+
         return [
             [
                 'originalCasing' => 'gandalf@the.grey',
                 'loginCasing' => 'gandalf@the.grey',
+                'field' => $emailField,
             ],
             [
                 'originalCasing' => 'gandalf@the.grey',
                 'loginCasing' => 'gAndAlf@thE.gReY',
+                'field' => $emailField,
             ],
             [
                 'originalCasing' => 'gAndAlf@thE.gReY',
                 'loginCasing' => 'gandalf@the.grey',
+                'field' => $emailField,
+            ],
+            [
+                'originalCasing' => 'gandalf',
+                'loginCasing' => 'gandalf',
+                'field' => $nameField,
+            ],
+            [
+                'originalCasing' => 'gandalf',
+                'loginCasing' => 'gAndAlf',
+                'field' => $nameField,
+            ],
+            [
+                'originalCasing' => 'gAndAlf',
+                'loginCasing' => 'gandalf',
+                'field' => $nameField,
             ],
         ];
     }
 
-    #[DataProvider('caseInsensitiveEmailDataProvider')]
-    public function testCaseInsensitiveLogin(string $originalCasing, string $loginCasing): void
+    public static function caseSensitiveEmailDataProvider(): array
+    {
+        $emailField = 'email';
+        $nameField = 'name';
+
+        return [
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gandalf@the.grey',
+                'shouldLogin' => true,
+                'field' => $emailField,
+            ],
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gAndAlf@thE.gReY',
+                'shouldLogin' => false,
+                'field' => $emailField,
+            ],
+            [
+                'originalCasing' => 'gAndAlf@thE.gReY',
+                'loginCasing' => 'gandalf@the.grey',
+                'shouldLogin' => false,
+                'field' => $emailField,
+            ],
+            [
+                'originalCasing' => 'gandalf',
+                'loginCasing' => 'gandalf',
+                'shouldLogin' => true,
+                'field' => $nameField,
+            ],
+            [
+                'originalCasing' => 'gandalf',
+                'loginCasing' => 'gAndAlf',
+                'shouldLogin' => false,
+                'field' => $nameField,
+            ],
+            [
+                'originalCasing' => 'gAndAlf',
+                'loginCasing' => 'gandalf',
+                'shouldLogin' => false,
+                'field' => $nameField,
+            ],
+        ];
+    }
+
+    public static function allowedLoginDataProvider(): array
+    {
+        return [
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'email',
+                ],
+            ],
+            // Should fail because name is not allowed
+            // [
+            //     'loginFields' => [
+            //         'name' => 'gandalf',
+            //     ],
+            //     'allowedFields' => [
+            //         'email',
+            //     ],
+            // ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'email',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'email',
+                ],
+            ],
+            // Should fail because email is not allowed
+            // [
+            //     'loginFields' => [
+            //         'email' => 'gandalf@the.grey',
+            //     ],
+            //     'allowedFields' => [
+            //         'name',
+            //     ],
+            // ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'email',
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'email',
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'email',
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'email',
+                    'name',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'name',
+                    'email',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'name',
+                    'email',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'name',
+                    'email',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'name',
+                    'email',
+                ],
+            ],
+        ];
+    }
+
+    public static function unallowedLoginDataProvider(): array
+    {
+        return [
+            [
+                'loginFields' => [
+                    'name' => 'gandalf',
+                ],
+                'allowedFields' => [
+                    'email',
+                ],
+            ],
+            [
+                'loginFields' => [
+                    'email' => 'gandalf@the.grey',
+                ],
+                'allowedFields' => [
+                    'name',
+                ],
+            ],
+        ];
+    }
+
+    #[DataProvider('caseInsensitiveDataProvider')]
+    public function testCaseInsensitiveLogin(string $originalCasing, string $loginCasing, string $field): void
     {
         config()->set('appSection-authentication.login.case_sensitive', false);
+        config()->set('appSection-authentication.login.fields', [$field => []]);
         $password = 'youShallNotPass';
         $userDetails = [
-            'email' => $originalCasing,
+            $field => $originalCasing,
             'password' => $password,
         ];
         $user = UserFactory::new()->createOne($userDetails);
         $credentials = [
-            'email' => $loginCasing,
+            $field => $loginCasing,
             'password' => $password,
         ];
         $request = LoginRequest::injectData($credentials);
@@ -55,39 +296,19 @@ final class WebLoginActionTest extends UnitTestCase
         $this->assertAuthenticatedAs($user, 'web');
     }
 
-    public static function caseSensitiveEmailDataProvider(): array
-    {
-        return [
-            [
-                'originalCasing' => 'gandalf@the.grey',
-                'loginCasing' => 'gandalf@the.grey',
-                'shouldLogin' => true,
-            ],
-            [
-                'originalCasing' => 'gandalf@the.grey',
-                'loginCasing' => 'gAndAlf@thE.gReY',
-                'shouldLogin' => false,
-            ],
-            [
-                'originalCasing' => 'gAndAlf@thE.gReY',
-                'loginCasing' => 'gandalf@the.grey',
-                'shouldLogin' => false,
-            ],
-        ];
-    }
-
     #[DataProvider('caseSensitiveEmailDataProvider')]
-    public function testCaseSensitiveLogin(string $originalCasing, string $loginCasing, bool $shouldLogin): void
+    public function testCaseSensitiveLogin(string $originalCasing, string $loginCasing, bool $shouldLogin, string $field): void
     {
         config()->set('appSection-authentication.login.case_sensitive', true);
+        config()->set('appSection-authentication.login.fields', [$field => []]);
         $password = 'youShallNotPass';
         $userDetails = [
-            'email' => $originalCasing,
+            $field => $originalCasing,
             'password' => $password,
         ];
         $user = UserFactory::new()->createOne($userDetails);
         $credentials = [
-            'email' => $loginCasing,
+            $field => $loginCasing,
             'password' => $password,
         ];
         $request = LoginRequest::injectData($credentials);
@@ -100,17 +321,91 @@ final class WebLoginActionTest extends UnitTestCase
             $this->assertAuthenticatedAs($user, 'web');
         } else {
             $this->assertGuest('web');
-            $this->assertSame('The provided credentials do not match our records.', $response->getSession()->get('errors')->first('email'));
+            $this->assertSame(__('auth.failed'), $response->getSession()->get('errors')->first($field));
         }
     }
 
-    public function testByDefaultCanAuthenticateUsingEmail(): void
+    public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
         $credentials = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $user = UserFactory::new()->createOne($credentials);
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $action->run($request);
+
+        $this->assertAuthenticatedAs($user, 'web');
+    }
+
+    #[DataProvider('allowedLoginDataProvider')]
+    public function testCanAuthenticateUsingAllowedLoginFields(array $loginFields, array $allowedFields): void
+    {
+        config()->set('appSection-authentication.login.fields', $this->prepareForConfig($allowedFields));
+        $credentials = [
+            ...$loginFields,
+            'password' => 'youShallNotPass',
+        ];
+        $user = UserFactory::new()->createOne($credentials);
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $action->run($request);
+
+        $this->assertAuthenticatedAs($user, 'web');
+    }
+
+    private function prepareForConfig(array $allowedFields): array
+    {
+        $config = [];
+        foreach ($allowedFields as $key => $field) {
+            $config[$field] = [];
+        }
+
+        return $config;
+    }
+
+    #[DataProvider('unallowedLoginDataProvider')]
+    public function testCanAuthenticateUsingOnlyAllowedLoginFields(array $loginFields, array $allowedFields): void
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('No matching login field found');
+
+        config()->set('appSection-authentication.login.fields', $this->prepareForConfig($allowedFields));
+        $credentials = [
+            ...$loginFields,
+            'password' => 'youShallNotPass',
+        ];
+        $user = UserFactory::new()->createOne($credentials);
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $response = $action->run($request);
+    }
+
+    public function testCanReturnMultipleErrors(): void
+    {
+        $this->markTestIncomplete();
+    }
+
+    public function testCanAuthenticateEvenIfOnlyOneLoginFieldAndValueCombinationIsCorrect(): void
+    {
+        $this->markTestIncomplete('Mix in with invalid data. For example, if email value is correct but name value is incorrect');
+        config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
+        $password = 'youShallNotPass';
+        $userDetails = [
+            'email' => 'gandalf@the.grey',
+            'name' => 'gandalf',
+            'password' => $password,
+        ];
+        $user = UserFactory::new()->createOne($userDetails);
+        $credentials = [
+            'email' => 'gandalf@the.white',
+            'name' => 'gandalf',
+            'password' => $password,
+        ];
         $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
