@@ -115,7 +115,7 @@ final class UserTest extends UnitTestCase
         $this->assertTrue($user->is($result));
     }
 
-    public function testCanAuthenticateUsingDefinedLoginFields(): void
+    public function testCanAuthenticateUsingAllowedLoginFields(): void
     {
         config()->set('appSection-authentication.login.fields', ['name' => []]);
         $user = UserFactory::new()->createOne();
