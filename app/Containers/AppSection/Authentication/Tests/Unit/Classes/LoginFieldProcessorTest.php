@@ -7,8 +7,10 @@ use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
@@ -34,6 +36,17 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->assertSame($loginFieldName, 'email');
     }
 
+    public function testGivenInvalidLoginAttributeThenExtractUsername(): void
+    {
+        $this->expectException(NotFoundException::class);
+
+        $userDetails = [
+            'email' => (int) 'ThisIsNotString!',
+        ];
+
+        LoginFieldProcessor::extract($userDetails);
+    }
+
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void
     {
         Config::offsetUnset('appSection-authentication.login.fields');
@@ -57,15 +70,102 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
         $this->testingUser = UserFactory::new()->createOne($userDetails);
         $request = LoginRequest::injectData($userDetails);
-//        $request = LoginRequest::injectData([
-//            'email' => 'gandalf@the.grey',
-//            'password' => 'youShallNotPass',
-//        ]);
+        //        $request = LoginRequest::injectData([
+        //            'email' => 'gandalf@the.grey',
+        //            'password' => 'youShallNotPass',
+        //        ]);
         $action = app(WebLoginAction::class);
 
         $response = $action->run($request);
 
         $this->assertTrue($response->isRedirect());
         $this->assertAuthenticatedAs($this->testingUser, 'web');
+    }
+
+    public static function caseInvalidAllowedLoginFieldsDataProvider(): array
+    {
+        return [
+            [
+                'ThisIsNotArray!',
+                \InvalidArgumentException::class,
+                'Login {fields} property must be an array, string given',
+            ],
+            [
+                [(int) 'ThisIsNotString!'],
+                \InvalidArgumentException::class,
+                'Login fields keys must be a string, integer given',
+            ],
+        ];
+    }
+
+    #[DataProvider('caseInvalidAllowedLoginFieldsDataProvider')]
+    public function testInvalidAllowedLoginFields(mixed $invalidFields, string $exceptedException, string $exceptedMessage): void
+    {
+        $this->expectException($exceptedException);
+        $this->expectExceptionMessage($exceptedMessage);
+
+        Config::set('appSection-authentication.login.fields', $invalidFields);
+
+        $userDetails = [
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
+        ];
+
+        LoginFieldProcessor::extract($userDetails);
+    }
+
+    public function testMergeValidValidationRules(): void
+    {
+        $newRules = [
+            'password' => 'required',
+            'remember' => 'boolean',
+        ];
+
+        Config::set('appSection-authentication.login.fields', ['email' => ['email']]);
+        $result = LoginFieldProcessor::mergeValidationRules($newRules);
+        $this->assertValidValidationRulesIsMerged($result, $newRules);
+
+        Config::set('appSection-authentication.login.fields', [
+            'email' => ['email'],
+            'login' => ['string', 'required'],
+        ]);
+        $result = LoginFieldProcessor::mergeValidationRules($newRules);
+        $this->assertValidValidationRulesIsMerged($result, $newRules, true);
+    }
+
+    private function assertValidValidationRulesIsMerged(array $result, array $newRules, bool $manyAllowedLoginFields = false): void
+    {
+        if (!$manyAllowedLoginFields) {
+            $this->assertArrayHasKey('email', $result);
+            $this->assertSame($result['email'], 'required:email|email');
+        }
+
+        if ($manyAllowedLoginFields) {
+            $this->assertArrayHasKey('email', $result);
+            $this->assertSame($result['email'], 'required_without_all:login|email');
+
+            $this->assertArrayHasKey('login', $result);
+            $this->assertSame($result['login'], 'required_without_all:email|string|required');
+        }
+
+        foreach ($newRules as $ruleName => $ruleValue) {
+            $this->assertArrayHasKey($ruleName, $result);
+            $this->assertSame($result[$ruleName], $ruleValue);
+        }
+    }
+
+    public function testMergeValidValidationRulesWithException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The login fields must be an array');
+
+        Config::set('appSection-authentication.login.fields', 'ThisIsNotArray!');
+
+        $newRules = [
+            'password' => 'required',
+            'remember' => 'boolean',
+        ];
+
+        LoginFieldProcessor::mergeValidationRules($newRules);
     }
 }
