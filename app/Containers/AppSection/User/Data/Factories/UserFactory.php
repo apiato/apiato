@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\Data\Factories;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Str;
 
@@ -42,6 +42,15 @@ class UserFactory extends ParentFactory
         return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
+            ];
+        });
+    }
+
+    public function verified(): static
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email_verified_at' => now(),
             ];
         });
     }
