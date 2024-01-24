@@ -7,28 +7,101 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
 #[CoversClass(WebLoginAction::class)]
 final class WebLoginActionTest extends UnitTestCase
 {
-    public function testCanLogin(): void
+    public static function caseInsensitiveEmailDataProvider(): array
     {
+        return [
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gandalf@the.grey',
+            ],
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gAndAlf@thE.gReY',
+            ],
+            [
+                'originalCasing' => 'gAndAlf@thE.gReY',
+                'loginCasing' => 'gandalf@the.grey',
+            ],
+        ];
+    }
+
+    #[DataProvider('caseInsensitiveEmailDataProvider')]
+    public function testCaseInsensitiveLogin(string $originalCasing, string $loginCasing): void
+    {
+        config(['appSection-authentication.login.case_sensitive' => false]);
+        $password = 'youShallNotPass';
         $userDetails = [
-            'email' => 'gandalf@the.grey',
-            'password' => 'youShallNotPass',
-            'name' => 'Mahmoud',
+            'email' => $originalCasing,
+            'password' => $password,
         ];
         $this->testingUser = UserFactory::new()->createOne($userDetails);
-        $request = LoginRequest::injectData($userDetails);
+        $credentials = [
+            'email' => $loginCasing,
+            'password' => $password,
+        ];
+        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
         $response = $action->run($request);
 
         $this->assertTrue($response->isRedirect());
         $this->assertAuthenticatedAs($this->testingUser, 'web');
-        // TODO: add unit test for this
-        // $this->assertSame('The provided credentials do not match our records.', $response->getSession()->get('email'));
     }
+
+    public static function caseSensitiveEmailDataProvider(): array
+    {
+        return [
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gandalf@the.grey',
+                'shouldLogin' => true,
+            ],
+            [
+                'originalCasing' => 'gandalf@the.grey',
+                'loginCasing' => 'gAndAlf@thE.gReY',
+                'shouldLogin' => false,
+            ],
+            [
+                'originalCasing' => 'gAndAlf@thE.gReY',
+                'loginCasing' => 'gandalf@the.grey',
+                'shouldLogin' => false,
+            ],
+        ];
+    }
+
+    #[DataProvider('caseSensitiveEmailDataProvider')]
+    public function testCaseSensitiveLogin(string $originalCasing, string $loginCasing, bool $shouldLogin): void
+    {
+        config(['appSection-authentication.login.case_sensitive' => true]);
+        $password = 'youShallNotPass';
+        $userDetails = [
+            'email' => $originalCasing,
+            'password' => $password,
+        ];
+        $this->testingUser = UserFactory::new()->createOne($userDetails);
+        $credentials = [
+            'email' => $loginCasing,
+            'password' => $password,
+        ];
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $response = $action->run($request);
+
+        $this->assertTrue($response->isRedirect());
+        if ($shouldLogin) {
+            $this->assertAuthenticatedAs($this->testingUser, 'web');
+        } else {
+            $this->assertGuest('web');
+            $this->assertSame('The provided credentials do not match our records.', $response->getSession()->get('errors')->first('email'));
+        }
+    }
+
 }
