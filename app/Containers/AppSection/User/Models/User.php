@@ -55,11 +55,11 @@ class User extends ParentUserModel implements MustVerifyEmail
      */
     public function findForPassport($identifier): self|null
     {
-        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
+        $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
 
         $query = $this->newModelQuery();
 
-        foreach (array_keys($allowedLoginAttributes) as $field) {
+        foreach (array_keys($allowedLoginFields) as $field) {
             if (config('appSection-authentication.login.case_sensitive')) {
                 $query->orWhere($field, $identifier);
             } else {

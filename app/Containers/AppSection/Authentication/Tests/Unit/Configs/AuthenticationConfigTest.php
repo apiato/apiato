@@ -25,9 +25,9 @@ final class AuthenticationConfigTest extends UnitTestCase
         $this->assertArrayHasKey('id', config('appSection-authentication.clients.mobile'));
         $this->assertArrayHasKey('secret', config('appSection-authentication.clients.mobile'));
         $this->assertArrayHasKey('login', config('appSection-authentication'));
-        $this->assertArrayHasKey('attributes', config('appSection-authentication.login'));
-        $this->assertArrayHasKey('email', config('appSection-authentication.login.attributes'));
-        $this->assertSame(['email'], config('appSection-authentication.login.attributes.email'));
+        $this->assertArrayHasKey('fields', config('appSection-authentication.login'));
+        $this->assertArrayHasKey('email', config('appSection-authentication.login.fields'));
+        $this->assertSame(['email'], config('appSection-authentication.login.fields.email'));
         $this->assertArrayHasKey('case_sensitive', config('appSection-authentication.login'));
         $this->assertFalse(config('appSection-authentication.login.case_sensitive'));
         $this->assertArrayHasKey('prefix', config('appSection-authentication.login'));

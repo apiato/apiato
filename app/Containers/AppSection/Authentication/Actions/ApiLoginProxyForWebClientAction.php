@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
@@ -28,7 +28,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
     public function run(LoginProxyPasswordGrantRequest $request): AuthResult
     {
         $sanitizedData = $request->sanitizeInput([
-            ...array_keys(config('appSection-authentication.login.attributes')),
+            ...array_keys(config('appSection-authentication.login.fields')),
             'password',
             'client_id' => config('appSection-authentication.clients.web.id'),
             'client_secret' => config('appSection-authentication.clients.web.secret'),
@@ -36,7 +36,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
             'scope' => '',
         ]);
 
-        [$loginFieldValue] = LoginCustomAttribute::extract($sanitizedData);
+        [$loginFieldValue] = LoginFieldProcessor::extract($sanitizedData);
         $sanitizedData['username'] = $loginFieldValue;
 
         $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));

@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -20,12 +20,12 @@ class WebLoginAction extends ParentAction
     public function run(LoginRequest $request): RedirectResponse
     {
         $sanitizedData = $request->sanitizeInput([
-            'email',
+            ...array_keys(config('appSection-authentication.login.fields')),
             'password',
-            'remember_me' => false,
+            'remember' => false,
         ]);
 
-        [$loginFieldValue, $loginFieldName] = LoginCustomAttribute::extract($sanitizedData);
+        [$loginFieldValue, $loginFieldName] = LoginFieldProcessor::extract($sanitizedData);
         if (config('appSection-authentication.login.case_sensitive')) {
             $credentials = [
                 $loginFieldName => $loginFieldValue,
@@ -33,12 +33,12 @@ class WebLoginAction extends ParentAction
             ];
         } else {
             $credentials = [
-                $loginFieldName => static fn (Builder $query) => $query->whereRaw("lower({$loginFieldName}) = lower(?)", [$loginFieldValue]),
+                $loginFieldName => static fn (Builder $query): Builder => $query->whereRaw("lower({$loginFieldName}) = lower(?)", [$loginFieldValue]),
                 'password' => $sanitizedData['password'],
             ];
         }
 
-        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember_me']);
+        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember']);
 
         if ($loggedIn) {
             session()->regenerate();

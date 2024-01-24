@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -12,8 +12,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
-#[CoversClass(LoginCustomAttribute::class)]
-final class LoginCustomAttributeTest extends UnitTestCase
+#[CoversClass(LoginFieldProcessor::class)]
+final class LoginFieldProcessorTest extends UnitTestCase
 {
     public function testGivenValidLoginAttributeThenExtractUsername(): void
     {
@@ -22,7 +22,7 @@ final class LoginCustomAttributeTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
 
-        $result = LoginCustomAttribute::extract($userDetails);
+        $result = LoginFieldProcessor::extract($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }
@@ -36,13 +36,13 @@ final class LoginCustomAttributeTest extends UnitTestCase
 
     public function testWhenNoLoginAttributeIsProvidedShouldUseEmailFieldAsDefaultFallback(): void
     {
-        Config::offsetUnset('appSection-authentication.login.attributes');
+        Config::offsetUnset('appSection-authentication.login.fields');
         $userDetails = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
-        $result = LoginCustomAttribute::extract($userDetails);
+        $result = LoginFieldProcessor::extract($userDetails);
 
         $this->assertAttributeIsExtracted($result, $userDetails);
     }

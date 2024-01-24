@@ -106,7 +106,7 @@ final class UserTest extends UnitTestCase
         $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
     }
 
-    public function testByDefaultCanAuthenticateByEmail(): void
+    public function testByDefaultCanAuthenticateUsingEmail(): void
     {
         $user = UserFactory::new()->createOne();
 
@@ -115,9 +115,9 @@ final class UserTest extends UnitTestCase
         $this->assertTrue($user->is($result));
     }
 
-    public function testCanAuthenticateCustomUsingCustomField(): void
+    public function testCanAuthenticateUsingDefinedLoginFields(): void
     {
-        config()->set('appSection-authentication.login.attributes', ['name' => []]);
+        config()->set('appSection-authentication.login.fields', ['name' => []]);
         $user = UserFactory::new()->createOne();
 
         $result = (new User())->findForPassport($user->name);

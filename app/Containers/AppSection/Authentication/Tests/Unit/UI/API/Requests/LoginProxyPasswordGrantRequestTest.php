@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -35,7 +35,7 @@ final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
     public function testValidationRules(): void
     {
         $this->assertEquals(
-            LoginCustomAttribute::mergeValidationRules(['password' => 'required']),
+            LoginFieldProcessor::mergeValidationRules(['password' => 'required']),
             $this->request->rules(),
         );
     }

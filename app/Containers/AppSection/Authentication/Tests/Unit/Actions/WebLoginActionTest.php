@@ -41,7 +41,7 @@ final class WebLoginActionTest extends UnitTestCase
             'email' => $originalCasing,
             'password' => $password,
         ];
-        $this->testingUser = UserFactory::new()->createOne($userDetails);
+        $user = UserFactory::new()->createOne($userDetails);
         $credentials = [
             'email' => $loginCasing,
             'password' => $password,
@@ -52,7 +52,7 @@ final class WebLoginActionTest extends UnitTestCase
         $response = $action->run($request);
 
         $this->assertTrue($response->isRedirect());
-        $this->assertAuthenticatedAs($this->testingUser, 'web');
+        $this->assertAuthenticatedAs($user, 'web');
     }
 
     public static function caseSensitiveEmailDataProvider(): array
@@ -85,7 +85,7 @@ final class WebLoginActionTest extends UnitTestCase
             'email' => $originalCasing,
             'password' => $password,
         ];
-        $this->testingUser = UserFactory::new()->createOne($userDetails);
+        $user = UserFactory::new()->createOne($userDetails);
         $credentials = [
             'email' => $loginCasing,
             'password' => $password,
@@ -97,11 +97,25 @@ final class WebLoginActionTest extends UnitTestCase
 
         $this->assertTrue($response->isRedirect());
         if ($shouldLogin) {
-            $this->assertAuthenticatedAs($this->testingUser, 'web');
+            $this->assertAuthenticatedAs($user, 'web');
         } else {
             $this->assertGuest('web');
             $this->assertSame('The provided credentials do not match our records.', $response->getSession()->get('errors')->first('email'));
         }
     }
 
+    public function testByDefaultCanAuthenticateUsingEmail(): void
+    {
+        $credentials = [
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
+        ];
+        $user = UserFactory::new()->createOne($credentials);
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $action->run($request);
+
+        $this->assertAuthenticatedAs($user, 'web');
+    }
 }

@@ -20,10 +20,10 @@ class UpdateUserTask extends ParentTask
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
-    public function run(int $id, array $attributes): User
+    public function run(int $id, array $properties): User
     {
         try {
-            return $this->repository->update($attributes, $id);
+            return $this->repository->update($properties, $id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
         } catch (\Exception) {

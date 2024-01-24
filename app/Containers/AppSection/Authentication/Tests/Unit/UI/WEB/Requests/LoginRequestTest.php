@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -37,7 +37,10 @@ final class LoginRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame(
-            LoginCustomAttribute::mergeValidationRules(['password' => 'required']),
+            LoginFieldProcessor::mergeValidationRules([
+                'password' => 'required',
+                'remember' => 'boolean',
+            ]),
             $rules,
         );
     }

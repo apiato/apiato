@@ -61,9 +61,9 @@ final class LoginProxyForWebClientTest extends ApiTestCase
         $response->assertOk();
     }
 
-    private function setLoginAttributes(array $attributes): void
+    private function setLoginAttributes(array $fields): void
     {
-        Config::set('appSection-authentication.login.attributes', $attributes);
+        Config::set('appSection-authentication.login.fields', $fields);
     }
 
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void

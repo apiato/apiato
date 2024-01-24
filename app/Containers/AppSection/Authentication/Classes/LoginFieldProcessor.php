@@ -5,10 +5,10 @@ namespace App\Containers\AppSection\Authentication\Classes;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Arr;
 
-class LoginCustomAttribute
+class LoginFieldProcessor
 {
     /**
-     * Extract the login custom attributes.
+     * Extract the login fields.
      *
      * @param array<string, mixed> $data
      *
@@ -37,11 +37,11 @@ class LoginCustomAttribute
     {
         $loginFieldName = null;
         $loginFieldValue = null;
-        foreach (static::getAllowedLoginAttributes() as $allowedLoginAttribute) {
-            $loginFieldValue = static::getMatchingLoginFieldValue($allowedLoginAttribute, $data);
+        foreach (static::getAllowedLoginFields() as $allowedLoginField) {
+            $loginFieldValue = static::getMatchingLoginFieldValue($allowedLoginField, $data);
 
             if (static::loginFieldHasValue($loginFieldValue)) {
-                $loginFieldName = $allowedLoginAttribute;
+                $loginFieldName = $allowedLoginField;
                 break;
             }
         }
@@ -50,32 +50,32 @@ class LoginCustomAttribute
     }
 
     /**
-     * @return array<int, string> [key => attributeName]
+     * @return array<int, string> [key => field]
      */
-    private static function getAllowedLoginAttributes(): array
+    private static function getAllowedLoginFields(): array
     {
-        $allowedLoginAttributes = config('appSection-authentication.login.attributes');
-        if (!$allowedLoginAttributes) {
-            $allowedLoginAttributes = ['email' => []];
+        $allowedLoginFields = config('appSection-authentication.login.fields');
+        if (!$allowedLoginFields) {
+            $allowedLoginFields = ['email' => []];
         }
 
-        if (!is_array($allowedLoginAttributes)) {
-            throw new \InvalidArgumentException('The login attributes must be an array');
+        if (!is_array($allowedLoginFields)) {
+            throw new \InvalidArgumentException("Login {fields} property must be an array, " . gettype($allowedLoginFields) . " given");
         }
 
-        $attributeNames = array_keys($allowedLoginAttributes);
-        foreach ($attributeNames as $key => $attributeName) {
-            if (!is_string($attributeName)) {
-                throw new \InvalidArgumentException('The login attribute must be a string');
+        $fieldNames = array_keys($allowedLoginFields);
+        foreach ($fieldNames as $key => $fieldName) {
+            if (!is_string($fieldName)) {
+                throw new \InvalidArgumentException("Login fields keys must be a string, " . gettype($fieldName) . " given");
             }
         }
 
-        return $attributeNames;
+        return $fieldNames;
     }
 
-    private static function getMatchingLoginFieldValue(string $attribute, array $from): string|null
+    private static function getMatchingLoginFieldValue(string $field, array $from): string|null
     {
-        $result = Arr::get($from, static::prepareLoginAttribute($attribute));
+        $result = Arr::get($from, static::prepareLoginField($field));
         if (!is_string($result) || empty($result)) {
             return null;
         }
@@ -83,9 +83,9 @@ class LoginCustomAttribute
         return $result;
     }
 
-    private static function prepareLoginAttribute(string $attribute): string
+    private static function prepareLoginField(string $field): string
     {
-        return static::getPrefix() . $attribute;
+        return static::getPrefix() . $field;
     }
 
     private static function loginFieldHasValue(string|null $loginFieldValue): bool
@@ -100,35 +100,35 @@ class LoginCustomAttribute
 
     public static function mergeValidationRules(array $rules): array
     {
-        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
+        $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
 
-        if (!is_array($allowedLoginAttributes)) {
-            throw new \InvalidArgumentException('The login attributes must be an array');
+        if (!is_array($allowedLoginFields)) {
+            throw new \InvalidArgumentException('The login fields must be an array');
         }
 
-        if (1 === count($allowedLoginAttributes)) {
-            $loginAttribute = array_key_first($allowedLoginAttributes);
-            $optionalValidators = $allowedLoginAttributes[$loginAttribute];
+        if (1 === count($allowedLoginFields)) {
+            $loginField = array_key_first($allowedLoginFields);
+            $optionalValidators = $allowedLoginFields[$loginField];
             $validators = implode('|', $optionalValidators);
 
-            $fieldName = static::prepareLoginAttribute($loginAttribute);
+            $fieldName = static::prepareLoginField($loginField);
 
-            $rules[$fieldName] = "required:$fieldName|$validators";
+            $rules[$fieldName] = "required:{$fieldName}|{$validators}";
 
             return $rules;
         }
 
-        foreach ($allowedLoginAttributes as $loginAttribute => $optionalValidators) {
-            $otherLoginFields = Arr::except($allowedLoginAttributes, $loginAttribute);
+        foreach ($allowedLoginFields as $loginField => $optionalValidators) {
+            $otherLoginFields = Arr::except($allowedLoginFields, $loginField);
             $otherLoginFields = array_keys($otherLoginFields);
             $otherLoginFields = preg_filter('/^/', static::getPrefix(), $otherLoginFields);
             $otherLoginFields = implode(',', $otherLoginFields);
 
             $validators = implode('|', $optionalValidators);
 
-            $fieldName = static::prepareLoginAttribute($loginAttribute);
+            $fieldName = static::prepareLoginField($loginField);
 
-            $rules[$fieldName] = "required_without_all:$otherLoginFields|$validators";
+            $rules[$fieldName] = "required_without_all:{$otherLoginFields}|{$validators}";
         }
 
         return $rules;
