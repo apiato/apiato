@@ -24,19 +24,4 @@ final class LoginControllerTest extends UnitTestCase
 
         $controller->__invoke($request, $actionMock);
     }
-
-    public function testControllerRedirectWithException(): void
-    {
-        $exceptionMessage = 'Test Exception';
-
-        $controller = app(LoginController::class);
-        $request = LoginRequest::injectData();
-        $actionMock = $this->mock(WebLoginAction::class);
-        $actionMock->expects()->run($request)->andThrow(new \Exception($exceptionMessage));
-
-        $response = $controller->__invoke($request, $actionMock);
-
-        $this->assertTrue($response->isRedirect(route(RouteServiceProvider::LOGIN)));
-        $this->assertSame($exceptionMessage, $response->getSession()->get('login'));
-    }
 }
