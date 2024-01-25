@@ -22,8 +22,8 @@ final class ResetPasswordTest extends ApiTestCase
     public function testResetPassword(): void
     {
         $this->getTestingUser([
-            'email' => 'someone@something.test',
-            'password' => 'old pass',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
         ]);
         $token = app(CreatePasswordResetTokenTask::class)->run($this->testingUser);
         $data = [

@@ -62,8 +62,8 @@ final class ResetPasswordActionTest extends UnitTestCase
 
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
         $data = [
-            'email' => 'someone@elses.mail',
-            'password' => 'new pass',
+            'email' => 'ganldalf@the.white',
+            'password' => 'youShallNotPass',
             'token' => $token,
         ];
         $request = new ResetPasswordRequest($data);
@@ -76,8 +76,8 @@ final class ResetPasswordActionTest extends UnitTestCase
         parent::setUp();
 
         $this->user = UserFactory::new()->createOne([
-            'email' => 'someone@something.test',
-            'password' => 'old pass',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
         ]);
     }
 }

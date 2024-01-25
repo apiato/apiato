@@ -14,8 +14,8 @@ final class CreateAdminActionTest extends UnitTestCase
     public function testCreateAdmin(): void
     {
         $data = [
-            'email' => 'some@one.test',
-            'password' => 'admin',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
             'name' => 'Super Admin',
         ];
 
@@ -34,8 +34,8 @@ final class CreateAdminActionTest extends UnitTestCase
 
         config()->set('appSection-authorization.admin_role', 'not_existing_role');
         $data = [
-            'email' => 'a@new.email',
-            'password' => 'admin',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
             'name' => 'Super Admin',
         ];
 

@@ -19,7 +19,7 @@ final class UpdatePasswordActionTest extends UnitTestCase
     public function testCanUpdateCurrentPassword(): void
     {
         Notification::fake();
-        $user = UserFactory::new()->createOne(['password' => 'password']);
+        $user = UserFactory::new()->createOne(['password' => 'youShallNotPass']);
         $data = [
             'new_password' => 'test',
         ];

@@ -2,51 +2,50 @@
 
 namespace App\Containers\AppSection\Authentication\Classes;
 
-use App\Ship\Exceptions\NotFoundException;
+use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use Illuminate\Support\Arr;
 
 class LoginFieldProcessor
 {
     /**
-     * Extract the login fields.
+     * Extract all matching login fields from the given data.
+     * The login fields are the fields that are allowed to be used as login credentials.
+     * The login fields are defined in the config file.
+     * The login fields are extracted from the given data.
+     * The login fields are returned as an array of IncomingLoginField objects.
+     * The login fields are returned in the order they are defined in the config file.
+     * TODO: update this docblock
      *
      * @param array<string, mixed> $data
      *
-     * @return string[] [loginFieldValue, loginFieldName]
-     *
-     * @throws NotFoundException
+     * @return IncomingLoginField[]
      */
-    public static function extract(array $data): array
+    public static function extractAll(array $data): array
     {
-        [$loginFieldName, $loginFieldValue] = static::getFirstMatchingLoginField($data);
+        $result = static::extractAllMatchingLoginFields($data);
 
-        if (!is_string($loginFieldName) || !is_string($loginFieldValue) || static::noMatchingLoginFieldFound($loginFieldValue)) {
-            throw new NotFoundException('No matching login field found');
+        if ([] === $result) {
+            throw new \RuntimeException('No matching login field found');
         }
 
-        return [
-            $loginFieldValue,
-            $loginFieldName,
-        ];
+        return $result;
     }
 
     /**
-     * @return array<array-key, mixed|null> [loginFieldName, loginFieldValue]
+     * @return IncomingLoginField[]
      */
-    private static function getFirstMatchingLoginField(array $data): array
+    private static function extractAllMatchingLoginFields(array $data): array
     {
-        $loginFieldName = null;
-        $loginFieldValue = null;
-        foreach (static::getAllowedLoginFields() as $allowedLoginField) {
-            $loginFieldValue = static::getMatchingLoginFieldValue($allowedLoginField, $data);
+        $result = [];
+        foreach (static::getAllowedLoginFields() as $fieldName) {
+            $fieldValue = static::getMatchingLoginFieldValue($fieldName, $data);
 
-            if (static::loginFieldHasValue($loginFieldValue)) {
-                $loginFieldName = $allowedLoginField;
-                break;
+            if (static::loginFieldHasValue($fieldValue)) {
+                $result[] = new IncomingLoginField($fieldName, $fieldValue);
             }
         }
 
-        return [$loginFieldName, $loginFieldValue];
+        return $result;
     }
 
     /**
@@ -60,13 +59,13 @@ class LoginFieldProcessor
         }
 
         if (!is_array($allowedLoginFields)) {
-            throw new \InvalidArgumentException("Login {fields} property must be an array, " . gettype($allowedLoginFields) . " given");
+            throw new \InvalidArgumentException('Login {fields} property must be an array, ' . gettype($allowedLoginFields) . ' given');
         }
 
         $fieldNames = array_keys($allowedLoginFields);
         foreach ($fieldNames as $key => $fieldName) {
             if (!is_string($fieldName)) {
-                throw new \InvalidArgumentException("Login fields keys must be a string, " . gettype($fieldName) . " given");
+                throw new \InvalidArgumentException('Login fields keys must be a string, ' . gettype($fieldName) . ' given');
             }
         }
 
@@ -88,16 +87,17 @@ class LoginFieldProcessor
         return static::getPrefix() . $field;
     }
 
+    private static function getPrefix(): string
+    {
+        return config('appSection-authentication.login.prefix', '');
+    }
+
     private static function loginFieldHasValue(string|null $loginFieldValue): bool
     {
         return null !== $loginFieldValue;
     }
 
-    private static function noMatchingLoginFieldFound(string $loginFieldValue): bool
-    {
-        return empty($loginFieldValue);
-    }
-
+    // TODO: I think this should be moved to a separate class
     public static function mergeValidationRules(array $rules): array
     {
         $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
@@ -132,10 +132,5 @@ class LoginFieldProcessor
         }
 
         return $rules;
-    }
-
-    private static function getPrefix(): string
-    {
-        return config('appSection-authentication.login.prefix', '');
     }
 }

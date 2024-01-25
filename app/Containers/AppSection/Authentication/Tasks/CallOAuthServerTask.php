@@ -6,9 +6,8 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Values\Token;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use GuzzleHttp\Utils;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Request;
 
 class CallOAuthServerTask extends ParentTask
 {
@@ -18,7 +17,6 @@ class CallOAuthServerTask extends ParentTask
     public function run(array $data, string|null $languageHeader = null): Token
     {
         $authFullApiUrl = route('passport.token');
-
         $headers = [
             'HTTP_ACCEPT' => 'application/json',
             'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? config('app.locale'),

@@ -20,7 +20,7 @@ final class UpdateUserActionTest extends UnitTestCase
     {
         $user = UserFactory::new()
             ->gender(Gender::FEMALE)
-            ->createOne(['password' => 'password']);
+            ->createOne(['password' => 'youShallNotPass']);
         $data = [
             'name' => 'a name',
             'gender' => Gender::MALE->value,

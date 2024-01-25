@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Tests;
 
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 class ContainerTestCase extends ParentTestCase
@@ -34,8 +33,8 @@ class ContainerTestCase extends ParentTestCase
 
     protected function setEnvVars(): void
     {
-        Config::set('appSection-authentication.clients.web.id', self::CLIENT_ID);
-        Config::set('appSection-authentication.clients.web.secret', self::CLIENT_SECRET);
+        config()->set('appSection-authentication.clients.web.id', self::CLIENT_ID);
+        config()->set('appSection-authentication.clients.web.secret', self::CLIENT_SECRET);
     }
 
     public function enrichWithPasswordGrantFields(string $email, string $password): array

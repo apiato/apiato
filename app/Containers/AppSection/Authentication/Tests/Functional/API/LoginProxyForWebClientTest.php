@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
@@ -17,8 +16,8 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testProxyLogin(): void
     {
         $data = [
-            'email' => 'testing@mail.com',
-            'password' => 'testingpass',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($data);
 
@@ -42,8 +41,8 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testLoginWithNameAttribute(): void
     {
         $data = [
-            'email' => 'testing@mail.com',
-            'password' => 'testingpass',
+            'email' => 'gandalf@the.grey',
+            'password' => 'youShallNotPass',
             'name' => 'username',
         ];
         $this->getTestingUser($data);
@@ -52,7 +51,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'name' => [],
         ]);
         $request = [
-            'password' => 'testingpass',
+            'password' => 'youShallNotPass',
             'name' => 'username',
         ];
 
@@ -63,7 +62,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 
     private function setLoginAttributes(array $fields): void
     {
-        Config::set('appSection-authentication.login.fields', $fields);
+        config()->set('appSection-authentication.login.fields', $fields);
     }
 
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
@@ -109,12 +108,12 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testGivenWrongCredentialThrow422(): void
     {
         $data = [
-            'email' => 'none@existing.mail',
-            'password' => 'some-unbelievable-password',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
         ];
 
         $response = $this->makeCall($data);
 
-        $response->assertUnprocessable();
+        $response->assertUnauthorized();
     }
 }
