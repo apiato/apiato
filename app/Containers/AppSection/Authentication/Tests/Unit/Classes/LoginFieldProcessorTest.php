@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
-use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
@@ -82,7 +81,15 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->assertEquals($result, $expected);
     }
 
-    public static function caseInvalidAllowedLoginFieldsDataProvider(): array
+    public function testEmptyCredentialsWithException(): void
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('No matching login field found');
+
+        LoginFieldProcessor::extractAll([]);
+    }
+
+    public static function invalidAllowedLoginFieldsDataProvider(): array
     {
         return [
             [
@@ -98,7 +105,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
     }
 
-    #[DataProvider('caseInvalidAllowedLoginFieldsDataProvider')]
+    #[DataProvider('invalidAllowedLoginFieldsDataProvider')]
     public function testInvalidAllowedLoginFields(mixed $invalidFields, string $exceptedException, string $exceptedMessage): void
     {
         $this->expectException($exceptedException);
