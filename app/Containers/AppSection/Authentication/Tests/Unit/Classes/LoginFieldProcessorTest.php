@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
+use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -103,14 +104,14 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->expectException($exceptedException);
         $this->expectExceptionMessage($exceptedMessage);
 
-        Config::set('appSection-authentication.login.fields', $invalidFields);
+        config()->set('appSection-authentication.login.fields', $invalidFields);
 
         $userDetails = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
-        LoginFieldProcessor::extract($userDetails);
+        LoginFieldProcessor::extractAll($userDetails);
     }
 
     public function testMergeValidValidationRulesWithOneAllowedLoginField(): void
@@ -163,7 +164,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The login fields must be an array');
 
-        Config::set('appSection-authentication.login.fields', 'ThisIsNotArray!');
+        config()->set('appSection-authentication.login.fields', 'ThisIsNotArray!');
 
         $newRules = [
             'password' => 'required',
