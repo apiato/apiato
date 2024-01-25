@@ -32,7 +32,7 @@ final class LoginControllerTest extends UnitTestCase
         $controller = app(LoginController::class);
         $request = LoginRequest::injectData();
         $actionMock = $this->mock(WebLoginAction::class);
-        $actionMock->shouldReceive('run')->andThrowExceptions([new \Exception($exceptionMessage)]);
+        $actionMock->expects()->run($request)->andThrow(new \Exception($exceptionMessage));
 
         $response = $controller->__invoke($request, $actionMock);
 
