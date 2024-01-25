@@ -11,7 +11,6 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordReques
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Exceptions\UpdateResourceFailedException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -63,8 +62,8 @@ final class ResetPasswordActionTest extends UnitTestCase
 
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
         $data = [
-            'email' => 'someone@elses.mail',
-            'password' => 'new pass',
+            'email' => 'ganldalf@the.white',
+            'password' => 'youShallNotPass',
             'token' => $token,
         ];
         $request = new ResetPasswordRequest($data);
@@ -77,8 +76,8 @@ final class ResetPasswordActionTest extends UnitTestCase
         parent::setUp();
 
         $this->user = UserFactory::new()->createOne([
-            'email' => 'someone@something.test',
-            'password' => 'old pass',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
         ]);
     }
 }

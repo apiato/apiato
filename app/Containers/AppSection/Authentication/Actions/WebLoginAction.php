@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Ship\Exceptions\NotFoundException;
+use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -15,38 +15,49 @@ class WebLoginAction extends ParentAction
 {
     /**
      * @throws IncorrectIdException
-     * @throws NotFoundException
      */
     public function run(LoginRequest $request): RedirectResponse
     {
         $sanitizedData = $request->sanitizeInput([
-            'email',
+            ...array_keys(config('appSection-authentication.login.fields', ['email' => []])),
             'password',
-            'remember_me' => false,
+            'remember' => false,
         ]);
 
-        [$loginFieldValue, $loginFieldName] = LoginCustomAttribute::extract($sanitizedData);
-        if (config('appSection-authentication.login.case_sensitive')) {
-            $credentials = [
-                $loginFieldName => $loginFieldValue,
-                'password' => $sanitizedData['password'],
-            ];
-        } else {
-            $credentials = [
-                $loginFieldName => static fn (Builder $query) => $query->whereRaw("lower({$loginFieldName}) = lower(?)", [$loginFieldValue]),
-                'password' => $sanitizedData['password'],
-            ];
+        $loginFields = LoginFieldProcessor::extractAll($sanitizedData);
+        $credentials = [];
+        foreach ($loginFields as $loginField) {
+            if (config('appSection-authentication.login.case_sensitive')) {
+                $credentials[$loginField->field] =
+                    static fn (Builder $query): Builder => $query->orWhere($loginField->field, $loginField->value);
+            } else {
+                $credentials[$loginField->field] =
+                    static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->field}) = lower(?)", [$loginField->value]);
+            }
         }
+        $credentials['password'] = $sanitizedData['password'];
 
-        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember_me']);
+        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember']);
 
+        // TODO: This doesnt feels right. Maybe we should move this to controller?
+        // You know, the controller should be the one who decides where to redirect the user.
         if ($loggedIn) {
             session()->regenerate();
+
             return redirect()->intended();
         }
 
-        return back()->withErrors([
-            $loginFieldName => 'The provided credentials do not match our records.',
-        ])->onlyInput($loginFieldName);
+        $errorResult = array_reduce(
+            $loginFields,
+            static fn (array $result, IncomingLoginField $loginField): array => [
+                'errors' => array_merge($result['errors'], [$loginField->field => __('auth.failed')]),
+                'fields' => array_merge($result['fields'], [$loginField->field]),
+            ],
+            ['errors' => [], 'fields' => []],
+        );
+
+        return back()->withErrors(
+            $errorResult['errors'],
+        )->onlyInput(...$errorResult['fields']);
     }
 }

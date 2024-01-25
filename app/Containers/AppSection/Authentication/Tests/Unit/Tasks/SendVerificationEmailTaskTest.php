@@ -18,7 +18,7 @@ final class SendVerificationEmailTaskTest extends UnitTestCase
     {
         Notification::fake();
         $unverifiedUser = UserFactory::new()->unverified()->createOne();
-        config(['appSection-authentication.require_email_verification' => true]);
+        config()->set('appSection-authentication.require_email_verification', true);
 
         app(SendVerificationEmailTask::class)->run($unverifiedUser, 'this_doesnt_matter_for_the_test');
 
@@ -29,7 +29,7 @@ final class SendVerificationEmailTaskTest extends UnitTestCase
     {
         Notification::fake();
         $unverifiedUser = UserFactory::new()->unverified()->createOne();
-        config(['appSection-authentication.require_email_verification' => false]);
+        config()->set('appSection-authentication.require_email_verification', false);
 
         app(SendVerificationEmailTask::class)->run($unverifiedUser);
 

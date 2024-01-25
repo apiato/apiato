@@ -25,7 +25,7 @@ final class SendVerificationEmailTest extends ApiTestCase
     {
         Notification::fake();
         $this->testingUser = UserFactory::new()->unverified()->createOne();
-        config(['appSection-authentication.require_email_verification' => true]);
+        config()->set('appSection-authentication.require_email_verification', true);
 
         $data = [
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
@@ -56,7 +56,7 @@ final class SendVerificationEmailTest extends ApiTestCase
     public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
     {
         $data = [
-            'email' => 'test@test.test',
+            'email' => 'ganldalf@the.grey',
             'password' => 's3cr3tPa$$',
             'name' => 'Bruce Lee',
             'verification_url' => 'http://notallowed.test/wrong',

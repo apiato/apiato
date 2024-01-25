@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tasks;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Symfony\Component\HttpFoundation\Cookie;
 
-class MakeRefreshCookieTask extends ParentTask
+class MakeRefreshTokenCookieTask extends ParentTask
 {
     public function run(string $refreshToken): Cookie
     {

@@ -23,7 +23,7 @@ final class ForgotPasswordTest extends ApiTestCase
     public function testForgotPassword(): void
     {
         $reseturl = 'http://somereseturl.test/yea/something';
-        config(['appSection-authentication.allowed-reset-password-urls' => $reseturl]);
+        config()->set('appSection-authentication.allowed-reset-password-urls', $reseturl);
         $data = [
             'email' => 'admin@admin.com',
             'reseturl' => $reseturl,
@@ -35,11 +35,11 @@ final class ForgotPasswordTest extends ApiTestCase
 
     public function testForgotPasswordWithNotAllowedVerificationUrl(): void
     {
-        config(['appSection-authentication.allowed-reset-password-urls' => []]);
+        config()->set('appSection-authentication.allowed-reset-password-urls', []);
 
         $data = [
-            'email' => 'test@test.test',
-            'password' => 'secret',
+            'email' => 'ganldalf@the.grey',
+            'password' => 'youShallNotPass',
             'reseturl' => 'http://notallowed.test/wrong',
         ];
 

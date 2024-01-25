@@ -27,7 +27,7 @@ final class VerifyEmailTest extends ApiTestCase
         $unverifiedUser = UserFactory::new()->unverified()->createOne();
         $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
         // enable email verification
-        config(['appSection-authentication.require_email_verification' => true]);
+        config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),
@@ -58,7 +58,7 @@ final class VerifyEmailTest extends ApiTestCase
         $unverifiedUser = UserFactory::new()->unverified()->createOne();
         $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
         // enable email verification
-        config(['appSection-authentication.require_email_verification' => true]);
+        config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),

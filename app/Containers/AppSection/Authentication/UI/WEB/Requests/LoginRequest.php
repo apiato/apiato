@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginCustomAttribute;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class LoginRequest extends ParentRequest
@@ -20,9 +20,10 @@ class LoginRequest extends ParentRequest
     {
         $rules = [
             'password' => 'required',
+            'remember' => 'boolean',
         ];
 
-        return LoginCustomAttribute::mergeValidationRules($rules);
+        return LoginFieldProcessor::mergeValidationRules($rules);
     }
 
     public function authorize(): bool

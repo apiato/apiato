@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
-use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
+use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

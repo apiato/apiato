@@ -34,7 +34,7 @@ final class ForgotPasswordActionTest extends UnitTestCase
     {
         Mail::fake();
         $data = [
-            'email' => 'wrong@mail.test',
+            'email' => 'ganldalf@the.grey',
         ];
 
         $request = new ForgotPasswordRequest($data);

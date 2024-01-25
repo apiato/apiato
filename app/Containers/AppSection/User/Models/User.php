@@ -38,30 +38,34 @@ class User extends ParentUserModel implements MustVerifyEmail
         $this->notify(new VerifyEmail($verificationUrl));
     }
 
-    protected function email(): Attribute
+    final public function getHashedEmailForVerification(): string
     {
-        return new Attribute(
-            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
-        );
+        return sha1($this->getEmailForVerification());
     }
 
     /**
      * Allows Passport to authenticate users with custom fields.
      */
-    public function findForPassport($identifier): self|null
+    public function findForPassport(string $username): self|null
     {
-        $allowedLoginAttributes = config('appSection-authentication.login.attributes', ['email' => []]);
-
+        $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
         $query = $this->newModelQuery();
 
-        foreach (array_keys($allowedLoginAttributes) as $field) {
+        foreach ($allowedLoginFields as $field) {
             if (config('appSection-authentication.login.case_sensitive')) {
-                $query->orWhere($field, $identifier);
+                $query->orWhere($field, $username);
             } else {
-                $query->orWhereRaw("lower({$field}) = lower(?)", [$identifier]);
+                $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
             }
         }
 
         return $query->first();
+    }
+
+    protected function email(): Attribute
+    {
+        return new Attribute(
+            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
+        );
     }
 }
