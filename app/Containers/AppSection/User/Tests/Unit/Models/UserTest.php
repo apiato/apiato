@@ -8,6 +8,9 @@ use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
+use Illuminate\Config\Repository;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -108,6 +111,7 @@ final class UserTest extends UnitTestCase
 
     public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
+        config()->unset('appSection-authentication.login.fields');
         $user = UserFactory::new()->createOne();
 
         $result = (new User())->findForPassport($user->email);

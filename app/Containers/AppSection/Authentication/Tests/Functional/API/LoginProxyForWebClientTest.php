@@ -114,6 +114,6 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertUnprocessable();
+        $response->assertUnauthorized();
     }
 }

@@ -43,30 +43,29 @@ class User extends ParentUserModel implements MustVerifyEmail
         return sha1($this->getEmailForVerification());
     }
 
+    /**
+     * Allows Passport to authenticate users with custom fields.
+     */
+    public function findForPassport(string $username): self|null
+    {
+        $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
+        $query = $this->newModelQuery();
+
+        foreach ($allowedLoginFields as $field) {
+            if (config('appSection-authentication.login.case_sensitive')) {
+                $query->orWhere($field, $username);
+            } else {
+                $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
+            }
+        }
+
+        return $query->first();
+    }
+
     protected function email(): Attribute
     {
         return new Attribute(
             get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
         );
-    }
-
-    /**
-     * Allows Passport to authenticate users with custom fields.
-     */
-    public function findForPassport($identifier): self|null
-    {
-        $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
-
-        $query = $this->newModelQuery();
-
-        foreach (array_keys($allowedLoginFields) as $field) {
-            if (config('appSection-authentication.login.case_sensitive')) {
-                $query->orWhere($field, $identifier);
-            } else {
-                $query->orWhereRaw("lower({$field}) = lower(?)", [$identifier]);
-            }
-        }
-
-        return $query->first();
     }
 }

@@ -19,28 +19,28 @@ class WebLoginAction extends ParentAction
     public function run(LoginRequest $request): RedirectResponse
     {
         $sanitizedData = $request->sanitizeInput([
-            ...array_keys(config('appSection-authentication.login.fields')),
+            ...array_keys(config('appSection-authentication.login.fields', ['email' => []])),
             'password',
             'remember' => false,
         ]);
 
-        $loginFields = LoginFieldProcessor::extract($sanitizedData);
+        $loginFields = LoginFieldProcessor::extractAll($sanitizedData);
         $credentials = [];
         foreach ($loginFields as $loginField) {
             if (config('appSection-authentication.login.case_sensitive')) {
-                $credentials = [
-                    $loginField->field => static fn (Builder $query): Builder => $query->orWhere($loginField->field, $loginField->value),
-                ];
+                $credentials[$loginField->field] =
+                    static fn (Builder $query): Builder => $query->orWhere($loginField->field, $loginField->value);
             } else {
-                $credentials = [
-                    $loginField->field => static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->field}) = lower(?)", [$loginField->value]),
-                ];
+                $credentials[$loginField->field] =
+                    static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->field}) = lower(?)", [$loginField->value]);
             }
         }
         $credentials['password'] = $sanitizedData['password'];
 
         $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember']);
 
+        // TODO: This doesnt feels right. Maybe we should move this to controller?
+        // You know, the controller should be the one who decides where to redirect the user.
         if ($loggedIn) {
             session()->regenerate();
 

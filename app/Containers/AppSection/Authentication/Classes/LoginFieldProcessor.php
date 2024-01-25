@@ -8,18 +8,19 @@ use Illuminate\Support\Arr;
 class LoginFieldProcessor
 {
     /**
-     * Extract the login fields.
+     * Extract all matching login fields from the given data.
      * The login fields are the fields that are allowed to be used as login credentials.
      * The login fields are defined in the config file.
      * The login fields are extracted from the given data.
      * The login fields are returned as an array of IncomingLoginField objects.
      * The login fields are returned in the order they are defined in the config file.
+     * TODO: update this docblock
      *
      * @param array<string, mixed> $data
      *
      * @return IncomingLoginField[]
      */
-    public static function extract(array $data): array
+    public static function extractAll(array $data): array
     {
         $result = static::extractAllMatchingLoginFields($data);
 
@@ -86,11 +87,17 @@ class LoginFieldProcessor
         return static::getPrefix() . $field;
     }
 
+    private static function getPrefix(): string
+    {
+        return config('appSection-authentication.login.prefix', '');
+    }
+
     private static function loginFieldHasValue(string|null $loginFieldValue): bool
     {
         return null !== $loginFieldValue;
     }
 
+    // TODO: I think this should be moved to a separate class
     public static function mergeValidationRules(array $rules): array
     {
         $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
@@ -125,10 +132,5 @@ class LoginFieldProcessor
         }
 
         return $rules;
-    }
-
-    private static function getPrefix(): string
-    {
-        return config('appSection-authentication.login.prefix', '');
     }
 }

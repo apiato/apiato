@@ -6,6 +6,8 @@ use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -327,6 +329,7 @@ final class WebLoginActionTest extends UnitTestCase
 
     public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
+        config()->unset('appSection-authentication.login.fields');
         $credentials = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -378,39 +381,60 @@ final class WebLoginActionTest extends UnitTestCase
             ...$loginFields,
             'password' => 'youShallNotPass',
         ];
-        $user = UserFactory::new()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
-        $action = app(WebLoginAction::class);
-
-        $response = $action->run($request);
-    }
-
-    public function testCanReturnMultipleErrors(): void
-    {
-        $this->markTestIncomplete();
-    }
-
-    public function testCanAuthenticateEvenIfOnlyOneLoginFieldAndValueCombinationIsCorrect(): void
-    {
-        $this->markTestIncomplete('Mix in with invalid data. For example, if email value is correct but name value is incorrect');
-        config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
-        $password = 'youShallNotPass';
-        $userDetails = [
-            'email' => 'gandalf@the.grey',
-            'name' => 'gandalf',
-            'password' => $password,
-        ];
-        $user = UserFactory::new()->createOne($userDetails);
-        $credentials = [
-            'email' => 'gandalf@the.white',
-            'name' => 'gandalf',
-            'password' => $password,
-        ];
+        UserFactory::new()->createOne($credentials);
         $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
         $action->run($request);
+    }
 
+    public function testCanReturnMultipleErrors(): void
+    {
+        config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
+        $credentials = [
+            'email' => 'gandalf@the.grey',
+            'name' => 'gandalf',
+            'password' => 'youShallNotPass',
+        ];
+        UserFactory::new()->createOne($credentials);
+        $authSpy = Auth::spy();
+        $authSpy->allows()->guard('web')->andReturnSelf();
+        $authSpy->allows()->attempt($credentials)->andReturn(false);
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $response = $action->run($request);
+
+        /** @var MessageBag $errors */
+        $errors = $response->getSession()->get('errors');
+        foreach (['email', 'name'] as $field) {
+            $this->assertTrue($errors->has($field));
+            $this->assertCount(1, $errors->get($field));
+            $this->assertSame(__('auth.failed'), $errors->get($field)[0]);
+        }
+        $this->assertTrue($response->isRedirect());
+    }
+
+    public function testCanLoginWithMultipleLoginFieldsEvenIfOneFieldIsCorrect(): void
+    {
+        config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
+        $userDetails = [
+            'email' => 'ganldalf@the.grey',
+            'name' => 'gandalf',
+            'password' => 'youShallNotPass',
+        ];
+        $user = UserFactory::new()->createOne($userDetails);
+        $credentials = [
+            'email' => 'ganldalf@the.white', // wrong email
+            'name' => 'gandalf', // correct name
+            'password' => 'youShallNotPass',
+        ];
+        $request = LoginRequest::injectData($credentials);
+        $action = app(WebLoginAction::class);
+
+        $response = $action->run($request);
+
+        $this->assertTrue($response->isRedirect());
         $this->assertAuthenticatedAs($user, 'web');
     }
 }

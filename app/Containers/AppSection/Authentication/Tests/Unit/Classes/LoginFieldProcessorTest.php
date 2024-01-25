@@ -47,7 +47,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
 
-        $result = LoginFieldProcessor::extract($input);
+        $result = LoginFieldProcessor::extractAll($input);
 
         $this->assertEquals($result, $expected);
     }
@@ -61,21 +61,21 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldProcessor::extract($credentials);
+        $result = LoginFieldProcessor::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
 
     public function testUsesEmailFieldAsDefaultFallback(): void
     {
-        config()->offsetUnset('appSection-authentication.login.fields');
+        config()->unset('appSection-authentication.login.fields');
         $credentials = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldProcessor::extract($credentials);
+        $result = LoginFieldProcessor::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
