@@ -114,7 +114,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         LoginFieldProcessor::extract($userDetails);
     }
 
-    public function testMergeValidValidationRules(): void
+    public function testMergeValidValidationRulesWithOneAllowedLoginField(): void
     {
         $newRules = [
             'password' => 'required',
@@ -122,39 +122,44 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
 
         Config::set('appSection-authentication.login.fields', ['email' => ['email']]);
+
         $result = LoginFieldProcessor::mergeValidationRules($newRules);
+
+        $this->assertArrayHasKey('email', $result);
+        $this->assertSame($result['email'], 'required:email|email');
         $this->assertValidValidationRulesIsMerged($result, $newRules);
+    }
+
+    public function testMergeValidValidationRulesWithManyAllowedLoginFields(): void
+    {
+        $newRules = [
+            'password' => 'required',
+            'remember' => 'boolean',
+        ];
 
         Config::set('appSection-authentication.login.fields', [
             'email' => ['email'],
             'login' => ['string', 'required'],
         ]);
+
         $result = LoginFieldProcessor::mergeValidationRules($newRules);
-        $this->assertValidValidationRulesIsMerged($result, $newRules, true);
+
+        $this->assertArrayHasKey('email', $result);
+        $this->assertSame($result['email'], 'required_without_all:login|email');
+        $this->assertArrayHasKey('login', $result);
+        $this->assertSame($result['login'], 'required_without_all:email|string|required');
+        $this->assertValidValidationRulesIsMerged($result, $newRules);
     }
 
-    private function assertValidValidationRulesIsMerged(array $result, array $newRules, bool $manyAllowedLoginFields = false): void
+    private function assertValidValidationRulesIsMerged(array $result, array $newRules): void
     {
-        if (!$manyAllowedLoginFields) {
-            $this->assertArrayHasKey('email', $result);
-            $this->assertSame($result['email'], 'required:email|email');
-        }
-
-        if ($manyAllowedLoginFields) {
-            $this->assertArrayHasKey('email', $result);
-            $this->assertSame($result['email'], 'required_without_all:login|email');
-
-            $this->assertArrayHasKey('login', $result);
-            $this->assertSame($result['login'], 'required_without_all:email|string|required');
-        }
-
         foreach ($newRules as $ruleName => $ruleValue) {
             $this->assertArrayHasKey($ruleName, $result);
             $this->assertSame($result[$ruleName], $ruleValue);
         }
     }
 
-    public function testMergeValidValidationRulesWithException(): void
+    public function testMergeValidationRulesWithException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The login fields must be an array');
