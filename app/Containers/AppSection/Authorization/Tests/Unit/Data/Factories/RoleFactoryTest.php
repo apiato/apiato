@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Factories;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use App\Ship\Enums\AuthGuard;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -31,5 +32,12 @@ final class RoleFactoryTest extends UnitTestCase
         $role = RoleFactory::new()->admin()->createOne();
 
         $this->assertSame($roleName, $role->name);
+    }
+
+    public function testCanSetGuard(): void
+    {
+        $role = RoleFactory::new()->withGuard(AuthGuard::API->value)->createOne();
+
+        $this->assertSame(AuthGuard::API->value, $role->guard_name);
     }
 }
