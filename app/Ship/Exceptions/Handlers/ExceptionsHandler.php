@@ -7,7 +7,6 @@ use Apiato\Core\Exceptions\AuthenticationException as CoreAuthenticationExceptio
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
 use App\Ship\Exceptions\NotAuthorizedResourceException;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -61,7 +60,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
                 return $this->buildJsonResponse(new NotAuthorizedResourceException());
             }
 
-            return redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
+            return redirect()->guest(route('unauthorized-page'));
         });
     }
 
@@ -92,6 +91,6 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->buildJsonResponse(new CoreAuthenticationException());
         }
 
-        return redirect()->guest(route(RouteServiceProvider::LOGIN));
+        return redirect()->guest(route('login-page'));
     }
 }
