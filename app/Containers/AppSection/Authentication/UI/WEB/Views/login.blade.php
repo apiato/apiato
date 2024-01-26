@@ -101,7 +101,7 @@
 
 <div class="login-page">
     <h1 class="center">Login</h1>
-    <form class="form" action="{{route('login_post_form')}}" method="post">
+    <form class="form" action="{{ route('login') }}" method="post">
         @csrf
         @if(session('login'))
             <div class="text-red">{{ session('login') }}</div>
