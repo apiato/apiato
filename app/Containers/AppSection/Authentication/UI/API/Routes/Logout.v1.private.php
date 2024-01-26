@@ -4,7 +4,7 @@
  *
  * @apiName            Logout
  *
- * @api                {post} /v1/api/logout Logout
+ * @api                {post} /v1/logout Logout
  *
  * @apiDescription     User Logout. (Revoking Access Token)
  *
@@ -25,5 +25,5 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('api/logout', LogoutController::class)
+Route::post('logout', LogoutController::class)
     ->middleware(['auth:api']);

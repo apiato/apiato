@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class LogoutTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/api/logout';
+    protected string $endpoint = 'post@v1/logout';
 
     public function testLogout(): void
     {
