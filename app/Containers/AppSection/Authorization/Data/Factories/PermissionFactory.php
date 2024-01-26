@@ -22,4 +22,13 @@ class PermissionFactory extends ParentFactory
             'guard_name' => 'api',
         ];
     }
+
+    public function withGuard(string $guard): static
+    {
+        return $this->state(function (array $attributes) use ($guard) {
+            return [
+                'guard_name' => $guard,
+            ];
+        });
+    }
 }
