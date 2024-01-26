@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\UI\WEB\Controllers;
 use App\Containers\AppSection\Authentication\Actions\WebLogoutAction;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\WebController;
-use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 
 class LogoutController extends WebController
@@ -14,6 +13,6 @@ class LogoutController extends WebController
     {
         $action->run();
 
-        return redirect()->route(RouteServiceProvider::HOME);
+        return redirect()->route('home-page');
     }
 }
