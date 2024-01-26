@@ -4,4 +4,4 @@ use App\Containers\AppSection\Authorization\UI\WEB\Controllers\UnauthorizedPageC
 use Illuminate\Support\Facades\Route;
 
 Route::get('/unauthorized', UnauthorizedPageController::class)
-    ->name('unauthorized');
+    ->name('unauthorized-page');
