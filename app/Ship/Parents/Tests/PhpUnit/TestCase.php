@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Tests\PhpUnit;
 
 use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
+use App\Ship\Enums\AuthGuard;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 use Illuminate\Foundation\Application;
@@ -41,9 +42,14 @@ abstract class TestCase extends AbstractTestCase
 
         $app->make(ApiatoConsoleKernel::class)->bootstrap();
 
-        // create instance of faker and make it available in all tests
+        // create an instance of faker and make it available in all tests
         $this->faker = $app->make(Generator::class);
 
         return $app;
+    }
+
+    public static function authGuardDataProvider(): array
+    {
+        return array_map(static fn (AuthGuard $guard) => [$guard->value], AuthGuard::cases());
     }
 }
