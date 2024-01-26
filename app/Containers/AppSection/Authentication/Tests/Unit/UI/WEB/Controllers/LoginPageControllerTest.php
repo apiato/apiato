@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
-use Illuminate\Support\Facades\View;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
