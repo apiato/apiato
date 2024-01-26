@@ -28,7 +28,7 @@ final  class RoleTest extends UnitTestCase
 
     public function testHasCorrectFillableFields(): void
     {
-        $permission = RoleFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
         $fillables = [
             'name',
             'guard_name',
@@ -37,8 +37,16 @@ final  class RoleTest extends UnitTestCase
         ];
 
         foreach ($fillables as $fillable) {
-            $this->assertContains($fillable, $permission->getFillable());
+            $this->assertContains($fillable, $role->getFillable());
         }
+    }
+
+    public function testUsesCorrectTable(): void
+    {
+        $role = RoleFactory::new()->createOne();
+        $table = 'roles';
+
+        $this->assertSame($table, $role->getTable());
     }
 
     public function testHasCorrectResourceKey(): void
