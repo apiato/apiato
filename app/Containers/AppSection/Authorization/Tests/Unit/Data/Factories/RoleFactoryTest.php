@@ -12,21 +12,24 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(RoleFactory::class)]
 final class RoleFactoryTest extends UnitTestCase
 {
-    public function testCreateRole(): void
+    public function testCanCreateRole(): void
     {
         $role = RoleFactory::new()->createOne();
 
         $this->assertInstanceOf(Role::class, $role);
     }
 
-    public function testCreateAdminRole(): void
+    public function testCanCreateAdminRole(): void
     {
-        // 'admin' role is seeded into db automatically, so we have to remove it first before we can test creating it
-        // using factory
-        Role::findByName(config('appSection-authorization.admin_role'))->delete();
+        // Since 'admin' is seeded in the database, we need to delete it first
+        // to avoid "duplicate key" error.
+        $roleName = config('appSection-authorization.admin_role');
+        $adminRole = Role::findByName($roleName);
+        $adminRole->delete();
+        $this->assertModelMissing($adminRole);
 
         $role = RoleFactory::new()->admin()->createOne();
 
-        $this->assertSame(config('appSection-authorization.admin_role'), $role->name);
+        $this->assertSame($roleName, $role->name);
     }
 }
