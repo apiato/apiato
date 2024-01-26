@@ -27,7 +27,7 @@ final class UserFactoryTest extends UnitTestCase
         $this->assertTrue($user->hasRole(config('appSection-authorization.admin_role')));
     }
 
-    public function tesCantCreateUnverifiedUser(): void
+    public function testCanCreateUnverifiedUser(): void
     {
         $user = UserFactory::new()->unverified()->createOne();
 
