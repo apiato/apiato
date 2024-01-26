@@ -29,20 +29,6 @@ final class UpdateUserTaskTest extends UnitTestCase
         $this->assertSame($data['name'], $updatedUser->name);
     }
 
-    public function testUpdateUserWithUpdateResourceFailedException(): void
-    {
-        $this->expectException(UpdateResourceFailedException::class);
-
-        $user = UserFactory::new()->createOne();
-        $data = [
-            'name' => 'new name',
-        ];
-
-        $this->mock(UserRepository::class);
-
-        app(UpdateUserTask::class)->run($user->id, $data);
-    }
-
     public function testUpdateUserWithInvalidID(): void
     {
         $this->expectException(NotFoundException::class);
@@ -62,5 +48,18 @@ final class UpdateUserTaskTest extends UnitTestCase
         $result = app(UpdateUserTask::class)->run($user->id, $data);
 
         $this->assertTrue(Hash::check($data['password'], $result->password));
+    }
+
+    public function testCatchesAllExceptionsAndThrowsCustomException(): void
+    {
+        $this->expectException(UpdateResourceFailedException::class);
+
+        $user = UserFactory::new()->createOne();
+        $this->partialMock(UserRepository::class)
+            ->expects('update')->andThrowExceptions([
+                new \Exception(),
+            ]);
+
+        app(UpdateUserTask::class)->run($user->id, []);
     }
 }

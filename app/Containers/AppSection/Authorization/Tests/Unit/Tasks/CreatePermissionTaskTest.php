@@ -27,15 +27,17 @@ final class CreatePermissionTaskTest extends UnitTestCase
         $this->assertSame('api', $permission->guard_name);
     }
 
-    public function testCreatePermissionWithCreateResourceFailedException(): void
+    public function testCatchesAllExceptionsAndThrowsCustomException(): void
     {
         $this->expectException(CreateResourceFailedException::class);
 
         $name = 'fuLl_coNtroL';
         $description = 'Gives full control of everything!';
         $display_name = 'Controller of All';
-
-        $this->mock(PermissionRepository::class);
+        $this->partialMock(PermissionRepository::class)
+            ->expects('create')->andThrowExceptions([
+                new \Exception(),
+            ]);
 
         app(CreatePermissionTask::class)->run($name, $description, $display_name);
     }

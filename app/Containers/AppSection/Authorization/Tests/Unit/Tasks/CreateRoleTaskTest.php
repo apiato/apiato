@@ -27,15 +27,17 @@ final class CreateRoleTaskTest extends UnitTestCase
         $this->assertSame('api', $role->guard_name);
     }
 
-    public function testCreateRoleWithCreateResourceFailedException(): void
+    public function testCatchesAllExceptionsAndThrowsCustomException(): void
     {
         $this->expectException(CreateResourceFailedException::class);
 
         $name = 'MEga_AdmIn';
         $description = 'The One above all';
         $display_name = 'Mega Admin the Almighty';
-
-        $this->mock(RoleRepository::class);
+        $this->partialMock(RoleRepository::class)
+            ->expects('create')->andThrowExceptions([
+                new \Exception(),
+            ]);
 
         app(CreateRoleTask::class)->run($name, $description, $display_name);
     }
