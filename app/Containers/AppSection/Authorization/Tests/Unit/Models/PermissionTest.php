@@ -20,10 +20,10 @@ final class PermissionTest extends UnitTestCase
 
     public function testUsesCorrectGuard(): void
     {
-        $user = PermissionFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne();
         $guard = 'api';
 
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($user, 'guard_name'));
+        $this->assertSame($guard, $this->getInaccessiblePropertyValue($permission, 'guard_name'));
     }
 
     public function testHasCorrectFillableFields(): void
@@ -41,10 +41,18 @@ final class PermissionTest extends UnitTestCase
         }
     }
 
+    public function testUsesCorrectTable(): void
+    {
+        $permission = PermissionFactory::new()->createOne();
+        $table = 'permissions';
+
+        $this->assertSame($table, $permission->getTable());
+    }
+
     public function testHasCorrectResourceKey(): void
     {
-        $user = PermissionFactory::new()->createOne();
+        $permission = PermissionFactory::new()->createOne();
 
-        $this->assertSame('Permission', $user->getResourceKey());
+        $this->assertSame('Permission', $permission->getResourceKey());
     }
 }
