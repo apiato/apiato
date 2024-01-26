@@ -15,17 +15,16 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
     {
         parent::boot();
 
-        $this->registerPassport();
+        $this->configPassport();
     }
 
-    private function registerPassport(): void
+    private function configPassport(): void
     {
         if (config('apiato.api.enabled-implicit-grant')) {
             Passport::enableImplicitGrant();
         }
 
         Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
-
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
     }
 
