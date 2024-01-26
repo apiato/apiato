@@ -4,5 +4,5 @@ use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageControl
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', LoginPageController::class)
-    ->name('login')
+    ->name('login-page')
     ->middleware(['guest']);
