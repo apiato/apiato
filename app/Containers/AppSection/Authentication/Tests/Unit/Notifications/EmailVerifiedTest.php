@@ -13,25 +13,21 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(EmailVerified::class)]
 final class EmailVerifiedTest extends UnitTestCase
 {
-    protected string $subject = 'Email Verified';
-    protected string $line = 'Your email has been verified.';
-
-    public function testSendMail(): void
+    public function testCanSendMail(): void
     {
         Notification::fake();
         Notification::assertNothingSent();
-
         $user = UserFactory::new()->createOne();
+
         $user->notify(new EmailVerified());
 
         Notification::assertSentTo($user, EmailVerified::class, function (EmailVerified $notification) use ($user) {
-            $mailData = $notification->toMail($user)->toArray();
+            $email = $notification->toMail($user);
+            $this->assertSame('Email Verified', $email->subject);
+            $this->assertSame(['Your email has been verified.'], $email->introLines);
+            return true;
 
-            $this->assertContains($this->line, $mailData['introLines']);
-
-            return $this->subject === $mailData['subject'];
         });
-
         Notification::assertCount(1);
     }
 }

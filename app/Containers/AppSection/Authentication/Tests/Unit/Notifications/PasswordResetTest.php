@@ -13,24 +13,20 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(PasswordReset::class)]
 final class PasswordResetTest extends UnitTestCase
 {
-    protected string $subject = 'Password Reset';
-    protected string $line = 'Your password has been reset successfully.';
     public function testSendMail(): void
     {
         Notification::fake();
         Notification::assertNothingSent();
-
         $user = UserFactory::new()->createOne();
+
         $user->notify(new PasswordReset());
 
         Notification::assertSentTo($user, PasswordReset::class, function (PasswordReset $notification) use ($user) {
-            $mailData = $notification->toMail($user)->toArray();
-
-            $this->assertContains($this->line, $mailData['introLines']);
-
-            return $this->subject === $mailData['subject'];
+            $email = $notification->toMail($user);
+            $this->assertSame('Password Reset', $email->subject);
+            $this->assertSame( ['Your password has been reset successfully.'], $email->introLines);
+            return true;
         });
-
         Notification::assertCount(1);
     }
 }

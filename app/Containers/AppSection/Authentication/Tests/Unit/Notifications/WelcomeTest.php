@@ -15,22 +15,19 @@ final class WelcomeTest extends UnitTestCase
 {
     public function testSendMail(): void
     {
-        $verificationUrl = 'https://verfly.world';
-
         Notification::fake();
         Notification::assertNothingSent();
-
         $user = UserFactory::new()->createOne();
-        $user->notify(new Welcome($verificationUrl));
+
+        $user->notify(new Welcome());
 
         Notification::assertSentTo($user, Welcome::class, function (Welcome $notification) use ($user) {
-            $mailData = $notification->toMail($user)->toArray();
+            $email = $notification->toMail($user);
+            $this->assertSame('Welcome to ' . config('app.name'), $email->subject);
+            $this->assertSame(['Thank you for registering ' . $user->name], $email->introLines);
 
-            $this->assertContains('Thank you for registering ' . $user->name, $mailData['introLines']);
-
-            return 'Welcome to ' . config('app.name') === $mailData['subject'];
+            return true;
         });
-
         Notification::assertCount(1);
     }
 }

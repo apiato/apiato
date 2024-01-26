@@ -13,34 +13,26 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(VerifyEmail::class)]
 final class VerifyEmailTest extends UnitTestCase
 {
-    protected string $subject = 'Verify Email Address';
-    protected array $lines = [
-        'Please click the below button to verify your email address.',
-        'If you did not create an account, no further action is required.',
-    ];
-    protected string $action = 'Verify Email Address';
-
     public function testSendMail(): void
     {
-        $verificationUrl = 'https://verfly.world';
-
         Notification::fake();
         Notification::assertNothingSent();
-
         $user = UserFactory::new()->createOne();
-        $user->notify(new VerifyEmail($verificationUrl));
+
+        $user->notify(new VerifyEmail('https://example.com'));
 
         Notification::assertSentTo($user, VerifyEmail::class, function (VerifyEmail $notification) use ($user) {
-            $mailData = $notification->toMail($user)->toArray();
-
-            foreach ($this->lines as $line) {
-                $this->assertContains($line, array_merge($mailData['introLines'], $mailData['outroLines']));
-            }
-            $this->assertSame($this->action, $mailData['actionText']);
-
-            return $this->subject === $mailData['subject'];
+            $email = $notification->toMail($user);
+            $this->assertSame('Verify Email Address', $email->subject);
+            $this->assertSame([
+                'Please click the below button to verify your email address.',
+            ], $email->introLines);
+            $this->assertSame([
+                'If you did not create an account, no further action is required.',
+            ], $email->outroLines);
+            $this->assertSame('Verify Email Address', $email->actionText);
+            return true;
         });
-
         Notification::assertCount(1);
     }
 }
