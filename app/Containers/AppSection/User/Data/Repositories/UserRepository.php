@@ -7,10 +7,10 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
 class UserRepository extends ParentRepository
 {
     protected $fieldSearchable = [
-        'name' => 'like',
         'id' => '=',
+        'name' => 'like',
         'email' => '=',
-        'email_verified_at' => '=',
+        'email_verified_at' => 'like',
         'created_at' => 'like',
     ];
 
