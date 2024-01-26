@@ -26,7 +26,7 @@ final class FindUserByEmailTaskTest extends UnitTestCase
     {
         $this->expectException(NotFoundException::class);
 
-        $noneExistingEmail = 'nomail@email.com';
+        $noneExistingEmail = 'gandalf@the.grey';
 
         app(FindUserByEmailTask::class)->run($noneExistingEmail);
     }
