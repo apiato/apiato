@@ -19,7 +19,7 @@ final class GetUserProfileTest extends ApiTestCase
         'roles' => null,
     ];
 
-    public function testCanGetProfile(): void
+    public function testCanGetOwnProfile(): void
     {
         $user = $this->getTestingUser();
 
@@ -27,9 +27,9 @@ final class GetUserProfileTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                fn (AssertableJson $json) => $json
+                static fn (AssertableJson $json): AssertableJson => $json
                     ->where('object', 'User')
                     ->where('id', $user->getHashedKey())
                     ->where('email', $user->email)
