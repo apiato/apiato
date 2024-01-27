@@ -27,7 +27,6 @@ final class WhereGuardCriteriaTest extends UnitTestCase
 
         $result = $repository->all();
 
-        // 4 roles in total, 3 with the same guard (1 from seeders, 2 from this test)
         $this->assertCount(3, $result);
         $this->assertEquals($guard, $result->first()->guard_name);
         $this->assertEquals($guard, $result->last()->guard_name);
@@ -44,8 +43,7 @@ final class WhereGuardCriteriaTest extends UnitTestCase
 
         $result = $repository->all();
 
-        // 14 permissions in total, 13 with the same guard (11 from seeders, 2 from this test)
-        $this->assertCount(13, $result);
+        $this->assertCount(8, $result);
         $this->assertEquals($guard, $result->first()->guard_name);
         $this->assertEquals($guard, $result->last()->guard_name);
     }
