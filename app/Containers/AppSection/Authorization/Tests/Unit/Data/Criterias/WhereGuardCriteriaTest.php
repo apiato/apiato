@@ -43,7 +43,7 @@ final class WhereGuardCriteriaTest extends UnitTestCase
 
         $result = $repository->all();
 
-        $this->assertCount(8, $result);
+        $this->assertCount(7, $result);
         $this->assertEquals($guard, $result->first()->guard_name);
         $this->assertEquals($guard, $result->last()->guard_name);
     }
