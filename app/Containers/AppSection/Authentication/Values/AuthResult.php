@@ -16,10 +16,10 @@ class AuthResult extends ParentValue
     public static function fake(): self
     {
         return new self(
-            token: Token::fake(),
-            refreshTokenCookie: new Cookie(
-                name: 'refreshToken',
-                value: fake()->sha256(),
+            Token::fake(),
+            new Cookie(
+                'refreshToken',
+                fake()->sha256(),
             ),
         );
     }
