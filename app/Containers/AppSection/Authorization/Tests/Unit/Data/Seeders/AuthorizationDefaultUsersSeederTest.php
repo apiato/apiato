@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationDefaultUsersSeeder_4;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
@@ -14,10 +15,15 @@ final class AuthorizationDefaultUsersSeederTest extends UnitTestCase
 {
     public function testSeedsSuperAdmin(): void
     {
-        $admin = User::where('email', '=', 'admin@admin.com')->first();
+        $actionSpy = $this->spy(CreateAdminAction::class);
+        $seeder = new AuthorizationDefaultUsersSeeder_4();
 
-        $this->assertNotNull($admin);
-        $this->assertTrue($admin->hasRole(config('appSection-authorization.admin_role')));
-        $this->assertSame($admin->name, 'Super Admin');
+        $seeder->run($actionSpy);
+
+        $actionSpy->shouldHaveReceived('run')->once()->with([
+            'email' => 'admin@admin.com',
+            'password' => config('appSection-authorization.admin_role'),
+            'name' => 'Super Admin',
+        ]);
     }
 }
