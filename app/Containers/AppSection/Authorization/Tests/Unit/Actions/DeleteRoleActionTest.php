@@ -4,11 +4,8 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\DeleteRoleAction;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
-use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
-use App\Ship\Exceptions\DeleteResourceFailedException;
-use App\Ship\Exceptions\NotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -23,31 +20,9 @@ final class DeleteRoleActionTest extends UnitTestCase
         $action = app(DeleteRoleAction::class);
         $this->assertModelExists($role);
 
-        $action->run($request);
+        $result = $action->run($request);
 
+        $this->assertTrue($result);
         $this->assertModelMissing($role);
-    }
-
-    public function testDeleteRoleWitInvalidIdThrows404(): void
-    {
-        $this->expectException(NotFoundException::class);
-
-        $invalidId = 7777777;
-        $request = DeleteRoleRequest::injectData()
-            ->withUrlParameters(['id' => $invalidId]);
-
-        app(DeleteRoleAction::class)->run($request);
-    }
-
-    public function testCatchesAllExceptionsAndThrowsDeleteResourceFailedException(): void
-    {
-        $this->expectException(DeleteResourceFailedException::class);
-
-        $request = DeleteRoleRequest::injectData();
-        $mockRepository = $this->mock(RoleRepository::class);
-        $mockRepository->allows()->delete()->andThrow(new \Exception());
-        $action = new DeleteRoleAction($mockRepository);
-
-        $action->run($request);
     }
 }

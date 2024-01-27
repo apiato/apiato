@@ -38,7 +38,7 @@ final class SyncUserRolesTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->count('data.roles.data', 2)
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
                 ->where('data.roles.data.1.id', $data['role_ids'][1])
@@ -59,7 +59,7 @@ final class SyncUserRolesTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
                 ->etc(),
         );
@@ -78,11 +78,11 @@ final class SyncUserRolesTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors) => $errors->has(
                     'role_ids.0',
-                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

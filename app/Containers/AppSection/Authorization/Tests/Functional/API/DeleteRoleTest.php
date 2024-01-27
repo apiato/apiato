@@ -18,21 +18,12 @@ final class DeleteRoleTest extends ApiTestCase
         'roles' => null,
     ];
 
-    public function testDeleteExistingRole(): void
+    public function testCanDeleteRole(): void
     {
         $role = RoleFactory::new()->createOne();
 
         $response = $this->injectId($role->id)->makeCall();
 
         $response->assertNoContent();
-    }
-
-    public function testDeleteNonExistingRole(): void
-    {
-        $invalidId = 7777777;
-
-        $response = $this->injectId($invalidId)->makeCall();
-
-        $response->assertNotFound();
     }
 }

@@ -46,9 +46,9 @@ final class SendVerificationEmailTest extends ApiTestCase
         $response->assertUnprocessable();
 
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $json) => $json->where('verification_url.0', 'The verification url field is required.'),
+                static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The verification url field is required.'),
             )->etc(),
         );
     }
@@ -66,9 +66,9 @@ final class SendVerificationEmailTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $json) => $json->where('verification_url.0', 'The selected verification url is invalid.'),
+                static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The selected verification url is invalid.'),
             )->etc(),
         );
     }

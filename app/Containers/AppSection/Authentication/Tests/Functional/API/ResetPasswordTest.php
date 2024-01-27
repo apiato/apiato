@@ -47,7 +47,7 @@ final class ResetPasswordTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc(),
         );
@@ -63,10 +63,10 @@ final class ResetPasswordTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->has(
                     'errors.password',
-                    fn (AssertableJson $json) => $json
+                    static fn (AssertableJson $json): AssertableJson => $json
                         ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
                         ->where('1', 'The password field must contain at least one letter.')
                         ->where('2', 'The password field must contain at least one number.'),

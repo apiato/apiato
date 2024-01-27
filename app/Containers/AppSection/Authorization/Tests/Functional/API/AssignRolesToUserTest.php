@@ -33,7 +33,7 @@ final class AssignRolesToUserTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 1)
                 ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
@@ -58,7 +58,7 @@ final class AssignRolesToUserTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 2)
                 ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['role_ids'][0])

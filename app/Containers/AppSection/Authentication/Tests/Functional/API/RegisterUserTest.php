@@ -39,7 +39,7 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc(),
         );
@@ -57,7 +57,7 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc(),
         );
@@ -81,7 +81,7 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
                 ->etc(),
         );
@@ -95,17 +95,17 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         if (config('appSection-authentication.require_email_verification')) {
-            $response->assertJson(fn (AssertableJson $json) => $json->has(
+            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $json) => $json
+                static fn (AssertableJson $json): AssertableJson => $json
                     ->where('email.0', 'The email field is required.')
                     ->where('password.0', 'The password field is required.')
                     ->where('verification_url.0', 'The verification url field is required.'),
             )->etc());
         } else {
-            $response->assertJson(fn (AssertableJson $json) => $json->has(
+            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $json) => $json
+                static fn (AssertableJson $json): AssertableJson => $json
                     ->where('email.0', 'The email field is required.')
                     ->where('password.0', 'The password field is required.'),
             )->etc());
@@ -122,7 +122,7 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc(),
         );
@@ -138,10 +138,10 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->has(
                     'errors.password',
-                    fn (AssertableJson $json) => $json
+                    static fn (AssertableJson $json): AssertableJson => $json
                         ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
                         ->where('1', 'The password field must contain at least one letter.')
                         ->where('2', 'The password field must contain at least one number.'),
@@ -164,9 +164,9 @@ final class RegisterUserTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $json) => $json->where('verification_url.0', 'The selected verification url is invalid.'),
+                static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The selected verification url is invalid.'),
             )->etc(),
         );
     }

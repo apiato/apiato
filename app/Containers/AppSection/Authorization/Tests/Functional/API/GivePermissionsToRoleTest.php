@@ -33,7 +33,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->has('data.permissions.data', 1)
@@ -57,7 +57,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->has('data.permissions.data', 2)
@@ -78,11 +78,11 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors) => $errors->has(
                     'permission_ids.0',
-                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );
@@ -101,7 +101,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
                 ->etc(),
         );

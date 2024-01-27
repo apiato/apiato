@@ -35,7 +35,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->has('data.permissions.data', 1)
@@ -62,7 +62,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->count('data.permissions.data', 1)
@@ -83,7 +83,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permission_ids.0',

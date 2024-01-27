@@ -25,9 +25,9 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                fn (AssertableJson $json) => $json->hasAll([
+                static fn (AssertableJson $json): AssertableJson => $json->hasAll([
                 'access_token',
                 'refresh_token',
                 'token_type',
@@ -77,9 +77,9 @@ final class LoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json) => $json->has(
+        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
             'errors',
-            fn (AssertableJson $json) => $json
+            static fn (AssertableJson $json): AssertableJson => $json
                 ->where('email.0', 'The email field is required.'),
         )->etc());
     }
@@ -97,9 +97,9 @@ final class LoginProxyForWebClientTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json) => $json->has(
+        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
             'errors',
-            fn (AssertableJson $json) => $json
+            static fn (AssertableJson $json): AssertableJson => $json
                 ->where('email.0', 'The email field is required when none of name are present.')
                 ->where('name.0', 'The name field is required when none of email are present.'),
         )->etc());

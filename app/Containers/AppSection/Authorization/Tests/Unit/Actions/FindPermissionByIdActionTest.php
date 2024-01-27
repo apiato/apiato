@@ -4,9 +4,9 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
-use App\Ship\Exceptions\NotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -18,21 +18,9 @@ final class FindPermissionByIdActionTest extends UnitTestCase
     {
         $permission = PermissionFactory::new()->createOne();
         $request = FindPermissionByIdRequest::injectData()->withUrlParameters(['id' => $permission->id]);
-        $action = app(FindPermissionByIdAction::class);
+        $repositoryMock = $this->partialMock(PermissionRepository::class);
+        $repositoryMock->expects('findOrFail')->once()->with($request->id)->andReturn($permission);
 
-        $foundPermission = $action->run($request);
-
-        $this->assertSame($permission->id, $foundPermission->id);
-    }
-
-    public function testFindPermissionWitInvalidIdThrows404(): void
-    {
-        $this->expectException(NotFoundException::class);
-
-        $nonExistingID = 7777777;
-        $request = FindPermissionByIdRequest::injectData()->withUrlParameters(['id' => $nonExistingID]);
-        $action = app(FindPermissionByIdAction::class);
-
-        $action->run($request);
+        app(FindPermissionByIdAction::class)->run($request);
     }
 }

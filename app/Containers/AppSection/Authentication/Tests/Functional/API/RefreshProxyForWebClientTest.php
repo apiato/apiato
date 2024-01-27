@@ -27,9 +27,9 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                fn (AssertableJson $json) => $json->hasAll([
+                static fn (AssertableJson $json): AssertableJson => $json->hasAll([
                     'access_token',
                     'refresh_token',
                     'token_type',
@@ -50,7 +50,7 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
                 ->etc(),
         );

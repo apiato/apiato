@@ -35,7 +35,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $data['user_id'])
                 ->has('data.roles.data', 1)
@@ -61,7 +61,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $data['user_id'])
                 ->has('data.roles.data', 0)
@@ -82,7 +82,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 
         $response->assertUnprocessable();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
+            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
                 ->etc(),
         );
@@ -100,11 +100,11 @@ final class RemoveUserRolesTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors) => $errors->has(
                     'role_ids.0',
-                    fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );
