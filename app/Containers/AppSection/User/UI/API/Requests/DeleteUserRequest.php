@@ -2,18 +2,12 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class DeleteUserRequest extends ParentRequest
 {
-    use IsResourceOwnerTrait;
-
-    protected array $access = [
-        'permissions' => 'delete-users',
-        'roles' => null,
-    ];
-
     protected array $decode = [
         'id',
     ];
@@ -27,8 +21,8 @@ class DeleteUserRequest extends ParentRequest
         return [];
     }
 
-    public function authorize(): bool
+    public function authorize(Gate $gate): bool
     {
-        return $this->hasAccess() || $this->isResourceOwner();
+        return $gate->allows('delete', [User::class]);
     }
 }

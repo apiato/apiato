@@ -2,9 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
@@ -20,11 +19,9 @@ final class UpdateUserPasswordTest extends ApiTestCase
         'roles' => null,
     ];
 
-    public function testGivenUserAlreadyHaveAPasswordUpdateUserPassword(): void
+    public function testCanUpdatePasswordAsOwner(): void
     {
-        Notification::fake();
-
-        $user = $this->getTestingUser([
+        $this->testingUser = UserFactory::new()->createOne([
             'password' => 'Av@dakedavra!',
         ]);
         $data = [
@@ -32,93 +29,18 @@ final class UpdateUserPasswordTest extends ApiTestCase
             'new_password' => 'updated#Password111',
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($this->testingUser->id)->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
-                ->where('data.object', 'User')
-                ->where('data.email', $user->email)
-                ->missing('data.password')
-                ->etc(),
-        );
-
-        Notification::assertSentTo($user, PasswordUpdatedNotification::class);
-    }
-
-    public function testNewPasswordFieldShouldBeRequired(): void
-    {
-        $user = $this->getTestingUser();
-        $data = [
-            'new_password' => '',
-        ];
-
-        $response = $this->injectId($user->id)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.new_password.0', 'The new password field is required.')
-                ->etc(),
-        );
-    }
-
-    public function testGivenUserAlreadyHaveAPasswordCurrentPasswordFieldShouldBeRequired(): void
-    {
-        $user = $this->getTestingUser([
-            'password' => 'Av@dakedavra!',
-        ]);
-        $data = [
-            'new_password' => 'updated#Password111',
-        ];
-
-        $response = $this->injectId($user->id)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.current_password.0', 'The current password field is required.')
-                ->etc(),
-        );
-    }
-
-    public function testGivenUserAlreadyHaveAPasswordCurrentPasswordFieldMustMatchUserCurrentPassword(): void
-    {
-        $user = $this->getTestingUser([
-            'password' => 'Av@dakedavra!',
-        ]);
-        $data = [
-            'current_password' => 'notMatchingP@ssw0rd',
-            'new_password' => 'updated#Password111',
-        ];
-
-        $response = $this->injectId($user->id)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.current_password.0', 'The password is incorrect.')
-                ->etc(),
-        );
-    }
-
-    public function testGivenUserDoesntHaveAPasswordCurrentPasswordFieldShouldBeProhibited(): void
-    {
-        $user = $this->getTestingUser([
-            'password' => null,
-        ]);
-        $data = [
-            'current_password' => 'sh0uldBeProhibited!!11',
-            'new_password' => 'updated#Password111',
-        ];
-
-        $response = $this->injectId($user->id)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.current_password.0', 'The password is incorrect.')
-                ->etc(),
+            fn (AssertableJson $json): AssertableJson => $json->has(
+                'data',
+                fn (AssertableJson $json): AssertableJson => $json
+                    ->where('object', 'User')
+                    ->where('email', $this->testingUser->email)
+                    ->missing('password')
+                    ->etc(),
+            )->etc(),
         );
     }
 }

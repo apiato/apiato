@@ -2,6 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use Illuminate\Validation\Rule;
@@ -14,14 +16,6 @@ use PHPUnit\Framework\Attributes\Group;
 final class UpdatePasswordRequestTest extends UnitTestCase
 {
     private UpdatePasswordRequest $request;
-
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => null,
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
 
     public function testDecode(): void
     {
@@ -54,10 +48,17 @@ final class UpdatePasswordRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
-        $request = UpdatePasswordRequest::injectData(['id' => $user->getHashedKey()], $user);
+        $user = UserFactory::new()->createOne();
+        $request = UpdatePasswordRequest::injectData([], $user)
+            ->withUrlParameters([
+                'id' => $user->id,
+            ]);
+        $gateMock = $this->getGateMock('update', [
+            User::class,
+            $user->id,
+        ]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($request->authorize($gateMock));
     }
 
     protected function setUp(): void

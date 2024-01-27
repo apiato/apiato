@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -12,14 +13,6 @@ use PHPUnit\Framework\Attributes\Group;
 final class DeleteUserRequestTest extends UnitTestCase
 {
     private DeleteUserRequest $request;
-
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => 'delete-users',
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
 
     public function testDecode(): void
     {
@@ -44,10 +37,12 @@ final class DeleteUserRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
-        $request = DeleteUserRequest::injectData([], $user)->withUrlParameters(['id' => $user->id]);
+        $request = DeleteUserRequest::injectData();
+        $gateMock = $this->getGateMock('delete', [
+            User::class,
+        ]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($request->authorize($gateMock));
     }
 
     protected function setUp(): void

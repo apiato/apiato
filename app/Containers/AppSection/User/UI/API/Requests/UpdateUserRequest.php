@@ -2,20 +2,14 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\Authorization\Traits\IsResourceOwnerTrait;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends ParentRequest
 {
-    use IsResourceOwnerTrait;
-
-    protected array $access = [
-        'permissions' => 'update-users',
-        'roles' => null,
-    ];
-
     protected array $decode = [
         'id',
     ];
@@ -33,8 +27,8 @@ class UpdateUserRequest extends ParentRequest
         ];
     }
 
-    public function authorize(): bool
+    public function authorize(Gate $gate): bool
     {
-        return $this->hasAccess() || $this->isResourceOwner();
+        return $gate->allows('update', [User::class, $this->id]);
     }
 }

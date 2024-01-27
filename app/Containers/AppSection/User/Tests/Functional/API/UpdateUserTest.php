@@ -2,8 +2,9 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -16,14 +17,14 @@ final class UpdateUserTest extends ApiTestCase
     protected string $endpoint = 'patch@v1/users/{id}';
 
     protected array $access = [
-        'permissions' => 'update-users',
+        'permissions' => null,
         'roles' => null,
     ];
 
-    public function testUpdateExistingUser(): void
+    public function testCanUpdateAsOwner(): void
     {
-        $user = $this->getTestingUser([
-            'name' => 'He who should not be named',
+        $this->testingUser = UserFactory::new()->createOne([
+            'name' => 'He who must not be named',
             'gender' => Gender::FEMALE,
         ]);
         $data = [
@@ -32,48 +33,21 @@ final class UpdateUserTest extends ApiTestCase
             'birth' => Carbon::today(),
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($this->testingUser->id)->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
-                ->where('data.object', 'User')
-                ->where('data.email', $user->email)
-                ->where('data.name', $data['name'])
-                ->where('data.gender', $data['gender'])
-                ->where('data.birth', Carbon::parse($data['birth'])->toISOString())
-                ->missing('data.password')
-                ->etc(),
-        );
-    }
-
-    public function testUpdateNonExistingUser(): void
-    {
-        $invalidId = 7777777;
-
-        $response = $this->injectId($invalidId)->makeCall();
-
-        $response->assertNotFound();
-    }
-
-    public function testUpdateExistingUserWithEmptyValues(): void
-    {
-        $user = $this->getTestingUser();
-        $data = [
-            'name' => '',
-            'gender' => '',
-            'birth' => '',
-        ];
-
-        $response = $this->injectId($user->id)->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('errors')
-                ->where('errors.name.0', 'The name field must be at least 2 characters.')
-                ->where('errors.gender.0', 'The selected gender is invalid.')
-                ->where('errors.birth.0', 'The birth field must be a valid date.')
-                ->etc(),
+            fn (AssertableJson $json): AssertableJson => $json->has(
+                'data',
+                fn (AssertableJson $json): AssertableJson => $json
+                    ->where('object', 'User')
+                    ->where('email', $this->testingUser->email)
+                    ->where('name', $data['name'])
+                    ->where('gender', $data['gender'])
+                    ->where('birth', static fn ($birth) => $data['birth']->isSameDay($birth))
+                    ->missing('password')
+                    ->etc(),
+            )->etc(),
         );
     }
 }

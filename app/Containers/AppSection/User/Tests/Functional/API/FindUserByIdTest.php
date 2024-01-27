@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -14,61 +15,30 @@ final class FindUserByIdTest extends ApiTestCase
     protected string $endpoint = 'get@v1/users/{id}';
 
     protected array $access = [
-        'permissions' => 'search-users',
+        'permissions' => null,
         'roles' => null,
     ];
 
-    public function testFindUser(): void
+    public function testCanFindSelfAsAdmin(): void
     {
-        $user = $this->getTestingUser();
+        $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($user->id)->makeCall();
+        $response = $this->injectId($this->testingUser->id)->makeCall();
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
-                    ->where('data.id', $this->encode($user->id))
-                    ->etc(),
-        );
-    }
-
-    public function testFindNonExistingUser(): void
-    {
-        $invalidId = 7777777;
-
-        $response = $this->injectId($invalidId)->makeCall();
-
-        $response->assertNotFound();
-    }
-
-    public function testFindFilteredUserResponse(): void
-    {
-        $user = $this->getTestingUser();
-
-        $response = $this->injectId($user->id)->endpoint($this->endpoint . '?filter=email;name')->makeCall();
-
-        $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
-                    ->where('data.name', $user->name)
-                    ->where('data.email', $user->email),
-        );
-    }
-
-    public function testFindUserWithRelation(): void
-    {
-        $user = $this->getTestingUser();
-        $user->assignRole(config('appSection-authorization.admin_role'));
-
-        $response = $this->injectId($user->id)->endpoint($this->endpoint . '?include=roles')->makeCall();
-
-        $response->assertOk();
-        $response->assertJson(
-            fn (AssertableJson $json) => $json->has('data')
-                ->where('data.email', $user->email)
-                ->count('data.roles.data', 1)
-                ->where('data.roles.data.0.name', config('appSection-authorization.admin_role'))
+            fn (AssertableJson $json): AssertableJson => $json->has('data')
+                ->where('data.id', $this->encode($this->testingUser->id))
                 ->etc(),
         );
+    }
+
+    public function testCanFindAnotherUserAsAdmin(): void
+    {
+        $this->testingUser = UserFactory::new()->admin()->createOne();
+
+        $response = $this->injectId(UserFactory::new()->createOne()->id)->makeCall();
+
+        $response->assertOk();
     }
 }

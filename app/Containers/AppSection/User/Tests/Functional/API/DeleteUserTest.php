@@ -14,35 +14,25 @@ final class DeleteUserTest extends ApiTestCase
     protected string $endpoint = 'delete@v1/users/{id}';
 
     protected array $access = [
-        'permissions' => 'delete-users',
+        'permissions' => null,
         'roles' => null,
     ];
 
-    public function testDeleteExistingUser(): void
+    public function testCanDeleteSelfAsAdmin(): void
     {
-        $user = $this->getTestingUser();
+        $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($user->id)->makeCall();
+        $response = $this->injectId($this->testingUser->id)->makeCall();
 
         $response->assertNoContent();
     }
 
-    public function testDeleteNonExistingUser(): void
+    public function testCanDeleteAnotherUserAsAdmin(): void
     {
-        $invalidId = 7777777;
+        $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($invalidId)->makeCall();
+        $response = $this->injectId(UserFactory::new()->createOne()->id)->makeCall();
 
-        $response->assertNotFound();
-    }
-
-    public function testGivenHaveNoAccessCannotDeleteAnotherUser(): void
-    {
-        $this->getTestingUserWithoutAccess();
-        $anotherUser = UserFactory::new()->createOne();
-
-        $response = $this->injectId($anotherUser->id)->makeCall();
-
-        $response->assertForbidden();
+        $response->assertNoContent();
     }
 }

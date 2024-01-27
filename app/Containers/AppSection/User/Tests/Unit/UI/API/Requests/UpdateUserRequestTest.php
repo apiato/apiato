@@ -2,6 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
@@ -14,14 +16,6 @@ use PHPUnit\Framework\Attributes\Group;
 final class UpdateUserRequestTest extends UnitTestCase
 {
     private UpdateUserRequest $request;
-
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => 'update-users',
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
 
     public function testDecode(): void
     {
@@ -50,13 +44,17 @@ final class UpdateUserRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: [
-            'permissions' => ['update-users'],
-            'roles' => null,
+        $user = UserFactory::new()->createOne();
+        $request = UpdateUserRequest::injectData([], $user)
+            ->withUrlParameters([
+                'id' => $user->id,
+            ]);
+        $gateMock = $this->getGateMock('update', [
+            User::class,
+            $user->id,
         ]);
-        $request = UpdateUserRequest::injectData(['id' => $user->getHashedKey()], $user);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($request->authorize($gateMock));
     }
 
     protected function setUp(): void

@@ -2,15 +2,12 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class FindUserByIdRequest extends ParentRequest
 {
-    protected array $access = [
-        'permissions' => 'search-users',
-        'roles' => null,
-    ];
-
     protected array $decode = [
         'id',
     ];
@@ -24,8 +21,8 @@ class FindUserByIdRequest extends ParentRequest
         return [];
     }
 
-    public function authorize(): bool
+    public function authorize(Gate $gate): bool
     {
-        return $this->hasAccess();
+        return $gate->allows('show', [User::class]);
     }
 }
