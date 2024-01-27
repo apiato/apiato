@@ -12,7 +12,7 @@ class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
      * @throws CreateResourceFailedException
      * @throws \Throwable
      */
-    public function run(CreateAdminAction $task): void
+    public function run(CreateAdminAction $action): void
     {
         // Default Users (with their roles) ---------------------------------------------
         $userData = [
@@ -21,6 +21,6 @@ class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
             'name' => 'Super Admin',
         ];
 
-        $task->run($userData);
+        $action->run($userData);
     }
 }
