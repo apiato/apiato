@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
-use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
@@ -11,8 +10,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
-    use AuthorizationTrait;
-
     protected $fillable = [
         'name',
         'email',
@@ -60,6 +57,11 @@ class User extends ParentUserModel implements MustVerifyEmail
         }
 
         return $query->first();
+    }
+
+    public function hasAdminRole(): bool
+    {
+        return $this->hasRole(config('appSection-authorization.admin_role'));
     }
 
     protected function email(): Attribute

@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\User\Tests\Unit\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
-use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
@@ -17,11 +16,6 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(User::class)]
 final class UserTest extends UnitTestCase
 {
-    public function testUsesCorrectTraits(): void
-    {
-        $this->assertContains(AuthorizationTrait::class, class_uses_recursive(User::class));
-    }
-
     public function testUsesCorrectTable(): void
     {
         $user = UserFactory::new()->createOne();
@@ -95,17 +89,6 @@ final class UserTest extends UnitTestCase
         $this->assertSame(sha1((string) $user->getEmailForVerification()), $hashedEmail);
     }
 
-    public function testLowerCasesEmailOnAccess(): void
-    {
-        $original = 'GanDalf@thE.Gray';
-        $expectedGet = 'gandalf@the.gray';
-        $expectedSet = 'GanDalf@thE.Gray';
-        $user = UserFactory::new()->createOne(['email' => $original]);
-
-        $this->assertSame($expectedGet, $user->email);
-        $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
-    }
-
     public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
         config()->unset('appSection-authentication.login.fields');
@@ -124,5 +107,16 @@ final class UserTest extends UnitTestCase
         $result = (new User())->findForPassport($user->name);
 
         $this->assertTrue($user->is($result));
+    }
+
+    public function testLowerCasesEmailOnAccess(): void
+    {
+        $original = 'GanDalf@thE.Gray';
+        $expectedGet = 'gandalf@the.gray';
+        $expectedSet = 'GanDalf@thE.Gray';
+        $user = UserFactory::new()->createOne(['email' => $original]);
+
+        $this->assertSame($expectedGet, $user->email);
+        $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
     }
 }
