@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationPermissionsSeeder_1;
+use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
@@ -20,17 +21,17 @@ final class AuthorizationPermissionsSeederTest extends UnitTestCase
             ['manage-admins-access', 'Assign users to Roles.'],
             ['access-dashboard', 'Access the admins dashboard.'],
         ];
+        $taskSpy = $this->spy(CreatePermissionTask::class);
+        $seeder = new AuthorizationPermissionsSeeder_1();
 
-        foreach (array_keys(config('auth.guards')) as $guardName) {
-            foreach ($data as $datum) {
-                $this->assertDatabaseHas('permissions', [
-                    'name' => $datum[0],
-                    'description' => $datum[1],
-                    'display_name' => null,
-                    'guard_name' => $guardName,
-                ]);
-            }
-        }
-        $this->assertDatabaseCount('permissions', count($data) * count(config('auth.guards')));
+        $seeder->run($taskSpy);
+
+        $taskSpy->shouldHaveReceived('run')
+            ->withArgs(
+                static fn ($name, $description, $displayName, $guardName) => in_array([$name, $description], $data)
+                    && null === $displayName
+                    && array_key_exists($guardName, config('auth.guards')),
+            )
+            ->times(count($data) * count(config('auth.guards')));
     }
 }
