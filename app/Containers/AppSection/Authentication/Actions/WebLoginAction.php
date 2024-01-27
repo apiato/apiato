@@ -28,11 +28,11 @@ class WebLoginAction extends ParentAction
         $credentials = [];
         foreach ($loginFields as $loginField) {
             if (config('appSection-authentication.login.case_sensitive')) {
-                $credentials[$loginField->field] =
-                    static fn (Builder $query): Builder => $query->orWhere($loginField->field, $loginField->value);
+                $credentials[$loginField->name] =
+                    static fn (Builder $query): Builder => $query->orWhere($loginField->name, $loginField->value);
             } else {
-                $credentials[$loginField->field] =
-                    static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->field}) = lower(?)", [$loginField->value]);
+                $credentials[$loginField->name] =
+                    static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->name}) = lower(?)", [$loginField->value]);
             }
         }
         $credentials['password'] = $sanitizedData['password'];
@@ -50,8 +50,8 @@ class WebLoginAction extends ParentAction
         $errorResult = array_reduce(
             $loginFields,
             static fn (array $result, IncomingLoginField $loginField): array => [
-                'errors' => array_merge($result['errors'], [$loginField->field => __('auth.failed')]),
-                'fields' => array_merge($result['fields'], [$loginField->field]),
+                'errors' => array_merge($result['errors'], [$loginField->name => __('auth.failed')]),
+                'fields' => array_merge($result['fields'], [$loginField->name]),
             ],
             ['errors' => [], 'fields' => []],
         );
