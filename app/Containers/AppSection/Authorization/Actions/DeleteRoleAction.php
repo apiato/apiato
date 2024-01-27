@@ -7,7 +7,6 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DeleteRoleAction extends ParentAction
 {
@@ -17,17 +16,11 @@ class DeleteRoleAction extends ParentAction
     }
 
     /**
-     * @throws DeleteResourceFailedException
      * @throws NotFoundException
+     * @throws DeleteResourceFailedException
      */
-    public function run(DeleteRoleRequest $request): void
+    public function run(DeleteRoleRequest $request): bool
     {
-        try {
-            $this->repository->delete($request->id);
-        } catch (ModelNotFoundException) {
-            throw new NotFoundException();
-        } catch (\Exception) {
-            throw new DeleteResourceFailedException();
-        }
+        return $this->repository->delete($request->id);
     }
 }

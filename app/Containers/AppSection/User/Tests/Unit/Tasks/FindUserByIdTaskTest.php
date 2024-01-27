@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Ship\Exceptions\NotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -16,18 +16,9 @@ final class FindUserByIdTaskTest extends UnitTestCase
     public function testFindUserById(): void
     {
         $user = UserFactory::new()->createOne();
+        $repositoryMock = $this->partialMock(UserRepository::class);
+        $repositoryMock->expects('findOrFail')->once()->with($user->id)->andReturn($user);
 
-        $foundUser = app(FindUserByIdTask::class)->run($user->id);
-
-        $this->assertSame($user->id, $foundUser->id);
-    }
-
-    public function testFindUserWithInvalidId(): void
-    {
-        $this->expectException(NotFoundException::class);
-
-        $noneExistingId = 7777777;
-
-        app(FindUserByIdTask::class)->run($noneExistingId);
+        app(FindUserByIdTask::class)->run($user->id);
     }
 }
