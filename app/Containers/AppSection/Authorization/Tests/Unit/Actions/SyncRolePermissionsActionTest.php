@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 use App\Containers\AppSection\Authorization\Actions\SyncRolePermissionsAction;
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
-use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsRequest;
 use PHPUnit\Framework\Attributes\CoversClass;

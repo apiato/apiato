@@ -24,6 +24,5 @@ class SendVerificationEmailActionTest extends UnitTestCase
         $taskSpy->expects()->run($request->user(), $request->verification_url);
 
         $action->run($request);
-
     }
 }

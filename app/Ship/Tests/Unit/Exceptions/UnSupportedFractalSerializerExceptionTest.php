@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
-#[CoversClass(\App\Ship\Exceptions\UnSupportedFractalSerializerException::class)]
+#[CoversClass(UnsupportedFractalSerializerException::class)]
 final class UnSupportedFractalSerializerExceptionTest extends TestCase
 {
     public function testException(): void

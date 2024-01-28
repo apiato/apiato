@@ -17,6 +17,7 @@ class UserPolicy extends ParentPolicy
     {
         return false;
     }
+
     public function show(): bool
     {
         return false;
@@ -30,6 +31,7 @@ class UserPolicy extends ParentPolicy
     public function update(User $user, int $userId): bool
     {
         $entity = $this->repository->find($userId);
+
         return $user->is($entity);
     }
 }

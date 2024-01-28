@@ -25,8 +25,8 @@ final class EmailVerifiedTest extends UnitTestCase
             $email = $notification->toMail($user);
             $this->assertSame('Email Verified', $email->subject);
             $this->assertSame(['Your email has been verified.'], $email->introLines);
-            return true;
 
+            return true;
         });
         Notification::assertCount(1);
     }

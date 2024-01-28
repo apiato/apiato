@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 use App\Containers\AppSection\Authentication\Actions\WebLogoutAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
-use Illuminate\Events\Dispatcher;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 

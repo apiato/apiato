@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authorization')]
 #[CoversClass(Role::class)]
-final  class RoleTest extends UnitTestCase
+final class RoleTest extends UnitTestCase
 {
     public function testUsesCorrectTraits(): void
     {

@@ -24,7 +24,8 @@ final class PasswordResetTest extends UnitTestCase
         Notification::assertSentTo($user, PasswordReset::class, function (PasswordReset $notification) use ($user) {
             $email = $notification->toMail($user);
             $this->assertSame('Password Reset', $email->subject);
-            $this->assertSame( ['Your password has been reset successfully.'], $email->introLines);
+            $this->assertSame(['Your password has been reset successfully.'], $email->introLines);
+
             return true;
         });
         Notification::assertCount(1);

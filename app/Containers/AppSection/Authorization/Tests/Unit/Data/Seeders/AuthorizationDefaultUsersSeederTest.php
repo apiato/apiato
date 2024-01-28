@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationDefaultUsersSeeder_4;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
-use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 

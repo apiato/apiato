@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Models\Role;
-use App\Ship\Enums\AuthGuard;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 
 /**

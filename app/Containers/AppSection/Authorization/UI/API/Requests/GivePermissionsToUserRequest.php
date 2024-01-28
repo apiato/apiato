@@ -13,7 +13,7 @@ class GivePermissionsToUserRequest extends ParentRequest
 
     protected array $decode = [
         'id',
-        'permission_ids.*'
+        'permission_ids.*',
     ];
 
     protected array $urlParameters = [

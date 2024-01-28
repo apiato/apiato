@@ -31,6 +31,7 @@ final class VerifyEmailTest extends UnitTestCase
                 'If you did not create an account, no further action is required.',
             ], $email->outroLines);
             $this->assertSame('Verify Email Address', $email->actionText);
+
             return true;
         });
         Notification::assertCount(1);

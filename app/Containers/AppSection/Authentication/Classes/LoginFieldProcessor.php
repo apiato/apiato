@@ -14,7 +14,7 @@ class LoginFieldProcessor
      * The login fields are extracted from the given data.
      * The login fields are returned as an array of IncomingLoginField objects.
      * The login fields are returned in the order they are defined in the config file.
-     * TODO: update this docblock
+     * TODO: update this docblock.
      *
      * @param array<string, mixed> $data
      *

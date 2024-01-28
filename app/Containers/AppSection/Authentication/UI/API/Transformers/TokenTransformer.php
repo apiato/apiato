@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\UI\API\Transformers;
 
 use App\Containers\AppSection\Authentication\Values\Token;
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
-use Illuminate\Support\Facades\Config;
 
 class TokenTransformer extends ParentTransformer
 {
