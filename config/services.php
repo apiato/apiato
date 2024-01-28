@@ -34,15 +34,18 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-//        'redirect' => 'social-auth/login/google',
-//        'redirect' => 'http://api.example.com/v1/social-auth/callback/google',
-         'redirect' => 'http://example.com/social-auth/callback/google',
-//         'redirect' => 'https://developers.google.com/oauthplayground',
+        // Test with Google playground
+        'redirect' => 'https://developers.google.com/oauthplayground',
+        // Test with HTTP client
+        // 'redirect' => 'http://example.com/social-auth/callback/google',
+        // Test with API (Monolith)
+        // 'redirect' => 'http://api.example.com/v1/social-auth/callback/google',
     ],
 
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        // TODO: Test Facebook login
         'redirect' => 'https://developers.google.com/oauthplayground',
     ],
 ];
