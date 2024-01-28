@@ -18,6 +18,7 @@ final class CallbackController extends ApiController
     ) {
     }
 
+    // TODO: Separate login and sighup actions by using different routes.
     public function __invoke(AuthCallbackRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
