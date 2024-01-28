@@ -7,17 +7,17 @@ use Apiato\Core\Abstracts\Models\UserModel;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
-use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserFromCodeTask;
+use App\Containers\AppSection\SocialAuth\Tasks\StatelessGetOAuthUserFromCodeTask;
 use App\Containers\AppSection\SocialAuth\Tasks\StoreOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-final class SignupByCodeAction extends Action
+final class StatelessSignupByCodeAction extends Action
 {
     public function __construct(
-        private readonly GetOAuthUserFromCodeTask $getOAuthUserFromCodeTask,
-        private readonly FindOAuthIdentityTask    $findOAuthIdentityTask,
-        private readonly StoreOAuthIdentityTask   $storeOAuthIdentityTask,
+        private readonly StatelessGetOAuthUserFromCodeTask $statelessGetOAuthUserFromCodeTask,
+        private readonly FindOAuthIdentityTask $findOAuthIdentityTask,
+        private readonly StoreOAuthIdentityTask $storeOAuthIdentityTask,
     ) {
     }
 
@@ -27,15 +27,15 @@ final class SignupByCodeAction extends Action
      */
     public function run(string $provider): SocialAuthOutcome
     {
-        $oAuthUser = $this->getOAuthUserFromCodeTask->run($provider);
+        $oAuthUser = $this->statelessGetOAuthUserFromCodeTask->run($provider);
 
         try {
             $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser->getId());
         } catch (OAuthIdentityNotFoundException) {
             $identity = $this->storeOAuthIdentityTask->run($provider, $oAuthUser);
             // TODO: What if user is registered via a provider that doesn't provide email? e.g., Twitter or Facebook
-//            if (!$oAuthUser->getEmail())
-//                throw new \Exception('Email not provided by provider'
+            //            if (!$oAuthUser->getEmail())
+            //                throw new \Exception('Email not provided by provider'
             // TODO: What if the user email is not verified? (In provider).
             // Can we assume that the user email is verified if the user is registered via a provider?
             $user = $this->createVerifiedUser($identity, $oAuthUser->getEmail());

@@ -6,7 +6,7 @@ use Apiato\Core\Abstracts\Actions\Action;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
-use App\Containers\AppSection\SocialAuth\Tasks\GetOAuthUserFromCodeTask;
+use App\Containers\AppSection\SocialAuth\Tasks\StatelessGetOAuthUserFromCodeTask;
 use App\Containers\AppSection\SocialAuth\Tasks\StoreOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 use Illuminate\Auth\AuthManager;
@@ -16,10 +16,10 @@ use Prettus\Validator\Exceptions\ValidatorException;
 final class LinkOAuthIdentityAction extends Action
 {
     public function __construct(
-        private readonly GetOAuthUserFromCodeTask $getOAuthUserFromCodeTask,
-        private readonly FindOAuthIdentityTask    $findOAuthIdentityTask,
-        private readonly StoreOAuthIdentityTask   $storeOAuthIdentityTask,
-        private readonly AuthManager              $authManager,
+        private readonly StatelessGetOAuthUserFromCodeTask $statelessGetOAuthUserFromCodeTask,
+        private readonly FindOAuthIdentityTask             $findOAuthIdentityTask,
+        private readonly StoreOAuthIdentityTask            $storeOAuthIdentityTask,
+        private readonly AuthManager                       $authManager,
     ) {
     }
 
@@ -29,7 +29,7 @@ final class LinkOAuthIdentityAction extends Action
      */
     public function run(string $provider): SocialAuthOutcome
     {
-        $oAuthUser = $this->getOAuthUserFromCodeTask->run($provider);
+        $oAuthUser = $this->statelessGetOAuthUserFromCodeTask->run($provider);
 
         try {
             $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser->getId());

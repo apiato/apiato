@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\AppSection\SocialAuth\UI\API\Controllers;
+namespace App\Containers\AppSection\SocialAuth\UI\WEB\Controllers;
 
 use Apiato\Core\Abstracts\Controllers\ApiController;
-use App\Containers\AppSection\SocialAuth\UI\API\Requests\RedirectRequest;
+use App\Containers\AppSection\SocialAuth\UI\WEB\Requests\RedirectRequest;
 use Laravel\Socialite\SocialiteManager;
 use Laravel\Socialite\Two\AbstractProvider;
 use Symfony\Component\HttpFoundation\RedirectResponse;

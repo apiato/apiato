@@ -32,7 +32,7 @@ class LoginSubAction extends SubAction
 
         // TODO: What if the user email is not verified? (In provider).
         // Can we assume that the user email is verified if the user is registered via a provider?
-        if ($oAuthUser->getEmail()) {
+        if (null === $oAuthUser->getEmail()) {
             $this->verifyEmailTask->run($identity->user, $oAuthUser->email);
         }
 

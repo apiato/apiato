@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\SocialAuth\UI\API\Controllers;
 
 use Apiato\Core\Abstracts\Controllers\ApiController;
-use App\Containers\AppSection\SocialAuth\Actions\LoginByCodeAction;
+use App\Containers\AppSection\SocialAuth\Actions\StatelessLoginByCodeAction;
 use App\Containers\AppSection\SocialAuth\UI\API\Requests\LoginByCodeRequest;
 use App\Containers\AppSection\SocialAuth\Values\PersonalAccessTokenResponse;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
@@ -11,7 +11,7 @@ use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 final class LinkOAuthIdentityController extends ApiController
 {
     public function __construct(
-        private readonly LoginByCodeAction $loginAction,
+        private readonly StatelessLoginByCodeAction $loginAction,
     ) {
     }
 
