@@ -34,10 +34,13 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        // Test with Google playground
-        'redirect' => 'https://developers.google.com/oauthplayground',
-        // Test with HTTP client
-        // 'redirect' => 'http://example.com/social-auth/callback/google',
+        // 'redirect' => 'is the same redirect_url that is sent to google to get the authorization code',
+        // Test with Google playground (getting the authorization code), acting as a client e.g., a web app
+        // 'redirect' => 'https://developers.google.com/oauthplayground',
+        // The webpage that the user will be redirected to after getting the authorization code (usually handled by the client e.g., a web app)
+        // Then the client will use the authorization code to get the access token (by sending a post request code+sameRedirectUrl to the API)
+        // Then we return the access token to the client
+        'redirect' => 'http://example.com/social-auth/callback/google',
         // Test with API (Monolith)
         // 'redirect' => 'http://api.example.com/v1/social-auth/callback/google',
     ],
@@ -46,6 +49,8 @@ return [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         // TODO: Test Facebook login
-        'redirect' => 'https://developers.google.com/oauthplayground',
+         'redirect' => 'https://developers.google.com/oauthplayground',
+//        'redirect' => 'https://developers.facebook.com/tools/explorer',
+//        'redirect' => 'http://localhost/social-auth/callback/facebook',
     ],
 ];
