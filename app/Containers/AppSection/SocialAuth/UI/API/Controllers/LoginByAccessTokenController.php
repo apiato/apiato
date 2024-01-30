@@ -18,7 +18,7 @@ final class LoginByAccessTokenController extends ApiController
     public function __invoke(LoginByAccessTokenRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
-        $result = $this->loginByAccessTokenAction->transactionalRun($provider);
+        $result = $this->loginByAccessTokenAction->transactionalRun($provider, $request->access_token);
 
         return $this->withMeta(
             PersonalAccessTokenResponse::from($result->token)->toArray(),
