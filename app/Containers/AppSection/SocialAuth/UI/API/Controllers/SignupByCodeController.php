@@ -11,14 +11,14 @@ use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 final class SignupByCodeController extends ApiController
 {
     public function __construct(
-        private readonly StatelessSignupByCodeAction $signupByCodeAction,
+        private readonly StatelessSignupByCodeAction $statelessSignupByCodeAction,
     ) {
     }
 
     public function __invoke(SignupByCodeRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
-        $result = $this->signupByCodeAction->transactionalRun($provider);
+        $result = $this->statelessSignupByCodeAction->transactionalRun($provider);
 
         return $this->withMeta(
             PersonalAccessTokenResponse::from($result->token)->toArray(),

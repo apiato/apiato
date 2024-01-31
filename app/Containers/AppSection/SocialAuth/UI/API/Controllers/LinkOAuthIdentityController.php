@@ -3,25 +3,22 @@
 namespace App\Containers\AppSection\SocialAuth\UI\API\Controllers;
 
 use Apiato\Core\Abstracts\Controllers\ApiController;
-use App\Containers\AppSection\SocialAuth\Actions\StatelessLoginByCodeAction;
-use App\Containers\AppSection\SocialAuth\UI\API\Requests\LoginByCodeRequest;
-use App\Containers\AppSection\SocialAuth\Values\PersonalAccessTokenResponse;
+use App\Containers\AppSection\SocialAuth\Actions\LinkOAuthIdentityAction;
+use App\Containers\AppSection\SocialAuth\UI\API\Requests\LinkOAuthIdentityRequest;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
 
 final class LinkOAuthIdentityController extends ApiController
 {
     public function __construct(
-        private readonly StatelessLoginByCodeAction $loginAction,
+        private readonly LinkOAuthIdentityAction $linkOAuthIdentityAction,
     ) {
     }
 
-    public function __invoke(LoginByCodeRequest $request, string $provider)
+    public function __invoke(LinkOAuthIdentityRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
-        $result = $this->loginAction->transactionalRun($provider);
+        $this->linkOAuthIdentityAction->transactionalRun($provider);
 
-        return $this->withMeta(
-            PersonalAccessTokenResponse::from($result->token)->toArray(),
-        )->transform($result->user, config('vendor-socialAuth.user.transformer'));
+        return $this->noContent();
     }
 }

@@ -9,10 +9,10 @@ class VerifyEmailTask extends Task
 {
     public function run(MustVerifyEmail $verifiable, string|null $email): void
     {
-        // TODO: $email here can be null sometimes.
+        // TODO: $email here can be null sometimes. (e.g., in case of facebook or twitter)
         // If we let it be null, then what will happen in isEmailMatching()?
         // What if user doesn't have an email already? Then it returns true!
-        if ($this->shouldVerifyEmail($verifiable, $email)) {
+        if (null !== $email && $this->shouldVerifyEmail($verifiable, $email)) {
             $verifiable->markEmailAsVerified();
         }
     }

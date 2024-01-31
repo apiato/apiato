@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\SocialAuth\Models;
 
 use Apiato\Core\Abstracts\Models\Model;
+use App\Containers\AppSection\SocialAuth\SocialAuth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Socialite\Two\User;
 
@@ -30,6 +31,6 @@ class OAuthIdentity extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('vendor-socialAuth.user.user_model'), 'user_id');
+        return $this->belongsTo(SocialAuth::userModel(), 'user_id');
     }
 }
