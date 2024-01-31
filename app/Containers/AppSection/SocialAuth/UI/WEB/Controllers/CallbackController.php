@@ -6,6 +6,7 @@ use Apiato\Core\Abstracts\Controllers\ApiController;
 use App\Containers\AppSection\SocialAuth\Actions\StatefulLoginByCodeAction;
 use App\Containers\AppSection\SocialAuth\Actions\StatefulSignupByCodeAction;
 use App\Containers\AppSection\SocialAuth\Enums\AuthAction;
+use App\Containers\AppSection\SocialAuth\SocialAuth;
 use App\Containers\AppSection\SocialAuth\UI\WEB\Requests\CallbackRequest;
 use App\Containers\AppSection\SocialAuth\Values\PersonalAccessTokenResponse;
 use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
@@ -32,6 +33,6 @@ final class CallbackController extends ApiController
         // return redirect()->away('http://example.com');
         return $this->withMeta(
             PersonalAccessTokenResponse::from($result->token)->toArray(),
-        )->transform($result->user, config('vendor-socialAuth.user.transformer'));
+        )->transform($result->user, SocialAuth::userTransformer());
     }
 }
