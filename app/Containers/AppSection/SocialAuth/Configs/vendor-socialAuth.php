@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // TODO: review and remove unused configs
     'can_link_multiple_providers' => false,
     'can_unlink_providers' => false,
     'can_signup_without_email' => false,
@@ -9,8 +10,6 @@ return [
      * if your user repository or transformer is different from Apiato's default, you can provide them here.
      */
     'user' => [
-        'repository' => App\Containers\AppSection\User\Data\Repositories\UserRepository::class,
-        'transformer' => App\Containers\AppSection\User\UI\API\Transformers\UserTransformer::class,
         'table_name' => 'oauth_identities',
     ],
 ];
