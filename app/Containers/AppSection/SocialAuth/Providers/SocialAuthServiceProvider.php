@@ -8,6 +8,7 @@ final class SocialAuthServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        // TODO: publish migrations
         $this->publishes([
             __DIR__ . '/../Configs/vendor-socialAuth.php' => app_path('Ship/Configs/vendor-socialAuth.php'),
         ]);
