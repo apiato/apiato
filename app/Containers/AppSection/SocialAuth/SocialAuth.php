@@ -2,9 +2,12 @@
 
 namespace App\Containers\AppSection\SocialAuth;
 
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use App\Containers\AppSection\SocialAuth\UI\API\Transformers\OAuthIdentityTransformer;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Webmozart\Assert\Assert;
 
 class SocialAuth
 {
@@ -22,6 +25,16 @@ class SocialAuth
      * The oAuth identity class name.
      */
     public static string $oAuthIdentityModel = OAuthIdentityTransformer::class;
+
+    /**
+     * Indicates if SocialAuth routes should be registered.
+     */
+    public static bool $registersRoutes = true;
+
+    /**
+     * Indicates if SocialAuth should verify user email automatically.
+     */
+    public static bool $verifiesEmail = false;
 
     /**
      * Set the user model class name.
@@ -42,7 +55,7 @@ class SocialAuth
     /**
      * Get a new user model instance.
      */
-    public static function user(): User
+    public static function user()
     {
         return new static::$userModel();
     }
@@ -66,7 +79,7 @@ class SocialAuth
     /**
      * Get a new user transformer entity instance.
      */
-    public static function userTransformer(): UserTransformer
+    public static function userTransformer()
     {
         return new static::$userTransformer();
     }
@@ -76,6 +89,8 @@ class SocialAuth
      */
     public static function useOAuthIdentityModel(string $oAuthIdentityModel): void
     {
+        Assert::isAOf($oAuthIdentityModel, OAuthIdentity::class);
+
         static::$oAuthIdentityModel = $oAuthIdentityModel;
     }
 
@@ -90,8 +105,32 @@ class SocialAuth
     /**
      * Get a new oAuth identity model instance.
      */
-    public static function oAuthIdentity(): OAuthIdentityTransformer
+    public static function oAuthIdentity()
     {
         return new static::$oAuthIdentityModel();
+    }
+
+    /**
+     * Configure SocialAuth to not register its routes.
+     */
+    public static function ignoreRoutes(): static
+    {
+        static::$registersRoutes = false;
+
+        return new static();
+    }
+
+    /**
+     * Configure SocialAuth to verify user email automatically.
+     *
+     * If social email matches an existing user email, the user will be verified.
+     */
+    public static function verifiesEmail(): static
+    {
+        Assert::isAOf(static::$userModel, MustVerifyEmail::class);
+
+        static::$verifiesEmail = true;
+
+        return new static();
     }
 }
