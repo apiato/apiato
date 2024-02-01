@@ -19,7 +19,6 @@ final class StatefulLoginByCodeAction extends Action
     /**
      * @throws OAuthIdentityNotFoundException
      * @throws ValidatorException
-     * @throws \JsonException
      */
     public function run(string $provider): SocialAuthOutcome
     {
