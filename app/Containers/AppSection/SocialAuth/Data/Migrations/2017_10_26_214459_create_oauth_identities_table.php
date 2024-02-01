@@ -10,16 +10,12 @@ return new class() extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->string('provider')->nullable();
-            $table->string('social_id')->nullable();
-            $table->string('email')->nullable();
+            $table->string('provider');
+            $table->string('social_id');
             $table->string('nickname')->nullable();
             $table->string('name')->nullable();
+            $table->string('email')->nullable();
             $table->text('avatar')->nullable();
-            $table->text('token')->nullable();
-            $table->text('refresh_token')->nullable();
-            $table->string('expires_in')->nullable();
-            $table->string('scopes')->nullable();
             $table->unique(['provider', 'social_id']);
 
             $table->timestamps();

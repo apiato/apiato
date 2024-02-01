@@ -12,10 +12,12 @@ final class OAuthIdentityTransformer extends ParentTransformer
         return [
             'object' => $entity->getResourceKey(),
             'id' => $entity->getHashedKey(),
-            'provider' => $entity->provider,
-            'social_id' => $entity->social_id,
-            'email' => $entity->email,
-            'scopes' => $entity->scopes,
+            'provider' => $entity->getProvider(),
+            'social_id' => $entity->getSocialId(),
+            'nickname' => $entity->getNickname(),
+            'name' => $entity->getName(),
+            'email' => $entity->getEmail(),
+            'avatar' => $entity->getAvatar(),
         ];
     }
 }
