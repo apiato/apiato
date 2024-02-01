@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\SubAction;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
+use App\Containers\AppSection\SocialAuth\Exceptions\SignupFailedException;
 use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Tasks\StoreOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Tasks\VerifyEmailTask;
@@ -22,6 +23,7 @@ class SignupSubAction extends SubAction
 
     /**
      * @throws ValidatorException
+     * @throws SignupFailedException
      */
     public function run(string $provider, User $oAuthUser): SocialAuthOutcome
     {
@@ -29,10 +31,11 @@ class SignupSubAction extends SubAction
             $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser->getId());
         } catch (OAuthIdentityNotFoundException) {
             $identity = $this->storeOAuthIdentityTask->run($provider, $oAuthUser);
-            // TODO: What if user is registered via a provider that doesn't provide email? e.g., Twitter or Facebook
-             if (!$oAuthUser->getEmail()) {
-                    return new SocialAuthOutcome($identity);
-             }
+
+            if (null === $oAuthUser->getEmail()) {
+                throw new SignupFailedException('No email provided by the OAuth provider.');
+            }
+
             $user = $identity->user()->create(['email' => $oAuthUser->getEmail()]);
             $identity->linkUser($user);
             $this->verifyEmailTask->run($user, $oAuthUser->getEmail());
