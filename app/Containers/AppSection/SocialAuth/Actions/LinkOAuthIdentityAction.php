@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\SocialAuth\Actions;
 
 use Apiato\Core\Abstracts\Actions\Action;
-use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityLinkingException;
+use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityLinkingFailedException;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Tasks\FindOAuthIdentityTask;
 use App\Containers\AppSection\SocialAuth\Tasks\StatelessGetOAuthUserFromCodeTask;
@@ -26,7 +26,7 @@ final class LinkOAuthIdentityAction extends Action
 
     /**
      * @throws ValidatorException
-     * @throws OAuthIdentityLinkingException
+     * @throws OAuthIdentityLinkingFailedException
      */
     public function run(Model|MustVerifyEmail $user, string $provider): void
     {
@@ -37,10 +37,10 @@ final class LinkOAuthIdentityAction extends Action
             $identity = $this->findOAuthIdentityTask->run($provider, $oAuthUser->getId());
 
             if ($identity->user->is($user)) {
-                throw new OAuthIdentityLinkingException('This account is already linked to this user.');
+                throw new OAuthIdentityLinkingFailedException('This account is already linked to this user.');
             }
             if ($identity->user->isNot($user)) {
-                throw new OAuthIdentityLinkingException('This account is already linked to another user.');
+                throw new OAuthIdentityLinkingFailedException('This account is already linked to another user.');
             }
         } catch (OAuthIdentityNotFoundException) {
             $identity = $this->storeOAuthIdentityTask->run($provider, $oAuthUser);
