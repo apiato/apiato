@@ -3,20 +3,26 @@
 namespace App\Containers\AppSection\SocialAuth\Tasks;
 
 use Apiato\Core\Abstracts\Tasks\Task;
+use App\Containers\AppSection\SocialAuth\SocialAuth;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 
 class VerifyEmailTask extends Task
 {
-    public function run(MustVerifyEmail $verifiable, string|null $email): void
+    public function run(Model|MustVerifyEmail $verifiable, string|null $email): void
     {
-        if (null !== $email && $this->shouldVerifyEmail($verifiable, $email)) {
+        if ($this->shouldVerifyEmail($verifiable, $email)) {
             $verifiable->markEmailAsVerified();
         }
     }
 
-    private function shouldVerifyEmail(MustVerifyEmail $verifiable, string $email): bool
+    private function shouldVerifyEmail(MustVerifyEmail $verifiable, string|null $email): bool
     {
-        return $this->isEmailMatching($verifiable, $email) && !$verifiable->hasVerifiedEmail();
+        if (SocialAuth::$verifiesEmail && null !== $email) {
+            return $this->isEmailMatching($verifiable, $email) && !$verifiable->hasVerifiedEmail();
+        }
+
+        return false;
     }
 
     private function isEmailMatching(MustVerifyEmail $verifiable, string $email): bool
