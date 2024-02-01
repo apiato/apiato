@@ -17,7 +17,7 @@ final class LinkOAuthIdentityController extends ApiController
     public function __invoke(LinkOAuthIdentityRequest $request, string $provider)
     {
         /* @var SocialAuthOutcome $result */
-        $this->linkOAuthIdentityAction->transactionalRun($provider);
+        $this->linkOAuthIdentityAction->transactionalRun($request->user(), $provider);
 
         return $this->noContent();
     }
