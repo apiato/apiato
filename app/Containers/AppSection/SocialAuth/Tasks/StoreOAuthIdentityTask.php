@@ -16,7 +16,6 @@ class StoreOAuthIdentityTask extends Task
     }
 
     /**
-     * @throws \JsonException
      * @throws ValidatorException
      */
     public function run(string $provider, User $oAuthUser): OAuthIdentity
@@ -25,14 +24,10 @@ class StoreOAuthIdentityTask extends Task
             [
                 'provider' => $provider,
                 'social_id' => $oAuthUser->getId(),
-                'email' => $oAuthUser->getEmail(),
                 'nickname' => $oAuthUser->getNickname(),
                 'name' => $oAuthUser->getName(),
+                'email' => $oAuthUser->getEmail(),
                 'avatar' => $oAuthUser->getAvatar(),
-                'token' => $oAuthUser->token,
-                'refresh_token' => $oAuthUser->refreshToken,
-                'expires_in' => $oAuthUser->expiresIn,
-                'scopes' => json_encode($oAuthUser->approvedScopes, JSON_THROW_ON_ERROR),
             ],
         );
     }
