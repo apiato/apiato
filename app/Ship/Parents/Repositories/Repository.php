@@ -19,44 +19,31 @@ use Prettus\Repository\Exceptions\RepositoryException;
 abstract class Repository extends AbstractRepository
 {
     /**
-     * @return Collection<array-key, TModel>
-     *
-     * @throws NotFoundException
-     */
-    public function findManyOrFail(array|Arrayable $ids, array $columns = ['*']): Collection
-    {
-        try {
-            return parent::find($ids, $columns);
-        } catch (\Exception) {
-            throw new NotFoundException();
-        }
-    }
-
-    /**
-     * @param int|string $id
-     * @param array $columns
+     * Find a model by its primary key.
      *
      * @return TModel|null
      */
-    public function find($id, $columns = ['*'])
+    public function findById(int|string $id, array $columns = ['*'])
     {
         try {
-            return parent::find($id, $columns);
-        } catch (\Exception) {
+            return $this->find($id, $columns);
+        } catch (ModelNotFoundException) {
             return null;
         }
     }
 
     /**
+     * Get a model by its primary key or throw an exception.
+     *
      * @return TModel
      *
      * @throws NotFoundException
      */
-    public function findOrFail(int|string $id, array $columns = ['*'])
+    public function getById(int|string $id, array $columns = ['*'])
     {
         try {
-            return parent::find($id, $columns);
-        } catch (\Exception) {
+            return $this->find($id, $columns);
+        } catch (ModelNotFoundException) {
             throw new NotFoundException();
         }
     }
@@ -67,13 +54,15 @@ abstract class Repository extends AbstractRepository
     public function findMany(array|Arrayable $ids, array $columns = ['*']): Collection
     {
         try {
-            return parent::find($ids, $columns);
-        } catch (\Exception) {
+            return $this->find($ids, $columns);
+        } catch (ModelNotFoundException) {
             return new Collection();
         }
     }
 
     /**
+     * Delete a model by its primary key or throw an exception.
+     *
      * @param int|string $id
      *
      * @throws NotFoundException
@@ -82,8 +71,6 @@ abstract class Repository extends AbstractRepository
     public function delete($id): bool
     {
         try {
-            $this->findOrFail($id);
-
             return (bool) parent::delete($id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();

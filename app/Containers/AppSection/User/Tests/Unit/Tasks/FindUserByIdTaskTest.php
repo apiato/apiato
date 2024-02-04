@@ -17,7 +17,7 @@ final class FindUserByIdTaskTest extends UnitTestCase
     {
         $user = UserFactory::new()->createOne();
         $repositoryMock = $this->partialMock(UserRepository::class);
-        $repositoryMock->expects('findOrFail')->once()->with($user->id)->andReturn($user);
+        $repositoryMock->expects('getById')->once()->with($user->id)->andReturn($user);
 
         app(FindUserByIdTask::class)->run($user->id);
     }

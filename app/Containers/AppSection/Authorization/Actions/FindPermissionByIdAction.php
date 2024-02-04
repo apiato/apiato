@@ -20,6 +20,6 @@ class FindPermissionByIdAction extends ParentAction
      */
     public function run(FindPermissionByIdRequest $request): Permission
     {
-        return $this->repository->findOrFail($request->id);
+        return $this->repository->getById($request->id);
     }
 }

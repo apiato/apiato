@@ -19,7 +19,7 @@ final class FindPermissionByIdActionTest extends UnitTestCase
         $permission = PermissionFactory::new()->createOne();
         $request = FindPermissionByIdRequest::injectData()->withUrlParameters(['id' => $permission->id]);
         $repositoryMock = $this->partialMock(PermissionRepository::class);
-        $repositoryMock->expects('findOrFail')->once()->with($request->id)->andReturn($permission);
+        $repositoryMock->expects('getById')->once()->with($request->id)->andReturn($permission);
 
         app(FindPermissionByIdAction::class)->run($request);
     }

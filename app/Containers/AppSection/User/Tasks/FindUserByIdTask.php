@@ -19,6 +19,6 @@ class FindUserByIdTask extends ParentTask
      */
     public function run(mixed $userId): User
     {
-        return $this->repository->findOrFail($userId);
+        return $this->repository->getById($userId);
     }
 }

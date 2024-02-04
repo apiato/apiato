@@ -30,7 +30,7 @@ class UserPolicy extends ParentPolicy
 
     public function update(User $user, int $userId): bool
     {
-        $entity = $this->repository->find($userId);
+        $entity = $this->repository->findById($userId);
 
         return $user->is($entity);
     }
