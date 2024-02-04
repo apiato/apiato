@@ -18,7 +18,7 @@ class PermissionFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->firstName(),
+            'name' => $this->faker->unique()->firstName(),
             'guard_name' => 'api',
         ];
     }
