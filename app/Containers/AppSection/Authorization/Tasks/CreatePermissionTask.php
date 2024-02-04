@@ -17,7 +17,7 @@ class CreatePermissionTask extends ParentTask
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(string $name, string $description = null, string $displayName = null, string $guardName = 'api'): Permission
+    public function run(string $name, ?string $description = null, ?string $displayName = null, string $guardName = 'api'): Permission
     {
         try {
             $permission = $this->repository->create([
