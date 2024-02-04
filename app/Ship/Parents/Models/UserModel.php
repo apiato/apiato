@@ -20,7 +20,6 @@ abstract class UserModel extends AbstractUserModel implements Authorizable
      * Create a new Eloquent Collection instance.
      *
      * @param array<int, Model> $models
-     * @return EloquentCollection
      */
     public function newCollection(array $models = []): EloquentCollection
     {
