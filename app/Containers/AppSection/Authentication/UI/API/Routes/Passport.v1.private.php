@@ -13,7 +13,7 @@ $guard = config('passport.guard', null);
 Route::group([
     'as' => 'passport.',
     'prefix' => config('passport.path', 'oauth'),
-], function () use ($guard) {
+], static function () use ($guard) {
     Route::post('/token', [AccessTokenController::class, 'issueToken'])
         ->name('token')
         ->middleware(['throttle']);

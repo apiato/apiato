@@ -11,7 +11,7 @@
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => 'search-users', 'roles' => '']
+ * @apiPermission      Authenticated ['permissions' => null, 'roles' => null]
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer

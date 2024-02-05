@@ -10,14 +10,13 @@ use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
 use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
 class ResetPasswordAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByEmailTask $findUserByEmailTask
+        private readonly FindUserByEmailTask $findUserByEmailTask,
     ) {
     }
 
@@ -27,7 +26,7 @@ class ResetPasswordAction extends ParentAction
      * @throws UpdateResourceFailedException
      * @throws IncorrectIdException
      */
-    public function run(ResetPasswordRequest $request): mixed
+    public function run(ResetPasswordRequest $request): void
     {
         $sanitizedData = $request->sanitizeInput([
             'email',
@@ -38,13 +37,11 @@ class ResetPasswordAction extends ParentAction
 
         $status = Password::broker()->reset(
             $sanitizedData,
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                ])->setRememberToken(Str::random(60));
-
+            static function ($user, $password) {
+                $user->forceFill(compact('password'))
+                    ->setRememberToken(Str::random(60));
                 $user->save();
-            }
+            },
         );
 
         switch ($status) {
@@ -52,13 +49,9 @@ class ResetPasswordAction extends ParentAction
                 throw new InvalidResetPasswordTokenException();
             case Password::INVALID_USER:
                 throw new NotFoundException('User Not Found.');
-            case Password::PASSWORD_RESET:
+            default:
                 $user = $this->findUserByEmailTask->run($sanitizedData['email']);
                 $user->notify(new PasswordReset());
-
-                return $status;
-            default:
-                throw new UpdateResourceFailedException();
         }
     }
 }

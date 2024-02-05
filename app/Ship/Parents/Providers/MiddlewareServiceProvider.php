@@ -10,7 +10,7 @@ abstract class MiddlewareServiceProvider extends AbstractMiddlewareServiceProvid
 
     protected array $middlewareGroups = [];
 
-    protected array $middlewarePriority = [];
-
     protected array $middlewareAliases = [];
+
+    protected array $middlewarePriority = [];
 }

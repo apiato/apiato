@@ -33,8 +33,6 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-if (config('appSection-authentication.require_email_verification')) {
-    Route::post('email/verify/{id}/{hash}', VerifyEmailController::class)
+Route::post('email/verify/{id}/{hash}', VerifyEmailController::class)
     ->name('verification.verify')
     ->middleware('signed');
-}

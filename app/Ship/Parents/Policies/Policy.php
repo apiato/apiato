@@ -3,17 +3,13 @@
 namespace App\Ship\Parents\Policies;
 
 use Apiato\Core\Abstracts\Policies\Policy as AbstractPolicy;
-use App\Ship\Parents\Models\UserModel;
+use App\Ship\Contracts\Authorizable;
 
 abstract class Policy extends AbstractPolicy
 {
-    /**
-     * Perform pre-authorization checks.
-     */
-    public function before(UserModel $user, string $ability): ?bool
+    public function before(Authorizable $authorizable, string $ability): bool|null
     {
-        // grant access for admins
-        if (method_exists($user, 'hasAdminRole') && $user->hasAdminRole()) {
+        if ($authorizable->hasAdminRole()) {
             return true;
         }
 

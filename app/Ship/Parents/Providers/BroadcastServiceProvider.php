@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Broadcast;
 
 /**
  * Class BroadcastServiceProvider.
- *
- * A.K.A. app/Providers/BroadcastServiceProvider.php
+ * A.K.A. app/Providers/BroadcastServiceProvider.php.
  */
 abstract class BroadcastServiceProvider extends AbstractBroadcastServiceProvider
 {

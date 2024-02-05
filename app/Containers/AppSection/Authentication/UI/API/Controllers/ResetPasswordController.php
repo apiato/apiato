@@ -9,14 +9,9 @@ use Illuminate\Http\JsonResponse;
 
 class ResetPasswordController extends ApiController
 {
-    public function __construct(
-        private readonly ResetPasswordAction $resetPasswordAction
-    ) {
-    }
-
-    public function __invoke(ResetPasswordRequest $request): JsonResponse
+    public function __invoke(ResetPasswordRequest $request, ResetPasswordAction $action): JsonResponse
     {
-        $this->resetPasswordAction->run($request);
+        $action->run($request);
 
         return $this->noContent();
     }

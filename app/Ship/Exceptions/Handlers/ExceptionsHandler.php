@@ -5,10 +5,10 @@ namespace App\Ship\Exceptions\Handlers;
 use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
 use Apiato\Core\Exceptions\AuthenticationException as CoreAuthenticationException;
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
-use App\Ship\Exceptions\NotAuthorizedResourceException;
+use App\Ship\Exceptions\AccessDeniedException;
 use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Providers\RouteServiceProvider;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\App;
@@ -17,8 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ExceptionsHandler.
- *
- * A.K.A. (app/Exceptions/Handler.php)
+ * A.K.A. app/Exceptions/Handler.php.
  */
 class ExceptionsHandler extends CoreExceptionsHandler
 {
@@ -49,7 +48,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->renderExceptionResponse($request, $e);
         });
 
-        $this->renderable(function (NotFoundHttpException $e, $request) {
+        $this->renderable(function (NotFoundHttpException|ModelNotFoundException $e, $request) {
             if ($this->shouldReturnJson($request, $e)) {
                 return $this->buildJsonResponse(new NotFoundException());
             }
@@ -59,10 +58,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
 
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
             if ($this->shouldReturnJson($request, $e)) {
-                return $this->buildJsonResponse(new NotAuthorizedResourceException());
+                return $this->buildJsonResponse(new AccessDeniedException());
             }
 
-            return redirect()->guest(route(RouteServiceProvider::UNAUTHORIZED));
+            return redirect()->guest(route('unauthorized-page'));
         });
     }
 
@@ -93,6 +92,6 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->buildJsonResponse(new CoreAuthenticationException());
         }
 
-        return redirect()->guest(route(RouteServiceProvider::LOGIN));
+        return redirect()->guest(route('login-page'));
     }
 }

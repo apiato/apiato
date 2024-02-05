@@ -15,12 +15,11 @@ class UserTransformer extends ParentTransformer
         'permissions',
     ];
 
-    protected array $defaultIncludes = [
-    ];
+    protected array $defaultIncludes = [];
 
     public function transform(User $user): array
     {
-        $response = [
+        return [
             'object' => $user->getResourceKey(),
             'id' => $user->getHashedKey(),
             'name' => $user->name,
@@ -29,14 +28,6 @@ class UserTransformer extends ParentTransformer
             'gender' => $user->gender,
             'birth' => $user->birth,
         ];
-
-        return $this->ifAdmin([
-            'real_id' => $user->id,
-            'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at,
-            'readable_created_at' => $user->created_at->diffForHumans(),
-            'readable_updated_at' => $user->updated_at->diffForHumans(),
-        ], $response);
     }
 
     public function includeRoles(User $user): Collection

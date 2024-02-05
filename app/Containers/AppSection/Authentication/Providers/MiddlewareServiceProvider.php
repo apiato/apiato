@@ -11,9 +11,9 @@ class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 
     protected array $middlewareGroups = [];
 
-    protected array $middlewarePriority = [];
-
     protected array $middlewareAliases = [
         'guest' => RedirectIfAuthenticated::class,
     ];
+
+    protected array $middlewarePriority = [];
 }

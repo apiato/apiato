@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class RegisterUserController extends ApiController
 {
-    public function __construct(
-        private readonly RegisterUserAction $registerUserAction
-    ) {
-    }
-
-    public function __invoke(RegisterUserRequest $request): array
+    public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): array
     {
-        $user = $this->registerUserAction->transactionalRun($request);
+        $user = $action->transactionalRun($request);
 
         return $this->transform($user, UserTransformer::class);
     }

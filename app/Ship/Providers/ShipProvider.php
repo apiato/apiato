@@ -4,6 +4,8 @@ namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
 
 class ShipProvider extends ParentMainServiceProvider
 {
@@ -33,6 +35,8 @@ class ShipProvider extends ParentMainServiceProvider
      */
     public function register(): void
     {
+        parent::register();
+
         /*
          * Load the ide-helper service provider only in non production environments.
          */
@@ -40,6 +44,8 @@ class ShipProvider extends ParentMainServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
-        parent::register();
+        Config::macro('unset', function ($key) {
+            Arr::forget($this->items, $key);
+        });
     }
 }

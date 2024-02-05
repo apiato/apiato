@@ -1,16 +1,29 @@
 <p align="center">
+<a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
+<img src="https://img.shields.io/github/actions/workflow/status/apiato/apiato/tests.yaml?label=tests" alt="tests status">
+</a>
+<a href="https://codecov.io/gh/apiato/apiato" > 
+ <img src="https://img.shields.io/codecov/c/github/apiato/apiato?token=siiyEg5AC9" alt="code coverage"/> 
+</a>
+<a href="https://packagist.org/packages/apiato/apiato">
+<img src="https://img.shields.io/packagist/v/apiato/apiato" alt="latest stable version">
+</a>
+<br>
+<a href="https://packagist.org/packages/apiato/apiato">
+<img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="total downloads">
+</a>
+<a href="https://github.com/apiato/apiato">
+<img src="https://img.shields.io/github/license/apiato/apiato" alt="license">
+</a>
+<a href="https://discord.gg/ryPcV4KM5k">
+<img src="https://img.shields.io/discord/800815227839053834?logo=discord&label=chat" alt="chat">
+</a>
+</p>
+
+<p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
-
 <h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
-
-[//]: # (<a href="https://github.com/apiato/apiato/actions"><img src="https://github.com/apiato/apiato/workflows/Tests/badge.svg" alt="Build Status"></a>)
-<p align="center">
-<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/apiato/apiato"><img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version"></a>
-<a href="https://github.com/apiato/apiato"><img src="https://img.shields.io/github/license/apiato/apiato" alt="License"></a>
-<a href="https://discord.gg/ryPcV4KM5k"><img src="https://img.shields.io/discord/800815227839053834?label=discord" alt="support"></a>
-</p>
 
 ## About Apiato
 

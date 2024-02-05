@@ -7,24 +7,18 @@ use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 
 class PermissionTransformer extends ParentTransformer
 {
-    protected array $availableIncludes = [
-    ];
+    protected array $availableIncludes = [];
 
-    protected array $defaultIncludes = [
-    ];
+    protected array $defaultIncludes = [];
 
     public function transform(Permission $permission): array
     {
-        $response = [
+        return [
             'object' => $permission->getResourceKey(),
-            'id' => $permission->getHashedKey(), // << Unique Identifier
-            'name' => $permission->name, // << Unique Identifier
-            'description' => $permission->description,
+            'id' => $permission->getHashedKey(),
+            'name' => $permission->name,
             'display_name' => $permission->display_name,
+            'description' => $permission->description,
         ];
-
-        return $this->ifAdmin([
-            'guard_name' => $permission->guard_name,
-        ], $response);
     }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class OrderByFieldCriteria extends Criteria
+class OrderByFieldCriteria extends ParentCriteria
 {
     public function __construct(
         private string $field,
-        private string $sortOrder
+        private string $sortOrder,
     ) {
         if (!$this->isValidSortOrder($sortOrder)) {
             throw new \InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");

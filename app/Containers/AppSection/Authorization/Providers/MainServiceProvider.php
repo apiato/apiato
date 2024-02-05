@@ -5,21 +5,21 @@ namespace App\Containers\AppSection\Authorization\Providers;
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
 /**
- * Class MainServiceProvider.
- *
- * The Main Service Provider of this container, it will be automatically registered in the framework.
+ * The Main Service Provider of this container.
+ * It will be automatically registered by the framework.
  */
 class MainServiceProvider extends ParentMainServiceProvider
 {
-    /**
-     * Container Service Providers.
-     */
     public array $serviceProviders = [
+        // InternalServiceProviderExample::class,
     ];
 
-    /**
-     * Container Aliases.
-     */
     public array $aliases = [
+        // 'Foo' => Bar::class,
     ];
+
+    public function register(): void
+    {
+        parent::register();
+    }
 }

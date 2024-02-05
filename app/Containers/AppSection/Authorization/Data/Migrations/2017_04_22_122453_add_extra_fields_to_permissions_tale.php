@@ -4,9 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 return new class() extends Migration {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         $permissionsTableName = config('permission.table_names')['permissions'];
@@ -16,9 +13,6 @@ return new class() extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         $permissionsTableName = config('permission.table_names')['permissions'];

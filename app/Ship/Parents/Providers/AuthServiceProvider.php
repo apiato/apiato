@@ -6,8 +6,7 @@ use Apiato\Core\Abstracts\Providers\AuthServiceProvider as AbstractAuthServicePr
 
 /**
  * Class ShipAuthServiceProvider.
- *
- * A.K.A. App\Providers\AuthServiceProvider.php
+ * A.K.A. App\Providers\AuthServiceProvider.php.
  */
 abstract class AuthServiceProvider extends AbstractAuthServiceProvider
 {

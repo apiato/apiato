@@ -3,12 +3,15 @@
 namespace App\Ship\Middlewares;
 
 use Apiato\Core\Middlewares\Http\Authenticate as CoreMiddleware;
-use App\Ship\Providers\RouteServiceProvider;
 
 class Authenticate extends CoreMiddleware
 {
-    protected function redirectTo($request): ?string
+    protected function redirectTo($request): string|null
     {
-        return $request->expectsJson() ? null : route(RouteServiceProvider::LOGIN);
+        if ($request->expectsJson()) {
+            return null;
+        }
+
+        return route('login');
     }
 }

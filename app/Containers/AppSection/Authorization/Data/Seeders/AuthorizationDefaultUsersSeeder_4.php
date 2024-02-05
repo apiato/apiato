@@ -8,33 +8,19 @@ use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
 class AuthorizationDefaultUsersSeeder_4 extends ParentSeeder
 {
-    public function __construct(
-        private readonly CreateAdminAction $createAdminAction
-    ) {
-    }
-
     /**
      * @throws CreateResourceFailedException
      * @throws \Throwable
      */
-    public function run(): void
+    public function run(CreateAdminAction $action): void
     {
         // Default Users (with their roles) ---------------------------------------------
-        $this->createSuperAdmin();
-    }
-
-    /**
-     * @throws CreateResourceFailedException
-     * @throws \Throwable
-     */
-    private function createSuperAdmin(): void
-    {
         $userData = [
             'email' => 'admin@admin.com',
-            'password' => 'admin',
+            'password' => config('appSection-authorization.admin_role'),
             'name' => 'Super Admin',
         ];
 
-        $this->createAdminAction->run($userData);
+        $action->run($userData);
     }
 }

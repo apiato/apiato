@@ -8,16 +8,9 @@ use App\Ship\Parents\Commands\ConsoleCommand as ParentConsoleCommand;
 class CreateAdminCommand extends ParentConsoleCommand
 {
     protected $signature = 'apiato:create:admin';
-
     protected $description = 'Create a new User with the ADMIN role';
 
-    public function __construct(
-        private readonly CreateAdminAction $createAdminAction
-    ) {
-        parent::__construct();
-    }
-
-    public function handle(): void
+    public function handle(CreateAdminAction $action): void
     {
         $username = $this->ask('Enter the username for this user');
         $email = $this->ask('Enter the email address of this user');
@@ -25,7 +18,7 @@ class CreateAdminCommand extends ParentConsoleCommand
         $password_confirmation = $this->secret('Please confirm the password');
 
         if ($password !== $password_confirmation) {
-            $this->error('Passwords do not match - exiting!');
+            $this->error('Passwords does not match - exiting!');
 
             return;
         }
@@ -36,8 +29,14 @@ class CreateAdminCommand extends ParentConsoleCommand
             'password' => $password,
         ];
 
-        $this->createAdminAction->run($data);
+        try {
+            $action->run($data);
+        } catch (\Exception $exception) {
+            $this->error($exception->getMessage());
 
-        $this->info('Admin ' . $email . ' was successfully created');
+            return;
+        }
+
+        $this->info('Admin ' . $email . ' successfully created');
     }
 }

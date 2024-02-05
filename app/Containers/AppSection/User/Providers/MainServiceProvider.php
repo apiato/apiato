@@ -3,36 +3,35 @@
 namespace App\Containers\AppSection\User\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 /**
- * Class MainServiceProvider.
- *
- * The Main Service Provider of this container, it will be automatically registered in the framework.
+ * The Main Service Provider of this container.
+ * It will be automatically registered by the framework.
  */
 class MainServiceProvider extends ParentMainServiceProvider
 {
-    /**
-     * Container Service Providers.
-     */
     public array $serviceProviders = [
         // InternalServiceProviderExample::class,
-        // ...
     ];
 
-    /**
-     * Container Aliases.
-     */
     public array $aliases = [
+        // 'Foo' => Bar::class,
     ];
 
-    /**
-     * Register anything in the container.
-     */
+    public function boot(): void
+    {
+        parent::boot();
+
+        Password::defaults(static fn () => Password::min(8)
+            ->letters()
+            ->mixedCase()
+            ->numbers()
+            ->symbols());
+    }
+
     public function register(): void
     {
         parent::register();
-
-        // do your binding here..
-        // $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }

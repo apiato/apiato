@@ -11,7 +11,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class CreateRoleAction extends ParentAction
 {
     public function __construct(
-        private readonly CreateRoleTask $createRoleTask
+        private readonly CreateRoleTask $createRoleTask,
     ) {
     }
 

@@ -11,7 +11,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class FindUserByIdAction extends ParentAction
 {
     public function __construct(
-        private readonly FindUserByIdTask $findUserByIdTask
+        private readonly FindUserByIdTask $findUserByIdTask,
     ) {
     }
 

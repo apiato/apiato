@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\PermissionRegistrar;
 
 return new class() extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
@@ -66,12 +61,12 @@ return new class() extends Migration {
 
                 $table->primary(
                     [$columnNames['team_foreign_key'], PermissionRegistrar::$pivotPermission, $columnNames['model_morph_key'], 'model_type'],
-                    'model_has_permissions_permission_model_type_primary'
+                    'model_has_permissions_permission_model_type_primary',
                 );
             } else {
                 $table->primary(
                     [PermissionRegistrar::$pivotPermission, $columnNames['model_morph_key'], 'model_type'],
-                    'model_has_permissions_permission_model_type_primary'
+                    'model_has_permissions_permission_model_type_primary',
                 );
             }
         });
@@ -93,12 +88,12 @@ return new class() extends Migration {
 
                 $table->primary(
                     [$columnNames['team_foreign_key'], PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
-                    'model_has_roles_role_model_type_primary'
+                    'model_has_roles_role_model_type_primary',
                 );
             } else {
                 $table->primary(
                     [PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
-                    'model_has_roles_role_model_type_primary'
+                    'model_has_roles_role_model_type_primary',
                 );
             }
         });
@@ -125,12 +120,7 @@ return new class() extends Migration {
             ->forget(config('permission.cache.key'));
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         $tableNames = config('permission.table_names');
 

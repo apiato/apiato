@@ -2,12 +2,13 @@
 
 namespace App\Containers\AppSection\Authentication\Notifications;
 
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Notifications\Notification as ParentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class Welcome extends ParentNotification implements ShouldQueue
+final class Welcome extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,7 +17,7 @@ class Welcome extends ParentNotification implements ShouldQueue
         return ['mail'];
     }
 
-    public function toMail($notifiable): MailMessage
+    public function toMail(User $notifiable): MailMessage
     {
         return (new MailMessage())
             ->subject('Welcome to ' . config('app.name'))

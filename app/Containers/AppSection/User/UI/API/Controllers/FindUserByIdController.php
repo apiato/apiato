@@ -9,14 +9,9 @@ use App\Ship\Parents\Controllers\ApiController;
 
 class FindUserByIdController extends ApiController
 {
-    public function __construct(
-        private readonly FindUserByIdAction $findUserByIdAction
-    ) {
-    }
-
-    public function __invoke(FindUserByIdRequest $request): array
+    public function __invoke(FindUserByIdRequest $request, FindUserByIdAction $action): array
     {
-        $user = $this->findUserByIdAction->run($request);
+        $user = $action->run($request);
 
         return $this->transform($user, UserTransformer::class);
     }
