@@ -14,7 +14,7 @@ final class NotFoundExceptionTest extends TestCase
     public function testException(): void
     {
         $this->expectExceptionCode(404);
-        $this->expectExceptionMessage('The requested Resource was not found.');
+        $this->expectExceptionMessage('The requested resource could not be found.');
 
         throw new NotFoundException();
     }
