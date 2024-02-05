@@ -3,13 +3,13 @@
 namespace App\Ship\Tests\Unit\Exceptions;
 
 use App\Ship\Exceptions\NotImplementedException;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversClass(NotImplementedException::class)]
-final class NotImplementedExceptionTest extends TestCase
+final class NotImplementedExceptionTest extends ShipTestCase
 {
     public function testException(): void
     {

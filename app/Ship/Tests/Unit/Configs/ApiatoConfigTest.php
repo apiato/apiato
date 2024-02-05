@@ -5,13 +5,13 @@ namespace App\Ship\Tests\Unit\Configs;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Seeders\SeedDeploymentData;
 use App\Ship\Seeders\SeedTestingData;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversNothing]
-final class ApiatoConfigTest extends TestCase
+final class ApiatoConfigTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
