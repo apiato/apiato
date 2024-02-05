@@ -8,6 +8,7 @@ use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
 use App\Ship\Exceptions\AccessDeniedException;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\App;
@@ -47,7 +48,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->renderExceptionResponse($request, $e);
         });
 
-        $this->renderable(function (NotFoundHttpException $e, $request) {
+        $this->renderable(function (NotFoundHttpException|ModelNotFoundException $e, $request) {
             if ($this->shouldReturnJson($request, $e)) {
                 return $this->buildJsonResponse(new NotFoundException());
             }
