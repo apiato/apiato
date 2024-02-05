@@ -6,14 +6,14 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Policies\Policy;
 use App\Ship\Parents\Providers\MainServiceProvider;
 use App\Ship\Parents\Requests\Request;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Auth\Access\Gate;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversClass(Policy::class)]
-final class PolicyTest extends TestCase
+final class PolicyShipTest extends ShipTestCase
 {
     public function testAdminCanBypassAllAuthorizations(): void
     {
