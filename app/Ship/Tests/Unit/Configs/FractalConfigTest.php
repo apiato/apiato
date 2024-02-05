@@ -2,7 +2,7 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
@@ -10,7 +10,7 @@ use Spatie\Fractal\Fractal;
 
 #[Group('ship')]
 #[CoversNothing]
-final class FractalConfigTest extends TestCase
+final class FractalConfigTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {

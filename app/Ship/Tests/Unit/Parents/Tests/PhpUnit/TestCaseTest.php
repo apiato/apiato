@@ -2,14 +2,15 @@
 
 namespace App\Ship\Tests\Unit\Parents\Tests\PhpUnit;
 
-use App\Ship\Tests\TestCase;
+use App\Ship\Parents\Tests\PhpUnit\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Foundation\Application;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
-#[CoversClass(\App\Ship\Parents\Tests\PhpUnit\TestCase::class)]
-final class TestCaseTest extends TestCase
+#[CoversClass(TestCase::class)]
+final class TestCaseTest extends ShipTestCase
 {
     public function testCanCreateApplication(): void
     {
@@ -20,6 +21,6 @@ final class TestCaseTest extends TestCase
     }
 }
 
-class FakeTestCase extends \App\Ship\Parents\Tests\PhpUnit\TestCase
+class FakeTestCase extends TestCase
 {
 }

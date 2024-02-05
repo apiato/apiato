@@ -5,13 +5,13 @@ namespace App\Ship\Tests\Unit\Criterias;
 use App\Ship\Criterias\OrderByFieldCriteria;
 use App\Ship\Tests\Fakes\TestUserFactory;
 use App\Ship\Tests\Fakes\TestUserRepository;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversClass(OrderByFieldCriteria::class)]
-final class OrderByFieldCriteriaTest extends TestCase
+final class OrderByFieldCriteriaTest extends ShipTestCase
 {
     public function testCriteriaAscending(): void
     {

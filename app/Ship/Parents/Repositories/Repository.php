@@ -4,7 +4,6 @@ namespace App\Ship\Parents\Repositories;
 
 use Apiato\Core\Abstracts\Repositories\Repository as AbstractRepository;
 use App\Ship\Exceptions\DeleteResourceFailedException;
-use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Collection;
@@ -37,15 +36,11 @@ abstract class Repository extends AbstractRepository
      *
      * @return TModel
      *
-     * @throws NotFoundException
+     * @throws ModelNotFoundException
      */
     public function getById(int|string $id, array $columns = ['*'])
     {
-        try {
-            return $this->find($id, $columns);
-        } catch (ModelNotFoundException) {
-            throw new NotFoundException();
-        }
+        return $this->find($id, $columns);
     }
 
     /**
@@ -65,15 +60,13 @@ abstract class Repository extends AbstractRepository
      *
      * @param int|string $id
      *
-     * @throws NotFoundException
+     * @throws ModelNotFoundException
      * @throws DeleteResourceFailedException
      */
     public function delete($id): bool
     {
         try {
             return (bool) parent::delete($id);
-        } catch (ModelNotFoundException) {
-            throw new NotFoundException();
         } catch (\Exception) {
             throw new DeleteResourceFailedException();
         }

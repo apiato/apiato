@@ -5,13 +5,13 @@ namespace App\Ship\Tests\Unit\Criterias;
 use App\Ship\Criterias\ThisBetweenDatesCriteria;
 use App\Ship\Tests\Fakes\TestUserFactory;
 use App\Ship\Tests\Fakes\TestUserRepository;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversClass(ThisBetweenDatesCriteria::class)]
-final class ThisBetweenDatesCriteriaTest extends TestCase
+final class ThisBetweenDatesCriteriaTest extends ShipTestCase
 {
     public function testCriteria(): void
     {

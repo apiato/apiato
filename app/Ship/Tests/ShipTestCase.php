@@ -6,7 +6,7 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TestCase extends ParentTestCase
+class ShipTestCase extends ParentTestCase
 {
     protected function createTestUsersTable(): void
     {

@@ -3,13 +3,13 @@
 namespace App\Ship\Tests\Unit\Exceptions;
 
 use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Tests\TestCase;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('ship')]
 #[CoversClass(CreateResourceFailedException::class)]
-final class CreateResourceFailedExceptionTest extends TestCase
+final class CreateResourceFailedExceptionTest extends ShipTestCase
 {
     public function testException(): void
     {
