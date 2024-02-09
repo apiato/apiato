@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
+use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -44,7 +45,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
     }
 
     #[DataProvider('loginDataProvider')]
-    public function testCanExtractUsernames(array $input, array $expected): void
+    public function testCanExtractUsernameFromValidInput(array $input, array $expected): void
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
 
@@ -81,7 +82,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->assertEquals($result, $expected);
     }
 
-    public function testEmptyCredentialsWithException(): void
+    public function testEmptyCredentialsThrowsException(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('No matching login field found');
@@ -89,7 +90,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         LoginFieldProcessor::extractAll([]);
     }
 
-    public static function invalidAllowedLoginFieldsDataProvider(): array
+    public static function invalidLoginFieldsDataProvider(): array
     {
         return [
             [
@@ -105,14 +106,13 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
     }
 
-    #[DataProvider('invalidAllowedLoginFieldsDataProvider')]
-    public function testInvalidAllowedLoginFields(mixed $invalidFields, string $exceptedException, string $exceptedMessage): void
+    #[DataProvider('invalidLoginFieldsDataProvider')]
+    public function testInvalidLoginFields(mixed $invalidFields, string $exceptedException, string $exceptedMessage): void
     {
         $this->expectException($exceptedException);
         $this->expectExceptionMessage($exceptedMessage);
 
         config()->set('appSection-authentication.login.fields', $invalidFields);
-
         $userDetails = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -121,63 +121,150 @@ final class LoginFieldProcessorTest extends UnitTestCase
         LoginFieldProcessor::extractAll($userDetails);
     }
 
-    public function testMergeValidValidationRulesWithOneAllowedLoginField(): void
-    {
-        $newRules = [
-            'password' => 'required',
-            'remember' => 'boolean',
-        ];
-
-        Config::set('appSection-authentication.login.fields', ['email' => ['email']]);
-
-        $result = LoginFieldProcessor::mergeValidationRules($newRules);
-
-        $this->assertArrayHasKey('email', $result);
-        $this->assertSame($result['email'], 'required:email|email');
-        $this->assertValidValidationRulesIsMerged($result, $newRules);
-    }
-
-    public function testMergeValidValidationRulesWithManyAllowedLoginFields(): void
-    {
-        $newRules = [
-            'password' => 'required',
-            'remember' => 'boolean',
-        ];
-
-        Config::set('appSection-authentication.login.fields', [
-            'email' => ['email'],
-            'login' => ['string', 'required'],
-        ]);
-
-        $result = LoginFieldProcessor::mergeValidationRules($newRules);
-
-        $this->assertArrayHasKey('email', $result);
-        $this->assertSame($result['email'], 'required_without_all:login|email');
-        $this->assertArrayHasKey('login', $result);
-        $this->assertSame($result['login'], 'required_without_all:email|string|required');
-        $this->assertValidValidationRulesIsMerged($result, $newRules);
-    }
-
-    private function assertValidValidationRulesIsMerged(array $result, array $newRules): void
-    {
-        foreach ($newRules as $ruleName => $ruleValue) {
-            $this->assertArrayHasKey($ruleName, $result);
-            $this->assertSame($result[$ruleName], $ruleValue);
-        }
-    }
-
     public function testMergeValidationRulesWithException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The login fields must be an array');
 
         config()->set('appSection-authentication.login.fields', 'ThisIsNotArray!');
-
         $newRules = [
             'password' => 'required',
             'remember' => 'boolean',
         ];
 
         LoginFieldProcessor::mergeValidationRules($newRules);
+    }
+
+    public static function multiLoginFieldProvider(): array
+    {
+        return [
+            [
+                [
+                    new LoginField('email', ['required|email']),
+                    'required_without_all:name,city|email',
+                ],
+                [
+                    new LoginField('name', ['string', 'max:255']),
+                    'required_without_all:email,city|string|max:255',
+                ],
+                [
+                    new LoginField('city', ['required|string', 'min:3']),
+                    'required_without_all:email,name|string|min:3',
+                ],
+            ],
+            [
+                [
+                    new LoginField('email', ['email']),
+                    'required_without_all:name,city|email',
+                ],
+                [
+                    new LoginField('name', []),
+                    'required_without_all:email,city',
+                ],
+                [
+                    new LoginField('city', ['required']),
+                    'required_without_all:email,name',
+                ],
+            ],
+            [
+                [
+                    new LoginField('email', ['email|nullable', 'max:255|nullable']),
+                    'required_without_all:name,city|email|nullable|max:255',
+                ],
+                [
+                    new LoginField('name', ['string', 'required']),
+                    'required_without_all:email,city|string',
+                ],
+                [
+                    new LoginField('city', ['required|string|string', 'min:3|string']),
+                    'required_without_all:email,name|string|min:3',
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @param array{LoginField, string} $email
+     * @param array{LoginField, string} $name
+     * @param array{LoginField, string} $city
+     */
+    #[DataProvider('multiLoginFieldProvider')]
+    public function testCanMergeValidationRules(array $email, array $name, array $city): void
+    {
+        [$emailField, $emailExpectedRule] = $email;
+        [$nameField, $nameExpectedRule] = $name;
+        [$cityField, $cityExpectedRule] = $city;
+        Config::set('appSection-authentication.login.fields', [
+            ...$emailField->toArray(),
+            ...$nameField->toArray(),
+            ...$cityField->toArray(),
+        ]);
+        $rules = [
+            'phone' => ['required', 'numeric'],
+            'address' => ['string'],
+            'age' => ['nullable', 'integer'],
+        ];
+
+        $result = LoginFieldProcessor::mergeValidationRules($rules);
+
+        $this->assertSame([
+            'phone' => ['required', 'numeric'],
+            'address' => ['string'],
+            'age' => ['nullable', 'integer'],
+            $emailField->name() => $emailExpectedRule,
+            $nameField->name() => $nameExpectedRule,
+            $cityField->name() => $cityExpectedRule,
+        ], $result);
+    }
+
+    public static function singleLoginFieldProvider(): array
+    {
+        return [
+            [
+                new LoginField('city', ['required|string', 'min:3']),
+                'expectation' => 'required|string|min:3',
+            ],
+            [
+                new LoginField('city', []),
+                'expectation' => 'required',
+            ],
+            [
+                new LoginField('city', ['required|string|required|string', 'min:3']),
+                'expectation' => 'required|string|min:3',
+            ],
+            [
+
+                new LoginField('city', ['string', 'min:4', 'required', 'string']),
+                'expectation' => 'string|min:4|required',
+            ],
+            [
+                new LoginField('city', ['min:3|string']),
+                'expectation' => 'required|min:3|string',
+            ],
+            [
+                new LoginField('city', ['string', 'required', 'min:3']),
+                'expectation' => 'string|required|min:3',
+            ],
+        ];
+    }
+
+    #[DataProvider('singleLoginFieldProvider')]
+    public function testGivenOnlyOneFieldExistsShouldNotAddMultiLoginRelatedRule(LoginField $field, string $expectation): void
+    {
+        Config::set('appSection-authentication.login.fields', [$field->name() => $field->rules()]);
+        $rules = [
+            'phone' => ['required', 'numeric'],
+            'address' => ['string'],
+            'age' => ['nullable', 'integer'],
+        ];
+
+        $result = LoginFieldProcessor::mergeValidationRules($rules);
+
+        $this->assertSame([
+            'phone' => ['required', 'numeric'],
+            'address' => ['string'],
+            'age' => ['nullable', 'integer'],
+            $field->name() => $expectation,
+        ], $result);
     }
 }

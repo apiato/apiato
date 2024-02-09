@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Classes;
 
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
+use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Arr;
 
 class LoginFieldProcessor
@@ -100,37 +101,61 @@ class LoginFieldProcessor
     // TODO: I think this should be moved to a separate class
     public static function mergeValidationRules(array $rules): array
     {
-        $allowedLoginFields = config('appSection-authentication.login.fields', ['email' => []]);
+        /**
+         * @var string $prefix
+         * @var array $elements
+         */
+        $prefix = config('appSection-authentication.login.prefix', '');
+        $elements = config('appSection-authentication.login.fields', ['email' => []]);
 
-        if (!is_array($allowedLoginFields)) {
+        if (!is_array($elements)) {
             throw new \InvalidArgumentException('The login fields must be an array');
         }
 
-        if (1 === count($allowedLoginFields)) {
-            $loginField = array_key_first($allowedLoginFields);
-            $optionalValidators = $allowedLoginFields[$loginField];
-            $validators = implode('|', $optionalValidators);
+        if (1 === count($elements)) {
+            $fieldName = array_key_first($elements);
+            // $fieldRules = self::getUniqueRules($elements[$fieldName]);
+            $loginField = new LoginField($fieldName, $elements[$fieldName]);
+            $fieldRules = $loginField->rules()[0];
 
-            $fieldName = static::prepareLoginField($loginField);
+            if (!str_contains($fieldRules, 'required')) {
+                $fieldRules = 'required|' . $fieldRules;
+            }
 
-            $rules[$fieldName] = "required:{$fieldName}|{$validators}";
+            $rules["{$prefix}{$fieldName}"] = self::trimPipes($fieldRules);
 
             return $rules;
         }
 
-        foreach ($allowedLoginFields as $loginField => $optionalValidators) {
-            $otherLoginFields = Arr::except($allowedLoginFields, $loginField);
-            $otherLoginFields = array_keys($otherLoginFields);
-            $otherLoginFields = preg_filter('/^/', static::getPrefix(), $otherLoginFields);
-            $otherLoginFields = implode(',', $otherLoginFields);
+        foreach ($elements as $fieldName => $fieldRules) {
+            $currentLoginField = new LoginField($fieldName, $elements[$fieldName]);
+            $otherFields = Arr::except($elements, $currentLoginField->name());
+            $otherFieldsNames = array_keys($otherFields);
+            $otherFieldsNamesWithPrefix = preg_filter('/^/', $prefix, $otherFieldsNames);
+            $otherFieldsNamesConcatenated = implode(',', $otherFieldsNamesWithPrefix);
+            $fieldRules = $currentLoginField->rules()[0];
+            if (str_contains($fieldRules, 'required')) {
+                $fieldRules = str_replace('required', '', $fieldRules);
+            }
+            $fieldNameWithPrefix = "{$prefix}{$currentLoginField->name()}";
+            $fieldRules = "required_without_all:{$otherFieldsNamesConcatenated}|{$fieldRules}";
+            $fieldRules = self::trimPipes($fieldRules);
 
-            $validators = implode('|', $optionalValidators);
-
-            $fieldName = static::prepareLoginField($loginField);
-
-            $rules[$fieldName] = "required_without_all:{$otherLoginFields}|{$validators}";
+            $rules[$fieldNameWithPrefix] = $fieldRules;
         }
 
         return $rules;
+    }
+
+    private static function trimPipes(string $rule): string
+    {
+        $rule = str_replace('||', '|', $rule);
+
+        return trim($rule, '|');
+    }
+
+    private static function getUniqueRules(mixed $attributeRules): string
+    {
+        return implode('|', array_unique(explode('|', implode('|', $attributeRules))));
     }
 }
