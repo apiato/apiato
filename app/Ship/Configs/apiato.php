@@ -59,7 +59,7 @@ return [
         | response, and it will be logged in the default Log file.
         |
         */
-        'debug' => env('API_DEBUG', true),
+        'debug' => env('API_DEBUG', false),
 
         /*
         |--------------------------------------------------------------------------
