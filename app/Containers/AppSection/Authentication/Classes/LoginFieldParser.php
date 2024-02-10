@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Arr;
 
-class LoginFieldProcessor
+class LoginFieldParser
 {
     /**
      * Extract all matching login fields from the given data.
@@ -116,13 +116,16 @@ class LoginFieldProcessor
             $fieldName = array_key_first($elements);
             // $fieldRules = self::getUniqueRules($elements[$fieldName]);
             $loginField = new LoginField($fieldName, $elements[$fieldName]);
-            $fieldRules = $loginField->rules()[0];
+            $fieldRules = $loginField->rules();
 
-            if (!str_contains($fieldRules, 'required')) {
-                $fieldRules = 'required|' . $fieldRules;
+            if (!$loginField->isRequired()) {
+                $loginField->makeRequired();
             }
+            // if (!str_contains($fieldRules, 'required')) {
+            //     $fieldRules = 'required|' . $fieldRules;
+            // }
 
-            $rules["{$prefix}{$fieldName}"] = self::trimPipes($fieldRules);
+            $rules["{$prefix}{$fieldName}"] = $loginField->rules();//self::trimPipes($fieldRules);
 
             return $rules;
         }
@@ -133,15 +136,16 @@ class LoginFieldProcessor
             $otherFieldsNames = array_keys($otherFields);
             $otherFieldsNamesWithPrefix = preg_filter('/^/', $prefix, $otherFieldsNames);
             $otherFieldsNamesConcatenated = implode(',', $otherFieldsNamesWithPrefix);
-            $fieldRules = $currentLoginField->rules()[0];
-            if (str_contains($fieldRules, 'required')) {
+
+            if ($currentLoginField->isRequired()) {
                 $fieldRules = str_replace('required', '', $fieldRules);
             }
             $fieldNameWithPrefix = "{$prefix}{$currentLoginField->name()}";
-            $fieldRules = "required_without_all:{$otherFieldsNamesConcatenated}|{$fieldRules}";
-            $fieldRules = self::trimPipes($fieldRules);
+            // $fieldRules = "required_without_all:{$otherFieldsNamesConcatenated}|{$fieldRules}";
+//            $fieldRules = self::trimPipes($fieldRules);
+            $currentLoginField->makeRequiredWithoutAll($otherFieldsNamesWithPrefix);
 
-            $rules[$fieldNameWithPrefix] = $fieldRules;
+            $rules[$fieldNameWithPrefix] = $currentLoginField->rules();
         }
 
         return $rules;

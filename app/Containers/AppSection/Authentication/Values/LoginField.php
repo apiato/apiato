@@ -3,14 +3,17 @@
 namespace App\Containers\AppSection\Authentication\Values;
 
 use App\Ship\Parents\Values\Value as ParentValue;
-use Illuminate\Validation\ValidationRuleParser;
+use Illuminate\Validation\Validator;
 
 final class LoginField extends ParentValue implements \Stringable
 {
+    private readonly Validator $validator;
+
     public function __construct(
         private string $name,
         private array $rules,
     ) {
+        $this->validator = validator([], $this->rules);
     }
 
     public function __toString(): string
@@ -25,7 +28,7 @@ final class LoginField extends ParentValue implements \Stringable
 
     public function rules(): array
     {
-        return [$this->uniqueRules()];
+        return $this->validator->getRules();
     }
 
     public function name(): string
@@ -33,25 +36,46 @@ final class LoginField extends ParentValue implements \Stringable
         return $this->name;
     }
 
-    private function uniqueRules(): string
+    public function isRequired(): bool
     {
-        ValidationRuleParser::parse($this->rules);
-
-        return implode('|', array_unique(explode('|', implode('|', $this->rules))));
+        return $this->validator->hasRule($this->name, 'required');
     }
 
-    private function isRequired(): bool
+    public function makeRequired(): void
     {
-        return !str_contains($this->uniqueRules(), 'required');
+        $this->validator->addRules([$this->name => 'required']);
     }
 
-    public function makeRequired(bool $required = true): self
+    public function makeRequiredWithoutAll(array $fields): void
     {
-        if ($required && $this->isRequired()) {
-            $this->rules[] = 'required';
+        $this->removeRule('required');
+        $implodedFields = implode(',', $fields);
+        $this->validator->addRules([$this->name, "required_without_all:{$implodedFields}"]);
+    }
+
+    public function removeRule(string $ruleToRemove): void
+    {
+        // Get the current rules
+        $rules = $this->validator->getRules();
+
+        // Find the index of the rule to remove
+        foreach ($rules as $rule) {
+            dump($rule);
+            foreach ($rule as $value) {
+                dump($value);
+            }
         }
 
-        return $this;
+        // If the rule is found, remove it
+//        if (false !== $index) {
+//            unset($fieldRules[$index]);
+//        }
+
+        // Set the modified rules back to the field
+//        $rules[$this->name] = $fieldRules;
+
+        // Set the modified rules back to the validator
+        $this->validator->setRules($rules);
     }
 
     private function trimPipes(): self
