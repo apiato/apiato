@@ -233,7 +233,6 @@ final class LoginFieldParserTest extends UnitTestCase
                 'expectation' => 'required|string|min:3',
             ],
             [
-
                 new LoginField('city', ['string', 'min:4', 'required', 'string']),
                 'expectation' => 'string|min:4|required',
             ],
