@@ -3,8 +3,8 @@
 namespace App\Containers\AppSection\Authentication\Classes;
 
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
-use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class LoginFieldParser
 {
@@ -113,35 +113,34 @@ class LoginFieldParser
         }
 
         if (1 === count($elements)) {
-            $fieldName = array_key_first($elements);
-            // $fieldRules = self::getUniqueRules($elements[$fieldName]);
-            $loginField = new LoginField($fieldName, $elements[$fieldName]);
-            $fieldRules = $loginField->rules()[0];
+            $key = array_key_first($elements);
+            $fieldRules = self::getUniqueRules($elements[$key]);
 
-            if (!str_contains($fieldRules, 'required')) {
+            if (!Str::contains($fieldRules, 'required')) {
                 $fieldRules = 'required|' . $fieldRules;
             }
 
-            $rules["{$prefix}{$fieldName}"] = self::trimPipes($fieldRules);
+            $fieldName = "{$prefix}{$key}";
+            $rules[$fieldName] = self::trimPipes($fieldRules);
 
             return $rules;
         }
 
-        foreach ($elements as $fieldName => $fieldRules) {
-            $currentLoginField = new LoginField($fieldName, $elements[$fieldName]);
-            $otherFields = Arr::except($elements, $currentLoginField->name());
-            $otherFieldsNames = array_keys($otherFields);
-            $otherFieldsNamesWithPrefix = preg_filter('/^/', $prefix, $otherFieldsNames);
-            $otherFieldsNamesConcatenated = implode(',', $otherFieldsNamesWithPrefix);
-            $fieldRules = $currentLoginField->rules()[0];
-            if (str_contains($fieldRules, 'required')) {
+        foreach ($elements as $key => $fieldRules) {
+            // build all other login fields together
+            $otherLoginFields = Arr::except($elements, $key);
+            $otherLoginFields = array_keys($otherLoginFields);
+            $otherLoginFields = preg_filter('/^/', $prefix, $otherLoginFields);
+            $otherLoginFields = implode(',', $otherLoginFields);
+            $fieldRules = self::getUniqueRules($fieldRules);
+            if (Str::contains($fieldRules, 'required')) {
                 $fieldRules = str_replace('required', '', $fieldRules);
             }
-            $fieldNameWithPrefix = "{$prefix}{$currentLoginField->name()}";
-            $fieldRules = "required_without_all:{$otherFieldsNamesConcatenated}|{$fieldRules}";
+            $fieldName = "{$prefix}{$key}";
+            $fieldRules = "required_without_all:{$otherLoginFields}|{$fieldRules}";
             $fieldRules = self::trimPipes($fieldRules);
 
-            $rules[$fieldNameWithPrefix] = $fieldRules;
+            $rules[$fieldName] = $fieldRules;
         }
 
         return $rules;
