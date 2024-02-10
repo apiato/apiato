@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Containers\AppSection\Authentication\Values\LoginField;
@@ -12,8 +12,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
-#[CoversClass(LoginFieldProcessor::class)]
-final class LoginFieldProcessorTest extends UnitTestCase
+#[CoversClass(LoginFieldParser::class)]
+final class LoginFieldParserTest extends UnitTestCase
 {
     public static function loginDataProvider(): array
     {
@@ -49,7 +49,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
 
-        $result = LoginFieldProcessor::extractAll($input);
+        $result = LoginFieldParser::extractAll($input);
 
         $this->assertEquals($result, $expected);
     }
@@ -63,7 +63,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldProcessor::extractAll($credentials);
+        $result = LoginFieldParser::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
@@ -77,7 +77,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldProcessor::extractAll($credentials);
+        $result = LoginFieldParser::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
@@ -87,7 +87,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('No matching login field found');
 
-        LoginFieldProcessor::extractAll([]);
+        LoginFieldParser::extractAll([]);
     }
 
     public static function invalidLoginFieldsDataProvider(): array
@@ -118,7 +118,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
 
-        LoginFieldProcessor::extractAll($userDetails);
+        LoginFieldParser::extractAll($userDetails);
     }
 
     public function testMergeValidationRulesWithException(): void
@@ -132,7 +132,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
             'remember' => 'boolean',
         ];
 
-        LoginFieldProcessor::mergeValidationRules($newRules);
+        LoginFieldParser::mergeValidationRules($newRules);
     }
 
     public static function multiLoginFieldProvider(): array
@@ -205,7 +205,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
             'age' => ['nullable', 'integer'],
         ];
 
-        $result = LoginFieldProcessor::mergeValidationRules($rules);
+        $result = LoginFieldParser::mergeValidationRules($rules);
 
         $this->assertSame([
             'phone' => ['required', 'numeric'],
@@ -258,7 +258,7 @@ final class LoginFieldProcessorTest extends UnitTestCase
             'age' => ['nullable', 'integer'],
         ];
 
-        $result = LoginFieldProcessor::mergeValidationRules($rules);
+        $result = LoginFieldParser::mergeValidationRules($rules);
 
         $this->assertSame([
             'phone' => ['required', 'numeric'],

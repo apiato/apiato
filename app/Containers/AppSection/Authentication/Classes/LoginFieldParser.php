@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Arr;
 
-class LoginFieldProcessor
+class LoginFieldParser
 {
     /**
      * Extract all matching login fields from the given data.
