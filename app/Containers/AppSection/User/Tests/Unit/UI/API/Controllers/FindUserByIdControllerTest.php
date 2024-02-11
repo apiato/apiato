@@ -19,7 +19,7 @@ final class FindUserByIdControllerTest extends UnitTestCase
         $controller = app(FindUserByIdController::class);
         $request = FindUserByIdRequest::injectData();
         $actionMock = $this->mock(FindUserByIdAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects('run')->andReturn(UserFactory::new()->createOne());
 
         $controller->__invoke($request, $actionMock);
     }

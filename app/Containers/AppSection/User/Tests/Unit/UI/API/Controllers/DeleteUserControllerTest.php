@@ -18,7 +18,7 @@ final class DeleteUserControllerTest extends UnitTestCase
         $controller = app(DeleteUserController::class);
         $request = DeleteUserRequest::injectData();
         $actionMock = $this->mock(DeleteUserAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects('run');
 
         $controller->__invoke($request, $actionMock);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tasks;
 
+use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\NotFoundException;
@@ -20,10 +21,10 @@ class UpdateUserTask extends ParentTask
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
-    public function run(int $id, array $properties): User
+    public function run(UserResource $data): User
     {
         try {
-            return $this->repository->update($properties, $id);
+            return $this->repository->update($data->toArray(), $data->id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
         } catch (\Exception) {

@@ -19,7 +19,7 @@ final class UpdatePasswordControllerTest extends UnitTestCase
         $controller = app(UpdatePasswordController::class);
         $request = UpdatePasswordRequest::injectData();
         $actionMock = $this->mock(UpdatePasswordAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects('run')->andReturn(UserFactory::new()->createOne());
 
         $controller->__invoke($request, $actionMock);
     }

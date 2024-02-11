@@ -3,11 +3,17 @@
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
+use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+/**
+ * @template T of UserResource
+ *
+ * @extends ParentUserModel<T>
+ */
 class User extends ParentUserModel implements MustVerifyEmail
 {
     protected $fillable = [
@@ -69,5 +75,13 @@ class User extends ParentUserModel implements MustVerifyEmail
         return new Attribute(
             get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
         );
+    }
+
+    /**
+     * @return class-string<T>
+     */
+    final public function dataClass(): string
+    {
+        return UserResource::class;
     }
 }

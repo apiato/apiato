@@ -11,7 +11,7 @@ class DeleteUserController extends ApiController
 {
     public function __invoke(DeleteUserRequest $request, DeleteUserAction $action): JsonResponse
     {
-        $action->run($request);
+        $action->run($request->getData());
 
         return $this->noContent();
     }
