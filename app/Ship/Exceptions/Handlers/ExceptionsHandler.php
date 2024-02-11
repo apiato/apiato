@@ -5,6 +5,8 @@ namespace App\Ship\Exceptions\Handlers;
 use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
 use Apiato\Core\Exceptions\AuthenticationException as CoreAuthenticationException;
 use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
+use App\Containers\AppSection\Authorization\UI\WEB\Controllers\UnauthorizedPageController;
 use App\Ship\Exceptions\AccessDeniedException;
 use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Auth\AuthenticationException as LaravelAuthenticationException;
@@ -61,7 +63,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
                 return $this->buildJsonResponse(new AccessDeniedException());
             }
 
-            return redirect()->guest(route('unauthorized-page'));
+            return redirect()->guest(action(UnauthorizedPageController::class));
         });
     }
 
@@ -92,6 +94,6 @@ class ExceptionsHandler extends CoreExceptionsHandler
             return $this->buildJsonResponse(new CoreAuthenticationException());
         }
 
-        return redirect()->guest(route('login-page'));
+        return redirect()->guest(action(LoginPageController::class));
     }
 }

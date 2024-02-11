@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Middlewares;
 
 use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Ship\Enums\AuthGuard;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ final class RedirectIfAuthenticatedTest extends UnitTestCase
 
         $response = $middleware->handle($request, static fn (Request $req) => $req, $requestGuard);
 
-        $this->assertTrue($response->isRedirect(route('home-page')));
+        $this->assertTrue($response->isRedirect(action(HomePageController::class)));
     }
 
     #[TestDox('dont redirect if logged in with different guard (means not logged in)')]
