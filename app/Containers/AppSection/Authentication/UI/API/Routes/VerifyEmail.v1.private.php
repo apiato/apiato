@@ -5,7 +5,7 @@
  *
  * @apiName            VerifyEmail
  *
- * @api                {POST} /v1/email/verify/:id/:hash Verify Email
+ * @api                {POST} /v1/email/verify/:user_id/:hash Verify Email
  *
  * @apiDescription     Verify user email
  *
@@ -19,7 +19,7 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiParam           {String} id user id
+ * @apiParam           {String} user_id
  * @apiParam           {String} hash a hashed value sent to the user email
  *
  * @apiQuery           {string} expires expiration time of the `verify email` link
@@ -33,6 +33,6 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('email/verify/{id}/{hash}', VerifyEmailController::class)
+Route::post('email/verify/{user_id}/{hash}', VerifyEmailController::class)
     ->name('verification.verify')
     ->middleware('signed');
