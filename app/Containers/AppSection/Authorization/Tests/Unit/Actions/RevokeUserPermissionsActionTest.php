@@ -21,7 +21,7 @@ final class RevokeUserPermissionsActionTest extends UnitTestCase
         $user->givePermissionTo($permissions);
         $request = RevokeUserPermissionsRequest::injectData([
             'permission_ids' => [$permissions[1]->getHashedKey()],
-        ])->withUrlParameters(['id' => $user->id]);
+        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RevokeUserPermissionsAction::class);
 
         $result = $action->run($request);
@@ -38,7 +38,7 @@ final class RevokeUserPermissionsActionTest extends UnitTestCase
         $user->givePermissionTo($permissions);
         $request = RevokeUserPermissionsRequest::injectData([
             'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ])->withUrlParameters(['id' => $user->id]);
+        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RevokeUserPermissionsAction::class);
 
         $result = $action->run($request);

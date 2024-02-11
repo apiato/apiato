@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class FindRoleByIdTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/roles/{id}';
+    protected string $endpoint = 'get@v1/roles/{role_id}';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -22,7 +22,7 @@ final class FindRoleByIdTest extends ApiTestCase
     {
         $roleA = RoleFactory::new()->createOne();
 
-        $response = $this->injectId($roleA->id)->makeCall();
+        $response = $this->injectId($roleA->id, replace: '{role_id}')->makeCall();
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
@@ -33,7 +33,7 @@ final class FindRoleByIdTest extends ApiTestCase
     {
         $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId)->makeCall();
+        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall();
 
         $response->assertNotFound();
     }

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class RevokeUserPermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/users/{id}/permissions';
+    protected string $endpoint = 'delete@v1/users/{user_id}/permissions';
 
     protected array $access = [
         'permissions' => 'manage-permissions',
@@ -31,7 +31,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -58,7 +58,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id)->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -79,7 +79,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(

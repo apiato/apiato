@@ -5,7 +5,7 @@
  *
  * @apiName            FindPermissionById
  *
- * @api                {get} /v1/permissions/:id Find a Permission by ID
+ * @api                {get} /v1/permissions/:permission_id Find a Permission by ID
  *
  * @apiVersion         1.0.0
  *
@@ -14,7 +14,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} id permission id
+ * @apiParam           {String} permission_id
  *
  * @apiUse             PermissionSuccessSingleResponse
  */
@@ -22,5 +22,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\FindPermissionByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('permissions/{id}', FindPermissionByIdController::class)
+Route::get('permissions/{permission_id}', FindPermissionByIdController::class)
     ->middleware(['auth:api']);

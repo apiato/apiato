@@ -25,14 +25,14 @@ final class FindPermissionRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'permission_id',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'permission_id',
         ], $this->request->getUrlParametersArray());
     }
 
@@ -46,7 +46,7 @@ final class FindPermissionRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = FindPermissionByIdRequest::injectData([], $user)->withUrlParameters(['id' => PermissionFactory::new()->createOne()->id]);
+        $request = FindPermissionByIdRequest::injectData([], $user)->withUrlParameters(['permission_id' => PermissionFactory::new()->createOne()->id]);
 
         $this->assertTrue($request->authorize());
     }

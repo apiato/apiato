@@ -5,7 +5,7 @@
  *
  * @apiName            RevokeUserPermissions
  *
- * @api                {delete} /v1/users/:id/permissions Detach Permission From User
+ * @api                {delete} /v1/users/:user_id/permissions Detach Permission From User
  *
  * @apiDescription     Detach direct permissions assigned to user.
  *
@@ -16,7 +16,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} id user's id
+ * @apiParam           {String} user_id
  *
  * @apiBody            {String} permission_ids Array of Permissions ID's
  *
@@ -26,5 +26,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeUserPermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('users/{id}/permissions', RevokeUserPermissionsController::class)
+Route::delete('users/{user_id}/permissions', RevokeUserPermissionsController::class)
     ->middleware(['auth:api']);
