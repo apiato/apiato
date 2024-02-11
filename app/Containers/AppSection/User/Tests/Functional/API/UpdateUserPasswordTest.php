@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class UpdateUserPasswordTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{id}/password';
+    protected string $endpoint = 'patch@v1/users/{user_id}/password';
 
     protected array $access = [
         'permissions' => null,
@@ -29,7 +29,7 @@ final class UpdateUserPasswordTest extends ApiTestCase
             'new_password' => 'updated#Password111',
         ];
 
-        $response = $this->injectId($this->testingUser->id)->makeCall($data);
+        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(

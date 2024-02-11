@@ -17,14 +17,14 @@ final class DeleteUserRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getUrlParametersArray());
     }
 

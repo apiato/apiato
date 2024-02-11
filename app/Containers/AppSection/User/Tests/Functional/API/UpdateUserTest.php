@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class UpdateUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{id}';
+    protected string $endpoint = 'patch@v1/users/{user_id}';
 
     protected array $access = [
         'permissions' => null,
@@ -34,7 +34,7 @@ final class UpdateUserTest extends ApiTestCase
             'birth' => Carbon::today()->toIso8601String(),
         ];
 
-        $response = $this->injectId($this->testingUser->id)->makeCall($data);
+        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(

@@ -11,11 +11,11 @@ use Illuminate\Validation\Rules\Password;
 class UpdatePasswordRequest extends ParentRequest
 {
     protected array $decode = [
-        'id',
+        'user_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'user_id',
     ];
 
     public function rules(): array
@@ -33,6 +33,6 @@ class UpdatePasswordRequest extends ParentRequest
 
     public function authorize(Gate $gate): bool
     {
-        return $gate->allows('update', [User::class, $this->id]);
+        return $gate->allows('update', [User::class, $this->user_id]);
     }
 }
