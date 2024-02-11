@@ -25,14 +25,14 @@ final class FindRoleByIdRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'role_id',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'role_id',
         ], $this->request->getUrlParametersArray());
     }
 
@@ -46,7 +46,7 @@ final class FindRoleByIdRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
-        $request = FindRoleByIdRequest::injectData([], $user)->withUrlParameters(['id' => RoleFactory::new()->createOne()->id]);
+        $request = FindRoleByIdRequest::injectData([], $user)->withUrlParameters(['role_id' => RoleFactory::new()->createOne()->id]);
 
         $this->assertTrue($request->authorize());
     }

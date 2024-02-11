@@ -16,7 +16,7 @@ final class DeleteUserActionTest extends UnitTestCase
     public function testCanDeleteUser(): void
     {
         $user = UserFactory::new()->createOne();
-        $request = DeleteUserRequest::injectData()->withUrlParameters(['id' => $user->id]);
+        $request = DeleteUserRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
         $action = app(DeleteUserAction::class);
 
         $result = $action->run($request);

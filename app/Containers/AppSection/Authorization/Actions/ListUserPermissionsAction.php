@@ -23,6 +23,6 @@ class ListUserPermissionsAction extends ParentAction
      */
     public function run(ListUserPermissionsRequest $request): Collection
     {
-        return $this->findUserByIdTask->run($request->id)->permissions;
+        return $this->findUserByIdTask->run($request->user_id)->permissions;
     }
 }

@@ -24,7 +24,7 @@ final class VerifyEmailActionTest extends UnitTestCase
         $request = VerifyEmailRequest::injectData([
             'hash' => sha1($user->email),
         ])->withUrlParameters([
-            'id' => $user->id,
+            'user_id' => $user->id,
         ]);
 
         $action->run($request);
@@ -42,7 +42,7 @@ final class VerifyEmailActionTest extends UnitTestCase
         $request = VerifyEmailRequest::injectData([
             'hash' => sha1('nonematching@email.com'),
         ])->withUrlParameters([
-            'id' => $user->id,
+            'user_id' => $user->id,
         ]);
 
         $action->run($request);

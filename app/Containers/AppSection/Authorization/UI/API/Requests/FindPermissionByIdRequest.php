@@ -12,11 +12,11 @@ class FindPermissionByIdRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'id',
+        'permission_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'permission_id',
     ];
 
     public function rules(): array

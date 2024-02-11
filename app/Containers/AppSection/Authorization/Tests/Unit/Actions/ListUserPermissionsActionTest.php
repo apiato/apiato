@@ -18,7 +18,7 @@ final class ListUserPermissionsActionTest extends UnitTestCase
     {
         $user = UserFactory::new()->createOne()
             ->givePermissionTo(PermissionFactory::new()->count(3)->create());
-        $request = ListUserPermissionsRequest::injectData()->withUrlParameters(['id' => $user->id]);
+        $request = ListUserPermissionsRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
         $action = app(ListUserPermissionsAction::class);
 
         $result = $action->run($request);

@@ -9,11 +9,11 @@ use Illuminate\Contracts\Auth\Access\Gate;
 class DeleteUserRequest extends ParentRequest
 {
     protected array $decode = [
-        'id',
+        'user_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'user_id',
     ];
 
     public function rules(): array

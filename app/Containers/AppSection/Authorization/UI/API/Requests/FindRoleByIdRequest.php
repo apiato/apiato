@@ -12,11 +12,11 @@ class FindRoleByIdRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'id',
+        'role_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'role_id',
     ];
 
     public function rules(): array

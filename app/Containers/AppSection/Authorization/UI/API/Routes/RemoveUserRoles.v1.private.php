@@ -20,7 +20,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {Number} user_id user ID
+ * @apiBody           {String} user_id user ID
  * @apiBody           {Array} role_ids Role ID or Array of Role ID's
  *
  * @apiUse             UserSuccessSingleResponse

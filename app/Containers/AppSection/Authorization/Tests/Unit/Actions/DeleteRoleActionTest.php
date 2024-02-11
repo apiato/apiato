@@ -16,7 +16,7 @@ final class DeleteRoleActionTest extends UnitTestCase
     public function testCanDeleteRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $request = DeleteRoleRequest::injectData()->withUrlParameters(['id' => $role->id]);
+        $request = DeleteRoleRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
         $action = app(DeleteRoleAction::class);
         $this->assertModelExists($role);
 

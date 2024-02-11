@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class FindUserByIdTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/users/{id}';
+    protected string $endpoint = 'get@v1/users/{user_id}';
 
     protected array $access = [
         'permissions' => null,
@@ -23,7 +23,7 @@ final class FindUserByIdTest extends ApiTestCase
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($this->testingUser->id)->makeCall();
+        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
 
         $response->assertOk();
         $response->assertJson(
@@ -37,7 +37,7 @@ final class FindUserByIdTest extends ApiTestCase
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId(UserFactory::new()->createOne()->id)->makeCall();
+        $response = $this->injectId(UserFactory::new()->createOne()->id, replace: '{user_id}')->makeCall();
 
         $response->assertOk();
     }

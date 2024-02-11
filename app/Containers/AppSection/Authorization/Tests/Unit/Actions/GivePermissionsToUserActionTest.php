@@ -21,7 +21,7 @@ final class GivePermissionsToUserActionTest extends UnitTestCase
         $data = [
             'permission_ids' => [$permission->getHashedKey()],
         ];
-        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['id' => $user->id]);
+        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $user->id]);
         $action = app(GivePermissionsToUserAction::class);
 
         $result = $action->run($request);
@@ -38,7 +38,7 @@ final class GivePermissionsToUserActionTest extends UnitTestCase
         $data = [
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
-        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['id' => $user->id]);
+        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $user->id]);
         $action = app(GivePermissionsToUserAction::class);
 
         $result = $action->run($request);

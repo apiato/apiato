@@ -23,6 +23,6 @@ class ListUserRolesAction extends ParentAction
      */
     public function run(ListUserRolesRequest $request): Collection
     {
-        return $this->findUserByIdTask->run($request->id)->roles;
+        return $this->findUserByIdTask->run($request->user_id)->roles;
     }
 }

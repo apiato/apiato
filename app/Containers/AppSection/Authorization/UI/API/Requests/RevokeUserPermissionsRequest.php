@@ -12,12 +12,12 @@ class RevokeUserPermissionsRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'id',
+        'user_id',
         'permission_ids.*',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'user_id',
     ];
 
     public function rules(): array

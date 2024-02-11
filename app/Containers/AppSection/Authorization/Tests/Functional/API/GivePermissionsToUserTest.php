@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class GivePermissionsToUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{id}/permissions';
+    protected string $endpoint = 'patch@v1/users/{user_id}/permissions';
 
     protected array $access = [
         'permissions' => 'manage-permissions',
@@ -28,7 +28,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -51,7 +51,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -74,7 +74,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [$invalidId],
         ];
 
-        $response = $this->injectId($user->id)->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(

@@ -23,6 +23,6 @@ class ListRolePermissionsAction extends ParentAction
      */
     public function run(ListRolePermissionsRequest $request): Collection
     {
-        return $this->findRoleTask->run($request->id)->permissions;
+        return $this->findRoleTask->run($request->role_id)->permissions;
     }
 }
