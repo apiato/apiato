@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Middlewares;
 
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Ship\Parents\Middlewares\Middleware as ParentMiddleware;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class RedirectIfAuthenticated extends ParentMiddleware
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->route('home-page');
+                return redirect()->action(HomePageController::class);
             }
         }
 
