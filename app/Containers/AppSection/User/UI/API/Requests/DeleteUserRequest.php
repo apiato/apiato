@@ -3,10 +3,9 @@
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Contracts\Auth\Access\Gate;
 
-class DeleteUserRequest extends ParentRequest
+class DeleteUserRequest extends AbstractUserRequest
 {
     protected array $decode = [
         'user_id',

@@ -4,11 +4,10 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends ParentRequest
+class UpdateUserRequest extends AbstractUserRequest
 {
     protected array $decode = [
         'user_id',

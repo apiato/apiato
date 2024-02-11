@@ -45,6 +45,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
+        "spatie/laravel-data": "^4.0",
         "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
     },

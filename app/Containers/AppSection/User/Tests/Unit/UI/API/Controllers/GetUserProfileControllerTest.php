@@ -17,7 +17,7 @@ final class GetUserProfileControllerTest extends UnitTestCase
     {
         $controller = app(GetUserProfileController::class);
         $actionMock = $this->mock(GetUserProfileAction::class);
-        $actionMock->expects()->run()->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects('run')->andReturn(UserFactory::new()->createOne());
 
         $controller->__invoke($actionMock);
     }

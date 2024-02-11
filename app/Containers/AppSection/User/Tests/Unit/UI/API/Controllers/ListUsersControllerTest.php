@@ -19,7 +19,7 @@ final class ListUsersControllerTest extends UnitTestCase
         $controller = app(ListUsersController::class);
         $request = ListUsersRequest::injectData();
         $actionMock = $this->mock(ListUsersAction::class);
-        $actionMock->expects()->run()->andReturn(new LengthAwarePaginator([], 0, 1));
+        $actionMock->expects('run')->andReturn(new LengthAwarePaginator([], 0, 1));
 
         $controller->__invoke($request, $actionMock);
     }
