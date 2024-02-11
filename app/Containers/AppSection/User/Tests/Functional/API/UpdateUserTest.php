@@ -30,7 +30,7 @@ final class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => 'Updated Name',
             'gender' => Gender::MALE->value,
-            'birth' => Carbon::today(),
+            'birth' => Carbon::today()->toIso8601String(),
         ];
 
         $response = $this->injectId($this->testingUser->id)->makeCall($data);

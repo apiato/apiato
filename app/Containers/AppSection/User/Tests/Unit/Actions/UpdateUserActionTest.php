@@ -24,7 +24,7 @@ final class UpdateUserActionTest extends UnitTestCase
         $data = [
             'name' => 'a name',
             'gender' => Gender::MALE->value,
-            'birth' => Carbon::today(),
+            'birth' => Carbon::today()->toIso8601String(),
             'password' => 'test',
         ];
         $request = UpdateUserRequest::injectData($data, $user)->withUrlParameters(['id' => $user->id]);
