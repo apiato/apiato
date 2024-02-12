@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Middlewares;
+namespace App\Ship\Middlewares;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
