@@ -43,6 +43,7 @@
         "ext-sodium": "*",
         "ext-tokenizer": "*",
         "guzzlehttp/guzzle": "^7.2",
+        "inertiajs/inertia-laravel": "^0.6.11",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "^4.0",
