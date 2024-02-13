@@ -3,6 +3,22 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    server: {
+        https: false,
+        host: '0.0.0.0',
+        strictPort: true,
+        hmr: {
+            host: 'localhost',
+        },
+        watch: {
+            usePolling: true,
+        },
+    },
+    resolve: {
+        alias: {
+            '@': '/app/Containers',
+        },
+    },
     plugins: [
         laravel({
             input: [
@@ -29,15 +45,4 @@ export default defineConfig({
             },
         }),
     ],
-    server: {
-        https: false,
-        host: '0.0.0.0',
-        strictPort: true,
-        hmr: {
-            host: 'localhost',
-        },
-        watch: {
-            usePolling: true,
-        },
-    },
 });
