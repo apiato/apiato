@@ -2,7 +2,7 @@ import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
 import light from '../themes/custom-light';
 import { md3 } from 'vuetify/blueprints';
-import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
+import '@mdi/font/css/materialdesignicons.css';
 
 export default createVuetify({
     blueprint: md3,
