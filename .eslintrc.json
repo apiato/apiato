@@ -1,0 +1,67 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:vue/vue3-essential",
+        "./.eslintrc-auto-import.json",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "parser": "@typescript-eslint/parser",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "vue"
+    ],
+    "globals": {
+
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "semi": [
+            "error"
+        ],
+        "no-duplicate-imports": [
+            "off"
+        ],
+        "no-new-native-nonconstructor": [
+            "error"
+        ],
+        "no-self-compare": [
+            "error"
+        ],
+        "no-template-curly-in-string": [
+            "error"
+        ],
+        "no-unmodified-loop-condition": [
+            "error"
+        ],
+        "no-unreachable-loop": [
+            "error"
+        ],
+        "no-unused-private-class-members": [
+            "error"
+        ],
+        "no-use-before-define": [
+            "error",
+            {
+                "functions": true,
+                "classes": true,
+                "variables": true,
+                "allowNamedExports": false
+            }
+        ],
+        "require-atomic-updates": [
+            "error"
+        ]
+    }
+}

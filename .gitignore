@@ -28,3 +28,5 @@ aliases
 /app/Containers/Vendor
 /public/vendor
 .bash_aliases
+.eslintrc-auto-import.json
+resources/js/declarations
