@@ -18,12 +18,12 @@
     "noEmit": true,
     "paths": {
       "@/*": [
-        "app/*",
         "resources/js/*"
       ]
     },
     "types": [
-      "vite/client"
+      "vite/client",
+      "unplugin-fonts/client"
     ]
   },
   "include": [
