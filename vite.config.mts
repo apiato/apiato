@@ -1,27 +1,19 @@
-// Plugins
 import Laravel from 'laravel-vite-plugin';
 import Vue from '@vitejs/plugin-vue';
-import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import Vuetify from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import Checker from 'vite-plugin-checker'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-
-// Utilities
 import { defineConfig } from 'vite';
-import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
     server: {
-        https: false,
         host: '0.0.0.0',
         strictPort: true,
         hmr: {
             host: 'localhost',
-        },
-        watch: {
-            usePolling: true,
-        },
+        }
     },
     //define: { 'process.env': {} },
     resolve: {
@@ -30,6 +22,12 @@ export default defineConfig({
             // @ Points to ./src
             //'@': fileURLToPath(new URL('./src', import.meta.url)),
         },
+        extensions: [
+            '.ts',
+            '.vue',
+            '.js',
+            '.json',
+        ],
     },
     plugins: [
         Laravel({
@@ -39,7 +37,6 @@ export default defineConfig({
             refresh: true,
         }),
         Vue({
-            //template: { transformAssetUrls },
             template: {
                 transformAssetUrls: {
                     // The Vue plugin will re-write asset URLs, when referenced
