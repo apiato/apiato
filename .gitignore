@@ -1,32 +1,57 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+# OS generated files
+.DS_Store
+
+# Dependency directories
+vendor
+node_modules
+app/Containers/Vendor
+
+# Laravel specific
+public/hot
+public/storage
+public/uploads/
+public/vendor
+storage/*.key
+storage/logs/*.log
+
+# local env files
 .env
 .env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
 .env.testing
-storage/logs/laravel.log
-/public/uploads/
-/laradock*/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cache files
+.php-cs-fixer.cache
+.phpunit.result.cache
+psalm_cache/
+
+# Local development files
 _ide_helper*.php
 .phpstorm.meta.php
-/.vagrant
+.eslintrc-auto-import.json
+resources/js/declarations
+Homestead.json
+Homestead.yaml
+laradock*/
+.vagrant
 html_coverage
 Vagrantfile
 after.sh
 aliases
-.php-cs-fixer.cache
-/psalm_cache/
-/app/Containers/Vendor
-/public/vendor
 .bash_aliases
-.eslintrc-auto-import.json
-resources/js/declarations
+
+
