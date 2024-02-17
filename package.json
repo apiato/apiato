@@ -24,7 +24,6 @@
         "laravel-vite-plugin": "^1.0.0",
         "prettier": "3.2.5",
         "sass": "^1.70.0",
-        "sass-loader": "^14.1.0",
         "typescript": "^5.3.3",
         "unplugin-auto-import": "^0.17.5",
         "unplugin-vue-components": "^0.26.0",
