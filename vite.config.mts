@@ -1,10 +1,15 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
-import vuetify from 'vite-plugin-vuetify';
-import checker from 'vite-plugin-checker'
+// Plugins
+import Laravel from 'laravel-vite-plugin';
+import Vue from '@vitejs/plugin-vue';
+import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import ViteFonts from 'unplugin-fonts/vite'
+import Checker from 'vite-plugin-checker'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+
+// Utilities
+import { defineConfig } from 'vite';
+import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
     server: {
@@ -18,18 +23,23 @@ export default defineConfig({
             usePolling: true,
         },
     },
+    //define: { 'process.env': {} },
     resolve: {
         alias: {
+            // The Laravel plugin will re-write asset URLs to point to the Laravel
+            // @ Points to ./src
+            //'@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
     plugins: [
-        laravel({
+        Laravel({
             input: [
                 'resources/js/app.ts',
             ],
             refresh: true,
         }),
-        vue({
+        Vue({
+            //template: { transformAssetUrls },
             template: {
                 transformAssetUrls: {
                     // The Vue plugin will re-write asset URLs, when referenced
@@ -47,11 +57,19 @@ export default defineConfig({
                 },
             },
         }),
-        vuetify({
+        Vuetify({
             autoImport: true,
             styles: { configFile: 'resources/styles/sass/settings.scss' },
         }),
-        checker({
+        ViteFonts({
+            google: {
+                families: [{
+                    name: 'Roboto',
+                    styles: 'wght@100;300;400;500;700;900',
+                }],
+            },
+        }),
+        Checker({
             typescript: true,
             vueTsc: true,
             eslint: {
