@@ -38,6 +38,7 @@ pnpm-debug.log*
 .php-cs-fixer.cache
 .phpunit.result.cache
 psalm_cache/
+tsconfig.tsbuildinfo
 
 # Local development files
 _ide_helper*.php
