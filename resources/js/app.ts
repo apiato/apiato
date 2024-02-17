@@ -1,14 +1,13 @@
 import '../styles/sass/app.scss';
-import '@/utility/auguments';
+import '@/utility';
 import type { App } from 'vue';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
-import { componentResolver } from '@/utility';
 import { registerPlugins } from '@/plugins';
-import { registerComponents } from '@/components';
+import { registerComponents, resolveComponent } from '@/components';
 
 createInertiaApp({
-    resolve: componentResolver,
+    resolve: resolveComponent,
     setup({ el, App, props, plugin }) {
         const app: App = createApp({ render: () => h(App, props) });
         app.use(plugin);
