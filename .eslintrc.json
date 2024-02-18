@@ -20,16 +20,8 @@
         "vue"
     ],
     "globals": {
-
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "semi": [
-            "error"
-        ],
         "no-duplicate-imports": [
             "off"
         ],
