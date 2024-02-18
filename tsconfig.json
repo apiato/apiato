@@ -1,60 +1,61 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.json",
-  "compilerOptions": {
-    "composite": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
-    "baseUrl": ".",
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": [
-      "ESNext",
-      "DOM",
-    ],
-    "skipLibCheck": true,
-    "noEmit": true,
-    "paths": {
-      "@/*": [
-        "resources/js/*"
-      ]
+    "extends": "@vue/tsconfig/tsconfig.json",
+    "compilerOptions": {
+        "allowImportingTsExtensions": true,
+        "baseUrl": ".",
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "jsx": "preserve",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "skipLibCheck": true,
+        "noEmit": true,
+        "paths": {
+            "@/*": [
+                "resources/js/*"
+            ]
+        },
+        "types": [
+            "vite/client",
+            "unplugin-fonts/client"
+        ],
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "alwaysStrict": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "allowJs": false,
+        "forceConsistentCasingInFileNames": true,
+        "verbatimModuleSyntax": true,
+        "noErrorTruncation": true
     },
-    "types": [
-      "vite/client",
-      "unplugin-fonts/client"
+    "include": [
+        "resources/**/*.ts",
+        "resources/**/*.d.ts",
+        "resources/**/*.vue",
+        "app/**/*.ts",
+        "app/**/*.d.ts",
+        "app/**/*.vue"
     ],
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "alwaysStrict": true,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "declarationMap": true,
-    "allowJs": false,
-    "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "noErrorTruncation": true
-  },
-  "include": [
-    "vite.config.mts",
-    "resources/js/**/*.ts",
-    "resources/js/**/*.d.ts",
-    "resources/js/**/*.vue",
-    "app/Containers/**/**/UI/WEB/**/*.ts",
-    "app/Containers/**/**/UI/WEB/**/*.d.ts",
-    "app/Containers/**/**/UI/WEB/**/*.vue"
-  ],
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "exclude": [
+        "node_modules",
+        "app/Containers/Vendor"
+    ]
 }
