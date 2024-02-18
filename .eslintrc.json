@@ -1,26 +1,33 @@
 {
+    "root": true,
     "env": {
         "browser": true,
-        "es2021": true
+        "node": true,
+        "es2022": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:vue/vue3-essential",
         "./.eslintrc-auto-import.json",
         "prettier"
     ],
     "parserOptions": {
+        "allowAutomaticSingleRunInference": true,
+        "sourceType": "module",
         "ecmaVersion": "latest",
         "parser": "@typescript-eslint/parser",
-        "sourceType": "module"
+        "project": ["tsconfig.json"],
+        "extraFileExtensions": [
+            ".vue"
+        ],
+        "tsconfigRootDir": "."
     },
     "plugins": [
         "@typescript-eslint",
         "vue"
     ],
-    "globals": {
-    },
     "rules": {
         "no-duplicate-imports": [
             "off"
