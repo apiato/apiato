@@ -16,6 +16,7 @@ storage/logs/*.log
 
 # local env files
 .env
+.env.local
 .env.backup
 .env.testing
 
@@ -39,12 +40,12 @@ pnpm-debug.log*
 .phpunit.result.cache
 psalm_cache/
 tsconfig.tsbuildinfo
+resources/js/cache
 
 # Local development files
 _ide_helper*.php
 .phpstorm.meta.php
 .eslintrc-auto-import.json
-resources/js/declarations
 Homestead.json
 Homestead.yaml
 laradock*/
