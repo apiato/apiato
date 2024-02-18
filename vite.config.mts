@@ -15,7 +15,6 @@ export default defineConfig({
             host: 'localhost',
         }
     },
-    //define: { 'process.env': {} },
     resolve: {
         alias: {
             // The Laravel plugin will re-write asset URLs to point to the Laravel
@@ -77,7 +76,7 @@ export default defineConfig({
             dirs: ['app/Containers/**/**/UI/WEB/Pages/'],
             extensions: ['vue'],
             deep: true,
-            dts: './resources/js/declarations/components.d.ts',
+            dts: './resources/js/cache/components.d.ts',
             directoryAsNamespace: true,
             collapseSamePrefixes: true,
             directives: true,
@@ -109,7 +108,7 @@ export default defineConfig({
             // Filepath to generate corresponding .d.ts file.
             // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
             // Set `false` to disable.
-            dts: './resources/js/declarations/auto-imports.d.ts',
+            dts: './resources/js/cache/auto-imports.d.ts',
 
             // Array of strings of regexes that contains imports meant to be ignored during
             // the declaration file generation. You may find this useful when you need to provide
