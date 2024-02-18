@@ -1,18 +1,20 @@
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
-import light from '../themes/custom-light';
-import { md3 } from 'vuetify/blueprints';
+import { defaultLight } from '../themes/default-light.ts';
+import { defaultDark } from '../themes/default-dark.ts';
+import { md2 } from 'vuetify/blueprints';
 import '@mdi/font/css/materialdesignicons.css';
 
 export default createVuetify({
-    blueprint: md3,
-    theme: {
-        defaultTheme: 'light',
-        themes: {
-            light,
-        },
+  blueprint: md2,
+  theme: {
+    defaultTheme: 'defaultDark',
+    themes: {
+      defaultDark,
+      defaultLight,
     },
-    icons: {
-        defaultSet: 'mdi',
-    },
+  },
+  icons: {
+    defaultSet: 'mdi',
+  },
 });
