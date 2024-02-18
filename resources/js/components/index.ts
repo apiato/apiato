@@ -1,7 +1,6 @@
-import type { App } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import type { DefineComponent } from 'vue';
+import type { App, DefineComponent } from 'vue';
 
 export function registerComponents(app: App) {
     app.component('InertiaHead', Head);
@@ -23,10 +22,9 @@ export async function resolveComponent(name: string): Promise<DefineComponent> {
     const container: string = matched[2].camelToPascalCase();
     const pageName = name.replace(matched[0], '').camelToPascalCase();
 
-    const pages: Record<string, Promise<DefineComponent>> = import.meta.glob(
-        '/app/Containers/**/**/UI/WEB/Pages/**/*.vue',
-        { eager: true },
-    );
+    const pages: Record<string, Promise<DefineComponent>> = import.meta.glob<
+        Promise<DefineComponent>
+    >('/app/Containers/**/**/UI/WEB/Pages/**/*.vue', { eager: true });
     const path = `/app/Containers/${section}/${container}/UI/WEB/Pages/${pageName}.vue`;
 
     return resolvePageComponent(path, pages);
