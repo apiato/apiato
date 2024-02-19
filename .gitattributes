@@ -1,4 +1,4 @@
-* text=auto
+* text=auto eol=lf
 
 *.blade.php diff=html
 *.css diff=css
@@ -7,6 +7,7 @@
 *.php diff=php
 
 /.github export-ignore
+CHANGELOG.md export-ignore
 /tests export-ignore
 .env.ci export-ignore
 .editorconfig export-ignore
