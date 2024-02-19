@@ -14,17 +14,20 @@
         "esModuleInterop": true,
         "lib": [
             "ESNext",
-            "DOM"
+            "DOM",
+            "DOM.Iterable"
         ],
         "skipLibCheck": true,
         "noEmit": true,
         "paths": {
             "@/*": [
-                "resources/js/*"
-            ]
+                "resources/js/*",
+                "app/Containers/*",
+                "app/Ship/Resources/Js/*",
+            ],
+            "ziggy-js": ["./vendor/tightenco/ziggy"]
         },
         "types": [
-            "vite/client",
             "unplugin-fonts/client"
         ],
         "allowUnreachableCode": false,
@@ -40,22 +43,29 @@
         "noUncheckedIndexedAccess": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "allowJs": false,
+        "allowJs": true,
         "forceConsistentCasingInFileNames": true,
         "verbatimModuleSyntax": true,
         "noErrorTruncation": true
     },
     "include": [
+        "resources/**/*.js",
         "resources/**/*.ts",
         "resources/**/*.d.ts",
         "resources/**/*.vue",
-        "app/**/*.ts",
-        "app/**/*.d.ts",
-        "app/**/*.vue"
+        "app/Containers/**/**/UI/WEB/**/*.js",
+        "app/Containers/**/**/UI/WEB/**/*.ts",
+        "app/Containers/**/**/UI/WEB/**/*.d.ts",
+        "app/Containers/**/**/UI/WEB/**/*.vue",
+        "app/Ship/Resources/**/*.js",
+        "app/Ship/Resources/**/*.ts",
+        "app/Ship/Resources/**/*.d.ts",
+        "app/Ship/Resources/**/*.vue"
     ],
     "references": [{ "path": "./tsconfig.node.json" }],
     "exclude": [
+        "public",
         "node_modules",
-        "app/Containers/Vendor"
+        "app/Containers/Vendor",
     ]
 }

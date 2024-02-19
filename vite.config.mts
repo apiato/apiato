@@ -1,10 +1,10 @@
 import Laravel from 'laravel-vite-plugin';
 import Vue from '@vitejs/plugin-vue';
-import Vuetify from 'vite-plugin-vuetify'
-import ViteFonts from 'unplugin-fonts/vite'
-import Checker from 'vite-plugin-checker'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
+import Vuetify from 'vite-plugin-vuetify';
+import ViteFonts from 'unplugin-fonts/vite';
+import Checker from 'vite-plugin-checker';
+import Components from 'unplugin-vue-components/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -13,26 +13,20 @@ export default defineConfig({
         strictPort: true,
         hmr: {
             host: 'localhost',
-        }
+        },
     },
     resolve: {
         alias: {
             // The Laravel plugin will re-write asset URLs to point to the Laravel
             // @ Points to ./src
             //'@': fileURLToPath(new URL('./src', import.meta.url)),
+            // '@/Components': path.resolve('resources/js/Components'),
         },
-        extensions: [
-            '.ts',
-            '.vue',
-            '.js',
-            '.json',
-        ],
+        extensions: ['.ts', '.vue', '.js', '.json'],
     },
     plugins: [
         Laravel({
-            input: [
-                'resources/js/app.ts',
-            ],
+            input: ['resources/js/app.ts'],
             refresh: true,
         }),
         Vue({
@@ -59,21 +53,26 @@ export default defineConfig({
         }),
         ViteFonts({
             google: {
-                families: [{
-                    name: 'Roboto',
-                    styles: 'wght@100;300;400;500;700;900',
-                }],
+                families: [
+                    {
+                        name: 'Roboto',
+                        styles: 'wght@100;300;400;500;700;900',
+                    },
+                ],
             },
         }),
         Checker({
             typescript: true,
             vueTsc: true,
             eslint: {
-                lintCommand: 'eslint "./resources/js/*.{ts,tsx}"',
+                lintCommand: 'eslint',
             },
         }),
         Components({
-            dirs: ['app/Containers/**/**/UI/WEB/Pages/'],
+            dirs: [
+                'app/Containers/**/**/UI/WEB/Pages/*',
+                'app/Ship/Resources/Vue/*',
+            ],
             extensions: ['vue'],
             deep: true,
             dts: './resources/js/cache/components.d.ts',
@@ -82,7 +81,11 @@ export default defineConfig({
             directives: true,
             allowOverrides: false,
             include: [/\.vue$/, /\.vue\?vue/],
-            exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+            exclude: [
+                /[\\/]node_modules[\\/]/,
+                /[\\/]\.git[\\/]/,
+                /[\\/]\.nuxt[\\/]/,
+            ],
             types: [],
         }),
         AutoImport({
@@ -95,9 +98,7 @@ export default defineConfig({
             ],
 
             // global imports to register
-            imports: [
-                'vue',
-            ],
+            imports: ['vue'],
 
             // Array of strings of regexes that contains imports meant to be filtered out.
             ignore: [],
@@ -113,10 +114,7 @@ export default defineConfig({
             // Array of strings of regexes that contains imports meant to be ignored during
             // the declaration file generation. You may find this useful when you need to provide
             // a custom signature for a function.
-            ignoreDts: [
-                'ignoredFunction',
-                /^ignore_/
-            ],
+            ignoreDts: ['ignoredFunction', /^ignore_/],
 
             vueTemplate: true,
 
@@ -130,6 +128,6 @@ export default defineConfig({
                 filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
                 globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
             },
-        })
+        }),
     ],
 });

@@ -24,7 +24,13 @@ export async function resolveComponent(name: string): Promise<DefineComponent> {
 
     const pages: Record<string, Promise<DefineComponent>> = import.meta.glob<
         Promise<DefineComponent>
-    >('/app/Containers/**/**/UI/WEB/Pages/**/*.vue', { eager: true });
+    >(
+        [
+            '/app/Containers/**/**/UI/WEB/Pages/**/*.vue',
+            '/app/Ship/Resources/Vue/Pages/**/*.vue',
+        ],
+        { eager: true },
+    );
     const path = `/app/Containers/${section}/${container}/UI/WEB/Pages/${pageName}.vue`;
 
     return resolvePageComponent(path, pages);
