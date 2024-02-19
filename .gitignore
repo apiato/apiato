@@ -16,6 +16,7 @@ storage/logs/*.log
 
 # local env files
 .env
+.env.docker
 .env.local
 .env.backup
 .env.testing
