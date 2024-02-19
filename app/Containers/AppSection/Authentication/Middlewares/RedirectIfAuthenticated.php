@@ -4,15 +4,13 @@ namespace App\Containers\AppSection\Authentication\Middlewares;
 
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Ship\Parents\Middlewares\Middleware as ParentMiddleware;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated extends ParentMiddleware
 {
-    public function handle(Request $request, \Closure $next, string|null ...$guards): Response|RedirectResponse|JsonResponse|null
+    public function handle(Request $request, \Closure $next, string|null ...$guards): Response
     {
         $guards = [] === $guards ? [null] : $guards;
 
