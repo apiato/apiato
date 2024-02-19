@@ -47,6 +47,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "^4.0",
+        "tightenco/ziggy": "^1.8",
         "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
@@ -97,6 +98,9 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:eloquent"
+        ],
+        "ziggy": [
+            "@php artisan ziggy:generate --types"
         ]
     },
     "extra": {
