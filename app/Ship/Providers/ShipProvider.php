@@ -2,9 +2,12 @@
 
 namespace App\Ship\Providers;
 
+use Apiato\Core\Abstracts\Models\Model;
+use Apiato\Core\Traits\HashIdTrait;
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 
 class ShipProvider extends ParentMainServiceProvider
@@ -38,14 +41,29 @@ class ShipProvider extends ParentMainServiceProvider
         parent::register();
 
         /*
-         * Load the ide-helper service provider only in non production environments.
+         * Load the ide-helper service provider only in non-production environments.
          */
         if ($this->app->isLocal()) {
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
-        Config::macro('unset', function ($key) {
+        Config::macro('unset', function (string $key): void {
             Arr::forget($this->items, $key);
+        });
+
+        /*
+         * Check if the given id is in the given model collection by comparing hashed ids.
+         *
+         * @param Collection|array $ids either a collection of models or an array of unhashed ids
+         */
+        Collection::macro('inIds', function (string $hashedId): bool {
+            $hashService = new class() extends Model {
+                use HashIdTrait;
+            };
+
+            $id = $hashService->decode($hashedId);
+
+            return $this->contains('id', $id);
         });
     }
 }

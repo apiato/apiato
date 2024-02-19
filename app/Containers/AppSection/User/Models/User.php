@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
+use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
@@ -69,5 +70,13 @@ class User extends ParentUserModel implements MustVerifyEmail
         return new Attribute(
             get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
         );
+    }
+
+    /**
+     * @param array<int, User> $models
+     */
+    public function newCollection(array $models = []): UserCollection
+    {
+        return new UserCollection($models);
     }
 }
