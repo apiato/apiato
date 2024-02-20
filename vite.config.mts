@@ -6,6 +6,7 @@ import Checker from 'vite-plugin-checker';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
     clearScreen: false,
@@ -134,5 +135,6 @@ export default defineConfig({
                 globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
             },
         }),
+        tsconfigPaths(),
     ],
 });
