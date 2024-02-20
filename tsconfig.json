@@ -23,7 +23,15 @@
             "@/*": [
                 "resources/js/*",
                 "app/Containers/*",
+            ],
+            "@ship/Js/*": [
                 "app/Ship/Resources/Js/*",
+            ],
+            "@ship/Vue/*": [
+                "app/Ship/Resources/Vue/*",
+            ],
+            "@ship/Styles/*": [
+                "app/Ship/Resources/Styles/*",
             ],
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         },
@@ -49,10 +57,9 @@
         "noErrorTruncation": true
     },
     "include": [
-        "resources/**/*.js",
-        "resources/**/*.ts",
-        "resources/**/*.d.ts",
-        "resources/**/*.vue",
+        "resources/js/**/*.js",
+        "resources/js/**/*.ts",
+        "resources/js/**/*.d.ts",
         "app/Containers/**/**/UI/WEB/**/*.js",
         "app/Containers/**/**/UI/WEB/**/*.ts",
         "app/Containers/**/**/UI/WEB/**/*.d.ts",

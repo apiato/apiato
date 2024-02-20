@@ -8,6 +8,7 @@
     "extends": [
         "./.eslintrc-auto-import.json",
         "eslint:recommended",
+        "eslint-config-standard",
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
         "plugin:vue/vue3-recommended",

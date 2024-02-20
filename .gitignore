@@ -41,7 +41,6 @@ pnpm-debug.log*
 .phpunit.result.cache
 psalm_cache/
 tsconfig.tsbuildinfo
-resources/js/cache
 
 # Local development files
 _ide_helper*.php

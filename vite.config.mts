@@ -17,12 +17,7 @@ export default defineConfig({
         },
     },
     resolve: {
-        alias: {
-            // The Laravel plugin will re-write asset URLs to point to the Laravel
-            // @ Points to ./src
-            //'@': fileURLToPath(new URL('./src', import.meta.url)),
-            // '@/Components': path.resolve('resources/js/Components'),
-        },
+        alias: {},
         extensions: ['.ts', '.vue', '.js', '.json'],
     },
     plugins: [
@@ -71,14 +66,14 @@ export default defineConfig({
         }),
         Components({
             dirs: [
-                'app/Containers/**/**/UI/WEB/Pages/*',
-                'app/Ship/Resources/Vue/*',
+                'app/Containers/**/**/UI/WEB/Pages/',
+                'app/Ship/Resources/Vue/',
             ],
             extensions: ['vue'],
             deep: true,
-            dts: './resources/js/cache/components.d.ts',
-            directoryAsNamespace: true,
-            collapseSamePrefixes: true,
+            dts: './resources/js/types/components.d.ts',
+            directoryAsNamespace: false,
+            collapseSamePrefixes: false,
             directives: true,
             allowOverrides: false,
             include: [/\.vue$/, /\.vue\?vue/],
@@ -99,18 +94,27 @@ export default defineConfig({
             ],
 
             // global imports to register
-            imports: ['vue'],
+            imports: [
+                'vue',
+                {
+                    '@inertiajs/vue3': [
+                        'router',
+                        'useForm',
+                        'usePage',
+                    ],
+                },
+            ],
 
             // Array of strings of regexes that contains imports meant to be filtered out.
             ignore: [],
 
             // Enable auto import by filename for default module exports under directories
-            defaultExportByFilename: false,
+            defaultExportByFilename: true,
 
             // Filepath to generate corresponding .d.ts file.
             // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
             // Set `false` to disable.
-            dts: './resources/js/cache/auto-imports.d.ts',
+            dts: './resources/js/types/auto-imports.d.ts',
 
             // Array of strings of regexes that contains imports meant to be ignored during
             // the declaration file generation. You may find this useful when you need to provide

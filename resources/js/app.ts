@@ -7,6 +7,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { registerPlugins } from '@/plugins';
 import { registerComponents, resolveComponent } from '@/components';
 
+// eslint-disable-next-line no-void
 void createInertiaApp({
     title(title) {
         const appName: string = import.meta.env.VITE_APP_TITLE || 'Apiato';
