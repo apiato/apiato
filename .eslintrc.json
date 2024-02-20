@@ -6,13 +6,14 @@
         "es2022": true
     },
     "extends": [
+        "./.eslintrc-auto-import.json",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
-        "plugin:vue/vue3-essential",
-        "./.eslintrc-auto-import.json",
+        "plugin:vue/vue3-recommended",
         "prettier"
     ],
+    "parser": "vue-eslint-parser",
     "parserOptions": {
         "allowAutomaticSingleRunInference": true,
         "sourceType": "module",
