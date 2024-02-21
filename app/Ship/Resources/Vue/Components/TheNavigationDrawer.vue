@@ -31,14 +31,14 @@ const Dashboard: NavItem = {
     children: [],
 };
 
-const Staff: NavItem = {
-    title: 'Staff',
+const User: NavItem = {
+    title: 'Users',
     icon: 'mdi-account-search',
-    to: route('home-page'),
+    to: route('user-page'),
     children: [],
 };
 
-const items = [Dashboard, Staff];
+const items = [Dashboard, User];
 </script>
 
 <style scoped>
