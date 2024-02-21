@@ -21,21 +21,22 @@
         "noEmit": true,
         "paths": {
             "@/*": [
-                "resources/js/*",
-                "app/Containers/*",
+                "./resources/js/*",
+                "./app/Containers/*"
             ],
             "@ship/Js/*": [
-                "app/Ship/Resources/Js/*",
+                "./app/Ship/Resources/Js/*"
             ],
             "@ship/Vue/*": [
-                "app/Ship/Resources/Vue/*",
+                "./app/Ship/Resources/Vue/*"
             ],
             "@ship/Styles/*": [
-                "app/Ship/Resources/Styles/*",
+                "./app/Ship/Resources/Styles/*"
             ],
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         },
         "types": [
+            "node",
             "unplugin-fonts/client"
         ],
         "allowUnreachableCode": false,
