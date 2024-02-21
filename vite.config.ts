@@ -66,10 +66,7 @@ export default defineConfig({
             },
         }),
         Components({
-            dirs: [
-                'app/Containers/**/**/UI/WEB/Pages/',
-                'app/Ship/Resources/Vue/',
-            ],
+            dirs: ['app/Containers/**/**/UI/WEB/Pages/', 'app/Ship/Resources/Vue/'],
             extensions: ['vue'],
             deep: true,
             dts: './resources/js/types/components.d.ts',
@@ -78,11 +75,7 @@ export default defineConfig({
             directives: true,
             allowOverrides: false,
             include: [/\.vue$/, /\.vue\?vue/],
-            exclude: [
-                /[\\/]node_modules[\\/]/,
-                /[\\/]\.git[\\/]/,
-                /[\\/]\.nuxt[\\/]/,
-            ],
+            exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
             types: [],
         }),
         AutoImport({
@@ -98,11 +91,7 @@ export default defineConfig({
             imports: [
                 'vue',
                 {
-                    '@inertiajs/vue3': [
-                        'router',
-                        'useForm',
-                        'usePage',
-                    ],
+                    '@inertiajs/vue3': ['router', 'useForm', 'usePage'],
                 },
             ],
 

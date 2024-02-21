@@ -9,7 +9,8 @@
     },
     "devDependencies": {
         "@mdi/font": "^7.4.47",
-        "@types/node": "^20.11.19",
+        "@tsconfig/node18": "^18.2.2",
+        "@types/node": "^18.19.17",
         "@typescript-eslint/eslint-plugin": "^7.0.2",
         "@typescript-eslint/parser": "^7.0.2",
         "@vitejs/plugin-vue": "^5.0.4",

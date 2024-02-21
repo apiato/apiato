@@ -1,7 +1,6 @@
 import { Head, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { App, DefineComponent } from 'vue';
-import DashboardLayout from '@ship/Vue/Layouts/DashboardLayout.vue';
 
 export function registerComponents(app: App) {
     app.component('InertiaHead', Head);
@@ -40,16 +39,12 @@ export async function resolveComponent(name: string): Promise<DefineComponent> {
         path = `/app/Ship/Resources/Vue/Pages/${pageName}.vue`;
     }
 
-    const pages: Record<string, Promise<DefineComponent>> = import.meta.glob<Promise<DefineComponent>>(['/app/Containers/**/**/UI/WEB/Pages/**/*.vue', '/app/Ship/Resources/Vue/Pages/**/*.vue'], { eager: true });
-
+    const pages = import.meta.glob<Promise<DefineComponent>>(['/app/Containers/**/**/UI/WEB/Pages/**/*.vue', '/app/Ship/Resources/Vue/**/*.vue'], { eager: true });
+    const defaultLayout = await resolvePageComponent('/app/Ship/Resources/Vue/Layouts/DashboardLayout.vue', pages);
     const page = await resolvePageComponent(path, pages);
-    // https://stackoverflow.com/questions/72864434/default-persistent-layout-in-laravel-inertia-vite
-    // https://stackoverflow.com/questions/73751146/default-layout-doesnt-work-in-laravel-vite-svelte
-    // https://github.com/inertiajs/inertia/discussions/651
-    // https://twitter.com/enzoinnocenzi/status/1443171187190808578?t=RQF8dpZAllByFubIYN-nmQ&s=19
-    // https://advanced-inertia.com/blog/persistent-layouts
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
-    page['default'].layout = page['default'].layout || DashboardLayout;
+    if (page.default.layout === undefined) {
+        page.default.layout = defaultLayout.default;
+    }
 
     return page;
 }
