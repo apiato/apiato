@@ -12,5 +12,6 @@ declare module 'vue' {
     InputError: typeof import('./../../../app/Ship/Resources/Vue/Components/InputError.vue')['default']
     TheLogin: typeof import('./../../../app/Containers/AppSection/Authentication/UI/WEB/Pages/TheLogin.vue')['default']
     TheNavigationDrawer: typeof import('./../../../app/Ship/Resources/Vue/Components/TheNavigationDrawer.vue')['default']
+    UserPage: typeof import('./../../../app/Containers/AppSection/Authentication/UI/WEB/Pages/UserPage.vue')['default']
   }
 }
