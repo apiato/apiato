@@ -25,6 +25,8 @@
         "paths": {
             "@/*": [
                 "./resources/js/*",
+            ],
+            "@containers/*": [
                 "./app/Containers/*"
             ],
             "@ship/Js/*": [
