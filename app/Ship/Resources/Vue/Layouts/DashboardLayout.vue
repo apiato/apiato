@@ -1,12 +1,12 @@
 <template>
     <v-app id="the-app">
-        <v-layout>
-            <v-app-bar title="GESG Carbon Registry" />
-            <TheNavigationDrawer />
-            <v-main class="d-flex align-center justify-center" style="min-height: 300px">
+        <v-app-bar title="GESG Carbon Registry" />
+        <TheNavigationDrawer />
+        <v-main class="d-flex align-center justify-center" style="min-height: 300px">
+            <v-container fluid>
                 <slot />
-            </v-main>
-        </v-layout>
+            </v-container>
+        </v-main>
     </v-app>
 </template>
 <script lang="ts" setup></script>
