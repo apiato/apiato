@@ -1,22 +1,12 @@
-<!--<template>-->
-<!--    <v-navigation-drawer permanent>-->
-<!--        <v-list density="compact" nav>-->
-<!--            <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>-->
-<!--            <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>-->
-<!--        </v-list>-->
-<!--    </v-navigation-drawer>-->
-<!--</template>-->
 <template>
     <v-navigation-drawer permanent style="z-index: 2; height: 100%">
         <v-list nav>
-            <v-list-item v-for="item in items" :key="item.title" :prepend-icon="item.icon" nav class="text-start" :title="item.title" link :to="item.to"> </v-list-item>
+            <v-list-item v-for="item in items" :key="item.title" :to="item.to" :prepend-icon="item.icon" nav class="text-start" :title="item.title" />
         </v-list>
     </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">
-import route from 'ziggy-js';
-
 interface NavItem {
     title: string;
     icon: string;
@@ -34,17 +24,9 @@ const Dashboard: NavItem = {
 const User: NavItem = {
     title: 'Users',
     icon: 'mdi-account-search',
-    to: route('user-page'),
+    to: route('index-users'),
     children: [],
 };
 
 const items = [Dashboard, User];
 </script>
-
-<style scoped>
-/* Style of example of submenu implementation
-.ml-sub-drawer {
-    margin-left: 256px;
-}
-*/
-</style>
