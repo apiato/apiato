@@ -6,12 +6,15 @@
 export {}
 
 declare module 'vue' {
-    export interface GlobalComponents {
-        DashboardLayout: (typeof import('./../../../app/Ship/Resources/Vue/Layouts/DashboardLayout.vue'))['default'];
-        HomePage: (typeof import('./../../../app/Ship/Resources/Vue/Pages/HomePage.vue'))['default'];
-        IndexUsersPage: (typeof import('./../../../app/Containers/AppSection/User/UI/WEB/Pages/IndexUsersPage.vue'))['default'];
-        InputError: (typeof import('./../../../app/Ship/Resources/Vue/Components/InputError.vue'))['default'];
-        TheLogin: (typeof import('./../../../app/Containers/AppSection/Authentication/UI/WEB/Pages/TheLogin.vue'))['default'];
-        TheNavigationDrawer: (typeof import('./../../../app/Ship/Resources/Vue/Components/TheNavigationDrawer.vue'))['default'];
-    }
+  export interface GlobalComponents {
+    DashboardLayout: typeof import('./../../../app/Ship/Resources/Vue/Layouts/DashboardLayout.vue')['default']
+    DashboardPage: typeof import('./../../../app/Ship/Resources/Vue/Pages/DashboardPage.vue')['default']
+    DataTableSearchBox: typeof import('./../../../app/Ship/Resources/Vue/Components/DataTableSearchBox.vue')['default']
+    DataTableToolbar: typeof import('./../../../app/Ship/Resources/Vue/Components/DataTableToolbar.vue')['default']
+    HomePage: typeof import('./../../../app/Ship/Resources/Vue/Pages/HomePage.vue')['default']
+    IndexUsersPage: typeof import('./../../../app/Containers/AppSection/User/UI/WEB/Pages/IndexUsersPage.vue')['default']
+    InputError: typeof import('./../../../app/Ship/Resources/Vue/Components/InputError.vue')['default']
+    TheLogin: typeof import('./../../../app/Containers/AppSection/Authentication/UI/WEB/Pages/TheLogin.vue')['default']
+    TheNavigationDrawer: typeof import('./../../../app/Ship/Resources/Vue/Components/TheNavigationDrawer.vue')['default']
+  }
 }
