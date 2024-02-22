@@ -42,8 +42,10 @@ export async function resolveComponent(name: string): Promise<DefineComponent> {
     const pages = import.meta.glob<Promise<DefineComponent>>(['/app/Containers/**/**/UI/WEB/Pages/**/*.vue', '/app/Ship/Resources/Vue/**/*.vue'], { eager: true });
     const defaultLayout = await resolvePageComponent('/app/Ship/Resources/Vue/Layouts/DashboardLayout.vue', pages);
     const page = await resolvePageComponent(path, pages);
-    if (page.default.layout === undefined) {
-        page.default.layout = defaultLayout.default;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    if (page['default'].layout === undefined) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
+        page['default'].layout = defaultLayout['default'];
     }
 
     return page;
