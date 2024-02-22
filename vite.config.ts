@@ -65,6 +65,7 @@ export default defineConfig({
                 lintCommand: 'eslint',
             },
         }),
+        tsconfigPaths(),
         Components({
             dirs: ['app/Containers/**/**/UI/WEB/Pages/', 'app/Ship/Resources/Vue/'],
             extensions: ['vue'],
@@ -99,7 +100,7 @@ export default defineConfig({
             ignore: [],
 
             // Enable auto import by filename for default module exports under directories
-            defaultExportByFilename: true,
+            defaultExportByFilename: false,
 
             // Filepath to generate corresponding .d.ts file.
             // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
@@ -124,6 +125,5 @@ export default defineConfig({
                 globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
             },
         }),
-        tsconfigPaths(),
     ],
 });
