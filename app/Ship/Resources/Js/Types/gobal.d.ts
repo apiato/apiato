@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { route as routeFn } from 'ziggy-js';
 import { PageProps as InertiaPageProps } from '@inertiajs/core';
-import { SharedPageProps } from './';
+import { SharedPageProps } from '../../../../../resources/js/types';
 
 declare global {
     interface Window {
