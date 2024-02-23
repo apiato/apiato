@@ -92,7 +92,7 @@ export default defineConfig({
             imports: [
                 'vue',
                 {
-                    '@inertiajs/vue3': ['router', 'useForm', 'usePage'],
+                    '@inertiajs/vue3': ['router', 'useForm', 'usePage', 'useRemember'],
                 },
             ],
             packagePresets: ['vuetify'],
