@@ -62,6 +62,7 @@ declare global {
   const useLayout: typeof import('vuetify')['useLayout']
   const useLocale: typeof import('vuetify')['useLocale']
   const usePage: typeof import('@inertiajs/vue3')['usePage']
+  const useRemember: typeof import('@inertiajs/vue3')['useRemember']
   const useRtl: typeof import('vuetify')['useRtl']
   const useSlots: typeof import('vue')['useSlots']
   const useTheme: typeof import('vuetify')['useTheme']
@@ -139,6 +140,7 @@ declare module 'vue' {
     readonly useLayout: UnwrapRef<typeof import('vuetify')['useLayout']>
     readonly useLocale: UnwrapRef<typeof import('vuetify')['useLocale']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
+    readonly useRemember: UnwrapRef<typeof import('@inertiajs/vue3')['useRemember']>
     readonly useRtl: UnwrapRef<typeof import('vuetify')['useRtl']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTheme: UnwrapRef<typeof import('vuetify')['useTheme']>
@@ -209,6 +211,7 @@ declare module '@vue/runtime-core' {
     readonly useLayout: UnwrapRef<typeof import('vuetify')['useLayout']>
     readonly useLocale: UnwrapRef<typeof import('vuetify')['useLocale']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
+    readonly useRemember: UnwrapRef<typeof import('@inertiajs/vue3')['useRemember']>
     readonly useRtl: UnwrapRef<typeof import('vuetify')['useRtl']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTheme: UnwrapRef<typeof import('vuetify')['useTheme']>
