@@ -24,7 +24,7 @@ const Dashboard: NavItem = {
 const User: NavItem = {
     title: 'Users',
     icon: 'mdi-account-search',
-    to: route('index-users'),
+    to: route('users.index'),
     children: [],
 };
 
