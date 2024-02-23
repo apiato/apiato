@@ -42,7 +42,7 @@ declare module 'ziggy-js' {
     "login-page": [],
     "logout": [],
     "unauthorized-page": [],
-    "index-users": [],
+    "users.index": [],
     "private_docs": [],
     "public_docs": [],
     "debugbar.openhandler": [],
