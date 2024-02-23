@@ -98,9 +98,6 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:eloquent"
-        ],
-        "ziggy": [
-            "@php artisan ziggy:generate --types"
         ]
     },
     "extra": {
