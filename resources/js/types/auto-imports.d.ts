@@ -8,6 +8,7 @@ declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
+  const createVuetify: typeof import('vuetify')['createVuetify']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
@@ -53,9 +54,18 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDate: typeof import('vuetify')['useDate']
+  const useDefaults: typeof import('vuetify')['useDefaults']
+  const useDisplay: typeof import('vuetify')['useDisplay']
   const useForm: typeof import('@inertiajs/vue3')['useForm']
+  const useGoTo: typeof import('vuetify')['useGoTo']
+  const useLayout: typeof import('vuetify')['useLayout']
+  const useLocale: typeof import('vuetify')['useLocale']
   const usePage: typeof import('@inertiajs/vue3')['usePage']
+  const useRtl: typeof import('vuetify')['useRtl']
   const useSlots: typeof import('vue')['useSlots']
+  const useTheme: typeof import('vuetify')['useTheme']
+  const version: typeof import('vuetify')['version']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -75,6 +85,7 @@ declare module 'vue' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createVuetify: UnwrapRef<typeof import('vuetify')['createVuetify']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -120,9 +131,18 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDate: UnwrapRef<typeof import('vuetify')['useDate']>
+    readonly useDefaults: UnwrapRef<typeof import('vuetify')['useDefaults']>
+    readonly useDisplay: UnwrapRef<typeof import('vuetify')['useDisplay']>
     readonly useForm: UnwrapRef<typeof import('@inertiajs/vue3')['useForm']>
+    readonly useGoTo: UnwrapRef<typeof import('vuetify')['useGoTo']>
+    readonly useLayout: UnwrapRef<typeof import('vuetify')['useLayout']>
+    readonly useLocale: UnwrapRef<typeof import('vuetify')['useLocale']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
+    readonly useRtl: UnwrapRef<typeof import('vuetify')['useRtl']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly useTheme: UnwrapRef<typeof import('vuetify')['useTheme']>
+    readonly version: UnwrapRef<typeof import('vuetify')['version']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
@@ -135,6 +155,7 @@ declare module '@vue/runtime-core' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createVuetify: UnwrapRef<typeof import('vuetify')['createVuetify']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -180,9 +201,18 @@ declare module '@vue/runtime-core' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDate: UnwrapRef<typeof import('vuetify')['useDate']>
+    readonly useDefaults: UnwrapRef<typeof import('vuetify')['useDefaults']>
+    readonly useDisplay: UnwrapRef<typeof import('vuetify')['useDisplay']>
     readonly useForm: UnwrapRef<typeof import('@inertiajs/vue3')['useForm']>
+    readonly useGoTo: UnwrapRef<typeof import('vuetify')['useGoTo']>
+    readonly useLayout: UnwrapRef<typeof import('vuetify')['useLayout']>
+    readonly useLocale: UnwrapRef<typeof import('vuetify')['useLocale']>
     readonly usePage: UnwrapRef<typeof import('@inertiajs/vue3')['usePage']>
+    readonly useRtl: UnwrapRef<typeof import('vuetify')['useRtl']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly useTheme: UnwrapRef<typeof import('vuetify')['useTheme']>
+    readonly version: UnwrapRef<typeof import('vuetify')['version']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
