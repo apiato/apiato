@@ -1,8 +1,7 @@
-import { PageProps as InertiaPageProps } from '@inertiajs/core';
 import { AxiosInstance } from 'axios';
 import { route as routeFn } from 'ziggy-js';
-
-import { PageProps as AppPageProps } from './';
+import { PageProps as InertiaPageProps } from '@inertiajs/core';
+import { SharedPageProps } from './';
 
 declare global {
     interface Window {
@@ -14,10 +13,10 @@ declare global {
 
 declare module 'vue' {
     interface ComponentCustomProperties {
-        route: typeof ziggyRoute;
+        route: typeof routeFn;
     }
 }
 
 declare module '@inertiajs/core' {
-    interface PageProps extends InertiaPageProps, AppPageProps {}
+    interface PageProps extends InertiaPageProps, SharedPageProps {}
 }

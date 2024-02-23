@@ -1,14 +1,16 @@
-export interface User {
+export interface AuthUser {
     id: number;
     name: string;
     email: string;
-    email_verified_at: string;
 }
 
-export type PageProps<
-    T extends Record<string, unknown> = Record<string, unknown>,
-> = T & {
+export interface User extends AuthUser {
+    created_at: string;
+    updated_at: string;
+}
+
+export type SharedPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
-        user: User;
+        user: AuthUser;
     };
 };
