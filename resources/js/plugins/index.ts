@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import vuetify from './vuetify';
-import { ZiggyVue } from '../../../vendor/tightenco/ziggy/dist/vue.m';
+import { ZiggyVue } from 'ziggy-js';
 import link from '@/plugins/link.ts';
 
 export function registerPlugins(app: App) {

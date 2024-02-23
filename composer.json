@@ -47,7 +47,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "^4.0",
-        "tightenco/ziggy": "^1.8",
+        "tightenco/ziggy": "^v2.0.3",
         "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
