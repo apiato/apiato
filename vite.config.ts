@@ -95,6 +95,7 @@ export default defineConfig({
                     '@inertiajs/vue3': ['router', 'useForm', 'usePage'],
                 },
             ],
+            packagePresets: ['vuetify'],
 
             // Array of strings of regexes that contains imports meant to be filtered out.
             ignore: [],
