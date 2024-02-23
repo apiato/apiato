@@ -1,11 +1,11 @@
 import '../styles/sass/app.scss';
-import 'app/Ship/Resources/Js/utility';
+import 'app/Ship/Resources/Js/Utility';
 
 import type { App } from 'vue';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
-import { registerPlugins } from 'app/Ship/Resources/Js/plugins';
-import { registerComponents, resolveComponent } from 'app/Ship/Resources/Js/components';
+import { registerPlugins } from 'app/Ship/Resources/Js/Plugins';
+import { registerComponents, resolveComponent } from 'app/Ship/Resources/Js/Components';
 
 // eslint-disable-next-line no-void
 void createInertiaApp({
