@@ -16,8 +16,6 @@ class IndexUsersController extends WebController
 
     public function __invoke(ListUsersRequest $request, ListUsersAction $action): Response
     {
-        return Inertia::render('appSection@user::IndexUsersPage', [
-            'response' => fn (): array => $this->transform($action->run(), UserTransformer::class),
-        ]);
+        return Inertia::render('appSection@user::IndexUsersPage', $this->transform($action->run(), UserTransformer::class));
     }
 }

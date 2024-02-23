@@ -4,7 +4,7 @@
             <h3 class="text-h3">Users</h3>
         </v-card-title>
         <v-card-text>
-            <v-data-table :on-update:options="options" :items="response.data" item-value="id">
+            <v-data-table v-model:sort-by="sortBy" :on-update:options="options" :items="props.data" item-value="id">
                 <!--                <DataTableToolbar :title="dataTableTitle">-->
                 <!--                    <template #search>-->
                 <!--                        <DataTableSearchBox v-model:search-query="searchQuery" :loading="isSearching" />-->
@@ -23,31 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
+import type { PaginatedResponse } from '@/types/response';
 
-interface Pagination {
-    count: number;
-    current_page: number;
-    per_page: number;
-    total: number;
-    total_pages: number;
-}
-
-type Data = Record<string, unknown>;
-
-interface Response {
-    data: Data[];
-    meta: {
-        pagination: Pagination;
-    };
-}
-
-const props = defineProps({
-    response: {
-        type: Object as PropType<Response>,
-        required: true,
-    },
-});
+const props = defineProps<PaginatedResponse>();
+const userFields = computed(() => Object.keys(props.data[0]));
 
 const options = reactive({
     sortBy: [],
@@ -56,18 +35,19 @@ const options = reactive({
     page: 1,
     itemsPerPage: 10,
 });
+const sortBy = ref([{ key: 'id', order: 'asc' }]);
+// const items: Data[] = ref([]);
+// const currentPage = ref(1);
+// const indexData = () =>
+//     axios.get(route('index-users', {})).then((res: Response) => {
+//         console.log(res);
+//         items.value.values = res.items;
+//         if (currentPage.value > res.meta.pagination.total_pages) {
+//             currentPage.value = 1;
+//         }
+//     });
 
-const items: Data[] = ref([]);
-const indexData = () =>
-    axios.get(route('index-users', {})).then((res: Response) => {
-        console.log(res);
-        items.values = res.items;
-        if (currentPage > res.meta.pagination.total_pages) {
-            currentPage = 1;
-        }
-    });
-
-onMounted(indexData);
+// onMounted(indexData);
 
 // const prepareGetAllURL = (payload: object, defaultUrl: string, includes: string | string[]) => {
 //     const params = new URLSearchParams();
@@ -139,7 +119,6 @@ onMounted(indexData);
 //         value: key,
 //     })),
 // ]);
-const userFields = computed(() => Object.keys(props.response.data[0]));
 </script>
 
 <style scoped lang="scss"></style>
