@@ -1,16 +1,13 @@
-interface Dto {
-    object: string;
-    id: string;
-    [key: string]: unknown;
-}
+import type { Castable } from '@ship/Js/Types/castable';
+import type { BasePageProps } from '@ship/Js/Types/shared-props';
 
 interface Meta {
     include: string[];
     custom: unknown;
 }
 
-interface SingleResponse {
-    data: Dto;
+interface SingleResponse<TModel extends Castable> extends BasePageProps {
+    data: TModel;
     meta: Meta;
 }
 
@@ -30,7 +27,7 @@ interface MetaWithPagination extends Meta {
     pagination: Pagination;
 }
 
-export interface PaginatedResponse {
-    data: Dto[];
+export interface PaginatedResponse<TModel extends Castable> extends /* @vue-ignore */ BasePageProps {
+    data: TModel[];
     meta: MetaWithPagination;
 }

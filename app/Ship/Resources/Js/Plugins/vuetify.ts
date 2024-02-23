@@ -9,7 +9,7 @@ import { mdi, aliases } from 'vuetify/iconsets/mdi';
 export default createVuetify({
     blueprint: md2,
     theme: {
-        defaultTheme: 'defaultLight',
+        defaultTheme: 'defaultDark',
         themes: {
             defaultDark,
             defaultLight,

@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { route as routeFn } from 'ziggy-js';
 import { PageProps as InertiaPageProps } from '@inertiajs/core';
-import { SharedPageProps } from '@ship/Js/Types/shared-props';
+import { BasePageProps } from '@ship/Js/Types/shared-props';
 
 declare global {
     interface Window {
@@ -18,5 +18,5 @@ declare module 'vue' {
 }
 
 declare module '@inertiajs/core' {
-    interface PageProps extends InertiaPageProps, SharedPageProps {}
+    interface PageProps extends InertiaPageProps, BasePageProps {}
 }
