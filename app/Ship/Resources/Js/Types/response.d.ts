@@ -1,4 +1,3 @@
-import type { Castable } from '@ship/Js/Types/castable';
 import type { BasePageProps } from '@ship/Js/Types/shared-props';
 
 interface Meta {
@@ -6,8 +5,8 @@ interface Meta {
     custom: unknown;
 }
 
-interface SingleResponse<TModel extends Castable> extends BasePageProps {
-    data: TModel;
+interface SingleResponse<TContract> extends BasePageProps {
+    data: TContract;
     meta: Meta;
 }
 
@@ -27,7 +26,11 @@ interface MetaWithPagination extends Meta {
     pagination: Pagination;
 }
 
-export interface PaginatedResponse<TModel extends Castable> extends /* @vue-ignore */ BasePageProps {
-    data: TModel[];
+interface Instantiable<T> extends T {
+    create: (data: T) => this;
+}
+
+export interface PaginatedResponse<TContract> extends /* @vue-ignore */ BasePageProps {
+    data: TContract[];
     meta: MetaWithPagination;
 }
