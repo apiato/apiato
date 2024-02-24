@@ -26,10 +26,6 @@ interface MetaWithPagination extends Meta {
     pagination: Pagination;
 }
 
-interface Instantiable<T> extends T {
-    create: (data: T) => this;
-}
-
 export interface PaginatedResponse<TContract> extends /* @vue-ignore */ BasePageProps {
     data: TContract[];
     meta: MetaWithPagination;
