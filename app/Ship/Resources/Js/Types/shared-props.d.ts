@@ -9,6 +9,10 @@ interface SharedPageProps {
         auth: {
             user: AuthUser;
         };
+        query: {
+            [key: string]: string;
+            search?: string;
+        };
     };
 }
 
