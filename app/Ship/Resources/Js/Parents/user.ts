@@ -9,6 +9,4 @@ export abstract class User extends Model {
     ) {
         super();
     }
-
-    abstract firstName(): string;
 }
