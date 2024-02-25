@@ -44,10 +44,35 @@ class HandleInertiaRequests extends Middleware
 //                    'email' => $request->user()->email,
 //                ] : null,
                 ],
-                'query' => [
-                    'search' => $request->query('search', ''),
-                ],
+                'query' => $this->query(),
             ],
         ]);
+    }
+
+    private function query(): array
+    {
+        $query = [];
+        if (null !== request()) {
+            if (request()->has('search')) {
+                $query['search'] = request()->query('search');
+            }
+            if (request()->has('page')) {
+                $query['page'] = request()->query('page');
+            }
+            if (request()->has('limit')) {
+                $query['limit'] = request()->query('limit');
+            }
+            if (request()->has('orderBy')) {
+                $query['orderBy'] = request()->query('orderBy');
+            }
+            if (request()->has('sortedBy')) {
+                $query['sortedBy'] = request()->query('sortedBy');
+            }
+            if (request()->has('filter')) {
+                $query['filter'] = request()->query('filter');
+            }
+        }
+
+        return $query;
     }
 }
