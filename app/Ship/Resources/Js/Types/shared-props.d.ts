@@ -7,8 +7,8 @@ interface AuthUser {
 export interface ApiatoQueryString {
     [key: string]: string | number | undefined;
     search?: string;
-    page?: number;
-    limit?: number;
+    page?: string | number;
+    limit?: string | number;
     orderBy?: string;
     sortedBy?: string;
     filter?: string;
