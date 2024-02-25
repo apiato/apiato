@@ -25,6 +25,7 @@
 import type { ApiatoQueryString } from '@ship/Js/Types/shared-props';
 import type { PaginatedResponse } from '@ship/Js/Types/response';
 import type { VDataTable } from 'vuetify/components';
+import { debounce } from '@ship/Js/Utility';
 
 // https://stackoverflow.com/a/75993081 <- This is the best way to type the headers
 // https://stackoverflow.com/a/77876055
@@ -91,22 +92,21 @@ function emptySearch(value: string | undefined | null): boolean {
     return value === undefined || value === '' || value === null;
 }
 function applyTableOptions($event: TableOptions) {
-    const currentQuery = page.props.shared.query;
     const newQuery = { ...page.props.shared.query };
 
-    if (currentQuery.page !== $event.page) {
+    if (parseInt(page.props.shared.query?.page) !== $event.page) {
         newQuery.page = $event.page ?? 1;
     }
 
-    if (currentQuery.limit !== $event.itemsPerPage) {
+    if (parseInt(page.props.shared.query?.limit) !== $event.itemsPerPage) {
         newQuery.limit = $event.itemsPerPage ?? 10;
     }
 
     if ($event.sortBy.length > 0 && $event.sortBy[0]) {
-        if ($event.sortBy[0].key !== currentQuery.orderBy) {
+        if ($event.sortBy[0].key !== page.props.shared.query.orderBy) {
             newQuery.orderBy = $event.sortBy[0].key;
         }
-        if ($event.sortBy[0].order !== currentQuery.sortedBy) {
+        if ($event.sortBy[0].order !== page.props.shared.query.sortedBy) {
             newQuery.sortedBy = $event.sortBy[0].order;
         }
     }
@@ -119,25 +119,30 @@ function applyTableOptions($event: TableOptions) {
     }
 }
 
-watch(search, (newValue) => {
-    if (emptySearch(newValue)) {
-        // Resets current pagination options
-        // const newQuery = {};
-        // applyQuery(newQuery);
-        // Keeps current pagination options
-        const newQuery = { ...page.props.shared.query };
-        if (newQuery.page) delete newQuery.page;
-        if (newQuery.search) delete newQuery.search;
-        applyQuery(newQuery);
-    } else {
-        // Resets current pagination options
-        // const newQuery = { search: newValue };
-        // Keeps current pagination options
-        const newQuery = { ...page.props.shared.query, search: newValue };
-        if (newQuery.page) delete newQuery.page;
-        applyQuery(newQuery);
-    }
-});
+watch(
+    search,
+    debounce((newValue) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        if (emptySearch(newValue)) {
+            // Resets current pagination options
+            // const newQuery = {};
+            // applyQuery(newQuery);
+            // Keeps current pagination options
+            const newQuery = { ...page.props.shared.query };
+            if (newQuery.page) delete newQuery.page;
+            if (newQuery.search) delete newQuery.search;
+            applyQuery(newQuery);
+        } else {
+            // Resets current pagination options
+            // const newQuery = { search: newValue };
+            // Keeps current pagination options
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const newQuery = { ...page.props.shared.query, search: newValue };
+            // if (newQuery.page) delete newQuery.page;
+            applyQuery(newQuery);
+        }
+    }, 400),
+);
 
 // interface PaginationParams {
 //     page: number;
