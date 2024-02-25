@@ -96,13 +96,18 @@ function applyTableOptions($event: TableOptions) {
 
 watch(search, (newValue) => {
     if (emptySearch(newValue)) {
-        const newQuery = { ...page.props.shared.query };
-
-        if (newQuery.search) delete newQuery.search;
-
+        // Resets current pagination options
+        const newQuery = {};
         applyQuery(newQuery);
+        // Keeps current pagination options
+        // const newQuery = { ...page.props.shared.query };
+        // if (newQuery.search) delete newQuery.search;
+        // applyQuery(newQuery);
     } else {
-        const newQuery = { ...page.props.shared.query, search: newValue };
+        // Resets current pagination options
+        const newQuery = { search: newValue };
+        // Keeps current pagination options
+        // const newQuery = { ...page.props.shared.query, search: newValue };
         applyQuery(newQuery);
     }
 });
