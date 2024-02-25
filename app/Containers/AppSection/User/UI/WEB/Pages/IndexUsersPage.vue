@@ -10,7 +10,7 @@
 
         <v-divider />
 
-        <v-data-table-server :disable-sort="loading" hide-default-footer :items="users" item-value="name" :headers="headers" :items-length="pagination.total" :loading="loading" @update:options="options">
+        <v-data-table-server :disable-sort="loading" hide-default-footer :items="users" item-value="name" :headers="headers" :items-length="pagination.total" :loading="loading" @update:options="applyTableOptions">
             <template #item="{ item }">
                 <tr>
                     <td v-for="field in headers" :key="field.key">
@@ -35,9 +35,9 @@ import type { ApiatoQueryString } from '@ship/Js/Types/shared-props';
 defineProps<PaginatedResponse<UserContract>>();
 const page = usePage<PaginatedResponse<UserContract>>();
 const users = computed(() => page.props.data);
+const pagination = computed(() => page.props.meta.pagination);
 // const currentQuery = toRef(page.props.shared.query);
 const search = ref(page.props.shared.query.search ?? '');
-const pagination = page.props.meta.pagination;
 
 const loading = ref(false);
 // const headers = computed(() => Object.keys(page.props.data[0] ?? {}));
@@ -73,14 +73,11 @@ function applyQuery(query: ApiatoQueryString): void {
     });
 }
 
-// type InvalidSearchType = undefined | null | '';
-// type ValidSearchType = string;
-
 function emptySearch(value: string | undefined | null): boolean {
     return value === undefined || value === '' || value === null;
 }
-function options($event: TableOptions) {
-    let newQuery = { ...page.props.shared.query };
+function applyTableOptions($event: TableOptions) {
+    const newQuery = { ...page.props.shared.query };
 
     newQuery.page = $event.page ?? 1;
     newQuery.limit = $event.itemsPerPage ?? 10;
@@ -88,11 +85,13 @@ function options($event: TableOptions) {
         newQuery.orderBy = $event.sortBy[0].key;
         newQuery.sortedBy = $event.sortBy[0].order;
     }
-    if (!emptySearch(search.value)) {
-        newQuery = { ...newQuery, search: search.value };
-    }
 
-    applyQuery(newQuery);
+    if (!emptySearch(search.value)) {
+        const newQueryWithSearch = { ...newQuery, search: search.value };
+        applyQuery(newQueryWithSearch);
+    } else {
+        applyQuery(newQuery);
+    }
 }
 
 watch(search, (newValue) => {
@@ -104,7 +103,6 @@ watch(search, (newValue) => {
         applyQuery(newQuery);
     } else {
         const newQuery = { ...page.props.shared.query, search: newValue };
-
         applyQuery(newQuery);
     }
 });
@@ -117,25 +115,6 @@ watch(search, (newValue) => {
 //     search: string;
 // }
 // interface QueryParams {}
-
-// const items: Data[] = ref([]);
-// const currentPage = ref(1);
-// const indexData = () =>
-//     axios.get(route('index-users', {})).then((res: Response) => {
-//         console.log(res);
-//         items.value.values = res.items;
-//         if (currentPage.value > res.meta.pagination.total_pages) {
-//             currentPage.value = 1;
-//         }
-//     });
-
-// const headers = computed(() => [
-//     // use user field keys as headers
-//     ...Object.keys(props.response.data[0]).map((key) => ({
-//         text: key,
-//         value: key,
-//     })),
-// ]);
 </script>
 
 <style scoped lang="scss"></style>
