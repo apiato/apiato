@@ -2,15 +2,16 @@
     <v-card-title class="d-flex align-center pe-2">
         {{ title }}
         <v-spacer></v-spacer>
-        <v-text-field v-model="search" :disabled="loading" clearable label="Search" prepend-inner-icon="mdi-magnify" single-line variant="solo-filled" hide-details :loading="loading" />
+        <v-text-field v-model="search" clearable label="Search" prepend-inner-icon="mdi-magnify" single-line variant="solo-filled" hide-details :loading="loading" />
     </v-card-title>
 </template>
 
 <script setup lang="ts">
 defineProps({
     title: {
+        // TODO: we can get an unexpected null value here when the component clear btn is clicked (clearable)
         type: String,
-        default: '',
+        default: () => '',
     },
     loading: {
         type: Boolean,
