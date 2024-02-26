@@ -94,11 +94,17 @@ function emptySearch(value: string | undefined | null): boolean {
 function applyTableOptions($event: TableOptions) {
     const newQuery = { ...page.props.shared.query };
 
-    if (parseInt(page.props.shared.query?.page) !== $event.page) {
+    if (page.props.shared.query.page && typeof page.props.shared.query.page === 'string') {
+        newQuery.page = parseInt(page.props.shared.query.page);
+    }
+    if (page.props.shared.query.page !== $event.page) {
         newQuery.page = $event.page ?? 1;
     }
 
-    if (parseInt(page.props.shared.query?.limit) !== $event.itemsPerPage) {
+    if (page.props.shared.query.limit && typeof page.props.shared.query.limit === 'string') {
+        newQuery.limit = parseInt(page.props.shared.query.limit);
+    }
+    if (page.props.shared.query.limit !== $event.itemsPerPage) {
         newQuery.limit = $event.itemsPerPage ?? 10;
     }
 
