@@ -4,6 +4,7 @@ namespace App\Ship\Kernels;
 
 use Illuminate\Console\Scheduling\Schedule;
 use App\Ship\Parents\Commands\ConsoleCommand;
+use Illuminate\Console\Application as Artisan;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
 class ConsoleKernel extends LaravelConsoleKernel
