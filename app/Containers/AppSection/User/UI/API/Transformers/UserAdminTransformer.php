@@ -10,11 +10,11 @@ class UserAdminTransformer extends UserTransformer
     {
         return parent::transform($user) +
        [
-            'real_id' => $user->id,
-            'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at,
-            'readable_created_at' => $user->created_at->diffForHumans(),
-            'readable_updated_at' => $user->updated_at->diffForHumans(),
-        ];
+           'real_id' => $user->id,
+           'created_at' => $user->created_at,
+           'updated_at' => $user->updated_at,
+           'readable_created_at' => $user->created_at->diffForHumans(),
+           'readable_updated_at' => $user->updated_at->diffForHumans(),
+       ];
     }
 }
