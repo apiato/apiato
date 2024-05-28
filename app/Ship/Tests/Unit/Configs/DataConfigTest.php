@@ -4,12 +4,10 @@ namespace App\Ship\Tests\Unit\Configs;
 
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Enumerable;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Casts\EnumCast;
-use Spatie\LaravelData\Casts\EnumerableCast;
 use Spatie\LaravelData\Normalizers\ArrayableNormalizer;
 use Spatie\LaravelData\Normalizers\ArrayNormalizer;
 use Spatie\LaravelData\Normalizers\JsonNormalizer;
@@ -34,6 +32,10 @@ final class DataConfigTest extends ShipTestCase
         $config = config('data');
         $expected = [
             'date_format' => DATE_ATOM,
+            'features' => [
+                'cast_and_transform_iterables' => false,
+                'ignore_exception_when_trying_to_set_computed_property_value' => false,
+            ],
             'transformers' => [
                 \DateTimeInterface::class => DateTimeInterfaceTransformer::class,
                 Arrayable::class => ArrayableTransformer::class,
@@ -42,7 +44,6 @@ final class DataConfigTest extends ShipTestCase
             'casts' => [
                 \DateTimeInterface::class => DateTimeInterfaceCast::class,
                 \BackedEnum::class => EnumCast::class,
-                Enumerable::class => EnumerableCast::class,
             ],
             'rule_inferrers' => [
                 SometimesRuleInferrer::class,
@@ -67,6 +68,7 @@ final class DataConfigTest extends ShipTestCase
                 'cache' => [
                     'store' => env('CACHE_DRIVER', 'file'),
                     'prefix' => 'laravel-data',
+                    'duration' => null,
                 ],
                 'reflection_discovery' => [
                     'enabled' => true,
@@ -74,8 +76,19 @@ final class DataConfigTest extends ShipTestCase
                     'root_namespace' => null,
                 ],
             ],
-            'validation_strategy' => ValidationStrategy::OnlyRequests->value,
+            'validation_strategy' => ValidationStrategy::Always->value,
             'ignore_invalid_partials' => false,
+            'max_transformation_depth' => null,
+            'throw_when_max_transformation_depth_reached' => true,
+            'commands' => [
+                'make' => [
+                    'namespace' => 'Data',
+                    'suffix' => 'Data',
+                ],
+            ],
+            'livewire' => [
+                'enable_synths' => false,
+            ],
         ];
 
         $this->assertSame($expected, $config);

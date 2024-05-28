@@ -21,6 +21,7 @@ final class DebugBarConfigTest extends ShipTestCase
             ],
             'storage' => [
                 'enabled' => true,
+                'open' => null,
                 'driver' => 'file',
                 'path' => storage_path('debugbar'),
                 'connection' => null,
@@ -29,11 +30,13 @@ final class DebugBarConfigTest extends ShipTestCase
                 'port' => 2304,
             ],
             'editor' => 'phpstorm',
-            'remote_sites_path' => '',
-            'local_sites_path' => '',
+            'remote_sites_path' => null,
+            'local_sites_path' => null,
             'include_vendors' => true,
             'capture_ajax' => true,
             'add_ajax_timing' => false,
+            'ajax_handler_auto_show' => true,
+            'ajax_handler_enable_tab' => true,
             'error_handler' => false,
             'clockwork' => false,
             'collectors' => [
@@ -60,10 +63,23 @@ final class DebugBarConfigTest extends ShipTestCase
                 'cache' => false,
                 'models' => true,
                 'livewire' => true,
+                'jobs' => false,
             ],
             'options' => [
+                'time' => [
+                    'memory_usage' => false,
+                ],
+                'messages' => [
+                    'trace' => true,
+                ],
+                'memory' => [
+                    'reset_peak' => false,
+                    'with_baseline' => false,
+                    'precision' => 0,
+                ],
                 'auth' => [
                     'show_name' => true,
+                    'show_guards' => true,
                 ],
                 'db' => [
                     'with_params' => true,
@@ -77,16 +93,34 @@ final class DebugBarConfigTest extends ShipTestCase
                     ],
                     'hints' => false,
                     'show_copy' => false,
+                    'slow_threshold' => false,
+                    'memory_usage' => false,
+                    'soft_limit' => 100,
+                    'hard_limit' => 500,
                 ],
                 'mail' => [
-                    'full_log' => false,
+                    'timeline' => false,
+                    'show_body' => true,
                 ],
                 'views' => [
                     'timeline' => false,
                     'data' => false,
+                    'group' => 50,
+                    'exclude_paths' => [
+                        0 => 'vendor/filament',
+                    ],
                 ],
                 'route' => [
                     'label' => true,
+                ],
+                'session' => [
+                    'hiddens' => [],
+                ],
+                'symfony_request' => [
+                    'hiddens' => [],
+                ],
+                'events' => [
+                    'data' => false,
                 ],
                 'logs' => [
                     'file' => null,
@@ -97,6 +131,7 @@ final class DebugBarConfigTest extends ShipTestCase
             ],
             'inject' => true,
             'route_prefix' => '_debugbar',
+            'route_middleware' => [],
             'route_domain' => null,
             'theme' => env('DEBUGBAR_THEME', 'auto'),
             'debug_backtrace_limit' => 50,

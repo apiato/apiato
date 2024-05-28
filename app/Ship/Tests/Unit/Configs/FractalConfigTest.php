@@ -24,6 +24,10 @@ final class FractalConfigTest extends ShipTestCase
                 'enabled' => true,
                 'request_key' => 'include',
             ],
+            'auto_excludes' => [
+                'enabled' => true,
+                'request_key' => 'exclude',
+            ],
         ];
 
         $this->assertSame($expected, $config);
