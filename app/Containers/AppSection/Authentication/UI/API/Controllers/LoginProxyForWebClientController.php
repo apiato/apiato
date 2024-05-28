@@ -7,6 +7,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordG
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class LoginProxyForWebClientController extends ApiController
 {
@@ -14,6 +15,6 @@ class LoginProxyForWebClientController extends ApiController
     {
         $result = $action->run($request);
 
-        return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
+        return $this->json(Fractal::create($result->token, TokenTransformer::class)->toArray())->withCookie($result->refreshTokenCookie);
     }
 }
