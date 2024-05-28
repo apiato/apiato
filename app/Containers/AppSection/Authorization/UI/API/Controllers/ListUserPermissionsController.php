@@ -6,13 +6,14 @@ use App\Containers\AppSection\Authorization\Actions\ListUserPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Spatie\Fractal\Facades\Fractal;
 
 class ListUserPermissionsController extends ApiController
 {
-    public function __invoke(ListUserPermissionsRequest $request, ListUserPermissionsAction $action): array
+    public function __invoke(ListUserPermissionsRequest $request, ListUserPermissionsAction $action): array|null
     {
         $permissions = $action->run($request);
 
-        return $this->transform($permissions, PermissionAdminTransformer::class);
+        return Fractal::create($permissions, PermissionAdminTransformer::class)->toArray();
     }
 }

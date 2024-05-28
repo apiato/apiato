@@ -6,13 +6,14 @@ use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Spatie\Fractal\Facades\Fractal;
 
 class UpdatePasswordController extends ApiController
 {
-    public function __invoke(UpdatePasswordRequest $request, UpdatePasswordAction $action): array
+    public function __invoke(UpdatePasswordRequest $request, UpdatePasswordAction $action): array|null
     {
         $user = $action->run($request->getData());
 
-        return $this->transform($user, UserTransformer::class);
+        return Fractal::create($user, UserTransformer::class)->toArray();
     }
 }
