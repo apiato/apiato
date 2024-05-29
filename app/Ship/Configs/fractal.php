@@ -41,7 +41,6 @@ return [
     ],
 
     'auto_excludes' => [
-
         /*
          * If enabled Fractal will automatically add the excludes who's
          * names are present in the `include` request parameter.
