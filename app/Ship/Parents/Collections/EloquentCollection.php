@@ -2,8 +2,8 @@
 
 namespace App\Ship\Parents\Collections;
 
-use Illuminate\Database\Eloquent\Model;
 use Apiato\Core\Abstracts\Collections\EloquentCollection as AbstractEloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @template TKey of array-key
