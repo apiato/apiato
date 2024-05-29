@@ -17,7 +17,7 @@ class TestUserFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => fake()->name(),
         ];
     }
 }

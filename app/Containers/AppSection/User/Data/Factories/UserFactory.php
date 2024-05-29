@@ -20,13 +20,13 @@ class UserFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
             'password' => 'password',
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'gender' => $this->faker->randomElement(['male', 'female', 'unspecified']),
-            'birth' => $this->faker->date(),
+            'gender' => fake()->randomElement(['male', 'female', 'unspecified']),
+            'birth' => fake()->date(),
         ];
     }
 
