@@ -39,4 +39,18 @@ return [
          */
         'request_key' => 'include',
     ],
+
+    'auto_excludes' => [
+
+        /*
+         * If enabled Fractal will automatically add the excludes who's
+         * names are present in the `include` request parameter.
+         */
+        'enabled' => true,
+
+        /*
+         * The name of key in the request to where we should look for the excludes to exclude.
+         */
+        'request_key' => 'exclude',
+    ],
 ];

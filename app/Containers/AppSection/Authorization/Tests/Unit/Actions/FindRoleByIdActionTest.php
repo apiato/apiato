@@ -17,9 +17,9 @@ final class FindRoleByIdActionTest extends UnitTestCase
     public function testCanFindRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $request = FindRoleByIdRequest::injectData()->withUrlParameters(['id' => $role->id]);
+        $request = FindRoleByIdRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
         $taskMock = $this->partialMock(FindRoleTask::class);
-        $taskMock->expects('run')->once()->with($request->id)->andReturn($role);
+        $taskMock->expects('run')->once()->with($request->role_id)->andReturn($role);
 
         app(FindRoleByIdAction::class)->run($request);
     }

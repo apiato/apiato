@@ -43,10 +43,10 @@ final class UserTest extends UnitTestCase
         $user = UserFactory::new()->createOne();
         $casts = [
             'id' => 'int',
-            'email_verified_at' => 'datetime',
+            'email_verified_at' => 'immutable_datetime',
             'password' => 'hashed',
-            'birth' => 'date',
             'gender' => Gender::class,
+            'birth' => 'immutable_date',
         ];
 
         $this->assertSame($casts, $user->getCasts());

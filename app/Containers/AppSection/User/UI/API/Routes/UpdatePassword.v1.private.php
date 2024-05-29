@@ -5,7 +5,7 @@
  *
  * @apiName            UpdatePassword
  *
- * @api                {patch} /v1/users/:id/password Update User's Password
+ * @api                {patch} /v1/users/:user_id/password Update User's Password
  *
  * @apiVersion         1.0.0
  *
@@ -14,7 +14,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} id user id
+ * @apiParam           {String} user_id
  *
  * @apiBody           {String} current_password
  * @apiBody           {String} new_password min: 8
@@ -35,5 +35,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\UpdatePasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users/{id}/password', UpdatePasswordController::class)
+Route::patch('users/{user_id}/password', UpdatePasswordController::class)
     ->middleware(['auth:api']);

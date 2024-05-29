@@ -23,7 +23,7 @@ final class UpdatePasswordActionTest extends UnitTestCase
         $data = [
             'new_password' => 'test',
         ];
-        $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['id' => $user->id]);
+        $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
         $action = app(UpdatePasswordAction::class);
 
         $result = $action->run($request);

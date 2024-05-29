@@ -30,6 +30,6 @@ class UpdateUserAction extends ParentAction
             'birth',
         ]);
 
-        return $this->updateUserTask->run($request->id, $sanitizedData);
+        return $this->updateUserTask->run($request->user_id, $sanitizedData);
     }
 }

@@ -20,14 +20,14 @@ final class UpdatePasswordRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getUrlParametersArray());
     }
 
@@ -51,7 +51,7 @@ final class UpdatePasswordRequestTest extends UnitTestCase
         $user = UserFactory::new()->createOne();
         $request = UpdatePasswordRequest::injectData([], $user)
             ->withUrlParameters([
-                'id' => $user->id,
+                'user_id' => $user->id,
             ]);
         $gateMock = $this->getGateMock('update', [
             User::class,

@@ -13,6 +13,6 @@ class LogoutController extends WebController
     {
         $action->run();
 
-        return redirect()->route('home-page');
+        return redirect()->action(HomePageController::class);
     }
 }

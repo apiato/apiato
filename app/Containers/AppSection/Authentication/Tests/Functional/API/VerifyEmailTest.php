@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class VerifyEmailTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/email/verify/{id}/{hash}';
+    protected string $endpoint = 'post@v1/email/verify/{user_id}/{hash}';
 
     protected array $access = [
         'permissions' => null,
@@ -32,7 +32,7 @@ final class VerifyEmailTest extends ApiTestCase
             'verification.verify',
             now()->addMinutes(30),
             [
-                'id' => $unverifiedUser->getHashedKey(),
+                'user_id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
             ],
         );
@@ -41,7 +41,7 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = $match[preg_match('/signature=(.*)/', $url, $match)];
 
-        $response = $this->injectId($unverifiedUser->id)
+        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
             ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
             ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
             ->makeCall();
@@ -63,7 +63,7 @@ final class VerifyEmailTest extends ApiTestCase
             'verification.verify',
             now()->addMinutes(30),
             [
-                'id' => $unverifiedUser->getHashedKey(),
+                'user_id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
             ],
         );
@@ -72,7 +72,7 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = 'invalid_sig';
 
-        $response = $this->injectId($unverifiedUser->id)
+        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
             ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
             ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
             ->makeCall();

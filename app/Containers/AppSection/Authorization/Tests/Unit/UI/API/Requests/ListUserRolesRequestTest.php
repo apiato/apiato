@@ -24,14 +24,14 @@ final class ListUserRolesRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getUrlParametersArray());
     }
 
@@ -45,7 +45,7 @@ final class ListUserRolesRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
-        $request = ListUserRolesRequest::injectData([], $user)->withUrlParameters(['id' => $user->id]);
+        $request = ListUserRolesRequest::injectData([], $user)->withUrlParameters(['user_id' => $user->id]);
 
         $this->assertTrue($request->authorize());
     }

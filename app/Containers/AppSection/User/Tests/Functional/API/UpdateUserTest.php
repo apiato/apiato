@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Carbon;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -14,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class UpdateUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{id}';
+    protected string $endpoint = 'patch@v1/users/{user_id}';
 
     protected array $access = [
         'permissions' => null,
@@ -30,10 +31,10 @@ final class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => 'Updated Name',
             'gender' => Gender::MALE->value,
-            'birth' => Carbon::today(),
+            'birth' => Carbon::today()->toIso8601String(),
         ];
 
-        $response = $this->injectId($this->testingUser->id)->makeCall($data);
+        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -44,7 +45,7 @@ final class UpdateUserTest extends ApiTestCase
                     ->where('email', $this->testingUser->email)
                     ->where('name', $data['name'])
                     ->where('gender', $data['gender'])
-                    ->where('birth', static fn ($birth) => $data['birth']->isSameDay($birth))
+                    ->where('birth', static fn ($birth) => CarbonImmutable::parse($data['birth'])->isSameDay($birth))
                     ->missing('password')
                     ->etc(),
             )->etc(),

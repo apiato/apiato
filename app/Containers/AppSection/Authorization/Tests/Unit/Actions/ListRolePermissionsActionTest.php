@@ -18,7 +18,7 @@ final class ListRolePermissionsActionTest extends UnitTestCase
     {
         $role = RoleFactory::new()->createOne()
             ->givePermissionTo(PermissionFactory::new()->count(3)->create());
-        $request = ListRolePermissionsRequest::injectData()->withUrlParameters(['id' => $role->id]);
+        $request = ListRolePermissionsRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
         $action = app(ListRolePermissionsAction::class);
 
         $result = $action->run($request);

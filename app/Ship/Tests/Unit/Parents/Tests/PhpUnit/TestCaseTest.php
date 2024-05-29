@@ -2,7 +2,7 @@
 
 namespace App\Ship\Tests\Unit\Parents\Tests\PhpUnit;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase;
+use App\Ship\Parents\Tests\TestCase;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Foundation\Application;
 use PHPUnit\Framework\Attributes\CoversClass;

@@ -18,7 +18,7 @@ final class ListUserRolesActionTest extends UnitTestCase
     {
         $user = UserFactory::new()->createOne()
             ->assignRole(RoleFactory::new()->count(3)->create());
-        $request = ListUserRolesRequest::injectData()->withUrlParameters(['id' => $user->id]);
+        $request = ListUserRolesRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
         $action = app(ListUserRolesAction::class);
 
         $result = $action->run($request);

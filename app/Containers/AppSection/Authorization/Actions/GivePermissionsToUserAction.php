@@ -20,7 +20,7 @@ class GivePermissionsToUserAction extends ParentAction
      */
     public function run(GivePermissionsToUserRequest $request): User
     {
-        return $this->findUserByIdTask->run($request->id)
+        return $this->findUserByIdTask->run($request->user_id)
             ->givePermissionTo($request->permission_ids);
     }
 }

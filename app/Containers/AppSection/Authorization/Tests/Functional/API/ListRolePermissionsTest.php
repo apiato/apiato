@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class ListRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/roles/{id}/permissions';
+    protected string $endpoint = 'get@v1/roles/{role_id}/permissions';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -25,7 +25,7 @@ final class ListRolePermissionsTest extends ApiTestCase
         $permission = PermissionFactory::new()->createOne();
         $role->givePermissionTo([$permission]);
 
-        $response = $this->injectId($role->id)->makeCall();
+        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall();
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();

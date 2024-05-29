@@ -25,10 +25,10 @@ class User extends ParentUserModel implements MustVerifyEmail
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'immutable_datetime',
         'password' => 'hashed',
-        'birth' => 'date',
         'gender' => Gender::class,
+        'birth' => 'immutable_date',
     ];
 
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void

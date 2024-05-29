@@ -20,7 +20,7 @@ class RevokeUserPermissionsAction extends ParentAction
      */
     public function run(RevokeUserPermissionsRequest $request): User
     {
-        $user = $this->findUserByIdTask->run($request->id);
+        $user = $this->findUserByIdTask->run($request->user_id);
 
         foreach ($request->permission_ids as $permissionId) {
             $user->revokePermissionTo($permissionId);

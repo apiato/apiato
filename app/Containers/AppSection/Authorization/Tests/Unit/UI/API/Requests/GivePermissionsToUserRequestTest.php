@@ -24,7 +24,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
             'permission_ids.*',
         ], $this->request->getDecodeArray());
     }
@@ -32,7 +32,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
     public function testUrlParametersArray(): void
     {
         $this->assertSame([
-            'id',
+            'user_id',
         ], $this->request->getUrlParametersArray());
     }
 
@@ -49,7 +49,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
     public function testAuthorizeMethodGateCall(): void
     {
         $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = GivePermissionsToUserRequest::injectData([], $user)->withUrlParameters(['id' => $user->id]);
+        $request = GivePermissionsToUserRequest::injectData([], $user)->withUrlParameters(['user_id' => $user->id]);
 
         $this->assertTrue($request->authorize());
     }

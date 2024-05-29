@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class DeleteRoleTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/roles/{id}';
+    protected string $endpoint = 'delete@v1/roles/{role_id}';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -22,7 +22,7 @@ final class DeleteRoleTest extends ApiTestCase
     {
         $role = RoleFactory::new()->createOne();
 
-        $response = $this->injectId($role->id)->makeCall();
+        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall();
 
         $response->assertNoContent();
     }

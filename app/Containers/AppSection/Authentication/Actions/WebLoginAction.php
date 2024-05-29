@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
-use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -24,7 +24,7 @@ class WebLoginAction extends ParentAction
             'remember' => false,
         ]);
 
-        $loginFields = LoginFieldProcessor::extractAll($sanitizedData);
+        $loginFields = LoginFieldParser::extractAll($sanitizedData);
         $credentials = [];
         foreach ($loginFields as $loginField) {
             if (config('appSection-authentication.login.case_sensitive')) {

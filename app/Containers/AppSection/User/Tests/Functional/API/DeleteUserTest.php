@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class DeleteUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/users/{id}';
+    protected string $endpoint = 'delete@v1/users/{user_id}';
 
     protected array $access = [
         'permissions' => null,
@@ -22,7 +22,7 @@ final class DeleteUserTest extends ApiTestCase
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($this->testingUser->id)->makeCall();
+        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
 
         $response->assertNoContent();
     }
@@ -31,7 +31,7 @@ final class DeleteUserTest extends ApiTestCase
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId(UserFactory::new()->createOne()->id)->makeCall();
+        $response = $this->injectId(UserFactory::new()->createOne()->id, replace: '{user_id}')->makeCall();
 
         $response->assertNoContent();
     }

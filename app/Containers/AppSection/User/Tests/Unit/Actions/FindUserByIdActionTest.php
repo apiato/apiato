@@ -16,7 +16,7 @@ final class FindUserByIdActionTest extends UnitTestCase
     public function testCanDeleteUser(): void
     {
         $user = UserFactory::new()->createOne();
-        $request = FindUserByIdRequest::injectData()->withUrlParameters(['id' => $user->id]);
+        $request = FindUserByIdRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
         $action = app(FindUserByIdAction::class);
 
         $result = $action->run($request);

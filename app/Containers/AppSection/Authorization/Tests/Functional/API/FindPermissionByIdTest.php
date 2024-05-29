@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class FindPermissionByIdTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/permissions/{id}';
+    protected string $endpoint = 'get@v1/permissions/{permission_id}';
 
     protected array $access = [
         'permissions' => 'manage-permissions',
@@ -22,7 +22,7 @@ final class FindPermissionByIdTest extends ApiTestCase
     {
         $permissionA = PermissionFactory::new()->createOne();
 
-        $response = $this->injectId($permissionA->id)->makeCall();
+        $response = $this->injectId($permissionA->id, replace: '{permission_id}')->makeCall();
 
         $response->assertOk();
         $responseContent = $this->getResponseContentObject();
@@ -33,7 +33,7 @@ final class FindPermissionByIdTest extends ApiTestCase
     {
         $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId)->makeCall();
+        $response = $this->injectId($invalidId, replace: '{permission_id}')->makeCall();
 
         $response->assertNotFound();
     }
