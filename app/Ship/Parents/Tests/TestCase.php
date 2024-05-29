@@ -16,7 +16,7 @@ abstract class TestCase extends AbstractTestCase
 
     public function createApplication(): Application
     {
-        $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
+        $this->baseUrl = env('API_URL'); // this reads the value from `phpunit.xml` during testing
 
         $this->overrideSubDomain();
 
