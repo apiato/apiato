@@ -2,7 +2,7 @@
 
 namespace App\Ship\Tests;
 
-use App\Ship\Parents\Tests\PhpUnit\TestCase as ParentTestCase;
+use App\Ship\Parents\Tests\TestCase as ParentTestCase;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
