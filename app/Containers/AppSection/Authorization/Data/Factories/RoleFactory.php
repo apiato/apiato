@@ -18,7 +18,7 @@ class RoleFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->firstName(),
+            'name' => fake()->unique()->firstName(),
             'guard_name' => 'api',
         ];
     }
