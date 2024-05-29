@@ -20,7 +20,7 @@ abstract class TestCase extends AbstractTestCase
 
         $this->overrideSubDomain();
 
-        $app = require base_path('bootstrap/app.php');
+        $app = require __DIR__.'/../../../../bootstrap/app.php';
 
         $app->make(ApiatoConsoleKernel::class)->bootstrap();
 
