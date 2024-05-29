@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Parents\Tests\PhpUnit;
+namespace App\Ship\Parents\Tests;
 
 use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
 use App\Ship\Enums\AuthGuard;
@@ -14,35 +14,13 @@ abstract class TestCase extends AbstractTestCase
     #[Deprecated(reason: 'Laravel already provides a helper function for this', replacement: 'fake(%parameter0%)')]
     protected Generator $faker;
 
-    /**
-     * Setup the test environment, before each test.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
-    /**
-     * Reset the test environment, after each test.
-     */
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-    }
-
-    /**
-     * Creates the application.
-     *
-     * @return Application
-     */
-    public function createApplication()
+    public function createApplication(): Application
     {
         $this->baseUrl = env('API_FULL_URL'); // this reads the value from `phpunit.xml` during testing
 
-        // override the default subDomain of the base URL when subDomain property is declared inside a test
         $this->overrideSubDomain();
 
-        $app = require __DIR__ . '/../../../../../bootstrap/app.php';
+        $app = require base_path('bootstrap/app.php');
 
         $app->make(ApiatoConsoleKernel::class)->bootstrap();
 
