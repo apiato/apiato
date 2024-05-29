@@ -16,10 +16,6 @@ abstract class TestCase extends AbstractTestCase
 
     public function createApplication(): Application
     {
-        $this->baseUrl = env('API_URL'); // this reads the value from `phpunit.xml` during testing
-
-        $this->overrideSubDomain();
-
         $app = require __DIR__.'/../../../../bootstrap/app.php';
 
         $app->make(ApiatoConsoleKernel::class)->bootstrap();
