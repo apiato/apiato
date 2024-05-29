@@ -28,11 +28,11 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 static fn (AssertableJson $json): AssertableJson => $json->hasAll([
-                'access_token',
-                'refresh_token',
-                'token_type',
-                'expires_in',
-            ])->where('token_type', 'Bearer')
+                    'access_token',
+                    'refresh_token',
+                    'token_type',
+                    'expires_in',
+                ])->where('token_type', 'Bearer')
                 ->etc(),
             )->etc(),
         );
