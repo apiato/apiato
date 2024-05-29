@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Models;
 
 use Apiato\Core\Traits\ModelTrait;
+use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole
@@ -17,4 +18,9 @@ class Role extends SpatieRole
         'display_name',
         'description',
     ];
+
+    public function newCollection(array $models = []): RoleCollection
+    {
+        return new RoleCollection($models);
+    }
 }
