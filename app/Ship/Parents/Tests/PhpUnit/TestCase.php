@@ -7,9 +7,13 @@ use App\Ship\Enums\AuthGuard;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 use Illuminate\Foundation\Application;
+use JetBrains\PhpStorm\Deprecated;
 
 abstract class TestCase extends AbstractTestCase
 {
+    #[Deprecated(reason: 'Laravel already provides a helper function for this', replacement: 'fake(%parameter0%)')]
+    protected Generator $faker;
+
     /**
      * Setup the test environment, before each test.
      */
