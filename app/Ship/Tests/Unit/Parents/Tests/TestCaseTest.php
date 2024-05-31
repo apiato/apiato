@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Tests\Unit\Parents\Tests\PhpUnit;
+namespace App\Ship\Tests\Unit\Parents\Tests;
 
 use App\Ship\Parents\Tests\TestCase;
 use App\Ship\Tests\ShipTestCase;
