@@ -8,10 +8,6 @@ use League\Fractal\Resource\Collection;
 
 class RoleAdminTransformer extends RoleTransformer
 {
-    protected array $availableIncludes = [
-        'permissions',
-    ];
-
     public function transform(Role $role): array
     {
         return Arr::add(

@@ -22,7 +22,8 @@ final class AssignRolesToUserActionTest extends UnitTestCase
             'user_id' => $user->getHashedKey(),
             'role_ids' => [$role->getHashedKey()],
         ];
-        $request = AssignRolesToUserRequest::injectData($data);
+        $request = AssignRolesToUserRequest::injectData($data)
+        ->withUrlParameters(['user_id' => $user->id]);
         $action = app(AssignRolesToUserAction::class);
 
         $result = $action->run($request);
@@ -40,7 +41,8 @@ final class AssignRolesToUserActionTest extends UnitTestCase
             'user_id' => $user->getHashedKey(),
             'role_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
         ];
-        $request = AssignRolesToUserRequest::injectData($data);
+        $request = AssignRolesToUserRequest::injectData($data)
+            ->withUrlParameters(['user_id' => $user->id]);
         $action = app(AssignRolesToUserAction::class);
 
         $result = $action->run($request);

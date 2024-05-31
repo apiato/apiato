@@ -14,6 +14,8 @@ class RevokeUserPermissionsController extends ApiController
     {
         $user = $action->run($request);
 
-        return Fractal::create($user, UserAdminTransformer::class)->toArray();
+        return Fractal::create($user, UserAdminTransformer::class)
+            ->parseIncludes(['permissions'])
+            ->toArray();
     }
 }

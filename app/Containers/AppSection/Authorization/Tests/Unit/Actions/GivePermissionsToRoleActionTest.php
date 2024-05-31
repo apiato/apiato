@@ -19,10 +19,10 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
         $role = RoleFactory::new()->createOne();
         $permission = PermissionFactory::new()->createOne();
         $data = [
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permission->getHashedKey()],
         ];
-        $request = GivePermissionsToRoleRequest::injectData($data);
+        $request = GivePermissionsToRoleRequest::injectData($data)
+            ->withUrlParameters(['role_id' => $role->id]);
         $action = app(GivePermissionsToRoleAction::class);
 
         $result = $action->run($request);
@@ -37,10 +37,10 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
         $permissionA = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $data = [
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
-        $request = GivePermissionsToRoleRequest::injectData($data);
+        $request = GivePermissionsToRoleRequest::injectData($data)
+        ->withUrlParameters(['role_id' => $role->id]);
         $action = app(GivePermissionsToRoleAction::class);
 
         $result = $action->run($request);

@@ -7,7 +7,9 @@ use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 
 class RoleTransformer extends ParentTransformer
 {
-    protected array $availableIncludes = [];
+    protected array $availableIncludes = [
+        'permissions',
+    ];
 
     protected array $defaultIncludes = [];
 

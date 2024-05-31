@@ -14,6 +14,8 @@ class RevokeRolePermissionsController extends ApiController
     {
         $role = $action->run($request);
 
-        return Fractal::create($role, RoleAdminTransformer::class)->toArray();
+        return Fractal::create($role, RoleAdminTransformer::class)
+            ->parseIncludes(['permissions'])
+            ->toArray();
     }
 }
