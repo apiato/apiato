@@ -16,9 +16,9 @@
  *
  * @apiParam           {String} user_id
  *
- * @apiBody           {String} [name] min:2|max:50
- * @apiBody           {String="male","female","unspecified"} [gender]
- * @apiBody           {Date} [birth] format: Y-m-d / e.g. 2015-10-15
+ * @apiBody            {String} [name] min:2|max:50
+ * @apiBody            {String="male","female","unspecified"} [gender]
+ * @apiBody            {Date} [birth] format: Y-m-d / e.g. 2015-10-15
  *
  * @apiUse             UserSuccessSingleResponse
  */

@@ -16,7 +16,7 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {String} verification_url required|url
+ * @apiBody            {String} verification_url required|url
  *
  * @apiSuccessExample  {json} Success-Response:
  * HTTP/1.1 202 Accepted

@@ -7,7 +7,7 @@
  *
  * @api                {get} /v1/users/:user_id Find User
  *
- * @apiDescription     Find a user by its ID
+ * @apiDescription     Find a user by its id
  *
  * @apiVersion         1.0.0
  *

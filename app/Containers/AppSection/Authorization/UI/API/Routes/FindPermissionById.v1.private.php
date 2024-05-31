@@ -5,7 +5,7 @@
  *
  * @apiName            FindPermissionById
  *
- * @api                {get} /v1/permissions/:permission_id Find a Permission by ID
+ * @api                {get} /v1/permissions/:permission_id Find a permission by id
  *
  * @apiVersion         1.0.0
  *

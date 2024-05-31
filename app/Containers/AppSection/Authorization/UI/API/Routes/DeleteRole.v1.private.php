@@ -5,9 +5,9 @@
  *
  * @apiName            DeleteRole
  *
- * @api                {delete} /v1/roles/:role_id Delete a Role
+ * @api                {delete} /v1/roles/:role_id Delete a role
  *
- * @apiDescription     Delete Role by ID
+ * @apiDescription     Delete Role by id
  *
  * @apiVersion         1.0.0
  *

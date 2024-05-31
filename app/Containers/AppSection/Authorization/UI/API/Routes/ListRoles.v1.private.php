@@ -5,7 +5,7 @@
  *
  * @apiName            ListRoles
  *
- * @api                {get} /v1/roles List All Roles
+ * @api                {get} /v1/roles List all roles
  *
  * @apiVersion         1.0.0
  *

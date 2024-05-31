@@ -15,8 +15,8 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String} email
- * @apiBody           {String} password
+ * @apiBody            {String} email
+ * @apiBody            {String} password
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

@@ -16,8 +16,8 @@
  *
  * @apiParam           {String} user_id
  *
- * @apiBody           {String} current_password
- * @apiBody           {String} new_password min: 8
+ * @apiBody            {String} current_password
+ * @apiBody            {String} new_password min: 8
  *
  * at least one character of the following:
  *

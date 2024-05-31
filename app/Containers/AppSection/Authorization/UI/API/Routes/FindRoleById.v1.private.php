@@ -5,7 +5,7 @@
  *
  * @apiName            FindRoleById
  *
- * @api                {get} /v1/roles/:role_id Find a Role by ID
+ * @api                {get} /v1/roles/:role_id Find a role by id
  *
  * @apiVersion         1.0.0
  *

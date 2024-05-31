@@ -15,8 +15,8 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String}  email
- * @apiBody           {String="reset-password"}  reseturl the reset password url
+ * @apiBody            {String}  email
+ * @apiBody            {String="reset-password"}  reseturl the reset password url
  *
  * @apiSuccessExample  {json}  Success-Response:
  * HTTP/1.1 204 No Content
