@@ -2,8 +2,8 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
+use Apiato\Core\Serializers\DataArraySerializer;
 use App\Ship\Tests\ShipTestCase;
-use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 use Spatie\Fractal\Fractal;

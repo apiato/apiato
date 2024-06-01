@@ -54,7 +54,7 @@ final class RepositoryConfigTest extends ShipTestCase
                 'params' => [
                     'search' => 'search',
                     'searchFields' => 'searchFields',
-                    'filter' => 'l5_filter',
+                    'filter' => 'filter',
                     'orderBy' => 'orderBy',
                     'sortedBy' => 'sortedBy',
                     'with' => 'l5_with',
