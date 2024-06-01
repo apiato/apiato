@@ -3,9 +3,8 @@
 namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
+use App\Ship\Providers\MacroProviders\ConfigMacroServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
 
 class ShipProvider extends ParentMainServiceProvider
 {
@@ -15,6 +14,7 @@ class ShipProvider extends ParentMainServiceProvider
     public array $serviceProviders = [
         EventServiceProvider::class,
         RouteServiceProvider::class,
+        ConfigMacroServiceProvider::class,
     ];
 
     /**
@@ -43,9 +43,5 @@ class ShipProvider extends ParentMainServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(IdeHelperServiceProvider::class);
         }
-
-        Config::macro('unset', function ($key) {
-            Arr::forget($this->items, $key);
-        });
     }
 }
