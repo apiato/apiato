@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "v8.11.0",
+            "version": "v8.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "b768290370772618a8b9e40d2b2157bfc718296f"
+                "reference": "960ece89e9276d91d4af6b0b926cada4829c42ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/b768290370772618a8b9e40d2b2157bfc718296f",
-                "reference": "b768290370772618a8b9e40d2b2157bfc718296f",
+                "url": "https://api.github.com/repos/apiato/core/zipball/960ece89e9276d91d4af6b0b926cada4829c42ae",
+                "reference": "960ece89e9276d91d4af6b0b926cada4829c42ae",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-05-29T17:21:31+00:00"
+            "time": "2024-06-01T19:12:13+00:00"
         },
         {
             "name": "apiato/documentation-generator-container",
@@ -8056,16 +8056,16 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.1.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "8286a62d243312ed99b3eee20d5005c961adb311"
+                "reference": "acd227952154850d0bb7d65caa4f9edf9cd806a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/8286a62d243312ed99b3eee20d5005c961adb311",
-                "reference": "8286a62d243312ed99b3eee20d5005c961adb311",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/acd227952154850d0bb7d65caa4f9edf9cd806a7",
+                "reference": "acd227952154850d0bb7d65caa4f9edf9cd806a7",
                 "shasum": ""
             },
             "require": {
@@ -8109,7 +8109,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.1.1"
+                "source": "https://github.com/composer/class-map-generator/tree/1.3.2"
             },
             "funding": [
                 {
@@ -8125,7 +8125,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-15T12:53:41+00:00"
+            "time": "2024-05-31T19:45:56+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -9694,16 +9694,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v8.24.1",
+            "version": "v8.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "fa67adb5517553ec8a00804933bb7bb50110137e"
+                "reference": "756519effeac591971c313ee830ed625ffac8681"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/fa67adb5517553ec8a00804933bb7bb50110137e",
-                "reference": "fa67adb5517553ec8a00804933bb7bb50110137e",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/756519effeac591971c313ee830ed625ffac8681",
+                "reference": "756519effeac591971c313ee830ed625ffac8681",
                 "shasum": ""
             },
             "require": {
@@ -9782,7 +9782,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-05-23T02:08:40+00:00"
+            "time": "2024-06-01T09:24:14+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -10279,16 +10279,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.29.0",
+            "version": "1.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fcaefacf2d5c417e928405b71b400d4ce10daaf4",
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4",
                 "shasum": ""
             },
             "require": {
@@ -10320,9 +10320,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.1"
             },
-            "time": "2024-05-06T12:04:23+00:00"
+            "time": "2024-05-31T08:52:43+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -11520,12 +11520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e567d8d7d81fe18d93e87f64427a49caf3d5511f"
+                "reference": "255803f702f07bee1a4edb0b079348c198603514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e567d8d7d81fe18d93e87f64427a49caf3d5511f",
-                "reference": "e567d8d7d81fe18d93e87f64427a49caf3d5511f",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/255803f702f07bee1a4edb0b079348c198603514",
+                "reference": "255803f702f07bee1a4edb0b079348c198603514",
                 "shasum": ""
             },
             "conflict": {
@@ -12068,7 +12068,7 @@
                 "slim/psr7": "<1.4.1|>=1.5,<1.5.1|>=1.6,<1.6.1",
                 "slim/slim": "<2.6",
                 "slub/slub-events": "<3.0.3",
-                "smarty/smarty": "<3.1.48|>=4,<4.3.1",
+                "smarty/smarty": "<4.5.3|>=5,<5.1.1",
                 "snipe/snipe-it": "<=6.2.2",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
@@ -12096,7 +12096,7 @@
                 "sylius/paypal-plugin": ">=1,<1.2.4|>=1.3,<1.3.1",
                 "sylius/resource-bundle": ">=1,<1.3.14|>=1.4,<1.4.7|>=1.5,<1.5.2|>=1.6,<1.6.4",
                 "sylius/sylius": "<1.9.10|>=1.10,<1.10.11|>=1.11,<1.11.2|>=1.12.0.0-alpha1,<1.12.16|>=1.13.0.0-alpha1,<1.13.1",
-                "symbiote/silverstripe-multivaluefield": ">=3,<3.0.99",
+                "symbiote/silverstripe-multivaluefield": ">=3,<3.1",
                 "symbiote/silverstripe-queuedjobs": ">=3,<3.0.2|>=3.1,<3.1.4|>=4,<4.0.7|>=4.1,<4.1.2|>=4.2,<4.2.4|>=4.3,<4.3.3|>=4.4,<4.4.3|>=4.5,<4.5.1|>=4.6,<4.6.4",
                 "symbiote/silverstripe-seed": "<6.0.3",
                 "symbiote/silverstripe-versionedfiles": "<=2.0.3",
@@ -12312,7 +12312,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-29T15:04:31+00:00"
+            "time": "2024-05-29T19:04:21+00:00"
         },
         {
             "name": "sebastian/cli-parser",
