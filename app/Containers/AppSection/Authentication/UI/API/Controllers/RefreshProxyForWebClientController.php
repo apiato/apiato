@@ -15,6 +15,6 @@ class RefreshProxyForWebClientController extends ApiController
     {
         $result = $action->run($request);
 
-        return $this->json(Fractal::create($result->token, TokenTransformer::class)->toArray())->withCookie($result->refreshTokenCookie);
+        return Fractal::create($result->token, TokenTransformer::class)->ok()->withCookie($result->refreshTokenCookie);
     }
 }
