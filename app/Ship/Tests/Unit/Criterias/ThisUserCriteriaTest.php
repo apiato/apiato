@@ -28,10 +28,4 @@ final class ThisUserCriteriaTest extends ShipTestCase
         $this->assertSame(1, $result->count());
         $this->assertSame($model1->id, $result->first()->id);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

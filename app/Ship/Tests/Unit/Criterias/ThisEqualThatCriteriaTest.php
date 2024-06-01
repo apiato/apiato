@@ -28,10 +28,4 @@ final class ThisEqualThatCriteriaTest extends ShipTestCase
         $this->assertSame(1, $result->count());
         $this->assertSame($modelA->id, $result->first()->id);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

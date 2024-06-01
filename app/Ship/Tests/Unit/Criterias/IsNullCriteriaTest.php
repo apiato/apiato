@@ -26,10 +26,4 @@ final class IsNullCriteriaTest extends ShipTestCase
 
         $this->assertCount(3, $result);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

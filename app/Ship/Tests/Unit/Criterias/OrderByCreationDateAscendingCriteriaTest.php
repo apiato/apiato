@@ -29,10 +29,4 @@ final class OrderByCreationDateAscendingCriteriaTest extends ShipTestCase
         $this->assertSame($modelB->id, $result->get(1)->id);
         $this->assertSame($modelC->id, $result->last()->id);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

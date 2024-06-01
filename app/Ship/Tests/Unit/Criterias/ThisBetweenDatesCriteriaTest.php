@@ -28,10 +28,4 @@ final class ThisBetweenDatesCriteriaTest extends ShipTestCase
         $this->assertCount(1, $result);
         $this->assertSame($todayModels->first()->id, $result->first()->id);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }
