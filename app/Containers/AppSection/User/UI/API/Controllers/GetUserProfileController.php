@@ -4,9 +4,9 @@ namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\GetUserProfileAction;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class GetUserProfileController extends ApiController
 {
@@ -14,6 +14,6 @@ class GetUserProfileController extends ApiController
     {
         $user = $action->run();
 
-        return Fractal::create($user, UserTransformer::class)->ok();
+        return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
     }
 }

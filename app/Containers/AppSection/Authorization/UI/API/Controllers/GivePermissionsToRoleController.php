@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToRoleAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToRoleRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class GivePermissionsToRoleController extends ApiController
 {
@@ -15,7 +15,8 @@ class GivePermissionsToRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return Fractal::create($role, RoleAdminTransformer::class)
+        return Response::createFrom($role,)
+            ->transformWith(RoleAdminTransformer::class)
             ->parseIncludes(['permissions'])
             ->ok();
     }

@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 use App\Containers\AppSection\Authorization\Actions\ListUserPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class ListUserPermissionsController extends ApiController
 {
@@ -15,6 +15,6 @@ class ListUserPermissionsController extends ApiController
     {
         $permissions = $action->run($request);
 
-        return Fractal::create($permissions, PermissionAdminTransformer::class)->ok();
+        return Response::createFrom($permissions)->transformWith(PermissionAdminTransformer::class)->ok();
     }
 }

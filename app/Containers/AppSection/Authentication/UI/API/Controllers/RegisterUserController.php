@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class RegisterUserController extends ApiController
 {
@@ -15,6 +15,6 @@ class RegisterUserController extends ApiController
     {
         $user = $action->transactionalRun($request);
 
-        return Fractal::create($user, UserTransformer::class)->ok();
+        return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
     }
 }

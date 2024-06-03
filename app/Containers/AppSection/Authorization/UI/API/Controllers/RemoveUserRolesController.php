@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 use App\Containers\AppSection\Authorization\Actions\RemoveUserRolesAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class RemoveUserRolesController extends ApiController
 {
@@ -15,7 +15,8 @@ class RemoveUserRolesController extends ApiController
     {
         $user = $action->run($request);
 
-        return Fractal::create($user, UserAdminTransformer::class)
+        return Response::createFrom($user)
+            ->transformWith(UserAdminTransformer::class)
             ->parseIncludes(['roles'])
             ->ok();
     }
