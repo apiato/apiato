@@ -8,9 +8,7 @@ use League\Fractal\Resource\Collection;
 
 class PermissionAdminTransformer extends PermissionTransformer
 {
-    protected array $availableIncludes = [
-        'roles',
-    ];
+    protected array $availableIncludes = [];
 
     public function transform(Permission $permission): array
     {
@@ -19,10 +17,5 @@ class PermissionAdminTransformer extends PermissionTransformer
             'guard_name',
             $permission->guard_name,
         );
-    }
-
-    public function includeRoles(Permission $permission): Collection
-    {
-        return $this->collection($permission->roles, new RoleAdminTransformer());
     }
 }

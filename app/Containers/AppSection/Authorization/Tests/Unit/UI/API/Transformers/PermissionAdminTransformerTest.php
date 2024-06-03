@@ -34,9 +34,7 @@ final class PermissionAdminTransformerTest extends UnitTestCase
 
     public function testAvailableIncludes(): void
     {
-        $this->assertSame([
-            'roles',
-        ], $this->transformer->getAvailableIncludes());
+        $this->assertSame([], $this->transformer->getAvailableIncludes());
     }
 
     public function testDefaultIncludes(): void
