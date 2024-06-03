@@ -3,8 +3,6 @@
 namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
-use App\Ship\Providers\MacroProviders\ConfigMacroServiceProvider;
-use App\Ship\Providers\MacroProviders\FractalMacroServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class ShipProvider extends ParentMainServiceProvider
@@ -15,8 +13,6 @@ class ShipProvider extends ParentMainServiceProvider
     public array $serviceProviders = [
         EventServiceProvider::class,
         RouteServiceProvider::class,
-        ConfigMacroServiceProvider::class,
-        FractalMacroServiceProvider::class,
     ];
 
     /**
