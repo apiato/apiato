@@ -1,7 +1,7 @@
 <?php
 
 
-use Apiato\Core\Serializers\DataArraySerializer;
+use League\Fractal\Serializer\DataArraySerializer;
 
 return [
     /*
@@ -28,7 +28,7 @@ return [
      * If you wish to override or extend the default Spatie\Fractal\Fractal
      * instance provide the name of the class you want to use.
      */
-    'fractal_class' => Spatie\Fractal\Fractal::class,
+    'fractal_class' => Apiato\Core\Services\Response::class,
 
     'auto_includes' => [
         /*
