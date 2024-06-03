@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
+use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -21,7 +22,7 @@ class ListRolesAction extends ParentAction
      * @throws RepositoryException
      * @throws BindingResolutionException
      */
-    public function run(): LengthAwarePaginator
+    public function run(): LengthAwarePaginator|RoleCollection
     {
         $this->repository->addRequestCriteria();
         $this->repository->whereGuard(activeGuard());

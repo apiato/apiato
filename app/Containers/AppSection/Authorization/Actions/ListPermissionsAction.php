@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
+use App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -21,7 +22,7 @@ class ListPermissionsAction extends ParentAction
      * @throws RepositoryException
      * @throws BindingResolutionException
      */
-    public function run(): LengthAwarePaginator
+    public function run(): LengthAwarePaginator|PermissionCollection
     {
         $this->repository->addRequestCriteria();
         $this->repository->whereGuard(activeGuard());
