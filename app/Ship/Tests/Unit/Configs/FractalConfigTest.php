@@ -6,7 +6,7 @@ use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
-use Apiato\Core\Services\Response;
+use Apiato\Core\Services\ResponseTransformer;
 
 #[Group('ship')]
 #[CoversNothing]
@@ -19,7 +19,7 @@ final class FractalConfigTest extends ShipTestCase
             'default_serializer' => DataArraySerializer::class,
             'default_paginator' => '',
             'base_url' => null,
-            'fractal_class' => Response::class,
+            'fractal_class' => ResponseTransformer::class,
             'auto_includes' => [
                 'enabled' => true,
                 'request_key' => 'include',
