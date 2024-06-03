@@ -4,9 +4,10 @@ namespace App\Containers\AppSection\Authorization\Models;
 
 use Apiato\Core\Traits\ModelTrait;
 use App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection;
+use Apiato\Core\Contracts\HasResourceKey;
 use Spatie\Permission\Models\Permission as SpatiePermission;
 
-class Permission extends SpatiePermission
+class Permission extends SpatiePermission implements HasResourceKey
 {
     use ModelTrait;
 
