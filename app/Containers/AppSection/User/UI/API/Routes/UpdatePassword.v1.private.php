@@ -18,6 +18,7 @@
  *
  * @apiBody            {String} current_password
  * @apiBody            {String} new_password min: 8
+ * @apiBody            {String} new_password_confirmation same:new_password
  *
  * at least one character of the following:
  *

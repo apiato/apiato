@@ -21,14 +21,14 @@ final class UpdatePasswordActionTest extends UnitTestCase
         Notification::fake();
         $user = UserFactory::new()->createOne(['password' => 'youShallNotPass']);
         $data = [
-            'new_password' => 'test',
+            'password' => 'test',
         ];
         $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
         $action = app(UpdatePasswordAction::class);
 
         $result = $action->run($request);
 
-        $this->assertTrue(Hash::check($data['new_password'], $result->password));
+        $this->assertTrue(Hash::check($data['password'], $result->password));
         Notification::assertSentTo($user, PasswordUpdatedNotification::class);
     }
 }

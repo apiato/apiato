@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
@@ -27,6 +28,7 @@ final class UpdateUserPasswordTest extends ApiTestCase
         $data = [
             'current_password' => 'Av@dakedavra!',
             'new_password' => 'updated#Password111',
+            'new_password_confirmation' => 'updated#Password111',
         ];
 
         $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
@@ -42,5 +44,6 @@ final class UpdateUserPasswordTest extends ApiTestCase
                     ->etc(),
             )->etc(),
         );
+        $this->assertTrue(Hash::check($data['new_password'], $this->testingUser->refresh()->password));
     }
 }

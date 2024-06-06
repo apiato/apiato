@@ -28,6 +28,7 @@ class UpdateUserAction extends ParentAction
             'name',
             'gender',
             'birth',
+            'password',
         ]);
 
         return $this->updateUserTask->run($request->user_id, $sanitizedData);

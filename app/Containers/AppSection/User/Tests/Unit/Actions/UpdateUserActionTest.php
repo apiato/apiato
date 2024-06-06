@@ -35,6 +35,6 @@ final class UpdateUserActionTest extends UnitTestCase
         $this->assertSame($data['name'], $result->name);
         $this->assertSame(Gender::from($data['gender']), $result->gender);
         $this->assertTrue($result->birth->isSameDay($data['birth']));
-        $this->assertFalse(Hash::check($data['password'], $result->password));
+        $this->assertTrue(Hash::check($data['password'], $result->password));
     }
 }

@@ -13,6 +13,9 @@ class UpdateUserController extends ApiController
 {
     public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): JsonResponse
     {
+        $request->mapInput([
+            'new_password' => 'password',
+        ]);
         $user = $action->run($request);
 
         return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();

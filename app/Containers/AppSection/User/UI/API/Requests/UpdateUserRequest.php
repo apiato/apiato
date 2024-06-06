@@ -7,6 +7,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UpdateUserRequest extends ParentRequest
 {
@@ -22,8 +23,17 @@ class UpdateUserRequest extends ParentRequest
     {
         return [
             'name' => 'min:2|max:50',
-            'gender' => Rule::enum(Gender::class),
-            'birth' => 'date',
+            'gender' => [Rule::enum(Gender::class), 'nullable'],
+            'birth' => ['date', 'nullable'],
+            'current_password' => [
+                Rule::requiredIf(fn (): bool => !is_null($this->user()->password) && $this->filled('new_password')),
+                'current_password:api',
+            ],
+            'new_password' => [
+                Password::default(),
+                'required_with:current_password',
+            ],
+            'new_password_confirmation' => 'required_with:new_password|same:new_password',
         ];
     }
 
