@@ -21,6 +21,7 @@ final class UpdatePasswordActionTest extends UnitTestCase
         Notification::fake();
         $user = UserFactory::new()->createOne(['password' => 'youShallNotPass']);
         $data = [
+            'user_id' => $user->id,
             'password' => 'test',
         ];
         $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
