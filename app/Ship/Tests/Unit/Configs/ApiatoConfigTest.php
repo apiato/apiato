@@ -40,7 +40,7 @@ final class ApiatoConfigTest extends ShipTestCase
                 'use-etag' => false,
                 'params' => [
                     'include' => 'include',
-                    'filter' => 'filter',
+                    'filter' => 'fieldset',
                 ],
             ],
             'seeders' => [
