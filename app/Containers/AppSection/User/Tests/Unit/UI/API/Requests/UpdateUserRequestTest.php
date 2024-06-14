@@ -8,6 +8,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -37,8 +38,17 @@ final class UpdateUserRequestTest extends UnitTestCase
 
         $this->assertEquals([
             'name' => 'min:2|max:50',
-            'gender' => Rule::enum(Gender::class),
-            'birth' => 'date',
+            'gender' => [Rule::enum(Gender::class), 'nullable'],
+            'birth' => ['date', 'nullable'],
+            'current_password' => [
+                Rule::requiredIf(fn (): bool => !is_null($this->request->user()->password) && $this->request->filled('new_password')),
+                'current_password:api',
+            ],
+            'new_password' => [
+                Password::default(),
+                'required_with:current_password',
+            ],
+            'new_password_confirmation' => 'required_with:new_password|same:new_password',
         ], $rules);
     }
 

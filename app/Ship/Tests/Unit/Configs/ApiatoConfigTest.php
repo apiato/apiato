@@ -38,6 +38,10 @@ final class ApiatoConfigTest extends ShipTestCase
                 ],
                 'force-accept-header' => false,
                 'use-etag' => false,
+                'params' => [
+                    'include' => 'include',
+                    'filter' => 'fieldset',
+                ],
             ],
             'seeders' => [
                 'deployment' => SeedDeploymentData::class,

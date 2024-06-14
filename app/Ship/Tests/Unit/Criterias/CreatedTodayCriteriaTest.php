@@ -27,10 +27,4 @@ final class CreatedTodayCriteriaTest extends ShipTestCase
 
         $this->assertCount(6, $result);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

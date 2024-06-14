@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
+
 class RevokeUserPermissionsRequest extends ParentRequest
 {
     protected array $access = [
@@ -23,6 +24,7 @@ class RevokeUserPermissionsRequest extends ParentRequest
     public function rules(): array
     {
         return [
+            'user_id' => 'exists:users,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ];

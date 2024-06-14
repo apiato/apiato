@@ -21,9 +21,8 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
         $role->givePermissionTo($permissions);
         $this->assertCount(3, $role->permissions);
         $request = SyncRolePermissionsRequest::injectData([
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => $permissions[1]->getHashedKey(),
-        ]);
+        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(SyncRolePermissionsAction::class);
 
         $result = $action->run($request);
@@ -39,9 +38,8 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
         $role->givePermissionTo($permissions);
         $this->assertCount(3, $role->permissions);
         $request = SyncRolePermissionsRequest::injectData([
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ]);
+        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(SyncRolePermissionsAction::class);
 
         $result = $action->run($request);

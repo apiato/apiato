@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Actions;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Exceptions\DeleteResourceFailedException;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DeleteRoleAction extends ParentAction
@@ -16,6 +17,7 @@ class DeleteRoleAction extends ParentAction
 
     /**
      * @throws DeleteResourceFailedException
+     * @throws NotFoundException
      */
     public function run(DeleteRoleRequest $request): bool
     {

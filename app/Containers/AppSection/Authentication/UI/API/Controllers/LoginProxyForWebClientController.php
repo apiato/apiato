@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class LoginProxyForWebClientController extends ApiController
 {
@@ -15,6 +15,8 @@ class LoginProxyForWebClientController extends ApiController
     {
         $result = $action->run($request);
 
-        return $this->json(Fractal::create($result->token, TokenTransformer::class)->toArray())->withCookie($result->refreshTokenCookie);
+        return Response::createFrom($result->token)
+            ->transformWith(TokenTransformer::class)
+            ->ok()->withCookie($result->refreshTokenCookie);
     }
 }

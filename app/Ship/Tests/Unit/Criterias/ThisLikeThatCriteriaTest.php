@@ -30,10 +30,4 @@ final class ThisLikeThatCriteriaTest extends ShipTestCase
         $this->assertSame($modelB->id, $result->first()->id);
         $this->assertSame($modelA->id, $result->last()->id);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

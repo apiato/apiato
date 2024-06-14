@@ -36,13 +36,15 @@ final class UpdatePasswordRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertEquals([
-            'current_password' => [Rule::requiredIf(
-                fn (): bool => null !== $this->request->user()->password,
-            ), 'current_password:api'],
+            'current_password' => [
+                Rule::requiredIf(fn (): bool => !is_null($this->request->user()->password)),
+                'current_password:api',
+            ],
             'new_password' => [
                 'required',
                 Password::default(),
             ],
+            'new_password_confirmation' => 'required_with:new_password|same:new_password',
         ], $rules);
     }
 

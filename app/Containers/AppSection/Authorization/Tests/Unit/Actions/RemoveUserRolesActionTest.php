@@ -20,9 +20,8 @@ final class RemoveUserRolesActionTest extends UnitTestCase
         $roles = RoleFactory::new()->count(3)->create();
         $user->assignRole($roles);
         $request = RemoveUserRolesRequest::injectData([
-            'user_id' => $user->getHashedKey(),
             'role_ids' => $roles[1]->getHashedKey(),
-        ]);
+        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RemoveUserRolesAction::class);
 
         $result = $action->run($request);
@@ -38,9 +37,8 @@ final class RemoveUserRolesActionTest extends UnitTestCase
         $roles = RoleFactory::new()->count(3)->create();
         $user->assignRole($roles);
         $request = RemoveUserRolesRequest::injectData([
-            'user_id' => $user->getHashedKey(),
             'role_ids' => [$roles[0]->getHashedKey(), $roles[2]->getHashedKey()],
-        ]);
+        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RemoveUserRolesAction::class);
 
         $result = $action->run($request);

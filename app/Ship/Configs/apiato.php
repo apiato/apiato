@@ -129,6 +129,13 @@ return [
         |
         */
         'use-etag' => false,
+
+        'params' => [
+            // The key to use for the include request parameter
+            'include' => 'include',
+            // The key to use for the filter request parameter
+            'filter' => 'fieldset',
+        ],
     ],
 
     'seeders' => [

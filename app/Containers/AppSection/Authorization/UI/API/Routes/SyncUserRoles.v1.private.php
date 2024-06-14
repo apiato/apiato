@@ -5,11 +5,9 @@
  *
  * @apiName            SyncUserRoles
  *
- * @api                {post} /v1/roles/sync Sync User Roles
+ * @api                {put} /v1/users/:user_id/roles Sync user roles
  *
- * @apiDescription     You can use this endpoint instead of `roles/assign` & `roles/revoke`.
- *                     The sync endpoint will override all existing user roles with the new
- *                     one sent to this endpoint.
+ * @apiDescription     Sync user roles
  *
  * @apiVersion         1.0.0
  *
@@ -18,8 +16,9 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {String} user_id User ID
- * @apiBody           {Array} role_ids Role ID or Array of Roles ID's
+ * @apiParam           {String} user_id
+ *
+ * @apiBody            {Array} role_ids Array of role id's
  *
  * @apiUse             UserSuccessSingleResponse
  */
@@ -27,5 +26,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncUserRolesController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('roles/sync', SyncUserRolesController::class)
+Route::put('users/{user_id}/roles', SyncUserRolesController::class)
     ->middleware(['auth:api']);

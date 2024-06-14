@@ -24,14 +24,16 @@ final class GivePermissionsToRoleRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'permission_ids.*',
             'role_id',
+            'permission_ids.*',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
-        $this->assertSame([], $this->request->getUrlParametersArray());
+        $this->assertSame([
+            'role_id',
+        ], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -39,9 +41,9 @@ final class GivePermissionsToRoleRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
+            'role_id' => 'exists:roles,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
-            'role_id' => 'required|exists:roles,id',
         ], $rules);
     }
 

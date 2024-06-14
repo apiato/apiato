@@ -5,17 +5,17 @@
  * @apiName            LoginCredentialsGrant
  * @api                {post} /v1/oauth/token Login (Client Credentials Grant)
  * @apiDescription     Login Users using their username and passwords. (For Third-Party Clients).
- *                     You must have client ID and secret first. You can generate them by creating new Client in our Web App.
+ *                     You must have client id and secret first. You can generate them by creating new Client in our Web App.
  *
  * @apiVersion         1.0.0
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String}  client_id
- * @apiBody           {String}  client_secret
- * @apiBody           {String="client_credentials"}  grant_type
- * @apiBody           {String}  [scope]
+ * @apiBody            {String}  client_id
+ * @apiBody            {String}  client_secret
+ * @apiBody            {String="client_credentials"}  grant_type
+ * @apiBody            {String}  [scope]
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

@@ -5,9 +5,9 @@
  *
  * @apiName            RevokeUserPermissions
  *
- * @api                {delete} /v1/users/:user_id/permissions Detach Permission From User
+ * @api                {delete} /v1/users/:user_id/permissions Revoke user permissions
  *
- * @apiDescription     Detach direct permissions assigned to user.
+ * @apiDescription     Revoke user permissions
  *
  * @apiVersion         1.0.0
  *
@@ -18,9 +18,9 @@
  *
  * @apiParam           {String} user_id
  *
- * @apiBody            {String} permission_ids Array of Permissions ID's
+ * @apiBody            {String} permission_ids Array of permission id's
  *
- * @apiUse            UserSuccessSingleResponse
+ * @apiUse             UserSuccessSingleResponse
  */
 
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeUserPermissionsController;

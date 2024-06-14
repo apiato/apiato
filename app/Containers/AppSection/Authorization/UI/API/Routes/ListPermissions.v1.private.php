@@ -5,7 +5,7 @@
  *
  * @apiName            ListPermissions
  *
- * @api                {get} /v1/permissions List All Permissions
+ * @api                {get} /v1/permissions List all permissions
  *
  * @apiVersion         1.0.0
  *

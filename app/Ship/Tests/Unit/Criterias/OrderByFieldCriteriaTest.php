@@ -55,10 +55,4 @@ final class OrderByFieldCriteriaTest extends ShipTestCase
         $criteria = new OrderByFieldCriteria('name', 'wrong');
         $repository->pushCriteria($criteria);
     }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->createTestUsersTable();
-    }
 }

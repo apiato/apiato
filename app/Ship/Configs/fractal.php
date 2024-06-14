@@ -1,12 +1,15 @@
 <?php
 
+
+use League\Fractal\Serializer\DataArraySerializer;
+
 return [
     /*
      * The default serializer to be used when performing a transformation. It
      * may be left empty to use Fractal's default one. This can either be a
      * string or a League\Fractal\Serializer\SerializerAbstract subclass.
      */
-    'default_serializer' => League\Fractal\Serializer\DataArraySerializer::class,
+    'default_serializer' => DataArraySerializer::class,
 
     /*
      * The default paginator to be used when performing a transformation. It
@@ -25,7 +28,7 @@ return [
      * If you wish to override or extend the default Spatie\Fractal\Fractal
      * instance provide the name of the class you want to use.
      */
-    'fractal_class' => Spatie\Fractal\Fractal::class,
+    'fractal_class' => Apiato\Core\Services\Response::class,
 
     'auto_includes' => [
         /*

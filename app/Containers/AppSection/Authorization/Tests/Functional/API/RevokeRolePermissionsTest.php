@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class RevokeRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/permissions/detach';
+    protected string $endpoint = 'delete@v1/roles/{role_id}/permissions';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -27,11 +27,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB]);
         $data = [
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
+        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -52,11 +51,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB, $permissionC]);
         $data = [
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissionA->getHashedKey(), $permissionC->getHashedKey()],
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
+        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -74,11 +72,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -93,18 +90,17 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

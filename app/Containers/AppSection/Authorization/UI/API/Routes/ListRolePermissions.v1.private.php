@@ -5,7 +5,7 @@
  *
  * @apiName            ListRolePermissions
  *
- * @api                {GET} /v1/roles/:role_id/permissions List Role Permissions
+ * @api                {GET} /v1/roles/:role_id/permissions List role permissions
  *
  * @apiVersion         1.0.0
  *

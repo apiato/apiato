@@ -4,10 +4,13 @@ namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
+use League\Fractal\Resource\Collection;
 
 class RoleTransformer extends ParentTransformer
 {
-    protected array $availableIncludes = [];
+    protected array $availableIncludes = [
+        'permissions',
+    ];
 
     protected array $defaultIncludes = [];
 
@@ -20,5 +23,10 @@ class RoleTransformer extends ParentTransformer
             'display_name' => $role->display_name,
             'description' => $role->description,
         ];
+    }
+
+    public function includePermissions(Role $role): Collection
+    {
+        return $this->collection($role->permissions, new PermissionAdminTransformer());
     }
 }

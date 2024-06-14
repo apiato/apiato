@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\DeleteUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
+use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
@@ -13,6 +14,6 @@ class DeleteUserController extends ApiController
     {
         $action->run($request->getData());
 
-        return $this->noContent();
+        return Response::noContent();
     }
 }

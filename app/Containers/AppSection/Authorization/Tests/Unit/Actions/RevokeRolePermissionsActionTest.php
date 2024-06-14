@@ -20,9 +20,8 @@ final class RevokeRolePermissionsActionTest extends UnitTestCase
         $permissions = PermissionFactory::new()->count(3)->create();
         $role->givePermissionTo($permissions);
         $request = RevokeRolePermissionsRequest::injectData([
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissions[1]->getHashedKey()],
-        ]);
+        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(RevokeRolePermissionsAction::class);
 
         $result = $action->run($request);
@@ -38,9 +37,8 @@ final class RevokeRolePermissionsActionTest extends UnitTestCase
         $permissions = PermissionFactory::new()->count(3)->create();
         $role->givePermissionTo($permissions);
         $request = RevokeRolePermissionsRequest::injectData([
-            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ]);
+        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(RevokeRolePermissionsAction::class);
 
         $result = $action->run($request);
