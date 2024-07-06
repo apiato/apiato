@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\SocialAuth;
 
+use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use App\Containers\AppSection\SocialAuth\UI\API\Transformers\OAuthIdentityTransformer;
 use App\Containers\AppSection\User\Models\User;
@@ -25,6 +26,11 @@ class SocialAuth
      * The oAuth identity class name.
      */
     public static string $oAuthIdentityModel = OAuthIdentityTransformer::class;
+
+    /**
+     * The register user action.
+     */
+    public static string $registerUserAction = RegisterUserAction::class;
 
     /**
      * Indicates if SocialAuth routes should be registered.
@@ -108,6 +114,30 @@ class SocialAuth
     public static function oAuthIdentity()
     {
         return new static::$oAuthIdentityModel();
+    }
+
+    /**
+     * Set the register user action class name.
+     */
+    public static function useRegisterUserAction(string $action): void
+    {
+        static::$registerUserAction = $action;
+    }
+
+    /**
+     * Get the register user action class name.
+     */
+    public static function registerUserActionClass(): string
+    {
+        return static::$registerUserAction;
+    }
+
+    /**
+     * Get a new register user action instance.
+     */
+    public static function registerUserAction()
+    {
+        return app(static::registerUserActionClass());
     }
 
     /**

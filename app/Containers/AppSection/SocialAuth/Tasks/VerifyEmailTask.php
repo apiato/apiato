@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class VerifyEmailTask extends Task
 {
-    public function run(Model|MustVerifyEmail $verifiable, string|null $email): void
+    public function run(Model|MustVerifyEmail $verifiable, ?string $email): void
     {
         if ($this->shouldVerifyEmail($verifiable, $email)) {
             $verifiable->markEmailAsVerified();
         }
     }
 
-    private function shouldVerifyEmail(MustVerifyEmail $verifiable, string|null $email): bool
+    private function shouldVerifyEmail(MustVerifyEmail $verifiable, ?string $email): bool
     {
         if (SocialAuth::$verifiesEmail && null !== $email) {
             return $this->isEmailMatching($verifiable, $email) && !$verifiable->hasVerifiedEmail();

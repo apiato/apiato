@@ -9,7 +9,7 @@ trait HasOauthIdentity
 {
     public function oAuthIdentities(): HasMany
     {
-        return $this->hasMany(OAuthIdentity::class);
+        return $this->hasMany(OAuthIdentity::class, 'user_id');
     }
 
     // override

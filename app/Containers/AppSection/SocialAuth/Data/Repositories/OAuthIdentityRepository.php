@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\SocialAuth\Data\Repositories;
 
-use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 use Apiato\Core\Abstracts\Repositories\Repository as CoreRepository;
+use App\Containers\AppSection\SocialAuth\Models\OAuthIdentity;
 
 class OAuthIdentityRepository extends CoreRepository
 {

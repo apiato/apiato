@@ -2,14 +2,14 @@
 
 namespace App\Containers\AppSection\SocialAuth\UI\WEB\Requests;
 
-use Apiato\Core\Abstracts\Requests\Request;
+use App\Ship\Parents\Requests\Request;
 
 final class RedirectRequest extends Request
 {
     public function rules(): array
     {
         return [
-//            'action' => ['required', Rule::enum(AuthAction::class)],
+            //            'action' => ['required', Rule::enum(AuthAction::class)],
         ];
     }
 }

@@ -28,7 +28,7 @@ final class LinkOAuthIdentityAction extends Action
      * @throws ValidatorException
      * @throws OAuthIdentityLinkingFailedException
      */
-    public function run(Model|MustVerifyEmail $user, string $provider): void
+    public function run(Model|MustVerifyEmail $user, string $provider): Model|MustVerifyEmail
     {
         Assert::isInstanceOf($user, Model::class);
         $oAuthUser = $this->statelessGetOAuthUserFromCodeTask->run($provider);
@@ -47,5 +47,7 @@ final class LinkOAuthIdentityAction extends Action
             $identity->linkUser($user);
             $this->verifyEmailTask->run($user, $oAuthUser->getEmail());
         }
+
+        return $user;
     }
 }

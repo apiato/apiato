@@ -6,7 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 return new class() extends Migration {
     public function up(): void
     {
-        Schema::create(config('vendor-socialAuth.user.table_name'), static function (Blueprint $table): void {
+        Schema::create('oauth_identities', static function (Blueprint $table): void {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
 
@@ -24,6 +24,6 @@ return new class() extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists(config('vendor-socialAuth.user.table_name'));
+        Schema::dropIfExists('oauth_identities');
     }
 };

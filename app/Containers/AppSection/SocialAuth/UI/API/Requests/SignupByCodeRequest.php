@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\SocialAuth\UI\API\Requests;
 
-use Apiato\Core\Abstracts\Requests\Request;
+use App\Ship\Parents\Requests\Request;
 
 final class SignupByCodeRequest extends Request
 {

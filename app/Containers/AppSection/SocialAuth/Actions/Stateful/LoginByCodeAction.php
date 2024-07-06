@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Containers\AppSection\SocialAuth\Actions;
+namespace App\Containers\AppSection\SocialAuth\Actions\Stateful;
 
 use Apiato\Core\Abstracts\Actions\Action;
+use App\Containers\AppSection\SocialAuth\Actions\LoginSubAction;
 use App\Containers\AppSection\SocialAuth\Exceptions\OAuthIdentityNotFoundException;
 use App\Containers\AppSection\SocialAuth\Tasks\StatefulGetOAuthUserFromCodeTask;
-use App\Containers\AppSection\SocialAuth\Values\SocialAuthOutcome;
+use App\Containers\AppSection\SocialAuth\Values\SuccessfulSocialAuthOutcome;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-final class StatefulLoginByCodeAction extends Action
+final class LoginByCodeAction extends Action
 {
     public function __construct(
         private readonly StatefulGetOAuthUserFromCodeTask $statefulGetOAuthUserFromCodeTask,
@@ -20,7 +21,7 @@ final class StatefulLoginByCodeAction extends Action
      * @throws OAuthIdentityNotFoundException
      * @throws ValidatorException
      */
-    public function run(string $provider): SocialAuthOutcome
+    public function run(string $provider): SuccessfulSocialAuthOutcome
     {
         $oAuthUser = $this->statefulGetOAuthUserFromCodeTask->run($provider);
 
