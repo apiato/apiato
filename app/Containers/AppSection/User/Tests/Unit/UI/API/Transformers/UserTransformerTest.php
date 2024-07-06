@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Transformers;
 
-use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
-use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
+use App\Containers\AppSection\User\Contracts\Transformers\IncludePermissions;
+use App\Containers\AppSection\User\Contracts\Transformers\IncludeRoles;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
@@ -15,6 +15,12 @@ use PHPUnit\Framework\Attributes\Group;
 final class UserTransformerTest extends UnitTestCase
 {
     private UserTransformer $transformer;
+
+    public function testImplementsContract(): void
+    {
+        $this->assertInstanceOf(IncludeRoles::class, $this->transformer);
+        $this->assertInstanceOf(IncludePermissions::class, $this->transformer);
+    }
 
     public function testCanTransformSingleObject(): void
     {
@@ -45,28 +51,6 @@ final class UserTransformerTest extends UnitTestCase
     public function testDefaultIncludes(): void
     {
         $this->assertSame([], $this->transformer->getDefaultIncludes());
-    }
-
-    public function testIncludeRoles(): void
-    {
-        $user = UserFactory::new()->createOne();
-        $roles = RoleFactory::new()->count(3)->create();
-        $user->roles()->attach($roles);
-
-        $resource = $this->transformer->includeRoles($user);
-
-        $this->assertSame($user->roles, $resource->getData());
-    }
-
-    public function testIncludePermissions(): void
-    {
-        $user = UserFactory::new()->createOne();
-        $permissions = PermissionFactory::new()->count(3)->create();
-        $user->permissions()->attach($permissions);
-
-        $resource = $this->transformer->includePermissions($user);
-
-        $this->assertSame($user->permissions, $resource->getData());
     }
 
     protected function setUp(): void
