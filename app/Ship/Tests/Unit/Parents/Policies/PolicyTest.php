@@ -36,7 +36,6 @@ final class PolicyTest extends ShipTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
         $this->app->register(FakeServiceProvider::class);
     }
 }

@@ -33,6 +33,15 @@
             "role": "Maintainer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../apiato_core/",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^8.1",
         "ext-curl": "*",
@@ -42,8 +51,10 @@
         "ext-pdo": "*",
         "ext-sodium": "*",
         "ext-tokenizer": "*",
+        "apiato/core": "8.*-dev",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^11.0",
+        "laravel/passport": "^12.0",
         "laravel/tinker": "^2.8",
         "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
@@ -55,7 +66,7 @@
         "friendsofphp/php-cs-fixer": "^3.8.0",
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
+        "nunomaduro/collision": "^8.0",
         "php-standard-library/psalm-plugin": "^2.3",
         "phpmd/phpmd": "@stable",
         "phpunit/phpunit": "^10.0",
@@ -64,7 +75,9 @@
         "psalm/plugin-phpunit": "^0.18.4",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
-        "vimeo/psalm": "^5.8.0"
+        "vimeo/psalm": "^5.8.0",
+        "barryvdh/laravel-ide-helper": "^3.0",
+        "barryvdh/laravel-debugbar": "^3.13.5"
     },
     "autoload": {
         "psr-4": {

@@ -16,6 +16,7 @@ abstract class MainServiceProvider extends AbstractMainServiceProvider
     public function boot(): void
     {
         parent::boot();
+        \Laravel\Passport\Passport::enablePasswordGrant();
     }
 
     /**

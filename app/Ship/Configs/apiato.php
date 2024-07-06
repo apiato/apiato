@@ -1,5 +1,4 @@
 <?php
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +37,7 @@ return [
         | In Minutes. Default to 1,440 minutes = 1 day
         |
         */
-        'expires-in' => env('API_TOKEN_EXPIRES', 1440),
+        'expires-in' => intval(env('API_TOKEN_EXPIRES', 1440)),
 
         /*
         |--------------------------------------------------------------------------
@@ -48,7 +47,7 @@ return [
         | In Minutes. Default to 43,200 minutes = 30 days
         |
         */
-        'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 43200),
+        'refresh-expires-in' => intval(env('API_REFRESH_TOKEN_EXPIRES', 43200)),
 
         /*
         |--------------------------------------------------------------------------

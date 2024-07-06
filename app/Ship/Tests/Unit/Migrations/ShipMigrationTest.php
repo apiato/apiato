@@ -15,12 +15,12 @@ final class ShipMigrationTest extends ShipTestCase
         $table = 'jobs';
         $columns = [
             'id' => 'bigint',
-            'queue' => 'string',
-            'payload' => 'text',
-            'attempts' => 'smallint',
-            'reserved_at' => 'integer',
-            'available_at' => 'integer',
-            'created_at' => 'integer',
+            'queue' => 'varchar',
+            'payload' => 'longtext',
+            'attempts' => 'tinyint',
+            'reserved_at' => 'int',
+            'available_at' => 'int',
+            'created_at' => 'int',
         ];
 
         $this->assertDatabaseTable($table, $columns);
@@ -33,10 +33,10 @@ final class ShipMigrationTest extends ShipTestCase
             'id' => 'bigint',
             'connection' => 'text',
             'queue' => 'text',
-            'payload' => 'text',
-            'exception' => 'text',
-            'failed_at' => 'datetime',
-            'uuid' => 'string',
+            'payload' => 'longtext',
+            'exception' => 'longtext',
+            'failed_at' => 'timestamp',
+            'uuid' => 'varchar',
         ];
 
         $this->assertDatabaseTable($table, $columns);
@@ -45,15 +45,16 @@ final class ShipMigrationTest extends ShipTestCase
     public function testNotificationsTableHasExpectedColumns(): void
     {
         $table = 'notifications';
+        
         $columns = [
-            'id' => 'guid',
-            'type' => 'string',
+            'id' => 'char',
+            'type' => 'varchar',
             'notifiable_id' => 'bigint',
-            'notifiable_type' => 'string',
+            'notifiable_type' => 'varchar',
             'data' => 'text',
-            'read_at' => 'datetime',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'read_at' => 'timestamp',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
         ];
 
         $this->assertDatabaseTable($table, $columns);

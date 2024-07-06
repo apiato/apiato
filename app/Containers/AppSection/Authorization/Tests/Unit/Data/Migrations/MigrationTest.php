@@ -24,12 +24,12 @@ final class MigrationTest extends UnitTestCase
     {
         $columns = [
             'id' => 'bigint',
-            'name' => 'string',
-            'guard_name' => 'string',
-            'display_name' => 'string',
-            'description' => 'string',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'name' => 'varchar',
+            'guard_name' => 'varchar',
+            'display_name' => 'varchar',
+            'description' => 'varchar',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
         ];
 
         $this->assertDatabaseTable($this->tableNames['permissions'], $columns);
@@ -39,12 +39,12 @@ final class MigrationTest extends UnitTestCase
     {
         $columns = [
             'id' => 'bigint',
-            'name' => 'string',
-            'guard_name' => 'string',
-            'display_name' => 'string',
-            'description' => 'string',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'name' => 'varchar',
+            'guard_name' => 'varchar',
+            'display_name' => 'varchar',
+            'description' => 'varchar',
+            'created_at' => 'timestamp',
+            'updated_at' => 'timestamp',
         ];
 
         $this->assertDatabaseTable($this->tableNames['roles'], $columns);
@@ -54,7 +54,7 @@ final class MigrationTest extends UnitTestCase
     {
         $columns = [
             'permission_id' => 'bigint',
-            'model_type' => 'string',
+            'model_type' => 'varchar',
             $this->columnNames['model_morph_key'] => 'bigint',
         ];
 
@@ -65,7 +65,7 @@ final class MigrationTest extends UnitTestCase
     {
         $columns = [
             'role_id' => 'bigint',
-            'model_type' => 'string',
+            'model_type' => 'varchar',
             $this->columnNames['model_morph_key'] => 'bigint',
         ];
 
