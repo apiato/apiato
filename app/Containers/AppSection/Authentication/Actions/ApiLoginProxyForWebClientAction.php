@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
@@ -34,7 +34,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
             'scope' => '',
         ]);
 
-        $loginFields = LoginFieldParser::extractAll($sanitizedData);
+        $loginFields = LoginFieldProcessor::extractAll($sanitizedData);
 
         foreach ($loginFields as $loginField) {
             $sanitizedData['username'] = $loginField->value;

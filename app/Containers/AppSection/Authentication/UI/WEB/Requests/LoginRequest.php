@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class LoginRequest extends ParentRequest
@@ -23,7 +23,7 @@ class LoginRequest extends ParentRequest
             'remember' => 'boolean',
         ];
 
-        return LoginFieldParser::mergeValidationRules($rules);
+        return LoginFieldProcessor::mergeValidationRules($rules);
     }
 
     public function authorize(): bool

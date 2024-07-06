@@ -15,8 +15,9 @@ final class LoginFieldTest extends UnitTestCase
     {
         $loginAttribute = new LoginField('email', ['required|email']);
 
-        $this->assertSame('email', $loginAttribute->name());
-        $this->assertSame(['required|email'], $loginAttribute->rules());
+
+        $this->assertSame('email', $loginAttribute->name);
+        $this->assertSame(['required|email'], $loginAttribute->rules);
         $this->assertSame('email', (string) $loginAttribute);
         $this->assertSame(['email' => ['required|email']], $loginAttribute->toArray());
     }

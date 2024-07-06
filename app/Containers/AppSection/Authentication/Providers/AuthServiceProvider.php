@@ -20,6 +20,8 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
 
     private function configPassport(): void
     {
+        // Passport::hashClientSecrets();
+
         if (config('apiato.api.enabled-implicit-grant')) {
             Passport::enableImplicitGrant();
         }

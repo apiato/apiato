@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
 use App\Containers\AppSection\Authentication\Values\LoginField;
@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('authentication')]
-#[CoversClass(LoginFieldParser::class)]
+#[CoversClass(LoginFieldProcessor::class)]
 final class LoginFieldParserTest extends UnitTestCase
 {
     public static function loginDataProvider(): array
@@ -49,7 +49,7 @@ final class LoginFieldParserTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
 
-        $result = LoginFieldParser::extractAll($input);
+        $result = LoginFieldProcessor::extractAll($input);
 
         $this->assertEquals($result, $expected);
     }
@@ -63,7 +63,7 @@ final class LoginFieldParserTest extends UnitTestCase
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldParser::extractAll($credentials);
+        $result = LoginFieldProcessor::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
@@ -77,7 +77,7 @@ final class LoginFieldParserTest extends UnitTestCase
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
-        $result = LoginFieldParser::extractAll($credentials);
+        $result = LoginFieldProcessor::extractAll($credentials);
 
         $this->assertEquals($result, $expected);
     }
@@ -87,7 +87,7 @@ final class LoginFieldParserTest extends UnitTestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('No matching login field found');
 
-        LoginFieldParser::extractAll([]);
+        LoginFieldProcessor::extractAll([]);
     }
 
     public static function invalidLoginFieldsDataProvider(): array
@@ -118,7 +118,7 @@ final class LoginFieldParserTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
 
-        LoginFieldParser::extractAll($userDetails);
+        LoginFieldProcessor::extractAll($userDetails);
     }
 
     public function testMergeValidationRulesWithException(): void
@@ -132,7 +132,7 @@ final class LoginFieldParserTest extends UnitTestCase
             'remember' => 'boolean',
         ];
 
-        LoginFieldParser::mergeValidationRules($newRules);
+        LoginFieldProcessor::mergeValidationRules($newRules);
     }
 
     public static function multiLoginFieldProvider(): array
@@ -205,7 +205,7 @@ final class LoginFieldParserTest extends UnitTestCase
             'age' => ['nullable', 'integer'],
         ];
 
-        $result = LoginFieldParser::mergeValidationRules($rules);
+        $result = LoginFieldProcessor::mergeValidationRules($rules);
 
         $this->assertSame([
             'phone' => ['required', 'numeric'],
@@ -250,20 +250,20 @@ final class LoginFieldParserTest extends UnitTestCase
     #[DataProvider('singleLoginFieldProvider')]
     public function testGivenOnlyOneFieldExistsShouldNotAddMultiLoginRelatedRule(LoginField $field, string $expectation): void
     {
-        Config::set('appSection-authentication.login.fields', [$field->name() => $field->rules()]);
+        Config::set('appSection-authentication.login.fields', [$field->name => $field->rules]);
         $rules = [
             'phone' => ['required', 'numeric'],
             'address' => ['string'],
             'age' => ['nullable', 'integer'],
         ];
 
-        $result = LoginFieldParser::mergeValidationRules($rules);
+        $result = LoginFieldProcessor::mergeValidationRules($rules);
 
         $this->assertSame([
             'phone' => ['required', 'numeric'],
             'address' => ['string'],
             'age' => ['nullable', 'integer'],
-            $field->name() => $expectation,
+            $field->name => $expectation,
         ], $result);
     }
 }

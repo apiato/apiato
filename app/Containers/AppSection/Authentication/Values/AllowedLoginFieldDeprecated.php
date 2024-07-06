@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Values;
 
 use App\Ship\Parents\Values\Value as ParentValue;
 
-class LoginField extends ParentValue implements \Stringable
+class AllowedLoginFieldDeprecated extends ParentValue implements \Stringable
 {
     public function __construct(
         public readonly string $name,

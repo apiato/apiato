@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
+use App\Containers\AppSection\Authentication\Classes\LoginFieldProcessor;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class LoginProxyPasswordGrantRequest extends ParentRequest
@@ -26,7 +26,7 @@ class LoginProxyPasswordGrantRequest extends ParentRequest
             'password' => 'required',
         ];
 
-        return LoginFieldParser::mergeValidationRules($rules);
+        return LoginFieldProcessor::mergeValidationRules($rules);
     }
 
     public function authorize(): bool
