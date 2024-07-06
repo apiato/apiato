@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
+use App\Containers\AppSection\User\Data\Resources\RegisterUserDto;
 use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Contracts\Auth\Access\Gate;
@@ -22,6 +23,6 @@ abstract class AbstractUserRequest extends ParentRequest
      */
     final public function dataClass(): string
     {
-        return UserResource::class;
+        return RegisterUserDto::class;
     }
 }

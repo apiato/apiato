@@ -3,11 +3,13 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\User\UI\API\Requests\AbstractUserRequest;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterUserRequest extends ParentRequest
+class RegisterUserRequest extends AbstractUserRequest
 {
     protected array $access = [
         'permissions' => null,
@@ -21,7 +23,7 @@ class RegisterUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:users,email',
+//            'email' => 'required|email|unique:users,email',
             'password' => [
                 'required',
                 Password::default(),
@@ -37,7 +39,7 @@ class RegisterUserRequest extends ParentRequest
         ];
     }
 
-    public function authorize(): bool
+    public function authorize(Gate $gate): bool
     {
         return $this->hasAccess();
     }

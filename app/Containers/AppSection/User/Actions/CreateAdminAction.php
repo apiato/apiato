@@ -3,6 +3,8 @@
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
+use App\Containers\AppSection\User\Data\Resources\RegisterUserDto;
+use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Ship\Exceptions\CreateResourceFailedException;
@@ -23,7 +25,7 @@ class CreateAdminAction extends ParentAction
      * @throws \Throwable
      * @throws NotFoundException
      */
-    public function run(array $data): User
+    public function run(RegisterUserDto $data): User
     {
         return DB::transaction(function () use ($data) {
             $user = $this->createUserTask->run($data);

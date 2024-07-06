@@ -6,8 +6,11 @@ use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
+use App\Containers\AppSection\User\Data\Resources\RegisterUserDto;
+use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
+use App\Containers\AppSection\User\Values\Email;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
@@ -23,20 +26,21 @@ class RegisterUserAction extends ParentAction
      * @throws CreateResourceFailedException
      * @throws IncorrectIdException
      */
-    public function run(RegisterUserRequest $request): User
+    public function run(RegisterUserDto $data): User
     {
-        $sanitizedData = $request->sanitizeInput([
-            'email',
-            'password',
-            'name',
-            'gender',
-            'birth',
-        ]);
+//        app(Email::class, ['email' => 'email']);
+//        $sanitizedData = $data->sanitizeInput([
+//            'email',
+//            'password',
+//            'name',
+//            'gender',
+//            'birth',
+//        ]);
 
-        $user = $this->createUserTask->run($sanitizedData);
+        $user = $this->createUserTask->run($data);
 
         $user->notify(new Welcome());
-        $this->sendVerificationEmailTask->run($user, $request->verification_url);
+        $this->sendVerificationEmailTask->run($user, $data->verification_url);
 
         return $user;
     }
