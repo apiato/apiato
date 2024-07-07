@@ -35,11 +35,8 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "../apiato_core/",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "https://github.com/kienngd/apiato_core.git"
         }
     ],
     "require": {
@@ -51,7 +48,7 @@
         "ext-pdo": "*",
         "ext-sodium": "*",
         "ext-tokenizer": "*",
-        "apiato/core": "8.*-dev",
+        "apiato/core": "^9.0.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^11.0",
         "laravel/passport": "^12.0",
