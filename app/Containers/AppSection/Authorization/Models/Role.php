@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\Models;
 
+use Apiato\Core\Contracts\HasResourceKey;
 use Apiato\Core\Traits\ModelTrait;
 use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
-use Apiato\Core\Contracts\HasResourceKey;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole implements HasResourceKey

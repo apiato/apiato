@@ -26,7 +26,7 @@ class Email extends ParentValue implements \Stringable, Castable, \JsonSerializa
 
             public function set($model, string $key, $value, array $attributes): array
             {
-                return [$key => (string)$value];
+                return [$key => (string) $value];
             }
         };
     }

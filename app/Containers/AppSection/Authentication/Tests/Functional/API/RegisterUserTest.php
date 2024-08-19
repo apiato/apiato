@@ -29,6 +29,7 @@ final class RegisterUserTest extends ApiTestCase
     public static function emailDataProvider(): array
     {
         $email = 'ganDalf@thE.GreY';
+
         return [
             ['sameCasing' => $email],
             ['differentCasingLower' => Str::lower($email)],

@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Values\Email;
 use App\Ship\Parents\Requests\Request as ParentRequest;
-use App\Ship\Rules\UniqueCaseInsensitive;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
@@ -25,7 +24,7 @@ class RegisterUserRequest extends ParentRequest
         return [
             'email' => [
                 'required',
-                ...Email::rules()
+                ...Email::rules(),
             ],
             'password' => [
                 'required',

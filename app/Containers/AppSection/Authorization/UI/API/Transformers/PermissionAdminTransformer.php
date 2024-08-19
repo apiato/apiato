@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
 use Illuminate\Support\Arr;
-use League\Fractal\Resource\Collection;
 
 class PermissionAdminTransformer extends PermissionTransformer
 {

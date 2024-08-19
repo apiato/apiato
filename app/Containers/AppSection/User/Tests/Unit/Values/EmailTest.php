@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversClass(Email::class)]
 final class EmailTest extends UnitTestCase
 {
-
     public function testEmailIsValid(): void
     {
         $email = new Email('test@example.com');
@@ -55,7 +54,7 @@ final class EmailTest extends UnitTestCase
     public function testEmailToString(): void
     {
         $email = new Email('test@example.com');
-        $this->assertEquals('test@example.com', (string)$email);
+        $this->assertEquals('test@example.com', (string) $email);
     }
 
     public function testEmailEquality(): void
