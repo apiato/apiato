@@ -68,7 +68,7 @@ final class EmailTest extends UnitTestCase
     public function testEmailToString(): void
     {
         $email = new Email('test@example.com');
-        $this->assertEquals('test@example.com', (string)$email);
+        $this->assertEquals('test@example.com', (string) $email);
     }
 
     public function testEmailEquality(): void
