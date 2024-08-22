@@ -42,7 +42,7 @@ a new architectural pattern and comes with an amazing list of [features](http://
 - [Localization](https://apiato.io/docs/additional-features/localization).
 - [Code generator](https://apiato.io/docs/core-features/code-generator).
 - [Shallow ETag](https://apiato.io/docs/core-features/etag).
-- [Social Authentication](https://apiato.io/docs/additional-features/social-authentication).
+- [Social Authentication](https://apiato.io/docs/pacakges/social-authentication).
 - [Query Parameters support](https://apiato.io/docs/core-features/query-parameters).
 
 
