@@ -1,6 +1,5 @@
 <?php
 
-
 use League\Fractal\Serializer\DataArraySerializer;
 
 return [

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-return new class() extends Migration {
+return new class extends Migration {
     public function up(): void
     {
         $permissionsTableName = config('permission.table_names')['permissions'];
