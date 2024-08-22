@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authentication\Notifications;
 
-use App\Ship\Parents\Models\UserModel;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Notifications\Notification as ParentNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class EmailVerified extends ParentNotification implements ShouldQueue
+final class EmailVerified extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 
@@ -17,7 +17,7 @@ class EmailVerified extends ParentNotification implements ShouldQueue
         return ['mail'];
     }
 
-    public function toMail(UserModel $notifiable): MailMessage
+    public function toMail(User $notifiable): MailMessage
     {
         return (new MailMessage())
             ->subject('Email Verified')

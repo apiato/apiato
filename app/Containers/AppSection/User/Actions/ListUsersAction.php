@@ -3,14 +3,16 @@
 namespace App\Containers\AppSection\User\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
-use App\Containers\AppSection\User\Tasks\ListUsersTask;
+use App\Containers\AppSection\User\Data\Collections\UserCollection;
+use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Prettus\Repository\Exceptions\RepositoryException;
 
 class ListUsersAction extends ParentAction
 {
     public function __construct(
-        private readonly ListUsersTask $listUsersTask,
+        private readonly UserRepository $repository,
     ) {
     }
 
@@ -18,8 +20,8 @@ class ListUsersAction extends ParentAction
      * @throws CoreInternalErrorException
      * @throws RepositoryException
      */
-    public function run(): mixed
+    public function run(): LengthAwarePaginator|UserCollection
     {
-        return $this->listUsersTask->run();
+        return $this->repository->addRequestCriteria()->paginate();
     }
 }

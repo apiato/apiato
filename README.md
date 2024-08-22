@@ -1,29 +1,28 @@
 <p align="center">
 <a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
-<img src="https://github.com/apiato/apiato/actions/workflows/tests.yaml/badge.svg" alt="Build Status">
+<img src="https://img.shields.io/github/actions/workflow/status/apiato/apiato/tests.yaml?label=tests" alt="tests status">
 </a>
 <a href="https://codecov.io/gh/apiato/apiato" > 
- <img src="https://codecov.io/gh/apiato/apiato/graph/badge.svg?token=siiyEg5AC9" alt="code coverage"/> 
+ <img src="https://img.shields.io/codecov/c/github/apiato/apiato?token=siiyEg5AC9" alt="code coverage"/> 
 </a>
 <a href="https://packagist.org/packages/apiato/apiato">
-<img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="Total Downloads">
+<img src="https://img.shields.io/packagist/v/apiato/apiato" alt="latest stable version">
 </a>
 <br>
 <a href="https://packagist.org/packages/apiato/apiato">
-<img src="https://img.shields.io/packagist/v/apiato/apiato" alt="Latest Stable Version">
+<img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="total downloads">
 </a>
 <a href="https://github.com/apiato/apiato">
-<img src="https://img.shields.io/github/license/apiato/apiato" alt="License">
+<img src="https://img.shields.io/github/license/apiato/apiato" alt="license">
 </a>
 <a href="https://discord.gg/ryPcV4KM5k">
-<img src="https://img.shields.io/discord/800815227839053834?label=discord" alt="support">
+<img src="https://img.shields.io/discord/800815227839053834?logo=discord&label=chat" alt="chat">
 </a>
 </p>
 
 <p align="center">
    <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
 </p>
-
 <h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
 
 ## About Apiato
@@ -43,7 +42,7 @@ a new architectural pattern and comes with an amazing list of [features](http://
 - [Localization](https://apiato.io/docs/additional-features/localization).
 - [Code generator](https://apiato.io/docs/core-features/code-generator).
 - [Shallow ETag](https://apiato.io/docs/core-features/etag).
-- [Social Authentication](https://apiato.io/docs/additional-features/social-authentication).
+- [Social Authentication](https://apiato.io/docs/pacakges/social-authentication).
 - [Query Parameters support](https://apiato.io/docs/core-features/query-parameters).
 
 

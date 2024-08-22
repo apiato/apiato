@@ -2,11 +2,11 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Illuminate\Support\Str;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
-class OrderByFieldCriteria extends Criteria
+class OrderByFieldCriteria extends ParentCriteria
 {
     public function __construct(
         private string $field,

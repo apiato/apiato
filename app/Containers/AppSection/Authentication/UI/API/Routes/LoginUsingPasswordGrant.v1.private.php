@@ -11,12 +11,12 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String}  username user email
- * @apiBody           {String}  password user password
- * @apiBody           {String}  client_id
- * @apiBody           {String}  client_secret
- * @apiBody           {String="password"}  grant_type
- * @apiBody           {String}  [scope]
+ * @apiBody            {String}  username user email
+ * @apiBody            {String}  password user password
+ * @apiBody            {String}  client_id
+ * @apiBody            {String}  client_secret
+ * @apiBody            {String="password"}  grant_type
+ * @apiBody            {String}  [scope]
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

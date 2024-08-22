@@ -8,12 +8,11 @@ use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Hash;
 
 class UpdateUserTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository,
+        private readonly UserRepository $repository,
     ) {
     }
 
@@ -21,14 +20,10 @@ class UpdateUserTask extends ParentTask
      * @throws NotFoundException
      * @throws UpdateResourceFailedException
      */
-    public function run(array $userData, mixed $userId): User
+    public function run(int $id, array $properties): User
     {
         try {
-            if (array_key_exists('password', $userData)) {
-                $userData['password'] = Hash::make($userData['password']);
-            }
-
-            return $this->repository->update($userData, $userId);
+            return $this->repository->update($properties, $id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
         } catch (\Exception) {

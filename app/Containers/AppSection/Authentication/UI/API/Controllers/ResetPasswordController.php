@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -9,15 +10,10 @@ use Illuminate\Http\JsonResponse;
 
 class ResetPasswordController extends ApiController
 {
-    public function __construct(
-        private readonly ResetPasswordAction $resetPasswordAction,
-    ) {
-    }
-
-    public function __invoke(ResetPasswordRequest $request): JsonResponse
+    public function __invoke(ResetPasswordRequest $request, ResetPasswordAction $action): JsonResponse
     {
-        $this->resetPasswordAction->run($request);
+        $action->run($request);
 
-        return $this->noContent();
+        return Response::noContent();
     }
 }

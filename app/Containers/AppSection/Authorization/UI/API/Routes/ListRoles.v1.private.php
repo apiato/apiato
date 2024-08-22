@@ -5,11 +5,11 @@
  *
  * @apiName            ListRoles
  *
- * @api                {get} /v1/roles List All Roles
+ * @api                {get} /v1/roles List all roles
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => '']
+ * @apiPermission      Authenticated ['permissions' => 'manage-roles', 'roles' => null]
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer

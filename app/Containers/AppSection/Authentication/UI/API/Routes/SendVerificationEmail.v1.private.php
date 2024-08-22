@@ -11,12 +11,12 @@
  *
  * @apiVersion         1.0.0
  *
- * @apiPermission      Authenticated ['permissions' => '', 'roles' => '']
+ * @apiPermission      Authenticated ['permissions' => null, 'roles' => null]
  *
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {String} verification_url required|url
+ * @apiBody            {String} verification_url required|url
  *
  * @apiSuccessExample  {json} Success-Response:
  * HTTP/1.1 202 Accepted
@@ -26,7 +26,5 @@
 use App\Containers\AppSection\Authentication\UI\API\Controllers\SendVerificationEmailController;
 use Illuminate\Support\Facades\Route;
 
-if (config('appSection-authentication.require_email_verification')) {
-    Route::post('/email/verification-notification', SendVerificationEmailController::class)
-        ->middleware(['auth:api']);
-}
+Route::post('/email/verification-notification', SendVerificationEmailController::class)
+    ->middleware(['auth:api']);

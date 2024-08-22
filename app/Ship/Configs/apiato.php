@@ -1,5 +1,9 @@
 <?php
 
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Seeders\SeedDeploymentData;
+use App\Ship\Seeders\SeedTestingData;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +63,7 @@ return [
         | response, and it will be logged in the default Log file.
         |
         */
-        'debug' => env('API_DEBUG', true),
+        'debug' => env('API_DEBUG', false),
 
         /*
         |--------------------------------------------------------------------------
@@ -118,22 +122,6 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Force Valid Request Include Parameters
-        |--------------------------------------------------------------------------
-        |
-        | By default, users can request to include additional resources into the
-        | response by using the ?include=... query parameter. The requested top-level
-        | resource also responds with all available includes. However, the user may
-        | still request an invalid (i.e., not available) include parameter. This flag
-        | determines, how to proceed in such a case:
-        | When set to true, a PHP Exception will be thrown (default)
-        | When set to false, this invalid include will be skipped
-        |
-        */
-        'force-valid-includes' => true,
-
-        /*
-        |--------------------------------------------------------------------------
         | Use ETags
         |--------------------------------------------------------------------------
         |
@@ -145,6 +133,13 @@ return [
         |
         */
         'use-etag' => false,
+
+        'params' => [
+            // The key to use for the include request parameter
+            'include' => 'include',
+            // The key to use for the filter request parameter
+            'filter' => 'fieldset',
+        ],
     ],
 
     'seeders' => [
@@ -154,8 +149,8 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'deployment' => App\Ship\Seeders\SeedDeploymentData::class,
-        'testing' => App\Ship\Seeders\SeedTestingData::class,
+        'deployment' => SeedDeploymentData::class,
+        'testing' => SeedTestingData::class,
     ],
 
     'tests' => [
@@ -168,7 +163,7 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'user-class' => App\Containers\AppSection\User\Models\User::class,
+        'user-class' => User::class,
 
         /*
         |--------------------------------------------------------------------------

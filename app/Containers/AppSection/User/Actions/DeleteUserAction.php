@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\AppSection\User\Tasks\DeleteUserTask;
+use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Exceptions\NotFoundException;
@@ -11,7 +11,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 class DeleteUserAction extends ParentAction
 {
     public function __construct(
-        private readonly DeleteUserTask $deleteUserTask,
+        private readonly UserRepository $repository,
     ) {
     }
 
@@ -19,8 +19,8 @@ class DeleteUserAction extends ParentAction
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
-    public function run(DeleteUserRequest $request): void
+    public function run(DeleteUserRequest $request): bool
     {
-        $this->deleteUserTask->run($request->id);
+        return $this->repository->delete($request->user_id);
     }
 }

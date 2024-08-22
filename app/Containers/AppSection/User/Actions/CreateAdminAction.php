@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\AssignRolesToUserTask;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
@@ -16,7 +15,6 @@ class CreateAdminAction extends ParentAction
     public function __construct(
         private readonly CreateUserTask $createUserTask,
         private readonly FindRoleTask $findRoleTask,
-        private readonly AssignRolesToUserTask $assignRolesToUserTask,
     ) {
     }
 
@@ -32,7 +30,7 @@ class CreateAdminAction extends ParentAction
             $adminRoleName = config('appSection-authorization.admin_role');
             foreach (array_keys(config('auth.guards')) as $guardName) {
                 $adminRole = $this->findRoleTask->run($adminRoleName, $guardName);
-                $this->assignRolesToUserTask->run($user, $adminRole);
+                $user->assignRole($adminRole);
             }
             $user->email_verified_at = now();
             $user->save();

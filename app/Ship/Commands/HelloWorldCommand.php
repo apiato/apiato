@@ -6,27 +6,11 @@ use App\Ship\Parents\Commands\ConsoleCommand;
 
 class HelloWorldCommand extends ConsoleCommand
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'hello:world';
+    protected $description = 'Says Hello World!';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Hello World!';
-
-    /**
-     * Execute the console command.
-     *
-     * @return void
-     */
-    public function handle()
+    public function handle(): void
     {
-        echo "Hello World :)\n";
+        $this->line('Hello World!');
     }
 }

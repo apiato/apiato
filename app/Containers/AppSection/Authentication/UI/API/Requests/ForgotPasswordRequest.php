@@ -8,17 +8,13 @@ use Illuminate\Validation\Rule;
 class ForgotPasswordRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
-    protected array $decode = [
-        // 'id',
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-        // 'id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
@@ -33,8 +29,6 @@ class ForgotPasswordRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

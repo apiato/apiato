@@ -24,7 +24,7 @@ class VerifyEmailAction extends ParentAction
      */
     public function run(VerifyEmailRequest $request): void
     {
-        $user = $this->findUserByIdTask->run($request->id);
+        $user = $this->findUserByIdTask->run($request->user_id);
 
         throw_unless($this->emailIsValid($request, $user), InvalidEmailVerificationDataException::class);
 

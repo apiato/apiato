@@ -8,21 +8,14 @@ use Illuminate\Validation\Rule;
 class SendVerificationEmailRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
-    protected array $decode = [
-        // 'id',
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-        // 'id',
-    ];
+    protected array $urlParameters = [];
 
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         return [
@@ -34,13 +27,8 @@ class SendVerificationEmailRequest extends ParentRequest
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

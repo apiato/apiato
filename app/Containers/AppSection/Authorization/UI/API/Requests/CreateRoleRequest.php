@@ -8,14 +8,12 @@ class CreateRoleRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
-    protected array $decode = [
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
@@ -28,8 +26,6 @@ class CreateRoleRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

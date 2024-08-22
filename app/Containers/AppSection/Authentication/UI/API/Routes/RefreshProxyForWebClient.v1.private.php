@@ -15,7 +15,7 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String}  [refresh_token] The refresh Token
+ * @apiBody            {String}  [refresh_token] The refresh Token
  *
  * @apiSuccessExample  {json}       Success-Response:
  * HTTP/1.1 200 OK

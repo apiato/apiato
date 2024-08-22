@@ -12,7 +12,7 @@ return [
     */
 
     'require_email_verification' => env('REQUIRE_EMAIL_VERIFICATION', true),
-    'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30), // in minute
+    'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ return [
     'login' => [
         /*
         |--------------------------------------------------------------------------
-        | Allowed Login Attributes
+        | Allowed Login Fields
         |--------------------------------------------------------------------------
         |
         | A list of fields the user can log in with.
@@ -60,7 +60,7 @@ return [
         |
         */
 
-        'attributes' => [
+        'fields' => [
             'email' => ['email'],
         ],
 
@@ -69,7 +69,7 @@ return [
         | Case Sensitive
         |--------------------------------------------------------------------------
         |
-        | This field represents if login attribute should be case-sensitive.
+        | This field represents if login field should be case-sensitive.
         | If false, then user can log in with both `admin@admin.com` and `Admin@Admin.Com`
         |
         */
@@ -81,9 +81,9 @@ return [
         | Prefix
         |--------------------------------------------------------------------------
         |
-        | Use this $prefix variable in order to allow for nested elements.
-        | For example, if your login fields are nested in "data.attributes.name / data.attributes.email"
-        | simply set the $prefix to "data.attributes."
+        | Use this $prefix variable to allow for nested elements.
+        | For example, if your login fields are nested in "data.field.name / data.field.email"
+        | simply set the $prefix to "data.fields."
         |
         */
 

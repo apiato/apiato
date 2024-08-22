@@ -7,10 +7,10 @@
             <directory>./app/Containers/*/*/Tests/Unit</directory>
         </testsuite>
         <testsuite name="Functional">
-            <directory>./app/Containers/*/*/UI/*/Tests/Functional</directory>
+            <directory>./app/Containers/*/*/Tests/Functional</directory>
         </testsuite>
         <testsuite name="Ship-Unit">
-            <directory>./app/Ship/Tests</directory>
+            <directory>./app/Ship/Tests/Unit</directory>
         </testsuite>
     </testsuites>
     <source>
@@ -21,16 +21,18 @@
             <directory>./app/Containers/Vendor</directory>
             <!-- NOTE: Exclude the following directories because they fail when directly included with code-coverage-->
             <directory>./app/Containers/*/*/UI/*/Routes</directory>
-            <directory>./app/Containers/*/*/Data/Factories</directory>
+            <directory>./app/Containers/*/*/Configs</directory>
+            <directory>./app/Containers/*/*/Data/Migrations</directory>
+            <directory>./app/Ship/Configs</directory>
+            <directory>./app/Ship/Migrations</directory>
             <!-- NOTE: Exclude tests from coverage-->
             <directory>./app/Containers/*/*/Tests</directory>
-            <directory>./app/Containers/*/*/UI/*/Tests</directory>
+            <directory>./app/Ship/Tests</directory>
             <!-- NOTE: Exclude blade files from coverage-->
             <directory suffix=".blade.php">./app</directory>
         </exclude>
     </source>
     <php>
-        <env name="API_FULL_URL" value="http://api.apiato.test"/>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>

@@ -2,22 +2,19 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListPermissionsRequest;
-use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionTransformer;
+use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
 class ListPermissionsController extends ApiController
 {
-    public function __construct(
-        private readonly ListPermissionsAction $listPermissionsAction,
-    ) {
-    }
-
-    public function __invoke(ListPermissionsRequest $request): array
+    public function __invoke(ListPermissionsRequest $request, ListPermissionsAction $action): JsonResponse
     {
-        $permissions = $this->listPermissionsAction->run();
+        $permissions = $action->run();
 
-        return $this->transform($permissions, PermissionTransformer::class);
+        return Response::createFrom($permissions)->transformWith(PermissionAdminTransformer::class)->ok();
     }
 }

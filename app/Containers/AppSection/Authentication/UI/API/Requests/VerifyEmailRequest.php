@@ -7,35 +7,25 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 class VerifyEmailRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [
-        'id',
+        'user_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'user_id',
     ];
 
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
-        return [
-            // 'id' => 'required',
-        ];
+        return [];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

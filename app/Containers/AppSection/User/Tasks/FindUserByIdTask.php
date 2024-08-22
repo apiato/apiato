@@ -10,7 +10,7 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 class FindUserByIdTask extends ParentTask
 {
     public function __construct(
-        protected readonly UserRepository $repository,
+        private readonly UserRepository $repository,
     ) {
     }
 
@@ -19,10 +19,6 @@ class FindUserByIdTask extends ParentTask
      */
     public function run(mixed $userId): User
     {
-        try {
-            return $this->repository->find($userId);
-        } catch (\Exception) {
-            throw new NotFoundException();
-        }
+        return $this->repository->getById($userId);
     }
 }

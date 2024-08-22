@@ -10,14 +10,9 @@ use Illuminate\Support\Facades\Cookie;
 
 class LogoutController extends ApiController
 {
-    public function __construct(
-        private readonly ApiLogoutAction $logoutAction,
-    ) {
-    }
-
-    public function __invoke(LogoutRequest $request): JsonResponse
+    public function __invoke(LogoutRequest $request, ApiLogoutAction $action): JsonResponse
     {
-        $this->logoutAction->run($request);
+        $action->run($request);
 
         return $this->accepted([
             'message' => 'Token revoked successfully.',

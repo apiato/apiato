@@ -3,6 +3,6 @@
     "description": "apiato Container.",
     "type": "apiato-container",
     "require": {
-        "spatie/laravel-permission": "^5.9.1"
+        "spatie/laravel-permission": "^5.0"
     }
 }

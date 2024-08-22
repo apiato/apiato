@@ -8,30 +8,29 @@ class SyncUserRolesRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [
         'user_id',
-        'roles_ids.*',
+        'role_ids.*',
     ];
 
     protected array $urlParameters = [
+        'user_id',
     ];
 
     public function rules(): array
     {
         return [
-            'roles_ids' => 'array|required',
-            'roles_ids.*' => 'required|exists:roles,id',
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'exists:users,id',
+            'role_ids' => 'array|required',
+            'role_ids.*' => 'required|exists:roles,id',
         ];
     }
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

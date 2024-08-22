@@ -2,22 +2,21 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
-use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterUserRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
-    protected array $decode = [
-    ];
+    protected array $decode = [];
 
-    protected array $urlParameters = [
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
@@ -25,16 +24,14 @@ class RegisterUserRequest extends ParentRequest
             'email' => 'required|email|unique:users,email',
             'password' => [
                 'required',
-                User::getPasswordValidationRules(),
+                Password::default(),
             ],
             'name' => 'min:2|max:50',
-            'gender' => 'in:male,female,unspecified',
+            'gender' => Rule::enum(Gender::class),
             'birth' => 'date',
             'verification_url' => [
                 'url',
-                Rule::requiredIf(function () {
-                    return config('appSection-authentication.require_email_verification');
-                }),
+                Rule::requiredIf(static fn (): bool => config('appSection-authentication.require_email_verification')),
                 Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
             ],
         ];
@@ -42,8 +39,6 @@ class RegisterUserRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

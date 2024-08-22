@@ -8,28 +8,24 @@ class DeleteRoleRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => '',
+        'roles' => null,
     ];
 
     protected array $decode = [
-        'id',
+        'role_id',
     ];
 
     protected array $urlParameters = [
-        'id',
+        'role_id',
     ];
 
     public function rules(): array
     {
-        return [
-            // 'id' => 'required',
-        ];
+        return [];
     }
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }

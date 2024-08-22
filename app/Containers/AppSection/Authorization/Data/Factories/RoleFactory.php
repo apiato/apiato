@@ -18,7 +18,7 @@ class RoleFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->firstName(),
+            'name' => fake()->unique()->firstName(),
             'guard_name' => 'api',
         ];
     }
@@ -28,6 +28,15 @@ class RoleFactory extends ParentFactory
         return $this->state(function (array $attributes) {
             return [
                 'name' => config('appSection-authorization.admin_role'),
+            ];
+        });
+    }
+
+    public function withGuard(string $guard): static
+    {
+        return $this->state(function (array $attributes) use ($guard) {
+            return [
+                'guard_name' => $guard,
             ];
         });
     }

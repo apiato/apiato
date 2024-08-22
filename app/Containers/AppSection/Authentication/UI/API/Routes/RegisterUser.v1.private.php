@@ -15,8 +15,8 @@
  *
  * @apiHeader          {String} accept=application/json
  *
- * @apiBody           {String} email
- * @apiBody           {String} password min: 8
+ * @apiBody            {String} email
+ * @apiBody            {String} password min: 8
  *
  * at least one character of the following:
  *

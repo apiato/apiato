@@ -2,22 +2,19 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
 class RegisterUserController extends ApiController
 {
-    public function __construct(
-        private readonly RegisterUserAction $registerUserAction,
-    ) {
-    }
-
-    public function __invoke(RegisterUserRequest $request): array
+    public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): JsonResponse
     {
-        $user = $this->registerUserAction->transactionalRun($request);
+        $user = $action->transactionalRun($request);
 
-        return $this->transform($user, UserTransformer::class);
+        return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
     }
 }

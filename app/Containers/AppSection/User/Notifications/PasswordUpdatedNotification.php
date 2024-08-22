@@ -8,7 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordUpdatedNotification extends ParentNotification implements ShouldQueue
+final class PasswordUpdatedNotification extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 

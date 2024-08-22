@@ -3,18 +3,14 @@
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
-use App\Containers\AppSection\Authentication\Traits\AuthenticationTrait;
-use App\Containers\AppSection\Authorization\Traits\AuthorizationTrait;
+use App\Containers\AppSection\User\Data\Collections\UserCollection;
+use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Validation\Rules\Password;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
-    use AuthorizationTrait;
-    use AuthenticationTrait;
-
     protected $fillable = [
         'name',
         'email',
@@ -29,18 +25,15 @@ class User extends ParentUserModel implements MustVerifyEmail
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'immutable_datetime',
         'password' => 'hashed',
-        'birth' => 'date',
+        'gender' => Gender::class,
+        'birth' => 'immutable_date',
     ];
 
-    public static function getPasswordValidationRules(): Password
+    public function newCollection(array $models = []): UserCollection
     {
-        return Password::min(8)
-            ->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols();
+        return new UserCollection($models);
     }
 
     public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
@@ -48,10 +41,39 @@ class User extends ParentUserModel implements MustVerifyEmail
         $this->notify(new VerifyEmail($verificationUrl));
     }
 
+    final public function getHashedEmailForVerification(): string
+    {
+        return sha1($this->getEmailForVerification());
+    }
+
+    /**
+     * Allows Passport to authenticate users with custom fields.
+     */
+    public function findForPassport(string $username): self|null
+    {
+        $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
+        $query = $this->newModelQuery();
+
+        foreach ($allowedLoginFields as $field) {
+            if (config('appSection-authentication.login.case_sensitive')) {
+                $query->orWhere($field, $username);
+            } else {
+                $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
+            }
+        }
+
+        return $query->first();
+    }
+
+    public function hasAdminRole(): bool
+    {
+        return $this->hasRole(config('appSection-authorization.admin_role'));
+    }
+
     protected function email(): Attribute
     {
         return new Attribute(
-            get: fn (null|string $value): null|string => is_null($value) ? null : strtolower($value),
+            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
         );
     }
 }
