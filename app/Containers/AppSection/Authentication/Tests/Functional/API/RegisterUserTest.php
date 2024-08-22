@@ -31,9 +31,9 @@ final class RegisterUserTest extends ApiTestCase
         $email = 'ganDalf@thE.GreY';
 
         return [
-            ['sameCasing' => $email],
-            ['differentCasingLower' => Str::lower($email)],
-            ['differentCasingUpper' => Str::upper($email)],
+            'sameCasing' => compact('email'),
+            'differentCasingLower' => ['email' => Str::lower($email)],
+            'differentCasingUpper' => ['email' => Str::upper($email)],
         ];
     }
 
