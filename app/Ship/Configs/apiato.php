@@ -1,5 +1,9 @@
 <?php
 
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Seeders\SeedDeploymentData;
+use App\Ship\Seeders\SeedTestingData;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -145,8 +149,8 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'deployment' => App\Ship\Seeders\SeedDeploymentData::class,
-        'testing' => App\Ship\Seeders\SeedTestingData::class,
+        'deployment' => SeedDeploymentData::class,
+        'testing' => SeedTestingData::class,
     ],
 
     'tests' => [
@@ -159,7 +163,7 @@ return [
         |--------------------------------------------------------------------------
         |
         */
-        'user-class' => App\Containers\AppSection\User\Models\User::class,
+        'user-class' => User::class,
 
         /*
         |--------------------------------------------------------------------------
