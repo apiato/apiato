@@ -9,6 +9,6 @@
         "apidoc": "^1.0.0",
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.5",
-        "vite": "^4.0.0"
+        "vite": "^5.4.2"
     }
 }
