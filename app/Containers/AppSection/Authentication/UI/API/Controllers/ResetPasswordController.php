@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
-use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 

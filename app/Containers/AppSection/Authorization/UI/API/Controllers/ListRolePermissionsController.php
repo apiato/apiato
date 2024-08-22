@@ -2,10 +2,10 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListRolePermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolePermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
-use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 

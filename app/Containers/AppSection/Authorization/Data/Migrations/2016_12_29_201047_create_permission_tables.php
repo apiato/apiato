@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\PermissionRegistrar;
 
-return new class() extends Migration {
+return new class extends Migration {
     public function up(): void
     {
         $tableNames = config('permission.table_names');

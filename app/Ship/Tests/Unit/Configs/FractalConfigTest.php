@@ -2,11 +2,11 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
+use Apiato\Core\Services\Response;
 use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
-use Apiato\Core\Services\Response;
 
 #[Group('ship')]
 #[CoversNothing]

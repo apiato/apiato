@@ -2,10 +2,10 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
-use Apiato\Core\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
