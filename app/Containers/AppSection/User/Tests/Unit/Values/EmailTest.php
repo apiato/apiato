@@ -5,14 +5,27 @@ namespace App\Containers\AppSection\User\Tests\Unit\Values;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Values\Email;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('user')]
 #[CoversClass(Email::class)]
 final class EmailTest extends UnitTestCase
 {
+    public static function emailDataProvider(): array
+    {
+        $email = 'duPliCate@eXampLe.cOm';
+
+        return [
+            'sameCasing' => compact('email'),
+            'differentCasingLower' => ['email' => Str::lower($email)],
+            'differentCasingUpper' => ['email' => Str::upper($email)],
+        ];
+    }
+
     public function testEmailIsValid(): void
     {
         $email = new Email('test@example.com');
@@ -31,7 +44,7 @@ final class EmailTest extends UnitTestCase
         $email->validate();
     }
 
-    public function testEmailIsUniqueCaseInsensitive(): void
+    public function testAllowsUsingUniqueCaseInsensitiveEmail(): void
     {
         $email = new Email('unique@example.com');
         UserFactory::new()->createOne(['email' => 'different@example.com']);
@@ -41,12 +54,13 @@ final class EmailTest extends UnitTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmailIsNotUniqueCaseInsensitive(): void
+    #[DataProvider('emailDataProvider')]
+    public function testCanDetectNonUniqueCaseInsensitiveEmail($email): void
     {
         $this->expectException(ValidationException::class);
 
-        $email = new Email('duplicate@example.com');
-        UserFactory::new()->createOne(['email' => $email->value]);
+        UserFactory::new()->createOne(['email' => 'duPliCate@eXampLe.cOm']);
+        $email = new Email($email);
 
         $email->validate();
     }
@@ -54,7 +68,7 @@ final class EmailTest extends UnitTestCase
     public function testEmailToString(): void
     {
         $email = new Email('test@example.com');
-        $this->assertEquals('test@example.com', (string) $email);
+        $this->assertEquals('test@example.com', (string)$email);
     }
 
     public function testEmailEquality(): void
