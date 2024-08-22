@@ -15,8 +15,6 @@ class TestUser extends ParentUserModel
         'published',
     ];
 
-    protected string $resourceKey = 'TestUser';
-
     public function hasAdminRole(): bool
     {
         return false;
