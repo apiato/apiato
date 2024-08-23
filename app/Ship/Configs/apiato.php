@@ -135,6 +135,7 @@ return [
         'use-etag' => false,
 
         'params' => [
+            // TODO: (BREAKING CHANGE) Use the config in fractal.php instead of here
             // The key to use for the include request parameter
             'include' => 'include',
             // The key to use for the filter request parameter
