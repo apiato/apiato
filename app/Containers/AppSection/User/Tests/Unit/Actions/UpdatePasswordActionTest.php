@@ -4,9 +4,9 @@ namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Data\Resources\UserResource;
 use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -24,10 +24,10 @@ final class UpdatePasswordActionTest extends UnitTestCase
             'user_id' => $user->id,
             'password' => 'test',
         ];
-        $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
+        $userData = UserResource::from($data);
         $action = app(UpdatePasswordAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($userData);
 
         $this->assertTrue(Hash::check($data['password'], $result->password));
         Notification::assertSentTo($user, PasswordUpdatedNotification::class);

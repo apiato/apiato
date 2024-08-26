@@ -16,7 +16,7 @@ class UpdateUserController extends ApiController
         $request->mapInput([
             'new_password' => 'password',
         ]);
-        $user = $action->run($request);
+        $user = $action->run($request->getData());
 
         return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
     }

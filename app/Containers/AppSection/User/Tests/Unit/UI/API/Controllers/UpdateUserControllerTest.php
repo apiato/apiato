@@ -19,7 +19,7 @@ final class UpdateUserControllerTest extends UnitTestCase
         $controller = app(UpdateUserController::class);
         $request = UpdateUserRequest::injectData();
         $actionMock = $this->mock(UpdateUserAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects('run')->andReturn(UserFactory::new()->createOne());
 
         $controller->__invoke($request, $actionMock);
     }

@@ -13,7 +13,7 @@ class FindUserByIdController extends ApiController
 {
     public function __invoke(FindUserByIdRequest $request, FindUserByIdAction $action): JsonResponse
     {
-        $user = $action->run($request);
+        $user = $action->run($request->getData());
 
         return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
     }
