@@ -5,13 +5,9 @@
  *
  * @apiName            GivePermissionsToRole
  *
- * @api                {post} /v1/permissions/attach Attach Permissions to Role
+ * @api                {post} /v1/roles/:role_id/permissions Attach permissions to role
  *
- * @apiDescription     Attach new permissions to role. This endpoint does not sync the role with the
- *                     new permissions. It simply attaches new permission to the role. So make sure
- *                     to never send an already attached permission since it will cause an error.
- *                     To sync (update) all existing permissions with the new ones use
- *                     `/permissions/sync` endpoint instead.
+ * @apiDescription     Attach new permissions to a role.
  *
  * @apiVersion         1.0.0
  *
@@ -20,8 +16,9 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {String} role_id Role ID
- * @apiBody           {Array} permission_ids Array of Permissions ID's
+ * @apiParam           {String} role_id
+ *
+ * @apiBody            {Array} permission_ids Array of permission id's
  *
  * @apiUse             RoleSuccessSingleResponse
  */
@@ -29,5 +26,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GivePermissionsToRoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('permissions/attach', GivePermissionsToRoleController::class)
+Route::post('roles/{role_id}/permissions', GivePermissionsToRoleController::class)
     ->middleware(['auth:api']);

@@ -5,13 +5,9 @@
  *
  * @apiName            RemoveUserRoles
  *
- * @api                {post} /v1/roles/revoke Revoke/Remove Roles from User
+ * @api                {delete} /v1/users/:user_id/roles Remove user roles
  *
- * @apiDescription     Revoke existing roles from user. This endpoint does not sync the user
- *                     It just revokes the passed role from the user. So make sure
- *                     to never send a non-assigned role since it will cause an error.
- *                     To sync (update) all existing roles with the new ones use
- *                     `/roles/sync` endpoint instead.
+ * @apiDescription     Remove existing roles from a user
  *
  * @apiVersion         1.0.0
  *
@@ -20,8 +16,9 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiBody           {String} user_id user ID
- * @apiBody           {Array} role_ids Role ID or Array of Role ID's
+ * @apiParam           {String} user_id
+ *
+ * @apiBody            {Array} role_ids Array of role id's
  *
  * @apiUse             UserSuccessSingleResponse
  */
@@ -29,5 +26,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RemoveUserRolesController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('roles/revoke', RemoveUserRolesController::class)
+Route::delete('users/{user_id}/roles', RemoveUserRolesController::class)
     ->middleware(['auth:api']);
