@@ -8,7 +8,6 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class RefreshProxyForWebClientController extends ApiController
 {
@@ -16,6 +15,6 @@ class RefreshProxyForWebClientController extends ApiController
     {
         $result = $action->run($request);
 
-        return $this->json(Fractal::create($result->token, TokenTransformer::class)->toArray())->withCookie($result->refreshTokenCookie);
+        return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
     }
 }

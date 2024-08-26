@@ -8,7 +8,6 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
-use Spatie\Fractal\Facades\Fractal;
 
 class CreateRoleController extends ApiController
 {
@@ -16,6 +15,6 @@ class CreateRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return $this->created(Fractal::create($role, RoleAdminTransformer::class)->toArray());
+        return $this->created($this->transform($role, RoleAdminTransformer::class));
     }
 }
