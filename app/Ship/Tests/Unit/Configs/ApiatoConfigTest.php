@@ -37,6 +37,7 @@ final class ApiatoConfigTest extends ShipTestCase
                     env('ADMIN_ROLE', 'admin'),
                 ],
                 'force-accept-header' => false,
+                'force-valid-includes' => true,
                 'use-etag' => false,
                 'params' => [
                     'include' => 'include',

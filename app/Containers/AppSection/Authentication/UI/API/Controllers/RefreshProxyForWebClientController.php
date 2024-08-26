@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
@@ -15,8 +14,6 @@ class RefreshProxyForWebClientController extends ApiController
     {
         $result = $action->run($request);
 
-        return Response::createFrom($result->token)
-            ->transformWith(TokenTransformer::class)
-            ->ok()->withCookie($result->refreshTokenCookie);
+        return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
     }
 }
