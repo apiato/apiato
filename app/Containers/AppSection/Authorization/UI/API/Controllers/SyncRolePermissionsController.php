@@ -13,6 +13,6 @@ class SyncRolePermissionsController extends ApiController
     {
         $role = $action->run($request);
 
-        return $this->transform($role, RoleAdminTransformer::class);
+        return $this->transform($role, RoleAdminTransformer::class, ['permissions']);
     }
 }

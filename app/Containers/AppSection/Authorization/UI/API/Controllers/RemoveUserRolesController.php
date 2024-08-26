@@ -13,6 +13,6 @@ class RemoveUserRolesController extends ApiController
     {
         $user = $action->run($request);
 
-        return $this->transform($user, UserAdminTransformer::class);
+        return $this->transform($user, UserAdminTransformer::class, ['roles']);
     }
 }
