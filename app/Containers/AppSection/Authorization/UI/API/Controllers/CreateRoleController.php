@@ -16,6 +16,6 @@ class CreateRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return Fractal::create($role, RoleAdminTransformer::class)->created();
+        return $this->created(Fractal::create($role, RoleAdminTransformer::class)->toArray());
     }
 }
