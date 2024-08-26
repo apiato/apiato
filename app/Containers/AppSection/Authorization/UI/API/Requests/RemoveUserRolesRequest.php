@@ -12,20 +12,18 @@ class RemoveUserRolesRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'user_id',
         'role_ids.*',
+        'user_id',
     ];
 
-    protected array $urlParameters = [
-        'user_id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
             'role_ids' => 'array|required',
             'role_ids.*' => 'required|exists:roles,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

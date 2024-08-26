@@ -5,7 +5,7 @@
  *
  * @apiName            GivePermissionsToUser
  *
- * @api                {post} /v1/users/:user_id/permissions Attach permissions to user
+ * @api                {patch} /v1/users/:user_id/permissions Attach Permissions To User
  *
  * @apiDescription     Attach direct permissions to user
  *
@@ -18,7 +18,7 @@
  *
  * @apiParam           {String} user_id
  *
- * @apiBody            {Array} permission_ids Array of permission id's
+ * @apiBody            {Array} permission_ids Array of Permissions ID's
  *
  * @apiUse            UserSuccessSingleResponse
  */
@@ -26,5 +26,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\GivePermissionsToUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('users/{user_id}/permissions', GivePermissionsToUserController::class)
+Route::patch('users/{user_id}/permissions', GivePermissionsToUserController::class)
     ->middleware(['auth:api']);

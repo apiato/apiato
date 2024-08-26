@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class AssignRolesToUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{user_id}/roles';
+    protected string $endpoint = 'post@v1/roles/assign?include=roles';
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
@@ -26,15 +26,16 @@ final class AssignRolesToUserTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $data = [
             'role_ids' => [$role->getHashedKey()],
+            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 1)
-                ->where('data.id', $user->getHashedKey())
+                ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
                 ->etc(),
         );
@@ -50,15 +51,16 @@ final class AssignRolesToUserTest extends ApiTestCase
                 $role1->getHashedKey(),
                 $role2->getHashedKey(),
             ],
+            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 2)
-                ->where('data.id', $user->getHashedKey())
+                ->where('data.id', $data['user_id'])
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
                 ->where('data.roles.data.1.id', $data['role_ids'][1])
                 ->etc(),

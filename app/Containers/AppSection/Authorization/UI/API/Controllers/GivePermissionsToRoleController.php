@@ -14,8 +14,6 @@ class GivePermissionsToRoleController extends ApiController
     {
         $role = $action->run($request);
 
-        return Fractal::create($role, RoleAdminTransformer::class)
-            ->parseIncludes(['permissions'])
-            ->toArray();
+        return Fractal::create($role, RoleAdminTransformer::class)->toArray();
     }
 }

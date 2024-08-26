@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class SyncUserRolesTest extends ApiTestCase
 {
-    protected string $endpoint = 'put@v1/users/{user_id}/roles';
+    protected string $endpoint = 'post@v1/roles/sync';
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
@@ -31,9 +31,10 @@ final class SyncUserRolesTest extends ApiTestCase
                 $role1->getHashedKey(),
                 $role2->getHashedKey(),
             ],
+            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=roles')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -51,9 +52,10 @@ final class SyncUserRolesTest extends ApiTestCase
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$role->getHashedKey()],
+            'user_id' => $this->encode($invalidId),
         ];
 
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -69,9 +71,10 @@ final class SyncUserRolesTest extends ApiTestCase
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
+            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(

@@ -5,9 +5,13 @@
  *
  * @apiName            RevokeRolePermissions
  *
- * @api                {delete} /v1/role/:role_id/permissions Revoke role permissions
+ * @api                {post} /v1/permissions/detach Detach Permissions from Role
  *
- * @apiDescription     Revoke role permissions
+ * @apiDescription     Detach existing permission from role. This endpoint does not sync the role
+ *                     It just detaches the passed permissions from the role. So make sure
+ *                     to never send a non-attached permission since it will cause an error.
+ *                     To sync (update) all existing permissions with the new ones use
+ *                     `/permissions/sync` endpoint instead.
  *
  * @apiVersion         1.0.0
  *
@@ -16,9 +20,8 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} role_id
- *
- * @apiBody            {String} permission_ids Array of permission id's
+ * @apiBody           {String} role_id Role ID
+ * @apiBody           {String} permission_ids Array of Permissions ID's
  *
  * @apiUse             RoleSuccessSingleResponse
  */
@@ -26,5 +29,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRolePermissionsController;
 use Illuminate\Support\Facades\Route;
 
-Route::delete('roles/{role_id}/permissions', RevokeRolePermissionsController::class)
+Route::post('permissions/detach', RevokeRolePermissionsController::class)
     ->middleware(['auth:api']);

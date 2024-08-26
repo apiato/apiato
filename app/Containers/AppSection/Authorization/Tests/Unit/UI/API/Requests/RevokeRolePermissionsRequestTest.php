@@ -31,9 +31,7 @@ final class RevokeRolePermissionsRequestTest extends UnitTestCase
 
     public function testUrlParametersArray(): void
     {
-        $this->assertSame([
-            'role_id',
-        ], $this->request->getUrlParametersArray());
+        $this->assertSame([], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -41,7 +39,7 @@ final class RevokeRolePermissionsRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'role_id' => 'exists:roles,id',
+            'role_id' => 'required|exists:roles,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ], $rules);

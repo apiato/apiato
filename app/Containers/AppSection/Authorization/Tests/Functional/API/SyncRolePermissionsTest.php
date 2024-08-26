@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class SyncRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'put@v1/roles/{role_id}/permissions';
+    protected string $endpoint = 'post@v1/permissions/sync';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -27,10 +27,11 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $role->givePermissionTo($permissionA);
         $data = [
+            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -49,10 +50,11 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $permission = PermissionFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
+            'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -67,10 +69,11 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
+            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(

@@ -31,7 +31,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -58,7 +58,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -71,28 +71,10 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         );
     }
 
-    public function testDetachPermissionFromNonExistingRole(): void
-    {
-        $permission = PermissionFactory::new()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'permission_ids' => [$permission->getHashedKey()],
-        ];
-
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.user_id.0', 'The selected user id is invalid.')
-                ->etc(),
-        );
-    }
-
     public function testDetachNonExistingPermissionFromUser(): void
     {
+        $invalidId = 3333;
         $user = UserFactory::new()->createOne();
-        $invalidId = 7777777;
         $data = [
             'permission_ids' => [$this->encode($invalidId)],
         ];
@@ -105,7 +87,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

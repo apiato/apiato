@@ -16,14 +16,12 @@ class RevokeRolePermissionsRequest extends ParentRequest
         'permission_ids.*',
     ];
 
-    protected array $urlParameters = [
-        'role_id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
         return [
-            'role_id' => 'exists:roles,id',
+            'role_id' => 'required|exists:roles,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ];

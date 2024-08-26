@@ -32,9 +32,7 @@ final class RoleTransformerTest extends UnitTestCase
 
     public function testAvailableIncludes(): void
     {
-        $this->assertSame([
-            'permissions',
-        ], $this->transformer->getAvailableIncludes());
+        $this->assertSame([], $this->transformer->getAvailableIncludes());
     }
 
     public function testDefaultIncludes(): void

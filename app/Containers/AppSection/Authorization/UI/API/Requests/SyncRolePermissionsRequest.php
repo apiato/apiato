@@ -12,20 +12,18 @@ class SyncRolePermissionsRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        'role_id',
         'permission_ids.*',
+        'role_id',
     ];
 
-    protected array $urlParameters = [
-        'role_id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
         return [
-            'role_id' => 'exists:roles,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'required|exists:permissions,id',
+            'role_id' => 'required|exists:roles,id',
         ];
     }
 

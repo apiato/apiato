@@ -5,9 +5,13 @@
  *
  * @apiName            AssignRolesToUser
  *
- * @api                {patch} /v1/users/:user_id/roles Assign roles to user
+ * @api                {post} /v1/roles/assign Assign User to Roles
  *
- * @apiDescription     Assign new roles to user.
+ * @apiDescription     Assign new roles to user. This endpoint does not sync the user with the
+ *                     new roles. It simply assigns new role to the user. So make sure
+ *                     to never send an already assigned role since it will cause an error.
+ *                     To sync (update) all existing roles with the new ones use
+ *                     `/roles/sync` endpoint instead.
  *
  * @apiVersion         1.0.0
  *
@@ -16,9 +20,8 @@
  * @apiHeader          {String} accept=application/json
  * @apiHeader          {String} authorization=Bearer
  *
- * @apiParam           {String} user_id
- *
- * @apiBody            {Array} role_ids Array of role id's
+ * @apiBody           {String} user_id User ID
+ * @apiBody           {Array} role_ids Role ID or Array of Roles ID's
  *
  * @apiUse             UserSuccessSingleResponse
  */
@@ -26,5 +29,5 @@
 use App\Containers\AppSection\Authorization\UI\API\Controllers\AssignRolesToUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users/{user_id}/roles', AssignRolesToUserController::class)
+Route::post('roles/assign', AssignRolesToUserController::class)
     ->middleware(['auth:api']);

@@ -16,16 +16,14 @@ class AssignRolesToUserRequest extends ParentRequest
         'role_ids.*',
     ];
 
-    protected array $urlParameters = [
-        'user_id',
-    ];
+    protected array $urlParameters = [];
 
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
             'role_ids' => 'array|required',
             'role_ids.*' => 'exists:roles,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

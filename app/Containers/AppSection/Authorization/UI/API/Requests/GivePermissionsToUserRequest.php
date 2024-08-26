@@ -23,7 +23,6 @@ class GivePermissionsToUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ];

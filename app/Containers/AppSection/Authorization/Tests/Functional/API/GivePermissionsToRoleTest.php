@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class GivePermissionsToRoleTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/roles/{role_id}/permissions';
+    protected string $endpoint = 'post@v1/permissions/attach';
 
     protected array $access = [
         'permissions' => 'manage-roles',
@@ -25,10 +25,11 @@ final class GivePermissionsToRoleTest extends ApiTestCase
         $role = RoleFactory::new()->createOne();
         $permission = PermissionFactory::new()->createOne();
         $data = [
+            'role_id' => $role->getHashedKey(),
             'permission_ids' => $permission->getHashedKey(),
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -48,10 +49,11 @@ final class GivePermissionsToRoleTest extends ApiTestCase
         $permissionA = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $data = [
+            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->endpoint($this->endpoint . '?include=permissions')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -59,9 +61,6 @@ final class GivePermissionsToRoleTest extends ApiTestCase
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->has('data.permissions.data', 2)
-                ->where('data.permissions.data.0.object', 'Permission')
-                ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
-                ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
                 ->etc(),
         );
     }
@@ -69,12 +68,13 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachNonExistingPermissionToRole(): void
     {
         $role = RoleFactory::new()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
+            'role_id' => $role->getHashedKey(),
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -82,7 +82,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
                 'errors',
                 static fn (AssertableJson $errors) => $errors->has(
                     'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );
@@ -91,12 +91,13 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachPermissionToNonExistingRole(): void
     {
         $permission = PermissionFactory::new()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
+            'role_id' => $this->encode($invalidId),
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, skipEncoding: true, replace: '{role_id}')->makeCall($data);
+        $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(

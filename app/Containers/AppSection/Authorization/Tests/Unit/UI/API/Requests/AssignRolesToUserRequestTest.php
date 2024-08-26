@@ -31,9 +31,7 @@ final class AssignRolesToUserRequestTest extends UnitTestCase
 
     public function testUrlParametersArray(): void
     {
-        $this->assertSame([
-            'user_id',
-        ], $this->request->getUrlParametersArray());
+        $this->assertSame([], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -41,9 +39,9 @@ final class AssignRolesToUserRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'user_id' => 'exists:users,id',
             'role_ids' => 'array|required',
             'role_ids.*' => 'exists:roles,id',
+            'user_id' => 'required|exists:users,id',
         ], $rules);
     }
 
