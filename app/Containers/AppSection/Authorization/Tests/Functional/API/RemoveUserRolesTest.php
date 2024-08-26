@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing]
 final class RemoveUserRolesTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/roles/revoke';
+    protected string $endpoint = 'delete@v1/users/{user_id}/roles';
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
@@ -28,16 +28,15 @@ final class RemoveUserRolesTest extends ApiTestCase
         $user->assignRole($roleA, $roleB);
         $data = [
             'role_ids' => [$roleA->getHashedKey()],
-            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=roles')->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
-                ->where('data.id', $data['user_id'])
+                ->where('data.id', $user->getHashedKey())
                 ->has('data.roles.data', 1)
                 ->where('data.roles.data.0.id', $roleB->getHashedKey())
                 ->etc(),
@@ -54,16 +53,15 @@ final class RemoveUserRolesTest extends ApiTestCase
 
         $data = [
             'role_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
-            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->endpoint($this->endpoint . '?include=roles')->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
-                ->where('data.id', $data['user_id'])
+                ->where('data.id', $user->getHashedKey())
                 ->has('data.roles.data', 0)
                 ->etc(),
         );
@@ -75,10 +73,9 @@ final class RemoveUserRolesTest extends ApiTestCase
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$role->getHashedKey()],
-            'user_id' => $this->encode($invalidId),
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -94,10 +91,9 @@ final class RemoveUserRolesTest extends ApiTestCase
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
-            'user_id' => $user->getHashedKey(),
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(

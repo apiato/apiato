@@ -41,6 +41,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
+            'user_id' => 'exists:users,id',
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ], $rules);

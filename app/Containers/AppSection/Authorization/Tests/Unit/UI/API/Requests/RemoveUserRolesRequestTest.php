@@ -24,14 +24,16 @@ final class RemoveUserRolesRequestTest extends UnitTestCase
     public function testDecode(): void
     {
         $this->assertSame([
-            'role_ids.*',
             'user_id',
+            'role_ids.*',
         ], $this->request->getDecodeArray());
     }
 
     public function testUrlParametersArray(): void
     {
-        $this->assertSame([], $this->request->getUrlParametersArray());
+        $this->assertSame([
+            'user_id',
+        ], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -39,9 +41,9 @@ final class RemoveUserRolesRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
+            'user_id' => 'exists:users,id',
             'role_ids' => 'array|required',
             'role_ids.*' => 'required|exists:roles,id',
-            'user_id' => 'required|exists:users,id',
         ], $rules);
     }
 
