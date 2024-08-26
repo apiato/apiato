@@ -45,16 +45,16 @@
         },
         {
             "name": "apiato/core",
-            "version": "8.x-dev",
+            "version": "v8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apiato/core.git",
-                "reference": "4791f810666e78e03db774baa537c2863178b643"
+                "reference": "95e8296d8a425ec3f239c21c807004a71b15edef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/4791f810666e78e03db774baa537c2863178b643",
-                "reference": "4791f810666e78e03db774baa537c2863178b643",
+                "url": "https://api.github.com/repos/apiato/core/zipball/95e8296d8a425ec3f239c21c807004a71b15edef",
+                "reference": "95e8296d8a425ec3f239c21c807004a71b15edef",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,6 @@
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^5.8.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -102,23 +101,14 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Apiato\\Core\\": "src/"
-                },
                 "files": [
                     "src/Helpers/helpers.php"
-                ]
-            },
-            "autoload-dev": {
+                ],
                 "psr-4": {
-                    "Apiato\\Core\\Tests\\": "tests/"
+                    "Apiato\\Core\\": "src/"
                 }
             },
-            "scripts": {
-                "php-cs-fixer": [
-                    "php-cs-fixer --config=./php_cs.dist.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -150,23 +140,67 @@
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/Mahmoudz"
+                    "url": "https://paypal.me/mzmmzz",
+                    "type": "custom"
                 },
                 {
-                    "type": "open_collective",
-                    "url": "https://opencollective.com/apiato"
+                    "url": "https://github.com/Mahmoudz",
+                    "type": "github"
                 },
                 {
-                    "type": "custom",
-                    "url": "https://paypal.me/mzmmzz"
+                    "url": "https://opencollective.com/apiato",
+                    "type": "open_collective"
                 },
                 {
-                    "type": "patreon",
-                    "url": "https://www.patreon.com/zalt"
+                    "url": "https://www.patreon.com/zalt",
+                    "type": "patreon"
                 }
             ],
-            "time": "2024-08-22T16:00:59+00:00"
+            "time": "2024-08-26T15:14:48+00:00"
+        },
+        {
+            "name": "apiato/documentation-generator-container",
+            "version": "v3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/documentation-generator-container.git",
+                "reference": "c22d6d4a6b4f598b4e68432175cfad479b48af64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/documentation-generator-container/zipball/c22d6d4a6b4f598b4e68432175cfad479b48af64",
+                "reference": "c22d6d4a6b4f598b4e68432175cfad479b48af64",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "apiato/core": "^v8.1.0"
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Documentation"
+                    }
+                },
+                "laravel": {
+                    "providers": [
+                        "App\\Containers\\Vendor\\Documentation\\Providers\\DocumentGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
+            "support": {
+                "issues": "https://github.com/apiato/documentation-generator-container/issues",
+                "source": "https://github.com/apiato/documentation-generator-container/tree/v3.0.5"
+            },
+            "time": "2023-12-17T12:09:05+00:00"
         },
         {
             "name": "brick/math",
@@ -9118,16 +9152,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.62.0",
+            "version": "v3.63.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "627692f794d35c43483f34b01d94740df2a73507"
+                "reference": "ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/627692f794d35c43483f34b01d94740df2a73507",
-                "reference": "627692f794d35c43483f34b01d94740df2a73507",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea",
+                "reference": "ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea",
                 "shasum": ""
             },
             "require": {
@@ -9209,7 +9243,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.62.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.63.1"
             },
             "funding": [
                 {
@@ -9217,7 +9251,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-07T17:03:09+00:00"
+            "time": "2024-08-26T14:03:20+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -9672,16 +9706,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v8.26.0",
+            "version": "v8.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "c3bc4a4440b312035da6659b87973a4cda584476"
+                "reference": "95185200e654c75e4d5d6626f6ec139c5a4699ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/c3bc4a4440b312035da6659b87973a4cda584476",
-                "reference": "c3bc4a4440b312035da6659b87973a4cda584476",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/95185200e654c75e4d5d6626f6ec139c5a4699ca",
+                "reference": "95185200e654c75e4d5d6626f6ec139c5a4699ca",
                 "shasum": ""
             },
             "require": {
@@ -9692,6 +9726,7 @@
             "conflict": {
                 "brianium/paratest": "<6.4.0 || >=7.0.0 <7.1.4 || >=8.0.0",
                 "laravel/framework": "<10.48.20 || >=11.0.0",
+                "laravel/serializable-closure": "<1.3.0 || >=2.0.0",
                 "nunomaduro/collision": "<6.4.0 || >=7.0.0 <7.4.0 || >=8.0.0",
                 "orchestra/testbench-dusk": "<8.21.0 || >=9.0.0",
                 "orchestra/workbench": "<1.0.0",
@@ -9760,7 +9795,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-08-14T05:31:02+00:00"
+            "time": "2024-08-26T04:43:39+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -11498,12 +11533,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "8938260885863ec2dd9f2aaf9a79ba14e58a92f6"
+                "reference": "f8de2a81061775002d96aea80b12f2ab3c5eeb8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/8938260885863ec2dd9f2aaf9a79ba14e58a92f6",
-                "reference": "8938260885863ec2dd9f2aaf9a79ba14e58a92f6",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f8de2a81061775002d96aea80b12f2ab3c5eeb8d",
+                "reference": "f8de2a81061775002d96aea80b12f2ab3c5eeb8d",
                 "shasum": ""
             },
             "conflict": {
@@ -11714,7 +11749,7 @@
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "friendsoftypo3/openid": ">=4.5,<4.5.31|>=4.7,<4.7.16|>=6,<6.0.11|>=6.1,<6.1.6",
                 "froala/wysiwyg-editor": "<3.2.7|>=4.0.1,<=4.1.3",
-                "froxlor/froxlor": "<2.1.9",
+                "froxlor/froxlor": "<=2.2.0.0-RC3",
                 "frozennode/administrator": "<=5.0.12",
                 "fuel/core": "<1.8.1",
                 "funadmin/funadmin": "<=3.2|>=3.3.2,<=3.3.3",
@@ -12307,7 +12342,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-19T21:04:39+00:00"
+            "time": "2024-08-23T19:04:38+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -14342,8 +14377,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "phpmd/phpmd": 0,
-        "roave/security-advisories": 20,
-        "apiato/core": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
