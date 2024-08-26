@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -14,6 +13,6 @@ class ForgotPasswordController extends ApiController
     {
         $action->run($request);
 
-        return Response::noContent();
+        return $this->noContent();
     }
 }

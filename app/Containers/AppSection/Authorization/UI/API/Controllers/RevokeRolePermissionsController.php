@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolePermission
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class RevokeRolePermissionsController extends ApiController
 {
@@ -15,8 +16,7 @@ class RevokeRolePermissionsController extends ApiController
     {
         $role = $action->run($request);
 
-        return Response::createFrom($role)
-            ->transformWith(RoleAdminTransformer::class)
+        return Fractal::create($role, RoleAdminTransformer::class)
             ->parseIncludes(['permissions'])
             ->ok();
     }

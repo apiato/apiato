@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRe
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class FindPermissionByIdController extends ApiController
 {
@@ -15,6 +16,6 @@ class FindPermissionByIdController extends ApiController
     {
         $permission = $action->run($request);
 
-        return Response::createFrom($permission)->transformWith(PermissionAdminTransformer::class)->ok();
+        return Fractal::create($permission, PermissionAdminTransformer::class)->ok();
     }
 }

@@ -14,6 +14,6 @@ class ResetPasswordController extends ApiController
     {
         $action->run($request);
 
-        return Response::noContent();
+        return $this->noContent();
     }
 }

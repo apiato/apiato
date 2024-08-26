@@ -8,6 +8,7 @@ use App\Containers\AppSection\User\UI\API\Requests\ListUsersRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class ListUsersController extends ApiController
 {
@@ -15,6 +16,6 @@ class ListUsersController extends ApiController
     {
         $users = $action->run();
 
-        return Response::createFrom($users)->transformWith(UserTransformer::class)->ok();
+        return Fractal::create($users, UserTransformer::class)->ok();
     }
 }

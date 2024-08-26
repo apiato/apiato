@@ -8,6 +8,7 @@ use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class UpdatePasswordController extends ApiController
 {
@@ -18,6 +19,6 @@ class UpdatePasswordController extends ApiController
         ]);
         $user = $action->run($request);
 
-        return Response::createFrom($user)->transformWith(UserTransformer::class)->ok();
+        return Fractal::create($user, UserTransformer::class)->ok();
     }
 }

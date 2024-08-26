@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserPermission
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class RevokeUserPermissionsController extends ApiController
 {
@@ -15,8 +16,7 @@ class RevokeUserPermissionsController extends ApiController
     {
         $user = $action->run($request);
 
-        return Response::createFrom($user)
-            ->transformWith(UserAdminTransformer::class)
+        return Fractal::create($user, UserAdminTransformer::class)
             ->parseIncludes(['permissions'])
             ->ok();
     }

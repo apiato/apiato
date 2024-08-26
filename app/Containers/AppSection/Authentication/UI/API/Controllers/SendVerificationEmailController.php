@@ -14,6 +14,6 @@ class SendVerificationEmailController extends ApiController
     {
         $action->run($request);
 
-        return Response::accepted();
+        return $this->accepted();
     }
 }

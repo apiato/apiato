@@ -8,6 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserRolesRequest
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
+use Spatie\Fractal\Facades\Fractal;
 
 class ListUserRolesController extends ApiController
 {
@@ -15,6 +16,6 @@ class ListUserRolesController extends ApiController
     {
         $roles = $action->run($request);
 
-        return Response::createFrom($roles)->transformWith(RoleAdminTransformer::class)->ok();
+        return Fractal::create($roles, RoleAdminTransformer::class)->ok();
     }
 }
