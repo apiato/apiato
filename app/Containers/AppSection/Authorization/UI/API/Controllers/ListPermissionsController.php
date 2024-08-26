@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListPermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;

@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListRolesAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolesRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;

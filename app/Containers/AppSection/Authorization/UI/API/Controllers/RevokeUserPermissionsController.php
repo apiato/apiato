@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\RevokeUserPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserPermissionsRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;

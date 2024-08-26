@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\User\Actions\FindUserByIdAction;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
