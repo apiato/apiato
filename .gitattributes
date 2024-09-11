@@ -8,7 +8,7 @@
 
 /.github export-ignore
 /app/Ship/Tests export-ignore
-/app/Containers/AppSection/*/Tests export-ignore
+/app/Containers/*/*/Tests export-ignore
 .env.ci export-ignore
 .editorconfig export-ignore
 .gitattributes export-ignore
