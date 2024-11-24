@@ -4,8 +4,8 @@ docroot: public
 php_version: "8.2"
 webserver_type: nginx-fpm
 xdebug_enabled: false
-additional_hostnames: ['api.apiato']
-additional_fqdns: []
+additional_fqdns:
+  - api.apiato.ddev.site
 database:
     type: postgres
     version: "17"
@@ -13,7 +13,6 @@ upload_dirs:
     - ../storage
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
 corepack_enable: false
 
 # Key features of DDEV's config.yaml:
