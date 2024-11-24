@@ -15,6 +15,7 @@ final class DebugBarConfigTest extends ShipTestCase
         $config = config('debugbar');
         $expected = [
             'enabled' => env('DEBUGBAR_ENABLED', null),
+            'hide_empty_tabs' => false,
             'except' => [
                 'telescope*',
                 'horizon*',
