@@ -7,4 +7,5 @@
 *.php diff=php
 
 /.github export-ignore
+/.ddeve export-ignore
 .env.ci export-ignore
