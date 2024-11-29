@@ -151,11 +151,25 @@ return [
         'use-etag' => false,
 
         'params' => [
-            // TODO: (BREAKING CHANGE) Use the config in fractal.php instead of here
-            // The key to use for the include request parameter
-            'include' => 'include',
-            // The key to use for the filter request parameter
+            // TODO: BC: remove this after removing its usage in ResponseTrait in Core
             'filter' => 'fieldset',
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Sparse Fieldsets
+        |--------------------------------------------------------------------------
+        |
+        | Sparse Fieldsets are a feature of the JSON API spec that allows clients to request only a subset of the
+        | attributes for a specific resource type. This can be useful for improving performance by reducing the amount
+        | of data that needs to be transferred over the network.
+        |
+        | @see https://jsonapi.org/format/#fetching-sparse-fieldsets
+        |
+        */
+        'sparse_fieldsets' => [
+            // The name of key in the request to where we should look for the fields to return.
+            'request_key' => 'fields',
         ],
     ],
 
