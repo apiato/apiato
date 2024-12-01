@@ -7,9 +7,7 @@ use App\Ship\Seeders\SeedDeploymentData;
 use App\Ship\Seeders\SeedTestingData;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversNothing]
 final class ApiatoConfigTest extends ShipTestCase
 {
@@ -40,8 +38,10 @@ final class ApiatoConfigTest extends ShipTestCase
                 'force-valid-includes' => true,
                 'use-etag' => false,
                 'params' => [
-                    'include' => 'include',
                     'filter' => 'fieldset',
+                ],
+                'sparse_fieldsets' => [
+                    'request_key' => 'fields',
                 ],
             ],
             'seeders' => [
