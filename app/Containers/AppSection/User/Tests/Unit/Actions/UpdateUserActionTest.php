@@ -10,9 +10,7 @@ use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(UpdateUserAction::class)]
 final class UpdateUserActionTest extends UnitTestCase
 {

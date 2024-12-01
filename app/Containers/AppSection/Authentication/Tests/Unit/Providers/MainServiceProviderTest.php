@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authentication\Providers\MiddlewareServiceProvider
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Laravel\Passport\PassportServiceProvider;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(MainServiceProvider::class)]
 final class MainServiceProviderTest extends UnitTestCase
 {

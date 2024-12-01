@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\UI\API\Controllers\ListUsersController;
 use App\Containers\AppSection\User\UI\API\Requests\ListUsersRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(ListUsersController::class)]
 final class ListUsersControllerTest extends UnitTestCase
 {

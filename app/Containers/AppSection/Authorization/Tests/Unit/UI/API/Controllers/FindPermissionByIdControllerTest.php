@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\FindPermissionByIdController;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(FindPermissionByIdController::class)]
 final class FindPermissionByIdControllerTest extends UnitTestCase
 {

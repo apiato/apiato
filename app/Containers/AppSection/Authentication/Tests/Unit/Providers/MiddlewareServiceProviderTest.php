@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated
 use App\Containers\AppSection\Authentication\Providers\MiddlewareServiceProvider;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(MiddlewareServiceProvider::class)]
 final class MiddlewareServiceProviderTest extends UnitTestCase
 {

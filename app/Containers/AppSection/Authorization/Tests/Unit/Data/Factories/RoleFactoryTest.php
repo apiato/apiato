@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Enums\AuthGuard;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(RoleFactory::class)]
 final class RoleFactoryTest extends UnitTestCase
 {

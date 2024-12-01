@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Enums\Gender;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(RegisterUserRequest::class)]
 final class RegisterUserRequestTest extends UnitTestCase
 {

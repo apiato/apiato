@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(LogoutController::class)]
 final class LogoutControllerTest extends UnitTestCase
 {

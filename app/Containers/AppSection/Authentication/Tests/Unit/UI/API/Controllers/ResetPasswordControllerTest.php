@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\ResetPasswordController;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(ResetPasswordController::class)]
 final class ResetPasswordControllerTest extends UnitTestCase
 {

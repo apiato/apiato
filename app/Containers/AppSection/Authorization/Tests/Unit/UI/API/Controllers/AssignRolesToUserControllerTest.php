@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\AssignRolesToUser
 use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(AssignRolesToUserController::class)]
 final class AssignRolesToUserControllerTest extends UnitTestCase
 {

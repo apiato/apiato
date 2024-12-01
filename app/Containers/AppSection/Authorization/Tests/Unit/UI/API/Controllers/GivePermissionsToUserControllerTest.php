@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\GivePermissionsTo
 use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToUserRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(GivePermissionsToUserController::class)]
 final class GivePermissionsToUserControllerTest extends UnitTestCase
 {

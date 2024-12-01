@@ -6,10 +6,8 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\AuthResult;
 use App\Containers\AppSection\Authentication\Values\Token;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\Cookie;
 
-#[Group('authentication')]
 #[CoversClass(AuthResult::class)]
 final class AuthResultTest extends UnitTestCase
 {

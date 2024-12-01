@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Repositories;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(RoleRepository::class)]
 final class RoleRepositoryTest extends UnitTestCase
 {

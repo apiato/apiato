@@ -4,9 +4,7 @@ namespace App\Ship\Tests\Unit\Migrations;
 
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversNothing]
 final class ShipMigrationTest extends ShipTestCase
 {

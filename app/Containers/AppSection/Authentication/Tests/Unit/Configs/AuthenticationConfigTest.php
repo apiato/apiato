@@ -4,9 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Configs;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversNothing]
 final class AuthenticationConfigTest extends UnitTestCase
 {

@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\VerifyEmailRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(VerifyEmailRequest::class)]
 final class VerifyEmailRequestTest extends UnitTestCase
 {

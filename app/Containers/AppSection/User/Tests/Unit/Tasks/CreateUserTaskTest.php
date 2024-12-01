@@ -9,9 +9,7 @@ use App\Ship\Exceptions\CreateResourceFailedException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(CreateUserTask::class)]
 final class CreateUserTaskTest extends UnitTestCase
 {

@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationGivePermis
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(AuthorizationGivePermissionsToRolesSeeder_3::class)]
 final class AuthorizationGivePermissionsToRolesSeederTest extends UnitTestCase
 {

@@ -7,9 +7,7 @@ use App\Ship\Tests\Fakes\TestUserFactory;
 use App\Ship\Tests\Fakes\TestUserRepository;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversClass(ThisEqualThatCriteria::class)]
 final class ThisEqualThatCriteriaTest extends ShipTestCase
 {

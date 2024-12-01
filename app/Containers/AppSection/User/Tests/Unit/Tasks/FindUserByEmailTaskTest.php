@@ -7,9 +7,7 @@ use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Ship\Exceptions\NotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(FindUserByEmailTask::class)]
 final class FindUserByEmailTaskTest extends UnitTestCase
 {

@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWeb
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Containers\AppSection\Authentication\Values\AuthResult;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(LoginProxyForWebClientController::class)]
 final class LoginProxyForWebClientControllerTest extends UnitTestCase
 {

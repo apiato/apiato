@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Actions\ListPermissionsAction;
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(ListPermissionsAction::class)]
 final class ListPermissionsActionTest extends UnitTestCase
 {

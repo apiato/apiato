@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(AuthServiceProvider::class)]
 final class AuthServiceProviderTest extends UnitTestCase
 {

@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\CreateRoleController;
 use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(CreateRoleController::class)]
 final class CreateRoleControllerTest extends UnitTestCase
 {

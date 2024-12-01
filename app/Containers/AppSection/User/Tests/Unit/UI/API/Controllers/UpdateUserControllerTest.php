@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\UpdateUserController;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(UpdateUserController::class)]
 final class UpdateUserControllerTest extends UnitTestCase
 {

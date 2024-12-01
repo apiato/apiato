@@ -11,9 +11,7 @@ use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(RegisterUserAction::class)]
 final class RegisterUserActionTest extends UnitTestCase
 {

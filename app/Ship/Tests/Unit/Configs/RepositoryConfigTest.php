@@ -5,9 +5,7 @@ namespace App\Ship\Tests\Unit\Configs;
 use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversNothing]
 final class RepositoryConfigTest extends ShipTestCase
 {

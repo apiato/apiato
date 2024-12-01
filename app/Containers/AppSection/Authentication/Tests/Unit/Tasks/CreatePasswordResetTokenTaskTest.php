@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(CreatePasswordResetTokenTask::class)]
 final class CreatePasswordResetTokenTaskTest extends UnitTestCase
 {

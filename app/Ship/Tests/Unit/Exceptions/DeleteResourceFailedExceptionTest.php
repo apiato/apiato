@@ -5,9 +5,7 @@ namespace App\Ship\Tests\Unit\Exceptions;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversClass(DeleteResourceFailedException::class)]
 final class DeleteResourceFailedExceptionTest extends ShipTestCase
 {

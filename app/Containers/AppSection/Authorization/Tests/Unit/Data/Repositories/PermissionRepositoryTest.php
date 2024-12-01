@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Repositories;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(PermissionRepository::class)]
 final class PermissionRepositoryTest extends UnitTestCase
 {

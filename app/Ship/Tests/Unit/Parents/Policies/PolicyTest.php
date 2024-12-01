@@ -9,10 +9,7 @@ use App\Ship\Parents\Requests\Request;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Auth\Access\Gate;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-// TODO: remove all test groups
-#[Group('ship')]
 #[CoversClass(Policy::class)]
 final class PolicyTest extends ShipTestCase
 {

@@ -10,10 +10,8 @@ use App\Ship\Enums\AuthGuard;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[Group('authentication')]
 #[CoversClass(RedirectIfAuthenticated::class)]
 final class RedirectIfAuthenticatedTest extends UnitTestCase
 {
