@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         if (app()->runningUnitTests()) {
-            Schema::create('test_users', function (Blueprint $table) {
+            Schema::create('test_users', static function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
                 $table->integer('age')->nullable();
