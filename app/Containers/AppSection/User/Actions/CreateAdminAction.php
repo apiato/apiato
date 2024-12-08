@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\User\Actions;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
-use App\Ship\Exceptions\CreateResourceFailedException;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\DB;
 
@@ -18,11 +16,6 @@ class CreateAdminAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws CreateResourceFailedException
-     * @throws \Throwable
-     * @throws NotFoundException
-     */
     public function run(array $data): User
     {
         return DB::transaction(function () use ($data) {
