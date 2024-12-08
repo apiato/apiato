@@ -38,7 +38,7 @@ final class ApiatoConfigTest extends ShipTestCase
                 'force-valid-includes' => true,
                 'use-etag' => false,
                 'params' => [
-                    'filter' => 'fieldset',
+                    'filter' => 'filter',
                 ],
                 'sparse_fieldsets' => [
                     'request_key' => 'fields',
