@@ -19,28 +19,28 @@ final class RedirectIfAuthenticatedTest extends UnitTestCase
     {
         return [
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => AuthGuard::API->value,
+                AuthGuard::API->value,
+                AuthGuard::API->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => AuthGuard::WEB->value,
+                AuthGuard::WEB->value,
+                AuthGuard::WEB->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => null,
+                AuthGuard::API->value,
+                null,
             ],
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => '',
+                AuthGuard::API->value,
+                '',
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => null,
+                AuthGuard::WEB->value,
+                null,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => '',
+                AuthGuard::WEB->value,
+                '',
             ],
         ];
     }
@@ -49,12 +49,12 @@ final class RedirectIfAuthenticatedTest extends UnitTestCase
     {
         return [
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => AuthGuard::WEB->value,
+                AuthGuard::API->value,
+                AuthGuard::WEB->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => AuthGuard::API->value,
+                AuthGuard::WEB->value,
+                AuthGuard::API->value,
             ],
         ];
     }
