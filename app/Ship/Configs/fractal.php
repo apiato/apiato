@@ -57,7 +57,6 @@ return [
     ],
 
     'auto_fieldsets' => [
-
         /*
          * If enabled, Fractal will automatically add the fieldsets who's
          * names are present in the `fields` request parameter.
