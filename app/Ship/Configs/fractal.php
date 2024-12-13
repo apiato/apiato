@@ -32,7 +32,7 @@ return [
 
     'auto_includes' => [
         /*
-         * If enabled Fractal will automatically add the includes who's
+         * If enabled, Fractal will automatically add the includes who's
          * names are present in the `include` request parameter.
          */
         'enabled' => true,
@@ -54,5 +54,19 @@ return [
          * The name of key in the request to where we should look for the excludes to exclude.
          */
         'request_key' => 'exclude',
+    ],
+
+    'auto_fieldsets' => [
+
+        /*
+         * If enabled, Fractal will automatically add the fieldsets who's
+         * names are present in the `fields` request parameter.
+         */
+        'enabled' => true,
+
+        /*
+         * The name of key in the request, where we should look for the fieldsets to parse.
+         */
+        'request_key' => 'fields',
     ],
 ];
