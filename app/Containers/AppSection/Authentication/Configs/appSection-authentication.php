@@ -66,18 +66,6 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Case Sensitive
-        |--------------------------------------------------------------------------
-        |
-        | This field represents if login field should be case-sensitive.
-        | If false, then user can log in with both `admin@admin.com` and `Admin@Admin.Com`
-        |
-        */
-
-        'case_sensitive' => false,
-
-        /*
-        |--------------------------------------------------------------------------
         | Prefix
         |--------------------------------------------------------------------------
         |
