@@ -61,9 +61,8 @@ abstract class Repository extends AbstractRepository
      *
      * @param int|string $id
      *
-     * @throws ModelNotFoundException
-     * @throws DeleteResourceFailedException
      * @throws NotFoundException
+     * @throws DeleteResourceFailedException
      */
     public function delete($id): bool
     {
