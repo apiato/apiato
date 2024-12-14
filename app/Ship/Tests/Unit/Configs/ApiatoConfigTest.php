@@ -40,9 +40,6 @@ final class ApiatoConfigTest extends ShipTestCase
                 'params' => [
                     'filter' => 'filter',
                 ],
-                'sparse_fieldsets' => [
-                    'request_key' => 'fields',
-                ],
             ],
             'seeders' => [
                 'deployment' => SeedDeploymentData::class,

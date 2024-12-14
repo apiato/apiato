@@ -154,23 +154,6 @@ return [
             // TODO: BC: remove this after removing its usage in ResponseTrait in Core
             'filter' => 'filter',
         ],
-
-        /*
-        |--------------------------------------------------------------------------
-        | Sparse Fieldsets
-        |--------------------------------------------------------------------------
-        |
-        | Sparse Fieldsets are a feature of the JSON API spec that allows clients to request only a subset of the
-        | attributes for a specific resource type. This can be useful for improving performance by reducing the amount
-        | of data that needs to be transferred over the network.
-        |
-        | @see https://jsonapi.org/format/#fetching-sparse-fieldsets
-        |
-        */
-        'sparse_fieldsets' => [
-            // The name of key in the request to where we should look for the fields to return.
-            'request_key' => 'fields',
-        ],
     ],
 
     'seeders' => [
