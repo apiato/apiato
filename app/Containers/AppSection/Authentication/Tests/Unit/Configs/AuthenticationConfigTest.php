@@ -4,9 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Configs;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversNothing]
 final class AuthenticationConfigTest extends UnitTestCase
 {
@@ -28,8 +26,6 @@ final class AuthenticationConfigTest extends UnitTestCase
         $this->assertArrayHasKey('fields', config('appSection-authentication.login'));
         $this->assertArrayHasKey('email', config('appSection-authentication.login.fields'));
         $this->assertSame(['email'], config('appSection-authentication.login.fields.email'));
-        $this->assertArrayHasKey('case_sensitive', config('appSection-authentication.login'));
-        $this->assertFalse(config('appSection-authentication.login.case_sensitive'));
         $this->assertArrayHasKey('prefix', config('appSection-authentication.login'));
         $this->assertEmpty(config('appSection-authentication.login.prefix'));
         $this->assertArrayHasKey('allowed-reset-password-urls', config('appSection-authentication'));

@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Actions\ListRolesAction;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(ListRolesAction::class)]
 final class ListRolesActionTest extends UnitTestCase
 {

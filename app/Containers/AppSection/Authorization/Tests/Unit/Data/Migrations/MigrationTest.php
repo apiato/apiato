@@ -4,9 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversNothing]
 final class MigrationTest extends UnitTestCase
 {

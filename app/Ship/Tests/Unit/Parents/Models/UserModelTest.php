@@ -8,10 +8,8 @@ use App\Ship\Tests\ShipTestCase;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 use Spatie\Permission\Traits\HasRoles;
 
-#[Group('ship')]
 #[CoversClass(UserModel::class)]
 final class UserModelTest extends ShipTestCase
 {

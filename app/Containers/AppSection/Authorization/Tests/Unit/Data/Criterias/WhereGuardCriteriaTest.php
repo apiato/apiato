@@ -10,9 +10,7 @@ use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(WhereGuardCriteria::class)]
 final class WhereGuardCriteriaTest extends UnitTestCase
 {

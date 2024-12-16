@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(FindPermissionByIdRequest::class)]
 final class FindPermissionRequestTest extends UnitTestCase
 {

@@ -10,9 +10,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\VerifyEmailRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(VerifyEmailAction::class)]
 final class VerifyEmailActionTest extends UnitTestCase
 {

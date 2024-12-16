@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(SyncRolePermissionsAction::class)]
 final class SyncRolePermissionsActionTest extends UnitTestCase
 {

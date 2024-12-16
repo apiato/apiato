@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(CreatePermissionTask::class)]
 final class CreatePermissionTaskTest extends UnitTestCase
 {

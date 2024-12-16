@@ -9,9 +9,7 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\ListRolesControll
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolesRequest;
 use Illuminate\Pagination\LengthAwarePaginator;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(ListRolesController::class)]
 final class ListRolesControllerTest extends UnitTestCase
 {

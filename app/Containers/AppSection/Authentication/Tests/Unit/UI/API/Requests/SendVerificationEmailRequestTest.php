@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\SendVerificationEmailRequest;
 use Illuminate\Validation\Rule;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(SendVerificationEmailRequest::class)]
 final class SendVerificationEmailRequestTest extends UnitTestCase
 {

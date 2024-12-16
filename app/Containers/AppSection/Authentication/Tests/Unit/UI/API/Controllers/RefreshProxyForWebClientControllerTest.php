@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForW
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Containers\AppSection\Authentication\Values\AuthResult;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(RefreshProxyForWebClientController::class)]
 final class RefreshProxyForWebClientControllerTest extends UnitTestCase
 {

@@ -9,9 +9,7 @@ use App\Containers\AppSection\Authentication\Values\LoginField;
 use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(LoginFieldParser::class)]
 final class LoginFieldParserTest extends UnitTestCase
 {

@@ -7,9 +7,7 @@ use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(PasswordUpdatedNotification::class)]
 final class PasswordUpdatedNotificationTest extends UnitTestCase
 {

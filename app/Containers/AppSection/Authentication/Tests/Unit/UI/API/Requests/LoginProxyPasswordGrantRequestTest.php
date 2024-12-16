@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(LoginProxyPasswordGrantRequest::class)]
 final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
 {

@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeUserPermiss
 use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserPermissionsRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(RevokeUserPermissionsController::class)]
 final class RevokeUserPermissionsControllerTest extends UnitTestCase
 {

@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(CreateAdminAction::class)]
 final class CreateAdminActionTest extends UnitTestCase
 {

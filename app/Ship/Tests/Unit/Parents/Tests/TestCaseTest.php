@@ -6,9 +6,7 @@ use App\Ship\Parents\Tests\TestCase;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Contracts\Foundation\Application;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('ship')]
 #[CoversClass(TestCase::class)]
 final class TestCaseTest extends ShipTestCase
 {

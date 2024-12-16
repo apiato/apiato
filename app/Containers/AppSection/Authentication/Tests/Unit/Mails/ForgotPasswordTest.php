@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(ForgotPassword::class)]
 final class ForgotPasswordTest extends UnitTestCase
 {

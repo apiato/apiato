@@ -10,10 +10,8 @@ use App\Ship\Enums\AuthGuard;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 
-#[Group('authentication')]
 #[CoversClass(RedirectIfAuthenticated::class)]
 final class RedirectIfAuthenticatedTest extends UnitTestCase
 {
@@ -21,28 +19,28 @@ final class RedirectIfAuthenticatedTest extends UnitTestCase
     {
         return [
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => AuthGuard::API->value,
+                AuthGuard::API->value,
+                AuthGuard::API->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => AuthGuard::WEB->value,
+                AuthGuard::WEB->value,
+                AuthGuard::WEB->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => null,
+                AuthGuard::API->value,
+                null,
             ],
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => '',
+                AuthGuard::API->value,
+                '',
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => null,
+                AuthGuard::WEB->value,
+                null,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => '',
+                AuthGuard::WEB->value,
+                '',
             ],
         ];
     }
@@ -51,12 +49,12 @@ final class RedirectIfAuthenticatedTest extends UnitTestCase
     {
         return [
             [
-                'authenticated_guard' => AuthGuard::API->value,
-                'request_guard' => AuthGuard::WEB->value,
+                AuthGuard::API->value,
+                AuthGuard::WEB->value,
             ],
             [
-                'authenticated_guard' => AuthGuard::WEB->value,
-                'request_guard' => AuthGuard::API->value,
+                AuthGuard::WEB->value,
+                AuthGuard::API->value,
             ],
         ];
     }

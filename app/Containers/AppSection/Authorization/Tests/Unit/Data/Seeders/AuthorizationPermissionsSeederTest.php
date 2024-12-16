@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationPermission
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(AuthorizationPermissionsSeeder_1::class)]
 final class AuthorizationPermissionsSeederTest extends UnitTestCase
 {

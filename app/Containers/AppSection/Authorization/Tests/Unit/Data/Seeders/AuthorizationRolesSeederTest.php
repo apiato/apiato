@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationRolesSeede
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(AuthorizationRolesSeeder_2::class)]
 final class AuthorizationRolesSeederTest extends UnitTestCase
 {

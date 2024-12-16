@@ -27,13 +27,9 @@ class WebLoginAction extends ParentAction
         $loginFields = LoginFieldParser::extractAll($sanitizedData);
         $credentials = [];
         foreach ($loginFields as $loginField) {
-            if (config('appSection-authentication.login.case_sensitive')) {
-                $credentials[$loginField->name] =
-                    static fn (Builder $query): Builder => $query->orWhere($loginField->name, $loginField->value);
-            } else {
-                $credentials[$loginField->name] =
-                    static fn (Builder $query): Builder => $query->orWhereRaw("lower({$loginField->name}) = lower(?)", [$loginField->value]);
-            }
+            $credentials[$loginField->name] =
+                static fn (Builder $query): Builder => $query
+                    ->orWhereRaw("lower({$loginField->name}) = lower(?)", [$loginField->value]);
         }
         $credentials['password'] = $sanitizedData['password'];
 

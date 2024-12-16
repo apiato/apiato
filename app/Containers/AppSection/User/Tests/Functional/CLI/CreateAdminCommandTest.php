@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Tests\Functional\CliTestCase;
 use App\Containers\AppSection\User\UI\CLI\Commands\CreateAdminCommand;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(CreateAdminCommand::class)]
 final class CreateAdminCommandTest extends CliTestCase
 {

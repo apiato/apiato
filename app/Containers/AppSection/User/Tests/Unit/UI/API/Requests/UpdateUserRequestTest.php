@@ -10,9 +10,7 @@ use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(UpdateUserRequest::class)]
 final class UpdateUserRequestTest extends UnitTestCase
 {

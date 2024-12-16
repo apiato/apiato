@@ -7,7 +7,7 @@ return new class extends Migration {
     public function up(): void
     {
         $permissionsTableName = config('permission.table_names')['permissions'];
-        Schema::table($permissionsTableName, function (Blueprint $table) {
+        Schema::table($permissionsTableName, static function (Blueprint $table) {
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
         });
@@ -16,7 +16,7 @@ return new class extends Migration {
     public function down(): void
     {
         $permissionsTableName = config('permission.table_names')['permissions'];
-        Schema::table($permissionsTableName, function (Blueprint $table) {
+        Schema::table($permissionsTableName, static function (Blueprint $table) {
             $table->dropColumn('display_name');
             $table->dropColumn('description');
         });

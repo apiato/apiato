@@ -55,11 +55,7 @@ class User extends ParentUserModel implements MustVerifyEmail
         $query = $this->newModelQuery();
 
         foreach ($allowedLoginFields as $field) {
-            if (config('appSection-authentication.login.case_sensitive')) {
-                $query->orWhere($field, $username);
-            } else {
-                $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
-            }
+            $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
         }
 
         return $query->first();

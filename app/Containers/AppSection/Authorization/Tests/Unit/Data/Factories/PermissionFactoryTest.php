@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Enums\AuthGuard;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(PermissionFactory::class)]
 final class PermissionFactoryTest extends UnitTestCase
 {

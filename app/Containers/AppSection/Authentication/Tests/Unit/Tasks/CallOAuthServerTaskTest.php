@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(CallOAuthServerTask::class)]
 final class CallOAuthServerTaskTest extends UnitTestCase
 {

@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\WelcomeController;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(WelcomeController::class)]
 final class WelcomeControllerTest extends UnitTestCase
 {

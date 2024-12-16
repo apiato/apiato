@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(MakeRefreshTokenCookieTask::class)]
 final class MakeRefreshCookieTaskTest extends UnitTestCase
 {

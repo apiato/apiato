@@ -6,9 +6,7 @@ use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversNothing]
 final class ListRolePermissionsTest extends ApiTestCase
 {

@@ -1,5 +1,6 @@
 <?php
 
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\DataArraySerializer;
 
 return [
@@ -15,7 +16,7 @@ return [
      * may be left empty to use Fractal's default one. This can either be a
      * string or a League\Fractal\Paginator\PaginatorInterface subclass.*
      */
-    'default_paginator' => '',
+    'default_paginator' => IlluminatePaginatorAdapter::class,
 
     /*
      * League\Fractal\Serializer\JsonApiSerializer will use this value to
@@ -31,7 +32,7 @@ return [
 
     'auto_includes' => [
         /*
-         * If enabled Fractal will automatically add the includes who's
+         * If enabled, Fractal will automatically add the includes who's
          * names are present in the `include` request parameter.
          */
         'enabled' => true,
@@ -45,7 +46,7 @@ return [
     'auto_excludes' => [
         /*
          * If enabled Fractal will automatically add the excludes who's
-         * names are present in the `include` request parameter.
+         * names are present in the `exclude` request parameter.
          */
         'enabled' => true,
 
@@ -53,5 +54,18 @@ return [
          * The name of key in the request to where we should look for the excludes to exclude.
          */
         'request_key' => 'exclude',
+    ],
+
+    'auto_fieldsets' => [
+        /*
+         * If enabled, Fractal will automatically add the fieldsets who's
+         * names are present in the `fields` request parameter.
+         */
+        'enabled' => true,
+
+        /*
+         * The name of key in the request, where we should look for the fieldsets to parse.
+         */
+        'request_key' => 'fields',
     ],
 ];

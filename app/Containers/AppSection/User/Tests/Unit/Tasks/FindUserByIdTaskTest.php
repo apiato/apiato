@@ -7,9 +7,7 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(FindUserByIdTask::class)]
 final class FindUserByIdTaskTest extends UnitTestCase
 {

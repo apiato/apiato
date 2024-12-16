@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Controllers\RemoveUserRolesCo
 use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(RemoveUserRolesController::class)]
 final class RemoveUserRolesControllerTest extends UnitTestCase
 {

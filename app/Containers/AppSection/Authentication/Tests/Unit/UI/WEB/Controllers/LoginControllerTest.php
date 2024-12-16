@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(LoginController::class)]
 final class LoginControllerTest extends UnitTestCase
 {

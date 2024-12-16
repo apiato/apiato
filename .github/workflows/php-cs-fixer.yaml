@@ -1,6 +1,10 @@
 name: Check & fix styling
 
 on:
+  push:
+    branches:
+      - master
+      - '*.x'
   pull_request:
     types: [ opened, synchronize, reopened ]
 

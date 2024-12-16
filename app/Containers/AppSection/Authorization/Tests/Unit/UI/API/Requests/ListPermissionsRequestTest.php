@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListPermissionsRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(ListPermissionsRequest::class)]
 final class ListPermissionsRequestTest extends UnitTestCase
 {

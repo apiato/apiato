@@ -6,9 +6,7 @@ use App\Containers\AppSection\User\Providers\MainServiceProvider;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(MainServiceProvider::class)]
 final class MainServiceProviderTest extends UnitTestCase
 {

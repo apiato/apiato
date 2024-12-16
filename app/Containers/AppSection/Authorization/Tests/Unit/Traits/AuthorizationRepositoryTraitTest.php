@@ -8,9 +8,7 @@ use App\Containers\AppSection\Authorization\Traits\AuthorizationRepositoryTrait;
 use App\Ship\Tests\Fakes\TestUser;
 use App\Ship\Tests\Fakes\TestUserRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(AuthorizationRepositoryTrait::class)]
 final class AuthorizationRepositoryTraitTest extends UnitTestCase
 {

@@ -7,9 +7,7 @@ use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authorization')]
 #[CoversClass(CreateRoleTask::class)]
 final class CreateRoleTaskTest extends UnitTestCase
 {

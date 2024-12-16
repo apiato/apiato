@@ -10,9 +10,7 @@ use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(UpdatePasswordAction::class)]
 final class UpdatePasswordActionTest extends UnitTestCase
 {

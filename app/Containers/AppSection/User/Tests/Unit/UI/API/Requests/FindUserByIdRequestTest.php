@@ -6,9 +6,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(FindUserByIdRequest::class)]
 final class FindUserByIdRequestTest extends UnitTestCase
 {

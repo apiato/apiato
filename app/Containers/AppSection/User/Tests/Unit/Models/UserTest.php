@@ -10,9 +10,7 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(User::class)]
 final class UserTest extends UnitTestCase
 {

@@ -14,9 +14,7 @@ use App\Ship\Exceptions\NotFoundException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(ResetPasswordAction::class)]
 final class ResetPasswordActionTest extends UnitTestCase
 {

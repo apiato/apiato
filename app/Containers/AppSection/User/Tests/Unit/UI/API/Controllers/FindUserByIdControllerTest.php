@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Tests\UnitTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\FindUserByIdController;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('user')]
 #[CoversClass(FindUserByIdController::class)]
 final class FindUserByIdControllerTest extends UnitTestCase
 {

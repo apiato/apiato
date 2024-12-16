@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\SendVerificationEmailAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\SendVerificationEmailRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -14,6 +13,6 @@ class SendVerificationEmailController extends ApiController
     {
         $action->run($request);
 
-        return Response::accepted();
+        return $this->accepted();
     }
 }

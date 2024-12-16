@@ -8,9 +8,7 @@ use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversNothing]
 final class VerifyEmailTest extends ApiTestCase
 {

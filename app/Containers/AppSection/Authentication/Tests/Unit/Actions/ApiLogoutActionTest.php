@@ -7,11 +7,9 @@ use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 #[UsesClass(CallOAuthServerTask::class)]
-#[Group('authentication')]
 #[CoversClass(ApiLogoutAction::class)]
 final class ApiLogoutActionTest extends UnitTestCase
 {

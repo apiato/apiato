@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
-use Apiato\Core\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\DeleteRoleAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -14,6 +13,6 @@ class DeleteRoleController extends ApiController
     {
         $action->run($request);
 
-        return Response::noContent();
+        return $this->noContent();
     }
 }

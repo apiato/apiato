@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Exceptions;
 use App\Containers\AppSection\Authentication\Exceptions\InvalidEmailVerificationDataException;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Group;
 
-#[Group('authentication')]
 #[CoversClass(InvalidEmailVerificationDataException::class)]
 final class InvalidEmailVerificationDataExceptionTest extends UnitTestCase
 {

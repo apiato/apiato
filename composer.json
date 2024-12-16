@@ -34,6 +34,7 @@
         }
     ],
     "require": {
+        "apiato/core": "^8.15.0",
         "php": "^8.1",
         "ext-curl": "*",
         "ext-gettext": "*",
