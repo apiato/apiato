@@ -7,6 +7,7 @@ use App\Ship\Enums\AuthGuard;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Artisan;
 use JetBrains\PhpStorm\Deprecated;
 
 abstract class TestCase extends AbstractTestCase
@@ -29,5 +30,13 @@ abstract class TestCase extends AbstractTestCase
         $this->faker = $app->make(Generator::class);
 
         return $app;
+    }
+
+    protected function afterRefreshingDatabase(): void
+    {
+        $provider = array_key_exists('users', config('auth.providers')) ? 'users' : null;
+
+        Artisan::call('passport:client', ['--personal' => true, '--name' => config('app.name').' Personal Access Client']);
+        Artisan::call('passport:client', ['--password' => true, '--name' => config('app.name').' Password Grant Client', '--provider' => $provider]);
     }
 }
