@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Tests;
 
-use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
+use Apiato\Core\Abstracts\Tests\TestCase as AbstractTestCase;
 use App\Ship\Enums\AuthGuard;
 use Faker\Generator;
 use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
