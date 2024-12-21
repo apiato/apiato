@@ -36,6 +36,7 @@ class ForgotPasswordAction extends ParentAction
             $token = $this->createPasswordResetTokenTask->run($user);
             Mail::send(new ForgotPassword($user, $token, $sanitizedData['reseturl']));
         } catch (Exception) {
+            return true;
         }
 
         return true;
