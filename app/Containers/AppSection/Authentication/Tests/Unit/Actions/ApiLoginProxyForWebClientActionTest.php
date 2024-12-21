@@ -13,6 +13,13 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ApiLoginProxyForWebClientAction::class)]
 final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setupPasswordGrantClient();
+    }
+
     public function testCanLogin(): void
     {
         $credentials = [

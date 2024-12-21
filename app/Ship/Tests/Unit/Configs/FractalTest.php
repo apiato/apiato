@@ -9,7 +9,7 @@ use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class FractalConfigTest extends ShipTestCase
+final class FractalTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {

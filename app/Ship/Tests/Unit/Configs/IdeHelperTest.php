@@ -6,7 +6,7 @@ use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class IdeHelperConfigTest extends ShipTestCase
+final class IdeHelperTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
@@ -29,9 +29,7 @@ final class IdeHelperConfigTest extends ShipTestCase
                 'app/Containers/*/*/Models',
             ],
             'ignored_models' => [],
-            'model_hooks' => [
-                // App\Support\IdeHelper\MyModelHook::class
-            ],
+            'model_hooks' => [],
             'extra' => [
                 'Eloquent' => ['Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'],
                 'Session' => ['Illuminate\Session\Store'],
@@ -48,10 +46,8 @@ final class IdeHelperConfigTest extends ShipTestCase
             'use_generics_annotations' => true,
             'additional_relation_types' => [],
             'additional_relation_return_types' => [],
-            'post_migrate' => [
-                // 'ide-helper:models --nowrite',
-            ],
-            'custom_db_types' => [],
+            'enforce_nullable_relationships' => true,
+            'post_migrate' => [],
         ];
 
         $this->assertSame($expected, $config);

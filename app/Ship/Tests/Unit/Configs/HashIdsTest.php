@@ -6,7 +6,7 @@ use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class HashIdsConfigTest extends ShipTestCase
+final class HashIdsTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
@@ -16,7 +16,7 @@ final class HashIdsConfigTest extends ShipTestCase
             'connections' => [
                 'main' => [
                     'salt' => (string) env('HASH_ID_KEY', env('APP_KEY')),
-                    'length' => (int) env('HASH_ID_LENGTH', 32),
+                    'length' => (int) env('HASH_ID_LENGTH', 16),
                     'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
                 ],
 

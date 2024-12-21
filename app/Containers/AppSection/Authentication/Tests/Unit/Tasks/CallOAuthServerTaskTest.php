@@ -10,6 +10,13 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(CallOAuthServerTask::class)]
 final class CallOAuthServerTaskTest extends UnitTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setupPasswordGrantClient();
+    }
+
     public function testCallOAuthServer(): void
     {
         $credentials = [

@@ -9,7 +9,7 @@ use DateInterval;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class PermissionConfigTest extends ShipTestCase
+final class PermissionTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
@@ -35,7 +35,7 @@ final class PermissionConfigTest extends ShipTestCase
             'register_permission_check_method' => true,
             'register_octane_reset_listener' => false,
             'teams' => false,
-            'use_passport_client_credentials' => false,
+            'use_passport_client_credentials' => true,
             'display_permission_in_exception' => false,
             'display_role_in_exception' => false,
             'enable_wildcard_permission' => false,

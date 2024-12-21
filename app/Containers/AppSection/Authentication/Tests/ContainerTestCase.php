@@ -22,12 +22,9 @@ class ContainerTestCase extends ParentTestCase
         ];
     }
 
-    protected function setUp(): void
+    protected function setupPasswordGrantClient(): void
     {
-        parent::setUp();
-
         $this->clientId = $this->createPasswordGrantClient()->id;
-
         $this->setEnvVars();
     }
 

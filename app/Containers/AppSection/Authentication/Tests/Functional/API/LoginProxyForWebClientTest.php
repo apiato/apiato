@@ -11,6 +11,13 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/clients/web/login';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setupPasswordGrantClient();
+    }
+
     public function testProxyLogin(): void
     {
         $data = [

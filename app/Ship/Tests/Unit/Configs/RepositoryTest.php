@@ -7,7 +7,7 @@ use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class RepositoryConfigTest extends ShipTestCase
+final class RepositoryTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {

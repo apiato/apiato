@@ -9,7 +9,7 @@ use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class ApiatoConfigTest extends ShipTestCase
+final class ApiatoTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
@@ -22,7 +22,6 @@ final class ApiatoConfigTest extends ShipTestCase
                 'enable_version_prefix' => true,
                 'expires-in' => env('API_TOKEN_EXPIRES', 1440),
                 'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 43200),
-                'debug' => env('API_DEBUG', false),
                 'enabled-implicit-grant' => env('API_ENABLE_IMPLICIT_GRANT', true),
                 'throttle' => [
                     'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),

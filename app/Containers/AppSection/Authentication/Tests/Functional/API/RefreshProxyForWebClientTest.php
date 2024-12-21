@@ -13,6 +13,7 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
 
     private array $data;
 
+
     public function testProxyRefresh(): void
     {
         $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);
@@ -57,6 +58,8 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->setupPasswordGrantClient();
 
         $this->data = [
             'email' => 'gandalf@the.grey',

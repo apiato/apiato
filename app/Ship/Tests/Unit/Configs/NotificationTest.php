@@ -6,7 +6,7 @@ use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class NotificationConfigTest extends ShipTestCase
+final class NotificationTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {

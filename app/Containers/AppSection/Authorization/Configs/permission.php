@@ -122,7 +122,7 @@ return [
      * When set to true the package will use Passports Client to check permissions
      */
 
-    'use_passport_client_credentials' => false,
+    'use_passport_client_credentials' => true,
 
     /*
      * When set to true, the required permission names are added to exception messages.

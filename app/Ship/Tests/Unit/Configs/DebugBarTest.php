@@ -6,7 +6,7 @@ use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class DebugBarConfigTest extends ShipTestCase
+final class DebugBarTest extends ShipTestCase
 {
     public function testConfigHasCorrectValues(): void
     {
@@ -63,6 +63,7 @@ final class DebugBarConfigTest extends ShipTestCase
                 'models' => true,
                 'livewire' => true,
                 'jobs' => false,
+                'pennant' => false,
             ],
             'options' => [
                 'time' => [
@@ -82,16 +83,16 @@ final class DebugBarConfigTest extends ShipTestCase
                 ],
                 'db' => [
                     'with_params' => true,
+                    'exclude_paths' => [],
                     'backtrace' => true,
                     'backtrace_exclude_paths' => [],
                     'timeline' => false,
                     'duration_background' => true,
                     'explain' => [
                         'enabled' => false,
-                        'types' => ['SELECT'],
                     ],
-                    'hints' => false,
-                    'show_copy' => false,
+                    'hints' => true,
+                    'show_copy' => true,
                     'slow_threshold' => false,
                     'memory_usage' => false,
                     'soft_limit' => 100,

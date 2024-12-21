@@ -56,17 +56,6 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Enable Disable API Debugging
-        |--------------------------------------------------------------------------
-        |
-        | If enabled, the Error Exception trace will be injected in the JSON
-        | response, and it will be logged in the default Log file.
-        |
-        */
-        'debug' => env('API_DEBUG', false),
-
-        /*
-        |--------------------------------------------------------------------------
         | Enable/Disable Implicit Grant
         |--------------------------------------------------------------------------
         */
