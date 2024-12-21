@@ -28,8 +28,7 @@ final class IdeHelperConfigTest extends ShipTestCase
             'model_locations' => [
                 'app/Containers/*/*/Models',
             ],
-            'ignored_models' => [
-            ],
+            'ignored_models' => [],
             'model_hooks' => [
                 // App\Support\IdeHelper\MyModelHook::class
             ],
@@ -39,7 +38,6 @@ final class IdeHelperConfigTest extends ShipTestCase
             ],
             'magic' => [],
             'interfaces' => [],
-            'custom_db_types' => [],
             'model_camel_case_properties' => false,
             'type_overrides' => [
                 'integer' => 'int',
@@ -53,6 +51,7 @@ final class IdeHelperConfigTest extends ShipTestCase
             'post_migrate' => [
                 // 'ide-helper:models --nowrite',
             ],
+            'custom_db_types' => [],
         ];
 
         $this->assertSame($expected, $config);
