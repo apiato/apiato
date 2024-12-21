@@ -11,8 +11,6 @@ class Permission extends SpatiePermission implements HasResourceKey
 {
     use ModelTrait;
 
-    protected string $guard_name = 'api';
-
     protected $fillable = [
         'name',
         'guard_name',

@@ -16,14 +16,6 @@ final class RoleTest extends UnitTestCase
         $this->assertContains(ModelTrait::class, class_uses_recursive(Role::class));
     }
 
-    public function testUsesCorrectGuard(): void
-    {
-        $user = RoleFactory::new()->createOne();
-        $guard = 'api';
-
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($user, 'guard_name'));
-    }
-
     public function testHasCorrectFillableFields(): void
     {
         $role = RoleFactory::new()->createOne();
@@ -49,8 +41,8 @@ final class RoleTest extends UnitTestCase
 
     public function testHasCorrectResourceKey(): void
     {
-        $user = RoleFactory::new()->createOne();
+        $role = RoleFactory::new()->createOne();
 
-        $this->assertSame('Role', $user->getResourceKey());
+        $this->assertSame('Role', $role->getResourceKey());
     }
 }

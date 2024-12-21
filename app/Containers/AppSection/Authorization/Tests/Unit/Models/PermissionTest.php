@@ -16,14 +16,6 @@ final class PermissionTest extends UnitTestCase
         $this->assertContains(ModelTrait::class, class_uses_recursive(Permission::class));
     }
 
-    public function testUsesCorrectGuard(): void
-    {
-        $permission = PermissionFactory::new()->createOne();
-        $guard = 'api';
-
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($permission, 'guard_name'));
-    }
-
     public function testHasCorrectFillableFields(): void
     {
         $permission = PermissionFactory::new()->createOne();
