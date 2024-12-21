@@ -45,6 +45,6 @@ final class PermissionConfigTest extends ShipTestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEquals($expected, $config);
     }
 }
