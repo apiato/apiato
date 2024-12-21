@@ -88,9 +88,9 @@ class ExceptionsHandler extends CoreExceptionsHandler
         return response()->json($response, (int) $e->getCode());
     }
 
-    protected function unauthenticated($request, LaravelAuthenticationException $e): JsonResponse|RedirectResponse
+    protected function unauthenticated($request, LaravelAuthenticationException $exception): JsonResponse|RedirectResponse
     {
-        if ($this->shouldReturnJson($request, $e)) {
+        if ($this->shouldReturnJson($request, $exception)) {
             return $this->buildJsonResponse(new CoreAuthenticationException());
         }
 
