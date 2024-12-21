@@ -34,39 +34,35 @@
         }
     ],
     "require": {
-        "apiato/core": "^8.15.0",
-        "php": "^8.1",
-        "ext-curl": "*",
-        "ext-gettext": "*",
-        "ext-mbstring": "*",
-        "ext-openssl": "*",
-        "ext-pdo": "*",
-        "ext-sodium": "*",
-        "ext-tokenizer": "*",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.0",
-        "laravel/tinker": "^2.8",
+        "apiato/core": "dev-master",
+        "php": "^8.2",
         "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
-        "ext-intl": "*",
-        "ext-json": "*",
+        "brianium/paratest": "^7.4",
         "fakerphp/faker": "^1.19.1",
-        "friendsofphp/php-cs-fixer": "^3.8.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "jetbrains/phpstorm-attributes": "^1.0",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
-        "php-standard-library/psalm-plugin": "^2.3",
+        "mohammad-alavi/apiato-rector": "dev-latest",
+        "nunomaduro/collision": "^8.0",
+        "orchestra/testbench": "^9.0",
         "phpmd/phpmd": "@stable",
-        "phpunit/phpunit": "^10.0",
-        "psalm/plugin-laravel": "^2.8",
-        "psalm/plugin-mockery": "^1.1",
-        "psalm/plugin-phpunit": "^0.18.4",
-        "roave/security-advisories": "dev-latest",
-        "spatie/laravel-ignition": "^2.0",
-        "vimeo/psalm": "^5.8.0"
+        "phpunit/phpunit": "^11.0.1",
+        "rector/rector": "^1.2",
+        "roave/security-advisories": "dev-latest"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/var/www/html/core"
+        },
+        {
+            "type": "path",
+            "url": "/var/www/html/apiato-rector"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",

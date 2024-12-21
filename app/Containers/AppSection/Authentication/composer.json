@@ -3,6 +3,6 @@
     "description": "Authentication Container",
     "type": "apiato-container",
     "require": {
-        "laravel/passport": "^11.0.0"
+        "laravel/passport": "^12.0"
     }
 }
