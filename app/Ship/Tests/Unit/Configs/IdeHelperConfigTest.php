@@ -38,14 +38,11 @@ final class IdeHelperConfigTest extends ShipTestCase
                 'Session' => ['Illuminate\Session\Store'],
             ],
             'magic' => [],
-            'interfaces' => [
-            ],
-            'custom_db_types' => [
-            ],
+            'interfaces' => [],
+            'custom_db_types' => [],
             'model_camel_case_properties' => false,
             'type_overrides' => [
                 'integer' => 'int',
-
                 'boolean' => 'bool',
             ],
             'include_class_docblocks' => true,
@@ -54,7 +51,7 @@ final class IdeHelperConfigTest extends ShipTestCase
             'additional_relation_types' => [],
             'additional_relation_return_types' => [],
             'post_migrate' => [
-                'ide-helper:models --nowrite',
+                // 'ide-helper:models --nowrite',
             ],
         ];
 
