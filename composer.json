@@ -1,4 +1,5 @@
 {
+    "$schema": "https://getcomposer.org/schema.json",
     "name": "apiato/apiato",
     "type": "project",
     "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
@@ -87,7 +88,9 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
         ],
         "ide-helper": [
             "@php artisan ide-helper:models --nowrite --reset",
@@ -123,7 +126,6 @@
         "allow-plugins": {
             "apiato/container-installer": true,
             "composer/package-versions-deprecated": true,
-            "pestphp/pest-plugin": true,
             "php-http/discovery": true,
             "wikimedia/composer-merge-plugin": true
         }
