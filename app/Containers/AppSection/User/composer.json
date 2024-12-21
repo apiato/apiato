@@ -1,7 +1,6 @@
 {
     "name": "apiato/user",
-    "description": "apiato Container for apiato.",
+    "description": "User Container",
     "type": "apiato-container",
-    "require": {
-    }
+    "require": {}
 }
