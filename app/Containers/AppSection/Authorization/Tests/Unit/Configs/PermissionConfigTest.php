@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Configs;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Tests\ShipTestCase;
+use DateInterval;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -32,12 +33,14 @@ final class PermissionConfigTest extends ShipTestCase
                 'team_foreign_key' => 'team_id',
             ],
             'register_permission_check_method' => true,
+            'register_octane_reset_listener' => false,
             'teams' => false,
+            'use_passport_client_credentials' => false,
             'display_permission_in_exception' => false,
             'display_role_in_exception' => false,
             'enable_wildcard_permission' => false,
             'cache' => [
-                'expiration_time' => \DateInterval::createFromDateString('24 hours'),
+                'expiration_time' => DateInterval::createFromDateString('24 hours'),
                 'key' => 'spatie.permission.cache',
                 'store' => 'default',
             ],
