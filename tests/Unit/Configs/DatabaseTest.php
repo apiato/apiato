@@ -12,6 +12,7 @@ final class DatabaseTest extends ShipTestCase
     public function testConfigHasCorrectValues(): void
     {
         $config = config('database');
+        $paraTestDBSuffix = env('TEST_TOKEN') ? '_test_' . env('TEST_TOKEN') : '';
         $expected = [
             'default' => env('DB_CONNECTION', 'sqlite'),
             'connections' => [
@@ -68,7 +69,7 @@ final class DatabaseTest extends ShipTestCase
                     'url' => env('DB_URL'),
                     'host' => env('DB_HOST', '127.0.0.1'),
                     'port' => env('DB_PORT', '5432'),
-                    'database' => env('DB_DATABASE', 'laravel'),
+                    'database' => env('DB_DATABASE', 'laravel') . $paraTestDBSuffix,
                     'username' => env('DB_USERNAME', 'root'),
                     'password' => env('DB_PASSWORD', ''),
                     'charset' => env('DB_CHARSET', 'utf8'),
