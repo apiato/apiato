@@ -2,9 +2,9 @@
 
 namespace App\Ship\Console\Commands;
 
-use App\Ship\Parents\Commands\ConsoleCommand;
+use App\Ship\Parents\Commands\Command;
 
-class HelloWorld extends ConsoleCommand
+class HelloWorld extends Command
 {
     protected $signature = 'hello:world';
     protected $description = 'Says Hello World!';
