@@ -2,12 +2,12 @@
 
 namespace App\Ship\Tests\Unit\Commands;
 
-use App\Ship\Commands\HelloWorldCommand;
+use App\Ship\Console\Commands\HelloWorld;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(HelloWorldCommand::class)]
-final class HelloWorldCommandTest extends ShipTestCase
+#[CoversClass(HelloWorld::class)]
+final class HelloWorldTest extends ShipTestCase
 {
     public function testCommand(): void
     {

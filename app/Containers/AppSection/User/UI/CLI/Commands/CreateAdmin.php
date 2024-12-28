@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\UI\CLI\Commands;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Ship\Parents\Commands\ConsoleCommand as ParentConsoleCommand;
 
-class CreateAdminCommand extends ParentConsoleCommand
+class CreateAdmin extends ParentConsoleCommand
 {
     protected $signature = 'apiato:create:admin';
     protected $description = 'Create a new User with the ADMIN role';

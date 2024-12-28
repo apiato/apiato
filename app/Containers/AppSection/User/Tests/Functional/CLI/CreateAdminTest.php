@@ -5,12 +5,12 @@ namespace App\Containers\AppSection\User\Tests\Functional\CLI;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\CliTestCase;
-use App\Containers\AppSection\User\UI\CLI\Commands\CreateAdminCommand;
+use App\Containers\AppSection\User\UI\CLI\Commands\CreateAdmin;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(CreateAdminCommand::class)]
-final class CreateAdminCommandTest extends CliTestCase
+#[CoversClass(CreateAdmin::class)]
+final class CreateAdminTest extends CliTestCase
 {
     public function testCanCreateAdmin(): void
     {
