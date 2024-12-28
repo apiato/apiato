@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
-use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
@@ -58,7 +58,7 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 
     public function testCannotLoginWithMultipleWrongLoginFields(): void
     {
-        $this->expectException(LoginFailedException::class);
+        $this->expectException(LoginFailed::class);
 
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $userDetails = [
@@ -128,7 +128,7 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         $oAuthTaskMock->expects('run')
             ->twice()
             ->andReturnUsing(
-                static fn () => throw new LoginFailedException(),
+                static fn () => throw LoginFailed::create(),
                 static fn () => Token::fake(),
             );
         $action = app(ApiLoginProxyForWebClientAction::class, ['callOAuthServerTask' => $oAuthTaskMock]);

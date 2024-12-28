@@ -110,7 +110,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
         )->etc());
     }
 
-    public function testGivenWrongCredentialThrow422(): void
+    public function testGivenWrongCredentialThrowException(): void
     {
         $data = [
             'email' => 'ganldalf@the.grey',
@@ -119,6 +119,6 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 
         $response = $this->makeCall($data);
 
-        $response->assertUnauthorized();
+        $response->assertUnprocessable();
     }
 }

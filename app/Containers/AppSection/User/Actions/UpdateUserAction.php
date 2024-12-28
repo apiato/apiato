@@ -6,9 +6,9 @@ use Apiato\Core\Exceptions\IncorrectIdException;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
-use App\Ship\Exceptions\NotFoundException;
-use App\Ship\Exceptions\UpdateResourceFailedException;
+use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class UpdateUserAction extends ParentAction
 {
@@ -18,9 +18,9 @@ class UpdateUserAction extends ParentAction
     }
 
     /**
-     * @throws NotFoundException
-     * @throws UpdateResourceFailedException
+     * @throws ResourceNotFound
      * @throws IncorrectIdException
+     * @throws ValidatorException
      */
     public function run(UpdateUserRequest $request): User
     {
