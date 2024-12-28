@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Exceptions\IncorrectIdException;
+use Apiato\Core\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
@@ -21,7 +21,7 @@ class ApiLoginProxyForWebClientAction extends ParentAction
 
     /**
      * @throws LoginFailed
-     * @throws IncorrectIdException
+     * @throws IncorrectId
      * @throws \Exception
      */
     public function run(LoginProxyPasswordGrantRequest $request): AuthResult

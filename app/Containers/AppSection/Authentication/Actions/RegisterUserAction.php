@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Exceptions\IncorrectIdException;
+use Apiato\Core\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
@@ -21,7 +21,7 @@ class RegisterUserAction extends ParentAction
 
     /**
      * @throws CreateResourceFailed
-     * @throws IncorrectIdException
+     * @throws IncorrectId
      */
     public function run(RegisterUserRequest $request): User
     {

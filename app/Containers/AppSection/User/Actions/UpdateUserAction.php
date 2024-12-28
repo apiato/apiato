@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use Apiato\Core\Exceptions\IncorrectIdException;
+use Apiato\Core\Exceptions\IncorrectId;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
@@ -19,7 +19,7 @@ class UpdateUserAction extends ParentAction
 
     /**
      * @throws ResourceNotFound
-     * @throws IncorrectIdException
+     * @throws IncorrectId
      * @throws ValidatorException
      */
     public function run(UpdateUserRequest $request): User
