@@ -98,6 +98,12 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:eloquent"
+        ],
+        "fixer": [
+            "php-cs-fixer fix"
+        ],
+        "rector": [
+            "rector process --ansi"
         ]
     },
     "extra": {
