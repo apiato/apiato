@@ -7,15 +7,15 @@ use Laravel\Passport\Client;
 
 class ContainerTestCase extends ParentTestCase
 {
-    protected const CLIENT_SECRET = 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX';
     private int $clientId;
+    private string $clientSecret;
 
     public function enrichWithPasswordGrantFields(string $email, string $password): array
     {
         return [
             'grant_type' => 'password',
             'client_id' => $this->clientId,
-            'client_secret' => self::CLIENT_SECRET,
+            'client_secret' => $this->clientSecret,
             'username' => $email,
             'password' => $password,
             'scope' => '',
@@ -24,25 +24,18 @@ class ContainerTestCase extends ParentTestCase
 
     protected function setupPasswordGrantClient(): void
     {
-        $this->clientId = $this->createPasswordGrantClient()->id;
-        $this->setEnvVars();
-    }
+        $passwordClient = Client::query()
+            ->where('password_client', '1')
+            ->first();
 
-    protected function createPasswordGrantClient(): Client
-    {
-        return Client::create([
-            'secret' => self::CLIENT_SECRET,
-            'name' => 'Testing',
-            'redirect' => 'http://localhost',
-            'password_client' => '1',
-            'personal_access_client' => '0',
-            'revoked' => '0',
-        ]);
+        $this->clientId = $passwordClient->id;
+        $this->clientSecret = $passwordClient->secret;
+        $this->setEnvVars();
     }
 
     protected function setEnvVars(): void
     {
         config()->set('appSection-authentication.clients.web.id', $this->clientId);
-        config()->set('appSection-authentication.clients.web.secret', self::CLIENT_SECRET);
+        config()->set('appSection-authentication.clients.web.secret', $this->clientSecret);
     }
 }
