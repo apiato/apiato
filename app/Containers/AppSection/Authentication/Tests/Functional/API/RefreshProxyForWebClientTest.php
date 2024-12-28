@@ -13,7 +13,6 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
 
     private array $data;
 
-
     public function testProxyRefresh(): void
     {
         $loginResponse = $this->endpoint('post@v1/clients/web/login')->makeCall($this->data);

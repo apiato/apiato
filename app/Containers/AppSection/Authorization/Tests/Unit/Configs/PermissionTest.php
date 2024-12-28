@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Configs;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Tests\ShipTestCase;
-use DateInterval;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -40,7 +39,7 @@ final class PermissionTest extends ShipTestCase
             'display_role_in_exception' => false,
             'enable_wildcard_permission' => false,
             'cache' => [
-                'expiration_time' => DateInterval::createFromDateString('24 hours'),
+                'expiration_time' => \DateInterval::createFromDateString('24 hours'),
                 'key' => 'spatie.permission.cache',
                 'store' => 'default',
             ],
