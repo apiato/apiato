@@ -3,8 +3,6 @@
 namespace App\Ship\Tests\Unit\Configs;
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Seeders\SeedDeploymentData;
-use App\Ship\Seeders\SeedTestingData;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
