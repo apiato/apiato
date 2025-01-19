@@ -21,7 +21,7 @@ jobs:
       - id: set-matrix
         uses: JoshuaTheMiller/conditional-build-matrix@v2.0.1
         with:
-          filter: '[?runOn==`${{ env.BRANCH_NAME }}` || `${{ github.event.pull_request.base.ref == env.BRANCH_NAME }}` || runOn==`always`]'
+          filter: '[?runOn==`${{ env.BRANCH_NAME }}` || runOn==`${{ github.event.pull_request.base.ref }}` || runOn==`always`]'
   tests:
     needs: matrix_prep
     runs-on: ${{ matrix.runs_on }}
