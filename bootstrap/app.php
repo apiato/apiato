@@ -30,5 +30,8 @@ return Application::configure(basePath: $basePath)
         });
     })
     ->withCommands($apiato->commands())
+    // TODO: Create a Laravel PR
+    //  It seems there is no defined default behaviour for the `withExceptions` method.
+    //  So, if withExceptions is removed, we get a binding resolution error.
     ->withExceptions(static function (Exceptions $exceptions) {})
     ->create();
