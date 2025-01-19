@@ -3,6 +3,8 @@
 namespace App\Ship\Kernels;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Ship\Parents\Commands\ConsoleCommand;
+use Illuminate\Console\Application as Artisan;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
 class ConsoleKernel extends LaravelConsoleKernel
@@ -40,6 +42,20 @@ class ConsoleKernel extends LaravelConsoleKernel
 
         // $this->load(__DIR__.'/Commands');
 
+        //Autoload schedule from Command method
+        Artisan::starting(
+            function ($artisan) {
+                collect($artisan->all())->each(
+                    function ($command) use ($artisan) {
+                        $command->setApplication($artisan);
+                        if ($command instanceof ConsoleCommand && method_exists($command, 'schedule')) {
+                            $this->app->call([$command, 'schedule']);
+                        }
+                    }
+                );
+            }
+        );
+        
         require app_path('Ship/Commands/closures.php');
     }
 }
