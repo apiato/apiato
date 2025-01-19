@@ -55,6 +55,16 @@
         "rector/rector": "^1.2",
         "roave/security-advisories": "dev-latest"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/var/www/html/core"
+        },
+        {
+            "type": "path",
+            "url": "/var/www/html/apiato-rector"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
