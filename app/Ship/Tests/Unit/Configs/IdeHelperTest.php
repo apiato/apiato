@@ -48,6 +48,10 @@ final class IdeHelperTest extends ShipTestCase
             'additional_relation_return_types' => [],
             'enforce_nullable_relationships' => true,
             'post_migrate' => [],
+            'macroable_traits' => [
+                'Filament\Support\Concerns\Macroable',
+                'Spatie\Macroable\Macroable',
+            ],
         ];
 
         $this->assertSame($expected, $config);

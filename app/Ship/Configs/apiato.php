@@ -1,8 +1,6 @@
 <?php
 
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Seeders\SeedDeploymentData;
-use App\Ship\Seeders\SeedTestingData;
 
 return [
     /*
@@ -19,20 +17,6 @@ return [
         |--------------------------------------------------------------------------
         */
         'url' => env('API_URL', 'http://localhost'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | API Prefix
-        |--------------------------------------------------------------------------
-        */
-        'prefix' => env('API_PREFIX', '/'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | API Version Prefix
-        |--------------------------------------------------------------------------
-        */
-        'enable_version_prefix' => true,
 
         /*
         |--------------------------------------------------------------------------
@@ -144,17 +128,6 @@ return [
             // TODO: BC: remove this after removing its usage in ResponseTrait in Core
             'filter' => 'filter',
         ],
-    ],
-
-    'seeders' => [
-        /*
-        |--------------------------------------------------------------------------
-        | Special seeders for apiato:seed-deploy & apiato:seed-test commands
-        |--------------------------------------------------------------------------
-        |
-        */
-        'deployment' => SeedDeploymentData::class,
-        'testing' => SeedTestingData::class,
     ],
 
     'tests' => [

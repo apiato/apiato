@@ -2,7 +2,7 @@
 
 namespace App\Ship\Tests\Unit\Commands;
 
-use App\Ship\Console\Commands\HelloWorld;
+use App\Ship\Commands\HelloWorld;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

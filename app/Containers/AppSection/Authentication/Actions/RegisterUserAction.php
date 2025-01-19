@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Exceptions\IncorrectId;
+use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;

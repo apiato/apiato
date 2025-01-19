@@ -2,23 +2,15 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
-use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\AuthenticationServiceProvider;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(AuthServiceProvider::class)]
-final class AuthServiceProviderTest extends UnitTestCase
+#[CoversClass(AuthenticationServiceProvider::class)]
+final class AuthenticationServiceProviderTest extends UnitTestCase
 {
-    private AuthServiceProvider $provider;
-
-    public function testProviderHasCorrectFields(): void
-    {
-        $this->assertTrue($this->provider->isDeferred());
-        $this->assertSame([], $this->provider->policies());
-    }
-
     public function testCanConfigurePassport(): void
     {
         $this->assertTrue(Passport::$implicitGrantEnabled);
@@ -48,7 +40,7 @@ final class AuthServiceProviderTest extends UnitTestCase
             'passport.personal.tokens.destroy',
         ];
 
-        $apiPrefix = $this->removeLeadingSlashes(config('apiato.api.prefix'));
+        $apiPrefix = $this->removeLeadingSlashes(apiato()->routing()->getApiPrefix());
         $oAuthPrefix = $apiPrefix . 'v1/oauth';
         foreach ($passportRouteNames as $routeName) {
             $this->assertNotNull($registeredRoutes->getByName($routeName));
@@ -83,11 +75,5 @@ final class AuthServiceProviderTest extends UnitTestCase
         foreach ($passportRouteNames as $routeName) {
             $this->assertNull($registeredRoutes->getByName($routeName));
         }
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->provider = app(AuthServiceProvider::class, ['app' => app()]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Tests;
 
-use Apiato\Core\Abstracts\Tests\TestCase as AbstractTestCase;
+use Apiato\Abstract\Tests\TestCase as AbstractTestCase;
 use App\Ship\Enums\AuthGuard;
 use Illuminate\Support\Facades\Artisan;
 

@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Repositories;
 
-use Apiato\Core\Abstracts\Repositories\Repository as AbstractRepository;
+use Apiato\Abstract\Repositories\Repository as AbstractRepository;
 use App\Ship\Exceptions\ResourceNotFound;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Arrayable;

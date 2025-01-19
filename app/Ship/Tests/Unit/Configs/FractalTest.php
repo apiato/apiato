@@ -2,11 +2,12 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
-use Apiato\Core\Services\Response;
+use Apiato\Services\Response;
 use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\DataArraySerializer;
 use PHPUnit\Framework\Attributes\CoversNothing;
+use Spatie\Fractal\Fractal;
 
 #[CoversNothing]
 final class FractalTest extends ShipTestCase
@@ -18,7 +19,7 @@ final class FractalTest extends ShipTestCase
             'default_serializer' => DataArraySerializer::class,
             'default_paginator' => IlluminatePaginatorAdapter::class,
             'base_url' => null,
-            'fractal_class' => Response::class,
+            'fractal_class' => Fractal::class,
             'auto_includes' => [
                 'enabled' => true,
                 'request_key' => 'include',

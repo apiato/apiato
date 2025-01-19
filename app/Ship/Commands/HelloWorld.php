@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Console\Commands;
+namespace App\Ship\Commands;
 
 use App\Ship\Parents\Commands\Command;
 

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Core\Exceptions\IncorrectId;
+use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;

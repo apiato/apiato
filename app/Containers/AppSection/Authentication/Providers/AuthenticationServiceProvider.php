@@ -2,23 +2,18 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthServiceProvider;
+use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Laravel\Passport\Passport;
 
-class AuthServiceProvider extends ParentAuthServiceProvider implements DeferrableProvider
+class AuthenticationServiceProvider extends ParentServiceProvider
 {
-    protected $policies = [];
-
-    public function boot(): void
+    public function register(): void
     {
-        parent::boot();
-
-        $this->configPassport();
+        Passport::ignoreRoutes();
     }
 
-    private function configPassport(): void
+    public function boot(): void
     {
         if (config('apiato.api.enabled-implicit-grant')) {
             Passport::enableImplicitGrant();
@@ -28,12 +23,5 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
 
         Passport::tokensExpireIn(Carbon::now()->addMinutes((int) config('apiato.api.expires-in')));
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes((int) config('apiato.api.refresh-expires-in')));
-    }
-
-    public function register(): void
-    {
-        parent::register();
-
-        Passport::ignoreRoutes();
     }
 }

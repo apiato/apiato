@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Apiato\Core\Abstracts\Tests\TestCase as AbstractTestCase;
+use Apiato\Abstract\Tests\TestCase as AbstractTestCase;
 
 abstract class TestCase extends AbstractTestCase
 {
