@@ -2,7 +2,6 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
-use Apiato\Services\Response;
 use App\Ship\Tests\ShipTestCase;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\DataArraySerializer;
