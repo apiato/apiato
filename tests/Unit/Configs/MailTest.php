@@ -67,7 +67,7 @@ final class MailTest extends ShipTestCase
             'markdown' => [
                 'theme' => 'default',
                 'paths' => [
-                    '/var/www/html/resources/views/vendor/mail',
+                    base_path('/resources/views/vendor/mail'),
                 ],
             ],
         ];
