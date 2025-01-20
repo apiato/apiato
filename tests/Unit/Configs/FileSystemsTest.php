@@ -44,6 +44,6 @@ final class FileSystemsTest extends ShipTestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

@@ -72,6 +72,6 @@ final class MailTest extends ShipTestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

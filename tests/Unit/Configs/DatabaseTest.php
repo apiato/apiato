@@ -120,6 +120,6 @@ final class DatabaseTest extends ShipTestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

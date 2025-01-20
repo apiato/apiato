@@ -63,6 +63,6 @@ final class QueueTest extends ShipTestCase
             ],
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

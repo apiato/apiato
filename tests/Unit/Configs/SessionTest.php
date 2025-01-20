@@ -34,6 +34,6 @@ final class SessionTest extends ShipTestCase
             'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

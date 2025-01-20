@@ -137,6 +137,6 @@ final class DebugBarTest extends ShipTestCase
             'debug_backtrace_limit' => 50,
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

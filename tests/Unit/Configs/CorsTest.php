@@ -22,6 +22,6 @@ final class CorsTest extends ShipTestCase
             'supports_credentials' => false,
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }

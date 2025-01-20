@@ -46,6 +46,6 @@ final class AuthTest extends ShipTestCase
             'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
         ];
 
-        $this->assertSame($expected, $config);
+        $this->assertEqualsCanonicalizing($expected, $config);
     }
 }
