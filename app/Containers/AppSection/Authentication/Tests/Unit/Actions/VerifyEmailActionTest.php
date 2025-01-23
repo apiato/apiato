@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\Exceptions\InvalidEmailVerification
 use App\Containers\AppSection\Authentication\Notifications\EmailVerified;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\VerifyEmailRequest;
-use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -17,7 +17,7 @@ final class VerifyEmailActionTest extends UnitTestCase
     public function testVerifyEmail(): void
     {
         Notification::fake();
-        $user = UserFactory::new()->unverified()->createOne();
+        $user = User::factory()->unverified()->createOne();
         $action = app(VerifyEmailAction::class);
         $request = VerifyEmailRequest::injectData([
             'hash' => sha1($user->email),
@@ -35,7 +35,7 @@ final class VerifyEmailActionTest extends UnitTestCase
     {
         $this->expectException(InvalidEmailVerificationData::class);
 
-        $user = UserFactory::new()->unverified()->createOne();
+        $user = User::factory()->unverified()->createOne();
         $action = app(VerifyEmailAction::class);
         $request = VerifyEmailRequest::injectData([
             'hash' => sha1('nonematching@email.com'),

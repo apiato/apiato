@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
 use Apiato\Foundation\Support\Traits\Model\ModelTrait;
-use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -18,7 +17,7 @@ final class PermissionTest extends UnitTestCase
 
     public function testHasCorrectFillableFields(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $permission = Permission::factory()->createOne();
         $fillables = [
             'name',
             'guard_name',
@@ -33,7 +32,7 @@ final class PermissionTest extends UnitTestCase
 
     public function testUsesCorrectTable(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $permission = Permission::factory()->createOne();
         $table = 'permissions';
 
         $this->assertSame($table, $permission->getTable());
@@ -41,7 +40,7 @@ final class PermissionTest extends UnitTestCase
 
     public function testHasCorrectResourceKey(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $permission = Permission::factory()->createOne();
 
         $this->assertSame('Permission', $permission->getResourceKey());
     }

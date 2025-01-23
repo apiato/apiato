@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
 use Apiato\Foundation\Support\Traits\Model\ModelTrait;
-use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -18,7 +17,7 @@ final class RoleTest extends UnitTestCase
 
     public function testHasCorrectFillableFields(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $role = Role::factory()->createOne();
         $fillables = [
             'name',
             'guard_name',
@@ -33,7 +32,7 @@ final class RoleTest extends UnitTestCase
 
     public function testUsesCorrectTable(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $role = Role::factory()->createOne();
         $table = 'roles';
 
         $this->assertSame($table, $role->getTable());
@@ -41,7 +40,7 @@ final class RoleTest extends UnitTestCase
 
     public function testHasCorrectResourceKey(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $role = Role::factory()->createOne();
 
         $this->assertSame('Role', $role->getResourceKey());
     }

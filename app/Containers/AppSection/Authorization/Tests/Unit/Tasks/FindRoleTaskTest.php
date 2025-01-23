@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
-use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Exceptions\ResourceNotFound;
@@ -13,7 +13,7 @@ final class FindRoleTaskTest extends UnitTestCase
 {
     public function testFindRoleById(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $role = Role::factory()->createOne();
 
         $result = app(FindRoleTask::class)->run($role->id);
 
@@ -22,7 +22,7 @@ final class FindRoleTaskTest extends UnitTestCase
 
     public function testFindRoleByName(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $role = Role::factory()->createOne();
 
         $result = app(FindRoleTask::class)->run($role->name);
 
