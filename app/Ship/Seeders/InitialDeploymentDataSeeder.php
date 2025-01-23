@@ -4,7 +4,7 @@ namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 
-class InitialDeploymentDataSeeder extends Seeder
+final class InitialDeploymentDataSeeder extends Seeder
 {
     /**
      * Note: This seeder is not loaded automatically by Apiato

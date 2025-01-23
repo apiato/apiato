@@ -5,7 +5,7 @@ namespace App\Ship\Commands;
 use Apiato\Abstract\Commands\Command as ParentCommand;
 use App\Ship\Seeders\TestingDataSeeder;
 
-class SeedTestingData extends ParentCommand
+final class SeedTestingData extends ParentCommand
 {
     protected $signature = 'apiato:seed-test';
     protected $description = 'Seed testing data.';

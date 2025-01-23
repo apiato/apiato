@@ -4,7 +4,7 @@ namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 
-class TestingDataSeeder extends Seeder
+final class TestingDataSeeder extends Seeder
 {
     /**
      * Note: This seeder is not loaded automatically by Apiato
