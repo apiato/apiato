@@ -1,6 +1,9 @@
 <?php
 
 use Apiato\Foundation\Apiato;
+use Apiato\Support\Middleware\ProcessETag;
+use Apiato\Support\Middleware\Profiler;
+use Apiato\Support\Middleware\ValidateJsonContent;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
 use Illuminate\Foundation\Application;
@@ -20,8 +23,12 @@ return Application::configure(basePath: $basePath)
         health: '/up',
         then: static fn () => $apiato->registerApiRoutes(),
     )
-    ->withMiddleware(function (Middleware $middleware) use ($apiato) {
-        $middleware->api($apiato->apiMiddlewares());
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->api(append: [
+            ValidateJsonContent::class,
+            ProcessETag::class,
+            Profiler::class,
+        ]);
         $middleware->redirectUsersTo(function (Request $request) {
             return redirect()->action(HomePageController::class);
         });
