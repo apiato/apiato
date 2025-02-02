@@ -2,13 +2,14 @@
 
 namespace App\Containers\AppSection\Authorization\Models;
 
+use Apiato\Abstract\Models\ApiatoIntegration;
 use Apiato\Http\Resources\ResourceKeyAware;
 use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole implements ResourceKeyAware
 {
-    use ModelTrait;
+    use ApiatoIntegration;
 
     protected $fillable = [
         'name',
