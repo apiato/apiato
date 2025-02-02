@@ -1,8 +1,8 @@
 <?php
 
 use Apiato\Foundation\Apiato;
-use Apiato\Support\Middleware\ProcessETag;
-use Apiato\Support\Middleware\ValidateJsonContent;
+use Apiato\Http\Middleware\ProcessETag;
+use Apiato\Http\Middleware\ValidateJsonContent;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
 use Illuminate\Foundation\Application;
