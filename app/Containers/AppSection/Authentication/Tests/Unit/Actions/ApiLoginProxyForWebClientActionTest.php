@@ -3,11 +3,11 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
-use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ApiLoginProxyForWebClientAction::class)]

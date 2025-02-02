@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
-use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
 use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
+use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Cookie;
 

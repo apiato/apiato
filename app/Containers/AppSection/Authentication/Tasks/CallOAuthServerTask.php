@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authentication\Tasks;
 
-use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use GuzzleHttp\Utils;
 use Illuminate\Support\Facades\App;
