@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
-use App\Containers\AppSection\Authentication\Values\AuthResult;
+use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class ApiLoginProxyForWebClientAction extends ParentAction

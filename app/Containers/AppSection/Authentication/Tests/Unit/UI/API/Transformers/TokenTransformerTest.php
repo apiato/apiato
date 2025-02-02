@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformer
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
-use App\Containers\AppSection\Authentication\Values\Token;
+use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(TokenTransformer::class)]

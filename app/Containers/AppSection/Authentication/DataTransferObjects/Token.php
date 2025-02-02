@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Values;
+namespace App\Containers\AppSection\Authentication\DataTransferObjects;
 
-use App\Ship\Parents\Values\Value as ParentValue;
+use Apiato\Http\Resources\HasResourceKey;
+use Apiato\Http\Resources\ResourceKeyAware;
 
-class Token extends ParentValue
+final class Token implements ResourceKeyAware
 {
+    use HasResourceKey;
+
     public function __construct(
         public readonly string $tokenType,
         public readonly int $expiresIn,

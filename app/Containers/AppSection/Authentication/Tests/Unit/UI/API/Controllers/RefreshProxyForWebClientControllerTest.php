@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAct
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForWebClientController;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
-use App\Containers\AppSection\Authentication\Values\AuthResult;
+use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(RefreshProxyForWebClientController::class)]

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Values;
+namespace App\Containers\AppSection\Authentication\DataTransferObjects;
 
-use App\Ship\Parents\Values\Value as ParentValue;
+use Apiato\Http\Resources\HasResourceKey;
+use Apiato\Http\Resources\ResourceKeyAware;
 
-final class LoginField extends ParentValue implements \Stringable
+final class LoginField implements \Stringable, ResourceKeyAware
 {
+    use HasResourceKey;
+
     public function __construct(
         private readonly string $name,
         private readonly array $rules,

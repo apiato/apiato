@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\Actions;
 use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Containers\AppSection\Authentication\Values\IncomingLoginField;
+use App\Containers\AppSection\Authentication\DataTransferObjects\IncomingLoginField;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
