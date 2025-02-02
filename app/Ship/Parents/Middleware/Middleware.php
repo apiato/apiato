@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ship\Parents\Middlewares;
+namespace App\Ship\Parents\Middleware;
 
 use Apiato\Abstract\Middlewares\Middleware as AbstractMiddleware;
 
