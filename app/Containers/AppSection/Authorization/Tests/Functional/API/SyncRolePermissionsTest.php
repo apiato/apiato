@@ -65,7 +65,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $role = Role::factory()->createOne();
         $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$this->encode($invalidId)],
+            'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
         $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);

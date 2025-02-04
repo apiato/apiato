@@ -23,7 +23,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
         $role = Role::factory()->createOne();
         $permission = Permission::factory()->createOne();
         $data = [
-            'permission_ids' => $permission->getHashedKey(),
+            'permission_ids' => [$permission->getHashedKey()],
         ];
 
         $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
@@ -67,9 +67,9 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachNonExistingPermissionToRole(): void
     {
         $role = Role::factory()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$this->encode($invalidId)],
+            'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
         $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
@@ -89,12 +89,12 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     public function testAttachPermissionToNonExistingRole(): void
     {
         $permission = Permission::factory()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, skipEncoding: true, replace: '{role_id}')->makeCall($data);
+        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(

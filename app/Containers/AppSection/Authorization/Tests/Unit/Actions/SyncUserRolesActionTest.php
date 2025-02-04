@@ -19,7 +19,7 @@ final class SyncUserRolesActionTest extends UnitTestCase
         $user->assignRole($roles);
         $this->assertCount(3, $user->roles);
         $request = SyncUserRolesRequest::injectData([
-            'role_ids' => $roles[1]->getHashedKey(),
+            'role_ids' => [$roles[1]->getHashedKey()],
         ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(SyncUserRolesAction::class);
 

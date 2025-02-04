@@ -88,7 +88,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $user = User::factory()->createOne();
         $invalidId = 7777777;
         $data = [
-            'role_ids' => [$this->encode($invalidId)],
+            'role_ids' => [hashids()->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);

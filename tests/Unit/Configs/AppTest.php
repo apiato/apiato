@@ -2,6 +2,9 @@
 
 namespace Tests\Unit\Configs;
 
+use Apiato\Console\CommandServiceProvider;
+use Apiato\Generator\GeneratorsServiceProvider;
+use Apiato\Macros\MacroServiceProvider;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider;
@@ -103,6 +106,9 @@ final class AppTest extends ShipTestCase
                 'store' => env('APP_MAINTENANCE_STORE', 'database'),
             ],
             'providers' => [
+                CommandServiceProvider::class,
+                GeneratorsServiceProvider::class,
+                MacroServiceProvider::class,
                 AuthServiceProvider::class,
                 BroadcastServiceProvider::class,
                 BusServiceProvider::class,

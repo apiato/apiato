@@ -92,7 +92,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         $user = User::factory()->createOne();
         $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$this->encode($invalidId)],
+            'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);

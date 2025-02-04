@@ -18,7 +18,7 @@ final class RemoveUserRolesActionTest extends UnitTestCase
         $roles = Role::factory()->count(3)->create();
         $user->assignRole($roles);
         $request = RemoveUserRolesRequest::injectData([
-            'role_ids' => $roles[1]->getHashedKey(),
+            'role_ids' => [$roles[1]->getHashedKey()],
         ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RemoveUserRolesAction::class);
 

@@ -181,7 +181,7 @@ final class RegisterUserTest extends ApiTestCase
         ];
 
         $response = $this->makeCall($data);
-        $registeredUser = User::find($this->decode($response->json()['data']['id']));
+        $registeredUser = User::find(hashids()->decode($response->json()['data']['id']));
         $response->assertOk();
         Notification::assertSentTo($registeredUser, Welcome::class);
         Notification::assertNotSentTo($registeredUser, VerifyEmail::class);

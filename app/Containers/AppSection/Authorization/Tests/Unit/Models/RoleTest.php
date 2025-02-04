@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
-use Apiato\Foundation\Support\Traits\Model\ModelTrait;
+use Apiato\Abstract\Models\ApiatoIntegration;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -12,7 +12,7 @@ final class RoleTest extends UnitTestCase
 {
     public function testUsesCorrectTraits(): void
     {
-        $this->assertContains(ModelTrait::class, class_uses_recursive(Role::class));
+        $this->assertContains(ApiatoIntegration::class, class_uses_recursive(Role::class));
     }
 
     public function testHasCorrectFillableFields(): void

@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
+use Spatie\Permission\DefaultTeamResolver;
 
 #[CoversNothing]
 final class PermissionTest extends ShipTestCase
@@ -43,6 +44,7 @@ final class PermissionTest extends ShipTestCase
                 'key' => 'spatie.permission.cache',
                 'store' => 'default',
             ],
+            'team_resolver' => DefaultTeamResolver::class,
         ];
 
         $this->assertEquals($expected, $config);

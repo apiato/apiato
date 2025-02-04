@@ -67,9 +67,9 @@ final class GivePermissionsToUserTest extends ApiTestCase
     public function testGiveNonExistingPermission(): void
     {
         $user = User::factory()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$invalidId],
+            'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
@@ -89,12 +89,12 @@ final class GivePermissionsToUserTest extends ApiTestCase
     public function testAttachPermissionToNonExistingRole(): void
     {
         $permission = Permission::factory()->createOne();
-        $invalidId = $this->encode(7777777);
+        $invalidId = 7777777;
         $data = [
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, skipEncoding: true, replace: '{user_id}')->makeCall($data);
+        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
 
         $response->assertUnprocessable();
         $response->assertJson(
