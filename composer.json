@@ -52,7 +52,7 @@
         "orchestra/testbench": "^9.0",
         "phpmd/phpmd": "@stable",
         "phpunit/phpunit": "^11.0.1",
-        "rector/rector": "^1.2",
+        "rector/rector": "^2.0",
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {
