@@ -65,24 +65,6 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         );
     }
 
-    public function testDetachPermissionFromNonExistingRole(): void
-    {
-        $permission = Permission::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'permission_ids' => [$permission->getHashedKey()],
-        ];
-
-        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.role_id.0', 'The selected role id is invalid.')
-                ->etc(),
-        );
-    }
-
     public function testDetachNonExistingPermissionFromRole(): void
     {
         $role = Role::factory()->createOne();

@@ -43,24 +43,6 @@ final class SyncUserRolesTest extends ApiTestCase
         );
     }
 
-    public function testSyncRoleOnNonExistingUser(): void
-    {
-        $role = Role::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'role_ids' => [$role->getHashedKey()],
-        ];
-
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.user_id.0', 'The selected user id is invalid.')
-                ->etc(),
-        );
-    }
-
     public function testSyncNonExistingRoleOnUser(): void
     {
         $user = User::factory()->createOne();

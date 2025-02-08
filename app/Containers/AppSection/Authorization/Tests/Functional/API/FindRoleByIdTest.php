@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -23,8 +24,13 @@ final class FindRoleByIdTest extends ApiTestCase
         $response = $this->injectId($roleA->id, replace: '{role_id}')->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($roleA->name, $responseContent->data->name);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('name', $roleA->name)
+                ->etc(),
+            )->etc(),
+        );
     }
 
     public function testFindNonExistingRole(): void

@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -24,8 +25,13 @@ final class FindPermissionByIdTest extends ApiTestCase
         $response = $this->injectId($permissionA->id, replace: '{permission_id}')->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($permissionA->name, $responseContent->data->name);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('name', $permissionA->name)
+                    ->etc(),
+            )->etc(),
+        );
     }
 
     public function testFindNonExistingPermission(): void

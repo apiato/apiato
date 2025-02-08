@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -26,7 +27,12 @@ final class ListUserRolesTest extends ApiTestCase
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($role->name, $responseContent->data[0]->name);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('0.name', $role->name)
+                ->etc(),
+            )->etc(),
+        );
     }
 }

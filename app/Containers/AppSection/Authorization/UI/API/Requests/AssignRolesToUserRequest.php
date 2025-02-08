@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class AssignRolesToUserRequest extends ParentRequest
@@ -22,6 +23,6 @@ class AssignRolesToUserRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('assign', Role::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -27,7 +28,12 @@ final class ListUserPermissionsTest extends ApiTestCase
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($permission->name, $responseContent->data[0]->name);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('0.name', $permission->name)
+                ->etc(),
+            )->etc(),
+        );
     }
 }

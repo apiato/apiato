@@ -3,7 +3,9 @@
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Enums\Role;
+use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -18,10 +20,16 @@ final class ListPermissionsTest extends ApiTestCase
 
     public function testListPermissions(): void
     {
+        Permission::factory()->count(2)->create();
+
         $response = $this->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertNotEmpty($responseContent->data);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                2,
+            )->etc(),
+        );
     }
 }

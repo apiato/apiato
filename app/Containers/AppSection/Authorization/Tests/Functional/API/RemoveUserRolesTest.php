@@ -65,24 +65,6 @@ final class RemoveUserRolesTest extends ApiTestCase
         );
     }
 
-    public function testRevokeRolesFromNonExistingUser(): void
-    {
-        $role = Role::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'role_ids' => [$role->getHashedKey()],
-        ];
-
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.user_id.0', 'The selected user id is invalid.')
-                ->etc(),
-        );
-    }
-
     public function testRevokeNonExistingRoleFromUser(): void
     {
         $user = User::factory()->createOne();

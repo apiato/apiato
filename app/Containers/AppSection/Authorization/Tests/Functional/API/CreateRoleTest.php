@@ -28,8 +28,13 @@ final class CreateRoleTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertCreated();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($data['name'], $responseContent->data->name);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('name', $data['name'])
+                ->etc(),
+            )->etc(),
+        );
     }
 
     public function testCreateRoleWithWrongName(): void

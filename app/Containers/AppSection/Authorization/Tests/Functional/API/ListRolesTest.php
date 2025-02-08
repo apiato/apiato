@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -23,7 +24,11 @@ final class ListRolesTest extends ApiTestCase
         $response = $this->makeCall();
 
         $response->assertOk();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertNotEmpty($responseContent->data);
+        $response->assertJson(
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                1,
+            )->etc(),
+        );
     }
 }

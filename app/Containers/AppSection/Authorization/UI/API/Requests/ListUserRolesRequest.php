@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class ListUserRolesRequest extends ParentRequest
@@ -17,6 +18,6 @@ class ListUserRolesRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('viewAny', Role::class);
     }
 }

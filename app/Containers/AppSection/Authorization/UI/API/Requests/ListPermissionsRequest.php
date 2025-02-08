@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
+use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class ListPermissionsRequest extends ParentRequest
@@ -15,6 +16,6 @@ class ListPermissionsRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('viewAny', Permission::class);
     }
 }
