@@ -11,27 +11,12 @@ final class SyncRolePermissionsRequestTest extends UnitTestCase
 {
     private SyncRolePermissionsRequest $request;
 
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => 'manage-roles',
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
-
     public function testDecode(): void
     {
         $this->assertSame([
             'role_id',
             'permission_ids.*',
         ], $this->request->getDecodeArray());
-    }
-
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([
-            'role_id',
-        ], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -47,10 +32,10 @@ final class SyncRolePermissionsRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
+        $user = $this->getTestingUserWithoutAccess();
         $request = SyncRolePermissionsRequest::injectData([], $user);
 
-        $this->assertTrue($request->authorize());
+        $this->assertFalse($request->authorize());
     }
 
     protected function setUp(): void

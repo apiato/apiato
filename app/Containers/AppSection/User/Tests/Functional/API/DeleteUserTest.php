@@ -11,11 +11,6 @@ final class DeleteUserTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{user_id}';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanDeleteSelfAsAdmin(): void
     {
         $this->testingUser = User::factory()->admin()->createOne();

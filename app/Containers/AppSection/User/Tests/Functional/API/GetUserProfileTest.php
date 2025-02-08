@@ -12,11 +12,6 @@ final class GetUserProfileTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/profile';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanGetOwnProfile(): void
     {
         $user = $this->getTestingUser();

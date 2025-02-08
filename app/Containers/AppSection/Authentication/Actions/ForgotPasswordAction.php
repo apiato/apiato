@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
@@ -18,12 +17,9 @@ class ForgotPasswordAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws IncorrectId
-     */
     public function run(ForgotPasswordRequest $request): bool
     {
-        $sanitizedData = $request->sanitizeInput([
+        $sanitizedData = $request->sanitize([
             'email',
             'reseturl',
         ]);

@@ -17,11 +17,6 @@ final class ListUsersRequestTest extends UnitTestCase
         $this->assertSame([], $this->request->getDecodeArray());
     }
 
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([], $this->request->getUrlParametersArray());
-    }
-
     public function testValidationRules(): void
     {
         $rules = $this->request->rules();

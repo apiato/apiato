@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
@@ -21,12 +20,11 @@ class ApiLoginProxyForWebClientAction extends ParentAction
 
     /**
      * @throws LoginFailed
-     * @throws IncorrectId
      * @throws \Exception
      */
     public function run(LoginProxyPasswordGrantRequest $request): AuthResult
     {
-        $sanitizedData = $request->sanitizeInput([
+        $sanitizedData = $request->sanitize([
             ...array_keys(config('appSection-authentication.login.fields')),
             'password',
             'client_id' => config('appSection-authentication.clients.web.id'),

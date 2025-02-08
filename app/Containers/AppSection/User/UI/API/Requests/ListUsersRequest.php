@@ -10,8 +10,6 @@ class ListUsersRequest extends ParentRequest
 {
     protected array $decode = [];
 
-    protected array $urlParameters = [];
-
     public function rules(): array
     {
         return [];

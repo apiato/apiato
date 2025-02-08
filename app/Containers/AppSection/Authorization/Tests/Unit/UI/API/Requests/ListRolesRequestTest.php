@@ -11,22 +11,9 @@ final class ListRolesRequestTest extends UnitTestCase
 {
     private ListRolesRequest $request;
 
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => 'manage-roles',
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
-
     public function testDecode(): void
     {
         $this->assertSame([], $this->request->getDecodeArray());
-    }
-
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -38,10 +25,10 @@ final class ListRolesRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
+        $user = $this->getTestingUserWithoutAccess();
         $request = ListRolesRequest::injectData([], $user);
 
-        $this->assertTrue($request->authorize());
+        $this->assertFalse($request->authorize());
     }
 
     protected function setUp(): void

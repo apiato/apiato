@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
+use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -12,8 +13,8 @@ final class CreateRoleTest extends ApiTestCase
     protected string $endpoint = 'post@v1/roles';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => Role::SUPER_ADMIN,
     ];
 
     public function testCreateRole(): void

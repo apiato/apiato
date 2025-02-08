@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
@@ -21,11 +20,10 @@ class RegisterUserAction extends ParentAction
 
     /**
      * @throws CreateResourceFailed
-     * @throws IncorrectId
      */
     public function run(RegisterUserRequest $request): User
     {
-        $sanitizedData = $request->sanitizeInput([
+        $sanitizedData = $request->sanitize([
             'email',
             'password',
             'name',

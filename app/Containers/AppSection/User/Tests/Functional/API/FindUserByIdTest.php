@@ -12,11 +12,6 @@ final class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{user_id}';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanFindSelfAsAdmin(): void
     {
         $this->testingUser = User::factory()->admin()->createOne();

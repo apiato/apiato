@@ -19,5 +19,5 @@ return [
     |
     */
 
-    'admin_role' => env('ADMIN_ROLE', 'admin'),
+    'admin_role' => env('ADMIN_ROLE', 'admin'), // TODO
 ];

@@ -12,8 +12,8 @@ final class DeleteRoleTest extends ApiTestCase
     protected string $endpoint = 'delete@v1/roles/{role_id}';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
     ];
 
     public function testCanDeleteRole(): void

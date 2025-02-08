@@ -6,14 +6,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class CreateRoleRequest extends ParentRequest
 {
-    protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
-    ];
-
     protected array $decode = [];
-
-    protected array $urlParameters = [];
 
     public function rules(): array
     {
@@ -26,6 +19,6 @@ class CreateRoleRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->hasAccess();
+        return false;
     }
 }

@@ -65,6 +65,16 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/var/www/html/core"
+        },
+        {
+            "type": "path",
+            "url": "/var/www/html/apiato-rector"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
+use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -12,8 +13,8 @@ final class FindPermissionByIdTest extends ApiTestCase
     protected string $endpoint = 'get@v1/permissions/{permission_id}';
 
     protected array $access = [
-        'permissions' => 'manage-permissions',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => Role::SUPER_ADMIN,
     ];
 
     public function testFindPermissionById(): void

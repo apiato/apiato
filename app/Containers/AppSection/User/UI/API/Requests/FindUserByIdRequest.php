@@ -12,10 +12,6 @@ class FindUserByIdRequest extends ParentRequest
         'user_id',
     ];
 
-    protected array $urlParameters = [
-        'user_id',
-    ];
-
     public function rules(): array
     {
         return [];

@@ -12,8 +12,8 @@ final class FindRoleByIdTest extends ApiTestCase
     protected string $endpoint = 'get@v1/roles/{role_id}';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
     ];
 
     public function testFindRoleById(): void

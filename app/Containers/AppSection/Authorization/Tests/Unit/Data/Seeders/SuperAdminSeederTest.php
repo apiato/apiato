@@ -2,18 +2,18 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
-use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationDefaultUsersSeeder_4;
+use App\Containers\AppSection\Authorization\Data\Seeders\SuperAdminSeeder_2;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(AuthorizationDefaultUsersSeeder_4::class)]
-final class AuthorizationDefaultUsersSeederTest extends UnitTestCase
+#[CoversClass(SuperAdminSeeder_2::class)]
+final class SuperAdminSeederTest extends UnitTestCase
 {
     public function testSeedsSuperAdmin(): void
     {
         $actionSpy = $this->spy(CreateAdminAction::class);
-        $seeder = new AuthorizationDefaultUsersSeeder_4();
+        $seeder = new SuperAdminSeeder_2();
 
         $seeder->run($actionSpy);
 

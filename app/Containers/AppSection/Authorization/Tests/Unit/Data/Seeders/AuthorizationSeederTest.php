@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
-use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationRolesSeeder_2;
+use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationSeeder_1;
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(AuthorizationRolesSeeder_2::class)]
-final class AuthorizationRolesSeederTest extends UnitTestCase
+#[CoversClass(AuthorizationSeeder_1::class)]
+final class AuthorizationSeederTest extends UnitTestCase
 {
     public function testCanSeed(): void
     {
@@ -17,7 +17,7 @@ final class AuthorizationRolesSeederTest extends UnitTestCase
         ];
 
         $taskSpy = $this->spy(CreateRoleTask::class);
-        $seeder = new AuthorizationRolesSeeder_2();
+        $seeder = new AuthorizationSeeder_1();
 
         $seeder->run($taskSpy);
 

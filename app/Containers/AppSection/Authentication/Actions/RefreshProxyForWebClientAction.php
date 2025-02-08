@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
@@ -20,11 +19,10 @@ class RefreshProxyForWebClientAction extends ParentAction
 
     /**
      * @throws LoginFailed
-     * @throws IncorrectId
      */
     public function run(RefreshProxyRequest $request): AuthResult
     {
-        $sanitizedData = $request->sanitizeInput([
+        $sanitizedData = $request->sanitize([
             'refresh_token' => $request->cookie('refreshToken'),
             'client_id' => config('appSection-authentication.clients.web.id'),
             'client_secret' => config('appSection-authentication.clients.web.secret'),

@@ -13,11 +13,6 @@ final class UpdateUserPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{user_id}/password';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanUpdatePasswordAsOwner(): void
     {
         $this->testingUser = User::factory()->createOne([

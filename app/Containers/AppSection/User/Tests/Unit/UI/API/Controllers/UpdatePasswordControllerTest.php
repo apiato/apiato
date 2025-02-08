@@ -15,9 +15,10 @@ final class UpdatePasswordControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(UpdatePasswordController::class);
-        $request = UpdatePasswordRequest::injectData();
+        $user = User::factory()->createOne();
+        $request = UpdatePasswordRequest::injectData(['new_password' => 'test'])->withUrlParameters(['user_id' => $user->id]);
         $actionMock = $this->mock(UpdatePasswordAction::class);
-        $actionMock->expects()->run($request)->andReturn(User::factory()->createOne());
+        $actionMock->expects()->run($request->user_id, $request->new_password)->andReturn($user);
 
         $controller->__invoke($request, $actionMock);
     }

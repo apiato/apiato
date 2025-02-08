@@ -6,18 +6,9 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class SyncRolePermissionsRequest extends ParentRequest
 {
-    protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
-    ];
-
     protected array $decode = [
         'role_id',
         'permission_ids.*',
-    ];
-
-    protected array $urlParameters = [
-        'role_id',
     ];
 
     public function rules(): array
@@ -31,6 +22,6 @@ class SyncRolePermissionsRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->hasAccess();
+        return false;
     }
 }

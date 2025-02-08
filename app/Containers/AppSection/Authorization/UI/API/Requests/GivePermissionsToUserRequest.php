@@ -6,18 +6,9 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class GivePermissionsToUserRequest extends ParentRequest
 {
-    protected array $access = [
-        'permissions' => 'manage-permissions',
-        'roles' => null,
-    ];
-
     protected array $decode = [
         'user_id',
         'permission_ids.*',
-    ];
-
-    protected array $urlParameters = [
-        'user_id',
     ];
 
     public function rules(): array
@@ -31,6 +22,6 @@ class GivePermissionsToUserRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->hasAccess();
+        return false;
     }
 }

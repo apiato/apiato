@@ -12,11 +12,6 @@ final class ResetPasswordTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/password/reset';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testResetPassword(): void
     {
         $this->getTestingUser([

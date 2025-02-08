@@ -14,8 +14,8 @@ final class RemoveUserRolesTest extends ApiTestCase
     protected string $endpoint = 'delete@v1/users/{user_id}/roles';
 
     protected array $access = [
-        'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
     ];
 
     public function testRevokeRolesFromUser(): void

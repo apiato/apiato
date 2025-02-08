@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
@@ -19,17 +18,12 @@ class UpdatePasswordAction extends ParentAction
     }
 
     /**
-     * @throws IncorrectId
      * @throws ResourceNotFound
      * @throws ValidatorException
      */
-    public function run(UpdatePasswordRequest $request): User
+    public function run(int $userId, string $password): User
     {
-        $sanitizedData = $request->sanitizeInput([
-            'password',
-        ]);
-
-        $user = $this->updateUserTask->run($request->user_id, $sanitizedData);
+        $user = $this->updateUserTask->run($userId, ['password' => $password]);
 
         $user->notify(new PasswordUpdatedNotification());
 

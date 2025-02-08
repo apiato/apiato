@@ -14,8 +14,8 @@ final class SyncUserRolesTest extends ApiTestCase
     protected string $endpoint = 'put@v1/users/{user_id}/roles';
 
     protected array $access = [
-        'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
     ];
 
     public function testSyncMultipleRolesOnUser(): void

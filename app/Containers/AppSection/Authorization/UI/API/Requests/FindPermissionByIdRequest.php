@@ -6,16 +6,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class FindPermissionByIdRequest extends ParentRequest
 {
-    protected array $access = [
-        'permissions' => 'manage-permissions',
-        'roles' => null,
-    ];
-
     protected array $decode = [
-        'permission_id',
-    ];
-
-    protected array $urlParameters = [
         'permission_id',
     ];
 
@@ -26,6 +17,6 @@ class FindPermissionByIdRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->hasAccess();
+        return false;
     }
 }

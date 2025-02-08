@@ -12,11 +12,6 @@ final class ListUsersTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanIndexUsersAsAdmin(): void
     {
         $this->testingUser = User::factory()->admin()->createOne();

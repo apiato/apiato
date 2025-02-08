@@ -11,27 +11,12 @@ final class RevokeUserPermissionsRequestTest extends UnitTestCase
 {
     private RevokeUserPermissionsRequest $request;
 
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => 'manage-permissions',
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
-
     public function testDecode(): void
     {
         $this->assertSame([
             'user_id',
             'permission_ids.*',
         ], $this->request->getDecodeArray());
-    }
-
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([
-            'user_id',
-        ], $this->request->getUrlParametersArray());
     }
 
     public function testValidationRules(): void
@@ -47,10 +32,10 @@ final class RevokeUserPermissionsRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
+        $user = $this->getTestingUserWithoutAccess();
         $request = RevokeUserPermissionsRequest::injectData([], $user)->withUrlParameters(['user_id' => $user->id]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertFalse($request->authorize());
     }
 
     protected function setUp(): void

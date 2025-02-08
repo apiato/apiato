@@ -17,11 +17,6 @@ final class RegisterUserTest extends ApiTestCase
 
     protected bool $auth = false;
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void
     {
         config()->set('appSection-authentication.require_email_verification', true);

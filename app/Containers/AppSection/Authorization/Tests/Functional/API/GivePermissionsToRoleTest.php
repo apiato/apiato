@@ -14,8 +14,8 @@ final class GivePermissionsToRoleTest extends ApiTestCase
     protected string $endpoint = 'post@v1/roles/{role_id}/permissions';
 
     protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
+        'permissions' => null,
+        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
     ];
 
     public function testAttachSinglePermissionToRole(): void

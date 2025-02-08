@@ -19,13 +19,6 @@ final class FindUserByIdRequestTest extends UnitTestCase
         ], $this->request->getDecodeArray());
     }
 
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([
-            'user_id',
-        ], $this->request->getUrlParametersArray());
-    }
-
     public function testValidationRules(): void
     {
         $rules = $this->request->rules();

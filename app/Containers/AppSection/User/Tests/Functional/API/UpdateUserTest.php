@@ -16,11 +16,6 @@ final class UpdateUserTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{user_id}';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanUpdateAsOwner(): void
     {
         $this->testingUser = User::factory()->createOne([

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fd2f0431542184531595c67ef109ee7",
+    "content-hash": "124e7f5957870b1b985b2c5edd686d45",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -46,16 +46,10 @@
         {
             "name": "apiato/core",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/apiato/core.git",
-                "reference": "c9f5af788ff1b682fe4d0ea1edb4fb1bd466c6d3"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/apiato/core/zipball/c9f5af788ff1b682fe4d0ea1edb4fb1bd466c6d3",
-                "reference": "c9f5af788ff1b682fe4d0ea1edb4fb1bd466c6d3",
-                "shasum": ""
+                "type": "path",
+                "url": "/var/www/html/core",
+                "reference": "c9f5af788ff1b682fe4d0ea1edb4fb1bd466c6d3"
             },
             "require": {
                 "apiato/container-installer": "^2.0.8",
@@ -97,14 +91,47 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/Foundation/helpers.php"
-                ],
                 "psr-4": {
                     "Apiato\\": "src/"
+                },
+                "files": [
+                    "src/Foundation/helpers.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/",
+                    "Workbench\\App\\": "workbench/app/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "artisan": [
+                    "@php vendor/bin/testbench"
+                ],
+                "fixer": [
+                    "php-cs-fixer fix --config=./.php-cs-fixer.dist.php"
+                ],
+                "phpstan": [
+                    "./vendor/bin/phpstan analyse"
+                ],
+                "post-autoload-dump": [
+                    "@clear",
+                    "@prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-skeleton --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "lint": [
+                    "@php vendor/bin/phpstan analyse --verbose --ansi"
+                ],
+                "test": [
+                    "@clear",
+                    "@php vendor/bin/pest"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -134,25 +161,9 @@
                 "issues": "https://github.com/apiato/core/issues",
                 "source": "https://github.com/apiato/core"
             },
-            "funding": [
-                {
-                    "url": "https://paypal.me/mzmmzz",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/Mahmoudz",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/apiato",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/zalt",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2025-02-04T07:51:34+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "brick/math",
@@ -9116,16 +9127,10 @@
         {
             "name": "mohammad-alavi/apiato-rector",
             "version": "dev-latest",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Mohammad-Alavi/apiato-rector.git",
-                "reference": "8d8e33c4b15345049c4c53b23088820fc5cabc9e"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Mohammad-Alavi/apiato-rector/zipball/8d8e33c4b15345049c4c53b23088820fc5cabc9e",
-                "reference": "8d8e33c4b15345049c4c53b23088820fc5cabc9e",
-                "shasum": ""
+                "type": "path",
+                "url": "/var/www/html/apiato-rector",
+                "reference": "8d8e33c4b15345049c4c53b23088820fc5cabc9e"
             },
             "require": {
                 "php": "^8.1",
@@ -9146,14 +9151,17 @@
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^5.8.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "MohammadAlavi\\ApiatoRector\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "MohammadAlavi\\ApiatoRector\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -9167,16 +9175,18 @@
             ],
             "description": "A collection of Rectors for the Apiato meta-framework.",
             "keywords": [
-                "apiato",
-                "laravel",
-                "php",
-                "rector"
+                "Apiato",
+                "Laravel",
+                "PHP",
+                "Rector"
             ],
             "support": {
                 "issues": "https://github.com/mohammad-alavi/apiato-rector/issues",
                 "source": "https://github.com/mohammad-alavi/apiato-rector"
             },
-            "time": "2025-02-04T07:48:43+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "myclabs/deep-copy",

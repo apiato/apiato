@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use Apiato\Exceptions\IncorrectId;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\DataTransferObjects\IncomingLoginField;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
@@ -13,12 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class WebLoginAction extends ParentAction
 {
-    /**
-     * @throws IncorrectId
-     */
     public function run(LoginRequest $request): RedirectResponse
     {
-        $sanitizedData = $request->sanitizeInput([
+        $sanitizedData = $request->sanitize([
             ...array_keys(config('appSection-authentication.login.fields', ['email' => []])),
             'password',
             'remember' => false,
