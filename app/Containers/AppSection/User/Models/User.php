@@ -61,11 +61,6 @@ class User extends ParentUserModel implements MustVerifyEmail
         return $query->first();
     }
 
-    public function hasAdminRole(): bool
-    {
-        return $this->hasRole(config('appSection-authorization.admin_role'));
-    }
-
     protected function email(): Attribute
     {
         return new Attribute(

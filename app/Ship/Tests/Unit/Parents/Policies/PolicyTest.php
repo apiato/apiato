@@ -13,15 +13,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Policy::class)]
 final class PolicyTest extends ShipTestCase
 {
-    public function testAdminCanBypassAllAuthorizations(): void
-    {
-        $this->getTestingUser(createUserAsAdmin: true);
-
-        $request = FakeRequest::injectData([], $this->testingUser);
-
-        $this->assertTrue($request->authorize(app(Gate::class)));
-    }
-
     public function testNonAdminCannotBypassAllAuthorizations(): void
     {
         $this->getTestingUser();
