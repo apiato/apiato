@@ -9,7 +9,7 @@ use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ApiLogoutAction::class)]
-final class ApiLogoutTest extends FunctionalTestCase
+final class LogoutTest extends FunctionalTestCase
 {
     protected string $endpoint = 'post@v1/logout';
 
