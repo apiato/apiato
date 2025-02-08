@@ -23,7 +23,8 @@ final class UpdateUserActionTest extends UnitTestCase
             'name' => 'a name',
             'gender' => Gender::MALE->value,
             'birth' => Carbon::today()->toIso8601String(),
-            'password' => 'test',
+            'password' => 'youShallNotPass',
+            'new_password' => 'test',
         ];
         $request = UpdateUserRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
         $action = app(UpdateUserAction::class);
@@ -33,6 +34,6 @@ final class UpdateUserActionTest extends UnitTestCase
         $this->assertSame($data['name'], $result->name);
         $this->assertSame(Gender::from($data['gender']), $result->gender);
         $this->assertTrue($result->birth->isSameDay($data['birth']));
-        $this->assertTrue(Hash::check($data['password'], $result->password));
+        $this->assertTrue(Hash::check($data['new_password'], $result->password));
     }
 }
