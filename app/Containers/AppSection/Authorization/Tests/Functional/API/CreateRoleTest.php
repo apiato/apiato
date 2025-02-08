@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
-use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -12,13 +12,10 @@ final class CreateRoleTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/roles';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => Role::SUPER_ADMIN,
-    ];
-
     public function testCreateRole(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
+
         $data = [
             'name' => 'manager',
             'display_name' => 'manager',
@@ -39,6 +36,8 @@ final class CreateRoleTest extends ApiTestCase
 
     public function testCreateRoleWithWrongName(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
+
         $data = [
             'name' => 'includes Space',
             'display_name' => 'manager',
@@ -57,7 +56,7 @@ final class CreateRoleTest extends ApiTestCase
 
     public function testGivenHaveNoAccessCannotCreateRole(): void
     {
-        $this->getTestingUserWithoutAccess();
+        $this->actingAs(User::factory()->createOne());
 
         $response = $this->makeCall();
 

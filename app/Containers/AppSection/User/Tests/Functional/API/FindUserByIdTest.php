@@ -14,24 +14,16 @@ final class FindUserByIdTest extends ApiTestCase
 
     public function testCanFindSelfAsAdmin(): void
     {
-        $this->testingUser = User::factory()->admin()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
 
-        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
 
         $response->assertOk();
         $response->assertJson(
             fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.id', $this->testingUser->getHashedKey())
+                ->where('data.id', $user->getHashedKey())
                 ->etc(),
         );
-    }
-
-    public function testCanFindAnotherUserAsAdmin(): void
-    {
-        $this->testingUser = User::factory()->admin()->createOne();
-
-        $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
-
-        $response->assertOk();
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -27,19 +26,12 @@ final class ApiatoTest extends ShipTestCase
                 ],
             ],
             'requests' => [
-                'allow-roles-to-access-all-routes' => [
-                    env('ADMIN_ROLE', 'admin'),
-                ],
                 'force-accept-header' => false,
                 'force-valid-includes' => true,
                 'use-etag' => false,
                 'params' => [
                     'filter' => 'filter',
                 ],
-            ],
-            'tests' => [
-                'user-class' => User::class,
-                'user-admin-state' => 'admin',
             ],
         ];
 

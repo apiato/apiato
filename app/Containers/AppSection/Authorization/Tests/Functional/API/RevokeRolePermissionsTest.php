@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -13,10 +14,12 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/roles/{role_id}/permissions';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
-    ];
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
+    }
 
     public function testDetachSinglePermissionFromRole(): void
     {

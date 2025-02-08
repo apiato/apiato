@@ -17,9 +17,9 @@ final class SendVerificationEmailTest extends ApiTestCase
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         Notification::fake();
-        $this->testingUser = User::factory()->unverified()->createOne();
         config()->set('appSection-authentication.require_email_verification', true);
-
+        $user = User::factory()->unverified()->createOne();
+        $this->actingAs($user);
         $data = [
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
@@ -27,17 +27,19 @@ final class SendVerificationEmailTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertAccepted();
-        Notification::assertSentTo($this->testingUser, VerifyEmail::class);
+        Notification::assertSentTo($user, VerifyEmail::class);
     }
 
     public function testSendingWithoutRequiredDataShouldThrowError(): void
     {
+        config()->set('appSection-authentication.require_email_verification', true);
+        $user = User::factory()->unverified()->createOne();
+        $this->actingAs($user);
         $data = [];
 
         $response = $this->makeCall($data);
 
         $response->assertUnprocessable();
-
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
@@ -46,12 +48,12 @@ final class SendVerificationEmailTest extends ApiTestCase
         );
     }
 
-    public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
+    public function testPreventSendingEmailWithNotAllowedVerificationUrl(): void
     {
+        config()->set('appSection-authentication.require_email_verification', true);
+        $user = User::factory()->unverified()->createOne();
+        $this->actingAs($user);
         $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 's3cr3tPa$$',
-            'name' => 'Bruce Lee',
             'verification_url' => 'http://notallowed.test/wrong',
         ];
 

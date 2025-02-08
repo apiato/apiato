@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CallOAuthServerTask::class)]
@@ -23,7 +24,7 @@ final class CallOAuthServerTaskTest extends UnitTestCase
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $this->getTestingUser($credentials);
+        User::factory()->createOne($credentials);
         $data = $this->enrichWithPasswordGrantFields($credentials['email'], $credentials['password']);
         $task = app(CallOAuthServerTask::class);
 
@@ -36,7 +37,7 @@ final class CallOAuthServerTaskTest extends UnitTestCase
     {
         $this->expectException(LoginFailed::class);
 
-        $this->getTestingUser(['email' => 'gandalf@the.grey', 'password' => 'youShallNotPass']);
+        User::factory()->createOne(['email' => 'gandalf@the.grey', 'password' => 'youShallNotPass']);
         $data = $this->enrichWithPasswordGrantFields('nonexisting@email.void', 'invalidPassword');
         $task = app(CallOAuthServerTask::class);
 

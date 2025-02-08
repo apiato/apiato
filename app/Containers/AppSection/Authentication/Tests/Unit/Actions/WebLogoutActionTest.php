@@ -14,11 +14,11 @@ class WebLogoutActionTest extends UnitTestCase
     {
         $user = User::factory()->create();
         $this->actingAs($user, 'web');
-        $this->assertEquals(auth()->user()->id, $user->id);
+        $this->assertAuthenticated('web');
         $action = app(WebLogoutAction::class);
 
         $action->run();
 
-        $this->assertNull(auth()->user());
+        $this->assertFalse(auth('web')->check());
     }
 }

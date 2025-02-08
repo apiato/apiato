@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
-use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
@@ -14,10 +13,12 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{user_id}/permissions';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => Role::SUPER_ADMIN,
-    ];
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
+    }
 
     public function testDetachSinglePermissionFromUser(): void
     {

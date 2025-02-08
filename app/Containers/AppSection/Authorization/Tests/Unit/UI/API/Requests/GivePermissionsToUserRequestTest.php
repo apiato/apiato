@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToUserRequest;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GivePermissionsToUserRequest::class)]
@@ -32,7 +33,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
+        $user = User::factory()->createOne();
         $request = GivePermissionsToUserRequest::injectData([], $user)->withUrlParameters(['user_id' => $user->id]);
 
         $this->assertFalse($request->authorize());

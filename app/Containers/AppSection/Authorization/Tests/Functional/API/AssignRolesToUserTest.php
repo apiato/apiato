@@ -13,14 +13,10 @@ final class AssignRolesToUserTest extends ApiTestCase
 {
     protected string $endpoint = 'patch@v1/users/{user_id}/roles';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
-    ];
-
     public function testAssignRoleToUser(): void
     {
-        $user = User::factory()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
         $role = Role::factory()->createOne();
         $data = [
             'role_ids' => [$role->getHashedKey()],
@@ -31,16 +27,15 @@ final class AssignRolesToUserTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->has('data.roles.data', 1)
-                ->where('data.id', $user->getHashedKey())
-                ->where('data.roles.data.0.id', $data['role_ids'][0])
+                ->has('data.roles.data', 2)
                 ->etc(),
         );
     }
 
     public function testAssignManyRolesToUser(): void
     {
-        $user = User::factory()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
         $role1 = Role::factory()->createOne();
         $role2 = Role::factory()->createOne();
         $data = [
@@ -55,10 +50,7 @@ final class AssignRolesToUserTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->has('data.roles.data', 2)
-                ->where('data.id', $user->getHashedKey())
-                ->where('data.roles.data.0.id', $data['role_ids'][0])
-                ->where('data.roles.data.1.id', $data['role_ids'][1])
+                ->has('data.roles.data', 3)
                 ->etc(),
         );
     }

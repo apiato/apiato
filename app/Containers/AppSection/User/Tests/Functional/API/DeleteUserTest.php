@@ -10,19 +10,22 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 final class DeleteUserTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{user_id}';
+    protected string $myUrl = 'v1/users/{user_id}';
 
     public function testCanDeleteSelfAsAdmin(): void
     {
-        $this->testingUser = User::factory()->admin()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
 
-        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
 
         $response->assertNoContent();
     }
 
     public function testCanDeleteAnotherUserAsAdmin(): void
     {
-        $this->testingUser = User::factory()->admin()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
 
         $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
 

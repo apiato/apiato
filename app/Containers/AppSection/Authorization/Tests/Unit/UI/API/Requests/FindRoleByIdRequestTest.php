@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleByIdRequest;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(FindRoleByIdRequest::class)]
@@ -28,7 +29,7 @@ final class FindRoleByIdRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
+        $user = User::factory()->createOne();
         $request = FindRoleByIdRequest::injectData([], $user)->withUrlParameters(['role_id' => Role::factory()->createOne()->id]);
 
         $this->assertFalse($request->authorize());

@@ -63,14 +63,9 @@ final class RegisterUserTest extends ApiTestCase
             'password' => 'youShallNotPass',
         ];
 
-        $this->getTestingUser($userDetails);
+        User::factory()->createOne($userDetails);
 
-        $data = [
-            'email' => $userDetails['email'],
-            'password' => $userDetails['password'],
-        ];
-
-        $response = $this->makeCall($data);
+        $response = $this->makeCall($userDetails);
 
         $response->assertUnprocessable();
         $response->assertJson(

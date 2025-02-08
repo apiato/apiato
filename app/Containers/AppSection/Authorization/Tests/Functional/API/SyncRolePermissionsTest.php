@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -13,13 +14,9 @@ final class SyncRolePermissionsTest extends ApiTestCase
 {
     protected string $endpoint = 'put@v1/roles/{role_id}/permissions';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
-    ];
-
     public function testSyncDuplicatedPermissionsToRole(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $role = Role::factory()->createOne();
@@ -44,6 +41,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
 
     public function testSyncNonExistingPermissionOnRole(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $role = Role::factory()->createOne();
         $invalidId = 7777777;
         $data = [

@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolesRequest;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ListRolesRequest::class)]
@@ -25,7 +26,7 @@ final class ListRolesRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
+        $user = User::factory()->createOne();
         $request = ListRolesRequest::injectData([], $user);
 
         $this->assertFalse($request->authorize());

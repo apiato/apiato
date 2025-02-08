@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -65,7 +66,6 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
             'password' => 'youShallNotPass',
         ];
 
-        $this->getTestingUser($this->data);
-        $this->actingAs($this->testingUser, 'web');
+        $this->actingAs(User::factory()->createOne($this->data), 'web');
     }
 }

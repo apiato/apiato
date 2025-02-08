@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CreateRoleRequest::class)]
@@ -29,7 +30,7 @@ final class CreateRoleRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUserWithoutAccess();
+        $user = User::factory()->createOne();
         $request = CreateRoleRequest::injectData([], $user);
 
         $this->assertFalse($request->authorize());

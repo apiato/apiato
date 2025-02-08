@@ -14,7 +14,8 @@ final class GetUserProfileTest extends ApiTestCase
 
     public function testCanGetOwnProfile(): void
     {
-        $user = $this->getTestingUser();
+        $user = User::factory()->createOne();
+        $this->actingAs($user);
 
         $response = $this->makeCall();
 
@@ -37,9 +38,7 @@ final class GetUserProfileTest extends ApiTestCase
 
     public function testCannotGetProfileByUnauthenticatedUser(): void
     {
-        $this->testingUser = User::factory()->createOne();
-
-        $response = $this->auth(false)->makeCall();
+        $response = $this->makeCall();
 
         $response->assertUnauthorized();
     }

@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAct
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 
@@ -26,7 +27,7 @@ final class RefreshProxyForWebClientActionTest extends UnitTestCase
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $this->getTestingUser($data);
+        User::factory()->createOne($data);
         $request = RefreshProxyRequest::injectData([
             'refresh_token' => $this->createRefreshTokenFor($data['email'], $data['password']),
         ]);
@@ -48,7 +49,7 @@ final class RefreshProxyForWebClientActionTest extends UnitTestCase
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $this->getTestingUser($data);
+        User::factory()->createOne($data);
         $request = RefreshProxyRequest::injectData(
             cookies: [
                 'refreshToken' => $this->createRefreshTokenFor($data['email'], $data['password']),

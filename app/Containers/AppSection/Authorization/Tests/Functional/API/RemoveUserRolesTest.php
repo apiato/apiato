@@ -13,10 +13,12 @@ final class RemoveUserRolesTest extends ApiTestCase
 {
     protected string $endpoint = 'delete@v1/users/{user_id}/roles';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => \App\Containers\AppSection\Authorization\Enums\Role::SUPER_ADMIN,
-    ];
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
+    }
 
     public function testRevokeRolesFromUser(): void
     {

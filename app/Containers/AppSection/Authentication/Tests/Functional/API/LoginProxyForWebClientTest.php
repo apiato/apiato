@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -24,7 +25,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $this->getTestingUser($data);
+        User::factory()->createOne($data);
 
         $response = $this->makeCall($data);
 
@@ -50,7 +51,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'password' => 'youShallNotPass',
             'name' => 'username',
         ];
-        $this->getTestingUser($data);
+        User::factory()->createOne($data);
         $this->setLoginAttributes([
             'email' => [],
             'name' => [],

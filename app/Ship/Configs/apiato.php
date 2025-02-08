@@ -1,7 +1,5 @@
 <?php
 
-use App\Containers\AppSection\User\Models\User;
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -65,23 +63,6 @@ return [
     'requests' => [
         /*
         |--------------------------------------------------------------------------
-        | Allow Roles to access all Routes
-        |--------------------------------------------------------------------------
-        |
-        | Define a list of roles that do not need to go through the "hasAccess"
-        | check in Requests. These roles automatically pass this check. This is
-        | useful, if you want to make all routes accessible for admin users.
-        |
-        | Usage: ['admin', 'editor']
-        | Default: []
-        |
-        */
-        'allow-roles-to-access-all-routes' => [
-            env('ADMIN_ROLE', 'admin'),
-        ],
-
-        /*
-        |--------------------------------------------------------------------------
         | Force Request Header to Contain header
         |--------------------------------------------------------------------------
         |
@@ -128,28 +109,5 @@ return [
             // TODO: BC: remove this after removing its usage in ResponseTrait in Core
             'filter' => 'filter',
         ],
-    ],
-
-    'tests' => [
-        /*
-        |--------------------------------------------------------------------------
-        | In order to be able to create testing user in your tests using test helpers, tests needs to know
-        | the name of the user model.This is working by default but if you are using another
-        | user model you should update this config.
-        | This user model MUST have a factory defined.
-        |--------------------------------------------------------------------------
-        |
-        */
-        'user-class' => User::class,
-
-        /*
-        |--------------------------------------------------------------------------
-        | In order to be able to create admin testing user in your tests using test helpers, tests needs to know
-        | the name of the admin state in user factory. This is working by default but if you are using another
-        | user model or you have changed the default admin state name you should update this config.
-        |--------------------------------------------------------------------------
-        |
-        */
-        'user-admin-state' => 'admin',
     ],
 ];

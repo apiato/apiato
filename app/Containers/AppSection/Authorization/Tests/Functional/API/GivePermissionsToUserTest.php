@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
-use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\Models\User;
@@ -14,14 +13,10 @@ final class GivePermissionsToUserTest extends ApiTestCase
 {
     protected string $endpoint = 'post@v1/users/{user_id}/permissions';
 
-    protected array $access = [
-        'permissions' => null,
-        'roles' => Role::SUPER_ADMIN,
-    ];
-
     public function testGiveSinglePermission(): void
     {
-        $user = User::factory()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
         $permission = Permission::factory()->createOne();
         $data = [
             'permission_ids' => [$permission->getHashedKey()],
@@ -43,7 +38,8 @@ final class GivePermissionsToUserTest extends ApiTestCase
 
     public function testGiveMultiplePermissions(): void
     {
-        $user = User::factory()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $data = [
@@ -67,7 +63,8 @@ final class GivePermissionsToUserTest extends ApiTestCase
 
     public function testGiveNonExistingPermission(): void
     {
-        $user = User::factory()->createOne();
+        $user = User::factory()->admin()->createOne();
+        $this->actingAs($user);
         $invalidId = 7777777;
         $data = [
             'permission_ids' => [hashids()->encode($invalidId)],

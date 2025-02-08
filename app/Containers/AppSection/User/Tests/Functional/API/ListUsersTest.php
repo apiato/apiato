@@ -14,7 +14,7 @@ final class ListUsersTest extends ApiTestCase
 
     public function testCanIndexUsersAsAdmin(): void
     {
-        $this->testingUser = User::factory()->admin()->createOne();
+        $this->actingAs(User::factory()->admin()->createOne());
         User::factory()->count(2)->create();
 
         $response = $this->makeCall();

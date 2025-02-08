@@ -15,16 +15,17 @@ final class UpdateUserPasswordTest extends ApiTestCase
 
     public function testCanUpdatePasswordAsOwner(): void
     {
-        $this->testingUser = User::factory()->createOne([
+        $user = User::factory()->createOne([
             'password' => 'Av@dakedavra!',
         ]);
+        $this->actingAs($user);
         $data = [
             'current_password' => 'Av@dakedavra!',
             'new_password' => 'updated#Password111',
             'new_password_confirmation' => 'updated#Password111',
         ];
 
-        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
@@ -32,11 +33,11 @@ final class UpdateUserPasswordTest extends ApiTestCase
                 'data',
                 fn (AssertableJson $json): AssertableJson => $json
                     ->where('object', 'User')
-                    ->where('email', $this->testingUser->email)
+                    ->where('email', $user->email)
                     ->missing('password')
                     ->etc(),
             )->etc(),
         );
-        $this->assertTrue(Hash::check($data['new_password'], $this->testingUser->refresh()->password));
+        $this->assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
     }
 }
