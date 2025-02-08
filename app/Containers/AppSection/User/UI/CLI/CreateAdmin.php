@@ -7,7 +7,7 @@ use App\Ship\Parents\Commands\Command as ParentCommand;
 
 final class CreateAdmin extends ParentCommand
 {
-    protected $signature = 'apiato:create:admin';
+    protected $signature = 'create:admin';
     protected $description = 'Create a new User with the ADMIN role';
 
     public function handle(CreateAdminAction $action): void
