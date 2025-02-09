@@ -5,18 +5,16 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\RegisterUserController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
 final class RegisterUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/register';
-
-    protected bool $auth = false;
-
     public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void
     {
         config()->set('appSection-authentication.require_email_verification', true);
@@ -28,7 +26,7 @@ final class RegisterUserTest extends ApiTestCase
             'verification_url' => 'http://some.test/known/url',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -46,7 +44,7 @@ final class RegisterUserTest extends ApiTestCase
             'password' => 's3cr3tPa$$',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -58,14 +56,14 @@ final class RegisterUserTest extends ApiTestCase
 
     public function testRegisterExistingUser(): void
     {
-        $userDetails = [
+        $data = [
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
-        User::factory()->createOne($userDetails);
+        User::factory()->createOne($data);
 
-        $response = $this->makeCall($userDetails);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -79,7 +77,7 @@ final class RegisterUserTest extends ApiTestCase
     {
         $data = [];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertUnprocessable();
         if (config('appSection-authentication.require_email_verification')) {
@@ -106,7 +104,7 @@ final class RegisterUserTest extends ApiTestCase
             'email' => 'missing-at.test',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -122,7 +120,7 @@ final class RegisterUserTest extends ApiTestCase
             'password' => '((((()))))',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -148,7 +146,7 @@ final class RegisterUserTest extends ApiTestCase
             'verification_url' => 'http://notallowed.test/wrong/hopyfuly/noone/make/a/route/like/this',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -170,7 +168,8 @@ final class RegisterUserTest extends ApiTestCase
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
+
         $registeredUser = User::find(hashids()->decode($response->json()['data']['id']));
         $response->assertOk();
         Notification::assertSentTo($registeredUser, Welcome::class);
