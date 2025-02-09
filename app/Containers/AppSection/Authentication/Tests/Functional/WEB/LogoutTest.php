@@ -18,7 +18,7 @@ final class LogoutTest extends WebTestCase
         $response = $this->post('logout');
 
         $response->assertRedirect(action(HomePageController::class));
-        $this->assertFalse(auth('web')->check());
+        $this->assertGuest('web');
     }
 
     public function testLogoutWhileUnauthenticated(): void
