@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Ship\Exceptions\CreateResourceFailed;
+use App\Ship\Exceptions\ResourceCreationFailed;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -30,7 +30,7 @@ final class CreateUserTaskTest extends UnitTestCase
 
     public function testCreateUserWithInvalidData(): void
     {
-        $this->expectException(CreateResourceFailed::class);
+        $this->expectException(ResourceCreationFailed::class);
         $this->expectExceptionMessage('User creation failed.');
 
         $data = [

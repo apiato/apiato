@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
-use App\Ship\Exceptions\CreateResourceFailed;
+use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class RegisterUserAction extends ParentAction
@@ -19,7 +19,7 @@ class RegisterUserAction extends ParentAction
     }
 
     /**
-     * @throws CreateResourceFailed
+     * @throws ResourceCreationFailed
      */
     public function run(RegisterUserRequest $request): User
     {
