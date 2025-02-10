@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class ResourceNotFound extends ParentHttpException
 {
-    public static function create(string $resourceName = 'Resource'): static
+    public static function create(string $resourceName = 'Resource'): self
     {
         return new self(Response::HTTP_NOT_FOUND, "{$resourceName} not found.");
     }
