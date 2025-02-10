@@ -51,4 +51,13 @@ final class UpdateUserTest extends ApiTestCase
         );
         $this->assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
     }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->patchJson(URL::action(UpdateUserController::class, User::factory()->createOne()->getHashedKey()));
+
+        $response->assertForbidden();
+    }
 }

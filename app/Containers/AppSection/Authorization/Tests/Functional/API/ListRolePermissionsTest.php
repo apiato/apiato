@@ -32,4 +32,13 @@ final class ListRolePermissionsTest extends ApiTestCase
             )->etc(),
         );
     }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->injectId(Role::factory()->createOne()->id, replace: '{role_id}')->makeCall();
+
+        $response->assertForbidden();
+    }
 }

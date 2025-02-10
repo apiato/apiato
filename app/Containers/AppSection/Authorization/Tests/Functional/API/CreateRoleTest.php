@@ -54,7 +54,7 @@ final class CreateRoleTest extends ApiTestCase
         );
     }
 
-    public function testGivenHaveNoAccessCannotCreateRole(): void
+    public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());
 

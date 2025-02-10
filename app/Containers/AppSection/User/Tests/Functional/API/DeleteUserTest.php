@@ -12,14 +12,14 @@ final class DeleteUserTest extends ApiTestCase
     protected string $endpoint = 'delete@v1/users/{user_id}';
     protected string $myUrl = 'v1/users/{user_id}';
 
-    public function testCanDeleteSelfAsAdmin(): void
+    public function testCannotDeleteSelf(): void
     {
         $user = User::factory()->admin()->createOne();
         $this->actingAs($user);
 
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
 
-        $response->assertNoContent();
+        $response->assertUnprocessable();
     }
 
     public function testCanDeleteAnotherUserAsAdmin(): void
@@ -30,5 +30,14 @@ final class DeleteUserTest extends ApiTestCase
         $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
 
         $response->assertNoContent();
+    }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->makeCall();
+
+        $response->assertForbidden();
     }
 }

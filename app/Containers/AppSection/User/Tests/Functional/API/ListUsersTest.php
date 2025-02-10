@@ -25,4 +25,13 @@ final class ListUsersTest extends ApiTestCase
                 ->etc(),
         );
     }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->makeCall();
+
+        $response->assertForbidden();
+    }
 }

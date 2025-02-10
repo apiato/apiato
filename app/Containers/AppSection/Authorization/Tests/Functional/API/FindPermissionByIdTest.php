@@ -13,7 +13,7 @@ final class FindPermissionByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/permissions/{permission_id}';
 
-    public function testFindPermissionById(): void
+    public function testCanFindPermissionById(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
         $permission = Permission::factory()->createOne();
@@ -28,5 +28,14 @@ final class FindPermissionByIdTest extends ApiTestCase
                     ->etc(),
             )->etc(),
         );
+    }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->makeCall();
+
+        $response->assertForbidden();
     }
 }

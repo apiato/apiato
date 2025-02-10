@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsRequest;
-use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SyncRolePermissionsRequest::class)]
@@ -29,14 +28,6 @@ final class SyncRolePermissionsRequestTest extends UnitTestCase
             'permission_ids' => 'array|required',
             'permission_ids.*' => 'required|exists:permissions,id',
         ], $rules);
-    }
-
-    public function testAuthorizeMethodGateCall(): void
-    {
-        $user = User::factory()->createOne();
-        $request = SyncRolePermissionsRequest::injectData([], $user);
-
-        $this->assertFalse($request->authorize());
     }
 
     protected function setUp(): void

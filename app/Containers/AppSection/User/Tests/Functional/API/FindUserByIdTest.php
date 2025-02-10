@@ -12,9 +12,9 @@ final class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{user_id}';
 
-    public function testCanFindSelfAsAdmin(): void
+    public function testCanFindSelf(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->createOne();
         $this->actingAs($user);
 
         $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();

@@ -13,7 +13,7 @@ final class FindRoleByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/roles/{role_id}';
 
-    public function testFindRoleById(): void
+    public function testCanFindRoleById(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
         $roleA = Role::factory()->createOne();
@@ -28,5 +28,14 @@ final class FindRoleByIdTest extends ApiTestCase
                 ->etc(),
             )->etc(),
         );
+    }
+
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+
+        $response = $this->makeCall();
+
+        $response->assertForbidden();
     }
 }

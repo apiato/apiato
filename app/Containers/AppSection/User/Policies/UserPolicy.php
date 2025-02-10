@@ -27,9 +27,11 @@ class UserPolicy extends ParentPolicy
         return false;
     }
 
-    public function show(): bool
+    public function show(User $user, int $userId): bool
     {
-        return false;
+        $entity = $this->userRepository->findById($userId);
+
+        return $user->is($entity);
     }
 
     public function index(): bool

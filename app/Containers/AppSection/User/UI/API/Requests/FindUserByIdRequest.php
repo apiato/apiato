@@ -19,6 +19,6 @@ class FindUserByIdRequest extends ParentRequest
 
     public function authorize(Gate $gate): bool
     {
-        return $gate->allows('show', [User::class]);
+        return $gate->allows('show', [User::class, $this->user_id]);
     }
 }
