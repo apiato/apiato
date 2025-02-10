@@ -10,6 +10,7 @@ class ContainerTestCase extends ParentTestCase
     private int $clientId;
     private string $clientSecret;
 
+    // TODO
     public function enrichWithPasswordGrantFields(string $email, string $password): array
     {
         return [
@@ -22,6 +23,7 @@ class ContainerTestCase extends ParentTestCase
         ];
     }
 
+    // TODO
     protected function setupPasswordGrantClient(): void
     {
         $passwordClient = Client::query()
