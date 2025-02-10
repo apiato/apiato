@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
+use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
@@ -11,9 +12,9 @@ class AuthorizationSeeder_1 extends ParentSeeder
     {
         foreach (array_keys(config('auth.guards')) as $guardName) {
             $task->run(
-                config('appSection-authorization.admin_role'),
+                Role::SUPER_ADMIN->value,
                 'Administrator',
-                'Administrator Role',
+                Role::SUPER_ADMIN->label(),
                 $guardName,
             );
         }

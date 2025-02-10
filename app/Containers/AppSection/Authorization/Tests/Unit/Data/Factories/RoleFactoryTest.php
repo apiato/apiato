@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
+use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Enums\AuthGuard;
@@ -22,14 +23,13 @@ final class RoleFactoryTest extends UnitTestCase
     {
         // Since 'admin' is seeded in the database, we need to delete it first
         // to avoid "duplicate key" error.
-        $roleName = config('appSection-authorization.admin_role');
-        $adminRole = Role::findByName($roleName);
+        $adminRole = Role::findByName(RoleEnum::SUPER_ADMIN->value);
         $adminRole->delete();
         $this->assertModelMissing($adminRole);
 
         $role = Role::factory()->admin()->createOne();
 
-        $this->assertSame($roleName, $role->name);
+        $this->assertSame(RoleEnum::SUPER_ADMIN->value, $role->name);
     }
 
     public function testCanSetGuard(): void

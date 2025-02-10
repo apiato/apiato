@@ -11,7 +11,7 @@ class SuperAdminSeeder_2 extends ParentSeeder
     {
         $userData = [
             'email' => 'admin@admin.com',
-            'password' => config('appSection-authorization.admin_role'),
+            'password' => 'admin',
             'name' => 'Super Admin',
         ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\Data\Factories;
 
+use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
@@ -35,7 +36,7 @@ class UserFactory extends ParentFactory
     public function admin(): static
     {
         return $this->afterCreating(function (User $user) {
-            $user->assignRole(config('appSection-authorization.admin_role'));
+            app(RoleRepository::class)->makeSuperAdmin($user);
         });
     }
 

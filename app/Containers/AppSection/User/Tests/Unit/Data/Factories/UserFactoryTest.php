@@ -22,7 +22,7 @@ final class UserFactoryTest extends UnitTestCase
     {
         $user = User::factory()->admin()->createOne();
 
-        $this->assertTrue($user->hasRole(config('appSection-authorization.admin_role')));
+        $this->assertTrue($user->isSuperAdmin());
     }
 
     public function testCanCreateUnverifiedUser(): void

@@ -28,8 +28,13 @@ class RoleRepository extends ParentRepository
         return config('permission.models.role');
     }
 
-    public function isSuperAdmin(User $user): bool
+    public function makeSuperAdmin(User $user): User
     {
-        return $user->hasRole(RoleEnum::SUPER_ADMIN);
+        foreach (array_keys(config('auth.guards')) as $guard) {
+            $role = $this->getModel()->findByName(RoleEnum::SUPER_ADMIN->value, $guard);
+            $user->assignRole($role);
+        }
+
+        return $user;
     }
 }

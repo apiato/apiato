@@ -16,18 +16,17 @@ final class AssignRolesToUserTest extends ApiTestCase
     public function testAssignRoleToUser(): void
     {
         $user = User::factory()->admin()->createOne();
-        $this->actingAs($user);
         $role = Role::factory()->createOne();
         $data = [
             'role_ids' => [$role->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->actingAs($user)->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->has('data.roles.data', 2)
+                ->has('data.roles.data', 3)
                 ->etc(),
         );
     }
@@ -35,7 +34,6 @@ final class AssignRolesToUserTest extends ApiTestCase
     public function testAssignManyRolesToUser(): void
     {
         $user = User::factory()->admin()->createOne();
-        $this->actingAs($user);
         $role1 = Role::factory()->createOne();
         $role2 = Role::factory()->createOne();
         $data = [
@@ -45,12 +43,12 @@ final class AssignRolesToUserTest extends ApiTestCase
             ],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->actingAs($user)->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->has('data.roles.data', 3)
+                ->has('data.roles.data', 4)
                 ->etc(),
         );
     }
