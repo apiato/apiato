@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\FindPermissionByIdController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -11,14 +12,15 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class FindPermissionByIdTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/permissions/{permission_id}';
-
     public function testCanFindPermissionById(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
         $permission = Permission::factory()->createOne();
 
-        $response = $this->injectId($permission->id, replace: '{permission_id}')->makeCall();
+        $response = $this->getJson(action(
+            FindPermissionByIdController::class,
+            ['permission_id' => $permission->getHashedKey()],
+        ));
 
         $response->assertOk();
         $response->assertJson(
@@ -34,7 +36,10 @@ final class FindPermissionByIdTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->makeCall();
+        $response = $this->getJson(action(
+            FindPermissionByIdController::class,
+            ['permission_id' => Permission::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
     }

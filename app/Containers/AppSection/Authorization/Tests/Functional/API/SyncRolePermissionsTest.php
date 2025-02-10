@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncRolePermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -12,8 +13,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class SyncRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'put@v1/roles/{role_id}/permissions';
-
     public function testSyncDuplicatedPermissionsToRole(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
@@ -25,7 +24,10 @@ final class SyncRolePermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->putJson(action(
+            SyncRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -48,7 +50,10 @@ final class SyncRolePermissionsTest extends ApiTestCase
             'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->putJson(action(
+            SyncRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -66,7 +71,10 @@ final class SyncRolePermissionsTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(Role::factory()->createOne()->id, replace: '{role_id}')->makeCall();
+        $response = $this->putJson(action(
+            SyncRolePermissionsController::class,
+            ['role_id' => Role::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
     }

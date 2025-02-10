@@ -4,20 +4,19 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\UI\API\Controllers\FindUserByIdController;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
 final class FindUserByIdTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/users/{user_id}';
-
     public function testCanFindSelf(): void
     {
         $user = User::factory()->createOne();
         $this->actingAs($user);
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
+        $response = $this->getJson(action(FindUserByIdController::class, ['user_id' => $user->getHashedKey()]));
 
         $response->assertOk();
         $response->assertJson(

@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\GivePermissionsToUserController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -11,8 +12,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class GivePermissionsToUserTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/users/{user_id}/permissions';
-
     public function testGiveSinglePermission(): void
     {
         $user = User::factory()->admin()->createOne();
@@ -22,7 +21,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [$permission->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->postJson(action(GivePermissionsToUserController::class, ['user_id' => $user->getHashedKey()]), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -46,7 +45,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->postJson(action(GivePermissionsToUserController::class, ['user_id' => $user->getHashedKey()]), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -70,7 +69,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
             'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->postJson(action(GivePermissionsToUserController::class, ['user_id' => $user->getHashedKey()]), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -88,7 +87,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
+        $response = $this->postJson(action(GivePermissionsToUserController::class, ['user_id' => User::factory()->createOne()->getHashedKey()]));
 
         $response->assertForbidden();
     }

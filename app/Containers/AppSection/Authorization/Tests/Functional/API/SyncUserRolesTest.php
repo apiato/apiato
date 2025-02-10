@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncUserRolesController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -11,15 +12,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class SyncUserRolesTest extends ApiTestCase
 {
-    protected string $endpoint = 'put@v1/users/{user_id}/roles';
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
-    }
-
     public function testSyncMultipleRolesOnUser(): void
     {
         $role1 = Role::factory()->createOne();
@@ -33,7 +25,10 @@ final class SyncUserRolesTest extends ApiTestCase
             ],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->putJson(action(
+            SyncUserRolesController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -53,7 +48,10 @@ final class SyncUserRolesTest extends ApiTestCase
             'role_ids' => [hashids()->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->putJson(action(
+            SyncUserRolesController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -71,8 +69,18 @@ final class SyncUserRolesTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
+        $response = $this->putJson(action(
+            SyncUserRolesController::class,
+            ['user_id' => User::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
     }
 }

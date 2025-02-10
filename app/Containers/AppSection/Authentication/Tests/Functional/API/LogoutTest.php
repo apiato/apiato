@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
 use App\Containers\AppSection\Authentication\Tests\FunctionalTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
 use App\Containers\AppSection\User\Models\User;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -11,8 +12,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ApiLogoutAction::class)]
 final class LogoutTest extends FunctionalTestCase
 {
-    protected string $endpoint = 'post@v1/logout';
-
     public function testCanLogout(): void
     {
         $user = User::factory()->create();
@@ -21,7 +20,7 @@ final class LogoutTest extends FunctionalTestCase
         Passport::actingAs($user, ['*'])->withAccessToken($accessToken);
         $this->assertFalse($accessToken->revoked);
 
-        $response = $this->makeCall();
+        $response = $this->postJson(action(LogoutController::class));
 
         $response->assertAccepted();
         $this->assertTrue($accessToken->refresh()->revoked);

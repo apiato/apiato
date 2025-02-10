@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\ListRolePermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -12,8 +13,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class ListRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/roles/{role_id}/permissions';
-
     public function testGetRolePermissions(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
@@ -21,7 +20,10 @@ final class ListRolePermissionsTest extends ApiTestCase
         $permission = Permission::factory()->createOne();
         $role->givePermissionTo([$permission]);
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall();
+        $response = $this->getJson(action(
+            ListRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ));
 
         $response->assertOk();
         $response->assertJson(
@@ -37,7 +39,10 @@ final class ListRolePermissionsTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(Role::factory()->createOne()->id, replace: '{role_id}')->makeCall();
+        $response = $this->getJson(action(
+            ListRolePermissionsController::class,
+            ['role_id' => Role::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
     }

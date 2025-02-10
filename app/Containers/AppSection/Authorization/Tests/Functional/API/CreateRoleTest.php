@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\CreateRoleController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -10,8 +11,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class CreateRoleTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/roles';
-
     public function testCreateRole(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
@@ -22,7 +21,7 @@ final class CreateRoleTest extends ApiTestCase
             'description' => 'he manages things',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(CreateRoleController::class), $data);
 
         $response->assertCreated();
         $response->assertJson(
@@ -44,7 +43,7 @@ final class CreateRoleTest extends ApiTestCase
             'description' => 'he manages things',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(CreateRoleController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -58,7 +57,7 @@ final class CreateRoleTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->makeCall();
+        $response = $this->postJson(action(CreateRoleController::class));
 
         $response->assertForbidden();
     }

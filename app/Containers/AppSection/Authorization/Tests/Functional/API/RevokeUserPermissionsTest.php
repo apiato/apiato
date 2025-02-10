@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeUserPermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -11,27 +12,20 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class RevokeUserPermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/users/{user_id}/permissions';
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
-    }
-
     public function testDetachSinglePermissionFromUser(): void
     {
         $user = User::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $user->givePermissionTo([$permissionA, $permissionB]);
-
         $data = [
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeUserPermissionsController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -51,14 +45,15 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $permissionC = Permission::factory()->createOne();
-
         $user->givePermissionTo([$permissionA, $permissionB, $permissionC]);
-
         $data = [
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeUserPermissionsController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -79,7 +74,10 @@ final class RevokeUserPermissionsTest extends ApiTestCase
             'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeUserPermissionsController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -97,8 +95,18 @@ final class RevokeUserPermissionsTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
+        $response = $this->deleteJson(action(
+            RevokeUserPermissionsController::class,
+            ['user_id' => User::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
     }
 }

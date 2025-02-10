@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\UI\API\Controllers\UpdatePasswordController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -11,8 +12,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class UpdatePasswordTest extends ApiTestCase
 {
-    protected string $endpoint = 'patch@v1/users/{user_id}/password';
-
     public function testCanUpdatePasswordAsOwner(): void
     {
         $user = User::factory()->createOne([
@@ -25,7 +24,10 @@ final class UpdatePasswordTest extends ApiTestCase
             'new_password_confirmation' => 'updated#Password111',
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $response = $this->patch(action(
+            UpdatePasswordController::class,
+            ['user_id' => $user->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -45,7 +47,10 @@ final class UpdatePasswordTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(User::factory()->createOne()->id, replace: '{user_id}')->makeCall();
+        $response = $this->patch(action(
+            UpdatePasswordController::class,
+            ['user_id' => User::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
     }

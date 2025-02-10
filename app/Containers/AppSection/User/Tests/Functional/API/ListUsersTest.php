@@ -4,20 +4,19 @@ namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\UI\API\Controllers\ListUsersController;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
 final class ListUsersTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/users';
-
     public function testCanIndexUsersAsAdmin(): void
     {
         $this->actingAs(User::factory()->admin()->createOne());
         User::factory()->count(2)->create();
 
-        $response = $this->makeCall();
+        $response = $this->getJson(action(ListUsersController::class));
 
         $response->assertOk();
         $response->assertJson(
@@ -30,7 +29,7 @@ final class ListUsersTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->makeCall();
+        $response = $this->getJson(action(ListUsersController::class));
 
         $response->assertForbidden();
     }

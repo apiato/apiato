@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\SendVerificationEmailController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -12,8 +13,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class SendVerificationEmailTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/email/verification-notification';
-
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         Notification::fake();
@@ -24,7 +23,7 @@ final class SendVerificationEmailTest extends ApiTestCase
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(SendVerificationEmailController::class), $data);
 
         $response->assertAccepted();
         Notification::assertSentTo($user, VerifyEmail::class);
@@ -37,7 +36,7 @@ final class SendVerificationEmailTest extends ApiTestCase
         $this->actingAs($user);
         $data = [];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(SendVerificationEmailController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(
@@ -57,7 +56,7 @@ final class SendVerificationEmailTest extends ApiTestCase
             'verification_url' => 'http://notallowed.test/wrong',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(SendVerificationEmailController::class), $data);
 
         $response->assertUnprocessable();
         $response->assertJson(

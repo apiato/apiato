@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\EmailVerified;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\VerifyEmailController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
@@ -12,8 +13,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class VerifyEmailTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/email/verify/{user_id}/{hash}';
-
     public function testVerifyEmail(): void
     {
         Notification::fake();
@@ -34,10 +33,14 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = $match[preg_match('/signature=(.*)/', $url, $match)];
 
-        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
-            ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
-            ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
-            ->makeCall();
+        $response = $this->postJson(
+            action(VerifyEmailController::class, [
+                'user_id' => $unverifiedUser->getHashedKey(),
+                'hash' => $hashedEmail,
+                'expires' => $expires,
+                'signature' => $signature,
+            ]),
+        );
 
         $response->assertOk();
         $unverifiedUser->refresh();
@@ -65,10 +68,14 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = 'invalid_sig';
 
-        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
-            ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
-            ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
-            ->makeCall();
+        $response = $this->postJson(
+            action(VerifyEmailController::class, [
+                'user_id' => $unverifiedUser->getHashedKey(),
+                'hash' => $hashedEmail,
+                'expires' => $expires,
+                'signature' => $signature,
+            ]),
+        );
 
         $response->assertForbidden();
     }

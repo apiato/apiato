@@ -5,6 +5,7 @@ namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRolePermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -12,15 +13,6 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 #[CoversNothing]
 final class RevokeRolePermissionsTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/roles/{role_id}/permissions';
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
-    }
-
     public function testDetachSinglePermissionFromRole(): void
     {
         $permissionA = Permission::factory()->createOne();
@@ -31,7 +23,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -55,7 +50,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
             'permission_ids' => [$permissionA->getHashedKey(), $permissionC->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ), $data);
 
         $response->assertOk();
         $response->assertJson(
@@ -76,7 +74,10 @@ final class RevokeRolePermissionsTest extends ApiTestCase
             'permission_ids' => [hashids()->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $response = $this->deleteJson(action(
+            RevokeRolePermissionsController::class,
+            ['role_id' => $role->getHashedKey()],
+        ), $data);
 
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
@@ -93,8 +94,18 @@ final class RevokeRolePermissionsTest extends ApiTestCase
     {
         $this->actingAs(User::factory()->createOne());
 
-        $response = $this->injectId(Role::factory()->createOne()->id, replace: '{role_id}')->makeCall();
+        $response = $this->deleteJson(action(
+            RevokeRolePermissionsController::class,
+            ['role_id' => Role::factory()->createOne()->getHashedKey()],
+        ));
 
         $response->assertForbidden();
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->admin()->createOne());
     }
 }
