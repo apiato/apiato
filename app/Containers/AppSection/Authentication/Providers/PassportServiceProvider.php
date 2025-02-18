@@ -15,12 +15,7 @@ class PassportServiceProvider extends ParentServiceProvider
 
     public function boot(): void
     {
-        if (config('apiato.api.enabled-implicit-grant')) {
-            Passport::enableImplicitGrant();
-        }
-
         Passport::enablePasswordGrant();
-
         Passport::tokensExpireIn(Carbon::now()->addMinutes((int) config('apiato.api.expires-in')));
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes((int) config('apiato.api.refresh-expires-in')));
     }
