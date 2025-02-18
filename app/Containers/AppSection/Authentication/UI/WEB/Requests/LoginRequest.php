@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Ship\Parents\Requests\Request as ParentRequest;
+use Illuminate\Validation\Rules\Password;
 
 class LoginRequest extends ParentRequest
 {
@@ -12,7 +13,7 @@ class LoginRequest extends ParentRequest
     public function rules(): array
     {
         $rules = [
-            'password' => 'required',
+            'password' => Password::required(),
             'remember' => 'boolean',
         ];
 
