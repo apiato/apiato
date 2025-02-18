@@ -45,6 +45,7 @@ final class PermissionTest extends ShipTestCase
                 'store' => 'default',
             ],
             'team_resolver' => DefaultTeamResolver::class,
+            'events_enabled' => false
         ];
 
         $this->assertEquals($expected, $config);

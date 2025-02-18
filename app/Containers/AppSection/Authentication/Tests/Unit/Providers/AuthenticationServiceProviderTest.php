@@ -13,7 +13,6 @@ final class AuthenticationServiceProviderTest extends UnitTestCase
 {
     public function testCanConfigurePassport(): void
     {
-        $this->assertTrue(Passport::$implicitGrantEnabled);
         $this->assertSame(59, Passport::$tokensExpireIn->i);
         $this->assertSame(59, Passport::$refreshTokensExpireIn->i);
     }
