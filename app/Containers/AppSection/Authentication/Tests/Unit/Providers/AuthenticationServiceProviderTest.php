@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
-use App\Containers\AppSection\Authentication\Providers\AuthenticationServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\PassportServiceProvider;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(AuthenticationServiceProvider::class)]
+#[CoversClass(PassportServiceProvider::class)]
 final class AuthenticationServiceProviderTest extends UnitTestCase
 {
     public function testCanConfigurePassport(): void

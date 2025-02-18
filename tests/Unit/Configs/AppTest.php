@@ -76,7 +76,7 @@ use Illuminate\Validation\ValidationServiceProvider;
 use Illuminate\View\ViewServiceProvider;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use App\Containers\AppSection\User\Providers\UserServiceProvider;
-use App\Containers\AppSection\Authentication\Providers\AuthenticationServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\PassportServiceProvider;
 use App\Ship\Providers\ShipServiceProvider;
 
 #[CoversNothing]
@@ -133,7 +133,7 @@ final class AppTest extends ShipTestCase
                 ValidationServiceProvider::class,
                 ViewServiceProvider::class,
                 ShipServiceProvider::class,
-                AuthenticationServiceProvider::class,
+                PassportServiceProvider::class,
                 UserServiceProvider::class,
             ],
             'aliases' => [
