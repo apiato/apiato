@@ -5,6 +5,8 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\AppSection\User\Models\User;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -30,11 +32,6 @@ final class RegisterUserRequestTest extends UnitTestCase
             'name' => 'min:2|max:50',
             'gender' => Rule::enum(Gender::class),
             'birth' => 'date',
-            'verification_url' => [
-                'url',
-                Rule::requiredIf(static fn (): bool => config('appSection-authentication.require_email_verification')),
-                Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
-            ],
         ], $this->request->rules());
     }
 

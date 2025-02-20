@@ -2,12 +2,10 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\Models;
 
-use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(User::class)]
@@ -24,7 +22,7 @@ final class UserTest extends UnitTestCase
     public function testHasCorrectFillableFields(): void
     {
         $user = User::factory()->createOne();
-        $fillables = [
+        $fillable = [
             'name',
             'email',
             'password',
@@ -32,7 +30,7 @@ final class UserTest extends UnitTestCase
             'birth',
         ];
 
-        $this->assertSame($fillables, $user->getFillable());
+        $this->assertSame($fillable, $user->getFillable());
     }
 
     public function testHasCorrectCasts(): void
@@ -65,25 +63,6 @@ final class UserTest extends UnitTestCase
         $user = User::factory()->createOne();
 
         $this->assertSame('User', $user->getResourceKey());
-    }
-
-    public function testSendEmailVerificationNotificationWithVerificationUrl(): void
-    {
-        Notification::fake();
-        $user = User::factory()->createOne();
-
-        $user->sendEmailVerificationNotificationWithVerificationUrl('http://localhost');
-
-        Notification::assertSentTo($user, VerifyEmail::class);
-    }
-
-    public function testGetHashedEmailForVerification(): void
-    {
-        $user = User::factory()->createOne();
-
-        $hashedEmail = $user->getHashedEmailForVerification();
-
-        $this->assertSame(sha1((string) $user->getEmailForVerification()), $hashedEmail);
     }
 
     public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void

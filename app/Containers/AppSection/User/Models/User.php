@@ -2,12 +2,11 @@
 
 namespace App\Containers\AppSection\User\Models;
 
-use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
-use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends ParentUserModel implements MustVerifyEmail
@@ -35,16 +34,6 @@ class User extends ParentUserModel implements MustVerifyEmail
     public function newCollection(array $models = []): UserCollection
     {
         return new UserCollection($models);
-    }
-
-    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
-    {
-        $this->notify(new VerifyEmail($verificationUrl));
-    }
-
-    final public function getHashedEmailForVerification(): string
-    {
-        return sha1($this->getEmailForVerification());
     }
 
     /**

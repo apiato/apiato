@@ -1,25 +1,27 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
+namespace App\Containers\AppSection\Authentication\Tests\Functional\API\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Notifications\EmailVerified;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Controllers\VerifyEmailController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification\VerifyController;
 use App\Containers\AppSection\User\Models\User;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
-final class VerifyEmailTest extends ApiTestCase
+final class VerifyTest extends ApiTestCase
 {
     public function testVerifyEmail(): void
     {
+        if (!is_a(User::class, MustVerifyEmail::class, true)) {
+            $this->markTestSkipped();
+        }
         Notification::fake();
         $unverifiedUser = User::factory()->unverified()->createOne();
         $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
-        // enable email verification
-        config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),
@@ -34,7 +36,7 @@ final class VerifyEmailTest extends ApiTestCase
         $signature = $match[preg_match('/signature=(.*)/', $url, $match)];
 
         $response = $this->postJson(
-            action(VerifyEmailController::class, [
+            action(VerifyController::class, [
                 'user_id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
                 'expires' => $expires,
@@ -50,11 +52,12 @@ final class VerifyEmailTest extends ApiTestCase
 
     public function testVerifyEmailShouldNotBeAcceptedIfRoutesSignatureIsNotVerified(): void
     {
+        if (!is_a(User::class, MustVerifyEmail::class, true)) {
+            $this->markTestSkipped();
+        }
         Notification::fake();
         $unverifiedUser = User::factory()->unverified()->createOne();
         $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
-        // enable email verification
-        config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),
@@ -69,7 +72,7 @@ final class VerifyEmailTest extends ApiTestCase
         $signature = 'invalid_sig';
 
         $response = $this->postJson(
-            action(VerifyEmailController::class, [
+            action(VerifyController::class, [
                 'user_id' => $unverifiedUser->getHashedKey(),
                 'hash' => $hashedEmail,
                 'expires' => $expires,

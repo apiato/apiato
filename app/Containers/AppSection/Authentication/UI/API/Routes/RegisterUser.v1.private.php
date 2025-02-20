@@ -5,9 +5,9 @@
  *
  * @apiName            RegisterUser
  *
- * @api                {post} /v1/register Register User (create client)
+ * @api                {post} /v1/register Register User
  *
- * @apiDescription     Register users as (client).
+ * @apiDescription     Register a new user
  *
  * @apiVersion         1.0.0
  *
@@ -31,7 +31,6 @@
  * @apiParam           {String} [name] min:2|max:50
  * @apiParam           {String="male","female","unspecified"} [gender]
  * @apiParam           {Date} [birth] format: Y-m-d / e.g. 2015-10-15
- * @apiParam           {String} [verification_url] requireIf:email_verification_required|url|in:allowed-verify-email-urls
  *
  * @apiUse             UserSuccessSingleResponse
  */

@@ -22,11 +22,6 @@ class RegisterUserRequest extends ParentRequest
             'name' => 'min:2|max:50',
             'gender' => Rule::enum(Gender::class),
             'birth' => 'date',
-            'verification_url' => [
-                'url',
-                Rule::requiredIf(static fn (): bool => config('appSection-authentication.require_email_verification')),
-                Rule::in(config('appSection-authentication.allowed-verify-email-urls')),
-            ],
         ];
     }
 }

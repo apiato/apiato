@@ -2,19 +2,17 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\Notifications\Welcome;
-use App\Containers\AppSection\Authentication\Tasks\SendVerificationEmailTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterUserAction extends ParentAction
 {
     public function __construct(
         private readonly CreateUserTask $createUserTask,
-        private readonly SendVerificationEmailTask $sendVerificationEmailTask,
     ) {
     }
 
@@ -33,8 +31,7 @@ class RegisterUserAction extends ParentAction
 
         $user = $this->createUserTask->run($sanitizedData);
 
-        $user->notify(new Welcome());
-        $this->sendVerificationEmailTask->run($user, $request->verification_url);
+        event(new Registered($user));
 
         return $user;
     }

@@ -14,7 +14,7 @@ return [
         | API URL
         |--------------------------------------------------------------------------
         */
-        'url' => env('API_URL', 'http://localhost'),
+        'url' => env('API_URL', 'http://localhost:3000'),
 
         /*
         |--------------------------------------------------------------------------
@@ -50,6 +50,12 @@ return [
             'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
             'attempts' => env('GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN', '30'),
             'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
+        ],
+    ],
+
+    'frontend' => [
+        'urls' => [
+            'web' => env('FRONTEND_URL', 'http://localhost:3000'),
         ],
     ],
 

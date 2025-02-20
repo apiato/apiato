@@ -24,6 +24,11 @@ final class ApiatoTest extends ShipTestCase
                     'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
                 ],
             ],
+            'frontend' => [
+                'urls' => [
+                    'web' => env('FRONTEND_URL', 'http://localhost:3000'),
+                ],
+            ],
             'requests' => [
                 'force-accept-header' => false,
                 'use-etag' => false,

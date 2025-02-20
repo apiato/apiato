@@ -5,6 +5,7 @@ namespace Tests\Unit\Configs;
 use Apiato\Console\CommandServiceProvider;
 use Apiato\Generator\GeneratorsServiceProvider;
 use Apiato\Macros\MacroServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\EmailVerificationServiceProvider;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Auth\AuthServiceProvider;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider;
@@ -133,6 +134,7 @@ final class AppTest extends ShipTestCase
                 ValidationServiceProvider::class,
                 ViewServiceProvider::class,
                 ShipServiceProvider::class,
+                EmailVerificationServiceProvider::class,
                 PassportServiceProvider::class,
                 UserServiceProvider::class,
             ],

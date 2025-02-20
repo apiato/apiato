@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification;
+
+use App\Containers\AppSection\Authentication\Actions\EmailVerification\SendAction;
+use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\SendRequest;
+use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
+
+class SendController extends ApiController
+{
+    public function __invoke(SendRequest $request, SendAction $action): JsonResponse
+    {
+        $action->run($request);
+
+        return $this->accepted();
+    }
+}

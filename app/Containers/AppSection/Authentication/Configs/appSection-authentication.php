@@ -3,19 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Email Confirmation
-    |--------------------------------------------------------------------------
-    |
-    | When set to true, the user must verify his email before being able to
-    | Login, after his registration.
-    |
-    */
-
-    'require_email_verification' => env('REQUIRE_EMAIL_VERIFICATION', true),
-    'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30),
-
-    /*
-    |--------------------------------------------------------------------------
     | Clients
     |--------------------------------------------------------------------------
     |
@@ -85,18 +72,6 @@ return [
     |
     */
     'allowed-reset-password-urls' => [
-        env('APP_URL', 'http://api.apiato.test/v1') . '/password/reset',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Verify Email URLs
-    |--------------------------------------------------------------------------
-    |
-    | Insert your allowed verify email urls which user can request to be injected into the email.
-    |
-*/
-    'allowed-verify-email-urls' => [
-        env('APP_URL', 'http://api.apiato.test/v1') . '/email/verify',
+        env('FRONTEND_URL', 'http://localhost:3000') . '/password/reset',
     ],
 ];
