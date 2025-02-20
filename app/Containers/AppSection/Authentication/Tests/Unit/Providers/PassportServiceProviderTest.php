@@ -9,7 +9,7 @@ use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PassportServiceProvider::class)]
-final class AuthenticationServiceProviderTest extends UnitTestCase
+final class PassportServiceProviderTest extends UnitTestCase
 {
     public function testCanConfigurePassport(): void
     {
