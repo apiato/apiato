@@ -16,7 +16,6 @@ class SendActionTest extends UnitTestCase
 {
     public function testCanSendVerificationEmail(): void
     {
-        $verificationEnabled = is_a(User::class, MustVerifyEmail::class, true);
         Notification::fake();
         $user = User::factory()->unverified()->createOne();
         $action = app(SendAction::class);
@@ -24,6 +23,7 @@ class SendActionTest extends UnitTestCase
 
         $action->run($request);
 
+        $verificationEnabled = is_a($user, MustVerifyEmail::class);
         if ($verificationEnabled) {
             Notification::assertSentTo($user, VerifyEmail::class);
         }
