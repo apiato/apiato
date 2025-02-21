@@ -38,6 +38,7 @@ class User extends ParentUserModel implements MustVerifyEmail
 
     /**
      * Allows Passport to authenticate users with custom fields.
+     * TODO
      */
     public function findForPassport(string $username): self|null
     {
@@ -62,6 +63,9 @@ class User extends ParentUserModel implements MustVerifyEmail
         return true;
     }
 
+    /**
+     * TODO
+     */
     protected function email(): Attribute
     {
         return new Attribute(
