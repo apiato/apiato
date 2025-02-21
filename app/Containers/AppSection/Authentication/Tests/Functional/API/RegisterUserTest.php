@@ -70,7 +70,7 @@ final class RegisterUserTest extends ApiTestCase
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json
                     ->where('email.0', 'The email field is required.')
-                    ->where('password.0', 'The password field is required.')
+                    ->where('password.0', 'The password field is required.'),
             )->etc());
         } else {
             $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(

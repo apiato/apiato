@@ -32,10 +32,10 @@ final class VerifyRequestTest extends UnitTestCase
     {
         config(['apiato.hash-id' => $hashIdEnabled]);
         $user = User::factory()->createOne(['email' => 'known@email.test']);
-        $this->request->setUserResolver(static fn() => $user);
+        $this->request->setUserResolver(static fn () => $user);
         $route = Route::getRoutes()->getByAction(VerifyController::class);
         $route->bind($this->request);
-        $this->request->setRouteResolver(static fn() => $route);
+        $this->request->setRouteResolver(static fn () => $route);
         $route->setParameter('id', (string) $user->getHashedKey());
         $route->setParameter('hash', $hash);
 
