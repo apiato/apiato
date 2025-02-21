@@ -6,9 +6,9 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\GetUserProfileController;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(GetUserProfileController::class)]
 final class GetUserProfileTest extends ApiTestCase
 {
     public function testCanGetOwnProfile(): void
@@ -35,7 +35,7 @@ final class GetUserProfileTest extends ApiTestCase
         );
     }
 
-    public function testCannotGetProfileByUnauthenticatedUser(): void
+    public function testPreventAccessByUnauthenticatedUser(): void
     {
         $response = $this->getJson(action(GetUserProfileController::class));
 

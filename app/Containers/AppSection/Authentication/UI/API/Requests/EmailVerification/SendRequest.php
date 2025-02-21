@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerifica
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class SendRequest extends ParentRequest
+final class SendRequest extends ParentRequest
 {
     protected array $decode = [];
 

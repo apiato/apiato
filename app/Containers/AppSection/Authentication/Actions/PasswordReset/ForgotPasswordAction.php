@@ -7,7 +7,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 
-class ForgotPasswordAction extends ParentAction
+final class ForgotPasswordAction extends ParentAction
 {
     public function run(ForgotPasswordRequest $request): string
     {
@@ -19,7 +19,7 @@ class ForgotPasswordAction extends ParentAction
 
         return match ($status) {
             Password::RESET_LINK_SENT => __($status),
-            Password::RESET_THROTTLED =>  throw ValidationException::withMessages(['throttle' => __($status)]),
+            Password::RESET_THROTTLED => throw ValidationException::withMessages(['throttle' => __($status)]),
             default => throw ValidationException::withMessages(['email' => __($status)]),
         };
     }

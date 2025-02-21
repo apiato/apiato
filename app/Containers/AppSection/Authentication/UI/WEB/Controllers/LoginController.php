@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Controllers\WebController;
 use Illuminate\Http\RedirectResponse;
 
-class LoginController extends WebController
+final class LoginController extends WebController
 {
     public function __invoke(LoginRequest $request, WebLoginAction $action): RedirectResponse
     {

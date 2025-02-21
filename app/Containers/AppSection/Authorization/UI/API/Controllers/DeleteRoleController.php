@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class DeleteRoleController extends ApiController
+final class DeleteRoleController extends ApiController
 {
     public function __invoke(DeleteRoleRequest $request, DeleteRoleAction $action): JsonResponse
     {

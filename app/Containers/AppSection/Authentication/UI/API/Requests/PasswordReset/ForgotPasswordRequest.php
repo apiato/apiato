@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class ForgotPasswordRequest extends ParentRequest
+final class ForgotPasswordRequest extends ParentRequest
 {
     protected array $decode = [];
 

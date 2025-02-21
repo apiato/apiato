@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserPermission
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class RevokeUserPermissionsController extends ApiController
+final class RevokeUserPermissionsController extends ApiController
 {
     public function __invoke(RevokeUserPermissionsRequest $request, RevokeUserPermissionsAction $action): array
     {

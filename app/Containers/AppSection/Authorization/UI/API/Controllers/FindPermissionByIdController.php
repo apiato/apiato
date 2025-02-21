@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRe
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class FindPermissionByIdController extends ApiController
+final class FindPermissionByIdController extends ApiController
 {
     public function __invoke(FindPermissionByIdRequest $request, FindPermissionByIdAction $action): array
     {

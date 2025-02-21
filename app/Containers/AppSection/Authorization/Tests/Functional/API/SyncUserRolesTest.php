@@ -7,13 +7,14 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncUserRolesController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(SyncUserRolesController::class)]
 final class SyncUserRolesTest extends ApiTestCase
 {
     public function testSyncMultipleRolesOnUser(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $role1 = Role::factory()->createOne();
         $role2 = Role::factory()->createOne();
         $user = User::factory()->createOne();
@@ -40,31 +41,7 @@ final class SyncUserRolesTest extends ApiTestCase
         );
     }
 
-    public function testSyncNonExistingRoleOnUser(): void
-    {
-        $user = User::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'role_ids' => [hashids()->encode($invalidId)],
-        ];
-
-        $response = $this->putJson(action(
-            SyncUserRolesController::class,
-            ['user_id' => $user->getHashedKey()],
-        ), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->has(
-                    'role_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
-                )->etc(),
-            )->etc(),
-        );
-    }
-
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());
@@ -75,12 +52,5 @@ final class SyncUserRolesTest extends ApiTestCase
         ));
 
         $response->assertForbidden();
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
     }
 }

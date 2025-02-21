@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolePermission
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class RevokeRolePermissionsAction extends ParentAction
+final class RevokeRolePermissionsAction extends ParentAction
 {
     public function __construct(
         private readonly FindRoleTask $findRoleTask,

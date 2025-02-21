@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
-class CreateRoleTask extends ParentTask
+final class CreateRoleTask extends ParentTask
 {
     public function __construct(
         private readonly RoleRepository $repository,

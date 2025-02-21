@@ -11,7 +11,7 @@ use App\Ship\Parents\Factories\Factory as ParentFactory;
  *
  * @extends ParentFactory<TModel>
  */
-class RoleFactory extends ParentFactory
+final class RoleFactory extends ParentFactory
 {
     /** @var class-string<TModel> */
     protected $model = Role::class;

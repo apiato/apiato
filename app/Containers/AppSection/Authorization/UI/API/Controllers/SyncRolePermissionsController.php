@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsR
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class SyncRolePermissionsController extends ApiController
+final class SyncRolePermissionsController extends ApiController
 {
     public function __invoke(SyncRolePermissionsRequest $request, SyncRolePermissionsAction $action): array
     {

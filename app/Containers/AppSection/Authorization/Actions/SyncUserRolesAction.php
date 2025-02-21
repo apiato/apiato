@@ -8,7 +8,7 @@ use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class SyncUserRolesAction extends ParentAction
+final class SyncUserRolesAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,

@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\Forgo
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class ForgotPasswordController extends ApiController
+final class ForgotPasswordController extends ApiController
 {
     public function __invoke(ForgotPasswordRequest $request, ForgotPasswordAction $action): JsonResponse
     {

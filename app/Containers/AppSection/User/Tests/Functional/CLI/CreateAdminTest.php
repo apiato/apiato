@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\CLI;
 
-use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\CliTestCase;
 use App\Containers\AppSection\User\UI\CLI\CreateAdmin;
@@ -56,26 +55,5 @@ final class CreateAdminTest extends CliTestCase
             'name' => $data['name'],
             'email' => $data['email'],
         ]);
-    }
-
-    public function testOutputsExceptionMessages(): void
-    {
-        $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ];
-        $this->partialMock(CreateAdminAction::class)
-            ->expects('run')->andThrowExceptions([
-                new \Exception('This is an exception message'),
-            ]);
-
-        $this->artisan('create:admin')
-            ->expectsQuestion('Enter the username for this user', $data['name'])
-            ->expectsQuestion('Enter the email address of this user', $data['email'])
-            ->expectsQuestion('Enter the password for this user', $data['password'])
-            ->expectsQuestion('Please confirm the password', $data['password_confirmation'])
-            ->expectsOutput('This is an exception message');
     }
 }

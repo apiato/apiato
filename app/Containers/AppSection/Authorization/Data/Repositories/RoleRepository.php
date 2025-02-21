@@ -13,7 +13,7 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
  *
  * @extends ParentRepository<TModel>
  */
-class RoleRepository extends ParentRepository
+final class RoleRepository extends ParentRepository
 {
     use AuthorizationRepositoryTrait;
 

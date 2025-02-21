@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class GivePermissionsToUserAction extends ParentAction
+final class GivePermissionsToUserAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,

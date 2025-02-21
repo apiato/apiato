@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\S
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class SendAction extends ParentAction
+final class SendAction extends ParentAction
 {
     public function run(SendRequest $request): void
     {

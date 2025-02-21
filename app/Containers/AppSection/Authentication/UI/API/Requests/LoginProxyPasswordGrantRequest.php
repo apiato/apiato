@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class LoginProxyPasswordGrantRequest extends ParentRequest
+final class LoginProxyPasswordGrantRequest extends ParentRequest
 {
     protected array $decode = [];
 

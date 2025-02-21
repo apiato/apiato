@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-class GetUserProfileAction extends ParentAction
+final class GetUserProfileAction extends ParentAction
 {
     public function __construct(
         private readonly GetAuthenticatedUserTask $getAuthenticatedUserTask,

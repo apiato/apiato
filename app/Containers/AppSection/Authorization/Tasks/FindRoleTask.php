@@ -8,7 +8,7 @@ use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Support\Str;
 
-class FindRoleTask extends ParentTask
+final class FindRoleTask extends ParentTask
 {
     public function __construct(
         private readonly RoleRepository $repository,

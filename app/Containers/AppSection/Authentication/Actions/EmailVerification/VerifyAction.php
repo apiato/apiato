@@ -7,7 +7,7 @@ use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Verified;
 
-class VerifyAction extends ParentAction
+final class VerifyAction extends ParentAction
 {
     /**
      * @throws ResourceNotFound

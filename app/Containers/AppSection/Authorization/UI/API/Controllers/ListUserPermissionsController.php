@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsR
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class ListUserPermissionsController extends ApiController
+final class ListUserPermissionsController extends ApiController
 {
     public function __invoke(ListUserPermissionsRequest $request, ListUserPermissionsAction $action): array
     {

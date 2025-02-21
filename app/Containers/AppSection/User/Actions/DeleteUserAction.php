@@ -8,7 +8,7 @@ use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class DeleteUserAction extends ParentAction
+final class DeleteUserAction extends ParentAction
 {
     public function __construct(
         private readonly UserRepository $repository,

@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\UI\API\Requests\ListUsersRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class ListUsersController extends ApiController
+final class ListUsersController extends ApiController
 {
     public function __invoke(ListUsersRequest $request, ListUsersAction $action): array
     {

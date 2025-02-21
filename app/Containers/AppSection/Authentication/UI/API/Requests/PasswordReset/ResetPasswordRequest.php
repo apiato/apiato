@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rules\Password;
 
-class ResetPasswordRequest extends ParentRequest
+final class ResetPasswordRequest extends ParentRequest
 {
     protected array $decode = [];
 

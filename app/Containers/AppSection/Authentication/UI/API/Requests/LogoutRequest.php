@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class LogoutRequest extends ParentRequest
+final class LogoutRequest extends ParentRequest
 {
     protected array $decode = [];
 

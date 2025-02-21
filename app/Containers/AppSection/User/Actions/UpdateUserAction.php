@@ -9,7 +9,7 @@ use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-class UpdateUserAction extends ParentAction
+final class UpdateUserAction extends ParentAction
 {
     public function __construct(
         private readonly UpdateUserTask $updateUserTask,

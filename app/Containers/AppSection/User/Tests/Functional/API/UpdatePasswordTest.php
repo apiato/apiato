@@ -7,9 +7,9 @@ use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\UpdatePasswordController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(UpdatePasswordController::class)]
 final class UpdatePasswordTest extends ApiTestCase
 {
     public function testCanUpdatePasswordAsOwner(): void
@@ -43,6 +43,7 @@ final class UpdatePasswordTest extends ApiTestCase
         $this->assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
     }
 
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rules\Password;
 
-class LoginRequest extends ParentRequest
+final class LoginRequest extends ParentRequest
 {
     protected array $decode = [];
 

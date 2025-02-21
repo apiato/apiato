@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class FindUserByIdAction extends ParentAction
+final class FindUserByIdAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,

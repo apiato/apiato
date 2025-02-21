@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\Reset
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class ResetPasswordController extends ApiController
+final class ResetPasswordController extends ApiController
 {
     public function __invoke(ResetPasswordRequest $request, ResetPasswordAction $action): JsonResponse
     {

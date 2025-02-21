@@ -9,7 +9,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class ListRolesAction extends ParentAction
+final class ListRolesAction extends ParentAction
 {
     public function __construct(
         private readonly RoleRepository $repository,

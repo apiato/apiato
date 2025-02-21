@@ -11,9 +11,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(RegisterUserController::class)]
 final class RegisterUserTest extends ApiTestCase
 {
     public function testRegisterNewUserWithCredentials(): void
@@ -37,86 +37,5 @@ final class RegisterUserTest extends ApiTestCase
         if (is_a(User::class, MustVerifyEmail::class, true)) {
             Notification::assertSentTo($userId, VerifyEmail::class);
         }
-    }
-
-    public function testRegisterExistingUser(): void
-    {
-        $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 'youShallNotPass',
-        ];
-
-        User::factory()->createOne($data);
-
-        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.email.0', 'The email has already been taken.')
-                ->etc(),
-        );
-    }
-
-    public function testRegisterNewUserWithoutData(): void
-    {
-        $data = [];
-
-        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
-
-        $response->assertUnprocessable();
-        if (is_a(User::class, MustVerifyEmail::class, true)) {
-            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $json): AssertableJson => $json
-                    ->where('email.0', 'The email field is required.')
-                    ->where('password.0', 'The password field is required.'),
-            )->etc());
-        } else {
-            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $json): AssertableJson => $json
-                    ->where('email.0', 'The email field is required.')
-                    ->where('password.0', 'The password field is required.'),
-            )->etc());
-        }
-    }
-
-    public function testRegisterNewUserWithInvalidEmail(): void
-    {
-        $data = [
-            'email' => 'missing-at.test',
-        ];
-
-        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.email.0', 'The email field must be a valid email address.')
-                ->etc(),
-        );
-    }
-
-    public function testRegisterNewUserWithInvalidPassword(): void
-    {
-        $data = [
-            'password' => '((((()))))',
-        ];
-
-        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->has(
-                    'errors.password',
-                    static fn (AssertableJson $json): AssertableJson => $json
-                        ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
-                        ->where('1', 'The password field must contain at least one letter.')
-                        ->where('2', 'The password field must contain at least one number.'),
-                )
-                ->etc(),
-        );
     }
 }

@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class FindPermissionByIdAction extends ParentAction
+final class FindPermissionByIdAction extends ParentAction
 {
     public function __construct(
         private readonly PermissionRepository $repository,

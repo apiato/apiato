@@ -7,9 +7,9 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\FindRoleByIdController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(FindRoleByIdController::class)]
 final class FindRoleByIdTest extends ApiTestCase
 {
     public function testCanFindRoleById(): void
@@ -32,6 +32,7 @@ final class FindRoleByIdTest extends ApiTestCase
         );
     }
 
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

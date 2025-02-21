@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToRol
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class GivePermissionsToRoleController extends ApiController
+final class GivePermissionsToRoleController extends ApiController
 {
     public function __invoke(GivePermissionsToRoleRequest $request, GivePermissionsToRoleAction $action): array
     {

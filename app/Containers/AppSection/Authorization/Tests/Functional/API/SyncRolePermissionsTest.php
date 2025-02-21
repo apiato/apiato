@@ -8,9 +8,9 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\SyncRolePermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(SyncRolePermissionsController::class)]
 final class SyncRolePermissionsTest extends ApiTestCase
 {
     public function testSyncDuplicatedPermissionsToRole(): void
@@ -41,32 +41,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         );
     }
 
-    public function testSyncNonExistingPermissionOnRole(): void
-    {
-        $this->actingAs(User::factory()->admin()->createOne());
-        $role = Role::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'permission_ids' => [hashids()->encode($invalidId)],
-        ];
-
-        $response = $this->putJson(action(
-            SyncRolePermissionsController::class,
-            ['role_id' => $role->getHashedKey()],
-        ), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->has(
-                    'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
-                )->etc(),
-            )->etc(),
-        );
-    }
-
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

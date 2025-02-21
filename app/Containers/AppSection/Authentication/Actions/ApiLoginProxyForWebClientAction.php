@@ -10,7 +10,7 @@ use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class ApiLoginProxyForWebClientAction extends ParentAction
+final class ApiLoginProxyForWebClientAction extends ParentAction
 {
     public function __construct(
         private readonly CallOAuthServerTask $callOAuthServerTask,

@@ -9,7 +9,7 @@ use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class User extends ParentUserModel implements MustVerifyEmail
+final class User extends ParentUserModel implements MustVerifyEmail
 {
     protected $fillable = [
         'name',
@@ -38,7 +38,7 @@ class User extends ParentUserModel implements MustVerifyEmail
 
     /**
      * Allows Passport to authenticate users with custom fields.
-     * TODO
+     * TODO.
      */
     public function findForPassport(string $username): self|null
     {
@@ -64,7 +64,7 @@ class User extends ParentUserModel implements MustVerifyEmail
     }
 
     /**
-     * TODO
+     * TODO.
      */
     protected function email(): Attribute
     {

@@ -7,20 +7,14 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RemoveUserRolesController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(RemoveUserRolesController::class)]
 final class RemoveUserRolesTest extends ApiTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
-    }
-
     public function testRevokeRolesFromUser(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $roleA = Role::factory()->createOne();
         $roleB = Role::factory()->createOne();
         $user = User::factory()->createOne();
@@ -44,6 +38,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     public function testRevokeManyRolesFromUser(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $roleA = Role::factory()->createOne();
         $roleB = Role::factory()->createOne();
         $user = User::factory()->createOne();
@@ -66,27 +61,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         );
     }
 
-    public function testRevokeNonExistingRoleFromUser(): void
-    {
-        $user = User::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'role_ids' => [hashids()->encode($invalidId)],
-        ];
-
-        $response = $this->deleteJson(action(RemoveUserRolesController::class, ['user_id' => $user->getHashedKey()]), $data);
-
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->has(
-                    'role_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
-                )->etc(),
-            )->etc(),
-        );
-    }
-
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

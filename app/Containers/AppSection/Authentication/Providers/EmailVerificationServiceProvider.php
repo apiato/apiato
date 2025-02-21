@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateV
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 use Illuminate\Auth\Notifications\VerifyEmail;
 
-class EmailVerificationServiceProvider extends ParentServiceProvider
+final class EmailVerificationServiceProvider extends ParentServiceProvider
 {
     public function boot(): void
     {

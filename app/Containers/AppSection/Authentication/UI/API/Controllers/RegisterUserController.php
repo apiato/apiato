@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class RegisterUserController extends ApiController
+final class RegisterUserController extends ApiController
 {
     public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): array
     {

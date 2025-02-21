@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class ResetPasswordAction extends ParentAction
+final class ResetPasswordAction extends ParentAction
 {
     public function run(ResetPasswordRequest $request): string
     {

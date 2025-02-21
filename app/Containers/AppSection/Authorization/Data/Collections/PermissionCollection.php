@@ -11,6 +11,6 @@ use App\Ship\Parents\Collections\EloquentCollection as ParentCollection;
  *
  * @extends ParentCollection<TKey, TModel>
  */
-class PermissionCollection extends ParentCollection
+final class PermissionCollection extends ParentCollection
 {
 }

@@ -8,7 +8,7 @@ use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(WebLogoutAction::class)]
-class WebLogoutActionTest extends UnitTestCase
+final class WebLogoutActionTest extends UnitTestCase
 {
     public function testLogout(): void
     {

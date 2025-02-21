@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToRol
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class GivePermissionsToRoleAction extends ParentAction
+final class GivePermissionsToRoleAction extends ParentAction
 {
     public function __construct(
         private readonly FindRoleTask $findRoleTask,

@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransforme
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class RefreshProxyForWebClientController extends ApiController
+final class RefreshProxyForWebClientController extends ApiController
 {
     public function __invoke(RefreshProxyRequest $request, RefreshProxyForWebClientAction $action): JsonResponse
     {

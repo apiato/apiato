@@ -9,7 +9,7 @@ use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class RefreshProxyForWebClientAction extends ParentAction
+final class RefreshProxyForWebClientAction extends ParentAction
 {
     public function __construct(
         private readonly CallOAuthServerTask $callOAuthServerTask,

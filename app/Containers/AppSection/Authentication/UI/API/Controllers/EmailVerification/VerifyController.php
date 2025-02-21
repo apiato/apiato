@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\V
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class VerifyController extends ApiController
+final class VerifyController extends ApiController
 {
     public function __invoke(VerifyRequest $request, VerifyAction $action): JsonResponse
     {

@@ -8,7 +8,7 @@ use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\DB;
 
-class CreateAdminAction extends ParentAction
+final class CreateAdminAction extends ParentAction
 {
     public function __construct(
         private readonly CreateUserTask $createUserTask,

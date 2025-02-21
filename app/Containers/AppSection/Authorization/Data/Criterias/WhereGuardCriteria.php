@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\Data\Criterias;
 use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-class WhereGuardCriteria extends ParentCriteria
+final class WhereGuardCriteria extends ParentCriteria
 {
     public function __construct(
         private readonly string $guard,

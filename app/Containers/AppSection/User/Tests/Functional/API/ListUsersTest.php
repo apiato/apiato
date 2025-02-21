@@ -6,9 +6,9 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\ListUsersController;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(ListUsersController::class)]
 final class ListUsersTest extends ApiTestCase
 {
     public function testCanIndexUsersAsAdmin(): void
@@ -25,6 +25,7 @@ final class ListUsersTest extends ApiTestCase
         );
     }
 
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

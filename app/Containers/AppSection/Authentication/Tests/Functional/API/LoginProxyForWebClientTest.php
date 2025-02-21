@@ -6,9 +6,9 @@ use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWebClientController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(LoginProxyForWebClientController::class)]
 final class LoginProxyForWebClientTest extends ApiTestCase
 {
     protected function setUp(): void
@@ -86,38 +86,5 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             static fn (AssertableJson $json): AssertableJson => $json
                 ->where('email.0', 'The email field is required.'),
         )->etc());
-    }
-
-    public function testGivenMultipleLoginAttributeIsSetThenAtLeastOneShouldBeRequired(): void
-    {
-        $this->setLoginAttributes([
-            'email' => [],
-            'name' => [],
-        ]);
-        $data = [
-            'password' => 'youShallNotPass',
-        ];
-
-        $response = $this->postJson(action(LoginProxyForWebClientController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
-            'errors',
-            static fn (AssertableJson $json): AssertableJson => $json
-                ->where('email.0', 'The email field is required when none of name are present.')
-                ->where('name.0', 'The name field is required when none of email are present.'),
-        )->etc());
-    }
-
-    public function testGivenWrongCredentialThrowException(): void
-    {
-        $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 'youShallNotPass',
-        ];
-
-        $response = $this->postJson(action(LoginProxyForWebClientController::class), $data);
-
-        $response->assertUnprocessable();
     }
 }

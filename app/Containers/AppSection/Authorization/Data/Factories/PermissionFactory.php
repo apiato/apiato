@@ -10,7 +10,7 @@ use App\Ship\Parents\Factories\Factory as ParentFactory;
  *
  * @extends ParentFactory<TModel>
  */
-class PermissionFactory extends ParentFactory
+final class PermissionFactory extends ParentFactory
 {
     /** @var class-string<TModel> */
     protected $model = Permission::class;

@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\UI\API\Requests\FindUserByIdRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class FindUserByIdController extends ApiController
+final class FindUserByIdController extends ApiController
 {
     public function __invoke(FindUserByIdRequest $request, FindUserByIdAction $action): array
     {

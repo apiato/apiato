@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolePermission
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class RevokeRolePermissionsController extends ApiController
+final class RevokeRolePermissionsController extends ApiController
 {
     public function __invoke(RevokeRolePermissionsRequest $request, RevokeRolePermissionsAction $action): array
     {

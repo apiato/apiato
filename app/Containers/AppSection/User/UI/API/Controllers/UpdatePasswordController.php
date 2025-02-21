@@ -7,7 +7,7 @@ use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class UpdatePasswordController extends ApiController
+final class UpdatePasswordController extends ApiController
 {
     public function __invoke(UpdatePasswordRequest $request, UpdatePasswordAction $action): array
     {

@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authorization\Enums\Role;
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
 use App\Ship\Parents\Seeders\Seeder as ParentSeeder;
 
-class AuthorizationSeeder_1 extends ParentSeeder
+final class AuthorizationSeeder_1 extends ParentSeeder
 {
     public function run(CreateRoleTask $task): void
     {

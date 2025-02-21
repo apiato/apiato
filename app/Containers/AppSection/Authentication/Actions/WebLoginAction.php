@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-class WebLoginAction extends ParentAction
+final class WebLoginAction extends ParentAction
 {
     public function run(LoginRequest $request): RedirectResponse
     {

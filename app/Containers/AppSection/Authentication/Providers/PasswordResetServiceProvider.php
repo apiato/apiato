@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\PasswordReset\GeneratePassw
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
 
-class PasswordResetServiceProvider extends ParentServiceProvider
+final class PasswordResetServiceProvider extends ParentServiceProvider
 {
     public function boot(): void
     {

@@ -34,7 +34,7 @@ final class AuthorizationRepositoryTraitTest extends UnitTestCase
     }
 }
 
-class TraitTestRepository extends TestUserRepository
+final class TraitTestRepository extends TestUserRepository
 {
     use AuthorizationRepositoryTrait;
 

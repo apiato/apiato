@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserReq
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class AssignRolesToUserController extends ApiController
+final class AssignRolesToUserController extends ApiController
 {
     public function __invoke(AssignRolesToUserRequest $request, AssignRolesToUserAction $action): array
     {

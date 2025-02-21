@@ -9,7 +9,7 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class ListPermissionsAction extends ParentAction
+final class ListPermissionsAction extends ParentAction
 {
     public function __construct(
         private readonly PermissionRepository $repository,

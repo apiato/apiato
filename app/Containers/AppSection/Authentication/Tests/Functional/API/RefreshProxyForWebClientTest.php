@@ -7,13 +7,14 @@ use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWeb
 use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForWebClientController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(RefreshProxyForWebClientController::class)]
 final class RefreshProxyForWebClientTest extends ApiTestCase
 {
     public function testProxyRefresh(): void
     {
+        $this->setupPasswordGrantClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -38,28 +39,5 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
                     ->etc(),
             )->etc(),
         );
-    }
-
-    public function testGivenRefreshTokenPassedAsParameterItShouldBeString(): void
-    {
-        $data = [
-            'refresh_token' => '',
-        ];
-
-        $response = $this->postJson(action(RefreshProxyForWebClientController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.refresh_token.0', 'The refresh token field must be a string.')
-                ->etc(),
-        );
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->setupPasswordGrantClient();
     }
 }

@@ -7,13 +7,14 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeUserPermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(RevokeUserPermissionsController::class)]
 final class RevokeUserPermissionsTest extends ApiTestCase
 {
     public function testDetachSinglePermissionFromUser(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $user = User::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
@@ -41,6 +42,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 
     public function testDetachMultiplePermissionFromUser(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $user = User::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
@@ -66,31 +68,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         );
     }
 
-    public function testDetachNonExistingPermissionFromUser(): void
-    {
-        $user = User::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'permission_ids' => [hashids()->encode($invalidId)],
-        ];
-
-        $response = $this->deleteJson(action(
-            RevokeUserPermissionsController::class,
-            ['user_id' => $user->getHashedKey()],
-        ), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->has(
-                    'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
-                )->etc(),
-            )->etc(),
-        );
-    }
-
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());
@@ -101,12 +79,5 @@ final class RevokeUserPermissionsTest extends ApiTestCase
         ));
 
         $response->assertForbidden();
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
     }
 }

@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransfo
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class CreateRoleController extends ApiController
+final class CreateRoleController extends ApiController
 {
     public function __invoke(CreateRoleRequest $request, CreateRoleAction $action): JsonResponse
     {

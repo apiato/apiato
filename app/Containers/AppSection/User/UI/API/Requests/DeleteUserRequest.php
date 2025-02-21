@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class DeleteUserRequest extends ParentRequest
+final class DeleteUserRequest extends ParentRequest
 {
     protected array $decode = [
         'user_id',

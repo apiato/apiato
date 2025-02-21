@@ -9,7 +9,7 @@ use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Registered;
 
-class RegisterUserAction extends ParentAction
+final class RegisterUserAction extends ParentAction
 {
     public function __construct(
         private readonly CreateUserTask $createUserTask,

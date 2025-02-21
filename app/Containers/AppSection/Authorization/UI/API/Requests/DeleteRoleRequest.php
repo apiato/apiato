@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class DeleteRoleRequest extends ParentRequest
+final class DeleteRoleRequest extends ParentRequest
 {
     protected array $decode = [
         'role_id',

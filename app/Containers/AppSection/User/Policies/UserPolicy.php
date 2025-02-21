@@ -6,7 +6,7 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Policies\Policy as ParentPolicy;
 
-class UserPolicy extends ParentPolicy
+final class UserPolicy extends ParentPolicy
 {
     public function __construct(
         private readonly UserRepository $userRepository,

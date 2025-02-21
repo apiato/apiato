@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class ListUserRolesRequest extends ParentRequest
+final class ListUserRolesRequest extends ParentRequest
 {
     protected array $decode = [
         'user_id',

@@ -7,7 +7,7 @@ use App\Ship\Parents\Listeners\Listener as ParentListener;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendEmailVerifiedNotification extends ParentListener implements ShouldQueue
+final class SendEmailVerifiedNotification extends ParentListener implements ShouldQueue
 {
     public function __invoke(Verified $event): void
     {

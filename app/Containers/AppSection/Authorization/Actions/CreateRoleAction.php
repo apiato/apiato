@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class CreateRoleAction extends ParentAction
+final class CreateRoleAction extends ParentAction
 {
     public function __construct(
         private readonly CreateRoleTask $createRoleTask,

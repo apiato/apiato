@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToUse
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class GivePermissionsToUserController extends ApiController
+final class GivePermissionsToUserController extends ApiController
 {
     public function __invoke(GivePermissionsToUserRequest $request, GivePermissionsToUserAction $action): array
     {

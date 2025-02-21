@@ -7,9 +7,9 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\ListUserPermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(ListUserPermissionsController::class)]
 final class ListUserPermissionsTest extends ApiTestCase
 {
     public function testGetUserPermissions(): void
@@ -34,6 +34,7 @@ final class ListUserPermissionsTest extends ApiTestCase
         );
     }
 
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

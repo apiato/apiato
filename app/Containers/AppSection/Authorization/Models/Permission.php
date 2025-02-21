@@ -7,7 +7,7 @@ use Apiato\Http\Resources\ResourceKeyAware;
 use App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection;
 use Spatie\Permission\Models\Permission as SpatiePermission;
 
-class Permission extends SpatiePermission implements ResourceKeyAware
+final class Permission extends SpatiePermission implements ResourceKeyAware
 {
     use ApiatoIntegration;
 

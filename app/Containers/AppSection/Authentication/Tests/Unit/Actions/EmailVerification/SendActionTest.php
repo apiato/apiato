@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\TestWith;
 
 #[CoversClass(SendAction::class)]
-class SendActionTest extends UnitTestCase
+final class SendActionTest extends UnitTestCase
 {
     #[TestWith([false], 'verified')]
     #[TestWith([true], 'unverified')]

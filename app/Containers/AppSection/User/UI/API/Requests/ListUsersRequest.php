@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class ListUsersRequest extends ParentRequest
+final class ListUsersRequest extends ParentRequest
 {
     protected array $decode = [];
 

@@ -2,15 +2,14 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
-use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
-use App\Containers\AppSection\Authentication\Tests\FunctionalTestCase;
+use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LogoutController;
 use App\Containers\AppSection\User\Models\User;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(ApiLogoutAction::class)]
-final class LogoutTest extends FunctionalTestCase
+#[CoversClass(LogoutController::class)]
+final class LogoutTest extends ApiTestCase
 {
     public function testCanLogout(): void
     {

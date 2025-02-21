@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 
-class SyncRolePermissionsRequest extends ParentRequest
+final class SyncRolePermissionsRequest extends ParentRequest
 {
     protected array $decode = [
         'role_id',

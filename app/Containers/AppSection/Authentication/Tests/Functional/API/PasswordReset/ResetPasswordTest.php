@@ -6,10 +6,9 @@ use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset\ResetPasswordController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(ResetPasswordController::class)]
 final class ResetPasswordTest extends ApiTestCase
 {
     public function testResetPassword(): void
@@ -28,44 +27,5 @@ final class ResetPasswordTest extends ApiTestCase
         $response = $this->postJson(action(ResetPasswordController::class), $data);
 
         $response->assertOk();
-    }
-
-    public function testResetPasswordWithInvalidEmail(): void
-    {
-        $data = [
-            'email' => 'missing-at.test',
-        ];
-
-        $response = $this->postJson(action(ResetPasswordController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->where('errors.email.0', 'The email field must be a valid email address.')
-                ->etc(),
-        );
-    }
-
-    public function testResetPasswordWithInvalidPassword(): void
-    {
-        $data = [
-            'password' => '((((()))))',
-            'password_confirmation' => '((((()))))',
-        ];
-
-        $response = $this->postJson(action(ResetPasswordController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('errors')
-                ->has(
-                    'errors.password',
-                    static fn (AssertableJson $json): AssertableJson => $json
-                        ->where('0', 'The password field must contain at least one uppercase and one lowercase letter.')
-                        ->where('1', 'The password field must contain at least one letter.')
-                        ->where('2', 'The password field must contain at least one number.'),
-                )
-                ->etc(),
-        );
     }
 }

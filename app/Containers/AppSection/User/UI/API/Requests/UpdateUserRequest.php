@@ -8,7 +8,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class UpdateUserRequest extends ParentRequest
+final class UpdateUserRequest extends ParentRequest
 {
     protected array $decode = [
         'user_id',

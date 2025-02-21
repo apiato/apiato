@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsR
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class SyncRolePermissionsAction extends ParentAction
+final class SyncRolePermissionsAction extends ParentAction
 {
     public function __construct(
         private readonly FindRoleTask $findRoleTask,

@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\SyncUserRolesRequest
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class SyncUserRolesController extends ApiController
+final class SyncUserRolesController extends ApiController
 {
     public function __invoke(SyncUserRolesRequest $request, SyncUserRolesAction $action): array
     {

@@ -9,7 +9,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\Permission\Contracts\Permission;
 
-class ListUserPermissionsAction extends ParentAction
+final class ListUserPermissionsAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,

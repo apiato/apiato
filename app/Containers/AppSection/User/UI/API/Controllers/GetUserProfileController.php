@@ -6,7 +6,7 @@ use App\Containers\AppSection\User\Actions\GetUserProfileAction;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class GetUserProfileController extends ApiController
+final class GetUserProfileController extends ApiController
 {
     public function __invoke(GetUserProfileAction $action): array
     {

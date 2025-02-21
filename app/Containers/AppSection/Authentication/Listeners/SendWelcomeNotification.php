@@ -7,7 +7,7 @@ use App\Ship\Parents\Listeners\Listener as ParentListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendWelcomeNotification extends ParentListener implements ShouldQueue
+final class SendWelcomeNotification extends ParentListener implements ShouldQueue
 {
     public function __invoke(Registered $event): void
     {

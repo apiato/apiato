@@ -11,9 +11,9 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(UpdateUserController::class)]
 final class UpdateUserTest extends ApiTestCase
 {
     public function testCanUpdateAsOwner(): void
@@ -52,6 +52,7 @@ final class UpdateUserTest extends ApiTestCase
         $this->assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
     }
 
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());

@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesReque
 use App\Containers\AppSection\User\UI\API\Transformers\UserAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class RemoveUserRolesController extends ApiController
+final class RemoveUserRolesController extends ApiController
 {
     public function __invoke(RemoveUserRolesRequest $request, RemoveUserRolesAction $action): array
     {

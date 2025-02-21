@@ -8,7 +8,7 @@ use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cookie;
 
-class LogoutController extends ApiController
+final class LogoutController extends ApiController
 {
     public function __invoke(LogoutRequest $request, ApiLogoutAction $action): JsonResponse
     {

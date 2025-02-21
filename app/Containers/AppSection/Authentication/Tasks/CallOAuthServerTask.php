@@ -9,7 +9,7 @@ use GuzzleHttp\Utils;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 
-class CallOAuthServerTask extends ParentTask
+final class CallOAuthServerTask extends ParentTask
 {
     /**
      * @throws \Exception

@@ -8,7 +8,7 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-class ListUsersAction extends ParentAction
+final class ListUsersAction extends ParentAction
 {
     public function __construct(
         private readonly UserRepository $repository,

@@ -8,13 +8,14 @@ use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authorization\UI\API\Controllers\RevokeRolePermissionsController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(RevokeRolePermissionsController::class)]
 final class RevokeRolePermissionsTest extends ApiTestCase
 {
     public function testDetachSinglePermissionFromRole(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $role = Role::factory()->createOne();
@@ -41,6 +42,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 
     public function testDetachMultiplePermissionFromRole(): void
     {
+        $this->actingAs(User::factory()->admin()->createOne());
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $permissionC = Permission::factory()->createOne();
@@ -66,30 +68,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         );
     }
 
-    public function testDetachNonExistingPermissionFromRole(): void
-    {
-        $role = Role::factory()->createOne();
-        $invalidId = 7777777;
-        $data = [
-            'permission_ids' => [hashids()->encode($invalidId)],
-        ];
-
-        $response = $this->deleteJson(action(
-            RevokeRolePermissionsController::class,
-            ['role_id' => $role->getHashedKey()],
-        ), $data);
-
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'errors',
-                static fn (AssertableJson $errors) => $errors->has(
-                    'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
-                )->etc(),
-            )->etc(),
-        );
-    }
-
+    // TODO: move to request test
     public function testGivenUserHasNoAccessPreventsOperation(): void
     {
         $this->actingAs(User::factory()->createOne());
@@ -100,12 +79,5 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         ));
 
         $response->assertForbidden();
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->actingAs(User::factory()->admin()->createOne());
     }
 }

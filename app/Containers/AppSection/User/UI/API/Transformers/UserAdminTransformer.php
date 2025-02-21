@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\User\UI\API\Transformers;
 
 use App\Containers\AppSection\User\Models\User;
 
-class UserAdminTransformer extends UserTransformer
+final class UserAdminTransformer extends UserTransformer
 {
     public function transform(User $user): array
     {

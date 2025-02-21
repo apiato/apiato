@@ -8,7 +8,7 @@ use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransforme
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
 
-class LoginProxyForWebClientController extends ApiController
+final class LoginProxyForWebClientController extends ApiController
 {
     public function __invoke(LoginProxyPasswordGrantRequest $request, ApiLoginProxyForWebClientAction $action): JsonResponse
     {

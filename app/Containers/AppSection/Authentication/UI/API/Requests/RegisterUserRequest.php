@@ -7,7 +7,7 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterUserRequest extends ParentRequest
+final class RegisterUserRequest extends ParentRequest
 {
     protected array $decode = [];
 

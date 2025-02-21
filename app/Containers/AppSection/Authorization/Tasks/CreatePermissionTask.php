@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
-class CreatePermissionTask extends ParentTask
+final class CreatePermissionTask extends ParentTask
 {
     public function __construct(
         private readonly PermissionRepository $repository,

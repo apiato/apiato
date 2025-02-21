@@ -7,7 +7,7 @@ use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserRolesRequest
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 
-class ListUserRolesController extends ApiController
+final class ListUserRolesController extends ApiController
 {
     public function __invoke(ListUserRolesRequest $request, ListUserRolesAction $action): array
     {

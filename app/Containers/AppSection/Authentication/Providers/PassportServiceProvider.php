@@ -6,7 +6,7 @@ use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 use Carbon\Carbon;
 use Laravel\Passport\Passport;
 
-class PassportServiceProvider extends ParentServiceProvider
+final class PassportServiceProvider extends ParentServiceProvider
 {
     public function register(): void
     {
