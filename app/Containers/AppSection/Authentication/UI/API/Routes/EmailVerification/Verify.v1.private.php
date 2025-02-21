@@ -5,7 +5,7 @@
  *
  * @apiName            VerifyEmail
  *
- * @api                {POST} /v1/email/verify/:id/:hash Verify Email
+ * @api                {post} /v1/email/verify/:id/:hash Verify Email
  *
  * @apiDescription     Verify user email by passing the user id and hash.
  *

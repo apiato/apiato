@@ -5,7 +5,7 @@
  *
  * @apiName            GetUserProfile
  *
- * @api                {GET} /v1/profile Get Profile
+ * @api                {get} /v1/profile Get Profile
  *
  * @apiDescription     Get the authenticated user profile data.
  *

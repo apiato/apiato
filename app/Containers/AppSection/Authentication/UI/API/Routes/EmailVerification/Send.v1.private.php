@@ -5,7 +5,7 @@
  *
  * @apiName            SendVerificationEmail
  *
- * @api                {POST} /v1/email/verification-notification Send Verification Email
+ * @api                {post} /v1/email/verification-notification Send Verification Email
  *
  * @apiDescription     Send verification email to the currently authenticated user
  *
