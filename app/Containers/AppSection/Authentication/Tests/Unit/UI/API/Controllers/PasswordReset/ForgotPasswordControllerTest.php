@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers\PasswordReset;
 
-use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
+use App\Containers\AppSection\Authentication\Actions\PasswordReset\ForgotPasswordAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ForgotPasswordController;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset\ForgotPasswordController;
+use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ForgotPasswordRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ForgotPasswordController::class)]
@@ -20,6 +20,6 @@ final class ForgotPasswordControllerTest extends UnitTestCase
 
         $response = $controller->__invoke($request, $actionMock);
 
-        $this->assertSame(204, $response->getStatusCode());
+        $this->assertSame(202, $response->getStatusCode());
     }
 }

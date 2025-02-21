@@ -28,9 +28,6 @@ final class AuthenticationTest extends UnitTestCase
                 ],
                 'prefix' => '',
             ],
-            'allowed-reset-password-urls' => [
-                env('FRONTEND_URL', 'http://localhost:3000') . '/password/reset',
-            ],
         ];
 
         $this->assertEquals($expected, $config);

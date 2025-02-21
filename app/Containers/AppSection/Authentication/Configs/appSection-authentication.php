@@ -62,16 +62,4 @@ return [
 
         'prefix' => '',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Reset Password URLs
-    |--------------------------------------------------------------------------
-    |
-    | Insert your allowed reset password urls which user can request to be injected into the email.
-    |
-    */
-    'allowed-reset-password-urls' => [
-        env('FRONTEND_URL', 'http://localhost:3000') . '/password/reset',
-    ],
 ];

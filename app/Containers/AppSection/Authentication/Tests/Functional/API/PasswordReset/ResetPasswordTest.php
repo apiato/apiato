@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
+namespace App\Containers\AppSection\Authentication\Tests\Functional\API\PasswordReset;
 
-use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ResetPasswordController;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset\ResetPasswordController;
 use App\Containers\AppSection\User\Models\User;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -18,16 +18,16 @@ final class ResetPasswordTest extends ApiTestCase
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
-        $token = app(CreatePasswordResetTokenTask::class)->run($user);
         $data = [
             'email' => $user->email,
             'password' => 's3cr3tPa$$',
-            'token' => $token,
+            'password_confirmation' => 's3cr3tPa$$',
+            'token' => Password::createToken($user),
         ];
 
         $response = $this->postJson(action(ResetPasswordController::class), $data);
 
-        $response->assertNoContent();
+        $response->assertOk();
     }
 
     public function testResetPasswordWithInvalidEmail(): void
@@ -50,6 +50,7 @@ final class ResetPasswordTest extends ApiTestCase
     {
         $data = [
             'password' => '((((()))))',
+            'password_confirmation' => '((((()))))',
         ];
 
         $response = $this->postJson(action(ResetPasswordController::class), $data);

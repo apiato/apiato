@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests\PasswordReset;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
+use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ResetPasswordRequest;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -22,10 +22,7 @@ final class ResetPasswordRequestTest extends UnitTestCase
         $this->assertEquals([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => [
-                'required',
-                Password::default(),
-            ],
+            'password' => [...Password::required(), 'confirmed'],
         ], $this->request->rules());
     }
 

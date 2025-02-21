@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers\PasswordReset;
 
-use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
+use App\Containers\AppSection\Authentication\Actions\PasswordReset\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Controllers\ResetPasswordController;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ResetPasswordRequest;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset\ResetPasswordController;
+use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ResetPasswordRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ResetPasswordController::class)]

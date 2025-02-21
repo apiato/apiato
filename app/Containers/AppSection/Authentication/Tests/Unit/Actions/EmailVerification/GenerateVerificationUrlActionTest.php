@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\EmailVerif
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateVerificationUrlAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification\VerifyController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -27,11 +28,12 @@ final class GenerateVerificationUrlActionTest extends UnitTestCase
 
         $url = $action($user);
 
-        $emailHash = sha1($user->getEmailForVerification());
-        $this->assertStringContainsString("{$frontendUrl}?verification_url=https://api.apiato.ddev.site/v1/email/verify/{$user->getHashedKey()}/{$emailHash}?expires=", $url);
+        $apiEndpoint = action(VerifyController::class, [
+            'id' => $user->getHashedKey(),
+            'hash' => sha1($user->getEmailForVerification()),
+        ]);
         $expiration = Carbon::now()->addMinutes(config('auth.verification.expire', 60))->unix();
-        $this->assertStringContainsString("?expires={$expiration}", $url);
-        $this->assertStringContainsString('&signature=', $url);
+        $this->assertStringContainsString("{$frontendUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature=", $url);
     }
 
     public static function clientDataProvider(): array

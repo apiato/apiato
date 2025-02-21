@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests\PasswordReset;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ForgotPasswordRequest;
-use Illuminate\Validation\Rule;
+use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ForgotPasswordRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ForgotPasswordRequest::class)]
@@ -21,10 +20,6 @@ final class ForgotPasswordRequestTest extends UnitTestCase
     {
         $this->assertEquals([
             'email' => 'required|email',
-            'reseturl' => [
-                'required',
-                Rule::in(config('appSection-authentication.allowed-reset-password-urls')),
-            ],
         ], $this->request->rules());
     }
 

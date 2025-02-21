@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\UI\API\Requests;
+namespace App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
-use Illuminate\Validation\Rule;
 
 class ForgotPasswordRequest extends ParentRequest
 {
@@ -13,10 +12,6 @@ class ForgotPasswordRequest extends ParentRequest
     {
         return [
             'email' => 'required|email',
-            'reseturl' => [
-                'required',
-                Rule::in(config('appSection-authentication.allowed-reset-password-urls')),
-            ],
         ];
     }
 }
