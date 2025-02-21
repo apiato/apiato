@@ -11,6 +11,7 @@ final class GenerateVerificationUrlAction extends ParentAction
 {
     public function __invoke(User $notifiable): string
     {
+        // TODO: maybe we can have default configurable config like in laravel auth.php config, for default client-type?
         $clientType = request()->header('Client-Type', 'web');
 
         $frontendUrls = config('apiato.frontend.urls', []);
