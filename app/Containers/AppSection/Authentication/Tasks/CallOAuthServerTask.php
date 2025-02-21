@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Request;
 class CallOAuthServerTask extends ParentTask
 {
     /**
-     * @throws LoginFailed
+     * @throws \Exception
      */
     public function run(array $data, string|null $languageHeader = null): Token
     {
