@@ -31,28 +31,4 @@ class SendActionTest extends UnitTestCase
             Notification::assertNotSentTo($user, VerifyEmail::class);
         }
     }
-
-//    public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
-//    {
-//        if (!is_a(User::class, MustVerifyEmail::class, true)) {
-//            $this->markTestSkipped();
-//        }
-//        Notification::fake();
-//        $unverifiedUser = User::factory()->unverified()->createOne();
-//        app(SendVerificationEmailTask::class)->run($unverifiedUser, 'this_doesnt_matter_for_the_test');
-//
-//        Notification::assertSentTo($unverifiedUser, VerifyEmail::class);
-//    }
-//
-//    public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
-//    {
-//        if (is_a(User::class, MustVerifyEmail::class, true)) {
-//            $this->markTestSkipped();
-//        }
-//        Notification::fake();
-//        $unverifiedUser = User::factory()->unverified()->createOne();
-//        app(SendVerificationEmailTask::class)->run($unverifiedUser);
-//
-//        Notification::assertNotSentTo($unverifiedUser, VerifyEmail::class);
-//    }
 }
