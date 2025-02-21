@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Enums\Gender;
-use App\Containers\AppSection\User\Models\User;
-use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use PHPUnit\Framework\Attributes\CoversClass;

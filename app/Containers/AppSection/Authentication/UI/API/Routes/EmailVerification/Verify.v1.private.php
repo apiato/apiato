@@ -12,7 +12,6 @@
  * @apiVersion         1.0.0
  *
  * @apiPermission      Authenticated ['permissions' => 'null', 'roles' => null]
- *
  * @apiPermission      none
  *
  * @apiHeader          {String} accept=application/json
