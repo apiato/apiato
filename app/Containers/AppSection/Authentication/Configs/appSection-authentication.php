@@ -10,6 +10,7 @@ return [
     |
     */
 
+    // TODO
     'clients' => [
         'web' => [
             'id' => env('CLIENT_WEB_ID'),
@@ -33,7 +34,7 @@ return [
     'login' => [
         /*
         |--------------------------------------------------------------------------
-        | Allowed Login Fields
+        | Allowed Login Fields TODO
         |--------------------------------------------------------------------------
         |
         | A list of fields the user can log in with.

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
-use App\Containers\AppSection\Authentication\DataTransferObjects\IncomingLoginField;
+use App\Containers\AppSection\Authentication\Data\Dto\IncomingLoginField;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 

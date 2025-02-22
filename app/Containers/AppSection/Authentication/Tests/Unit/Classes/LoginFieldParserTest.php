@@ -3,8 +3,8 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
-use App\Containers\AppSection\Authentication\DataTransferObjects\IncomingLoginField;
-use App\Containers\AppSection\Authentication\DataTransferObjects\LoginField;
+use App\Containers\AppSection\Authentication\Data\Dto\IncomingLoginField;
+use App\Containers\AppSection\Authentication\Data\Dto\LoginField;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\CoversClass;

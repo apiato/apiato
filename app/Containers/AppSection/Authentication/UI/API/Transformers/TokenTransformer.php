@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Transformers;
 
-use App\Containers\AppSection\Authentication\DataTransferObjects\Token;
+use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 
 final class TokenTransformer extends ParentTransformer

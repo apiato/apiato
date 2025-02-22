@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
-use App\Containers\AppSection\Authentication\DataTransferObjects\IncomingLoginField;
+use App\Containers\AppSection\Authentication\Data\Dto\IncomingLoginField;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Builder;

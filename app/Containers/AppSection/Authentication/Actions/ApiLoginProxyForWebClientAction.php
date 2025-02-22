@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
-use App\Containers\AppSection\Authentication\DataTransferObjects\AuthResult;
+use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
