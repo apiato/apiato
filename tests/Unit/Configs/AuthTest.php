@@ -26,7 +26,6 @@ final class AuthTest extends ShipTestCase
                 'api' => [
                     'driver' => 'passport',
                     'provider' => 'users',
-                    'hash' => false,
                 ],
             ],
             'providers' => [
