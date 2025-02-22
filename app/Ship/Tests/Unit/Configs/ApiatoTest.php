@@ -18,8 +18,6 @@ final class ApiatoTest extends ShipTestCase
             ],
             'api' => [
                 'url' => env('API_URL', 'http://localhost'),
-                'expires-in' => env('API_TOKEN_EXPIRES', 1440),
-                'refresh-expires-in' => env('API_REFRESH_TOKEN_EXPIRES', 43200),
                 'rate-limiter' => [
                     'name' => env('GLOBAL_API_RATE_LIMIT_NAME', 'api'),
                     'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
