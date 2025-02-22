@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Data\Dto;
 
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use Symfony\Component\HttpFoundation\Cookie;
 
 final class AuthResult implements ResourceKeyAware
