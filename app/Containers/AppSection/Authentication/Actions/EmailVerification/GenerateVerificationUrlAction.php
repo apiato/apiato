@@ -6,16 +6,17 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
+use Webmozart\Assert\Assert;
 
 final class GenerateVerificationUrlAction extends ParentAction
 {
     public function __invoke(User $notifiable): string
     {
-        // TODO: maybe we can have default configurable config like in laravel auth.php config, for default client-type?
-        $clientType = request()->header('Client-Type', 'web');
+        $appId = request()->header('App-Identifier', config('apiato.defaults.app'));
+        Assert::keyExists(config('apiato.apps'), $appId, "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(', ', array_keys(config('apiato.apps'))));
 
-        $frontendUrls = config('apiato.frontend.urls', []);
-        $frontendUrl = $frontendUrls[$clientType] ?? $frontendUrls['web'];
+        $frontendUrls = config("apiato.apps.{$appId}", []);
+        $frontendUrl = $frontendUrls['url'];
 
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',

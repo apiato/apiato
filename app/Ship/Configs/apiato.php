@@ -3,6 +3,15 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | App Defaults
+    |--------------------------------------------------------------------------
+    */
+    'defaults' => [
+        'app' => 'web',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Enable / Disable Hashed ID
     |--------------------------------------------------------------------------
     */
@@ -53,9 +62,21 @@ return [
         ],
     ],
 
-    'frontend' => [
-        'urls' => [
-            'web' => env('FRONTEND_URL', 'http://localhost:3000'),
+    /*
+    |--------------------------------------------------------------------------
+    | Apps
+    |--------------------------------------------------------------------------
+    |
+    | A list of apps that have access to the application.
+    |
+    | This is useful when you have multiple web apps (like an admin panel, frontend, etc...), and you want to
+    | generate different URLs for each app.
+    | For example, for the password reset and email verification links.
+    |
+    */
+    'apps' => [
+        'web' => [
+            'url' => env('FRONTEND_URL', env('APP_URL', 'http://localhost:3000')),
         ],
     ],
 

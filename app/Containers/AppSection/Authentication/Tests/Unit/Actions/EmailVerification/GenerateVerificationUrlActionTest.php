@@ -13,15 +13,17 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(GenerateVerificationUrlAction::class)]
 final class GenerateVerificationUrlActionTest extends UnitTestCase
 {
-    #[DataProvider('clientDataProvider')]
-    public function testItCanGenerateCorrectUrl(string $clientType, string $frontendUrl): void
+    #[DataProvider('appDataProvider')]
+    public function testItCanGenerateCorrectUrl(string|null $appId, string $appUrl): void
     {
         $this->freezeTime();
-        request()->headers->set('Client-Type', $clientType);
-        config(['apiato.frontend.urls' => [
-            'web' => 'http://localhost:3000',
-            'desktop' => 'http://localhost:5000',
-            'mobile' => 'http://localhost:4000',
+        if ($appId) {
+            request()->headers->set('App-Identifier', $appId);
+        }
+        config(['apiato.apps' => [
+            'web' => ['url' => 'http://localhost:3000'],
+            'desktop' => ['url' => 'http://localhost:5000'],
+            'mobile' => ['url' => 'http://localhost:4000'],
         ]]);
         $action = new GenerateVerificationUrlAction();
         $user = User::factory()->createOne();
@@ -33,14 +35,31 @@ final class GenerateVerificationUrlActionTest extends UnitTestCase
             'hash' => sha1($user->getEmailForVerification()),
         ]);
         $expiration = Carbon::now()->addMinutes(config('auth.verification.expire', 60))->unix();
-        $this->assertStringContainsString("{$frontendUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature=", $url);
+        $this->assertStringContainsString("{$appUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature=", $url);
     }
 
-    public static function clientDataProvider(): array
+    public static function appDataProvider(): array
     {
         return [
             ['web', 'http://localhost:3000'],
             ['mobile', 'http://localhost:4000'],
+            'falls back to default' => [null, 'http://localhost:3000'],
         ];
+    }
+
+    public function testItThrowsIfInvalidAppIdIsProvided(): void
+    {
+        $this->expectExceptionMessage("App-Identifier header value 'non-existing' is not valid. Allowed values are: web, desktop, mobile");
+
+        request()->headers->set('App-Identifier', 'non-existing');
+        config(['apiato.apps' => [
+            'web' => ['url' => 'http://localhost:3000'],
+            'desktop' => ['url' => 'http://localhost:5000'],
+            'mobile' => ['url' => 'http://localhost:4000'],
+        ]]);
+        $action = new GenerateVerificationUrlAction();
+        $user = User::factory()->createOne();
+
+        $action($user);
     }
 }

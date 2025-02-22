@@ -17,10 +17,6 @@ final class AuthenticationTest extends UnitTestCase
                     'id' => env('CLIENT_WEB_ID'),
                     'secret' => env('CLIENT_WEB_SECRET'),
                 ],
-                'mobile' => [
-                    'id' => env('CLIENT_MOBILE_ID'),
-                    'secret' => env('CLIENT_MOBILE_SECRET'),
-                ],
             ],
             'login' => [
                 'fields' => [

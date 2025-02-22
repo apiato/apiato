@@ -13,6 +13,9 @@ final class ApiatoTest extends ShipTestCase
         $config = config('apiato');
         $expected = [
             'hash-id' => env('HASH_ID', true),
+            'defaults' => [
+                'app' => 'web',
+            ],
             'api' => [
                 'url' => env('API_URL', 'http://localhost'),
                 'expires-in' => env('API_TOKEN_EXPIRES', 1440),
@@ -24,9 +27,9 @@ final class ApiatoTest extends ShipTestCase
                     'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
                 ],
             ],
-            'frontend' => [
-                'urls' => [
-                    'web' => env('FRONTEND_URL', 'http://localhost:3000'),
+            'apps' => [
+                'web' => [
+                    'url' => env('FRONTEND_URL', env('APP_URL', 'http://localhost:3000')),
                 ],
             ],
             'requests' => [
