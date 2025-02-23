@@ -5,6 +5,7 @@ use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
+use App\Ship\Middleware\ValidateAppId;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -23,6 +24,9 @@ return Application::configure(basePath: $basePath)
         then: static fn () => $apiato->registerApiRoutes(),
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->use([
+            ValidateAppId::class,
+        ]);
         $middleware->api(append: [
             ValidateJsonContent::class,
             ProcessETag::class,
