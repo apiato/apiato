@@ -20,7 +20,7 @@ final class AuthServiceProvider extends ParentServiceProvider
 
             return null;
         };
-        /**
+        /*
          * Get the current logged-in user guard.
          *
          * @return string|null

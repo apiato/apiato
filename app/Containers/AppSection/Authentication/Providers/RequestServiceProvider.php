@@ -9,7 +9,7 @@ final class RequestServiceProvider extends ParentServiceProvider
 {
     public function boot(): void
     {
-        /**
+        /*
          * Get the App-Identifier header value from the request or use the default app.
          */
         Request::macro('appId', function () {

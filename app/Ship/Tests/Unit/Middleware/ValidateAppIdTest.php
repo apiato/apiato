@@ -15,7 +15,7 @@ final class ValidateAppIdTest extends UnitTestCase
     {
         $request = Request::create(
             action([WelcomeController::class, 'unversioned']),
-            server: ['HTTP_App-Identifier' => 'desktop']
+            server: ['HTTP_App-Identifier' => 'desktop'],
         );
         config(['apiato.apps' => [
             'web' => null,
@@ -35,7 +35,7 @@ final class ValidateAppIdTest extends UnitTestCase
 
         $request = Request::create(
             action([WelcomeController::class, 'unversioned']),
-            server: ['HTTP_App-Identifier' => 'non-existing']
+            server: ['HTTP_App-Identifier' => 'non-existing'],
         );
         config(['apiato.apps' => [
             'web' => null,
