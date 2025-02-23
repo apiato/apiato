@@ -30,6 +30,6 @@ final class GenerateVerificationUrlActionTest extends UnitTestCase
             'hash' => sha1($user->getEmailForVerification()),
         ]);
         $expiration = Carbon::now()->addMinutes(config('auth.verification.expire', 60))->unix();
-        $this->assertStringContainsString("{$appUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature=", $url);
+        $this->assertStringContainsString(urlencode("{$appUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature="), $url);
     }
 }

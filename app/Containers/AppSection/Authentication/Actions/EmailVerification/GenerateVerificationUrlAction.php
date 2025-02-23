@@ -24,6 +24,6 @@ final class GenerateVerificationUrlAction extends ParentAction
             ],
         );
 
-        return "{$frontendUrl}?verification_url=" . $verificationUrl;
+        return urlencode("{$frontendUrl}?verification_url=" . $verificationUrl);
     }
 }
