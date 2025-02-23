@@ -25,7 +25,7 @@ final class UserFactory extends ParentFactory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => self::$password ??= Hash::make('password'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'gender' => fake()->randomElement(['male', 'female', 'unspecified']),
@@ -33,21 +33,21 @@ final class UserFactory extends ParentFactory
         ];
     }
 
-    public function admin(): static
+    public function admin(): self
     {
         return $this->afterCreating(function (User $user) {
             app(RoleRepository::class)->makeSuperAdmin($user);
         });
     }
 
-    public function unverified(): static
+    public function unverified(): self
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
 
-    public function gender(Gender $gender): static
+    public function gender(Gender $gender): self
     {
         return $this->state(fn (array $attributes) => [
             'gender' => $gender,
