@@ -11,14 +11,18 @@ final class MakeRefreshCookieTaskTest extends UnitTestCase
 {
     public function testMakeRefreshCookie(): void
     {
+        $this->freezeTime();
         $refreshToken = 'some-random-refresh-token';
         $task = app(MakeRefreshTokenCookieTask::class);
 
         $result = $task->run($refreshToken);
 
-        // TODO: this should cover more cases
-        $this->assertSame($result->getName(), 'refreshToken');
-        $this->assertSame($result->getValue(), $refreshToken);
-        $this->assertSame($result->isHttpOnly(), true);
+        $this->assertSame('refreshToken', $result->getName());
+        $this->assertSame($refreshToken, $result->getValue());
+        $this->assertEquals((int)config('appSection-authentication.refresh-tokens-expire-in'), $result->getExpiresTime());
+        $this->assertEquals('/', $result->getPath());
+        $this->assertNull($result->getDomain());
+        $this->assertEquals(config('session.secure'), $result->isSecure());
+        $this->assertEquals(config('session.http_only'), $result->isHttpOnly());
     }
 }
