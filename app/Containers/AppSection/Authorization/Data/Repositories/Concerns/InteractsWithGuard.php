@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Data\Repositories\Concerns;
 
-use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
+use App\Containers\AppSection\Authorization\Data\Criteria\WhereGuardCriteria;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Prettus\Repository\Exceptions\RepositoryException;
 

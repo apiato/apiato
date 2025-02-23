@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Repositories\Concerns;
 
-use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
+use App\Containers\AppSection\Authorization\Data\Criteria\WhereGuardCriteria;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\Data\Repositories\Concerns\InteractsWithGuard;
 use App\Ship\Tests\Fakes\TestUser;

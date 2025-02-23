@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Criterias;
 
-use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
+use App\Containers\AppSection\Authorization\Data\Criteria\WhereGuardCriteria;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Models\Permission;
