@@ -16,7 +16,7 @@ final class GivePermissionsToRoleRequestTest extends UnitTestCase
         $this->assertSame([
             'role_id',
             'permission_ids.*',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

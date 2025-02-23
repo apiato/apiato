@@ -15,7 +15,7 @@ final class FindPermissionRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permission_id',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

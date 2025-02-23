@@ -14,7 +14,7 @@ final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([], $this->request->getDecodeArray());
+        $this->assertSame([], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

@@ -17,7 +17,7 @@ final class UpdatePasswordRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'user_id',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

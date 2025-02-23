@@ -16,7 +16,7 @@ final class SyncUserRolesRequestTest extends UnitTestCase
         $this->assertSame([
             'user_id',
             'role_ids.*',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

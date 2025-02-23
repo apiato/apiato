@@ -16,7 +16,7 @@ final class GivePermissionsToUserRequestTest extends UnitTestCase
         $this->assertSame([
             'user_id',
             'permission_ids.*',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void

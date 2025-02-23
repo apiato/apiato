@@ -14,16 +14,9 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(RefreshProxyForWebClientAction::class)]
 final class RefreshProxyForWebClientActionTest extends UnitTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->markTestIncomplete('This test has not been implemented yet.');
-        
-        $this->setupPasswordGrantClient();
-    }
-
     public function testCanRefreshToken(): void
     {
+        $this->setupPasswordGrantClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -44,6 +37,7 @@ final class RefreshProxyForWebClientActionTest extends UnitTestCase
 
     public function testCanRefreshTokenFromCookie(): void
     {
+        $this->setupPasswordGrantClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',

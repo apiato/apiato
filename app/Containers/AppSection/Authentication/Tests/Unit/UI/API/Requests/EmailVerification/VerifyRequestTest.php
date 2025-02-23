@@ -19,7 +19,7 @@ final class VerifyRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'id',
-        ], $this->request->getDecodeArray());
+        ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
