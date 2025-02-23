@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
-use Apiato\Abstract\Models\ApiatoIntegration;
+use Apiato\Abstract\Models\InteractsWithApiato;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -12,7 +12,7 @@ final class PermissionTest extends UnitTestCase
 {
     public function testUsesCorrectTraits(): void
     {
-        $this->assertContains(ApiatoIntegration::class, class_uses_recursive(Permission::class));
+        $this->assertContains(InteractsWithApiato::class, class_uses_recursive(Permission::class));
     }
 
     public function testHasCorrectFillableFields(): void

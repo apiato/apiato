@@ -32,10 +32,10 @@ final class RegisterUserTest extends ApiTestCase
                 ->where('data.email', $data['email'])
                 ->etc(),
         );
-        $userId = User::find(hashids()->decode($response->json('data.id')));
-        Notification::assertSentTo($userId, Welcome::class);
+        $user = User::find(hashids()->decodeOrFail($response->json('data.id')));
+        Notification::assertSentTo($user, Welcome::class);
         if (is_a(User::class, MustVerifyEmail::class, true)) {
-            Notification::assertSentTo($userId, VerifyEmail::class);
+            Notification::assertSentTo($user, VerifyEmail::class);
         }
     }
 }
