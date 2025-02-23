@@ -12,10 +12,10 @@ final class ApiatoTest extends ShipTestCase
     {
         $config = config('apiato');
         $expected = [
-            'hash-id' => env('HASH_ID', true),
             'defaults' => [
                 'app' => 'web',
             ],
+            'hash-id' => env('HASH_ID', true),
             'api' => [
                 'url' => env('API_URL', 'http://localhost'),
                 'rate-limiter' => [
