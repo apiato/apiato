@@ -19,12 +19,6 @@ final class CreateUserTask extends ParentTask
      */
     public function run(array $data): User
     {
-        try {
-            $user = $this->repository->create($data);
-        } catch (\Exception) {
-            throw ResourceCreationFailed::create('User');
-        }
-
-        return $user;
+        return $this->repository->create($data);
     }
 }

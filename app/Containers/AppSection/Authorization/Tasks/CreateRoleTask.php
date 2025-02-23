@@ -19,17 +19,11 @@ final class CreateRoleTask extends ParentTask
      */
     public function run(string $name, string|null $description = null, string|null $displayName = null, string $guardName = 'api'): Role
     {
-        try {
-            $role = $this->repository->create([
-                'name' => strtolower($name),
-                'description' => $description,
-                'display_name' => $displayName,
-                'guard_name' => $guardName,
-            ]);
-        } catch (\Exception) {
-            throw ResourceCreationFailed::create('Role');
-        }
-
-        return $role;
+        return $this->repository->create([
+            'name' => strtolower($name),
+            'description' => $description,
+            'display_name' => $displayName,
+            'guard_name' => $guardName,
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Ship\Parents\Repositories;
 
 use Apiato\Abstract\Repositories\Repository as AbstractRepository;
+use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Exceptions\ResourceNotFound;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Arrayable;
@@ -18,7 +19,42 @@ use Prettus\Repository\Exceptions\RepositoryException;
 abstract class Repository extends AbstractRepository
 {
     /**
-     * Find a model by its primary key.
+     * @var \Closure[]
+     */
+    protected array $scopes = [];
+
+    public function __construct()
+    {
+        parent::__construct(app());
+    }
+
+    /**
+     * Add a new global scope to the model.
+     */
+    public function scope(\Closure $scope): static
+    {
+        $this->scopes[] = $scope;
+
+        return $this;
+    }
+
+    public function resetScope(): static
+    {
+        parent::resetScope();
+        $this->resetScopes();
+
+        return $this;
+    }
+
+    public function resetScopes(): static
+    {
+        $this->scopes = [];
+
+        return $this;
+    }
+
+    /**
+     * Find an entity by its primary key.
      *
      * @return TModel|null
      */
@@ -32,18 +68,40 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Get a model by its primary key or throw an exception.
+     * Find an entity by its primary key or throw an exception.
      *
      * @return TModel
      *
-     * @throws ModelNotFoundException
+     * @throws ResourceNotFound
      */
-    public function getById(int|string $id, array $columns = ['*'])
+    public function findByIdOrFail(int|string $id, array $columns = ['*'])
     {
-        return $this->find($id, $columns);
+        try {
+            return $this->find($id, $columns);
+        } catch (ModelNotFoundException) {
+            throw ResourceNotFound::create();
+        }
     }
 
     /**
+     * Make a new instance of the Model and persist it to the storage.
+     *
+     * @return TModel
+     *
+     * @throws ResourceCreationFailed
+     */
+    public function create(array $attributes)
+    {
+        try {
+            return parent::create($attributes);
+        } catch (\Exception) {
+            throw ResourceCreationFailed::create();
+        }
+    }
+
+    /**
+     * Find many entities by their primary keys.
+     *
      * @return Collection<array-key, TModel>
      */
     public function findMany(array|Arrayable $ids, array $columns = ['*']): Collection
@@ -56,7 +114,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Delete a model by its primary key or throw an exception.
+     * Delete an entity by its primary key or throw an exception.
      *
      * @param int|string $id
      *
@@ -72,6 +130,79 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
+     * Make a new instance of the Model.
+     *
+     * @return TModel
+     */
+    public function make(array $attributes)
+    {
+        return $this->getModel()->newInstance($attributes);
+    }
+
+    /**
+     * Returns the current Model instance.
+     * *
+     * @return TModel
+     */
+    public function getModel()
+    {
+        return parent::getModel();
+    }
+
+    /**
+     * Persist a Model instance to the storage.
+     *
+     * @param TModel $model
+     *
+     * @return TModel
+     */
+    public function save($model)
+    {
+        $model->save();
+
+        return $model;
+    }
+
+    /**
+     * Persist an object with the given data if it passes the validation.
+     *
+     * A note for myself:
+     * The create method should just create an instance and persist it to the storage.
+     * The store method should validate the data and then create an instance and persist it to the storage using the create method.
+     * The store method should be used everywhere.
+     * It should be the only method used to create a new instance of the model.
+     * It should not fire any non-repository related events.
+     *
+     * @template TData of Arrayable
+     *
+     * @param TData $data
+     *
+     * @return TModel
+     *
+     * @throws ResourceCreationFailed
+     */
+    public function store($data)
+    {
+        return $this->create($data->toArray());
+    }
+
+    /**
+     * Find the first instance of the Model or create it.
+     *
+     * @return TModel
+     */
+    public function firstOrCreate(array $attributes = [], array $values = [])
+    {
+        /** @var TModel $model */
+        $model = parent::firstOrCreate($attributes);
+        if ($model->wasRecentlyCreated) {
+            $model->update($values);
+        }
+
+        return $model;
+    }
+
+    /**
      * @param class-string<CriteriaInterface> $criteria Criteria class name
      * @param array<string, mixed> $args Arguments to pass to the criteria constructor
      *
@@ -84,5 +215,25 @@ abstract class Repository extends AbstractRepository
         $criteriaInstance = $this->app->makeWith($criteria, $args);
 
         return $this->pushCriteria($criteriaInstance);
+    }
+
+    protected function applyScope(): static
+    {
+        parent::applyScope();
+        $this->applyScopes();
+
+        return $this;
+    }
+
+    protected function applyScopes(): static
+    {
+        foreach ($this->scopes as $scope) {
+            if (!is_callable($scope)) {
+                throw new \RuntimeException('Query scope is not callable');
+            }
+            $this->model = $scope($this->model);
+        }
+
+        return $this;
     }
 }

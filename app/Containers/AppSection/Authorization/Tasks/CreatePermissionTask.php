@@ -19,17 +19,11 @@ final class CreatePermissionTask extends ParentTask
      */
     public function run(string $name, string|null $description = null, string|null $displayName = null, string $guardName = 'api'): Permission
     {
-        try {
-            $permission = $this->repository->create([
-                'name' => strtolower($name),
-                'description' => $description,
-                'display_name' => $displayName,
-                'guard_name' => $guardName,
-            ]);
-        } catch (\Exception) {
-            throw ResourceCreationFailed::create('Permission');
-        }
-
-        return $permission;
+        return $this->repository->create([
+            'name' => strtolower($name),
+            'description' => $description,
+            'display_name' => $displayName,
+            'guard_name' => $guardName,
+        ]);
     }
 }
