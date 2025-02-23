@@ -13,13 +13,13 @@ final class CreateRoleTaskTest extends UnitTestCase
     {
         $name = 'MEga_AdmIn';
         $description = 'The One above all';
-        $display_name = 'Mega Admin the Almighty';
+        $displayName = 'Mega Admin the Almighty';
 
-        $role = app(CreateRoleTask::class)->run($name, $description, $display_name);
+        $role = app(CreateRoleTask::class)->run($name, $description, $displayName);
 
         $this->assertSame(strtolower($name), $role->name);
         $this->assertSame($description, $role->description);
-        $this->assertSame($display_name, $role->display_name);
+        $this->assertSame($displayName, $role->display_name);
         $this->assertSame('api', $role->guard_name);
     }
 }
