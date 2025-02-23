@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Artisan;
 
 // TODO:
 //  Is there a better way to install passport?
-//  Do we need to do it?
-//  Where we need it?
 abstract class TestCase extends AbstractTestCase
 {
     use LazilyRefreshDatabase;
