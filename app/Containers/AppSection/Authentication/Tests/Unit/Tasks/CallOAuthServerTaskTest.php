@@ -11,15 +11,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(CallOAuthServerTask::class)]
 final class CallOAuthServerTaskTest extends UnitTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->setupPasswordGrantClient();
-    }
-
     public function testCallOAuthServer(): void
     {
+        $this->setupPasswordGrantClient();
         $credentials = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -37,6 +31,7 @@ final class CallOAuthServerTaskTest extends UnitTestCase
     {
         $this->expectException(LoginFailed::class);
 
+        $this->setupPasswordGrantClient();
         User::factory()->createOne(['email' => 'gandalf@the.grey', 'password' => 'youShallNotPass']);
         $data = $this->enrichWithPasswordGrantFields('nonexisting@email.void', 'invalidPassword');
         $task = app(CallOAuthServerTask::class);
