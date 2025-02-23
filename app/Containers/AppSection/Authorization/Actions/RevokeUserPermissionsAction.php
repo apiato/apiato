@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserPermissionsRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\ResourceNotFound;
@@ -18,11 +17,11 @@ final class RevokeUserPermissionsAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(RevokeUserPermissionsRequest $request): User
+    public function run(int $userId, int ...$permissionIds): User
     {
-        $user = $this->findUserByIdTask->run($request->user_id);
+        $user = $this->findUserByIdTask->run($userId);
 
-        foreach ($request->permission_ids as $permissionId) {
+        foreach ($permissionIds as $permissionId) {
             $user->revokePermissionTo($permissionId);
         }
 

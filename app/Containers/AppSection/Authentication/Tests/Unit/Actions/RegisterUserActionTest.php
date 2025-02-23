@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
@@ -23,10 +22,9 @@ final class RegisterUserActionTest extends UnitTestCase
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $request = RegisterUserRequest::injectData($data);
         $action = app(RegisterUserAction::class);
 
-        $user = $action->run($request);
+        $user = $action->run($data);
 
         $this->assertModelExists($user);
         $this->assertInstanceOf(User::class, $user);

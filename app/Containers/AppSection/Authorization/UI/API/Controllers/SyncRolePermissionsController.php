@@ -11,7 +11,7 @@ final class SyncRolePermissionsController extends ApiController
 {
     public function __invoke(SyncRolePermissionsRequest $request, SyncRolePermissionsAction $action): array
     {
-        $role = $action->run($request);
+        $role = $action->run($request->role_id, ...$request->permission_ids);
 
         return $this->transform($role, RoleAdminTransformer::class, ['permissions']);
     }

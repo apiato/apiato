@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Data\Dto\IncomingLoginField;
-use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -12,24 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 final class WebLoginAction extends ParentAction
 {
-    public function run(LoginRequest $request): RedirectResponse
+    public function run(array $data): RedirectResponse
     {
-        $sanitizedData = $request->sanitize([
-            ...array_keys(config('appSection-authentication.login.fields', ['email' => []])),
-            'password',
-            'remember' => false,
-        ]);
-
-        $loginFields = LoginFieldParser::extractAll($sanitizedData);
+        $loginFields = LoginFieldParser::extractAll($data);
         $credentials = [];
         foreach ($loginFields as $loginField) {
             $credentials[$loginField->name] =
                 static fn (Builder $query): Builder => $query
                     ->orWhereRaw("lower({$loginField->name}) = lower(?)", [$loginField->value]);
         }
-        $credentials['password'] = $sanitizedData['password'];
+        $credentials['password'] = $data['password'];
 
-        $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember']);
+        $loggedIn = Auth::guard('web')->attempt($credentials, $data['remember'] ?? false);
 
         // TODO: This doesnt feels right. Maybe we should move this to controller?
         // You know, the controller should be the one who decides where to redirect the user.

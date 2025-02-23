@@ -6,7 +6,6 @@ use App\Containers\AppSection\User\Actions\DeleteUserAction;
 use App\Containers\AppSection\User\Exceptions\FailedToDeleteUser;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(DeleteUserAction::class)]
@@ -14,13 +13,13 @@ final class DeleteUserActionTest extends UnitTestCase
 {
     public function testCanDeleteAnotherUser(): void
     {
-        $authenticatedUser = User::factory()->createOne();
+        $user = User::factory()->createOne();
+        $this->actingAs($user, 'api');
         $anotherUser = User::factory()->createOne();
-        $request = DeleteUserRequest::injectData([], $authenticatedUser)
-            ->withUrlParameters(['user_id' => $anotherUser->id]);
+
         $action = app(DeleteUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($anotherUser->id);
 
         $this->assertTrue($result);
         $this->assertModelMissing($anotherUser);
@@ -31,10 +30,9 @@ final class DeleteUserActionTest extends UnitTestCase
         $this->expectException(FailedToDeleteUser::class);
 
         $user = User::factory()->createOne();
-        $request = DeleteUserRequest::injectData([], $user)
-            ->withUrlParameters(['user_id' => $user->id]);
+        $this->actingAs($user, 'api');
         $action = app(DeleteUserAction::class);
 
-        $action->run($request);
+        $action->run($user->id);
     }
 }

@@ -11,7 +11,7 @@ final class ListUserRolesController extends ApiController
 {
     public function __invoke(ListUserRolesRequest $request, ListUserRolesAction $action): array
     {
-        $roles = $action->run($request);
+        $roles = $action->run($request->user_id);
 
         return $this->transform($roles, RoleAdminTransformer::class);
     }

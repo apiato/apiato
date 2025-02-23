@@ -6,7 +6,6 @@ use App\Containers\AppSection\Authorization\Actions\SyncRolePermissionsAction;
 use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(SyncRolePermissionsAction::class)]
@@ -18,12 +17,9 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
         $permissions = Permission::factory()->count(3)->create();
         $role->givePermissionTo($permissions);
         $this->assertCount(3, $role->permissions);
-        $request = SyncRolePermissionsRequest::injectData([
-            'permission_ids' => [$permissions[1]->getHashedKey()],
-        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(SyncRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($role->id, $permissions[1]->id);
 
         $this->assertCount(1, $result->permissions);
         $this->assertSame($permissions[1]->id, $result->permissions->sole()->id);
@@ -35,12 +31,9 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
         $permissions = Permission::factory()->count(3)->create();
         $role->givePermissionTo($permissions);
         $this->assertCount(3, $role->permissions);
-        $request = SyncRolePermissionsRequest::injectData([
-            'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ])->withUrlParameters(['role_id' => $role->id]);
         $action = app(SyncRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($role->id, $permissions[0]->id, $permissions[2]->id);
 
         $this->assertCount(2, $result->permissions);
         $this->assertSame($permissions[0]->id, $result->permissions->first()->id);

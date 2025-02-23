@@ -3,10 +3,8 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
-use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
-use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class RefreshProxyForWebClientAction extends ParentAction
@@ -18,19 +16,11 @@ final class RefreshProxyForWebClientAction extends ParentAction
     }
 
     /**
-     * @throws LoginFailed
+     * @throws \Exception
      */
-    public function run(RefreshProxyRequest $request): AuthResult
+    public function run(array $data): AuthResult
     {
-        $sanitizedData = $request->sanitize([
-            'refresh_token' => $request->cookie('refreshToken'),
-            'client_id' => config('appSection-authentication.clients.web.id'),
-            'client_secret' => config('appSection-authentication.clients.web.secret'),
-            'grant_type' => 'refresh_token',
-            'scope' => '',
-        ]);
-
-        $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
+        $responseContent = $this->callOAuthServerTask->run($data);
         $refreshCookie = $this->makeRefreshTokenCookieTask->run($responseContent->refreshToken);
 
         return new AuthResult($responseContent, $refreshCookie);

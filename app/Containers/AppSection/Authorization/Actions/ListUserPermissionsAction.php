@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsRequest;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -21,8 +20,8 @@ final class ListUserPermissionsAction extends ParentAction
      *
      * @throws ResourceNotFound
      */
-    public function run(ListUserPermissionsRequest $request): Collection
+    public function run(int $id): Collection
     {
-        return $this->findUserByIdTask->run($request->user_id)->permissions;
+        return $this->findUserByIdTask->run($id)->permissions;
     }
 }

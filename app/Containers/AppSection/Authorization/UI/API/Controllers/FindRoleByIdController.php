@@ -11,7 +11,7 @@ final class FindRoleByIdController extends ApiController
 {
     public function __invoke(FindRoleByIdRequest $request, FindRoleByIdAction $action): array
     {
-        $role = $action->run($request);
+        $role = $action->run($request->role_id);
 
         return $this->transform($role, RoleAdminTransformer::class);
     }

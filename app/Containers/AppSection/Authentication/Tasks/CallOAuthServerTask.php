@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Request;
 final class CallOAuthServerTask extends ParentTask
 {
     /**
+     * @param array $data
+     * @return Token
      * @throws \Exception
      */
-    public function run(array $data, string|null $languageHeader = null): Token
+    public function run(array $data): Token
     {
         $authFullApiUrl = route('passport.token');
         $headers = [
             'HTTP_ACCEPT' => 'application/json',
-            'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? config('app.locale'),
+            'HTTP_ACCEPT_LANGUAGE' => request()->headers->get('accept-language', config('app.locale')),
         ];
 
         $request = Request::create($authFullApiUrl, 'POST', $data, server: $headers);

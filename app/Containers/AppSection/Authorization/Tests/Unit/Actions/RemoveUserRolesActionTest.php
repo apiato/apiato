@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 use App\Containers\AppSection\Authorization\Actions\RemoveUserRolesAction;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesRequest;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -17,12 +16,9 @@ final class RemoveUserRolesActionTest extends UnitTestCase
         $user = User::factory()->createOne();
         $roles = Role::factory()->count(3)->create();
         $user->assignRole($roles);
-        $request = RemoveUserRolesRequest::injectData([
-            'role_ids' => [$roles[1]->getHashedKey()],
-        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RemoveUserRolesAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($user->id, $roles[1]->id);
 
         $this->assertCount(2, $result->roles);
         $this->assertSame($roles[0]->id, $result->roles->first()->id);
@@ -34,12 +30,9 @@ final class RemoveUserRolesActionTest extends UnitTestCase
         $user = User::factory()->createOne();
         $roles = Role::factory()->count(3)->create();
         $user->assignRole($roles);
-        $request = RemoveUserRolesRequest::injectData([
-            'role_ids' => [$roles[0]->getHashedKey(), $roles[2]->getHashedKey()],
-        ])->withUrlParameters(['user_id' => $user->id]);
         $action = app(RemoveUserRolesAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($user->id, $roles[0]->id, $roles[2]->id);
 
         $this->assertCount(1, $result->roles);
         $this->assertSame($roles[1]->id, $result->roles->sole()->id);

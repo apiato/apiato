@@ -12,7 +12,11 @@ final class CreateRoleController extends ApiController
 {
     public function __invoke(CreateRoleRequest $request, CreateRoleAction $action): JsonResponse
     {
-        $role = $action->run($request);
+        $role = $action->run(
+            $request->input('name'),
+            $request->input('description'),
+            $request->input('display_name'),
+        );
 
         return $this->created($this->transform($role, RoleAdminTransformer::class));
     }

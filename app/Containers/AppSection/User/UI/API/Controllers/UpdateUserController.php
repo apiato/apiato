@@ -11,7 +11,16 @@ final class UpdateUserController extends ApiController
 {
     public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): array
     {
-        $user = $action->run($request);
+        $user = $action->run(
+            $request->user_id,
+            $request->sanitize([
+                'name',
+                'gender',
+                'birth',
+                'password',
+                'new_password',
+            ]),
+        );
 
         return $this->transform($user, UserTransformer::class);
     }

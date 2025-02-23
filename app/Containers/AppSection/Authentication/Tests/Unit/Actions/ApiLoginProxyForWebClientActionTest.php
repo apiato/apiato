@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -27,10 +26,9 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         ];
         $user = User::factory()->createOne($credentials);
         $this->actingAs($user, 'web');
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($this->mergeProxyData($credentials));
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
@@ -45,10 +43,9 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         ];
         $user = User::factory()->createOne($credentials);
         $this->actingAs($user, 'web');
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($this->mergeProxyData($credentials));
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
@@ -70,10 +67,9 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
             'name' => 'saruman', // wrong name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $action->run($request);
+        $action->run($this->mergeProxyData($credentials));
     }
 
     public function testCanLoginWithMultipleLoginFieldsEvenIfOneFieldIsCorrect(): void
@@ -91,11 +87,22 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
             'name' => 'gandalf', // correct name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($this->mergeProxyData($credentials));
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
+    }
+
+    private function mergeProxyData(array $data): array
+    {
+        return array_merge($data, [
+            ...array_keys(config('appSection-authentication.login.fields')),
+            'password',
+            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_secret' => config('appSection-authentication.clients.web.secret'),
+            'grant_type' => 'password',
+            'scope' => '',
+        ]);
     }
 }

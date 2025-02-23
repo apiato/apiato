@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class LoginFailed extends ParentHttpException
 {
-    public static function create(): static
+    public static function create(): self
     {
-        return new static(Response::HTTP_UNPROCESSABLE_ENTITY, 'Login Failed.');
+        return new self(Response::HTTP_UNPROCESSABLE_ENTITY, 'Login Failed.');
     }
 }

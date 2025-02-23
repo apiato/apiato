@@ -12,8 +12,15 @@ final class RefreshProxyForWebClientController extends ApiController
 {
     public function __invoke(RefreshProxyRequest $request, RefreshProxyForWebClientAction $action): JsonResponse
     {
-        $result = $action->run($request);
+        $result = $action->run($request->sanitize([
+            'refresh_token' => $request->cookie('refreshToken'),
+            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_secret' => config('appSection-authentication.clients.web.secret'),
+            'grant_type' => 'refresh_token',
+            'scope' => '',
+        ]));
 
-        return $this->json($this->transform($result->token, TokenTransformer::class))->withCookie($result->refreshTokenCookie);
+        return $this->json($this->transform($result->token, TokenTransformer::class))
+            ->withCookie($result->refreshTokenCookie);
     }
 }

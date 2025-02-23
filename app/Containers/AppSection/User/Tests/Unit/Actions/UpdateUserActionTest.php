@@ -6,7 +6,6 @@ use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -26,10 +25,9 @@ final class UpdateUserActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
             'new_password' => 'test',
         ];
-        $request = UpdateUserRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
         $action = app(UpdateUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($user->id, $data);
 
         $this->assertSame($data['name'], $result->name);
         $this->assertSame(Gender::from($data['gender']), $result->gender);

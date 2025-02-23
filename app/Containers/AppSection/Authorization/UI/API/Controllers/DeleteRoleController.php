@@ -11,7 +11,7 @@ final class DeleteRoleController extends ApiController
 {
     public function __invoke(DeleteRoleRequest $request, DeleteRoleAction $action): JsonResponse
     {
-        $action->run($request);
+        $action->run($request->role_id);
 
         return $this->noContent();
     }

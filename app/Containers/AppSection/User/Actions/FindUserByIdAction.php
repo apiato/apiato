@@ -14,8 +14,8 @@ final class FindUserByIdAction extends ParentAction
     ) {
     }
 
-    public function run(FindUserByIdRequest $request): User
+    public function run(int $id): User
     {
-        return $this->findUserByIdTask->run($request->user_id);
+        return $this->findUserByIdTask->run($id);
     }
 }

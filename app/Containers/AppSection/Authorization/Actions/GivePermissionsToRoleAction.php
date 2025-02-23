@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToRoleRequest;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
@@ -18,9 +17,9 @@ final class GivePermissionsToRoleAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(GivePermissionsToRoleRequest $request): Role
+    public function run(int $roleId, int ...$permissionIds): Role
     {
-        return $this->findRoleTask->run($request->role_id)
-            ->givePermissionTo($request->permission_ids);
+        return $this->findRoleTask->run($roleId)
+            ->givePermissionTo($permissionIds);
     }
 }

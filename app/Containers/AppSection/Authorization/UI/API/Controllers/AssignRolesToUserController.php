@@ -11,7 +11,7 @@ final class AssignRolesToUserController extends ApiController
 {
     public function __invoke(AssignRolesToUserRequest $request, AssignRolesToUserAction $action): array
     {
-        $user = $action->run($request);
+        $user = $action->run($request->user_id, ...$request->role_ids);
 
         return $this->transform($user, UserAdminTransformer::class, ['roles']);
     }

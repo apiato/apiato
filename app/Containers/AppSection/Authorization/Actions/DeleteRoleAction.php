@@ -17,8 +17,8 @@ final class DeleteRoleAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(DeleteRoleRequest $request): bool
+    public function run(int $id): bool
     {
-        return $this->repository->delete($request->role_id);
+        return $this->repository->delete($id);
     }
 }

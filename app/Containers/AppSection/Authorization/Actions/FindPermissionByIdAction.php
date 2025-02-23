@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class FindPermissionByIdAction extends ParentAction
@@ -14,8 +13,8 @@ final class FindPermissionByIdAction extends ParentAction
     ) {
     }
 
-    public function run(FindPermissionByIdRequest $request): Permission
+    public function run(int $id): Permission
     {
-        return $this->repository->findByIdOrFail($request->permission_id);
+        return $this->repository->findByIdOrFail($id);
     }
 }

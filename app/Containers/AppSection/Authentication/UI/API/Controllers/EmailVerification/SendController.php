@@ -11,7 +11,7 @@ final class SendController extends ApiController
 {
     public function __invoke(SendRequest $request, SendAction $action): JsonResponse
     {
-        $action->run($request);
+        $action->run($request->user());
 
         return $this->accepted();
     }

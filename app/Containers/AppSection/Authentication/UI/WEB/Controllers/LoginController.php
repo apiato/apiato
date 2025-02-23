@@ -11,6 +11,10 @@ final class LoginController extends WebController
 {
     public function __invoke(LoginRequest $request, WebLoginAction $action): RedirectResponse
     {
-        return $action->run($request);
+        return $action->run($request->sanitize([
+            ...array_keys(config('appSection-authentication.login.fields', ['email' => []])),
+            'password',
+            'remember' => false,
+        ]));
     }
 }

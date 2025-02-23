@@ -30,9 +30,8 @@ final class SendActionTest extends UnitTestCase
             },
         )->createOne();
         $action = app(SendAction::class);
-        $request = SendRequest::injectData([], $user);
 
-        $action->run($request);
+        $action->run($user);
 
         $verificationEnabled = $user instanceof MustVerifyEmail;
         if ($verificationEnabled && !$user->hasVerifiedEmail()) {

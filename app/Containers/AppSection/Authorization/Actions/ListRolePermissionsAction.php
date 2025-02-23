@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolePermissionsRequest;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,8 +20,8 @@ final class ListRolePermissionsAction extends ParentAction
      *
      * @throws ResourceNotFound
      */
-    public function run(ListRolePermissionsRequest $request): Collection
+    public function run(int $id): Collection
     {
-        return $this->findRoleTask->run($request->role_id)->permissions;
+        return $this->findRoleTask->run($id)->permissions;
     }
 }

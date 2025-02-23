@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -14,9 +13,9 @@ final class GivePermissionsToUserAction extends ParentAction
     ) {
     }
 
-    public function run(GivePermissionsToUserRequest $request): User
+    public function run(int $userId, int ...$permissionIds): User
     {
-        return $this->findUserByIdTask->run($request->user_id)
-            ->givePermissionTo($request->permission_ids);
+        return $this->findUserByIdTask->run($userId)
+            ->givePermissionTo($permissionIds);
     }
 }

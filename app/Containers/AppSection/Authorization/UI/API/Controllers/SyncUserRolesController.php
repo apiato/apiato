@@ -11,7 +11,7 @@ final class SyncUserRolesController extends ApiController
 {
     public function __invoke(SyncUserRolesRequest $request, SyncUserRolesAction $action): array
     {
-        $user = $action->run($request);
+        $user = $action->run($request->user_id, ...$request->role_ids);
 
         return $this->transform($user, UserAdminTransformer::class, ['roles']);
     }

@@ -11,7 +11,7 @@ final class GivePermissionsToUserController extends ApiController
 {
     public function __invoke(GivePermissionsToUserRequest $request, GivePermissionsToUserAction $action): array
     {
-        $user = $action->run($request);
+        $user = $action->run($request->user_id, ...$request->permission_ids);
 
         return $this->transform($user, UserAdminTransformer::class, ['permissions']);
     }

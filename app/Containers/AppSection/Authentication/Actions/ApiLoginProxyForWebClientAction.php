@@ -7,7 +7,6 @@ use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
-use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class ApiLoginProxyForWebClientAction extends ParentAction
@@ -22,25 +21,16 @@ final class ApiLoginProxyForWebClientAction extends ParentAction
      * @throws LoginFailed
      * @throws \Exception
      */
-    public function run(LoginProxyPasswordGrantRequest $request): AuthResult
+    public function run(array $data): AuthResult
     {
-        $sanitizedData = $request->sanitize([
-            ...array_keys(config('appSection-authentication.login.fields')),
-            'password',
-            'client_id' => config('appSection-authentication.clients.web.id'),
-            'client_secret' => config('appSection-authentication.clients.web.secret'),
-            'grant_type' => 'password',
-            'scope' => '',
-        ]);
-
-        $loginFields = LoginFieldParser::extractAll($sanitizedData);
+        $loginFields = LoginFieldParser::extractAll($data);
 
         $exception = null;
         foreach ($loginFields as $loginField) {
-            $sanitizedData['username'] = $loginField->value;
+            $data['username'] = $loginField->value;
 
             try {
-                $token = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
+                $token = $this->callOAuthServerTask->run($data);
                 $refreshTokenCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
 
                 return new AuthResult($token, $refreshTokenCookie);

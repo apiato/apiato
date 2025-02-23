@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\AssignRolesToUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\ResourceNotFound;
@@ -18,9 +17,9 @@ final class AssignRolesToUserAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(AssignRolesToUserRequest $request): User
+    public function run(int $userId, int ...$roleIds): User
     {
-        return $this->findUserByIdTask->run($request->user_id)
-            ->assignRole($request->role_ids);
+        return $this->findUserByIdTask->run($userId)
+            ->assignRole($roleIds);
     }
 }

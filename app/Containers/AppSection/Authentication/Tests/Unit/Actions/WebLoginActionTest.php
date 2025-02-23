@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
@@ -196,10 +195,9 @@ final class WebLoginActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
         $user = User::factory()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($credentials);
 
         $this->assertAuthenticatedAs($user, 'web');
     }
@@ -213,10 +211,9 @@ final class WebLoginActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
         $user = User::factory()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($credentials);
 
         $this->assertAuthenticatedAs($user, 'web');
     }
@@ -243,10 +240,9 @@ final class WebLoginActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
         User::factory()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($credentials);
     }
 
     public function testCanReturnMultipleErrors(): void
@@ -261,10 +257,9 @@ final class WebLoginActionTest extends UnitTestCase
         $authSpy = Auth::spy();
         $authSpy->allows()->guard('web')->andReturnSelf();
         $authSpy->allows()->attempt($credentials)->andReturn(false);
-        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($credentials);
 
         /** @var MessageBag $errors */
         $errors = $response->getSession()->get('errors');
@@ -290,10 +285,9 @@ final class WebLoginActionTest extends UnitTestCase
             'name' => 'gandalf', // correct name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($credentials);
 
         $this->assertTrue($response->isRedirect());
         $this->assertAuthenticatedAs($user, 'web');

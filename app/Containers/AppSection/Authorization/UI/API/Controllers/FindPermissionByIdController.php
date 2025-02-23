@@ -11,7 +11,7 @@ final class FindPermissionByIdController extends ApiController
 {
     public function __invoke(FindPermissionByIdRequest $request, FindPermissionByIdAction $action): array
     {
-        $permission = $action->run($request);
+        $permission = $action->run($request->permission_id);
 
         return $this->transform($permission, PermissionAdminTransformer::class);
     }

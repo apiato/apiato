@@ -11,7 +11,7 @@ final class ListUserPermissionsController extends ApiController
 {
     public function __invoke(ListUserPermissionsRequest $request, ListUserPermissionsAction $action): array
     {
-        $permissions = $action->run($request);
+        $permissions = $action->run($request->user_id);
 
         return $this->transform($permissions, PermissionAdminTransformer::class);
     }

@@ -18,9 +18,9 @@ final class SyncUserRolesAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(SyncUserRolesRequest $request): User
+    public function run(int $userId, int ...$roleIds): User
     {
-        return $this->findUserByIdTask->run($request->user_id)
-            ->syncRoles($request->role_ids);
+        return $this->findUserByIdTask->run($userId)
+            ->syncRoles($roleIds);
     }
 }

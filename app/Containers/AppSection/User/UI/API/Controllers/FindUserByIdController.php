@@ -11,7 +11,7 @@ final class FindUserByIdController extends ApiController
 {
     public function __invoke(FindUserByIdRequest $request, FindUserByIdAction $action): array
     {
-        $user = $action->run($request);
+        $user = $action->run($request->user_id);
 
         return $this->transform($user, UserTransformer::class);
     }

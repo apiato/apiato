@@ -11,7 +11,13 @@ final class RegisterUserController extends ApiController
 {
     public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): array
     {
-        $user = $action->transactionalRun($request);
+        $user = $action->transactionalRun($request->sanitize([
+            'email',
+            'password',
+            'name',
+            'gender',
+            'birth',
+        ]));
 
         return $this->transform($user, UserTransformer::class);
     }

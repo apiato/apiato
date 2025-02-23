@@ -19,17 +19,9 @@ final class RegisterUserAction extends ParentAction
     /**
      * @throws ResourceCreationFailed
      */
-    public function run(RegisterUserRequest $request): User
+    public function run(array $data): User
     {
-        $sanitizedData = $request->sanitize([
-            'email',
-            'password',
-            'name',
-            'gender',
-            'birth',
-        ]);
-
-        $user = $this->createUserTask->run($sanitizedData);
+        $user = $this->createUserTask->run($data);
 
         event(new Registered($user));
 

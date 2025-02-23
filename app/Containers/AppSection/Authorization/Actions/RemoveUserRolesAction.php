@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Exceptions\ResourceNotFound;
@@ -18,11 +17,11 @@ final class RemoveUserRolesAction extends ParentAction
     /**
      * @throws ResourceNotFound
      */
-    public function run(RemoveUserRolesRequest $request): User
+    public function run(int $userId, int ...$roleIds): User
     {
-        $user = $this->findUserByIdTask->run($request->user_id);
+        $user = $this->findUserByIdTask->run($userId);
 
-        foreach ($request->role_ids as $roleId) {
+        foreach ($roleIds as $roleId) {
             $user->removeRole($roleId);
         }
 
