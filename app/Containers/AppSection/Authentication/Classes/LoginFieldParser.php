@@ -23,7 +23,7 @@ final class LoginFieldParser
      */
     public static function extractAll(array $data): array
     {
-        $result = static::extractAllMatchingLoginFields($data);
+        $result = self::extractAllMatchingLoginFields($data);
 
         if ([] === $result) {
             throw new \RuntimeException('No matching login field found');
@@ -38,10 +38,10 @@ final class LoginFieldParser
     private static function extractAllMatchingLoginFields(array $data): array
     {
         $result = [];
-        foreach (static::getAllowedLoginFields() as $fieldName) {
-            $fieldValue = static::getMatchingLoginFieldValue($fieldName, $data);
+        foreach (self::getAllowedLoginFields() as $fieldName) {
+            $fieldValue = self::getMatchingLoginFieldValue($fieldName, $data);
 
-            if (static::loginFieldHasValue($fieldValue)) {
+            if (self::loginFieldHasValue($fieldValue)) {
                 $result[] = new IncomingLoginField($fieldName, $fieldValue);
             }
         }
@@ -75,7 +75,7 @@ final class LoginFieldParser
 
     private static function getMatchingLoginFieldValue(string $field, array $from): string|null
     {
-        $result = Arr::get($from, static::prepareLoginField($field));
+        $result = Arr::get($from, self::prepareLoginField($field));
         if (!is_string($result) || empty($result)) {
             return null;
         }
@@ -85,7 +85,7 @@ final class LoginFieldParser
 
     private static function prepareLoginField(string $field): string
     {
-        return static::getPrefix() . $field;
+        return self::getPrefix() . $field;
     }
 
     private static function getPrefix(): string
