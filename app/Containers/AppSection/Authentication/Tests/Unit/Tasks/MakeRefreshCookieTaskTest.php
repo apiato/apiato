@@ -19,7 +19,7 @@ final class MakeRefreshCookieTaskTest extends UnitTestCase
 
         $this->assertSame('refreshToken', $result->getName());
         $this->assertSame($refreshToken, $result->getValue());
-        $this->assertEquals((int)config('appSection-authentication.refresh-tokens-expire-in'), $result->getExpiresTime());
+        $this->assertEquals((int) config('appSection-authentication.refresh-tokens-expire-in'), $result->getExpiresTime());
         $this->assertEquals('/', $result->getPath());
         $this->assertNull($result->getDomain());
         $this->assertEquals(config('session.secure'), $result->isSecure());

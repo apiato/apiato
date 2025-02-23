@@ -3,8 +3,8 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Repositories\Concerns;
 
 use App\Containers\AppSection\Authorization\Data\Criteria\WhereGuardCriteria;
-use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Containers\AppSection\Authorization\Data\Repositories\Concerns\InteractsWithGuard;
+use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
 use App\Ship\Tests\Fakes\TestUser;
 use App\Ship\Tests\Fakes\TestUserRepository;
 use PHPUnit\Framework\Attributes\CoversClass;

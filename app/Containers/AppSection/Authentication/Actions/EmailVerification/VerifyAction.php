@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions\EmailVerification;
 
-use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\VerifyRequest;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Verified;
