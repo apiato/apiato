@@ -166,12 +166,8 @@ abstract class Repository extends AbstractRepository
     /**
      * Persist an object with the given data if it passes the validation.
      *
-     * A note for myself:
-     * The create method should just create an instance and persist it to the storage.
-     * The store method should validate the data and then create an instance and persist it to the storage using the create method.
-     * The store method should be used everywhere.
-     * It should be the only method used to create a new instance of the model.
-     * It should not fire any non-repository related events.
+     * TODO: a note to my future self,
+     *  This method should not fire any non-repository related events.
      *
      * @template TData of Arrayable
      *
