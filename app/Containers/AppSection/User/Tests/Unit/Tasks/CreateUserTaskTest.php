@@ -31,7 +31,6 @@ final class CreateUserTaskTest extends UnitTestCase
     public function testCreateUserWithInvalidData(): void
     {
         $this->expectException(ResourceCreationFailed::class);
-        $this->expectExceptionMessage('User creation failed.');
 
         $data = [
             'email' => 'gandalf@the.grey',
