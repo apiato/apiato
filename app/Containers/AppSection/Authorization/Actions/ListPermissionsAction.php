@@ -23,7 +23,7 @@ final class ListPermissionsAction extends ParentAction
     public function run(): LengthAwarePaginator|PermissionCollection
     {
         $this->repository->addRequestCriteria();
-        $this->repository->whereGuard(activeGuard());
+        $this->repository->whereGuard(auth()->activeGuard());
 
         return $this->repository->paginate();
     }

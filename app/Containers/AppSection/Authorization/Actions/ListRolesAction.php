@@ -23,7 +23,7 @@ final class ListRolesAction extends ParentAction
     public function run(): LengthAwarePaginator|RoleCollection
     {
         $this->repository->addRequestCriteria();
-        $this->repository->whereGuard(activeGuard());
+        $this->repository->whereGuard(auth()->activeGuard());
 
         return $this->repository->paginate();
     }

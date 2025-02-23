@@ -5,10 +5,11 @@ namespace Tests\Unit\Configs;
 use Apiato\Console\CommandServiceProvider;
 use Apiato\Generator\GeneratorsServiceProvider;
 use Apiato\Macros\MacroServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\EmailVerificationServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\PasswordResetServiceProvider;
 use App\Ship\Tests\ShipTestCase;
-use Illuminate\Auth\AuthServiceProvider;
+use Illuminate\Auth\AuthServiceProvider as LaravelAuthServiceProviderAlias;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider as LaravelPasswordResetServiceProvider;
 use Illuminate\Broadcasting\BroadcastServiceProvider;
 use Illuminate\Bus\BusServiceProvider;
@@ -111,7 +112,7 @@ final class AppTest extends ShipTestCase
                 CommandServiceProvider::class,
                 GeneratorsServiceProvider::class,
                 MacroServiceProvider::class,
-                AuthServiceProvider::class,
+                LaravelAuthServiceProviderAlias::class,
                 BroadcastServiceProvider::class,
                 BusServiceProvider::class,
                 CacheServiceProvider::class,
@@ -135,6 +136,7 @@ final class AppTest extends ShipTestCase
                 ValidationServiceProvider::class,
                 ViewServiceProvider::class,
                 ShipServiceProvider::class,
+                AuthServiceProvider::class,
                 EmailVerificationServiceProvider::class,
                 PassportServiceProvider::class,
                 PasswordResetServiceProvider::class,
