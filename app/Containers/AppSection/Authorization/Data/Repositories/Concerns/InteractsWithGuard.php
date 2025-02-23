@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Containers\AppSection\Authorization\Traits;
+namespace App\Containers\AppSection\Authorization\Data\Repositories\Concerns;
 
 use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Prettus\Repository\Exceptions\RepositoryException;
 
-// TODO
-trait AuthorizationRepositoryTrait
+trait InteractsWithGuard
 {
     /**
      * @throws RepositoryException

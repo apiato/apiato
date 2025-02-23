@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Containers\AppSection\Authorization\Traits\AuthorizationRepositoryTrait;
+use App\Containers\AppSection\Authorization\Data\Repositories\Concerns\InteractsWithGuard;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
 /**
@@ -13,7 +13,7 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
  */
 final class PermissionRepository extends ParentRepository
 {
-    use AuthorizationRepositoryTrait;
+    use InteractsWithGuard;
 
     protected $fieldSearchable = [
         'name' => '=',

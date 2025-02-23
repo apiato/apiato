@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\Authorization\Models\Role;
-use App\Containers\AppSection\Authorization\Traits\AuthorizationRepositoryTrait;
+use App\Containers\AppSection\Authorization\Data\Repositories\Concerns\InteractsWithGuard;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
@@ -15,7 +15,7 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
  */
 final class RoleRepository extends ParentRepository
 {
-    use AuthorizationRepositoryTrait;
+    use InteractsWithGuard;
 
     protected $fieldSearchable = [
         'name' => '=',
