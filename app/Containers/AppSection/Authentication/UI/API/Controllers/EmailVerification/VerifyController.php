@@ -11,7 +11,7 @@ final class VerifyController extends ApiController
 {
     public function __invoke(VerifyRequest $request, VerifyAction $action): JsonResponse
     {
-        $action->run($request);
+        $action->run($request->user());
 
         return $this->json(null);
     }

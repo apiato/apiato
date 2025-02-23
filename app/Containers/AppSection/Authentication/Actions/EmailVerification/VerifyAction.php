@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\V
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 final class VerifyAction extends ParentAction
 {
@@ -13,12 +14,12 @@ final class VerifyAction extends ParentAction
      * @throws ResourceNotFound
      * @throws \Throwable
      */
-    public function run(VerifyRequest $request): void
+    public function run(MustVerifyEmail $user): void
     {
-        if (!$request->user()->hasVerifiedEmail()) {
-            $request->user()->markEmailAsVerified();
+        if (!$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
 
-            event(new Verified($request->user()));
+            event(new Verified($user));
         }
     }
 }
