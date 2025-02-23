@@ -3,7 +3,6 @@
 namespace App\Ship\Parents\Tests;
 
 use Apiato\Abstract\Tests\TestCase as AbstractTestCase;
-use App\Ship\Enums\AuthGuard;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 
@@ -14,11 +13,6 @@ use Illuminate\Support\Facades\Artisan;
 abstract class TestCase extends AbstractTestCase
 {
     use LazilyRefreshDatabase;
-
-    public static function authGuardDataProvider(): array
-    {
-        return array_map(static fn (AuthGuard $guard) => [$guard->value], AuthGuard::cases());
-    }
 
     protected function afterRefreshingDatabase(): void
     {

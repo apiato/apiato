@@ -6,8 +6,8 @@ use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Ship\Enums\AuthGuard;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\TestWith;
 
 #[CoversClass(RoleFactory::class)]
 final class RoleFactoryTest extends UnitTestCase
@@ -32,10 +32,11 @@ final class RoleFactoryTest extends UnitTestCase
         $this->assertSame(RoleEnum::SUPER_ADMIN->value, $role->name);
     }
 
-    public function testCanSetGuard(): void
+    #[TestWith(['web'])]
+    #[TestWith(['api'])]
+    public function testCanSetGuard(string $guard): void
     {
-        $role = Role::factory()->withGuard(AuthGuard::API->value)->createOne();
-
-        $this->assertSame(AuthGuard::API->value, $role->guard_name);
+        $role = Role::factory()->withGuard($guard)->createOne();
+        $this->assertSame($guard, $role->guard_name);
     }
 }

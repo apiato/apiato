@@ -14,6 +14,14 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(WhereGuardCriteria::class)]
 final class WhereGuardCriteriaTest extends UnitTestCase
 {
+    public static function authGuardDataProvider(): array
+    {
+        return [
+            ['web'],
+            ['api'],
+        ];
+    }
+
     #[DataProvider('authGuardDataProvider')]
     public function testWorksWithRoleModel(string $guard): void
     {
