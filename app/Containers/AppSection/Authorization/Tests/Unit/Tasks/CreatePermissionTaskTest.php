@@ -13,13 +13,13 @@ final class CreatePermissionTaskTest extends UnitTestCase
     {
         $name = 'fuLl_coNtroL';
         $description = 'Gives full control of everything!';
-        $display_name = 'Controller of All';
+        $displayName = 'Controller of All';
 
-        $permission = app(CreatePermissionTask::class)->run($name, $description, $display_name);
+        $permission = app(CreatePermissionTask::class)->run($name, $description, $displayName);
 
         $this->assertSame(strtolower($name), $permission->name);
         $this->assertSame($description, $permission->description);
-        $this->assertSame($display_name, $permission->display_name);
+        $this->assertSame($displayName, $permission->display_name);
         $this->assertSame('api', $permission->guard_name);
     }
 }
