@@ -2,11 +2,12 @@
 
 namespace App\Ship\Middleware;
 
+use App\Ship\Parents\Middleware\Middleware as ParentMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Webmozart\Assert\Assert;
 
-final class ValidateAppId
+final class ValidateAppId extends ParentMiddleware
 {
     /**
      * Handle an incoming request.
