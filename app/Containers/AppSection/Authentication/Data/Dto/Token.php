@@ -5,15 +5,15 @@ namespace App\Containers\AppSection\Authentication\Data\Dto;
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
 
-final class Token implements ResourceKeyAware
+final readonly class Token implements ResourceKeyAware
 {
     use HasResourceKey;
 
     public function __construct(
-        public readonly string $tokenType,
-        public readonly int $expiresIn,
-        public readonly string $accessToken,
-        public readonly string $refreshToken,
+        public string $tokenType,
+        public int    $expiresIn,
+        public string $accessToken,
+        public string $refreshToken,
     ) {
     }
 
