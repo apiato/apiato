@@ -65,22 +65,11 @@ final class UserTest extends UnitTestCase
         $this->assertSame('User', $user->getResourceKey());
     }
 
-    public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
+    public function testCanAuthenticateUsingEmail(): void
     {
-        config()->unset('appSection-authentication.login.fields');
         $user = User::factory()->createOne();
 
         $result = (new User())->findForPassport($user->email);
-
-        $this->assertTrue($user->is($result));
-    }
-
-    public function testCanAuthenticateUsingAllowedLoginFields(): void
-    {
-        config()->set('appSection-authentication.login.fields', ['name' => []]);
-        $user = User::factory()->createOne();
-
-        $result = (new User())->findForPassport($user->name);
 
         $this->assertTrue($user->is($result));
     }

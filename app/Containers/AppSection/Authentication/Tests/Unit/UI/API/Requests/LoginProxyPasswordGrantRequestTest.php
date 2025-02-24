@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LoginProxyPasswordGrantRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -20,7 +19,10 @@ final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
     public function testValidationRules(): void
     {
         $this->assertEquals(
-            LoginFieldParser::mergeValidationRules(['password' => 'required']),
+            [
+                'email' => ['required', 'email'],
+                'password' => 'required',
+            ],
             $this->request->rules(),
         );
     }

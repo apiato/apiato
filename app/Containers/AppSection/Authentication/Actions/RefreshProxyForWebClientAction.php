@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\RefreshProxy;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -18,7 +19,7 @@ final class RefreshProxyForWebClientAction extends ParentAction
     /**
      * @throws \Exception
      */
-    public function run(array $data): AuthResult
+    public function run(RefreshProxy $data): AuthResult
     {
         $responseContent = $this->callOAuthServerTask->run($data);
         $refreshCookie = $this->makeRefreshTokenCookieTask->run($responseContent->refreshToken);

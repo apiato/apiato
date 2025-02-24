@@ -2,31 +2,32 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\PasswordGrantLoginProxy;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWebClientController;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\RefreshProxyForWebClientController;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use Illuminate\Testing\TestResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(RefreshProxyForWebClientController::class)]
 final class RefreshProxyForWebClientTest extends ApiTestCase
 {
-    public function testProxyRefresh(): void
-    {
-        $this->setupPasswordGrantClient();
-        $data = [
-            'email' => 'gandalf@the.grey',
-            'password' => 'youShallNotPass',
-        ];
-        $this->actingAs(User::factory()->createOne($data), 'web');
+    private string $refreshToken;
 
-        $loginResponse = $this->postJson(action(LoginProxyForWebClientController::class), $data);
+    public function testCanRefreshToken(): void
+    {
         $response = $this->postJson(action(RefreshProxyForWebClientController::class), [
-            'refresh_token' => $loginResponse['data']['refresh_token'],
+            'refresh_token' => $this->refreshToken,
         ]);
 
-        $response->assertOk();
+        $this->assertJsonResponse($response);
+    }
+
+    private function assertJsonResponse(TestResponse $response): void
+    {
+        $response->assertok();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
@@ -41,33 +42,39 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
         );
     }
 
-    public function testProxyRefreshViaCookie(): void
+    public function testApiCanRefreshViaCookie(): void
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $response = $this
+            ->withCredentials()
+            ->disableCookieEncryption()
+            ->withCookie('refreshToken', $this->refreshToken)
+            ->postJson(action(RefreshProxyForWebClientController::class));
+
+        $this->assertJsonResponse($response);
+    }
+
+    public function testWebCanRefreshViaCookie(): void
+    {
+        $response = $this
+            ->disableCookieEncryption()
+            ->withCookie('refreshToken', $this->refreshToken)
+            ->post(action(RefreshProxyForWebClientController::class));
+
+        $this->assertJsonResponse($response);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
         $this->setupPasswordGrantClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $this->actingAs(User::factory()->createOne($data), 'web');
-
-        $loginResponse = $this->postJson(action(LoginProxyForWebClientController::class), $data);
-        $response = $this->postJson(action(RefreshProxyForWebClientController::class))
-//            ->cookie('refreshToken', $loginResponse['data']['refresh_token']);
-            ->withCookie('refreshToken', $loginResponse['data']['refresh_token']);
-
-        $response->assertok();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'data',
-                static fn (AssertableJson $json): AssertableJson => $json->hasAll([
-                    'access_token',
-                    'refresh_token',
-                    'token_type',
-                    'expires_in',
-                ])->where('token_type', 'Bearer')
-                    ->etc(),
-            )->etc(),
-        );
+        User::factory()->createOne($data);
+        $this->refreshToken = app(CallOAuthServerTask::class)
+            ->run(PasswordGrantLoginProxy::create($data['email'], $data['password']))
+            ->refreshToken;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\PasswordGrantLoginProxy;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
@@ -21,25 +21,11 @@ final class ApiLoginProxyForWebClientAction extends ParentAction
      * @throws LoginFailed
      * @throws \Exception
      */
-    public function run(array $data): AuthResult
+    public function run(PasswordGrantLoginProxy $data): AuthResult
     {
-        $loginFields = LoginFieldParser::extractAll($data);
+        $token = $this->callOAuthServerTask->run($data);
+        $refreshTokenCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
 
-        $exception = null;
-        foreach ($loginFields as $loginField) {
-            $data['username'] = $loginField->value;
-
-            try {
-                $token = $this->callOAuthServerTask->run($data);
-                $refreshTokenCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
-
-                return new AuthResult($token, $refreshTokenCookie);
-            } catch (LoginFailed $e) {
-                $exception = $e;
-                // try the next login field
-            }
-        }
-
-        throw $exception;
+        return new AuthResult($token, $refreshTokenCookie);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\RefreshProxy;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Ship\Parents\Controllers\ApiController;
@@ -12,13 +13,14 @@ final class RefreshProxyForWebClientController extends ApiController
 {
     public function __invoke(RefreshProxyRequest $request, RefreshProxyForWebClientAction $action): JsonResponse
     {
-        $result = $action->run($request->sanitize([
-            'refresh_token' => $request->cookie('refreshToken'),
-            'client_id' => config('appSection-authentication.clients.web.id'),
-            'client_secret' => config('appSection-authentication.clients.web.secret'),
-            'grant_type' => 'refresh_token',
-            'scope' => '',
-        ]));
+        $result = $action->run(
+            RefreshProxy::create(
+                $request->input(
+                    'refresh_token',
+                    $request->cookie('refreshToken'),
+                ),
+            ),
+        );
 
         return $this->json($this->transform($result->token, TokenTransformer::class))
             ->withCookie($result->refreshTokenCookie);

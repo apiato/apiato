@@ -11,20 +11,6 @@ class ContainerTestCase extends ParentTestCase
     private string $clientSecret;
 
     // TODO
-    public function enrichWithPasswordGrantFields(string $email, string $password): array
-    {
-        $this->setupPasswordGrantClient();
-        return [
-            'grant_type' => 'password',
-            'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret,
-            'username' => $email,
-            'password' => $password,
-            'scope' => '',
-        ];
-    }
-
-    // TODO
     protected function setupPasswordGrantClient(): void
     {
         $passwordClient = Client::query()

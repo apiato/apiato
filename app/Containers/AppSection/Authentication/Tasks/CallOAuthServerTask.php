@@ -3,6 +3,8 @@
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\PasswordGrantLoginProxy;
+use App\Containers\AppSection\Authentication\Data\Dto\WebClient\RefreshProxy;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use GuzzleHttp\Utils;
@@ -12,11 +14,9 @@ use Illuminate\Support\Facades\Request;
 final class CallOAuthServerTask extends ParentTask
 {
     /**
-     * @param array $data
-     * @return Token
      * @throws \Exception
      */
-    public function run(array $data): Token
+    public function run(PasswordGrantLoginProxy|RefreshProxy $data): Token
     {
         $authFullApiUrl = route('passport.token');
         $headers = [
@@ -24,7 +24,7 @@ final class CallOAuthServerTask extends ParentTask
             'HTTP_ACCEPT_LANGUAGE' => request()->headers->get('accept-language', config('app.locale')),
         ];
 
-        $request = Request::create($authFullApiUrl, 'POST', $data, server: $headers);
+        $request = Request::create($authFullApiUrl, 'POST', $data->toArray(), server: $headers);
         $response = App::handle($request);
         $content = Utils::jsonDecode($response->getContent(), true);
 

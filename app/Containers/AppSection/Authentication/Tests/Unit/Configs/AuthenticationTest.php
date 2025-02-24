@@ -18,12 +18,6 @@ final class AuthenticationTest extends UnitTestCase
                     'secret' => env('CLIENT_WEB_SECRET'),
                 ],
             ],
-            'login' => [
-                'fields' => [
-                    'email' => ['email'],
-                ],
-                'prefix' => '',
-            ],
             'tokens-expire-in' => env('API_TOKEN_EXPIRES', 1440),
             'refresh-tokens-expire-in' => env('API_REFRESH_TOKEN_EXPIRES', 43200),
         ];

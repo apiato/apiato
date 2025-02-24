@@ -37,18 +37,11 @@ final class User extends ParentUserModel implements MustVerifyEmail
     }
 
     /**
-     * Allows Passport to authenticate users with custom fields.
+     * Allows Passport to find the user by email (case-insensitive).
      */
     public function findForPassport(string $username): self|null
     {
-        $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
-        $query = $this->newModelQuery();
-
-        foreach ($allowedLoginFields as $field) {
-            $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
-        }
-
-        return $query->first();
+        return self::orWhereRaw('lower(email) = lower(?)', [$username])->first();
     }
 
     public function isSuperAdmin(): bool

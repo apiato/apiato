@@ -11,15 +11,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(LoginProxyForWebClientController::class)]
 final class LoginProxyForWebClientTest extends ApiTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->setupPasswordGrantClient();
-    }
-
     public function testProxyLogin(): void
     {
+        $this->setupPasswordGrantClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
@@ -41,50 +35,5 @@ final class LoginProxyForWebClientTest extends ApiTestCase
                 ->etc(),
             )->etc(),
         );
-    }
-
-    public function testLoginWithNameAttribute(): void
-    {
-        User::factory()->createOne([
-            'email' => 'gandalf@the.grey',
-            'password' => 'youShallNotPass',
-            'name' => 'username',
-        ]);
-        $this->setLoginAttributes([
-            'email' => [],
-            'name' => [],
-        ]);
-        $data = [
-            'password' => 'youShallNotPass',
-            'name' => 'username',
-        ];
-
-        $response = $this->postJson(action(LoginProxyForWebClientController::class), $data);
-
-        $response->assertOk();
-    }
-
-    private function setLoginAttributes(array $fields): void
-    {
-        config()->set('appSection-authentication.login.fields', $fields);
-    }
-
-    public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
-    {
-        $this->setLoginAttributes([
-            'email' => [],
-        ]);
-        $data = [
-            'password' => 'youShallNotPass',
-        ];
-
-        $response = $this->postJson(action(LoginProxyForWebClientController::class), $data);
-
-        $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
-            'errors',
-            static fn (AssertableJson $json): AssertableJson => $json
-                ->where('email.0', 'The email field is required.'),
-        )->etc());
     }
 }
