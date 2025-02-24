@@ -13,6 +13,7 @@ class ContainerTestCase extends ParentTestCase
     // TODO
     public function enrichWithPasswordGrantFields(string $email, string $password): array
     {
+        $this->setupPasswordGrantClient();
         return [
             'grant_type' => 'password',
             'client_id' => $this->clientId,
