@@ -9,7 +9,6 @@ return [
     | A list of clients that have access to the application.
     |
     */
-
     'clients' => [
         'web' => [
             'id' => env('CLIENT_WEB_ID'),
