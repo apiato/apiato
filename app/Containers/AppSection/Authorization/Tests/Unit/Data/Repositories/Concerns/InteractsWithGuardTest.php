@@ -14,18 +14,18 @@ final class InteractsWithGuardTest extends UnitTestCase
 {
     public function testItPushesCriteriaWhenGuardIsNotNull(): void
     {
-        $repository = new TraitTestRepository(app());
+        $repository = new TraitTestRepository();
         $guard = 'web';
 
         $repository->whereGuard($guard);
 
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($repository->getCriteria()->first(), 'guard'));
+        $this->assertSame($guard, $repository->getCriteria()->first()->guard);
         $this->assertContains(WhereGuardCriteria::class, $repository->getCriteria()->map(static fn ($criteria) => get_class($criteria)));
     }
 
     public function testItDoesNotPushCriteriaWhenGuardIsNull(): void
     {
-        $repository = new TraitTestRepository(app());
+        $repository = new TraitTestRepository();
         $guard = null;
 
         $repository->whereGuard($guard);
