@@ -5,13 +5,13 @@ namespace App\Containers\AppSection\Authentication\Data\Dto;
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
 
-final class IncomingLoginField implements ResourceKeyAware
+final readonly class IncomingLoginField implements ResourceKeyAware
 {
     use HasResourceKey;
 
     public function __construct(
-        public readonly string $name,
-        public readonly string $value,
+        public string $name,
+        public string $value,
     ) {
     }
 }
