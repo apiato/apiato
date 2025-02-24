@@ -35,7 +35,7 @@ class ContainerTestCase extends ParentTestCase
         $this->setEnvVars();
     }
 
-    protected function setEnvVars(): void
+    private function setEnvVars(): void
     {
         config()->set('appSection-authentication.clients.web.id', $this->clientId);
         config()->set('appSection-authentication.clients.web.secret', $this->clientSecret);
