@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\AppSection\Authorization\UI\API\Requests\DeleteRoleRequest;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 

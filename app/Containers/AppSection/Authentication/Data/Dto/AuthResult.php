@@ -11,7 +11,7 @@ final readonly class AuthResult implements ResourceKeyAware
     use HasResourceKey;
 
     public function __construct(
-        public Token  $token,
+        public Token $token,
         public Cookie $refreshTokenCookie,
     ) {
     }

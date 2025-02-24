@@ -11,7 +11,7 @@ final readonly class LoginField implements \Stringable, ResourceKeyAware
 
     public function __construct(
         private string $name,
-        private array  $rules,
+        private array $rules,
     ) {
     }
 

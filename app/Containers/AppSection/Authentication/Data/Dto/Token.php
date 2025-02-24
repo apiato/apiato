@@ -11,7 +11,7 @@ final readonly class Token implements ResourceKeyAware
 
     public function __construct(
         public string $tokenType,
-        public int    $expiresIn,
+        public int $expiresIn,
         public string $accessToken,
         public string $refreshToken,
     ) {

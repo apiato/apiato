@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\EmailVerif
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\SendAction;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\SendRequest;
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Auth\Notifications\VerifyEmail;

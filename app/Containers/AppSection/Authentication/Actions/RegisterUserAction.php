@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
 use App\Ship\Exceptions\ResourceCreationFailed;
