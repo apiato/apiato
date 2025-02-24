@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 final class WhereGuardCriteria extends ParentCriteria
 {
     public function __construct(
-        private readonly string $guard,
+        public readonly string $guard,
     ) {
     }
 
