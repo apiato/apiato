@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Data\Dto\IncomingLoginField;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-final class LoginFieldParser
+final readonly class LoginFieldParser
 {
     /**
      * Extract all matching login fields from the given data.
@@ -146,15 +146,15 @@ final class LoginFieldParser
         return $rules;
     }
 
+    private static function getUniqueRules(mixed $attributeRules): string
+    {
+        return implode('|', array_unique(explode('|', implode('|', $attributeRules))));
+    }
+
     private static function trimPipes(string $rule): string
     {
         $rule = str_replace('||', '|', $rule);
 
         return trim($rule, '|');
-    }
-
-    private static function getUniqueRules(mixed $attributeRules): string
-    {
-        return implode('|', array_unique(explode('|', implode('|', $attributeRules))));
     }
 }
