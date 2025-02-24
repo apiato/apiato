@@ -36,6 +36,7 @@ final class DebugBarTest extends ShipTestCase
             'add_ajax_timing' => false,
             'ajax_handler_auto_show' => true,
             'ajax_handler_enable_tab' => true,
+            'defer_datasets' => false,
             'error_handler' => false,
             'clockwork' => false,
             'collectors' => [
@@ -137,6 +138,6 @@ final class DebugBarTest extends ShipTestCase
             'debug_backtrace_limit' => 50,
         ];
 
-        $this->assertEqualsCanonicalizing($expected, $config);
+        $this->assertSame($expected, $config);
     }
 }
