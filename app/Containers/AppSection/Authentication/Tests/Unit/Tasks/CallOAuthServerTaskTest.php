@@ -21,7 +21,6 @@ final class CallOAuthServerTaskTest extends UnitTestCase
         ];
         User::factory()->createOne($credentials);
         $data = PasswordGrantLoginProxy::create($credentials['email'], $credentials['password']);
-
         $task = app(CallOAuthServerTask::class);
 
         $task->run($data);
