@@ -12,8 +12,9 @@ final class LogoutController extends ApiController
 {
     public function __invoke(LogoutRequest $request, ApiLogoutAction $action): JsonResponse
     {
-        $action->run($request);
+        $action->run($request->user());
 
+        // TODO: shouldn't the cookie be sent back by the action?
         return $this->accepted([
             'message' => 'Token revoked successfully.',
         ])->withCookie(Cookie::forget('refreshToken'));

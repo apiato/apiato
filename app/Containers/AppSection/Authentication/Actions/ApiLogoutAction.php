@@ -2,13 +2,13 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class ApiLogoutAction extends ParentAction
 {
-    public function run(LogoutRequest $request): void
+    public function run(User|null $user): void
     {
-        $request->user()?->token()?->revoke();
+        $user?->token()?->revoke();
     }
 }

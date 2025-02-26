@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\LoginProxyForWebClientController;
+use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -13,7 +14,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
 {
     public function testProxyLogin(): void
     {
-        $this->setupPasswordGrantClient();
+        WebClient::fake();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',

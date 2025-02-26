@@ -3,8 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
-use App\Containers\AppSection\Authentication\Data\Dto\WebClient\PasswordGrantLoginProxy;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
+use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -13,7 +14,7 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 {
     public function testCanLogin(): void
     {
-        $this->setupPasswordGrantClient();
+        WebClient::fake();
         $credentials = [
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
@@ -21,10 +22,7 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         User::factory()->createOne($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run(PasswordGrantLoginProxy::create(
-            $credentials['email'],
-            $credentials['password'],
-        ));
+        $response = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
         $this->assertNotEmpty($response->token->accessToken);

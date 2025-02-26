@@ -3,16 +3,17 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
-use App\Containers\AppSection\Authentication\Data\Dto\WebClient\PasswordGrantLoginProxy;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
-use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
+use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
+use App\Containers\AppSection\Authentication\Values\UserCredential;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class ApiLoginProxyForWebClientAction extends ParentAction
 {
     public function __construct(
-        private readonly CallOAuthServerTask $callOAuthServerTask,
         private readonly MakeRefreshTokenCookieTask $makeRefreshTokenCookieTask,
     ) {
     }
@@ -21,9 +22,9 @@ final class ApiLoginProxyForWebClientAction extends ParentAction
      * @throws LoginFailed
      * @throws \Exception
      */
-    public function run(PasswordGrantLoginProxy $data): AuthResult
+    public function run(UserCredential $credential): AuthResult
     {
-        $token = $this->callOAuthServerTask->run($data);
+        $token = User::issueToken(AccessTokenProxy::create($credential, WebClient::create()));
         $refreshTokenCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
 
         return new AuthResult($token, $refreshTokenCookie);

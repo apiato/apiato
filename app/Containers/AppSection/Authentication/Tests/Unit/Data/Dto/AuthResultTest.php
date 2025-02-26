@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\Dto;
 
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
 use App\Containers\AppSection\Authentication\Data\Dto\Token;

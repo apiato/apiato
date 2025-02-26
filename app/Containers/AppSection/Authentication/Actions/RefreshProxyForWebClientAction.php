@@ -3,15 +3,16 @@
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Data\Dto\AuthResult;
-use App\Containers\AppSection\Authentication\Data\Dto\WebClient\RefreshProxy;
-use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
+use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenProxy;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class RefreshProxyForWebClientAction extends ParentAction
 {
     public function __construct(
-        private readonly CallOAuthServerTask $callOAuthServerTask,
         private readonly MakeRefreshTokenCookieTask $makeRefreshTokenCookieTask,
     ) {
     }
@@ -19,11 +20,11 @@ final class RefreshProxyForWebClientAction extends ParentAction
     /**
      * @throws \Exception
      */
-    public function run(RefreshProxy $data): AuthResult
+    public function run(RefreshToken $refreshToken): AuthResult
     {
-        $responseContent = $this->callOAuthServerTask->run($data);
-        $refreshCookie = $this->makeRefreshTokenCookieTask->run($responseContent->refreshToken);
+        $token = User::issueToken(RefreshTokenProxy::create($refreshToken, WebClient::create()));
+        $refreshCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
 
-        return new AuthResult($responseContent, $refreshCookie);
+        return new AuthResult($token, $refreshCookie);
     }
 }

@@ -6,6 +6,7 @@ use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
 use Symfony\Component\HttpFoundation\Cookie;
 
+// TODO
 final readonly class AuthResult implements ResourceKeyAware
 {
     use HasResourceKey;
