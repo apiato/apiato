@@ -49,7 +49,7 @@ final class TokenTest extends UnitTestCase
             'token_type' => 'type',
             'expires_in' => 123,
             'access_token' => 'access',
-            'refresh_token' => 'refresh'
+            'refresh_token' => 'refresh',
         ]);
 
         $this->assertSame('type', $value->tokenType);
