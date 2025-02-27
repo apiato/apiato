@@ -6,7 +6,7 @@ use App\Ship\Parents\Values\Value as ParentValue;
 
 final readonly class RefreshToken extends ParentValue
 {
-    public function __construct(
+    private function __construct(
         private string $refreshToken,
     ) {
     }

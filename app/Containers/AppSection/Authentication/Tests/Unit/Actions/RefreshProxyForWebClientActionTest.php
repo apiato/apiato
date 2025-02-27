@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
@@ -14,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(RefreshProxyForWebClientAction::class)]
 final class RefreshProxyForWebClientActionTest extends UnitTestCase
 {
-    public function testCanRefreshToken(): void
+    public function testCanGetTokenViaRefreshToken(): void
     {
         $user = User::factory()->createOne(['password' => 'youShallNotPass']);
         $refreshToken = User::issueToken(
@@ -28,8 +29,10 @@ final class RefreshProxyForWebClientActionTest extends UnitTestCase
         )->refreshToken;
         $action = app(RefreshProxyForWebClientAction::class);
 
-        $response = $action->run(new RefreshToken($refreshToken));
+        $this->assertCount(1, $user->tokens);
 
-        $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
+        $result = $action->run(RefreshToken::create($refreshToken));
+
+        $this->assertInstanceOf(Token::class, $result);
     }
 }

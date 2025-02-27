@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
@@ -19,12 +20,14 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        User::factory()->createOne($credentials);
+        $user = User::factory()->createOne($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
+        $this->assertCount(0, $user->tokens);
 
-        $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
-        $this->assertNotEmpty($response->token->accessToken);
+        $result = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
+
+        $this->assertInstanceOf(Token::class, $result);
+
     }
 }

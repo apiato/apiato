@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
+use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Containers\AppSection\Authentication\UI\API\Requests\LogoutRequest;
 use App\Ship\Parents\Controllers\ApiController;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +18,6 @@ final class LogoutController extends ApiController
         // TODO: shouldn't the cookie be sent back by the action?
         return $this->accepted([
             'message' => 'Token revoked successfully.',
-        ])->withCookie(Cookie::forget('refreshToken'));
+        ])->withCookie(Cookie::forget(Token::refreshTokenCookieName()));
     }
 }

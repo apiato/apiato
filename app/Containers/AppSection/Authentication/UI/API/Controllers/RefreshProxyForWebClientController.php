@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAction;
+use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RefreshProxyRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
@@ -17,11 +18,11 @@ final class RefreshProxyForWebClientController extends ApiController
         $result = $action->run(
             RefreshToken::create($request->input(
                 'refresh_token',
-                $request->cookie('refreshToken'),
+                $request->cookie(Token::refreshTokenCookieName()),
             )),
         );
 
-        return $this->json($this->transform($result->token, TokenTransformer::class))
+        return $this->json($this->transform($result, TokenTransformer::class))
             ->withCookie($result->refreshTokenCookie);
     }
 }

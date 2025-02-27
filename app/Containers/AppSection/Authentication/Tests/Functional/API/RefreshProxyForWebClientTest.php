@@ -43,6 +43,13 @@ final class RefreshProxyForWebClientTest extends ApiTestCase
         );
     }
 
+    public function testCanHandleMissingRefreshToken(): void
+    {
+        $response = $this->postJson(action(RefreshProxyForWebClientController::class));
+
+        $response->assertUnauthorized();
+    }
+
     public function testApiCanRefreshViaCookie(): void
     {
         $response = $this
