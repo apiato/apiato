@@ -28,6 +28,5 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
         $result = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
 
         $this->assertInstanceOf(Token::class, $result);
-
     }
 }
