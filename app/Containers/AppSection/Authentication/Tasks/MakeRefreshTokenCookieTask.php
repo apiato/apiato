@@ -5,8 +5,6 @@ namespace App\Containers\AppSection\Authentication\Tasks;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Symfony\Component\HttpFoundation\Cookie;
 
-// TODO
-//  Maybe we can use Laravel\Passport\ApiTokenCookieFactory;
 final class MakeRefreshTokenCookieTask extends ParentTask
 {
     public function run(string $refreshToken): Cookie
