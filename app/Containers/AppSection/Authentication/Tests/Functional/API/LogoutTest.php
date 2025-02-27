@@ -16,23 +16,23 @@ final class LogoutTest extends ApiTestCase
 {
     public function testCanLogout(): void
     {
-        $this->markTestSkipped('This test has not been implemented yet.');
-        WebClient::fake();
         $user = User::factory()->createOne([
             'password' => 'password',
         ]);
-        User::issueToken(AccessTokenProxy::create(UserCredential::create($user->email, 'password'), WebClient::create()));
-        //        $tokenResult = $user->createToken('Test Token');
-        //        $accessToken = $tokenResult->token;
-        //        Passport::actingAs($user, ['*'])->withAccessToken($accessToken);
-        Passport::actingAs($user);
-        dd($user->fresh()->token());
-        $this->assertFalse($user->fresh()->token()->revoked);
+
+        $this->assertCount(0, $user->tokens);
+        User::issueToken(AccessTokenProxy::create(UserCredential::create($user->email, 'password'), WebClient::fake()));
+        $user = $user->fresh();
+        $userToken = $user->tokens->first();
+        $this->assertCount(1, $user->tokens);
+        $this->assertFalse($userToken->revoked);
+
+        Passport::actingAs($user)->withAccessToken($userToken);
 
         $response = $this->postJson(action(LogoutController::class));
 
         $response->assertAccepted();
-        $this->assertTrue($user->refresh()->token()->revoked);
+        $this->assertTrue($userToken->revoked);
         $response->assertCookieExpired('refreshToken');
     }
 }
