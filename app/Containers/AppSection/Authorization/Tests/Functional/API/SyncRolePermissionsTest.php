@@ -32,7 +32,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.object', 'Role')
+                ->where('data.type', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->count('data.permissions.data', 2)
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())

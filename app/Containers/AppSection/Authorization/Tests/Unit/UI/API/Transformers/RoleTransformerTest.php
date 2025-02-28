@@ -16,7 +16,7 @@ final class RoleTransformerTest extends UnitTestCase
     {
         $role = Role::factory()->createOne();
         $expected = [
-            'object' => $role->getResourceKey(),
+            'type' => $role->getResourceKey(),
             'id' => $role->getHashedKey(),
             'name' => $role->name,
             'display_name' => $role->display_name,

@@ -28,7 +28,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.object', 'User')
+                ->where('data.type', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->has('data.roles.data', 1)
                 ->where('data.roles.data.0.id', $roleB->getHashedKey())
@@ -54,7 +54,7 @@ final class RemoveUserRolesTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.object', 'User')
+                ->where('data.type', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->has('data.roles.data', 0)
                 ->etc(),

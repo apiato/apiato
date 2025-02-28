@@ -17,7 +17,7 @@ class RoleTransformer extends ParentTransformer
     public function transform(Role $role): array
     {
         return [
-            'object' => $role->getResourceKey(),
+            'type' => $role->getResourceKey(),
             'id' => $role->getHashedKey(),
             'name' => $role->name,
             'display_name' => $role->display_name,

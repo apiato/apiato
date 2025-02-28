@@ -16,7 +16,7 @@ final class TokenTransformerTest extends UnitTestCase
     {
         $token = new Token('test', 100, 'asdc1234', '1234asdc');
         $expected = [
-            'object' => $token->getResourceKey(),
+            'type' => $token->getResourceKey(),
             'token_type' => $token->tokenType,
             'access_token' => $token->accessToken,
             'refresh_token' => $token->refreshToken,

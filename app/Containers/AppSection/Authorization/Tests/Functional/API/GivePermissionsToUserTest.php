@@ -26,10 +26,10 @@ final class GivePermissionsToUserTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.object', 'User')
+                ->where('data.type', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->has('data.permissions.data', 1)
-                ->where('data.permissions.data.0.object', 'Permission')
+                ->where('data.permissions.data.0.type', 'Permission')
                 ->where('data.permissions.data.0.id', $permission->getHashedKey())
                 ->etc(),
         );
@@ -50,10 +50,10 @@ final class GivePermissionsToUserTest extends ApiTestCase
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
-                ->where('data.object', 'User')
+                ->where('data.type', 'User')
                 ->where('data.id', $user->getHashedKey())
                 ->has('data.permissions.data', 2)
-                ->where('data.permissions.data.0.object', 'Permission')
+                ->where('data.permissions.data.0.type', 'Permission')
                 ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
                 ->etc(),

@@ -18,7 +18,7 @@ final class UserTransformerTest extends UnitTestCase
     {
         $user = User::factory()->createOne();
         $expected = [
-            'object' => $user->getResourceKey(),
+            'type' => $user->getResourceKey(),
             'id' => $user->getHashedKey(),
             'name' => $user->name,
             'email' => $user->email,

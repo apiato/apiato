@@ -10,7 +10,7 @@ final class TokenTransformer extends ParentTransformer
     public function transform(Token $token): array
     {
         return [
-            'object' => $token->getResourceKey(),
+            'type' => $token->getResourceKey(),
             'token_type' => $token->tokenType,
             'access_token' => $token->accessToken,
             'refresh_token' => $token->refreshToken,

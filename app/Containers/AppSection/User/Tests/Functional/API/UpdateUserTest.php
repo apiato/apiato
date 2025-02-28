@@ -40,7 +40,7 @@ final class UpdateUserTest extends ApiTestCase
             fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 fn (AssertableJson $json): AssertableJson => $json
-                    ->where('object', 'User')
+                    ->where('type', 'User')
                     ->where('email', $user->email)
                     ->where('name', $data['name'])
                     ->where('gender', $data['gender'])

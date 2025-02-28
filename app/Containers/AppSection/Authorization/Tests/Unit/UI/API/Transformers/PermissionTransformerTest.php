@@ -16,7 +16,7 @@ final class PermissionTransformerTest extends UnitTestCase
     {
         $permission = Permission::factory()->createOne();
         $expected = [
-            'object' => $permission->getResourceKey(),
+            'type' => $permission->getResourceKey(),
             'id' => $permission->getHashedKey(),
             'name' => $permission->name,
             'display_name' => $permission->display_name,

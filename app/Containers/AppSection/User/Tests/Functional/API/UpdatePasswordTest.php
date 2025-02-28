@@ -34,7 +34,7 @@ final class UpdatePasswordTest extends ApiTestCase
             fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 fn (AssertableJson $json): AssertableJson => $json
-                    ->where('object', 'User')
+                    ->where('type', 'User')
                     ->where('email', $user->email)
                     ->missing('password')
                     ->etc(),

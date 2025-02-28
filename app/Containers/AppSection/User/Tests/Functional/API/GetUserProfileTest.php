@@ -23,7 +23,7 @@ final class GetUserProfileTest extends ApiTestCase
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 static fn (AssertableJson $json): AssertableJson => $json
-                    ->where('object', 'User')
+                    ->where('type', 'User')
                     ->where('id', $user->getHashedKey())
                     ->where('email', $user->email)
                     ->whereType('email_verified_at', 'string')
