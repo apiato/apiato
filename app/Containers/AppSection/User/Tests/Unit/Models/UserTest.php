@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\Models;
 
-use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
+use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenProxy;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
@@ -113,11 +113,11 @@ final class UserTest extends UnitTestCase
                     $user->email,
                     'youShallNotPass',
                 ),
-                WebClient::fake(),
+                WebClientCredential::fake(),
             ),
         );
 
-        $this->assertCount(1, $user->fresh()->tokens);
+        $this->assertCount(1, $user->refresh()->tokens);
     }
 
     public function testCanIssueRefreshToken(): void
@@ -129,15 +129,15 @@ final class UserTest extends UnitTestCase
                     $user->email,
                     'youShallNotPass',
                 ),
-                WebClient::fake(),
+                WebClientCredential::fake(),
             ),
         )->refreshToken;
 
-        $this->assertCount(1, $user->fresh()->tokens);
+        $this->assertCount(1, $user->refresh()->tokens);
 
-        User::issueToken(RefreshTokenProxy::create(RefreshToken::create($refreshToken), WebClient::create()));
+        User::issueToken(RefreshTokenProxy::create(RefreshToken::create($refreshToken), WebClientCredential::create()));
 
-        $tokens = $user->fresh()->tokens;
+        $tokens = $user->refresh()->tokens;
         $this->assertCount(2, $tokens);
         $this->assertSame(1, $tokens->where('revoked', true)->count());
         $this->assertSame(1, $tokens->where('revoked', false)->count());

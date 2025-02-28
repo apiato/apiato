@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant;
 
-use App\Containers\AppSection\Authentication\Values\Clients\Client;
+use App\Containers\AppSection\Authentication\Values\ClientCredentials\ClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Grants\RefreshTokenGrant;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use App\Ship\Parents\Values\Value as ParentValue;
@@ -15,11 +15,11 @@ final readonly class RefreshTokenProxy extends ParentValue implements PasswordGr
     ) {
     }
 
-    public static function create(RefreshToken $refreshToken, Client $client): self
+    public static function create(RefreshToken $refreshToken, ClientCredential $clientCredential): self
     {
         return new self(
             $refreshToken,
-            RefreshTokenGrant::create($client),
+            RefreshTokenGrant::create($clientCredential),
         );
     }
 

@@ -4,6 +4,9 @@ namespace App\Containers\AppSection\Authentication\Data\Dto;
 
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
+use App\Containers\AppSection\User\Models\User;
+use Laravel\Passport\Token as PassportToken;
+use Lcobucci\JWT\Parser;
 use Symfony\Component\HttpFoundation\Cookie;
 use Webmozart\Assert\Assert;
 
@@ -61,5 +64,18 @@ final readonly class Token implements ResourceKeyAware
             $data['access_token'] ?? fake()->sha256(),
             $data['refresh_token'] ?? fake()->sha256(),
         );
+    }
+
+    /**
+     * Set this token as the current access token for the user.
+     */
+    public function for(User $user): self
+    {
+        $parsedToken = app(Parser::class)->parse($this->accessToken);
+        $tokenId = $parsedToken->claims()->get('jti');
+        $tokenModel = PassportToken::find($tokenId);
+        $user->refresh()->withAccessToken($tokenModel);
+
+        return $this;
     }
 }
