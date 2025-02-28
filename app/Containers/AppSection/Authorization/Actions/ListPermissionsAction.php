@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authorization\Actions;
 use App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection;
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Prettus\Repository\Exceptions\RepositoryException;
 
 final class ListPermissionsAction extends ParentAction
 {
@@ -16,10 +14,6 @@ final class ListPermissionsAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws RepositoryException
-     * @throws BindingResolutionException
-     */
     public function run(): LengthAwarePaginator|PermissionCollection
     {
         $this->repository->addRequestCriteria();

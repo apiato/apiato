@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\Authorization\Actions;
 use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Prettus\Repository\Exceptions\RepositoryException;
 
 final class ListRolesAction extends ParentAction
 {
@@ -16,10 +14,6 @@ final class ListRolesAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws RepositoryException
-     * @throws BindingResolutionException
-     */
     public function run(): LengthAwarePaginator|RoleCollection
     {
         $this->repository->addRequestCriteria();

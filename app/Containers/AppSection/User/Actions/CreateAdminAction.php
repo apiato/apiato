@@ -16,9 +16,6 @@ final class CreateAdminAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws \Throwable
-     */
     public function run(array $data): User
     {
         return DB::transaction(function () use ($data) {

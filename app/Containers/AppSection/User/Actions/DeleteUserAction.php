@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Exceptions\FailedToDeleteUser;
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class DeleteUserAction extends ParentAction
@@ -14,10 +13,6 @@ final class DeleteUserAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws FailedToDeleteUser
-     * @throws ResourceNotFound
-     */
     public function run(int $id): bool
     {
         $user = $this->repository->findById($id);

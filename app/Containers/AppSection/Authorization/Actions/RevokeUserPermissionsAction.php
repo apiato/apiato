@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class RevokeUserPermissionsAction extends ParentAction
@@ -14,9 +13,6 @@ final class RevokeUserPermissionsAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws ResourceNotFound
-     */
     public function run(int $userId, int ...$permissionIds): User
     {
         $user = $this->findUserByIdTask->run($userId);

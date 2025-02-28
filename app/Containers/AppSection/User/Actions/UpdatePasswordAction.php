@@ -5,9 +5,7 @@ namespace App\Containers\AppSection\User\Actions;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Notifications\PasswordUpdatedNotification;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Prettus\Validator\Exceptions\ValidatorException;
 
 final class UpdatePasswordAction extends ParentAction
 {
@@ -16,10 +14,6 @@ final class UpdatePasswordAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws ResourceNotFound
-     * @throws ValidatorException
-     */
     public function run(int $userId, string $password): User
     {
         $user = $this->updateUserTask->run($userId, ['password' => $password]);

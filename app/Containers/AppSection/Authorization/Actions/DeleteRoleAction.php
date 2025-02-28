@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class DeleteRoleAction extends ParentAction
@@ -13,9 +12,6 @@ final class DeleteRoleAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws ResourceNotFound
-     */
     public function run(int $id): bool
     {
         return $this->repository->delete($id);

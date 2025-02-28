@@ -2,11 +2,9 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
+use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Database\Eloquent\Collection;
-use Spatie\Permission\Contracts\Role;
 
 final class ListUserRolesAction extends ParentAction
 {
@@ -15,12 +13,7 @@ final class ListUserRolesAction extends ParentAction
     ) {
     }
 
-    /**
-     * @return Collection<array-key, Role>
-     *
-     * @throws ResourceNotFound
-     */
-    public function run(int $id): Collection
+    public function run(int $id): RoleCollection
     {
         return $this->findUserByIdTask->run($id)->roles;
     }
