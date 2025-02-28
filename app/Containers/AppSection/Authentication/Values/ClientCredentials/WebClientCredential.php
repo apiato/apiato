@@ -25,7 +25,6 @@ final readonly class WebClientCredential extends ParentValue implements ClientCr
         );
     }
 
-    // TODO: see where and how it is used and see if it can be improved
     public static function fake(): self
     {
         $provider = array_key_exists('users', config('auth.providers')) ? 'users' : null;
