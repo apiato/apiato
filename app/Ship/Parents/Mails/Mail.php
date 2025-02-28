@@ -8,5 +8,6 @@ use Illuminate\Queue\SerializesModels;
 
 abstract class Mail extends AbstractMail
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 }
