@@ -17,7 +17,7 @@ final class DeleteUserAction extends ParentAction
     {
         $user = $this->repository->findById($id);
 
-        if (auth()->user()->is($user)) {
+        if (auth()->user()?->is($user)) {
             throw FailedToDeleteUser::becauseCannotDeleteItself();
         }
 
