@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant;
 
-use App\Containers\AppSection\Authentication\Values\Clients\Client;
+use App\Containers\AppSection\Authentication\Values\ClientCredentials\ClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Grants\PasswordGrant;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Ship\Parents\Values\Value as ParentValue;
@@ -15,11 +15,11 @@ final readonly class AccessTokenProxy extends ParentValue implements PasswordGra
     ) {
     }
 
-    public static function create(UserCredential $credential, Client $client): self
+    public static function create(UserCredential $credential, ClientCredential $clientCredential): self
     {
         return new self(
             $credential,
-            PasswordGrant::create($client),
+            PasswordGrant::create($clientCredential),
         );
     }
 

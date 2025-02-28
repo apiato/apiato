@@ -4,11 +4,16 @@ namespace App\Containers\AppSection\Authentication\Data\Dto;
 
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
+use App\Containers\AppSection\User\Models\User;
+use Laravel\Passport\Token as PassportToken;
+use Lcobucci\JWT\Parser;
+use Symfony\Component\HttpFoundation\Cookie;
+use Webmozart\Assert\Assert;
 
-// TODO
 final readonly class Token implements ResourceKeyAware
 {
     use HasResourceKey;
+    public Cookie $refreshTokenCookie;
 
     public function __construct(
         public string $tokenType,
@@ -16,6 +21,11 @@ final readonly class Token implements ResourceKeyAware
         public string $accessToken,
         public string $refreshToken,
     ) {
+        Assert::stringNotEmpty($this->tokenType);
+        Assert::greaterThan($this->expiresIn, 0);
+        Assert::stringNotEmpty($this->accessToken);
+        Assert::stringNotEmpty($this->refreshToken);
+        $this->refreshTokenCookie = $this->createRefreshTokenCookie();
     }
 
     public static function fromArray(array $data): self
@@ -28,13 +38,44 @@ final readonly class Token implements ResourceKeyAware
         );
     }
 
-    public static function fake(): self
+    private function createRefreshTokenCookie(): Cookie
+    {
+        return Cookie::create(
+            self::refreshTokenCookieName(),
+            $this->refreshToken,
+            config('appSection-authentication.refresh-tokens-expire-in'),
+            null,
+            null,
+            config('session.secure'),
+            config('session.http_only'),
+        );
+    }
+
+    public static function refreshTokenCookieName(): string
+    {
+        return 'refreshToken';
+    }
+
+    public static function fake(array $data = []): self
     {
         return new self(
-            fake()->word(),
-            fake()->numberBetween(),
-            fake()->sha256(),
-            fake()->sha256(),
+            $data['token_type'] ?? fake()->word(),
+            $data['expires_in'] ?? fake()->numberBetween(),
+            $data['access_token'] ?? fake()->sha256(),
+            $data['refresh_token'] ?? fake()->sha256(),
         );
+    }
+
+    /**
+     * Set this token as the current access token for the user.
+     */
+    public function for(User $user): self
+    {
+        $parsedToken = app(Parser::class)->parse($this->accessToken);
+        $tokenId = $parsedToken->claims()->get('jti');
+        $tokenModel = PassportToken::find($tokenId);
+        $user->refresh()->withAccessToken($tokenModel);
+
+        return $this;
     }
 }

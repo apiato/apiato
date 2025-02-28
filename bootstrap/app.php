@@ -4,7 +4,7 @@ use Apiato\Foundation\Apiato;
 use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
-use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginPageController;
+use App\Containers\AppSection\Authentication\UI\WEB\Controllers\LoginController;
 use App\Ship\Middleware\ValidateAppId;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -35,7 +35,7 @@ return Application::configure(basePath: $basePath)
             return redirect()->action(HomePageController::class);
         });
         $middleware->redirectGuestsTo(function (Request $request) {
-            return redirect()->action(LoginPageController::class);
+            return redirect()->action([LoginController::class, 'showForm']);
         });
     })
     ->withCommands($apiato->commands())

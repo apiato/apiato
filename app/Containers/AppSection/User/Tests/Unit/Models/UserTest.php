@@ -2,6 +2,11 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit\Models;
 
+use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenProxy;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
+use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
@@ -83,5 +88,58 @@ final class UserTest extends UnitTestCase
 
         $this->assertSame($expectedGet, $user->email);
         $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
+    }
+
+    public function testIsSuperAdmin(): void
+    {
+        $user = User::factory()->createOne();
+
+        $this->assertFalse($user->isSuperAdmin());
+
+        $user = User::factory()->admin()->createOne();
+
+        $this->assertTrue($user->isSuperAdmin());
+    }
+
+    public function testCanIssueAccessToken(): void
+    {
+        $user = User::factory()->createOne(['password' => 'youShallNotPass']);
+
+        $this->assertCount(0, $user->tokens);
+
+        User::issueToken(
+            AccessTokenProxy::create(
+                UserCredential::create(
+                    $user->email,
+                    'youShallNotPass',
+                ),
+                WebClientCredential::fake(),
+            ),
+        );
+
+        $this->assertCount(1, $user->refresh()->tokens);
+    }
+
+    public function testCanIssueRefreshToken(): void
+    {
+        $user = User::factory()->createOne(['password' => 'youShallNotPass']);
+        $refreshToken = User::issueToken(
+            AccessTokenProxy::create(
+                UserCredential::create(
+                    $user->email,
+                    'youShallNotPass',
+                ),
+                WebClientCredential::fake(),
+            ),
+        )->refreshToken;
+
+        $this->assertCount(1, $user->refresh()->tokens);
+
+        User::issueToken(RefreshTokenProxy::create(RefreshToken::create($refreshToken), WebClientCredential::create()));
+
+        $tokens = $user->refresh()->tokens;
+        $this->assertCount(2, $tokens);
+        $this->assertSame(1, $tokens->where('revoked', true)->count());
+        $this->assertSame(1, $tokens->where('revoked', false)->count());
     }
 }

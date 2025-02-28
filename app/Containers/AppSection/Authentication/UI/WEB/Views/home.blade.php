@@ -93,7 +93,7 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         @guest
-            <a href="{{ route('login-page') }}" class="top-right button">Login</a>
+            <a href="{{ route('login.form') }}" class="top-right button">Login</a>
         @endguest
 
         @auth('web')
