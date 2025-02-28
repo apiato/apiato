@@ -54,7 +54,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Find an entity by its primary key.
+     * Find a model by its primary key.
      *
      * @return TModel|null
      */
@@ -68,7 +68,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Find an entity by its primary key or throw an exception.
+     * Find a model by its primary key or throw an exception.
      *
      * @return TModel
      *
@@ -100,7 +100,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Find many entities by their primary keys.
+     * Find multiple models by their primary keys.
      *
      * @return Collection<array-key, TModel>
      */
@@ -114,7 +114,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Delete an entity by its primary key or throw an exception.
+     * Delete the model from the database.
      *
      * @param int|string $id
      *
@@ -150,7 +150,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Persist a Model instance to the storage.
+     * Persist a Model instance to the database.
      *
      * @param TModel $model
      *
@@ -183,7 +183,7 @@ abstract class Repository extends AbstractRepository
     }
 
     /**
-     * Find the first instance of the Model or create it.
+     * Get the first record matching the attributes. If the record is not found, create it.
      *
      * @return TModel
      */
