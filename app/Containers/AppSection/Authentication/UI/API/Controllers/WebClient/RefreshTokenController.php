@@ -14,7 +14,6 @@ final class RefreshTokenController extends ApiController
 {
     public function __invoke(RefreshTokenRequest $request, RefreshTokenAction $action): JsonResponse
     {
-        // TODO who should decide if refresh token can be null or not? RefreshToken, Proxy, Controller or Action?
         $result = $action->run(
             RefreshToken::create($request->input(
                 'refresh_token',

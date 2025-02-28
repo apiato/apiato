@@ -43,6 +43,13 @@ final class RefreshTokenTest extends ApiTestCase
         );
     }
 
+    public function testCanHandleMissingRefreshToken(): void
+    {
+        $response = $this->postJson(action(RefreshTokenController::class));
+
+        $response->assertForbidden();
+    }
+
     public function testApiCanRefreshViaCookie(): void
     {
         $response = $this
