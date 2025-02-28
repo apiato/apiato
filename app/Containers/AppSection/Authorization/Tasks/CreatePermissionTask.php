@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\PermissionRepository;
 use App\Containers\AppSection\Authorization\Models\Permission;
-use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 final class CreatePermissionTask extends ParentTask
@@ -14,9 +13,6 @@ final class CreatePermissionTask extends ParentTask
     ) {
     }
 
-    /**
-     * @throws ResourceCreationFailed
-     */
     public function run(string $name, string|null $description = null, string|null $displayName = null, string $guardName = 'api'): Permission
     {
         return $this->repository->create([

@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\User\Tasks;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
-use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 final class CreateUserTask extends ParentTask
@@ -14,9 +13,6 @@ final class CreateUserTask extends ParentTask
     ) {
     }
 
-    /**
-     * @throws ResourceCreationFailed
-     */
     public function run(array $data): User
     {
         return $this->repository->create($data);

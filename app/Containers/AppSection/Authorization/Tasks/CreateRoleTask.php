@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Models\Role;
-use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 final class CreateRoleTask extends ParentTask
@@ -14,9 +13,6 @@ final class CreateRoleTask extends ParentTask
     ) {
     }
 
-    /**
-     * @throws ResourceCreationFailed
-     */
     public function run(string $name, string|null $description = null, string|null $displayName = null, string $guardName = 'api'): Role
     {
         return $this->repository->create([

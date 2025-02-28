@@ -2,17 +2,12 @@
 
 namespace App\Containers\AppSection\Authentication\Actions\EmailVerification;
 
-use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 final class VerifyAction extends ParentAction
 {
-    /**
-     * @throws ResourceNotFound
-     * @throws \Throwable
-     */
     public function run(MustVerifyEmail $user): void
     {
         if (!$user->hasVerifiedEmail()) {

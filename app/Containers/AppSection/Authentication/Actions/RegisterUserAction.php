@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\CreateUserTask;
-use App\Ship\Exceptions\ResourceCreationFailed;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Auth\Events\Registered;
 
@@ -15,9 +14,6 @@ final class RegisterUserAction extends ParentAction
     ) {
     }
 
-    /**
-     * @throws ResourceCreationFailed
-     */
     public function run(array $data): User
     {
         $user = $this->createUserTask->run($data);

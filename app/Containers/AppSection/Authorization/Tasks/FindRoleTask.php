@@ -15,9 +15,6 @@ final class FindRoleTask extends ParentTask
     ) {
     }
 
-    /**
-     * @throws ResourceNotFound
-     */
     public function run(string|int $roleNameOrId, string $guardName = 'api'): Role
     {
         $query = [

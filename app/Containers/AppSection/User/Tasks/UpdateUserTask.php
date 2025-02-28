@@ -7,7 +7,6 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\ResourceNotFound;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Prettus\Validator\Exceptions\ValidatorException;
 
 final class UpdateUserTask extends ParentTask
 {
@@ -16,10 +15,6 @@ final class UpdateUserTask extends ParentTask
     ) {
     }
 
-    /**
-     * @throws ResourceNotFound
-     * @throws ValidatorException
-     */
     public function run(int $id, array $properties): User
     {
         try {
