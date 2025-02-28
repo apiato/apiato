@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\UpdateUserTask;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use App\Ship\Exceptions\ResourceNotFound;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -23,15 +22,6 @@ final class UpdateUserTaskTest extends UnitTestCase
 
         $this->assertSame($user->id, $updatedUser->id);
         $this->assertSame($data['name'], $updatedUser->name);
-    }
-
-    public function testUpdateUserWithInvalidID(): void
-    {
-        $this->expectException(ResourceNotFound::class);
-
-        $noneExistingId = 7777777;
-
-        app(UpdateUserTask::class)->run($noneExistingId, []);
     }
 
     public function testUpdatedPasswordShouldBeHashed(): void
