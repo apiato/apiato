@@ -9,6 +9,7 @@ _ide_helper*.php
 /.vagrant
 .php-cs-fixer.cache
 /psalm_cache/
+/phpstan_cache/
 /app/Containers/Vendor
 .DS_Store
 .phpstorm.meta.php
