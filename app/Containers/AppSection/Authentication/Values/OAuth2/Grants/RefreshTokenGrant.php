@@ -11,7 +11,7 @@ final readonly class RefreshTokenGrant extends ParentValue implements Grant
 
     private function __construct(
         private ClientCredential $clientCredential,
-        private string           $scope = '',
+        private string $scope = '',
     ) {
         $this->grantType = 'refresh_token';
     }
