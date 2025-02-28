@@ -7,11 +7,10 @@ use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
+use Webmozart\Assert\Assert;
 
 /**
- * @template TModel of Role
- *
- * @extends ParentRepository<TModel>
+ * @extends ParentRepository<Role>
  */
 final class RoleRepository extends ParentRepository
 {
@@ -31,7 +30,9 @@ final class RoleRepository extends ParentRepository
     public function makeSuperAdmin(User $user): User
     {
         foreach (array_keys(config('auth.guards')) as $guard) {
-            $role = $this->getModel()->findByName(RoleEnum::SUPER_ADMIN->value, $guard);
+            Assert::nullOrStringNotEmpty($guard);
+
+            $role = $this->getModel()::findByName(RoleEnum::SUPER_ADMIN->value, $guard);
             $user->assignRole($role);
         }
 

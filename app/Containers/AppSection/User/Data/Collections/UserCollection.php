@@ -6,10 +6,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Collections\EloquentCollection as ParentCollection;
 
 /**
- * @template TKey of array-key
- * @template TModel of User
- *
- * @extends ParentCollection<TKey, TModel>
+ * @extends ParentCollection<array-key, User>
  */
 final class UserCollection extends ParentCollection
 {

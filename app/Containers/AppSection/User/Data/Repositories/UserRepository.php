@@ -6,9 +6,7 @@ use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
 /**
- * @template TModel of User
- *
- * @extends ParentRepository<TModel>
+ * @extends ParentRepository<User>
  */
 final class UserRepository extends ParentRepository
 {

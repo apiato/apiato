@@ -24,12 +24,12 @@ final class RoleFactory extends ParentFactory
         ];
     }
 
-    public function admin(): static
+    public function admin(): self
     {
         return $this->state(fn () => ['name' => RoleEnum::SUPER_ADMIN->value]);
     }
 
-    public function withGuard(string $guard): static
+    public function withGuard(string $guard): self
     {
         return $this->state(fn () => ['guard_name' => $guard]);
     }
