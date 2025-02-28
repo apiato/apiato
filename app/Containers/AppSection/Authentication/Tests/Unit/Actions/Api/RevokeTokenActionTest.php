@@ -32,8 +32,9 @@ final class RevokeTokenActionTest extends UnitTestCase
         $this->assertFalse($user->token()->revoked);
         $action = app(RevokeTokenAction::class);
 
-        $action->run($user);
+        $result = $action->run($user);
 
         $this->assertTrue($user->token()->revoked);
+        $this->assertTrue($result->isCleared());
     }
 }
