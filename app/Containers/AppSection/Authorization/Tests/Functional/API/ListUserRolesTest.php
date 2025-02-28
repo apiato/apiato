@@ -14,7 +14,7 @@ final class ListUserRolesTest extends ApiTestCase
 {
     public function testGetUserRoles(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $user = User::factory()->createOne();
         $role = Role::factory()->createOne();
         $user->assignRole($role);

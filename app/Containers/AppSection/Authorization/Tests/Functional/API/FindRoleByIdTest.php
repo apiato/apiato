@@ -14,7 +14,7 @@ final class FindRoleByIdTest extends ApiTestCase
 {
     public function testCanFindRoleById(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $roleA = Role::factory()->createOne();
 
         $response = $this->getJson(action(

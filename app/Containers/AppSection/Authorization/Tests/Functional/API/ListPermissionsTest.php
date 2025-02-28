@@ -14,7 +14,7 @@ final class ListPermissionsTest extends ApiTestCase
 {
     public function testListPermissions(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         Permission::factory()->count(2)->create();
 
         $response = $this->getJson(action(ListPermissionsController::class));

@@ -13,7 +13,7 @@ final class ListRolesTest extends ApiTestCase
 {
     public function testListRoles(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
 
         $response = $this->getJson(action(ListRolesController::class));
 

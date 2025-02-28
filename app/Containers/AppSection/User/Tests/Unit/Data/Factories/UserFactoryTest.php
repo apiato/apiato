@@ -20,7 +20,7 @@ final class UserFactoryTest extends UnitTestCase
 
     public function testCanCreateAdminUser(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
 
         $this->assertTrue($user->isSuperAdmin());
     }

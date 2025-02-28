@@ -13,7 +13,7 @@ final class CreateRoleTest extends ApiTestCase
 {
     public function testCreateRole(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
 
         $data = [
             'name' => 'manager',

@@ -15,7 +15,7 @@ final class ListRolePermissionsTest extends ApiTestCase
 {
     public function testGetRolePermissions(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $role = Role::factory()->createOne();
         $permission = Permission::factory()->createOne();
         $role->givePermissionTo([$permission]);

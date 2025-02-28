@@ -12,7 +12,7 @@ final class DeleteUserTest extends ApiTestCase
 {
     public function testAdminCanDeleteAnotherUser(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
 
         $response = $this->deleteJson(action(
@@ -26,7 +26,7 @@ final class DeleteUserTest extends ApiTestCase
     // TODO: move to request test
     public function testCannotDeleteSelf(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
 
         $response = $this->deleteJson(action(

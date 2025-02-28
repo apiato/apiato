@@ -14,7 +14,7 @@ final class SyncUserRolesTest extends ApiTestCase
 {
     public function testSyncMultipleRolesOnUser(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $role1 = Role::factory()->createOne();
         $role2 = Role::factory()->createOne();
         $user = User::factory()->createOne();

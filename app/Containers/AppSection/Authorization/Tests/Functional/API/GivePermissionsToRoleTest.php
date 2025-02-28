@@ -15,7 +15,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 {
     public function testAttachSinglePermissionToRole(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $role = Role::factory()->createOne();
         $permission = Permission::factory()->createOne();
         $data = [
@@ -41,7 +41,7 @@ final class GivePermissionsToRoleTest extends ApiTestCase
 
     public function testAttachMultiplePermissionsToRole(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $role = Role::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();

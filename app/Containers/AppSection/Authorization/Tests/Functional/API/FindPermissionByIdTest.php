@@ -14,7 +14,7 @@ final class FindPermissionByIdTest extends ApiTestCase
 {
     public function testCanFindPermissionById(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $permission = Permission::factory()->createOne();
 
         $response = $this->getJson(action(

@@ -14,7 +14,7 @@ final class ListUserPermissionsTest extends ApiTestCase
 {
     public function testGetUserPermissions(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $user = User::factory()->createOne();
         $permission = Permission::factory()->createOne();
         $user->givePermissionTo([$permission]);

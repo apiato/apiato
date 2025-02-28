@@ -14,7 +14,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 {
     public function testDetachSinglePermissionFromUser(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $user = User::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
@@ -42,7 +42,7 @@ final class RevokeUserPermissionsTest extends ApiTestCase
 
     public function testDetachMultiplePermissionFromUser(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $user = User::factory()->createOne();
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();

@@ -96,7 +96,7 @@ final class UserTest extends UnitTestCase
 
         $this->assertFalse($user->isSuperAdmin());
 
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
 
         $this->assertTrue($user->isSuperAdmin());
     }

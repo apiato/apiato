@@ -14,7 +14,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
 {
     public function testGiveSinglePermission(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
         $permission = Permission::factory()->createOne();
         $data = [
@@ -37,7 +37,7 @@ final class GivePermissionsToUserTest extends ApiTestCase
 
     public function testGiveMultiplePermissions(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();

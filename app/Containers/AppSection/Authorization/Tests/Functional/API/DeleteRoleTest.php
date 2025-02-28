@@ -13,7 +13,7 @@ final class DeleteRoleTest extends ApiTestCase
 {
     public function testCanDeleteRole(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $role = Role::factory()->createOne();
 
         $response = $this->deleteJson(action(DeleteRoleController::class, ['role_id' => $role->getHashedKey()]));

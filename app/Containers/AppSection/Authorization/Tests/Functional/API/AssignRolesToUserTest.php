@@ -14,7 +14,7 @@ final class AssignRolesToUserTest extends ApiTestCase
 {
     public function testAssignRoleToUser(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
         $role = Role::factory()->createOne();
         $data = [
@@ -36,7 +36,7 @@ final class AssignRolesToUserTest extends ApiTestCase
 
     public function testAssignManyRolesToUser(): void
     {
-        $user = User::factory()->admin()->createOne();
+        $user = User::factory()->superAdmin()->createOne();
         $this->actingAs($user);
         $role1 = Role::factory()->createOne();
         $role2 = Role::factory()->createOne();

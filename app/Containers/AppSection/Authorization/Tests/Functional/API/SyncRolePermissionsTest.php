@@ -15,7 +15,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
 {
     public function testSyncDuplicatedPermissionsToRole(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $permissionA = Permission::factory()->createOne();
         $permissionB = Permission::factory()->createOne();
         $role = Role::factory()->createOne();

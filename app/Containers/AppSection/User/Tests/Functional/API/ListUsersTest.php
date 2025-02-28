@@ -13,7 +13,7 @@ final class ListUsersTest extends ApiTestCase
 {
     public function testCanIndexUsersAsAdmin(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         User::factory()->count(2)->create();
 
         $response = $this->getJson(action(ListUsersController::class));

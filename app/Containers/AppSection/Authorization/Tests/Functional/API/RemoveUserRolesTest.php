@@ -14,7 +14,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 {
     public function testRevokeRolesFromUser(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $roleA = Role::factory()->createOne();
         $roleB = Role::factory()->createOne();
         $user = User::factory()->createOne();
@@ -38,7 +38,7 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     public function testRevokeManyRolesFromUser(): void
     {
-        $this->actingAs(User::factory()->admin()->createOne());
+        $this->actingAs(User::factory()->superAdmin()->createOne());
         $roleA = Role::factory()->createOne();
         $roleB = Role::factory()->createOne();
         $user = User::factory()->createOne();

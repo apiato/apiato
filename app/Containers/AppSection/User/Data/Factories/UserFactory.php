@@ -33,7 +33,7 @@ final class UserFactory extends ParentFactory
         ];
     }
 
-    public function admin(): self
+    public function superAdmin(): self
     {
         return $this->afterCreating(function (User $user) {
             app(RoleRepository::class)->makeSuperAdmin($user);
