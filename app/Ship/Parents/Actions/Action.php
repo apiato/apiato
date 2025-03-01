@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Actions;
 
-use Apiato\Abstract\Actions\Action as AbstractAction;
+use Apiato\Core\Actions\Action as AbstractAction;
 
 abstract class Action extends AbstractAction
 {

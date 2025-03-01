@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Requests;
 
-use Apiato\Abstract\Requests\Request as AbstractRequest;
+use Apiato\Core\Requests\Request as AbstractRequest;
 
 abstract class Request extends AbstractRequest
 {

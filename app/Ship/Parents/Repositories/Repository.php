@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Repositories;
 
-use Apiato\Abstract\Repositories\Repository as AbstractRepository;
+use Apiato\Core\Repositories\Repository as AbstractRepository;
 use Illuminate\Database\Eloquent\Model;
 
 /**

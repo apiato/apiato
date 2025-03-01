@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Mails;
 
-use Apiato\Abstract\Mails\Mail as AbstractMail;
+use Apiato\Core\Mails\Mail as AbstractMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 

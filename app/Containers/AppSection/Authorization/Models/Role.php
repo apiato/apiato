@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\Models;
 
-use Apiato\Abstract\Models\InteractsWithApiato;
+use Apiato\Core\Models\InteractsWithApiato;
 use Apiato\Http\Resources\ResourceKeyAware;
 use App\Containers\AppSection\Authorization\Data\Collections\RoleCollection;
 use Spatie\Permission\Models\Role as SpatieRole;

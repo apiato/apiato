@@ -2,7 +2,7 @@
 
 namespace App\Ship\Commands;
 
-use Apiato\Abstract\Commands\Command as ParentCommand;
+use Apiato\Core\Commands\Command as ParentCommand;
 use App\Ship\Seeders\InitialDeploymentDataSeeder;
 
 final class SeedInitialDeploymentData extends ParentCommand

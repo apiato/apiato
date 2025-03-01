@@ -2,7 +2,7 @@
 
 namespace App\Ship\Parents\Listeners;
 
-use Apiato\Abstract\Listeners\Listener as AbstractListener;
+use Apiato\Core\Listeners\Listener as AbstractListener;
 
 abstract class Listener extends AbstractListener
 {

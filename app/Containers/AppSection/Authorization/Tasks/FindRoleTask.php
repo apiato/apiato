@@ -26,7 +26,7 @@ final class FindRoleTask extends ParentTask
             $query['name'] = $nameOrId;
         }
 
-        return $this->repository->firstOrFail($query);
+        return $this->repository->findWhere($query)->sole();
     }
 
     private function isId(int|string $roleNameOrId): bool
