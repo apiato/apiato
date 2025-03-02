@@ -5,7 +5,6 @@ namespace App\Containers\AppSection\User\Tasks;
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Tasks\Task as ParentTask;
-use Illuminate\Validation\Rules\Unique;
 
 final class CreateUserTask extends ParentTask
 {
