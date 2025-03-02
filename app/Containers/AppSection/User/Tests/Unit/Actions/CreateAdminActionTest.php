@@ -28,7 +28,7 @@ final class CreateAdminActionTest extends UnitTestCase
     {
         $this->expectException(\Error::class);
 
-        $data = ['name' => new class {}];
+        $data = ['email' => new class {}];
 
         $admin = app(CreateAdminAction::class)->run($data);
 
