@@ -38,4 +38,17 @@ final class RegisterUserTest extends ApiTestCase
             Notification::assertSentTo($user, VerifyEmail::class);
         }
     }
+
+    public function testPreventsDuplicateEmailRegistration(): void
+    {
+        User::factory()->createOne(['email' => 'bigemail@email.com']);
+        $data = [
+            'email' => 'BiGeMaIl@EmAiL.CoM',
+            'password' => 's3cr3tPa$$',
+        ];
+
+        $response = $this->postJson(URL::action(RegisterUserController::class), $data);
+
+        $response->assertUnprocessable()->assertJsonValidationErrors('email');
+    }
 }
