@@ -88,10 +88,5 @@ return [
         |
         */
         'use-etag' => false,
-
-        'params' => [
-            // TODO: BC: remove this after removing its usage in ResponseTrait in Core
-            'filter' => 'filter',
-        ],
     ],
 ];

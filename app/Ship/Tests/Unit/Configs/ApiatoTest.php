@@ -33,9 +33,6 @@ final class ApiatoTest extends ShipTestCase
             'requests' => [
                 'force-accept-header' => false,
                 'use-etag' => false,
-                'params' => [
-                    'filter' => 'filter',
-                ],
             ],
         ];
 
