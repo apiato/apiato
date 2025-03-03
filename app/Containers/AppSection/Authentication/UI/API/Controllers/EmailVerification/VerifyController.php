@@ -14,6 +14,6 @@ final class VerifyController extends ApiController
     {
         $action->run($request->user());
 
-        return Response::json(null);
+        return Response::ok();
     }
 }

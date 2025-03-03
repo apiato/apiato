@@ -14,6 +14,6 @@ final class ResetPasswordController extends ApiController
     {
         $status = $action->run($request);
 
-        return Response::json($status);
+        return Response::ok($status);
     }
 }

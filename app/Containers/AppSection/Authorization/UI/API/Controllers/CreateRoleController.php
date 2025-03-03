@@ -19,6 +19,6 @@ final class CreateRoleController extends ApiController
             $request->input('display_name'),
         );
 
-        return Response::created(Response::create($role, RoleAdminTransformer::class)->toArray());
+        return Response::create($role, RoleAdminTransformer::class)->created();
     }
 }

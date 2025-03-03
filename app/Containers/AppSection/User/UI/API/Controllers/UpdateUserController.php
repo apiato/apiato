@@ -7,10 +7,11 @@ use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
 final class UpdateUserController extends ApiController
 {
-    public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): array
+    public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): JsonResponse
     {
         $user = $action->run(
             $request->user_id,
@@ -23,6 +24,6 @@ final class UpdateUserController extends ApiController
             ]),
         );
 
-        return Response::create($user, UserTransformer::class)->toArray();
+        return Response::create($user, UserTransformer::class)->ok();
     }
 }

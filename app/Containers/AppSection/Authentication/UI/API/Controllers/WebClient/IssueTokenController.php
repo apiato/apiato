@@ -21,7 +21,7 @@ final class IssueTokenController extends ApiController
             ),
         );
 
-        return Response::json(Response::create($result, TokenTransformer::class)->toArray())
+        return Response::create($result, TokenTransformer::class)->ok()
             ->withCookie($result->refreshTokenCookie);
     }
 }
