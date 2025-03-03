@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\SyncRolePermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\SyncRolePermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
@@ -13,6 +14,6 @@ final class SyncRolePermissionsController extends ApiController
     {
         $role = $action->run($request->role_id, ...$request->permission_ids);
 
-        return $this->transform($role, RoleAdminTransformer::class, ['permissions']);
+        return Response::create($role, RoleAdminTransformer::class)->parseIncludes(['permissions'])->toArray();
     }
 }

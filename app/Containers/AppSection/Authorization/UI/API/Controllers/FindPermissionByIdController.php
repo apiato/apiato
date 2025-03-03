@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindPermissionByIdRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
@@ -13,6 +14,6 @@ final class FindPermissionByIdController extends ApiController
     {
         $permission = $action->run($request->permission_id);
 
-        return $this->transform($permission, PermissionAdminTransformer::class);
+        return Response::create($permission, PermissionAdminTransformer::class)->toArray();
     }
 }

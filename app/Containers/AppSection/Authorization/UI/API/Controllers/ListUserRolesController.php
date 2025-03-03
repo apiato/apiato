@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListUserRolesAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserRolesRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
@@ -13,6 +14,6 @@ final class ListUserRolesController extends ApiController
     {
         $roles = $action->run($request->user_id);
 
-        return $this->transform($roles, RoleAdminTransformer::class);
+        return Response::create($roles, RoleAdminTransformer::class)->toArray();
     }
 }

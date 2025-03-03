@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\PasswordReset\ResetPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ResetPasswordRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -13,6 +14,6 @@ final class ResetPasswordController extends ApiController
     {
         $status = $action->run($request);
 
-        return $this->json($status);
+        return Response::json($status);
     }
 }

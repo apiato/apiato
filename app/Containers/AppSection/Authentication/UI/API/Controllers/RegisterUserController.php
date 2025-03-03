@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
@@ -19,6 +20,6 @@ final class RegisterUserController extends ApiController
             'birth',
         ]));
 
-        return $this->transform($user, UserTransformer::class);
+        return Response::create($user, UserTransformer::class)->toArray();
     }
 }

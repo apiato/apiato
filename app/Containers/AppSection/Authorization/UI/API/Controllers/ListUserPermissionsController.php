@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListUserPermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
@@ -13,6 +14,6 @@ final class ListUserPermissionsController extends ApiController
     {
         $permissions = $action->run($request->user_id);
 
-        return $this->transform($permissions, PermissionAdminTransformer::class);
+        return Response::create($permissions, PermissionAdminTransformer::class)->toArray();
     }
 }

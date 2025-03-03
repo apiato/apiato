@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdatePasswordRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
@@ -13,6 +14,6 @@ final class UpdatePasswordController extends ApiController
     {
         $user = $action->run($request->user_id, $request->new_password);
 
-        return $this->transform($user, UserTransformer::class);
+        return Response::create($user, UserTransformer::class)->toArray();
     }
 }

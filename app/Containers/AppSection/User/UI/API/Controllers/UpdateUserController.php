@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
@@ -22,6 +23,6 @@ final class UpdateUserController extends ApiController
             ]),
         );
 
-        return $this->transform($user, UserTransformer::class);
+        return Response::create($user, UserTransformer::class)->toArray();
     }
 }

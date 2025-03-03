@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\CreateRoleAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\CreateRoleRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
@@ -18,6 +19,6 @@ final class CreateRoleController extends ApiController
             $request->input('display_name'),
         );
 
-        return $this->created($this->transform($role, RoleAdminTransformer::class));
+        return Response::created(Response::create($role, RoleAdminTransformer::class)->toArray());
     }
 }

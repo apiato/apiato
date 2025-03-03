@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\Api\RevokeTokenAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RevokeTokenRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -13,7 +14,7 @@ final class RevokeTokenController extends ApiController
     {
         $cookies = $action->run($request->user());
 
-        return $this->accepted([
+        return Response::accepted([
             'message' => 'Token revoked successfully.',
         ])->withCookie($cookies);
     }

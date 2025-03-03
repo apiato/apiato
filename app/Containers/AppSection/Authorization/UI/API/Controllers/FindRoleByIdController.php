@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\FindRoleByIdAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\FindRoleByIdRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleAdminTransformer;
@@ -13,6 +14,6 @@ final class FindRoleByIdController extends ApiController
     {
         $role = $action->run($request->role_id);
 
-        return $this->transform($role, RoleAdminTransformer::class);
+        return Response::create($role, RoleAdminTransformer::class)->toArray();
     }
 }

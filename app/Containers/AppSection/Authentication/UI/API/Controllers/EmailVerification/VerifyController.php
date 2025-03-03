@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\VerifyAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification\VerifyRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -13,6 +14,6 @@ final class VerifyController extends ApiController
     {
         $action->run($request->user());
 
-        return $this->json(null);
+        return Response::json(null);
     }
 }

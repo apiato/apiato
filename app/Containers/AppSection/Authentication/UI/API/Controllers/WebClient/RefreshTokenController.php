@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\RefreshTokenAction;
 use App\Containers\AppSection\Authentication\Data\Dto\Token;
 use App\Containers\AppSection\Authentication\UI\API\Requests\WebClient\RefreshTokenRequest;
@@ -21,7 +22,7 @@ final class RefreshTokenController extends ApiController
             )),
         );
 
-        return $this->json($this->transform($result, TokenTransformer::class))
+        return Response::json(Response::create($result, TokenTransformer::class)->toArray())
             ->withCookie($result->refreshTokenCookie);
     }
 }

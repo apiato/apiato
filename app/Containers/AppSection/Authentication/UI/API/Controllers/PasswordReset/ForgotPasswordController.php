@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\PasswordReset\ForgotPasswordAction;
 use App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset\ForgotPasswordRequest;
 use App\Ship\Parents\Controllers\ApiController;
@@ -13,6 +14,6 @@ final class ForgotPasswordController extends ApiController
     {
         $status = $action->run($request);
 
-        return $this->accepted($status);
+        return Response::accepted($status);
     }
 }
