@@ -7,7 +7,9 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
 /**
- * @extends ParentRepository<Permission>
+ * @template TModel of Permission
+ *
+ * @extends ParentRepository<TModel>
  */
 final class PermissionRepository extends ParentRepository
 {

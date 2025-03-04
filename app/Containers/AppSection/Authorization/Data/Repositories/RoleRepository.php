@@ -10,7 +10,9 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
 use Webmozart\Assert\Assert;
 
 /**
- * @extends ParentRepository<Role>
+ * @template TModel of Role
+ *
+ * @extends ParentRepository<TModel>
  */
 final class RoleRepository extends ParentRepository
 {
