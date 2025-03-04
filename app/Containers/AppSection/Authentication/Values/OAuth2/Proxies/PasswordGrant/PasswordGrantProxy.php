@@ -5,9 +5,8 @@ namespace App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\Passwor
 use App\Containers\AppSection\Authentication\Values\OAuth2\Grants\PasswordGrant;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Grants\RefreshTokenGrant;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\GrantProxy;
-use Illuminate\Contracts\Support\Arrayable;
 
-interface PasswordGrantProxy extends GrantProxy, Arrayable
+interface PasswordGrantProxy extends GrantProxy
 {
     public function grant(): PasswordGrant|RefreshTokenGrant;
 }
