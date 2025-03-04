@@ -31,11 +31,11 @@ return Application::configure(basePath: $basePath)
             ValidateJsonContent::class,
             ProcessETag::class,
         ]);
-        $middleware->redirectUsersTo(function (Request $request) {
-            return redirect()->action(HomePageController::class);
+        $middleware->redirectUsersTo(static function (Request $request): string {
+            return action(HomePageController::class);
         });
-        $middleware->redirectGuestsTo(function (Request $request) {
-            return redirect()->action([LoginController::class, 'showForm']);
+        $middleware->redirectGuestsTo(static function (Request $request): string {
+            return action([LoginController::class, 'showForm']);
         });
     })
     ->withCommands($apiato->commands())
