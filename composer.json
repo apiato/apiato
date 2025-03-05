@@ -36,6 +36,8 @@
     ],
     "require": {
         "php": "^8.2",
+        "apiato/core": "dev-master",
+        "laravel/passport": "^12.0",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
