@@ -36,7 +36,6 @@
     ],
     "require": {
         "php": "^8.2",
-        "webmozart/assert": "^1.11",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
