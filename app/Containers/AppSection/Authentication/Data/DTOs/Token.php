@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Data\Dto;
+namespace App\Containers\AppSection\Authentication\Data\DTOs;
 
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;

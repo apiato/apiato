@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient;
 
 use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\RefreshTokenAction;
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\UI\API\Requests\WebClient\RefreshTokenRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;

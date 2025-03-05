@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions\Api;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Cookie as CookieFacade;

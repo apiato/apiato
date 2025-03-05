@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\WebClient;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 

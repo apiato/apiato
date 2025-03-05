@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformers;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
 use PHPUnit\Framework\Attributes\CoversClass;

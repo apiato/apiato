@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\User\Models;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\PasswordGrantProxy;
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;

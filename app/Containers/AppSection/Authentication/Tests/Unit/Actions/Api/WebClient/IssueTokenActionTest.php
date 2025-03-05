@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\IssueTokenAction;
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\UserCredential;

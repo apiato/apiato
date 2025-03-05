@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions\Api\WebClient;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenProxy;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;

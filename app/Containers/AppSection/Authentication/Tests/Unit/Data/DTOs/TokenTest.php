@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\Dto;
+namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\DTOs;
 
-use App\Containers\AppSection\Authentication\Data\Dto\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\Token;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Cookie;
