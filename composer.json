@@ -45,7 +45,6 @@
         "jetbrains/phpstorm-attributes": "^1.0",
         "larastan/larastan": "^3.0",
         "mockery/mockery": "^1.4.4",
-        "mohammad-alavi/apiato-rector": "dev-latest",
         "nunomaduro/collision": "^8.0",
         "orchestra/testbench": "^9.0",
         "phpmd/phpmd": "@stable",
@@ -53,7 +52,6 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpunit/phpunit": "^11.0.1",
-        "rector/rector": "^2.0",
         "roave/security-advisories": "dev-latest",
         "thecodingmachine/phpstan-safe-rule": "^1.4"
     },
@@ -91,9 +89,6 @@
         ],
         "fixer": [
             "php-cs-fixer fix"
-        ],
-        "rector": [
-            "rector process --ansi"
         ]
     },
     "extra": {
