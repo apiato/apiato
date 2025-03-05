@@ -2,5 +2,7 @@
     "name": "apiato/authentication",
     "description": "Authentication Container",
     "type": "apiato-container",
-    "require": {}
+    "require": {
+        "laravel/passport": "^12.0"
+    }
 }
