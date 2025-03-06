@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api;
 
 use App\Containers\AppSection\Authentication\Actions\Api\RevokeTokenAction;
+use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
@@ -19,7 +20,7 @@ final class RevokeTokenActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ]);
         $this->assertCount(0, $user->tokens);
-        User::issueToken(
+        app(IssueTokenTask::class)->run(
             AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,

@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
+use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\RevokeTokenController;
 use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
@@ -20,7 +21,7 @@ final class RevokeTokenTest extends ApiTestCase
         ]);
 
         $this->assertCount(0, $user->tokens);
-        User::issueToken(
+        app(IssueTokenTask::class)->run(
             AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,

@@ -4,6 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api\WebCli
 
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\RefreshTokenAction;
 use App\Containers\AppSection\Authentication\Data\DTOs\Token;
+use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
@@ -18,7 +19,7 @@ final class RefreshTokenActionTest extends UnitTestCase
     public function testCanGetTokenViaRefreshToken(): void
     {
         $user = User::factory()->createOne(['password' => 'youShallNotPass']);
-        $refreshToken = User::issueToken(
+        $refreshToken = app(IssueTokenTask::class)->run(
             AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,
