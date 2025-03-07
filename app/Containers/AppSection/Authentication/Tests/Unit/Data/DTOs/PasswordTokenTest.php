@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 #[CoversClass(PasswordToken::class)]
 final class PasswordTokenTest extends UnitTestCase
 {
-    public function testCanCreateValue(): void
+    public function testCanBeInstantiated(): void
     {
         $value = new PasswordToken(
             fake()->word(),
