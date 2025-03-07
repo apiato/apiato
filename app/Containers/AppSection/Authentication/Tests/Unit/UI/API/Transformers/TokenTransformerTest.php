@@ -2,19 +2,19 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformers;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\UI\API\Transformers\TokenTransformer;
+use App\Containers\AppSection\Authentication\UI\API\Transformers\AccessTokenTransformer;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(TokenTransformer::class)]
+#[CoversClass(AccessTokenTransformer::class)]
 final class TokenTransformerTest extends UnitTestCase
 {
-    private TokenTransformer $transformer;
+    private AccessTokenTransformer $transformer;
 
     public function testCanTransformSingleObject(): void
     {
-        $token = new Token('test', 100, 'asdc1234', '1234asdc');
+        $token = new PasswordAccessTokenResponse('test', 100, 'asdc1234', '1234asdc');
         $expected = [
             'type' => $token->getResourceKey(),
             'token_type' => $token->tokenType,
@@ -41,6 +41,6 @@ final class TokenTransformerTest extends UnitTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->transformer = new TokenTransformer();
+        $this->transformer = new AccessTokenTransformer();
     }
 }

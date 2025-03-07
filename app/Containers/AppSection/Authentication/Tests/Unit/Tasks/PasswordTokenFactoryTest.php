@@ -2,33 +2,33 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
-use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
+use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenProxy;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenRequestProxy;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(IssueTokenTask::class)]
-final class IssueTokenTaskTest extends UnitTestCase
+#[CoversClass(PasswordTokenFactory::class)]
+final class PasswordTokenFactoryTest extends UnitTestCase
 {
     public function testCanIssueAccessToken(): void
     {
         $user = User::factory()->createOne(['password' => 'youShallNotPass']);
-        $task = app(IssueTokenTask::class);
+        $factory = app(PasswordTokenFactory::class);
 
         $this->assertCount(0, $user->tokens);
 
-        $task->run(
-            AccessTokenProxy::create(
+        $factory->make(
+            AccessTokenRequestProxy::create(
                 UserCredential::create(
                     $user->email,
                     'youShallNotPass',
                 ),
-                WebClientCredential::fake(),
+                ClientFactory::webPasswordClient(),
             ),
         );
 
@@ -38,20 +38,28 @@ final class IssueTokenTaskTest extends UnitTestCase
     public function testCanIssueRefreshToken(): void
     {
         $user = User::factory()->createOne(['password' => 'youShallNotPass']);
-        $task = app(IssueTokenTask::class);
-        $refreshToken = $task->run(
-            AccessTokenProxy::create(
+        $factory = app(PasswordTokenFactory::class);
+        $client = ClientFactory::webPasswordClient();
+        $refreshToken = $factory->make(
+            AccessTokenRequestProxy::create(
                 UserCredential::create(
                     $user->email,
                     'youShallNotPass',
                 ),
-                WebClientCredential::fake(),
+                $client,
             ),
-        )->refreshToken;
+        )->refreshToken();
 
         $this->assertCount(1, $user->refresh()->tokens);
 
-        $task->run(RefreshTokenProxy::create(RefreshToken::create($refreshToken), WebClientCredential::create()));
+        $factory->make(
+            RefreshTokenRequestProxy::create(
+                RefreshToken::create(
+                    $refreshToken,
+                ),
+                $client,
+            ),
+        );
 
         $tokens = $user->refresh()->tokens;
         $this->assertCount(2, $tokens);

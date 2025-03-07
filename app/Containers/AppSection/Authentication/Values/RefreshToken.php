@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Values;
 
 use App\Ship\Parents\Values\Value as ParentValue;
+use Webmozart\Assert\Assert;
 
 final readonly class RefreshToken extends ParentValue
 {
@@ -13,14 +14,9 @@ final readonly class RefreshToken extends ParentValue
 
     public static function create(string $refreshToken): self
     {
-        return new self($refreshToken);
-    }
+        Assert::stringNotEmpty($refreshToken);
 
-    public function toArray(): array
-    {
-        return [
-            'refresh_token' => $this->refreshToken,
-        ];
+        return new self($refreshToken);
     }
 
     public function value(): string

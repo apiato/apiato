@@ -2,12 +2,12 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Transformers;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 
-final class TokenTransformer extends ParentTransformer
+final class AccessTokenTransformer extends ParentTransformer
 {
-    public function transform(Token $token): array
+    public function transform(PasswordAccessTokenResponse $token): array
     {
         return [
             'type' => $token->getResourceKey(),

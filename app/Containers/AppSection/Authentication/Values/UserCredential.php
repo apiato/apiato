@@ -17,14 +17,6 @@ final readonly class UserCredential extends ParentValue
         return new self($username, $password);
     }
 
-    public function toArray(): array
-    {
-        return [
-            'username' => $this->username,
-            'password' => $this->password,
-        ];
-    }
-
     public function username(): string
     {
         return $this->username;

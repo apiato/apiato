@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\WebClient;
 
+use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient\IssueTokenController;
-use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -14,7 +14,7 @@ final class IssueTokenTest extends ApiTestCase
 {
     public function testProxyLogin(): void
     {
-        WebClientCredential::fake();
+        ClientFactory::webPasswordClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',

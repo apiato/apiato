@@ -2,11 +2,11 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\WebClient;
 
-use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
+use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient\RefreshTokenController;
-use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -81,14 +81,14 @@ final class RefreshTokenTest extends ApiTestCase
             'password' => 'youShallNotPass',
         ];
         User::factory()->createOne($data);
-        $this->refreshToken = app(IssueTokenTask::class)->run(
-            AccessTokenProxy::create(
+        $this->refreshToken = app(PasswordTokenFactory::class)->make(
+            AccessTokenRequestProxy::create(
                 UserCredential::create(
                     $data['email'],
                     $data['password'],
                 ),
-                WebClientCredential::fake(),
+                ClientFactory::webPasswordClient(),
             ),
-        )->refreshToken;
+        )->refreshToken();
     }
 }

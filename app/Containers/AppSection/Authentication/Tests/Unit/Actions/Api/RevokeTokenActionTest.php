@@ -3,10 +3,10 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api;
 
 use App\Containers\AppSection\Authentication\Actions\Api\RevokeTokenAction;
-use App\Containers\AppSection\Authentication\Tasks\IssueTokenTask;
+use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenProxy;
+use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -20,13 +20,13 @@ final class RevokeTokenActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ]);
         $this->assertCount(0, $user->tokens);
-        app(IssueTokenTask::class)->run(
-            AccessTokenProxy::create(
+        app(PasswordTokenFactory::class)->make(
+            AccessTokenRequestProxy::create(
                 UserCredential::create(
                     $user->email,
                     'youShallNotPass',
                 ),
-                WebClientCredential::fake(),
+                ClientFactory::webPasswordClient(),
             ),
         )->for($user);
         $this->assertCount(1, $user->tokens);

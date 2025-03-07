@@ -2,17 +2,18 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\DTOs;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
+use App\Containers\AppSection\Authentication\Data\Factories\AccessTokenResponseFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Cookie;
 
-#[CoversClass(Token::class)]
-final class TokenTest extends UnitTestCase
+#[CoversClass(PasswordAccessTokenResponse::class)]
+final class PasswordAccessTokenResponseTest extends UnitTestCase
 {
     public function testCanCreateValue(): void
     {
-        $value = new Token(
+        $value = new PasswordAccessTokenResponse(
             fake()->word(),
             fake()->numberBetween(),
             fake()->sha256(),
@@ -24,7 +25,7 @@ final class TokenTest extends UnitTestCase
         $this->assertSame('string', gettype($value->accessToken));
         $this->assertSame('string', gettype($value->refreshToken));
         $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
-        $this->assertSame(Token::refreshTokenCookieName(), $value->refreshTokenCookie->getName());
+        $this->assertSame(PasswordAccessTokenResponse::refreshTokenCookieName(), $value->refreshTokenCookie->getName());
         $this->assertSame($value->refreshToken, $value->refreshTokenCookie->getValue());
         $this->assertEquals(
             (int) config('appSection-authentication.refresh-tokens-expire-in'),
@@ -38,14 +39,14 @@ final class TokenTest extends UnitTestCase
 
     public function testCanCreateFakeValue(): void
     {
-        $value = Token::fake();
+        $value = AccessTokenResponseFactory::create();
 
         $this->assertNotEmpty($value->tokenType);
         $this->assertNotEmpty($value->accessToken);
         $this->assertNotEmpty($value->refreshToken);
         $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
 
-        $value = Token::fake([
+        $value = AccessTokenResponseFactory::create([
             'token_type' => 'type',
             'expires_in' => 123,
             'access_token' => 'access',

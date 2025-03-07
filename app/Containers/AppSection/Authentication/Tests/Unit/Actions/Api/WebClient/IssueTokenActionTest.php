@@ -3,9 +3,9 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\IssueTokenAction;
-use App\Containers\AppSection\Authentication\Data\DTOs\Token;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
+use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\Values\ClientCredentials\WebClientCredential;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -15,7 +15,7 @@ final class IssueTokenActionTest extends UnitTestCase
 {
     public function testCanLogin(): void
     {
-        WebClientCredential::fake();
+        ClientFactory::webPasswordClient();
         $credentials = [
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
@@ -27,6 +27,6 @@ final class IssueTokenActionTest extends UnitTestCase
 
         $result = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
 
-        $this->assertInstanceOf(Token::class, $result);
+        $this->assertInstanceOf(PasswordAccessTokenResponse::class, $result);
     }
 }
