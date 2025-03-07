@@ -15,13 +15,10 @@ final class IssueTokenController extends ApiController
     public function __invoke(IssueTokenRequest $request, IssueTokenAction $action): JsonResponse
     {
         $result = $action->run(
-            UserCredential::create(
-                $request->input('email'),
-                $request->input('password'),
-            ),
+            UserCredential::createFrom($request),
         );
 
         return Response::create($result, PasswordTokenTransformer::class)->ok()
-            ->withCookie($result->refreshTokenCookie);
+            ->withCookie($result->refreshToken->asCookie());
     }
 }

@@ -48,7 +48,7 @@ final class PasswordTokenFactoryTest extends UnitTestCase
                 ),
                 $client,
             ),
-        )->refreshToken;
+        )->refreshToken->value();
 
         $this->assertCount(1, $user->refresh()->tokens);
 

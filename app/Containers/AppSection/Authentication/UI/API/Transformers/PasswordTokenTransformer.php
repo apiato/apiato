@@ -13,7 +13,7 @@ final class PasswordTokenTransformer extends ParentTransformer
             'type' => $token->getResourceKey(),
             'token_type' => $token->tokenType,
             'access_token' => $token->accessToken,
-            'refresh_token' => $token->refreshToken,
+            'refresh_token' => $token->refreshToken->value(),
             'expires_in' => $token->expiresIn,
         ];
     }

@@ -27,7 +27,7 @@ final class RefreshTokenActionTest extends UnitTestCase
                 ),
                 ClientFactory::webClient(),
             ),
-        )->refreshToken;
+        )->refreshToken->value();
         $action = app(RefreshTokenAction::class);
 
         $this->assertCount(1, $user->tokens);

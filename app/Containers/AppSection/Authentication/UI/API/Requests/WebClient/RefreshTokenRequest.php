@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\WebClient;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use App\Ship\Parents\Requests\Request as ParentRequest;
 use Illuminate\Validation\Rule;
 
@@ -12,7 +12,7 @@ final class RefreshTokenRequest extends ParentRequest
 
     public function rules(): array
     {
-        $cookieName = PasswordToken::refreshTokenCookieName();
+        $cookieName = RefreshToken::cookieName();
 
         return [
             'refresh_token' => [
@@ -33,13 +33,13 @@ final class RefreshTokenRequest extends ParentRequest
     public function messages(): array
     {
         return [
-            PasswordToken::refreshTokenCookieName() . '.string' => 'Refresh token cookie must be a string.',
+            RefreshToken::cookieName() . '.string' => 'Refresh token cookie must be a string.',
         ];
     }
 
     public function prepareForValidation(): void
     {
-        $cookieName = PasswordToken::refreshTokenCookieName();
+        $cookieName = RefreshToken::cookieName();
         if (!is_null($this->cookie($cookieName))) {
             $this->merge([
                 $cookieName => $this->cookie($cookieName),
@@ -49,6 +49,6 @@ final class RefreshTokenRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->has('refresh_token') || $this->hasCookie(PasswordToken::refreshTokenCookieName());
+        return $this->has('refresh_token') || $this->hasCookie(RefreshToken::cookieName());
     }
 }

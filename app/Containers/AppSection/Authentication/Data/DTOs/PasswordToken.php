@@ -4,26 +4,23 @@ namespace App\Containers\AppSection\Authentication\Data\DTOs;
 
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
-use Symfony\Component\HttpFoundation\Cookie;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use Webmozart\Assert\Assert;
 
 final readonly class PasswordToken implements ResourceKeyAware
 {
     use HasResourceKey;
 
-    public Cookie $refreshTokenCookie;
-
     public function __construct(
         public string $tokenType,
         public int $expiresIn,
         public string $accessToken,
-        public string $refreshToken,
+        public RefreshToken $refreshToken,
     ) {
         Assert::stringNotEmpty($this->tokenType);
+        Assert::same($this->tokenType, 'Bearer');
         Assert::greaterThan($this->expiresIn, 0);
         Assert::stringNotEmpty($this->accessToken);
-        Assert::stringNotEmpty($this->refreshToken);
-        $this->refreshTokenCookie = $this->createRefreshTokenCookie();
     }
 
     public static function fromArray(array $data): self
@@ -32,25 +29,7 @@ final readonly class PasswordToken implements ResourceKeyAware
             $data['token_type'],
             $data['expires_in'],
             $data['access_token'],
-            $data['refresh_token'],
+            RefreshToken::create($data['refresh_token']),
         );
-    }
-
-    private function createRefreshTokenCookie(): Cookie
-    {
-        return Cookie::create(
-            self::refreshTokenCookieName(),
-            $this->refreshToken,
-            config('appSection-authentication.refresh-tokens-expire-in'),
-            null,
-            null,
-            config('session.secure'),
-            config('session.http_only'),
-        );
-    }
-
-    public static function refreshTokenCookieName(): string
-    {
-        return 'refreshToken';
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Actions\Api;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Cookie as CookieFacade;
@@ -14,6 +14,6 @@ final class RevokeTokenAction extends ParentAction
     {
         $user?->token()?->revoke();
 
-        return CookieFacade::forget(PasswordToken::refreshTokenCookieName());
+        return CookieFacade::forget(RefreshToken::cookieName());
     }
 }

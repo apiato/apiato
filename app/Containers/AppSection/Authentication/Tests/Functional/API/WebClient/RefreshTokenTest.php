@@ -89,6 +89,6 @@ final class RefreshTokenTest extends ApiTestCase
                 ),
                 ClientFactory::webClient(),
             ),
-        )->refreshToken;
+        )->refreshToken->value();
     }
 }

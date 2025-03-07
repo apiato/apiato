@@ -2,6 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Values;
 
+use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Values\Value as ParentValue;
 
 final readonly class UserCredential extends ParentValue
@@ -10,6 +11,14 @@ final readonly class UserCredential extends ParentValue
         private string $username,
         private string $password,
     ) {
+    }
+
+    public static function createFrom(Request $request): self
+    {
+        return self::create(
+            $request->input('email'),
+            $request->input('password'),
+        );
     }
 
     public static function create(string $username, string $password): self

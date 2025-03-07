@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient;
 
 use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\RefreshTokenAction;
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 use App\Containers\AppSection\Authentication\UI\API\Requests\WebClient\RefreshTokenRequest;
 use App\Containers\AppSection\Authentication\UI\API\Transformers\PasswordTokenTransformer;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
@@ -15,16 +14,9 @@ final class RefreshTokenController extends ApiController
 {
     public function __invoke(RefreshTokenRequest $request, RefreshTokenAction $action): JsonResponse
     {
-        $result = $action->run(
-            RefreshToken::create(
-                $request->input(
-                    'refresh_token',
-                    $request->cookie(PasswordToken::refreshTokenCookieName()),
-                ),
-            ),
-        );
+        $result = $action->run(RefreshToken::createFrom($request));
 
         return Response::create($result, PasswordTokenTransformer::class)->ok()
-            ->withCookie($result->refreshTokenCookie);
+            ->withCookie($result->refreshToken->asCookie());
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests\WebClient;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Requests\WebClient\RefreshTokenRequest;
+use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use Illuminate\Validation\Rule;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -21,7 +21,7 @@ final class RefreshTokenRequestTest extends UnitTestCase
     public function testValidationRules(): void
     {
         $request = new RefreshTokenRequest();
-        $cookieName = PasswordToken::refreshTokenCookieName();
+        $cookieName = RefreshToken::cookieName();
 
         $this->assertEquals([
             'refresh_token' => [
