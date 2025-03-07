@@ -28,7 +28,7 @@ final class RevokeTokenTest extends ApiTestCase
                     $user->email,
                     'password',
                 ),
-                ClientFactory::webPasswordClient(),
+                ClientFactory::webClient(),
             ),
         )->for($user);
         $this->assertCount(1, $user->tokens);

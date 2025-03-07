@@ -25,7 +25,7 @@ final class RefreshTokenActionTest extends UnitTestCase
                     $user->email,
                     'youShallNotPass',
                 ),
-                ClientFactory::webPasswordClient(),
+                ClientFactory::webClient(),
             ),
         )->refreshToken();
         $action = app(RefreshTokenAction::class);

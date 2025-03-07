@@ -14,7 +14,7 @@ final class IssueTokenTest extends ApiTestCase
 {
     public function testProxyLogin(): void
     {
-        ClientFactory::webPasswordClient();
+        ClientFactory::webClient();
         $data = [
             'email' => 'gandalf@the.grey',
             'password' => 'youShallNotPass',

@@ -28,7 +28,7 @@ final class PasswordTokenFactoryTest extends UnitTestCase
                     $user->email,
                     'youShallNotPass',
                 ),
-                ClientFactory::webPasswordClient(),
+                ClientFactory::webClient(),
             ),
         );
 
@@ -39,7 +39,7 @@ final class PasswordTokenFactoryTest extends UnitTestCase
     {
         $user = User::factory()->createOne(['password' => 'youShallNotPass']);
         $factory = app(PasswordTokenFactory::class);
-        $client = ClientFactory::webPasswordClient();
+        $client = ClientFactory::webClient();
         $refreshToken = $factory->make(
             AccessTokenRequestProxy::create(
                 UserCredential::create(

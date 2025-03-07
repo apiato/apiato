@@ -6,14 +6,19 @@ use App\Ship\Parents\Values\Value as ParentValue;
 use Laravel\Passport\Client as PassportClient;
 use Webmozart\Assert\Assert;
 
-final readonly class WebPasswordClient extends ParentValue implements Client
+final readonly class WebClient extends ParentValue implements Client
 {
+    private const ID_CONFIG_KEY = 'appSection-authentication.clients.web.id';
+    private const SECRET_CONFIG_KEY = 'appSection-authentication.clients.web.secret';
     private PassportClient $client;
 
     public function __construct(
         private int $id,
         private string $secret,
     ) {
+        config([self::ID_CONFIG_KEY => $this->id]);
+        config([self::SECRET_CONFIG_KEY => $this->secret]);
+
         $this->client = PassportClient::query()->where([
             'id' => $this->id,
             'secret' => $this->secret,
@@ -23,8 +28,8 @@ final readonly class WebPasswordClient extends ParentValue implements Client
 
     public static function create(): self
     {
-        $id = (int) config('appSection-authentication.clients.web.id');
-        $secret = config('appSection-authentication.clients.web.secret');
+        $id = (int) config(self::ID_CONFIG_KEY);
+        $secret = config(self::SECRET_CONFIG_KEY);
 
         Assert::notNull($id, 'The web client id is not set');
         Assert::notNull($secret, 'The web client secret is not set');
@@ -37,13 +42,13 @@ final readonly class WebPasswordClient extends ParentValue implements Client
         return $this->instance()->getKey();
     }
 
-    public function secret(): string
-    {
-        return $this->instance()->secret;
-    }
-
     public function instance(): PassportClient
     {
         return $this->client;
+    }
+
+    public function secret(): string
+    {
+        return $this->instance()->secret;
     }
 }

@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
 use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
-use App\Containers\AppSection\Authentication\Values\Clients\WebPasswordClient;
+use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
 use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Ship\Parents\Actions\Action as ParentAction;
@@ -21,7 +21,7 @@ final class IssueTokenAction extends ParentAction
         return $this->passwordTokenFactory->make(
             AccessTokenRequestProxy::create(
                 $credential,
-                WebPasswordClient::create(),
+                WebClient::create(),
             ),
         )->response();
     }

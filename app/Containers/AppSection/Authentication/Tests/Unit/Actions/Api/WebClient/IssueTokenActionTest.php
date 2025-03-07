@@ -15,7 +15,7 @@ final class IssueTokenActionTest extends UnitTestCase
 {
     public function testCanLogin(): void
     {
-        ClientFactory::webPasswordClient();
+        ClientFactory::webClient();
         $credentials = [
             'email' => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',

@@ -87,7 +87,7 @@ final class RefreshTokenTest extends ApiTestCase
                     $data['email'],
                     $data['password'],
                 ),
-                ClientFactory::webPasswordClient(),
+                ClientFactory::webClient(),
             ),
         )->refreshToken();
     }

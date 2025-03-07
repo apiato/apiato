@@ -26,7 +26,7 @@ final class RevokeTokenActionTest extends UnitTestCase
                     $user->email,
                     'youShallNotPass',
                 ),
-                ClientFactory::webPasswordClient(),
+                ClientFactory::webClient(),
             ),
         )->for($user);
         $this->assertCount(1, $user->tokens);
