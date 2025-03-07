@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
-use App\Containers\AppSection\Authentication\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Values\Clients\WebClient;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;

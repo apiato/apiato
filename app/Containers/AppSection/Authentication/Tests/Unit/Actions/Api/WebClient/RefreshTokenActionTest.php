@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api\WebCli
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\RefreshTokenAction;
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
-use App\Containers\AppSection\Authentication\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;

@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
-use App\Containers\AppSection\Authentication\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient\RefreshTokenController;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;

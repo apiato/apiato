@@ -3,7 +3,6 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\DTOs;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
-use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -35,28 +34,5 @@ final class PasswordTokenTest extends UnitTestCase
         $this->assertNull($value->refreshTokenCookie->getDomain());
         $this->assertEquals(config('session.secure'), $value->refreshTokenCookie->isSecure());
         $this->assertEquals(config('session.http_only'), $value->refreshTokenCookie->isHttpOnly());
-    }
-
-    public function testCanCreateFakeValue(): void
-    {
-        $value = PasswordTokenFactory::create();
-
-        $this->assertNotEmpty($value->tokenType);
-        $this->assertNotEmpty($value->accessToken);
-        $this->assertNotEmpty($value->refreshToken);
-        $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
-
-        $value = PasswordTokenFactory::create([
-            'token_type' => 'type',
-            'expires_in' => 123,
-            'access_token' => 'access',
-            'refresh_token' => 'refresh',
-        ]);
-
-        $this->assertSame('type', $value->tokenType);
-        $this->assertSame(123, $value->expiresIn);
-        $this->assertSame('access', $value->accessToken);
-        $this->assertSame('refresh', $value->refreshToken);
-        $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
     }
 }

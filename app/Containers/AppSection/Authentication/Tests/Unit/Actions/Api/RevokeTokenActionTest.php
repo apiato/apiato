@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api;
 
 use App\Containers\AppSection\Authentication\Actions\Api\RevokeTokenAction;
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
-use App\Containers\AppSection\Authentication\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
