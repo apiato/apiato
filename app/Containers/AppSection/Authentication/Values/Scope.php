@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Values\OAuth2;
+namespace App\Containers\AppSection\Authentication\Values;
 
 use App\Ship\Parents\Values\Value as ParentValue;
 

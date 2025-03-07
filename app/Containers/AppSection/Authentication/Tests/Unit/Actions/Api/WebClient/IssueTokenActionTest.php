@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Actions\Api\WebClient\IssueTokenAction;
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
@@ -27,6 +27,6 @@ final class IssueTokenActionTest extends UnitTestCase
 
         $result = $action->run(UserCredential::create($credentials['email'], $credentials['password']));
 
-        $this->assertInstanceOf(PasswordAccessTokenResponse::class, $result);
+        $this->assertInstanceOf(PasswordToken::class, $result);
     }
 }

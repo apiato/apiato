@@ -2,67 +2,17 @@
 
 namespace App\Containers\AppSection\Authentication\Data\Factories;
 
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResponse;
-use App\Containers\AppSection\Authentication\Data\DTOs\PasswordAccessTokenResult;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenRequestProxy;
-use Laravel\Passport\Token;
-use Laravel\Passport\TokenRepository;
-use Lcobucci\JWT\Parser as JwtParser;
-use League\OAuth2\Server\AuthorizationServer;
-use Nyholm\Psr7\Response;
-use Nyholm\Psr7\ServerRequest;
-use Psr\Http\Message\ServerRequestInterface;
+use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 
 final readonly class PasswordTokenFactory
 {
-    public function __construct(
-        private AuthorizationServer $server,
-        private TokenRepository $tokens,
-        private JwtParser $jwt,
-    ) {
-    }
-
-    public function make(AccessTokenRequestProxy|RefreshTokenRequestProxy $proxy): PasswordAccessTokenResult
+    public static function create(array $data = []): PasswordToken
     {
-        $response = $this->dispatchRequestToAuthorizationServer(
-            $this->createRequest($proxy),
-        );
-
-        $token = tap($this->findAccessToken($response), function (Token $token) {
-            $this->tokens->save($token->forceFill([
-                'user_id' => $token->user_id,
-            ]));
-        });
-
-        return new PasswordAccessTokenResult($response, $token);
-    }
-
-    protected function dispatchRequestToAuthorizationServer(ServerRequestInterface $request): PasswordAccessTokenResponse
-    {
-        return PasswordAccessTokenResponse::fromArray(
-            json_decode(
-                (string) $this->server->respondToAccessTokenRequest(
-                    $request,
-                    new Response(),
-                )->getBody(),
-                true,
-                512,
-                JSON_THROW_ON_ERROR,
-            ),
-        );
-    }
-
-    protected function createRequest(AccessTokenRequestProxy|RefreshTokenRequestProxy $proxy): ServerRequestInterface
-    {
-        return (new ServerRequest('POST', 'not-important'))
-            ->withParsedBody($proxy->toArray());
-    }
-
-    public function findAccessToken(PasswordAccessTokenResponse $response): Token
-    {
-        return $this->tokens->find(
-            $this->jwt->parse($response->accessToken)->claims()->get('jti'),
+        return new PasswordToken(
+            $data['token_type'] ?? fake()->word(),
+            $data['expires_in'] ?? fake()->numberBetween(),
+            $data['access_token'] ?? fake()->sha256(),
+            $data['refresh_token'] ?? fake()->sha256(),
         );
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
-use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\WebClient\RefreshTokenController;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
+use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -82,13 +82,13 @@ final class RefreshTokenTest extends ApiTestCase
         ];
         User::factory()->createOne($data);
         $this->refreshToken = app(PasswordTokenFactory::class)->make(
-            AccessTokenRequestProxy::create(
+            AccessTokenProxy::create(
                 UserCredential::create(
                     $data['email'],
                     $data['password'],
                 ),
                 ClientFactory::webClient(),
             ),
-        )->refreshToken();
+        )->refreshToken;
     }
 }

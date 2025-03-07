@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant;
+namespace App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant;
 
 use App\Containers\AppSection\Authentication\Values\Clients\Client;
-use App\Containers\AppSection\Authentication\Values\OAuth2\ScopeCollection;
+use App\Containers\AppSection\Authentication\Values\ScopeCollection;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Ship\Parents\Values\Value as ParentValue;
 
-final readonly class AccessTokenRequestProxy extends ParentValue
+final readonly class AccessTokenProxy extends ParentValue
 {
     private function __construct(
         private UserCredential $credential,

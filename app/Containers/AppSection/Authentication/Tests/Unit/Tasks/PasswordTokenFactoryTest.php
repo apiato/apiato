@@ -3,11 +3,11 @@
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
-use App\Containers\AppSection\Authentication\Data\Factories\PasswordTokenFactory;
+use App\Containers\AppSection\Authentication\PasswordTokenFactory;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\AccessTokenRequestProxy;
-use App\Containers\AppSection\Authentication\Values\OAuth2\Proxies\PasswordGrant\RefreshTokenRequestProxy;
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
+use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;
+use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\RefreshTokenProxy;
 use App\Containers\AppSection\Authentication\Values\UserCredential;
 use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -23,7 +23,7 @@ final class PasswordTokenFactoryTest extends UnitTestCase
         $this->assertCount(0, $user->tokens);
 
         $factory->make(
-            AccessTokenRequestProxy::create(
+            AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,
                     'youShallNotPass',
@@ -41,19 +41,19 @@ final class PasswordTokenFactoryTest extends UnitTestCase
         $factory = app(PasswordTokenFactory::class);
         $client = ClientFactory::webClient();
         $refreshToken = $factory->make(
-            AccessTokenRequestProxy::create(
+            AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,
                     'youShallNotPass',
                 ),
                 $client,
             ),
-        )->refreshToken();
+        )->refreshToken;
 
         $this->assertCount(1, $user->refresh()->tokens);
 
         $factory->make(
-            RefreshTokenRequestProxy::create(
+            RefreshTokenProxy::create(
                 RefreshToken::create(
                     $refreshToken,
                 ),

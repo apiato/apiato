@@ -7,7 +7,7 @@ use Apiato\Http\Resources\ResourceKeyAware;
 use Symfony\Component\HttpFoundation\Cookie;
 use Webmozart\Assert\Assert;
 
-final readonly class PasswordAccessTokenResponse implements ResourceKeyAware
+final readonly class PasswordToken implements ResourceKeyAware
 {
     use HasResourceKey;
 
