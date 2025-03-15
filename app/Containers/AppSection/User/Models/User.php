@@ -57,7 +57,7 @@ final class User extends ParentUserModel
     protected function email(): Attribute
     {
         return new Attribute(
-            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
+            get: static fn (string|null $value): string|null => is_null($value) ? null : strtolower($value),
         );
     }
 }
