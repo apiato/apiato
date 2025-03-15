@@ -19,8 +19,7 @@ final class UpdateUserController extends ApiController
                 'name',
                 'gender',
                 'birth',
-                'password',
-                'new_password',
+                'password' => $request->new_password,
             ]),
         );
 

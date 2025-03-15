@@ -15,8 +15,6 @@ final class UpdateUserAction extends ParentAction
 
     public function run(int $id, array $data): User
     {
-        $data['password'] = $data['new_password'];
-
         return $this->updateUserTask->run($id, $data);
     }
 }
