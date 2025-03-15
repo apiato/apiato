@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\User\Tests\Functional\CLI;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\CliTestCase;
-use App\Containers\AppSection\User\UI\CLI\CreateAdmin;
+use App\Containers\AppSection\User\UI\CLI\Commands\CreateAdmin;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 

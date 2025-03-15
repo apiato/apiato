@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\AppSection\User\UI\CLI;
+namespace App\Containers\AppSection\User\UI\CLI\Commands;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Ship\Parents\Commands\Command as ParentCommand;
