@@ -6,10 +6,9 @@ use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-final class User extends ParentUserModel implements MustVerifyEmail
+final class User extends ParentUserModel
 {
     protected $fillable = [
         'name',
