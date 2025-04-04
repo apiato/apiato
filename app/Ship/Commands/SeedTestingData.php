@@ -2,7 +2,7 @@
 
 namespace App\Ship\Commands;
 
-use Apiato\Core\Commands\Command as ParentCommand;
+use Apiato\Core\Console\Command as ParentCommand;
 use App\Ship\Seeders\TestingDataSeeder;
 
 final class SeedTestingData extends ParentCommand
