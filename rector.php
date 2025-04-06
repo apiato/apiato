@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use MohammadAlavi\ApiatoRector\Rules\RemoveGroupAttributeRector;
-use MohammadAlavi\ApiatoRector\Rules\TransformMethodToResponseCreateRector;
+use MohammadAlavi\ApiatoRector\Rules\TransformMethodToResponseFacadeRector;
 use Rector\Config\RectorConfig;
 
 return RectorConfig::configure()
@@ -14,7 +14,7 @@ return RectorConfig::configure()
     ->withImportNames(true, false, false, true)
     ->withRules([
         RemoveGroupAttributeRector::class,
-        TransformMethodToResponseCreateRector::class,
+        TransformMethodToResponseFacadeRector::class,
     ]);
 // uncomment to reach your current PHP version
 // ->withPhpSets()
