@@ -13,9 +13,9 @@ class ShipServiceProvider extends ParentServiceProvider
 {
     public function boot(): void
     {
+        RequestException::dontTruncate();
         Date::use(CarbonImmutable::class);
         Model::shouldBeStrict(!app()->isProduction());
         UserModel::shouldBeStrict(!app()->isProduction());
-        RequestException::dontTruncate();
     }
 }
