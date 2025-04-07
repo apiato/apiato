@@ -50,12 +50,17 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8.0",
         "orchestra/testbench": "^9.0",
+        "php-standard-library/psalm-plugin": "^2.3",
         "phpmd/phpmd": "@stable",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpunit/phpunit": "^11.0.1",
+        "psalm/plugin-laravel": "^3.0",
+        "psalm/plugin-mockery": "^1.2",
+        "psalm/plugin-phpunit": "^0.19.2",
         "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^6.0.0",
         "thecodingmachine/phpstan-safe-rule": "^1.4"
     },
     "autoload": {
