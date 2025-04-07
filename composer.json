@@ -38,6 +38,7 @@
         "php": "^8.2",
         "apiato/core": "13.x-dev",
         "laravel/passport": "^12.0",
+        "spatie/laravel-permission": "^6.0",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
