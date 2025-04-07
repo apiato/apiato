@@ -3,7 +3,7 @@
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
 use Laravel\Passport\Passport;
 
 final class PassportServiceProvider extends ParentServiceProvider
@@ -16,7 +16,7 @@ final class PassportServiceProvider extends ParentServiceProvider
     public function boot(): void
     {
         Passport::enablePasswordGrant();
-        Passport::tokensExpireIn(Carbon::now()->addMinutes((int) config('appSection-authentication.tokens-expire-in')));
-        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes((int) config('appSection-authentication.refresh-tokens-expire-in')));
+        Passport::tokensExpireIn(Date::now()->addMinutes((int) config('appSection-authentication.tokens-expire-in')));
+        Passport::refreshTokensExpireIn(Date::now()->addMinutes((int) config('appSection-authentication.refresh-tokens-expire-in')));
     }
 }

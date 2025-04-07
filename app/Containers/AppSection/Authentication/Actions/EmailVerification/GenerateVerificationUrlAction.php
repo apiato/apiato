@@ -4,7 +4,7 @@ namespace App\Containers\AppSection\Authentication\Actions\EmailVerification;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\URL;
 
 final class GenerateVerificationUrlAction extends ParentAction
@@ -17,7 +17,7 @@ final class GenerateVerificationUrlAction extends ParentAction
 
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
-            Carbon::now()->addMinutes(config('auth.verification.expire', 60)),
+            Date::now()->addMinutes(config('auth.verification.expire', 60)),
             [
                 'id' => $notifiable->getHashedKey(),
                 'hash' => sha1($notifiable->getEmailForVerification()),

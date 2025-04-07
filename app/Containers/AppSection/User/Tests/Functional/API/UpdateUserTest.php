@@ -6,8 +6,7 @@ use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\User\UI\API\Controllers\UpdateUserController;
-use Carbon\CarbonImmutable;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -27,7 +26,7 @@ final class UpdateUserTest extends ApiTestCase
         $data = [
             'name' => 'Updated Name',
             'gender' => Gender::MALE->value,
-            'birth' => Carbon::today()->toIso8601String(),
+            'birth' => Date::today()->toIso8601String(),
             'current_password' => 'Av@dakedavra!',
             'new_password' => 'updated#Password111',
             'new_password_confirmation' => 'updated#Password111',
@@ -44,7 +43,7 @@ final class UpdateUserTest extends ApiTestCase
                     ->where('email', $user->email)
                     ->where('name', $data['name'])
                     ->where('gender', $data['gender'])
-                    ->where('birth', static fn ($birth) => CarbonImmutable::parse($data['birth'])->isSameDay($birth))
+                    ->where('birth', static fn ($birth) => Date::parse($data['birth'])->isSameDay($birth))
                     ->missing('password')
                     ->etc(),
             )->etc(),

@@ -6,7 +6,7 @@ use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateV
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification\VerifyController;
 use App\Containers\AppSection\User\Models\User;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GenerateVerificationUrlAction::class)]
@@ -29,7 +29,7 @@ final class GenerateVerificationUrlActionTest extends UnitTestCase
             'id' => $user->getHashedKey(),
             'hash' => sha1($user->getEmailForVerification()),
         ]);
-        $expiration = Carbon::now()->addMinutes(config('auth.verification.expire', 60))->unix();
+        $expiration = Date::now()->addMinutes(config('auth.verification.expire', 60))->unix();
         $this->assertStringContainsString(urlencode("{$appUrl}?verification_url={$apiEndpoint}?expires={$expiration}&signature="), $url);
     }
 }

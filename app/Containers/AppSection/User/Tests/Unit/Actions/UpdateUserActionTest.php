@@ -6,7 +6,7 @@ use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\UnitTestCase;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -21,7 +21,7 @@ final class UpdateUserActionTest extends UnitTestCase
         $data = [
             'name' => 'a name',
             'gender' => Gender::MALE->value,
-            'birth' => Carbon::today()->toIso8601String(),
+            'birth' => Date::today()->toIso8601String(),
             'password' => 'test',
         ];
         $action = app(UpdateUserAction::class);
