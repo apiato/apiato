@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\EmailVerification;
 
-use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateVerificationUrlAction;
+use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateUrlAction;
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
 use App\Containers\AppSection\Authentication\UI\API\Controllers\EmailVerification\VerifyController;
 use App\Containers\AppSection\User\Models\User;
@@ -21,7 +21,7 @@ final class VerifyTest extends ApiTestCase
         Event::fake();
         $user = User::factory()->unverified()->createOne();
         $this->actingAs($user, 'api');
-        $url = (new GenerateVerificationUrlAction())($user);
+        $url = (new GenerateUrlAction())($user);
         $request = Request::create(Str::of(Request::create($url)->decodedPath())->after('verification_url=')->value());
 
         $response = $this->postJson(

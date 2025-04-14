@@ -16,8 +16,13 @@ final class ValidateAppId extends ParentMiddleware
      */
     public function handle(Request $request, \Closure $next): mixed
     {
-        $appId = $request->header('App-Identifier', config('apiato.defaults.app'));
-        Assert::keyExists(config('apiato.apps'), $appId, "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(', ', array_keys(config('apiato.apps'))));
+        $appId = $request->appId();
+        Assert::keyExists(
+            config()->array('apiato.apps'),
+            $appId,
+            "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(', ', array_keys(config()->array('apiato.apps')),
+            ),
+        );
 
         return $next($request);
     }

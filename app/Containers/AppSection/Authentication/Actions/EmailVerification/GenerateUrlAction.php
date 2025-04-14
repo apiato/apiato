@@ -7,14 +7,10 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\URL;
 
-final class GenerateVerificationUrlAction extends ParentAction
+final class GenerateUrlAction extends ParentAction
 {
     public function __invoke(User $notifiable): string
     {
-        $appId = request()->appId();
-        $frontendUrls = config("apiato.apps.{$appId}", []);
-        $frontendUrl = $frontendUrls['url'];
-
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
             Date::now()->addMinutes(config('auth.verification.expire', 60)),
@@ -24,6 +20,6 @@ final class GenerateVerificationUrlAction extends ParentAction
             ],
         );
 
-        return urlencode("{$frontendUrl}?verification_url=" . $verificationUrl);
+        return urlencode(request()->app()->verifyEmailUrl() . "?verification_url=" . $verificationUrl);
     }
 }

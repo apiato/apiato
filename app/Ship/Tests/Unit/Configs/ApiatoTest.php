@@ -2,6 +2,7 @@
 
 namespace App\Ship\Tests\Unit\Configs;
 
+use App\Ship\Apps\Web;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
@@ -27,6 +28,7 @@ final class ApiatoTest extends ShipTestCase
             ],
             'apps' => [
                 'web' => [
+                    'class' => Web::class,
                     'url' => env('FRONTEND_URL', env('APP_URL', 'http://localhost:3000')),
                 ],
             ],

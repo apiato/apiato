@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
-use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateVerificationUrlAction;
+use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateUrlAction;
 use App\Containers\AppSection\Authentication\Providers\EmailVerificationServiceProvider;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use Illuminate\Auth\Notifications\VerifyEmail;
@@ -13,6 +13,6 @@ final class EmailVerificationServiceProviderTest extends UnitTestCase
 {
     public function testItCustomizesVerificationUrl(): void
     {
-        $this->assertInstanceOf(GenerateVerificationUrlAction::class, VerifyEmail::$createUrlCallback);
+        $this->assertInstanceOf(GenerateUrlAction::class, VerifyEmail::$createUrlCallback);
     }
 }
