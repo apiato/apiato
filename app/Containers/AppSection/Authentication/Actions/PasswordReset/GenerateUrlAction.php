@@ -15,6 +15,6 @@ final class GenerateUrlAction extends ParentAction
             'email' => $notifiable->getEmailForPasswordReset(),
         ]);
 
-        return request()->app()->resetPasswordUrl() . "?reset_url=" . $verificationUrl;
+        return request()->app()->resetPasswordUrl() . '?reset_url=' . $verificationUrl;
     }
 }

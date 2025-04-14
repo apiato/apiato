@@ -20,7 +20,9 @@ final class ValidateAppId extends ParentMiddleware
         Assert::keyExists(
             config()->array('apiato.apps'),
             $appId,
-            "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(', ', array_keys(config()->array('apiato.apps')),
+            "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(
+                ', ',
+                array_keys(config()->array('apiato.apps')),
             ),
         );
 

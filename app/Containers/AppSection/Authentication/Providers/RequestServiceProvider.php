@@ -2,8 +2,8 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use App\Ship\Apps\AppFactory;
 use App\Ship\Apps\App;
+use App\Ship\Apps\AppFactory;
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 use Illuminate\Support\Facades\Request;
 

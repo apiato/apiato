@@ -20,6 +20,6 @@ final class GenerateUrlAction extends ParentAction
             ],
         );
 
-        return urlencode(request()->app()->verifyEmailUrl() . "?verification_url=" . $verificationUrl);
+        return urlencode(request()->app()->verifyEmailUrl() . '?verification_url=' . $verificationUrl);
     }
 }
