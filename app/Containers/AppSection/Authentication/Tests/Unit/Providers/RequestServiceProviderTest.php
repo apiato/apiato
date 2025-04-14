@@ -4,7 +4,6 @@ namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Providers\RequestServiceProvider;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
-use App\Ship\Apps\Web;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -35,14 +34,5 @@ final class RequestServiceProviderTest extends UnitTestCase
         $result = request()->appId();
 
         $this->assertEquals($result, $expectation());
-    }
-
-    public function testCanReturnApp(): void
-    {
-        request()->headers->set('App-Identifier', 'web');
-
-        $result = request()->app();
-
-        $this->assertInstanceOf(Web::class, $result);
     }
 }

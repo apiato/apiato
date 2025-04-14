@@ -23,4 +23,9 @@ final readonly class AppFactory
 
         return new $instance->apps[$identifier]['class']();
     }
+    
+    public static function current(): App
+    {
+        return self::create(request()->appId());
+    }
 }
