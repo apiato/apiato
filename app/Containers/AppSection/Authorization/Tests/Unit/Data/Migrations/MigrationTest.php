@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use Illuminate\Support\Facades\Schema;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -16,8 +17,14 @@ final class MigrationTest extends UnitTestCase
 
     public function testPermissionsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'id'           => 'bigint',
+            'id'           => $bigint,
             'name'         => 'string',
             'guard_name'   => 'string',
             'display_name' => 'string',
@@ -31,8 +38,14 @@ final class MigrationTest extends UnitTestCase
 
     public function testRolesTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'id'           => 'bigint',
+            'id'           => $bigint,
             'name'         => 'string',
             'guard_name'   => 'string',
             'display_name' => 'string',
@@ -46,10 +59,16 @@ final class MigrationTest extends UnitTestCase
 
     public function testModelHasPermissionsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'permission_id'                       => 'bigint',
+            'permission_id'                       => $bigint,
             'model_type'                          => 'string',
-            $this->columnNames['model_morph_key'] => 'bigint',
+            $this->columnNames['model_morph_key'] => $bigint,
         ];
 
         $this->assertDatabaseTable($this->tableNames['model_has_permissions'], $columns);
@@ -57,10 +76,16 @@ final class MigrationTest extends UnitTestCase
 
     public function testModelHasRolesTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'role_id'                             => 'bigint',
+            'role_id'                             => $bigint,
             'model_type'                          => 'string',
-            $this->columnNames['model_morph_key'] => 'bigint',
+            $this->columnNames['model_morph_key'] => $bigint,
         ];
 
         $this->assertDatabaseTable($this->tableNames['model_has_roles'], $columns);
@@ -68,9 +93,15 @@ final class MigrationTest extends UnitTestCase
 
     public function testRoleHasPermissionsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'permission_id' => 'bigint',
-            'role_id'       => 'bigint',
+            'permission_id' => $bigint,
+            'role_id'       => $bigint,
         ];
 
         $this->assertDatabaseTable($this->tableNames['role_has_permissions'], $columns);

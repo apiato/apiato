@@ -14,11 +14,22 @@ final class ShipMigrationTest extends ShipTestCase
     public function testJobsTableHasExpectedColumns(): void
     {
         $table = 'jobs';
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+        $smallint = match ($driver) {
+            'mysql'  => 'boolean',
+            'sqlite' => 'integer',
+            default  => 'smallint',
+        };
+
         $columns = [
-            'id'           => 'bigint',
+            'id'           => $bigint,
             'queue'        => 'string',
             'payload'      => 'text',
-            'attempts'     => 'smallint',
+            'attempts'     => $smallint,
             'reserved_at'  => 'integer',
             'available_at' => 'integer',
             'created_at'   => 'integer',
@@ -30,8 +41,14 @@ final class ShipMigrationTest extends ShipTestCase
     public function testFailedJobsTableHasExpectedColumns(): void
     {
         $table = 'failed_jobs';
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
+
         $columns = [
-            'id'         => 'bigint',
+            'id'         => $bigint,
             'connection' => 'text',
             'queue'      => 'text',
             'payload'    => 'text',
@@ -47,12 +64,19 @@ final class ShipMigrationTest extends ShipTestCase
     {
         $table = 'notifications';
         $driver = Schema::getConnection()->getDriverName();
-        $idType = $driver === 'sqlite' ? 'guid' : 'string';
+        $guid = match ($driver) {
+            'pgsql' => 'guid',
+            default => 'string',
+        };
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            default  => 'bigint',
+        };
 
         $columns = [
-            'id'              => $idType,
+            'id'              => $guid,
             'type'            => 'string',
-            'notifiable_id'   => 'bigint',
+            'notifiable_id'   => $bigint,
             'notifiable_type' => 'string',
             'data'            => 'text',
             'read_at'         => 'datetime',
