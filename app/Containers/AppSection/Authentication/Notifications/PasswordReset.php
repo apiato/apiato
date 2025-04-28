@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Notifications;
 
 use App\Containers\AppSection\User\Models\User;
@@ -12,6 +14,7 @@ final class PasswordReset extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 
+    #[\Override]
     public function via($notifiable): array
     {
         return ['mail'];

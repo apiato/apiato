@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
@@ -14,10 +16,10 @@ final class LoginControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(LoginController::class);
-        $request = LoginRequest::injectData();
+        $loginRequest = LoginRequest::injectData();
         $actionMock = $this->mock(WebLoginAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($loginRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($loginRequest, $actionMock);
     }
 }

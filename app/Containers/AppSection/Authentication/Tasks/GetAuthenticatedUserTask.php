@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Containers\AppSection\User\Models\User;
@@ -13,7 +15,7 @@ class GetAuthenticatedUserTask extends ParentTask
     {
         $result = Auth::user();
 
-        if (null === $result) {
+        if ($result === null) {
             throw new \RuntimeException('You are not authenticated.');
         }
 

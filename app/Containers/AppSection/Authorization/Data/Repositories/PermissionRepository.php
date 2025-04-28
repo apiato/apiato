@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -16,11 +18,12 @@ class PermissionRepository extends ParentRepository
     use AuthorizationRepositoryTrait;
 
     protected $fieldSearchable = [
-        'name' => '=',
+        'name'         => '=',
         'display_name' => 'like',
-        'description' => 'like',
+        'description'  => 'like',
     ];
 
+    #[\Override]
     public function model(): string
     {
         return config('permission.models.permission');

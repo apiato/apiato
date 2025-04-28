@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\WebLogoutAction;
@@ -15,11 +17,11 @@ final class LogoutControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(LogoutController::class);
-        $request = LogoutRequest::injectData();
-        $actionSpy = $this->mock(WebLogoutAction::class);
-        $actionSpy->expects()->run();
+        $logoutRequest = LogoutRequest::injectData();
+        $mock = $this->mock(WebLogoutAction::class);
+        $mock->expects()->run();
 
-        $response = $controller->__invoke($request, $actionSpy);
+        $response = $controller($logoutRequest, $mock);
 
         $this->assertTrue($response->isRedirect(action(HomePageController::class)));
     }

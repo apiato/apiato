@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
@@ -11,9 +13,8 @@ use Spatie\Permission\Contracts\Permission;
 
 class ListRolePermissionsAction extends ParentAction
 {
-    public function __construct(
-        private readonly FindRoleTask $findRoleTask,
-    ) {
+    public function __construct(private readonly FindRoleTask $findRoleTask)
+    {
     }
 
     /**

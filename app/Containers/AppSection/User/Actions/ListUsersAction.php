@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
@@ -11,9 +13,8 @@ use Prettus\Repository\Exceptions\RepositoryException;
 
 class ListUsersAction extends ParentAction
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     /**

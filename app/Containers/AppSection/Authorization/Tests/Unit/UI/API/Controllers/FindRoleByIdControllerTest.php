@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\FindRoleByIdAction;
@@ -15,10 +17,10 @@ final class FindRoleByIdControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(FindRoleByIdController::class);
-        $request = FindRoleByIdRequest::injectData();
+        $findRoleByIdRequest = FindRoleByIdRequest::injectData();
         $actionMock = $this->mock(FindRoleByIdAction::class);
-        $actionMock->expects()->run($request)->andReturn(RoleFactory::new()->createOne());
+        $actionMock->expects()->run($findRoleByIdRequest)->andReturn(RoleFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($findRoleByIdRequest, $actionMock);
     }
 }

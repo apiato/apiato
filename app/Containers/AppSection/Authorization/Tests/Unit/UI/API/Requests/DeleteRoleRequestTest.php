@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -16,7 +18,7 @@ final class DeleteRoleRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-roles',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -43,12 +45,13 @@ final class DeleteRoleRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
-        $request = DeleteRoleRequest::injectData([], $user)->withUrlParameters(['role_id' => RoleFactory::new()->createOne()->id]);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
+        $deleteRoleRequest = DeleteRoleRequest::injectData([], $userModel)->withUrlParameters(['role_id' => RoleFactory::new()->createOne()->id]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($deleteRoleRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

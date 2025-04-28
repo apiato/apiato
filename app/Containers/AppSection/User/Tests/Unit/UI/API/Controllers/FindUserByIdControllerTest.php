@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\FindUserByIdAction;
@@ -15,10 +17,10 @@ final class FindUserByIdControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(FindUserByIdController::class);
-        $request = FindUserByIdRequest::injectData();
+        $findUserByIdRequest = FindUserByIdRequest::injectData();
         $actionMock = $this->mock(FindUserByIdAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($findUserByIdRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($findUserByIdRequest, $actionMock);
     }
 }

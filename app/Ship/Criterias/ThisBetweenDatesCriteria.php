@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
@@ -8,9 +10,9 @@ use Carbon\Carbon;
 class ThisBetweenDatesCriteria extends ParentCriteria
 {
     public function __construct(
-        private string $field,
-        private Carbon $start,
-        private Carbon $end,
+        private readonly string $field,
+        private readonly Carbon $start,
+        private readonly Carbon $end,
     ) {
     }
 

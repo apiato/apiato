@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
@@ -28,10 +30,10 @@ class ApiLoginProxyForWebClientAction extends ParentAction
         $sanitizedData = $request->sanitizeInput([
             ...array_keys(config('appSection-authentication.login.fields')),
             'password',
-            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_id'     => config('appSection-authentication.clients.web.id'),
             'client_secret' => config('appSection-authentication.clients.web.secret'),
-            'grant_type' => 'password',
-            'scope' => '',
+            'grant_type'    => 'password',
+            'scope'         => '',
         ]);
 
         $loginFields = LoginFieldParser::extractAll($sanitizedData);

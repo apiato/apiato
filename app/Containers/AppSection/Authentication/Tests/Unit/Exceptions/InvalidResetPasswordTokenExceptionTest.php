@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Exceptions;
 
 use App\Containers\AppSection\Authentication\Exceptions\InvalidResetPasswordTokenException;

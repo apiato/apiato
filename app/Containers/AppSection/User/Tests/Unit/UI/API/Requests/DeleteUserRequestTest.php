@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Models\User;
@@ -35,14 +37,15 @@ final class DeleteUserRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = DeleteUserRequest::injectData();
+        $deleteUserRequest = DeleteUserRequest::injectData();
         $gateMock = $this->getGateMock('delete', [
             User::class,
         ]);
 
-        $this->assertTrue($request->authorize($gateMock));
+        $this->assertTrue($deleteUserRequest->authorize($gateMock));
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

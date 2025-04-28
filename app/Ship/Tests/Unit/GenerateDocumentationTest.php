@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit;
 
 use App\Ship\Tests\ShipTestCase;
@@ -10,7 +12,6 @@ final class GenerateDocumentationTest extends ShipTestCase
 {
     public function testDocumentationCreation(): void
     {
-        $this->markTestSkipped('Dependency not installed yet.');
         $this->artisan('apiato:apidoc')
             ->assertSuccessful();
     }

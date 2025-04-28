@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -8,7 +10,7 @@ class CreateRoleRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [];
@@ -18,8 +20,8 @@ class CreateRoleRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|no_spaces',
-            'description' => 'max:255',
+            'name'         => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|no_spaces',
+            'description'  => 'max:255',
             'display_name' => 'max:100',
         ];
     }

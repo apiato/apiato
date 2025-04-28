@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests;
 
 use App\Ship\Parents\Tests\TestCase as ParentTestCase;
@@ -8,20 +10,22 @@ use Laravel\Passport\Client;
 class ContainerTestCase extends ParentTestCase
 {
     protected const CLIENT_SECRET = 'XXp8x4QK7d3J9R7OVRXWrhc19XPRroHTTKIbY8XX';
+
     private int $clientId;
 
     public function enrichWithPasswordGrantFields(string $email, string $password): array
     {
         return [
-            'grant_type' => 'password',
-            'client_id' => $this->clientId,
+            'grant_type'    => 'password',
+            'client_id'     => $this->clientId,
             'client_secret' => self::CLIENT_SECRET,
-            'username' => $email,
-            'password' => $password,
-            'scope' => '',
+            'username'      => $email,
+            'password'      => $password,
+            'scope'         => '',
         ];
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -34,12 +38,12 @@ class ContainerTestCase extends ParentTestCase
     protected function createPasswordGrantClient(): Client
     {
         return Client::create([
-            'secret' => self::CLIENT_SECRET,
-            'name' => 'Testing',
-            'redirect' => 'http://localhost',
-            'password_client' => '1',
+            'secret'                 => self::CLIENT_SECRET,
+            'name'                   => 'Testing',
+            'redirect'               => 'http://localhost',
+            'password_client'        => '1',
             'personal_access_client' => '0',
-            'revoked' => '0',
+            'revoked'                => '0',
         ]);
     }
 

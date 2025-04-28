@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
@@ -23,7 +25,7 @@ class ThisLikeThatCriteria extends ParentCriteria
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->where(function ($query) {
+        return $model->where(function ($query): void {
             $values = explode($this->separator, $this->value);
             $query->where($this->field, 'LIKE', str_replace($this->wildcard, '%', array_shift($values)));
             foreach ($values as $value) {

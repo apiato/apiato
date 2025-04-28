@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * @apiGroup           OAuth2
  * @apiName            LoginCredentialsGrant
@@ -25,5 +27,4 @@
  * "access_token": "eyJ0eXAiOiJKV1QiLCJhbG...",
  * }
  */
-
 // Implementation in the Laravel Passport package and overridden in Passport.v1.private.php

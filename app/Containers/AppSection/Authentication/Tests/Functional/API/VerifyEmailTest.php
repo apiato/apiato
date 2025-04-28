@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\EmailVerified;
@@ -16,22 +18,22 @@ final class VerifyEmailTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testVerifyEmail(): void
     {
         Notification::fake();
-        $unverifiedUser = UserFactory::new()->unverified()->createOne();
-        $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
+        $model = UserFactory::new()->unverified()->createOne();
+        $hashedEmail = sha1((string) $model->getEmailForVerification());
         // enable email verification
         config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),
             [
-                'user_id' => $unverifiedUser->getHashedKey(),
-                'hash' => $hashedEmail,
+                'user_id' => $model->getHashedKey(),
+                'hash'    => $hashedEmail,
             ],
         );
 
@@ -39,30 +41,31 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = $match[preg_match('/signature=(.*)/', $url, $match)];
 
-        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')
             ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
-            ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
+            ->endpoint($this->endpoint . \sprintf('?expires=%s&signature=%s', $expires, $signature))
             ->makeCall();
 
-        $response->assertOk();
-        $unverifiedUser->refresh();
-        $this->assertTrue($unverifiedUser->hasVerifiedEmail());
-        Notification::assertSentTo($unverifiedUser, EmailVerified::class);
+        $testResponse->assertOk();
+
+        $model->refresh();
+        $this->assertTrue($model->hasVerifiedEmail());
+        Notification::assertSentTo($model, EmailVerified::class);
     }
 
     public function testVerifyEmailShouldNotBeAcceptedIfRoutesSignatureIsNotVerified(): void
     {
         Notification::fake();
-        $unverifiedUser = UserFactory::new()->unverified()->createOne();
-        $hashedEmail = sha1($unverifiedUser->getEmailForVerification());
+        $model = UserFactory::new()->unverified()->createOne();
+        $hashedEmail = sha1((string) $model->getEmailForVerification());
         // enable email verification
         config()->set('appSection-authentication.require_email_verification', true);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(30),
             [
-                'user_id' => $unverifiedUser->getHashedKey(),
-                'hash' => $hashedEmail,
+                'user_id' => $model->getHashedKey(),
+                'hash'    => $hashedEmail,
             ],
         );
 
@@ -70,11 +73,11 @@ final class VerifyEmailTest extends ApiTestCase
         $expires = $match[preg_match('/expires=(.*?)&/', $url, $match)];
         $signature = 'invalid_sig';
 
-        $response = $this->injectId($unverifiedUser->id, replace: '{user_id}')
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')
             ->injectId($hashedEmail, skipEncoding: true, replace: '{hash}')
-            ->endpoint($this->endpoint . "?expires=$expires&signature=$signature")
+            ->endpoint($this->endpoint . \sprintf('?expires=%s&signature=%s', $expires, $signature))
             ->makeCall();
 
-        $response->assertForbidden();
+        $testResponse->assertForbidden();
     }
 }

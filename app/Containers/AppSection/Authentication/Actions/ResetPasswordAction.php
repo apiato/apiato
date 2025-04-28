@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
@@ -37,8 +39,8 @@ class ResetPasswordAction extends ParentAction
 
         $status = Password::broker()->reset(
             $sanitizedData,
-            static function ($user, $password) {
-                $user->forceFill(compact('password'))
+            static function ($user, $password): void {
+                $user->forceFill(['password' => $password])
                     ->setRememberToken(Str::random(60));
                 $user->save();
             },

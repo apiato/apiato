@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -13,26 +15,27 @@ final class FindPermissionByIdTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-permissions',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testFindPermissionById(): void
     {
-        $permissionA = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
 
-        $response = $this->injectId($permissionA->id, replace: '{permission_id}')->makeCall();
+        $testResponse = $this->injectId($model->id, replace: '{permission_id}')->makeCall();
 
-        $response->assertOk();
+        $testResponse->assertOk();
+
         $responseContent = $this->getResponseContentObject();
-        $this->assertSame($permissionA->name, $responseContent->data->name);
+        $this->assertSame($model->name, $responseContent->data->name);
     }
 
     public function testFindNonExistingPermission(): void
     {
         $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId, replace: '{permission_id}')->makeCall();
+        $testResponse = $this->injectId($invalidId, replace: '{permission_id}')->makeCall();
 
-        $response->assertNotFound();
+        $testResponse->assertNotFound();
     }
 }

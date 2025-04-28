@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
@@ -15,14 +17,14 @@ final class ForgotPasswordActionTest extends UnitTestCase
     public function testIfUserExistsShouldReturnTrue(): void
     {
         Mail::fake();
-        $user = $this->getTestingUser();
+        $userModel = $this->getTestingUser();
         $data = [
-            'email' => $user->email,
+            'email'    => $userModel->email,
             'reseturl' => 'http://localhost',
         ];
 
-        $request = new ForgotPasswordRequest($data);
-        $result = app(ForgotPasswordAction::class)->run($request);
+        $forgotPasswordRequest = new ForgotPasswordRequest($data);
+        $result = app(ForgotPasswordAction::class)->run($forgotPasswordRequest);
 
         $this->assertTrue($result);
         Mail::assertQueued(ForgotPassword::class);
@@ -35,8 +37,8 @@ final class ForgotPasswordActionTest extends UnitTestCase
             'email' => 'ganldalf@the.grey',
         ];
 
-        $request = new ForgotPasswordRequest($data);
-        $result = app(ForgotPasswordAction::class)->run($request);
+        $forgotPasswordRequest = new ForgotPasswordRequest($data);
+        $result = app(ForgotPasswordAction::class)->run($forgotPasswordRequest);
 
         $this->assertTrue($result);
         Mail::assertNotQueued(ForgotPassword::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Middlewares;
 
 use App\Containers\AppSection\Authentication\UI\WEB\Controllers\HomePageController;
@@ -11,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated extends ParentMiddleware
 {
-    public function handle(Request $request, \Closure $next, string|null ...$guards): Response|RedirectResponse|null
+    public function handle(Request $request, \Closure $next, null|string ...$listOfGuards): null|Response|RedirectResponse
     {
-        $guards = [] === $guards ? [null] : $guards;
+        $guards = $listOfGuards === [] ? [null] : $listOfGuards;
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {

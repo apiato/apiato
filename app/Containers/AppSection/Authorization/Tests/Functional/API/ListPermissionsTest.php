@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
@@ -12,14 +14,15 @@ final class ListPermissionsTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-permissions',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testListPermissions(): void
     {
-        $response = $this->makeCall();
+        $testResponse = $this->makeCall();
 
-        $response->assertOk();
+        $testResponse->assertOk();
+
         $responseContent = $this->getResponseContentObject();
         $this->assertNotEmpty($responseContent->data);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -16,7 +18,7 @@ final class SendVerificationEmailTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
@@ -29,9 +31,9 @@ final class SendVerificationEmailTest extends ApiTestCase
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertAccepted();
+        $testResponse->assertAccepted();
         Notification::assertSentTo($this->testingUser, VerifyEmail::class);
     }
 
@@ -39,11 +41,11 @@ final class SendVerificationEmailTest extends ApiTestCase
     {
         $data = [];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
+        $testResponse->assertUnprocessable();
 
-        $response->assertJson(
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The verification url field is required.'),
@@ -54,16 +56,16 @@ final class SendVerificationEmailTest extends ApiTestCase
     public function testRegisterNewUserWithNotAllowedVerificationUrl(): void
     {
         $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 's3cr3tPa$$',
-            'name' => 'Bruce Lee',
+            'email'            => 'ganldalf@the.grey',
+            'password'         => 's3cr3tPa$$',
+            'name'             => 'Bruce Lee',
             'verification_url' => 'http://notallowed.test/wrong',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The selected verification url is invalid.'),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Ship\Parents\Models\UserModel;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -19,7 +21,7 @@ final class RegisterUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testGivenEmailVerificationEnabledRegisterNewUserWithCredentials(): void
@@ -28,15 +30,15 @@ final class RegisterUserTest extends ApiTestCase
         config()->set('appSection-authentication.allowed-verify-email-urls', 'http://some.test/known/url');
 
         $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 's3cr3tPa$$',
+            'email'            => 'ganldalf@the.grey',
+            'password'         => 's3cr3tPa$$',
             'verification_url' => 'http://some.test/known/url',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc(),
@@ -47,14 +49,14 @@ final class RegisterUserTest extends ApiTestCase
     {
         config()->set('appSection-authentication.require_email_verification', false);
         $data = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 's3cr3tPa$$',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.email', $data['email'])
                 ->etc(),
@@ -64,21 +66,21 @@ final class RegisterUserTest extends ApiTestCase
     public function testRegisterExistingUser(): void
     {
         $userDetails = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
         $this->getTestingUser($userDetails);
 
         $data = [
-            'email' => $userDetails['email'],
+            'email'    => $userDetails['email'],
             'password' => $userDetails['password'],
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email has already been taken.')
                 ->etc(),
@@ -89,11 +91,12 @@ final class RegisterUserTest extends ApiTestCase
     {
         $data = [];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
+        $testResponse->assertUnprocessable();
+
         if (config('appSection-authentication.require_email_verification')) {
-            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
+            $testResponse->assertJson(static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json
                     ->where('email.0', 'The email field is required.')
@@ -101,7 +104,7 @@ final class RegisterUserTest extends ApiTestCase
                     ->where('verification_url.0', 'The verification url field is required.'),
             )->etc());
         } else {
-            $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
+            $testResponse->assertJson(static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json
                     ->where('email.0', 'The email field is required.')
@@ -116,10 +119,10 @@ final class RegisterUserTest extends ApiTestCase
             'email' => 'missing-at.test',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc(),
@@ -132,10 +135,10 @@ final class RegisterUserTest extends ApiTestCase
             'password' => '((((()))))',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->has(
                     'errors.password',
@@ -153,15 +156,15 @@ final class RegisterUserTest extends ApiTestCase
         config()->set('appSection-authentication.require_email_verification', true);
 
         $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 's3cr3tPa$$',
+            'email'            => 'ganldalf@the.grey',
+            'password'         => 's3cr3tPa$$',
             'verification_url' => 'http://notallowed.test/wrong/hopyfuly/noone/make/a/route/like/this',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json->where('verification_url.0', 'The selected verification url is invalid.'),
@@ -175,14 +178,14 @@ final class RegisterUserTest extends ApiTestCase
 
         Notification::fake();
         $data = [
-            'email' => 'ganldalf@the.grey',
-            'password' => 's3cr3tPa$$',
+            'email'            => 'ganldalf@the.grey',
+            'password'         => 's3cr3tPa$$',
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
 
-        $response = $this->makeCall($data);
-        $registeredUser = User::find($this->decode($response->json()['data']['id']));
-        $response->assertOk();
+        $testResponse = $this->makeCall($data);
+        $registeredUser = User::find($this->decode($testResponse->json()['data']['id']));
+        $testResponse->assertOk();
         Notification::assertSentTo($registeredUser, Welcome::class);
         Notification::assertNotSentTo($registeredUser, VerifyEmail::class);
     }

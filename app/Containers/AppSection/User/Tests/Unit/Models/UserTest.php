@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -16,15 +18,15 @@ final class UserTest extends UnitTestCase
 {
     public function testUsesCorrectTable(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $table = 'users';
 
-        $this->assertSame($table, $user->getTable());
+        $this->assertSame($table, $model->getTable());
     }
 
     public function testHasCorrectFillableFields(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $fillables = [
             'name',
             'email',
@@ -33,78 +35,78 @@ final class UserTest extends UnitTestCase
             'birth',
         ];
 
-        $this->assertSame($fillables, $user->getFillable());
+        $this->assertSame($fillables, $model->getFillable());
     }
 
     public function testHasCorrectCasts(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $casts = [
-            'id' => 'int',
+            'id'                => 'int',
             'email_verified_at' => 'immutable_datetime',
-            'password' => 'hashed',
-            'gender' => Gender::class,
-            'birth' => 'immutable_date',
+            'password'          => 'hashed',
+            'gender'            => Gender::class,
+            'birth'             => 'immutable_date',
         ];
 
-        $this->assertSame($casts, $user->getCasts());
+        $this->assertSame($casts, $model->getCasts());
     }
 
     public function testHasCorrectHiddenFields(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $hiddens = [
             'password',
             'remember_token',
         ];
 
-        $this->assertSame($hiddens, $user->getHidden());
+        $this->assertSame($hiddens, $model->getHidden());
     }
 
     public function testHasCorrectResourceKey(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $this->assertSame('User', $user->getResourceKey());
+        $this->assertSame('User', $model->getResourceKey());
     }
 
     public function testSendEmailVerificationNotificationWithVerificationUrl(): void
     {
         Notification::fake();
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $user->sendEmailVerificationNotificationWithVerificationUrl('http://localhost');
+        $model->sendEmailVerificationNotificationWithVerificationUrl('http://localhost');
 
-        Notification::assertSentTo($user, VerifyEmail::class);
+        Notification::assertSentTo($model, VerifyEmail::class);
     }
 
     public function testGetHashedEmailForVerification(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $hashedEmail = $user->getHashedEmailForVerification();
+        $hashedEmail = $model->getHashedEmailForVerification();
 
-        $this->assertSame(sha1((string) $user->getEmailForVerification()), $hashedEmail);
+        $this->assertSame(sha1((string) $model->getEmailForVerification()), $hashedEmail);
     }
 
     public function testUsesEmailFieldAsDefaultLoginFieldFallback(): void
     {
         config()->unset('appSection-authentication.login.fields');
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $result = (new User())->findForPassport($user->email);
+        $result = (new User())->findForPassport($model->email);
 
-        $this->assertTrue($user->is($result));
+        $this->assertTrue($model->is($result));
     }
 
     public function testCanAuthenticateUsingAllowedLoginFields(): void
     {
         config()->set('appSection-authentication.login.fields', ['name' => []]);
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $result = (new User())->findForPassport($user->name);
+        $result = (new User())->findForPassport($model->name);
 
-        $this->assertTrue($user->is($result));
+        $this->assertTrue($model->is($result));
     }
 
     public function testLowerCasesEmailOnAccess(): void
@@ -112,9 +114,9 @@ final class UserTest extends UnitTestCase
         $original = 'GanDalf@thE.Gray';
         $expectedGet = 'gandalf@the.gray';
         $expectedSet = 'GanDalf@thE.Gray';
-        $user = UserFactory::new()->createOne(['email' => $original]);
+        $model = UserFactory::new()->createOne(['email' => $original]);
 
-        $this->assertSame($expectedGet, $user->email);
-        $this->assertSame($expectedSet, DB::query()->from('users')->find($user->id)->email);
+        $this->assertSame($expectedGet, $model->email);
+        $this->assertSame($expectedSet, DB::query()->from('users')->find($model->id)->email);
     }
 }

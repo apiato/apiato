@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
@@ -14,11 +16,11 @@ final class FindPermissionByIdActionTest extends UnitTestCase
 {
     public function testCanFindPermission(): void
     {
-        $permission = PermissionFactory::new()->createOne();
-        $request = FindPermissionByIdRequest::injectData()->withUrlParameters(['permission_id' => $permission->id]);
+        $model = PermissionFactory::new()->createOne();
+        $findPermissionByIdRequest = FindPermissionByIdRequest::injectData()->withUrlParameters(['permission_id' => $model->id]);
         $repositoryMock = $this->partialMock(PermissionRepository::class);
-        $repositoryMock->expects('getById')->once()->with($request->permission_id)->andReturn($permission);
+        $repositoryMock->expects('getById')->once()->with($findPermissionByIdRequest->permission_id)->andReturn($model);
 
-        app(FindPermissionByIdAction::class)->run($request);
+        app(FindPermissionByIdAction::class)->run($findPermissionByIdRequest);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Models;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -26,11 +28,12 @@ class User extends ParentUserModel implements MustVerifyEmail
 
     protected $casts = [
         'email_verified_at' => 'immutable_datetime',
-        'password' => 'hashed',
-        'gender' => Gender::class,
-        'birth' => 'immutable_date',
+        'password'          => 'hashed',
+        'gender'            => Gender::class,
+        'birth'             => 'immutable_date',
     ];
 
+    #[\Override]
     public function newCollection(array $models = []): UserCollection
     {
         return new UserCollection($models);
@@ -49,13 +52,13 @@ class User extends ParentUserModel implements MustVerifyEmail
     /**
      * Allows Passport to authenticate users with custom fields.
      */
-    public function findForPassport(string $username): self|null
+    public function findForPassport(string $username): null|self
     {
         $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
         $query = $this->newModelQuery();
 
-        foreach ($allowedLoginFields as $field) {
-            $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
+        foreach ($allowedLoginFields as $allowedLoginField) {
+            $query->orWhereRaw(\sprintf('lower(%s) = lower(?)', $allowedLoginField), [$username]);
         }
 
         return $query->first();
@@ -69,7 +72,7 @@ class User extends ParentUserModel implements MustVerifyEmail
     protected function email(): Attribute
     {
         return new Attribute(
-            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
+            get: static fn (null|string $value): null|string => $value === null ? null : strtolower($value),
         );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -16,18 +18,18 @@ final class UserTransformerTest extends UnitTestCase
 
     public function testCanTransformSingleObject(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $expected = [
-            'object' => $user->getResourceKey(),
-            'id' => $user->getHashedKey(),
-            'name' => $user->name,
-            'email' => $user->email,
-            'email_verified_at' => $user->email_verified_at,
-            'gender' => $user->gender,
-            'birth' => $user->birth,
+            'object'            => $model->getResourceKey(),
+            'id'                => $model->getHashedKey(),
+            'name'              => $model->name,
+            'email'             => $model->email,
+            'email_verified_at' => $model->email_verified_at,
+            'gender'            => $model->gender,
+            'birth'             => $model->birth,
         ];
 
-        $transformedResource = $this->transformer->transform($user);
+        $transformedResource = $this->transformer->transform($model);
 
         $this->assertEquals($expected, $transformedResource);
     }
@@ -47,29 +49,31 @@ final class UserTransformerTest extends UnitTestCase
 
     public function testIncludeRoles(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $roles = RoleFactory::new()->count(3)->create();
-        $user->roles()->attach($roles);
+        $model->roles()->attach($roles);
 
-        $resource = $this->transformer->includeRoles($user);
+        $collection = $this->transformer->includeRoles($model);
 
-        $this->assertSame($user->roles, $resource->getData());
+        $this->assertSame($model->roles, $collection->getData());
     }
 
     public function testIncludePermissions(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $user->permissions()->attach($permissions);
+        $model->permissions()->attach($permissions);
 
-        $resource = $this->transformer->includePermissions($user);
+        $collection = $this->transformer->includePermissions($model);
 
-        $this->assertSame($user->permissions, $resource->getData());
+        $this->assertSame($model->permissions, $collection->getData());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new UserTransformer();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
 use Apiato\Core\Traits\ModelTrait;
@@ -18,15 +20,15 @@ final class RoleTest extends UnitTestCase
 
     public function testUsesCorrectGuard(): void
     {
-        $user = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $guard = 'api';
 
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($user, 'guard_name'));
+        $this->assertSame($guard, $this->getInaccessiblePropertyValue($model, 'guard_name'));
     }
 
     public function testHasCorrectFillableFields(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $fillables = [
             'name',
             'guard_name',
@@ -35,22 +37,22 @@ final class RoleTest extends UnitTestCase
         ];
 
         foreach ($fillables as $fillable) {
-            $this->assertContains($fillable, $role->getFillable());
+            $this->assertContains($fillable, $model->getFillable());
         }
     }
 
     public function testUsesCorrectTable(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $table = 'roles';
 
-        $this->assertSame($table, $role->getTable());
+        $this->assertSame($table, $model->getTable());
     }
 
     public function testHasCorrectResourceKey(): void
     {
-        $user = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
 
-        $this->assertSame('Role', $user->getResourceKey());
+        $this->assertSame('Role', $model->getResourceKey());
     }
 }

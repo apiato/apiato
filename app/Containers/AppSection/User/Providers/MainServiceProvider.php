@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
@@ -30,6 +32,7 @@ class MainServiceProvider extends ParentMainServiceProvider
             ->symbols());
     }
 
+    #[\Override]
     public function register(): void
     {
         parent::register();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
@@ -18,13 +20,14 @@ class CreateAdminAction extends ParentAction
 
     public function run(array $data): User
     {
-        return DB::transaction(function () use ($data) {
+        return DB::transaction(function () use ($data): User {
             $user = $this->createUserTask->run($data);
             $adminRoleName = config('appSection-authorization.admin_role');
             foreach (array_keys(config('auth.guards')) as $guardName) {
                 $adminRole = $this->findRoleTask->run($adminRoleName, $guardName);
                 $user->assignRole($adminRole);
             }
+
             $user->email_verified_at = now();
             $user->save();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
@@ -15,9 +17,9 @@ final class ResetPasswordControllerTest extends UnitTestCase
     {
         $controller = app(ResetPasswordController::class);
         $actionMock = $this->mock(ResetPasswordAction::class);
-        $request = ResetPasswordRequest::injectData();
-        $actionMock->expects()->run($request);
+        $resetPasswordRequest = ResetPasswordRequest::injectData();
+        $actionMock->expects()->run($resetPasswordRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($resetPasswordRequest, $actionMock);
     }
 }

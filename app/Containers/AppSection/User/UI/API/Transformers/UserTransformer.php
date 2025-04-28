@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionTransformer;
@@ -20,13 +22,13 @@ class UserTransformer extends ParentTransformer
     public function transform(User $user): array
     {
         return [
-            'object' => $user->getResourceKey(),
-            'id' => $user->getHashedKey(),
-            'name' => $user->name,
-            'email' => $user->email,
+            'object'            => $user->getResourceKey(),
+            'id'                => $user->getHashedKey(),
+            'name'              => $user->name,
+            'email'             => $user->email,
             'email_verified_at' => $user->email_verified_at,
-            'gender' => $user->gender,
-            'birth' => $user->birth,
+            'gender'            => $user->gender,
+            'birth'             => $user->birth,
         ];
     }
 

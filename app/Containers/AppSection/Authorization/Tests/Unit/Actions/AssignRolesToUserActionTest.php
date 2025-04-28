@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\AssignRolesToUserAction;
@@ -14,38 +16,38 @@ final class AssignRolesToUserActionTest extends UnitTestCase
 {
     public function testCanAssignSingleRole(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
         $data = [
-            'user_id' => $user->getHashedKey(),
+            'user_id'  => $model->getHashedKey(),
             'role_ids' => [$role->getHashedKey()],
         ];
-        $request = AssignRolesToUserRequest::injectData($data)
-        ->withUrlParameters(['user_id' => $user->id]);
+        $assignRolesToUserRequest = AssignRolesToUserRequest::injectData($data)
+            ->withUrlParameters(['user_id' => $model->id]);
         $action = app(AssignRolesToUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($assignRolesToUserRequest);
 
-        $this->assertSame($result->id, $user->id);
+        $this->assertSame($result->id, $model->id);
         $this->assertTrue($result->hasRole($role->name));
     }
 
     public function testCanAssignMultipleRole(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $roleA = RoleFactory::new()->createOne();
         $roleB = RoleFactory::new()->createOne();
         $data = [
-            'user_id' => $user->getHashedKey(),
+            'user_id'  => $model->getHashedKey(),
             'role_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
         ];
-        $request = AssignRolesToUserRequest::injectData($data)
-            ->withUrlParameters(['user_id' => $user->id]);
+        $assignRolesToUserRequest = AssignRolesToUserRequest::injectData($data)
+            ->withUrlParameters(['user_id' => $model->id]);
         $action = app(AssignRolesToUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($assignRolesToUserRequest);
 
-        $this->assertSame($result->id, $user->id);
+        $this->assertSame($result->id, $model->id);
         $this->assertTrue($result->hasAllRoles([$roleA->name, $roleB->name]));
     }
 }

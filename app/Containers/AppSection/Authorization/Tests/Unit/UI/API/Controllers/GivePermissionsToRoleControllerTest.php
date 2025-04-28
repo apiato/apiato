@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToRoleAction;
@@ -15,10 +17,10 @@ final class GivePermissionsToRoleControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(GivePermissionsToRoleController::class);
-        $request = GivePermissionsToRoleRequest::injectData();
+        $givePermissionsToRoleRequest = GivePermissionsToRoleRequest::injectData();
         $actionMock = $this->mock(GivePermissionsToRoleAction::class);
-        $actionMock->expects()->run($request)->andReturn(RoleFactory::new()->createOne());
+        $actionMock->expects()->run($givePermissionsToRoleRequest)->andReturn(RoleFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($givePermissionsToRoleRequest, $actionMock);
     }
 }

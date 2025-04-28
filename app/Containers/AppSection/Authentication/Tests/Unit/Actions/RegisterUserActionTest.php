@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
@@ -19,14 +21,14 @@ final class RegisterUserActionTest extends UnitTestCase
     {
         Notification::fake();
         $data = [
-            'email' => 'gandalf@the.grey',
-            'password' => 'youShallNotPass',
+            'email'            => 'gandalf@the.grey',
+            'password'         => 'youShallNotPass',
             'verification_url' => config('appSection-authentication.allowed-verify-email-urls')[0],
         ];
-        $request = RegisterUserRequest::injectData($data);
+        $registerUserRequest = RegisterUserRequest::injectData($data);
         $action = app(RegisterUserAction::class);
 
-        $user = $action->run($request);
+        $user = $action->run($registerUserRequest);
 
         $this->assertModelExists($user);
         $this->assertInstanceOf(User::class, $user);
@@ -34,6 +36,7 @@ final class RegisterUserActionTest extends UnitTestCase
         $this->assertTrue(Hash::check($data['password'], $user->password));
         $this->assertNull($user->email_verified_at);
         Notification::assertSentTo($user, Welcome::class);
+
         if (config('appSection-authentication.require_email_verification')) {
             Notification::assertSentTo($user, VerifyEmail::class);
         }

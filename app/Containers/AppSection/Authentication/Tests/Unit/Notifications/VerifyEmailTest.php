@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Notifications;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -15,20 +17,20 @@ final class VerifyEmailTest extends UnitTestCase
     {
         Notification::fake();
         Notification::assertNothingSent();
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $user->notify(new VerifyEmail('https://example.com'));
+        $model->notify(new VerifyEmail('https://example.com'));
 
-        Notification::assertSentTo($user, VerifyEmail::class, function (VerifyEmail $notification) use ($user) {
-            $email = $notification->toMail($user);
-            $this->assertSame('Verify Email Address', $email->subject);
+        Notification::assertSentTo($model, VerifyEmail::class, function (VerifyEmail $notification) use ($model): true {
+            $mailMessage = $notification->toMail($model);
+            $this->assertSame('Verify Email Address', $mailMessage->subject);
             $this->assertSame([
                 'Please click the below button to verify your email address.',
-            ], $email->introLines);
+            ], $mailMessage->introLines);
             $this->assertSame([
                 'If you did not create an account, no further action is required.',
-            ], $email->outroLines);
-            $this->assertSame('Verify Email Address', $email->actionText);
+            ], $mailMessage->outroLines);
+            $this->assertSame('Verify Email Address', $mailMessage->actionText);
 
             return true;
         });

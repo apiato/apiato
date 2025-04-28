@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class SyncUserRolesRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-admins-access',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -39,20 +41,21 @@ final class SyncUserRolesRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'user_id' => 'exists:users,id',
-            'role_ids' => 'array|required',
+            'user_id'    => 'exists:users,id',
+            'role_ids'   => 'array|required',
             'role_ids.*' => 'required|exists:roles,id',
         ], $rules);
     }
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-admins-access']);
-        $request = SyncUserRolesRequest::injectData([], $user);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-admins-access']);
+        $syncUserRolesRequest = SyncUserRolesRequest::injectData([], $userModel);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($syncUserRolesRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Http\Controllers\AccessTokenController;
 use Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController;
@@ -11,14 +13,14 @@ use Laravel\Passport\Http\Controllers\TransientTokenController;
 $guard = config('passport.guard', null);
 
 Route::group([
-    'as' => 'passport.',
+    'as'     => 'passport.',
     'prefix' => config('passport.path', 'oauth'),
-], static function () use ($guard) {
+], static function () use ($guard): void {
     Route::post('/token', [AccessTokenController::class, 'issueToken'])
         ->name('token')
         ->middleware(['throttle']);
 
-    Route::middleware(['web', $guard ? 'auth:' . $guard : 'auth'])->group(function () {
+    Route::middleware(['web', $guard ? 'auth:' . $guard : 'auth'])->group(static function (): void {
         Route::post('/token/refresh', [TransientTokenController::class, 'refresh'])
             ->name('token.refresh');
 

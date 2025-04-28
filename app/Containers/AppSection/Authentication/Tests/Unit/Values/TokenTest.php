@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -11,21 +13,21 @@ final class TokenTest extends UnitTestCase
 {
     public function testCanCreateValue(): void
     {
-        $value = new Token(fake()->word(), fake()->numberBetween(), fake()->sha256(), fake()->sha256());
+        $token = new Token(fake()->word(), fake()->numberBetween(), fake()->sha256(), fake()->sha256());
 
-        $this->assertSame('string', gettype($value->tokenType));
-        $this->assertSame('integer', gettype($value->expiresIn));
-        $this->assertSame('string', gettype($value->accessToken));
-        $this->assertSame('string', gettype($value->refreshToken));
+        $this->assertSame('string', \gettype($token->tokenType));
+        $this->assertSame('integer', \gettype($token->expiresIn));
+        $this->assertSame('string', \gettype($token->accessToken));
+        $this->assertSame('string', \gettype($token->refreshToken));
     }
 
     public function testCanCreateFakeValue(): void
     {
-        $value = Token::fake();
+        $token = Token::fake();
 
-        $this->assertSame('string', gettype($value->tokenType));
-        $this->assertSame('integer', gettype($value->expiresIn));
-        $this->assertSame('string', gettype($value->accessToken));
-        $this->assertSame('string', gettype($value->refreshToken));
+        $this->assertSame('string', \gettype($token->tokenType));
+        $this->assertSame('integer', \gettype($token->expiresIn));
+        $this->assertSame('string', \gettype($token->accessToken));
+        $this->assertSame('string', \gettype($token->refreshToken));
     }
 }

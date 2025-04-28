@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\DeleteUserAction;
@@ -14,10 +16,10 @@ final class DeleteUserControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(DeleteUserController::class);
-        $request = DeleteUserRequest::injectData();
+        $deleteUserRequest = DeleteUserRequest::injectData();
         $actionMock = $this->mock(DeleteUserAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($deleteUserRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($deleteUserRequest, $actionMock);
     }
 }

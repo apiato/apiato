@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
@@ -14,15 +16,15 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testProxyLogin(): void
     {
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($data);
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 static fn (AssertableJson $json): AssertableJson => $json->hasAll([
@@ -31,7 +33,7 @@ final class LoginProxyForWebClientTest extends ApiTestCase
                     'token_type',
                     'expires_in',
                 ])->where('token_type', 'Bearer')
-                ->etc(),
+                    ->etc(),
             )->etc(),
         );
     }
@@ -39,28 +41,23 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testLoginWithNameAttribute(): void
     {
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
-            'name' => 'username',
+            'name'     => 'username',
         ];
         $this->getTestingUser($data);
         $this->setLoginAttributes([
             'email' => [],
-            'name' => [],
+            'name'  => [],
         ]);
         $request = [
             'password' => 'youShallNotPass',
-            'name' => 'username',
+            'name'     => 'username',
         ];
 
-        $response = $this->makeCall($request);
+        $testResponse = $this->makeCall($request);
 
-        $response->assertOk();
-    }
-
-    private function setLoginAttributes(array $fields): void
-    {
-        config()->set('appSection-authentication.login.fields', $fields);
+        $testResponse->assertOk();
     }
 
     public function testGivenOnlyOneLoginAttributeIsSetThenItShouldBeRequired(): void
@@ -72,10 +69,10 @@ final class LoginProxyForWebClientTest extends ApiTestCase
             'password' => 'youShallNotPass',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(static fn (AssertableJson $json): AssertableJson => $json->has(
             'errors',
             static fn (AssertableJson $json): AssertableJson => $json
                 ->where('email.0', 'The email field is required.'),
@@ -86,16 +83,16 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     {
         $this->setLoginAttributes([
             'email' => [],
-            'name' => [],
+            'name'  => [],
         ]);
         $data = [
             'password' => 'youShallNotPass',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(fn (AssertableJson $json): AssertableJson => $json->has(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(static fn (AssertableJson $json): AssertableJson => $json->has(
             'errors',
             static fn (AssertableJson $json): AssertableJson => $json
                 ->where('email.0', 'The email field is required when none of name are present.')
@@ -106,12 +103,17 @@ final class LoginProxyForWebClientTest extends ApiTestCase
     public function testGivenWrongCredentialThrow422(): void
     {
         $data = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnauthorized();
+        $testResponse->assertUnauthorized();
+    }
+
+    private function setLoginAttributes(array $fields): void
+    {
+        config()->set('appSection-authentication.login.fields', $fields);
     }
 }

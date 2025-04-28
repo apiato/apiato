@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -8,7 +10,7 @@ class RemoveUserRolesRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [
@@ -23,8 +25,8 @@ class RemoveUserRolesRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
-            'role_ids' => 'array|required',
+            'user_id'    => 'exists:users,id',
+            'role_ids'   => 'array|required',
             'role_ids.*' => 'required|exists:roles,id',
         ];
     }

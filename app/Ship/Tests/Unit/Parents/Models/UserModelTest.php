@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Parents\Models;
 
 use App\Ship\Parents\Models\UserModel;

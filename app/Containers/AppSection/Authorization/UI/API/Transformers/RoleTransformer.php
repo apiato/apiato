@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Role;
@@ -17,11 +19,11 @@ class RoleTransformer extends ParentTransformer
     public function transform(Role $role): array
     {
         return [
-            'object' => $role->getResourceKey(),
-            'id' => $role->getHashedKey(),
-            'name' => $role->name,
+            'object'       => $role->getResourceKey(),
+            'id'           => $role->getHashedKey(),
+            'name'         => $role->name,
             'display_name' => $role->display_name,
-            'description' => $role->description,
+            'description'  => $role->description,
         ];
     }
 

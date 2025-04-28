@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Notifications;
 
 use App\Containers\AppSection\User\Models\User;
@@ -13,11 +15,11 @@ final class VerifyEmail extends ParentNotification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(
-        private readonly string $verificationUrl,
-    ) {
+    public function __construct(private readonly string $verificationUrl)
+    {
     }
 
+    #[\Override]
     public function via($notifiable): array
     {
         return ['mail'];
@@ -41,7 +43,7 @@ final class VerifyEmail extends ParentNotification implements ShouldQueue
         return $this->verificationUrl . '?url=' . URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(config('appSection-authentication.email_verification_link_expiration_time_in_minute')),
-            compact('user_id', 'hash'),
+            ['user_id' => $user_id, 'hash' => $hash],
         );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -10,7 +12,6 @@
 | used to check if an authenticated user can listen to the channel.
 |
 */
-
 // Illuminate\Support\Facades\Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
 // });

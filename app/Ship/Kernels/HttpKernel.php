@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Kernels;
 
 use Apiato\Core\Middlewares\Http\ProcessETagHeadersMiddleware;
@@ -82,15 +84,15 @@ class HttpKernel extends LaravelHttpKernel
     protected $middlewareAliases = [
         'auth' => Authenticate::class,
         // 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'auth.session' => AuthenticateSession::class,
+        'auth.session'  => AuthenticateSession::class,
         'cache.headers' => SetCacheHeaders::class,
-        'can' => Authorize::class,
+        'can'           => Authorize::class,
         // Note: The "guest" middleware is registered by MiddlewareServiceProvider in Authentication Container
         // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => RequirePassword::class,
-        'signed' => ValidateSignature::class,
-        'throttle' => ThrottleRequests::class,
-        'verified' => EnsureEmailIsVerified::class,
+        'signed'           => ValidateSignature::class,
+        'throttle'         => ThrottleRequests::class,
+        'verified'         => EnsureEmailIsVerified::class,
     ];
 
     /**

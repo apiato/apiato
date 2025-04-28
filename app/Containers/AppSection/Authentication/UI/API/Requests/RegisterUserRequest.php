@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Containers\AppSection\User\Enums\Gender;
@@ -11,7 +13,7 @@ class RegisterUserRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [];
@@ -21,14 +23,14 @@ class RegisterUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:users,email',
+            'email'    => 'required|email|unique:users,email',
             'password' => [
                 'required',
                 Password::default(),
             ],
-            'name' => 'min:2|max:50',
-            'gender' => Rule::enum(Gender::class),
-            'birth' => 'date',
+            'name'             => 'min:2|max:50',
+            'gender'           => Rule::enum(Gender::class),
+            'birth'            => 'date',
             'verification_url' => [
                 'url',
                 Rule::requiredIf(static fn (): bool => config('appSection-authentication.require_email_verification')),

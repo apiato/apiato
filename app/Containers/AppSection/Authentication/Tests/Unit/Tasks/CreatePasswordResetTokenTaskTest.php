@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
@@ -14,12 +16,12 @@ final class CreatePasswordResetTokenTaskTest extends UnitTestCase
 {
     public function testCreatePasswordResetTask(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $task = app(CreatePasswordResetTokenTask::class);
 
-        $token = $task->run($user);
+        $token = $task->run($model);
 
         $this->assertIsString($token);
-        $this->assertTrue(Hash::check($token, DB::table('password_reset_tokens')->where('email', $user->email)->first()->token));
+        $this->assertTrue(Hash::check($token, DB::table('password_reset_tokens')->where('email', $model->email)->first()->token));
     }
 }

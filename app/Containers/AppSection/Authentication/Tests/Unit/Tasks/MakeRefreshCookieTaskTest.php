@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Tasks\MakeRefreshTokenCookieTask;
@@ -17,8 +19,8 @@ final class MakeRefreshCookieTaskTest extends UnitTestCase
         $result = $task->run($refreshToken);
 
         // TODO: this should cover more cases
-        $this->assertSame($result->getName(), 'refreshToken');
+        $this->assertSame('refreshToken', $result->getName());
         $this->assertSame($result->getValue(), $refreshToken);
-        $this->assertSame($result->isHttpOnly(), true);
+        $this->assertTrue($result->isHttpOnly());
     }
 }

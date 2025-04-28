@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\RemoveUserRolesAction;
@@ -15,10 +17,10 @@ final class RemoveUserRolesControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(RemoveUserRolesController::class);
-        $request = RemoveUserRolesRequest::injectData();
+        $removeUserRolesRequest = RemoveUserRolesRequest::injectData();
         $actionMock = $this->mock(RemoveUserRolesAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($removeUserRolesRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($removeUserRolesRequest, $actionMock);
     }
 }

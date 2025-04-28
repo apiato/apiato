@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
@@ -15,10 +17,10 @@ final class FindPermissionByIdControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(FindPermissionByIdController::class);
-        $request = FindPermissionByIdRequest::injectData();
+        $findPermissionByIdRequest = FindPermissionByIdRequest::injectData();
         $actionMock = $this->mock(FindPermissionByIdAction::class);
-        $actionMock->expects()->run($request)->andReturn(PermissionFactory::new()->createOne());
+        $actionMock->expects()->run($findPermissionByIdRequest)->andReturn(PermissionFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($findPermissionByIdRequest, $actionMock);
     }
 }

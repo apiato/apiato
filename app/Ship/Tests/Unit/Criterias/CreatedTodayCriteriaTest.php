@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\CreatedTodayCriteria;
@@ -13,13 +15,13 @@ final class CreatedTodayCriteriaTest extends ShipTestCase
 {
     public function testCriteria(): void
     {
-        $todayModels = TestUserFactory::new()->count(5)->create(['created_at' => now()]);
-        $yesterdayModels = TestUserFactory::new()->count(2)->create(['created_at' => now()->subDay()]);
-        $tomorrowModels = TestUserFactory::new()->count(1)->create(['created_at' => now()->addDay()]);
+        TestUserFactory::new()->count(5)->create(['created_at' => now()]);
+        TestUserFactory::new()->count(2)->create(['created_at' => now()->subDay()]);
+        TestUserFactory::new()->count(1)->create(['created_at' => now()->addDay()]);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new CreatedTodayCriteria();
-        $repository->pushCriteria($criteria);
+        $createdTodayCriteria = new CreatedTodayCriteria();
+        $repository->pushCriteria($createdTodayCriteria);
 
         $result = $repository->all();
 

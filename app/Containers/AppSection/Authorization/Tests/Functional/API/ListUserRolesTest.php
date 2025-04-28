@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -14,18 +16,19 @@ final class ListUserRolesTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testGetUserRoles(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
-        $user->assignRole($role);
+        $model->assignRole($role);
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall();
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')->makeCall();
 
-        $response->assertOk();
+        $testResponse->assertOk();
+
         $responseContent = $this->getResponseContentObject();
         $this->assertSame($role->name, $responseContent->data[0]->name);
     }

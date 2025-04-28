@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
@@ -15,7 +17,7 @@ final class ForgotPasswordTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testForgotPassword(): void
@@ -23,12 +25,12 @@ final class ForgotPasswordTest extends ApiTestCase
         $reseturl = 'http://somereseturl.test/yea/something';
         config()->set('appSection-authentication.allowed-reset-password-urls', $reseturl);
         $data = [
-            'email' => 'admin@admin.com',
+            'email'    => 'admin@admin.com',
             'reseturl' => $reseturl,
         ];
 
-        $response = $this->makeCall($data);
-        $response->assertNoContent();
+        $testResponse = $this->makeCall($data);
+        $testResponse->assertNoContent();
     }
 
     public function testForgotPasswordWithNotAllowedVerificationUrl(): void
@@ -36,15 +38,15 @@ final class ForgotPasswordTest extends ApiTestCase
         config()->set('appSection-authentication.allowed-reset-password-urls', []);
 
         $data = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
             'reseturl' => 'http://notallowed.test/wrong',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
                 static fn (AssertableJson $json): AssertableJson => $json

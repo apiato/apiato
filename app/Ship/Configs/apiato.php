@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Seeders\SeedDeploymentData;
 use App\Ship\Seeders\SeedTestingData;
@@ -82,9 +84,9 @@ return [
         |
         */
         'throttle' => [
-            'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
+            'enabled'  => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
             'attempts' => env('GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN', '30'),
-            'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
+            'expires'  => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
         ],
     ],
 
@@ -164,7 +166,7 @@ return [
         |
         */
         'deployment' => SeedDeploymentData::class,
-        'testing' => SeedTestingData::class,
+        'testing'    => SeedTestingData::class,
     ],
 
     'tests' => [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -15,23 +17,24 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testRevokeRolesFromUser(): void
     {
-        $roleA = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $roleB = RoleFactory::new()->createOne();
         $user = UserFactory::new()->createOne();
-        $user->assignRole($roleA, $roleB);
+        $user->assignRole($model, $roleB);
+
         $data = [
-            'role_ids' => [$roleA->getHashedKey()],
+            'role_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
@@ -43,20 +46,20 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     public function testRevokeManyRolesFromUser(): void
     {
-        $roleA = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $roleB = RoleFactory::new()->createOne();
         $user = UserFactory::new()->createOne();
-        $user->assignRole($roleA);
+        $user->assignRole($model);
         $user->assignRole($roleB);
 
         $data = [
-            'role_ids' => [$roleA->getHashedKey(), $roleB->getHashedKey()],
+            'role_ids' => [$model->getHashedKey(), $roleB->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'User')
                 ->where('data.id', $user->getHashedKey())
@@ -67,16 +70,16 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     public function testRevokeRolesFromNonExistingUser(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'role_ids' => [$role->getHashedKey()],
+            'role_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
                 ->etc(),
@@ -85,20 +88,20 @@ final class RemoveUserRolesTest extends ApiTestCase
 
     public function testRevokeNonExistingRoleFromUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertJson(
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                static fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors): AssertableJson => $errors->has(
                     'role_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds): AssertableJson => $permissionIds->where('0', 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

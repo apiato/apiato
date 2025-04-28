@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Traits;
 
 use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
@@ -12,10 +14,10 @@ trait AuthorizationRepositoryTrait
      * @throws RepositoryException
      * @throws BindingResolutionException
      */
-    public function whereGuard(string|null $guard): static
+    public function whereGuard(null|string $guard): static
     {
-        if (null !== $guard) {
-            $this->pushCriteriaWith(WhereGuardCriteria::class, compact('guard'));
+        if ($guard !== null) {
+            $this->pushCriteriaWith(WhereGuardCriteria::class, ['guard' => $guard]);
         }
 
         return $this;

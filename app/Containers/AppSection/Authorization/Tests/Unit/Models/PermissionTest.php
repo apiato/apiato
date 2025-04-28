@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
 use Apiato\Core\Traits\ModelTrait;
@@ -18,15 +20,15 @@ final class PermissionTest extends UnitTestCase
 
     public function testUsesCorrectGuard(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $guard = 'api';
 
-        $this->assertSame($guard, $this->getInaccessiblePropertyValue($permission, 'guard_name'));
+        $this->assertSame($guard, $this->getInaccessiblePropertyValue($model, 'guard_name'));
     }
 
     public function testHasCorrectFillableFields(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $fillables = [
             'name',
             'guard_name',
@@ -35,22 +37,22 @@ final class PermissionTest extends UnitTestCase
         ];
 
         foreach ($fillables as $fillable) {
-            $this->assertContains($fillable, $permission->getFillable());
+            $this->assertContains($fillable, $model->getFillable());
         }
     }
 
     public function testUsesCorrectTable(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $table = 'permissions';
 
-        $this->assertSame($table, $permission->getTable());
+        $this->assertSame($table, $model->getTable());
     }
 
     public function testHasCorrectResourceKey(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
 
-        $this->assertSame('Permission', $permission->getResourceKey());
+        $this->assertSame('Permission', $model->getResourceKey());
     }
 }

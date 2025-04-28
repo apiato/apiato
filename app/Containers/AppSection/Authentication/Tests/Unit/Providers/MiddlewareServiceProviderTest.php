@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Middlewares\RedirectIfAuthenticated;
@@ -14,8 +16,8 @@ final class MiddlewareServiceProviderTest extends UnitTestCase
     {
         $provider = app(MiddlewareServiceProvider::class, ['app' => app()]);
         $data = [
-            'middlewares' => [],
-            'middlewareGroups' => [],
+            'middlewares'       => [],
+            'middlewareGroups'  => [],
             'middlewareAliases' => [
                 'guest' => RedirectIfAuthenticated::class,
             ],

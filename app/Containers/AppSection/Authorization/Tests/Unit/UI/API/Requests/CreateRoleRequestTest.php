@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class CreateRoleRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-roles',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -34,20 +36,21 @@ final class CreateRoleRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'name' => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|no_spaces',
-            'description' => 'max:255',
+            'name'         => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|no_spaces',
+            'description'  => 'max:255',
             'display_name' => 'max:100',
         ], $rules);
     }
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
-        $request = CreateRoleRequest::injectData([], $user);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-roles']);
+        $createRoleRequest = CreateRoleRequest::injectData([], $userModel);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($createRoleRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

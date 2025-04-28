@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -13,26 +15,27 @@ final class FindRoleByIdTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testFindRoleById(): void
     {
-        $roleA = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
 
-        $response = $this->injectId($roleA->id, replace: '{role_id}')->makeCall();
+        $testResponse = $this->injectId($model->id, replace: '{role_id}')->makeCall();
 
-        $response->assertOk();
+        $testResponse->assertOk();
+
         $responseContent = $this->getResponseContentObject();
-        $this->assertSame($roleA->name, $responseContent->data->name);
+        $this->assertSame($model->name, $responseContent->data->name);
     }
 
     public function testFindNonExistingRole(): void
     {
         $invalidId = 7777777;
 
-        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall();
+        $testResponse = $this->injectId($invalidId, replace: '{role_id}')->makeCall();
 
-        $response->assertNotFound();
+        $testResponse->assertNotFound();
     }
 }

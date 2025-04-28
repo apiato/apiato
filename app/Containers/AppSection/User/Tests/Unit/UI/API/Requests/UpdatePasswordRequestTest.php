@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -35,7 +37,7 @@ final class UpdatePasswordRequestTest extends UnitTestCase
 
         $this->assertEquals([
             'current_password' => [
-                Rule::requiredIf(fn (): bool => !is_null($this->request->user()->password)),
+                Rule::requiredIf(fn (): bool => !\is_null($this->request->user()->password)),
                 'current_password:api',
             ],
             'new_password' => [
@@ -48,19 +50,20 @@ final class UpdatePasswordRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = UserFactory::new()->createOne();
-        $request = UpdatePasswordRequest::injectData([], $user)
+        $model = UserFactory::new()->createOne();
+        $updatePasswordRequest = UpdatePasswordRequest::injectData([], $model)
             ->withUrlParameters([
-                'user_id' => $user->id,
+                'user_id' => $model->id,
             ]);
         $gateMock = $this->getGateMock('update', [
             User::class,
-            $user->id,
+            $model->id,
         ]);
 
-        $this->assertTrue($request->authorize($gateMock));
+        $this->assertTrue($updatePasswordRequest->authorize($gateMock));
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

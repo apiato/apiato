@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Models\Role;
@@ -10,9 +12,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class RevokeRolePermissionsAction extends ParentAction
 {
-    public function __construct(
-        private readonly FindRoleTask $findRoleTask,
-    ) {
+    public function __construct(private readonly FindRoleTask $findRoleTask)
+    {
     }
 
     /**

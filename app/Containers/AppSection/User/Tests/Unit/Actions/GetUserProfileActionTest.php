@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\GetUserProfileAction;
@@ -13,13 +15,13 @@ final class GetUserProfileActionTest extends UnitTestCase
 {
     public function testCanGetUserProfile(): void
     {
-        $user = UserFactory::new()->createOne();
-        auth()->setUser($user);
+        $model = UserFactory::new()->createOne();
+        auth()->setUser($model);
         $action = app(GetUserProfileAction::class);
 
         $foundUser = $action->run();
 
         $this->assertInstanceOf(User::class, $foundUser);
-        $this->assertSame($user->id, $foundUser->id);
+        $this->assertSame($model->id, $foundUser->id);
     }
 }

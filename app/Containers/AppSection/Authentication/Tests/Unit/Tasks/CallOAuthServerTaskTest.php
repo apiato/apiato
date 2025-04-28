@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
@@ -13,7 +15,7 @@ final class CallOAuthServerTaskTest extends UnitTestCase
     public function testCallOAuthServer(): void
     {
         $credentials = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($credentials);

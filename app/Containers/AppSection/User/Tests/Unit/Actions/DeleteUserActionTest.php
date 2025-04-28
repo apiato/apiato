@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\DeleteUserAction;
@@ -13,13 +15,13 @@ final class DeleteUserActionTest extends UnitTestCase
 {
     public function testCanDeleteUser(): void
     {
-        $user = UserFactory::new()->createOne();
-        $request = DeleteUserRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
+        $model = UserFactory::new()->createOne();
+        $deleteUserRequest = DeleteUserRequest::injectData()->withUrlParameters(['user_id' => $model->id]);
         $action = app(DeleteUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($deleteUserRequest);
 
         $this->assertTrue($result);
-        $this->assertModelMissing($user);
+        $this->assertModelMissing($model);
     }
 }

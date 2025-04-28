@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -16,14 +18,14 @@ final class UpdateUserTaskTest extends UnitTestCase
 {
     public function testUpdateUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $data = [
             'name' => 'new name',
         ];
 
-        $updatedUser = app(UpdateUserTask::class)->run($user->id, $data);
+        $updatedUser = app(UpdateUserTask::class)->run($model->id, $data);
 
-        $this->assertSame($user->id, $updatedUser->id);
+        $this->assertSame($model->id, $updatedUser->id);
         $this->assertSame($data['name'], $updatedUser->name);
     }
 
@@ -38,12 +40,12 @@ final class UpdateUserTaskTest extends UnitTestCase
 
     public function testUpdatedPasswordShouldBeHashed(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $data = [
             'password' => 'secret',
         ];
 
-        $result = app(UpdateUserTask::class)->run($user->id, $data);
+        $result = app(UpdateUserTask::class)->run($model->id, $data);
 
         $this->assertTrue(Hash::check($data['password'], $result->password));
     }
@@ -52,12 +54,12 @@ final class UpdateUserTaskTest extends UnitTestCase
     {
         $this->expectException(UpdateResourceFailedException::class);
 
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $this->partialMock(UserRepository::class)
             ->expects('update')->andThrowExceptions([
                 new \Exception(),
             ]);
 
-        app(UpdateUserTask::class)->run($user->id, []);
+        app(UpdateUserTask::class)->run($model->id, []);
     }
 }

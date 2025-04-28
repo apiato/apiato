@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -15,26 +17,27 @@ final class SyncUserRolesTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testSyncMultipleRolesOnUser(): void
     {
-        $role1 = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $role2 = RoleFactory::new()->createOne();
         $user = UserFactory::new()->createOne();
-        $user->assignRole($role1);
+        $user->assignRole($model);
+
         $data = [
             'role_ids' => [
-                $role1->getHashedKey(),
+                $model->getHashedKey(),
                 $role2->getHashedKey(),
             ],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->count('data.roles.data', 2)
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
@@ -45,16 +48,16 @@ final class SyncUserRolesTest extends ApiTestCase
 
     public function testSyncRoleOnNonExistingUser(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'role_ids' => [$role->getHashedKey()],
+            'role_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($invalidId, replace: '{user_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.user_id.0', 'The selected user id is invalid.')
                 ->etc(),
@@ -63,21 +66,21 @@ final class SyncUserRolesTest extends ApiTestCase
 
     public function testSyncNonExistingRoleOnUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
             'role_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                static fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors): AssertableJson => $errors->has(
                     'role_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected role_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds): AssertableJson => $permissionIds->where('0', 'The selected role_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

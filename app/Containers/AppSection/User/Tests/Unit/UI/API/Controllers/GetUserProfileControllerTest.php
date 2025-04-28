@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\GetUserProfileAction;
@@ -17,6 +19,6 @@ final class GetUserProfileControllerTest extends UnitTestCase
         $actionMock = $this->mock(GetUserProfileAction::class);
         $actionMock->expects()->run()->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($actionMock);
+        $controller($actionMock);
     }
 }

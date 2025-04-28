@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -11,9 +13,9 @@ final class IncomingLoginFieldTest extends UnitTestCase
 {
     public function testCanCreateValue(): void
     {
-        $value = new IncomingLoginField('email', 'gandalf@the.grey');
+        $incomingLoginField = new IncomingLoginField('email', 'gandalf@the.grey');
 
-        $this->assertSame('email', $value->name);
-        $this->assertSame('gandalf@the.grey', $value->value);
+        $this->assertSame('email', $incomingLoginField->name);
+        $this->assertSame('gandalf@the.grey', $incomingLoginField->value);
     }
 }

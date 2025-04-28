@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\UpdateUserAction;
@@ -16,19 +18,19 @@ final class UpdateUserActionTest extends UnitTestCase
 {
     public function testCanUpdateUser(): void
     {
-        $user = UserFactory::new()
+        $model = UserFactory::new()
             ->gender(Gender::FEMALE)
             ->createOne(['password' => 'youShallNotPass']);
         $data = [
-            'name' => 'a name',
-            'gender' => Gender::MALE->value,
-            'birth' => Carbon::today()->toIso8601String(),
+            'name'     => 'a name',
+            'gender'   => Gender::MALE->value,
+            'birth'    => Carbon::today()->toIso8601String(),
             'password' => 'test',
         ];
-        $request = UpdateUserRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
+        $updateUserRequest = UpdateUserRequest::injectData($data, $model)->withUrlParameters(['user_id' => $model->id]);
         $action = app(UpdateUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($updateUserRequest);
 
         $this->assertSame($data['name'], $result->name);
         $this->assertSame(Gender::from($data['gender']), $result->gender);

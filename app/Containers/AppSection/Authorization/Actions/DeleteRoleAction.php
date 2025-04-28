@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -10,9 +12,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DeleteRoleAction extends ParentAction
 {
-    public function __construct(
-        private readonly RoleRepository $repository,
-    ) {
+    public function __construct(private readonly RoleRepository $repository)
+    {
     }
 
     /**

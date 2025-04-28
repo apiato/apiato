@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tasks;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -11,9 +13,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UpdateUserTask extends ParentTask
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     /**
@@ -26,7 +27,7 @@ class UpdateUserTask extends ParentTask
             return $this->repository->update($properties, $id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
-        } catch (\Exception) {
+        } catch (\Throwable) {
             throw new UpdateResourceFailedException();
         }
     }

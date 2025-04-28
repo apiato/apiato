@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
@@ -16,7 +18,7 @@ final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => null,
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -40,11 +42,12 @@ final class LoginProxyPasswordGrantRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = LoginProxyPasswordGrantRequest::injectData([], $this->getTestingUserWithoutAccess());
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData([], $this->getTestingUserWithoutAccess());
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($loginProxyPasswordGrantRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

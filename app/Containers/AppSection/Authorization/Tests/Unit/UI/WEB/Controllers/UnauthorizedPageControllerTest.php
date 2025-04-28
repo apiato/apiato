@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -13,7 +15,7 @@ final class UnauthorizedPageControllerTest extends UnitTestCase
     {
         $controller = app(UnauthorizedPageController::class);
 
-        $view = $controller->__invoke();
+        $view = $controller();
 
         $this->assertSame('appSection@authorization::unauthorized', $view->name());
     }

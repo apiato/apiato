@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\CreateRoleAction;
@@ -15,11 +17,11 @@ final class CreateRoleControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(CreateRoleController::class);
-        $request = CreateRoleRequest::injectData();
+        $createRoleRequest = CreateRoleRequest::injectData();
         $actionMock = $this->mock(CreateRoleAction::class);
-        $actionMock->expects()->run($request)->andReturn(RoleFactory::new()->createOne());
+        $actionMock->expects()->run($createRoleRequest)->andReturn(RoleFactory::new()->createOne());
 
-        $response = $controller->__invoke($request, $actionMock);
+        $response = $controller($createRoleRequest, $actionMock);
 
         $this->assertSame(201, $response->getStatusCode());
     }

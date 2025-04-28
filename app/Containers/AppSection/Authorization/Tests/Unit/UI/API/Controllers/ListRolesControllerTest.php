@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\ListRolesAction;
@@ -16,7 +18,7 @@ final class ListRolesControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(ListRolesController::class);
-        $request = ListRolesRequest::injectData();
+        $listRolesRequest = ListRolesRequest::injectData();
         $actionMock = $this->mock(ListRolesAction::class);
         $actionMock->expects()->run()->andReturn(
             new LengthAwarePaginator(
@@ -26,6 +28,6 @@ final class ListRolesControllerTest extends UnitTestCase
             ),
         );
 
-        $controller->__invoke($request, $actionMock);
+        $controller($listRolesRequest, $actionMock);
     }
 }

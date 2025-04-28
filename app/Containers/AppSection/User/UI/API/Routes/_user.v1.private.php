@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @apiDefine UserSuccessSingleResponse
  *
@@ -45,7 +47,6 @@
  * }
  * }
  */
-
 /**
  * @apiDefine UserSuccessMultipleResponse
  *

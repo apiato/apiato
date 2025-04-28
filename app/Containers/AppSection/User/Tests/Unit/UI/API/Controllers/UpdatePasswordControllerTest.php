@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
@@ -15,10 +17,10 @@ final class UpdatePasswordControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(UpdatePasswordController::class);
-        $request = UpdatePasswordRequest::injectData();
+        $updatePasswordRequest = UpdatePasswordRequest::injectData();
         $actionMock = $this->mock(UpdatePasswordAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($updatePasswordRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($updatePasswordRequest, $actionMock);
     }
 }

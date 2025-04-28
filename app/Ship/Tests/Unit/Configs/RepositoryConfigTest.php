@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Configs;
 
 use App\Ship\Tests\ShipTestCase;
@@ -15,7 +17,7 @@ final class RepositoryConfigTest extends ShipTestCase
         $expected = [
             'pagination' => [
                 'limit' => env('PAGINATION_LIMIT_DEFAULT', 10),
-                'skip' => env('PAGINATION_SKIP', false),
+                'skip'  => env('PAGINATION_SKIP', false),
             ],
             'fractal' => [
                 'params' => [
@@ -24,12 +26,12 @@ final class RepositoryConfigTest extends ShipTestCase
                 'serializer' => DataArraySerializer::class,
             ],
             'cache' => [
-                'enabled' => env('ELOQUENT_QUERY_CACHE', false),
-                'minutes' => env('ELOQUENT_QUERY_CACHE_TIME', 30),
+                'enabled'    => env('ELOQUENT_QUERY_CACHE', false),
+                'minutes'    => env('ELOQUENT_QUERY_CACHE_TIME', 30),
                 'repository' => 'cache',
-                'clean' => [
+                'clean'      => [
                     'enabled' => true,
-                    'on' => [
+                    'on'      => [
                         'create' => true,
                         'update' => true,
                         'delete' => true,
@@ -39,7 +41,7 @@ final class RepositoryConfigTest extends ShipTestCase
                     'skipCache' => 'skipCache',
                 ],
                 'allowed' => [
-                    'only' => null,
+                    'only'   => null,
                     'except' => null,
                 ],
             ],
@@ -50,30 +52,30 @@ final class RepositoryConfigTest extends ShipTestCase
                     'in',
                 ],
                 'params' => [
-                    'search' => 'search',
+                    'search'       => 'search',
                     'searchFields' => 'searchFields',
-                    'filter' => 'l5_filter',
-                    'orderBy' => 'orderBy',
-                    'sortedBy' => 'sortedBy',
-                    'with' => 'l5_with',
-                    'searchJoin' => 'searchJoin',
-                    'withCount' => 'withCount',
+                    'filter'       => 'l5_filter',
+                    'orderBy'      => 'orderBy',
+                    'sortedBy'     => 'sortedBy',
+                    'with'         => 'l5_with',
+                    'searchJoin'   => 'searchJoin',
+                    'withCount'    => 'withCount',
                 ],
             ],
             'generator' => [
-                'basePath' => env('SRC_PATH', app()->path()),
-                'rootNamespace' => env('ROOT_NAMESPACE', 'App\\'),
+                'basePath'          => env('SRC_PATH', app()->path()),
+                'rootNamespace'     => env('ROOT_NAMESPACE', 'App\\'),
                 'stubsOverridePath' => app()->path(),
-                'paths' => [
-                    'models' => 'Entities',
+                'paths'             => [
+                    'models'       => 'Entities',
                     'repositories' => 'Repositories',
-                    'interfaces' => 'Repositories',
+                    'interfaces'   => 'Repositories',
                     'transformers' => 'Transformers',
-                    'presenters' => 'Presenters',
-                    'validators' => 'Validators',
-                    'controllers' => 'Http/Controllers',
-                    'provider' => 'RepositoryServiceProvider',
-                    'criteria' => 'Criteria',
+                    'presenters'   => 'Presenters',
+                    'validators'   => 'Validators',
+                    'controllers'  => 'Http/Controllers',
+                    'provider'     => 'RepositoryServiceProvider',
+                    'criteria'     => 'Criteria',
                 ],
             ],
         ];

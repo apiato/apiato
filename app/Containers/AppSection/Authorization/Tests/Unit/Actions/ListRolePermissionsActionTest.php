@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\ListRolePermissionsAction;
@@ -16,10 +18,10 @@ final class ListRolePermissionsActionTest extends UnitTestCase
     {
         $role = RoleFactory::new()->createOne()
             ->givePermissionTo(PermissionFactory::new()->count(3)->create());
-        $request = ListRolePermissionsRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
+        $listRolePermissionsRequest = ListRolePermissionsRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
         $action = app(ListRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($listRolePermissionsRequest);
 
         $this->assertCount(3, $result);
     }

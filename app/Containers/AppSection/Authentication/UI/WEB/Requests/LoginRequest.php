@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
@@ -9,7 +11,7 @@ class LoginRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [];

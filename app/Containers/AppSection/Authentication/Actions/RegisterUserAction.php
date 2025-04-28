@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
@@ -36,6 +38,7 @@ class RegisterUserAction extends ParentAction
         $user = $this->createUserTask->run($sanitizedData);
 
         $user->notify(new Welcome());
+
         $this->sendVerificationEmailTask->run($user, $request->verification_url);
 
         return $user;

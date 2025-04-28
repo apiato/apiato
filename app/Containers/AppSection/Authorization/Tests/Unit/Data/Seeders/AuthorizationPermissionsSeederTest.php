@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationPermissionsSeeder_1;
 use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
+use Mockery\VerificationDirector;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(AuthorizationPermissionsSeeder_1::class)]
@@ -19,17 +24,26 @@ final class AuthorizationPermissionsSeederTest extends UnitTestCase
             ['manage-admins-access', 'Assign users to Roles.'],
             ['access-dashboard', 'Access the admins dashboard.'],
         ];
-        $taskSpy = $this->spy(CreatePermissionTask::class);
-        $seeder = new AuthorizationPermissionsSeeder_1();
 
-        $seeder->run($taskSpy);
+        /**
+         * @var MockInterface|CreatePermissionTask $mock
+         */
+        $mock = $this->spy(CreatePermissionTask::class);
+        $authorizationPermissionsSeeder1 = new AuthorizationPermissionsSeeder_1();
 
-        $taskSpy->shouldHaveReceived('run')
+        $authorizationPermissionsSeeder1->run($mock);
+
+        /**
+         * @var VerificationDirector|LegacyMockInterface $legacyMock
+         */
+        $legacyMock = $mock->shouldHaveReceived('run');
+
+        $legacyMock
             ->withArgs(
-                static fn ($name, $description, $displayName, $guardName) => in_array([$name, $description], $data)
-                    && null === $displayName
-                    && array_key_exists($guardName, config('auth.guards')),
+                static fn ($name, $description, $displayName, $guardName): bool => \in_array([$name, $description], $data, true)
+                    && $displayName === null
+                    && \array_key_exists($guardName, config('auth.guards')),
             )
-            ->times(count($data) * count(config('auth.guards')));
+            ->times(\count($data) * \count(config('auth.guards')));
     }
 }

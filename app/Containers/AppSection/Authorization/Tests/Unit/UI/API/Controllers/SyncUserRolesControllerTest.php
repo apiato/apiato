@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\SyncUserRolesAction;
@@ -15,10 +17,10 @@ final class SyncUserRolesControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(SyncUserRolesController::class);
-        $request = SyncUserRolesRequest::injectData();
+        $syncUserRolesRequest = SyncUserRolesRequest::injectData();
         $actionMock = $this->mock(SyncUserRolesAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($syncUserRolesRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($syncUserRolesRequest, $actionMock);
     }
 }

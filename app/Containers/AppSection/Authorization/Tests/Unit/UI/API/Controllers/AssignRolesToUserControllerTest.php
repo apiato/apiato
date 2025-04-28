@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\AssignRolesToUserAction;
@@ -15,10 +17,10 @@ final class AssignRolesToUserControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(AssignRolesToUserController::class);
-        $request = AssignRolesToUserRequest::injectData();
+        $assignRolesToUserRequest = AssignRolesToUserRequest::injectData();
         $actionMock = $this->mock(AssignRolesToUserAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($assignRolesToUserRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($assignRolesToUserRequest, $actionMock);
     }
 }

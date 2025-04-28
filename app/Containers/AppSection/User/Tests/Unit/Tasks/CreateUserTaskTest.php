@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Models\User;
@@ -16,7 +18,7 @@ final class CreateUserTaskTest extends UnitTestCase
     public function testCreateUser(): void
     {
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
@@ -34,9 +36,9 @@ final class CreateUserTaskTest extends UnitTestCase
         $this->expectExceptionMessage('Failed to create Resource.');
 
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
-            'birth' => 'wrong-format',
+            'birth'    => 'wrong-format',
         ];
 
         app(CreateUserTask::class)->run($data);

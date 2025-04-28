@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\OrderByFieldCriteria;
@@ -18,8 +20,8 @@ final class OrderByFieldCriteriaTest extends ShipTestCase
         $modelC = TestUserFactory::new()->create(['name' => 'C']);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByFieldCriteria('name', 'asc');
-        $repository->pushCriteria($criteria);
+        $orderByFieldCriteria = new OrderByFieldCriteria('name', 'asc');
+        $repository->pushCriteria($orderByFieldCriteria);
 
         $result = $repository->all();
 
@@ -35,8 +37,8 @@ final class OrderByFieldCriteriaTest extends ShipTestCase
         $modelC = TestUserFactory::new()->create(['name' => 'C']);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByFieldCriteria('name', 'desc');
-        $repository->pushCriteria($criteria);
+        $orderByFieldCriteria = new OrderByFieldCriteria('name', 'desc');
+        $repository->pushCriteria($orderByFieldCriteria);
 
         $result = $repository->all();
 
@@ -50,7 +52,7 @@ final class OrderByFieldCriteriaTest extends ShipTestCase
         $this->expectException(\InvalidArgumentException::class);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByFieldCriteria('name', 'wrong');
-        $repository->pushCriteria($criteria);
+        $orderByFieldCriteria = new OrderByFieldCriteria('name', 'wrong');
+        $repository->pushCriteria($orderByFieldCriteria);
     }
 }

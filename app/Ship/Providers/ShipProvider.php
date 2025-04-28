@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
@@ -31,6 +33,7 @@ class ShipProvider extends ParentMainServiceProvider
     /**
      * Register any application services.
      */
+    #[\Override]
     public function register(): void
     {
         parent::register();

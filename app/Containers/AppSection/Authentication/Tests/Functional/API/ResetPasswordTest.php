@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Tasks\CreatePasswordResetTokenTask;
@@ -14,25 +16,25 @@ final class ResetPasswordTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testResetPassword(): void
     {
         $this->getTestingUser([
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
         $token = app(CreatePasswordResetTokenTask::class)->run($this->testingUser);
         $data = [
-            'email' => $this->testingUser->email,
+            'email'    => $this->testingUser->email,
             'password' => 's3cr3tPa$$',
-            'token' => $token,
+            'token'    => $token,
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertNoContent();
+        $testResponse->assertNoContent();
     }
 
     public function testResetPasswordWithInvalidEmail(): void
@@ -41,10 +43,10 @@ final class ResetPasswordTest extends ApiTestCase
             'email' => 'missing-at.test',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.email.0', 'The email field must be a valid email address.')
                 ->etc(),
@@ -57,10 +59,10 @@ final class ResetPasswordTest extends ApiTestCase
             'password' => '((((()))))',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->has(
                     'errors.password',

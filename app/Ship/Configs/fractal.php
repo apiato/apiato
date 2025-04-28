@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use Apiato\Core\Services\Response;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\DataArraySerializer;
 
@@ -28,7 +31,7 @@ return [
      * If you wish to override or extend the default Spatie\Fractal\Fractal
      * instance provide the name of the class you want to use.
      */
-    'fractal_class' => Apiato\Core\Services\Response::class,
+    'fractal_class' => Response::class,
 
     'auto_includes' => [
         /*

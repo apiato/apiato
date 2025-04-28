@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -9,24 +11,23 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 
 class CreateRoleTask extends ParentTask
 {
-    public function __construct(
-        private readonly RoleRepository $repository,
-    ) {
+    public function __construct(private readonly RoleRepository $repository)
+    {
     }
 
     /**
      * @throws CreateResourceFailedException
      */
-    public function run(string $name, string|null $description = null, string|null $displayName = null, string $guardName = 'api'): Role
+    public function run(string $name, null|string $description = null, null|string $displayName = null, string $guardName = 'api'): Role
     {
         try {
             $role = $this->repository->create([
-                'name' => strtolower($name),
-                'description' => $description,
+                'name'         => strtolower($name),
+                'description'  => $description,
                 'display_name' => $displayName,
-                'guard_name' => $guardName,
+                'guard_name'   => $guardName,
             ]);
-        } catch (\Exception) {
+        } catch (\Throwable) {
             throw new CreateResourceFailedException();
         }
 

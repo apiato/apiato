@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
@@ -13,20 +15,21 @@ final class CreateRoleTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testCreateRole(): void
     {
         $data = [
-            'name' => 'manager',
+            'name'         => 'manager',
             'display_name' => 'manager',
-            'description' => 'he manages things',
+            'description'  => 'he manages things',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertCreated();
+        $testResponse->assertCreated();
+
         $responseContent = $this->getResponseContentObject();
         $this->assertSame($data['name'], $responseContent->data->name);
     }
@@ -34,15 +37,15 @@ final class CreateRoleTest extends ApiTestCase
     public function testCreateRoleWithWrongName(): void
     {
         $data = [
-            'name' => 'includes Space',
+            'name'         => 'includes Space',
             'display_name' => 'manager',
-            'description' => 'he manages things',
+            'description'  => 'he manages things',
         ];
 
-        $response = $this->makeCall($data);
+        $testResponse = $this->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('message')
                     ->has('errors')
                     ->where('errors.name.0', 'String should not contain space.'),
@@ -53,8 +56,8 @@ final class CreateRoleTest extends ApiTestCase
     {
         $this->getTestingUserWithoutAccess();
 
-        $response = $this->makeCall();
+        $testResponse = $this->makeCall();
 
-        $response->assertForbidden();
+        $testResponse->assertForbidden();
     }
 }

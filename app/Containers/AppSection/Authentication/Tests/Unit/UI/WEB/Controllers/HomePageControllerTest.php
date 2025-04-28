@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -13,7 +15,7 @@ final class HomePageControllerTest extends UnitTestCase
     {
         $controller = app(HomePageController::class);
 
-        $view = $controller->__invoke();
+        $view = $controller();
 
         $this->assertSame('appSection@authentication::home', $view->name());
     }

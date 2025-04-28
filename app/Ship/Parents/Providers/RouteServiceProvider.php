@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Parents\Providers;
 
 use Apiato\Core\Abstracts\Providers\RouteServiceProvider as AbstractRouteServiceProvider;
@@ -10,6 +12,7 @@ use Apiato\Core\Abstracts\Providers\RouteServiceProvider as AbstractRouteService
  */
 abstract class RouteServiceProvider extends AbstractRouteServiceProvider
 {
+    #[\Override]
     public function boot(): void
     {
         $this->configureRateLimiting();

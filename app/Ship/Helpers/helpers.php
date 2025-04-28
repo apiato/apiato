@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Ship Helpers
@@ -10,12 +12,11 @@
 | All files under app/{section_name}/{container_name}/Helpers/ folder will be autoloaded by Apiato.
 |
 */
-
 if (!function_exists('activeGuard')) {
     /**
      * Get the current logged-in user guard.
      */
-    function activeGuard(): string|null
+    function activeGuard(): null|string
     {
         foreach (array_keys(config('auth.guards')) as $guard) {
             if (auth()->guard($guard)->check()) {

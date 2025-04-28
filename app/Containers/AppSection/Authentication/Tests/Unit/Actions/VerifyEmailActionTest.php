@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\VerifyEmailAction;
@@ -17,32 +19,32 @@ final class VerifyEmailActionTest extends UnitTestCase
     public function testVerifyEmail(): void
     {
         Notification::fake();
-        $user = UserFactory::new()->unverified()->createOne();
+        $model = UserFactory::new()->unverified()->createOne();
         $action = app(VerifyEmailAction::class);
-        $request = VerifyEmailRequest::injectData([
-            'hash' => sha1($user->email),
+        $verifyEmailRequest = VerifyEmailRequest::injectData([
+            'hash' => sha1((string) $model->email),
         ])->withUrlParameters([
-            'user_id' => $user->id,
+            'user_id' => $model->id,
         ]);
 
-        $action->run($request);
+        $action->run($verifyEmailRequest);
 
-        $this->assertTrue($user->refresh()->hasVerifiedEmail());
-        Notification::assertSentTo($user, EmailVerified::class);
+        $this->assertTrue($model->refresh()->hasVerifiedEmail());
+        Notification::assertSentTo($model, EmailVerified::class);
     }
 
     public function testGivenEmailMismatchedShouldThrowProperException(): void
     {
         $this->expectException(InvalidEmailVerificationDataException::class);
 
-        $user = UserFactory::new()->unverified()->createOne();
+        $model = UserFactory::new()->unverified()->createOne();
         $action = app(VerifyEmailAction::class);
-        $request = VerifyEmailRequest::injectData([
+        $verifyEmailRequest = VerifyEmailRequest::injectData([
             'hash' => sha1('nonematching@email.com'),
         ])->withUrlParameters([
-            'user_id' => $user->id,
+            'user_id' => $model->id,
         ]);
 
-        $action->run($request);
+        $action->run($verifyEmailRequest);
     }
 }

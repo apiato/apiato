@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Notifications;
 
 use App\Containers\AppSection\Authentication\Notifications\EmailVerified;
@@ -15,14 +17,14 @@ final class EmailVerifiedTest extends UnitTestCase
     {
         Notification::fake();
         Notification::assertNothingSent();
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $user->notify(new EmailVerified());
+        $model->notify(new EmailVerified());
 
-        Notification::assertSentTo($user, EmailVerified::class, function (EmailVerified $notification) use ($user) {
-            $email = $notification->toMail($user);
-            $this->assertSame('Email Verified', $email->subject);
-            $this->assertSame(['Your email has been verified.'], $email->introLines);
+        Notification::assertSentTo($model, EmailVerified::class, function (EmailVerified $notification) use ($model): true {
+            $mailMessage = $notification->toMail($model);
+            $this->assertSame('Email Verified', $mailMessage->subject);
+            $this->assertSame(['Your email has been verified.'], $mailMessage->introLines);
 
             return true;
         });

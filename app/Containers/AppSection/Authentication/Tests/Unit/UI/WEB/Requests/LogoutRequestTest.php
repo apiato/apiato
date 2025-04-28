@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Requests;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class LogoutRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => null,
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -38,11 +40,12 @@ final class LogoutRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = LogoutRequest::injectData([], $this->getTestingUserWithoutAccess());
+        $logoutRequest = LogoutRequest::injectData([], $this->getTestingUserWithoutAccess());
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($logoutRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

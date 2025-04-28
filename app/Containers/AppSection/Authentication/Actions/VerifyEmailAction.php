@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use App\Containers\AppSection\Authentication\Exceptions\InvalidEmailVerificationDataException;
@@ -28,11 +30,13 @@ class VerifyEmailAction extends ParentAction
 
         throw_unless($this->emailIsValid($request, $user), InvalidEmailVerificationDataException::class);
 
-        if (!$user->hasVerifiedEmail()) {
-            $user->markEmailAsVerified();
-
-            $user->notify(new EmailVerified());
+        if ($user->hasVerifiedEmail()) {
+            return;
         }
+
+        $user->markEmailAsVerified();
+
+        $user->notify(new EmailVerified());
     }
 
     private function emailIsValid(Request $request, User $user): bool

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Notifications;
 
 use App\Containers\AppSection\Authentication\Notifications\PasswordReset;
@@ -15,14 +17,14 @@ final class PasswordResetTest extends UnitTestCase
     {
         Notification::fake();
         Notification::assertNothingSent();
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $user->notify(new PasswordReset());
+        $model->notify(new PasswordReset());
 
-        Notification::assertSentTo($user, PasswordReset::class, function (PasswordReset $notification) use ($user) {
-            $email = $notification->toMail($user);
-            $this->assertSame('Password Reset', $email->subject);
-            $this->assertSame(['Your password has been reset successfully.'], $email->introLines);
+        Notification::assertSentTo($model, PasswordReset::class, function (PasswordReset $notification) use ($model): true {
+            $mailMessage = $notification->toMail($model);
+            $this->assertSame('Password Reset', $mailMessage->subject);
+            $this->assertSame(['Your password has been reset successfully.'], $mailMessage->introLines);
 
             return true;
         });

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\FindUserByIdAction;
@@ -13,12 +15,12 @@ final class FindUserByIdActionTest extends UnitTestCase
 {
     public function testCanDeleteUser(): void
     {
-        $user = UserFactory::new()->createOne();
-        $request = FindUserByIdRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
+        $model = UserFactory::new()->createOne();
+        $findUserByIdRequest = FindUserByIdRequest::injectData()->withUrlParameters(['user_id' => $model->id]);
         $action = app(FindUserByIdAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($findUserByIdRequest);
 
-        $this->assertSame($user->id, $result->id);
+        $this->assertSame($model->id, $result->id);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Kernels;
 
 use Illuminate\Console\Scheduling\Schedule;
@@ -23,6 +25,7 @@ class ConsoleKernel extends LaravelConsoleKernel
      *
      * @return void
      */
+    #[\Override]
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
@@ -33,6 +36,7 @@ class ConsoleKernel extends LaravelConsoleKernel
      *
      * @return void
      */
+    #[\Override]
     protected function commands()
     {
         // NOTE: No need to load your Commands manually from here.

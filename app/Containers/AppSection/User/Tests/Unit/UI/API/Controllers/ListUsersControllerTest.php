@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\ListUsersAction;
@@ -15,10 +17,10 @@ final class ListUsersControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(ListUsersController::class);
-        $request = ListUsersRequest::injectData();
+        $listUsersRequest = ListUsersRequest::injectData();
         $actionMock = $this->mock(ListUsersAction::class);
         $actionMock->expects()->run()->andReturn(new LengthAwarePaginator([], 0, 1));
 
-        $controller->__invoke($request, $actionMock);
+        $controller($listUsersRequest, $actionMock);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -15,23 +17,24 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testDetachSinglePermissionFromRole(): void
     {
-        $permissionA = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
-        $role->givePermissionTo([$permissionA, $permissionB]);
+        $role->givePermissionTo([$model, $permissionB]);
+
         $data = [
-            'permission_ids' => [$permissionA->getHashedKey()],
+            'permission_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
@@ -43,19 +46,20 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 
     public function testDetachMultiplePermissionFromRole(): void
     {
-        $permissionA = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $permissionC = PermissionFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
-        $role->givePermissionTo([$permissionA, $permissionB, $permissionC]);
+        $role->givePermissionTo([$model, $permissionB, $permissionC]);
+
         $data = [
-            'permission_ids' => [$permissionA->getHashedKey(), $permissionC->getHashedKey()],
+            'permission_ids' => [$model->getHashedKey(), $permissionC->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
@@ -67,16 +71,16 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 
     public function testDetachPermissionFromNonExistingRole(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$permission->getHashedKey()],
+            'permission_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
                 ->etc(),
@@ -85,20 +89,20 @@ final class RevokeRolePermissionsTest extends ApiTestCase
 
     public function testDetachNonExistingPermissionFromRole(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{role_id}')->makeCall($data);
 
-        $response->assertJson(
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                static fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors): AssertableJson => $errors->has(
                     'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds): AssertableJson => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

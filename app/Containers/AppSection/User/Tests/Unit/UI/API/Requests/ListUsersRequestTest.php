@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Models\User;
@@ -31,14 +33,15 @@ final class ListUsersRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = ListUsersRequest::injectData();
+        $listUsersRequest = ListUsersRequest::injectData();
         $gateMock = $this->getGateMock('index', [
             User::class,
         ]);
 
-        $this->assertTrue($request->authorize($gateMock));
+        $this->assertTrue($listUsersRequest->authorize($gateMock));
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Policies;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -34,8 +36,8 @@ final class UserPolicyTest extends UnitTestCase
     public function testCanUpdateUserAsOwner(): void
     {
         $policy = app(UserPolicy::class);
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $this->assertTrue($policy->update($user, $user->id));
+        $this->assertTrue($policy->update($model, $model->id));
     }
 }

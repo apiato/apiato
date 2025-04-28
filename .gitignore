@@ -7,8 +7,11 @@ storage/logs/laravel.log
 /public/uploads/
 /laradock*/
 _ide_helper*.php
+.phpstorm.meta.php
+_ide_helper_models.php
 /.vagrant
 .php-cs-fixer.cache
+.phpcs-cache
 /psalm_cache/
 /app/Containers/Vendor
 .DS_Store
@@ -30,3 +33,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Docker
+docker/nginx/logs
+make/configs/options.local.mk
+/docker-compose.yml

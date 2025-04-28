@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -14,16 +16,16 @@ final class PermissionTransformerTest extends UnitTestCase
 
     public function testCanTransformSingleObject(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $expected = [
-            'object' => $permission->getResourceKey(),
-            'id' => $permission->getHashedKey(),
-            'name' => $permission->name,
-            'display_name' => $permission->display_name,
-            'description' => $permission->description,
+            'object'       => $model->getResourceKey(),
+            'id'           => $model->getHashedKey(),
+            'name'         => $model->name,
+            'display_name' => $model->display_name,
+            'description'  => $model->description,
         ];
 
-        $transformedResource = $this->transformer->transform($permission);
+        $transformedResource = $this->transformer->transform($model);
 
         $this->assertEquals($expected, $transformedResource);
     }
@@ -40,9 +42,11 @@ final class PermissionTransformerTest extends UnitTestCase
         $this->assertSame([], $this->transformer->getDefaultIncludes());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new PermissionTransformer();
     }
 }

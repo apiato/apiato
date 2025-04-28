@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Exceptions\Handlers;
 
 use Apiato\Core\Abstracts\Exceptions\Exception as CoreException;
@@ -37,9 +39,10 @@ class ExceptionsHandler extends CoreExceptionsHandler
     /**
      * Register the exception handling callbacks for the application.
      */
+    #[\Override]
     public function register(): void
     {
-        $this->reportable(static function (\Throwable $e) {
+        $this->reportable(static function (\Throwable $e): void {
         });
 
         $this->renderable(function (CoreException $e, $request) {
@@ -67,27 +70,7 @@ class ExceptionsHandler extends CoreExceptionsHandler
         });
     }
 
-    private function buildJsonResponse(CoreException $e): JsonResponse
-    {
-        if (!App::isProduction()) {
-            $response = [
-                'message' => $e->getMessage(),
-                'errors' => $e->getErrors(),
-                'exception' => get_class($e),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-                'trace' => $e->getTrace(),
-            ];
-        } else {
-            $response = [
-                'message' => $e->getMessage(),
-                'errors' => $e->getErrors(),
-            ];
-        }
-
-        return response()->json($response, (int) $e->getCode());
-    }
-
+    #[\Override]
     protected function unauthenticated($request, LaravelAuthenticationException $exception): JsonResponse|RedirectResponse
     {
         if ($this->shouldReturnJson($request, $exception)) {
@@ -95,5 +78,26 @@ class ExceptionsHandler extends CoreExceptionsHandler
         }
 
         return redirect()->guest(action(LoginPageController::class));
+    }
+
+    private function buildJsonResponse(CoreException $e): JsonResponse
+    {
+        if (!App::isProduction()) {
+            $response = [
+                'message'   => $e->getMessage(),
+                'errors'    => $e->getErrors(),
+                'exception' => $e::class,
+                'file'      => $e->getFile(),
+                'line'      => $e->getLine(),
+                'trace'     => $e->getTrace(),
+            ];
+        } else {
+            $response = [
+                'message' => $e->getMessage(),
+                'errors'  => $e->getErrors(),
+            ];
+        }
+
+        return response()->json($response, (int) $e->getCode());
     }
 }

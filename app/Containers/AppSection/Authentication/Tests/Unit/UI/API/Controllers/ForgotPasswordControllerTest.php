@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\ForgotPasswordAction;
@@ -14,11 +16,11 @@ final class ForgotPasswordControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(ForgotPasswordController::class);
-        $request = ForgotPasswordRequest::injectData();
+        $forgotPasswordRequest = ForgotPasswordRequest::injectData();
         $actionMock = $this->mock(ForgotPasswordAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($forgotPasswordRequest);
 
-        $response = $controller->__invoke($request, $actionMock);
+        $response = $controller($forgotPasswordRequest, $actionMock);
 
         $this->assertSame(204, $response->getStatusCode());
     }

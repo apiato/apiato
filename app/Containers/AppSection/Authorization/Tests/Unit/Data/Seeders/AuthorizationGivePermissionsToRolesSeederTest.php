@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationGivePermissionsToRolesSeeder_3;

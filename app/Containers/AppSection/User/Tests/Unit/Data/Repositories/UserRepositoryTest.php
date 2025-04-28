@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Data\Repositories;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -12,11 +14,11 @@ final class UserRepositoryTest extends UnitTestCase
     public function testRepositoryHasExpectedSearchableFieldsSet(): void
     {
         $data = [
-            'id' => '=',
-            'name' => 'like',
-            'email' => '=',
+            'id'                => '=',
+            'name'              => 'like',
+            'email'             => '=',
             'email_verified_at' => 'like',
-            'created_at' => 'like',
+            'created_at'        => 'like',
         ];
         $repository = app(UserRepository::class);
 

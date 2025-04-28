@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Models;
 
 use Apiato\Core\Contracts\HasResourceKey;
@@ -20,6 +22,7 @@ class Permission extends SpatiePermission implements HasResourceKey
         'description',
     ];
 
+    #[\Override]
     public function newCollection(array $models = []): PermissionCollection
     {
         return new PermissionCollection($models);

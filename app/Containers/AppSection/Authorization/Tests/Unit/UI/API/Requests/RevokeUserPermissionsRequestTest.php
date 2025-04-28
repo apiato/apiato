@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class RevokeUserPermissionsRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-permissions',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -39,20 +41,21 @@ final class RevokeUserPermissionsRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertSame([
-            'user_id' => 'exists:users,id',
-            'permission_ids' => 'array|required',
+            'user_id'          => 'exists:users,id',
+            'permission_ids'   => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ], $rules);
     }
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = RevokeUserPermissionsRequest::injectData([], $user)->withUrlParameters(['user_id' => $user->id]);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
+        $revokeUserPermissionsRequest = RevokeUserPermissionsRequest::injectData([], $userModel)->withUrlParameters(['user_id' => $userModel->id]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($revokeUserPermissionsRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

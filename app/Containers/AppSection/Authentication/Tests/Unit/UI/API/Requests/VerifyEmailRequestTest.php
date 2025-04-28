@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class VerifyEmailRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => null,
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -40,11 +42,12 @@ final class VerifyEmailRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = VerifyEmailRequest::injectData([], $this->getTestingUserWithoutAccess());
+        $verifyEmailRequest = VerifyEmailRequest::injectData([], $this->getTestingUserWithoutAccess());
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($verifyEmailRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

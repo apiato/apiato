@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -9,7 +11,7 @@ class ResetPasswordRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [];
@@ -19,8 +21,8 @@ class ResetPasswordRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'token' => 'required',
-            'email' => 'required|email',
+            'token'    => 'required',
+            'email'    => 'required|email',
             'password' => [
                 'required',
                 Password::default(),

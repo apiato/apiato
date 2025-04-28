@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -15,28 +17,29 @@ final class SyncRolePermissionsTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testSyncDuplicatedPermissionsToRole(): void
     {
-        $permissionA = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
-        $role->givePermissionTo($permissionA);
+        $role->givePermissionTo($model);
+
         $data = [
-            'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
+            'permission_ids' => [$model->getHashedKey(), $permissionB->getHashedKey()],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.object', 'Role')
                 ->where('data.id', $role->getHashedKey())
                 ->count('data.permissions.data', 2)
-                ->where('data.permissions.data.0.id', $permissionA->getHashedKey())
+                ->where('data.permissions.data.0.id', $model->getHashedKey())
                 ->where('data.permissions.data.1.id', $permissionB->getHashedKey())
                 ->etc(),
         );
@@ -44,16 +47,16 @@ final class SyncRolePermissionsTest extends ApiTestCase
 
     public function testSyncPermissionsOnNonExistingRole(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
-            'permission_ids' => [$permission->getHashedKey()],
+            'permission_ids' => [$model->getHashedKey()],
         ];
 
-        $response = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($invalidId, replace: '{role_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('errors')
                 ->where('errors.role_id.0', 'The selected role id is invalid.')
                 ->etc(),
@@ -62,21 +65,21 @@ final class SyncRolePermissionsTest extends ApiTestCase
 
     public function testSyncNonExistingPermissionOnRole(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $invalidId = 7777777;
         $data = [
             'permission_ids' => [$this->encode($invalidId)],
         ];
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{role_id}')->makeCall($data);
 
-        $response->assertUnprocessable();
-        $response->assertJson(
+        $testResponse->assertUnprocessable();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'errors',
-                static fn (AssertableJson $errors) => $errors->has(
+                static fn (AssertableJson $errors): AssertableJson => $errors->has(
                     'permission_ids.0',
-                    static fn (AssertableJson $permissionIds) => $permissionIds->where(0, 'The selected permission_ids.0 is invalid.'),
+                    static fn (AssertableJson $permissionIds): AssertableJson => $permissionIds->where('0', 'The selected permission_ids.0 is invalid.'),
                 )->etc(),
             )->etc(),
         );

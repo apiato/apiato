@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
@@ -14,10 +16,10 @@ final class RegisterUserControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(RegisterUserController::class);
-        $request = RegisterUserRequest::injectData();
+        $registerUserRequest = RegisterUserRequest::injectData();
         $actionMock = $this->mock(RegisterUserAction::class);
-        $actionMock->expects()->transactionalRun($request);
+        $actionMock->expects()->transactionalRun($registerUserRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($registerUserRequest, $actionMock);
     }
 }

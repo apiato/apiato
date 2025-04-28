@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
@@ -14,10 +16,10 @@ final class LogoutControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(LogoutController::class);
-        $request = LogoutRequest::injectData();
+        $logoutRequest = LogoutRequest::injectData();
         $actionMock = $this->mock(ApiLogoutAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($logoutRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($logoutRequest, $actionMock);
     }
 }

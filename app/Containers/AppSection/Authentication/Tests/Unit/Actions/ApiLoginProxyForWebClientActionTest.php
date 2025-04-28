@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLoginProxyForWebClientAction;
@@ -16,15 +18,15 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
     public function testCanLogin(): void
     {
         $credentials = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($credentials);
         $this->actingAs($this->testingUser, 'web');
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($loginProxyPasswordGrantRequest);
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
@@ -33,18 +35,18 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $credentials = [
-            'email' => 'ganldalf@the.grey', // correct email
-            'name' => 'gandalf', // correct name
+            'email'    => 'ganldalf@the.grey', // correct email
+            'name'     => 'gandalf', // correct name
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($credentials);
         $this->actingAs($this->testingUser, 'web');
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData($credentials);
         $oAuthTaskMock = $this->mock(CallOAuthServerTask::class);
         $oAuthTaskMock->expects('run')->once()->andReturn(Token::fake());
         $action = app(ApiLoginProxyForWebClientAction::class, ['callOAuthServerTask' => $oAuthTaskMock]);
 
-        $response = $action->run($request);
+        $response = $action->run($loginProxyPasswordGrantRequest);
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
@@ -55,46 +57,46 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
 
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $userDetails = [
-            'email' => 'ganldalf@the.grey',
-            'name' => 'gandalf',
+            'email'    => 'ganldalf@the.grey',
+            'name'     => 'gandalf',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($userDetails);
         $this->actingAs($this->testingUser, 'web');
         $credentials = [
-            'email' => 'ganldalf@the.white', // wrong email
-            'name' => 'saruman', // wrong name
+            'email'    => 'ganldalf@the.white', // wrong email
+            'name'     => 'saruman', // wrong name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData($credentials);
         $action = app(ApiLoginProxyForWebClientAction::class);
 
-        $action->run($request);
+        $action->run($loginProxyPasswordGrantRequest);
     }
 
     public function testShouldStopCallingOAuthServerAfterFirstSuccessfulLogin(): void
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $userDetails = [
-            'email' => 'ganldalf@the.grey',
-            'name' => 'gandalf',
+            'email'    => 'ganldalf@the.grey',
+            'name'     => 'gandalf',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($userDetails);
         $this->actingAs($this->testingUser, 'web');
         $credentials = [
-            'email' => 'ganldalf@the.grey', // correct email
-            'name' => 'saruman', // wrong name
+            'email'    => 'ganldalf@the.grey', // correct email
+            'name'     => 'saruman', // wrong name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData($credentials);
         $oAuthTaskMock = $this->mock(CallOAuthServerTask::class);
         // oauth server should be called only once
         // because the first login field is correct
         $oAuthTaskMock->expects('run')->once()->andReturn(Token::fake());
         $action = app(ApiLoginProxyForWebClientAction::class, ['callOAuthServerTask' => $oAuthTaskMock]);
 
-        $response = $action->run($request);
+        $response = $action->run($loginProxyPasswordGrantRequest);
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }
@@ -103,18 +105,18 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $userDetails = [
-            'email' => 'ganldalf@the.grey',
-            'name' => 'gandalf',
+            'email'    => 'ganldalf@the.grey',
+            'name'     => 'gandalf',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($userDetails);
         $this->actingAs($this->testingUser, 'web');
         $credentials = [
-            'email' => 'ganldalf@the.white', // wrong email
-            'name' => 'gandalf', // correct name
+            'email'    => 'ganldalf@the.white', // wrong email
+            'name'     => 'gandalf', // correct name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginProxyPasswordGrantRequest::injectData($credentials);
+        $loginProxyPasswordGrantRequest = LoginProxyPasswordGrantRequest::injectData($credentials);
         $oAuthTaskMock = $this->mock(CallOAuthServerTask::class);
         // call oauth server until it returns a token (successful login)
         // oauth server should be called twice, because the second login field is correct
@@ -122,11 +124,11 @@ final class ApiLoginProxyForWebClientActionTest extends UnitTestCase
             ->twice()
             ->andReturnUsing(
                 static fn () => throw new LoginFailedException(),
-                static fn () => Token::fake(),
+                static fn (): Token => Token::fake(),
             );
         $action = app(ApiLoginProxyForWebClientAction::class, ['callOAuthServerTask' => $oAuthTaskMock]);
 
-        $response = $action->run($request);
+        $response = $action->run($loginProxyPasswordGrantRequest);
 
         $this->assertSame('refreshToken', $response->refreshTokenCookie->getName());
     }

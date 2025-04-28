@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
@@ -17,17 +19,17 @@ final class UpdatePasswordActionTest extends UnitTestCase
     public function testCanUpdateCurrentPassword(): void
     {
         Notification::fake();
-        $user = UserFactory::new()->createOne(['password' => 'youShallNotPass']);
+        $model = UserFactory::new()->createOne(['password' => 'youShallNotPass']);
         $data = [
-            'user_id' => $user->id,
+            'user_id'  => $model->id,
             'password' => 'test',
         ];
-        $request = UpdatePasswordRequest::injectData($data, $user)->withUrlParameters(['user_id' => $user->id]);
+        $updatePasswordRequest = UpdatePasswordRequest::injectData($data, $model)->withUrlParameters(['user_id' => $model->id]);
         $action = app(UpdatePasswordAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($updatePasswordRequest);
 
         $this->assertTrue(Hash::check($data['password'], $result->password));
-        Notification::assertSentTo($user, PasswordUpdatedNotification::class);
+        Notification::assertSentTo($model, PasswordUpdatedNotification::class);
     }
 }

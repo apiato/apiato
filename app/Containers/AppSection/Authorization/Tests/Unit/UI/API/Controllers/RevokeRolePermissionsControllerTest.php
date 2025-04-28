@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\RevokeRolePermissionsAction;
@@ -15,10 +17,10 @@ final class RevokeRolePermissionsControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(RevokeRolePermissionsController::class);
-        $request = RevokeRolePermissionsRequest::injectData();
+        $revokeRolePermissionsRequest = RevokeRolePermissionsRequest::injectData();
         $actionMock = $this->mock(RevokeRolePermissionsAction::class);
-        $actionMock->expects()->run($request)->andReturn(RoleFactory::new()->createOne());
+        $actionMock->expects()->run($revokeRolePermissionsRequest)->andReturn(RoleFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($revokeRolePermissionsRequest, $actionMock);
     }
 }

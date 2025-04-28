@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Data\Factories;
 
 use App\Containers\AppSection\User\Enums\Gender;
@@ -20,45 +22,45 @@ class UserFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => 'password',
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
+            'password'          => 'password',
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'gender' => fake()->randomElement(['male', 'female', 'unspecified']),
-            'birth' => fake()->date(),
+            'remember_token'    => Str::random(10),
+            'gender'            => fake()->randomElement(['male', 'female', 'unspecified']),
+            'birth'             => fake()->date(),
         ];
     }
 
-    public function admin(): static
+    public function admin(): self
     {
-        return $this->afterCreating(function (User $user) {
+        return $this->afterCreating(function (User $user): void {
             $user->assignRole(config('appSection-authorization.admin_role'));
         });
     }
 
-    public function unverified(): static
+    public function unverified(): self
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function (array $attributes): array {
             return [
                 'email_verified_at' => null,
             ];
         });
     }
 
-    public function verified(): static
+    public function verified(): self
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function (array $attributes): array {
             return [
                 'email_verified_at' => now(),
             ];
         });
     }
 
-    public function gender(Gender $gender): static
+    public function gender(Gender $gender): self
     {
-        return $this->state(function (array $attributes) use ($gender) {
-            return compact('gender');
+        return $this->state(function (array $attributes) use ($gender): array {
+            return ['gender' => $gender];
         });
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Policies;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -8,9 +10,8 @@ use App\Ship\Parents\Policies\Policy as ParentPolicy;
 
 class UserPolicy extends ParentPolicy
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     public function delete(): bool

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
@@ -15,22 +17,22 @@ final class SendVerificationEmailTaskTest extends UnitTestCase
     public function testGivenEmailVerificationEnabledSendVerificationEmail(): void
     {
         Notification::fake();
-        $unverifiedUser = UserFactory::new()->unverified()->createOne();
+        $model = UserFactory::new()->unverified()->createOne();
         config()->set('appSection-authentication.require_email_verification', true);
 
-        app(SendVerificationEmailTask::class)->run($unverifiedUser, 'this_doesnt_matter_for_the_test');
+        app(SendVerificationEmailTask::class)->run($model, 'this_doesnt_matter_for_the_test');
 
-        Notification::assertSentTo($unverifiedUser, VerifyEmail::class);
+        Notification::assertSentTo($model, VerifyEmail::class);
     }
 
     public function testGivenEmailVerificationDisabledShouldNotSendVerificationEmail(): void
     {
         Notification::fake();
-        $unverifiedUser = UserFactory::new()->unverified()->createOne();
+        $model = UserFactory::new()->unverified()->createOne();
         config()->set('appSection-authentication.require_email_verification', false);
 
-        app(SendVerificationEmailTask::class)->run($unverifiedUser);
+        app(SendVerificationEmailTask::class)->run($model);
 
-        Notification::assertNotSentTo($unverifiedUser, VerifyEmail::class);
+        Notification::assertNotSentTo($model, VerifyEmail::class);
     }
 }

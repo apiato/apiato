@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Middlewares;
 
 use Apiato\Core\Middlewares\Http\Authenticate as CoreMiddleware;
 
 class Authenticate extends CoreMiddleware
 {
-    protected function redirectTo($request): string|null
+    #[\Override]
+    protected function redirectTo($request): null|string
     {
         if ($request->expectsJson()) {
             return null;

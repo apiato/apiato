@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -8,7 +10,7 @@ class SyncRolePermissionsRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [
@@ -23,8 +25,8 @@ class SyncRolePermissionsRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'role_id' => 'exists:roles,id',
-            'permission_ids' => 'array|required',
+            'role_id'          => 'exists:roles,id',
+            'permission_ids'   => 'array|required',
             'permission_ids.*' => 'required|exists:permissions,id',
         ];
     }

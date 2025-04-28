@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -14,26 +16,26 @@ final class GetUserProfileTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testCanGetOwnProfile(): void
     {
-        $user = $this->getTestingUser();
+        $userModel = $this->getTestingUser();
 
-        $response = $this->makeCall();
+        $testResponse = $this->makeCall();
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 static fn (AssertableJson $json): AssertableJson => $json
                     ->where('object', 'User')
-                    ->where('id', $user->getHashedKey())
-                    ->where('email', $user->email)
+                    ->where('id', $userModel->getHashedKey())
+                    ->where('email', $userModel->email)
                     ->whereType('email_verified_at', 'string')
-                    ->where('name', $user->name)
-                    ->where('gender', $user->gender->value)
+                    ->where('name', $userModel->name)
+                    ->where('gender', $userModel->gender->value)
                     ->whereType('birth', 'string')
                     ->etc(),
             )->etc(),
@@ -44,8 +46,8 @@ final class GetUserProfileTest extends ApiTestCase
     {
         $this->testingUser = UserFactory::new()->createOne();
 
-        $response = $this->auth(false)->makeCall();
+        $testResponse = $this->auth(false)->makeCall();
 
-        $response->assertUnauthorized();
+        $testResponse->assertUnauthorized();
     }
 }

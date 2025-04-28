@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -15,17 +17,17 @@ final class RoleAdminTransformerTest extends UnitTestCase
 
     public function testCanTransformSingleObject(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $expected = [
-            'object' => $role->getResourceKey(),
-            'id' => $role->getHashedKey(),
-            'name' => $role->name,
-            'display_name' => $role->display_name,
-            'guard_name' => $role->guard_name,
-            'description' => $role->description,
+            'object'       => $model->getResourceKey(),
+            'id'           => $model->getHashedKey(),
+            'name'         => $model->name,
+            'display_name' => $model->display_name,
+            'guard_name'   => $model->guard_name,
+            'description'  => $model->description,
         ];
 
-        $transformedResource = $this->transformer->transform($role);
+        $transformedResource = $this->transformer->transform($model);
 
         $this->assertEquals($expected, $transformedResource);
     }
@@ -44,18 +46,20 @@ final class RoleAdminTransformerTest extends UnitTestCase
 
     public function testIncludePermissions(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $role->permissions()->attach($permissions);
+        $model->permissions()->attach($permissions);
 
-        $resource = $this->transformer->includePermissions($role);
+        $collection = $this->transformer->includePermissions($model);
 
-        $this->assertSame($role->permissions, $resource->getData());
+        $this->assertSame($model->permissions, $collection->getData());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new RoleAdminTransformer();
     }
 }

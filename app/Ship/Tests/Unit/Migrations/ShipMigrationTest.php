@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Migrations;
 
 use App\Ship\Tests\ShipTestCase;
@@ -12,13 +14,13 @@ final class ShipMigrationTest extends ShipTestCase
     {
         $table = 'jobs';
         $columns = [
-            'id' => 'bigint',
-            'queue' => 'string',
-            'payload' => 'text',
-            'attempts' => 'smallint',
-            'reserved_at' => 'integer',
+            'id'           => 'bigint',
+            'queue'        => 'string',
+            'payload'      => 'text',
+            'attempts'     => 'smallint',
+            'reserved_at'  => 'integer',
             'available_at' => 'integer',
-            'created_at' => 'integer',
+            'created_at'   => 'integer',
         ];
 
         $this->assertDatabaseTable($table, $columns);
@@ -28,13 +30,13 @@ final class ShipMigrationTest extends ShipTestCase
     {
         $table = 'failed_jobs';
         $columns = [
-            'id' => 'bigint',
+            'id'         => 'bigint',
             'connection' => 'text',
-            'queue' => 'text',
-            'payload' => 'text',
-            'exception' => 'text',
-            'failed_at' => 'datetime',
-            'uuid' => 'string',
+            'queue'      => 'text',
+            'payload'    => 'text',
+            'exception'  => 'text',
+            'failed_at'  => 'datetime',
+            'uuid'       => 'string',
         ];
 
         $this->assertDatabaseTable($table, $columns);
@@ -44,14 +46,14 @@ final class ShipMigrationTest extends ShipTestCase
     {
         $table = 'notifications';
         $columns = [
-            'id' => 'guid',
-            'type' => 'string',
-            'notifiable_id' => 'bigint',
+            'id'              => 'string',
+            'type'            => 'string',
+            'notifiable_id'   => 'bigint',
             'notifiable_type' => 'string',
-            'data' => 'text',
-            'read_at' => 'datetime',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'data'            => 'text',
+            'read_at'         => 'datetime',
+            'created_at'      => 'datetime',
+            'updated_at'      => 'datetime',
         ];
 
         $this->assertDatabaseTable($table, $columns);

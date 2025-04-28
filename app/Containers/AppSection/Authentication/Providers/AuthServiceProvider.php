@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthServiceProvider;
@@ -11,11 +13,20 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
 {
     protected $policies = [];
 
+    #[\Override]
     public function boot(): void
     {
         parent::boot();
 
         $this->configPassport();
+    }
+
+    #[\Override]
+    public function register(): void
+    {
+        parent::register();
+
+        Passport::ignoreRoutes();
     }
 
     private function configPassport(): void
@@ -26,12 +37,5 @@ class AuthServiceProvider extends ParentAuthServiceProvider implements Deferrabl
 
         Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
-    }
-
-    public function register(): void
-    {
-        parent::register();
-
-        Passport::ignoreRoutes();
     }
 }

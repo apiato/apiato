@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Parents\Tests;
 
 use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
@@ -16,7 +18,7 @@ abstract class TestCase extends AbstractTestCase
 
     public static function authGuardDataProvider(): array
     {
-        return array_map(static fn (AuthGuard $guard) => [$guard->value], AuthGuard::cases());
+        return array_map(static fn (AuthGuard $guard): array => [$guard->value], AuthGuard::cases());
     }
 
     public function createApplication(): Application

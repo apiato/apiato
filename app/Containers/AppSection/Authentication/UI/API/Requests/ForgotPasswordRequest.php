@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -9,7 +11,7 @@ class ForgotPasswordRequest extends ParentRequest
 {
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     protected array $decode = [];
@@ -19,7 +21,7 @@ class ForgotPasswordRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'reseturl' => [
                 'required',
                 Rule::in(config('appSection-authentication.allowed-reset-password-urls')),

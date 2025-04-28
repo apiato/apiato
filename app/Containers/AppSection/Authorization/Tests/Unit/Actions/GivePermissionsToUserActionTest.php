@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToUserAction;
@@ -14,34 +16,34 @@ final class GivePermissionsToUserActionTest extends UnitTestCase
 {
     public function testCanGiveSinglePermission(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $permission = PermissionFactory::new()->createOne();
         $data = [
             'permission_ids' => [$permission->getHashedKey()],
         ];
-        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $user->id]);
+        $givePermissionsToUserRequest = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $model->id]);
         $action = app(GivePermissionsToUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($givePermissionsToUserRequest);
 
-        $this->assertSame($result->id, $user->id);
+        $this->assertSame($result->id, $model->id);
         $this->assertTrue($result->hasPermissionTo($permission->name));
     }
 
     public function testCanGiveMultiplePermissions(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $permissionA = PermissionFactory::new()->createOne();
         $permissionB = PermissionFactory::new()->createOne();
         $data = [
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];
-        $request = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $user->id]);
+        $givePermissionsToUserRequest = GivePermissionsToUserRequest::injectData($data)->withUrlParameters(['user_id' => $model->id]);
         $action = app(GivePermissionsToUserAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($givePermissionsToUserRequest);
 
-        $this->assertSame($result->id, $user->id);
+        $this->assertSame($result->id, $model->id);
         $this->assertTrue($result->hasAllPermissions([$permissionA->name, $permissionB->name]));
     }
 }

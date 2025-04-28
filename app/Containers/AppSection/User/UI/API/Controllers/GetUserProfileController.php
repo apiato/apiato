@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\GetUserProfileAction;
@@ -10,8 +12,8 @@ class GetUserProfileController extends ApiController
 {
     public function __invoke(GetUserProfileAction $action): array
     {
-        $user = $action->run();
+        $authenticatable = $action->run();
 
-        return $this->transform($user, UserTransformer::class);
+        return $this->transform($authenticatable, UserTransformer::class);
     }
 }

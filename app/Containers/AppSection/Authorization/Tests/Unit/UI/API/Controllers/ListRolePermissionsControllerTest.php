@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\ListRolePermissionsAction;
@@ -15,10 +17,10 @@ final class ListRolePermissionsControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(ListRolePermissionsController::class);
-        $request = ListRolePermissionsRequest::injectData();
+        $listRolePermissionsRequest = ListRolePermissionsRequest::injectData();
         $actionMock = $this->mock(ListRolePermissionsAction::class);
-        $actionMock->expects()->run($request)->andReturn(PermissionFactory::new()->count(2)->create());
+        $actionMock->expects()->run($listRolePermissionsRequest)->andReturn(PermissionFactory::new()->count(2)->create());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($listRolePermissionsRequest, $actionMock);
     }
 }

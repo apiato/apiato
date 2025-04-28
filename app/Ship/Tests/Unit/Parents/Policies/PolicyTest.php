@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Parents\Policies;
 
 use App\Containers\AppSection\User\Models\User;
@@ -17,20 +19,21 @@ final class PolicyTest extends ShipTestCase
     {
         $this->getTestingUser(createUserAsAdmin: true);
 
-        $request = FakeRequest::injectData([], $this->testingUser);
+        $fakeRequest = FakeRequest::injectData([], $this->testingUser);
 
-        $this->assertTrue($request->authorize(app(Gate::class)));
+        $this->assertTrue($fakeRequest->authorize(app(Gate::class)));
     }
 
     public function testNonAdminCannotBypassAllAuthorizations(): void
     {
         $this->getTestingUser();
 
-        $request = FakeRequest::injectData([], $this->testingUser);
+        $fakeRequest = FakeRequest::injectData([], $this->testingUser);
 
-        $this->assertFalse($request->authorize(app(Gate::class)));
+        $this->assertFalse($fakeRequest->authorize(app(Gate::class)));
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

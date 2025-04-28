@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Notifications;
 
 use App\Ship\Parents\Models\UserModel;
@@ -12,6 +14,7 @@ final class PasswordUpdatedNotification extends ParentNotification implements Sh
 {
     use Queueable;
 
+    #[\Override]
     public function via($notifiable): array
     {
         return ['mail'];

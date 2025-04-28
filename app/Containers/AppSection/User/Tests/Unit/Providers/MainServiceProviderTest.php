@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Providers;
 
 use App\Containers\AppSection\User\Providers\MainServiceProvider;
@@ -34,6 +36,7 @@ final class MainServiceProviderTest extends UnitTestCase
         );
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

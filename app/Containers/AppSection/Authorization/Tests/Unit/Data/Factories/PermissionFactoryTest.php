@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -13,15 +15,15 @@ final class PermissionFactoryTest extends UnitTestCase
 {
     public function testCanCreatePermission(): void
     {
-        $permission = PermissionFactory::new()->createOne();
+        $model = PermissionFactory::new()->createOne();
 
-        $this->assertInstanceOf(Permission::class, $permission);
+        $this->assertInstanceOf(Permission::class, $model);
     }
 
     public function testCanSetGuard(): void
     {
-        $permission = PermissionFactory::new()->withGuard(AuthGuard::API->value)->createOne();
+        $model = PermissionFactory::new()->withGuard(AuthGuard::API->value)->createOne();
 
-        $this->assertSame(AuthGuard::API->value, $permission->guard_name);
+        $this->assertSame(AuthGuard::API->value, $model->guard_name);
     }
 }

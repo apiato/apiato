@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Parents\Providers;
 
 use Apiato\Core\Abstracts\Providers\EventServiceProvider as AbstractEventServiceProvider;
@@ -18,6 +20,7 @@ abstract class EventServiceProvider extends AbstractEventServiceProvider
     /**
      * Register any other events for your application.
      */
+    #[\Override]
     public function boot(): void
     {
     }

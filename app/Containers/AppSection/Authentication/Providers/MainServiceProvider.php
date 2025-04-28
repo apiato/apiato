@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
@@ -21,6 +23,7 @@ class MainServiceProvider extends ParentMainServiceProvider
         // 'Foo' => Bar::class,
     ];
 
+    #[\Override]
     public function register(): void
     {
         parent::register();

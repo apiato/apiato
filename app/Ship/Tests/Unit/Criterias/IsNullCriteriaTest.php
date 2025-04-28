@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\IsNullCriteria;
@@ -13,12 +15,12 @@ final class IsNullCriteriaTest extends ShipTestCase
 {
     public function testCriteria(): void
     {
-        $modelsWithNull = TestUserFactory::new()->count(3)->create(['published' => null]);
-        $modelsWithNotNull = TestUserFactory::new()->count(2)->create(['published' => 'something']);
+        TestUserFactory::new()->count(3)->create(['published' => null]);
+        TestUserFactory::new()->count(2)->create(['published' => 'something']);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new IsNullCriteria('published');
-        $repository->pushCriteria($criteria);
+        $isNullCriteria = new IsNullCriteria('published');
+        $repository->pushCriteria($isNullCriteria);
 
         $result = $repository->all();
 

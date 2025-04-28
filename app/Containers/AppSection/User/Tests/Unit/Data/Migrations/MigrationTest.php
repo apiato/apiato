@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\User\Tests\UnitTestCase;
@@ -11,16 +13,16 @@ final class MigrationTest extends UnitTestCase
     public function testUsersTableHasExpectedColumns(): void
     {
         $columns = [
-            'id' => 'bigint',
-            'name' => 'string',
-            'email' => 'string',
+            'id'                => 'bigint',
+            'name'              => 'string',
+            'email'             => 'string',
             'email_verified_at' => 'datetime',
-            'password' => 'string',
-            'gender' => 'string',
-            'birth' => 'date',
-            'remember_token' => 'string',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'password'          => 'string',
+            'gender'            => 'string',
+            'birth'             => 'date',
+            'remember_token'    => 'string',
+            'created_at'        => 'datetime',
+            'updated_at'        => 'datetime',
         ];
 
         $this->assertDatabaseTable('users', $columns);
@@ -29,8 +31,8 @@ final class MigrationTest extends UnitTestCase
     public function testPasswordResetsTableHasExpectedColumns(): void
     {
         $columns = [
-            'email' => 'string',
-            'token' => 'string',
+            'email'      => 'string',
+            'token'      => 'string',
             'created_at' => 'datetime',
         ];
 

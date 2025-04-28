@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -13,11 +15,11 @@ final class FindUserByEmailTaskTest extends UnitTestCase
 {
     public function testFindUserByEmail(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $foundUser = app(FindUserByEmailTask::class)->run($user->email);
+        $foundUser = app(FindUserByEmailTask::class)->run($model->email);
 
-        $this->assertSame($user->email, $foundUser->email);
+        $this->assertSame($model->email, $foundUser->email);
     }
 
     public function testFindUserWithInvalidEmail(): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\SendVerificationEmailAction;

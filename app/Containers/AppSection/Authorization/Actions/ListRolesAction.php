@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use Apiato\Core\Exceptions\CoreInternalErrorException;
@@ -12,9 +14,8 @@ use Prettus\Repository\Exceptions\RepositoryException;
 
 class ListRolesAction extends ParentAction
 {
-    public function __construct(
-        private readonly RoleRepository $repository,
-    ) {
+    public function __construct(private readonly RoleRepository $repository)
+    {
     }
 
     /**

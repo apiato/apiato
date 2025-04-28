@@ -1,0 +1,24 @@
+#https://phpstan.org/user-guide/getting-started
+
+parameters:
+    level: 7
+    paths:
+        - app
+        - database
+    excludePaths:
+        - vendor/*
+        - app/Containers/Vendor/*
+
+    reportUnmatchedIgnoredErrors: true
+
+    ignoreErrors:
+        -
+            identifier: missingType.generics
+        -
+            identifier: missingType.iterableValue
+
+    fileExtensions:
+        - php
+
+includes:
+    - phpstan-baseline.neon

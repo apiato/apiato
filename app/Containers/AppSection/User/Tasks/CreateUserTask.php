@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tasks;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -9,9 +11,8 @@ use App\Ship\Parents\Tasks\Task as ParentTask;
 
 class CreateUserTask extends ParentTask
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     /**
@@ -21,7 +22,7 @@ class CreateUserTask extends ParentTask
     {
         try {
             $user = $this->repository->create($data);
-        } catch (\Exception) {
+        } catch (\Throwable) {
             throw new CreateResourceFailedException();
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\CLI;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
@@ -15,9 +17,9 @@ final class CreateAdminCommandTest extends CliTestCase
     public function testCanCreateAdmin(): void
     {
         $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
+            'name'                  => 'admin',
+            'email'                 => 'new@admin.com',
+            'password'              => 'password',
             'password_confirmation' => 'password',
         ];
         $this->artisan('apiato:create:admin')
@@ -29,7 +31,7 @@ final class CreateAdminCommandTest extends CliTestCase
             ->assertSuccessful();
 
         $this->assertDatabaseHas('users', [
-            'name' => $data['name'],
+            'name'  => $data['name'],
             'email' => $data['email'],
         ]);
         $this->assertTrue(Hash::check($data['password'], User::where('email', $data['email'])->first()->password));
@@ -38,9 +40,9 @@ final class CreateAdminCommandTest extends CliTestCase
     public function testErrorsOnNotMatchingPassword(): void
     {
         $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
+            'name'                  => 'admin',
+            'email'                 => 'new@admin.com',
+            'password'              => 'password',
             'password_confirmation' => 'not_matching_password',
         ];
 
@@ -53,7 +55,7 @@ final class CreateAdminCommandTest extends CliTestCase
             ->assertSuccessful();
 
         $this->assertDatabaseMissing('users', [
-            'name' => $data['name'],
+            'name'  => $data['name'],
             'email' => $data['email'],
         ]);
     }
@@ -61,9 +63,9 @@ final class CreateAdminCommandTest extends CliTestCase
     public function testOutputsExceptionMessages(): void
     {
         $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
+            'name'                  => 'admin',
+            'email'                 => 'new@admin.com',
+            'password'              => 'password',
             'password_confirmation' => 'password',
         ];
         $this->partialMock(CreateAdminAction::class)

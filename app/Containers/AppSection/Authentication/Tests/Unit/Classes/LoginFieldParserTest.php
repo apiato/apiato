@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Classes;
 
 use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
@@ -13,32 +15,29 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(LoginFieldParser::class)]
 final class LoginFieldParserTest extends UnitTestCase
 {
-    public static function loginDataProvider(): array
+    public static function loginDataProvider(): \Iterator
     {
         $email = 'gandalf@the.grey';
         $name = 'gandalf';
         $extractedEmailField = new IncomingLoginField('email', 'gandalf@the.grey');
         $extractedNameField = new IncomingLoginField('name', 'gandalf');
-
-        return [
-            [
-                'input' => compact('email'),
-                'expected' => [$extractedEmailField],
-            ],
-            [
-                'input' => compact('name'),
-                'expected' => [$extractedNameField],
-            ],
-            [
-                'input' => compact('email', 'name'),
-                'expected' => [$extractedEmailField, $extractedNameField],
-            ],
-            [
-                'input' => compact('name', 'email'),
-                // input order should not matter,
-                // results are returned in the order they are defined in the config file.
-                'expected' => [$extractedEmailField, $extractedNameField],
-            ],
+        yield [
+            ['email' => $email],
+            [$extractedEmailField],
+        ];
+        yield [
+            ['name' => $name],
+            [$extractedNameField],
+        ];
+        yield [
+            ['email' => $email, 'name' => $name],
+            [$extractedEmailField, $extractedNameField],
+        ];
+        yield [
+            ['name' => $name, 'email' => $email],
+            // input order should not matter,
+            // results are returned in the order they are defined in the config file.
+            [$extractedEmailField, $extractedNameField],
         ];
     }
 
@@ -55,9 +54,9 @@ final class LoginFieldParserTest extends UnitTestCase
     public function testShouldDiscardUnknownFields(): void
     {
         $credentials = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass, should be discarded',
-            'unknown' => 'field, should be discarded',
+            'unknown'  => 'field, should be discarded',
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
 
@@ -70,7 +69,7 @@ final class LoginFieldParserTest extends UnitTestCase
     {
         config()->unset('appSection-authentication.login.fields');
         $credentials = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $expected = [new IncomingLoginField('email', 'gandalf@the.grey')];
@@ -88,19 +87,17 @@ final class LoginFieldParserTest extends UnitTestCase
         LoginFieldParser::extractAll([]);
     }
 
-    public static function invalidLoginFieldsDataProvider(): array
+    public static function invalidLoginFieldsDataProvider(): \Iterator
     {
-        return [
-            [
-                'ThisIsNotArray!',
-                \InvalidArgumentException::class,
-                'Login {fields} property must be an array, string given',
-            ],
-            [
-                [(int) 'ThisIsNotString!'],
-                \InvalidArgumentException::class,
-                'Login fields keys must be a string, integer given',
-            ],
+        yield [
+            'ThisIsNotArray!',
+            \InvalidArgumentException::class,
+            'Login {fields} property must be an array, string given',
+        ];
+        yield [
+            [(int) 'ThisIsNotString!'],
+            \InvalidArgumentException::class,
+            'Login fields keys must be a string, integer given',
         ];
     }
 
@@ -112,7 +109,7 @@ final class LoginFieldParserTest extends UnitTestCase
 
         config()->set('appSection-authentication.login.fields', $invalidFields);
         $userDetails = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
@@ -133,50 +130,48 @@ final class LoginFieldParserTest extends UnitTestCase
         LoginFieldParser::mergeValidationRules($newRules);
     }
 
-    public static function multiLoginFieldProvider(): array
+    public static function multiLoginFieldProvider(): \Iterator
     {
-        return [
+        yield [
             [
-                [
-                    new LoginField('email', ['required|email']),
-                    'required_without_all:name,city|email',
-                ],
-                [
-                    new LoginField('name', ['string', 'max:255']),
-                    'required_without_all:email,city|string|max:255',
-                ],
-                [
-                    new LoginField('city', ['required|string', 'min:3']),
-                    'required_without_all:email,name|string|min:3',
-                ],
+                new LoginField('email', ['required|email']),
+                'required_without_all:name,city|email',
             ],
             [
-                [
-                    new LoginField('email', ['email']),
-                    'required_without_all:name,city|email',
-                ],
-                [
-                    new LoginField('name', []),
-                    'required_without_all:email,city',
-                ],
-                [
-                    new LoginField('city', ['required']),
-                    'required_without_all:email,name',
-                ],
+                new LoginField('name', ['string', 'max:255']),
+                'required_without_all:email,city|string|max:255',
             ],
             [
-                [
-                    new LoginField('email', ['email|nullable', 'max:255|nullable']),
-                    'required_without_all:name,city|email|nullable|max:255',
-                ],
-                [
-                    new LoginField('name', ['string', 'required']),
-                    'required_without_all:email,city|string',
-                ],
-                [
-                    new LoginField('city', ['required|string|string', 'min:3|string']),
-                    'required_without_all:email,name|string|min:3',
-                ],
+                new LoginField('city', ['required|string', 'min:3']),
+                'required_without_all:email,name|string|min:3',
+            ],
+        ];
+        yield [
+            [
+                new LoginField('email', ['email']),
+                'required_without_all:name,city|email',
+            ],
+            [
+                new LoginField('name', []),
+                'required_without_all:email,city',
+            ],
+            [
+                new LoginField('city', ['required']),
+                'required_without_all:email,name',
+            ],
+        ];
+        yield [
+            [
+                new LoginField('email', ['email|nullable', 'max:255|nullable']),
+                'required_without_all:name,city|email|nullable|max:255',
+            ],
+            [
+                new LoginField('name', ['string', 'required']),
+                'required_without_all:email,city|string',
+            ],
+            [
+                new LoginField('city', ['required|string|string', 'min:3|string']),
+                'required_without_all:email,name|string|min:3',
             ],
         ];
     }
@@ -198,50 +193,48 @@ final class LoginFieldParserTest extends UnitTestCase
             ...$cityField->toArray(),
         ]);
         $rules = [
-            'phone' => ['required', 'numeric'],
+            'phone'   => ['required', 'numeric'],
             'address' => ['string'],
-            'age' => ['nullable', 'integer'],
+            'age'     => ['nullable', 'integer'],
         ];
 
         $result = LoginFieldParser::mergeValidationRules($rules);
 
         $this->assertSame([
-            'phone' => ['required', 'numeric'],
-            'address' => ['string'],
-            'age' => ['nullable', 'integer'],
+            'phone'             => ['required', 'numeric'],
+            'address'           => ['string'],
+            'age'               => ['nullable', 'integer'],
             $emailField->name() => $emailExpectedRule,
-            $nameField->name() => $nameExpectedRule,
-            $cityField->name() => $cityExpectedRule,
+            $nameField->name()  => $nameExpectedRule,
+            $cityField->name()  => $cityExpectedRule,
         ], $result);
     }
 
-    public static function singleLoginFieldProvider(): array
+    public static function singleLoginFieldProvider(): \Iterator
     {
-        return [
-            [
-                new LoginField('city', ['required|string', 'min:3']),
-                'expectation' => 'required|string|min:3',
-            ],
-            [
-                new LoginField('city', []),
-                'expectation' => 'required',
-            ],
-            [
-                new LoginField('city', ['required|string|required|string', 'min:3']),
-                'expectation' => 'required|string|min:3',
-            ],
-            [
-                new LoginField('city', ['string', 'min:4', 'required', 'string']),
-                'expectation' => 'string|min:4|required',
-            ],
-            [
-                new LoginField('city', ['min:3|string']),
-                'expectation' => 'required|min:3|string',
-            ],
-            [
-                new LoginField('city', ['string', 'required', 'min:3']),
-                'expectation' => 'string|required|min:3',
-            ],
+        yield [
+            new LoginField('city', ['required|string', 'min:3']),
+            'required|string|min:3',
+        ];
+        yield [
+            new LoginField('city', []),
+            'required',
+        ];
+        yield [
+            new LoginField('city', ['required|string|required|string', 'min:3']),
+            'required|string|min:3',
+        ];
+        yield [
+            new LoginField('city', ['string', 'min:4', 'required', 'string']),
+            'string|min:4|required',
+        ];
+        yield [
+            new LoginField('city', ['min:3|string']),
+            'required|min:3|string',
+        ];
+        yield [
+            new LoginField('city', ['string', 'required', 'min:3']),
+            'string|required|min:3',
         ];
     }
 
@@ -250,17 +243,17 @@ final class LoginFieldParserTest extends UnitTestCase
     {
         Config::set('appSection-authentication.login.fields', [$field->name() => $field->rules()]);
         $rules = [
-            'phone' => ['required', 'numeric'],
+            'phone'   => ['required', 'numeric'],
             'address' => ['string'],
-            'age' => ['nullable', 'integer'],
+            'age'     => ['nullable', 'integer'],
         ];
 
         $result = LoginFieldParser::mergeValidationRules($rules);
 
         $this->assertSame([
-            'phone' => ['required', 'numeric'],
-            'address' => ['string'],
-            'age' => ['nullable', 'integer'],
+            'phone'        => ['required', 'numeric'],
+            'address'      => ['string'],
+            'age'          => ['nullable', 'integer'],
             $field->name() => $expectation,
         ], $result);
     }

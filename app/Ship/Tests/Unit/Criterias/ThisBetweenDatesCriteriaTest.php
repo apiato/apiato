@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\ThisBetweenDatesCriteria;
@@ -14,12 +16,12 @@ final class ThisBetweenDatesCriteriaTest extends ShipTestCase
     public function testCriteria(): void
     {
         $todayModels = TestUserFactory::new()->count(1)->create(['created_at' => now()]);
-        $twoDaysAgoModels = TestUserFactory::new()->count(2)->create(['created_at' => now()->subDays(2)]);
-        $twoDaysLaterModels = TestUserFactory::new()->count(3)->create(['created_at' => now()->addDays(2)]);
+        TestUserFactory::new()->count(2)->create(['created_at' => now()->subDays(2)]);
+        TestUserFactory::new()->count(3)->create(['created_at' => now()->addDays(2)]);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new ThisBetweenDatesCriteria('created_at', now()->subDay(), now()->addDay());
-        $repository->pushCriteria($criteria);
+        $thisBetweenDatesCriteria = new ThisBetweenDatesCriteria('created_at', now()->subDay(), now()->addDay());
+        $repository->pushCriteria($thisBetweenDatesCriteria);
 
         $result = $repository->all();
 

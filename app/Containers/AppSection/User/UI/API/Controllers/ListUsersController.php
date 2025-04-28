@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\ListUsersAction;

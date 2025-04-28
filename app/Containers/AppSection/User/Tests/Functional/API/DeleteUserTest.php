@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -13,24 +15,24 @@ final class DeleteUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testCanDeleteSelfAsAdmin(): void
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
+        $testResponse = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall();
 
-        $response->assertNoContent();
+        $testResponse->assertNoContent();
     }
 
     public function testCanDeleteAnotherUserAsAdmin(): void
     {
         $this->testingUser = UserFactory::new()->admin()->createOne();
 
-        $response = $this->injectId(UserFactory::new()->createOne()->id, replace: '{user_id}')->makeCall();
+        $testResponse = $this->injectId(UserFactory::new()->createOne()->id, replace: '{user_id}')->makeCall();
 
-        $response->assertNoContent();
+        $testResponse->assertNoContent();
     }
 }

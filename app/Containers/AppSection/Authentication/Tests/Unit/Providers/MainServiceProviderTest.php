@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
@@ -30,6 +32,7 @@ final class MainServiceProviderTest extends UnitTestCase
         $this->assertSame([], $this->provider->aliases);
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

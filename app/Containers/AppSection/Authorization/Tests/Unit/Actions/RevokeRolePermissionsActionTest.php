@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\RevokeRolePermissionsAction;
@@ -14,15 +16,15 @@ final class RevokeRolePermissionsActionTest extends UnitTestCase
 {
     public function testCanRevokeSinglePermission(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $role->givePermissionTo($permissions);
-        $request = RevokeRolePermissionsRequest::injectData([
+        $model->givePermissionTo($permissions);
+        $revokeRolePermissionsRequest = RevokeRolePermissionsRequest::injectData([
             'permission_ids' => [$permissions[1]->getHashedKey()],
-        ])->withUrlParameters(['role_id' => $role->id]);
+        ])->withUrlParameters(['role_id' => $model->id]);
         $action = app(RevokeRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($revokeRolePermissionsRequest);
 
         $this->assertCount(2, $result->permissions);
         $this->assertSame($permissions[0]->id, $result->permissions->first()->id);
@@ -31,15 +33,15 @@ final class RevokeRolePermissionsActionTest extends UnitTestCase
 
     public function testCanRevokeMultiplePermissions(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $role->givePermissionTo($permissions);
-        $request = RevokeRolePermissionsRequest::injectData([
+        $model->givePermissionTo($permissions);
+        $revokeRolePermissionsRequest = RevokeRolePermissionsRequest::injectData([
             'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ])->withUrlParameters(['role_id' => $role->id]);
+        ])->withUrlParameters(['role_id' => $model->id]);
         $action = app(RevokeRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($revokeRolePermissionsRequest);
 
         $this->assertCount(1, $result->permissions);
         $this->assertSame($permissions[1]->id, $result->permissions->sole()->id);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -16,16 +18,16 @@ final class TokenTransformerTest extends UnitTestCase
     {
         $token = new Token('test', 100, 'asdc1234', '1234asdc');
         $expected = [
-            'object' => $token->getResourceKey(),
-            'token_type' => $token->tokenType,
-            'access_token' => $token->accessToken,
+            'object'        => $token->getResourceKey(),
+            'token_type'    => $token->tokenType,
+            'access_token'  => $token->accessToken,
             'refresh_token' => $token->refreshToken,
-            'expires_in' => $token->expiresIn,
+            'expires_in'    => $token->expiresIn,
         ];
 
         $transformedResource = $this->transformer->transform($token);
 
-        $this->assertEquals($expected, $transformedResource);
+        $this->assertSame($expected, $transformedResource);
     }
 
     public function testAvailableIncludes(): void
@@ -38,9 +40,11 @@ final class TokenTransformerTest extends UnitTestCase
         $this->assertSame([], $this->transformer->getDefaultIncludes());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new TokenTransformer();
     }
 }

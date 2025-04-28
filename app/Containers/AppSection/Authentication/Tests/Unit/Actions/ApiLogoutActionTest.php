@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ApiLogoutAction;
@@ -16,15 +18,15 @@ final class ApiLogoutActionTest extends UnitTestCase
     public function testApiLogoutAction(): void
     {
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $this->getTestingUser($data);
         $accessToken = $this->createAccessTokenFor($data['email'], $data['password']);
-        $request = LogoutRequest::injectData(server: ['HTTP_AUTHORIZATION' => 'Bearer ' . $accessToken]);
+        $logoutRequest = LogoutRequest::injectData(server: ['HTTP_AUTHORIZATION' => 'Bearer ' . $accessToken]);
         $action = app(ApiLogoutAction::class);
 
-        $action->run($request);
+        $action->run($logoutRequest);
 
         $this->assertTrue(true);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -14,18 +16,19 @@ final class ListRolePermissionsTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-roles',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testGetRolePermissions(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permission = PermissionFactory::new()->createOne();
-        $role->givePermissionTo([$permission]);
+        $model->givePermissionTo([$permission]);
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall();
+        $testResponse = $this->injectId($model->id, replace: '{role_id}')->makeCall();
 
-        $response->assertOk();
+        $testResponse->assertOk();
+
         $responseContent = $this->getResponseContentObject();
         $this->assertSame($permission->name, $responseContent->data[0]->name);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -9,25 +11,19 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 final class MigrationTest extends UnitTestCase
 {
     private array $tableNames;
-    private array $columnNames;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->tableNames = config('permission.table_names');
-        $this->columnNames = config('permission.column_names');
-    }
+    private array $columnNames;
 
     public function testPermissionsTableHasExpectedColumns(): void
     {
         $columns = [
-            'id' => 'bigint',
-            'name' => 'string',
-            'guard_name' => 'string',
+            'id'           => 'bigint',
+            'name'         => 'string',
+            'guard_name'   => 'string',
             'display_name' => 'string',
-            'description' => 'string',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'description'  => 'string',
+            'created_at'   => 'datetime',
+            'updated_at'   => 'datetime',
         ];
 
         $this->assertDatabaseTable($this->tableNames['permissions'], $columns);
@@ -36,13 +32,13 @@ final class MigrationTest extends UnitTestCase
     public function testRolesTableHasExpectedColumns(): void
     {
         $columns = [
-            'id' => 'bigint',
-            'name' => 'string',
-            'guard_name' => 'string',
+            'id'           => 'bigint',
+            'name'         => 'string',
+            'guard_name'   => 'string',
             'display_name' => 'string',
-            'description' => 'string',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
+            'description'  => 'string',
+            'created_at'   => 'datetime',
+            'updated_at'   => 'datetime',
         ];
 
         $this->assertDatabaseTable($this->tableNames['roles'], $columns);
@@ -51,8 +47,8 @@ final class MigrationTest extends UnitTestCase
     public function testModelHasPermissionsTableHasExpectedColumns(): void
     {
         $columns = [
-            'permission_id' => 'bigint',
-            'model_type' => 'string',
+            'permission_id'                       => 'bigint',
+            'model_type'                          => 'string',
             $this->columnNames['model_morph_key'] => 'bigint',
         ];
 
@@ -62,8 +58,8 @@ final class MigrationTest extends UnitTestCase
     public function testModelHasRolesTableHasExpectedColumns(): void
     {
         $columns = [
-            'role_id' => 'bigint',
-            'model_type' => 'string',
+            'role_id'                             => 'bigint',
+            'model_type'                          => 'string',
             $this->columnNames['model_morph_key'] => 'bigint',
         ];
 
@@ -74,9 +70,18 @@ final class MigrationTest extends UnitTestCase
     {
         $columns = [
             'permission_id' => 'bigint',
-            'role_id' => 'bigint',
+            'role_id'       => 'bigint',
         ];
 
         $this->assertDatabaseTable($this->tableNames['role_has_permissions'], $columns);
+    }
+
+    #[\Override]
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->tableNames = config('permission.table_names');
+        $this->columnNames = config('permission.column_names');
     }
 }

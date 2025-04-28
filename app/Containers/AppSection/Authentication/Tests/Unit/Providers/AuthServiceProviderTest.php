@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
@@ -28,8 +30,9 @@ final class AuthServiceProviderTest extends UnitTestCase
 
     public function testRegistersPassportApiRoutes(): void
     {
-        $registeredRoutes = Route::getRoutes();
-        $registeredRoutes->refreshNameLookups();
+        $routeCollection = Route::getRoutes();
+        $routeCollection->refreshNameLookups();
+
         $passportRouteNames = [
             'passport.token',
             'passport.tokens.index',
@@ -50,10 +53,34 @@ final class AuthServiceProviderTest extends UnitTestCase
 
         $apiPrefix = $this->removeLeadingSlashes(config('apiato.api.prefix'));
         $oAuthPrefix = $apiPrefix . 'v1/oauth';
-        foreach ($passportRouteNames as $routeName) {
-            $this->assertNotNull($registeredRoutes->getByName($routeName));
-            $this->assertSamePrefix($oAuthPrefix, $registeredRoutes->getByName($routeName)->getPrefix());
+        foreach ($passportRouteNames as $passportRouteName) {
+            $this->assertInstanceOf(\Illuminate\Routing\Route::class, $routeCollection->getByName($passportRouteName));
+            $this->assertSamePrefix($oAuthPrefix, $routeCollection->getByName($passportRouteName)->getPrefix());
         }
+    }
+
+    public function testDoesntRegisterPassportWebRoutes(): void
+    {
+        $routeCollection = Route::getRoutes();
+        $routeCollection->refreshNameLookups();
+
+        $passportRouteNames = [
+            'passport.authorizations.authorize',
+            'passport.authorizations.approve',
+            'passport.authorizations.deny',
+        ];
+
+        foreach ($passportRouteNames as $passportRouteName) {
+            $this->assertNotInstanceOf(\Illuminate\Routing\Route::class, $routeCollection->getByName($passportRouteName));
+        }
+    }
+
+    #[\Override]
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->provider = app(AuthServiceProvider::class, ['app' => app()]);
     }
 
     private function removeLeadingSlashes(string $value): string
@@ -68,26 +95,5 @@ final class AuthServiceProviderTest extends UnitTestCase
             $endpoint,
             'The prefix of the route does not match the expected value.',
         );
-    }
-
-    public function testDoesntRegisterPassportWebRoutes(): void
-    {
-        $registeredRoutes = Route::getRoutes();
-        $registeredRoutes->refreshNameLookups();
-        $passportRouteNames = [
-            'passport.authorizations.authorize',
-            'passport.authorizations.approve',
-            'passport.authorizations.deny',
-        ];
-
-        foreach ($passportRouteNames as $routeName) {
-            $this->assertNull($registeredRoutes->getByName($routeName));
-        }
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->provider = app(AuthServiceProvider::class, ['app' => app()]);
     }
 }

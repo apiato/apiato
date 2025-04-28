@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Mails;
 
 use App\Containers\AppSection\Authentication\Mails\ForgotPassword;
@@ -12,16 +14,16 @@ final class ForgotPasswordTest extends UnitTestCase
 {
     public function testRenderMail(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $token = 'token-b510d059-5d0d-4618-9eb9-b315b4a07f12';
         $resetUrl = 'https://refresh-your-pass.world';
 
-        $mail = new ForgotPassword($user, $token, $resetUrl);
-        $view = $mail->build();
+        $forgotPassword = new ForgotPassword($model, $token, $resetUrl);
+        $view = $forgotPassword->build();
 
-        $view->assertHasTo($user->email, $user->name);
+        $view->assertHasTo($model->email, $model->name);
         $view->assertSeeInHtml($token);
         $view->assertSeeInHtml(config('app.url'));
-        $view->assertSeeInHtml($user->email);
+        $view->assertSeeInHtml($model->email);
     }
 }

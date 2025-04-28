@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\DeleteRoleAction;
@@ -14,11 +16,11 @@ final class DeleteRoleControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(DeleteRoleController::class);
-        $request = DeleteRoleRequest::injectData();
+        $deleteRoleRequest = DeleteRoleRequest::injectData();
         $actionMock = $this->mock(DeleteRoleAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($deleteRoleRequest);
 
-        $response = $controller->__invoke($request, $actionMock);
+        $response = $controller($deleteRoleRequest, $actionMock);
 
         $this->assertSame(204, $response->getStatusCode());
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Mails;
 
 use App\Containers\AppSection\User\Models\User;
@@ -18,15 +20,15 @@ class ForgotPassword extends ParentMail implements ShouldQueue
     ) {
     }
 
-    public function build(): static
+    public function build(): self
     {
         return $this->view('appSection@authentication::forgot-password')
             ->to($this->recipient->email, $this->recipient->name)
             ->with([
-                'token' => $this->token,
+                'token'    => $this->token,
                 'reseturl' => $this->reseturl,
-                'email' => $this->recipient->email,
-                'app_url' => config('app.url'),
+                'email'    => $this->recipient->email,
+                'app_url'  => config('app.url'),
             ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -18,29 +20,29 @@ final class UpdateUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => null,
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testCanUpdateAsOwner(): void
     {
         $this->testingUser = UserFactory::new()->createOne([
-            'name' => 'He who must not be named',
-            'gender' => Gender::FEMALE,
+            'name'     => 'He who must not be named',
+            'gender'   => Gender::FEMALE,
             'password' => 'Av@dakedavra!',
         ]);
         $data = [
-            'name' => 'Updated Name',
-            'gender' => Gender::MALE->value,
-            'birth' => Carbon::today()->toIso8601String(),
-            'current_password' => 'Av@dakedavra!',
-            'new_password' => 'updated#Password111',
+            'name'                      => 'Updated Name',
+            'gender'                    => Gender::MALE->value,
+            'birth'                     => Carbon::today()->toIso8601String(),
+            'current_password'          => 'Av@dakedavra!',
+            'new_password'              => 'updated#Password111',
             'new_password_confirmation' => 'updated#Password111',
         ];
 
-        $response = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($this->testingUser->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 fn (AssertableJson $json): AssertableJson => $json

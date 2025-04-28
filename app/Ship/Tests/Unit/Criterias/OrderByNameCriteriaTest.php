@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\OrderByNameCriteria;
@@ -18,8 +20,8 @@ final class OrderByNameCriteriaTest extends ShipTestCase
         $modelC = TestUserFactory::new()->create(['name' => 'C']);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByNameCriteria();
-        $repository->pushCriteria($criteria);
+        $orderByNameCriteria = new OrderByNameCriteria();
+        $repository->pushCriteria($orderByNameCriteria);
 
         $result = $repository->all();
 

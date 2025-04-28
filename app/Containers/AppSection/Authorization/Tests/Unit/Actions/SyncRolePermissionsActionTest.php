@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\SyncRolePermissionsAction;
@@ -14,16 +16,16 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
 {
     public function testCanSyncPermission(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $role->givePermissionTo($permissions);
-        $this->assertCount(3, $role->permissions);
-        $request = SyncRolePermissionsRequest::injectData([
+        $model->givePermissionTo($permissions);
+        $this->assertCount(3, $model->permissions);
+        $syncRolePermissionsRequest = SyncRolePermissionsRequest::injectData([
             'permission_ids' => $permissions[1]->getHashedKey(),
-        ])->withUrlParameters(['role_id' => $role->id]);
+        ])->withUrlParameters(['role_id' => $model->id]);
         $action = app(SyncRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($syncRolePermissionsRequest);
 
         $this->assertCount(1, $result->permissions);
         $this->assertSame($permissions[1]->id, $result->permissions->sole()->id);
@@ -31,16 +33,16 @@ final class SyncRolePermissionsActionTest extends UnitTestCase
 
     public function testCanSyncPermissions(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
         $permissions = PermissionFactory::new()->count(3)->create();
-        $role->givePermissionTo($permissions);
-        $this->assertCount(3, $role->permissions);
-        $request = SyncRolePermissionsRequest::injectData([
+        $model->givePermissionTo($permissions);
+        $this->assertCount(3, $model->permissions);
+        $syncRolePermissionsRequest = SyncRolePermissionsRequest::injectData([
             'permission_ids' => [$permissions[0]->getHashedKey(), $permissions[2]->getHashedKey()],
-        ])->withUrlParameters(['role_id' => $role->id]);
+        ])->withUrlParameters(['role_id' => $model->id]);
         $action = app(SyncRolePermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($syncRolePermissionsRequest);
 
         $this->assertCount(2, $result->permissions);
         $this->assertSame($permissions[0]->id, $result->permissions->first()->id);

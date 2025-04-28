@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Criterias;
 
 use App\Containers\AppSection\Authorization\Data\Criterias\WhereGuardCriteria;
@@ -20,7 +22,7 @@ final class WhereGuardCriteriaTest extends UnitTestCase
         RoleFactory::new()->withGuard($guard)->count(2)->create();
         RoleFactory::new()->withGuard(fake()->word())->createOne();
         $repository = app(RoleRepository::class);
-        $criteria = app(WhereGuardCriteria::class, compact('guard'));
+        $criteria = app(WhereGuardCriteria::class, ['guard' => $guard]);
         $repository->pushCriteria($criteria);
 
         $result = $repository->all();
@@ -36,7 +38,7 @@ final class WhereGuardCriteriaTest extends UnitTestCase
         PermissionFactory::new()->withGuard($guard)->count(2)->create();
         PermissionFactory::new()->withGuard(fake()->word())->createOne();
         $repository = app(PermissionRepository::class);
-        $criteria = app(WhereGuardCriteria::class, compact('guard'));
+        $criteria = app(WhereGuardCriteria::class, ['guard' => $guard]);
         $repository->pushCriteria($criteria);
 
         $result = $repository->all();

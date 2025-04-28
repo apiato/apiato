@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -10,9 +12,8 @@ use Illuminate\Support\Str;
 
 class FindRoleTask extends ParentTask
 {
-    public function __construct(
-        private readonly RoleRepository $repository,
-    ) {
+    public function __construct(private readonly RoleRepository $repository)
+    {
     }
 
     /**

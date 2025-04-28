@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\User\Actions\UpdateUserAction;
@@ -15,10 +17,10 @@ final class UpdateUserControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(UpdateUserController::class);
-        $request = UpdateUserRequest::injectData();
+        $updateUserRequest = UpdateUserRequest::injectData();
         $actionMock = $this->mock(UpdateUserAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($updateUserRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($updateUserRequest, $actionMock);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
@@ -29,8 +31,9 @@ class WebLoginAction extends ParentAction
         foreach ($loginFields as $loginField) {
             $credentials[$loginField->name] =
                 static fn (Builder $query): Builder => $query
-                    ->orWhereRaw("lower({$loginField->name}) = lower(?)", [$loginField->value]);
+                    ->orWhereRaw(\sprintf('lower(%s) = lower(?)', $loginField->name), [$loginField->value]);
         }
+
         $credentials['password'] = $sanitizedData['password'];
 
         $loggedIn = Auth::guard('web')->attempt($credentials, $sanitizedData['remember']);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -13,20 +15,20 @@ final class FindRoleTaskTest extends UnitTestCase
 {
     public function testFindRoleById(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
 
-        $result = app(FindRoleTask::class)->run($role->id);
+        $result = app(FindRoleTask::class)->run($model->id);
 
-        $this->assertSame($role->id, $result->id);
+        $this->assertSame($model->id, $result->id);
     }
 
     public function testFindRoleByName(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
 
-        $result = app(FindRoleTask::class)->run($role->name);
+        $result = app(FindRoleTask::class)->run($model->name);
 
-        $this->assertSame($role->id, $result->id);
+        $this->assertSame($model->id, $result->id);
     }
 
     public function testFindRoleWithInvalidIdThrows404(): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * @apiGroup           OAuth2
  * @apiName            LoginPasswordGrant
@@ -27,5 +29,4 @@
  * "refresh_token": "Oukd61zgKzt8TBwRjnasd..."
  * }
  */
-
 // Implementation in the Laravel Passport package and overridden in Passport.v1.private.php

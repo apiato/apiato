@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\OrderByCreationDateDescendingCriteria;
@@ -18,8 +20,8 @@ final class OrderByCreationDateDescendingCriteriaTest extends ShipTestCase
         $modelC = TestUserFactory::new()->create(['created_at' => now()->addDay()]);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByCreationDateDescendingCriteria();
-        $repository->pushCriteria($criteria);
+        $orderByCreationDateDescendingCriteria = new OrderByCreationDateDescendingCriteria();
+        $repository->pushCriteria($orderByCreationDateDescendingCriteria);
 
         $result = $repository->all();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
@@ -14,176 +16,172 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(WebLoginAction::class)]
 final class WebLoginActionTest extends UnitTestCase
 {
-    public static function allowedLoginDataProvider(): array
+    public static function allowedLoginDataProvider(): \Iterator
     {
-        return [
+        yield [
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'email',
-                ],
-            ],
-            // Should fail because name is not allowed
-            // [
-            //     'loginFields' => [
-            //         'name' => 'gandalf',
-            //     ],
-            //     'allowedFields' => [
-            //         'email',
-            //     ],
-            // ],
-            [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'email',
-                ],
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'email',
-                ],
+                'email',
             ],
-            // Should fail because email is not allowed
-            // [
-            //     'loginFields' => [
-            //         'email' => 'gandalf@the.grey',
-            //     ],
-            //     'allowedFields' => [
-            //         'name',
-            //     ],
-            // ],
+        ];
+        // Should fail because name is not allowed
+        // [
+        //     'loginFields' => [
+        //         'name' => 'gandalf',
+        //     ],
+        //     'allowedFields' => [
+        //         'email',
+        //     ],
+        // ],
+        yield [
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'name',
-                ],
+                'email' => 'gandalf@the.grey',
+                'name'  => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'name',
-                ],
+                'email',
+            ],
+        ];
+        yield [
+            [
+                'name'  => 'gandalf',
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'name',
-                ],
+                'email',
+            ],
+        ];
+        // Should fail because email is not allowed
+        // [
+        //     'loginFields' => [
+        //         'email' => 'gandalf@the.grey',
+        //     ],
+        //     'allowedFields' => [
+        //         'name',
+        //     ],
+        // ],
+        yield [
+            [
+                'name' => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'email',
-                    'name',
-                ],
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
+                'name'  => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'email',
-                    'name',
-                ],
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'name'  => 'gandalf',
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'email',
-                    'name',
-                ],
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'email',
-                    'name',
-                ],
+                'email',
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'name' => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'name',
-                    'email',
-                ],
+                'email',
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
+                'name'  => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'name',
-                    'email',
-                ],
+                'email',
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'name'  => 'gandalf',
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'name',
-                    'email',
-                ],
+                'email',
+                'name',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
             ],
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'name',
-                    'email',
-                ],
+                'name',
+                'email',
+            ],
+        ];
+        yield [
+            [
+                'name' => 'gandalf',
+            ],
+            [
+                'name',
+                'email',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
+                'name'  => 'gandalf',
+            ],
+            [
+                'name',
+                'email',
+            ],
+        ];
+        yield [
+            [
+                'name'  => 'gandalf',
+                'email' => 'gandalf@the.grey',
+            ],
+            [
+                'name',
+                'email',
             ],
         ];
     }
 
-    public static function unallowedLoginDataProvider(): array
+    public static function unallowedLoginDataProvider(): \Iterator
     {
-        return [
+        yield [
             [
-                'loginFields' => [
-                    'name' => 'gandalf',
-                ],
-                'allowedFields' => [
-                    'email',
-                ],
+                'name' => 'gandalf',
             ],
             [
-                'loginFields' => [
-                    'email' => 'gandalf@the.grey',
-                ],
-                'allowedFields' => [
-                    'name',
-                ],
+                'email',
+            ],
+        ];
+        yield [
+            [
+                'email' => 'gandalf@the.grey',
+            ],
+            [
+                'name',
             ],
         ];
     }
@@ -192,16 +190,16 @@ final class WebLoginActionTest extends UnitTestCase
     {
         config()->unset('appSection-authentication.login.fields');
         $credentials = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
-        $user = UserFactory::new()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
+        $model = UserFactory::new()->createOne($credentials);
+        $loginRequest = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($loginRequest);
 
-        $this->assertAuthenticatedAs($user, 'web');
+        $this->assertAuthenticatedAs($model, 'web');
     }
 
     #[DataProvider('allowedLoginDataProvider')]
@@ -212,23 +210,13 @@ final class WebLoginActionTest extends UnitTestCase
             ...$loginFields,
             'password' => 'youShallNotPass',
         ];
-        $user = UserFactory::new()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
+        $model = UserFactory::new()->createOne($credentials);
+        $loginRequest = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($loginRequest);
 
-        $this->assertAuthenticatedAs($user, 'web');
-    }
-
-    private function prepareForConfig(array $allowedFields): array
-    {
-        $config = [];
-        foreach ($allowedFields as $key => $field) {
-            $config[$field] = [];
-        }
-
-        return $config;
+        $this->assertAuthenticatedAs($model, 'web');
     }
 
     #[DataProvider('unallowedLoginDataProvider')]
@@ -243,28 +231,28 @@ final class WebLoginActionTest extends UnitTestCase
             'password' => 'youShallNotPass',
         ];
         UserFactory::new()->createOne($credentials);
-        $request = LoginRequest::injectData($credentials);
+        $loginRequest = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $action->run($request);
+        $action->run($loginRequest);
     }
 
     public function testCanReturnMultipleErrors(): void
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $credentials = [
-            'email' => 'gandalf@the.grey',
-            'name' => 'gandalf',
+            'email'    => 'gandalf@the.grey',
+            'name'     => 'gandalf',
             'password' => 'youShallNotPass',
         ];
         UserFactory::new()->createOne($credentials);
-        $authSpy = Auth::spy();
-        $authSpy->allows()->guard('web')->andReturnSelf();
-        $authSpy->allows()->attempt($credentials)->andReturn(false);
-        $request = LoginRequest::injectData($credentials);
+        $mock = Auth::spy();
+        $mock->allows()->guard('web')->andReturnSelf();
+        $mock->allows()->attempt($credentials)->andReturn(false);
+        $loginRequest = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($loginRequest);
 
         /** @var MessageBag $errors */
         $errors = $response->getSession()->get('errors');
@@ -273,6 +261,7 @@ final class WebLoginActionTest extends UnitTestCase
             $this->assertCount(1, $errors->get($field));
             $this->assertSame(__('auth.failed'), $errors->get($field)[0]);
         }
+
         $this->assertTrue($response->isRedirect());
     }
 
@@ -280,22 +269,32 @@ final class WebLoginActionTest extends UnitTestCase
     {
         config()->set('appSection-authentication.login.fields', ['email' => [], 'name' => []]);
         $userDetails = [
-            'email' => 'ganldalf@the.grey',
-            'name' => 'gandalf',
+            'email'    => 'ganldalf@the.grey',
+            'name'     => 'gandalf',
             'password' => 'youShallNotPass',
         ];
-        $user = UserFactory::new()->createOne($userDetails);
+        $model = UserFactory::new()->createOne($userDetails);
         $credentials = [
-            'email' => 'ganldalf@the.white', // wrong email
-            'name' => 'gandalf', // correct name
+            'email'    => 'ganldalf@the.white', // wrong email
+            'name'     => 'gandalf', // correct name
             'password' => 'youShallNotPass',
         ];
-        $request = LoginRequest::injectData($credentials);
+        $loginRequest = LoginRequest::injectData($credentials);
         $action = app(WebLoginAction::class);
 
-        $response = $action->run($request);
+        $response = $action->run($loginRequest);
 
         $this->assertTrue($response->isRedirect());
-        $this->assertAuthenticatedAs($user, 'web');
+        $this->assertAuthenticatedAs($model, 'web');
+    }
+
+    private function prepareForConfig(array $allowedFields): array
+    {
+        $config = [];
+        foreach ($allowedFields as $allowedField) {
+            $config[$allowedField] = [];
+        }
+
+        return $config;
     }
 }

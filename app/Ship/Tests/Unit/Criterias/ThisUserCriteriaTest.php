@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criterias;
 
 use App\Ship\Criterias\ThisUserCriteria;
@@ -13,13 +15,13 @@ final class ThisUserCriteriaTest extends ShipTestCase
 {
     public function testCriteria(): void
     {
-        $model2 = TestUserFactory::new()->create(['user_id' => '2']);
+        TestUserFactory::new()->create(['user_id' => '2']);
         $model1 = TestUserFactory::new()->create(['user_id' => '1']);
-        $model3 = TestUserFactory::new()->create(['user_id' => '3']);
+        TestUserFactory::new()->create(['user_id' => '3']);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new ThisUserCriteria(1);
-        $repository->pushCriteria($criteria);
+        $thisUserCriteria = new ThisUserCriteria(1);
+        $repository->pushCriteria($thisUserCriteria);
 
         $result = $repository->all();
 

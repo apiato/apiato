@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class ListPermissionsRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-permissions',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -38,12 +40,13 @@ final class ListPermissionsRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = ListPermissionsRequest::injectData([], $user);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
+        $listPermissionsRequest = ListPermissionsRequest::injectData([], $userModel);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($listPermissionsRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

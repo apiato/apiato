@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -13,10 +15,10 @@ final class FindUserByIdTaskTest extends UnitTestCase
 {
     public function testFindUserById(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $repositoryMock = $this->partialMock(UserRepository::class);
-        $repositoryMock->expects('getById')->once()->with($user->id)->andReturn($user);
+        $repositoryMock->expects('getById')->once()->with($model->id)->andReturn($model);
 
-        app(FindUserByIdTask::class)->run($user->id);
+        app(FindUserByIdTask::class)->run($model->id);
     }
 }

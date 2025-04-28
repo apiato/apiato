@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Commands;
 
 use App\Ship\Commands\HelloWorldCommand;

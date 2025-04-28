@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Models;
 
 use Apiato\Core\Contracts\HasResourceKey;
@@ -20,6 +22,7 @@ class Role extends SpatieRole implements HasResourceKey
         'description',
     ];
 
+    #[\Override]
     public function newCollection(array $models = []): RoleCollection
     {
         return new RoleCollection($models);

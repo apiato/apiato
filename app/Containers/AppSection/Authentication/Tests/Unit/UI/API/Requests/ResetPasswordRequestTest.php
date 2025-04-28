@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -16,7 +18,7 @@ final class ResetPasswordRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => null,
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -33,8 +35,8 @@ final class ResetPasswordRequestTest extends UnitTestCase
     public function testValidationRules(): void
     {
         $this->assertEquals([
-            'token' => 'required',
-            'email' => 'required|email',
+            'token'    => 'required',
+            'email'    => 'required|email',
             'password' => [
                 'required',
                 Password::default(),
@@ -44,11 +46,12 @@ final class ResetPasswordRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $request = ResetPasswordRequest::injectData([], $this->getTestingUserWithoutAccess());
+        $resetPasswordRequest = ResetPasswordRequest::injectData([], $this->getTestingUserWithoutAccess());
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($resetPasswordRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

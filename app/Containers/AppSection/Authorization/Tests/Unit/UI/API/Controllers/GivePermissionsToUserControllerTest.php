@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToUserAction;
@@ -15,10 +17,10 @@ final class GivePermissionsToUserControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(GivePermissionsToUserController::class);
-        $request = GivePermissionsToUserRequest::injectData();
+        $givePermissionsToUserRequest = GivePermissionsToUserRequest::injectData();
         $actionMock = $this->mock(GivePermissionsToUserAction::class);
-        $actionMock->expects()->run($request)->andReturn(UserFactory::new()->createOne());
+        $actionMock->expects()->run($givePermissionsToUserRequest)->andReturn(UserFactory::new()->createOne());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($givePermissionsToUserRequest, $actionMock);
     }
 }

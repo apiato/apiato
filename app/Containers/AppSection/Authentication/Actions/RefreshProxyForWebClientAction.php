@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions;
 
 use Apiato\Core\Exceptions\IncorrectIdException;
@@ -26,15 +28,15 @@ class RefreshProxyForWebClientAction extends ParentAction
     {
         $sanitizedData = $request->sanitizeInput([
             'refresh_token' => $request->cookie('refreshToken'),
-            'client_id' => config('appSection-authentication.clients.web.id'),
+            'client_id'     => config('appSection-authentication.clients.web.id'),
             'client_secret' => config('appSection-authentication.clients.web.secret'),
-            'grant_type' => 'refresh_token',
-            'scope' => '',
+            'grant_type'    => 'refresh_token',
+            'scope'         => '',
         ]);
 
-        $responseContent = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
-        $refreshCookie = $this->makeRefreshTokenCookieTask->run($responseContent->refreshToken);
+        $token = $this->callOAuthServerTask->run($sanitizedData, $request->headers->get('accept-language'));
+        $refreshCookie = $this->makeRefreshTokenCookieTask->run($token->refreshToken);
 
-        return new AuthResult($responseContent, $refreshCookie);
+        return new AuthResult($token, $refreshCookie);
     }
 }

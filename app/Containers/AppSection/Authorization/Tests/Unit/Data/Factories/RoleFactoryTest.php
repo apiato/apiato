@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -13,9 +15,9 @@ final class RoleFactoryTest extends UnitTestCase
 {
     public function testCanCreateRole(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $model = RoleFactory::new()->createOne();
 
-        $this->assertInstanceOf(Role::class, $role);
+        $this->assertInstanceOf(Role::class, $model);
     }
 
     public function testCanCreateAdminRole(): void
@@ -27,15 +29,15 @@ final class RoleFactoryTest extends UnitTestCase
         $adminRole->delete();
         $this->assertModelMissing($adminRole);
 
-        $role = RoleFactory::new()->admin()->createOne();
+        $model = RoleFactory::new()->admin()->createOne();
 
-        $this->assertSame($roleName, $role->name);
+        $this->assertSame($roleName, $model->name);
     }
 
     public function testCanSetGuard(): void
     {
-        $role = RoleFactory::new()->withGuard(AuthGuard::API->value)->createOne();
+        $model = RoleFactory::new()->withGuard(AuthGuard::API->value)->createOne();
 
-        $this->assertSame(AuthGuard::API->value, $role->guard_name);
+        $this->assertSame(AuthGuard::API->value, $model->guard_name);
     }
 }

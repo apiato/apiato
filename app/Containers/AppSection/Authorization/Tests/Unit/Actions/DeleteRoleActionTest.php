@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\DeleteRoleAction;
@@ -13,14 +15,14 @@ final class DeleteRoleActionTest extends UnitTestCase
 {
     public function testCanDeleteRole(): void
     {
-        $role = RoleFactory::new()->createOne();
-        $request = DeleteRoleRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
+        $model = RoleFactory::new()->createOne();
+        $deleteRoleRequest = DeleteRoleRequest::injectData()->withUrlParameters(['role_id' => $model->id]);
         $action = app(DeleteRoleAction::class);
-        $this->assertModelExists($role);
+        $this->assertModelExists($model);
 
-        $result = $action->run($request);
+        $result = $action->run($deleteRoleRequest);
 
         $this->assertTrue($result);
-        $this->assertModelMissing($role);
+        $this->assertModelMissing($model);
     }
 }

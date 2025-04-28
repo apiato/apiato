@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -11,7 +13,7 @@ return [
     |
     */
 
-    'require_email_verification' => env('REQUIRE_EMAIL_VERIFICATION', true),
+    'require_email_verification'                        => env('REQUIRE_EMAIL_VERIFICATION', true),
     'email_verification_link_expiration_time_in_minute' => env('EMAIL_VERIFICATION_LINK_EXPIRATION_TIME_IN_MINUTE', 30),
 
     /*
@@ -25,11 +27,11 @@ return [
 
     'clients' => [
         'web' => [
-            'id' => env('CLIENT_WEB_ID'),
+            'id'     => env('CLIENT_WEB_ID'),
             'secret' => env('CLIENT_WEB_SECRET'),
         ],
         'mobile' => [
-            'id' => env('CLIENT_MOBILE_ID'),
+            'id'     => env('CLIENT_MOBILE_ID'),
             'secret' => env('CLIENT_MOBILE_SECRET'),
         ],
 

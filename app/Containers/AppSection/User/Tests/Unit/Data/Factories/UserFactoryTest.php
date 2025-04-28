@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -13,36 +15,36 @@ final class UserFactoryTest extends UnitTestCase
 {
     public function testCanCreateUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
 
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf(User::class, $model);
     }
 
     public function testCanCreateAdminUser(): void
     {
-        $user = UserFactory::new()->admin()->createOne();
+        $model = UserFactory::new()->admin()->createOne();
 
-        $this->assertTrue($user->hasRole(config('appSection-authorization.admin_role')));
+        $this->assertTrue($model->hasRole(config('appSection-authorization.admin_role')));
     }
 
     public function testCanCreateUnverifiedUser(): void
     {
-        $user = UserFactory::new()->unverified()->createOne();
+        $model = UserFactory::new()->unverified()->createOne();
 
-        $this->assertNull($user->email_verified_at);
+        $this->assertNull($model->email_verified_at);
     }
 
     public function testCanCreateVerifiedUser(): void
     {
-        $user = UserFactory::new()->verified()->createOne();
+        $model = UserFactory::new()->verified()->createOne();
 
-        $this->assertNotNull($user->email_verified_at);
+        $this->assertNotNull($model->email_verified_at);
     }
 
     public function testCanSetGender(): void
     {
-        $user = UserFactory::new()->gender(Gender::MALE)->createOne();
+        $model = UserFactory::new()->gender(Gender::MALE)->createOne();
 
-        $this->assertSame(Gender::MALE, $user->gender);
+        $this->assertSame(Gender::MALE, $model->gender);
     }
 }

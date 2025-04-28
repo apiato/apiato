@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\FindRoleByIdAction;
@@ -14,11 +16,11 @@ final class FindRoleByIdActionTest extends UnitTestCase
 {
     public function testCanFindRole(): void
     {
-        $role = RoleFactory::new()->createOne();
-        $request = FindRoleByIdRequest::injectData()->withUrlParameters(['role_id' => $role->id]);
+        $model = RoleFactory::new()->createOne();
+        $findRoleByIdRequest = FindRoleByIdRequest::injectData()->withUrlParameters(['role_id' => $model->id]);
         $taskMock = $this->partialMock(FindRoleTask::class);
-        $taskMock->expects('run')->once()->with($request->role_id)->andReturn($role);
+        $taskMock->expects('run')->once()->with($findRoleByIdRequest->role_id)->andReturn($model);
 
-        app(FindRoleByIdAction::class)->run($request);
+        app(FindRoleByIdAction::class)->run($findRoleByIdRequest);
     }
 }

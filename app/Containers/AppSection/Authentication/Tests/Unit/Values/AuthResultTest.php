@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -13,7 +15,7 @@ final class AuthResultTest extends UnitTestCase
 {
     public function testCanCreateValue(): void
     {
-        $value = new AuthResult(
+        $authResult = new AuthResult(
             Token::fake(),
             new Cookie(
                 'refreshToken',
@@ -21,15 +23,15 @@ final class AuthResultTest extends UnitTestCase
             ),
         );
 
-        $this->assertInstanceOf(Token::class, $value->token);
-        $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
+        $this->assertInstanceOf(Token::class, $authResult->token);
+        $this->assertInstanceOf(Cookie::class, $authResult->refreshTokenCookie);
     }
 
     public function testCanCreateFakeValue(): void
     {
-        $value = AuthResult::fake();
+        $authResult = AuthResult::fake();
 
-        $this->assertInstanceOf(Token::class, $value->token);
-        $this->assertInstanceOf(Cookie::class, $value->refreshTokenCookie);
+        $this->assertInstanceOf(Token::class, $authResult->token);
+        $this->assertInstanceOf(Cookie::class, $authResult->refreshTokenCookie);
     }
 }

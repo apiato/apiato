@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Parents\Repositories;
 
 use Apiato\Core\Abstracts\Repositories\Repository as AbstractRepository;
@@ -64,20 +66,21 @@ abstract class Repository extends AbstractRepository
      * @throws NotFoundException
      * @throws DeleteResourceFailedException
      */
+    #[\Override]
     public function delete($id): bool
     {
         try {
             return (bool) parent::delete($id);
         } catch (ModelNotFoundException) {
             throw new NotFoundException();
-        } catch (\Exception) {
+        } catch (\Throwable) {
             throw new DeleteResourceFailedException();
         }
     }
 
     /**
      * @param class-string<CriteriaInterface> $criteria Criteria class name
-     * @param array<string, mixed> $args Arguments to pass to the criteria constructor
+     * @param array<string, mixed>            $args     Arguments to pass to the criteria constructor
      *
      * @throws RepositoryException
      * @throws BindingResolutionException

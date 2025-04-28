@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Criterias;
 
 use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
@@ -8,8 +10,8 @@ use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterfa
 class ThisEqualThatCriteria extends ParentCriteria
 {
     public function __construct(
-        private string $field,
-        private string $value,
+        private readonly string $field,
+        private readonly string $value,
     ) {
     }
 

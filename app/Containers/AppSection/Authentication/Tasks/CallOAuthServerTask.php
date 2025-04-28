@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tasks;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
@@ -14,11 +16,11 @@ class CallOAuthServerTask extends ParentTask
     /**
      * @throws LoginFailedException
      */
-    public function run(array $data, string|null $languageHeader = null): Token
+    public function run(array $data, null|string $languageHeader = null): Token
     {
         $authFullApiUrl = route('passport.token');
         $headers = [
-            'HTTP_ACCEPT' => 'application/json',
+            'HTTP_ACCEPT'          => 'application/json',
             'HTTP_ACCEPT_LANGUAGE' => $languageHeader ?? config('app.locale'),
         ];
 

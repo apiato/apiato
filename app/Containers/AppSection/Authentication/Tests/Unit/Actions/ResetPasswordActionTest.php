@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\ResetPasswordAction;
@@ -25,14 +27,14 @@ final class ResetPasswordActionTest extends UnitTestCase
         Notification::fake();
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
         $data = [
-            'email' => $this->user->email,
-            'token' => $token,
-            'password' => 'new pass',
+            'email'                 => $this->user->email,
+            'token'                 => $token,
+            'password'              => 'new pass',
             'password_confirmation' => 'new pass',
         ];
-        $request = new ResetPasswordRequest($data);
+        $resetPasswordRequest = new ResetPasswordRequest($data);
 
-        app(ResetPasswordAction::class)->run($request);
+        app(ResetPasswordAction::class)->run($resetPasswordRequest);
 
         $this->assertTrue(Hash::check($data['password'], $this->user->fresh()->password));
         Notification::assertSentTo($this->user, PasswordReset::class);
@@ -44,13 +46,13 @@ final class ResetPasswordActionTest extends UnitTestCase
         $this->expectExceptionMessage('Invalid Reset Password Token Provided.');
 
         $data = [
-            'email' => $this->user->email,
+            'email'    => $this->user->email,
             'password' => 'new pass',
-            'token' => 'invalid token',
+            'token'    => 'invalid token',
         ];
-        $request = new ResetPasswordRequest($data);
+        $resetPasswordRequest = new ResetPasswordRequest($data);
 
-        app(ResetPasswordAction::class)->run($request);
+        app(ResetPasswordAction::class)->run($resetPasswordRequest);
     }
 
     public function testResetPasswordWithInvalidEmailThrowsException(): void
@@ -60,21 +62,22 @@ final class ResetPasswordActionTest extends UnitTestCase
 
         $token = app(CreatePasswordResetTokenTask::class)->run($this->user);
         $data = [
-            'email' => 'ganldalf@the.white',
+            'email'    => 'ganldalf@the.white',
             'password' => 'youShallNotPass',
-            'token' => $token,
+            'token'    => $token,
         ];
-        $request = new ResetPasswordRequest($data);
+        $resetPasswordRequest = new ResetPasswordRequest($data);
 
-        app(ResetPasswordAction::class)->run($request);
+        app(ResetPasswordAction::class)->run($resetPasswordRequest);
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->user = UserFactory::new()->createOne([
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
     }

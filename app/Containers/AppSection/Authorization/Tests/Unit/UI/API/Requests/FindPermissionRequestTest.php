@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
@@ -16,7 +18,7 @@ final class FindPermissionRequestTest extends UnitTestCase
     {
         $this->assertSame([
             'permissions' => 'manage-permissions',
-            'roles' => null,
+            'roles'       => null,
         ], $this->request->getAccessArray());
     }
 
@@ -43,12 +45,13 @@ final class FindPermissionRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
-        $request = FindPermissionByIdRequest::injectData([], $user)->withUrlParameters(['permission_id' => PermissionFactory::new()->createOne()->id]);
+        $userModel = $this->getTestingUser(access: ['permissions' => 'manage-permissions']);
+        $findPermissionByIdRequest = FindPermissionByIdRequest::injectData([], $userModel)->withUrlParameters(['permission_id' => PermissionFactory::new()->createOne()->id]);
 
-        $this->assertTrue($request->authorize());
+        $this->assertTrue($findPermissionByIdRequest->authorize());
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -35,11 +37,11 @@ final class UpdateUserRequestTest extends UnitTestCase
         $rules = $this->request->rules();
 
         $this->assertEquals([
-            'name' => 'min:2|max:50',
-            'gender' => [Rule::enum(Gender::class), 'nullable'],
-            'birth' => ['date', 'nullable'],
+            'name'             => 'min:2|max:50',
+            'gender'           => [Rule::enum(Gender::class), 'nullable'],
+            'birth'            => ['date', 'nullable'],
             'current_password' => [
-                Rule::requiredIf(fn (): bool => !is_null($this->request->user()->password) && $this->request->filled('new_password')),
+                Rule::requiredIf(fn (): bool => !\is_null($this->request->user()->password) && $this->request->filled('new_password')),
                 'current_password:api',
             ],
             'new_password' => [
@@ -52,19 +54,20 @@ final class UpdateUserRequestTest extends UnitTestCase
 
     public function testAuthorizeMethodGateCall(): void
     {
-        $user = UserFactory::new()->createOne();
-        $request = UpdateUserRequest::injectData([], $user)
+        $model = UserFactory::new()->createOne();
+        $updateUserRequest = UpdateUserRequest::injectData([], $model)
             ->withUrlParameters([
-                'user_id' => $user->id,
+                'user_id' => $model->id,
             ]);
         $gateMock = $this->getGateMock('update', [
             User::class,
-            $user->id,
+            $model->id,
         ]);
 
-        $this->assertTrue($request->authorize($gateMock));
+        $this->assertTrue($updateUserRequest->authorize($gateMock));
     }
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

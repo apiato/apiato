@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\SendVerificationEmailAction;
@@ -14,10 +16,10 @@ final class SendVerificationEmailControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(SendVerificationEmailController::class);
-        $request = SendVerificationEmailRequest::injectData();
+        $sendVerificationEmailRequest = SendVerificationEmailRequest::injectData();
         $actionMock = $this->mock(SendVerificationEmailAction::class);
-        $actionMock->expects()->run($request);
+        $actionMock->expects()->run($sendVerificationEmailRequest);
 
-        $controller->__invoke($request, $actionMock);
+        $controller($sendVerificationEmailRequest, $actionMock);
     }
 }

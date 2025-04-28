@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -15,24 +17,24 @@ final class AssignRolesToUserTest extends ApiTestCase
 
     protected array $access = [
         'permissions' => 'manage-admins-access',
-        'roles' => null,
+        'roles'       => null,
     ];
 
     public function testAssignRoleToUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $role = RoleFactory::new()->createOne();
         $data = [
             'role_ids' => [$role->getHashedKey()],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 1)
-                ->where('data.id', $user->getHashedKey())
+                ->where('data.id', $model->getHashedKey())
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
                 ->etc(),
         );
@@ -40,7 +42,7 @@ final class AssignRolesToUserTest extends ApiTestCase
 
     public function testAssignManyRolesToUser(): void
     {
-        $user = UserFactory::new()->createOne();
+        $model = UserFactory::new()->createOne();
         $role1 = RoleFactory::new()->createOne();
         $role2 = RoleFactory::new()->createOne();
         $data = [
@@ -50,13 +52,13 @@ final class AssignRolesToUserTest extends ApiTestCase
             ],
         ];
 
-        $response = $this->injectId($user->id, replace: '{user_id}')->makeCall($data);
+        $testResponse = $this->injectId($model->id, replace: '{user_id}')->makeCall($data);
 
-        $response->assertOk();
-        $response->assertJson(
+        $testResponse->assertOk();
+        $testResponse->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->has('data.roles.data', 2)
-                ->where('data.id', $user->getHashedKey())
+                ->where('data.id', $model->getHashedKey())
                 ->where('data.roles.data.0.id', $data['role_ids'][0])
                 ->where('data.roles.data.1.id', $data['role_ids'][1])
                 ->etc(),

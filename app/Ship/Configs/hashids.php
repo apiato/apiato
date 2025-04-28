@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright (c) Vincent Klaiber.
  *
@@ -8,7 +10,6 @@
  *
  * @see https://github.com/vinkla/laravel-hashids
  */
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -36,13 +37,13 @@ return [
 
     'connections' => [
         'main' => [
-            'salt' => (string) env('HASH_ID_KEY', env('APP_KEY')),
-            'length' => (int) env('HASH_ID_LENGTH', 32),
+            'salt'     => (string) env('HASH_ID_KEY', env('APP_KEY')),
+            'length'   => (int) env('HASH_ID_LENGTH', 32),
             'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         ],
 
         'alternative' => [
-            'salt' => (string) 'your-salt-string',
+            'salt'   => 'your-salt-string',
             'length' => (int) 'your-length-integer',
             // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],

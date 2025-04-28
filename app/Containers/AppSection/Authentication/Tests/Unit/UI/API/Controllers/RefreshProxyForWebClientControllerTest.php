@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Controllers;
 
 use App\Containers\AppSection\Authentication\Actions\RefreshProxyForWebClientAction;
@@ -15,10 +17,10 @@ final class RefreshProxyForWebClientControllerTest extends UnitTestCase
     public function testControllerCallsCorrectAction(): void
     {
         $controller = app(RefreshProxyForWebClientController::class);
-        $request = RefreshProxyRequest::injectData();
+        $refreshProxyRequest = RefreshProxyRequest::injectData();
         $actionMock = $this->mock(RefreshProxyForWebClientAction::class);
-        $actionMock->expects()->run($request)->andReturn(AuthResult::fake());
+        $actionMock->expects()->run($refreshProxyRequest)->andReturn(AuthResult::fake());
 
-        $controller->__invoke($request, $actionMock);
+        $controller($refreshProxyRequest, $actionMock);
     }
 }
