@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
+namespace App\Ship\Tests\Unit\Providers;
 
-use App\Containers\AppSection\Authentication\Providers\RequestServiceProvider;
-use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use App\Ship\Providers\ShipServiceProvider;
+use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-#[CoversClass(RequestServiceProvider::class)]
-final class RequestServiceProviderTest extends UnitTestCase
+#[CoversClass(ShipServiceProvider::class)]
+final class ShipServiceProviderTest extends ShipTestCase
 {
     public static function appDataProvider(): array
     {

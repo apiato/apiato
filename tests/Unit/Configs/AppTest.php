@@ -8,7 +8,6 @@ use Apiato\Macros\MacroServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\EmailVerificationServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\PasswordResetServiceProvider;
-use App\Containers\AppSection\Authentication\Providers\RequestServiceProvider;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Auth\AuthServiceProvider as LaravelAuthServiceProviderAlias;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider as LaravelPasswordResetServiceProvider;
@@ -143,7 +142,6 @@ final class AppTest extends ShipTestCase
                 EmailVerificationServiceProvider::class,
                 PassportServiceProvider::class,
                 PasswordResetServiceProvider::class,
-                RequestServiceProvider::class,
                 UserServiceProvider::class,
             ],
             'aliases' => [
