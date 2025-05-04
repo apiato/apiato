@@ -37,10 +37,10 @@ return [
         |
         */
         'rate-limiter' => [
-            'name' => env('GLOBAL_API_RATE_LIMIT_NAME', 'api'),
-            'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
-            'attempts' => env('GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN', '30'),
-            'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
+            'name' => env('GLOBAL_API_RATE_LIMITER_NAME', 'api'),
+            'enabled' => env('GLOBAL_API_RATE_LIMITER_ENABLED', true),
+            'attempts' => env('GLOBAL_API_RATE_LIMITER_ATTEMPTS_PER_MIN', '30'),
+            'expires' => env('GLOBAL_API_RATE_LIMITER_EXPIRES_IN_MIN', '1'),
         ],
     ],
 
