@@ -16,6 +16,7 @@ final class UserAdminTransformerTest extends UnitTestCase
 
     public function testCanTransformSingleObject(): void
     {
+        $this->freezeTime();
         $user = User::factory()->createOne();
         $expected = [
             'type' => $user->getResourceKey(),
