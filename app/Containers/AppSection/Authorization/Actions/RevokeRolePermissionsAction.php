@@ -4,25 +4,20 @@ namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeRolePermissionsRequest;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class RevokeRolePermissionsAction extends ParentAction
+final class RevokeRolePermissionsAction extends ParentAction
 {
     public function __construct(
         private readonly FindRoleTask $findRoleTask,
     ) {
     }
 
-    /**
-     * @throws NotFoundException
-     */
-    public function run(RevokeRolePermissionsRequest $request): Role
+    public function run(int $roleId, int ...$permissionIds): Role
     {
-        $role = $this->findRoleTask->run($request->role_id);
+        $role = $this->findRoleTask->run($roleId);
 
-        foreach ($request->permission_ids as $permissionId) {
+        foreach ($permissionIds as $permissionId) {
             $role->revokePermissionTo($permissionId);
         }
 

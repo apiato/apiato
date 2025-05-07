@@ -17,7 +17,7 @@ class PermissionTransformer extends ParentTransformer
     public function transform(Permission $permission): array
     {
         return [
-            'object' => $permission->getResourceKey(),
+            'type' => $permission->getResourceKey(),
             'id' => $permission->getHashedKey(),
             'name' => $permission->name,
             'display_name' => $permission->display_name,

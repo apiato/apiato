@@ -6,7 +6,7 @@ use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
-class FindUserByIdTask extends ParentTask
+final class FindUserByIdTask extends ParentTask
 {
     public function __construct(
         private readonly UserRepository $repository,
@@ -15,6 +15,6 @@ class FindUserByIdTask extends ParentTask
 
     public function run(mixed $userId): User
     {
-        return $this->repository->getById($userId);
+        return $this->repository->findOrFail($userId);
     }
 }

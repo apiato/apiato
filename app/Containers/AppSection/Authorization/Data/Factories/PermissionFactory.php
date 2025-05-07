@@ -10,7 +10,7 @@ use App\Ship\Parents\Factories\Factory as ParentFactory;
  *
  * @extends ParentFactory<TModel>
  */
-class PermissionFactory extends ParentFactory
+final class PermissionFactory extends ParentFactory
 {
     /** @var class-string<TModel> */
     protected $model = Permission::class;
@@ -23,7 +23,7 @@ class PermissionFactory extends ParentFactory
         ];
     }
 
-    public function withGuard(string $guard): static
+    public function withGuard(string $guard): self
     {
         return $this->state(function (array $attributes) use ($guard) {
             return [

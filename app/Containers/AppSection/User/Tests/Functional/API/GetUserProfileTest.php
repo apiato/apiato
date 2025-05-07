@@ -2,33 +2,28 @@
 
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\User\UI\API\Controllers\GetUserProfileController;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(GetUserProfileController::class)]
 final class GetUserProfileTest extends ApiTestCase
 {
-    protected string $endpoint = 'get@v1/profile';
-
-    protected array $access = [
-        'permissions' => null,
-        'roles' => null,
-    ];
-
     public function testCanGetOwnProfile(): void
     {
-        $user = $this->getTestingUser();
+        $user = User::factory()->createOne();
+        $this->actingAs($user);
 
-        $response = $this->makeCall();
+        $response = $this->getJson(action(GetUserProfileController::class));
 
         $response->assertOk();
         $response->assertJson(
             static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
                 static fn (AssertableJson $json): AssertableJson => $json
-                    ->where('object', 'User')
+                    ->where('type', 'User')
                     ->where('id', $user->getHashedKey())
                     ->where('email', $user->email)
                     ->whereType('email_verified_at', 'string')
@@ -40,11 +35,9 @@ final class GetUserProfileTest extends ApiTestCase
         );
     }
 
-    public function testCannotGetProfileByUnauthenticatedUser(): void
+    public function testPreventAccessByUnauthenticatedUser(): void
     {
-        $this->testingUser = UserFactory::new()->createOne();
-
-        $response = $this->auth(false)->makeCall();
+        $response = $this->getJson(action(GetUserProfileController::class));
 
         $response->assertUnauthorized();
     }

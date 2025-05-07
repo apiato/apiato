@@ -5,7 +5,7 @@
  *
  * @apiName            ListUserRoles
  *
- * @api                {GET} /v1/users/:user_id/roles List user roles
+ * @api                {get} /v1/users/:user_id/roles List user roles
  *
  * @apiVersion         1.0.0
  *

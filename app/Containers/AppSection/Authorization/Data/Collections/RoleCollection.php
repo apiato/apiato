@@ -6,11 +6,8 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Collections\EloquentCollection as ParentCollection;
 
 /**
- * @template TKey of array-key
- * @template TModel of Role
- *
- * @extends ParentCollection<TKey, TModel>
+ * @extends ParentCollection<array-key, Role>
  */
-class RoleCollection extends ParentCollection
+final class RoleCollection extends ParentCollection
 {
 }

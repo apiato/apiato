@@ -5,7 +5,7 @@
  *
  * @apiName            ListUserPermissions
  *
- * @api                {GET} /v1/users/:user_id/permissions List user permissions
+ * @api                {get} /v1/users/:user_id/permissions List user permissions
  *
  * @apiVersion         1.0.0
  *

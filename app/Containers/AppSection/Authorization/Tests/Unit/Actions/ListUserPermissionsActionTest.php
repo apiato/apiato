@@ -3,10 +3,9 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\ListUserPermissionsAction;
-use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
+use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\ListUserPermissionsRequest;
-use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Models\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ListUserPermissionsAction::class)]
@@ -14,12 +13,11 @@ final class ListUserPermissionsActionTest extends UnitTestCase
 {
     public function testCanListPermissions(): void
     {
-        $user = UserFactory::new()->createOne()
-            ->givePermissionTo(PermissionFactory::new()->count(3)->create());
-        $request = ListUserPermissionsRequest::injectData()->withUrlParameters(['user_id' => $user->id]);
+        $user = User::factory()->createOne()
+            ->givePermissionTo(Permission::factory()->count(3)->create());
         $action = app(ListUserPermissionsAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($user->id);
 
         $this->assertCount(3, $result);
     }

@@ -2,14 +2,13 @@
 
 namespace App\Containers\AppSection\User\Models;
 
-use App\Containers\AppSection\Authentication\Notifications\VerifyEmail;
+use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
-use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class User extends ParentUserModel implements MustVerifyEmail
+final class User extends ParentUserModel
 {
     protected $fillable = [
         'name',
@@ -36,40 +35,29 @@ class User extends ParentUserModel implements MustVerifyEmail
         return new UserCollection($models);
     }
 
-    public function sendEmailVerificationNotificationWithVerificationUrl(string $verificationUrl): void
-    {
-        $this->notify(new VerifyEmail($verificationUrl));
-    }
-
-    final public function getHashedEmailForVerification(): string
-    {
-        return sha1($this->getEmailForVerification());
-    }
-
     /**
-     * Allows Passport to authenticate users with custom fields.
+     * Allows Passport to find the user by email (case-insensitive).
      */
     public function findForPassport(string $username): self|null
     {
-        $allowedLoginFields = array_keys(config('appSection-authentication.login.fields', ['email' => []]));
-        $query = $this->newModelQuery();
-
-        foreach ($allowedLoginFields as $field) {
-            $query->orWhereRaw("lower({$field}) = lower(?)", [$username]);
-        }
-
-        return $query->first();
+        return self::orWhereRaw('lower(email) = lower(?)', [$username])->first();
     }
 
-    public function hasAdminRole(): bool
+    public function isSuperAdmin(): bool
     {
-        return $this->hasRole(config('appSection-authorization.admin_role'));
+        foreach (array_keys(config('auth.guards')) as $guard) {
+            if (!$this->hasRole(RoleEnum::SUPER_ADMIN, $guard)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     protected function email(): Attribute
     {
         return new Attribute(
-            get: static fn (string|null $value): string|null => null === $value ? null : strtolower($value),
+            get: static fn (string|null $value): string|null => is_null($value) ? null : strtolower($value),
         );
     }
 }

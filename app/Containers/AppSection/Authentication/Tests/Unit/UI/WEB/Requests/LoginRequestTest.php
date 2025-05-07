@@ -2,7 +2,6 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Requests;
 
-use App\Containers\AppSection\Authentication\Classes\LoginFieldParser;
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -12,42 +11,23 @@ final class LoginRequestTest extends UnitTestCase
 {
     private LoginRequest $request;
 
-    public function testAccess(): void
-    {
-        $this->assertSame([
-            'permissions' => null,
-            'roles' => null,
-        ], $this->request->getAccessArray());
-    }
-
     public function testDecode(): void
     {
-        $this->assertSame([], $this->request->getDecodeArray());
-    }
-
-    public function testUrlParametersArray(): void
-    {
-        $this->assertSame([], $this->request->getUrlParametersArray());
+        $this->assertSame([], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
     {
         $rules = $this->request->rules();
 
-        $this->assertSame(
-            LoginFieldParser::mergeValidationRules([
+        $this->assertEquals(
+            [
+                'email' => ['required', 'email'],
                 'password' => 'required',
                 'remember' => 'boolean',
-            ]),
+            ],
             $rules,
         );
-    }
-
-    public function testAuthorizeMethodGateCall(): void
-    {
-        $request = LoginRequest::injectData([], $this->getTestingUserWithoutAccess());
-
-        $this->assertTrue($request->authorize());
     }
 
     protected function setUp(): void

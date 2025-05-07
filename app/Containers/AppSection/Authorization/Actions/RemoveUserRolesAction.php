@@ -2,28 +2,23 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\UI\API\Requests\RemoveUserRolesRequest;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class RemoveUserRolesAction extends ParentAction
+final class RemoveUserRolesAction extends ParentAction
 {
     public function __construct(
         private readonly FindUserByIdTask $findUserByIdTask,
     ) {
     }
 
-    /**
-     * @throws NotFoundException
-     */
-    public function run(RemoveUserRolesRequest $request): User
+    public function run(int $userId, int ...$roleIds): User
     {
-        $user = $this->findUserByIdTask->run($request->user_id);
+        $user = $this->findUserByIdTask->run($userId);
 
-        foreach ($request->role_ids as $role_id) {
-            $user->removeRole($role_id);
+        foreach ($roleIds as $roleId) {
+            $user->removeRole($roleId);
         }
 
         return $user;

@@ -3,10 +3,9 @@
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToRoleAction;
-use App\Containers\AppSection\Authorization\Data\Factories\PermissionFactory;
-use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
+use App\Containers\AppSection\Authorization\Models\Permission;
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
-use App\Containers\AppSection\Authorization\UI\API\Requests\GivePermissionsToRoleRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(GivePermissionsToRoleAction::class)]
@@ -14,16 +13,11 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
 {
     public function testCanGiveSinglePermission(): void
     {
-        $role = RoleFactory::new()->createOne();
-        $permission = PermissionFactory::new()->createOne();
-        $data = [
-            'permission_ids' => [$permission->getHashedKey()],
-        ];
-        $request = GivePermissionsToRoleRequest::injectData($data)
-            ->withUrlParameters(['role_id' => $role->id]);
+        $role = Role::factory()->createOne();
+        $permission = Permission::factory()->createOne();
         $action = app(GivePermissionsToRoleAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($role->id, $permission->id);
 
         $this->assertSame($result->id, $role->id);
         $this->assertTrue($result->hasPermissionTo($permission->name));
@@ -31,17 +25,12 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
 
     public function testCanGiveMultiplePermissions(): void
     {
-        $role = RoleFactory::new()->createOne();
-        $permissionA = PermissionFactory::new()->createOne();
-        $permissionB = PermissionFactory::new()->createOne();
-        $data = [
-            'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
-        ];
-        $request = GivePermissionsToRoleRequest::injectData($data)
-        ->withUrlParameters(['role_id' => $role->id]);
+        $role = Role::factory()->createOne();
+        $permissionA = Permission::factory()->createOne();
+        $permissionB = Permission::factory()->createOne();
         $action = app(GivePermissionsToRoleAction::class);
 
-        $result = $action->run($request);
+        $result = $action->run($role->id, $permissionA->id, $permissionB->id);
 
         $this->assertSame($result->id, $role->id);
         $this->assertTrue($result->hasAllPermissions([$permissionA->name, $permissionB->name]));

@@ -2,20 +2,27 @@
 
 namespace App\Containers\AppSection\User\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\User\Actions\UpdateUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
-class UpdateUserController extends ApiController
+final class UpdateUserController extends ApiController
 {
-    public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): array
+    public function __invoke(UpdateUserRequest $request, UpdateUserAction $action): JsonResponse
     {
-        $request->mapInput([
-            'new_password' => 'password',
-        ]);
-        $user = $action->run($request);
+        $user = $action->run(
+            $request->user_id,
+            $request->sanitize([
+                'name',
+                'gender',
+                'birth',
+                'password' => $request->new_password,
+            ]),
+        );
 
-        return $this->transform($user, UserTransformer::class);
+        return Response::create($user, UserTransformer::class)->ok();
     }
 }

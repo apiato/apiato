@@ -2,36 +2,30 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthServiceProvider;
-use Carbon\Carbon;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Laravel\Passport\Passport;
+use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
+use Illuminate\Auth\SessionGuard;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\Guards\TokenGuard;
 
-class AuthServiceProvider extends ParentAuthServiceProvider implements DeferrableProvider
+final class AuthServiceProvider extends ParentServiceProvider
 {
-    protected $policies = [];
-
     public function boot(): void
     {
-        parent::boot();
+        $method = function () {
+            foreach (array_keys(config('auth.guards')) as $guard) {
+                if (Auth::guard($guard)->check()) {
+                    return $guard;
+                }
+            }
 
-        $this->configPassport();
-    }
-
-    private function configPassport(): void
-    {
-        if (config('apiato.api.enabled-implicit-grant')) {
-            Passport::enableImplicitGrant();
-        }
-
-        Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
-        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
-    }
-
-    public function register(): void
-    {
-        parent::register();
-
-        Passport::ignoreRoutes();
+            return null;
+        };
+        /*
+         * Get the current logged-in user guard.
+         *
+         * @return string|null
+         */
+        SessionGuard::macro('activeGuard', $method);
+        TokenGuard::macro('activeGuard', $method);
     }
 }

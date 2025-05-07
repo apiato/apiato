@@ -2,17 +2,19 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Controllers;
 
+use Apiato\Support\Facades\Response;
 use App\Containers\AppSection\Authorization\Actions\ListRolePermissionsAction;
 use App\Containers\AppSection\Authorization\UI\API\Requests\ListRolePermissionsRequest;
 use App\Containers\AppSection\Authorization\UI\API\Transformers\PermissionAdminTransformer;
 use App\Ship\Parents\Controllers\ApiController;
+use Illuminate\Http\JsonResponse;
 
-class ListRolePermissionsController extends ApiController
+final class ListRolePermissionsController extends ApiController
 {
-    public function __invoke(ListRolePermissionsRequest $request, ListRolePermissionsAction $action): array
+    public function __invoke(ListRolePermissionsRequest $request, ListRolePermissionsAction $action): JsonResponse
     {
-        $permissions = $action->run($request);
+        $permissions = $action->run($request->role_id);
 
-        return $this->transform($permissions, PermissionAdminTransformer::class);
+        return Response::create($permissions, PermissionAdminTransformer::class)->ok();
     }
 }

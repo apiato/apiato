@@ -6,11 +6,8 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Ship\Parents\Collections\EloquentCollection as ParentCollection;
 
 /**
- * @template TKey of array-key
- * @template TModel of Permission
- *
- * @extends ParentCollection<TKey, TModel>
+ * @extends ParentCollection<array-key, Permission>
  */
-class PermissionCollection extends ParentCollection
+final class PermissionCollection extends ParentCollection
 {
 }

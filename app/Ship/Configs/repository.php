@@ -1,5 +1,7 @@
 <?php
 
+use League\Fractal\Serializer\DataArraySerializer;
+
 /*
 |--------------------------------------------------------------------------
 | Prettus Repository Config
@@ -37,7 +39,7 @@ return [
         'params' => [
             'include' => 'include',
         ],
-        'serializer' => League\Fractal\Serializer\DataArraySerializer::class,
+        'serializer' => DataArraySerializer::class,
     ],
 
     /*
@@ -125,20 +127,20 @@ return [
         ],
 
         /*
-        |--------------------------------------------------------------------------
-        | Methods Allowed
-        |--------------------------------------------------------------------------
-        |
-        | methods cacheable : all, paginate, find, findByField, findWhere, getByCriteria
-        |
-        | Ex:
-        |
-        | 'only'  =>['all','paginate'],
-        |
-        | or
-        |
-        | 'except'  =>['find'],
-        */
+       |--------------------------------------------------------------------------
+       | Methods Allowed
+       |--------------------------------------------------------------------------
+       |
+       | methods cacheable : all, paginate, find, findByField, findWhere, getByCriteria
+       |
+       | Ex:
+       |
+       | 'only'  =>['all','paginate'],
+       |
+       | or
+       |
+       | 'except'  =>['find'],
+       */
         'allowed' => [
             'only' => null,
             'except' => null,

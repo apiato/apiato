@@ -174,3 +174,8 @@ Apiato is open-sourced software licensed under the [MIT license](https://github.
 <p align="center">
    <strong>Made with ❤️ by the Apiato community</strong>
 </p>
+
+## Acknowledgements
+Thanks to [JetBrains](https://www.jetbrains.com) for sponsoring this project with their amazing tools and IDEs.
+
+<img style="width: 300px" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png" alt="JetBrains logo.">

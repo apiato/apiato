@@ -3,57 +3,42 @@
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\CreateRoleController;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(CreateRoleController::class)]
 final class CreateRoleTest extends ApiTestCase
 {
-    protected string $endpoint = 'post@v1/roles';
-
-    protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
-    ];
-
     public function testCreateRole(): void
     {
+        $this->actingAs(User::factory()->superAdmin()->createOne());
+
         $data = [
             'name' => 'manager',
             'display_name' => 'manager',
             'description' => 'he manages things',
         ];
 
-        $response = $this->makeCall($data);
+        $response = $this->postJson(action(CreateRoleController::class), $data);
 
         $response->assertCreated();
-        $responseContent = $this->getResponseContentObject();
-        $this->assertSame($data['name'], $responseContent->data->name);
-    }
-
-    public function testCreateRoleWithWrongName(): void
-    {
-        $data = [
-            'name' => 'includes Space',
-            'display_name' => 'manager',
-            'description' => 'he manages things',
-        ];
-
-        $response = $this->makeCall($data);
-
-        $response->assertUnprocessable();
         $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has('message')
-                    ->has('errors')
-                    ->where('errors.name.0', 'String should not contain space.'),
+            static fn (AssertableJson $json) => $json->has(
+                'data',
+                static fn (AssertableJson $json) => $json->where('name', $data['name'])
+                ->etc(),
+            )->etc(),
         );
     }
 
-    public function testGivenHaveNoAccessCannotCreateRole(): void
+    // TODO: move to request test
+    public function testGivenUserHasNoAccessPreventsOperation(): void
     {
-        $this->getTestingUserWithoutAccess();
+        $this->actingAs(User::factory()->createOne());
 
-        $response = $this->makeCall();
+        $response = $this->postJson(action(CreateRoleController::class));
 
         $response->assertForbidden();
     }

@@ -10,7 +10,7 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
  *
  * @extends ParentRepository<TModel>
  */
-class UserRepository extends ParentRepository
+final class UserRepository extends ParentRepository
 {
     protected $fieldSearchable = [
         'id' => '=',

@@ -4,39 +4,33 @@ namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 use App\Containers\AppSection\Authorization\Models\Role;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 use Illuminate\Support\Str;
 
-class FindRoleTask extends ParentTask
+final class FindRoleTask extends ParentTask
 {
     public function __construct(
         private readonly RoleRepository $repository,
     ) {
     }
 
-    /**
-     * @throws NotFoundException
-     */
-    public function run(string|int $roleNameOrId, string $guardName = 'api'): Role
+    public function run(string|int $nameOrId, string $guardName = 'api'): Role
     {
         $query = [
             'guard_name' => $guardName,
         ];
 
-        if ($this->isID($roleNameOrId)) {
-            $query['id'] = $roleNameOrId;
+        if ($this->isId($nameOrId)) {
+            $query['id'] = $nameOrId;
         } else {
-            $query['name'] = $roleNameOrId;
+            $query['name'] = $nameOrId;
         }
 
-        $role = $this->repository->findWhere($query)->first();
-
-        return $role ?? throw new NotFoundException();
+        return $this->repository->findWhere($query)->sole();
     }
 
-    private function isID(int|string $roleNameOrId): bool
+    private function isId(int|string $roleNameOrId): bool
     {
-        return is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId);
+        return is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId) || Str::isUlid($roleNameOrId);
     }
 }

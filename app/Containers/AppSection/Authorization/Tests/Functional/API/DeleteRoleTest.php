@@ -2,26 +2,33 @@
 
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
-use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
+use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
-use PHPUnit\Framework\Attributes\CoversNothing;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\DeleteRoleController;
+use App\Containers\AppSection\User\Models\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversNothing]
+#[CoversClass(DeleteRoleController::class)]
 final class DeleteRoleTest extends ApiTestCase
 {
-    protected string $endpoint = 'delete@v1/roles/{role_id}';
-
-    protected array $access = [
-        'permissions' => 'manage-roles',
-        'roles' => null,
-    ];
-
     public function testCanDeleteRole(): void
     {
-        $role = RoleFactory::new()->createOne();
+        $this->actingAs(User::factory()->superAdmin()->createOne());
+        $role = Role::factory()->createOne();
 
-        $response = $this->injectId($role->id, replace: '{role_id}')->makeCall();
+        $response = $this->deleteJson(action(DeleteRoleController::class, ['role_id' => $role->getHashedKey()]));
 
         $response->assertNoContent();
+    }
+
+    // TODO: move to request test
+    public function testGivenUserHasNoAccessPreventsOperation(): void
+    {
+        $this->actingAs(User::factory()->createOne());
+        $role = Role::factory()->createOne();
+
+        $response = $this->deleteJson(action(DeleteRoleController::class, ['role_id' => $role->getHashedKey()]));
+
+        $response->assertForbidden();
     }
 }

@@ -5,7 +5,7 @@ namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 use App\Containers\AppSection\Authorization\Models\Role;
 use Illuminate\Support\Arr;
 
-class RoleAdminTransformer extends RoleTransformer
+final class RoleAdminTransformer extends RoleTransformer
 {
     public function transform(Role $role): array
     {
