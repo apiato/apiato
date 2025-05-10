@@ -38,7 +38,7 @@ final class RevokeTokenTest extends ApiTestCase
         $response = $this->postJson(action(RevokeTokenController::class));
 
         $response->assertAccepted();
-        $this->assertTrue($user->token()->revoked);
+        $this->assertNull($user->fresh()->token());
         $response->assertCookieExpired('refreshToken');
     }
 }
