@@ -13,26 +13,24 @@ final readonly class WebClient extends ParentValue implements Client
     private PassportClient $client;
 
     public function __construct(
-        private int $id,
+        private int|string $id,
         private string $secret,
     ) {
         config([self::ID_CONFIG_KEY => $this->id]);
         config([self::SECRET_CONFIG_KEY => $this->secret]);
 
-        $this->client = PassportClient::query()->where([
-            'id' => $this->id,
-            'secret' => $this->secret,
-            'password_client' => true,
-        ])->firstOrFail();
+        $this->client = PassportClient::query()
+            ->where('id', $this->id)
+            ->firstOrFail();
     }
 
     public static function create(): self
     {
-        $id = (int) config(self::ID_CONFIG_KEY);
+        $id = config(self::ID_CONFIG_KEY);
         $secret = config(self::SECRET_CONFIG_KEY);
 
-        Assert::notNull($id, 'The web client id is not set');
-        Assert::notNull($secret, 'The web client secret is not set');
+        Assert::stringNotEmpty($id, 'The web client id is not set');
+        Assert::stringNotEmpty($secret, 'The web client secret is not set');
 
         return new self($id, $secret);
     }
