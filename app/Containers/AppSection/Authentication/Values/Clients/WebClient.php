@@ -14,10 +14,10 @@ final readonly class WebClient extends ParentValue implements Client
 
     public function __construct(
         private int|string $id,
-        private string $secret,
+        private string $plainSecret,
     ) {
         config([self::ID_CONFIG_KEY => $this->id]);
-        config([self::SECRET_CONFIG_KEY => $this->secret]);
+        config([self::SECRET_CONFIG_KEY => $this->plainSecret]);
 
         $this->client = PassportClient::query()
             ->where('id', $this->id)
@@ -27,12 +27,12 @@ final readonly class WebClient extends ParentValue implements Client
     public static function create(): self
     {
         $id = config(self::ID_CONFIG_KEY);
-        $secret = config(self::SECRET_CONFIG_KEY);
+        $plainSecret = config(self::SECRET_CONFIG_KEY);
 
         Assert::stringNotEmpty($id, 'The web client id is not set');
-        Assert::stringNotEmpty($secret, 'The web client secret is not set');
+        Assert::stringNotEmpty($plainSecret, 'The web client secret is not set');
 
-        return new self($id, $secret);
+        return new self($id, $plainSecret);
     }
 
     public function id(): mixed
@@ -47,6 +47,6 @@ final readonly class WebClient extends ParentValue implements Client
 
     public function secret(): string
     {
-        return $this->instance()->secret;
+        return config()->string(self::SECRET_CONFIG_KEY);
     }
 }
