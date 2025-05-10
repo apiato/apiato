@@ -27,7 +27,7 @@ final readonly class RefreshTokenProxy extends ParentValue
             'grant_type' => 'refresh_token',
             'refresh_token' => $this->refreshToken->value(),
             'client_id' => $this->client->id(),
-            'client_secret' => $this->client->secret(),
+            'client_secret' => $this->client->plainSecret(),
             'scope' => $this->scope->toString(),
         ];
     }

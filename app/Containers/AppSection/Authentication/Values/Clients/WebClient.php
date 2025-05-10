@@ -45,7 +45,7 @@ final readonly class WebClient extends ParentValue implements Client
         return $this->client;
     }
 
-    public function secret(): string
+    public function plainSecret(): string
     {
         return config()->string(self::SECRET_CONFIG_KEY);
     }
