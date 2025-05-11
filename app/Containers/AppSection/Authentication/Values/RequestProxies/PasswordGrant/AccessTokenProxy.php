@@ -28,7 +28,7 @@ final readonly class AccessTokenProxy extends ParentValue
             'username' => $this->credential->username(),
             'password' => $this->credential->password(),
             'client_id' => $this->client->id(),
-            'client_secret' => $this->client->secret(),
+            'client_secret' => $this->client->plainSecret(),
             'scope' => $this->scope->toString(),
         ];
     }

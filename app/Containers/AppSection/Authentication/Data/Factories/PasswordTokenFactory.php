@@ -6,13 +6,12 @@ use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\AccessTokenProxy;
 use App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant\RefreshTokenProxy;
 use App\Containers\AppSection\User\Models\User;
-use Laravel\Passport\Token;
-use Laravel\Passport\TokenRepository;
-use Lcobucci\JWT\Parser as JwtParser;
+use Laravel\Passport\AccessToken;
 use League\OAuth2\Server\AuthorizationServer;
-use Nyholm\Psr7\Response;
-use Nyholm\Psr7\ServerRequest;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
+use Symfony\Component\HttpFoundation\Request;
 
 final class PasswordTokenFactory
 {
@@ -20,60 +19,61 @@ final class PasswordTokenFactory
 
     public function __construct(
         private readonly AuthorizationServer $server,
-        private readonly TokenRepository $tokens,
-        private readonly JwtParser $jwt,
+        private readonly TokenAttributeFormatter $tokenFormatter,
     ) {
     }
 
     public function make(AccessTokenProxy|RefreshTokenProxy $proxy): PasswordToken
     {
-        $response = $this->dispatchRequestToAuthorizationServer(
-            $this->createRequest($proxy),
-        );
+        $response = $this->processTokenRequest($proxy);
+        $this->updateUserTokenIfNeeded($response['access_token']);
 
-        $token = $this->findAccessToken($response);
-        tap($token, function (Token $token) {
-            $this->tokens->save($token->forceFill([
-                'user_id' => $token->user_id,
-            ]));
-        });
-
-        if (!is_null($this->user)) {
-            $this->setUserCurrentToken($token);
-        }
-
-        return $response;
+        return PasswordToken::fromArray($response);
     }
 
-    protected function dispatchRequestToAuthorizationServer(ServerRequestInterface $request): PasswordToken
+    private function processTokenRequest(AccessTokenProxy|RefreshTokenProxy $proxy): array
     {
-        return PasswordToken::fromArray(
-            json_decode(
-                (string) $this->server->respondToAccessTokenRequest(
-                    $request,
-                    new Response(),
-                )->getBody(),
-                true,
-                512,
-                JSON_THROW_ON_ERROR,
-            ),
+        return $this->dispatchRequestToAuthorizationServer(
+            $this->createRequest($proxy),
+        );
+    }
+
+    protected function dispatchRequestToAuthorizationServer(ServerRequestInterface $request): array
+    {
+        return json_decode(
+            (string) $this->server->respondToAccessTokenRequest(
+                $request,
+                app(ResponseInterface::class),
+            )->getBody(),
+            true,
+            512,
+            JSON_THROW_ON_ERROR,
         );
     }
 
     protected function createRequest(AccessTokenProxy|RefreshTokenProxy $proxy): ServerRequestInterface
     {
-        return (new ServerRequest('POST', 'not-important'))
-            ->withParsedBody($proxy->toArray());
-    }
-
-    public function findAccessToken(PasswordToken $token): Token
-    {
-        return $this->tokens->find(
-            $this->jwt->parse($token->accessToken)->claims()->get('jti'),
+        return (new PsrHttpFactory())->createRequest(
+            Request::create(
+                '',
+                'POST',
+                $proxy->toArray(),
+            ),
         );
     }
 
-    private function setUserCurrentToken(Token $token): void
+    private function updateUserTokenIfNeeded(string $accessToken): void
+    {
+        if (!is_null($this->user)) {
+            $this->setUserCurrentToken(
+                new AccessToken(
+                    $this->tokenFormatter->format($accessToken),
+                ),
+            );
+        }
+    }
+
+    private function setUserCurrentToken(AccessToken $token): void
     {
         $this->user->refresh()->withAccessToken($token);
     }

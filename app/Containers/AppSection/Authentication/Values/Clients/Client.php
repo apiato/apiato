@@ -6,7 +6,7 @@ interface Client
 {
     public function id(): mixed;
 
-    public function secret(): string;
+    public function plainSecret(): string;
 
     public function instance(): \Laravel\Passport\Client;
 }

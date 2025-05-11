@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(RevokeTokenAction::class)]
 final class RevokeTokenActionTest extends UnitTestCase
 {
-    public function testCanGetTokenViaRefreshToken(): void
+    public function testCanRevokeToken(): void
     {
         $user = User::factory()->createOne([
             'password' => 'youShallNotPass',
@@ -35,7 +35,7 @@ final class RevokeTokenActionTest extends UnitTestCase
 
         $result = $action->run($user);
 
-        $this->assertTrue($user->token()->revoked);
+        $this->assertNull($user->fresh()->token());
         $this->assertTrue($result->isCleared());
     }
 }
