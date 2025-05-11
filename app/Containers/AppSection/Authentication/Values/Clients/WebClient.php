@@ -29,8 +29,11 @@ final readonly class WebClient extends ParentValue implements Client
         $id = config(self::ID_CONFIG_KEY);
         $plainSecret = config(self::SECRET_CONFIG_KEY);
 
-        Assert::stringNotEmpty($id, 'The web client id is not set');
-        Assert::stringNotEmpty($plainSecret, 'The web client secret is not set');
+        Assert::true(
+            (is_string($id) && '' !== $id) || is_int($id),
+            'The web client id must be a non-empty string or an integer',
+        );
+        Assert::stringNotEmpty($plainSecret, 'The web client secret must be a non-empty string');
 
         return new self($id, $plainSecret);
     }
