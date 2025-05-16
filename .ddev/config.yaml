@@ -4,8 +4,9 @@ docroot: public
 php_version: "8.2"
 webserver_type: nginx-fpm
 xdebug_enabled: false
+additional_hostnames: []
 additional_fqdns:
-  - api.apiato.ddev.site
+    - api.apiato.ddev.site
 database:
     type: postgres
     version: "17"
@@ -13,21 +14,23 @@ upload_dirs:
     - ../storage
 use_dns_when_possible: true
 composer_version: "2"
+web_environment: []
 corepack_enable: false
 
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides
 #   http://projectname.ddev.site and https://projectname.ddev.site
+# If the name is omitted, the project will take the name of the enclosing directory,
+# which is useful if you want to have a copy of the project side by side with this one.
 
-# type: <projecttype>  # backdrop, craftcms, django4, drupal, drupal6, drupal7, laravel, magento, magento2, php, python, shopware6, silverstripe, typo3, wordpress
+# type: <projecttype>  # backdrop, cakephp, craftcms, drupal, drupal6, drupal7, drupal8, drupal9, drupal10, drupal11, generic, laravel, magento, magento2, php, shopware6, silverstripe, symfony, typo3, wordpress
 # See https://ddev.readthedocs.io/en/stable/users/quickstart/ for more
 # information on the different project types
-# "drupal" covers recent Drupal 8+
 
 # docroot: <relative_path> # Relative path to the directory containing index.php.
 
-# php_version: "8.2"  # PHP version to use, "5.6", "7.0", "7.1", "7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3", "8.4"
+# php_version: "8.3"  # PHP version to use, "5.6" through "8.4"
 
 # You can explicitly specify the webimage but this
 # is not recommended, as the images are often closely tied to DDEV's' behavior,
@@ -50,12 +53,29 @@ corepack_enable: false
 # "ddev xdebug" to enable Xdebug and "ddev xdebug off" to disable it work better,
 # as leaving Xdebug enabled all the time is a big performance hit.
 
+# xhgui_https_port: 8142
+# Can be used to change the router https port for xhgui application
+# Very rarely used
+
+# xhgui_http_port: 8143
+# Can be used to change the router http port for xhgui application
+# Very rarely used
+
+# host_xhgui_port: 8142
+# Can be used to change the host binding port of the xhgui
+# application. Rarely used; only when port conflict and
+# bind_all_ports is used (normally with router disabled)
+
 # xhprof_enabled: false  # Set to true to enable Xhprof and "ddev start" or "ddev restart"
 # Note that for most people the commands
 # "ddev xhprof" to enable Xhprof and "ddev xhprof off" to disable it work better,
 # as leaving Xhprof enabled all the time is a big performance hit.
 
-# webserver_type: nginx-fpm, apache-fpm, or nginx-gunicorn
+# xhprof_mode: [prepend|xhgui|global]
+# Set to "xhgui" to enable XHGui features
+# "xhgui" will become default in a future major release
+
+# webserver_type: nginx-fpm, apache-fpm, generic
 
 # timezone: Europe/Berlin
 # If timezone is unset, DDEV will attempt to derive it from the host system timezone
@@ -81,7 +101,7 @@ corepack_enable: false
 # Alternatively, an explicit Composer version may be specified, for example "2.2.18".
 # To reinstall Composer after the image was built, run "ddev debug rebuild".
 
-# nodejs_version: "20"
+# nodejs_version: "22"
 # change from the default system Node.js version to any other version.
 # See https://ddev.readthedocs.io/en/stable/users/configuration/config/#nodejs_version for more information
 # and https://www.npmjs.com/package/n#specifying-nodejs-versions for the full documentation,
