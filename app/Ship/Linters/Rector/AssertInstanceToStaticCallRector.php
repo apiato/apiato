@@ -43,7 +43,6 @@ final class AssertInstanceToStaticCallRector extends AbstractRector implements M
         'assertIsArray',
         'assertArrayHasKey',
         'assertArrayNotHasKey',
-        'assertDatabaseTable',
     ];
 
     public function __construct(

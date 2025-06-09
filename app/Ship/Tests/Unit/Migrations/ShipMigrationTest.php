@@ -34,7 +34,7 @@ final class ShipMigrationTest extends ShipTestCase
             'expiration' => $integer,
         ];
 
-        self::assertDatabaseTable('cache', $columns);
+        $this->assertDatabaseTable('cache', $columns);
     }
 
     public function testCacheLocksTableHasExpectedColumns(): void
@@ -56,7 +56,7 @@ final class ShipMigrationTest extends ShipTestCase
             'expiration' => $integer,
         ];
 
-        self::assertDatabaseTable('cache_locks', $columns);
+        $this->assertDatabaseTable('cache_locks', $columns);
     }
 
     public function testJobsTableHasExpectedColumns(): void
@@ -97,7 +97,7 @@ final class ShipMigrationTest extends ShipTestCase
             'created_at'   => $integer,
         ];
 
-        self::assertDatabaseTable('jobs', $columns);
+        $this->assertDatabaseTable('jobs', $columns);
     }
 
     public function testJobBatchesTableHasExpectedColumns(): void
@@ -134,7 +134,7 @@ final class ShipMigrationTest extends ShipTestCase
             'finished_at'    => $integer,
         ];
 
-        self::assertDatabaseTable('job_batches', $columns);
+        $this->assertDatabaseTable('job_batches', $columns);
     }
 
     public function testFailedJobsTableHasExpectedColumns(): void
@@ -168,7 +168,7 @@ final class ShipMigrationTest extends ShipTestCase
             'uuid'       => $string,
         ];
 
-        self::assertDatabaseTable('failed_jobs', $columns);
+        $this->assertDatabaseTable('failed_jobs', $columns);
     }
 
     public function testNotificationsTableHasExpectedColumns(): void
@@ -205,6 +205,6 @@ final class ShipMigrationTest extends ShipTestCase
             'updated_at'      => $datetime,
         ];
 
-        self::assertDatabaseTable('notifications', $columns);
+        $this->assertDatabaseTable('notifications', $columns);
     }
 }

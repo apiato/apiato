@@ -41,7 +41,7 @@ final class MigrationTest extends UnitTestCase
             'updated_at'        => $datetime,
         ];
 
-        self::assertDatabaseTable('users', $columns);
+        $this->assertDatabaseTable('users', $columns);
     }
 
     public function testPasswordResetsTableHasExpectedColumns(): void
@@ -61,7 +61,7 @@ final class MigrationTest extends UnitTestCase
             'created_at' => $datetime,
         ];
 
-        self::assertDatabaseTable('password_reset_tokens', $columns);
+        $this->assertDatabaseTable('password_reset_tokens', $columns);
     }
 
     public function testSessionsTableHasExpectedColumns(): void
@@ -95,6 +95,6 @@ final class MigrationTest extends UnitTestCase
             'last_activity' => $integer,
         ];
 
-        self::assertDatabaseTable('sessions', $columns);
+        $this->assertDatabaseTable('sessions', $columns);
     }
 }

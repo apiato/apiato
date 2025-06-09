@@ -42,7 +42,7 @@ final class MigrationTest extends UnitTestCase
             'updated_at'   => $datetime,
         ];
 
-        self::assertDatabaseTable($this->tableNames['permissions'], $columns);
+        $this->assertDatabaseTable($this->tableNames['permissions'], $columns);
     }
 
     public function testRolesTableHasExpectedColumns(): void
@@ -72,7 +72,7 @@ final class MigrationTest extends UnitTestCase
             'updated_at'   => $datetime,
         ];
 
-        self::assertDatabaseTable($this->tableNames['roles'], $columns);
+        $this->assertDatabaseTable($this->tableNames['roles'], $columns);
     }
 
     public function testModelHasPermissionsTableHasExpectedColumns(): void
@@ -94,7 +94,7 @@ final class MigrationTest extends UnitTestCase
             $this->columnNames['model_morph_key'] => $bigint,
         ];
 
-        self::assertDatabaseTable($this->tableNames['model_has_permissions'], $columns);
+        $this->assertDatabaseTable($this->tableNames['model_has_permissions'], $columns);
     }
 
     public function testModelHasRolesTableHasExpectedColumns(): void
@@ -116,7 +116,7 @@ final class MigrationTest extends UnitTestCase
             $this->columnNames['model_morph_key'] => $bigint,
         ];
 
-        self::assertDatabaseTable($this->tableNames['model_has_roles'], $columns);
+        $this->assertDatabaseTable($this->tableNames['model_has_roles'], $columns);
     }
 
     public function testRoleHasPermissionsTableHasExpectedColumns(): void
@@ -133,7 +133,7 @@ final class MigrationTest extends UnitTestCase
             'role_id'       => $bigint,
         ];
 
-        self::assertDatabaseTable($this->tableNames['role_has_permissions'], $columns);
+        $this->assertDatabaseTable($this->tableNames['role_has_permissions'], $columns);
     }
 
     #[\Override]

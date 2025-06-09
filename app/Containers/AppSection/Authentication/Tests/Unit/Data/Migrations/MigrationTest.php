@@ -49,7 +49,7 @@ final class MigrationTest extends UnitTestCase
             'expires_at' => $datetime,
         ];
 
-        self::assertDatabaseTable('oauth_auth_codes', $columns);
+        $this->assertDatabaseTable('oauth_auth_codes', $columns);
     }
 
     public function testOAuthAccessTokenTableHasExpectedColumns(): void
@@ -101,7 +101,7 @@ final class MigrationTest extends UnitTestCase
             'expires_at' => $datetime,
         ];
 
-        self::assertDatabaseTable('oauth_access_tokens', $columns);
+        $this->assertDatabaseTable('oauth_access_tokens', $columns);
     }
 
     public function testOAuthRefreshTokenTableHasExpectedColumns(): void
@@ -129,7 +129,7 @@ final class MigrationTest extends UnitTestCase
             'expires_at'      => $datetime,
         ];
 
-        self::assertDatabaseTable('oauth_refresh_tokens', $columns);
+        $this->assertDatabaseTable('oauth_refresh_tokens', $columns);
     }
 
     public function testOAuthClientsTableHasExpectedColumns(): void
@@ -173,7 +173,7 @@ final class MigrationTest extends UnitTestCase
             'updated_at'    => $timestamp,
         ];
 
-        self::assertDatabaseTable('oauth_clients', $columns);
+        $this->assertDatabaseTable('oauth_clients', $columns);
     }
 
     public function testOAuthDeviceCodesTableHasExpectedColumns(): void
@@ -217,6 +217,6 @@ final class MigrationTest extends UnitTestCase
             'expires_at'       => $datetime,
         ];
 
-        self::assertDatabaseTable('oauth_device_codes', $columns);
+        $this->assertDatabaseTable('oauth_device_codes', $columns);
     }
 }
