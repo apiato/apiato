@@ -15,7 +15,7 @@ final class DebugBarTest extends ShipTestCase
         $config = config('debugbar');
         $expected = [
             'enabled'         => env('DEBUGBAR_ENABLED', null),
-            'hide_empty_tabs' => true,
+            'hide_empty_tabs' => false,
             'except'          => [
                 'telescope*',
                 'horizon*',
@@ -38,10 +38,11 @@ final class DebugBarTest extends ShipTestCase
             'add_ajax_timing'         => false,
             'ajax_handler_auto_show'  => true,
             'ajax_handler_enable_tab' => true,
+            'defer_datasets'          => false,
             'error_handler'           => false,
             'clockwork'               => false,
             'collectors'              => [
-                'phpinfo'         => false,
+                'phpinfo'         => true,
                 'messages'        => true,
                 'time'            => true,
                 'memory'          => true,
@@ -49,13 +50,13 @@ final class DebugBarTest extends ShipTestCase
                 'log'             => true,
                 'db'              => true,
                 'views'           => true,
-                'route'           => false,
+                'route'           => true,
                 'auth'            => false,
                 'gate'            => true,
-                'session'         => false,
+                'session'         => true,
                 'symfony_request' => true,
                 'mail'            => true,
-                'laravel'         => true,
+                'laravel'         => false,
                 'events'          => false,
                 'default_request' => false,
                 'logs'            => false,
@@ -72,8 +73,7 @@ final class DebugBarTest extends ShipTestCase
                     'memory_usage' => false,
                 ],
                 'messages' => [
-                    'trace'         => true,
-                    'capture_dumps' => false,
+                    'trace' => true,
                 ],
                 'memory' => [
                     'reset_peak'    => false,
@@ -94,7 +94,7 @@ final class DebugBarTest extends ShipTestCase
                     'explain'                 => [
                         'enabled' => false,
                     ],
-                    'hints'          => false,
+                    'hints'          => true,
                     'show_copy'      => true,
                     'slow_threshold' => false,
                     'memory_usage'   => false,
@@ -102,11 +102,11 @@ final class DebugBarTest extends ShipTestCase
                     'hard_limit'     => 500,
                 ],
                 'mail' => [
-                    'timeline'  => true,
+                    'timeline'  => false,
                     'show_body' => true,
                 ],
                 'views' => [
-                    'timeline'      => true,
+                    'timeline'      => false,
                     'data'          => false,
                     'group'         => 50,
                     'exclude_paths' => [
@@ -120,7 +120,6 @@ final class DebugBarTest extends ShipTestCase
                     'hiddens' => [],
                 ],
                 'symfony_request' => [
-                    'label'   => true,
                     'hiddens' => [],
                 ],
                 'events' => [
@@ -139,7 +138,6 @@ final class DebugBarTest extends ShipTestCase
             'route_domain'          => null,
             'theme'                 => env('DEBUGBAR_THEME', 'auto'),
             'debug_backtrace_limit' => 50,
-            'defer_datasets'        => false,
         ];
 
         self::assertSame($expected, $config);
