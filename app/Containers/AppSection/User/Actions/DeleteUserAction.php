@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -8,9 +10,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class DeleteUserAction extends ParentAction
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     public function run(int $id): bool

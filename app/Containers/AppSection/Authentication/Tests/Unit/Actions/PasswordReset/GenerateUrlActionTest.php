@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\PasswordReset;
 
 use App\Containers\AppSection\Authentication\Actions\PasswordReset\GenerateUrlAction;
@@ -15,13 +17,13 @@ final class GenerateUrlActionTest extends UnitTestCase
     public function testItCanGenerateCorrectUrl(): void
     {
         request()->headers->set('App-Identifier', 'web');
-        $action = new GenerateUrlAction();
+        $generateUrlAction = new GenerateUrlAction();
         $user = User::factory()->createOne();
         $token = 'token';
-        $url = urldecode($action($user, $token));
+        $url = urldecode($generateUrlAction($user, $token));
 
         $apiEndpoint = action(ResetPasswordController::class);
 
-        $this->assertStringContainsString(AppFactory::current()->resetPasswordUrl() . "?reset_url={$apiEndpoint}?token={$token}&email={$user->getEmailForVerification()}", $url);
+        $this->assertStringContainsString(AppFactory::current()->resetPasswordUrl() . \sprintf('?reset_url=%s?token=%s&email=%s', $apiEndpoint, $token, $user->getEmailForVerification()), $url);
     }
 }

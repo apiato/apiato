@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\User\Models\User;
@@ -17,7 +19,7 @@ final class UpdatePasswordRequest extends ParentRequest
     {
         return [
             'current_password' => [
-                Rule::requiredIf(fn (): bool => !is_null($this->user()->password)),
+                Rule::requiredIf(fn (): bool => !\is_null($this->user()->password)),
                 'current_password:api',
             ],
             'new_password' => [

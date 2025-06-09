@@ -1,0 +1,42 @@
+name: "Static analysis - PHPStan"
+
+on:
+  push:
+    branches: [ master, '*.x' ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phpstan:
+    name: PHPStan Static Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Composer token
+        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy environment file for Composer
+        run: cp .env.ci .env
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --prefer-dist
+
+      - name: Run PHPStan
+        uses: php-actions/phpstan@v3
+        with:
+          configuration: phpstan.neon
+          path: app/ config/ tests/ database/
+          version: 'composer'
+          php_version: '8.3'

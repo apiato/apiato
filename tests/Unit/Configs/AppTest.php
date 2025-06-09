@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Configs;
 
 use Apiato\Console\CommandServiceProvider;
@@ -7,7 +9,11 @@ use Apiato\Generator\GeneratorsServiceProvider;
 use Apiato\Macros\MacroServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\EmailVerificationServiceProvider;
+use App\Containers\AppSection\Authentication\Providers\PassportServiceProvider;
 use App\Containers\AppSection\Authentication\Providers\PasswordResetServiceProvider;
+use App\Containers\AppSection\User\Providers\UserServiceProvider;
+use App\Containers\Vendor\Documentation\Providers\DocumentGeneratorServiceProvider;
+use App\Ship\Providers\ShipServiceProvider;
 use App\Ship\Tests\ShipTestCase;
 use Illuminate\Auth\AuthServiceProvider as LaravelAuthServiceProviderAlias;
 use Illuminate\Auth\Passwords\PasswordResetServiceProvider as LaravelPasswordResetServiceProvider;
@@ -78,10 +84,6 @@ use Illuminate\Translation\TranslationServiceProvider;
 use Illuminate\Validation\ValidationServiceProvider;
 use Illuminate\View\ViewServiceProvider;
 use PHPUnit\Framework\Attributes\CoversNothing;
-use App\Containers\AppSection\User\Providers\UserServiceProvider;
-use App\Containers\AppSection\Authentication\Providers\PassportServiceProvider;
-use App\Containers\Vendor\Documentation\Providers\DocumentGeneratorServiceProvider;
-use App\Ship\Providers\ShipServiceProvider;
 
 #[CoversNothing]
 final class AppTest extends ShipTestCase
@@ -90,24 +92,24 @@ final class AppTest extends ShipTestCase
     {
         $config = config('app');
         $expected = [
-            'name' => env('APP_NAME', 'Apiato'),
-            'env' => env('APP_ENV', 'production'),
-            'debug' => (bool) env('APP_DEBUG', false),
-            'url' => env('APP_URL', 'http://localhost'),
-            'frontend_url' => env('FRONTEND_URL', 'http://localhost:3000'),
-            'asset_url' => env('ASSET_URL', env('ASSET_URL')),
-            'timezone' => env('APP_TIMEZONE', 'UTC'),
-            'locale' => env('APP_LOCALE', 'en'),
+            'name'            => env('APP_NAME', 'Apiato'),
+            'env'             => env('APP_ENV', 'production'),
+            'debug'           => (bool) env('APP_DEBUG', false),
+            'url'             => env('APP_URL', 'http://localhost'),
+            'frontend_url'    => env('FRONTEND_URL', 'http://localhost:3000'),
+            'asset_url'       => env('ASSET_URL', env('ASSET_URL')),
+            'timezone'        => env('APP_TIMEZONE', 'UTC'),
+            'locale'          => env('APP_LOCALE', 'en'),
             'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-            'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
-            'cipher' => 'AES-256-CBC',
-            'key' => env('APP_KEY'),
-            'previous_keys' => array_filter(
-                explode(',', env('APP_PREVIOUS_KEYS', '')),
+            'faker_locale'    => env('APP_FAKER_LOCALE', 'en_US'),
+            'cipher'          => 'AES-256-CBC',
+            'key'             => env('APP_KEY'),
+            'previous_keys'   => array_filter(
+                explode(',', (string) env('APP_PREVIOUS_KEYS', '')),
             ),
             'maintenance' => [
                 'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-                'store' => env('APP_MAINTENANCE_STORE', 'database'),
+                'store'  => env('APP_MAINTENANCE_STORE', 'database'),
             ],
             'providers' => [
                 CommandServiceProvider::class,
@@ -145,51 +147,51 @@ final class AppTest extends ShipTestCase
                 UserServiceProvider::class,
             ],
             'aliases' => [
-                'App' => App::class,
-                'Arr' => Arr::class,
-                'Artisan' => Artisan::class,
-                'Auth' => Auth::class,
-                'Blade' => Blade::class,
-                'Broadcast' => Broadcast::class,
-                'Bus' => Bus::class,
-                'Cache' => Cache::class,
-                'Concurrency' => Concurrency::class,
-                'Config' => Config::class,
-                'Context' => Context::class,
-                'Cookie' => Cookie::class,
-                'Crypt' => Crypt::class,
-                'Date' => Date::class,
-                'DB' => DB::class,
-                'Eloquent' => Model::class,
-                'Event' => Event::class,
-                'File' => File::class,
-                'Gate' => Gate::class,
-                'Hash' => Hash::class,
-                'Http' => Http::class,
-                'Js' => Js::class,
-                'Lang' => Lang::class,
-                'Log' => Log::class,
-                'Mail' => Mail::class,
+                'App'          => App::class,
+                'Arr'          => Arr::class,
+                'Artisan'      => Artisan::class,
+                'Auth'         => Auth::class,
+                'Blade'        => Blade::class,
+                'Broadcast'    => Broadcast::class,
+                'Bus'          => Bus::class,
+                'Cache'        => Cache::class,
+                'Concurrency'  => Concurrency::class,
+                'Config'       => Config::class,
+                'Context'      => Context::class,
+                'Cookie'       => Cookie::class,
+                'Crypt'        => Crypt::class,
+                'Date'         => Date::class,
+                'DB'           => DB::class,
+                'Eloquent'     => Model::class,
+                'Event'        => Event::class,
+                'File'         => File::class,
+                'Gate'         => Gate::class,
+                'Hash'         => Hash::class,
+                'Http'         => Http::class,
+                'Js'           => Js::class,
+                'Lang'         => Lang::class,
+                'Log'          => Log::class,
+                'Mail'         => Mail::class,
                 'Notification' => Notification::class,
-                'Number' => Number::class,
-                'Password' => Password::class,
-                'Process' => Process::class,
-                'Queue' => Queue::class,
-                'RateLimiter' => RateLimiter::class,
-                'Redirect' => Redirect::class,
-                'Request' => Request::class,
-                'Response' => Response::class,
-                'Route' => Route::class,
-                'Schedule' => Schedule::class,
-                'Schema' => Schema::class,
-                'Session' => Session::class,
-                'Storage' => Storage::class,
-                'Str' => Str::class,
-                'URL' => URL::class,
-                'Uri' => Uri::class,
-                'Validator' => Validator::class,
-                'View' => View::class,
-                'Vite' => Vite::class,
+                'Number'       => Number::class,
+                'Password'     => Password::class,
+                'Process'      => Process::class,
+                'Queue'        => Queue::class,
+                'RateLimiter'  => RateLimiter::class,
+                'Redirect'     => Redirect::class,
+                'Request'      => Request::class,
+                'Response'     => Response::class,
+                'Route'        => Route::class,
+                'Schedule'     => Schedule::class,
+                'Schema'       => Schema::class,
+                'Session'      => Session::class,
+                'Storage'      => Storage::class,
+                'Str'          => Str::class,
+                'URL'          => URL::class,
+                'Uri'          => Uri::class,
+                'Validator'    => Validator::class,
+                'View'         => View::class,
+                'Vite'         => Vite::class,
             ],
         ];
 

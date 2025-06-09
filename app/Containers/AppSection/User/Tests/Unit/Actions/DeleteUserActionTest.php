@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\DeleteUserAction;
@@ -21,7 +23,7 @@ final class DeleteUserActionTest extends UnitTestCase
 
         $result = $action->run($anotherUser->id);
 
-        $this->assertTrue($result);
+        self::assertTrue($result);
         $this->assertModelMissing($anotherUser);
     }
 

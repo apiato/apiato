@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Values\Clients;
 
 use App\Ship\Parents\Values\Value as ParentValue;
@@ -9,7 +11,9 @@ use Webmozart\Assert\Assert;
 final readonly class WebClient extends ParentValue implements Client
 {
     private const ID_CONFIG_KEY = 'appSection-authentication.clients.web.id';
+
     private const SECRET_CONFIG_KEY = 'appSection-authentication.clients.web.secret';
+
     private PassportClient $client;
 
     public function __construct(
@@ -30,7 +34,7 @@ final readonly class WebClient extends ParentValue implements Client
         $plainSecret = config(self::SECRET_CONFIG_KEY);
 
         Assert::true(
-            (is_string($id) && '' !== $id) || is_int($id),
+            (\is_string($id) && $id !== '') || \is_int($id),
             'The web client id must be a non-empty string or an integer',
         );
         Assert::stringNotEmpty($plainSecret, 'The web client secret must be a non-empty string');
@@ -40,7 +44,7 @@ final readonly class WebClient extends ParentValue implements Client
 
     public function id(): mixed
     {
-        return $this->instance()->getKey();
+        return $this->client->getKey();
     }
 
     public function instance(): PassportClient
@@ -50,6 +54,6 @@ final readonly class WebClient extends ParentValue implements Client
 
     public function plainSecret(): string
     {
-        return config()->string(self::SECRET_CONFIG_KEY);
+        return config()?->string(self::SECRET_CONFIG_KEY);
     }
 }

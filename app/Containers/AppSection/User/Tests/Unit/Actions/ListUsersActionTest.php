@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\ListUsersAction;
@@ -17,6 +19,6 @@ final class ListUsersActionTest extends UnitTestCase
 
         $foundUsers = $task->run();
 
-        $this->assertCount(3, $foundUsers);
+        self::assertCount(3, $foundUsers);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\WEB;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\WebTestCase;
@@ -17,17 +19,16 @@ final class LoginTest extends WebTestCase
     public function testCanLoginWithCredentials(): void
     {
         $user = User::factory()->createOne([
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
 
         $response = $this
             ->post(action(LoginController::class), [
-                'email' => $user->email,
+                'email'    => $user->email,
                 'password' => 'youShallNotPass',
                 'remember' => true,
-            ])
-        ;
+            ]);
 
         $response->assertRedirect(action(HomePageController::class));
         $this->assertAuthenticatedAs($user, 'web');
@@ -38,17 +39,16 @@ final class LoginTest extends WebTestCase
         $this->markTestIncomplete("Couldn't get this test to work");
 
         $user = User::factory()->createOne([
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
 
         $response = $this
             ->post(action(LoginController::class), [
-                'email' => $user->email,
+                'email'    => $user->email,
                 'password' => 'youShallNotPass',
                 'remember' => true,
-            ])
-        ;
+            ]);
 
         $response->assertRedirect(action(HomePageController::class));
         $this->assertAuthenticatedAs($user, 'web');
@@ -59,7 +59,7 @@ final class LoginTest extends WebTestCase
         // Retrieve the value of the remember cookie
         /** @var Cookie $rememberCookie */
         $rememberCookie = collect($response->headers->getCookies())
-            ->first(fn (Cookie $cookie) => $cookie->getName() === $rememberCookieName);
+            ->first(static fn (Cookie $cookie): bool => $cookie->getName() === $rememberCookieName);
 
         $this->flushSession();
         Route::get('test', static function () {
@@ -73,6 +73,6 @@ final class LoginTest extends WebTestCase
             ->assertOk();
 
         // Assert that the user was authenticated via the "remember" cookie
-        $this->assertTrue($response->json('viaRemember'));
+        self::assertTrue($response->json('viaRemember'));
     }
 }

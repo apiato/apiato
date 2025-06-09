@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Values;
 
 use App\Ship\Parents\Values\Value as ParentValue;
 
 final readonly class ScopeCollection extends ParentValue
 {
-    private function __construct(
-        /** @var Scope[] */
-        private array $scope,
-    ) {
+    private function __construct(/** @var Scope[] */ private array $scope)
+    {
     }
 
     public static function create(Scope ...$scope): self

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values\RequestProxies\PasswordGrant;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
@@ -23,13 +25,13 @@ final class AccessTokenProxyTest extends UnitTestCase
             'scope1 scope2',
         );
 
-        $this->assertSame([
-            'grant_type' => 'password',
-            'username' => 'username',
-            'password' => 'password',
-            'client_id' => $client->id(),
+        self::assertSame([
+            'grant_type'    => 'password',
+            'username'      => 'username',
+            'password'      => 'password',
+            'client_id'     => $client->id(),
             'client_secret' => $client->plainSecret(),
-            'scope' => 'scope1 scope2',
+            'scope'         => 'scope1 scope2',
         ], $proxy->toArray());
     }
 }

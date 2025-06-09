@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Providers;
 
 use App\Ship\Providers\ShipServiceProvider;
@@ -10,29 +12,29 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(ShipServiceProvider::class)]
 final class ShipServiceProviderTest extends ShipTestCase
 {
-    public static function appDataProvider(): array
+    public static function appDataProvider(): \Iterator
     {
-        return [
-            ['web', static fn () => 'web'],
-            ['mobile', static fn () => 'mobile'],
-            'falls back to default' => [null, static fn () => config('apiato.defaults.app')],
-        ];
+        yield ['web', static fn (): string => 'web'];
+        yield ['mobile', static fn (): string => 'mobile'];
+        yield 'falls back to default' => [null, static fn () => config('apiato.defaults.app')];
     }
 
     #[DataProvider('appDataProvider')]
-    public function testItCanReturnAppId(string|null $appId, \Closure $expectation): void
+    public function testItCanReturnAppId(null|string $appId, \Closure $expectation): void
     {
-        if ($appId) {
+        if ($appId !== null && $appId !== '' && $appId !== '0') {
             request()->headers->set('App-Identifier', $appId);
         }
+
         config(['apiato.apps' => [
-            'web' => null,
+            'web'     => null,
             'desktop' => null,
-            'mobile' => null,
-        ]]);
+            'mobile'  => null,
+        ],
+        ]);
 
         $result = request()->appId();
 
-        $this->assertEquals($result, $expectation());
+        self::assertEquals($result, $expectation());
     }
 }

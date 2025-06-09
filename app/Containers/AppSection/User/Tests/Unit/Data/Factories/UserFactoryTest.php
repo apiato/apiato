@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\User\Data\Factories\UserFactory;
@@ -15,27 +17,27 @@ final class UserFactoryTest extends UnitTestCase
     {
         $user = User::factory()->createOne();
 
-        $this->assertInstanceOf(User::class, $user);
+        self::assertInstanceOf(User::class, $user);
     }
 
     public function testCanCreateAdminUser(): void
     {
         $user = User::factory()->superAdmin()->createOne();
 
-        $this->assertTrue($user->isSuperAdmin());
+        self::assertTrue($user->isSuperAdmin());
     }
 
     public function testCanCreateUnverifiedUser(): void
     {
         $user = User::factory()->unverified()->createOne();
 
-        $this->assertNull($user->email_verified_at);
+        self::assertNull($user->email_verified_at);
     }
 
     public function testCanSetGender(): void
     {
         $user = User::factory()->gender(Gender::MALE)->createOne();
 
-        $this->assertSame(Gender::MALE, $user->gender);
+        self::assertSame(Gender::MALE, $user->gender);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\ListPermissionsAction;
@@ -17,6 +19,6 @@ final class ListPermissionsActionTest extends UnitTestCase
 
         $result = $action->run();
 
-        $this->assertCount(3, $result);
+        self::assertCount(3, $result);
     }
 }

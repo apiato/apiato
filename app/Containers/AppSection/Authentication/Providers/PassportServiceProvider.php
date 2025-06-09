@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;

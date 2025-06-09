@@ -1,3 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+?>
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -120,3 +125,4 @@
 </div>
 </body>
 </html>
+<?php

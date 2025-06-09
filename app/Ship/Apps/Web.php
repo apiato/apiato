@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Apps;
 
 final readonly class Web implements App
 {
     public function url(): string
     {
-        return config()->string('apiato.apps.web.url');
+        return config()?->string('apiato.apps.web.url');
     }
 
     public function verifyEmailUrl(): string

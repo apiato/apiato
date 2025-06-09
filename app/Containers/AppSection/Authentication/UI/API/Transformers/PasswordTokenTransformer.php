@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Transformers;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
@@ -10,11 +12,11 @@ final class PasswordTokenTransformer extends ParentTransformer
     public function transform(PasswordToken $token): array
     {
         return [
-            'type' => $token->getResourceKey(),
-            'token_type' => $token->tokenType,
-            'access_token' => $token->accessToken,
+            'type'          => $token->getResourceKey(),
+            'token_type'    => $token->tokenType,
+            'access_token'  => $token->accessToken,
             'refresh_token' => $token->refreshToken->value(),
-            'expires_in' => $token->expiresIn,
+            'expires_in'    => $token->expiresIn,
         ];
     }
 }

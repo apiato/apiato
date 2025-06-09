@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Role;
@@ -19,6 +21,7 @@ final class SyncUserRolesTest extends ApiTestCase
         $role2 = Role::factory()->createOne();
         $user = User::factory()->createOne();
         $user->assignRole($role1);
+
         $data = [
             'role_ids' => [
                 $role1->getHashedKey(),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\SendAction;
@@ -20,19 +22,22 @@ final class SendActionTest extends UnitTestCase
     public function testCanSendVerificationEmail(bool $unverified): void
     {
         Notification::fake();
+        /** @var User|UserFactory<User>|MustVerifyEmail $user */
         $user = tap(
             User::factory(),
-            static function (UserFactory $factory) use ($unverified) {
+            static function (UserFactory $factory) use ($unverified): void {
                 if ($unverified) {
                     $factory->unverified();
                 }
             },
         )->createOne();
+        /** @var SendAction $action */
         $action = app(SendAction::class);
 
         $action->run($user);
 
         $verificationEnabled = $user instanceof MustVerifyEmail;
+
         if ($verificationEnabled && !$user->hasVerifiedEmail()) {
             Notification::assertSentTo($user, VerifyEmail::class);
         } else {

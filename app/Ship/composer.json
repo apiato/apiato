@@ -5,7 +5,8 @@
         "apiato/documentation-generator-container": "^4.0"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.0",
-        "barryvdh/laravel-debugbar": "^3.8.1"
+        "roave/security-advisories": "dev-latest",
+        "barryvdh/laravel-ide-helper": "^3.5",
+        "barryvdh/laravel-debugbar": "^3.15"
     }
 }

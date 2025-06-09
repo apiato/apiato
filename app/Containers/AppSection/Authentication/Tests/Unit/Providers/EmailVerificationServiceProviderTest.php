@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateUrlAction;
@@ -13,6 +15,6 @@ final class EmailVerificationServiceProviderTest extends UnitTestCase
 {
     public function testItCustomizesVerificationUrl(): void
     {
-        $this->assertInstanceOf(GenerateUrlAction::class, VerifyEmail::$createUrlCallback);
+        self::assertInstanceOf(GenerateUrlAction::class, VerifyEmail::$createUrlCallback);
     }
 }

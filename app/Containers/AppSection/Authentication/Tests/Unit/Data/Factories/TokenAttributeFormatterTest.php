@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
@@ -19,7 +21,9 @@ final class TokenAttributeFormatterTest extends UnitTestCase
         $user = User::factory()->createOne([
             'password' => 'password',
         ]);
-        $token = app(PasswordTokenFactory::class)->make(
+        /** @var PasswordTokenFactory $passwordTokenFactory */
+        $passwordTokenFactory = app(PasswordTokenFactory::class);
+        $token = $passwordTokenFactory->make(
             AccessTokenProxy::create(
                 UserCredential::create(
                     $user->email,
@@ -33,9 +37,9 @@ final class TokenAttributeFormatterTest extends UnitTestCase
             $token->accessToken,
         );
 
-        $this->assertArrayHasKey('oauth_access_token_id', $result);
-        $this->assertArrayHasKey('oauth_client_id', $result);
-        $this->assertArrayHasKey('oauth_user_id', $result);
-        $this->assertArrayHasKey('oauth_scopes', $result);
+        self::assertArrayHasKey('oauth_access_token_id', $result);
+        self::assertArrayHasKey('oauth_client_id', $result);
+        self::assertArrayHasKey('oauth_user_id', $result);
+        self::assertArrayHasKey('oauth_scopes', $result);
     }
 }

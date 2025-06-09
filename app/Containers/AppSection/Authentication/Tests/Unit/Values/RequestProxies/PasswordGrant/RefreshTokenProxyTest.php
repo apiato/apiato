@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values\RequestProxies\PasswordGrant;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
@@ -20,12 +22,12 @@ final class RefreshTokenProxyTest extends UnitTestCase
             'scope1 scope2',
         );
 
-        $this->assertSame([
-            'grant_type' => 'refresh_token',
+        self::assertSame([
+            'grant_type'    => 'refresh_token',
             'refresh_token' => 'refresh-token',
-            'client_id' => $client->id(),
+            'client_id'     => $client->id(),
             'client_secret' => $client->plainSecret(),
-            'scope' => 'scope1 scope2',
+            'scope'         => 'scope1 scope2',
         ], $proxy->toArray());
     }
 }

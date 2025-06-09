@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateUrlAction;
@@ -17,16 +19,16 @@ final class GenerateUrlActionTest extends UnitTestCase
     {
         $this->freezeTime();
         request()->headers->set('App-Identifier', 'web');
-        $action = new GenerateUrlAction();
+        $generateUrlAction = new GenerateUrlAction();
         $user = User::factory()->createOne();
 
-        $url = $action($user);
+        $url = $generateUrlAction($user);
 
         $apiEndpoint = action(VerifyController::class, [
-            'id' => $user->getHashedKey(),
-            'hash' => sha1($user->getEmailForVerification()),
+            'id'   => $user->getHashedKey(),
+            'hash' => sha1((string) $user->getEmailForVerification()),
         ]);
         $expiration = Date::now()->addMinutes(config('auth.verification.expire', 60))->unix();
-        $this->assertStringContainsString(urlencode(AppFactory::current()->verifyEmailUrl() . "?verification_url={$apiEndpoint}?expires={$expiration}&signature="), $url);
+        $this->assertStringContainsString(urlencode(AppFactory::current()->verifyEmailUrl() . \sprintf('?verification_url=%s?expires=%d&signature=', $apiEndpoint, $expiration)), $url);
     }
 }

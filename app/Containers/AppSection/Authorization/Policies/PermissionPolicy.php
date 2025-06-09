@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Policies;
 
 use App\Containers\AppSection\User\Models\User;

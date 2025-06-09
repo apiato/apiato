@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Models\User;
@@ -16,6 +18,6 @@ final class FindUserByIdTaskTest extends UnitTestCase
 
         $result = app(FindUserByIdTask::class)->run($user->id);
 
-        $this->assertTrue($result->is($user));
+        self::assertTrue($result->is($user));
     }
 }

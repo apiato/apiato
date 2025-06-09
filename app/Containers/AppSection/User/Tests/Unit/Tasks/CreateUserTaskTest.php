@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\User\Models\User;
@@ -15,15 +17,15 @@ final class CreateUserTaskTest extends UnitTestCase
     public function testCreateUser(): void
     {
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
 
         $user = app(CreateUserTask::class)->run($data);
 
         $this->assertModelExists($user);
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertSame(Str::lower($data['email']), $user->email);
-        $this->assertTrue(Hash::check($data['password'], $user->password));
+        self::assertInstanceOf(User::class, $user);
+        self::assertSame(Str::lower($data['email']), $user->email);
+        self::assertTrue(Hash::check($data['password'], $user->password));
     }
 }

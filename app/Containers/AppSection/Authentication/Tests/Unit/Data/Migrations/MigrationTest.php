@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Data\Migrations;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
+use Illuminate\Support\Facades\Schema;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -10,13 +13,40 @@ final class MigrationTest extends UnitTestCase
 {
     public function testOAuthAuthCodesTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $char = match ($driver) {
+            'mysql'  => 'char',
+            'pgsql'  => 'bpchar',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $guid = match ($driver) {
+            'pgsql'  => 'uuid',
+            'mysql'  => 'char',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $bool = match ($driver) {
+            'mysql', 'sqlite' => 'tinyint',
+            default => 'bool',
+        };
+        $datetime = match ($driver) {
+            'mysql', 'sqlite' => 'datetime',
+            default => 'timestamp',
+        };
+
         $columns = [
-            'id' => 'bpchar',
-            'user_id' => 'int8',
-            'client_id' => 'uuid',
-            'scopes' => 'text',
-            'revoked' => 'bool',
-            'expires_at' => 'timestamp',
+            'id'         => $char,
+            'user_id'    => $bigint,
+            'client_id'  => $guid,
+            'scopes'     => 'text',
+            'revoked'    => $bool,
+            'expires_at' => $datetime,
         ];
 
         $this->assertDatabaseTable('oauth_auth_codes', $columns);
@@ -24,16 +54,51 @@ final class MigrationTest extends UnitTestCase
 
     public function testOAuthAccessTokenTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $char = match ($driver) {
+            'mysql'  => 'char',
+            'pgsql'  => 'bpchar',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $guid = match ($driver) {
+            'pgsql'  => 'uuid',
+            'mysql'  => 'char',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $datetime = match ($driver) {
+            'mysql', 'sqlite' => 'datetime',
+            default => 'timestamp',
+        };
+        $timestamp = match ($driver) {
+            'mysql', 'pgsql' => 'timestamp',
+            default => 'datetime',
+        };
+        $bool = match ($driver) {
+            'mysql', 'sqlite' => 'tinyint',
+            default => 'bool',
+        };
+
         $columns = [
-            'id' => 'bpchar',
-            'user_id' => 'int8',
-            'client_id' => 'uuid',
-            'name' => 'varchar',
-            'scopes' => 'text',
-            'revoked' => 'bool',
-            'created_at' => 'timestamp',
-            'updated_at' => 'timestamp',
-            'expires_at' => 'timestamp',
+            'id'         => $char,
+            'user_id'    => $bigint,
+            'client_id'  => $guid,
+            'name'       => $string,
+            'scopes'     => 'text',
+            'revoked'    => $bool,
+            'created_at' => $timestamp,
+            'updated_at' => $timestamp,
+            'expires_at' => $datetime,
         ];
 
         $this->assertDatabaseTable('oauth_access_tokens', $columns);
@@ -41,11 +106,27 @@ final class MigrationTest extends UnitTestCase
 
     public function testOAuthRefreshTokenTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $char = match ($driver) {
+            'mysql'  => 'char',
+            'pgsql'  => 'bpchar',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $bool = match ($driver) {
+            'mysql', 'sqlite' => 'tinyint',
+            default => 'bool',
+        };
+        $datetime = match ($driver) {
+            'mysql', 'sqlite' => 'datetime',
+            default => 'timestamp',
+        };
+
         $columns = [
-            'id' => 'bpchar',
-            'access_token_id' => 'bpchar',
-            'revoked' => 'bool',
-            'expires_at' => 'timestamp',
+            'id'              => $char,
+            'access_token_id' => $char,
+            'revoked'         => $bool,
+            'expires_at'      => $datetime,
         ];
 
         $this->assertDatabaseTable('oauth_refresh_tokens', $columns);
@@ -53,18 +134,43 @@ final class MigrationTest extends UnitTestCase
 
     public function testOAuthClientsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $guid = match ($driver) {
+            'pgsql'  => 'uuid',
+            'mysql'  => 'char',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $bool = match ($driver) {
+            'mysql', 'sqlite' => 'tinyint',
+            default => 'bool',
+        };
+        $timestamp = match ($driver) {
+            'mysql', 'pgsql' => 'timestamp',
+            default => 'datetime',
+        };
+
         $columns = [
-            'id' => 'uuid',
-            'owner_type' => 'varchar',
-            'owner_id' => 'int8',
-            'name' => 'varchar',
-            'secret' => 'varchar',
-            'provider' => 'varchar',
+            'id'            => $guid,
+            'owner_type'    => $string,
+            'owner_id'      => $bigint,
+            'name'          => $string,
+            'secret'        => $string,
+            'provider'      => $string,
             'redirect_uris' => 'text',
-            'grant_types' => 'text',
-            'revoked' => 'bool',
-            'created_at' => 'timestamp',
-            'updated_at' => 'timestamp',
+            'grant_types'   => 'text',
+            'revoked'       => $bool,
+            'created_at'    => $timestamp,
+            'updated_at'    => $timestamp,
         ];
 
         $this->assertDatabaseTable('oauth_clients', $columns);
@@ -72,16 +178,43 @@ final class MigrationTest extends UnitTestCase
 
     public function testOAuthDeviceCodesTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $char = match ($driver) {
+            'mysql'  => 'char',
+            'pgsql'  => 'bpchar',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $guid = match ($driver) {
+            'pgsql'  => 'uuid',
+            'mysql'  => 'char',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $bool = match ($driver) {
+            'mysql', 'sqlite' => 'tinyint',
+            default => 'bool',
+        };
+        $datetime = match ($driver) {
+            'pgsql' => 'timestamp',
+            default => 'datetime',
+        };
+
         $columns = [
-            'id' => 'bpchar',
-            'user_id' => 'int8',
-            'client_id' => 'uuid',
-            'user_code' => 'bpchar',
-            'scopes' => 'text',
-            'revoked' => 'bool',
-            'user_approved_at' => 'timestamp',
-            'last_polled_at' => 'timestamp',
-            'expires_at' => 'timestamp',
+            'id'               => $char,
+            'user_id'          => $bigint,
+            'client_id'        => $guid,
+            'user_code'        => $char,
+            'scopes'           => 'text',
+            'revoked'          => $bool,
+            'user_approved_at' => $datetime,
+            'last_polled_at'   => $datetime,
+            'expires_at'       => $datetime,
         ];
 
         $this->assertDatabaseTable('oauth_device_codes', $columns);

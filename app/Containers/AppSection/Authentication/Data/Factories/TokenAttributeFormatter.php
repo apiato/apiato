@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Data\Factories;
 
+use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\ResourceServer;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
@@ -12,11 +15,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 final readonly class TokenAttributeFormatter
 {
-    public function __construct(
-        private ResourceServer $resourceServer,
-    ) {
+    public function __construct(private ResourceServer $resourceServer)
+    {
     }
 
+    /**
+     * @throws OAuthServerException
+     */
     public function format(string $accessToken): array
     {
         return $this->resourceServer

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\PasswordReset;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
@@ -14,14 +16,14 @@ final class ResetPasswordTest extends ApiTestCase
     public function testResetPassword(): void
     {
         $user = User::factory()->createOne([
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
         $data = [
-            'email' => $user->email,
-            'password' => 's3cr3tPa$$',
+            'email'                 => $user->email,
+            'password'              => 's3cr3tPa$$',
             'password_confirmation' => 's3cr3tPa$$',
-            'token' => Password::createToken($user),
+            'token'                 => Password::createToken($user),
         ];
 
         $response = $this->postJson(action(ResetPasswordController::class), $data);

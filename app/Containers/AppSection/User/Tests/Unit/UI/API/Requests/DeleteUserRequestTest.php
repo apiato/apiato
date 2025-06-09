@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Tests\UnitTestCase;
@@ -13,7 +15,7 @@ final class DeleteUserRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'user_id',
         ], $this->request->getDecode());
     }
@@ -22,7 +24,7 @@ final class DeleteUserRequestTest extends UnitTestCase
     {
         $rules = $this->request->rules();
 
-        $this->assertSame([], $rules);
+        self::assertSame([], $rules);
     }
 
     protected function setUp(): void

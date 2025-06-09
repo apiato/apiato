@@ -8,14 +8,14 @@ body:
     attributes:
       label: Apiato Version
       description: Provide the Apiato version that you are using. [Please ensure it is still supported.](https://apiato.io/docs/prologue/release-notes#support-policy)
-      placeholder: 12.x
+      placeholder: 13.x
     validations:
       required: true
   - type: input
     attributes:
       label: PHP Version
       description: Provide the PHP version that you are using.
-      placeholder: 8.1.x
+      placeholder: 8.2.x
     validations:
       required: true
   - type: input

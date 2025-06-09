@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\FindPermissionByIdAction;
@@ -16,6 +18,6 @@ final class FindPermissionByIdActionTest extends UnitTestCase
 
         $result = app(FindPermissionByIdAction::class)->run($permission->id);
 
-        $this->assertTrue($permission->is($result));
+        self::assertTrue($permission->is($result));
     }
 }

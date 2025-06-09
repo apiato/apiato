@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authorization\Models\Role;
@@ -16,7 +18,7 @@ final class FindRoleTaskTest extends UnitTestCase
 
         $result = app(FindRoleTask::class)->run($role->id);
 
-        $this->assertSame($role->id, $result->id);
+        self::assertSame($role->id, $result->id);
     }
 
     public function testFindRoleByName(): void
@@ -25,6 +27,6 @@ final class FindRoleTaskTest extends UnitTestCase
 
         $result = app(FindRoleTask::class)->run($role->name);
 
-        $this->assertSame($role->id, $result->id);
+        self::assertSame($role->id, $result->id);
     }
 }

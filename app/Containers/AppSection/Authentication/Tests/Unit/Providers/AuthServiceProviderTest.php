@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Providers\AuthServiceProvider;
@@ -18,9 +20,9 @@ final class AuthServiceProviderTest extends UnitTestCase
     {
         $user = User::factory()->createOne();
 
-        $this->assertNull(Auth::activeGuard());
+        self::assertNull(Auth::activeGuard());
 
         $this->actingAs($user, $guard);
-        $this->assertEquals($guard, Auth::activeGuard());
+        self::assertEquals($guard, Auth::activeGuard());
     }
 }

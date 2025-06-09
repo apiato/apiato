@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions\Api\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
@@ -11,9 +13,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class IssueTokenAction extends ParentAction
 {
-    public function __construct(
-        private readonly PasswordTokenFactory $factory,
-    ) {
+    public function __construct(private readonly PasswordTokenFactory $factory)
+    {
     }
 
     public function run(UserCredential $credential): PasswordToken

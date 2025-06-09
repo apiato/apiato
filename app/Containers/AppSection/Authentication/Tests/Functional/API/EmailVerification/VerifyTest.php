@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\GenerateUrlAction;
@@ -26,9 +28,9 @@ final class VerifyTest extends ApiTestCase
 
         $response = $this->postJson(
             action(VerifyController::class, [
-                'id' => $user->getHashedKey(),
-                'hash' => sha1($user->getEmailForVerification()),
-                'expires' => $request->query('expires'),
+                'id'        => $user->getHashedKey(),
+                'hash'      => sha1((string) $user->getEmailForVerification()),
+                'expires'   => $request->query('expires'),
                 'signature' => $request->query('signature'),
             ]),
         );

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Listeners;
 
 use App\Containers\AppSection\Authentication\Listeners\SendEmailVerifiedNotification;
@@ -18,10 +20,10 @@ final class SendEmailVerifiedNotificationTest extends UnitTestCase
     {
         Notification::fake();
         Event::fake();
-        $listener = new SendEmailVerifiedNotification();
-        $event = new Verified($user = User::factory()->makeOne());
+        $sendEmailVerifiedNotification = new SendEmailVerifiedNotification();
+        $verified = new Verified($user = User::factory()->makeOne());
 
-        $listener($event);
+        $sendEmailVerifiedNotification($verified);
 
         Notification::assertSentTo($user, EmailVerified::class);
         Event::assertListening(Verified::class, SendEmailVerifiedNotification::class);

@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Migrations;
 
 use App\Ship\Tests\ShipTestCase;
+use Illuminate\Support\Facades\Schema;
 use PHPUnit\Framework\Attributes\CoversNothing;
 
 #[CoversNothing]
@@ -10,10 +13,25 @@ final class ShipMigrationTest extends ShipTestCase
 {
     public function testCacheTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $integer = match ($driver) {
+            'mysql' => 'int',
+            'pgsql' => 'int4',
+            default => 'integer',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $text = match ($driver) {
+            'mysql' => 'mediumtext',
+            default => 'text',
+        };
+
         $columns = [
-            'key' => 'varchar',
-            'value' => 'text',
-            'expiration' => 'int4',
+            'key'        => $string,
+            'value'      => $text,
+            'expiration' => $integer,
         ];
 
         $this->assertDatabaseTable('cache', $columns);
@@ -21,10 +39,21 @@ final class ShipMigrationTest extends ShipTestCase
 
     public function testCacheLocksTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $integer = match ($driver) {
+            'mysql' => 'int',
+            'pgsql' => 'int4',
+            default => 'integer',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+
         $columns = [
-            'key' => 'varchar',
-            'owner' => 'varchar',
-            'expiration' => 'int4',
+            'key'        => $string,
+            'owner'      => $string,
+            'expiration' => $integer,
         ];
 
         $this->assertDatabaseTable('cache_locks', $columns);
@@ -32,14 +61,40 @@ final class ShipMigrationTest extends ShipTestCase
 
     public function testJobsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $integer = match ($driver) {
+            'mysql' => 'int',
+            'pgsql' => 'int4',
+            default => 'integer',
+        };
+        $smallint = match ($driver) {
+            'mysql'  => 'tinyint',
+            'pgsql'  => 'int2',
+            'sqlite' => 'integer',
+            default  => 'smallint',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $text = match ($driver) {
+            'mysql' => 'longtext',
+            default => 'text',
+        };
+
         $columns = [
-            'id' => 'int8',
-            'queue' => 'varchar',
-            'payload' => 'text',
-            'attempts' => 'int2',
-            'reserved_at' => 'int4',
-            'available_at' => 'int4',
-            'created_at' => 'int4',
+            'id'           => $bigint,
+            'queue'        => $string,
+            'payload'      => $text,
+            'attempts'     => $smallint,
+            'reserved_at'  => $integer,
+            'available_at' => $integer,
+            'created_at'   => $integer,
         ];
 
         $this->assertDatabaseTable('jobs', $columns);
@@ -47,17 +102,36 @@ final class ShipMigrationTest extends ShipTestCase
 
     public function testJobBatchesTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $integer = match ($driver) {
+            'mysql' => 'int',
+            'pgsql' => 'int4',
+            default => 'integer',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $text = match ($driver) {
+            'mysql' => 'mediumtext',
+            default => 'text',
+        };
+        $longtext = match ($driver) {
+            'mysql' => 'longtext',
+            default => 'text',
+        };
+
         $columns = [
-            'id' => 'varchar',
-            'name' => 'varchar',
-            'total_jobs' => 'int4',
-            'pending_jobs' => 'int4',
-            'failed_jobs' => 'int4',
-            'failed_job_ids' => 'text',
-            'options' => 'text',
-            'cancelled_at' => 'int4',
-            'created_at' => 'int4',
-            'finished_at' => 'int4',
+            'id'             => $string,
+            'name'           => $string,
+            'total_jobs'     => $integer,
+            'pending_jobs'   => $integer,
+            'failed_jobs'    => $integer,
+            'failed_job_ids' => $longtext,
+            'options'        => $text,
+            'cancelled_at'   => $integer,
+            'created_at'     => $integer,
+            'finished_at'    => $integer,
         ];
 
         $this->assertDatabaseTable('job_batches', $columns);
@@ -65,14 +139,33 @@ final class ShipMigrationTest extends ShipTestCase
 
     public function testFailedJobsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $datetime = match ($driver) {
+            'mysql', 'pgsql' => 'timestamp',
+            default => 'datetime',
+        };
+        $text = match ($driver) {
+            'mysql' => 'longtext',
+            default => 'text',
+        };
+
         $columns = [
-            'id' => 'int8',
+            'id'         => $bigint,
             'connection' => 'text',
-            'queue' => 'text',
-            'payload' => 'text',
-            'exception' => 'text',
-            'failed_at' => 'timestamp',
-            'uuid' => 'varchar',
+            'queue'      => 'text',
+            'payload'    => $text,
+            'exception'  => $text,
+            'failed_at'  => $datetime,
+            'uuid'       => $string,
         ];
 
         $this->assertDatabaseTable('failed_jobs', $columns);
@@ -80,15 +173,36 @@ final class ShipMigrationTest extends ShipTestCase
 
     public function testNotificationsTableHasExpectedColumns(): void
     {
+        $driver = Schema::getConnection()->getDriverName();
+        $guid = match ($driver) {
+            'pgsql'  => 'uuid',
+            'mysql'  => 'char',
+            'sqlite' => 'varchar',
+            default  => 'string',
+        };
+        $bigint = match ($driver) {
+            'sqlite' => 'integer',
+            'pgsql'  => 'int8',
+            default  => 'bigint',
+        };
+        $string = match ($driver) {
+            'sqlite', 'mysql', 'pgsql' => 'varchar',
+            default => 'string',
+        };
+        $datetime = match ($driver) {
+            'mysql', 'pgsql' => 'timestamp',
+            default => 'datetime',
+        };
+
         $columns = [
-            'id' => 'uuid',
-            'type' => 'varchar',
-            'notifiable_id' => 'int8',
-            'notifiable_type' => 'varchar',
-            'data' => 'text',
-            'read_at' => 'timestamp',
-            'created_at' => 'timestamp',
-            'updated_at' => 'timestamp',
+            'id'              => $guid,
+            'type'            => $string,
+            'notifiable_id'   => $bigint,
+            'notifiable_type' => $string,
+            'data'            => 'text',
+            'read_at'         => $datetime,
+            'created_at'      => $datetime,
+            'updated_at'      => $datetime,
         ];
 
         $this->assertDatabaseTable('notifications', $columns);

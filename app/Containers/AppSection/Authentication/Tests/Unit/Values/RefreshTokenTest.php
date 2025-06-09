@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Values;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -16,21 +18,18 @@ final class RefreshTokenTest extends UnitTestCase
 
         $cookie = $refreshToken->asCookie();
 
-        $this->assertSame(RefreshToken::cookieName(), $cookie->getName());
-        $this->assertSame($refreshToken->value(), $cookie->getValue());
-        $this->assertEquals(
-            (int) config('appSection-authentication.refresh-tokens-expire-in'),
-            $cookie->getExpiresTime(),
-        );
-        $this->assertEquals('/', $cookie->getPath());
-        $this->assertNull($cookie->getDomain());
-        $this->assertEquals(config('session.secure'), $cookie->isSecure());
-        $this->assertEquals(config('session.http_only'), $cookie->isHttpOnly());
+        self::assertSame(RefreshToken::cookieName(), $cookie->getName());
+        self::assertSame($refreshToken->value(), $cookie->getValue());
+        self::assertSame((int) config('appSection-authentication.refresh-tokens-expire-in'), $cookie->getExpiresTime());
+        self::assertSame('/', $cookie->getPath());
+        self::assertNull($cookie->getDomain());
+        self::assertEquals(config('session.secure'), $cookie->isSecure());
+        self::assertEquals(config('session.http_only'), $cookie->isHttpOnly());
     }
 
     public function testCanCreateFromRequest(): void
     {
-        $request = (new class extends Request {
+        $request = (new class () extends Request {
         })::create(
             '',
             parameters: [
@@ -40,13 +39,13 @@ final class RefreshTokenTest extends UnitTestCase
 
         $refreshToken = RefreshToken::createFrom($request);
 
-        $this->assertSame($request->input('refresh_token'), $refreshToken->value());
-        $this->assertNull($request->cookie(RefreshToken::cookieName()));
+        self::assertSame($request->input('refresh_token'), $refreshToken->value());
+        self::assertNull($request->cookie(RefreshToken::cookieName()));
     }
 
     public function testCanCreateFromRequestWithCookie(): void
     {
-        $request = (new class extends Request {
+        $request = (new class () extends Request {
         })::create(
             '',
             cookies: [
@@ -56,7 +55,7 @@ final class RefreshTokenTest extends UnitTestCase
 
         $refreshToken = RefreshToken::createFrom($request);
 
-        $this->assertSame($request->cookie(RefreshToken::cookieName()), $refreshToken->value());
-        $this->assertNull($request->input('refresh_token'));
+        self::assertSame($request->cookie(RefreshToken::cookieName()), $refreshToken->value());
+        self::assertNull($request->input('refresh_token'));
     }
 }

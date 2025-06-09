@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\PasswordReset;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -12,8 +14,8 @@ final class ResetPasswordRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'token' => 'required',
-            'email' => 'required|email',
+            'token'    => 'required',
+            'email'    => 'required|email',
             'password' => [...Password::required(), 'confirmed'],
         ];
     }

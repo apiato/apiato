@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -13,7 +15,7 @@ final class SyncRolePermissionsRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'role_id',
             'permission_ids.*',
         ], $this->request->getDecode());
@@ -23,9 +25,9 @@ final class SyncRolePermissionsRequestTest extends UnitTestCase
     {
         $rules = $this->request->rules();
 
-        $this->assertSame([
-            'role_id' => 'exists:roles,id',
-            'permission_ids' => 'array|required',
+        self::assertSame([
+            'role_id'          => 'exists:roles,id',
+            'permission_ids'   => 'array|required',
             'permission_ids.*' => 'required|exists:permissions,id',
         ], $rules);
     }

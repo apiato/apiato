@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tasks;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -9,9 +11,8 @@ use Illuminate\Support\Str;
 
 final class FindRoleTask extends ParentTask
 {
-    public function __construct(
-        private readonly RoleRepository $repository,
-    ) {
+    public function __construct(private readonly RoleRepository $repository)
+    {
     }
 
     public function run(string|int $nameOrId, string $guardName = 'api'): Role
@@ -31,6 +32,14 @@ final class FindRoleTask extends ParentTask
 
     private function isId(int|string $roleNameOrId): bool
     {
-        return is_numeric($roleNameOrId) || Str::isUuid($roleNameOrId) || Str::isUlid($roleNameOrId);
+        if (is_numeric($roleNameOrId)) {
+            return true;
+        }
+
+        if (Str::isUuid($roleNameOrId)) {
+            return true;
+        }
+
+        return Str::isUlid($roleNameOrId);
     }
 }

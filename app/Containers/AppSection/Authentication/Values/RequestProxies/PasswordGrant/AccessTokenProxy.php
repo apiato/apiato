@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant;
 
 use App\Containers\AppSection\Authentication\Values\Clients\Client;
@@ -24,12 +26,12 @@ final readonly class AccessTokenProxy extends ParentValue
     public function toArray(): array
     {
         return [
-            'grant_type' => 'password',
-            'username' => $this->credential->username(),
-            'password' => $this->credential->password(),
-            'client_id' => $this->client->id(),
+            'grant_type'    => 'password',
+            'username'      => $this->credential->username(),
+            'password'      => $this->credential->password(),
+            'client_id'     => $this->client->id(),
             'client_secret' => $this->client->plainSecret(),
-            'scope' => $this->scope->toString(),
+            'scope'         => $this->scope->toString(),
         ];
     }
 }

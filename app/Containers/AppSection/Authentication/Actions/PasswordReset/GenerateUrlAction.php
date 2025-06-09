@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions\PasswordReset;
 
 use App\Containers\AppSection\Authentication\UI\API\Controllers\PasswordReset\ResetPasswordController;

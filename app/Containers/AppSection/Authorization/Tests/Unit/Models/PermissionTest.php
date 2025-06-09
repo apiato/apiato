@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Models;
 
 use Apiato\Core\Models\InteractsWithApiato;
@@ -12,7 +14,7 @@ final class PermissionTest extends UnitTestCase
 {
     public function testUsesCorrectTraits(): void
     {
-        $this->assertContains(InteractsWithApiato::class, class_uses_recursive(Permission::class));
+        self::assertContains(InteractsWithApiato::class, class_uses_recursive(Permission::class));
     }
 
     public function testHasCorrectFillableFields(): void
@@ -26,7 +28,7 @@ final class PermissionTest extends UnitTestCase
         ];
 
         foreach ($fillables as $fillable) {
-            $this->assertContains($fillable, $permission->getFillable());
+            self::assertContains($fillable, $permission->getFillable());
         }
     }
 
@@ -35,13 +37,13 @@ final class PermissionTest extends UnitTestCase
         $permission = Permission::factory()->createOne();
         $table = 'permissions';
 
-        $this->assertSame($table, $permission->getTable());
+        self::assertSame($table, $permission->getTable());
     }
 
     public function testHasCorrectResourceKey(): void
     {
         $permission = Permission::factory()->createOne();
 
-        $this->assertSame('Permission', $permission->getResourceKey());
+        self::assertSame('Permission', $permission->getResourceKey());
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\Concerns\InteractsWithGuard;
@@ -16,9 +18,9 @@ final class PermissionRepository extends ParentRepository
     use InteractsWithGuard;
 
     protected $fieldSearchable = [
-        'name' => '=',
+        'name'         => '=',
         'display_name' => 'like',
-        'description' => 'like',
+        'description'  => 'like',
     ];
 
     public function model(): string

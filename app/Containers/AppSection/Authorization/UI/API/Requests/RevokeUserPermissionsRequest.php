@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -15,8 +17,8 @@ final class RevokeUserPermissionsRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
-            'permission_ids' => 'array|required',
+            'user_id'          => 'exists:users,id',
+            'permission_ids'   => 'array|required',
             'permission_ids.*' => 'exists:permissions,id',
         ];
     }

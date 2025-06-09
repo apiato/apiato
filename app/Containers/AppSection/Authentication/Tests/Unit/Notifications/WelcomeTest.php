@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Notifications;
 
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
@@ -12,12 +14,12 @@ final class WelcomeTest extends UnitTestCase
 {
     public function testSendMail(): void
     {
-        $notification = new Welcome();
+        $welcome = new Welcome();
         $user = User::factory()->make();
 
-        $result = $notification->toMail($user);
+        $result = $welcome->toMail($user);
 
-        $this->assertSame('Welcome to ' . config('app.name'), $result->subject);
-        $this->assertSame(['Thank you for registering ' . $user->name], $result->introLines);
+        self::assertSame('Welcome to ' . config('app.name'), $result->subject);
+        self::assertSame(['Thank you for registering ' . $user->name], $result->introLines);
     }
 }

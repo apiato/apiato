@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\User\Tests\UnitTestCase;
@@ -15,7 +17,7 @@ final class UpdatePasswordRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'user_id',
         ], $this->request->getDecode());
     }
@@ -24,9 +26,9 @@ final class UpdatePasswordRequestTest extends UnitTestCase
     {
         $rules = $this->request->rules();
 
-        $this->assertEquals([
+        self::assertEquals([
             'current_password' => [
-                Rule::requiredIf(fn (): bool => !is_null($this->request->user()->password)),
+                Rule::requiredIf(fn (): bool => !\is_null($this->request->user()->password)),
                 'current_password:api',
             ],
             'new_password' => [

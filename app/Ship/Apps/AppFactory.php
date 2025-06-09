@@ -1,24 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Apps;
 
 final readonly class AppFactory
 {
-    /**
-     * @var array<string, class-string<App>>
-     */
+    /** @var array<string, class-string<App>> */
     private array $apps;
 
     private function __construct()
     {
-        $this->apps = config()->array('apiato.apps');
+        $this->apps = config()?->array('apiato.apps');
     }
 
     public static function create(string $identifier): App
     {
         $instance = new self();
-        if (!array_key_exists($identifier, $instance->apps)) {
-            throw new \InvalidArgumentException("App [{$identifier}] not found.");
+
+        if (!\array_key_exists($identifier, $instance->apps)) {
+            throw new \InvalidArgumentException(\sprintf('App [%s] not found.', $identifier));
         }
 
         return new $instance->apps[$identifier]['class']();

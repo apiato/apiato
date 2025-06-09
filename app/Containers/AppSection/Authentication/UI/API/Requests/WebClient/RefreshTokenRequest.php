@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\WebClient;
 
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
@@ -18,13 +20,13 @@ final class RefreshTokenRequest extends ParentRequest
             'refresh_token' => [
                 'string',
                 Rule::requiredIf(
-                    fn () => !$this->hasCookie($cookieName),
+                    fn (): bool => !$this->hasCookie($cookieName),
                 ),
             ],
             $cookieName => [
                 'string',
                 Rule::requiredIf(
-                    fn () => !$this->has('refresh_token'),
+                    fn (): bool => !$this->has('refresh_token'),
                 ),
             ],
         ];
@@ -40,7 +42,8 @@ final class RefreshTokenRequest extends ParentRequest
     public function prepareForValidation(): void
     {
         $cookieName = RefreshToken::cookieName();
-        if (!is_null($this->cookie($cookieName))) {
+
+        if (!\is_null($this->cookie($cookieName))) {
             $this->merge([
                 $cookieName => $this->cookie($cookieName),
             ]);
@@ -49,6 +52,10 @@ final class RefreshTokenRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->has('refresh_token') || $this->hasCookie(RefreshToken::cookieName());
+        if ($this->has('refresh_token')) {
+            return true;
+        }
+
+        return $this->hasCookie(RefreshToken::cookieName());
     }
 }

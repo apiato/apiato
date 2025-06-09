@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\SuperAdminSeeder_2;
@@ -15,8 +17,8 @@ final class SuperAdminSeederTest extends UnitTestCase
     {
         $this->assertDatabaseCount('users', 1);
         $user = User::first();
-        $this->assertSame('admin@admin.com', $user->email);
-        $this->assertSame('Super Admin', $user->name);
-        $this->assertTrue(Hash::check('admin', $user->password));
+        self::assertSame('admin@admin.com', $user->email);
+        self::assertSame('Super Admin', $user->name);
+        self::assertTrue(Hash::check('admin', $user->password));
     }
 }

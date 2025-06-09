@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -19,28 +21,28 @@ final class UserAdminTransformerTest extends UnitTestCase
         $this->freezeTime();
         $user = User::factory()->createOne();
         $expected = [
-            'type' => $user->getResourceKey(),
-            'id' => $user->getHashedKey(),
-            'name' => $user->name,
-            'email' => $user->email,
-            'email_verified_at' => $user->email_verified_at,
-            'gender' => $user->gender,
-            'birth' => $user->birth,
-            'real_id' => $user->id,
-            'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at,
+            'type'                => $user->getResourceKey(),
+            'id'                  => $user->getHashedKey(),
+            'name'                => $user->name,
+            'email'               => $user->email,
+            'email_verified_at'   => $user->email_verified_at,
+            'gender'              => $user->gender,
+            'birth'               => $user->birth,
+            'real_id'             => $user->id,
+            'created_at'          => $user->created_at,
+            'updated_at'          => $user->updated_at,
             'readable_created_at' => $user->created_at->diffForHumans(),
             'readable_updated_at' => $user->updated_at->diffForHumans(),
         ];
 
         $transformedResource = $this->transformer->transform($user);
 
-        $this->assertEquals($expected, $transformedResource);
+        self::assertEquals($expected, $transformedResource);
     }
 
     public function testAvailableIncludes(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'roles',
             'permissions',
         ], $this->transformer->getAvailableIncludes());
@@ -48,7 +50,7 @@ final class UserAdminTransformerTest extends UnitTestCase
 
     public function testDefaultIncludes(): void
     {
-        $this->assertSame([], $this->transformer->getDefaultIncludes());
+        self::assertSame([], $this->transformer->getDefaultIncludes());
     }
 
     public function testIncludeRoles(): void
@@ -59,7 +61,7 @@ final class UserAdminTransformerTest extends UnitTestCase
 
         $resource = $this->transformer->includeRoles($user);
 
-        $this->assertSame($user->roles, $resource->getData());
+        self::assertSame($user->roles, $resource->getData());
     }
 
     public function testIncludePermissions(): void
@@ -70,12 +72,13 @@ final class UserAdminTransformerTest extends UnitTestCase
 
         $resource = $this->transformer->includePermissions($user);
 
-        $this->assertSame($user->permissions, $resource->getData());
+        self::assertSame($user->permissions, $resource->getData());
     }
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new UserAdminTransformer();
     }
 }

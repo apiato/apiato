@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -17,29 +19,29 @@ final class RoleAdminTransformerTest extends UnitTestCase
     {
         $role = Role::factory()->createOne();
         $expected = [
-            'type' => $role->getResourceKey(),
-            'id' => $role->getHashedKey(),
-            'name' => $role->name,
+            'type'         => $role->getResourceKey(),
+            'id'           => $role->getHashedKey(),
+            'name'         => $role->name,
             'display_name' => $role->display_name,
-            'guard_name' => $role->guard_name,
-            'description' => $role->description,
+            'guard_name'   => $role->guard_name,
+            'description'  => $role->description,
         ];
 
         $transformedResource = $this->transformer->transform($role);
 
-        $this->assertEquals($expected, $transformedResource);
+        self::assertEquals($expected, $transformedResource);
     }
 
     public function testAvailableIncludes(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'permissions',
         ], $this->transformer->getAvailableIncludes());
     }
 
     public function testDefaultIncludes(): void
     {
-        $this->assertSame([], $this->transformer->getDefaultIncludes());
+        self::assertSame([], $this->transformer->getDefaultIncludes());
     }
 
     public function testIncludePermissions(): void
@@ -50,12 +52,13 @@ final class RoleAdminTransformerTest extends UnitTestCase
 
         $resource = $this->transformer->includePermissions($role);
 
-        $this->assertSame($role->permissions, $resource->getData());
+        self::assertSame($role->permissions, $resource->getData());
     }
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new RoleAdminTransformer();
     }
 }

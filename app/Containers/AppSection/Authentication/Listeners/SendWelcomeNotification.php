@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Listeners;
 
 use App\Containers\AppSection\Authentication\Notifications\Welcome;

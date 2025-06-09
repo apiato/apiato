@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\WebClient;
 
 use App\Containers\AppSection\Authentication\Data\Factories\ClientFactory;
@@ -25,23 +27,6 @@ final class RefreshTokenTest extends ApiTestCase
         ]);
 
         $this->assertJsonResponse($response);
-    }
-
-    private function assertJsonResponse(TestResponse $response): void
-    {
-        $response->assertok();
-        $response->assertJson(
-            static fn (AssertableJson $json): AssertableJson => $json->has(
-                'data',
-                static fn (AssertableJson $json): AssertableJson => $json->hasAll([
-                    'access_token',
-                    'refresh_token',
-                    'token_type',
-                    'expires_in',
-                ])->where('token_type', 'Bearer')
-                    ->etc(),
-            )->etc(),
-        );
     }
 
     public function testCanHandleMissingRefreshToken(): void
@@ -77,11 +62,13 @@ final class RefreshTokenTest extends ApiTestCase
         parent::setUp();
 
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         User::factory()->createOne($data);
-        $this->refreshToken = app(PasswordTokenFactory::class)->make(
+        /** @var PasswordTokenFactory $passwordTokenFactory */
+        $passwordTokenFactory = app(PasswordTokenFactory::class);
+        $this->refreshToken = $passwordTokenFactory->make(
             AccessTokenProxy::create(
                 UserCredential::create(
                     $data['email'],
@@ -90,5 +77,22 @@ final class RefreshTokenTest extends ApiTestCase
                 ClientFactory::webClient(),
             ),
         )->refreshToken->value();
+    }
+
+    private function assertJsonResponse(TestResponse $response): void
+    {
+        $response->assertok();
+        $response->assertJson(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
+                'data',
+                static fn (AssertableJson $json): AssertableJson => $json->hasAll([
+                    'access_token',
+                    'refresh_token',
+                    'token_type',
+                    'expires_in',
+                ])->where('token_type', 'Bearer')
+                    ->etc(),
+            )->etc(),
+        );
     }
 }
