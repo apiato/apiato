@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
@@ -9,9 +11,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 final class ListUsersAction extends ParentAction
 {
-    public function __construct(
-        private readonly UserRepository $repository,
-    ) {
+    public function __construct(private readonly UserRepository $repository)
+    {
     }
 
     public function run(): LengthAwarePaginator|UserCollection

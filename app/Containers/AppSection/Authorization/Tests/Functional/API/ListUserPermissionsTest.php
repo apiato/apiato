@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -26,10 +28,10 @@ final class ListUserPermissionsTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                static fn (AssertableJson $json) => $json->where('0.name', $permission->name)
-                ->etc(),
+                static fn (AssertableJson $json): AssertableJson => $json->where('0.name', $permission->name)
+                    ->etc(),
             )->etc(),
         );
     }

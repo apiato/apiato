@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Tests\Functional\ApiTestCase;
@@ -22,6 +24,7 @@ final class SendTest extends ApiTestCase
         $response = $this->postJson(action(SendController::class));
 
         $response->assertAccepted();
+
         if ($user instanceof MustVerifyEmail) {
             Notification::assertSentTo($user, VerifyEmail::class);
         } else {

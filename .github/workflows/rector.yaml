@@ -1,0 +1,52 @@
+name: "Refactor - Rector"
+
+on:
+  push:
+    branches: [ master, '*.x' ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rector:
+    name: Rector Code Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: Setup Composer token
+        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare Rector cache directory
+        run: mkdir -p ./tmp/rector
+
+      - name: Cache Rector results
+        uses: actions/cache@v4
+        with:
+          path: ./tmp/rector
+          key: ${{ runner.OS }}-${{ github.repository }}-rector-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ github.repository }}-rector-
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --prefer-dist
+
+      - name: Run Rector Dry Run
+        run: vendor/bin/rector process --dry-run --no-progress-bar --output-format=github --ansi

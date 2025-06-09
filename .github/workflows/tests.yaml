@@ -1,14 +1,16 @@
-name: Tests
+name: "Test suite"
 
 on:
   push:
-    branches:
-      - master
-      - '*.x'
+    branches: [ master, '*.x' ]
   pull_request:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   matrix_prep:
@@ -40,6 +42,11 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,28 +58,38 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php_version }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, redis
           coverage: xdebug
           tools: ${{ matrix.php_unit_version }}
 
       - name: Setup Composer token
         run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Cache PHPUnit results
+        uses: actions/cache@v4
+        with:
+          path: .phpunit.result.cache
+          key: ${{ runner.OS }}-${{ github.repository }}-php-${{ matrix.php }}-phpunit-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ github.repository }}-php-${{ matrix.php }}-phpunit-
+
       # If you encounter an error during Laravel package discovery, remember this:
       # Composer doesn't have access to env variables at this stage,
       # Therefore, it uses the default value for all env variables.
       # To fix this, we need to copy the .env.ci file to .env before running composer install.
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress
-
-      - name: Copy environment file
+      - name: Copy environment file for Composer
         run: cp .env.ci .env
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --prefer-dist
 
       - name: Generate app key
         run: php artisan key:generate
 
       - name: Execute tests
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml --testdox --cache-directory=.phpunit.result.cache --colors=always --display-deprecations --display-phpunit-deprecations
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5

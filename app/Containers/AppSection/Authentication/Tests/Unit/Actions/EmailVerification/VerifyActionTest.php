@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Actions\EmailVerification\VerifyAction;
@@ -18,11 +20,11 @@ final class VerifyActionTest extends UnitTestCase
         $user = User::factory()->unverified()->createOne();
         $action = app(VerifyAction::class);
 
-        $this->assertFalse($user->refresh()->hasVerifiedEmail());
+        self::assertFalse($user->refresh()->hasVerifiedEmail());
 
         $action->run($user);
 
-        $this->assertTrue($user->refresh()->hasVerifiedEmail());
+        self::assertTrue($user->refresh()->hasVerifiedEmail());
         Event::assertDispatched(Verified::class, static function (Verified $event) use ($user) {
             return $event->user->is($user);
         });

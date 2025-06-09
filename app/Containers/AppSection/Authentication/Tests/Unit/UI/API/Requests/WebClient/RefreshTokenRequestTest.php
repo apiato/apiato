@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests\WebClient;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -13,21 +15,21 @@ final class RefreshTokenRequestTest extends UnitTestCase
 {
     public function testDecode(): void
     {
-        $request = new RefreshTokenRequest();
+        $refreshTokenRequest = new RefreshTokenRequest();
 
-        $this->assertSame([], $request->getDecode());
+        self::assertSame([], $refreshTokenRequest->getDecode());
     }
 
     public function testValidationRules(): void
     {
-        $request = new RefreshTokenRequest();
+        $refreshTokenRequest = new RefreshTokenRequest();
         $cookieName = RefreshToken::cookieName();
 
-        $this->assertEquals([
+        self::assertEquals([
             'refresh_token' => [
                 'string',
                 Rule::requiredIf(
-                    static fn () => !$request->hasCookie(
+                    static fn (): bool => !$refreshTokenRequest->hasCookie(
                         $cookieName,
                     ),
                 ),
@@ -35,9 +37,9 @@ final class RefreshTokenRequestTest extends UnitTestCase
             $cookieName => [
                 'string',
                 Rule::requiredIf(
-                    static fn () => !$request->has('refresh_token'),
+                    static fn (): bool => !$refreshTokenRequest->has('refresh_token'),
                 ),
             ],
-        ], $request->rules());
+        ], $refreshTokenRequest->rules());
     }
 }

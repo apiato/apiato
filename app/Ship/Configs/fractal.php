@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Apiato\Http\Response;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\DataArraySerializer;

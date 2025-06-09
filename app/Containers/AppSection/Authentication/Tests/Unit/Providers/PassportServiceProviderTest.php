@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Providers\PassportServiceProvider;
@@ -13,14 +15,15 @@ final class PassportServiceProviderTest extends UnitTestCase
 {
     public function testCanConfigurePassport(): void
     {
-        $this->assertSame(59, Passport::$tokensExpireIn->i);
-        $this->assertSame(59, Passport::$refreshTokensExpireIn->i);
+        self::assertSame(59, Passport::$tokensExpireIn->i);
+        self::assertSame(59, Passport::$refreshTokensExpireIn->i);
     }
 
     public function testRegistersPassportRoutes(): void
     {
         $registeredRoutes = Route::getRoutes();
         $registeredRoutes->refreshNameLookups();
+
         $passportRouteNames = [
             'passport.token',
             'passport.token.refresh',
@@ -39,33 +42,21 @@ final class PassportServiceProviderTest extends UnitTestCase
         $apiPrefix = $this->removeLeadingSlashes(apiato()->routing()->getApiPrefix());
         $oAuthPrefix = $apiPrefix . 'v1/oauth';
         foreach ($passportRouteNames as $routeName) {
-            $this->assertNotNull($registeredRoutes->getByName($routeName));
+            self::assertInstanceOf(\Illuminate\Routing\Route::class, $registeredRoutes->getByName($routeName));
             $this->assertSamePrefix($oAuthPrefix, $registeredRoutes->getByName($routeName)->getPrefix());
         }
-        foreach ($passportRouteNames as $routeName) {
-            $this->assertNotNull($registeredRoutes->getByName($routeName));
-            $this->assertSamePrefix($oAuthPrefix, $registeredRoutes->getByName($routeName)->getPrefix());
+
+        foreach ($passportRouteNames as $passportRouteName) {
+            self::assertInstanceOf(\Illuminate\Routing\Route::class, $registeredRoutes->getByName($passportRouteName));
+            $this->assertSamePrefix($oAuthPrefix, $registeredRoutes->getByName($passportRouteName)->getPrefix());
         }
-    }
-
-    private function removeLeadingSlashes(string $value): string
-    {
-        return ltrim($value, '/');
-    }
-
-    private function assertSamePrefix(string $prefix, string $endpoint): void
-    {
-        $this->assertSame(
-            $prefix,
-            $endpoint,
-            'The prefix of the route does not match the expected value.',
-        );
     }
 
     public function testDoesNotRegisterJsonApiRoutes(): void
     {
         $registeredRoutes = Route::getRoutes();
         $registeredRoutes->refreshNameLookups();
+
         $passportRouteNames = [
             'passport.tokens.index',
             'passport.tokens.destroy',
@@ -79,9 +70,19 @@ final class PassportServiceProviderTest extends UnitTestCase
             'passport.personal.tokens.destroy',
         ];
 
-        $this->assertFalse(Passport::$registersJsonApiRoutes);
-        foreach ($passportRouteNames as $routeName) {
-            $this->assertNull($registeredRoutes->getByName($routeName));
+        self::assertFalse(Passport::$registersJsonApiRoutes);
+        foreach ($passportRouteNames as $passportRouteName) {
+            self::assertNotInstanceOf(\Illuminate\Routing\Route::class, $registeredRoutes->getByName($passportRouteName));
         }
+    }
+
+    private function removeLeadingSlashes(string $value): string
+    {
+        return ltrim($value, '/');
+    }
+
+    private function assertSamePrefix(string $prefix, string $endpoint): void
+    {
+        self::assertSame($prefix, $endpoint, 'The prefix of the route does not match the expected value.');
     }
 }

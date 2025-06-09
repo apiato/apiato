@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\PasswordReset;
 
 use App\Containers\AppSection\Authentication\Actions\PasswordReset\ResetPasswordAction;
@@ -17,25 +19,23 @@ use PHPUnit\Framework\Attributes\DataProvider;
 #[CoversClass(ResetPasswordAction::class)]
 final class ResetPasswordActionTest extends UnitTestCase
 {
-    public static function invalidDataProvider(): array
+    public static function invalidDataProvider(): \Iterator
     {
-        return [
+        yield [
             [
-                [
-                    'token' => static fn () => 'invalid token',
-                    'email' => fn () => User::factory()->createOne()->email,
-                ],
-                'token',
-                Password::INVALID_TOKEN,
+                'token' => static fn (): string => 'invalid token',
+                'email' => static fn () => User::factory()->createOne()->email,
             ],
+            'token',
+            Password::INVALID_TOKEN,
+        ];
+        yield [
             [
-                [
-                    'token' => fn () => Password::createToken(User::factory()->createOne()),
-                    'email' => 'invalid email',
-                ],
-                'token',
-                Password::INVALID_USER,
+                'token' => static fn () => Password::createToken(User::factory()->createOne()),
+                'email' => 'invalid email',
             ],
+            'token',
+            Password::INVALID_USER,
         ];
     }
 
@@ -43,21 +43,21 @@ final class ResetPasswordActionTest extends UnitTestCase
     {
         Event::fake();
         $user = User::factory()->createOne([
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 'youShallNotPass',
         ]);
         $data = [
-            'email' => $user->email,
-            'token' => Password::createToken($user),
-            'password' => 'new pass',
+            'email'                 => $user->email,
+            'token'                 => Password::createToken($user),
+            'password'              => 'new pass',
             'password_confirmation' => 'new pass',
         ];
-        $request = new ResetPasswordRequest($data);
+        $resetPasswordRequest = new ResetPasswordRequest($data);
 
-        $result = app(ResetPasswordAction::class)->run($request);
+        $result = app(ResetPasswordAction::class)->run($resetPasswordRequest);
 
-        $this->assertSame(__(Password::PASSWORD_RESET), $result);
-        $this->assertTrue(Hash::check($data['password'], $user->fresh()->password));
+        self::assertSame(__(Password::PASSWORD_RESET), $result);
+        self::assertTrue(Hash::check($data['password'], $user->fresh()->password));
         Event::assertDispatched(
             PasswordReset::class,
             static function (PasswordReset $event) use ($user) {
@@ -71,11 +71,12 @@ final class ResetPasswordActionTest extends UnitTestCase
     {
         $this->expectExceptionObject(
             ValidationException::withMessages([
-                $key => __($message)]),
+                $key => __($message),
+            ]),
         );
 
-        $request = new ResetPasswordRequest($data);
+        $resetPasswordRequest = new ResetPasswordRequest($data);
 
-        app(ResetPasswordAction::class)->run($request);
+        app(ResetPasswordAction::class)->run($resetPasswordRequest);
     }
 }

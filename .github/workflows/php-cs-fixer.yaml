@@ -1,35 +1,49 @@
-name: Check & fix styling
+name: "Linter - PHP-CS-Fixer"
 
 on:
   push:
-    branches:
-      - master
-      - '*.x'
+    branches: [ master, '*.x' ]
   pull_request:
     types: [ opened, synchronize, reopened ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   php-cs-fixer:
     name: PHP-CS-Fixer
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Use Cache
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: Setup Composer token
+        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache PHP-CS-Fixer results
         uses: actions/cache@v4
         with:
           path: .php-cs-fixer.cache
-          key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.sha }}
+          key: ${{ runner.OS }}-${{ github.repository }}-php-cs-fixer-${{ github.sha }}
           restore-keys: |
-            ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
-      - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+            ${{ runner.OS }}-${{ github.repository }}-php-cs-fixer-
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
         with:
-          args: --config=.php-cs-fixer.dist.php
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "style: apply automated php-cs-fixer changes"
+          composer-options: --prefer-dist
+
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix --dry-run --format=txt --diff --allow-risky=yes --using-cache=yes --ansi -vv

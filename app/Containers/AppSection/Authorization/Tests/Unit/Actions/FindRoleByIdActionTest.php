@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\FindRoleByIdAction;
@@ -16,6 +18,6 @@ final class FindRoleByIdActionTest extends UnitTestCase
 
         $result = app(FindRoleByIdAction::class)->run($role->id);
 
-        $this->assertTrue($role->is($result));
+        self::assertTrue($role->is($result));
     }
 }

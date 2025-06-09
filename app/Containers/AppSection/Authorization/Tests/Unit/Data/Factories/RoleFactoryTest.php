@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Data\Factories\RoleFactory;
@@ -16,7 +18,7 @@ final class RoleFactoryTest extends UnitTestCase
     {
         $role = Role::factory()->createOne();
 
-        $this->assertInstanceOf(Role::class, $role);
+        self::assertInstanceOf(Role::class, $role);
     }
 
     public function testCanCreateAdminRole(): void
@@ -29,7 +31,7 @@ final class RoleFactoryTest extends UnitTestCase
 
         $role = Role::factory()->admin()->createOne();
 
-        $this->assertSame(RoleEnum::SUPER_ADMIN->value, $role->name);
+        self::assertSame(RoleEnum::SUPER_ADMIN->value, $role->name);
     }
 
     #[TestWith(['web'])]
@@ -37,6 +39,6 @@ final class RoleFactoryTest extends UnitTestCase
     public function testCanSetGuard(string $guard): void
     {
         $role = Role::factory()->withGuard($guard)->createOne();
-        $this->assertSame($guard, $role->guard_name);
+        self::assertSame($guard, $role->guard_name);
     }
 }

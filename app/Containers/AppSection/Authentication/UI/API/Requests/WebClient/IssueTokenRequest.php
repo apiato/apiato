@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\WebClient;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -11,7 +13,7 @@ final class IssueTokenRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
+            'email'    => ['required', 'email'],
             'password' => 'required',
         ];
     }

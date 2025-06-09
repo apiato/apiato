@@ -1,0 +1,21 @@
+#https://phpstan.org/user-guide/getting-started
+
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - app
+        - config
+        - tests
+        - database
+    excludePaths:
+        - vendor/*
+        - app/Containers/Vendor/*
+
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - identifier: larastan.noEnvCallsOutsideOfConfig
+    fileExtensions:
+        - php

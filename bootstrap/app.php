@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Apiato\Foundation\Apiato;
 use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Exceptions;
 
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailed;
@@ -13,7 +15,7 @@ final class LoginFailedTest extends UnitTestCase
     {
         $this->expectExceptionMessage('Login Failed.');
         $exception = LoginFailed::create();
-        $this->assertSame(422, $exception->getStatusCode());
+        self::assertSame(422, $exception->getStatusCode());
 
         throw $exception;
     }

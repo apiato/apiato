@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Models\User;
@@ -20,7 +22,7 @@ final class FindUserByIdTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json): AssertableJson => $json->has('data')
+            static fn (AssertableJson $json): AssertableJson => $json->has('data')
                 ->where('data.id', $user->getHashedKey())
                 ->etc(),
         );

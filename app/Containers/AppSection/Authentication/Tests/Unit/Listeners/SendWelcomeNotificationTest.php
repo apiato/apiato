@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Listeners;
 
 use App\Containers\AppSection\Authentication\Listeners\SendWelcomeNotification;
@@ -18,10 +20,10 @@ final class SendWelcomeNotificationTest extends UnitTestCase
     {
         Event::fake();
         Notification::fake();
-        $listener = new SendWelcomeNotification();
-        $event = new Registered($user = User::factory()->makeOne());
+        $sendWelcomeNotification = new SendWelcomeNotification();
+        $registered = new Registered($user = User::factory()->makeOne());
 
-        $listener($event);
+        $sendWelcomeNotification($registered);
 
         Notification::assertSentTo($user, Welcome::class);
         Event::assertListening(Registered::class, SendWelcomeNotification::class);

@@ -1,20 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Criteria;
 
 use App\Ship\Parents\Criteria\Criteria as ParentCriteria;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 class OrderByFieldCriteria extends ParentCriteria
 {
     public function __construct(
-        private string $field,
-        private string $sortOrder,
+        private readonly string $field,
+        private readonly string $sortOrder,
     ) {
-        if (!$this->isValidSortOrder($sortOrder)) {
-            throw new \InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");
+        if (!$this->isValidSortOrder($this->sortOrder)) {
+            throw new InvalidArgumentException("Invalid argument supplied. Valid arguments are 'asc' and 'desc'");
         }
+    }
+
+    /**
+     * @param Builder $model
+     */
+    public function apply($model, PrettusRepositoryInterface $repository): Builder
+    {
+        return $model->orderBy($this->field, $this->sortOrder);
     }
 
     private function isValidSortOrder(string $sortOrder): bool
@@ -25,11 +37,6 @@ class OrderByFieldCriteria extends ParentCriteria
             'desc',
         ];
 
-        return in_array($sortOrder, $availableDirections, true);
-    }
-
-    public function apply($model, PrettusRepositoryInterface $repository)
-    {
-        return $model->orderBy($this->field, $this->sortOrder);
+        return \in_array($sortOrder, $availableDirections, true);
     }
 }

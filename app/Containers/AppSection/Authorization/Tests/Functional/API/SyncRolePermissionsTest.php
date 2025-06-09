@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -20,6 +22,7 @@ final class SyncRolePermissionsTest extends ApiTestCase
         $permissionB = Permission::factory()->createOne();
         $role = Role::factory()->createOne();
         $role->givePermissionTo($permissionA);
+
         $data = [
             'permission_ids' => [$permissionA->getHashedKey(), $permissionB->getHashedKey()],
         ];

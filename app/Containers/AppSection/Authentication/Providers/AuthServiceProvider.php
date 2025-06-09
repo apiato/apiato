@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Providers;
 
 use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
@@ -11,7 +13,7 @@ final class AuthServiceProvider extends ParentServiceProvider
 {
     public function boot(): void
     {
-        $method = function () {
+        $method = function (): null|int|string {
             foreach (array_keys(config('auth.guards')) as $guard) {
                 if (Auth::guard($guard)->check()) {
                     return $guard;

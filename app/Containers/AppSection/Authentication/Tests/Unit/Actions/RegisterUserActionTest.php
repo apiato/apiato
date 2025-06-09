@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authentication\Actions\RegisterUserAction;
@@ -19,7 +21,7 @@ final class RegisterUserActionTest extends UnitTestCase
         Notification::fake();
         Event::fake();
         $data = [
-            'email' => 'gandalf@the.grey',
+            'email'    => 'gandalf@the.grey',
             'password' => 'youShallNotPass',
         ];
         $action = app(RegisterUserAction::class);
@@ -27,10 +29,10 @@ final class RegisterUserActionTest extends UnitTestCase
         $user = $action->run($data);
 
         $this->assertModelExists($user);
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertSame(strtolower($data['email']), $user->email);
-        $this->assertTrue(Hash::check($data['password'], $user->password));
-        $this->assertNull($user->email_verified_at);
+        self::assertInstanceOf(User::class, $user);
+        self::assertSame(strtolower($data['email']), $user->email);
+        self::assertTrue(Hash::check($data['password'], $user->password));
+        self::assertNull($user->email_verified_at);
         Event::assertDispatched(Registered::class, static fn (Registered $event) => $event->user->is($user));
     }
 }

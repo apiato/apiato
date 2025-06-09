@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Values\RequestProxies\PasswordGrant;
 
 use App\Containers\AppSection\Authentication\Values\Clients\Client;
@@ -24,11 +26,11 @@ final readonly class RefreshTokenProxy extends ParentValue
     public function toArray(): array
     {
         return [
-            'grant_type' => 'refresh_token',
+            'grant_type'    => 'refresh_token',
             'refresh_token' => $this->refreshToken->value(),
-            'client_id' => $this->client->id(),
+            'client_id'     => $this->client->id(),
             'client_secret' => $this->client->plainSecret(),
-            'scope' => $this->scope->toString(),
+            'scope'         => $this->scope->toString(),
         ];
     }
 }

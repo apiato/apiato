@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Policies;
 
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
@@ -13,7 +15,7 @@ final class UserPolicy extends ParentPolicy
     ) {
     }
 
-    public function before(User $user): bool|null
+    public function before(User $user): null|bool
     {
         if ($user->isSuperAdmin()) {
             return true;

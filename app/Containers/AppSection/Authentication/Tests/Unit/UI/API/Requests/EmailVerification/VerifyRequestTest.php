@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests\EmailVerification;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -17,14 +19,14 @@ final class VerifyRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([
+        self::assertSame([
             'id',
         ], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
     {
-        $this->assertSame([], $this->request->rules());
+        self::assertSame([], $this->request->rules());
     }
 
     #[DataProvider('routeHashParamProvider')]
@@ -34,24 +36,24 @@ final class VerifyRequestTest extends UnitTestCase
         $user = User::factory()->createOne(['email' => 'known@email.test']);
         $this->request->setUserResolver(static fn () => $user);
         $route = Route::getRoutes()->getByAction(VerifyController::class);
+        self::assertInstanceOf(\Illuminate\Routing\Route::class, $route);
         $route->bind($this->request);
-        $this->request->setRouteResolver(static fn () => $route);
+
+        $this->request->setRouteResolver(static fn (): \Illuminate\Routing\Route => $route);
         $route->setParameter('id', (string) $user->getHashedKey());
         $route->setParameter('hash', $hash);
 
-        $this->assertSame($this->request->authorize(), $expectation);
+        self::assertSame($this->request->authorize(), $expectation);
     }
 
-    public static function routeHashParamProvider(): array
+    public static function routeHashParamProvider(): \Iterator
     {
-        return [
-            [true, sha1('known@email.test'), true],
-            [true, 'known@email.test', false],
-            [true, sha1('invalid@email.test'), false],
-            [false, sha1('known@email.test'), true],
-            [false, 'known@email.test', false],
-            [false, sha1('invalid@email.test'), false],
-        ];
+        yield [true, sha1('known@email.test'), true];
+        yield [true, 'known@email.test', false];
+        yield [true, sha1('invalid@email.test'), false];
+        yield [false, sha1('known@email.test'), true];
+        yield [false, 'known@email.test', false];
+        yield [false, sha1('invalid@email.test'), false];
     }
 
     protected function setUp(): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions\Api;
 
 use App\Containers\AppSection\Authentication\Values\RefreshToken;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 final class RevokeTokenAction extends ParentAction
 {
-    public function run(User|null $user): Cookie
+    public function run(null|User $user): Cookie
     {
         $user?->token()?->revoke();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -18,7 +20,7 @@ final class CreateAdminAction extends ParentAction
 
     public function run(array $data): User
     {
-        return DB::transaction(function () use ($data) {
+        return DB::transaction(function () use ($data): User {
             $user = $this->createUserTask->run($data);
             $user = $this->roleRepository->makeSuperAdmin($user);
             $user->markEmailAsVerified();

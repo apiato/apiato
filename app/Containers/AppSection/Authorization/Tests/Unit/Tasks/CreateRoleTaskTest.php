@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Tasks;
 
 use App\Containers\AppSection\Authorization\Tasks\CreateRoleTask;
@@ -17,9 +19,9 @@ final class CreateRoleTaskTest extends UnitTestCase
 
         $role = app(CreateRoleTask::class)->run($name, $description, $displayName);
 
-        $this->assertSame(strtolower($name), $role->name);
-        $this->assertSame($description, $role->description);
-        $this->assertSame($displayName, $role->display_name);
-        $this->assertSame('api', $role->guard_name);
+        self::assertSame(strtolower($name), $role->name);
+        self::assertSame($description, $role->description);
+        self::assertSame($displayName, $role->display_name);
+        self::assertSame('api', $role->guard_name);
     }
 }

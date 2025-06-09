@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Middleware;
 
 use App\Ship\Parents\Middleware\Middleware as ParentMiddleware;
@@ -18,11 +20,11 @@ final class ValidateAppId extends ParentMiddleware
     {
         $appId = $request->appId();
         Assert::keyExists(
-            config()->array('apiato.apps'),
+            config()?->array('apiato.apps'),
             $appId,
-            "App-Identifier header value '{$appId}' is not valid. Allowed values are: " . implode(
+            \sprintf("App-Identifier header value '%s' is not valid. Allowed values are: ", $appId) . implode(
                 ', ',
-                array_keys(config()->array('apiato.apps')),
+                array_keys(config()?->array('apiato.apps')),
             ),
         );
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -18,14 +20,14 @@ final class PermissionFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->firstName(),
+            'name'       => fake()->unique()->firstName(),
             'guard_name' => 'api',
         ];
     }
 
     public function withGuard(string $guard): self
     {
-        return $this->state(function (array $attributes) use ($guard) {
+        return $this->state(function (array $attributes) use ($guard): array {
             return [
                 'guard_name' => $guard,
             ];

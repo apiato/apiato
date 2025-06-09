@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Apps;
 
 use App\Ship\Apps\AppFactory;
@@ -16,6 +18,6 @@ final class AppFactoryTest extends ShipTestCase
 
         $result = AppFactory::current();
 
-        $this->assertInstanceOf(Web::class, $result);
+        self::assertInstanceOf(Web::class, $result);
     }
 }

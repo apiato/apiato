@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Data\Seeders;
 
 use App\Containers\AppSection\Authorization\Data\Seeders\AuthorizationSeeder_1;
@@ -15,7 +17,7 @@ final class AuthorizationSeederTest extends UnitTestCase
         $this->assertDatabaseCount('roles', 2);
         foreach (config('auth.guards') as $name => $value) {
             $this->assertDatabaseHas('roles', [
-                'name' => Role::SUPER_ADMIN,
+                'name'       => Role::SUPER_ADMIN,
                 'guard_name' => $name,
             ]);
         }

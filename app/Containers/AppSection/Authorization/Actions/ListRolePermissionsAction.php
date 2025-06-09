@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Actions;
 
 use App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection;
@@ -8,9 +10,8 @@ use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class ListRolePermissionsAction extends ParentAction
 {
-    public function __construct(
-        private readonly FindRoleTask $findRoleTask,
-    ) {
+    public function __construct(private readonly FindRoleTask $findRoleTask)
+    {
     }
 
     public function run(int $id): PermissionCollection

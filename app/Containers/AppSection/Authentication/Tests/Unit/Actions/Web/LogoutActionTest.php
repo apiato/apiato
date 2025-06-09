@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Actions\Web;
 
 use App\Containers\AppSection\Authentication\Actions\Web\LogoutAction;
@@ -19,15 +21,15 @@ final class LogoutActionTest extends UnitTestCase
         $action = app(LogoutAction::class);
         Session::put('key', 'value');
         $session = app('session.store');
-        $this->assertTrue($session->has('key'));
-        $this->assertSame('value', $session->get('key'));
+        self::assertTrue($session->has('key'));
+        self::assertSame('value', $session->get('key'));
         $sessionId = $session->getId();
         $csrfToken = $session->token();
 
         $action->run($session);
 
-        $this->assertFalse(auth('web')->check());
-        $this->assertFalse($session->has('key'));
+        self::assertFalse(auth('web')->check());
+        self::assertFalse($session->has('key'));
         $this->assertNotSame($sessionId, $session->getId());
         $this->assertNotSame($csrfToken, $session->token());
     }

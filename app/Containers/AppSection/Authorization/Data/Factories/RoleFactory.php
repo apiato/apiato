@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
@@ -19,18 +21,18 @@ final class RoleFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->firstName(),
+            'name'       => fake()->unique()->firstName(),
             'guard_name' => 'api',
         ];
     }
 
     public function admin(): self
     {
-        return $this->state(fn () => ['name' => RoleEnum::SUPER_ADMIN->value]);
+        return $this->state(fn (): array => ['name' => RoleEnum::SUPER_ADMIN->value]);
     }
 
     public function withGuard(string $guard): self
     {
-        return $this->state(fn () => ['guard_name' => $guard]);
+        return $this->state(fn (): array => ['guard_name' => $guard]);
     }
 }

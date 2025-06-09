@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\WEB\Controllers;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -15,6 +17,6 @@ final class LoginControllerTest extends UnitTestCase
 
         $view = $controller->showForm();
 
-        $this->assertSame('appSection@authentication::login', $view->name());
+        self::assertSame('appSection@authentication::login', $view->name());
     }
 }

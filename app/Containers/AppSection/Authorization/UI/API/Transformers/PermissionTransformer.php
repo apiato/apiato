@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Transformers;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -17,11 +19,11 @@ class PermissionTransformer extends ParentTransformer
     public function transform(Permission $permission): array
     {
         return [
-            'type' => $permission->getResourceKey(),
-            'id' => $permission->getHashedKey(),
-            'name' => $permission->name,
+            'type'         => $permission->getResourceKey(),
+            'id'           => $permission->getHashedKey(),
+            'name'         => $permission->name,
             'display_name' => $permission->display_name,
-            'description' => $permission->description,
+            'description'  => $permission->description,
         ];
     }
 

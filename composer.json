@@ -1,8 +1,8 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
     "name": "apiato/apiato",
-    "type": "project",
     "description": "A flawless framework for building scalable and testable API-Centric Apps with PHP and Laravel.",
+    "license": "MIT",
+    "type": "project",
     "keywords": [
         "Apiato",
         "API",
@@ -15,12 +15,6 @@
         "Porto",
         "Porto SAP"
     ],
-    "license": "MIT",
-    "homepage": "https://apiato.io/",
-    "support": {
-        "issues": "https://github.com/apiato/apiato/issues",
-        "source": "https://github.com/apiato/apiato"
-    },
     "authors": [
         {
             "name": "Mahmoud Zalt",
@@ -34,6 +28,11 @@
             "role": "Maintainer"
         }
     ],
+    "homepage": "https://apiato.io/",
+    "support": {
+        "issues": "https://github.com/apiato/apiato/issues",
+        "source": "https://github.com/apiato/apiato"
+    },
     "require": {
         "php": "^8.2",
         "apiato/core": "^13.1",
@@ -43,26 +42,31 @@
     },
     "require-dev": {
         "brianium/paratest": "^7.4",
-        "fakerphp/faker": "^1.19.1",
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "driftingly/rector-laravel": "^2.0",
+        "fakerphp/faker": "^1.24",
+        "friendsofphp/php-cs-fixer": "^3.8.0",
+        "icanhazstring/composer-unused": "^0.9",
         "jetbrains/phpstorm-attributes": "^1.0",
         "larastan/larastan": "^3.0",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^8.0",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.5",
         "orchestra/testbench": "^10.0",
-        "php-standard-library/psalm-plugin": "^2.3",
         "phpmd/phpmd": "@stable",
+        "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-mockery": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpunit/phpunit": "^11.0.1",
-        "psalm/plugin-laravel": "^3.0",
-        "psalm/plugin-mockery": "^1.2",
-        "psalm/plugin-phpunit": "^0.19.2",
+        "rector/rector": "^2.0",
         "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^6.0.0",
+        "slevomat/coding-standard": "^8.15",
+        "spatie/laravel-ignition": "^2.0",
+        "squizlabs/php_codesniffer": "^3.12",
         "thecodingmachine/phpstan-safe-rule": "^1.4"
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "App\\": "app/"
@@ -73,31 +77,19 @@
             "Tests\\": "tests/"
         }
     },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ],
-        "ide-helper": [
-            "@php artisan ide-helper:models --nowrite --reset",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:eloquent"
-        ],
-        "fixer": [
-            "php-cs-fixer fix"
-        ]
+    "config": {
+        "allow-plugins": {
+            "apiato/container-installer": true,
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true,
+            "wikimedia/composer-merge-plugin": true
+        },
+        "github-protocols": ["https"],
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
@@ -108,28 +100,39 @@
                 "app/Ship/composer.json",
                 "app/Containers/*/*/composer.json"
             ],
-            "recurse": true,
-            "replace": false,
             "merge-dev": true,
             "merge-extra": true,
             "merge-extra-deep": false,
-            "merge-scripts": true
+            "merge-scripts": true,
+            "recurse": true,
+            "replace": false
         }
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "github-protocols": [
-            "https"
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
-        "allow-plugins": {
-            "apiato/container-installer": true,
-            "composer/package-versions-deprecated": true,
-            "php-http/discovery": true,
-            "wikimedia/composer-merge-plugin": true
-        }
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "fixer": [
+            "php-cs-fixer fix"
+        ],
+        "ide-helper": [
+            "@php artisan ide-helper:models --nowrite --reset",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:eloquent"
+        ]
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "$schema": "https://getcomposer.org/schema.json"
 }

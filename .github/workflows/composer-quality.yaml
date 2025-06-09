@@ -1,0 +1,44 @@
+name: "Composer - quality"
+
+on:
+  push:
+    branches: [ master, '*.x' ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  composer-quality:
+    name: Composer Quality Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: none
+
+      - name: Setup Composer token
+        run: composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --prefer-dist --optimize-autoloader
+
+      - name: Validate composer.json / composer.lock
+        run: composer validate --strict --no-check-publish --ansi
+
+      - name: Detect unused packages
+        run: vendor/bin/composer-unused --no-progress --ansi

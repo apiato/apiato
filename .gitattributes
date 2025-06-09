@@ -8,5 +8,11 @@
 
 /.github export-ignore
 /.ddev export-ignore
-.env.ci export-ignore
+/tests export-ignore
+.deptrac.cache export-ignore
+.editorconfig export-ignore
 .gitattributes export-ignore
+.gitignore export-ignore
+.php-cs-fixer.cache export-ignore
+.phpunit.result.cache export-ignore
+testbench.yaml export-ignore

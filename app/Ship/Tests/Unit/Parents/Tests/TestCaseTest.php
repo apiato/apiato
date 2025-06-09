@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Parents\Tests;
 
 use App\Ship\Parents\Tests\TestCase;
@@ -12,13 +14,9 @@ final class TestCaseTest extends ShipTestCase
 {
     public function testCanCreateApplication(): void
     {
-        $testCase = new FakeTestCase('test');
-        $application = $testCase->createApplication();
+        $fakeTestCase = new FakeTestCase('test');
+        $application = $fakeTestCase->createApplication();
 
-        $this->assertInstanceOf(Application::class, $application);
+        self::assertInstanceOf(Application::class, $application);
     }
-}
-
-class FakeTestCase extends TestCase
-{
 }

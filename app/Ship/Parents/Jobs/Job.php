@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Parents\Jobs;
 
 use Apiato\Core\Jobs\Job as AbstractJob;
@@ -8,6 +10,9 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
+ */
 abstract class Job extends AbstractJob implements ShouldQueue
 {
     use InteractsWithQueue;

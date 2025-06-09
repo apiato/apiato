@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\Providers;
 
 use App\Containers\AppSection\Authentication\Actions\PasswordReset\GenerateUrlAction;
@@ -13,6 +15,6 @@ final class PasswordResetServiceProviderTest extends UnitTestCase
 {
     public function testItCustomizesResetUrl(): void
     {
-        $this->assertInstanceOf(GenerateUrlAction::class, ResetPassword::$createUrlCallback);
+        self::assertInstanceOf(GenerateUrlAction::class, ResetPassword::$createUrlCallback);
     }
 }

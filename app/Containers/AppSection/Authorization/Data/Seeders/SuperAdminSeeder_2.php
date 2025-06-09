@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Data\Seeders;
 
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
@@ -10,9 +12,9 @@ final class SuperAdminSeeder_2 extends ParentSeeder
     public function run(CreateAdminAction $action): void
     {
         $userData = [
-            'email' => 'admin@admin.com',
+            'email'    => 'admin@admin.com',
             'password' => 'admin',
-            'name' => 'Super Admin',
+            'name'     => 'Super Admin',
         ];
 
         $action->run($userData);

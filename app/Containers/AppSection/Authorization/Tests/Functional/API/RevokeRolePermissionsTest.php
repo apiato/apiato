@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Models\Permission;
@@ -20,6 +22,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $permissionB = Permission::factory()->createOne();
         $role = Role::factory()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB]);
+
         $data = [
             'permission_ids' => [$permissionA->getHashedKey()],
         ];
@@ -48,6 +51,7 @@ final class RevokeRolePermissionsTest extends ApiTestCase
         $permissionC = Permission::factory()->createOne();
         $role = Role::factory()->createOne();
         $role->givePermissionTo([$permissionA, $permissionB, $permissionC]);
+
         $data = [
             'permission_ids' => [$permissionA->getHashedKey(), $permissionC->getHashedKey()],
         ];

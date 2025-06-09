@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -13,14 +15,14 @@ final class ListRolesRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([], $this->request->getDecode());
+        self::assertSame([], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
     {
         $rules = $this->request->rules();
 
-        $this->assertSame([], $rules);
+        self::assertSame([], $rules);
     }
 
     protected function setUp(): void

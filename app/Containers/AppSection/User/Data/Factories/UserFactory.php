@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Data\Factories;
 
 use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
@@ -16,40 +18,41 @@ use Illuminate\Support\Str;
  */
 final class UserFactory extends ParentFactory
 {
-    protected static string|null $password;
+    private static null|string $password;
+
     /** @var class-string<TModel> */
     protected $model = User::class;
 
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => self::$password ??= Hash::make('password'),
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
+            'password'          => self::$password ??= Hash::make('password'),
             'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'gender' => fake()->randomElement(['male', 'female', 'unspecified']),
-            'birth' => fake()->date(),
+            'remember_token'    => Str::random(10),
+            'gender'            => fake()->randomElement(['male', 'female', 'unspecified']),
+            'birth'             => fake()->date(),
         ];
     }
 
     public function superAdmin(): self
     {
-        return $this->afterCreating(function (User $user) {
+        return $this->afterCreating(function (User $user): void {
             app(RoleRepository::class)->makeSuperAdmin($user);
         });
     }
 
     public function unverified(): self
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'email_verified_at' => null,
         ]);
     }
 
     public function gender(Gender $gender): self
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn (array $attributes): array => [
             'gender' => $gender,
         ]);
     }

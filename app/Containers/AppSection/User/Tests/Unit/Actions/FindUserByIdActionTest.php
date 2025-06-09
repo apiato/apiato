@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\FindUserByIdAction;
@@ -17,6 +19,6 @@ final class FindUserByIdActionTest extends UnitTestCase
 
         $result = $action->run($user->id);
 
-        $this->assertSame($user->id, $result->id);
+        self::assertSame($user->id, $result->id);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\UI\API\Requests\EmailVerification;
 
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -19,7 +21,7 @@ final class VerifyRequest extends ParentRequest
     {
         $userId = (string) $this->user()->getKey();
         $routeId = (string) $this->route('id');
-        $emailHash = sha1($this->user()->getEmailForVerification());
+        $emailHash = sha1((string) $this->user()->getEmailForVerification());
         $routeHash = (string) $this->route('hash');
 
         return hash_equals($userId, $routeId) && hash_equals($emailHash, $routeHash);

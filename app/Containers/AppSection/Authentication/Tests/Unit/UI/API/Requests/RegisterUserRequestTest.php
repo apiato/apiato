@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authentication\Tests\UnitTestCase;
@@ -16,20 +18,20 @@ final class RegisterUserRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([], $this->request->getDecode());
+        self::assertSame([], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
     {
-        $this->assertEquals([
-            'email' => 'required|email|unique:users,email',
+        self::assertEquals([
+            'email'    => 'required|email|unique:users,email',
             'password' => [
                 'required',
                 Password::default(),
             ],
-            'name' => 'min:2|max:50',
+            'name'   => 'min:2|max:50',
             'gender' => Rule::enum(Gender::class),
-            'birth' => 'date',
+            'birth'  => 'date',
         ], $this->request->rules());
     }
 

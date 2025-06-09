@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Models\Role;
@@ -15,8 +17,8 @@ final class RemoveUserRolesRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'exists:users,id',
-            'role_ids' => 'array|required',
+            'user_id'    => 'exists:users,id',
+            'role_ids'   => 'array|required',
             'role_ids.*' => 'required|exists:roles,id',
         ];
     }

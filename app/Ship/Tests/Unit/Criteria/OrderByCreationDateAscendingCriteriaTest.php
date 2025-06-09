@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Ship\Tests\Unit\Criteria;
 
 use App\Ship\Criteria\OrderByCreationDateAscendingCriteria;
@@ -7,10 +9,14 @@ use App\Ship\Tests\Fakes\TestUserFactory;
 use App\Ship\Tests\Fakes\TestUserRepository;
 use App\Ship\Tests\ShipTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 #[CoversClass(OrderByCreationDateAscendingCriteria::class)]
 final class OrderByCreationDateAscendingCriteriaTest extends ShipTestCase
 {
+    /**
+     * @throws RepositoryException
+     */
     public function testCriteria(): void
     {
         $modelB = TestUserFactory::new()->create(['created_at' => now()]);
@@ -18,13 +24,13 @@ final class OrderByCreationDateAscendingCriteriaTest extends ShipTestCase
         $modelC = TestUserFactory::new()->create(['created_at' => now()->addDay()]);
 
         $repository = app(TestUserRepository::class);
-        $criteria = new OrderByCreationDateAscendingCriteria();
-        $repository->pushCriteria($criteria);
+        $orderByCreationDateAscendingCriteria = new OrderByCreationDateAscendingCriteria();
+        $repository->pushCriteria($orderByCreationDateAscendingCriteria);
 
         $result = $repository->all();
 
-        $this->assertSame($modelA->id, $result->first()->id);
-        $this->assertSame($modelB->id, $result->get(1)->id);
-        $this->assertSame($modelC->id, $result->last()->id);
+        self::assertSame($modelA->id, $result->first()->id);
+        self::assertSame($modelB->id, $result->get(1)->id);
+        self::assertSame($modelC->id, $result->last()->id);
     }
 }

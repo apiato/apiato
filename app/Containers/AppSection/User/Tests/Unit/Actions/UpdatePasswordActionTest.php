@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Actions;
 
 use App\Containers\AppSection\User\Actions\UpdatePasswordAction;
@@ -21,7 +23,7 @@ final class UpdatePasswordActionTest extends UnitTestCase
 
         $result = $action->run($user->id, 'test');
 
-        $this->assertTrue(Hash::check('test', $result->password));
+        self::assertTrue(Hash::check('test', $result->password));
         Notification::assertSentTo($user, PasswordUpdatedNotification::class);
     }
 }

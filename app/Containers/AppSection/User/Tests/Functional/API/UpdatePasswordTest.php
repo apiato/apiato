@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\API;
 
 use App\Containers\AppSection\User\Models\User;
@@ -19,8 +21,8 @@ final class UpdatePasswordTest extends ApiTestCase
         ]);
         $this->actingAs($user);
         $data = [
-            'current_password' => 'Av@dakedavra!',
-            'new_password' => 'updated#Password111',
+            'current_password'          => 'Av@dakedavra!',
+            'new_password'              => 'updated#Password111',
             'new_password_confirmation' => 'updated#Password111',
         ];
 
@@ -31,16 +33,16 @@ final class UpdatePasswordTest extends ApiTestCase
 
         $response->assertOk();
         $response->assertJson(
-            fn (AssertableJson $json): AssertableJson => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                fn (AssertableJson $json): AssertableJson => $json
+                static fn (AssertableJson $json): AssertableJson => $json
                     ->where('type', 'User')
                     ->where('email', $user->email)
                     ->missing('password')
                     ->etc(),
             )->etc(),
         );
-        $this->assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
+        self::assertTrue(Hash::check($data['new_password'], $user->refresh()->password));
     }
 
     // TODO: move to request test

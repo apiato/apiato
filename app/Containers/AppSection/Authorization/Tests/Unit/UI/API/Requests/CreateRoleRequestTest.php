@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\UI\API\Requests;
 
 use App\Containers\AppSection\Authorization\Tests\UnitTestCase;
@@ -13,16 +15,16 @@ final class CreateRoleRequestTest extends UnitTestCase
 
     public function testDecode(): void
     {
-        $this->assertSame([], $this->request->getDecode());
+        self::assertSame([], $this->request->getDecode());
     }
 
     public function testValidationRules(): void
     {
         $rules = $this->request->rules();
 
-        $this->assertSame([
-            'name' => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|alpha',
-            'description' => 'max:255',
+        self::assertSame([
+            'name'         => 'required|unique:' . config('permission.table_names.roles') . ',name|min:2|max:20|alpha',
+            'description'  => 'max:255',
             'display_name' => 'max:100',
         ], $rules);
     }

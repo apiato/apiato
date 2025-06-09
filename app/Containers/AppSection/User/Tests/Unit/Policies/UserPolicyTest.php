@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Unit\Policies;
 
 use App\Containers\AppSection\User\Models\User;
@@ -14,7 +16,7 @@ final class UserPolicyTest extends UnitTestCase
     {
         $policy = app(UserPolicy::class);
 
-        $this->assertFalse($policy->delete());
+        self::assertFalse($policy->delete());
     }
 
     public function testCanShowUserOnlyIfAdmin(): void
@@ -22,14 +24,14 @@ final class UserPolicyTest extends UnitTestCase
         $policy = app(UserPolicy::class);
         $user = User::factory()->createOne();
 
-        $this->assertTrue($policy->show($user, $user->id));
+        self::assertTrue($policy->show($user, $user->id));
     }
 
     public function testCanIndexUsersOnlyIfAdmin(): void
     {
         $policy = app(UserPolicy::class);
 
-        $this->assertFalse($policy->index());
+        self::assertFalse($policy->index());
     }
 
     public function testCanUpdateUserAsOwner(): void
@@ -37,6 +39,6 @@ final class UserPolicyTest extends UnitTestCase
         $policy = app(UserPolicy::class);
         $user = User::factory()->createOne();
 
-        $this->assertTrue($policy->update($user, $user->id));
+        self::assertTrue($policy->update($user, $user->id));
     }
 }

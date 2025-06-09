@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Actions\EmailVerification;
 
 use App\Ship\Parents\Actions\Action as ParentAction;

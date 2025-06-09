@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<ruleset name="Verso PHPMD rulesets"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <description>
+        Apiato PHPMD rulesets
+    </description>
+
+    <exclude-pattern>_ide_helper.php</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>phpstan_cache/*</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>app/Containers/Vendor/*</exclude-pattern>
+    <exclude-pattern>app/Containers/AppSection/*/Tests/*</exclude-pattern>
+    <exclude-pattern>app/Ship/Tests/Unit/*</exclude-pattern>
+    <exclude-pattern>app/Containers/AppSection/*/Data/Seeders/*</exclude-pattern>
+    <exclude-pattern>app/Containers/AppSection/*/Data/DTO/*</exclude-pattern>
+    <exclude-pattern>database/migrations/*</exclude-pattern>
+    <exclude-pattern>database/seeders/*</exclude-pattern>
+
+    <rule ref="rulesets/unusedcode.xml/UnusedPrivateField"/>
+    <rule ref="rulesets/unusedcode.xml/UnusedPrivateMethod"/>
+
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="StaticAccess"/>
+        <exclude name="MissingImport"/>
+        <exclude name="ElseExpression"/>
+        <exclude name="EmptyCatchBlock"/>
+    </rule>
+
+    <rule ref="rulesets/design.xml/CouplingBetweenObjects">
+        <priority>2</priority>
+        <properties><property name="maximum" value="11"/></properties>
+    </rule>
+
+    <rule ref="rulesets/design.xml/DepthOfInheritance">
+        <priority>3</priority>
+        <properties><property name="minimum" value="4"/></properties>
+    </rule>
+
+    <rule ref="rulesets/design.xml/NumberOfChildren">
+        <priority>2</priority>
+        <properties><property name="minimum" value="3"/></properties>
+    </rule>
+
+    <rule ref="rulesets/design.xml/CountInLoopExpression"/>
+
+    <rule ref="rulesets/codesize.xml/TooManyMethods">
+        <priority>2</priority>
+        <properties><property name="maxmethods" value="25"/></properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/ExcessiveClassLength">
+        <priority>2</priority>
+        <properties>
+            <property name="minimum" value="800"/>
+            <property name="ignore-whitespace" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+        <priority>1</priority>
+        <properties><property name="reportLevel" value="7"/></properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/NPathComplexity">
+        <priority>1</priority>
+        <properties><property name="minimum" value="120"/></properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
+        <priority>2</priority>
+        <properties>
+            <property name="minimum" value="50"/>
+            <property name="ignore-whitespace" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
+        <priority>1</priority>
+        <properties><property name="minimum" value="5"/></properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/TooManyFields">
+        <priority>1</priority>
+        <properties><property name="minimum" value="5"/></properties>
+    </rule>
+
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+        <exclude name="LongClassName"/>
+    </rule>
+
+    <rule ref="rulesets/controversial.xml">
+        <exclude name="Superglobals"/>
+        <exclude name="EvalExpression"/>
+        <exclude name="ExitExpression"/>
+    </rule>
+</ruleset>

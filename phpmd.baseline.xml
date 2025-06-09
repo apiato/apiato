@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<phpmd-baseline>
+  <violation rule="PHPMD\Rule\Design\CouplingBetweenObjects" file="app/Containers/AppSection/Authentication/Data/Factories/PasswordTokenFactory.php"/>
+  <violation rule="PHPMD\Rule\Naming\ShortMethodName" file="app/Containers/AppSection/Authentication/Values/Clients/Client.php" method="id"/>
+  <violation rule="PHPMD\Rule\Naming\ShortMethodName" file="app/Containers/AppSection/Authentication/Values/Clients/WebClient.php" method="id"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="app/Containers/AppSection/Authorization/UI/API/Transformers/PermissionAdminTransformer.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="app/Containers/AppSection/Authorization/UI/API/Transformers/RoleAdminTransformer.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="app/Containers/AppSection/User/UI/API/Transformers/UserAdminTransformer.php"/>
+  <violation rule="PHPMD\Rule\Design\NumberOfChildren" file="app/Ship/Tests/ShipTestCase.php"/>
+  <violation rule="PHPMD\Rule\Design\CouplingBetweenObjects" file="tests/Unit/Configs/AppTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/AppTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/AppTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/AuthTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/BroadcastingTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/CacheTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/CacheTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/CorsTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/DatabaseTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/DatabaseTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/FileSystemsTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/LoggingTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/LoggingTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/MailTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/MailTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/QueueTest.php"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="tests/Unit/Configs/QueueTest.php" method="testConfigHasCorrectValues"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/ServicesTest.php"/>
+  <violation rule="PHPMD\Rule\Design\DepthOfInheritance" file="tests/Unit/Configs/SessionTest.php"/>
+</phpmd-baseline>

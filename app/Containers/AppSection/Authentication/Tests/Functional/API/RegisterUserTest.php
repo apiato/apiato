@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Functional\API;
 
 use App\Containers\AppSection\Authentication\Notifications\Welcome;
@@ -20,7 +22,7 @@ final class RegisterUserTest extends ApiTestCase
     {
         Notification::fake();
         $data = [
-            'email' => 'ganldalf@the.grey',
+            'email'    => 'ganldalf@the.grey',
             'password' => 's3cr3tPa$$',
         ];
 
@@ -34,6 +36,7 @@ final class RegisterUserTest extends ApiTestCase
         );
         $user = User::find(hashids()->decodeOrFail($response->json('data.id')));
         Notification::assertSentTo($user, Welcome::class);
+
         if (is_a(User::class, MustVerifyEmail::class, true)) {
             Notification::assertSentTo($user, VerifyEmail::class);
         }
@@ -43,7 +46,7 @@ final class RegisterUserTest extends ApiTestCase
     {
         User::factory()->createOne(['email' => 'bigemail@email.com']);
         $data = [
-            'email' => 'BiGeMaIl@EmAiL.CoM',
+            'email'    => 'BiGeMaIl@EmAiL.CoM',
             'password' => 's3cr3tPa$$',
         ];
 

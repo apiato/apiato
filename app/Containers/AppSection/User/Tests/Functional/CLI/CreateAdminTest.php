@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\User\Tests\Functional\CLI;
 
 use App\Containers\AppSection\User\Models\User;
@@ -14,9 +16,9 @@ final class CreateAdminTest extends CliTestCase
     public function testCanCreateAdmin(): void
     {
         $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
+            'name'                  => 'admin',
+            'email'                 => 'new@admin.com',
+            'password'              => 'password',
             'password_confirmation' => 'password',
         ];
         $this->artisan('create:admin')
@@ -28,18 +30,18 @@ final class CreateAdminTest extends CliTestCase
             ->assertSuccessful();
 
         $this->assertDatabaseHas('users', [
-            'name' => $data['name'],
+            'name'  => $data['name'],
             'email' => $data['email'],
         ]);
-        $this->assertTrue(Hash::check($data['password'], User::where('email', $data['email'])->first()->password));
+        self::assertTrue(Hash::check($data['password'], User::where('email', $data['email'])->first()->password));
     }
 
     public function testErrorsOnNotMatchingPassword(): void
     {
         $data = [
-            'name' => 'admin',
-            'email' => 'new@admin.com',
-            'password' => 'password',
+            'name'                  => 'admin',
+            'email'                 => 'new@admin.com',
+            'password'              => 'password',
             'password_confirmation' => 'not_matching_password',
         ];
 
@@ -52,7 +54,7 @@ final class CreateAdminTest extends CliTestCase
             ->assertSuccessful();
 
         $this->assertDatabaseMissing('users', [
-            'name' => $data['name'],
+            'name'  => $data['name'],
             'email' => $data['email'],
         ]);
     }

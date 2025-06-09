@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authentication\Tests\Unit\UI\API\Transformers;
 
 use App\Containers\AppSection\Authentication\Data\DTOs\PasswordToken;
@@ -15,38 +17,39 @@ final class PasswordTokenTransformerTest extends UnitTestCase
 
     public function testCanTransformSingleObject(): void
     {
-        $token = new PasswordToken(
+        $passwordToken = new PasswordToken(
             'Bearer',
             100,
             'asdc1234',
             RefreshToken::create('1234asdc'),
         );
         $expected = [
-            'type' => $token->getResourceKey(),
-            'token_type' => $token->tokenType,
-            'access_token' => $token->accessToken,
-            'refresh_token' => $token->refreshToken->value(),
-            'expires_in' => $token->expiresIn,
+            'type'          => $passwordToken->getResourceKey(),
+            'token_type'    => $passwordToken->tokenType,
+            'access_token'  => $passwordToken->accessToken,
+            'refresh_token' => $passwordToken->refreshToken->value(),
+            'expires_in'    => $passwordToken->expiresIn,
         ];
 
-        $transformedResource = $this->transformer->transform($token);
+        $transformedResource = $this->transformer->transform($passwordToken);
 
-        $this->assertEquals($expected, $transformedResource);
+        self::assertSame($expected, $transformedResource);
     }
 
     public function testAvailableIncludes(): void
     {
-        $this->assertSame([], $this->transformer->getAvailableIncludes());
+        self::assertSame([], $this->transformer->getAvailableIncludes());
     }
 
     public function testDefaultIncludes(): void
     {
-        $this->assertSame([], $this->transformer->getDefaultIncludes());
+        self::assertSame([], $this->transformer->getDefaultIncludes());
     }
 
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->transformer = new PasswordTokenTransformer();
     }
 }

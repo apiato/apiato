@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -11,7 +13,7 @@ return [
     */
     'clients' => [
         'web' => [
-            'id' => env('CLIENT_WEB_ID'),
+            'id'     => env('CLIENT_WEB_ID'),
             'secret' => env('CLIENT_WEB_SECRET'),
         ],
     ],

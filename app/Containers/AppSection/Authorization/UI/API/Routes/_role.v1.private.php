@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @apiDefine RoleSuccessSingleResponse
  *
@@ -39,7 +41,6 @@
  * }
  * }
  */
-
 /**
  * @apiDefine RoleSuccessMultipleResponse
  *

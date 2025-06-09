@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Functional\API;
 
 use App\Containers\AppSection\Authorization\Tests\Functional\ApiTestCase;
@@ -16,19 +18,19 @@ final class CreateRoleTest extends ApiTestCase
         $this->actingAs(User::factory()->superAdmin()->createOne());
 
         $data = [
-            'name' => 'manager',
+            'name'         => 'manager',
             'display_name' => 'manager',
-            'description' => 'he manages things',
+            'description'  => 'he manages things',
         ];
 
         $response = $this->postJson(action(CreateRoleController::class), $data);
 
         $response->assertCreated();
         $response->assertJson(
-            static fn (AssertableJson $json) => $json->has(
+            static fn (AssertableJson $json): AssertableJson => $json->has(
                 'data',
-                static fn (AssertableJson $json) => $json->where('name', $data['name'])
-                ->etc(),
+                static fn (AssertableJson $json): AssertableJson => $json->where('name', $data['name'])
+                    ->etc(),
             )->etc(),
         );
     }

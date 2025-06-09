@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Containers\AppSection\Authorization\Tests\Unit\Actions;
 
 use App\Containers\AppSection\Authorization\Actions\GivePermissionsToRoleAction;
@@ -19,8 +21,8 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
 
         $result = $action->run($role->id, $permission->id);
 
-        $this->assertSame($result->id, $role->id);
-        $this->assertTrue($result->hasPermissionTo($permission->name));
+        self::assertSame($result->id, $role->id);
+        self::assertTrue($result->hasPermissionTo($permission->name));
     }
 
     public function testCanGiveMultiplePermissions(): void
@@ -32,7 +34,7 @@ final class GivePermissionsToRoleActionTest extends UnitTestCase
 
         $result = $action->run($role->id, $permissionA->id, $permissionB->id);
 
-        $this->assertSame($result->id, $role->id);
-        $this->assertTrue($result->hasAllPermissions([$permissionA->name, $permissionB->name]));
+        self::assertSame($result->id, $role->id);
+        self::assertTrue($result->hasAllPermissions([$permissionA->name, $permissionB->name]));
     }
 }
