@@ -17,7 +17,7 @@ class UserWithTokensResponse extends ResponseFactory
                     ->properties(
                         Schema::object('user')
                             ->properties(
-                                Schema::string('object')->example('User')
+                                Schema::string('object')->example('User'),
                             ),
                         Schema::object('tokens')
                             ->properties(
@@ -25,9 +25,9 @@ class UserWithTokensResponse extends ResponseFactory
                                 Schema::integer('expires_in')->example(315360000),
                                 Schema::string('access_token')->example('eyJ0eXAiOiJKV1QiLCJhbG...'),
                                 Schema::string('refresh_token')->example('ZFDPA1S7H8Wydjkjl+xt+hPGWTagX...'),
-                            )
-                    )
-            )
+                            ),
+                    ),
+            ),
         );
     }
 }

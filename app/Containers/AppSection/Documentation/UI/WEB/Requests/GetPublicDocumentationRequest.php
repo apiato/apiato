@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\UI\WEB\Requests;
 
-use Apiato\Core\Abstracts\Requests\Request as AbstractRequest;
+use Apiato\Core\Requests\Request as AbstractRequest;
 
 class GetPublicDocumentationRequest extends AbstractRequest
 {

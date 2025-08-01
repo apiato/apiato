@@ -19,8 +19,8 @@ class OAuth2SuccessResponse extends ResponseFactory
                         Schema::integer('expires_in')->example(315360000),
                         Schema::string('access_token')->example('eyJ0eXAiOiJKV1QiLCJhbG...'),
                         Schema::string('refresh_token')->example('ZFDPA1S7H8Wydjkjl+xt+hPGWTagX...'),
-                    )
-            )
+                    ),
+            ),
         );
     }
 }

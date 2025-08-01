@@ -24,7 +24,7 @@ class SendVerificationEmailSchema extends SchemaFactory implements Reusable
             ->properties(
                 Schema::string('verification_url')
                     ->description(RuleExtractor::getRuleFrom(SendVerificationEmailRequest::injectData(), 'verification_url'))
-                    ->example('https://example.com/verify-email?token={token}&email={email}')
+                    ->example('https://example.com/verify-email?token={token}&email={email}'),
             )->required('verification_url');
     }
 }

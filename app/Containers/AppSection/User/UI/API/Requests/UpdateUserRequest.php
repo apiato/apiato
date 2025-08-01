@@ -17,11 +17,11 @@ final class UpdateUserRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'name' => 'min:2|max:50',
+            'name' => 'string|min:2|max:50',
             'gender' => [Rule::enum(Gender::class), 'nullable'],
             'birth' => ['date', 'nullable'],
             'current_password' => [
-                Rule::requiredIf(fn (): bool => !is_null($this->user()->password) && $this->filled('new_password')),
+                //                Rule::requiredIf(fn (): bool => !is_null($this->user()->password) && $this->filled('new_password')),
                 'current_password:api',
             ],
             'new_password' => [

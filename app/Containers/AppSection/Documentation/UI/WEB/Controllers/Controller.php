@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\UI\WEB\Controllers;
 
-use Apiato\Core\Abstracts\Controllers\WebController as AbstractWebController;
+use Apiato\Core\Controllers\WebController as AbstractWebController;
 use App\Containers\AppSection\Documentation\UI\WEB\Requests\GetPrivateDocumentationRequest;
 use App\Containers\AppSection\Documentation\UI\WEB\Requests\GetPublicDocumentationRequest;
 

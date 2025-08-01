@@ -35,7 +35,7 @@ class RegisterUserSchema extends SchemaFactory implements Reusable
                     ->enum(...config('appSection-authentication.allowed-verify-email-urls')),
                 Schema::string('campaign')->nullable(),
                 Schema::string('recaptcha_token')
-                    ->default(env('GOOGLE_CAPTCHA_BYPASS_KEY'))
+                    ->default(env('GOOGLE_CAPTCHA_BYPASS_KEY')),
             )->required('email', 'password', 'recaptcha_token');
     }
 }

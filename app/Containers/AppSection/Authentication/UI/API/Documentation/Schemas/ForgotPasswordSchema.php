@@ -24,7 +24,7 @@ class ForgotPasswordSchema extends SchemaFactory implements Reusable
                 EmailPropertySchema::ref('email'),
                 Schema::string('reseturl')
                     ->enum(...config('appSection-authentication.allowed-reset-password-urls'))
-                    ->example(config('appSection-authentication.allowed-reset-password-urls')[0])
+                    ->example(config('appSection-authentication.allowed-reset-password-urls')[0]),
             )->required('email', 'reseturl');
     }
 }

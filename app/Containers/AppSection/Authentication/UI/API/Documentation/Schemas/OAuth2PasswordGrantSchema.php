@@ -23,7 +23,7 @@ class OAuth2PasswordGrantSchema extends SchemaFactory implements Reusable
                 Schema::string('grant_type')->enum('password'),
                 Schema::string('username')
                     ->description('user email')
-                    ->example('admin@praisecharts.com'),
+                    ->example('admin@laragen.io'),
                 Schema::string('password')
                     ->format(Schema::FORMAT_PASSWORD)
                     ->example('admin'),

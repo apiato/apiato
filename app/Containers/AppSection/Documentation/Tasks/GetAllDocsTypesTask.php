@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\Tasks;
 
-use Apiato\Core\Abstracts\Tasks\Task as AbstractTask;
+use Apiato\Core\Tasks\Task as AbstractTask;
 use App\Containers\AppSection\Documentation\Exceptions\NoDocTypesFoundException;
 
 class GetAllDocsTypesTask extends AbstractTask

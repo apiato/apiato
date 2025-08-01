@@ -2,20 +2,24 @@
 
 namespace App\Containers\AppSection\User\UI\API\Documentation\Parameters;
 
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Parameter;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
-use MohammadAlavi\LaravelOpenApi\Factories\ParametersFactory;
+use MohammadAlavi\LaravelOpenApi\Contracts\Interface\Factories\ParametersFactory;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Parameter\Parameter;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Parameter\SerializationRule\PathParameter;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Schema\Schema;
+use MohammadAlavi\ObjectOrientedOpenAPI\Support\SharedFields\Parameters;
 
-class UpdateUserParams extends ParametersFactory
+final class UpdateUserParams implements ParametersFactory
 {
-    public function build(): array
+    public function build(): Parameters
     {
-        return [
-            Parameter::path()
-                ->name('id')
-                ->description('User ID')
-                ->required()
-                ->schema(Schema::string()),
-        ];
+        return Parameters::create(
+            Parameter::path(
+                'id',
+                PathParameter::create(
+                    Schema::string(),
+                ),
+            )->description('User ID')
+                ->required(),
+        );
     }
 }

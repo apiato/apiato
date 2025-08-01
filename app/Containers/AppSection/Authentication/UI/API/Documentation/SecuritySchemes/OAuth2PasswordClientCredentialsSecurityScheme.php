@@ -24,7 +24,7 @@ class OAuth2PasswordClientCredentialsSecurityScheme extends SecuritySchemeFactor
                     ->scopes([
                         'read' => 'Read access',
                         'write' => 'Write access',
-                    ])
+                    ]),
             );
     }
 }

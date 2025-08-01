@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\Traits;
 
-use Apiato\Core\Abstracts\Models\UserModel;
+use Apiato\Core\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 
 trait HasDocAccessTrait

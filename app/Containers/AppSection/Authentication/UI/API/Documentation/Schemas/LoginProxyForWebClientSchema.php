@@ -26,7 +26,7 @@ class LoginProxyForWebClientSchema extends SchemaFactory implements Reusable
                     ->format(Schema::FORMAT_PASSWORD)
                     ->example('admin'),
                 Schema::string('recaptcha_token')
-                    ->default(env('GOOGLE_CAPTCHA_BYPASS_KEY'))
+                    ->default(env('GOOGLE_CAPTCHA_BYPASS_KEY')),
             )->required('email', 'password', 'recaptcha_token');
     }
 }

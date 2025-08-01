@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\UI\CLI\Commands;
 
-use Apiato\Core\Abstracts\Commands\ConsoleCommand as AbstractConsoleCommand;
+use Apiato\Core\Console\Command as AbstractConsoleCommand;
 use App\Containers\AppSection\Documentation\Actions\GenerateOpenApiDocumentationAction;
 
 class GenerateOpenApiSpecCommand extends AbstractConsoleCommand

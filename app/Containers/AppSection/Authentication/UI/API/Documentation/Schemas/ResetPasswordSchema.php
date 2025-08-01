@@ -31,7 +31,7 @@ class ResetPasswordSchema extends SchemaFactory implements Reusable
                 Schema::string('token')
                     ->description(RuleExtractor::getRuleFrom(ResetPasswordRequest::injectData(), 'token')),
                 Schema::boolean('login_after_reset')
-                    ->description('If true, the user will be logged in after resetting the password')
+                    ->description('If true, the user will be logged in after resetting the password'),
             )->required('email', 'password', 'token');
     }
 }

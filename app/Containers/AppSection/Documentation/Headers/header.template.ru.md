@@ -337,7 +337,7 @@ api.domain.test/v1/endpoint?skipCache=true
 Пример вызова эндпойнта без авторизации:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@praisecharts.com" -F "password=admin" -F "=" "http://api.domain.test/v2/register"
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@laragen.io" -F "password=admin" -F "=" "http://api.domain.test/v2/register"
 ```
 
 Пример вызова эндпойнта с авторизацией (передача Bearer Token):

@@ -21,7 +21,7 @@ class UpdateUserPasswordSchema extends SchemaFactory implements Reusable
             ->properties(
                 Schema::string('current_password'),
                 //                    ->description(RuleExtractor::getRuleFrom(UpdateUserPasswordRequest::class, 'current_password')),
-                Schema::string('new_password')
+                Schema::string('new_password'),
                 //                    ->description(RuleExtractor::getRuleFrom(UpdateUserPasswordRequest::class, 'new_password')),
             )->required('new_password');
     }

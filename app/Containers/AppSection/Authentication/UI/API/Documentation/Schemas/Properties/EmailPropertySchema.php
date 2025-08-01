@@ -3,20 +3,21 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Documentation\Schemas\Properties;
 
 use App\Ship\Documentation\Collections\PrivateCollection;
-use GoldSpecDigital\ObjectOrientedOAS\Contracts\SchemaContract;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use MohammadAlavi\LaravelOpenApi\Attributes\Collection;
-use MohammadAlavi\LaravelOpenApi\Contracts\Reusable;
-use MohammadAlavi\LaravelOpenApi\Factories\SchemaFactory;
+use MohammadAlavi\ObjectOrientedJSONSchema\Draft202012\Contracts\JSONSchema;
+use MohammadAlavi\ObjectOrientedJSONSchema\Draft202012\Formats\StringFormat;
+use MohammadAlavi\ObjectOrientedOpenAPI\Contracts\Abstract\Factories\Components\SchemaFactory;
+use MohammadAlavi\ObjectOrientedOpenAPI\Contracts\Interface\ShouldBeReferenced;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Schema\Schema;
 
 #[Collection([PrivateCollection::class])]
-class EmailPropertySchema extends SchemaFactory implements Reusable
+class EmailPropertySchema extends SchemaFactory implements ShouldBeReferenced
 {
-    public function build(): SchemaContract
+    public function component(): JSONSchema
     {
-        return Schema::string(class_basename($this))
-            // TODO: Get this from the request rules
+        return Schema::string()
+            ->format(StringFormat::EMAIL)
             ->description('email')
-            ->example('admin@praisecharts.com');
+            ->examples('admin@laragen.io');
     }
 }

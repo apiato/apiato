@@ -13,7 +13,7 @@ class CallOAuthServerTask extends ParentTask
     /**
      * @throws LoginFailedException
      */
-    public function run(array $data, ?string $languageHeader = null): float|object|int|bool|array|string|null
+    public function run(array $data, string|null $languageHeader = null): float|object|int|bool|array|string|null
     {
         $authFullApiUrl = route('passport.token');
 

@@ -9,19 +9,22 @@ use App\Containers\AppSection\Authentication\UI\API\Documentation\Responses\Regi
 use App\Containers\AppSection\Authentication\UI\API\Documentation\SecuritySchemes\BearerTokenSecurityScheme;
 use App\Containers\AppSection\Authentication\UI\API\Requests\RegisterUserRequest;
 use App\Containers\AppSection\User\UI\API\Transformers\UserTransformer;
+use App\Ship\Documentation\Collections\PrivateCollection;
 use App\Ship\Parents\Controllers\ApiController;
-use MohammadAlavi\LaravelOpenApi\Attributes\Operation;
-use MohammadAlavi\LaravelOpenApi\Attributes\Parameters;
-use MohammadAlavi\LaravelOpenApi\Attributes\PathItem;
-use MohammadAlavi\LaravelOpenApi\Attributes\Response as ResponseAttr;
 use Illuminate\Http\JsonResponse;
+use MohammadAlavi\LaravelOpenApi\Attributes\Collection;
+use MohammadAlavi\LaravelOpenApi\Attributes\Operation;
+use MohammadAlavi\LaravelOpenApi\Attributes\PathItem;
 
 #[PathItem]
+#[Collection(PrivateCollection::class)]
 final class RegisterUserController extends ApiController
 {
-    #[Operation(security: BearerTokenSecurityScheme::class)]
-    #[Parameters(factory: RegisterUserParams::class)]
-    #[ResponseAttr(factory: RegisterUserResponse::class)]
+    #[Operation(
+        parameters: RegisterUserParams::class,
+        responses: RegisterUserResponse::class,
+        //        security: BearerTokenSecurityScheme::class,
+    )]
     public function __invoke(RegisterUserRequest $request, RegisterUserAction $action): JsonResponse
     {
         $user = $action->transactionalRun($request->sanitize([

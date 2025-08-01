@@ -20,7 +20,7 @@ class RefreshProxyForWebClientSchema extends SchemaFactory implements Reusable
     {
         return Schema::object(class_basename($this))
             ->properties(
-                Schema::string('refresh_token')
+                Schema::string('refresh_token'),
             )->required('refresh_token');
     }
 }

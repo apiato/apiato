@@ -3,37 +3,49 @@
 namespace App\Containers\AppSection\Authentication\UI\API\Documentation\Parameters;
 
 use App\Containers\AppSection\Authentication\UI\API\Documentation\Schemas\Properties\EmailPropertySchema;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Parameter;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
-use MohammadAlavi\LaravelOpenApi\Factories\ParametersFactory;
+use MohammadAlavi\LaravelOpenApi\Contracts\Interface\Factories\ParametersFactory;
+use MohammadAlavi\ObjectOrientedJSONSchema\Draft202012\Formats\StringFormat;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Parameter\Parameter;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Parameter\SerializationRule\QueryParameter;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Schema\Schema;
+use MohammadAlavi\ObjectOrientedOpenAPI\Support\SharedFields\Parameters;
 
-class RegisterUserParams extends ParametersFactory
+class RegisterUserParams implements ParametersFactory
 {
-    /**
-     * @return Parameter[]
-     */
-    public function build(): array
+    public function build(): Parameters
     {
-        return [
-            Parameter::query()->name('email')
-                ->schema(EmailPropertySchema::ref())
-                ->required(),
-            Parameter::query()->name('password')
-                ->schema(
-                    Schema::string('password')
-                    ->format(Schema::FORMAT_PASSWORD)
-                )->required(),
-            Parameter::query()->name('name')
-                ->schema(
-                    Schema::string('name')
-                    ->minLength(2)
-                    ->maxLength(50)
+        return Parameters::create(
+            Parameter::query(
+                'email',
+                QueryParameter::create(
+                    EmailPropertySchema::create(),
                 ),
-            Parameter::query()->name('verification_url')
-                ->schema(
-                    Schema::string('verification_url')
-                    ->enum(...config('appSection-authentication.allowed-verify-email-urls'))
+            )->required(),
+            Parameter::query(
+                'password',
+                QueryParameter::create(
+                    Schema::string()
+                        ->format(StringFormat::PASSWORD),
                 ),
-        ];
+            )->required(),
+            Parameter::query(
+                'name',
+                QueryParameter::create(
+                    Schema::string()
+                        ->minLength(2)
+                        ->maxLength(50),
+                ),
+            ),
+            Parameter::query(
+                'verification_url',
+                QueryParameter::create(
+                    Schema::string()
+                        ->enum(
+                            'https://example.com/verify-email',
+                            'https://example.com/verify-email?token=123456',
+                        ),
+                ),
+            ),
+        );
     }
 }

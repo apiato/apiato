@@ -3,7 +3,5 @@
     "description": "An Apiato container which can creates a documentation from API annotations in your source code.",
     "type": "apiato-container",
     "license": "MIT",
-    "require": {
-        "mohammad-alavi/laravel-openapi": "dev-master"
-    }
+    "require": {}
 }

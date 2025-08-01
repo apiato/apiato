@@ -316,7 +316,7 @@ api.domain.test/v1/endpoint?skipCache=true
 Calling unprotected endpoint example:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@praisecharts.com" -F "password=admin" -F "=" "http://api.domain.test/v2/register"
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/x-www-form-urlencoded; -F "email=admin@laragen.io" -F "password=admin" -F "=" "http://api.domain.test/v2/register"
 ```
 
 Calling protected endpoint (passing Bearer Token) example:

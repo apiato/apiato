@@ -17,9 +17,9 @@ class LoginWithLegacyTokenRequestBody extends RequestBodyFactory
             ...GeneralMediaTypes::for(
                 Schema::object(class_basename($this))
                 ->properties(
-                    ...SchemaExtractor::extractFromRequest(LoginWithLegacyTokenRequest::class)
-                )
-            )
+                    ...SchemaExtractor::extractFromRequest(LoginWithLegacyTokenRequest::class),
+                ),
+            ),
         );
     }
 }

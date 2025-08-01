@@ -2,14 +2,29 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Documentation\Responses;
 
-use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
-use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
-use MohammadAlavi\LaravelOpenApi\Factories\ResponseFactory;
+use MohammadAlavi\LaravelOpenApi\Contracts\Interface\Factories\ResponsesFactory;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\MediaType\MediaType;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Response\Response;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Responses\Fields\HTTPStatusCode;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Responses\Responses;
+use MohammadAlavi\ObjectOrientedOpenAPI\Schema\Objects\Responses\Support\ResponseEntry;
+use MohammadAlavi\ObjectOrientedOpenAPI\Support\SharedFields\Content\ContentEntry;
 
-class RegisterUserResponse extends ResponseFactory
+class RegisterUserResponse implements ResponsesFactory
 {
-    public function build(): Response
+    public function build(): Responses
     {
-        return Response::ok()->content(MediaType::json());
+        return Responses::create(
+            ResponseEntry::create(
+                HTTPStatusCode::ok(),
+                Response::create(
+                    'User registered successfully',
+                )->content(
+                    ContentEntry::json(
+                        MediaType::create(),
+                    ),
+                ),
+            ),
+        );
     }
 }

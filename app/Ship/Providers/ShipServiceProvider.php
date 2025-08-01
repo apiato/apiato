@@ -9,16 +9,24 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Request;
+use MohammadAlavi\Laragen\Providers\LaragenServiceProvider;
 
 final class ShipServiceProvider extends ParentServiceProvider
 {
+    public function register(): void
+    {
+        $this->app->register(LaragenServiceProvider::class);
+    }
+
     public function boot(): void
     {
         $this->registerMacros();
         RequestException::dontTruncate();
         Date::use(CarbonImmutable::class);
         Model::shouldBeStrict(!app()->isProduction());
+        Model::automaticallyEagerLoadRelationships();
         UserModel::shouldBeStrict(!app()->isProduction());
+        UserModel::automaticallyEagerLoadRelationships();
     }
 
     public function registerMacros(): void

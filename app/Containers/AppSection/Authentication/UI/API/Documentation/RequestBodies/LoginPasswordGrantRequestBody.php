@@ -28,15 +28,15 @@ class LoginPasswordGrantRequestBody extends RequestBodyFactory
                     Schema::string('grant_type')->enum('password'),
                     Schema::string('username')
                         ->description('user email')
-                        ->example('admin@praisecharts.com'),
+                        ->example('admin@laragen.io'),
                     Schema::string('password')
                         ->format(Schema::FORMAT_PASSWORD)
                         ->example('admin'),
                     Schema::integer('client_id'),
                     Schema::string('client_secret'),
                     Schema::string('scope')->default(''),
-                )->required('grant_type', 'username', 'password', 'client_id', 'client_secret')
-            )
+                )->required('grant_type', 'username', 'password', 'client_id', 'client_secret'),
+            ),
 
             // Can't do this because Swagger UI doesn't support OneOf in RequestBody.
             // This is why we have to create a new endpoint for refresh token.

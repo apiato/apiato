@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Documentation\Actions;
 
-use Apiato\Core\Abstracts\Actions\Action as AbstractAction;
+use Apiato\Core\Actions\Action as AbstractAction;
 use App\Containers\AppSection\Documentation\Tasks\GenerateOpenApiSpecTask;
 use App\Containers\AppSection\Documentation\Tasks\GetAllDocsTypesTask;
 use App\Containers\AppSection\Documentation\Tasks\RenderTemplatesTask;
