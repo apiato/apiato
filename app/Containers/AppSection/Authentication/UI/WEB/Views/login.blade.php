@@ -86,7 +86,7 @@
             <!-- Logo Section -->
             <div class="text-center mb-8 sm:mb-10">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light text-apiato-blue mb-3 sm:mb-4 tracking-widest">Apiato</h1>
-                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed">Welcome back! Please sign in to your account.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed">Welcome back!</p>
             </div>
 
             <!-- Login Form -->
