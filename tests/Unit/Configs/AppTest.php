@@ -31,6 +31,7 @@ use Illuminate\Queue\QueueServiceProvider;
 use Illuminate\Redis\RedisServiceProvider;
 use Illuminate\Session\SessionServiceProvider;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -149,6 +150,7 @@ final class AppTest extends ShipTestCase
                 'Arr' => Arr::class,
                 'Artisan' => Artisan::class,
                 'Auth' => Auth::class,
+                'Benchmark' => Benchmark::class,
                 'Blade' => Blade::class,
                 'Broadcast' => Broadcast::class,
                 'Bus' => Bus::class,
