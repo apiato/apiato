@@ -51,6 +51,16 @@ final class QueueTest extends ShipTestCase
                     'block_for' => null,
                     'after_commit' => false,
                 ],
+                'deferred' => [
+                    'driver' => 'deferred',
+                ],
+                'failover' => [
+                    'driver' => 'failover',
+                    'connections' => [
+                        'database',
+                        'deferred',
+                    ],
+                ],
             ],
             'batching' => [
                 'database' => env('DB_CONNECTION', 'sqlite'),

@@ -67,6 +67,13 @@ final class CacheTest extends ShipTestCase
                 'octane' => [
                     'driver' => 'octane',
                 ],
+                'failover' => [
+                    'driver' => 'failover',
+                    'stores' => [
+                        'database',
+                        'array',
+                    ],
+                ],
             ],
             'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_cache_'),
         ];
