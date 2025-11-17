@@ -128,8 +128,7 @@
             "composer/package-versions-deprecated": true,
             "php-http/discovery": true,
             "wikimedia/composer-merge-plugin": true
-        },
-        "secure-http": false
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true
