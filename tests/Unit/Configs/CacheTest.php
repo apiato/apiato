@@ -19,6 +19,10 @@ final class CacheTest extends ShipTestCase
                     'driver' => 'array',
                     'serialize' => false,
                 ],
+                'session' => [
+                    'driver' => 'session',
+                    'key' => env('SESSION_CACHE_KEY', '_cache'),
+                ],
                 'database' => [
                     'driver' => 'database',
                     'connection' => env('DB_CACHE_CONNECTION'),
