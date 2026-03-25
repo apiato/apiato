@@ -56,12 +56,12 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpunit/phpunit": "^11.0.1",
-        "psalm/plugin-laravel": "^3.0",
+        "psalm/plugin-laravel": "^4.3",
         "psalm/plugin-mockery": "^1.2",
         "psalm/plugin-phpunit": "^0.19.2",
         "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^6.0.0",
-        "thecodingmachine/phpstan-safe-rule": "^1.4"
+        "thecodingmachine/phpstan-safe-rule": "^1.4",
+        "vimeo/psalm": "^7.0"
     },
     "autoload": {
         "psr-4": {
@@ -130,6 +130,6 @@
             "wikimedia/composer-merge-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

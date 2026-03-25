@@ -16,6 +16,13 @@
             <directory name="node_modules"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <MissingOverrideAttribute errorLevel="info"/>
+        <MissingPureAnnotation errorLevel="info"/>
+        <MissingAbstractPureAnnotation errorLevel="info"/>
+        <MissingInterfaceImmutableAnnotation errorLevel="info"/>
+        <MissingImmutableAnnotation errorLevel="info"/>
+    </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
