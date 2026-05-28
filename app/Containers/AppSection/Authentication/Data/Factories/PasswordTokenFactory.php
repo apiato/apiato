@@ -38,7 +38,7 @@ final class PasswordTokenFactory
         );
     }
 
-    protected function dispatchRequestToAuthorizationServer(ServerRequestInterface $request): array
+    private function dispatchRequestToAuthorizationServer(ServerRequestInterface $request): array
     {
         return json_decode(
             (string) $this->server->respondToAccessTokenRequest(
@@ -51,7 +51,7 @@ final class PasswordTokenFactory
         );
     }
 
-    protected function createRequest(AccessTokenProxy|RefreshTokenProxy $proxy): ServerRequestInterface
+    private function createRequest(AccessTokenProxy|RefreshTokenProxy $proxy): ServerRequestInterface
     {
         return (new PsrHttpFactory())->createRequest(
             Request::create(
